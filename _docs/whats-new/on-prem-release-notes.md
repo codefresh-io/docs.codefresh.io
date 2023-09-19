@@ -9,7 +9,7 @@ Welcome to the release notes for our on-premises release versions, starting with
 ## On-premises version 2.1
 
 ### Features & enhancements
-<br><br>
+<br>
 
 #### Upgrading to v2.1
 This major release includes new services and changes to existing services.  
@@ -86,6 +86,8 @@ Key benefits:
   We have introduced a dedicated Marketplace step to obtain the ID token. The `obtain-oidc-id-token` step when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
 
 For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+
+<br><br>
 
 #### Pipelines: Access control for endpoints 
 With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
@@ -228,13 +230,16 @@ Codefresh also adds the Group name as an annotation to the application manifest 
 
 For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
+<br><br>
+
 #### GitOps: Customize session cookie
 For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `DISABLE_CONCURRENT_SESSIONS`=`true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to customize the domain for the session cookie. For example, `.mydomain.com`. 
  
 For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
-#### Frame options for Codefresh pages
-We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. 
+<!--- #### Frame options for Codefresh pages
+We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. -->
+
 
 ### Bug fixes
 
@@ -292,7 +297,7 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
 | `accountInfoCopyButton`  | When enabled (the default), the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.                                                     | TRUE         |
-| `accessibilityContrast` | When enabled, displays an icon in the Codefresh toolbar allowing you to control the contrast by selecting the option that best suits the logged in user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}.| FALSE         |
+| `accessibilityContrast` | When enabled, displays an icon in the Codefresh toolbar allowing you to control the contrast by selecting the option that best suits the logged in user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}| FALSE         |
 | `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.      | FALSE         |
 |`gerritIntegration`      | When enabled, enables Gerrit integration in Account settings. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
