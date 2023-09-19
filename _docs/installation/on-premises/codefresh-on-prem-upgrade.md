@@ -634,4 +634,7 @@ Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/
 
 
 
+## Related articles
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[On-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
 

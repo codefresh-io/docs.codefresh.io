@@ -59,7 +59,8 @@ These providers are not displayed as options during sign-up/sign-in.
 
 ## Related articles
 [Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)   
-[Codefresh on-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[On-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
 
 
 
