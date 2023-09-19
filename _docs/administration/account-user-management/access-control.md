@@ -383,7 +383,7 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
 
 * For team Marvel:
     1. Rule 1: Create pipelines in projects only with _all of these_ tags: both `frontend` AND `shared`.
-    1. Rule 2: All other permissions for pipelines in projects only with _all of these_ tags: both `frontend` AND `shared` tags.
+    1. Rule 2: All other permissions for pipelines in projects only with _all of these_ tags: both `frontend` AND `shared`.
 
  {% include image.html
   lightbox="true"
@@ -469,6 +469,5 @@ By default, if configured for the account, users can also load pipeline definiti
 
 ## Related articles
 [Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
-[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 
