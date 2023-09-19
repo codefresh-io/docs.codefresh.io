@@ -378,7 +378,7 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   url="/images/administration/access-control/example-project-tags-devops.png"
   alt="Example: Unrestricted pipeline permissions for DevOps team by _any_ project tags"
   caption="Example: Unrestricted pipeline permissions for DevOps team by _any_ project tags"
-  max-width="60%"
+  max-width="70%"
   %}
 
 * For team Marvel:
@@ -391,7 +391,7 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   url="/images/administration/access-control/example-project-tags-marvel.png"
   alt="Example: Restricting pipeline permissions by _all_ project tags"
   caption="Example: Restricting pipeline permissions by _all_ project tags"
-  max-width="60%"
+  max-width="70%"
   %}
 
 * For team Users: 
@@ -403,7 +403,7 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   url="/images/administration/access-control/example-project-tags-users.png"
   alt="Example: Restricting team permissions for pipelines by _all_ project tags"
   caption="Example: Restricting team permissions for pipelines by _all_ project tags"
-  max-width="60%"
+  max-width="70%"
   %}
 
 ## Git-repository access for pipeline definitions 
