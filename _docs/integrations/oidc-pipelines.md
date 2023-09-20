@@ -468,8 +468,7 @@ assume_role:
     commands: 
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
-{:start="2"}
-2. Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
+1. Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
     1. Click the **Variables** tab on the right. 
     1. Add these variables and values:
       * `BUCKET_NAME=<bucket-name>`, for example, `oidc-test1`.
