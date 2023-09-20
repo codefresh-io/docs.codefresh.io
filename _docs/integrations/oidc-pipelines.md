@@ -438,7 +438,7 @@ steps:
       - 'echo ${{steps.obtain_id_token.output.ID_TOKEN}}'
 ```
 {:start="4"}
-4. Continue with [Step 5 for AWS: Add actions to the pipeline workflow](#step-5-for-aws-add-actions-to-the-pipeline-workflow).
+1. Continue with [Step 5 for AWS: Add actions to the pipeline workflow](#step-5-for-aws-add-actions-to-the-pipeline-workflow).
 
 
 
