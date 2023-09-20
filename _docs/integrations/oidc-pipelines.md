@@ -28,7 +28,7 @@ After setup, to use the ID token, on the Codefresh side, we have a dedicated Mar
 
 Review the [generic setup for OIDC](#oidc-setup-for-codefresh-pipelines), or follow the instructions in our example for [OIDC with AWS (Amazon Web Services)](#codefresh-oidc-for-aws). 
 
-## More on the OIDC ID token
+## OIDC ID tokens, standard & custom claims
 
 The ID token is a JSON Web Token (JWT) which contains claims on the authentication and authorization of the user or resource.
 The claim is a piece of information included in the ID token providing details about the identity, attributes, and other information for the cloud provider to authorize the access request.
@@ -125,7 +125,15 @@ The custom claims include `account_id`, `account_name`, `pipeline_id`, `pipeline
 
 Here are the steps required for OIDC ID token usage in Codefresh pipelines:
 
-DIAGRAM TBD
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/oidc/oidc-cf-config-flow.png" 
+url="/images/pipeline/oidc/oidc-cf-config-flow.png"
+alt="Configuration flow for OIDC ID token usage in Codefresh" 
+caption="Configuration flow for OIDC ID token usage in Codefresh"
+max-width="60%"
+%}
 
 1. Add Codefresh as an OIDC provider in the cloud provider platform
 1. Create the trust relationship between Codefresh OIDC and the cloud provider
@@ -224,6 +232,7 @@ For AWS, for example, you need a step to assume the required role and another st
 ## Codefresh OIDC for AWS
 
 This section walks you through setting up OIDC for Codefresh pipelines on AWS as an example.
+For more information, see AWS documentation on [Creating OpenID Connect (OIDC) identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html){:target="\_blank"} and [Creating a role for web identity or OpenID Connect Federation (console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html) {:target="\_blank"}.
 
 ### Step 1 for AWS: Add Codefresh as an OIDC provider
 
