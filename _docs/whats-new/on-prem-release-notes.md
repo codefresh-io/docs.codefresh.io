@@ -74,7 +74,7 @@ For details, see [Deploying Codefresh with OpenShift](https://artifacthub.io/pac
 #### Pipelines: OpenID Connect (OIDC) integration
 Introducing OIDC (OpenID Connect) for Codefresh pipelines! Boost pipeline security and streamline access control with OIDC. Instead of referencing static credentials stored in Codefresh for the cloud provider, allow pipelines to authenticate and authorize actions through short-lived ID tokens. 
 
-Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition.
+Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition, and then add the actions to perform on the cloud provider in the pipeline.
 
 Key benefits:
 * Enhanced security  
@@ -83,7 +83,7 @@ Key benefits:
 
 * Ease of use  
   Once the OIDC provider configuration is completed, obtaining the ID token is seamless.  
-  We have introduced a dedicated Marketplace step to obtain the ID token. The `obtain-oidc-id-token` step when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
+  Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
 
 For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
 
@@ -154,7 +154,6 @@ The Pipelines Dashboard now has a Favorites filter. If you starred any projects 
 The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
 
 **Full path display for pipelines in filter**  
-
 Previously, in the Pipelines filter, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
 Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, 
 followed by the name of the pipeline. 
