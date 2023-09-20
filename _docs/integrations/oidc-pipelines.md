@@ -15,7 +15,7 @@ Whether you are a SaaS user or running Codefresh on-premises, you can obtain the
 In Codefresh, cloud provider credentials are defined and stored as static credentials when setting up the integration with the provider, and then referenced in the pipeline through the integration name. 
 
 With OIDC, Codefresh pipelines can utilize short-lived ID tokens for authentication during execution, instead of long-lived static credentials.
-These ID tokens do not need to be stored and managed in Codefresh. See [More on the OIDC token](#more-on-the-oidc-id-token).
+These ID tokens do not need to be stored and managed in Codefresh. See [OIDC ID tokens, standard & custom claims](#oidc-id-tokens-standard--custom-claims).
 
 **How do you set up OIDC for Codefresh pipelines?**  
 The bulk of the process to setup the OIDC ID token in Codefresh pipelines is on the cloud provider's platform.  
@@ -98,7 +98,7 @@ The table below lists the different types of Codefresh triggers, and the corresp
 Here is an example of the payload of an ID token issued by Codefresh as the OIDC provider with a combination of standard and custom claims.  
  
 
-As you can see, the `sub` claim concatenates several of the custom claims for the Git trigger in this example. For examples of sample claims based on trigger types, see [Create trust and configure claims for Codefresh OIDC identity provider](#step-2-create-trust-and-configure-claims-for-codefresh-oidc-identity-provider).
+As you can see, the `sub` claim concatenates several of the custom claims for the Git trigger in this example.
 
 ```json
 {
