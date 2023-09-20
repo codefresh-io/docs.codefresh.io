@@ -93,6 +93,155 @@ The following resources can be targeted with the API:
 
 The scopes available for each resource differ according to the type of resource.
 
+{::nomarkdown}
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Entity</th>
+      <th>Access Level</th>
+      <th>Endpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="6">Pipeline</td>
+      <td>Full access</td>
+      <td>
+        Approve workflow defined by ID that is pending approval
+        Deny approval for workflow that is pending approval<br>
+
+
+
+        Get list of pipelines<br>
+        Create a pipeline<br>
+        Get list of incorrectly configured triggers for pipelines in account<br>
+        Resolve incorrectly configured triggers for pipelines in account<br>
+
+        Get list of pipelines according to the query filters. 
+        Create a template from an existing pipeline.
+        Set an existing pipeline as a template.
+        Verify that account has at least one pipeline (internal endpoint)
+        Get list of tags if any, assigned to pipelines.
+        Get list of pipelines with the tag defined.
+        Extract variables from the YAML based on the defined URL.
+        Run new builds/restart builds for pipelines.
+        Run pipeline. 
+        Run pipeline by name or ID.
+        Run specified pipeline in debug mode and get ID of new pipeline created.
+
+        Enable debug mode for existing build by ID.
+       Check if debug is enabled for existing build by ID.
+       Restart build by ID.
+       Restart a build in debug mode by ID.
+       Get list of triggers for pipeline by ID. 
+       Replace existing pipeline by name or ID with the new payload.
+       Delete pipeline by name or ID.
+       Get project variables for pipeline by name or ID.
+       Assign an execution context to pipeline by name or ID, with the execution context as payload.
+       Delete or unassign the execution context assigned to a pipeline by ID or name.
+       Get a preview of input variables and options for a pipeline execution by pipeline name and trigger name or ID.
+
+
+       Validate YAML (internal endpoint)
+       Test YAML from URL (internal endpoint)
+       Get deploy images (internal endpoint)
+       Clone variable by name from defined pipeline (internal endpoint)
+       Verify pipeline trigger (internal endpoint)
+       Extract variables (internal endpoint)
+       Get volume image (internal endpoint)
+
+
+
+
+
+
+
+
+
+        - post -- /pipelines/analyze<br>
+        - post -- /pipelines/run<br>
+        - get -- /pipelines/projects/all<br>
+        - 'post -- /pipelines/{name}'<br>
+
+      </td>
+    </tr>
+    <tr>
+      <td>Read access</td>
+      <td>
+        - get -- /pipelines<br>
+        - get -- /pipelines/invalidTriggers<br>
+        - get -- /pipelines/triggers<br>
+        - get -- /pipelines/templates<br>
+        - get -- /pipelines/exist<br>
+        - get -- /pipelines/labels<br>
+        - 'get -- /pipelines/labels/{label}'<br>
+        - get -- /pipelines/names<br>
+        - get -- /pipelines/utils/extractVariables<br>
+        - get -- /pipelines/yaml/test-url<br>
+        - get -- /pipelines/templates/deploy-images<br>
+        - get -- /pipelines/projects/all<br>
+        - 'get -- /pipelines/{name}'<br>
+        - 'get -- /pipelines/{name}/project-vars'<br>
+        - 'get -- /pipelines/{name}/extractVariables'<br>
+        - 'get -- /pipelines/{name}/volume-image'<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Write access</td>
+      <td>
+        Clone named variables from specified pipeline<br>
+        Update pipeline with specified name
+        Delete pipeline with specified name
+        Create pipeline 
+        - 'put -- /pipelines/clone/variables/{name}/{originPipelineName}'<br>
+        - 'put -- /pipelines/{name}'<br>
+        - 'delete -- /pipelines/{name}'<br>
+        - 'post -- /pipelines/{name}'<br>
+        - 'delete -- /pipelines/{name}/execution-context'<br>
+        - 'post -- /pipelines/{name}/triggers/{triggerId}/verify'<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Approve access</td>
+      <td>
+        - 'get -- /workflow/{workflowId}/pending-approval/approve'<br>
+        - 'get -- /workflow/{workflowId}/pending-approval/deny'<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Debug access</td>
+      <td>
+        - 'post -- /pipelines/debug/{name}'<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Run</td>
+      <td>
+        - 'post -- /pipelines/run/{name}'<br>
+        - 'get -- /pipelines/{name}/preview-run-input'<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Assign</td>
+      <td>
+        - 'patch -- /pipelines/{name}/execution-context'<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+{:/}
+
+
+
+
+
+
 
 ## Using the API Key with the Codefresh CLI
 
