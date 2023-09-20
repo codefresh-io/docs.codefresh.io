@@ -179,14 +179,6 @@ For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipe
 
 <br><br>
 
-#### Pipelines: Configure limit for project's pipelines
-The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project.  
-Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project. 
-  
-For details, see [Pipeline limit in projects](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#projects-pipelines-limit){:target="\_blank"}.
-
-
-<br><br>
 
 #### GitOps: ABAC for GitOps applications
 In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
@@ -231,12 +223,13 @@ For details, see [Application Groups for GitOps applications]({{site.baseurl}}/d
 
 <br><br>
 
+<!---
 #### GitOps: Customize session cookie
 For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `DISABLE_CONCURRENT_SESSIONS`=`true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to customize the domain for the session cookie. For example, `.mydomain.com`. 
  
 For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
-<!--- #### Frame options for Codefresh pages
+ #### Frame options for Codefresh pages
 We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. -->
 
 
