@@ -19,20 +19,20 @@ We have transitioned to a new Helm-based installation for the Codefresh Runner, 
 Existing installations, both CLI-based, and older Helm-based ones, we encourage you to transition to the new Helm installation.
 The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy and will be deprecated in the coming months. 
 
->**Codefresh Runner with sport instances**:<br>
+>**Codefresh Runner with spot instances**:<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice. If you require 100% availability, we do not recommend using spot instances.
 
 After installing the Codefresh Runner, you can:
 * View the Runner Agent and its Runtime Environments
-* Runner components and 
+* Runner components and resources
 * Configure different aspects of the Runner
 *  
 ## System requirements
 
 
 {: .table .table-bordered .table-hover}
-| Item                     | Requirement            |  
-| --------------         | --------------           |  
+| Item                     | Requirement            |
+| --------------         | --------------           |
 |Kubernetes cluster      | Server version 1.21 to 1.27. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
 |Helm| 3.8.0 and higher|
 |Container runtime | Any compliant container runtime, as the runner is **not** dependent on any special dockershim features. {::nomarkdown}<br>Examples: <ul><li><a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq" target="blank">Docker</a></li><li><a href="https://containerd.io/" target="blank">containerd</a></li><li><a href="https://cri-o.io/" target="blank">cri-o</a></li></ul> {:/} |
@@ -40,9 +40,13 @@ After installing the Codefresh Runner, you can:
 
 
 
+
+
 ## Install Codefresh Runner with Helm
 
+
 To install the Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#install-chart) in ArtifactHub.
+
 
 **Existing installations**  
 For existing Runner installations, either older Helm installations or CLI-based installations:  
@@ -51,10 +55,12 @@ Delete the existing `values` file and reinstall the Codefresh Runner with the ne
 ## Runner components and resources
 <!--- to be removed from this page once Mikhail has added to Artifact Hub -->
 
+
 Once installed, the Codefresh Runner is similar to any Kubernetes application, and you can monitor it using your existing tools.
 Among the Runner components, only the `runner` pod persists within your cluster. Other components, such as the `engine`, exist for the duration of pipeline build.
 
 To monitor the Runner, list the resources inside the namespace you chose during installation:
+
 
 ```shell
 $ kubectl get pods -n codefresh-runtime
@@ -68,6 +74,7 @@ engine-5ee7577017ef40908b784388                   1/1     Running   0          2
 monitor-648b4778bd-tvzcr                          1/1     Running   0          3d
 runner-5d549f8bc5-7h5rc                           1/1     Running   0          3d
 ```
+
 
 You can also list `secrets`, `config-maps`, `logs`, `volumes`, etc. for the Codefresh builds.
 
@@ -83,6 +90,7 @@ The Runner uses the following pods:
 
 The following table shows the **minimum** resources for each Runner component:
 
+
 {: .table .table-bordered .table-hover}
 | Component         | CPU requests| RAM requests | Storage                  | Type | Always on |
 | -------------- | --------------|------------- |-------------------------|-------|-------|
@@ -92,20 +100,31 @@ The following table shows the **minimum** resources for each Runner component:
 | `dind-volume-provisioner`         | 300m          | 400Mi        | Doesn't need PV         | Deployment   | Yes   |
 | `dind-lv-monitor`         | 300m          | 400Mi        | Doesn't need PV         | DaemonSet   | Yes   |
 
+  You have completed installing the Codefresh Runner with CLI Wizard.
+
+
 >**NOTES**:  
 Components that are always-on consume resources all the time. Components that are not always-on consume resources only when pipelines are running. Such resources are automatically both created and destroyed for each pipeline.
+
 
 Node size and count depends entirely on how many pipelines you want to be “ready” for, and how many will use “burst” capacity:  
 * Ready (nodes): Lower initialization time and faster build times.
 * Burst (nodes): High initialization time and slower build times (not recommended).
 
+{:start="5"}
+1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, continue with [Complete Codefresh Runner installation](#complete-codefresh-runner-installation).
+1. Optional. Verify your installation:
+
+
 >**TIP**:  
-The size of your nodes directly relates to the size required for your pipelines and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
+The size of your nodes relates directly to the size required for your pipelines, and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
+
 
 
 ### Storage
 
 For the storage options needed by the `dind` pod, we suggest:
+
 
 * [Local Volumes](https://kubernetes.io/docs/concepts/storage/volumes/#local){:target="\_blank"} `/var/lib/codefresh/dind-volumes` on the K8S nodes filesystem (**default**)
 * [EBS](https://aws.amazon.com/ebs/){:target="\_blank"} in the case of AWS. See also the [notes](#aws-backend-volume-configuration) about getting caching working.
@@ -170,12 +189,15 @@ Override the default Runtime Environment for a specific pipeline through the pip
 
 
 
+
 ## Codefresh Runner configuration
 After you install the Codefresh Runner, review the [configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} options described in ArtifactHub:
 * [EBS backend volume](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
 * [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
 * [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
 * [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
+
+
 
 
 
@@ -188,8 +210,10 @@ The section describes the specifications for the Runtime Environment.
 There are additional and hidden fields auto-generated by Codefresh that complete the specifications. You can view and edit these fields only for [Codefresh On-Premises installations]({{site.baseurl}}/docs/installation/codefresh-on-prem/).
 
 
+
 ### Example: Default Runtime Environment specifications
 Below is an example of the default and basic runtime spec after you've installed the Codefresh Runner: 
+
 
 {% highlight yaml %}
 {% raw %}
@@ -225,7 +249,9 @@ accountId: 5f048d85eb107d52b16c53ea
 {% endraw %}
 {% endhighlight %}
 
+
 ### Top-level fields
+
 
 {: .table .table-bordered .table-hover}
 | Field name          | Type                  | Value |
@@ -241,62 +267,7 @@ accountId: 5f048d85eb107d52b16c53ea
 
 ### runtimeScheduler fields (engine)
 
-{: .table .table-bordered .table-hover}
-| Field name          | Type                  | Value |
-| -------------- |-------------------------| -------------------------|
-| `image`       | string | Override default engine image |
-| `imagePullPolicy`       | string | Override image pull policy (default `IfNotPresent`) |
-| `type`       | string | `KubernetesPod` |
-| `envVars`       | object | Override or add environment variables passed into the engine pod |
-| `userEnvVars`       | object | Add external env var(s) to the pipeline. See [Custom Global Environment Variables](#custom-global-environment-variables)  |
-| `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `resources`       | object | Specify non-default `requests` and `limits` for engine pod. For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
-| `tolerations`       | array | Add tolerations to engine pod |
-| `annotations`       | object | Add custom annotations to engine pod (empty by default `{}`) |
-| `labels`       | object | Add custom labels to engine pod (empty by default `{}`) |
-| `dnsPolicy`       | string | Engine pod's [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy){:target="\_blank"} |
-| `dnsConfig`       | object | Engine pod's [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config){:target="\_blank"} |
 
-`runtimeScheduler` example:
-{% highlight yaml %}
-{% raw %}
-runtimeScheduler:
-  imagePullPolicy: Always
-  cluster:
-    clusterProvider:
-      accountId: 5f048d85eb107d52b16c53ea
-      selector: my-eks-cluster
-    nodeSelector: #schedule engine pod onto a node whose labels match the nodeSelector
-      node-type: engine  
-    namespace: codefresh
-    serviceAccount: codefresh-engine
-  annotations: {}
-  labels:
-    spotinst.io/restrict-scale-down: "true" #optional label to prevent node scaling down when the runner is deployed on spot instances using spot.io
-  envVars:
-    NODE_TLS_REJECT_UNAUTHORIZED: '0' #disable certificate validation for TLS connections (e.g. to g.codefresh.io)
-    METRICS_PROMETHEUS_ENABLED: 'true' #enable /metrics on engine pod
-    DEBUGGER_TIMEOUT: '30' #debug mode timeout duration (in minutes)
-  userEnvVars:
-    - name: GITHUB_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: github-token
-          key: token
-  resources:
-    requests:
-      cpu: 60m
-      memory: 500Mi
-    limits:
-      cpu: 1000m
-      memory: 2048Mi
-  tolerations:
-    - effect: NoSchedule
-      key: codefresh.io
-      operator: Equal
-      value: engine            
-{% endraw %}
-{% endhighlight %}
 
 ### dockerDaemonScheduler fields (dind)
 
@@ -544,7 +515,7 @@ provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- r
 volumeBindingMode: Immediate
 parameters:
   # ebs or ebs-csi
-  volumeBackend: ebs 
+  volumeBackend: ebs
   # Valid zone
   AvailabilityZone: us-central1-a # <---- change it to your AZ
   #  gp2, gp3 or io1
@@ -554,7 +525,7 @@ parameters:
   # ext4 or xfs (default to xfs, ensure that there is xfstools )
   fsType: xfs
 ```
-  * **Storage Class (gp3)** 
+  * **Storage Class (gp3)**
 
 ```yaml
 kind: StorageClass
@@ -582,12 +553,12 @@ parameters:
   # Max - 1000.
   throughput: "500"
 ```
-**Step 2:** Apply storage class manifest:  
+**Step 2:** Apply storage class manifest:
 ```shell
 kubectl apply -f dind-ebs.yaml
 ```
-**Step 3:** Get the YAML representation of the runtime you just added:  
-  * Get a list of all available runtimes:  
+**Step 3:** Get the YAML representation of the runtime you just added:
+  * Get a list of all available runtimes:
 ```shell
 codefresh get runtime-environments
 ```
@@ -596,12 +567,12 @@ codefresh get runtime-environments
 codefresh get runtime-environments my-eks-cluster/codefresh -o yaml > runtime.yaml
 ```
 
-**Step 4:** Modify the YAML:  
-  *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.  
+**Step 4:** Modify the YAML:
+  *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.
     > Make sure you define the same AZ you selected for Runtime Configuration.
   * Modify `pvcs.dind` to use the Storage Class you created above (`dind-ebs`).
 
-  Here is an example of the `runtime.yaml` including the required updates: 
+  Here is an example of the `runtime.yaml` including the required updates:
 
 
 ```yaml
@@ -652,7 +623,8 @@ codefresh patch runtime-environment my-eks-cluster/codefresh -f runtime.yaml
 kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
 kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 ```
-**Step 7:** Restart the volume provisioner pod. 
+**Step 7:** Restart the volume provisioner pod.
+
 
 
 
@@ -675,7 +647,7 @@ Configure the Codefresh Runner to use local SSDs for your pipeline volumes:
 
 #### GCE  disk storage configuration
 
-**Prerequisites**  
+**Prerequisites**
 The `dind-volume-provisioner` should have permissions to create/delete/get GCE disks.
 
 There are three options to provide cloud credentials:
@@ -686,7 +658,7 @@ There are three options to provide cloud credentials:
 
 Notice that builds run in a single Availability Zone (AZ), so you must specify Availability Zone parameters.
 
-**Configuration**  
+**Configuration**
 [How-to: Configuring an existing Runtime Environment with GCE disks]({{site.baseurl}}/docs/kb/articles/config-re-gke-gce-disk){:target="\_blank"}
 
 <br />
@@ -698,16 +670,16 @@ Currently, to support effective caching with GCE disks, the builds/pods need to 
 To use the Codefresh Runner on Kubernetes nodes running in multiple Availability Zones, check out our suggestions:
 
 **Provision a new Kubernetes cluster that runs in a single AZ**
-This is the preferred solution and avoids extra complexity. The cluster should be dedicated for usage with the Codefresh Runner. 
+This is the preferred solution and avoids extra complexity. The cluster should be dedicated for usage with the Codefresh Runner.
 
 <br />
 
-**Install Codefresh Runner in your multi-zone cluster and run it in the default Node Pool**  
+**Install Codefresh Runner in your multi-zone cluster and run it in the default Node Pool**
 
-You must specify:   
-`--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=topology.kubernetes.io/zone=us-central1-c`)  
-OR  
-Do the following:  
+You must specify:
+`--build-node-selector=<node-az-label>` (e.g.: `--build-node-selector=topology.kubernetes.io/zone=us-central1-c`)
+OR
+Do the following:
 1. Modify the Runtime environment as below:
 ```shell
 codefresh get re $RUNTIME_NAME -o yaml > re.yaml
@@ -721,12 +693,12 @@ runtimeScheduler:
   cluster:
     nodeSelector: #schedule engine pod onto a node whose labels match the nodeSelector
       topology.kubernetes.io/zone: us-central1-c
-    ...  
+    ...
 dockerDaemonScheduler:
   cluster:
     nodeSelector: #schedule dind pod onto a node whose labels match the nodeSelector
       topology.kubernetes.io/zone: us-central1-c
-    ...  
+    ...
   pvcs:
     dind:
       ...
@@ -737,11 +709,11 @@ codefresh patch re -f re.yaml
 ```
 <br />
 
-**Install Codefresh Runner in your multi-zone cluster and run it with a dedicated Node Pool**    
-Follow the instructions for the default Node Pool.  
+**Install Codefresh Runner in your multi-zone cluster and run it with a dedicated Node Pool**
+Follow the instructions for the default Node Pool.
 
-**Install a Codefresh Runner for every Availability Zone**  
-Install separate Codefresh Runners in each Availability Zone,  one for AZ A, and the other for AZ B, for example.  
+**Install a Codefresh Runner for every Availability Zone**
+Install separate Codefresh Runners in each Availability Zone,  one for AZ A, and the other for AZ B, for example.
 This is technically viable, but to distribute the builds across the Codefresh Runner runtime environments, you must manually specify the runtime environment for the pipelines that don't use the default runtime environment.
 
 For example, let's say Venona-zoneA is the default runtime environment, for the pipelines to run in Venona-zoneB,  modify their RE settings, and explicitly set Venona-zoneB as the one to use.
@@ -772,14 +744,14 @@ data:
 Now any container image used in your pipeline and isn't fully qualified, will be pulled through the Docker registry that is configured as a mirror.
 
 ### Add custom labels to dind and engine pods
-Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by patching it. 
+Add custom labels to your Engine and Dind pods in Runtime Environment (RE) by patching it.
 {:start="1"}
-1. Get the configuration of the RE and place it in a file named `runtime.yaml`.  
-  `codefresh get runtime-environments -o yaml <$RUNTIME_ENVIRONMENT> > runtime.yaml`  
-  where:  
+1. Get the configuration of the RE and place it in a file named `runtime.yaml`.
+  `codefresh get runtime-environments -o yaml <$RUNTIME_ENVIRONMENT> > runtime.yaml`
+  where:
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
-1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below.  
-  If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.  
+1. Edit the `dockerDaemonScheduler.labels` or `runtimeScheduler.labels` property of `runtime.yaml` to include the label, as in the example below.
+  If the `dockerDaemonScheduler.labels` are not included in the RE configuration by default, add them.
 ```yaml
 version: 1
 metadata:
@@ -798,15 +770,17 @@ dockerDaemonScheduler:
 [...]
 ```
 1. Patch the runtime environment:
-  `codefresh patch re $RUNTIME_ENVIRONMENT -f runtime.yaml`  
-  where:  
+  `codefresh patch re $RUNTIME_ENVIRONMENT -f runtime.yaml`
+  where:
   `$RUNTIME_ENVIRONMENT` must be replaced with the name of your RE.
 
-Once you have applied the patch, future builds will include the label preventing eviction. 
+Once you have applied the patch, future builds will include the label preventing eviction.
 
 ### Install monitoring component
 
+
 If your cluster is located [behind the firewall]({{site.baseurl}}/docs/installation/behind-the-firewall/), you can use the Runner's monitoring component to get valuable information about cluster resources to Codefresh dashboards. For example, to [Kubernetes](https://g.codefresh.io/kubernetes/services/){:target="\_blank"} and [Helm Releases](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"} dashboards.
+
 
 You can install the monitoring component during Runner installation with cluster integration, or after Runner installation without cluster integration. 
 
@@ -818,8 +792,11 @@ codefresh runner init --install-monitor
 where:  
 * `--install-monitor` is by default set to `true` and installs the monitoring component that makes valuable data on the cluster available to Codefresh.
 
+
 #### Install _without_ cluster integration _after_ Runner install
 If you defined the `--skip-cluster-integration` flag to skip cluster integration during Runner installation, then you cannot install the  monitoring component during the installation. Install the monitoring component separately after completing the Runner installation to get cluster resource information to the Codefresh dashboards. 
+
+
 
 ```shell
 codefresh install monitor --kube-context-name <CONTEXT> --kube-namespace <NAMESPACE> --cluster-id <CLUSTER_NAME> --token <TOKEN>
@@ -947,12 +924,12 @@ codefresh runner delete --help
 
 
 
-## Customized Codefresh Runner installations 
+## Customized Codefresh Runner installations
 
 
 ### App-Proxy installation
 
-The App-Proxy is an **optional** component of the Runner, used mainly when the Git provider server is installed on-premises, behind the firewall.  
+The App-Proxy is an **optional** component of the Runner, used mainly when the Git provider server is installed on-premises, behind the firewall.
 
 #### App-Proxy requirements
 
@@ -960,7 +937,7 @@ App-Proxy requires a Kubernetes cluster:
 
 1. With the Codefresh Runner installed <!--- is this correct? -->
 1. With an active [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/){:target="\_blank"}.
-  The ingress controller must allow incoming connections from the VPC/VPN where users are browsing the Codefresh UI.  
+  The ingress controller must allow incoming connections from the VPC/VPN where users are browsing the Codefresh UI.
   The ingress connection **must** have a hostname assigned for this route, and **must** be configured to perform SSL termination.
 
 >Currently, App-Proxy is supported for both SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Server.
@@ -976,15 +953,15 @@ codefresh install app-proxy --host=<hostname-of-ingress>
 **Install Codefresh Runner and App-Proxy**:
 
 ```shell
-codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress> 
+codefresh runner init --app-proxy --app-proxy-host=<hostname-of-ingress>
 ```
-**Define the ingress class for App-Proxy**:  
+**Define the ingress class for App-Proxy**:
 
-If you have multiple ingress controllers in the Kubernetes cluster, use the `--app-proxy-ingress-class` parameter to define which ingress will be used.  
+If you have multiple ingress controllers in the Kubernetes cluster, use the `--app-proxy-ingress-class` parameter to define which ingress will be used.
 For additional security, to further limit the web browsers that can access the ingress, you can also define an allowlist of IPs/ranges. Check the documentation of your ingress controller for the exact details.
 
-By default, the app-proxy ingress uses the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`.  
-See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml#L231-L253){:target="\_blank"}.  
+By default, the app-proxy ingress uses the path `hostname/app-proxy`. You can change that default by using the values file in the installation with the flag `--values values.yaml`.
+See the `AppProxy` section in the example [values.yaml](https://github.com/codefresh-io/venona/blob/release-1.0/venonactl/example/values-example.yaml#L231-L253){:target="\_blank"}.
 
 ```shell
 codefresh install app-proxy --values values.yaml
@@ -1004,7 +981,7 @@ Here is the architecture of the App-Proxy:
 The App-Proxy:
 * Enables you to automatically create webhooks for Git in the Codefresh UI (identical to the SaaS experience)
 * Sends commit status information back to your Git provider (identical to the SaaS experience)
-* Makes all Git operations in the GUI work exactly like the SaaS installation of Codefresh 
+* Makes all Git operations in the GUI work exactly like the SaaS installation of Codefresh
 
 For a Git GET operation, the Codefresh UI communicates with the App-Proxy to route the request to the Git provider. The confidential Git information never leaves the firewall premises, and the connection between the browser and the ingress is SSL/HTTPS.
 
@@ -1021,11 +998,11 @@ We have transitioned to a [new Helm-based installation](https://artifacthub.io/p
 
 Advanced users can install a single Codefresh Runner (agent) to manage multiple runtime environments.
 
->Note:  
+>Note:
   Make sure the cluster on which the Runner (agent) is installed has network access to the other clusters in the runtime environments.
 
 ```shell
-# 1. Create namespace for the agent: 
+# 1. Create namespace for the agent:
 kubectl create namespace codefresh-agent
 
 # 2. Install the agent in the namespace ( give your agent a unique name as $NAME):
@@ -1059,7 +1036,7 @@ codefresh attach runtime --agent-name $AGENT_NAME --agent-kube-namespace codefre
 
 ### Install Codefresh Runner on Google Kubernetes Engine (GKE) CLI-based 
 
-You can install the Codefresh Runner on [GKE](https://cloud.google.com/kubernetes-engine/){:target="\_blank"} Kubernetes cluster.  
+You can install the Codefresh Runner on [GKE](https://cloud.google.com/kubernetes-engine/){:target="\_blank"} Kubernetes cluster.
 Codefresh supports the following GKE configurations:
 * [Install on GKE with local SSD](#install-on-gke-with-local-ssd)
 * [Install Codefresh Runner on GKE with GCE disks and Google SA JSON key](#install-codefresh-runner-on-gke-with-gce-disks-and-google-sa-json-key)
@@ -1067,9 +1044,9 @@ Codefresh supports the following GKE configurations:
 
 #### Common prerequisites
 
-Before you start the installation, verify the following:  
-* Make sure your user has `Kubernetes Engine Cluster Admin` role in Google console  
-* Bind your user with `cluster-admin` Kubernetes cluster role. 
+Before you start the installation, verify the following:
+* Make sure your user has `Kubernetes Engine Cluster Admin` role in Google console
+* Bind your user with `cluster-admin` Kubernetes cluster role.
 
 ```shell
 kubectl create clusterrolebinding cluster-admin-binding \
@@ -1080,10 +1057,10 @@ kubectl create clusterrolebinding cluster-admin-binding \
 
 #### Install on GKE with local SSD
 
-**Prerequisites**  
+**Prerequisites**
 [GKE cluster with local SSD](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd){:target="\_blank"}
 
-**How to**  
+**How to**
 
 1. Run the CLI Wizard with these options:
 ```shell
@@ -1124,7 +1101,7 @@ codefresh runner init [options] \
   --set-file=Storage.GoogleServiceAccount=/path/to/google-service-account.json
 ```
 
-**With the values `values-example.yaml` file:**  
+**With the values `values-example.yaml` file:**
 ```yaml
 ...
 ### Storage parameter example for GCE disks
@@ -1158,7 +1135,7 @@ codefresh runner init [options] --values values-example.yaml
 
 #### Install Codefresh Runner on GKE with GCE disks with Workload Identity and IAM role
 
-**With the values `values-example.yaml` file:**  
+**With the values `values-example.yaml` file:**
 
 1. Configure the storage options for GCE disks as in the example below.
 ```yaml
@@ -1195,7 +1172,8 @@ gcloud iam service-accounts add-iam-policy-binding \
 ```
 <br />
 
-###  Install Codefresh Runner on EKS 
+###  Install Codefresh Runner on EKS
+
 
 >**LEGACY CONTENT**  
 Please be aware that the content in this section is _no longer receiving active updates_.  
@@ -1206,6 +1184,7 @@ Installing the Codefresh Runner on EKS includes:
 [Step 2: Install autoscaler on EKS cluster](#step-2-install-autoscaler-on-eks-cluster)  
 [Step 3: (Optional) Configure overprovisioning with Cluster Autoscaler](#step-3-optional-configure-overprovisioning-with-cluster-autoscaler)  
 [Step 4: Add an EKS cluster as Runner to the Codefresh platform with EBS support](#step-4-add-an-eks-cluster-as-runner-to-the-codefresh-platform-with-ebs-support)  
+
 
 
 #### Step 1: Create an EKS cluster
@@ -1274,7 +1253,7 @@ You need to create three files:
 }
 ```
 
-**How to**  
+**How to**
 1. Create the `cluster.yaml` as in the example below (`my-eks-cluster.yaml`).
 ```yaml
 apiVersion: eksctl.io/v1alpha5
@@ -1352,15 +1331,15 @@ availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
 eksctl create cluster -f my-eks-cluster.yaml
 ```
 
-The configuration leverages [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/){:target="\_blank"} as the default operating system for the nodes in the node group.  
+The configuration leverages [Amazon Linux 2](https://aws.amazon.com/amazon-linux-2/){:target="\_blank"} as the default operating system for the nodes in the node group.
 
-**Bottlerocket-based nodes**  
-Bottlerocket is an open source Linux based Operating System specifically built to run containers. It focuses on security, simplicity and easy updates via transactions. Find more information in the [official repository](https://github.com/bottlerocket-os/bottlerocket){:target="\_blank"}.  
+**Bottlerocket-based nodes**
+Bottlerocket is an open source Linux based Operating System specifically built to run containers. It focuses on security, simplicity and easy updates via transactions. Find more information in the [official repository](https://github.com/bottlerocket-os/bottlerocket){:target="\_blank"}.
 
 To leverage [Bottlerocket-based nodes](https://aws.amazon.com/bottlerocket/){:target="\_blank"}:
 * Specify the AMI Family using `amiFamily: Bottlerocket`
-* Add these additional IAM Policies: 
-    * `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly` 
+* Add these additional IAM Policies:
+    * `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
     * `arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore`
 
 
@@ -1389,8 +1368,8 @@ kubectl -n kube-system edit deployment.apps/cluster-autoscaler
 
 * Do the following as in the example below:
     * Replace `<YOUR CLUSTER NAME>` with the name of the cluster `cluster.yaml`
-    * Add the following options:  
-      `--balance-similar-node-groups`  
+    * Add the following options:
+      `--balance-similar-node-groups`
       `--skip-nodes-with-system-pods=false`
 
 ```
@@ -1408,7 +1387,7 @@ spec:
         - --skip-nodes-with-system-pods=false
 ```
 
-* Set the autoscaler version:  
+* Set the autoscaler version:
   If the version of the EKS cluster 1.15, the corresponding autoscaler version according to [https://github.com/kubernetes/autoscaler/releases](https://github.com/kubernetes/autoscaler/releases){:target="\_blank"} is 1.15.6.
 
 ```shell
@@ -1424,12 +1403,12 @@ https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#h
 
 #### Step 4: Add an EKS cluster as Runner to the Codefresh platform with EBS support
 
-**How to**  
+**How to**
 
 * Make sure to target the correct cluster:
 
 ```shell
-$ kubectl config current-context 
+$ kubectl config current-context
 my-aws-runner
 ```
 
@@ -1437,9 +1416,9 @@ my-aws-runner
     * Specify the zone in which to create your volumes, for example: `--set-value=Storage.AvailabilityZone=us-west-2a`.
     * (Optional) To assign the volume-provisioner to a specific node, for example, a specific node group with an IAM role that can create EBS volumes, `--set-value Storage.VolumeProvisioner.NodeSelector=node-type=addons`.
     * To use [encrypted EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_key_mgmt){:target="\_blank"}, add the custom value `--set-value=Storage.Encrypted=true`.
-    * If you already have a key, add its ARN via `--set-value=Storage.KmsKeyId=<key id> value`. Otherwise a key is generated by AWS. 
+    * If you already have a key, add its ARN via `--set-value=Storage.KmsKeyId=<key id> value`. Otherwise a key is generated by AWS.
 
-  Here is an example with _all_ the options configured: 
+  Here is an example with _all_ the options configured:
 
 ```shell
 codefresh runner init \
@@ -1452,7 +1431,7 @@ codefresh runner init \
 --set-value=Storage.AvailabilityZone=us-west-2a\
 --set-value=Storage.Encrypted=[false|true] \
 --set-value=Storage.KmsKeyId=<key id>
-```  
+```
     For descriptions of the other options, run `codefresh runner init --help`.
 
 * When the Wizard completes the installation, modify the runtime environment of `my-aws-runner` to specify the necessary toleration, nodeSelector and disk size:
@@ -1461,7 +1440,7 @@ codefresh runner init \
 codefresh get re --limit=100 my-aws-runner/cf -o yaml > my-runtime.yml
 ```
     * Modify the file `my-runtime.yml` as shown below:
-    
+
 ```yaml
 version: null
 metadata:
@@ -1526,21 +1505,23 @@ You have completed installing the Codefresh Runner on an EKS cluster. You can tr
 
 ### Install Codefresh Runner on Rancher RKE 2.X
 
+
 <!--- retain until validated -->
 
 Installing Codefresh Runner on Rancher RKE 2.X includes these steps:  
 
-* [Step 1: Configure kubelet for Runner StorageClass](#step-1-configure-kubelet-for-runner-storageclass)  
+
+* [Step 1: Configure kubelet for Runner StorageClass](#step-1-configure-kubelet-for-runner-storageclass)
 * [Step 2: Set kubeconfig user permissions](#step-2-set-kubeconfig-user-permissions)
-* [Step 3: Install the Runner](#step-3-install-the-runner)  
-* [Step 4: Update Runner Docker MTU](#step-4-update-runner-docker-mtu)  
+* [Step 3: Install the Runner](#step-3-install-the-runner)
+* [Step 4: Update Runner Docker MTU](#step-4-update-runner-docker-mtu)
 * [Step 5: Create the cluster integration](#step-5-create-the-cluster-integration)
 
 #### Step 1: Configure kubelet for Runner StorageClass
 
-Configure the cluster to allow the Runner's default `StorageClass` to create the persistent cache volume from local storage on each node. 
+Configure the cluster to allow the Runner's default `StorageClass` to create the persistent cache volume from local storage on each node.
 
-1. In the Rancher UI: 
+1. In the Rancher UI:
   For Rancher v2.5.9 and earlier, drill into the target cluster, and then click **Edit Cluster** at the top-right.
 
 {% include image.html
@@ -1552,8 +1533,9 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
   max-width="100%"
       %}
 
+
   For Rancher v2.6+ with the updated UI, open **Cluster Management** in the left panel, then click the three-dot menu near the corresponding cluster and select **Edit Config**.
-  
+
   {% include image.html
   lightbox="true"
   file="/images/runtime/runner/rancher-cluster-2.png"
@@ -1565,7 +1547,7 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
 
 {:start="2"}
 1. On the edit cluster page, scroll down to the Cluster Options section, and click its **Edit as YAML** button
-  
+
   {% include image.html
   lightbox="true"
   file="/images/runtime/runner/rancher-edit-as-yaml.png"
@@ -1580,9 +1562,9 @@ Configure the cluster to allow the Runner's default `StorageClass` to create the
 
 ```yaml
 rancher_kubernetes_engine_config:
-  ...  
+  ...
   services:
-    ...  
+    ...
     kubelet:
       extra_binds:
         - '/var/lib/codefresh:/var/lib/codefresh:rshared'
@@ -1599,20 +1581,20 @@ rancher_kubernetes_engine_config:
 
 #### Step 2: Set kubeconfig user permissions
 
-The user in your `kubeconfig` must be a `ClusterAdmin` to install the Runner.  
+The user in your `kubeconfig` must be a `ClusterAdmin` to install the Runner.
 
 There are two options to create a user:
 
 * For your pipelines to connect to this cluster as a cluster admin, create a Codefresh user in the Rancher UI with a **non-expiring** `kubeconfig` token. This is the easiest way install Codefresh Runner.
 
-* For your pipelines to connect to this cluster with fewer privileges, use your personal user account with `ClusterAdmin` privileges for the installation, and then create a Codefresh account with fewer privileges later. 
+* For your pipelines to connect to this cluster with fewer privileges, use your personal user account with `ClusterAdmin` privileges for the installation, and then create a Codefresh account with fewer privileges later.
 
 <br />
 
 1. Do one of the following:
   * To create a Codefresh user with `ClusterAdmin` rights in the Rancher, start from _step 2_.
   * To use your personal user account with `ClusterAdmin` privileges for the installation, continue from [Step 3: Install the Runner](#step-3-install-the-runner).
-  
+
 1. In the Rancher UI do the following:
   * Click **Security** at the top, and then select **Users**.
   * Click **Add User**, and below Global Permissions, select **Restricted Administrstor**.
@@ -1621,9 +1603,9 @@ There are two options to create a user:
   * Click **Add Key**, and create a `kubeconfig` token with **Expires** set to **Never**.
   * Copy the Bearer Token field (combines Access Key and Secret Key).
   * Edit your `kubeconfig` and paste the Bearer Token you copied in the `token` field of your user.
- 
+
  {% include image.html lightbox="true" file="/images/runtime/runner/rancher-security.png" url="/images/runtime/runner/rancher-security.png" alt="Create a cluster admin user for Codefresh" caption="Create a cluster admin user for Codefresh" max-width="100%" %}
-     
+
 
 #### Step 3: Install the Runner
 
@@ -1646,7 +1628,7 @@ codefresh runner init \
 
 #### Step 4: Update Runner Docker MTU
 
-By default, RKE nodes use the [Canal CNI](https://rancher.com/docs/rancher/v2.x/en/faq/networking/cni-providers/#canal){:target="\_blank"}, which combines elements of Flannel and Calico, and uses VXLAN encapsulation. The VXLAN encapsulation has a 50-byte overhead, and reduces the MTU of its virtual interfaces from the standard 1500 to 1450.  
+By default, RKE nodes use the [Canal CNI](https://rancher.com/docs/rancher/v2.x/en/faq/networking/cni-providers/#canal){:target="\_blank"}, which combines elements of Flannel and Calico, and uses VXLAN encapsulation. The VXLAN encapsulation has a 50-byte overhead, and reduces the MTU of its virtual interfaces from the standard 1500 to 1450.
 
 For example, when running `ifconfig` on an RKE 2.5.5 node, you might see several interfaces like this.  Note the `MTU:1450`.
 
@@ -1661,8 +1643,8 @@ cali0f8ac592086 Link encap:Ethernet  HWaddr ee:ee:ee:ee:ee:ee
 ```
 
 Reduce the Docker MTU used by the Runner's Docker in Docker (dind) pods to match this lower MTU:
- 
-1. Edit the `configmap` in the namespace where the Runner is installed:  
+
+1. Edit the `configmap` in the namespace where the Runner is installed:
   The example shows the edit command if you installed the Runner in the `codefresh` namespace
 ```shell
 kubectl edit cm codefresh-dind-config -n codefresh
@@ -1680,7 +1662,7 @@ kubectl edit cm codefresh-dind-config -n codefresh
 
 #### Step 5: Create the cluster integration
 
-If you installed the Runner with the `--skip-cluster-integration` option, then must add a Rancher cluster to your to your Kubernetes integrations. 
+If you installed the Runner with the `--skip-cluster-integration` option, then must add a Rancher cluster to your to your Kubernetes integrations.
 
 * [Add a Rancher Cluster]({{site.baseurl}}/docs/integrations/kubernetes/#adding-a-rancher-cluster).
 
@@ -1690,19 +1672,22 @@ Once complete, you can go to the Codefresh UI and run a pipeline on the new runt
 
 Depending on your Rancher configuration, you may need to allow insecure HTTPS/TLS connections, by adding an environment variable to the Runner deployment.
 
-* Edit the Runner deployment:  
-  The example below assumes that you installed the Runner in the `codefresh` namespace.  
+* Edit the Runner deployment:
+  The example below assumes that you installed the Runner in the `codefresh` namespace.
 
 ```shell
 kubectl edit deploy runner -n codefresh
 ```
 
-* In the editor, add this environment variable below `spec.containers.env[]`:  
+* In the editor, add this environment variable below `spec.containers.env[]`:
 
 ```yaml
 - name: NODE_TLS_REJECT_UNAUTHORIZED
   value: "0"
 ```
+
+
+
 
 
 ### Install Codefresh Runner on Azure Kubernetes Service (AKS)
@@ -1788,7 +1773,6 @@ helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f valu
 
 
 
-
 ### Note for ARM Builds
 
 
@@ -1803,7 +1787,9 @@ helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f valu
 For troubleshooting information, refer to the [Knowledge Base]({{site.baseurl}}/docs/kb/troubleshooting/#runtimes){:target="\_blank"}.
 
 ## Related articles
+
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Codefresh On-Premises installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
+
 

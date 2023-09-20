@@ -213,6 +213,8 @@
       url: "/codefresh-hosted-gitops"
     - title: Git Providers
       url: "/git-providers"
+    - title: OpenID Connect
+      url: "/oidc-pipelines"      
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Web Services
@@ -398,7 +400,7 @@
         - title: Deploy
           url: "/deploy"
         - title: Approval
-          url: "/approval"
+          url: "/approval"   
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:

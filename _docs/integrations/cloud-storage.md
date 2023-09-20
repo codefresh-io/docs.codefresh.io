@@ -102,8 +102,7 @@ The integration is ready. You will use the name of the integration as an environ
     ]
 }
 ```
-
-1. Note down the **Access** and **Secret** keys generated when you created the S3 bucket. 
+ 
 
 **Define S3 settings in Codefresh**   
 1. Select **Amazon Cloud Storage** as your [Cloud Storage provider](#connecting-your-storage-account).
@@ -111,6 +110,9 @@ The integration is ready. You will use the name of the integration as an environ
    * Enter an arbitrary name for your integration.
    * Paste the **AWS Access Key ID** and **AWS Secret Access Key**. 
 1. Click **Save**. 
+
+For more information on how to obtain the **Access Key** and **Secret Access Key**, check the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+
 
 {% include 
 image.html 

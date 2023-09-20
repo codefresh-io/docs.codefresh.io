@@ -51,6 +51,6 @@ max-width="40%"
 ## Related articles
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Cron triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
-[Slack integration for pipelines]({{site.baseurl}}/_docs/integrations/notifications/slack-integration/)  
+[Slack integration for pipelines]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  
