@@ -438,7 +438,7 @@ steps:
       - 'echo ${{steps.obtain_id_token.output.ID_TOKEN}}'
 ```
 {:start="4"}
-1. Continue with [Step 5 for AWS: Add actions to the pipeline workflow](#step-5-for-aws-add-actions-to-the-pipeline-workflow).
+4. Continue with [Step 5 for AWS: Add actions to the pipeline workflow](#step-5-for-aws-add-actions-to-the-pipeline-workflow).
 
 
 
@@ -469,9 +469,9 @@ assume_role:
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
 {:start="2"}
-1. Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
-  1. Click the **Variables** tab on the right. 
-  1. Add these variables and values:
+2. Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
+    1. Click the **Variables** tab on the right. 
+    1. Add these variables and values:
       * `BUCKET_NAME=<bucket-name>`, for example, `oidc-test1`.
       * `ROLE_ARN=arn:aws:iam::<role-name>`, for example, `arn:aws:iam::095585282052:role/cf-oidc-test1`.
       * `ROLE_SESSION_NAME`=<session-name>, for example, `oidc-session`.
