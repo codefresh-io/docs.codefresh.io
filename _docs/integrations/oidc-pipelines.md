@@ -232,7 +232,7 @@ For AWS, for example, you need a step to assume the required role and another st
 ## Codefresh OIDC for AWS
 
 This section walks you through setting up OIDC for Codefresh pipelines on AWS as an example.
-For more information, see AWS documentation on [Creating OpenID Connect (OIDC) identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html){:target="\_blank"} and [Creating a role for web identity or OpenID Connect Federation (console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html) {:target="\_blank"}.
+For more information, see AWS documentation on [Creating OpenID Connect (OIDC) identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html){:target="\_blank"} and [Creating a role for web identity or OpenID Connect Federation (console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html){:target="\_blank"}.
 
 ### Step 1 for AWS: Add Codefresh as an OIDC provider
 
