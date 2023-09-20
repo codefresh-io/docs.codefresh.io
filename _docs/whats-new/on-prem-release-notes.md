@@ -11,9 +11,21 @@ Welcome to the release notes for our on-premises release versions, starting with
 ### Features & enhancements
 <br>
 
-#### Upgrading to v2.1
+#### New Helm installation
+In this major version, we have completely revamped the Runner installation process. Runner installation is now Helm-based, and we have a new `values` file, making the installation more streamlined and eaier to manage.  
+From this version, Helm is the default installation method for the Codefresh Runner, which has implications for the installation options that were supported in previous versions. 
+* CLI installation is considered legacy, and will be deprecated in the coming months
+* Existing Helm installations should delete the old `values` file and reinstall with the _new_ one
+
+For both existing CLI and Helm installations, you should delete the old values file and reinstall the Codefresh Runner using the new values file to leverage the enhancements.
+
+You can find everything about the new Helm installation in [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+**Upgrading to v2.1**  
 This major release includes new services and changes to existing services.  
 Before running the upgrade, read the details [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+
+Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
 
 <br><br>
 
@@ -236,9 +248,10 @@ For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `D
  
 For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
 
+<!--- 
 #### Frame options for Codefresh pages
 We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. -->
-
+ 
 
 ### Bug fixes
 
@@ -259,6 +272,7 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Unable to add Hybrid Runner and run builds in Version 2.0.1. 
 * Pipeline trigger for BitBucket server does not fire on commit.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
+* “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
 * Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
 * Composition stops randomly with error: `Could not get status for container <container-name>`. 
 * Image enrichment with GitHub Actions fails with message: `EventSourceError: Request-URI Too Large`.
@@ -268,13 +282,13 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes.
 * Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
 * Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
-* Invited users prompted for phone number during sign-up.
-<!---
-* Slow scroll speed for build logs in online terminal view.
 * DinD pod does not use Service Account (SA) defined in Runner.
 * After upgrade to v2.0.9, Test reports screen does not display all elements.
+* Invited users prompted for phone number during sign-up.
+
+<!---
+* Slow scroll speed for build logs in online terminal view.
 * Page keeps on loading indefinitely when switching  active account from a ProjectOne account to a Classic one.
-* “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
 * Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
 * Build step fails with "Failed to update your new image" error.
 -->
@@ -285,7 +299,7 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
 * Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
 * Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated in the UI when it actually continues execution.
-
+* In the Timeline tab, on-going deployments do not display link to Rollout Player. 
 
 ### Feature Flags
 
