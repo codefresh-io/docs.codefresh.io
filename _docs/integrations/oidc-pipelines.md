@@ -452,7 +452,7 @@ Add two steps to the pipeline:
 <br><br>
 
 **How to**  
-1. Paste the following into the pipeline editor, below the `obtain_id_token` step.
+* Paste the following into the pipeline editor, below the `obtain_id_token` step.
 
 ```yaml
 assume_role:
@@ -468,7 +468,7 @@ assume_role:
     commands: 
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
-1. Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
+* Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
     1. Click the **Variables** tab on the right. 
     1. Add these variables and values:
       * `BUCKET_NAME=<bucket-name>`, for example, `oidc-test1`.
