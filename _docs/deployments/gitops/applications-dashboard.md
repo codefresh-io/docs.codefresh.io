@@ -510,6 +510,9 @@ Here's what you can see and do in the Summary tab:
 ### Logs for application resources
 In either Tree or List views, double-click an application resource to see its logs. Logs are available only for resource types such as pods.
 
+>**NOTE**:  
+A disabled Logs tab indicates that you have not been assigned the permission to view logs for pod resource types. Contact your administrator for help.
+
 {% include
 image.html
 lightbox="true"
