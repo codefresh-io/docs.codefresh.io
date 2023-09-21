@@ -1,5 +1,5 @@
 ---
-title: "Runner installation behind firewalls"
+title: "Runner behind firewalls"
 description: "Run Codefresh pipelines in your own secure infrastructure"
 group: installation
 redirect_from:
@@ -8,8 +8,8 @@ redirect_from:
 toc: true
 ---
 
-As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers Runner and GitOps options for hybrid installations.
-This articles focuses on the Runner installation option and its advantages.
+As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers the Hybrid Runner option for Codefresh pipelines.
+This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
 
@@ -19,7 +19,7 @@ and improvements done in the platform must also be transferred to the customer p
 
 Hybrid Runner installs the Runner within the customer premises, while the UI (and management platform) stays in Codefresh.
 
-Here is the overall architecture:
+Here is a visual representation of the CI/CD flow between the Runner in the customer environment and Codefresh client in the public internet:
 
 {% include image.html
   lightbox="true"
@@ -30,22 +30,22 @@ Here is the overall architecture:
   max-width="100%"
     %}   
 
-The advantages for this scenario are multi-fold. 
+The advantages for this scenario are multi-fold: 
 
-Regarding platform maintenance:
+**Regarding platform maintenance** 
 
  1. Codefresh is responsible for the heavy lifting for platform maintenance, instead of the customer.
  1. Updates to the UI, build engine, integrations etc., happen automatically, without any customer involvement.
  1. Actual builds run in the customer premises under fully controlled conditions.
  1. Codefresh Runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
-Regarding security of services:
+**Regarding security of services**
 
  1. Pipelines can run in behind-the-firewall clusters with internal services.
  1. Pipelines can use integrations (such as Docker registries) that are private and secure.
  1. Source code does not ever leave the customer premises.
 
-Regarding firewall security:
+**Regarding firewall security**
 
  1. Uni-directional, outgoing communication between the Runner and Codefresh. The Runner polls the platform for jobs. 
  1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
@@ -67,16 +67,16 @@ You can easily create pipelines that:
  * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
  Any of these pipelines will work out the box without extra configuration. In all cases,
- all data stays witin the private local network and does not exit the firewall.
+ all data stays within the private local network and does not exit the firewall.
 
- >Notice that [long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh Runner.
+ >**INFO**:  
+ [Long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh Runner.
 
 
 
 ### Checking out code from a private GIT repository
 
-To check out code from your private Git repository, you need to connect first to Codefresh via  [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise* you also
-need to mark it as *behind the firewall* as well:
+To check out code from your private Git repository, you need to connect first to Codefresh via  [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise*, you also need to mark it as *behind the firewall* as well:
 
 {% include image.html
   lightbox="true"
