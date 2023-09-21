@@ -11,19 +11,25 @@ Welcome to the release notes for our on-premises release versions, starting with
 ### Features & enhancements
 <br>
 
-#### New Helm installation
-In this major version, we have completely revamped the Runner installation process. Runner installation is now Helm-based, and we have a new `values` file, making the installation more streamlined and eaier to manage.  
-From this version, Helm is the default installation method for the Codefresh Runner, which has implications for the installation options that were supported in previous versions. 
-* CLI installation is considered legacy, and will be deprecated in the coming months
-* Existing Helm installations should delete the old `values` file and reinstall with the _new_ one
+#### Install/upgrade to v2.1 
+Welcome to our new major on-premises release! 
 
-For both existing CLI and Helm installations, you should delete the old values file and reinstall the Codefresh Runner using the new values file to leverage the enhancements.
-
-You can find everything about the new Helm installation in [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+**Installing v2.1**  
+For detailed instructions on installing v2.1, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 **Upgrading to v2.1**  
-This major release includes new services and changes to existing services.  
-Before running the upgrade, read the details [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+This major release includes new services and updates to existing services.  
+Before initiating the upgrade process, review the instructions [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+
+#### New Helm installation for Codefresh Runner
+In this major version, we have completely overhauled the installation process for the Codefresh Runner.  
+Now, Runner installation is completely Helm-based, making it streamlined and easier to manage.  
+
+Starting with this version, Helm becomes the default installation method for the Codefresh Runner. This change has implications for the installation options from previous versions. 
+* CLI installation is considered legacy, and will not be actively maintained going forward
+* For existing Helm installations with chart version 3.x or higher, we recommend migrating to the new chart version for the Runner
+
+The new Helm installation for the Runner is described in [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target="\_blank"} on ArtifactHub.
 
 Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
 
