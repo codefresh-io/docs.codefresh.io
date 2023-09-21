@@ -545,12 +545,6 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
       max-width="60%" 
    %}
 
-{:start="6"}
-1. For GitOps with Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller `deployment` to avoid having two controllers in the cluster.   
-  
-  >**IMPORTANT**:  
-  Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads.  
-    `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
 
 
 ### What to do next  
