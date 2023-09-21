@@ -9,7 +9,7 @@ toc: true
 Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. 
 
 >**NOTE**:
-The actions you can perform depend on the permissions assigned to you. 
+The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
 
 
 * [Edit applications](#edit-application-definitions)  
@@ -27,8 +27,6 @@ The actions you can perform depend on the permissions assigned to you.
 * [Rollback applications](#rollback-gitops-applications)   
   Rollback applications to previous deployment versions.
 
-* [Rollback applications](#rollback-gitops-applications)   
-  Rollback applications to previous deployment versions.
 
 * [Manage rollouts for deployments](#manage-rollouts-for-gitops-application-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
