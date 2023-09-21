@@ -21,6 +21,8 @@ For detailed instructions on installing v2.1, visit [ArtifactHub](https://artifa
 This major release includes new services and updates to existing services.  
 Before initiating the upgrade process, review the instructions [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
 
+<br><br>
+
 #### New Helm installation for Codefresh Runner
 In this major version, we have completely overhauled the installation process for the Codefresh Runner.  
 Now, Runner installation is completely Helm-based, making it streamlined and easier to manage.  
