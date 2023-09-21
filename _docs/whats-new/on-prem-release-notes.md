@@ -200,13 +200,14 @@ For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipe
 #### Pipelines: New terminal emulator
 We have introduced a new terminal emulator in this release, currently in Beta.
 
-Here a few enhancements for a better user experience: 
+The new terminal emulator provides: 
 * Improved performance through GPU acceleration
 * Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the entire file
 * Faster navigation with enhanced mouse support
 * Improved search functionality
 * Accessibility support with Screen Reader Mode
 
+<br><br>
 
 #### Pipelines: Configure limit for project’s pipelines
 The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project.
@@ -332,7 +333,6 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 | `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.      | FALSE         |
 |`gerritIntegration`      | When enabled, enables Gerrit integration in Account settings. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
 |`nextGenTerminal` | When enabled, uses the new terminal emulator for improved performance, online rendering for large logs (more than 100,000 lines), search functionality, and Screen Reader support for accessibility. | FALSE|
-Accessibility support: Screen Reader Mode
 |`supportOpenIdConnectInBuilds`| When enabled (the default), supports OIDC in pipeline builds, including obtaining and using ID tokens to authenticate and authorize pipeline actions on cloud providers.<br>See [Pipelines: OPenID Connect (OIDC) integration](#pipelines-openid-connect-oidc-integration) in this article. |TRUE|
 `supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.    | FALSE         |
