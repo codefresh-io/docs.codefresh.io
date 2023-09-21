@@ -119,18 +119,11 @@ Node size and count depends entirely on how many pipelines you want to be “rea
 * Ready (nodes): Lower initialization time and faster build times.
 * Burst (nodes): High initialization time and slower build times (not recommended).
 
-{:start="5"}
-1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, continue with [Complete Codefresh Runner installation](#complete-codefresh-runner-installation).
-1. Optional. Verify your installation:
 
 
 >**TIP**:  
-<<<<<<< Updated upstream
-The size of your nodes relates directly to the size required for your pipelines, and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
-
-=======
 The size of your nodes relates directly to the size required for your pipelines and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
->>>>>>> Stashed changes
+
 
 
 ### Storage
@@ -205,7 +198,7 @@ Override the default Runtime Environment for a specific pipeline through the pip
 ## Codefresh Runner configuration
 After you install the Codefresh Runner, review the [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} section on ArtifactHub for all configuration options.
 
-Configuration  options include EBS backend volume, custom global environment variables, volume mounts, volume reuse policies and more.
+Configuration options include EBS backend volume, custom global environment variables, volume mounts, volume reuse policies, and more.
 
 
 ## Runtime Environment specifications
@@ -461,11 +454,8 @@ codefresh runner init
   max-width="90%"
     %}
 
-
-
 {:start="5"}
 1. Optional. If the Kubernetes cluster with the Codefresh Runner is behind a proxy, do the following:
- {:start="1"}
   1. Run `kubectl edit deployment runner -n codefresh-runtime` and add the proxy variables:
 ```yaml
 spec:
