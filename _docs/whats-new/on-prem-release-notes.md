@@ -6,6 +6,341 @@ toc: true
 
 Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.3.
 
+## On-premises version 2.1
+
+### Features & enhancements
+<br>
+
+#### Install/upgrade to v2.1 
+Welcome to our new major on-premises release! 
+
+**Installing v2.1**  
+For detailed instructions on installing v2.1, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+**Upgrading to v2.1**  
+This major release includes new services and updates to existing services.  
+Before initiating the upgrade process, review the instructions [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+
+<br><br>
+
+#### New Helm installation for Codefresh Runner
+In this major version, we have completely overhauled the installation process for the Codefresh Runner.  
+Now, Runner installation is completely Helm-based, making it streamlined and easier to manage.  
+
+Starting with this version, Helm becomes the default installation method for the Codefresh Runner. This change has implications for the installation options from previous versions. 
+* CLI installation is considered legacy, and will not be actively maintained going forward
+* For existing Helm installations with chart version 3.x or higher, we recommend migrating to the new chart version for the Runner
+
+The new Helm installation for the Runner is described in [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target="\_blank"} on ArtifactHub.
+
+Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
+
+<br><br>
+
+#### Gerrit as Git provider for Pipelines and GitOps
+We are excited to announce the integration of Gerrit, the open-source web-based code review tool for Git repositories, with Codefresh. 
+
+**Gerrit and Codefresh Pipelines**  
+By integrating Gerrit as a Git provider for Codefresh Pipelines, you can leverage its capabilities to trigger builds and tests automatically whenever a new change is pushed to Git repositories hosted in Gerrit. The integration allows you to closely monitor the status of builds and tests within the Gerrit environment itself, providing you with a comprehensive view of your development process.
+With Codefresh’s `CF_PULL_REQUEST` group of environment variables, you can achieve similar functionality to Gerrit’s `Changes` directly within Codefresh.
+
+For details, see [Pipeline integrations - Git providers]({{site.baseurl}}/docs/integrations/git-providers/#gerrit).
+
+**Gerrit and Codefresh GitOps**   
+By configuring Gerrit as the primary Git provider for your Hosted GitOps Runtime, you can integrate Gerrit information into your third-party CI tools or platforms for image enrichment and reporting in Codefresh.  
+If you are interested in using Gerrit for Hybrid GitOps Runtimes, please contact us.
+
+For details, see [GitOps Gerrit Git provider integration]({{site.baseurl}}/docs/gitops-integrations/gerrit-integration/).
+
+<br><br>
+
+#### Multi-account sync for Okta with OIDC
+
+Check out the latest enhancements to the integration settings for Okta with OIDC: Multi-account sync and automatic deletion of users removed during sync from Codefresh.
+
+**Multi-account sync**  
+Following the successful implementation of just-in-time provisioning support for Okta, we are taking it a step further by introducing multi-account sync for OIDC-Okta. This feature enables you to synchronize multiple Codefresh accounts in Okta simultaneously in Codefresh, ensuring a seamless SSO setup for enterprise customers.
+
+With multi-account sync, you can easily select additional Codefresh accounts to sync with your Okta OIDC account in Codefresh. Codefresh validates admin privileges and access for each of the selected accounts, guaranteeing secure and reliable authentication. 
+
+You have the flexibility to sync users in multiple ways: through the UI's `Auto-group sync`, performing on-demand synchronization through the CLI, or integrating sync into a Codefresh pipeline using the CLI synchronize command.
+
+**Delete users removed during sync**  
+We added an option to further streamline Okta SSO account and user management in Codefresh. You can now easily remove individual users who are deactivated in Okta from both the current account in Codefresh and any additional accounts defined in your current account.  
+The Users list is updated accordingly, ensuring that both the Teams and Users lists are always organized.
+
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
+url="/images/whats-new/july23/rel-notes-july23-okta-new-settings.png" 
+alt="Multi-account sync and remove deactivated users for Okta OIDC" 
+caption="Multi-account sync and remove deactivated users for Okta OIDC" 
+max-width="40%" 
+%}
+
+For details, see [Configure OIDC SSO settings for Okta in Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-okta/#how-to). 
+
+<br><br>
+
+#### Codefresh & OpenShift 
+We are excited to announce that Codefresh now supports OpenShift! Seamlessly integrate with OpenShift for enhanced container orchestration capabilities, and discover new possibilities in your deployment workflows with Codefresh and OpenShift integration.
+
+For details, see [Deploying Codefresh with OpenShift](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#installing-on-openshift){:target="\_blank"}.
+
+<br><br>
+
+#### Pipelines: OpenID Connect (OIDC) integration
+Introducing OIDC (OpenID Connect) for Codefresh pipelines! Boost pipeline security and streamline access control with OIDC. Instead of referencing static credentials stored in Codefresh for the cloud provider, allow pipelines to authenticate and authorize actions through short-lived ID tokens. 
+
+Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition, and then add the actions to perform on the cloud provider in the pipeline.
+
+Key benefits:
+* Enhanced security  
+  You no longer need to define, store, and manage cloud-provider credentials in Codefresh. 
+  Obtain ID tokens from the cloud provider when needed. The ID tokens remain valid only for the duration of the workflow build and automatically expire upon completion.
+
+* Ease of use  
+  Once the OIDC provider configuration is completed, obtaining the ID token is seamless.  
+  Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
+
+For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+
+<br><br>
+
+#### Pipelines: Access control for endpoints 
+With this feature, Codefresh admins gain enhanced control over the security of their pipelines by being able to restrict access to specific endpoint scopes.
+Scopes are defined at the account level, ensuring a consistent security baseline for all pipelines. These predefined scopes are inherited by every pipeline, which Codefresh admins can override for individual pipelines when necessary.  
+To enable this, you need to turn on the `pipelineScopes` feature flag. 
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-pipeline-scopes-setting.png" 
+alt="Configure scopes for pipeline" 
+caption="Configure scopes for pipeline" 
+max-width="50%" 
+%}
+
+For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
+
+<br><br>
+
+#### Pipelines: Enhanced version of Cron triggers
+
+We have extended the capabilities of Cron triggers within Codefresh pipelines for a more powerful implementation. The new functionality is available as a Beta version. 
+
+Cron triggers can now simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. The new settings are supported in the Codefresh UI and in the pipeline specifications.
+To enable this, you need to turn on the `cronTriggersInPipelineSpec` feature flag. 
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
+alt="Extended settings for Cron triggers" 
+caption="Extended settings for Cron triggers" 
+max-width="40%" 
+%}
+
+These additional settings are optional, so you can continue to use just the timer component of the Cron trigger.
+
+Legacy versions of Cron triggers are flagged in the Codefresh UI and include an option to migrate them to the new version.
+
+For details, see [Cron (timer)triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) and [Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
+
+<br><br>
+
+#### Pipelines: Pipeline Dashboard enhancements
+Review the latest enhancements in the Pipelines Dashboard.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/june23/rel-notes-june23-pipeline-dashboard-updates.png" 
+url="/images/whats-new/june23/rel-notes-june23-pipeline-dashboard-updates.png" 
+alt="Favorites filter and Last Update in Pipelines Dashboard" 
+caption="Favorites filter and Last Update in Pipelines Dashboard" 
+max-width="60%" 
+%}
+
+**Filter by favorite pipelines**  
+The Pipelines Dashboard now has a Favorites filter. If you starred any projects or pipelines as favorites, you can easily view your favorite pipelines, both by projects or individual pipelines.
+
+**Recent update indication**  
+The Last Update timestamp on the top right of the Pipelines Dashboard, refreshes automatically to show you the exact time the data was retrieved.
+
+**Full path display for pipelines in filter**  
+Previously, in the Pipelines filter, it was challenging to identify the correct pipeline, when multiple pipelines shared the same name across different projects. 
+Now, when you mouse over a pipeline name in the list, the tooltip displays the full path, including the name of the project to which the pipeline belongs, 
+followed by the name of the pipeline. 
+
+For details, see [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard).
+
+<br><br>
+
+#### Pipelines: New icons for pipeline build statuses
+Pipeline builds have new status icons. With distinct icons for each status, you can easily differentiate between builds, bringing clarity and saving time. Previously, both terminated and failed builds had the same icon for example, causing confusion.
+
+Here are the icons and the build statuses they represent:  
+* **Running**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-running.png" display=inline-block/> {:/}
+* **Completed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-successful.png" display=inline-block/> {:/}
+* **Delayed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-delayed.png" display=inline-block/> {:/}
+* **Pending approval**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-pending-approval.png" display=inline-block/> {:/}
+* **Denied approval**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-denied.png" display=inline-block/> {:/}
+* **Terminating**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-terminating.png" display=inline-block/> {:/}
+* **Terminated**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-terminated.png" display=inline-block/> {:/}
+* **Failed**: {::nomarkdown}<img src="../../../images/whats-new/june23/pipeline-build-failed-error.png" display=inline-block/> {:/}
+
+For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).
+
+<br><br>
+
+#### Pipelines: New terminal emulator
+We have introduced a new terminal emulator in this release, currently in Beta.
+
+The new terminal emulator provides: 
+* Improved performance through GPU acceleration
+* Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the entire file
+* Faster navigation with enhanced mouse support
+* Improved search functionality
+* Accessibility support with Screen Reader Mode
+
+<br><br>
+
+#### Pipelines: Configure limit for project’s pipelines
+The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project.
+Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project.
+For details, see [Pipeline limit in projects](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#projects-pipelines-limit){:target=”\_blank”}.
+
+<br><br>
+
+
+#### GitOps: ABAC for GitOps applications
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
+To enable this, you need to turn on the `abacHermesTriggers` feature flag. 
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
+alt="Access control for GitOps application entities" 
+caption="Access control for GitOps application entities" 
+max-width="40%" 
+%}
+
+For details, see [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
+
+<br><br>
+
+#### GitOps: Application Groups in GitOps Apps dashboard
+
+Introducing a new view in the GitOps Apps dashboard, the Group view!  
+The Group view for GitOps applications is a simple and efficient way to streamline application deployment monitoring within your enterprise.    
+To enable this, you need to turn on the `gitopsAppGroups` feature flag. 
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+url="/images/whats-new/aug23/rel-notes-aug23-app-group-page.png" 
+alt="Application Groups in GitOps Apps dashboard" 
+caption="Application Groups in GitOps Apps dashboard" 
+max-width="40%" 
+%}
+
+With App Groups, you can effortlessly focus on specific app deployments, as it consolidates deployment information for all applications within the group in the same view. This feature eliminates the need to navigate between the different applications for information on them.
+Tailor groupings according to the unique requirements of your organization and applications. 
+
+Codefresh also adds the Group name as an annotation to the application manifest for easy organization and management. 
+
+For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
+
+<br><br>
+
+
+#### GitOps: Customize session cookie
+For GitOps app-proxy, when disabling concurrent sessions for `cf-api` through `DISABLE_CONCURRENT_SESSIONS`=`true`, the `CF_UUID_COOKIE_DOMAIN` environment variable allows you to customize the domain for the session cookie. For example, `.mydomain.com`. 
+ 
+For details, see [Customize session cookie](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#enable-session-cookie){:target="\_blank"}.
+
+<!--- 
+#### Frame options for Codefresh pages
+We've introduced a new environment variable, `FRAME_OPTIONS`, which is now available for the `cf-api` and `cf-ui` services. This variable allows you to define the frame rendering behavior for Codefresh pages to enhance security and customization. You can control if the Codefresh page is rendered within frames of the same origin as the page or not. -->
+ 
+
+### Bug fixes
+
+
+**General**
+* Unable to add users to Codefresh via team sync for Okta.
+* Auto-sync option not available for Azure SSO. 
+* 404 errors on clicking documentation links in Build > Triggers.
+* For Azure, auto-sync operations removes groups that were previously synced.
+
+
+
+**Pipelines**  
+* Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
+* Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
+* Pipeline resuming execution after approval shows previously executed steps as skipped in Codefresh UI.
+* Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`.
+* Unable to add Hybrid Runner and run builds in Version 2.0.1. 
+* Pipeline trigger for BitBucket server does not fire on commit.
+* Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
+* “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
+* Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
+* Composition stops randomly with error: `Could not get status for container <container-name>`. 
+* Image enrichment with GitHub Actions fails with message: `EventSourceError: Request-URI Too Large`.
+* In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
+* In the Pipelines page, the context-menu for the last pipeline in the list does not display all available actions.
+* **Save** button remains disabled when modifying an External Resource in Pipeline > Settings. 
+* Unable to set `requiredAvailableStorage` programmatically for Hybrid Pipeline Runtimes.
+* Commit message passed through the system variable `CF_COMMIT_MESSAGE` is truncated and does not include the full content.
+* Prefix for Docker registries omitted when using a custom Docker registry as a Public Marketplace Registry. 
+* DinD pod does not use Service Account (SA) defined in Runner.
+* After upgrade to v2.0.9, Test reports screen does not display all elements.
+* Invited users prompted for phone number during sign-up.
+
+<!---
+* Slow scroll speed for build logs in online terminal view.
+* Page keeps on loading indefinitely when switching  active account from a ProjectOne account to a Classic one.
+* Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
+* Build step fails with "Failed to update your new image" error.
+-->
+
+**GitOps** 
+* **Save** button remains disabled when modifying fields for an existing Git Source.
+* `DISABLED_CONCURRENT_SESSIONS` set to `true` results in `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
+* Unable to create Git Sources both from the Codefesh CLI and UI with Bitbucket Server.
+* Rollouts Reporter for managed cluster uses SaaS instead of on-premises URL.
+* Commits to a second application in the same repository as another application, marks the Rollout for the first application as terminated in the UI when it actually continues execution.
+* In the Timeline tab, on-going deployments do not display link to Rollout Player. 
+
+### Feature Flags
+
+The table below describes the new Feature Flags in the Codefresh On-Premises release v2.1.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
+| `accountInfoCopyButton`  | When enabled (the default), the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.                                                     | TRUE         |
+| `accessibilityContrast` | When enabled, displays an icon in the Codefresh toolbar allowing you to control the contrast by selecting the option that best suits the logged in user:{::nomarkdown}<ul><li><b>Invert colors</b> and <b>Bold colors (saturate)</b>: Optimized for visually impaired users.</li><li><b>Smart Contrast</b>: Increases the contrast between the text and the background to the maximum possible.</li></ul>{:/}| FALSE         |
+| `cronTriggersInPipelineSpec`         | When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API.<br>See [Pipelines: Enhanced version of Cron triggers](#pipelines-enhanced-version-of-cron-triggers) in this article.  | FALSE         |
+| `disableInviteWelcomeMail`     | When enabled, does not send the Welcome email to users invited to an account.      | FALSE         |
+|`gerritIntegration`      | When enabled, enables Gerrit integration in Account settings. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
+|`nextGenTerminal` | When enabled, uses the new terminal emulator for improved performance, online rendering for large logs (more than 100,000 lines), search functionality, and Screen Reader support for accessibility. | FALSE|
+|`supportOpenIdConnectInBuilds`| When enabled (the default), supports OIDC in pipeline builds, including obtaining and using ID tokens to authenticate and authorize pipeline actions on cloud providers.<br>See [Pipelines: OPenID Connect (OIDC) integration](#pipelines-openid-connect-oidc-integration) in this article. |TRUE|
+`supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
+| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.    | FALSE         |
+| `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
+
+
 
 ## On-premises version 2.0.3 
 Welcome to our newest On-Premises release, version 2.0.3!  This major release is finally here, and it’s packed with an array of exciting usability enhancements, new features, and improvements. We listened carefully to your feedback, and worked to incorporate your suggestions into this release. 
