@@ -51,9 +51,9 @@ To install the latest version of Codefresh Runner, follow the [chart installatio
 
 ### Migrating existing installations 
 You need to migrate existing CLI- and Helm-based installations of the Codefresh Runner to the new Helm installation.
-
 * CLI installations  
-  Uninstall the existing Runner installation, and reinstall the latest Helm version.
+  * Uninstall the existing Runner installation
+  * Reinstall the latest Helm version, making sure you _add all the manual overrides you made to the Runtime specifications_ to the new Helm [values](https://github.com/codefresh-io/venona/blob/release-1.0/charts/cf-runtime/values.yaml){:target="\_blank"} file. <br>For example storage configuration in `.values.storage`, dind/engine configuration in `.Values.runtime.dind/engine`.
 
 * Helm installations  
   Based on the chart version of the Runner installed, from 3.x or higher, you need to migrate the existing Helm chart to the latest version.
@@ -63,9 +63,7 @@ You need to migrate existing CLI- and Helm-based installations of the Codefresh 
 If you need help, please reach out to Codefresh support.
 
 ## Runner components and resources
-<!--- to be removed from this page once Mikhail has added to Artifact Hub -->
-
-
+<!--- to be removed from this page once moved to Artifact Hub -->
 Once installed, the Codefresh Runner is similar to any Kubernetes application, and you can monitor it using your existing tools.
 Among the Runner components, only the `runner` pod persists within your cluster. Other components, such as the `engine`, exist for the duration of pipeline build.
 
