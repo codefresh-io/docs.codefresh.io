@@ -197,6 +197,17 @@ For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipe
 
 <br><br>
 
+#### Pipelines: New terminal emulator
+We have introduced a new terminal emulator in this release, currently in Beta.
+
+Here a few enhancements for a better user experience: 
+* Improved performance through GPU acceleration
+* Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the entire file
+* Faster navigation with enhanced mouse support
+* Improved search functionality
+* Accessibility support with Screen Reader Mode
+
+
 #### Pipelines: Configure limit for project’s pipelines
 The `PROJECT_PIPELINES_LIMIT` variable allows to you set a limit for the number of pipelines in a project.
 Capping the number of pipelines in a project prevents projects from becoming unwieldy and cluttered, and makes it easier to view the pipelines belonging to a project.
