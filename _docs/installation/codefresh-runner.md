@@ -14,19 +14,20 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 The Codefresh Runner does not rely on specific dockershim features. It can work with any container runtime that adheres to the standards. In Codefresh pipelines, the docker socket/daemon is an internal docker daemon created and managed by the pipeline itself. It is also distinct from the docker daemon on the host node, which may not even exist in cases where containerd or cri-o is used.
 Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) and how the [Runner works behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
->**IMPORTANT**:
-We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.  
-s, , We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
-The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will not receive any active maintenance going forward. 
+>**IMPORTANT**:  
+We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.<br>  
+We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
+The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will be actively maintained going forward. 
 
 >**Codefresh Runner with spot instances**:<br>
-  Using spot instances can cause failures in Codefresh builds as they can be taken down without notice. If you require 100% availability, we do not recommend using spot instances.
+  Using spot instances can cause failures in Codefresh builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
 
 After installing the Codefresh Runner, you can:
 * View the Runner Agent and its Runtime Environments
-* Runner components and resources
+* View Runner components and resources
 * Configure different aspects of the Runner
-*  
+
+
 ## System requirements
 
 
@@ -49,11 +50,17 @@ To install the latest version of Codefresh Runner, follow the [chart installatio
 
 
 ### Migrating existing installations 
-Based on the chart version of the Runner, from 3.x or higher, you need to migrate existing CLI- and Helm-based installations to the latest chart version.
+You need to migrate existing CLI- and Helm-based installations of the Codefresh Runner to the new Helm installation.
 
-To customize the Helm chart, see [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target+"\_blank"} on ArtifactHub.  
+* CLI installations  
+  Uninstall the existing Runner installation, and reinstall the latest Helm version.
 
-The necessary instructions per chart version are described in the [Upgrade Chart section](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#upgrade-chart){:target+"\_blank"}, also on ArtifactHub. 
+* Helm installations 
+  Based on the chart version of the Runner installed, from 3.x or higher, you need to migrate the existing Helm chart to the latest version.
+
+  For Helm chart customization, see [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target+"\_blank"} on ArtifactHub.  
+
+  For upgrade instructions per chart version, see the [Upgrade Chart section](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#upgrade-chart){:target+"\_blank"}, also on ArtifactHub. 
 
 If you need help, please reach out to Codefresh support.
 
