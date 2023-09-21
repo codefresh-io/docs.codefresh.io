@@ -55,12 +55,10 @@ You need to migrate existing CLI- and Helm-based installations of the Codefresh 
 * CLI installations  
   Uninstall the existing Runner installation, and reinstall the latest Helm version.
 
-* Helm installations 
+* Helm installations  
   Based on the chart version of the Runner installed, from 3.x or higher, you need to migrate the existing Helm chart to the latest version.
-
-  For Helm chart customization, see [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target+"\_blank"} on ArtifactHub.  
-
-  For upgrade instructions per chart version, see the [Upgrade Chart section](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#upgrade-chart){:target+"\_blank"}, also on ArtifactHub. 
+  * For Helm chart customization, see [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target="\_blank"} on ArtifactHub.  
+  * For upgrade instructions per chart version, see the [Upgrade Chart section](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#upgrade-chart){:target="\_blank"}, also on ArtifactHub. 
 
 If you need help, please reach out to Codefresh support.
 
