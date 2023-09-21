@@ -12,12 +12,12 @@ toc: true
 Install the Codefresh Runner on your Kubernetes cluster to run pipelines and access secure internal services without compromising on-premises security requirements. These pipelines run on your infrastructure, even behind the firewall, and keep code on your Kubernetes cluster secure.
 
 The Codefresh Runner does not rely on specific dockershim features. It can work with any container runtime that adheres to the standards. In Codefresh pipelines, the docker socket/daemon is an internal docker daemon created and managed by the pipeline itself. It is also distinct from the docker daemon on the host node, which may not even exist in cases where containerd or cri-o is used.
-Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) and how the [Runner works Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) and how the [Runner works behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 >**IMPORTANT**:
 We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.  
-Existing installations, both CLI-based, and older Helm-based ones, we encourage you to transition to the new Helm installation.
-The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy and will be deprecated in the coming months. 
+s, , We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
+The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will not receive any active maintenance going forward. 
 
 >**Codefresh Runner with spot instances**:<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice. If you require 100% availability, we do not recommend using spot instances.
@@ -45,12 +45,17 @@ After installing the Codefresh Runner, you can:
 ## Install Codefresh Runner with Helm
 
 
-To install the Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#install-chart) in ArtifactHub.
+To install the latest version of Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#install-chart) on ArtifactHub.
 
 
-**Existing installations**  
-For existing Runner installations, either older Helm installations or CLI-based installations:  
-Delete the existing `values` file and reinstall the Codefresh Runner with the new `values` file.
+### Migrating existing installations 
+Based on the chart version of the Runner, from 3.x or higher, you need to migrate existing CLI- and Helm-based installations to the latest chart version.
+
+To customize the Helm chart, see [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target+"\_blank"} on ArtifactHub.  
+
+The necessary instructions per chart version are described in the [Upgrade Chart section](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#upgrade-chart){:target+"\_blank"}, also on ArtifactHub. 
+
+If you need help, please reach out to Codefresh support.
 
 ## Runner components and resources
 <!--- to be removed from this page once Mikhail has added to Artifact Hub -->
@@ -117,8 +122,12 @@ Node size and count depends entirely on how many pipelines you want to be “rea
 
 
 >**TIP**:  
+<<<<<<< Updated upstream
 The size of your nodes relates directly to the size required for your pipelines, and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
 
+=======
+The size of your nodes relates directly to the size required for your pipelines and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
+>>>>>>> Stashed changes
 
 
 ### Storage
@@ -191,16 +200,9 @@ Override the default Runtime Environment for a specific pipeline through the pip
 
 
 ## Codefresh Runner configuration
-After you install the Codefresh Runner, review the [configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} options described in ArtifactHub:
-* [EBS backend volume](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
-* [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
-* [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
-* [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
+After you install the Codefresh Runner, review the [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} section on ArtifactHub for all configuration options.
 
-
-
-
-
+Configuration  options include EBS backend volume, custom global environment variables, volume mounts, volume reuse policies and more.
 
 
 ## Runtime Environment specifications
@@ -267,7 +269,63 @@ accountId: 5f048d85eb107d52b16c53ea
 
 ### runtimeScheduler fields (engine)
 
+{: .table .table-bordered .table-hover}
+| Field name          | Type                  | Value |
+| -------------- |-------------------------| -------------------------|
+|`image`	|string	|Override default engine image|
+|`imagePullPolicy`|string	|Override image pull policy (default `IfNotPresent`)|
+|`type`	|string	`KubernetesPod`|
+|`envVars`	|object	|Override or add environment variables passed into the engine pod|
+|`userEnvVars`|	object	|Add external env var(s) to the pipeline. See [Custom Global Environment Variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}.|
+|`cluster`|	object|	k8s related information (`namespace`, `serviceAccount`, `nodeSelector`)|
+|`resources`|	object	|Specify non-default `requests` and `limits` for engine pod. <br>For memory, use `Mi` (mebibytes).<br>For CPU, use `m` (millicpu).|
+|`tolerations`	|array	|Add tolerations to engine pod|
+|`annotations`	|object|	Add custom annotations to engine pod (empty by default `{}`)|
+|`labels`	|object	|Add custom labels to engine pod (empty by default `{}`)|
+|`dnsPolicy`|	string|	Engine pod’s [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy){:target="\_blank"} |
+|`dnsConfig`	|object	|Engine pod’s [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config){:target="\_blank"}  |
 
+`runtimeScheduler` example:
+
+{% highlight yaml %}
+{% raw %}
+runtimeScheduler:
+  imagePullPolicy: Always
+  cluster:
+    clusterProvider:
+      accountId: 5f048d85eb107d52b16c53ea
+      selector: my-eks-cluster
+    nodeSelector: #schedule engine pod onto a node whose labels match the nodeSelector
+      node-type: engine
+    namespace: codefresh
+    serviceAccount: codefresh-engine
+  annotations: {}
+  labels:
+    spotinst.io/restrict-scale-down: "true" #optional label to prevent node scaling down when the runner is deployed on spot instances using spot.io
+  envVars:
+    NODE_TLS_REJECT_UNAUTHORIZED: '0' #disable certificate validation for TLS connections (e.g. to g.codefresh.io)
+    METRICS_PROMETHEUS_ENABLED: 'true' #enable /metrics on engine pod
+    DEBUGGER_TIMEOUT: '30' #debug mode timeout duration (in minutes)
+  userEnvVars:
+    - name: GITHUB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: github-token
+          key: token
+  resources:
+    requests:
+      cpu: 60m
+      memory: 500Mi
+    limits:
+      cpu: 1000m
+      memory: 2048Mi
+  tolerations:
+    - effect: NoSchedule
+      key: codefresh.io
+      operator: Equal
+      value: engine
+{% endraw %}
+{% endhighlight %}
 
 ### dockerDaemonScheduler fields (dind)
 
@@ -276,7 +334,7 @@ accountId: 5f048d85eb107d52b16c53ea
 | `dindImage`       | string | Override default dind image |
 | `type`       | string | `DindPodPvc` |
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
-| `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline See [Custom Volume Mounts](#custom-volume-mounts) |
+| `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline.<br>See [Custom Volume Mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}. |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
 | `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
 | `tolerations`       | array | Add tolerations to dind pod |
@@ -331,8 +389,8 @@ dockerDaemonScheduler:
 {% endhighlight %}
 
 ## Replacing expired certificates
-If your builds are failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify and if needed replace the expired certificates.  
-See [Troubleshooting this error in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#error-failed-to-validate-connection-to-docker-daemon-caused-by-error-certificate-has-expired){:target="\_blank"}.
+If your builds are failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify if your certificates have expired, and if needed replace them.  
+See [Troubleshooting this error on ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#error-failed-to-validate-connection-to-docker-daemon-caused-by-error-certificate-has-expired){:target="\_blank"}.
 
 ## CLI-based Codefresh Runner installation
 
