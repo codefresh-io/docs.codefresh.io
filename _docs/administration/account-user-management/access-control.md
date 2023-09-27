@@ -191,8 +191,8 @@ For each rule, select:
   * The other privileges can be defined in the same rule.
 1. The tags that control access to the entity/resource:
   * Any tags (`any`): Grants access to entity as long as it has a tag. The tag name is not relevant.
-  * All named tags (`all of these`): **AND** relationship between list of defined tags. Grants access only to the entities with _all_ the tags defined in the list.
-  * Any named tag (`any of these`): **OR** relationship between list of defined tags. Grants access to the entity with _at least one_ of the tags defined.
+  * All named tags (`all of these`): **AND** logic between list of defined tags. Grants access only to the entities with _all_ the tags defined in the list.
+  * Any named tag (`any of these`): **OR** logic between list of defined tags. Grants access to the entity with _at least one_ of the tags defined.
   * No tags (`no`): Grants access to the entity _without_ any tags.  
 
 
