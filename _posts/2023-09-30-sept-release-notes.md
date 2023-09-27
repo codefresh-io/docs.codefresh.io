@@ -28,7 +28,7 @@ We are excited to introduce a powerful enhancement to Codefresh pipelines: AND l
 Up until this point, we've been all about OR logic, allowing you to define rules with a choice of **Any of these** tags. But we recognize that you need to be more specific in certain scenarios, and that's where AND logic comes into play.  
 With AND logic, you can require **All of these** tags to be present, providing a level of granularity to tighten security and ensure that only the right people have access to entities.
 
-For details, see 
+For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
 
 #### Pipelines: Supercharged Cron triggers
 
