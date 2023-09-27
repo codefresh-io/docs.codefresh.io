@@ -151,7 +151,7 @@ For details, see [Access control for GitOps]({{site.baseurl}}/docs/administratio
 * Selecting a new Git integration in **Use YAML from repository** screen resets all custom settings, including branch, and PATH TO YAML.
 * “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
 * Frequent timeouts when pushing to Codefresh Helm repo via Helm step. 
-* "Invalid date" tooltips in Build and Memory usage metric graphs.(https://codefresh-io.atlassian.net/browse/CR-16895 Alexey)
+* Tooltips in Build and Memory usage metric graphs display "Invalid date".
 * (On-premises only) After upgrade to v2.0.9, Test reports screen does not display all elements.
 * (On-premises only) Page keeps on loading indefinitely when switching active account from a ProjectOne account to a Classic one.
 
