@@ -25,7 +25,7 @@ Deploy to Kubernetes from the Codefresh UI, or programmatically through dedicate
 For quick and easy deployment, you can deploy on-demand from the Codefresh UI.
 
 **Dedicated steps in pipelines**  
-For more flexibility, we have dedicated steps for pipelines: the `deploy`step, and the more advanced `cf-deploy-kubernetes`step which enables simple templating on Kubernetes manifests.   
+For more flexibility, we have dedicated steps for pipelines: the `deploy`step, and the more advanced `cf-deploy-kubernetes` step which enables simple templating on Kubernetes manifests.   
 
 Codefresh pipelines also support Kustomize and Helm for deployments through `freestyle` steps. 
 
