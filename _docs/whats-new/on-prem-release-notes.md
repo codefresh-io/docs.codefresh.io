@@ -200,12 +200,12 @@ For details, see [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipe
 <br><br>
 
 #### Pipelines: New terminal emulator
-We have introduced a new terminal emulator in this release, currently in Beta.
+In this release, we have introduced a NEW terminal emulator for a superior user experience, featuring lightning-fast scrolling, online rendering for large logs, enhanced accessibility support, and more...
 
 The new terminal emulator provides: 
 * Improved performance through GPU acceleration
-* Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the entire file
-* Faster navigation with enhanced mouse support
+* Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the file
+* Faster navigation with improved mouse support
 * Improved search functionality
 * Accessibility support with Screen Reader Mode
 
@@ -281,6 +281,7 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Auto-sync option not available for Azure SSO. 
 * 404 errors on clicking documentation links in Build > Triggers.
 * For Azure, auto-sync operations removes groups that were previously synced.
+* Page keeps on loading indefinitely when switching active account from a ProjectOne account to a Classic one.
 
 
 
@@ -306,9 +307,9 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * After upgrade to v2.0.9, Test reports screen does not display all elements.
 * Invited users prompted for phone number during sign-up.
 
+
 <!---
 * Slow scroll speed for build logs in online terminal view.
-* Page keeps on loading indefinitely when switching  active account from a ProjectOne account to a Classic one.
 * Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
 * Build step fails with "Failed to update your new image" error.
 -->
