@@ -28,6 +28,16 @@ We are excited to introduce a powerful enhancement to Codefresh pipelines: AND l
 Up until this point, we've been all about OR logic, allowing you to define rules with a choice of **Any of these** tags. But we recognize that you need to be more specific in certain scenarios, and that's where AND logic comes into play.  
 With AND logic, you can require **All of these** tags to be present, providing a level of granularity to tighten security and ensure that only the right people have access to entities.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/sep23/rel-notes-sep23-classic-and-policies.png" 
+url="/images/whats-new/sep23/rel-notes-sep23-classic-and-policies.png" 
+alt="Rules with OR/AND logic for tags" 
+caption="Rules with OR/AND logic for tags" 
+max-width="40%" 
+%}
+
 For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
 
 #### Pipelines: Supercharged Cron triggers
@@ -43,8 +53,8 @@ Cron triggers can also simulate Git events to enrich pipelines with repository d
 {% include 
 image.html 
 lightbox="true" 
-file="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
-url="/images/whats-new/aug23/rel-notes-aug23-cron-settings-tab.png" 
+file="/images/whats-new/sep23/rel-notes-sep23-cron-settings-tab.png" 
+url="/images/whats-new/sep23/rel-notes-sep23-cron-settings-tab.png" 
 alt="Extended settings for Cron triggers" 
 caption="Extended settings for Cron triggers" 
 max-width="40%" 
@@ -72,6 +82,16 @@ Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation
 ### Pipelines: Superior performance and UX with new terminal emulator
 We have introduced a new terminal emulator for a superior user experience, featuring fast scrolling, online rendering for large logs, enhanced accessibility support, and more...
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/sep23/rel-notes-sep23-new-terminal.png" 
+url="/images/whats-new/sep23/rel-notes-sep23-new-terminal.png" 
+alt="New terminal emulator" 
+caption="New terminal emulator" 
+max-width="40%" 
+%}
+
 The new terminal emulator provides: 
 * Improved performance through GPU acceleration
 * Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the file
@@ -88,8 +108,8 @@ Create rules and policies that enforce the security that your organization requi
  {% include 
 image.html 
 lightbox="true" 
-file="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
-url="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
+file="/images/whats-new/sep23/rel-notes-sep23-gitops-add-rule.png" 
+url="/images/whats-new/sep23/rel-notes-sep23-gitops-add-rule.png" 
 alt="Access control for GitOps application entities" 
 caption="Access control for GitOps application entities" 
 max-width="40%" 
@@ -118,30 +138,28 @@ For details, see [Access control for GitOps]({{site.baseurl}}/docs/administratio
 **General**  
 * Build step fails with "Failed to update your new image" error.
 * Missing examples for steps in Codefresh Step Marketplace.
-Link to Cron expression formats in Cron trigger documentation article goes to private repository which cannot be accessed externally.
+* Link to Cron expression formats in Cron trigger documentation article goes to private repository which cannot be accessed externally.
 
-
+<br>
 
 **Pipelines**  
 * Random 500 error when using fetch for Codefresh-managed Helm repo.
 * Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
 * StackRox blocks older versions of Codefresh images and deployments. (https://codefresh-io.atlassian.net/browse/CR-20134 Daniel Maizel)
 * DinD pod does not use Service Account (SA) defined in Runner.
-* "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error on selecting a new Git integration without selecting a branch in Use YAML from Repo screen. (https://codefresh-io.atlassian.net/browse/CR-19836 Aliksander)
-OR
-Selecting a new Git integration in **Use YAML from repository** screen resets all custom settings, including branch, PATH TO YAML.
+* In **Use YAML from Repo** screen, selecting a new Git integration without selecting a branch results in "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error. (https://codefresh-io.atlassian.net/browse/CR-19836 Aliksander)
+* Selecting a new Git integration in **Use YAML from repository** screen resets all custom settings, including branch, and PATH TO YAML.
 * “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
 * Frequent timeouts when pushing to Codefresh Helm repo via Helm step. 
 * "Invalid date" tooltips in Build and Memory usage metric graphs.(https://codefresh-io.atlassian.net/browse/CR-16895 Alexey)
-
 * (On-premises only) After upgrade to v2.0.9, Test reports screen does not display all elements.
-* (On-premises only) Page keeps on loading indefinitely when switching  active account from a ProjectOne account to a Classic one.
+* (On-premises only) Page keeps on loading indefinitely when switching active account from a ProjectOne account to a Classic one.
 
 
-
+<br>
 
 
 **GitOps**  
-* For a paused step, rolloutStepStatus garphQL call returns Passed instead of Active. (https://codefresh-io.atlassian.net/browse/CR-20303 - Olek)
+* For a paused step, sometimes `rolloutStepStatus` graphQL call returns Passed instead of Active.
 * In the Timeline tab, on-going deployments do not display link to Rollout Player. 
-* Slow scrolling in Terminal for online build logs.
+* Slow scrolling in terminal for online build logs.
