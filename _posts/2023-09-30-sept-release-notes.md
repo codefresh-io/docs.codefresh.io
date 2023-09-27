@@ -145,7 +145,6 @@ For details, see [Access control for GitOps]({{site.baseurl}}/docs/administratio
 **Pipelines**  
 * Random 500 error when using fetch for Codefresh-managed Helm repo.
 * Builds fail intermittently with `ESOCKETTIMEDOUT` error when pulling image for caching.
-* StackRox blocks older versions of Codefresh images and deployments. (https://codefresh-io.atlassian.net/browse/CR-20134 Daniel Maizel)
 * DinD pod does not use Service Account (SA) defined in Runner.
 * In **Use YAML from Repo** screen, selecting a new Git integration without selecting a branch results in "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error. (https://codefresh-io.atlassian.net/browse/CR-19836 Aliksander)
 * Selecting a new Git integration in **Use YAML from repository** screen resets all custom settings, including branch, and PATH TO YAML.
