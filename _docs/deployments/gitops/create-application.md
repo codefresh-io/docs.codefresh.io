@@ -10,17 +10,24 @@ toc: true
 
 Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
 * Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
-  Creating an application in Codefresh includes:  
-  * Application definitions
+  Creating an application in Codefresh includes defining:  
+  * Application name and location
   * General configuration settings
   * Advanced configuration settings  
 
-  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an application](#create-an-application).
-  For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
-* Edit and delete applications
-  Once the application is created and synced to the cluster, it is displayed in the GitOps Apps dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
-  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
+  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an application](#create-an-application).
+  For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
+  
+  Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit a GitOps application.
+
+
+* Monitor GitOps applications  
+  After creating an application, and it is synced to the cluster, the application is displayed in the GitOps Apps dashboard. Here, 
+  Here you can monitor its health and sync status, deployments, and resources. See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
+
+* Manage GitOps applications  
+  You can also select an application and update the application's configuration settings, or delete it.  For all available options, see [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
 ## Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -172,17 +179,18 @@ The tool used to create the application's manifests.  Codefresh supports definin
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
 
-<br />
+<br>
 
 ## Create an application
 Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
+* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 
-Review:    
-[General configuration](#application-general-configuration-settings)  
-[Advanced configuration](#application-advanced-configuration-settings)  
+* Review:    
+  [General configuration](#application-general-configuration-settings)  
+  [Advanced configuration](#application-advanced-configuration-settings)  
 
 
 **How to**  

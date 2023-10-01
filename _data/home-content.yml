@@ -33,6 +33,8 @@
       localurl: /docs/integrations/codefresh-hosted-gitops/
     - title: Git providers
       localurl: /docs/integrations/git-providers/
+    - title: OpenID Connect
+      localurl: /docs/integrations/oidc-pipelines/
     - title: Kubernetes
       localurl: /docs/integrations/kubernetes/
     - title: Amazon Web Services
