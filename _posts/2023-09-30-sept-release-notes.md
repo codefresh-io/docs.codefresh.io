@@ -8,7 +8,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ### Pipelines: OpenID Connect integration
 Introducing OIDC (OpenID Connect) for Codefresh pipelines! Boost pipeline security and streamline access control with OIDC. Instead of referencing static credentials stored in Codefresh for your cloud provider, allow pipelines to authenticate and authorize actions through short-lived ID tokens. 
 
-Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition, and then add the actions to perform on the cloud provider in the pipeline.
+Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition. Then add the actions to perform on the cloud provider in the pipeline.
 
 Key benefits:
 * Enhanced security  
@@ -17,7 +17,7 @@ Key benefits:
 
 * Ease of use  
   Once the OIDC provider configuration is completed, obtaining the ID token is seamless.  
-  Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
+  Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token without additional configuration or parameters on your part.
 
 For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
 
@@ -26,7 +26,7 @@ For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/
 We are excited to introduce a powerful enhancement to Codefresh pipelines: AND logic for rules in RBAC permissions. Now, you have even more control and precision when it comes to managing permissions for entities.
 
 Up until this point, we've been all about OR logic, allowing you to define rules with a choice of **Any of these** tags. But we recognize that you need to be more specific in certain scenarios, and that's where AND logic comes into play.  
-With AND logic, you can require **All of these** tags to be present, providing a level of granularity to tighten security and ensure that only the right people have access to entities.
+With AND logic, you can require **All of these** tags to be present, providing a level of granularity to tighten security and ensure that only the right teams have access to entities.
 
 {% include 
 image.html 
@@ -103,7 +103,7 @@ The new terminal emulator provides:
 
 ### GitOps: ABAC for GitOps applications
 We are excited to bring the power of ABAC for access control to the GitOps platform!  
-Create rules and policies that enforce the security that your organization requires, combining authorized users (teams), fine-grained control over entities (applications and rollbacks), support for a wide range of actions (sync, pause/resume rollbacks, and more), and the flexibility of attribute combinations (cluster, namespace, and more)!
+Create rules and policies that enforce the security that your organization requires. Combine authorized users (teams), fine-grained control over entities (applications and rollbacks), support for a wide range of actions (sync, pause/resume rollbacks, and more), and the flexibile attribute combinations (cluster, namespace, and more)!
 
  {% include 
 image.html 
@@ -128,9 +128,6 @@ For example, you can grant access to the `production` environment only to specif
 
 For details, see [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
 
-<br><br>
-
-### GitOps: Argo Events upgrade
 
 
 ## Bug fixes
