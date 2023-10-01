@@ -10,6 +10,17 @@ Introducing OIDC (OpenID Connect) for Codefresh pipelines! Boost pipeline securi
 
 Configure Codefresh as an OIDC provider with your preferred cloud provider, and let Codefresh handle ID token acquisition. Then add the actions to perform on the cloud provider in the pipeline.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/sep23/rel-notes-sep-23-oidc-obtain-token-step.png" 
+url="/images/whats-new/sep23/rel-notes-sep-23-oidc-obtain-token-step.png" 
+alt="Obtain OIDC token step" 
+caption="Obtain OIDC token step" 
+alt="" 
+max-width="40%" 
+%}
+
 Key benefits:
 * Enhanced security  
   You no longer need to define, store, and manage cloud-provider credentials in Codefresh. 
@@ -94,7 +105,7 @@ max-width="40%"
 
 The new terminal emulator provides: 
 * Improved performance through GPU acceleration
-* Convenient online viewing for log files, including large logs with up to 100,000 lines, avoiding the need to download the file
+* Convenient online viewing for log files, including for large logs with up to 100,000 lines, avoiding the need to download the file
 * Faster navigation with improved mouse support
 * Improved search functionality
 * Accessibility support with Screen Reader Mode
@@ -119,7 +130,7 @@ max-width="40%"
 Ensure that only authorized teams can perform critical actions on applications and rollback entities.
 
 **Fine-grained control for actions on Applications and Rollbacks**  
-GitOps ABAC supports an extensive range of actions to cater to all stages of application and rollout entities. 
+GitOps ABAC supports an extensive range of actions to cater to all stages of application and rollout management. 
 
 **Flexibility and granularity through attribute combinations**  
 You have the power to combine a wide variety of attributes to create highly specific access control rules. You're no longer limited to single attributes; instead, you can compose rules using multiple attributes, allowing for precise control. 
