@@ -332,7 +332,7 @@ runtimeScheduler:
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
 | `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline.<br>See [Custom Volume Mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}. |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu).<br>See also [How to: Update Runner Runtime Environment memory and CPU settings]({{site.baseurl}}/docs/kb/articles/update-runtime-mem-cpu/). |
+| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu).<br>See also [How to: Update Runtime Environment memory and CPU settings]({{site.baseurl}}/docs/kb/articles/update-runtime-mem-cpu/). |
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
