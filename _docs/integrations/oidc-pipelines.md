@@ -483,5 +483,5 @@ The cloud provider uses the ID token to authenticate the claim and perform the a
 ## Related articles
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
-[Variables in pipelines]({{site.baseurl}}/_docs/pipelines/variables/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
