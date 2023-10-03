@@ -5,7 +5,7 @@ group: installation
 toc: true
 ---
 
-If you have familiarized yourself with the different installation options, here's a deep dive into the architecture and components of the different options.
+If you have familiarized yourself with the different installation options, here's a deep dive into the architecture of the SaaS and on-premises platforms, and components.
 
 
 
@@ -31,9 +31,10 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 ### GitOps Runtime
 The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more in [GitOps Runtime architecture](#gitops-runtime-architecture).
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more about it in [GitOps Runtime architecture](#gitops-runtime-architecture).
 
-
+### Codefresh Runner
+The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
 ### GitOps Clients
 
@@ -63,9 +64,9 @@ max-width="100%"
 <br>
 
 #### Codefresh Runner
-The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
+The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
-Read more about how it works in [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 <br>
 
@@ -194,17 +195,54 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
   Stores data for legacy builder and windows nodes.
 
 
-## Codefresh Runner
+## Codefresh Runner architecture
+This section shows a detailed view of the Codefresh Runner architecture, and a description of the components. See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
-The most important components are the following:
+DIAGRAM TO BE INSERTED
 
-**Codefresh VPC:** All internal Codefresh services run in the VPC. Codefresh uses Mongo and PostgreSQL to store user and authentication information.
 
-**Pipeline execution environment**:  The Codefresh engine component is responsible for taking pipeline definitions and running them in managed Kubernetes clusters by automatically launching the Docker containers that each pipeline needs for its steps.
+The Codefresh Runner includes two main components:
 
-**External actors**. Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/) that is consumed both by the Web user interface and the <!--should i differentiate between the CI Cli and GitOps CLI -->[Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
+### Runner Agent
+The Codefresh Runner, often referred to as the Agent, is responsible for executing and managing tasks within the Runtime Environment. 
+Main functions include:
 
-See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Executing and terminating pipeline builds.
+Creating and deleting necessary resources, such as engine and DinD pods, as well as DinD PVCs.
+
+### Runtime Environment
+
+The Runtime Environment is attached to the Codefresh Runner, and includes the following components:
+
+**Volume Provisioner**  
+The Volume Provisioner is the central component that controls all Codefresh services, and performs the following functions:
+Acting as a Persistent Volume (PV) Kubernetes controller 
+Managing DinD Persistent Volume Claim s(PVCs)
+Optimizing Docker caching volumes to enhance cache utilization for Codefresh builds
+
+<br>
+
+**Volume Cleaners**  
+The Volume Cleaners are responsible for PV management based on the environment setup:
+* LV-Monitor: Installed when local volumes are used to allocate disk space for PVs on the cluster nodes.
+* Dind Volume Cleanup: Installed instead of the LV Monitor when local volumes are not used, to delete PVs according to retention policies. 
+
+<br>
+
+**Cluster Monitor**
+Optional. When installed, provides visibility on cluster resources in Codefresh, through the Kubernetes Services dashboard.
+
+<br>
+
+**App-Proxy**  
+Another optional component, the App-Proxy serves as an extension to the Codefresh platform. Its purpose is to enable remote operations, such as displaying Git repositories for Git providers behind firewalls and creating webhooks, while maintaining security.
+
+
+### Codefresh Platform
+
+Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/), consumed both by the Web user interface and the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
+
+
 
 
  
@@ -299,9 +337,10 @@ The Argo Project includes:
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
->Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
-  To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
-  Typically, new versions of Argo are available within 30 days of release in Argo.
+>**NOTE**:  
+Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
+To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
+Typically, new versions of Argo are available within 30 days of release in Argo.
 
 
 
@@ -309,7 +348,7 @@ The Argo Project includes:
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
->Important:  
+>**IMPORTANT**:  
   The Request Routing Service is available from Runtime version 0.0.543 and higher.   
   Older Runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
 

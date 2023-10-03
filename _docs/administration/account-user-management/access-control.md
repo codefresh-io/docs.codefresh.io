@@ -19,8 +19,8 @@ You can then create rules that combine roles, attributes, and CRUD (Create/Read/
   [Role-based access](#role-based-access-for-users-and-administrators) restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
 
 * **Attribute-based access control (ABAC)**  
-  Access control via attributes, restricts access to entities based on the _what (the type of access)_. Assigning attributes, or tags as in Codefresh to entities makes it easy to enforce a more flexible and secure form of access control.  
-  For example, add tags to projects, and then enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform team can Create/Edit/Delete.  
+  Access control via attributes, restricts access to entities based on the _what (the type of access)_. Assigning attributes or tags as they are also referred to, to Codefresh  entities makes it easy to enforce a more flexible and secure form of access control.  
+  For example, by adding tags to projects, you can enforce access control for pipelines through project tags, instead of relying on pipeline-level tags. So you can add tags to projects with pipelines that all teams can view and run (Read), but only the platform team can Create/Edit/Delete.  
   See [ABAC for entities with tags and rules](#abac-for-entities-with-tags-and-rules).
 
 * **YAML source and Git-repository access**  
@@ -32,7 +32,8 @@ Let's review the different access mechanisms in more detail, including privilege
 
 Role-based access is usually defined when you [add teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh). Role-based access means assigning either a user or an administrator role.
 
-> Only a user with an administrator role can add other users, and assign or change user roles.
+>**NOTE:**  
+Only a user with an administrator role can add other users, and assign or change user roles.
 
 
 {% include 
@@ -73,14 +74,18 @@ The table below lists the functionality available for the `Admin` and `User` rol
 ## ABAC for entities with tags and rules
 
 ABAC (Attribute-Based Access Control), allows fine-grained access to all entities, Kubernetes clusters, Codefresh pipelines, projects, and additional resources through the use of tags and rules.  
-For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
+For general information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
 
-Using tags, you can allocate entities and resources to teams. Define which team has access to which entities and resources, and also the type of access.  
-Tag names are arbitrary, and can be anything you choose that matches your company process. Tags can be product names, software lifecycle phases, department names, or names that help define security policies.  
+**Tags**  
+Tags give you the flexibility to assign entities and resources to specific teams while determining the type of access each team has. Tags serve as labels that help organize and control access to these entities and resources.
 
-You can then define rules combining teams, privileges, and tags and for fine-grained access control.
+Tag names are entirely customizable and can align with your company's processes and requirements. They can encompass a wide range of categories, including product names, software lifecycle phases, departmental designations, or labels designed to enforce security policies. 
 
-### Define tags for entities
+**Rules**  
+Rules combine teams (who), privileges (what), and tags (where) to create fine-grained access control policies.  
+Codefresh supports ABAC with the flexibility to use both OR and AND operations for tags.
+
+### Tags for entities
 
 #### Assign tags to Kubernetes clusters and Git contexts
 
@@ -125,7 +130,7 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 
 Add tags to projects for filtering and defining permissions. 
 
->TIP:  
+>**TIP**:  
   If [**Auto-create projects for teams**]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams) is enabled in global pipeline settings for your account, then creating the team also creates a project and tag for the project, both with the same name as the team name.
 
 
@@ -177,17 +182,18 @@ Shared configuration can be environment variables, Helm values, encrypted secret
 <br><br>
 
 ### Rules for access control 
-Define rules using the *who, what, where* pattern to control access to entities and resources. 
+Define rules using the *who, what, where* pattern to control access to entities and resources. Rules can be based on OR or AND relationships.
 
 For each rule, select:
 1. The team the rule applies to 
 1. The CRUD (*Create/Delete/Read/Update*) privileges the team has to the entity/resource 
   * For almost all entities, the Create privilege requires a separate rule. 
   * The other privileges can be defined in the same rule.
-1. The tags that control access to the entity/resource
-  * All tags, (implicitly includes No tags)
-  * No tags
-  * Named tags
+1. The tags that control access to the entity/resource:
+  * Any tags (`any`): Grants access to entity as long as it has a tag. The tag name is not relevant.
+  * All named tags (`all of these`): **AND** logic between list of defined tags. Grants access only to the entities with _all_ the tags defined in the list.
+  * Any named tag (`any of these`): **OR** logic between list of defined tags. Grants access to the entity with _at least one_ of the tags defined.
+  * No tags (`no`): Grants access to the entity _without_ any tags.  
 
 
 The examples in this section illustrate how to control access to projects and to pipelines through project tags:
@@ -209,19 +215,21 @@ Make sure you have:
 1. For each entity, do the following to define a rule:
     1. Select the team to which assign the rule.
     1. Select the privileges to assign to the team for that entity.
-      >You cannot select the **Create** privilege together with the other privileges. The **Create** privilege requires a separate rule.  
+      >**NOTE:**  
+        You cannot select the **Create** privilege together with the other privileges. The **Create** privilege requires a separate rule.  
        **Any** indicates no privileges are selected.
-    1. To assign tags, select one of the following:
-        *  **All tags**: Allows access only to entities with or without tags, regardless of the actual tag names.
-        *  **Without tags**: Allows access only to entities that do not have tags assigned to them.
-        * **Named tags**: Allows access only to those entities with the same tag names.
+    1. To determine  tags, select one of the following:
+        * **Any**: Allows access to entities _with_ any tag, regardless of the actual tag names.
+        * **All of these tags**: Allows access only to those entities _with all_ the tags defined in the list (_AND_ relationship between the tags). Access is denied if the entity does not all the tag names.
+        * **Any of these tags**: Allows access only to those entities _with any_ of the tags defined in the list. Access is allowed if the entity has at one of the tag names.
+        * **No tags**: Allows access only to entities that do not have tags assigned to them.
 
  {% include image.html
   lightbox="true"
   file="/images/administration/access-control/kubernetes-policies.png"
   url="/images/administration/access-control/kubernetes-policies.png"
-  alt="Kubernetes policies"
-  caption="Kubernetes policies"
+  alt="Rules for Kubernetes clusters"
+  caption="Rules for Kubernetes clusters"
   max-width="80%"
     %}
 
@@ -297,6 +305,7 @@ Now we'll create the two teams, DevOps and Users.
   max-width="60%"
   %} 
 
+{:start="3"}
 1. Create a new team, Users.
 
 <br>
@@ -348,52 +357,53 @@ Now we'll create three projects, with different tags. See [Create project for pi
 As the final step, let’s define the rules that govern access to pipelines in projects through the project tags.
 
 We'll first define the access requirements for the pipelines:
-* Team `DevOps` has full permissions for pipelines in all projects with tags `backend`, `frontend` and `shared`
-* Team `Marvel` has full permissions for pipelines in all projects with tags `frontend` and `shared`
-* Team `Users` can view and run pipelines in all projects with tags `shared`
+* Team `DevOps` has full permissions for pipelines in all projects with _any of these_ tags (OR relationship): `backend`, `frontend` and `shared`
+* Team `Marvel` has full permissions for pipelines in all projects with _all of these_ tags (AND relationship) `frontend` and `shared`
+* Team `Users` can view and run pipelines in all projects with _all of these_ tags (AND relationship) `shared`
 
-> Note: We are a defining the rule for pipelines _with project tags_ instead of _pipeline tags_.
+>**NOTE:**  
+We are defining rules for pipelines _with project tags_ instead of _pipeline tags_.
 
 
 Here's how you would define the rules:
 We need to define a Create rule each for teams DevOps and Marvel, and then different rules for the three teams with the other permissions.
 
 * For team DevOps: 
-    1. Rule 1: Create pipelines in projects with `frontend`, `backend`, or `shared` tags.
-    1. Rule 2: All other permissions for pipelines in projects with `frontend`, `backend`, or `shared` tags.
+    1. Rule 1: Create pipelines in projects with _any of these_ tags: `frontend` OR `backend` OR `shared`.
+    1. Rule 2: All other permissions for pipelines in projects with _any of these_ tags: `frontend` OR `backend` OR `shared`.
 
  {% include image.html
   lightbox="true"
   file="/images/administration/access-control/example-project-tags-devops.png"
   url="/images/administration/access-control/example-project-tags-devops.png"
-  alt="Example: Unrestricted pipeline permissions for DevOps team by project tags"
-  caption="Example: Unrestricted pipeline permissions for DevOps team by project tags"
-  max-width="60%"
+  alt="Example: Unrestricted pipeline permissions for DevOps team by _any_ project tags"
+  caption="Example: Unrestricted pipeline permissions for DevOps team by _any_ project tags"
+  max-width="70%"
   %}
 
 * For team Marvel:
-    1. Rule 1: Create pipelines in projects _only_ with `frontend` or `shared` tags.
-    1. Rule 2: All other permissions for pipelines in projects _only_ with `frontend` or `shared` tags.
+    1. Rule 1: Create pipelines in projects only with _all of these_ tags: both `frontend` AND `shared`.
+    1. Rule 2: All other permissions for pipelines in projects only with _all of these_ tags: both `frontend` AND `shared`.
 
  {% include image.html
   lightbox="true"
   file="/images/administration/access-control/example-project-tags-marvel.png"
   url="/images/administration/access-control/example-project-tags-marvel.png"
-  alt="Example: Restricting pipeline permissions by project tags"
-  caption="Example: Restricting pipeline permissions by project tags"
-  max-width="60%"
+  alt="Example: Restricting pipeline permissions by _all_ project tags"
+  caption="Example: Restricting pipeline permissions by _all_ project tags"
+  max-width="70%"
   %}
 
 * For team Users: 
-   * Rule: View and run for pipelines in projects with `shared` tags.
+   * Rule: View and run for pipelines in projects only with _all of these_ tags: `shared`.
 
  {% include image.html
   lightbox="true"
   file="/images/administration/access-control/example-project-tags-users.png"
   url="/images/administration/access-control/example-project-tags-users.png"
-  alt="Example: Restricting team permissions for pipelines by project tag"
-  caption="Example: Restricting team permissions for pipelines by project tag"
-  max-width="60%"
+  alt="Example: Restricting team permissions for pipelines by _all_ project tags"
+  caption="Example: Restricting team permissions for pipelines by _all_ project tags"
+  max-width="70%"
   %}
 
 ## Git-repository access for pipeline definitions 
@@ -459,6 +469,5 @@ By default, if configured for the account, users can also load pipeline definiti
 
 ## Related articles
 [Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
-[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 

@@ -1,15 +1,14 @@
-
 - title: Introduction
   icon: images/home-icons/started.svg
-  url: ''
+  url: ""
   links:
     - title: What is Codefresh?
       localurl: /docs/getting-started/intro-to-codefresh/
     - title: Codefresh for CI
       localurl: /docs/getting-started/ci-codefresh/
-    - title: Codefresh for CD 
+    - title: Codefresh for CD
       localurl: /docs/getting-started/cd-codefresh/
-    - title: Codefresh for GitOps 
+    - title: Codefresh for GitOps
       localurl: /docs/getting-started/gitops-codefresh/
     - title: Concepts in Codefresh
       localurl: /docs/getting-started/concepts/
@@ -18,53 +17,52 @@
 
 - title: Quick starts
   icon: images/home-icons/tutorial.svg
-  url: ''
+  url: ""
   links:
     - title: Create Codefresh account
-      localurl: /docs/quick-start/create-codefresh-account/  
+      localurl: /docs/quick-start/create-codefresh-account/
     - title: CI/CD quick starts
       localurl: /docs/quick-start/ci-quick-start/
-    - title: GitOps quick starts  
+    - title: GitOps quick starts
       localurl: /docs/quick-start/gitops-quick-start/
-
 
 - title: Pipeline integrations
   icon: images/home-icons/cloud-integrations.png
   links:
     - title: Hosted GitOps
-      localurl: /docs/integrations/codefresh-hosted-gitops/   
+      localurl: /docs/integrations/codefresh-hosted-gitops/
     - title: Git providers
       localurl: /docs/integrations/git-providers/
+    - title: OpenID Connect
+      localurl: /docs/integrations/oidc-pipelines/
     - title: Kubernetes
       localurl: /docs/integrations/kubernetes/
     - title: Amazon Web Services
-      localurl: /docs/integrations/amazon-web-services/    
+      localurl: /docs/integrations/amazon-web-services/
     - title: Microsoft Azure
-      localurl: /docs/integrations/microsoft-azure/   
+      localurl: /docs/integrations/microsoft-azure/
     - title: Google Cloud
-      localurl: /docs/integrations/google-cloud/   
+      localurl: /docs/integrations/google-cloud/
     - title: Docker Registries
-      localurl: /docs/integrations/docker-registries/  
+      localurl: /docs/integrations/docker-registries/
     - title: Secret Storage
-      localurl: /docs/integrations/secret-storage/  
+      localurl: /docs/integrations/secret-storage/
     - title: Cloud Storage
-      localurl: /docs/integrations/cloud-storage/          
+      localurl: /docs/integrations/cloud-storage/
     - title: Helm
-      localurl: /docs/integrations/helm/ 
+      localurl: /docs/integrations/helm/
     - title: Argo CD
-      localurl: /docs/integrations/argocd/  
+      localurl: /docs/integrations/argocd/
     - title: Datadog
-      localurl: /docs/integrations/datadog/    
+      localurl: /docs/integrations/datadog/
     - title: Jenkins integration/migration
-      localurl: /docs/integrations/jenkins-integration/               
+      localurl: /docs/integrations/jenkins-integration/
     - title: Codefresh API
       localurl: /docs/integrations/codefresh-api/
 
-
-
 - title: GitOps integrations
   icon: images/home-icons/integrations.svg
-  url: ''
+  url: ""
   links:
     - title: GitOps image enrichment with integrations
       localurl: /docs/gitops-integrations/image-enrichment-overview/
@@ -77,7 +75,7 @@
     - title: Jira for GitOps
       localurl: /docs/gitops-integrations/issue-tracking/jira/
     - title: Amazon ECR for GitOps
-      localurl: /docs/gitops-integrations/container-registries/amazon-ecr/    
+      localurl: /docs/gitops-integrations/container-registries/amazon-ecr/
     - title: Docker Hub Registry for GitOps
       localurl: /docs/gitops-integrations/container-registries/dockerhub/
     - title: GitHub Container Registry for GitOps
@@ -87,59 +85,51 @@
     - title: Quay Registry for GitOps
       localurl: /docs/gitops-integrations/container-registries/quay/
 
-
-
 - title: Dashboards & insights
   icon: images/home-icons/guides.png
-  url: ''
+  url: ""
   links:
     - title: Home dashboard
-      localurl: /docs/dashboards/home-dashboard/   
+      localurl: /docs/dashboards/home-dashboard/
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
       localurl: /docs/dashboards/images/
-    
-
-  
 
 - title: CI/CD guides
   icon: images/home-icons/guides.png
-  url: ''
+  url: ""
   links:
     - title: Building your app
       localurl: /docs/ci-cd-guides/packaging-compilation/
     - title: Building Docker images
       localurl: /docs/ci-cd-guides/building-docker-images/
     - title: Accessing a Docker registry from Kubernetes cluster
-      localurl: /docs/ci-cd-guides/access-docker-registry-from-kubernetes/  
+      localurl: /docs/ci-cd-guides/access-docker-registry-from-kubernetes/
     - title: Working with Docker registries
-      localurl: /docs/ci-cd-guides/working-with-docker-registries/       
+      localurl: /docs/ci-cd-guides/working-with-docker-registries/
     - title: Adding config maps to namespaces
-      localurl: /docs/ci-cd-guides/add-config-maps-to-your-namespaces/    
+      localurl: /docs/ci-cd-guides/add-config-maps-to-your-namespaces/
     - title: Pull Requests and branches
       localurl: /docs/ci-cd-guides/pull-request-branches/
     - title: Pipelines for microservices
-      localurl: /docs/ci-cd-guides/microservices/  
+      localurl: /docs/ci-cd-guides/microservices/
     - title: Deploying to predefined environments
-      localurl: /docs/ci-cd-guides/environment-deployments/ 
+      localurl: /docs/ci-cd-guides/environment-deployments/
     - title: Previewing dynamic environments
-      localurl: /docs/ci-cd-guides/preview-environments/   
+      localurl: /docs/ci-cd-guides/preview-environments/
     - title: Helm best practices
-      localurl: /docs/ci-cd-guides/helm-best-practices/  
+      localurl: /docs/ci-cd-guides/helm-best-practices/
     - title: Templating for Kubernetes
-      localurl: /docs/ci-cd-guides/kubernetes-templating/ 
+      localurl: /docs/ci-cd-guides/kubernetes-templating/
     - title: GitOps deployments
       localurl: /docs/ci-cd-guides/gitops-deployments/
     - title: Image enrichment
-      localurl: /docs/ci-cd-guides/image-enrichment/    
-
-    
-
+      localurl: /docs/ci-cd-guides/image-enrichment/
 
 - title: Example catalog
   icon: images/home-icons/tutorial.svg
-  url: ''
+  url: ""
   links:
     - title: CI examples
       localurl: /docs/example-catalog/ci-examples/
@@ -148,16 +138,16 @@
 
 - title: Pipelines
   icon: images/home-icons/pipeline.svg
-  url: ''
+  url: ""
   links:
     - title: Introduction to pipelines
       localurl: /docs/pipelines/introduction-to-codefresh-pipelines/
     - title: Creating pipelines
-      localurl: /docs/pipelines/pipelines/  
+      localurl: /docs/pipelines/pipelines/
     - title: Steps in pipelines
-      localurl: /docs/pipelines/steps/ 
+      localurl: /docs/pipelines/steps/
     - title: Variables in pipelines
-      localurl: /docs/pipelines/variables/         
+      localurl: /docs/pipelines/variables/
     - title: Triggers in pipelines
       localurl: /docs/pipelines/triggers/
     - title: Annotations in pipelines
@@ -177,11 +167,9 @@
     - title: Debugging pipelines
       localurl: /docs/pipelines/debugging-pipelines/
 
-
-
 - title: Deployments
   icon: images/home-icons/deployment.svg
-  url: ''
+  url: ""
   links:
     - title: Deployment options for Kubernetes
       localurl: /docs/deployments/kubernetes/
@@ -200,105 +188,94 @@
     - title: Managing GitOps applications
       localurl: /docs/deployments/gitops/manage-application/
 
-
-
-
 - title: Argo CD Workflows
   icon: images/home-icons/pipeline.svg
-  url: ''
+  url: ""
   links:
     - title: Creating Argo CD workflows
       localurl: /docs/workflows/create-pipeline
     - title: Nested Argo CD workflows
-      localurl: /docs/workflows/nested-workflows/      
+      localurl: /docs/workflows/nested-workflows/
     - title: Configure artifact repository
       localurl: /docs/workflows/configure-artifact-repository/
     - title: Selectors for concurrency synchronization
       localurl: /docs/workflows/concurrency-limit/
     - title: Sharing file systems
-      localurl: /docs/workflows/sharing-file-system/  
-       
-
-
+      localurl: /docs/workflows/sharing-file-system/
 
 - title: Installation
   icon: images/home-icons/runtimes.svg
-  url: ''
+  url: ""
   links:
     - title: Installation options
       localurl: /docs/installation/installation-options/
     - title: Codefresh Runner installation
-      localurl: /docs/installation/codefresh-runner/ 
+      localurl: /docs/installation/codefresh-runner/
     - title: On-Premises platform installation
       localurl: /docs/installation/on-premises/codefresh-on-prem/
     - title: On-Premises platform upgrade
       localurl: /docs/installation/on-premises/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
-      localurl: /docs/installation/gitops/hosted-runtime/  
+      localurl: /docs/installation/gitops/hosted-runtime/
     - title: Hybrid GitOps Runtime installation
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: On-premises GitOps Runtime installation
-      localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/        
-
-
+      localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/
 
 - title: Administration
   icon: images/home-icons/administration.svg
-  url: ''
+  url: ""
   links:
-  - title: Create a Codefresh account
-    localurl: /docs/administration/account-user-management/create-codefresh-account/
-  - title: Adding users and teams  
-    localurl: /docs/administration/account-user-management/add-users/
-  - title: Set up OAuth2 for GitOps
-    localurl: /docs/administration/account-user-management/oauth-setup/  
-  - title: Access control for pipelines
-    localurl: /docs/administration/account-user-management/access-control/
-  - title: Access control for GitOps
-    localurl: /docs/administration/account-user-management/gitops-abac/
-  - title: Audit
-    localurl: /docs/administration/account-user-management/audit/
-  - title: User settings
-    localurl: /docs/administration/user-self-management/user-settings/
-  - title: Manage Git PATs
-    localurl: /docs/administration/user-self-management/manage-pats/
-  - title: Codefresh IP addresses
-    localurl: /docs/administration/platform-ip-addresses/  
-  - title: Single Sign-On
-    localurl: /docs/administration/single-sign-on/
-
+    - title: Create a Codefresh account
+      localurl: /docs/administration/account-user-management/create-codefresh-account/
+    - title: Adding users and teams
+      localurl: /docs/administration/account-user-management/add-users/
+    - title: Set up OAuth2 for GitOps
+      localurl: /docs/administration/account-user-management/oauth-setup/
+    - title: Access control for pipelines
+      localurl: /docs/administration/account-user-management/access-control/
+    - title: Access control for GitOps
+      localurl: /docs/administration/account-user-management/gitops-abac/
+    - title: Audit
+      localurl: /docs/administration/account-user-management/audit/
+    - title: User settings
+      localurl: /docs/administration/user-self-management/user-settings/
+    - title: Manage Git PATs
+      localurl: /docs/administration/user-self-management/manage-pats/
+    - title: Codefresh IP addresses
+      localurl: /docs/administration/platform-ip-addresses/
+    - title: Single Sign-On
+      localurl: /docs/administration/single-sign-on/
 
 - title: Reference
   icon: images/home-icons/guides.png
-  url: ''
+  url: ""
   links:
     - title: Git tokens
-      localurl: /docs/reference/git-tokens/ 
+      localurl: /docs/reference/git-tokens/
     - title: Secrets for GitOps
-      localurl: /docs/reference/secrets   
-
-
+      localurl: /docs/reference/secrets
 
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
-  url: ''
+  url: ""
   links:
-  - title: Windows Containers Support
-    localurl: /docs/incubation/windows
-  - title: Mac OSX and iOS builds
-    localurl: /docs/incubation/osx-ios-builds
-  - title: ARM architecture Support
-    localurl: /docs/incubation/arm-support
-
+    - title: Windows Containers Support
+      localurl: /docs/incubation/windows
+    - title: Mac OSX and iOS builds
+      localurl: /docs/incubation/osx-ios-builds
+    - title: ARM architecture Support
+      localurl: /docs/incubation/arm-support
 
 - title: "Knowledge Base"
   icon: images/home-icons/troubleshooting.svg
-  url: ''
+  url: ""
   links:
-  - title: Common Issues
-    localurl: /docs/kb/common-issues
-  - title: How Tos
-    localurl: /docs/kb/how-to
-  - title: Troubleshooting
-    localurl: /docs/kb/troubleshooting
-
+    - title: Common Issues
+      localurl: /docs/kb/common-issues
+    - title: How Tos
+      localurl: /docs/kb/how-to
+    - title: Troubleshooting
+      localurl: /docs/kb/troubleshooting
+    - title: Support Ticket Examples
+      localurl: /docs/kb/support-ticket-examples

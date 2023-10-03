@@ -28,6 +28,16 @@ max-width="80%"
 
 In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard) serves as a centralized location to track pipelines performance by KPIs. 
 
+
+## Concurrency recommendation per Runtime Environment
+
+Concurrency limits control the number of simultaneous builds for Codefresh pipelines. Concurrency limits are set at both the account and specific pipeline levels. 
+
+**Balancing concurrency and performance**
+While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
+
+
+
 ## Starring projects and pipelines as favorites
 
 Mark frequently used or high-priority pipelines as favorites in the Projects and Pipelines pages. This allows for easy and quick access to important projects or pipelines.  

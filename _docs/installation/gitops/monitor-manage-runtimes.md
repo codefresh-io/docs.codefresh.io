@@ -184,31 +184,31 @@ dependencies:
 
 ## Update Git credentials for GitOps Runtimes
 
-Provisioned GitOps Runtimes require valid Git tokens at all times to authenticate Git actions by you as a user.
-These Git tokens are personal access tokens, specific to each user. As such, you can use the same Git user token for multiple Runtimes.
+Provisioned GitOps Runtimes require valid Git Runtime tokens at all times to authenticate and authorize the Runtime.
+The Git Runtime token differs from the Git user token which is a personal access token unique to each user. As such, you can use the same Git Runtime token for multiple Runtimes.
 
 >**TIP**:
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
 
 **When to update**
-If your Git token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
+If your Git Runtime token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
 
 Otherwise, you have to update Git tokens in the following situations:
-* **Complete Installation** status displayed in Sync column for Runtime
+* **Complete Installation** status displayed in Sync column for Runtime<br>
   You have installed the Runtime but need to update the Git credentials to complete the installation.
-* Invalid, revoked, or expired tokens
+* Invalid, revoked, or expired tokens<br>
   Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform.
 
-**Update methods**
+**Update methods**<br>
 The methods for updating any Git token are the same regardless of the reason for the update:
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh.
-* Git access token authentication, by generating a Git user token in your Git provider account with the correct scopes.
-  You can update your Git user token in the UI or through the CLI.
+* Git access token authentication, by generating a Git Runtime token in your Git provider account with the correct scopes.
+  You can update your Git Runtime token in the UI or through the CLI.
 
-### Update Git credentials in Codefresh UI
+### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git user token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes)
+* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/reference/git-tokens/#git-runtime-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -255,8 +255,8 @@ The methods for updating any Git token are the same regardless of the reason for
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
 1. Click **Update Credentials**.
 
-### Update Git user token through CLI
-If you are using Git user tokens for authentication, you can also update them through the Codefresh CLI.
+### Update Git Runtime token through CLI
+If you are using Git Runtime tokens for authentication, you can also update them through the Codefresh CLI.
 
 * Run:
   `cf config update-gitops-settings --shared-config-repo <repo_url> [--git-provider <git-provider>] [--git-api-url <git-api-url>]`
@@ -325,15 +325,15 @@ Copy the SSH private key for your Git provider
 ## Reset Shared Configuration Repository for GitOps Runtimes
 Codefresh creates and validates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration) when you install the first Hybrid or Hosted GitOps Runtime for your account, and uses it for all GitOps Runtimes you add to the same account.
 
-Once created, you can reset the Shared Configuration Repo defined for your account under the following conditions:
+The Shared Configuration Repo is created in your Git provider account. You can reset the repo defined for your account under the following conditions:
 
-* **Incorrect/missing URL**
-  Mandatory when Codefresh notifies you through the UI if the Shared Configuration Repo URL is either incorrect or missing.
+* **Incorrect/missing URL**  
+  Mandatory when Codefresh notifies you through the UI that the Shared Configuration Repo URL is either incorrect or missing.
 
-    * Incorrect URL
+    * Incorrect URL  
       The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
-    * Undefined URL
-      You installed the GitOps Runtime through a script or another automated mechanism without providing the URL to the Shared Configuration Repository.
+    * Undefined URL<br>
+      You installed the GitOps Runtime through a script or an automated mechanism without providing the URL to the Shared Configuration Repository.
 
 
     {% include
@@ -346,13 +346,13 @@ Once created, you can reset the Shared Configuration Repo defined for your accou
   max-width="100%"
 %}
 
-* **No active Runtimes**
+* **No active Runtimes**  
   If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Shared Configuration Repo URL.
   To do so, you must contact Codefresh Support.
 
-  Otherwise, you can reset the Shared Config Repo URL only _after uninstalling all the GitOps Runtimes in your account_. This option is useful when moving from a temporary account, for example, a POV account, to your organization's official account. Codefresh allows you to reset the URL.
+  Otherwise, you can reset the Shared Config Repo URL only _after uninstalling all the GitOps Runtimes in your account_. This option is useful when moving from a temporary account, for example, a POV account, to your organization's official account to reset the URL.
 
-### Reset Shared Config Repo via UI
+<!--- ### Reset Shared Config Repo via UI
 You can reset the Shared Config Repo via the Codefresh UI when you see the notification that the URL is either incorrect or missing.
 
 **Before you begin**
@@ -364,21 +364,25 @@ Verify that you have [authorized access to the Codefresh app's organizations]({{
 1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
 1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
 
-### Reset Shared Config Repo via CLI
+### Reset Shared Config Repo via CLI 
 You can reset the Shared Configuration Repo via the CLI when:
 * You receive the notification that the URL is incorrect or missing
 * There are no active GitOps Runtimes in your account.
    To reset the URL for an account with existing GitOps Runtimes, you must [uninstall](#uninstall-gitops-runtimes) all the Runtimes.
 
+-->
 
 **Before you begin**
-* Make sure you have have no active Runtimes in your account
+* Make sure you have no active GitOps Runtimes in your account
 
 **How to**
 
-* Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`
+
+1. Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`
   where:
   `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
+1. When prompted, select the Git provider.
+1. Confirm to create the Shared Configuration Repo. 
 
 ## (Hybrid GitOps) Configure Deep Links to applications & resources
 
@@ -521,10 +525,25 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 
+## (Helm GitOps) Download logs for GitOps Runtimes
 
+Download the logs for a completed GitOps Runtime installation.<br>
+The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. If needed, switch to **List View**, and then select the runtime for which to download logs.
+1. From the context menu, select **Download All Logs**.
+  The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
 
-
+  {% include
+	image.html
+	lightbox="true"
+	file="/images/runtime/helm-download-all-logs.png"
+	url="/images/runtime/helm-download-all-logs.png"
+	alt="Download all logs for installed GitOps Runtime"
+	caption="Download all logs for installed GitOps Runtime"
+    max-width="60%"
+%}
 
 ## (Legacy CLI Hybrid GitOps) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.

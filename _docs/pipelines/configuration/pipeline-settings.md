@@ -1,6 +1,6 @@
 ---
 title: "Global settings for pipelines"
-description: "Define global options for pipeline templates, yaml sources and approval behavior"
+description: "Configure settings for pipeline templates, YAML sources and build behavior for all pipelines in account"
 group: pipelines
 sub_group: configuration
 redirect_from:
@@ -9,12 +9,29 @@ toc: true
 ---
 
 
-You can define global settings for all the pipelines in the account. Users can still override some settings for individual pipelines.
+As a Codefresh account administrator, you can define global settings for all the pipelines in the account. Users can still override some settings for individual pipelines.
+
+{: .table .table-bordered .table-hover}
+| Account-level pipeline setting  | Description   |
+| ------------------------| ---------------- |
+|[Pause pipeline executions](#pause-pipeline-executions)| Define if users can pause builds for new and existing pipelines in the account.  |
+|[New pipeline creation options](#new-pipeline-creation-options)| Define if users can new pipelines from templates or by cloning existing pipelines.  |
+|[Configure pipeline scopes](#configure-pipeline-scopes)| Control access to endpoints exposed by the pipeline.  |
+|[Auto-create projects for teams](#auto-create-projects-for-teams)| Enabled by default, automatically creates projects when adding teams to the account.   |
+|[Enabling cluster-contexts for pipelines](#enabling-cluster-contexts-for-pipelines)| Define if users can select the clusters to which the pipeline has access. |
+|[Enabling cluster-contexts for pipelines](#enabling-cluster-contexts-for-pipelines)| Enable/disable sources for pipeline YAMLs.   |
+|[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
+|[Advanced pipeline options](#advanced-pipeline-options)| Configure options for build approval and pipeline volumes. |
+|[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
 
 
-## Access pipeline settings
+## Access global pipeline settings
+Global settings for pipelines are set for the account and inherited by all pipelines in the account. 
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
+
+
 
 
 ## Pause pipeline executions
@@ -36,14 +53,33 @@ caption="Pause Build Execution pipeline setting enabled"
 max-width="60%"
 %}
 
-## New pipeline as templates
+## New pipeline creation options
 
-Here you can define global template behavior. The options are:
+Here you can define if users can [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline) from existing pipelines or from scratch: 
 
-* Enable [pipeline templates]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates) for users. If this is enabled some pipelines can be marked as templates and users can still select them when creating a new pipeline. 
-* Decide if users can clone an existing pipeline (along with its triggers and associated parameters) when [creating a new pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#creating-a-pipeline).
+* Create pipelines from a [pipeline template]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates).<br>
+  Enabling this option allows users to select a pipeline marked as a template as the source for the new pipeline.   
+  Templates are simply pipelines “marked” as templates. There is no technical difference between templates and actual pipelines.
 
-Note that templates are simply pipelines “marked” as templates. There is no technical difference between templates and actual pipelines.
+* Clone existing pipeline<br>
+  Enabling this option allows users to create a pipeline by cloning an existing pipeline. Cloning an existing pipelines also copies its triggers and associated parameters.
+
+## Configure pipeline scopes
+Define the account-level scopes for resources, inherited by all pipelines in the account, through full access, read/write access, or CRUD permissions. <!--- For a description of the available scopes, see [API scopes]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#api-scopes). --> 
+
+  {% include image.html
+lightbox="true"
+file="/images/pipeline/pipeline-settings/pipeline-scopes-setting.png"
+url="/images/pipeline/pipeline-settings/pipeline-scopes-setting.png"
+alt="Scopes for pipelines"
+caption="Scopes for pipelines"
+max-width="60%"
+%}
+
+>**TIP**:
+ As a Codefresh administrator, you can override the account-level scopes for a specific pipeline by [configuring custom scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes). The custom scopes are inherited by all the builds for that pipeline. 
+
+
 
 ## Auto-create projects for teams
 Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. It also creates access-control rules for the same team to projects and pipeline, simplifying setup and saving time.
@@ -128,7 +164,7 @@ You can then select specific clusters for individual pipelines, through the **Ku
 
 
 
-## Pipeline YAML section
+## Configure sources for pipeline YAMLs
 
 Here you can restrict the sources of pipeline YAML that users can select. The options are:
 
