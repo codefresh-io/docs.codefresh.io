@@ -4,8 +4,6 @@ description: "Restrict access to GitOps entities through ABAC"
 toc: true
 ---
 
->**NOTE**: This feature is currently in Beta.
-
 Control access to entities in GitOps through ABAC (Attribute-Based Access Control). ABAC allows fine-grained access to application entities through the use of rules.  
 For GitOps, you can currently define ABAC for application entities in the Codefresh UI or programmatically via Terraform.
 For more information on ABAC, see [ABAC on Wikipedia](https://en.wikipedia.org/wiki/Attribute-based_access_control){:target="\_blank"}. 
