@@ -51,11 +51,11 @@ max-width="40%"
 
 For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
 
-#### Pipelines: Supercharged Cron triggers
+### Pipelines: Supercharged Cron triggers
 
-Welcome to v2.0 for Cron triggers! We have extended the capabilities of Cron triggers within Codefresh pipelines for a more powerful implementation.  The new version is currently in Beta.
+Welcome to v2.0 for Cron triggers! We have extended the capabilities of Cron triggers within Codefresh pipelines for a more powerful implementation.  
 
-In the Cron Interval settings, you can now add a name for the Cron trigger. 
+First, in the Cron Interval settings, you can now add a name for the Cron trigger. 
 
 Cron triggers can also simulate Git events to enrich pipelines with repository details, include environment variables, and custom settings for caching, volume reuse, and notifications. The new options are supported in the Codefresh UI (Advanced Settings), and also in the pipeline YAML specifications for declarative setup. 
 
