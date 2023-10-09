@@ -424,8 +424,8 @@ assume_role:
     title: Assume Role
     type: aws-sts-assume-role-with-web-identity
     arguments:
-      ROLE_ARN: ${{ROLE_ARN}}
-      ROLE_SESSION_NAME: ${{ROLE_SESSION_NAME}}
+      ROLE_ARN: arn:aws:iam::095585282052:role/cf-oidc-test1 #example; syntax arn:aws:iam::<role-name>
+      ROLE_SESSION_NAME: oidc-session #example
 
   s3_list_objects:
     title: s3_list_objects
@@ -433,16 +433,12 @@ assume_role:
     commands: 
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
-* Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
-    1. Click the **Variables** tab on the right. 
-    1. Add these variables and values:
-      * `BUCKET_NAME=<bucket-name>`, for example, `oidc-test1`.
-      * `ROLE_ARN=arn:aws:iam::<role-name>`, for example, `arn:aws:iam::095585282052:role/cf-oidc-test1`.
-      * `ROLE_SESSION_NAME`=<session-name>, for example, `oidc-session`.
+>**NOTE:**  
 
 
 
-The cloud provider uses the ID token to authenticate the claim and perform the action, listing the objects in the S3 bucket.
+The cloud provider uses the ID token to authenticate the request to assume the role, after which the pipeline’s build performs the permitted action for the role, such as listing the objects in the S3 bucket.
+
 
 
 ## Related articles
