@@ -7,7 +7,7 @@ toc: true
 
 Codefresh pipelines frequently interact with different cloud providers to access their services, resources, and execute tasks. Access to these cloud providers is generally controlled through long-lived secrets, defined, stored, and managed in Codefresh. 
 
-With OpenID Connect (OIDC), you can take a different approach and configure your pipeline to request a short-lived access token directly from the cloud provider with OIDC support. Providers who currently support OIDC include among others, Amazon Web Services, Azure, Google Cloud Platform, and HashiCorp Vault.
+With OpenID Connect (OIDC), you can take a different approach by configuring your pipeline to request a short-lived access token directly from the cloud provider with OIDC support. Providers who currently support OIDC include among others, Amazon Web Services, Azure, Google Cloud Platform, and HashiCorp Vault.
 
 Whether you are a SaaS user or running Codefresh on-premises, you can obtain these ID tokens from the Codefresh OIDC provider (trusted by the cloud provider), and use them in your pipelines to perform the actions you need.
 
@@ -38,9 +38,8 @@ The claim is a piece of information included in the ID token providing details a
 One of the key strengths of integrating OIDC into your Codefresh pipelines lies in the power of conditions defined through claims. Claims, which provide essential user information, offer far more than just identity verification. They allow you to introduce fine-grained access control based on entity attributes such as account and pipeline IDs, Git repositories and branches, and more.
 
 By defining conditions through claims, you can ensure that only authorized resources within your organization have access. An example of a simple condition would be to allow access to all pipelines by account ID.
-You can customize claims with simple or complex conditions.  
 
-To enforce secure access, _you must configure at least one condition on the `subject` claim, and additional claims as needed_. As cloud providers do not enforce conditions by default, without conditions in place, anyone can request an ID token and potentially perform actions.
+To enforce secure access, _you must configure at least one condition on the `subject` claim_, and additional claims as needed. As cloud providers do not enforce conditions by default, without conditions in place, anyone can request an ID token and potentially perform actions.
 
 ### Standard OIDC claims
 
@@ -56,7 +55,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
   The OIDC provider that issued the token, and is always `https://oidc.codefresh.io`.
 * **issued at (`iat`) claim**   
   The time when the ID token was issued.
-* **exp (`iat`) claim**   
+* **exp (`exp`) claim**   
   The time when the ID token is set to expire.
 
 The cloud provider verifies that the claims in the request token matches the claims defined in `aud` and the `sub` claims before issuing the ID token.
@@ -118,7 +117,7 @@ As you can see, the `sub` claim concatenates several of the custom claims for th
 ```
 The standard claims include `sub` `aud`, `exp`, `iat`, and `iss`.  
 
-The custom claims are specific to the type of Git trigger, and can include `account_id`, `account_name`, `pipeline_id`, `pipeline_name`, `workflow_id`, `scm_user_name`, `scm_repo_url` and `scm_ref`. The same claims are also part of the `sub` claim.
+The _custom claims are specific to the type of Git trigger_, and can include `account_id`, `account_name`, `pipeline_id`, `pipeline_name`, `workflow_id`, `scm_user_name`, `scm_repo_url` and `scm_ref`. The same claims can also be included in the `sub` claim.
 
 ## OIDC setup for Codefresh pipelines
 
@@ -200,7 +199,7 @@ The step:
     * `CF_OIDC_REQUEST_URL` is the URL from which the ID token is requested. 
   
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
-  You can use this environment variable in later steps within the same pipeline.
+  You can use this environment variable in subsequent steps within the same pipeline.
 
 >**Use API call in freestyle step**  
 You can also insert the `curl` command in a freestyle step to get the same result.
@@ -325,7 +324,7 @@ max-width="50%"
 {:start="5"}
 1. Replace the `sub` claims with the conditions you need for the specific `sub` claim according to the Codefresh trigger type. If there is more than one condition, separate them with colons.  
   See [Codefresh trigger types for Subject claims](#codefresh-trigger-types-for-subject-claims).  
-  In the example below, only ID tokens issued for account ID `5f30ebd30312313ae7f17948` and pipeline ID `64de5cd47626b3ca134e760a` will be allowed to assume the role.
+  In the example below, only ID tokens issued for account ID `5f30eb00t788899` and pipeline ID `64de5cd47626b3ca134e760a` will be allowed to assume the role.
 ```yaml
 {
 	"Version": "2012-10-17",
@@ -333,7 +332,7 @@ max-width="50%"
 		{
 			"Effect": "Allow",
 			"Principal": {
-				"Federated": "arn:aws:iam::095585282052:oidc-provider/oidc.codefresh.io" # role created 
+				"Federated": "arn:aws:iam::09550002000:oidc-provider/oidc.codefresh.io" # role created 
 			},
 			"Action": "sts:AssumeRoleWithWebIdentity",
 			"Condition": {
@@ -341,7 +340,7 @@ max-width="50%"
 					"oidc.codefresh.io:aud": "https://g.codefresh.io" # stay
 				},
 				"StringLike": {
-				    "oidc.codefresh.io:sub": "account:5f30ebd30312313ae7f17948:pipeline:64de5cd47626b3ca134e760a:*" ## change according to the trigger type
+				    "oidc.codefresh.io:sub": "account:5f30eb00t788899:pipeline:64de5cd47626b3a:*" ## change according to the trigger type
 				}
 			}
 		}
@@ -424,7 +423,7 @@ assume_role:
     title: Assume Role
     type: aws-sts-assume-role-with-web-identity
     arguments:
-      ROLE_ARN: arn:aws:iam::095585282052:role/cf-oidc-test1 #example; syntax arn:aws:iam::<role-name>
+      ROLE_ARN: arn:aws:iam::095585280052:role/cf-oidc-test1 #example; syntax arn:aws:iam::<role-name>
       ROLE_SESSION_NAME: oidc-session #example
 
   s3_list_objects:
