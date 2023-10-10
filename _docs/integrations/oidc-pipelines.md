@@ -287,8 +287,8 @@ Selecting Web identity as your trust policy, while allowing you to specify the i
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/oidc/assign-role-for-cf.png" 
-url="/images/pipeline/oidc/assign-role-for-cf.png"
+file="/images/pipeline/oidc/assign-role-for-codefresh.png" 
+url="/images/pipeline/oidc/assign-role-for-codefresh.png"
 alt="Codefresh OIDC identity provider information" 
 caption="Codefresh OIDC identity provider information"
 max-width="50%"
@@ -314,8 +314,8 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/oidc/custom-trust-policy.png" 
-url="/images/pipeline/oidc/custom-trust-policy.png"
+file="/images/pipeline/oidc/custom-trust-policy-example.png" 
+url="/images/pipeline/oidc/custom-trust-policy-example.png"
 alt="Sample Custom trust policy with `audience` and `subject` claims" 
 caption="Sample Custom trust policy with `subject` claim"
 max-width="50%"
