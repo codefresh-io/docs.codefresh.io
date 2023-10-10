@@ -7,9 +7,9 @@ toc: true
 
 Codefresh pipelines frequently interact with different cloud providers to access their services, resources, and execute tasks. Access to these cloud providers is generally controlled through long-lived secrets, defined, stored, and managed in Codefresh. 
 
-With OIDC (OpenID Connect) tokens, Codefresh pipelines can authenticate directly with the cloud provider by exchanging the ID token during the session. The ID tokens remain valid only for the duration of your workflow build and automatically expire upon completion.
+With OpenID Connect (OIDC), you can take a different approach by configuring your pipeline to request a short-lived access token directly from the cloud provider with OIDC support. Providers who currently support OIDC include among others, Amazon Web Services, Azure, Google Cloud Platform, and HashiCorp Vault.
 
-Whether you are a SaaS user or running Codefresh on-premises, you can obtain these ID tokens directly from your cloud provider, and use them in your pipelines to perform the actions you need.
+Whether you are a SaaS user or running Codefresh on-premises, you can obtain these ID tokens from the Codefresh OIDC provider (trusted by the cloud provider), and use them in your pipelines to perform the actions you need.
 
 **What are the benefits of OIDC ID tokens?**  
 In Codefresh, cloud provider credentials are defined and stored as static credentials when setting up the integration with the provider, and then referenced in the pipeline through the integration name. 
@@ -37,10 +37,9 @@ The claim is a piece of information included in the ID token providing details a
 
 One of the key strengths of integrating OIDC into your Codefresh pipelines lies in the power of conditions defined through claims. Claims, which provide essential user information, offer far more than just identity verification. They allow you to introduce fine-grained access control based on entity attributes such as account and pipeline IDs, Git repositories and branches, and more.
 
-By defining conditions through claims, you can ensure that only authorized resources within your organization have access. An example of a simple condition would be to allow access to all pipelines by account name or ID.
-You can customize claims with simple or complex conditions.  
+By defining conditions through claims, you can ensure that only authorized resources within your organization have access. An example of a simple condition would be to allow access to all pipelines by account ID.
 
-To enforce secure access, _you must configure at least one condition through a claim_. As cloud providers do not enforce conditions by default, without conditions in place, anyone can request an ID token and potentially perform actions.
+To enforce secure access, _you must configure at least one condition on the `subject` claim_, and additional claims as needed. As cloud providers do not enforce conditions by default, without conditions in place, anyone can request an ID token and potentially perform actions.
 
 ### Standard OIDC claims
 
@@ -56,7 +55,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
   The OIDC provider that issued the token, and is always `https://oidc.codefresh.io`.
 * **issued at (`iat`) claim**   
   The time when the ID token was issued.
-* **exp (`iat`) claim**   
+* **exp (`exp`) claim**   
   The time when the ID token is set to expire.
 
 The cloud provider verifies that the claims in the request token matches the claims defined in `aud` and the `sub` claims before issuing the ID token.
@@ -74,14 +73,13 @@ Git triggers include several custom Source Code Management (SCM) claims to filte
 | `pipeline_id` | The ID of the pipeline authorized in the claim. For example, `64f0c40800aafd1455566`. <br>Specifying the pipeline ID, restricts access to only builds from the pipeline with that ID.     |
 | `pipeline_name` | The name of the pipeline authorized in the claim. For example, `oidc/git-run`. <br>Specifying the pipeline name, restricts access to only builds from the pipeline with that name.         |
 | `workflow_id` | The ID of the specific workflow authorized in the claim. For example, `64f447c02199f903000gh20`. <br>Specifying the workflow ID restricts access to a single build with that ID.         |
-| `initiator` | Applies to manual trigger types, and is the username of the user who clicked Run to manually trigger the pipeline. For example, `codefresh-user`.|
-| `scm_repo_url`| Applies to Git push, PR, and manual trigger types. <br>The SCM URL specifying the Git repository's location. For example, `https://github.com/codefresh-user/oidc-test`. |
-| `scm_user_name` | Applies to Git push, PR, and manual trigger types. <br>The SCM name of the user who initiated the Git action on the URL specified by `scm_repo_url`. For example, `codefresh-user`.|
-| `scm_ref`  | Applies to Git push, PR, and manual trigger types. <br>The SCM name of the branch or tag within the Git repository for which the workflow should execute. For example, `main` or `v1.0.0`. |
+| `initiator` | Applies to manual trigger types, and is the username of the user manually triggered the pipeline, by clicking Run from the Codefresh UI, or from the CLI. For example, `codefresh-user`.|
+| `scm_repo_url`| Applies to Git push, PR, and manual Git trigger types. <br>The SCM URL specifying the Git repository's location. For example, `https://github.com/codefresh-user/oidc-test`. |
+| `scm_user_name` | Applies to Git push, PR, and manual Git trigger types. <br>The SCM name of the user who initiated the Git action. For example, `codefresh-user`.|
+| `scm_ref`  | Applies to Git push, PR, and manual Git trigger types. <br>The SCM name of the branch or tag within the Git repository for which the workflow should execute. For example, `main` or `v1.0.0`. |
 | `scm_pull_request_target_branch` | Applies to Git PR trigger types. <br>The SCM target branch the pull request should merge into. For example, `production`.        |
-| `sid` | A unique session identifier.         |
 
-### Codefresh trigger types and corresponding claims
+### Codefresh trigger types for Subject claims
 
 The table below lists the different types of Codefresh triggers, and the corresponding syntax for each part of the `sub` claim.
 
@@ -117,9 +115,9 @@ As you can see, the `sub` claim concatenates several of the custom claims for th
   "iss": "https://oidc.codefresh.io"
 }
 ```
-The standard claims include `sub` `aud`, `exp`, `iat` and `iss`.  
+The standard claims include `sub` `aud`, `exp`, `iat`, and `iss`.  
 
-The custom claims include `account_id`, `account_name`, `pipeline_id`, `pipeline_name`, `workflow_id`, `scm_user_name`, `scm_repo_url` and `scm_ref`. The same claims are also part of the `sub` claim.
+The _custom claims are specific to the type of Git trigger_, and can include `account_id`, `account_name`, `pipeline_id`, `pipeline_name`, `workflow_id`, `scm_user_name`, `scm_repo_url` and `scm_ref`. The same claims can also be included in the `sub` claim.
 
 ## OIDC setup for Codefresh pipelines
 
@@ -147,7 +145,6 @@ The first step is to integrate Codefresh as an OIDC identity provider in the clo
 Make sure you define the following settings:
 
 1. **Provider type**: OIDC
-1. **Provider name**: A meaningful name to identify Codefresh as an OIDC provider.
 1. **Provider URL**: The URL of the OIDC provider's authorization server, which is the Codefresh OIDC domain, `https//oidc.codefresh.io`. <!--- You can configure one provider URL -->
 1.  **Client ID**: The URL of the Codefresh platform. For SaaS, `https://g.codefresh.io`.  
     For on-premises, this is the URL of your Codefresh instance, for example, `https://<my.company.com>/codefresh.io`.
@@ -162,7 +159,7 @@ To create trust, define the claims, and configure the conditions for each claim.
 * For Codefresh pipelines, the claims depend on the type of trigger. 
 * The syntax to create the `sub` claim is similar for all identity providers, and is a concatenation of different claims, separated by colons. These generally include the account, pipeline, initiator, and for Git triggers, SCM (Source Code Management) data such as the repo URL or branch, and for PRs, the target branch to merge to.
 
-See [Custom Codefresh claims](#custom-codefresh-claims) and [Codefresh trigger types and corresponding claims](#codefresh-trigger-types-and-corresponding-claims) in this article.
+See [Custom Codefresh claims](#custom-codefresh-claims) and [Codefresh trigger types for Subject claims](#codefresh-trigger-types-for-subject-claims) in this article.
 
 >**WARNING**:  
 It is essential that you configure _at least one condition_ to enforce secure access.  
@@ -193,17 +190,19 @@ max-width="60%"
 
 The step:  
 
-1. Makes an API call with `curl` to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL`.  
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL`.  
+  <!--- These two variables are injected into each build of the pipeline. -->
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is the bearer token with the required claims.  
-    * `CF_OIDC_REQUEST_URL` is the URL for which the ID token is requested. 
+    * `CF_OIDC_REQUEST_TOKEN` is a Codefresh access token used to request the OIDC ID token for the OIDC provider.  
+    * `CF_OIDC_REQUEST_URL` is the URL from which the ID token is requested. 
   
-1. Gets the ID token in the `ID_TOKEN` environment variable.
+1. Sets the ID token in the `ID_TOKEN` environment variable.  
+  You can use this environment variable in subsequent steps within the same pipeline.
 
->**TIP: Use API call in freestyle step**  
-Instead of the predefined Marketplace step to obtain the OIDC ID token, you can insert the `curl` command in a freestyle step to get the same result.
+>**Use API call in freestyle step**  
+You can also insert the `curl` command in a freestyle step to get the same result.
 
 <br><br>
 
@@ -216,12 +215,6 @@ steps:
   obtain_id_token:
     title: Obtain ID Token
     type: obtain-oidc-id-token
-  print_output: 
-    title: Printing output from previous step
-    image: alpine
-    commands:
-      - echo $ID_TOKEN
-      - 'echo ${{steps.obtain_id_token.output.ID_TOKEN}}'
 ```
 
 ### Step 4: Add steps to perform actions in the cloud provider
@@ -254,10 +247,9 @@ max-width="50%"
 1. In the Add an Identity Provider form, do the following:
     1. Select Provider type as **OpenID Connect**.
     1. Enter a meaningful name for the Provider.
-    1. Click **Get thumbprint**.
     1. In the **Audience** field, enter the client ID for Codefresh:
       For SaaS customers, this is `https://g.codefresh.io`.  
-      For on-premises, this is the URL of their codefresh instance, for example, ???
+      For on-premises, this is the URL of their codefresh instance.
     1. Click **Add provider**.
 
 {% include 
@@ -282,7 +274,7 @@ Selecting Web identity as your trust policy, while allowing you to specify the i
 
 
 **Before you begin**  
-* Familiarize yourself with [Claims & conditions](#more-on-the-oidc-id-token) 
+* Familiarize yourself with [Claims & conditions](#claims--conditions) 
 
 **How to**  
 1. Make sure you are still in **Identity providers**.
@@ -295,8 +287,8 @@ Selecting Web identity as your trust policy, while allowing you to specify the i
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/oidc/assign-role-for-cf.png" 
-url="/images/pipeline/oidc/assign-role-for-cf.png"
+file="/images/pipeline/oidc/assign-role-for-codefresh.png" 
+url="/images/pipeline/oidc/assign-role-for-codefresh.png"
 alt="Codefresh OIDC identity provider information" 
 caption="Codefresh OIDC identity provider information"
 max-width="50%"
@@ -322,8 +314,8 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/oidc/custom-trust-policy.png" 
-url="/images/pipeline/oidc/custom-trust-policy.png"
+file="/images/pipeline/oidc/custom-trust-policy-example.png" 
+url="/images/pipeline/oidc/custom-trust-policy-example.png"
 alt="Sample Custom trust policy with `audience` and `subject` claims" 
 caption="Sample Custom trust policy with `subject` claim"
 max-width="50%"
@@ -331,8 +323,8 @@ max-width="50%"
 
 {:start="5"}
 1. Replace the `sub` claims with the conditions you need for the specific `sub` claim according to the Codefresh trigger type. If there is more than one condition, separate them with colons.  
-  See [Codefresh trigger types and corresponding claims](#codefresh-trigger-types-and-corresponding-claims).  
-  In the example below, only ID tokens issued for account ID `5f30ebd30312313ae7f17948` and pipeline ID `64de5cd47626b3ca134e760a` will be allowed to assume the role.
+  See [Codefresh trigger types for Subject claims](#codefresh-trigger-types-for-subject-claims).  
+  In the example below, only ID tokens issued for account ID `5f30eb00t788899` and pipeline ID `64de5cd47626b3ca134e760a` will be allowed to assume the role.
 ```yaml
 {
 	"Version": "2012-10-17",
@@ -340,7 +332,7 @@ max-width="50%"
 		{
 			"Effect": "Allow",
 			"Principal": {
-				"Federated": "arn:aws:iam::095585282052:oidc-provider/oidc.codefresh.io" # role created 
+				"Federated": "arn:aws:iam::09550002000:oidc-provider/oidc.codefresh.io" # role created 
 			},
 			"Action": "sts:AssumeRoleWithWebIdentity",
 			"Condition": {
@@ -348,7 +340,7 @@ max-width="50%"
 					"oidc.codefresh.io:aud": "https://g.codefresh.io" # stay
 				},
 				"StringLike": {
-				    "oidc.codefresh.io:sub": "account:5f30ebd30312313ae7f17948:pipeline:64de5cd47626b3ca134e760a:*" ## change according to the trigger type
+				    "oidc.codefresh.io:sub": "account:5f30eb00t788899:pipeline:64de5cd47626b3a:*" ## change according to the trigger type
 				}
 			}
 		}
@@ -382,32 +374,10 @@ max-width="50%"
 {:start="4"}
 1. In the Specify permissions page, do the following:
     1. Click **JSON**.
-    1. Click **Add new statement**, and select the statements required for the action you wish to perform on the cloud provider.  
+    1. Click **Add new statement**, and select the permissions from those available.  
     In the example, for S3 services, you would select S3 from the list of services, and to allow these actions such as adding and listing objects, you would add these statements to the Policy Editor  `AllowReadWriteAccess` and `AllowListAccess`.
     1. Click **Next**.
-    1. In Policy details, enter a meaningful **Policy name** to identify the policy with the required permissions, and click **Create policy**.
-  
-  {% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/oidc/role-permissions-create-inline-policy.png" 
-url="/images/pipeline/oidc/role-permissions-create-inline-policy.png"
-alt="Add role permissions with Create inline policy" 
-caption="Add role permissions with Create inline policy"
-max-width="50%"
-%}
-
-
-  {% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/oidc/role-permissions-create-inline-policy.png" 
-url="/images/pipeline/oidc/role-permissions-create-inline-policy.png"
-alt="Add role permissions with Create inline policy" 
-caption="Add role permissions with Create inline policy"
-max-width="50%"
-%}
-
+    1. In Policy details, enter a meaningful **Policy name** to identify the policy with the required permissions, and click **Create policy**
 {:start="5"}
 1. Copy the ARN string for the role.  
   This step completes the setup for Codefresh as an OIDC provider for Amazon Web Services.
@@ -430,12 +400,6 @@ steps:
   obtain_id_token:
     title: Obtain ID Token
     type: obtain-oidc-id-token
-  print_output: 
-    title: Printing output from previous step
-    image: alpine
-    commands:
-      - echo $ID_TOKEN
-      - 'echo ${{steps.obtain_id_token.output.ID_TOKEN}}'
 ```
 {:start="4"}
 1. Continue with [Step 5 for AWS: Add actions to the pipeline workflow](#step-5-for-aws-add-actions-to-the-pipeline-workflow).
@@ -447,7 +411,7 @@ This step illustrates how to use the ID token obtained in _step 4_ to assume the
 
 Add two steps to the pipeline:  
 * `assume_role` step in which specify the ARN role and the session name through two variables that you'll add to the pipeline.
-* `s3_list_objects` step which is the action you'll perform using the ID token from the previous _step 4 for AWS_.
+* `s3_list_objects` freestyl step which is the action you'll perform using the role from the previous _step 4 for AWS_.
 
 <br><br>
 
@@ -459,8 +423,8 @@ assume_role:
     title: Assume Role
     type: aws-sts-assume-role-with-web-identity
     arguments:
-      ROLE_ARN: ${{ROLE_ARN}}
-      ROLE_SESSION_NAME: ${{ROLE_SESSION_NAME}}
+      ROLE_ARN: arn:aws:iam::095585280052:role/cf-oidc-test1 #example; syntax arn:aws:iam::<role-name>
+      ROLE_SESSION_NAME: oidc-session #example
 
   s3_list_objects:
     title: s3_list_objects
@@ -468,16 +432,12 @@ assume_role:
     commands: 
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
-* Add the variables and values for `ROLE_ARN` and `ROLE_SESSION_NAME`:
-    1. Click the **Variables** tab on the right. 
-    1. Add these variables and values:
-      * `BUCKET_NAME=<bucket-name>`, for example, `oidc-test1`.
-      * `ROLE_ARN=arn:aws:iam::<role-name>`, for example, `arn:aws:iam::095585282052:role/cf-oidc-test1`.
-      * `ROLE_SESSION_NAME`=<session-name>, for example, `oidc-session`.
+>**NOTE:**  
 
 
 
-The cloud provider uses the ID token to authenticate the claim and perform the action, listing the objects in the S3 bucket.
+The cloud provider uses the ID token to authenticate the request to assume the role, after which the pipeline’s build performs the permitted action for the role, such as listing the objects in the S3 bucket.
+
 
 
 ## Related articles
