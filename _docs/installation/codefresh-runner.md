@@ -336,7 +336,7 @@ runtimeScheduler:
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
-| `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. See [Volume reuse policy](#volume-reuse-policy)  |
+| `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. <br>See [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}.  |
 | `dnsPolicy`       | string | Dind pod's [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy){:target="\_blank"} |
 | `dnsConfig`       | object | Dind pod's [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config){:target="\_blank"} |
 
