@@ -191,15 +191,19 @@ max-width="60%"
 
 The step:  
 
-1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL`.  
-  <!--- These two variables are injected into each build of the pipeline. -->
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
+  
+  >**NOTE**:  
+  Codefresh injects these two variables for every pipeline build, ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
+
+
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is a Codefresh access token containing the token.  
-    * `CF_OIDC_REQUEST_URL` is the URL from which the ID token is requested. 
+    * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.
+    * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token. 
   
-  >**NOTE**: You can also insert the `curl` command in a freestyle step to get the same result.
+  You can also insert the `curl` command as an API call in a freestyle step to get the same result.
   
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
   You can use this environment variable in subsequent steps within the same pipeline.
