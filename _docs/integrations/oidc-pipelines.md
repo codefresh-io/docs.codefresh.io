@@ -186,6 +186,7 @@ max-width="60%"
 %}
 
 
+
 **What does the `obtain-oidc-id-token` Marketplace step do?**  
 
 The step:  
@@ -195,14 +196,21 @@ The step:
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is a Codefresh access token used to request the OIDC ID token for the OIDC provider.  
+    * `CF_OIDC_REQUEST_TOKEN` is a Codefresh access token containing the token.  
     * `CF_OIDC_REQUEST_URL` is the URL from which the ID token is requested. 
+  
+  >**NOTE**: You can also insert the `curl` command in a freestyle step to get the same result.
   
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
   You can use this environment variable in subsequent steps within the same pipeline.
 
->**Use API call in freestyle step**  
-You can also insert the `curl` command in a freestyle step to get the same result.
+<br>
+
+**Requesting new OIDC ID tokens during build**  
+* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
+
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This ensures that requests for new OIDC tokens are limited to the build’s lifecycle, maintaining and ensuring security.
+
 
 <br><br>
 
