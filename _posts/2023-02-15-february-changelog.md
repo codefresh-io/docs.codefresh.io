@@ -140,7 +140,7 @@ We moved the **Terminate Sync** button from the Sync details drawer to the appli
  max-width="50%"
 %}
 
-See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#get-status-from-application-header) in [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#get-status-from-application-header) in [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
 
 <br>
 

@@ -75,7 +75,7 @@ For details, see [Application Groups for GitOps applications]({{site.baseurl}}/d
 * Out of memory for Hosted GitOps Runtimes.
 * Clicking the **Current State** or the **Timeline** tab of an application opens the Home dashboard instead of the tabs.
 * Unable to connect to a Git provider when installing Hosted GitOps Runtimes.
-* Deleted GitOps applications continue to be displayed in the GitOps Apps dashboard.
+* Deleted Argo CD applications continue to be displayed in the GitOps Apps dashboard.
 * (On-premises only) `DISABLED_CONCURRENT_SESSIONS` set to `true` results in `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
 
 

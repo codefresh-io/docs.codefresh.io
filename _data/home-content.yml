@@ -181,11 +181,11 @@
       localurl: /docs/deployments/helm/helm-releases-management/
     - title: Promoting Helm environments
       localurl: /docs/deployments/helm/helm-environment-promotion/
-    - title: Creating GitOps applications
+    - title: Create Argo CD applications
       localurl: /docs/deployments/gitops/create-application/
-    - title: Monitoring GitOps applications
+    - title: Monitor Argo CD applications
       localurl: /docs/deployments/gitops/applications-dashboard/
-    - title: Managing GitOps applications
+    - title: Manage Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
 - title: Argo CD Workflows

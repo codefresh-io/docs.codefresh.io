@@ -100,9 +100,9 @@ Reference the K8s secret containing the root CA in `config.yaml`. Define the vol
 
 For details, see [Configure custom Root CA for volumes and containers]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configure-custom-root-ca-for-volumes-and-containers).
 
-### GitOps: Rollback GitOps applications
+### GitOps: Rollback Argo CD applications
 
-We now have the Rollback feature for GitOps applications! With just a click of a button, you can rollback any new or active version of an application directly from the GitOps Apps dashboard in Codefresh.
+We now have the Rollback feature for Argo CD applications! With just a click of a button, you can rollback any new or active version of an application directly from the GitOps Apps dashboard in Codefresh.
 
 Like Argo CD, Codefresh allows you to rollback to any of the ten previous deployment versions.
 
@@ -111,12 +111,12 @@ Like Argo CD, Codefresh allows you to rollback to any of the ten previous deploy
  lightbox="true"
  file="/images/whats-new/rel-notes-apr23-app-rollback.png"
  url="/images/whats-new/rel-notes-apr23-app-rollback.png"
- alt="Rollback for GitOps applications"
- caption="Rollback for GitOps applications"
+ alt="Rollback for Argo CD applications"
+ caption="Rollback for Argo CD applications"
  max-width="50%"
 %}
 
-For details, see [Rollback GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#rollback-gitops-applications).
+For details, see [Rollback Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#rollback-gitops-applications).
 
 ### GitOps: Static integration option for Amazon ECR
 
