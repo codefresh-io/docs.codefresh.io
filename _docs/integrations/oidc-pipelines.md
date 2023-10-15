@@ -186,23 +186,36 @@ max-width="60%"
 %}
 
 
+
 **What does the `obtain-oidc-id-token` Marketplace step do?**  
 
 The step:  
 
-1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL`.  
-  <!--- These two variables are injected into each build of the pipeline. -->
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
+  
+  >**NOTE**:  
+  Codefresh injects these two variables for every pipeline build, ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
+
+
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is a Codefresh access token used to request the OIDC ID token for the OIDC provider.  
-    * `CF_OIDC_REQUEST_URL` is the URL from which the ID token is requested. 
+    * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.
+    * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token. 
   
+  You can also insert the `curl` command as an API call in a freestyle step to get the same result.
+
+{:start="2"} 
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
   You can use this environment variable in subsequent steps within the same pipeline.
 
->**Use API call in freestyle step**  
-You can also insert the `curl` command in a freestyle step to get the same result.
+<br>
+
+**Requesting new OIDC ID tokens during build**  
+* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
+
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
+
 
 <br><br>
 
