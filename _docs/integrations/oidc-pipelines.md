@@ -204,7 +204,8 @@ The step:
     * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token. 
   
   You can also insert the `curl` command as an API call in a freestyle step to get the same result.
-  
+
+{:start="2"} 
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
   You can use this environment variable in subsequent steps within the same pipeline.
 
@@ -213,7 +214,7 @@ The step:
 **Requesting new OIDC ID tokens during build**  
 * OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
 
-* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This ensures that requests for new OIDC tokens are limited to the build’s lifecycle, maintaining and ensuring security.
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
 
 
 <br><br>
