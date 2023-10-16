@@ -17,7 +17,7 @@ The quick start guides you through:
 
 
 ## Provision Codefresh Runner or Cloud Builds
-Based on your deployment model, start by installing the [Codefresh Runner]({{site.baseurl}}/docs/docs/getting-started/concepts/#runner) or enabling Cloud Builds.
+Based on your deployment model, start by installing the [Codefresh Runner]({{site.baseurl}}/docs/getting-started/concepts/#runner) or enabling Cloud Builds.
 
 
 ## Create a Codefresh account
