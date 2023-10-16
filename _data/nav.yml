@@ -351,17 +351,17 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Create Argo CD applications
+        - title: Creating Argo CD applications
           url: "/create-application"
-        - title: Monitor Argo CD applications
+        - title: Monitoring Argo CD applications
           url: "/applications-dashboard"
+        - title: Managing Argo CD applications
+          url: "/manage-application"
         - title: Application Groups for Argo CD applications
           url: "/gitops-app-groups"
-        - title: Manage Argo CD applications
-          url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Troubleshoot Argo CD applications
+        - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines

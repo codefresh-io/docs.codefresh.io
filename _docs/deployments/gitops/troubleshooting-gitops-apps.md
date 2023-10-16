@@ -1,5 +1,5 @@
 ---
-title: "Troubleshoot Argo CD applications"
+title: "Troubleshooting Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops

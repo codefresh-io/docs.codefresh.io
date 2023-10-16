@@ -1,5 +1,5 @@
 ---
-title: "Manage Argo CD applications"
+title: "Managing Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
@@ -541,7 +541,7 @@ Codefresh warns you of the implication of deleting the selected application in t
 
 
 ## Related articles
-[Create Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
+[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
 

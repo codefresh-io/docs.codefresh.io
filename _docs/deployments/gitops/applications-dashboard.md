@@ -1,5 +1,5 @@
 ---
-title: "Monitoring GitOps applications"
+title: "Monitoring Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
@@ -7,7 +7,7 @@ toc: true
 ---
 
 
-Monitor individual applications or groups of GitOps applications in the GitOps Apps dashboard. This article focuses on individual GitOps applications.
+Monitor individual applications or groups of Argo CD applications in the GitOps Apps dashboard. This article focuses on individual Argo CD applications.
 
 * **Applications**  
   Monitor deployments, resources, and services of individual applications.  
@@ -28,24 +28,21 @@ max-width="70%"
   
   Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
   * [Get status from application header](#monitor-gitops-application-status-in-application-header)
-  * [View deployment and configuration info for selected application](#view-deployment-configuration-info-for-selected-gitops-application)
-  * [Monitor resources for selected GitOps application](#monitor-resources-for-selected-gitops-application)
-  * [Monitor deployments for selected GitOps application](#monitor-deployments-for-selected-gitops-application)
-  * [Monitor services for selected GitOps application](#monitor-services-for-selected-gitops-application)
-
-
-
+  * [View deployment and configuration info for selected Argo CD application](#view-deployment-configuration-info-for-selected-argo-cd-application)
+  * [Monitor resources for selected Argo CD application](#monitor-resources-for-selected-argo-cd-application)
+  * [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application)
+  * [Monitor services for selected Argo CD application](#monitor-services-for-selected-argo-cd-application)
 
 
 
 * **Application Groups**  
   Monitor the deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights.
 
-  See [Application Group information](#application-group-information).
+  See [Application Group information]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
 
 >**NOTE**:  
-For information on creating and managing Application Groups, applications and application resources for GitOps, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+For information on creating and managing Application Groups, Argo CD applications and application resources, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
   
 
@@ -97,7 +94,7 @@ Here's a description of the information and actions you can see for individual a
 
 
 
-## Identify GitOps applications with warnings/errors 
+## Identify Argo CD applications with warnings/errors 
 Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications tab in the GitOps Apps dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
 
 {% include
@@ -142,7 +139,7 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.
 
-## Monitor GitOps application status in application header
+## Monitor Argo CD application status in application header
 When you select an application from the Applications tab in the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application, including health and sync statuses. 
 Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
 
@@ -167,7 +164,7 @@ max-width="80%"
 >**TIP**:  
   You can also view the current health and sync status for the application as a resource in the Current State tab. 
 
-## View deployment configuration info for selected GitOps application
+## View deployment configuration info for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
@@ -224,7 +221,7 @@ The Quick View includes the following tabs:
 
 
 
-## Monitor resources for selected GitOps application
+## Monitor resources for selected Argo CD application
 
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
@@ -553,7 +550,7 @@ max-width="50%"
 
 
 
-## Monitor deployments for selected GitOps application  
+## Monitor deployments for selected Argo CD application  
 
 Monitor an ongoing deployment for the selected application, and review its historical deployments. 
 The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
@@ -574,7 +571,7 @@ You can:
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)  
 
-See also [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
+See also [Troubleshoot Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
 **How to monitor deployments**
 1. If required, set filters to narrow the number of deployments for the selected application.
@@ -700,7 +697,7 @@ max-width="50%"
 
 
 
-## Monitor services for selected GitOps application
+## Monitor services for selected Argo CD application
 
 
 The Services tab shows the K8s services for each deployment of the application. 
