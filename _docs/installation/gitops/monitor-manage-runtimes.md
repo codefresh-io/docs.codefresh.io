@@ -526,7 +526,9 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 ## (Helm GitOps) Download logs for GitOps Runtimes
+Download logs for the GitOps Runtime from the Kubernetes cluster.
 
+<!--- 
 Download the logs for a completed GitOps Runtime installation.<br>
 The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
@@ -633,7 +635,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
   The file is downloaded as `<component-name>.log`.
 
 
-
+-->
 
 
 ## (Legacy CLI Hybrid GitOps) Restoring provisioned GitOps Runtimes
