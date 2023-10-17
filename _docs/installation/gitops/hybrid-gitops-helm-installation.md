@@ -33,7 +33,7 @@ Choose the installation option that best aligns with your specific requirements 
 * **First-time GitOps Runtime installation**   
   If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
 
-  * [Complete pre-requisites](#prepare-for-gitops-runtime-installation): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
+  * [Complete pre-requisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete pre-requisites, as described in Prepare for GitOps Runtime Installation.
   * [System requirements](#minimum-system-requirements): Check the minimum system requirements to ensure smooth installation.
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
@@ -53,22 +53,27 @@ Terminology clarifications:
 In the documentation, Hybrid GitOps Runtimes are also referred to as GitOps Runtimes.  
 
 
-## Preparing for Hybrid GitOps installation
+## Preparing for Hybrid GitOps Runtime installation
 
 
-Whether you are installing GitOps on a clean cluster without Argo CD or on a cluster with Argo CD, you have to complete the prerequisites for a smooth installation.
+Whether you are installing GitOps Runtimes on a clean cluster without Argo CD or on a cluster with Argo CD, you have to complete the prerequisites for a smooth installation.
 
 
 | Prerequisite                                                            |  GitOps only    | GitOps with Argo CD | 
 |-------------------------------------                                   |:------------:   |:-------------:      |
-| [Argo Project components](#gitops-only-argo-project-components)        |    ✅            |     N/A                |
-| [Argo Project CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
-| [Argo Rollout CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
-| [Synchronize Argo CD chart's minor versions](#gitops-with-argo-cd-synchronize-argo-cd-charts-minor-versions) |     N/A           | ✅        |
-| [Set native Argo CD resource tracking to `label](#gitops-with-argo-cd-set-native-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
+|[Argo Project components](#gitops-only-argo-project-components)        |    ✅            |     N/A                |
+|[SealedSecrets controller](#gitops-only-sealedsecrets-controller)        |    ✅            |     N/A                |
+|[Argo Project CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
+|[Argo Rollout CRDs(Custom Resource Definitions)](#gitops-onlygitops-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
+|[Synchronize Argo CD chart's minor versions](#gitops-with-argo-cd-synchronize-argo-cd-charts-minor-versions) |     N/A           | ✅        |
+|[Set native Argo CD resource tracking to `label](#gitops-with-argo-cd-set-native-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
 
 ### GitOps only: Argo Project components
-When installing a GitOps Runtime on a cluster with Standalone GitOps, the GitOps Runtime cluster must not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
+When installing only the GitOps Runtime on the cluster, the cluster should not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
+
+### GitOps only: SealedSecrets controller
+When installing only the GitOps Runtime on the cluster, the cluster should not have SealedSecret controller components.
+
 
 ### GitOps only/GitOps with Argo CD: Argo Project CRDs
 If you already have Argo Project CRDs on your cluster, Codefresh recommends adopting the CRDs to switch ownership for them to the GitOps Runtime, or handling the CRDs outside the chart.  
@@ -172,14 +177,11 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
+* Verify that you complete all the [prerequisites](#preparing-for-hybrid-gitops-runtime-installation) as required
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     <!--- * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
     * Server URLs for on-premises Git providers
-* For GitOps installation with Argo CD, verify the following: 
-  * [Minor version of Argo CD's Helm chart](#side-by-side-gitops-minor-versions) is identical to the version used by Codefresh
-  * [Native Argo CD's resource tracking is set to `label`](#side-by-side-gitops-set-native-argo-cd-resource-tracking-to-label)
-* Verify there are no Argo Project CRDs in the target namespace or that you have adopted the CRDs (see [Argo Project components & CRDs](#argo-project-components--crds))
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration](#aws-alb-ingress-configuration)
