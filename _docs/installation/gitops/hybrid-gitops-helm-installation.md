@@ -424,7 +424,7 @@ That's it! You have successfully completed installing a Hybrid GitOps Runtime wi
 **What to do next**  
 Depending on your configuration, if you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 
-You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/). 
+You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/). 
 
 
 ## Install additional GitOps Runtimes in account

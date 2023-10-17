@@ -1,6 +1,6 @@
 ---
-title:  "Application Groups for GitOps applications"
-description: "View deployment info for GitOps applications through Application Groups"
+title:  "Application Groups for Argo CD applications"
+description: "View deployment info for Argo CD applications through Application Groups"
 group: deployments
 sub_group: gitops
 toc: true
@@ -9,7 +9,7 @@ toc: true
 >**NOTE**: This feature is currently in Beta.
 
 
-The Group view for GitOps applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
+The Group view for Argo CD applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
 A Codefresh feature, the Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
 It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications. The Group name is added as an annotation to the app manifest and works like any other tag in the application.
 
@@ -155,8 +155,8 @@ At any time, add or remove an application from the Group or Groups it belongs to
   * To remove the application from a group, click the remove button for the group.
 
 ## Related articles
-[Create GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

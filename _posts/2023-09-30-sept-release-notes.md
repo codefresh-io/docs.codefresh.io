@@ -114,7 +114,7 @@ The new terminal emulator provides:
 
 <br><br>
 
-### GitOps: ABAC for GitOps applications
+### GitOps: ABAC for Argo CD applications
 We are excited to bring the power of ABAC for access control to the GitOps platform!  
 Create rules and policies that enforce the security that your organization requires. Combine authorized users (teams), fine-grained control over entities (applications and rollbacks), support for a wide range of actions (sync, pause/resume rollbacks, and more), and the flexibile attribute combinations (cluster, namespace, and more)!
 
@@ -123,8 +123,8 @@ image.html
 lightbox="true" 
 file="/images/whats-new/sep23/rel-notes-sep23-gitops-add-rule.png" 
 url="/images/whats-new/sep23/rel-notes-sep23-gitops-add-rule.png" 
-alt="Access control for GitOps application entities" 
-caption="Access control for GitOps application entities" 
+alt="Access control for Argo CD application entities" 
+caption="Access control for Argo CD application entities" 
 max-width="40%" 
 %}
 

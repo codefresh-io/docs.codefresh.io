@@ -1,16 +1,16 @@
 ---
-title: "Create an application"
+title: "Create `codefresh-guestbook` Argo CD application"
 description: ""
 group: getting-started
 sub-group: gitops-quick-start
 toc: true
 ---
 
-Let's start by creating a simple application, the `codefresh-guestbook` application in the Codefresh UI.  
+Let's start by creating a simple Argo CD application, `codefresh-guestbook`, in the Codefresh UI.  
 We'll create the application without resources and then define/add resources in the next step.  
 
 
-For detailed information, see [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 **How to**  
@@ -107,4 +107,4 @@ In the next task, you will create and commit resources for the `codefresh-guestb
 
 
 ### What to do next
-[Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
+[Create and commit resources for `codefresh-guestbook` application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)

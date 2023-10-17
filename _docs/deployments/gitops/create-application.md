@@ -1,5 +1,5 @@
 ---
-title: "Creating GitOps applications"
+title: "Creating Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
@@ -10,24 +10,24 @@ toc: true
 
 Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
 * Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
-  Creating an application in Codefresh includes defining:  
+  Creating an Argo CDapplication in Codefresh includes defining:  
   * Application name and location
   * General configuration settings
-  * Advanced configuration settings  
+  * Advanced configuration settings
 
 
-  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an application](#create-an-application).
+  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
   For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
   
-  Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit a GitOps application.
+  Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
 
 
-* Monitor GitOps applications  
+* Monitor Argo CD applications  
   After creating an application, and it is synced to the cluster, the application is displayed in the GitOps Apps dashboard. Here, 
-  Here you can monitor its health and sync status, deployments, and resources. See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
+  Here you can monitor its health and sync status, deployments, and resources. See [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
 
-* Manage GitOps applications  
-  You can also select an application and update the application's configuration settings, or delete it.  For all available options, see [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+* Manage Argo CD applications  
+  You can also select an application and update the application's configuration settings, or delete it.  For all available options, see [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
 ## Application: Definitions
 Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -60,7 +60,7 @@ General configuration settings define the group to which the application belongs
 
 ### Groups
 Optional. The group or groups to which to add the application.  
-You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for GitOps applications, Groups allow you to collate multiple applications view their timelines.
+You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for Argo CD applications, Groups allow you to collate multiple applications and view their timelines.
 
 Select an existing group or groups, or create a new application group by typing a name and pressing Enter.
 
@@ -181,7 +181,7 @@ For example applications, go to the [Argo CD example applications repo](https://
 
 <br>
 
-## Create an application
+## Create an Argo CD application
 Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
@@ -270,7 +270,7 @@ Monitor the application.
 
 
 ## Related articles
-[Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

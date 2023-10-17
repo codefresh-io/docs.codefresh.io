@@ -22,7 +22,7 @@
     - title: CI/CD quick starts
       url: "/ci-quick-start"
       sub-pages:
-        - title: Pipeline quick start
+        - title: Pipeline quick starts
           url: "/create-ci-pipeline"
         - title: Kubernetes deployment quick start
           url: "/deploy-to-kubernetes"
@@ -39,11 +39,11 @@
           url: "/verify-requirements"
         - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
-        - title: Create an application
+        - title: Create `codefresh-guestbook` Argo CD application
           url: "/create-app-ui"
-        - title: Create and commit resources for application
+        - title: Create & commit resources for `codefresh-guestbook` application
           url: "/create-app-specs"
-        - title: Update the image tag for application
+        - title: Update image tag for `codefresh-guestbook` application
           url: "/create-rollout"
 
 - title: Dashboards & insights
@@ -351,17 +351,17 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating GitOps applications
+        - title: Creating Argo CD applications
           url: "/create-application"
-        - title: Monitoring GitOps applications
+        - title: Monitoring Argo CD applications
           url: "/applications-dashboard"
-        - title: Application Groups for GitOps applications
-          url: "/gitops-app-groups"
-        - title: Managing GitOps applications
+        - title: Managing Argo CD applications
           url: "/manage-application"
+        - title: Application Groups for Argo CD applications
+          url: "/gitops-app-groups"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Troubleshooting GitOps applications
+        - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines
