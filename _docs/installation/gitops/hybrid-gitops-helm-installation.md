@@ -177,7 +177,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
-* Verify that you complete all the [prerequisites](#preparing-for-hybrid-gitops-runtime-installation) as required
+* Verify that you complete all the [prerequisites](#preparing-for-hybrid-gitops-runtime-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     <!--- * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
