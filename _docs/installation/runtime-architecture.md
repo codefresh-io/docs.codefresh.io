@@ -384,7 +384,7 @@ The customer environment that communicates with the GitOps Runtime and Codefresh
   Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps Runtimes for application deployment.  
   Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  
   Hybrid GitOps allow you to add external clusters after provisioning the Runtimes.  
-  See [Add external clusters to Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the ingress controller (ingress hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 

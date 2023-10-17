@@ -220,6 +220,6 @@ Codefresh Runner and GitOps environments can co-exist giving you the best of bot
 
 ## Related articles
 [Architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
 [Shared Configuration Repositorysitory]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 

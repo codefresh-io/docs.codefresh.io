@@ -1,6 +1,6 @@
 ---
-title: "Add external clusters to GitOps Runtimes"
-description: "Manage multiple remote clusters with a  GitOps Runtime"
+title: "Managing external clusters in GitOps Runtimes"
+description: "Add multiple remote clusters to a GitOps Runtime"
 group: installation
 sub_group: gitops
 toc: true
@@ -202,5 +202,5 @@ Run `helm delete <release_name>` with the name of the release that was created d
 Use the `terraform destroy` command.
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
