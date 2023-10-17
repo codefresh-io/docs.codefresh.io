@@ -1,5 +1,5 @@
 ---
-title: "Create and commit resources for `codefresh-guestbook` application"
+title: "Create & commit resources for `codefresh-guestbook` application"
 description: ""
 group: getting-started
 sub-group: gitops-quick-start

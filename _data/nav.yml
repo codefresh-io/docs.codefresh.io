@@ -22,7 +22,7 @@
     - title: CI/CD quick starts
       url: "/ci-quick-start"
       sub-pages:
-        - title: Pipeline quick start
+        - title: Pipeline quick starts
           url: "/create-ci-pipeline"
         - title: Kubernetes deployment quick start
           url: "/deploy-to-kubernetes"
@@ -39,11 +39,11 @@
           url: "/verify-requirements"
         - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
-        - title: Create an application
+        - title: Create `codefresh-guestbook` Argo CD application
           url: "/create-app-ui"
-        - title: Create and commit resources for application
+        - title: Create & commit resources for `codefresh-guestbook` application
           url: "/create-app-specs"
-        - title: Update the image tag for application
+        - title: Update image tag for `codefresh-guestbook` application
           url: "/create-rollout"
 
 - title: Dashboards & insights

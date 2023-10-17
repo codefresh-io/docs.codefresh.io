@@ -1,5 +1,5 @@
 ---
-title: "Update image tag for Argo CD application"
+title: "Update image tag for `codefresh-guestbook` application"
 description: ""
 group: getting-started
 sub-group: gitops-quick-start
@@ -10,7 +10,7 @@ You will now make a change in the `codefresh-guestbook` application manifest, an
 
 ### Before you begin
 
-* [Create resources for `codefresh-guestbook` application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
+* [Create & commit resources for `codefresh-guestbook` application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
 
 
 ### Update image tag in rollout.yaml
