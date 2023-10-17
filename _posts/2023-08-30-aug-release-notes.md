@@ -52,7 +52,7 @@ Codefresh also adds the Group name as an annotation to the application manifest 
 
 For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
-<br><br>
+
 
 
 
