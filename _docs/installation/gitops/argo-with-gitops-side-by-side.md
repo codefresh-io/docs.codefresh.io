@@ -147,8 +147,8 @@ Once you commit the manifest to the Git Source, it is converted into a GitOps ap
       lightbox="true" 
       file="/images/runtime/helm/migrate-app-current-state.png" 
       url="/images/runtime/helm/migrate-app-current-state.png" 
-      alt="Current State tab for migrated " 
-      caption="GitOps Apps dashboard with Git Source and GitOps Application"
+      alt="Current State tab for migrated Argo CD application" 
+      caption="Current State tab for migrated Argo CD application"
       max-width="50%" 
    %}
 
