@@ -93,7 +93,6 @@ If the Argo CD application is not synced to a Git Source:
   max-width="60%" 
 %}
 
-### Git Sources & Application Projects
 
 ## Use case: Restricted Git Source in multi-tenant environment
 The use case illustrates how the Restricted Git Source can handle secure application deployment in multi-tenant environments.
