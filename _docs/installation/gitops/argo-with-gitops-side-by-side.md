@@ -1,5 +1,5 @@
 ---
-title: "Install GitOps Runtime alongside existing Argo CD"
+title: "Install GitOps Runtime alongside Community Argo CD"
 description: "Install GitOps Runtime on cluster with existing Argo CD"
 group: installation
 toc: true
@@ -26,9 +26,9 @@ Follow these steps to install the GitOps Runtime on a cluster with Argo CD:
 ## Prepare Argo CD cluster for GitOps Runtime installation
 
 There are three configuration changes to make _before_ installing the GitOps Runtime on the cluster with Argo CD:
-1. [Switch ownership of Argo project CRDs]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-onlygitops-with-argo-cd-argo-project-crds)
-2. [Synchronize Argo CD chart's minor versions]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-with-argo-cd-synchronize-argo-cd-charts-minor-versions)
-3. [Set native Argo CD resource tracking to `label`]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-with-argo-cd-set-native-argo-cd-resource-tracking-to-label) 
+1. [Switch ownership of Argo project CRDs]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-project-crds)
+2. [Align Argo CD chart's minor versions]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-runtime-with-argo-cd-synchronize-argo-cd-charts-minor-versions)
+3. [Set Community Argo CD resource tracking to `label`]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#gitops-runtime-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) 
 
 
 ## Install Hybrid GitOps Runtime via Helm
@@ -38,8 +38,8 @@ After completing the configuration changes, follow our [step-by-step installatio
 The GitOps Runtime installation is Helm-based, and installing the Runtime on a cluster with an existing Argo CD, requires additional flags in the installation command and an additional step after installation.
 
 
-## Migrate Argo CD Applications to Codefresh GitOps Runtime
-The final task depending on your requirements is to migrate your Argo CD Applications to the Codefresh GitOps Runtime.  
+## Migrate Community Argo CD Applications to Codefresh GitOps Runtime
+The final task depending on your requirements is to migrate your Community Argo CD Applications to the Codefresh GitOps Runtime.  
 
 Why would you want to do this?  
 Because this allows you to completely and seamlessly manage the applications in Codefresh as GitOps entities.
