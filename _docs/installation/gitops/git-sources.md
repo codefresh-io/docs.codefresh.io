@@ -5,32 +5,27 @@ group: installation
 toc: true
 ---
 
-A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. A Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters. Every resource in the Git repo referenced by the Git Source is always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.  
+A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. A Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters. Every resource in the Git repo referenced by the Git Source is always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application. To understand how the Git Source interacts with GitOps Runtimes and applications, explore [Git Sources, GitOps Runtimes, Argo CD applications](#git-sources-gitops-runtimes-argo-cd-applications).
 
-For a deeper understanding of how Git Sources interact with GitOps Runtimes and Argo CD applications, explore [Git Source Concepts](#git-source-concepts).
 
-Codefresh supports two types of Git Sources: [Standard and Restricted Git Sources](#standard-and-restricted-git-sources):
+Argo CD applications can be synced to the namespace of your choice, instead of the Runtime's namespace, as is the default. 
+Codefresh removes the complexity from the manual configuration required to sync and manage application resources in different namespaces through the Restricted Git Source. 
 
-The Standard Git Source is the Git Source you would usually create to house application manifests.  
+Codefresh administrators can set up Restricted Git Sources with the Git repo, cluster and namespace definitions, and Codefresh manages the Argo CD applications synced to the Git Source, ensuring secure compliance without complex administrative overhead. See 
 
-For multi-tenancy organizations with multiple development teams creating and deploying applications for different customers on the same cluster, Restricted Git Sources are the answer. Argo CD uses Application Projects to control 
-With Restricted Git Sources, Codefresh removes the complexity of setting up Application Projects with the correct permissions. 
 Restricted Git Sources:
-Tailored control on which teams can create what applications and where
-Codefresh administrators can set up Restricted Git Sources with the precise constraints for each team. Codefresh automatcially creates the Application Project with the psettings and  The Restricted Git Sources enforces the creation and deployment requirements for the teams, ensuring user compliance without complex adminstrative overhead.
+* Are optimized for multi-tenant organizations where multiple development teams create and deploy applications for different customers on the same cluster 
+* Control which teams can create what applications and where
+
+See how the Restricted Git Source enforces secure deployment boundaries in [Use case: Restricted Git Source in multi-tenant environment](#use-case-restricted-git-source-in-multi-tenant-environment).
 
 
-Teams can focus on creating applications, while the  Restricted Git Source takes care of the deployments.
-Codefresh simplifies the process 
+[Standard and Restricted Git Sources](#standard-and-restricted-git-sources) explains the differences between the two types of Git Sources. You can create, edit, and delete both types Git Sources directly within the Codefresh UI. See [Git Source settings](#git-source-settings) and [Create a Git Source](#create-a-git-source).
 
 
 
-You can create, edit, and delete both types Git Sources directly within the Codefresh UI. See [Git Source settings](#git-source-settings) and [Create a Git Source](#create-a-git-source).
 
-Co
-
-
-## Git Source concepts
+## Git Sources, GitOps Runtimes, Argo CD applications
 
 Let's look at how the Git Source interacts with other entities such as GitOps Runtimes, Argo CD applications, and Application Projects.
 
@@ -100,7 +95,77 @@ If the Argo CD application is not synced to a Git Source:
 
 ### Git Sources & Application Projects
 
-## Use case: up Codefresh 
+## Use case: Restricted Git Source in multi-tenant environment
+The use case illustrates how the Restricted Git Source can handle secure application deployment in multi-tenant environments.
+
+### Scenario
+Multiple teams are engaged in creating applications for Marvel characters. Each team must be constrained to create the applications in the Git repos defined for them, and deploy the applications within assigned namespaces.
+
+There are three teams:
+* Hulk
+* Thor
+* 
+
+### Objective
+Use Codefresh's Restricted Git Sources to define and enforce restrictions.
+
+### Set up the Restricted Git Source
+Let's see how to achieve this for a single team, the Hulk team.
+
+1. **Create Git repo for the Hulk team**  
+  Create the Git repo where the developers in the Hulk can store their application manifests. Make sure to grant write permissions only for members of the Hulk team.  
+  Let's call the Git repo `marvel-hulk-apps`. 
+
+1. **Create destination namespace for deployment**
+  Create the namespace on the cluster to which Hulk applications can be deployed. Let's call it, `hulk-apps`.
+
+1. **Create a Restricted Git Source**
+  Create the Restricted Git Source for the Hulk team that will define the namespace to which to deploy application manifests, and the namespace to which to deploy the applications themselves.
+  For detailed descriptions of the settings, see [Git Source settings](#git-source-settings) in this article.
+
+  1. In the Codefresh UI, go to your GitOps Runtime for which to create Git Sources.
+  1. Click the **Git Sources** tab and click **Create Git Source**.
+  1. Define the following:
+    * **Name**: `hulk`
+    * **Type**: `Restricted`
+    * **Source**: `marvel-hulk-apps` (this is the Git repo linked to the Restricted Git Source where the Hulk team will store their application manifests)
+    * **Branch**: `main`
+    * **Path**: `.`
+  1. Leave the other settings empty, and click **Next**.
+  1. Specify the deployment settings: 
+    * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `hulk-app-manifests` as the namespace. If the namespace does not exist, Codefresh automatically creates it.
+    * **Allowed Clusters & Namespaces**: Select the relevant cluster and namespace to which to deploy the applications. Let's define `hulk-apps` as the namespace.
+  1. Click **Create**.
+
+  You have now created the Restricted Git Source.
+  Codefresh creates the Application Projects with the required configurations to enforce the restrictions.  
+
+1. **Create an Argo CD application**
+  When you [create an Argo CD application]({{site.baseurl}}/docs/deployments/gitops/create-application/) in Codefresh, you are prompted to select the:
+    * GitOps Runtime for the application
+    * Git Source in which to store the application manifest, from among the Git Sources in the Runtime to which you have write permissions.
+  
+  The Restricted Git Source you select dictates which target clusters and namespaces are available for deployment. 
+  Codefresh enforces the limitations through both the UI and the Runtime to ensure that applications can’t deploy outside their set boundaries.
+
+Repeat this process to set up Restricted Git Sources for other teams.
+
+### How does the Restricted Git Source function?
+The diagram below is a visual representation of how a Restricted Git Source functions to deploy Argo CD applications synchronized to it.
+
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/git-source/restricted-git-source-flow.png" 
+	url="/images/runtime/git-source/restricted-git-source-flow.png" 
+	alt="Git Source tab in GitOps Runtime" 
+	caption="Git Source tab in GitOps Runtime"
+  max-width="60%" 
+%}
+
+
+
+
 
 ## Standard and Restricted Git Sources
 Codefresh allows you to create two types of Git Sources:
@@ -131,7 +196,7 @@ The most notable feature of the Restricted Git Source is its ability to control 
 **Features of Restricted Git Sources**  
 
 * Application Projects
-  All Argo CD applications synced to the same Restricted Git Source must belong to the same Application Project. Codefresh simplifies this process by automatically creating the Application Project for the Restricted Git Source. As a user, you do not have the option to manually select the Application Project to which your applications should be synced when working with Restricted Git Sources.
+  All Argo CD applications synced to the same Restricted Git Source must belong to the same Application Project. Codefresh simplifies this by automatically creating the Application Project for the Restricted Git Source. As a user, you do not have the option to manually select the Application Project to which your applications should belong to when working with Restricted Git Sources.
 
   Whenever you create a Restricted Git Source, Codefresh generates two Application Projects for the Git Source with the same name as the Restricted Git Source:  
   * Application Project for the Restricted Git Source application, with the suffix `restricted` added to the name
@@ -142,20 +207,9 @@ The most notable feature of the Restricted Git Source is its ability to control 
   The Git repository referenced by the Restricted Git Source can house only manifests of Argo CD applications, Application sets, and Application Projects.
 
 * Deployment destinations  
-  Applications synced to a Restricted Git Source can be deployed to destination clusters and namespaces defined by the Restricted Git Source.
+  You can define the  synced to a Restricted Git Source can be deployed to destination clusters and namespaces defined by the Restricted Git Source.
 
 
-The diagram below is a visual representation of how a Restricted Git Source functions in deploying Argo CD applications synchronized to it.
-
-   {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/runtime/git-source/restricted-git-source-flow.png" 
-	url="/images/runtime/git-source/restricted-git-source-flow.png" 
-	alt="Git Source tab in GitOps Runtime" 
-	caption="Git Source tab in GitOps Runtime"
-  max-width="60%" 
-%}
 
 <!---
 
@@ -171,7 +225,6 @@ The table highlights the main differences between the two types of Git Sources.
 
 -->
 
-## 
 
 ## Git Source settings
 The table describes the settings you can define for Standard and Restricted Git Sources.
@@ -273,7 +326,7 @@ Delete a Git Source
 ### Example: Standard Git Source manifest
 TBD
 
-### Example: Restricted Git Source manifest
+### Example: Restricted Git Source app manifest
 Here's an example of the Restricted Git Source application manifest.
 
 {% highlight yaml %}
@@ -285,7 +338,7 @@ metadata:
     argocd.argoproj.io/tracking-id: in-cluster:csdp.codefresh.io/RestrictedGitSource:runtime/team-marvel
   labels:
     app.kubernetes.io/instance: in-cluster
-  name: team-marvel                       # name of the Git Source, also the name of the Git Source application and Application Project 
+  name: team-marvel     # taken from the name of the Git Source as the name of the Git Source application and Application Project 
   namespace: runtime
 spec:
   destinations:                             # destination clusters and namespaces allowed by the Application Project 
@@ -341,7 +394,7 @@ spec:
 ```
 
 
-### Example: Restricted Application Project for Restricted Git Source
+### Example: Application Project for Argo CD applications synced to Restricted Git Source
 Codefresh creates two Application Projects for a Restricted Git Source, one for the Restricted Git Source application itself, and the other for the applications synced to the Restricted Git Source.  
 
 Here's an example of the Application Project created for the Restricted Git Source application.
