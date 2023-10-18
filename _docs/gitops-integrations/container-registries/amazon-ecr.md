@@ -30,22 +30,27 @@ For detailed information, see [How Amazon Elastic Container Registry Works with 
 
 
 ### IAM Role integration
-Before you configure settings in Codefresh to integrate Amazon ECR:  
-* [Create an IAM (Identity and Access Management) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}  
 
-Define the role in trusted relationships with `Effect: Allow` and  `Action: sts:AssumeRole` on the EKS cluster.  
-For example:  
+* Dedicated IAM Role for ECR integration  
+  Amazon ECR integration in Codefresh requires a dedicated Identity and Access Management (IAM) Role with permissions to the ECR registry.
+
+  Before configuring the ECR integration for Codefresh GitOps, define the IAM Role for ECR integration in trusted relationships with `Effect: Allow` and `Action: sts:AssumeRole` on the EKS cluster.  
+  For details, see [Create the ECR integration IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}.
+
+  For example:  
 ```yaml
 {
   "Effect": "Allow",
     "Principal": {
-        "AWS": "arn:aws:iam::XXXXX:role/eksctl-awscluster-ServiceRole-XXXXXX"
+      "AWS": "arn:aws:iam::XXXXX:role/eksctl-awscluster-ServiceRole-XXXXXX"  # IAM role for ECR integration
             },
-        "Action": "sts:AssumeRole",
-        "Condition": {}
+    "Action": "sts:AssumeRole",
+    "Condition": {}
 }
 ```
-
+* Other IAM roles
+  Once you have a dedicated IAM Role for ECR integration in Codefresh, you can use a different IAM role if that Role can assume the IAM ECR integration role.  
+  To use an IAM Role assigned to the Service Account used by app-proxy for example, the Role must have trusted relationship to `assumeRole` of the IAM ECR integration role.
 
 ### Access Key integration
 You must generate an access key ID and the access secret for the IAM user, and download or copy them to a secure location.
@@ -76,7 +81,7 @@ The table describes the arguments required for GitOps integrations with Amazon E
 | ----------  |  -------- | 
 | **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share the integration resource. <br>The integration resource is created in the Git repository with the shared configuration, within <code class="highlighter-rouge">resources</code>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <code class="highlighter-rouge">resources/all-runtimes-all-clusters/</code></li><li>Selected runtimes: Created in <code class="highlighter-rouge">resources/runtimes/<runtime-name></code></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
-| **IAM Role settings**       | IAM Role integration is not supported for Hosted GitOps Runtimes.{::nomarkdown}<ul><li><b>IAM Role</b>: The name of the IAM role you defined with the specific permissions for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the container registry. Define the region nearest to you.</li></ul>{:/}|
+| **IAM Role settings**       | IAM Role integration is not supported for Hosted GitOps Runtimes.{::nomarkdown}<ul><li><b>IAM Role</b>: The name of the IAM role you defined for ECR integration with the specific permissions for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the container registry. Define the region nearest to you.</li></ul>{:/}|
 | **Access Key settings**       | Access Key integration is supported for both Hosted and Hybrid GitOps Runtimes.{::nomarkdown}<ul><li><b>Access Key ID</b>: The access key generated for the IAM user, and paired with the <b>Secret Access Key</b> for authentication to the ECR registry.</li><li><b>Secret Access Key</b>: The secret access key generated for and paired with the <b>Access Key</b> for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the ECR registry. Define the region nearest to you.</li></ul>{:/}|
 | **Test connection**       | Click to verify that you can connect to the specified instance before you commit changes. |
    
