@@ -48,7 +48,7 @@ For detailed information, see [How Amazon Elastic Container Registry Works with 
     "Condition": {}
 }
 ```
-* Other IAM roles
+* Other IAM roles  
   Once you have a dedicated IAM Role for ECR integration in Codefresh, you can use a different IAM role if that Role can assume the IAM ECR integration role.  
   To use an IAM Role assigned to the Service Account used by app-proxy for example, the Role must have trusted relationship to `assumeRole` of the IAM ECR integration role.
 
