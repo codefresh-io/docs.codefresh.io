@@ -221,7 +221,7 @@ For details, see [Pipeline limit in projects](https://artifacthub.io/packages/he
 
 #### GitOps: ABAC for Argo CD applications
 In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to Argo CD application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
-To enable this, you need to turn on the `abacHermesTriggers` feature flag. 
+To enable this, you need to turn on the `abacV2` feature flag. 
 
  {% include 
 image.html 
