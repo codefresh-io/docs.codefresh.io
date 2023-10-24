@@ -119,7 +119,7 @@ Here is a description of the information in the Topology view.
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
 The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
 * Argo CD GitOps Runtimes: For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
-* Non-Argo CD GitOps Runtimes: Run the upgrade command.  
+* Non-Argo CD GitOps Runtimes: Run the upgrade command.
 
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
@@ -174,7 +174,7 @@ name: codefresh-gitops-runtime
 version: <version>
 dependencies:
   - name: gitops-runtime
-    repository: https://chartmuseum.codefresh.io/gitops-runtime
+    repository: oci://quay.io/codefresh
     version: <version>
 ```
 1. For non-GitOps Runtimes, do the following:
@@ -327,10 +327,10 @@ Codefresh creates and validates the [Shared Configuration Repository]({{site.bas
 
 The Shared Configuration Repo is created in your Git provider account. You can reset the repo defined for your account under the following conditions:
 
-* **Incorrect/missing URL**  
+* **Incorrect/missing URL**
   Mandatory when Codefresh notifies you through the UI that the Shared Configuration Repo URL is either incorrect or missing.
 
-    * Incorrect URL  
+    * Incorrect URL
       The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
     * Undefined URL<br>
       You installed the GitOps Runtime through a script or an automated mechanism without providing the URL to the Shared Configuration Repository.
@@ -346,7 +346,7 @@ The Shared Configuration Repo is created in your Git provider account. You can r
   max-width="100%"
 %}
 
-* **No active Runtimes**  
+* **No active Runtimes**
   If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Shared Configuration Repo URL.
   To do so, you must contact Codefresh Support.
 
@@ -364,7 +364,7 @@ Verify that you have [authorized access to the Codefresh app's organizations]({{
 1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
 1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
 
-### Reset Shared Config Repo via CLI 
+### Reset Shared Config Repo via CLI
 You can reset the Shared Configuration Repo via the CLI when:
 * You receive the notification that the URL is incorrect or missing
 * There are no active GitOps Runtimes in your account.
@@ -382,7 +382,7 @@ You can reset the Shared Configuration Repo via the CLI when:
   where:
   `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
 1. When prompted, select the Git provider.
-1. Confirm to create the Shared Configuration Repo. 
+1. Confirm to create the Shared Configuration Repo.
 
 ## (Hybrid GitOps) Configure Deep Links to applications & resources
 
@@ -528,7 +528,7 @@ Uninstalling a GitOps Runtime permanently removes:
 ## (Helm GitOps) Download logs for GitOps Runtimes
 Download logs for the GitOps Runtime from the Kubernetes cluster.
 
-<!--- 
+<!---
 Download the logs for a completed GitOps Runtime installation.<br>
 The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
@@ -771,8 +771,8 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
+[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
 
 
