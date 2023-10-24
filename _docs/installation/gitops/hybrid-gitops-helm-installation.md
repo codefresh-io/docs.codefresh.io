@@ -67,7 +67,7 @@ Whether you are installing the GitOps Runtime on a cluster with or without Commu
 |[Argo Project CRDs(Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
 |[Argo Rollout CRDs(Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
 |[Align Argo CD chart's minor versions](#gitops-runtime-with-argo-cd-align-argo-cd-charts-minor-versions) |     N/A           | ✅        |
-|[Set Community Argo CD resource tracking to `label](#gitops-runtime-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
+|[Set Community Argo CD resource tracking to `label](#gitops-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
 
 ### GitOps Runtime only: Argo Project components
 When installing only the GitOps Runtime on the cluster, the cluster should not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
@@ -227,10 +227,10 @@ As a one-time action, define the Shared Configuration Repository and the Git pro
 
 The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
-**Shared Configuration Repository**
+**Shared Configuration Repository** 
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
-**Git provider**
+**Git provider**  
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
@@ -257,6 +257,7 @@ caption="Define Shared Configuration Repo and Git provider"
 max-width="40%"
 %}
 
+{:start="4"}
 1. Click **Next**.
 1. Continue with [Step 3: Install Hybrid Runtime](#step-3-install-hybrid-gitops-runtime).
 
@@ -273,21 +274,20 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 <br><br>
 
 
-**Runtime Name**
+**Runtime Name**  
 If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
 
-**Namespace**
+**Namespace**  
 The Namespace must conform to the naming conventions for Kubernetes objects.
 
-**Access modes**
+**Access modes**  
 You can define one of three different access modes:
 * Tunnel-based, the default mode, is automatically enabled when the other access modes are not defined in the installation command.
 * Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 * Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 
 
-**GitOps with Argo CD and Argo Rollouts**. 
-
+**GitOps with Argo CD and Argo Rollouts**
 * `fullnameOverride` configuration for resource conflicts  
   Installing GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
   Customizing `fullnameOverride` values for Argo CD, and if installed, Argo Rollouts, in the GitOps Runtime's `values` file prevents these conflicts.
@@ -385,13 +385,13 @@ helm upgrade --install <helm-release-name> \
         * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when _installing GitOps with Argo CD_  and you have Argo Rollouts in your cluster to avoid conflicts.
         * `argo-cd.configs.cm.application.resourceTrackingMethod=annotation` is mandatory _installing GitOps with Argo CD_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
       * Ingress-based Runtimes:  
-          * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
-          * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component.
-          * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
+        * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
+        * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component.
+        * `<ingress-class>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the ingress class of the ingress controller. For example, `nginx` for the NGINX ingress controller.
       * Service-mesh-based Runtimes:
-          * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that is the entry point to the cluster.
-          * `global.runtime.ingress.enabled=false` disables the ingress-based access mode.
-          * `tunnel-client.enabled=false` disables the tunnel-based access mode.
+        * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that is the entry point to the cluster.
+        * `global.runtime.ingress.enabled=false` disables the ingress-based access mode.
+        * `tunnel-client.enabled=false` disables the tunnel-based access mode.
       * `--wait` is optional, and when defined, waits until all the pods are up and running for the deployment.
 
 
@@ -430,7 +430,7 @@ Git credentials include authorizing access to Git through OAuth2 or a Git Runtim
 * OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for Codefresh]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
 * Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
 
-**SSH access to Git**
+**SSH access to Git**  
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 When SSH is configured for a GitOps Runtime, on creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
@@ -576,7 +576,7 @@ That's it! You have successfully completed installing a Hybrid GitOps Runtime wi
 
 Depending on your configuration:  
 * If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
-* If you installed the GitOps Runtime on a cluster with Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to GitOps applications.
+* If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to Codefresh Argo CD applications.
 
 You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
@@ -596,16 +596,16 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 The Git provider and Shared Configuration Repository is configured once per account, and are not required for additional installations in the same account.  
 
 
-**Shared Configuration Repository and Git provider**
+**Shared Configuration Repository and Git provider**  
 The Shared Configuration Repository and Git provider are configured once per account, and not required for additional installations.
 
-**Helm chart repository**
+**Helm chart repository**  
 The repository for the Helm chart is also configured per account, and is not required for additional installations in the same account.
 
 **Access mode**  
 You can define the tunnel/ingress/service-mesh-based access mode for the additional GitOps Runtimes you install. The command in the How To below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
 
-**Runtime name**
+**Runtime name**  
 The name of the Runtime must be unique in the same account.
 
 
@@ -722,9 +722,9 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
 
 Depending on your configuration:  
 * If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
-* If you installed the GitOps Runtime on a cluster with Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to GitOps applications.
+* If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to Codefresh Argo CD applications.
 
-You can now add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+You can now add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 ## Install GitOps Runtime via Terraform
@@ -802,8 +802,8 @@ global:
 {% endhighlight yaml %}
 
 
-## Migrate Argo CD Applications to Codefresh GitOps
-The final task depending on your requirements is to migrate your Argo CD Applications to Codefresh GitOps applications.  
+## Migrate Argo CD Applications to Codefresh GitOps Runtime
+The final task depending on your requirements is to migrate your Argo CD Applications to a Codefresh GitOps Runtime.  
 
 Because this allows you to completely and seamlessly manage the applications in Codefresh as GitOps entities.
 
@@ -869,10 +869,10 @@ spec:
 
 
 
-### Step 3: Commit the application to the Git Source
-As the final step in migrating your Argo CD Application to a Codefresh GitOps one, manually commit the updated Application manifest to the Git Source you created in Step 1.  
+### Step 3: Commit Argo CD application to Git Source
+As the final step in migrating your Argo CD Application to a Codefresh GitOps Runtime, manually commit the updated Application manifest to the Git Source you created in Step 1.  
 
-Once you commit the manifest to the Git Source, it is converted into a GitOps application. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
+Once you commit the manifest to the Git Source, it is synced to the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest to the Git Source.
