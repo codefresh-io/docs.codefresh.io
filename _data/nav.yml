@@ -22,7 +22,7 @@
     - title: CI/CD quick starts
       url: "/ci-quick-start"
       sub-pages:
-        - title: Pipeline quick starts
+        - title: Pipeline quick start
           url: "/create-ci-pipeline"
         - title: Kubernetes deployment quick start
           url: "/deploy-to-kubernetes"
@@ -39,11 +39,11 @@
           url: "/verify-requirements"
         - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
-        - title: Create `codefresh-guestbook` Argo CD application
+        - title: Create an application
           url: "/create-app-ui"
-        - title: Create & commit resources for `codefresh-guestbook` application
+        - title: Create and commit resources for application
           url: "/create-app-specs"
-        - title: Update image tag for `codefresh-guestbook` application
+        - title: Update the image tag for application
           url: "/create-rollout"
 
 - title: Dashboards & insights
@@ -351,17 +351,17 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating Argo CD applications
+        - title: Creating GitOps applications
           url: "/create-application"
-        - title: Monitoring Argo CD applications
+        - title: Monitoring GitOps applications
           url: "/applications-dashboard"
-        - title: Managing Argo CD applications
-          url: "/manage-application"
-        - title: Application Groups for Argo CD applications
+        - title: Application Groups for GitOps applications
           url: "/gitops-app-groups"
+        - title: Managing GitOps applications
+          url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Troubleshooting Argo CD applications
+        - title: Troubleshooting GitOps applications
           url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines
@@ -508,7 +508,7 @@
           url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
-        - title: Hybrid GitOps Runtime with existing Argo CD
+        - title: Hybrid GitOps Runtime alongside Community Argo CD
           url: "/argo-with-gitops-side-by-side"         
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
