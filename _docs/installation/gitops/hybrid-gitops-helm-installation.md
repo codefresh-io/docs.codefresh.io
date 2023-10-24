@@ -371,8 +371,8 @@ helm upgrade --install <helm-release-name> \
   --wait  
 {% endhighlight %}
 
-&nbsp;&nbsp;&nbsp;&nbsp;where:
-  *
+&nbsp;&nbsp;&nbsp;&nbsp;where:  
+  *  
       * `<helm-release-name>` is the name of the Helm release, and is either `cf-gitops-runtime` which is the default, or the release name you define.
       * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or the custom name you define.
       * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ , which is also the default access mode. Automatically populated by Codefresh in the installation command.
