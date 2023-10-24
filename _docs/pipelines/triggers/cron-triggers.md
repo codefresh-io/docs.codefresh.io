@@ -74,7 +74,6 @@ There are two parts to creating a Cron trigger in the UI:
   * Variables to populate for the build
   * Caching, volume resuse and notification behavior to override for the build  
 
-  >**NOTE**: Settings for Cron triggers is currently in Beta.
 
 
 ## How to: Create a Cron trigger in UI
