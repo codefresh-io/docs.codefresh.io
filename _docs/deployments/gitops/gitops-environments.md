@@ -6,38 +6,61 @@ toc: true
 ---
 
 
+Codefresh offers various dashboards, each providing a unique perspective on Argo CD applications and their deployments. The GitOps Overview dashboard offers a high-level view, emphasizing essential Key Performance Indicators. The GitOps Apps dashboard serves as a centralized hub for monitoring and managing application deployments, resources, and configurations.
 
-GitOps environments overview
+The GitOps Environments dashboard brings a new dimension to your GitOps experience. It presents Argo CD applications within the context of their environments, offering a holistic view of how applications progress through the software development lifecycle. Beyond the visibility, you can also review the deployment history, take action by implementing synchronization and refresh actions, and more for individual applications.
 
-Codefresh has several dashboards each providing different views on different aspects of GitOps appllications and deployments. The GitOps Apps dashboard is a centralized location to view, monitor, and manage application deployments, resources, and configurations. The GitOps Overview dashboard is a high-level overview of GitOps applications via key APIs. 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/environments-dashboard.png" 
+	url="/images/gitops-environments/environments-dashboard.png" 
+	alt="GitOps Environments" 
+	caption="GitOps Environments"
+  max-width="60%" 
+%}
 
-The GitOps Environments dashboard combines a view of applications in the context of their environments allowing you to track applications as they move across your software development lifecycles. 
+**What is an Environment in Codefresh GitOps?**
+An Environment is a logical entity in Codefresh that consolidates deployment information for all linked Argo CD applications. This means you can easily track what's deployed where at any given moment.
 
-What is an environment
-An Environment is a logical entity in Codefresh that consolidates deployment information for all the Argo CD applications linked to it. Allow you to see at any moment in time what's deployed where 
+**What can you see in an Environment?**
+1. Argo CD applications: Environments are populated by the Argo CD applications in the clusters and namespaces mapped to it. 
+1. Deployment lifecycle phase: The environment dashboard displays the current phase of each application's deployment.
+1. Commit information: The most recent change to the application and the user who made the commit.
 
-What can you see in an environment
-1. Argo CD applications that are part of the environment
-1. The phase of the application's deployment lifecycle
-1. Git information
+**Benefits of Environments**  
 
-
-Characteristics of an environment
-
-1. Account-level management: Environments are created and managed for an account with visibility into all the Runtimes and clusters created for the RUntimes in the account.
-1. Tracability: There are two broad categories 
-1. Moniorin: The main purpose of an environment is to show the Argo CD applications in that environment along with their current health and sync status, and Git information. This is only possible when you link an application to an environment. 
+* Account-level visibility: Environments are created and managed for an account. You get visibility into all Argo CD applications in all GitOps Runtimes in the account.
+* Traceability: Trace an application across   
+1.
 1. Promotion: 
 1. Deployment destinations:
 
-Environment views
+
+
+
+
+
 ## Products and Argo CD applications in GitOps Environments
+Codefresh provides the option to assign Argo CD applications to a Product. 
+
+Within an Environment, cards for applications assigned to products are displayed with the product's title, making it easier to understand the context and purpose of each application within the broader scope of your development and deployment processes. 
+
 
 ## GitOps Environment dashboard
 Here's an example of the GitOps Environments dashboard.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/environments-dashboard.png" 
+	url="/images/gitops-environments/environments-dashboard.png" 
+	alt="GitOps Environment dashboard" 
+	caption="GitOps Environment dashboard"
+  max-width="60%" 
+%}
 
-The table describes the information  displayed in the GitOps Environments dashboard.
+The table describes the information displayed in the GitOps Environments dashboard.
 
 {: .table .table-bordered .table-hover}
 | Item             | Description              | 
@@ -45,7 +68,8 @@ The table describes the information  displayed in the GitOps Environments dashbo
 |**Filters**              | Predefined filters that allow you to customize the Environment dashboard view by Product, Application, or by Application Health StatusTerminate the current rollout. | 
 |{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star a card with a product and application as a favorite and view only the starred products.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
 |**Detailed/Compact views**              | View details on the application in an environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's health and sync status.<br> <img src="../../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="70%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, SHA hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="70%">.</li></ul>{:/}|
-|**Environments**              | Environments are visually organized into columns, color-coded to differentiate between non-production environments (in gray) and production environments (in blue).<br>The column title is the name of the environment. Mouse over displays the edit, delete, and move icons to manage environments. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.{::nomarkdown}<ul><li>Each environment is populated with the applications in the cluster-namespace pairs mapped to the environment. <br>An empty environment indicates that there are no applications in the cluster-namespaces mapped to it.</li><li>If the application is assigned to a product, the product name is displayed as the card title. If not, the application name is used.<li>Clicking the application name displays the deployment history for the application. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#view-deployment-timeline-history-for-applications">View deployment (Timeline) history for applications</a>.</li><li>Every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#manage-applications-from-within-environments">Manage applications from within environments</a>.</li></ul>{:/} |
+|**Environments**              | Environments are visually organized into columns, color-coded to differentiate between non-production environments (in gray) and production environments (in blue).<br>The column title is the name of the environment. Mouse over displays the edit, delete, and move icons to manage environments. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.{::nomarkdown}<ul><li>Each environment is populated with the applications in the cluster-namespace pairs mapped to the environment. <br>An empty environment indicates that there are no applications in the cluster-namespaces mapped to it.</li></ul>{:/}|
+|**Applications**| Applications are displayed as a list of cards. {::nomarkdown}<ul><li>If the application is assigned to a product, the product name is displayed as the title of the card. If not, the application name is used.</li><li>Clicking the application name displays the deployment history for the application. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#view-deployment-timeline-history-for-applications">View deployment (Timeline) history for applications</a>.</li><li>Every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See <a href="https://codefresh.io/docs/docs/deployments/gitops/gitops-environments/#manage-applications-from-within-environments">Manage applications from within environments</a>.</li></ul>{:/} |
 
 ## Create GitOps Environments
 Create one or more GitOps Environments corresponding to any stage in your development and deployment lifecycle.  
@@ -74,18 +98,6 @@ Define the configuration of the environment through a unique name, it's intended
 
  
 
-## Create an Environment
-View environment dashboard
-
-Simple drag-n-drop for left-right-shift environments  
-
-Environments, products, applications
-Codefresh allows you to define a unique relationship between applications and the environments they are deployed to or deployed in through the concept of Products.
-
-Environments aggregates Argo CD applications based on a common dennominator and visualizes their based on deployment destinations.
-
-Instead of switching between each Argo CD Application to see where it is deployed, associating application with environw
-
 ## Work with GitOps environments
 
 Once you create an environment, it is displayed in the Environments page.
@@ -100,7 +112,7 @@ Update the environment's configuration settings when required. You can change al
 1. Mouse over the column with the environment to edit, and click {::nomarkdown}<img src="../../../../images/icons/edit.png?display=inline-block">{:/}.
 1. Edit the settings as required. 
 
-### Drag and drop to reorder environments
+### Reorder environments with drag and drop
 Change the order of the environments displayed in the Environments dashboard to suit your requirements by simple drag and drop. By default, the environments are displayed in the same order in which they were created.
 
 For example, if you have two non-production and one production environment for your e-commerce application, you can order them to display first the non-production and then the production environment to reflect the corresponding stages.
@@ -138,9 +150,33 @@ Delete unused or legacy environments to avoid clutter. Deleting an environment r
 
 
 ## Work with applications in GitOps Environments
+In the Environments dashboard, you get both visibility into applications running in different environments, detailed information on each application, and the ability to sync, refresh, and perform other actions for the application.  
+
+### Trace applications across environments
+Trace the same application as it moves across different environments in its development, testing, and deployment cycle. See the version of the application running in each environment, the most recent commit indicating the change, and the user who made the commit. 
+
+
+Alternatively, track a set of applications deployed to multiple environments of the same kind and at the same level. For example, track the billing application deployed to multiple production environments based on regions.
+Here too, see which applications are running on each environment, the most recent commit to the application, and the user who made the commit. 
+
+
+1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. Switch to **Detailed** view.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/create-environment.png" 
+	url="/images/gitops-environments/create-environment.png" 
+	alt="Example: Tracing application progress across different GitOps Environments" 
+	caption="Example: Tracing application progress across different GitOps Environments"
+  max-width="60%" 
+%}
+
+You can then view the deployment history for a specific version of the application.
 
 ### View deployment (Timeline) history for applications
-Review the deployments for the application. Clicking the application name takes you to the Timeline tab with the deployment history for the application. From there, clicking teyou can navigate to the detailed views of
+Review the deployments for an application. Clicking the application name takes you to the Timeline tab with the deployment history for the application. 
  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. In the Environment column with the application, click the application name to view deployment history.
@@ -156,7 +192,7 @@ Review the deployments for the application. Clicking the application name takes 
 %}
 
 {:start="3"}
-1. To view all the application's tabs, including the Current State, Configuration, and others, click the link to Full View at the top of the deployment view.
+1. To view all the application's tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top of the deployment view.
 
 
 ### Manage applications from within environments
@@ -180,3 +216,5 @@ Manage applications from within Environments through the application's context m
 	caption="Context menu with actions for Argo CD applications within GitOps Environments"
   max-width="60%" 
 %}
+
+## Related information 
