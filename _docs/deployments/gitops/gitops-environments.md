@@ -41,10 +41,7 @@ An Environment is a logical entity in Codefresh that consolidates deployment inf
 
 
 
-## Products and Argo CD applications in GitOps Environments
-Codefresh provides the option to assign Argo CD applications to a Product. 
-
-Within an Environment, cards for applications assigned to products are displayed with the product's title, making it easier to understand the context and purpose of each application within the broader scope of your development and deployment processes. 
+Products connect your applications across different environments for streamlined management.
 
 
 ## GitOps Environment dashboard
