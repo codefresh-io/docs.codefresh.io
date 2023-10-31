@@ -9,7 +9,7 @@ toc: true
 Codefresh enables you to send notifications about events.
 
 Codefresh supports the following notification channels:
-- Email
-- [Slack]({{ site.baseurl }}/docs/integrations/notifications/slack-integration/)
-- [Jira]({{ site.baseurl }}/docs/integrations/notifications/jira-integration/)
+- [Email]({{site.baseurl}}/docs/integrations/notifications/email-integration/)
+- [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/)
+- [Jira]({{site.baseurl}}/docs/integrations/notifications/jira-integration/)
 

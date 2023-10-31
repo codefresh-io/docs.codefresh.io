@@ -274,103 +274,6 @@ echo $(kubectl get secret -o go-template='{{index .data "token" }}' $(kubectl ge
 
 Once the cluster been added successfully you can go to the `Kubernetes` tab to start working with the services of your cluster.
 
-#### The proper/secure way
-
-For production environments you should create a service account and/or role for Codefresh access.
-The minimum permissions Codefresh needs to work with the cluster are the following:
-
-`codefresh-role.yml`
-{% highlight yaml %}
-{% raw %}
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: codefresh-role
-rules:
-  - apiGroups: [""]
-    resources: ["*"]
-    verbs: ["list", "watch", "get"] 
-{% endraw %}
-{% endhighlight %}
-
-Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
-
-Here is an example with role + service account + binding.
-
-`codefresh-role-sa-bind.yml`
-{% highlight yaml %}
-{% raw %}
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: codefresh-role
-rules:
-  - apiGroups: [ "*"]
-    resources: ["*"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: codefresh-user
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: codefresh-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: codefresh-role
-subjects:
-- kind: ServiceAccount
-  name: codefresh-user
-  namespace: kube-system
-{% endraw %}
-{% endhighlight %}
-
-Select the appropriate cluster if you have more than one:
-
-`Choose cluster`
-{% highlight shell %}
-{% raw %}
-kubectl config use-context <my-cluster-name>
-{% endraw %}
-{% endhighlight %}
-
-Create the Codefresh user/role:
-
-`Apply Codefresh access rules`
-{% highlight shell %}
-{% raw %}
-kubectl apply -f codefresh-role-sa-bind.yml
-{% endraw %}
-{% endhighlight %}
-
-Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
-
-`Host IP`
-{% highlight shell %}
-{% raw %}
-export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template="{{\$curr_context := \"$CURRENT_CONTEXT\" }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}") && echo $(kubectl config view -o go-template="{{\$cluster_context := \"$CURRENT_CLUSTER\"}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}")
-{% endraw %}
-{% endhighlight %}
-
-`Certificate`
-{% highlight shell %}
-{% raw %}
-echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
-{% endraw %}
-{% endhighlight %}
-
-`Token`
-{% highlight shell %}
-{% raw %}
-echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
-{% endraw %}
-{% endhighlight %}
-
 #### The proper/secure way for Kubernetes Cluster 1.24+
 
 For production environments, create a service account and/or role for Codefresh access.  
@@ -478,6 +381,104 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" 
 echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
+
+#### The proper/secure way Kubernetes 1.23 and older
+
+For production environments you should create a service account and/or role for Codefresh access.
+The minimum permissions Codefresh needs to work with the cluster are the following:
+
+`codefresh-role.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [""]
+    resources: ["*"]
+    verbs: ["list", "watch", "get"] 
+{% endraw %}
+{% endhighlight %}
+
+Note that these permissions will only allow Codefresh to read the cluster resources and populate the respective dashboards. You need to give more privileges for actual deployments. For more information see the [Kubernetes RBAC documentation page](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){:target="\_blank"}.
+
+Here is an example with role + service account + binding.
+
+`codefresh-role-sa-bind.yml`
+{% highlight yaml %}
+{% raw %}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: codefresh-role
+rules:
+  - apiGroups: [ "*"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: codefresh-user
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: codefresh-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: codefresh-role
+subjects:
+- kind: ServiceAccount
+  name: codefresh-user
+  namespace: kube-system
+{% endraw %}
+{% endhighlight %}
+
+Select the appropriate cluster if you have more than one:
+
+`Choose cluster`
+{% highlight shell %}
+{% raw %}
+kubectl config use-context <my-cluster-name>
+{% endraw %}
+{% endhighlight %}
+
+Create the Codefresh user/role:
+
+`Apply Codefresh access rules`
+{% highlight shell %}
+{% raw %}
+kubectl apply -f codefresh-role-sa-bind.yml
+{% endraw %}
+{% endhighlight %}
+
+Finally run the following commands and copy-paste the result to each Codefresh field in the UI:
+
+`Host IP`
+{% highlight shell %}
+{% raw %}
+export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template="{{\$curr_context := \"$CURRENT_CONTEXT\" }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}") && echo $(kubectl config view -o go-template="{{\$cluster_context := \"$CURRENT_CLUSTER\"}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}")
+{% endraw %}
+{% endhighlight %}
+
+`Certificate`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
+{% endraw %}
+{% endhighlight %}
+
+`Token`
+{% highlight shell %}
+{% raw %}
+echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' $(kubectl get sa codefresh-user -n kube-system -o go-template="{{range .secrets}}{{.name}}{{end}}"))
+{% endraw %}
+{% endhighlight %}
+
 
 #### Restrict Codefresh access to a specific namespace
 

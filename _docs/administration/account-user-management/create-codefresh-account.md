@@ -9,6 +9,7 @@ redirect_from:
   - /docs/create-an-account/
   - /docs/getting-started/
   - /docs/getting-started/introduction/
+toc: true
 ---
 Before you can do create pipelines, build, and deploy applications in Codefresh, you need to create a Codefresh account.
 
