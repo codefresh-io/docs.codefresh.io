@@ -57,17 +57,6 @@ max-width="50%"
 {:start="5"}
 1. If required, click **Close**, update as needed and generate the manifest again.
 1. If there are no validation errors, click **Copy**.
-
-{% include image.html 
-lightbox="true" 
-file="/images/integrations/classic/classic-manifest.png" 
-url="/images/integrations/classic/classic-manifest.png"
-alt="Example of manifest generated for Codefresh pipeline"
-caption="Example of manifest generated for Codefresh pipeline"
-max-width="50%"
-%}
-
-{:start="6"}
 1. Paste the copied manifest as the last step in your CI pipeline.
 
 ## CI integration argument reference 
@@ -80,7 +69,14 @@ The table describes _all_ the arguments required for CI integrations in general.
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
 | `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
 | `CF_API_KEY`            | The API key for authentication. Generate the key for the integration.  | Required  |
-| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/). | Optional  |
+| `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored to reference in the CI pipeline. See [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).<br>Alternatively, you can use _one_ of these container registries with explicit credentials:{::nomarkdown} <ul><li>DockerHub registry with <code class="highlighter-rouge"> CF_DOCKERHUB_USERNAME</code> and <code class="highlighter-rouge">CF_DOCKERHUB_PASSWORD</code>.</li><li><a href="https://docs.docker.com/registry/spec/api/">Docker Registry Protocol v2</a> with <code class="highlighter-rouge"> CF_REGISTRY_DOMAIN</code>, <code class="highlighter-rouge"> CF_REGISTRY_USERNAME</code>, and <code class="highlighter-rouge">CF_REGISTRY_PASSWORD</code>.</li><li>Google Artifact Registry (GAR)  with <code class="highlighter-rouge"> CF_GOOGLE_JSON_KEY</code> and <code class="highlighter-rouge">CF_GOOGLE_REGISTRY_HOST</code>.</li></ul>{:/}| Optional  |
+| `CF_DOCKERHUB_USERNAME` | Relevant only to provide explicit credentials to the Docker Hub container registry where the image is stored. <br>The username for the Docker Hub container registry.<br><br>To use a Docker Hub container registry integration created in Codefresh, set `CF_CONTAINER_REGISTRY_INTEGRATION` instead. | Optional  |
+| `CF_DOCKERHUB_PASSWORD` | Relevant only if `CF_DOCKERHUB_USERNAME` is specified.<br>The password for the Docker Hub container registry. | Optional  |
+| `CF_REGISTRY_USERNAME` | Relevant for container registries that support [Docker Registry Protocol v2](https://docs.docker.com/registry/spec/api/){:target="\_blank"}. <br>The username for the Docker Registry Protocol v2 container registry. <br><br>To use a container registry integration created in Codefresh, set `CF_CONTAINER_REGISTRY_INTEGRATION` instead. | Optional  |
+| `CF_REGISTRY_PASSWORD` | Relevant only if `CF_REGISTRY_USERNAME` is specified.<br> The password for the Docker Registry Protocol v2 container registry.  | Optional  |
+| `CF_REGISTRY_DOMAIN` | Relevant only if `CF_REGISTRY_USERNAME` and `CF_REGISTRY_PASSWORD` are specified. <br> The domain for the Docker Registry Protocol v2 container registry.  | Optional  |
+| `CF_GOOGLE_JSON_KEY` | Relevant only for Google Artifact Registry (GAR) or Google Container Registry (GCR).<br> The Google Cloud Platform Service Account key in JSON format to authenticate to GAR or GCR.  | Optional  |
+| `CF_GOOGLE_REGISTRY_HOST` | Relevant only if `CF_GOOGLE_JSON_KEY` is specified.<br>The GAR or GCR host. <br>For example, `us-central1-docker.pkg.dev` or `gcr.io`.| Optional  |
 | `CF_JIRA_INTEGRATION`               | _Deprecated from version 0.0.565 and higher._ Replaced by `CF_ISSUE_TRACKING_INTEGRATION`. |  _Deprecated_
 | `CF_ISSUE_TRACKING_INTEGRATION` | The name of the issue tracking integration created in Codefresh to use for image enrichment. Relevant only if Jira enrichment is required for the image. If you don't have a Jira integration, click **Create Atlassian Jira Integration** and configure settings. See [Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  | Optional  |
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |

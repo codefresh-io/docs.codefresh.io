@@ -138,6 +138,7 @@ Setting a default provider assigns the selected SSO automatically to all new use
 1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
 1. From the list, select the SSO account to set as default and click the **Edit** icon on the right.
 1. Scroll down and select **Set as default**. 
+  The Single Sign-on page shows the SSO provider tagged as the default.
 
 {% include 
 image.html
@@ -149,7 +150,7 @@ caption="Set default SSO provider for account"
 max-width="50%"
 %}
 
-    The Single Sign-on page shows the SSO provider tagged as the default.
+  
 
 {% include 
 image.html
@@ -172,6 +173,8 @@ You can override the default SSO provider if set for your account, with a differ
 * Existing users  
   SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
   If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
+
+**How to**  
 
 1. In the Codefresh UI, on the toolbar, from your avatar dropdown, select **Account Settings**.
 1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
