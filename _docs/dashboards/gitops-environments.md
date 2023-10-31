@@ -1,6 +1,6 @@
 ---
 title: "GitOps Environments"
-description: ""
+description: "Track and manage Argo CD applications within environments"
 group: dashboards
 toc: true
 ---

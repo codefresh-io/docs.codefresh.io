@@ -1,6 +1,6 @@
 ---
 title: "GitOps Products"
-description: ""
+description: "Create Products for Argo CD applications and view across environments"
 group: dashboards
 toc: true
 ---
