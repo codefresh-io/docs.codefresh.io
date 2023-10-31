@@ -294,7 +294,7 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Pipeline trigger for BitBucket server does not fire on commit.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
-* Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
+* Discrepancy in list of builds returned when running `{% raw %}GET {{baseUrl/workflow?pipeline=[pipeline-id]}}{% endraw %} ` query.
 * Composition stops randomly with error: `Could not get status for container <container-name>`. 
 * Image enrichment with GitHub Actions fails with message: `EventSourceError: Request-URI Too Large`.
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
