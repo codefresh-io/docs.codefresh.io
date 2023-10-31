@@ -56,9 +56,9 @@
   pages:
     - title: Home
       url: "/home-dashboard"
-    - title: Environments
+    - title: GitOps Environments
       url: "/gitops-environments" 
-    - title: Products
+    - title: GitOps Products
       url: "/gitops-environments"      
     - title: DORA metrics
       url: "/dora-metrics"

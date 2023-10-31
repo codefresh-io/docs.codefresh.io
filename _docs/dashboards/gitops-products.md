@@ -1,5 +1,5 @@
 ---
-title: "Products in GitOps"
+title: "GitOps Products"
 description: ""
 group: dashboards
 toc: true

@@ -95,9 +95,9 @@
   links:
     - title: Home
       localurl: /docs/dashboards/home-dashboard/  
-    - title: Environments
+    - title: GitOps Environments
       localurl: /docs/dashboards/gitops-environments/   
-    - title: Products
+    - title: GitOps Products
       localurl: /docs/dashboards/gitops-products/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
