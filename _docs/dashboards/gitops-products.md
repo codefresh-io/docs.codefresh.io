@@ -32,11 +32,13 @@ Products are a way to group Argo CD applications in Codefresh. The Products dash
   The streamlined view of application status and deployment across different environments simplifies decision-making and troubleshooting.
 
 
-**How do you view applications by product?**  
-The flow to 
-Create the product
-Connect applications to a product
-View information for product and its applications by environments
+**How do you view applications by Product?**  
+The flow to view applications by Products involves two steps:  
+* Create the Product
+* Connect applications to the Product
+
+The applications in a Product are organized by the [environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) they belong to.
+
 
 
 ## Create Products
@@ -76,12 +78,12 @@ The table describes the information displayed in the Products dashboard.
 | Item             | Description              | 
 | --------------    | --------------           |
 |**Filters**              | Predefined filters that allow you to customize the Products dashboard view by Product Name, Application, or by Environment. | 
-|**Default & expanded views**              | . {::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications by their environments..</li></ul>{:/}|
-|**Actions**| In both the collapsed and expanded views, mouse over the row with the product to see possible actions:{::nomarkdown}<ul><li><img src="../../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the product's settings.</li><li><img src="../../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to products</a>.</li><li><img src="../../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Delete product from the Products dashboard. Deleting a product removes the product name from the Products dashboard, and unassigns the applications manually assigned to the product in the Products dashboard.</li></ul>{:/} |
+|**Default & expanded views**              |{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications by their environments..</li></ul>{:/}|
+|**Actions**| In both the collapsed and expanded views, mouse over the row with the product to see possible actions:{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the product's settings.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Delete product from the Products dashboard. Deleting a product removes the product name from the Products dashboard, and unassigns the applications manually assigned to the product in the Products dashboard.</li></ul>{:/} |
 
 ## Working with Products
 
-Once you create a Product, you can assign applications to the Product, unassign applications, edit the Product's settings, or delete it . 
+Once you create a Product, you can assign applications to the Product, unassign applications, edit the Product's settings, or delete the Product . 
 
 
 ### Manually assign applications to products
@@ -119,7 +121,7 @@ Search for the application by the name of the application, cluster, or namespace
 %}
 
 {:start="4"}
-1. To assign the application, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/}.  
+1. To assign the application, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/}.  
 1. To confirm the assignment, click **Save**. 
   The application is added to the environment defined for it.
 
@@ -139,7 +141,7 @@ Connect an application to a product by adding the default or custom annotation t
 The annotation is defined as part of the Product's settings when creating Products.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
-1. Mouse over the row with the product name, and then click {::nomarkdown}<img src="../../../../images/icons/edit.png?display=inline-block">{:/}.
+1. Mouse over the row with the product name, and then click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
 1. In the Edit Product form, copy the annotation to add to the application's manifest.
 
 {% include 
@@ -162,13 +164,13 @@ The annotation is defined as part of the Product's settings when creating Produc
 Unassign an application from a Product directly from the Products dashboard. This is a quick option for applications manually assigned to Products from the Products dashboard.
 
 >**TIP:**  
-If you used annotations to connect applications to Products, remove the annotation from the application manifest to unassign the application.
+If you used annotations to connect applications to Products, to unassign the application, remove the annotation from the application manifest.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Do one of the following:
   * Mouse over the row with the product from which to unassign the application.
   * Select the product with the application to unassign and click **Manage Apps**.
-1. In the card with the application to unassign, click {::nomarkdown}<img src="../../../../images/icons/unassign-app.png?display=inline-block">{:/}.
+1. In the card with the application to unassign, click {::nomarkdown}<img src="../../../images/icons/unassign-app.png?display=inline-block">{:/}.
 
 {% include 
 	image.html 

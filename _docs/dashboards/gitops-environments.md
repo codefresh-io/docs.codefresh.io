@@ -6,10 +6,11 @@ toc: true
 ---
 
 
-Codefresh offers various dashboards, each providing a unique perspective on Argo CD applications and their deployments. <!--- The GitOps Overview dashboard offers a high-level view, emphasizing essential Key Performance Indicators. The GitOps Apps dashboard serves as a centralized hub for monitoring and managing application deployments, resources, and configurations. --> The GitOps Environments dashboard brings a new dimension to your GitOps experience. 
+Codefresh offers a variety of dashboards, each providing a unique perspective on Argo CD applications and their deployments. <!--- The GitOps Overview dashboard offers a high-level view, emphasizing essential Key Performance Indicators. The GitOps Apps dashboard serves as a centralized hub for monitoring and managing application deployments, resources, and configurations. --> 
 
+The GitOps Environments dashboard brings a new dimension to your GitOps experience.  
 It presents Argo CD applications within the context of their environments, offering a holistic view of how applications progress through the software development lifecycle.  
-Beyond the visibility, you can also review the deployment history, take actions such as synchronization and refresh, and more for individual applications.
+Beyond the visibility, for individual applications, you can also review the deployment history, take actions such as synchronization and refresh, and more.
 
 {% include 
 	image.html 
@@ -33,14 +34,7 @@ An Environment is a logical entity in Codefresh that consolidates deployment inf
 
 * Account-level visibility: Environments are created and managed for an account. You get visibility into all Argo CD applications in all GitOps Runtimes in the account.
 * Traceability: Trace an application across   
-
-
-
-
-
-
-
-Products connect your applications across different environments for streamlined management.
+TBD
 
 
 ## GitOps Environment dashboard
@@ -62,9 +56,9 @@ The table describes the information displayed in the GitOps Environments dashboa
 | Item             | Description              | 
 | --------------    | --------------           |
 |**Filters**              | Predefined filters that allow you to customize the Environment dashboard view by Product, Application, or by Application Health StatusTerminate the current rollout. | 
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star a card with a product and application as a favorite and view only the starred products.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
-|**Detailed/Compact views**              | View details on the application in an environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's health and sync status.<br> <img src="../../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="70%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, SHA hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="70%">.</li></ul>{:/}|
-|**Environments**              | Environments are visually organized into columns, color-coded to differentiate between non-production environments (in gray) and production environments (in blue).<br>The column title is the name of the environment. Mouse over displays the edit, delete, and move icons to manage environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.{::nomarkdown}<ul><li>Each environment is populated with the applications in the cluster-namespace pairs mapped to the environment. <br>An empty environment indicates that there are no applications in the cluster-namespaces mapped to it.</li></ul>{:/}|
+|{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star a card with a product and application as a favorite and view only the starred products.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
+|**Detailed/Compact views**              | View details on the application in an environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's health and sync status.<br> <img src="../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="70%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, SHA hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="70%">.</li></ul>{:/}|
+|**Environments**              | Environments are visually organized into columns, color-coded to differentiate between non-production environments (in gray) and production environments (in blue).<br>The column title is the name of the environment. Mouse over displays the edit, delete, and move icons to manage environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.<br>Each environment is populated with the applications in the cluster-namespace pairs mapped to the environment. <br>An empty environment indicates that there are no applications in the cluster-namespaces mapped to it.|
 |**Applications**| Applications are displayed as a list of cards. {::nomarkdown}<ul><li>If the application is assigned to a product, the product name is displayed as the title of the card. If not, the application name is used.</li><li>Clicking the application name displays the deployment history for the application. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#view-deployment-timeline-history-for-applications">View deployment (Timeline) history for applications</a>.</li><li>Every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#manage-applications-from-within-environments">Manage applications from within environments</a>.</li></ul>{:/} |
 
 ## Create GitOps Environments
@@ -94,7 +88,7 @@ Define the configuration of the environment through a unique name, it's intended
 
  
 
-## Work with GitOps environments
+## Working with GitOps environments
 
 Once you create an environment, it is displayed in the Environments page.
 The Environments dashboard consolidates in one location the environments defined for the account along with the applications that belong to each environment, and the [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) they are assigned to if you have created Products.
@@ -115,7 +109,7 @@ For example, if you have two non-production and one production environment for y
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Mouse over the column with the environment to move.
-1. Click {::nomarkdown}<img src="../../../../images/icons/move-environments.png?display=inline-block">{:/} and drag the column to the required location.
+1. Click {::nomarkdown}<img src="../../../images/icons/move-environments.png?display=inline-block">{:/} and drag the column to the required location.
 
 {% include 
 	image.html 
@@ -132,7 +126,7 @@ Delete unused or legacy environments to avoid clutter. Deleting an environment r
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Mouse over the column with the environment to delete.
-1. Click {::nomarkdown}<img src="../../../../images/icons/trash.png?display=inline-block">{:/}, type the name of the environment to confirm **Delete**.
+1. Click {::nomarkdown}<img src="../../../images/icons/trash.png?display=inline-block">{:/}, type the name of the environment to confirm **Delete**.
 
 {% include 
 	image.html 
@@ -145,7 +139,7 @@ Delete unused or legacy environments to avoid clutter. Deleting an environment r
 %}
 
 
-## Work with applications in GitOps Environments
+## Working with applications in GitOps Environments
 In the Environments dashboard, you get both visibility into applications running in different environments, detailed information on each application, and the ability to sync, refresh, and perform other actions for the application.  
 
 ### Trace applications across environments
