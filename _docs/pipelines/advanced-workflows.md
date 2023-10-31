@@ -101,11 +101,11 @@ This is the recommended way to start using parallelism in your Codefresh pipelin
 >**NOTE**:  
 The names of the parallel steps must be unique within the same pipeline. The parent and child steps should NOT share the same name.
 
-### Adding timeouts for parallel steps
-You can add `timeouts` for parallel steps either by defining a parent `timeout` inherited by the other parallel steps, or by defining individual timeouts for every step.  
+### Add timeouts for parallel steps
+You can add `timeouts`for parallel steps either by defining a parent `timeout` inherited by the other parallel steps, or by defining individual timeouts for every step.  
 
 >**NOTES**:  
-The step termination `timeout`field is not supported for `deploy` and `approval` steps.<br><br> 
+The step termination `timeout` field is not supported for `deploy` and `approval` steps.<br><br> 
 When _both_ parent and step-specific timeouts are defined for parallel steps, the step-specific timeouts override the parent timeout.
 
 {% highlight yaml %}

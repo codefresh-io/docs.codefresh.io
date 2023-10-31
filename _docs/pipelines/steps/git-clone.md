@@ -59,7 +59,7 @@ step_name:
 | `depth`    |  The number of commits to pull from the repo to create a shallow clone. Creating a shallow clone truncates the history to the number of commits specified, instead of pulling the entire history. | Optional      |
 | `use_proxy`    | If set to true the Git clone process will honor `HTTP_PROXY` and `HTTPS_PROXY` variables if present for [working via a proxy](#using-git-behind-a-proxy). Default value is `false`.      | Default                   |
 | `credentials`  | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .            | Optional                  |
-|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. <br>The timeout can be set to a maximum of 596.52 hours (approximately 24.8 days). <br><br>When set to `0` or `null`, the timeout is ignored and step execution is not terminated.<br>See [????](#add-a-timeout-to-terminate-step-execution). |Optional|
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>When set to `0` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`    | If a step fails and the process is halted. The default value is `true`.    | Default                   |
 | `when`      | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.   | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).   | Optional   |
@@ -278,7 +278,7 @@ When defined:
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#adding-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
-  `YAML`
+
 {% highlight yaml %}
 {% raw %}
 step_name:
@@ -317,8 +317,8 @@ Timeout information is displayed in the logs, as in the example below.
 lightbox="true"
 file="/images/steps/timeout-messages-in-logs.png"
 url="/images/steps/timeout-messages-in-logs.png"
-caption="Step termination due to timeout info in logs"
-alt="Step termination due to timeout info in logs"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
 max-width="60%"
 %}
 
