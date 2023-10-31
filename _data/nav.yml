@@ -54,8 +54,12 @@
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: Home dashboard
+    - title: Home
       url: "/home-dashboard"
+    - title: Environments
+      url: "/gitops-environments" 
+    - title: Products
+      url: "/gitops-environments"      
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images 

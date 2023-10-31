@@ -93,8 +93,12 @@
   icon: images/home-icons/guides.png
   url: ''
   links:
-    - title: Home dashboard
-      localurl: /docs/dashboards/home-dashboard/   
+    - title: Home
+      localurl: /docs/dashboards/home-dashboard/  
+    - title: Environments
+      localurl: /docs/dashboards/gitops-environments/   
+    - title: Products
+      localurl: /docs/dashboards/gitops-products/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
