@@ -105,7 +105,7 @@ The names of the parallel steps must be unique within the same pipeline. The par
 You can add `timeouts`for parallel steps either by defining a parent `timeout` inherited by the other parallel steps, or by defining individual timeouts for every step.  
 
 >**NOTES**:  
-The step termination `timeout` field is not supported for `deploy` and `approval` steps.<br><br> 
+The `timeout` field in the `deploy` and `pending-approval` steps has a specialized syntax and behavior to match the requirements of these steps.<br><br> 
 When _both_ parent and step-specific timeouts are defined for parallel steps, the step-specific timeouts override the parent timeout.
 
 {% highlight yaml %}
