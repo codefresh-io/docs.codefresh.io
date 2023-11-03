@@ -473,7 +473,8 @@ The possible values for the `events` array are the following (only those support
  * `pullrequest.labeled` - pull request labeled
  * `pullrequest.unlabeled` - pull request unlabeled
  * `pullrequest.synchronize` - pull request synchronized
- * `pullrequest.commentAdded` - pull request comment added
+ * `pullrequest.commentAdded` - pull request comment added (restricted)
+ * `pullrequest.commentAddedUnrestricted` - Any pull request comment will trigger a build. We recommend using only on private repositories.
  * `release` - Git release event
 
 The `variables` and `runtimeEnvironment` fields have exactly the same format as in the parent pipeline fields but values defined in the trigger will take higher priority.
