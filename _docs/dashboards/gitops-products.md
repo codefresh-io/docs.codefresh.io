@@ -7,7 +7,12 @@ toc: true
 
 
 
-Products are a way to group Argo CD applications in Codefresh. The Products dashboard offers a unified view of your application landscape within various environments. 
+Explore the power of GitOps Products for Argo CD applications within GitOps Environments. 
+
+A Product unifies individual Argo CD applications that share a common element between them. Consider your payment applications organized  by Environments corresponding to the regions they are deployed in. 
+With Products, Codefresh allows you group these applications and track them as a cohesive entity as they move through different environments. 
+
+
 
 
 {% include 
@@ -17,27 +22,35 @@ Products are a way to group Argo CD applications in Codefresh. The Products dash
 	url="/images/gitops-products/expanded-view.png" 
 	alt="GitOps Products dashboard (expanded view)" 
 	caption="GitOps Products dashboard (expanded view)"
-  max-width="60%" 
+  max-width="70%" 
 %}
 
-**What are the benefits of Products?**  
+
+**What are the benefits of GitOps Products?**  
 
 * Group applications  
-  Assign and connect applications to logical Products for a more consolidated perspective on application management. For example, connect all billing applications to the Billing product.
+  Group and connect Argo CD applications based on a common element through Products. Assign your applications to logical Products for a consolidated perspective on application management. For example, bring all your billing applications under the **Billing** Product, simplifying your view.
 
-* Bridge applications and environments  
-  By creating Products and linking applications, the Products dashboard efficiently bridges the gap between applications and their respective environments. 
+* Bridge applications and GitOps Environments  
+  By creating Products and linking applications to them, the Products dashboard efficiently bridges the gap between applications and their respective environments. GitOps Products allow you to see how related applications are performing across different Environments.
 
-* Unified insights
-  The streamlined view of application status and deployment across different environments simplifies decision-making and troubleshooting.
-
+* Extended insights  
+  With GitOps Products, Codefresh brings you critical information on the applications for all stakeholders through different view modes. In addition to operational information, project managers and developers can instantly see information on the most recent commits and features included in the applications.
 
 **How do you view applications by Product?**  
-The flow to view applications by Products involves two steps:  
-* Create the Product
-* Connect applications to the Product
+In a simple two-step process:
 
-The applications in a Product are organized by the [environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) they belong to.
+1. Create the Product  
+  You start by creating a Product, giving it a name that makes sense for your use case. 
+
+1. Connect applications to the Product
+  Bring your applications into the picture. Link your applications to the Products you've created, creating the associations you need. 
+
+Codefresh automatically identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+
+The diagram illustrates how Argo CD applications are grouped by Products and organized by Environment. 
+
+TBD
 
 
 
@@ -56,9 +69,9 @@ Create a Product with a unique name and define the annotations by which to conne
 <!--- screenshot TBD -->
 
 {:start="4"}
-1. Click **Add**. The Product is displayed in the Products dashboard. 
+1. Click **Add**. The Product is added to and displayed in the Products dashboard. 
 
-## Products dashboard
+## GitOps Products dashboard
 
 Here's an example of the Products dashboard.
 
@@ -77,33 +90,35 @@ The table describes the information displayed in the Products dashboard.
 {: .table .table-bordered .table-hover}
 | Item             | Description              | 
 | --------------    | --------------           |
-|**Filters**              | Predefined filters that allow you to customize the Products dashboard view by Product Name, Application, or by Environment. | 
-|**Default & expanded views**              |{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications by their environments..</li></ul>{:/}|
-|**Actions**| In both the collapsed and expanded views, mouse over the row with the product to see possible actions:{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the product's settings.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Delete product from the Products dashboard. Deleting a product removes the product name from the Products dashboard, and unassigns the applications manually assigned to the product in the Products dashboard.</li></ul>{:/} |
+|**Search and Filters**              | Predefined filters that allow you to customize the Products dashboard view by Product Name, Application, or by Environment. <br>See [Search/filter applications in Products](#searchfilter-applications-in-products).| 
+|**Default & expanded views**              |{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications by their environments.</li></ul>{:/}|
+|**Application views** |Clicking the Product name takes you to the detailed view of its applications with pod, Git, and feature information. See [Explore application views for Products](#explore-application-views-for-products).|
+|**Actions**| In both the collapsed and expanded views, mouse over the row with the Product displays possible actions:{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the Product's settings. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Delete Product from the Products dashboard. Deleting a Product removes its name from the Products dashboard, and unassigns the applications manually assigned to it in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} |
 
 ## Working with Products
 
-Once you create a Product, you can assign applications to the Product, unassign applications, edit the Product's settings, or delete the Product . 
+Once you create a Product, you can assign applications to the Product, unassign applications from a Product, edit the Product's settings, or delete the Product. 
 
 
-### Manually assign applications to products
-Manually assign an application to a product directly from the Products dashboard. This is an alternative to assigning applications that are not connected to a product through annotations in the application's manifest. 
+### Manually assign applications to Products
+Manually assign an application to a Product directly from the Products dashboard. This is an alternative to assigning applications that are not connected to a Product through annotations in the application's manifest. 
 
-Search for the application by the name of the application, cluster, or namespace mapped for the product. When assigned to a product, the application is automatically added to the column with the correct environment.
+Search for the application by the name of the application, cluster, or namespace mapped for the Product. When assigned to a product, Codefresh identifies and automatically adds it to the column with the correct environment.
+
 
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Do one of the following:
-  * Click the name of the product for which to assign applications, and then click **Manage Apps** on the top right.
-  * Mouse over the row with the product name and click {::nomarkdown}<img src="../../../../images/icons/trash.png?display=inline-block">{:/}.
+  * Click the name of the Product for which to assign applications, and then click **Manage Apps** on the top right.
+  * Mouse over the row with the Product name and click {::nomarkdown}<img src="../../../../images/icons/trash.png?display=inline-block">{:/}.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-products/assign-apps-option.png" 
 	url="/images/gitops-products/assign-apps-option.png" 
-	alt="Option to assign applications to product" 
-	caption="Option to assign applications to product"
+	alt="Option to assign applications to Product" 
+	caption="Option to assign applications to Product"
   max-width="60%" 
 %}
 
@@ -115,15 +130,15 @@ Search for the application by the name of the application, cluster, or namespace
 	lightbox="true" 
 	file="/images/gitops-products/unassigned-apps-in-product.png" 
 	url="/images/gitops-products/unassigned-apps-in-product.png" 
-	alt="Unassigned applications in product" 
-	caption="Unassigned applications in product"
+	alt="Unassigned applications in Product" 
+	caption="Unassigned applications in Product"
   max-width="60%" 
 %}
 
 {:start="4"}
 1. To assign the application, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/}.  
 1. To confirm the assignment, click **Save**. 
-  The application is added to the environment defined for it.
+  Codefresh adds the application to the environment defined for it.
 
 {% include 
 	image.html 
@@ -136,21 +151,21 @@ Search for the application by the name of the application, cluster, or namespace
 %}
 
 
-### Use annotations to connect applications to products
-Connect an application to a product by adding the default or custom annotation to the application's manifest.
+### Use annotations to connect applications to Products
+Connect an application to a Product by adding the default or custom annotation to the application's manifest.
 The annotation is defined as part of the Product's settings when creating Products.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
-1. Mouse over the row with the product name, and then click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+1. Mouse over the row with the Product name, and then click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
 1. In the Edit Product form, copy the annotation to add to the application's manifest.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/gitops-products/unassigned-apps-in-product.png" 
-	url="/images/gitops-products/unassigned-apps-in-product.png" 
-	alt="Unassigned applications in product" 
-	caption="Unassigned applications in product"
+	file="/images/gitops-products/copy-annotation.png" 
+	url="/images/gitops-products/copy-annotation.png" 
+	alt="Copy annotation for Product" 
+	caption="Copy annotation for Product"
   max-width="60%" 
 %}
 
@@ -158,6 +173,18 @@ The annotation is defined as part of the Product's settings when creating Produc
 1. Expand the Product.
 1. From the application's context menu, select **Edit**.
 1. In the **Configuration** tab, switch to the **YAML** format and add the annotation.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/add-annotation-app-manifest.png" 
+	url="/images/gitops-products/add-annotation-app-manifest.png" 
+	alt="Add annotation to application manifest" 
+	caption="Add annotation to application manifest"
+  max-width="60%" 
+%}
+
+{:start="7"}
 1. Commit to save the changes.
 
 ### Unassign an application from a Product
@@ -168,8 +195,8 @@ If you used annotations to connect applications to Products, to unassign the app
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Do one of the following:
-  * Mouse over the row with the product from which to unassign the application.
-  * Select the product with the application to unassign and click **Manage Apps**.
+  * Mouse over the row with the Product from which to unassign the application.
+  * Select the Product with the application to unassign and click **Manage Apps**.
 1. In the card with the application to unassign, click {::nomarkdown}<img src="../../../images/icons/unassign-app.png?display=inline-block">{:/}.
 
 {% include 
@@ -177,8 +204,8 @@ If you used annotations to connect applications to Products, to unassign the app
 	lightbox="true" 
 	file="/images/gitops-products/unassign-app-from-product.png" 
 	url="/images/gitops-products/unassign-app-from-product.png" 
-	alt="Unassign application from product" 
-	caption="Unassign application from product"
+	alt="Unassign application from Product" 
+	caption="Unassign application from Product"
   max-width="60%" 
 %}
 
@@ -196,12 +223,22 @@ If you used annotations to connect applications to Products, to unassign the app
   max-width="60%" 
 %}
 
+### Resolve conflicts for application assigned to multiple Products
+Resolve conflicts when the same application is assigned to more than one Product. Unassign the application from any one of the Products.
+
+When Codefresh detects an application assigned to two different Products, it alerts you of the same through a popup in the UI.
+This conflict typically occurs when you manually assign an application to a Product from the Unassigned list, and then add an annotation to the same application's manifest connecting it to a different Product.
+
+1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+TBD from UI
+
+
 ### Edit/delete Product
 Edit settings for an existing Product, or delete the Product from the Products dashboard.
 
-Edit all settings including the name of the product.
+Edit all settings including the name of the Product.
 
-Delete a product from the Products dashboard. Deleting a Product unassigns all the applications manually assigned to it in the Products dashboard. 
+Delete a Product from the Products dashboard. Deleting a Product unassigns all the applications manually assigned to it in the Products dashboard. 
 For applications connected through annotations in their manifests, the annotations are not deleted.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
@@ -215,7 +252,7 @@ For applications connected through annotations in their manifests, the annotatio
 	url="/images/gitops-products/edit-delete-product.png" 
 	alt="Edit/delete Product" 
 	caption="Edit/delete Product"
-  max-width="60%" 
+  max-width="80%" 
 %}
 
 {:start="4"}
@@ -225,7 +262,7 @@ For applications connected through annotations in their manifests, the annotatio
 Selecting a Product displays the applications assigned to that Product organized by environments, and provides different options to view and manage them.  
 
 The actions to manage applications in a Product are similar to those available in the Environments dashboard.  
-In addition, the Product-applications view offers a different a set of filters, and the ability to switch between views different aspects of information.
+In addition, the Product-applications view offers a different a set of filters, and the ability to switch between views with different aspects of information.
 
 ### Search/filter applications in Products
 For the selected Product, search for a specific application, or locate the applications of interest through filters.
@@ -250,7 +287,7 @@ Search by free-text to locate the applications you need.
 
 
 ### Explore application views for Products
-Switch between Kubernetes (Pods), version control (Git) and issue-tracking (Features) views of the applications assigned to the selected Product.  
+Switch between Kubernetes (Pods), version control (Git) and issue-tracking (Features) views of the applications assigned to the selected Product. Identify the technical details on the deployment, the latest commit and feature details important to the different stakeholders.
 <br>
 <br>
 
@@ -282,7 +319,7 @@ Displays Deployment, Rollout, and Promotion information for the application:
 %}
 
 #### Git
-Displays version control information to track changes, code history, and collaboration, showing the evolution of the application's codebase:
+Displays version control information to track changes, code history, and collaboration, showing the evolution of the application's codebase. Useful for project managers and developers to trace: 
 * Pull request history
 * Committer information
 * Commit message
@@ -300,7 +337,7 @@ Displays version control information to track changes, code history, and collabo
 %}
 
 #### Features
-Displays issue-tracking information that correlates software features with their deployment, showing which features are included in a release:
+Displays issue-tracking information that correlates software features with their deployment, showing which features are included in a release. Useful for project managers to identify which feature is in production.
 * Bug/feature request and description
 * User to whom the bug/feature request is assigned
 * Status of the bug/feature request
@@ -317,7 +354,26 @@ Displays issue-tracking information that correlates software features with their
   max-width="60%" 
 %}
 
-### Manage applications for products within environments
+### View deployment (Timeline) history for applications
+Review the deployments for an application. Clicking the application name takes you to the familiar Timeline tab in the GitOps Apps dashboard with the deployment history for the application. See [Monitor deployments for selected Argo CD application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitor-deployments-for-selected-argo-cd-application).
+ 
+1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. In the Environment column with the application, click the application name to view deployment history.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/app-timeline-view.png" 
+	url="/images/gitops-environments/app-timeline-view.png" 
+	alt="View deployment history for Argo CD application from GitOps Environments" 
+	caption="View deployment history for Argo CD application from GitOps Environments"
+  max-width="60%" 
+%}
+
+{:start="3"}
+1. To view all the application's tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top of the deployment view.
+
+### Manage applications in Products
 Manage applications from within Products through the application's context menu, including manual sync, refresh, and other options.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
