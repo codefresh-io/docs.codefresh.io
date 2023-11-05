@@ -16,19 +16,18 @@ In a significant upgrade to our repository management system, Codefresh has tran
 
 **General**  
 * Slow performance/response within Codefresh UI.
-* Events missing from Audit log. Vadim CR-21053
+* Events missing from Audit log. 
 
 <br>
 
 **Pipelines**  
-* BitBucket builds not triggered for Pull Request (PR) events. Yarik CR-20796 
 * BitBucket builds triggered for events not defined in pipeline. 
-* Slow loading for Builds and Workflow pages for pipelines. Sasha CR-20999
+* Slow loading for Builds and Workflow pages for pipelines. 
 * Restarting a Cron build or restarting a Cron build from a failed step results in error: "There was a problem rebuilding the selected item. Please make sure that the branch <BRANCH> is accessible". 
-* Cron validation for Terraform provider not identical to API validation. Yoni CR-20810
-* Cannot save views including Annotations as filters. Sasha CR-20269
+* Plan-time validation of the Cron expression field in `codefresh_pipeline` does not match API constraints.
+* Cannot save views including Annotations as filters. 
 * Statuses in build log outputs not color-coded.
-* Memory usage graph in Builds page shows **Mib** instead of **MiB**. Sasha CR-19038
+* Memory usage graph in Builds page shows **Mib** instead of **MiB**. 
 
 
 
@@ -37,7 +36,7 @@ In a significant upgrade to our repository management system, Codefresh has tran
 
 **GitOps**  
 * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images.
-* Unable to add cluster for Gerrit providers to GitOps Runtime. Daniel M 20672
+<!--- * Unable to add cluster for Gerrit providers to GitOps Runtime. Daniel M 20672  -->
 * (On-premises only) Cannot apply multiple namespaces to GitOps Runtime via Kustomize. 
 * Argo CD applications not displayed in GitOps Apps dashboard for Hosted GitOps Runtime.
 * Creating a Git Source using Bitbucket does not load all available repos for selection. 
