@@ -36,7 +36,7 @@ In a significant upgrade to our repository management system, Codefresh has tran
 
 **GitOps**  
 * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images.
-<!--- * Unable to add cluster for Gerrit providers to GitOps Runtime. Daniel M 20672  -->
+* Deleting cluster results `Failed deleting cluster` error message.
 * (On-premises only) Cannot apply multiple namespaces to GitOps Runtime via Kustomize. 
 * Argo CD applications not displayed in GitOps Apps dashboard for Hosted GitOps Runtime.
 * Creating a Git Source using Bitbucket does not load all available repos for selection. 
