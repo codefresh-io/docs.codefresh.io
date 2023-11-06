@@ -25,6 +25,7 @@ With Products, Codefresh allows you group these applications and track them as a
   max-width="70%" 
 %}
 
+Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/) on the world's first dashboard for GitOps Environments and Products.
 
 **What are the benefits of GitOps Products?**  
 
@@ -91,7 +92,7 @@ The table describes the information displayed in the Products dashboard.
 | Item             | Description              | 
 | --------------    | --------------           |
 |**Search and Filters**              | Predefined filters that allow you to customize the Products dashboard view by Product Name, Application, or by Environment. <br>See [Search/filter applications in Products](#searchfilter-applications-in-products).| 
-|**Default & expanded views**              |{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications by their environments.</li></ul>{:/}|
+|**Default & expanded views**              |{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view displays the product name alongside the environments with the number of applications in each environment.</li><li><b>Expanded view</b>: The expanded view displays the applications organized by their environments, including version information.<br>Currently supported for Helm-based applications, the version is the version of the Helm chart identifying the specific release of the application in the different environments. Clicking the version displays additional information and options.<br>See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#identify-application-versions-in-different-environments">Identify application versions in different environments</a>.</li></ul>{:/}|
 |**Application views** |Clicking the Product name takes you to the detailed view of its applications with pod, Git, and feature information. See [Explore application views for Products](#explore-application-views-for-products).|
 |**Actions**| In both the collapsed and expanded views, mouse over the row with the Product displays possible actions:{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the Product's settings. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Delete Product from the Products dashboard. Deleting a Product removes its name from the Products dashboard, and unassigns the applications manually assigned to it in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} |
 
@@ -351,6 +352,54 @@ Displays issue-tracking information that correlates software features with their
 	url="/images/gitops-products/features-view.png" 
 	alt="Products: Features view of application" 
 	caption="Products: Features view of application"
+  max-width="60%" 
+%}
+
+### Identify application versions in different environments
+Identify the version of the application deployed in different environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+
+Codefresh does more than just show you the version of the application currently deployed in an environment.  
+You can also:
+* View the charts (dependencies) deployed with the application and the release for each
+* Compare dependency versions with applications in different environments
+
+**How to**  
+1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. Click the version number of the application.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/version-info.png" 
+	url="/images/gitops-environments/version-info.png" 
+	alt="Helm chart version for application" 
+	caption="Helm chart version for application"
+  max-width="60%" 
+%}
+
+{:start="3"}
+1. Switch been tabular and YAML views to see the dependencies and their versions.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/version-table-yaml-view.png" 
+	url="/images/gitops-environments/version-table-yaml-view.png" 
+	alt="Table and YAML views of chart dependencies" 
+	caption="Table and YAML views of chart dependencies"
+  max-width="60%" 
+%}
+
+{:start="4"}
+1. To compare the selected application with its counterparts in different environment, enable **Compare**.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/version-compare-apps.png" 
+	url="/images/gitops-environments/version-compare-apps.png" 
+	alt="Compare versions dependencies of application in different environments" 
+	caption="Compare versions dependencies of application in different environments"
   max-width="60%" 
 %}
 
