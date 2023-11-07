@@ -48,7 +48,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
 
 
 * **audience (`aud`) claim**    
-  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. It can also be a custom audience claim, or a list of comma-separated custom audience claims.  
+  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a  custom audience, or a list of custom audiences.  
 * **subject (`sub`) claim**   
   The `sub` claim is a string value concatenated from the different claims representing the precise authentication and authorization required for access. 
 * **issuer (`iss`) claim**
@@ -173,7 +173,7 @@ You can move on to the Codefresh platform to obtain and use the OIDC ID token in
 
 Obtain the ID token from the Codefresh OIDC provider to authenticate and authorize pipeline actions. Codefresh makes this simple by offering a dedicated Marketplace step, the `obtain-oidc-id-token` step, which you can seamlessly add to your pipeline, without the need for additional configuration or parameters on your part.
 
-You can also use this step with custom `aud` claims to override the default configured.
+You can also use this step with custom audiences to override the default configured.
 
 
 {% include 
@@ -212,13 +212,13 @@ The step:
 
 <br>
 
-**Custom `aud` claims with the `obtain-oidc-id-token` step**  
+**Custom audiences with the `obtain-oidc-id-token` step**  
 
-Instead of configuring the URL of the Codefresh platform URL as the `aud` claim, you can pass single or multiple strings as custom audiences in the `obtain-oidc-id-token` step.
+Instead of configuring the URL of the Codefresh platform URL as the audience, you can pass single or multiple custom audiences in the `obtain-oidc-id-token` step.
 
-Here are examples of using single and multiple `aud` claims in the `obtain-oidc-id-token` step.
+Here are examples of single and multiple audience usage in the `obtain-oidc-id-token` step.
 
-* Single custom `aud` claim
+* Single custom audience
 ```yaml
 obtain_id_token:
     title: Obtain ID Token
@@ -227,7 +227,7 @@ obtain_id_token:
       AUDIENCE: "cosign"
 ```
 
-* Multiple custom `aud` claim s
+* Multiple custom audiences
 ```yaml
 obtain_id_token:
     title: Obtain ID Token
