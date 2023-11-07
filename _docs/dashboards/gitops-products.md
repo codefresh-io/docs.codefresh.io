@@ -30,14 +30,14 @@ Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboar
 **What are the benefits of GitOps Products?**  
 
 * Group applications  
-  Group and connect Argo CD applications based on a common element through Products. Assign your applications to logical Products for a consolidated perspective on these applications. For example, bring all your billing applications under the **Billing** Product.
+  Group and connect Argo CD applications based on a common element through Products. For example, bring all your billing applications under the **Billing** Product. Assign your applications to logical Products for a consolidated perspective on these applications. 
 
 * Bridge applications and GitOps Environments  
-  By creating Products and linking applications to them, the Products dashboard efficiently bridges the gap between applications and their respective environments. GitOps Products allow you to see how these applications are deployed across the different Environments.
+  By creating Products and linking applications to them, the Products dashboard efficiently bridges the gap between applications and their respective Environments. GitOps Products allow you to see how these applications are deployed across the different Environments.
 
-* Enriched insights 
-  With GitOps Products, Codefresh brings you critical information on the applications beyond their Git hashes. The Products dashboard automatically correlates sync information with other important information from the software lifecycle such as the source code commits and the affected services.
-  All stakeholders, including product and project managers and not just developers can instantly see information they need for all the applications in the different Environments.
+* Enriched insights   
+  With GitOps Products, Codefresh brings you critical information beyond sync and Git hash deployment information. The Products dashboard automatically correlates sync information with other important information from the software lifecycle such as the source code commits and the affected services.
+  All stakeholders, including product and project managers and not just developers can instantly see the information they need for all the applications in the different Environments.
 
 **How do you view applications by Product?**  
 In a simple two-step process:
@@ -45,7 +45,7 @@ In a simple two-step process:
 1. [Create the Product](#create-products)  
   You start by creating a Product, giving it a name that makes sense for your use case. 
 
-1. [Connect applications to the Product](#working-with-products)
+1. [Connect applications to the Product](#working-with-products)  
   Bring your applications into the picture. Link your applications to the Products you've created to create the associations you need. 
 
 Codefresh automatically identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
