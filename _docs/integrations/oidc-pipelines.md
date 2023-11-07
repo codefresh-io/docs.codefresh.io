@@ -48,7 +48,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
 
 
 * **audience (`aud`) claim**    
-  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a  custom audience, or a list of custom audiences.  
+  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a custom audience, or a list of custom audiences.  
 * **subject (`sub`) claim**   
   The `sub` claim is a string value concatenated from the different claims representing the precise authentication and authorization required for access. 
 * **issuer (`iss`) claim**
@@ -173,8 +173,6 @@ You can move on to the Codefresh platform to obtain and use the OIDC ID token in
 
 Obtain the ID token from the Codefresh OIDC provider to authenticate and authorize pipeline actions. Codefresh makes this simple by offering a dedicated Marketplace step, the `obtain-oidc-id-token` step, which you can seamlessly add to your pipeline, without the need for additional configuration or parameters on your part.
 
-You can also use this step with custom audiences to override the default configured.
-
 
 {% include 
 image.html 
@@ -195,7 +193,7 @@ The step:
 1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
   
   >**NOTE**:  
-  Codefresh injects these two variables into every pipeline build, ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
+  Codefresh injects these two variables into every pipeline build, ensuring their availability for use in steps.
 
 
   Example:  
@@ -209,6 +207,28 @@ The step:
 {:start="2"} 
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
   You can use this environment variable in subsequent steps within the same pipeline.
+
+<br>
+
+**Requesting new OIDC ID tokens during build**  
+* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
+
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
+
+
+<br><br>
+
+**How to**  
+
+* Add the step to your Codefresh pipeline's workflow.
+```yaml
+version: '1.0'
+steps:
+  obtain_id_token:
+    title: Obtain ID Token
+    type: obtain-oidc-id-token
+```
+
 
 <br>
 
@@ -235,29 +255,7 @@ obtain_id_token:
     arguments:
       AUDIENCE: "cosign,acme,custom"
 ```
-You can also do this via a simple API call in a `freestyle` step as follows:  
-`curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL?audience=cosign"`
-
-<br>
-
-**Requesting new OIDC ID tokens during build**  
-* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
-
-* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
-
-
-<br><br>
-
-**How to**  
-
-* Add the step to your Codefresh pipeline's workflow.
-```yaml
-version: '1.0'
-steps:
-  obtain_id_token:
-    title: Obtain ID Token
-    type: obtain-oidc-id-token
-```
+If you are using an API call in a `freestyle` step, you can pass the custom audience as the value of `$CF_OIDC_REQUEST_URL`, for  example, `"$CF_OIDC_REQUEST_URL?audience=cosign"`.
 
 ### Step 4: Add steps to perform actions in the cloud provider
 Add steps to the pipeline YAML to perform the required actions in the cloud provider. The specific steps required depend on the cloud provider you choose.  
@@ -475,9 +473,6 @@ assume_role:
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
 >**NOTE:**  
-
-
-
 The cloud provider uses the ID token to authenticate the request to assume the role, after which the pipeline’s build performs the permitted action for the role, such as listing the objects in the S3 bucket.
 
 
