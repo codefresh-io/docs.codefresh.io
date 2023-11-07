@@ -255,6 +255,7 @@ obtain_id_token:
     arguments:
       AUDIENCE: "cosign,acme,custom"
 ```
+
 If you are using an API call in a `freestyle` step, you can pass the custom audience as the value of `$CF_OIDC_REQUEST_URL`, for  example, `"$CF_OIDC_REQUEST_URL?audience=cosign"`.
 
 ### Step 4: Add steps to perform actions in the cloud provider
