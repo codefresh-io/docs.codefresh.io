@@ -5,6 +5,7 @@ group: dashboards
 toc: true
 ---
 
+>**NOTE**: This feature is currently in Beta.
 
 Codefresh offers a range of dashboards, each offering unique insights into Argo CD applications and their deployments. The GitOps Overview dashboard offers a high-level view, showcasing essential Key Performance Indicators (KPIs). The GitOps Apps dashboard centralizes the monitoring and management of individual application deployments, resources, and configurations.
 
@@ -194,10 +195,10 @@ You can then view the deployment history for a specific version of the applicati
 ### Identify application versions in different Environments
 Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
 
-Codefresh does more than just show you the version of the application currently deployed in an Environment.  
-You can also:
+Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
+You can:  
 * View the charts (dependencies) deployed with the application and the release for each
-* Compare dependency versions with applications in different Environments
+* Compare dependency versions with applications in different environments
 
 **How to**  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
