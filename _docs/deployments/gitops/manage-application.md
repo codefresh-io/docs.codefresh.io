@@ -507,11 +507,12 @@ Delete an Argo CD application from Codefresh. Deleting an application deletes th
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
-**Deleting applications through Argo CD UI**  
-When you delete Argo CD applications through the Argo CD UI, you may still see them in the GitOps Apps dashboard. Codefresh's validation mechanism identifies such applications, and will typically remove them from the GitOps Apps dashboard within a short period of time.  
-If an application deleted from Argo CD continues to be displayed, it is likely that it is also not deleted from the cluster. It is then essential to investigate further, checking for conditions or settings that might be preventing the application's deletion. 
+**Deleting applications in Argo CD**  
+When you delete Argo CD applications in the Argo CD UI, you might still see them in Codefresh's GitOps Apps dashboard.
 
- 
+Codefresh employs a validation mechanism to detect applications deleted from Argo CD and remove them from the GitOps Apps dashboard. If the application continues to be displayedin the dashboard after deleting it in Argo CD, it's possible that the application hasn't been deleted from the cluster. In this case, it essential to investigate further and check for conditions or settings preventing the application's deletion.
+
+
 **How to**  
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
