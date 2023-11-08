@@ -260,9 +260,9 @@ max-width="50%"
 1. In the Add an Identity Provider form, do the following:
     1. Select Provider type as **OpenID Connect**.
     1. Enter a meaningful name for the Provider.
-    1. In the **Audience** field, enter the client ID for Codefresh:
+    1. In the **Provider URL** field, enter the client ID for Codefresh:
       For SaaS customers, this is `https://g.codefresh.io`.  
-      For on-premises, this is the URL of their codefresh instance.
+      For on-premises customers, this is the URL of their Codefresh instance.
     1. Click **Add provider**.
 
 {% include 
