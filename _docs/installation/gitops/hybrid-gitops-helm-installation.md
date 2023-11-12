@@ -190,8 +190,8 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
 * Verify that you complete all the [prerequisites](#preparing-for-hybrid-gitops-runtime-installation)
 * Git provider requirements:
-    * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    <!--- * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
+    * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
+    <!--- * [Git user token]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
     * Server URLs for on-premises Git providers
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
@@ -428,7 +428,7 @@ Git credentials include authorizing access to Git through OAuth2 or a Git Runtim
 
 **Git authorization**
 * OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for Codefresh]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
-* Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
+* Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes).
 
 **SSH access to Git**  
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
@@ -503,7 +503,7 @@ max-width="50%"
 
 ### Step 5: Add Git user token
 Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
-Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
+Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 >**TIP**:  
 If you already have a Git user token defined, you can skip this step.  
@@ -650,7 +650,7 @@ You can use the same Git Runtime token you used for the first Runtime.
 
 **Git user token**  
 The Git user token is a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
-Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
+Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 **Configure as Argo CD application**  
 Configuring the Runtime an an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
@@ -930,8 +930,8 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
-|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
-| |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
+|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
+| |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 
 
 ## Ingress controller configuration

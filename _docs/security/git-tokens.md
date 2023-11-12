@@ -1,9 +1,10 @@
 ---
 title: "Git tokens"
 description: ""
-group: reference
+group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
+  - /docs/reference/git-tokens/ 
 toc: true
 ---
 
@@ -66,3 +67,5 @@ You need to create a service or robot account with your Git provider, generate t
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
+[Secrets]({site.baseurl}}/docs/reference/secrets/)  
+[Signed artifacts in Codefresh]({site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
