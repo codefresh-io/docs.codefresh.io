@@ -302,7 +302,6 @@ max-width="50%"
     >**NOTE**:  
      The Client ID must align with the value set for `audience`. The provided URLs are valid for the default audience.   
     For custom audiences, ensure that the Client ID corresponds to the specific custom audience you've configured.
-     
     1. Click **Add provider**.
 
 {% include 
