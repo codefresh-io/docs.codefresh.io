@@ -225,6 +225,8 @@
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: On-premises GitOps Runtime installation
       localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/
+    - title: Migrating CLI-based Hybrid GitOps Runtimes to Helm-based Runtimes
+      localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/
 
 - title: Administration
   icon: images/home-icons/administration.svg

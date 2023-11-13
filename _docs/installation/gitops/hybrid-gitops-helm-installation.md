@@ -378,7 +378,7 @@ helm upgrade --install <helm-release-name> \
       * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ , which is also the default access mode. Automatically populated by Codefresh in the installation command.
       * `<codefresh-api-key>` is the API key, either an existing one or a new API key you generated. When generated, it is automatically populated in the command.
       * `<runtime-name>` is the name of the GitOps Runtime, and is either `codefresh` which is the default, or the custom name you define.
-      * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<hem-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define.
+      * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<helm-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define.
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
       * GitOps with Argo CD installation:
         * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory when _installing GitOps with Argo CD_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
@@ -399,8 +399,8 @@ helm upgrade --install <helm-release-name> \
 {:start="5"}
 1. Wait for a few minutes, and then click **Close**.
   You are taken to the List View for GitOps Runtimes where:
-  * The Hybrid GitOps Runtime you added is prefixed with a green dot indicating that it is online
-  * The Type column for the Runtime displays **Helm**
+  * The Hybrid GitOps Runtime you added is prefixed with a green dot indicating that it is online.
+  * The Type column for the Runtime displays **Helm**.
   * The Sync Status column displays **Complete Installation**, indicating that there are pending steps to complete the installation.  
   * Drilling down into the Runtime shows empty tabs for Runtime Components, Git Sources, and Managed Clusters.  
     The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, described later on in the installation process.
