@@ -516,7 +516,7 @@
           url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
-        - title: Migrate CLI-based Hybrid GitOps Runtime to Helm-based
+        - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
           url: "/migrate-cli-runtimes-helm"  
         - title: Manage & monitor GitOps Runtimes
           url: "/monitor-manage-runtimes"
