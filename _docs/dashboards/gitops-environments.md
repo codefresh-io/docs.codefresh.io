@@ -285,5 +285,8 @@ Manage applications from within Environments through the application's context m
 %}
 
 ## Related information
-[Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)
