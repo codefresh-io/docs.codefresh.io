@@ -10,6 +10,8 @@ If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve 
 
 When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/), making them available to all the Runtimes in the account.
 
+The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
+
 ## Before you begin
 Have this information ready:
 * Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/)  
