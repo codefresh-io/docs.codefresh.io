@@ -197,19 +197,18 @@ max-width="60%"
 
 The step:  
 
-1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
-  
-  >**NOTE**:  
-  Codefresh injects these two variables into every pipeline build, ensuring their availability for use in steps.
-
-
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.   
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.
-    * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token. 
+  * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.  
+  * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token.    
   
-  You can also insert the `curl` command as an API call in a `freestyle` step to get the same result.
+  You can also insert the `curl` command as an API call in a `freestyle` step to get the same result.  
+
+  >**NOTE**:  
+  Codefresh injects these two variables into every pipeline build, ensuring their availability for use in steps.
+
 
 {:start="2"} 
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
@@ -243,7 +242,7 @@ steps:
 
 Instead of configuring the URL of the Codefresh platform URL as the audience, you can pass single or multiple custom audiences in the `obtain-oidc-id-token` step.
 
-Here are examples of single and multiple audience usage in the `obtain-oidc-id-token` step.
+Here are examples of single and multiple audiences in the `obtain-oidc-id-token` step.
 
 * Single custom audience
 ```yaml
