@@ -1,5 +1,5 @@
 ---
-title: "Migrate GitOps Runtimes from CLI to Helm"
+title: "Migrating GitOps Runtimes from CLI to Helm"
 description: "Migrate existing Hybrid GitOps Runtimes from CLI-based to Helm-based Runtimes"
 group: installation
 toc: true
