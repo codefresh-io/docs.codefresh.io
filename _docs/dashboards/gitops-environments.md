@@ -192,15 +192,10 @@ Here too, see which applications are running on each Environment, the most recen
 
 You can then view the deployment history for a specific version of the application.
 
-### Identify application versions in different Environments
-Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+### Get versions of dependencies in selected application
+Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release. View the charts (dependencies) deployed with the application and the release version of each.
 
-Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
-You can:  
-* View the charts (dependencies) deployed with the application and the release for each
-* Compare dependency versions with applications in different environments
-
-**How to**  
+ 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
 
@@ -215,7 +210,7 @@ You can:
 %}
 
 {:start="3"}
-1. Switch been tabular and YAML views to see the dependencies and their versions.
+1. Switch been **Table** and **YAML** views to see the dependencies and their versions.
 
 {% include 
 	image.html 
@@ -227,16 +222,42 @@ You can:
   max-width="60%" 
 %}
 
-{:start="4"}
-1. To compare the selected application with its counterparts in different Environments, enable **Compare**.
+
+
+### Compare dependency versions and diffs across Environments
+
+Compare the versions of dependencies dependency in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two Environments.  
+
+* The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
+* The YAML view displays a diff between two Environments.
+
+
+1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. Click the version number of the application.
+1. To compare the versions of dependencies in the selected application across different Environments, enable **Compare**.
+1. Select the Environments to compare to. 
+1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/app-dependency-list.png" 
+	url="/images/gitops-products/app-dependency-list.png" 
+	alt="App dependencies and versions" 
+	caption="App dependencies and versions"
+  max-width="60%" 
+%}
+
+{:start="6"}
+1. To see the actual diffs between the applications, switch to **YAML** view, and then toggle between **Full**/**Compact** views.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-environments/version-compare-apps.png" 
 	url="/images/gitops-environments/version-compare-apps.png" 
-	alt="Compare versions dependencies of application in different Environments" 
-	caption="Compare versions dependencies of application in different Environments"
+	alt="Compare versions for dependencies in different Environments" 
+	caption="Compare versions for dependencies in different Environments"
   max-width="60%" 
 %}
 
