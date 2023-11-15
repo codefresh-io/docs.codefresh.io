@@ -8,18 +8,22 @@ toc: true
 Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are considered legacy and will be deprecated.  
 If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve important data and install the new Helm GitOps Runtime.
 
-When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/), making them available to all the Runtimes in the account.
+When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
 
+>**NOTE**:  
+Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.53 and higher. 
+
 ## Before you begin
-Have this information ready:
+Make sure you have:
 * Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/)  
-* Git user name, based on the Git provider
+* Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
   * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.
-
+* CLI version 0.1.53 or higher  
+  Run `cf upgrade` if needed to download the latest CLI version
 
 ## Step 1: Migrate CLI-based GitOps Runtime 
 Migrate an existing CLI-based GitOps Runtime to a Helm-based Runtime by running the migration command. 
@@ -37,7 +41,6 @@ The migration command does the following:
 cf migrate <RUNTIME_NAME> \
   --git-token <GIT_TOKEN> \
   [--git-user <GIT_USER>] \
-  [--namespace <NAMESPACE>]
 ```
   where:  
   * `<RUNTIME_NAME>` is the name of the GitOps Runtime to migrate. When omitted, Codefresh displays the available Runtimes you can select from.
@@ -46,7 +49,6 @@ cf migrate <RUNTIME_NAME> \
     * GitHub and GitHub Enterprise: Not required. Codefresh 
     * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
     * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
-  * `<NAMESPACE>` is optional, and is required only when the CLI Runtime is installed to a namespace with a  
 1. Continue with [Step 2: Update values.yaml](#step-2-update-values-yaml).
 
 ## Step 2: Update values.yaml
@@ -92,9 +94,9 @@ If the Helm installation is terminated with the error message: `Job has reached 
 
 
 >**IMPORTANT**:  
-**Runtime Name** and  **Namespace**  
+**Runtime Name** and **Namespace**  
 The name of the Helm-based Runtime _must be identical_ to that of the CLI-based Runtime.  
-The `namespace` is required only if it is differernt from the Runtime name.
+The `namespace` is required only if it is different from the Runtime name.
 
 
 
