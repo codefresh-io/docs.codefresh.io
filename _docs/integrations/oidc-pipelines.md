@@ -48,7 +48,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
 
 
 * **audience (`aud`) claim**    
-  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a custom audience as a single0-value string, or a list of custom audiences as an array of strings.  See examples in [Step 3: Obtain OIDC ID token from OIDC provider](#step-3-obtain-oidc-id-token-from-oidc-provider).
+  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a custom audience as a single-value string, or a list of custom audiences as an array of strings.  See examples in [Step 3: Obtain OIDC ID token from OIDC provider](#step-3-obtain-oidc-id-token-from-oidc-provider).
 * **subject (`sub`) claim**   
   The `sub` claim is a string value concatenated from the different claims representing the precise authentication and authorization required for access. 
 * **issuer (`iss`) claim**
@@ -240,7 +240,7 @@ steps:
 
 **Custom audiences with the `obtain-oidc-id-token` step**  
 
-Instead of configuring the URL of the Codefresh platform URL as the audience, you can pass single or multiple custom audiences in the `obtain-oidc-id-token` step.
+Instead of using the default audience which is the Codefresh platform URL, you can pass single or multiple custom audiences in the `obtain-oidc-id-token` step.
 
 Here are examples of single and multiple audiences in the `obtain-oidc-id-token` step.
 
