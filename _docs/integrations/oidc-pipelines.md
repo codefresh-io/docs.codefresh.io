@@ -48,7 +48,7 @@ Codefresh supports a subset of standard claims which are listed below. Generally
 
 
 * **audience (`aud`) claim**    
-  The `aud` claim is the Client ID, which is the URL of the Codefresh platform instance.  
+  The `aud` claim is the Client ID, which is by default the URL of the Codefresh platform instance. You can also configure a custom audience as a single-value string, or a list of custom audiences as an array of strings.  See examples in [Step 3: Obtain OIDC ID token from OIDC provider](#step-3-obtain-oidc-id-token-from-oidc-provider).
 * **subject (`sub`) claim**   
   The `sub` claim is a string value concatenated from the different claims representing the precise authentication and authorization required for access. 
 * **issuer (`iss`) claim**
@@ -145,19 +145,26 @@ The first step is to integrate Codefresh as an OIDC identity provider in the clo
 Make sure you define the following settings:
 
 1. **Provider type**: OIDC
-1. **Provider URL**: The URL of the OIDC provider's authorization server, which is the Codefresh OIDC domain, `https//oidc.codefresh.io`. <!--- You can configure one provider URL -->
-1.  **Client ID**: The URL of the Codefresh platform. For SaaS, `https://g.codefresh.io`.  
-    For on-premises, this is the URL of your Codefresh instance, for example, `https://<my.company.com>/codefresh.io`.
+1. **Provider URL**: The URL of the OIDC provider's authorization server, which is the Codefresh OIDC domain:  
+  * For SaaS customers this would be `https//oidc.codefresh.io`. 
+  * For on-premises customers, this would be your on-premises instance of Codefresh, for example, `https//oidc.<my.company.com>/codefresh`. 
+1. **Client ID**: The URL of the Codefresh platform:  
+  * For SaaS customers this would be `https://g.codefresh.io`.  
+  * For on-premises customers, this would be the URL of your Codefresh instance, for example, `https://<my.company.com>/codefresh`.
+  >**NOTE**:  
+  The Client ID must align with the value set for `audience`. The provided URLs are valid for the default audience.  
+  For custom audiences, ensure that the Client ID corresponds to the specific custom audience you've configured.
 
 
-### Step 2: Create trust and configure claims for Codefresh OIDC identity provider
+### Step 2: Create trust for Codefresh OIDC identity provider
 
 Once you've added Codefresh as an OIDC provider, the next step is to establish trust between your cloud provider and the OIDC provider, Codefresh in our case. 
 
 To create trust, define the claims, and configure the conditions for each claim.      
 
 * For Codefresh pipelines, the claims depend on the type of trigger. 
-* The syntax to create the `sub` claim is similar for all identity providers, and is a concatenation of different claims, separated by colons. These generally include the account, pipeline, initiator, and for Git triggers, SCM (Source Code Management) data such as the repo URL or branch, and for PRs, the target branch to merge to.
+* The `sub` claim is a concatenation of different properties that encapsulate essential metadata on the authenticated entity.  
+  These properties include the account, pipeline, workflow, and if the workflow was triggered by a Git webhook or manually. Git triggers include also SCM (Source Code Management) data such as the repo URL or branch, and for PRs, the target branch to merge to.
 
 See [Custom Codefresh claims](#custom-codefresh-claims) and [Codefresh trigger types for Subject claims](#codefresh-trigger-types-for-subject-claims) in this article.
 
@@ -172,7 +179,6 @@ You can move on to the Codefresh platform to obtain and use the OIDC ID token in
 ### Step 3: Obtain OIDC ID token from OIDC provider
 
 Obtain the ID token from the Codefresh OIDC provider to authenticate and authorize pipeline actions. Codefresh makes this simple by offering a dedicated Marketplace step, the `obtain-oidc-id-token` step, which you can seamlessly add to your pipeline, without the need for additional configuration or parameters on your part.
-
 
 
 {% include 
@@ -191,19 +197,18 @@ max-width="60%"
 
 The step:  
 
-1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
-  
-  >**NOTE**:  
-  Codefresh injects these two variables for every pipeline build, ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
-
-
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.   
   Example:  
   `curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL"`  
   where:  
-    * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.
-    * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token. 
+  * `CF_OIDC_REQUEST_TOKEN` is an access token used to request the OIDC ID token for the OIDC provider.  
+  * `CF_OIDC_REQUEST_URL` is the URL from which to request the ID token.    
   
-  You can also insert the `curl` command as an API call in a freestyle step to get the same result.
+  You can also insert the `curl` command as an API call in a `freestyle` step to get the same result.  
+
+  >**NOTE**:  
+  Codefresh injects these two variables into every pipeline build, ensuring their availability for use in steps.
+
 
 {:start="2"} 
 1. Sets the ID token in the `ID_TOKEN` environment variable.  
@@ -229,6 +234,36 @@ steps:
     title: Obtain ID Token
     type: obtain-oidc-id-token
 ```
+
+
+<br>
+
+**Custom audiences with the `obtain-oidc-id-token` step**  
+
+Instead of using the default audience which is the Codefresh platform URL, you can pass single or multiple custom audiences in the `obtain-oidc-id-token` step.
+
+Here are examples of single and multiple audiences in the `obtain-oidc-id-token` step.
+
+* Single custom audience
+```yaml
+obtain_id_token:
+    title: Obtain ID Token
+    type: obtain-oidc-id-token
+    arguments:
+      AUDIENCE: "cosign"
+```
+
+* Multiple custom audiences
+```yaml
+obtain_id_token:
+    title: Obtain ID Token
+    type: obtain-oidc-id-token
+    arguments:
+      AUDIENCE: "cosign,acme,custom"
+```
+
+If you are using an API call in a `freestyle` step, you can pass the custom audience as a query parameter after `$CF_OIDC_REQUEST_URL`, for example, `"$CF_OIDC_REQUEST_URL?audience=cosign"`.  
+`curl -H "Authorization: $CF_OIDC_REQUEST_TOKEN" "$CF_OIDC_REQUEST_URL?audience=cosign"`  
 
 ### Step 4: Add steps to perform actions in the cloud provider
 Add steps to the pipeline YAML to perform the required actions in the cloud provider. The specific steps required depend on the cloud provider you choose.  
@@ -260,9 +295,12 @@ max-width="50%"
 1. In the Add an Identity Provider form, do the following:
     1. Select Provider type as **OpenID Connect**.
     1. Enter a meaningful name for the Provider.
-    1. In the **Provider URL** field, enter the client ID for Codefresh:
+    1. In the **Provider URL** field, enter the client ID for Codefresh:  
       For SaaS customers, this is `https://g.codefresh.io`.  
-      For on-premises customers, this is the URL of their Codefresh instance.
+      For on-premises, this is the URL of their codefresh instance. 
+    >**NOTE**:  
+     The Client ID must align with the value set for `audience`. The provided URLs are valid for the default audience.   
+    For custom audiences, ensure that the Client ID corresponds to the specific custom audience you've configured.
     1. Click **Add provider**.
 
 {% include 
@@ -446,9 +484,6 @@ assume_role:
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
 >**NOTE:**  
-
-
-
 The cloud provider uses the ID token to authenticate the request to assume the role, after which the pipeline’s build performs the permitted action for the role, such as listing the objects in the S3 bucket.
 
 
