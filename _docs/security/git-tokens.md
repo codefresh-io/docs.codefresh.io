@@ -1,6 +1,6 @@
 ---
 title: "Git tokens"
-description: ""
+description: "Understand what Git tokens and scopes required by Codefresh"
 group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
