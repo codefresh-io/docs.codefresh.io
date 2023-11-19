@@ -262,8 +262,6 @@
     - title: Verify authenticity of Codefresh artifacts
       localurl: /docs/security/codefresh-signed-artifacts/
 
-Verifying authenticity of Codefresh artifacts
-
 - title: "Incubation"
   icon: images/home-icons/plugins.svg
   url: ""
