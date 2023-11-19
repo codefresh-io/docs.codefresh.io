@@ -27,6 +27,6 @@ To verify the authenticity of third-party images that Codefresh uses, such as NG
 
 
 ## Related articles
-[Secrets]({site.baseurl}}/docs/reference/secrets/)  
+[Secrets]({site.baseurl}}/docs/security/secrets/)  
 [Git tokens]({site.baseurl}}/docs/security/git-tokens/)  
 
