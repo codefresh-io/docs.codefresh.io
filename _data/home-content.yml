@@ -251,14 +251,18 @@
     - title: Single Sign-On
       localurl: /docs/administration/single-sign-on/
 
-- title: Reference
+- title: Security
   icon: images/home-icons/guides.png
   url: ""
   links:
-    - title: Git tokens
+    - title: Git tokens for GitOps
       localurl: /docs/security/git-tokens/
     - title: Secrets for GitOps
-      localurl: /docs/reference/secrets
+      localurl: /docs/security/secrets/
+    - title: Verify authenticity of Codefresh artifacts
+      localurl: /docs/security/codefresh-signed-artifacts/
+
+Verifying authenticity of Codefresh artifacts
 
 - title: "Incubation"
   icon: images/home-icons/plugins.svg

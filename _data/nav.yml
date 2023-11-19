@@ -587,13 +587,15 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
-- title: Reference
-  url: "/reference"
+- title: Security
+  url: "/security"
   pages:
-    - title: Git tokens
+    - title: Git tokens for GitOps
       url: "/git-tokens"
-    - title: Secrets
+    - title: Secrets for GitOps
       url: "/secrets"
+    - title: Verify authenticity of Codefresh artifacts
+      url: "/codefresh-signed-artifacts"
 
 - title: What's new
   url: "/whats-new"
