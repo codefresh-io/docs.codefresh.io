@@ -23,7 +23,7 @@ where:
 ???
 
 ## Third-party images in Codefresh
-To verify the authenticity of third-party images that Codefresh uses, such as NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets refer to the official documentation of each component.
+To verify the authenticity of third-party images that Codefresh uses, such as NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets, refer to the official documentation of each component.
 
 
 ## Related articles
