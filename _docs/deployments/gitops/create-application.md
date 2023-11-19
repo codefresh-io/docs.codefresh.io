@@ -9,28 +9,28 @@ toc: true
 
 
 Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
-* Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
-  Creating an Argo CDapplication in Codefresh includes defining:  
+
+Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
+
+Creating an Argo CD application in Codefresh includes defining:  
   * Application name and location
   * General configuration settings
   * Advanced configuration settings
 
 
-  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
-  For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
+The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
+
+For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
   
-  Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
+Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
+ 
+Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) individual Argo CD applications.
 
+You can also monitor and manage Argo CD applications by Environments and Products, custom resources you can create in Codefresh. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 
-* Monitor Argo CD applications  
-  After creating an application, and it is synced to the cluster, the application is displayed in the GitOps Apps dashboard. Here, 
-  Here you can monitor its health and sync status, deployments, and resources. See [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
-
-* Manage Argo CD applications  
-  You can also select an application and update the application's configuration settings, or delete it.  For all available options, see [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
 ## Application: Definitions
-Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
+Application definitions include the application name, the GitOps Runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
    image.html 
@@ -272,5 +272,7 @@ Monitor the application.
 ## Related articles
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

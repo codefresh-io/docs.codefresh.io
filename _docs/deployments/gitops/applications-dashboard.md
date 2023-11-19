@@ -7,7 +7,12 @@ toc: true
 ---
 
 
-Monitor individual applications or groups of Argo CD applications in the GitOps Apps dashboard. This article focuses on individual Argo CD applications.
+Monitor Argo CD applications individually or within groups in the GitOps Apps dashboard.  
+You also monitor applications in the context of their Enviroments, and as part of the Product to which they are connected.  
+
+This article focuses on monitoring individual Argo CD applications in the GitOps Apps dashboard.
+
+
 
 * **Applications**  
   Monitor deployments, resources, and services of individual applications.  
@@ -33,7 +38,14 @@ max-width="70%"
   * [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application)
   * [Monitor services for selected Argo CD application](#monitor-services-for-selected-argo-cd-application)
 
+* **GitOps Environments**  
+  The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.  
+  See [GitOps Environments](#gitops-environments--argo-cd-applications).
 
+
+* **GitOps Products**  
+  The GitOps Products dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
+  See [GitOps Products](#gitops-products--argo-cd-applications).
 
 * **Application Groups**  
   Monitor the deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights.
@@ -44,7 +56,48 @@ max-width="70%"
 >**NOTE**:  
 For information on creating and managing Application Groups, Argo CD applications and application resources, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
 
-  
+## GitOps Environments & Argo CD applications
+To track, optimize, and manage deployments at scale you need a way to visualize applications at every stage of their development and deployment lifecycle. Our custom Environment entity resource allows you to do just this without the need for complex configuration and maintenance overhead. 
+
+Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces.
+
+You can visualize the environments and their applications in the GitOps Environments dashboard, allowing you tracking in parallel how and when an application was promoted from one to another, with version and other crucial information such as details on the most recent commits that caused the change.
+
+Here's a visualization of Argo CD applications in the GitOps Environments dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	alt="Argo CD applications organized in GitOps Environments" 
+	caption="Argo CD applications organized in GitOps Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with applications and Environments, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+
+## GitOps Products & Argo CD applications
+The Product is another custom resource from Codefresh, adding another dimension to managing applications at scale. As teams grow, and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
+
+Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments,  
+Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+
+Codefresh automatically and seamlessly collates the environments where each application is deployed. The comprehensive data includes not just application versions, but also enriched insights into commits, contributors, and uniquely the features deployed across different versions.
+
+Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Argo CD applications grouped by Products and organized by Environments" 
+	caption="Argo CD applications grouped by Products and organized by Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with applications and Products, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 ## Select view mode for the GitOps Apps dashboard 
