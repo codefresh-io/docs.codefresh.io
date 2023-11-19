@@ -21,7 +21,7 @@ Sealed Secrets are based on [public/private key encryption](https://en.wikipedia
 
 For Argo CD applications, it is critical to encrypt secrets, as it means that you can commit any kind of secret in Git as long as it is encrypted.  
 
-**Sealed Secrets mechanism in Codefresh**
+**Sealed Secrets mechanism in Codefresh**  
 The Sealed Secrets controller in a GitOps Runtime generates a sealing key, which is then divided into two parts:
 
 1. Half the private key is saved in a `configmap` that represents this sealing key, stored in the Shared Configuration Repo

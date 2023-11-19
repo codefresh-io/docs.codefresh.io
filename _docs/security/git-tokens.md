@@ -1,5 +1,5 @@
 ---
-title: "Git tokens"
+title: "Git tokens for GitOps"
 description: "Understand what Git tokens and scopes required by Codefresh"
 group: security
 redirect_from:
