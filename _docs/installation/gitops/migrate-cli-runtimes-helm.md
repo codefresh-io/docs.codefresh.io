@@ -17,7 +17,7 @@ Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI ver
 
 ## Before you begin
 Make sure you have:
-* Git user token (see [Git tokens]({{site.baseurl}}//docs/reference/git-tokens/#git-user-access-token-scopes)
+* Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes))
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
