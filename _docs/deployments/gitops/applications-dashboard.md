@@ -9,11 +9,6 @@ toc: true
 
 Monitor individual applications or groups of Argo CD applications in the GitOps Apps dashboard. This article focuses on individual Argo CD applications.
 
-* **Applications**  
-  Monitor deployments, resources, and services of individual applications.  
-  As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
-
-  
 {% include
 image.html
 lightbox="true"
@@ -23,6 +18,10 @@ alt="GitOps Apps dashboard: List view"
 caption="GitOps Apps dashboard: List view"
 max-width="70%"
 %}
+
+* **Applications**  
+  Monitor deployments, resources, and services of individual applications.  
+  As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
 
   Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
   

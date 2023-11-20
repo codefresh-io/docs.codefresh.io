@@ -60,7 +60,7 @@ The diagram illustrates how Codefresh organizes different Argo CD applications i
 
 Create Environments by defining key settings (see [Create GitOps Environments](#create-gitops-environments)), and see how Codefresh pulls in all the information into an intuitive dashboard (see [GitOps Environments dashboard](#gitops-environments-dashboard)). Learn how to [work with GitOps Environments](/#working-with-gitops-environments) and [work with Argo CD applications](#working-with-applications-in-gitops-environments) within Environments.
 
-Remember you can further refine application views in Environments through Products. Read more in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
+Remember you can further refine application views in Environments through Products. Read about in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
 
 
 
@@ -196,10 +196,10 @@ You can then view the deployment history for a specific version of the applicati
 ### Identify application versions in different Environments
 Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
 
-Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
+<!--- Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
 You can:  
 * View the charts (dependencies) deployed with the application and the release for each
-* Compare dependency versions with applications in different environments
+* Compare dependency versions with applications in different environments  -->
 
 **How to**  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
@@ -241,7 +241,7 @@ Compare the versions of dependencies in the same application across different En
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
-1. To compare the versions of dependencies in the selected application across different Environments, enable **Compare**.
+1. To compare the versions of dependencies for the selected application across different Environments, enable **Compare**.
 1. Select the Environments to compare to. 
 1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
 
