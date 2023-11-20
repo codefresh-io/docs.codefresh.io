@@ -500,12 +500,21 @@ The table describes the options for the `Rollout` resource.
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
 
 ## Delete Argo CD applications
-Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
- 
->**Prune resources** in the application's General settings determines the scope of the delete action.  
+Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.  
+
+**Prune resources settings**  
+**Prune resources** in the application's General settings determines the scope of the delete action.  
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
 
+**Deleting applications in Argo CD**  
+When you delete Argo CD applications in the Argo CD UI, you may still see them in Codefresh's GitOps Apps dashboard.
+
+Codefresh employs a validation mechanism to detect applications deleted from Argo CD and to remove them from the GitOps Apps dashboard.  
+If the application continues to be displayed in the dashboard after it was deleted in Argo CD, it could be that the application hasn't been deleted from the cluster. It is essential to investigate further and check for conditions or settings preventing the application's deletion.
+
+
+**How to**  
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
 1. Click the three dots for additional actions, and select **Delete**.

@@ -50,7 +50,7 @@ In a simple two-step process:
 
 Codefresh automatically identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
-The diagram illustrates how Argo CD applications connected to the same Product are grouped in that Product, organized by Environment. It also shows applications not assigned to any Product.
+The diagram illustrates how Argo CD applications connected to a Product are grouped by that Product, and organized by Environment. It also shows applications not assigned to any Product.
 
 {% include 
 	image.html 
@@ -61,6 +61,7 @@ The diagram illustrates how Argo CD applications connected to the same Product a
 	caption="Argo CD applications grouped by Products and organized by Environments"
   max-width="70%" 
 %}
+
 
 
 
@@ -88,6 +89,8 @@ Create a Product with a unique name and define the annotations by which to conne
 
 {:start="4"}
 1. Click **Add**. The Product is displayed in the Products dashboard. 
+
+
 
 ## GitOps Products dashboard
 
@@ -374,10 +377,17 @@ Displays issue-tracking information that correlates software features with their
   max-width="60%" 
 %}
 
-### Get versions of dependencies in selected application
-Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release. View the charts (dependencies) deployed with the application and the release version of each.
 
- 
+
+### Identify application versions in different Environments
+Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+
+Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
+You can:  
+* View the charts (dependencies) deployed with the application and the release for each
+* Compare dependency versions with applications in different environments
+
+**How to**  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
 
@@ -403,6 +413,7 @@ Identify the version of the application deployed in different Environments to tr
 	caption="Table and YAML views of chart dependencies"
   max-width="60%" 
 %}
+
 
 
 
@@ -442,6 +453,7 @@ Compare the versions of dependencies dependency in the same application across d
 	caption="Compare versions for dependencies in different Environments"
   max-width="60%" 
 %}
+
 
 
 ### View deployment (Timeline) history for applications

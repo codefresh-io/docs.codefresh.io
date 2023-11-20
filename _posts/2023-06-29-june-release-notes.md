@@ -113,7 +113,7 @@ As part of our ongoing commitment to improving efficiency and simplifying instal
 
 **Pipelines**  
 * Pipeline builds terminate with error message: `Pipeline could not be executed because retry attempts limit has been exceeded...`.
-* Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query. 
+* Discrepancy in list of builds returned when running `{% raw %}GET {{baseUrl/workflow?pipeline=[pipeline-id]}}{% endraw %}` query. 
 * Shallow clone for a specific revision with `depth` argument results in error: `pathspec 'test' did not match any file(s) known to git`.
 * Composition stops randomly with error: `Could not get status for container <container-name>`.
 * Cross-account ECR pull in `freestyle` step fails with `(HTTP code 500) server error...`. 

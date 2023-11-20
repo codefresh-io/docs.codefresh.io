@@ -192,10 +192,16 @@ Here too, see which applications are running on each Environment, the most recen
 
 You can then view the deployment history for a specific version of the application.
 
-### Get versions of dependencies in selected application
-Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release. View the charts (dependencies) deployed with the application and the release version of each.
 
- 
+### Identify application versions in different Environments
+Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+
+Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
+You can:  
+* View the charts (dependencies) deployed with the application and the release for each
+* Compare dependency versions with applications in different environments
+
+**How to**  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
 
@@ -224,9 +230,10 @@ Identify the version of the application deployed in different Environments to tr
 
 
 
+
 ### Compare dependency versions and diffs across Environments
 
-Compare the versions of dependencies dependency in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two Environments.  
+Compare the versions of dependencies in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two Environments.  
 
 * The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
 * The YAML view displays a diff between two Environments.
@@ -256,8 +263,8 @@ Compare the versions of dependencies dependency in the same application across d
 	lightbox="true" 
 	file="/images/gitops-environments/version-compare-apps.png" 
 	url="/images/gitops-environments/version-compare-apps.png" 
-	alt="Compare versions for dependencies in different Environments" 
-	caption="Compare versions for dependencies in different Environments"
+	alt="Compare versions of dependencies in different Environments" 
+	caption="Compare versions of dependencies in different Environments"
   max-width="60%" 
 %}
 
@@ -311,3 +318,4 @@ Manage applications from within Environments through the application's context m
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)
+
