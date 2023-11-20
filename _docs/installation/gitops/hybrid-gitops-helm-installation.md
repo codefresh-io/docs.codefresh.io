@@ -345,10 +345,10 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingress.enabled=true \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \
-  <helm-repo-name>/gitops-runtime \
   --set argo-cd.fullnameOverride=codefresh-argo-cd \
   --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
   --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
+  oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
 <br>
@@ -363,10 +363,10 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingressUrl=<ingress-url> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
-  <helm-repo-name>/gitops-runtime \
   --set argo-cd.fullnameOverride=codefresh-argo-cd \
   --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
   --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
+  oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
 
@@ -377,7 +377,6 @@ helm upgrade --install <helm-release-name> \
       * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ , which is also the default access mode. Automatically populated by Codefresh in the installation command.
       * `<codefresh-api-key>` is the API key, either an existing one or a new API key you generated. When generated, it is automatically populated in the command.
       * `<runtime-name>` is the name of the GitOps Runtime, and is either `codefresh` which is the default, or the custom name you define.
-      * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<helm-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define.
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
       * GitOps with Argo CD installation:
         * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory when _installing GitOps with Argo CD_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
@@ -598,8 +597,6 @@ The Git provider and Shared Configuration Repository is configured once per acco
 **Shared Configuration Repository and Git provider**  
 The Shared Configuration Repository and Git provider are configured once per account, and not required for additional installations.
 
-**Helm chart repository**  
-The repository for the Helm chart is also configured per account, and is not required for additional installations in the same account.
 
 **Access mode**  
 You can define the tunnel/ingress/service-mesh-based access mode for the additional GitOps Runtimes you install. The command in the How To below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
