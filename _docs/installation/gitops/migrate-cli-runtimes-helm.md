@@ -17,7 +17,7 @@ Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI ver
 
 ## Before you begin
 Make sure you have:
-* Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/)  
+* Git user token (see [Git tokens]({{site.baseurl}}//docs/reference/git-tokens/#git-user-access-token-scopes)
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
@@ -25,7 +25,17 @@ Make sure you have:
 * CLI version 0.1.53 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
-## Step 1: Migrate CLI-based GitOps Runtime 
+## Step 1: Update values.yaml
+
+Before migrating the CLI-based Runtime and installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration established in the CLI Runtime's setup.  
+
+The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
+
+1. Update `values.yaml`.
+1. Continue with [Step 2: Migrate CLI-based GitOps Runtime](#step-2-migrate-cli-based-gitops-runtime).
+
+
+## Step 2: Migrate CLI-based GitOps Runtime 
 Migrate an existing CLI-based GitOps Runtime to a Helm-based Runtime by running the migration command. 
 
 The migration command does the following: 
@@ -49,15 +59,6 @@ cf migrate <RUNTIME_NAME> \
     * GitHub and GitHub Enterprise: Not required. Codefresh 
     * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
     * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
-1. Continue with [Step 2: Update values.yaml](#step-2-update-values-yaml).
-
-## Step 2: Update values.yaml
-
-Before installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration established in the CLI Runtime's setup.  
-
-The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
-
-1. Update `values.yaml`.
 1. Continue with [Step 3: Select Hybrid Runtime install option](#step-3-select-hybrid-runtime-install-option). 
 
 ## Step 3: Select Hybrid Runtime install option
@@ -82,13 +83,14 @@ max-width="40%"
 
 
 ## Step 4: Install GitOps Helm Runtime
-Install a new Helm-based GtiOps Runtime to the cluster through the Helm chart. 
+Install a new Helm-based GitOps Runtime to the cluster through the Helm chart. 
+This step describes how to install the GitOps Runtime through the UI where you can copy the install command with values automatically populated by Codefresh.  
+You can also run the install command by applying the values.yaml file with the installation configuration and customizations.
 
 
 **values.yaml validation**    
-Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.<br> 
-If the Helm installation is terminated with the error message: `Job has reached the specified backoff limit`, get more detailed information on the reason for the validation failure with:  
-  `kubectl logs jobs/validate-values -n ${NAMESPACE}`, replacing `{NAMESPACE}` with the namespace of the Hybrid GitOps Runtime. 
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file, and if the supplied values are incorrect,terminates the installation. For troubleshooting details, see the [Job has reached the specified backoff limit error during Helm installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/#job-has-reached-the-specified-backoff-limit-error-during-helm-installation).
+ 
 
 <br><br>
 
@@ -98,8 +100,17 @@ If the Helm installation is terminated with the error message: `Job has reached 
 The name of the Helm-based Runtime _must be identical_ to that of the CLI-based Runtime.  
 The `namespace` is required only if it is different from the Runtime name.
 
+**Install by applying values.yaml**  
+Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace the name with the correct name if changed. 
 
-
+{% highlight yaml %}
+helm upgrade --intall <helm-release-name> \
+  --create-namespace \
+  --namespace <namespace> \
+  -f values.yaml \
+  oci://quay.io/codefresh/gitops-runtime \
+  --wait
+{% endhighlight %}
 
 <br><br>
 
@@ -296,7 +307,7 @@ max-width="50%"
 ## Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application
 
 Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.
-By doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
+We recommend completing this step, as by doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
 
 >**NOTE**:
 You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.
@@ -315,6 +326,9 @@ You cannot configure the Runtime as an Argo Application if you have not configur
       caption="Runtime Components after configuring GitOps Runtime as Argo Application"
       max-width="50%" 
    %}
+
+You have completed migrating your CLI-based GitOps Runtime to a Helm-based one.  
+In the Runtimes page, you can see that the Type column for the Runtime displays Helm. Drill down displays the [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/) and [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/) you had already created for the CLI-based Runtime.
 
 ## What to do next
 
