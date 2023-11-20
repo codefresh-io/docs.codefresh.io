@@ -10,6 +10,10 @@ toc: true
 
 Set up your environment with the Hosted GitOps Runtime to leverage Codefresh GitOps capabilities.
 
+>**IMPORTANT**:  
+Codefresh is responsible for the _availability of Hosted GitOps Runtimes_.<br>
+The Argo CD applications created in Hosted GitOps Runtimes are the customer's responsibility. Codefresh Support is happy to assist as needed.
+
 
 ## System requirements for Hosted GitOps Runtimes
 
@@ -17,7 +21,12 @@ Set up your environment with the Hosted GitOps Runtime to leverage Codefresh Git
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster      | Server version 1.18 and higher to which to deploy applications|
+|CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs defined declaratively with Crossplane        |
 |Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li><li>Gerrit</li></ul>{:/}|
+|Git repo for manifests   | Max size = 99MB OR up to 100MB|
+|CMP (Cloud Management Platform) plugins                  | Plugin images without contain high or critical vulnerabilities.<br>Codefresh immediately removes plugin images with vulnerabilities are found.  |
+| Sizing                       | Need to define the configuration for controller sizes.       |
+
 
 
 ## Where to start with Hosted GitOps Runtimes
