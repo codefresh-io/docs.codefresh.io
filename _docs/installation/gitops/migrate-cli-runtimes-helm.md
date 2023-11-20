@@ -104,7 +104,7 @@ The `namespace` is required only if it is different from the Runtime name.
 Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace the name with the correct name if changed. 
 
 {% highlight yaml %}
-helm upgrade --intall <helm-release-name> \
+helm upgrade --install <helm-release-name> \
   --create-namespace \
   --namespace <namespace> \
   -f values.yaml \
