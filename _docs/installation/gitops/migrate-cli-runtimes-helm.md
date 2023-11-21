@@ -89,7 +89,7 @@ You can also run the install command by applying the values.yaml file with the i
 
 
 **values.yaml validation**    
-Before initiating the installation, Codefresh automatically validates the `values.yaml` file, and if the supplied values are incorrect,terminates the installation. For troubleshooting details, see the [Job has reached the specified backoff limit error during Helm installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/#job-has-reached-the-specified-backoff-limit-error-during-helm-installation).
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file. If the supplied values are incorrect,Codefresh terminates the installation. For troubleshooting details, see [Job has reached the specified backoff limit error during Helm installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/#job-has-reached-the-specified-backoff-limit-error-during-helm-installation).
  
 
 <br><br>
@@ -98,10 +98,12 @@ Before initiating the installation, Codefresh automatically validates the `value
 >**IMPORTANT**:  
 **Runtime Name** and **Namespace**  
 The name of the Helm-based Runtime _must be identical_ to that of the CLI-based Runtime.  
-The `namespace` is required only if it is different from the Runtime name.
+The `namespace` is required only if it is different from the Runtime name.  
 
 **Install by applying values.yaml**  
-Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace the name with the correct name if changed. 
+Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace with the correct name of the file if needed. 
+
+This is an example of the Helm install command with the `values` file to be applied.
 
 {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
@@ -110,6 +112,19 @@ helm upgrade --install <helm-release-name> \
   -f values.yaml \
   oci://quay.io/codefresh/gitops-runtime \
   --wait
+{% endhighlight %}
+
+This is an example of the `values` file with the installation configuration settings applied. 
+
+{% highlight yaml %}
+global:
+  codefresh:
+    accountId: <codefresh-account-id>
+    userToken:
+      token: <codefresh-api-key>
+
+  runtime:
+    name: <runtime-name>
 {% endhighlight %}
 
 <br><br>
@@ -160,7 +175,7 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingress.enabled=true \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \
-  <helm-repo-name>/gitops-runtime \
+  oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
 <br>
@@ -175,7 +190,7 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingressUrl=<ingress-url> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
-  <helm-repo-name>/gitops-runtime \
+  oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
 
@@ -186,7 +201,7 @@ helm upgrade --install <helm-release-name> \
       * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ , which is also the default access mode. Automatically populated by Codefresh in the installation command.
       * `<codefresh-api-key>` is the API key, either an existing one or a new API key you generated. When generated, it is automatically populated in the command.
       * `<runtime-name>` is the name of the GitOps Runtime, and must be identical to that of the CLI-based Runtime you migrated.
-      * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<helm-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define.
+      <!--- * `<helm-repo-name>` is the name of the repo in which to store the Helm chart, and must be identical to the `<helm-repo-name>` you defined in _step 3_, either `cf-gitops-runtime` which is the default, or any custom name you define. -->
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
       * Ingress-based Runtimes:  
         * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
