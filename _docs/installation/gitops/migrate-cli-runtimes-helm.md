@@ -25,7 +25,7 @@ Make sure you have:
 * CLI version 0.1.53 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
-## Step 1: Update values.yaml
+## Step 1: Update `values.yaml`
 
 Before migrating the CLI-based Runtime and installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration established in the CLI Runtime's setup.  
 
@@ -56,9 +56,9 @@ cf migrate <RUNTIME_NAME> \
   * `<RUNTIME_NAME>` is the name of the GitOps Runtime to migrate. When omitted, Codefresh displays the available Runtimes you can select from.
   * `<GIT_TOKEN>` is required, and is the Git user token (not the Git Runtime token), or the environment variable that 
   * `<GIT_USER>` is optional depending on the Git provider, and is your user or ogranization name:
-    * GitHub and GitHub Enterprise: Not required. Codefresh 
-    * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
-    * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
+      * GitHub and GitHub Enterprise: Not required. Codefresh 
+      * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
+      * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
 1. Continue with [Step 3: Select Hybrid Runtime install option](#step-3-select-hybrid-runtime-install-option). 
 
 ## Step 3: Select Hybrid Runtime install option
@@ -85,7 +85,7 @@ max-width="40%"
 ## Step 4: Install GitOps Helm Runtime
 Install a new Helm-based GitOps Runtime to the cluster through the Helm chart. 
 This step describes how to install the GitOps Runtime through the UI where you can copy the install command with values automatically populated by Codefresh.  
-You can also run the install command by applying the values.yaml file with the installation configuration and customizations.
+You can also run the install command by applying the `values.yaml` file with the installation configuration and customizations.
 
 
 **values.yaml validation**    
@@ -100,7 +100,7 @@ Before initiating the installation, Codefresh automatically validates the `value
 The name of the Helm-based Runtime _must be identical_ to that of the CLI-based Runtime.  
 The `namespace` is required only if it is different from the Runtime name.  
 
-**Install by applying values.yaml**  
+**Install by applying `values.yaml`**  
 Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace with the correct name of the file if needed. 
 
 This is an example of the Helm install command with the `values` file to be applied.
@@ -243,7 +243,7 @@ Configure Git credentials to authorize access to and ensure proper functioning o
 Git credentials include authorizing access to Git through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
 **Git authorization**
-* OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for Codefresh]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
+* OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
 * Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
 
 **SSH access to Git**  
