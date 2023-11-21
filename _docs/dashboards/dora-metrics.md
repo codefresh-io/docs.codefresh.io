@@ -42,13 +42,13 @@ More than one option within the same filter type has an OR relationship. Multipl
 When no filters are defined, all metrics are shown for the last 90 days.  
 To view filters that are not displayed, click **More filters**. 
 
-* Runtimes: Show metrics for applications from selected runtimes 
-* Clusters: Show metrics for applications deployed to selected clusters
-* Applications: Show metrics for selected applications. 
-* Time: Show metrics from application for a specific time period
-* Products: Show metrics from applications within the specified [Product(s)]({{site.baseurl}}/docs/dashboards/gitops-products/).
-* Environments: Show metrics from applications within the specified [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
-* App Groups: Show metrics from applications within the specified [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
+* **Runtimes**: Show metrics for applications from selected runtimes 
+* **Clusters**: Show metrics for applications deployed to selected clusters
+* **Applications**: Show metrics for selected applications. 
+* **Time**: Show metrics from application for a specific time period
+* **Products**: Show metrics from applications within the specified [Product(s)]({{site.baseurl}}/docs/dashboards/gitops-products/).
+* **Environments**: Show metrics from applications within the specified [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+* **App Groups**: Show metrics from applications within the specified [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
 
 
