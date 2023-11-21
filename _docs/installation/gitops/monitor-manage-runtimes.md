@@ -1,5 +1,5 @@
 ---
-title: "Managing & monitoring GitOps Runtimes"
+title: "Monitoring & managing GitOps Runtimes"
 description: "Optimize GitOps Runtimes"
 group: runtime
 sub_group: gitops
