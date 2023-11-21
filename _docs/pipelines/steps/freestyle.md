@@ -93,6 +93,7 @@ step_name:
 | `entry_point`                                 | Override the default container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                      | Optional                  |
 | `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh. Note the `bash` option requires that you specify an `image` that includes `/bin/bash`; many images do not.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `environment`                              | A set of environment variables for the container.                                                                                                                                                                                                                                                                                                                           | Optional                  |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
 | `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `volumes` | One or more volumes for the container. All volumes must be mounted from the existing shared volume (see details below) |Optional 
@@ -102,6 +103,68 @@ step_name:
 
 **Exported resources:**
 - Working Directory.
+
+## Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**:  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#adding-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+{% highlight yaml %}
+{% raw %}
+step_name:
+  title: Step Title
+  description: Step description
+  image: image/id
+  working_directory: ${{step_id}}
+  commands: 
+    - bash-command1
+    - bash-command2
+  cmd:
+    - arg1
+    - arg2
+  environment:
+    - key=value
+  entry_point:
+    - cmd
+    - arg1
+  timeout: 45m
+  shell: sh  
+  fail_fast: false
+  volumes:
+    - ./relative-dir-under-cf-volume1:/absolute-dir-in-container1
+    - ./relative-dir-under-cf-volume2:/absolute-dir-in-container2
+  when:
+    branch:
+      only: [ master ]
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ...  
+{% endraw %}
+{% endhighlight %} 
+
+
+**Timeout info in logs**  
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
 
 ## Examples
 
