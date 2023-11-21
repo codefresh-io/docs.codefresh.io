@@ -123,7 +123,7 @@ When defined:
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
 >**NOTE**:  
-To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#adding-timeouts-for-parallel-steps).
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
 
