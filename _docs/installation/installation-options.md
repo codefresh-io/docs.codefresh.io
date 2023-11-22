@@ -191,8 +191,8 @@ The table below highlights the main differences in functionality and resources b
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
 |Resources                |CRDs (Custom Resource Definitions)| Between 300 and 400 CRDs with Crossplane |Unlimited |
-|                         |Mono Git repo for manifests |  Max size = 99MB OR up to 100MB | Unlimited |
-|                         | CMP (Cloud Management Platform) plugins |Plugin images without high or critical vulnerabilities.<br>Codefresh immediately removes plugin images with vulnerabilities.  |  |
+|                         |Mono Git repo for manifests | Max size up to 100MB | Unlimited |
+|                         | CMP (Cloud Management Platform) plugins |Plugin images without high or critical vulnerabilities.  |N/A |
 | Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
@@ -201,7 +201,7 @@ The table below highlights the main differences in functionality and resources b
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |Home                | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |GitOps Apps        | Supported                   |Supported        |
 |                         |GitOps Environments | Supported                   |Supported        |

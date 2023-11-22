@@ -23,11 +23,10 @@ The Argo CD applications created in Hosted GitOps Runtimes are the customer's re
 |Kubernetes cluster      | Server version 1.18 and higher to which to deploy applications|
 |CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs defined declaratively with Crossplane        |
 |Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li><li>Gerrit</li></ul>{:/}|
-|Git repo for manifests   | Max size = 99MB OR up to 100MB|
-|CMP (Cloud Management Platform) plugins                  | Plugin images without contain high or critical vulnerabilities.<br>Codefresh immediately removes plugin images with vulnerabilities are found.  |
-| Sizing                       | Need to define the configuration for controller sizes.       |
+|Git repo for manifests   | Up to 100MB|
+|CMP (Cloud Management Platform) plugins                  | Plugin images without contain high or critical vulnerabilities.<  |
 
-
+For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
 ## Where to start with Hosted GitOps Runtimes
 If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
