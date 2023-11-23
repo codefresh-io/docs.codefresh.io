@@ -182,7 +182,7 @@ The runtime:
 The table below highlights the main differences in functionality and resources between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
-| Functionality           |Criteria             |  Hosted                    | Hybrid |
+|Feature           |Functionality             |  Hosted                    | Hybrid |
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
