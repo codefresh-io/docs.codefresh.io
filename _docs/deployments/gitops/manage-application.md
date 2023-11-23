@@ -14,10 +14,10 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 
 **Optimizing application deployments**  
 
-* [GitOps Environments](#gitops-environments--argo-cd-applications)
+* [GitOps Environments](#gitops-environments--argo-cd-applications)  
   The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
 
-* [GitOps Products](#gitops-products--argo-cd-applications)
+* [GitOps Products](#gitops-products--argo-cd-applications)  
   The GitOps Products dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
 
 **Managing individual applications**  
