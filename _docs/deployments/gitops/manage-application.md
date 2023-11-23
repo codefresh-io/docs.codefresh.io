@@ -57,9 +57,7 @@ The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/ad
 ## GitOps Environments & Argo CD applications
 To track, optimize, and manage deployments at scale you need a way to visualize applications at every stage of their development and deployment lifecycle. Our custom Environment resource allows you to do just this without the need for complex configuration and maintenance overhead. 
 
-Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces.
-
-Visualize the environments and their applications in the GitOps Environments dashboard, allowing you tracking in parallel how and when an application was promoted from one to another, with version and other crucial information such as details on the most recent commits that caused the change.
+Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces. Visualize the environments and their applications in the GitOps Environments dashboard to track promotions and view version and details on the most recent commits that caused the change.
 
 Here's a visualization of Argo CD applications in the GitOps Environments dashboard.
 
@@ -76,12 +74,10 @@ Here's a visualization of Argo CD applications in the GitOps Environments dashbo
 For detailed information on how to work with Argo CD applications and Environments in Codefresh, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
 ## GitOps Products & Argo CD applications
-The Product is another custom resource from Codefresh, adding another dimension to managing applications at scale. As teams grow, and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
+The Product is another custom resource from Codefresh, also enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
 
-Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments,  
-Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
-
-Codefresh automatically and seamlessly collates the Environments where each application in the Product is deployed. The comprehensive data includes not just application versions, but also enriched insights into commits, contributors, and uniquely the features deployed across different versions.
+Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments, Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+Codefresh seamlessly collates the Environments where each application in the Product is deployed, along with insights into commits, contributors, and features deployed across versions.
 
 Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
 
@@ -95,7 +91,7 @@ Here's a visualization of Argo CD applications grouped by Products in the GitOps
   max-width="70%" 
 %}
 
-For detailed information on how to work with Argo CD applications and Products, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
+For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 
