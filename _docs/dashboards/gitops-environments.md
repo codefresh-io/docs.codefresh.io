@@ -82,9 +82,9 @@ The table describes the information displayed in the GitOps Environments dashboa
 {: .table .table-bordered .table-hover}
 | Item             | Description              | 
 | --------------    | --------------           |
-|**Filters**              | Predefined filters that allow you to customize the Environment dashboard view by Product or Application.<br>Every Environment has Health Statuses as quick filters. | 
+|**Filters**              | Predefined filters that allow you to customize the Environment dashboard view by Product or Application.<br>Each Environment allows filtering the applications within it by health status which correspond to Argo CD's official list of health status. | 
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star a card with a product and application as a favorite and view only the starred products.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
-|**Detailed/Compact views**              | View details on the application in an Environment, including the version deployed in each environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's version, health, and sync status.<br> <img src="../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="70%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, Git hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="70%">.</li></ul>{:/}|
+|**Detailed/Compact views**              | View details on the application in an Environment, including the version deployed in each environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's version, health, and sync status.<br> <img src="../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="60%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, Git hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="60%">.</li></ul>{:/}|
 |**Environments**              | Environments are organized into columns, color-coded to differentiate between non-production Environments (in gray) and production Environments (in blue).<br>The column title is the name of the Environment. Mouse over displays the edit, delete, and move icons to manage Environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.<br>Each Environment is populated with the applications in the cluster-namespace pairs mapped to it. <br>An empty Environment indicates that there are no applications in the cluster-namespaces mapped to it.<br>Each Environment allows filtering its applications based on their Health status.  |
 |**Applications**| Applications in different Environments are displayed as a list of cards. Every card has the following information:{::nomarkdown}<ul><li>Product/application name: If the application is assigned to a Product, the Product name is displayed as the title. If not, the application name is used.</li><li>Version: Currently supported for Helm-based applications. The version of the Helm chart identifying the specific release of the application in the different environments. Clicking the version displays additional information and options.<br>See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#identify-application-versions-in-different-environments">Identify application versions in different Environments</a>.</li><li>Deployment history: Clicking the application name displays the deployment history. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#view-deployment-timeline-history-for-applications">View deployment (Timeline) history for applications</a>.</li><li>Actions: Every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#manage-applications-from-within-environments">Manage applications in Environments</a>.</li></ul>{:/} |
 
@@ -169,12 +169,12 @@ Delete unused or legacy Environments to avoid clutter. Deleting an Environment r
 ## Working with applications in GitOps Environments
 In the Environments dashboard, you get both visibility into applications running in different Environments, detailed information on each application, and the ability to sync, refresh, and perform other actions for the application.  
 
-### Filter applications in Environments by Health status
-Isolate applications within an Environment by their Health statuses. 
+### Filter applications in Environments by health status
+Quickly filter applications within an environment by health status. For a description, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).
 
-1. 1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
-1. From any Environment, click the Health status by which to filter.  
-  The Environment view shows the applications with the selected status. 
+1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. From any Environment, click the Health status or statuses by which to filter.  
+  The Environment displays those applications that match the selected status. 
 
   {% include 
 	image.html 
@@ -250,7 +250,7 @@ You can:
 
 ### Compare dependency versions and diffs across Environments
 
-Compare the versions of dependencies in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two Environments.  
+Compare the versions of dependencies in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two or more Environments.  
 
 * The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
 * The YAML view displays a diff between two Environments.
