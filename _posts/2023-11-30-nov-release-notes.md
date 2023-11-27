@@ -4,7 +4,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 
 ## Features & enhancements
-Our November release offers two ground-breaking features in the world of GitOps: Environments and Products
+Our November release offers two groundbreaking features in the world of GitOps: Environments and Products
 
 ### GitOps: Environments 
 Welcome to the first ever GitOps dashboard for Environments! If you are familiar with our wide range of dashboards for Argo CD applications in Codefresh, you are also aware of the  unique insights these dashbpards offer into Argo CD applications and their deployments. These dashboards don't inherently reveal the relationships between different but interconnected Argo CD Applications. 
@@ -40,23 +40,25 @@ For details, see ???
 
 ### GitOps: Products
 
-GitOps Products is yet another gorund-breaking concept in GitOps from Codefresh! It adds another dimeios to Environments which makes application promotiona nd deployment transparent!
-A Product is a set of applications conisdered as and treated as as a cohesive unit. You can define exactly which applications are part of a Product.  
+GitOps Products is yet another groundbreaking concept in GitOps from Codefresh! It introduces a new dimension to Environments, providing transparency in application promotion and deployment processes.
 
-Codefresh automtaically identifies and organizes them by Environments.
+A Product represents a cohesive unit of Argo CD applications, enabling you to define and treat sets of applications as a unified entity. You can define exactly which applications are part of a Product.  
 
-It helps answer the dailys questions:
-What's int eh release, where are the artifats  deployed, which release is impacting production, and which services are being rolled out?
+
+
+It helps answer technical and questions:
+* what 
+* *where are the artifats  deployed, which release is impacting production, and which services are being rolled out?
 
 So yu have Git, Jira 
 
 **How to start?**
-As with Environments, you start by creating Products. A Product is also a custom resource in Codefresh that connects one or more Argo CD applications. 
+Similar to Environments, you start by creating Products. A Product, also a custom resource in Codefresh, connects one or more Argo CD applications. 
 
-Again, our intuitive UI makes it simple to create a Product. You can retain or use the default annotation that Codefresh provides for the Product, or add your custom annotations if you are already using them. 
-Codefresh allows you to also create Products and assign applications later from the Products dashboard.
+Again, our intuitive UI makes it simple to create a Product. You can connect applications using Codefresh's default annotation or bu=y adding custom annotations to the Product's definitons.  
+Codefresh also gives you the flexibility to create Products and later assign applications directly from the Products dashboard.
 
-Once you create Products, Codefresh collates the applications, organizes them by their Environments and showcases them in the Products dashboard.
+Once you create Products and connect applications, Codefresh does all the work.  Codefresh identifies assigned applications, organizes them based on their deployed Environments, and showcases them in the Products dashboard. 
 
 **Working with Products**  
 After creating Products, you can edit settings, and remove Products.
@@ -64,9 +66,13 @@ You can also assign unassigned applications
 
 **Working with Argo CD applications in Products**
 It's also easy to work with Argo CD applications in Environments. 
-Filters 
-You can access all options avilable in the GitOPs Apps dashboard to manage individual applications here as well.
-You can see the Timeline of all the releases for an application and identify failures
+* Quick view of the Products and its applications by Environment
+* Drill down into a Product to see detailed infomration on its applications from different perspectives for different stakeholders:
+  * Kubernetes
+  * Git 
+  * Features
+
+* As with applications in Environments, you have all the options in the GitOps Apps dashboard to manage individual applications here as well through the app's context menu.
 
 ### GitOps: Share logs for Helm Runtimes
 
