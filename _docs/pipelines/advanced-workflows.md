@@ -98,7 +98,34 @@ The final order of execution will be
 
 This is the recommended way to start using parallelism in your Codefresh pipelines. It is sufficient for most scenarios that require parallelism.
 
->The step names must be unique within the same pipeline. The parent and child steps should NOT share the same name.
+>**NOTE**:  
+The names of the parallel steps must be unique within the same pipeline. The parent and child steps should NOT share the same name.
+
+### Add timeouts for parallel steps
+You can add `timeouts`for parallel steps either by defining a parent `timeout` inherited by the other parallel steps, or by defining individual timeouts for every step.  
+
+>**NOTES**:  
+The `timeout` field in the `deploy` and `pending-approval` steps has a specialized syntax and behavior to match the requirements of these steps.<br><br> 
+When _both_ parent and step-specific timeouts are defined for parallel steps, the step-specific timeouts override the parent timeout.
+
+{% highlight yaml %}
+{% raw %}
+version: '1.0'
+steps:
+  parallel:
+    type: parallel
+    timeout: 1m
+    steps:
+      first:
+        image: alpine
+      second:
+        image: alpine
+        timeout: 2m 
+      third:
+        image: alpine
+        timeout: null 
+{% endraw %}
+{% endhighlight %}
 
 ### Example: pushing multiple Docker images in parallel
 

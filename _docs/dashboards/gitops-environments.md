@@ -28,7 +28,7 @@ The **GitOps Environments** dashboard introduces a new dimension to your GitOps 
 Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/) on the world's first dashboard for GitOps Environments.
 
 **What is an Environment in Codefresh GitOps?**  
-An Environment is an entity in Codefresh defined by one or more K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
+An Environment is a custom entity in Codefresh defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
 
 Codefresh allows you to define Environments that can exist without any applications deployed to them.
 

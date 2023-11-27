@@ -1,5 +1,5 @@
 ---
-title: "Add Git Sources to GitOps Runtimes"
+title: "Adding Git Sources to GitOps Runtimes"
 description: "Manage Git Sources storing resources"
 group: installation
 toc: true

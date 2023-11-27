@@ -12,7 +12,8 @@ Codefresh provides all the options and functionality to create and manage Argo C
 
 Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
 
-Creating an Argo CDapplication in Codefresh includes defining:  
+Creating an Argo CD application in Codefresh includes defining:  
+
   * Application name and location
   * General configuration settings
   * Advanced configuration settings
@@ -24,7 +25,10 @@ For example Argo CD applications, see this [repo](https://github.com/oleksandr-c
   
 Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
  
-Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) them.
+Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) individual Argo CD applications.
+
+After creating Argo CD applications in Codefresh, you can also monitor and manage them in the GitOps Environments and Products dashboards by creating Environment and Product resources. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+
 
 
 ## Application: Definitions
