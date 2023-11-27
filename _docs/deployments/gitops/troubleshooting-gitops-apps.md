@@ -32,5 +32,4 @@ In Codefresh, this issue leads to a loop with the following behavior:
 
 
 ### Possible Actions
-
 To resolve this issue when using Istio with Argo Rollouts, configure the application following the best practices for [integration with GitOps](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#integrating-with-gitops){:target="\_blank"} in the Argo Rollouts documentation.

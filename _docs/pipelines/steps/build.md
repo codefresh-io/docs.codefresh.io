@@ -97,6 +97,7 @@ step_name:
 | `no_cf_cache`   | Defines if to enable or disable Codefresh build optimization for the build. When set to `false`, the default, enables Codefresh build optimization. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |                                                                          |
 | `build_arguments`   | The set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg){:target="\_blank"} to pass to the build process.   | Optional                  |
 | `target`  | The target stage at which to stop the build in a multistage build. | Optional                  |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`  | Define the build behavior on step failure. When set to `true`, the default, ff a step fails, the build is stopped as well. To continue the build on step failure, set to `false`. | Default     |
 | `when`       | The set of conditions that need to be satisfied in order to execute this step.<br>For more information, see [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) .   | Optional |
 | `metadata`   | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).  | Optional   |
@@ -114,6 +115,70 @@ step_name:
 - Image ID, which you can use to [annotate images]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)
 
 ## Build image step examples
+
+### Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**:  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+  `YAML`
+{% highlight yaml %}
+step_name:
+  type: build
+  title: Step Title
+  description: Free text description
+  working_directory: {% raw %}${{clone_step_name}}{% endraw %}
+  dockerfile: path/to/Dockerfile
+  image_name: owner/new-image-name
+  tag: develop
+  platform: 'linux/arm64'
+  buildx: true
+  build_arguments:
+    - key=value
+  cache_from:
+    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:main
+  target: stage1
+  no_cache: false
+  no_cf_cache: false
+  tag_policy: original
+  timeout: 45m
+  fail_fast: false
+  metadata:
+    set:
+      - qa: pending
+  when:
+    condition:
+      all:
+        noDetectedSkipCI: "includes('{% raw %}${{CF_COMMIT_MESSAGE}}{% endraw %}', '[skip ci]') == false"
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ...
+{% endhighlight %} 
+
+
+**Timeout info in logs**  
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
 
 ### Using Dockerfile in root project folder
 
