@@ -6,6 +6,40 @@ toc: true
 
 Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.3.
 
+## On-premises version 2.2
+
+
+### Bug fixes
+
+**Pipelines**
+* Slow loading for Builds and Workflow pages for pipelines. 
+* Cannot save views including Annotations as filters. 
+* In **Use YAML from repository** screen, selecting a new Git integration resets all custom settings, including PATH TO YAML.
+* In **Use YAML from repository** screen, selecting a new Git integration without selecting a branch results in "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error. 
+* For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.
+* Webhook for Bitbucket triggers two-three builds for a single event. 
+* For enhanced Cron triggers, restarting a Cron build or restarting a Cron build from a failed step results in error: "There was a problem rebuilding the selected item. Please make sure that the branch <BRANCH> is accessible".
+* Bitbucket builds triggered for events not defined in pipeline. 
+
+* Memory usage graph in Builds page shows **Mib** instead of **MiB**. 
+
+
+**GitOps**
+* Rollouts panel does not display control to expand Analysis Run. 
+* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when k8s Deployments and Rollouts are both used in the same application. 
+
+ Subscription & Billing page is inconsistent when the account is paying via Wire Transfer (or any other non-Stripe related method) CR-2589 Alexey
+ Codefresh not able handle more than 100 allure reports CR-20207 Vadim
+
+ * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images. 20635 Andrii
+
+
+ * Frequent timeouts when pushing to Codefresh Helm repo via Helm step. CR-18160
+
+
+ * (On-premises only) After upgrade to v2.0.9, Test reports screen does not display all elements.
+* (On-premises only) Page keeps on loading indefinitely when switching active account from a ProjectOne account to a Classic one.
+
 ## On-premises version 2.1
 
 ### Features & enhancements
