@@ -20,6 +20,10 @@ Welcome to the release notes for our on-premises release versions, starting with
 * Webhook for Bitbucket triggers two-three builds for a single event. 
 * For enhanced Cron triggers, restarting a Cron build or restarting a Cron build from a failed step results in error: "There was a problem rebuilding the selected item. Please make sure that the branch <BRANCH> is accessible".
 * Bitbucket builds triggered for events not defined in pipeline. 
+* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
+* `stepTemplate`ignores path in `WORKING_DIR` environment variable and runs in default volume path. 
+
+
 
 * Memory usage graph in Builds page shows **Mib** instead of **MiB**. 
 
