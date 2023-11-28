@@ -10,6 +10,8 @@ Welcome to the release notes for our on-premises release versions, starting with
 
 
 ### Bug fixes
+**General**  
+* Removing users from Codefresh UI, or via API or Terraform results in 504 error. (CR-21192 - Vadim)
 
 **Pipelines**
 * Slow loading for Builds and Workflow pages for pipelines. 
@@ -18,10 +20,12 @@ Welcome to the release notes for our on-premises release versions, starting with
 * In **Use YAML from repository** screen, selecting a new Git integration without selecting a branch results in "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error. 
 * For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.
 * Webhook for Bitbucket triggers two-three builds for a single event. 
+* Unable to upload more than 100 Allure reports from Codefresh.
 * For enhanced Cron triggers, restarting a Cron build or restarting a Cron build from a failed step results in error: "There was a problem rebuilding the selected item. Please make sure that the branch <BRANCH> is accessible".
 * Bitbucket builds triggered for events not defined in pipeline. 
 * Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
 * `stepTemplate`ignores path in `WORKING_DIR` environment variable and runs in default volume path. 
+* Statuses in build log outputs not color-coded.
 
 
 
@@ -31,9 +35,10 @@ Welcome to the release notes for our on-premises release versions, starting with
 **GitOps**
 * Rollouts panel does not display control to expand Analysis Run. 
 * Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when k8s Deployments and Rollouts are both used in the same application. 
+* Creating a Git Source using Bitbucket does not load all available repos for selection. 
 
  Subscription & Billing page is inconsistent when the account is paying via Wire Transfer (or any other non-Stripe related method) CR-2589 Alexey
- Codefresh not able handle more than 100 allure reports CR-20207 Vadim
+
 
  * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images. 20635 Andrii
 
