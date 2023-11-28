@@ -185,7 +185,7 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 * PostgreSQL
   The PostgreSQL database stores:
     * Audit logs of API calls from the Codefresh and GitOps APIs
-    * Analytics information (OF WHAT WOULD BE HELPFUL)
+    * Analytics information 
 
 
 * NATS
