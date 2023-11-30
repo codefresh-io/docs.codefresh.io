@@ -85,24 +85,24 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 ## Bug fixes
 
 **General**  
-* Removing users from Codefresh UI, or via API or Terraform results in 504 error. (CR-21192 - Vadim)
+* Removing users from Codefresh UI, via API, or Terraform, results in 504 error.
 * Events missing from Audit log. 
 
 <br>
 
 **Pipelines**  
-* Branch information for Gerrit as Git provider not loaded in Codefresh. (CR-21414 - Alina)
-* Branches not loaded for GitLab repos within sub-groups. (CR-21413)
+* Branch information for Gerrit as Git provider not loaded in Codefresh. 
+* Branches not loaded for GitLab repos within sub-groups. 
 * CR-21202 Zhenya to ask if valid
-* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. (CR-21193 - Zhenya)
-* For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.(CR-21171 Olek)
-* Incorrectly sorted list of volumes in Volume Provisioner results in less than optimal volume selected for caching. (CR-21168 - Noam)
-* `stepTemplate` runs in default volume path ignoring `WORKING_DIR` environment variable. (CR-21167 - Zhenya)
-* Webhook for Bitbucket triggers three builds for a single event. (CR-21159 - Olek)
-* Helm step does not support latest Helm versions. (CR-21055 - Vadim)
+* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
+* For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.
+* Incorrectly sorted list of volumes in Volume Provisioner results in less than optimal volume selected for caching. 
+* `stepTemplate` runs in default volume path ignoring `WORKING_DIR` environment variable. 
+* Webhook for Bitbucket triggers three builds for a single event. 
+* Helm step does not support latest Helm versions. 
 * CR-21024 Mikhail
 * Incorrect error message for Glob expressions. (CR-20956 - Victor)
-* Incorrect results for CLI command `codefresh get pip --label`. (CR-20734 - Yosi)
+* Incorrect results for CLI command `codefresh get pip --label`. 
 * Actions for Bitbucket Codefresh slow to load (CR-18913 - Andrii)
 <br>
 
@@ -111,7 +111,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Some GitOps Runtimes not displayed in List view.
 * Unable to add managed clusters to GitOps Runtimes. (CR-21030 - Mikhail)
 * CR-20998 Mikhail
-* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application. (CR-20848 - Olek) 
-* Incorrect behavior with ServerSideApply for Hybrid GitOps Runtimes. (CR-20837 - Pasha)
+* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
+* Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. (CR-20837 - Pasha)
 * Not found screen for analysis run (CR-20808 - Victor - verify if customer issue)
 * (On-premises?)Clicking Truncated Labels on clicking More filters in GitOps Apps dashboard. (CR-20792 Alina)
