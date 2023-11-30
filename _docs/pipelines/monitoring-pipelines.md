@@ -260,15 +260,15 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
-### Sharing logs for builds
-Resolve issues in pipeline builds more efficiently by sharing relevant log segments with your team members.  
-Select the entire or any part of the log to share with others in your team who are logged in to the same account.
+### Sharing log URLs for pipeline builds
+Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues.  
+Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
 
 >**NOTE**:  
 Users with whom you share the logs must be logged in to the same account.
 
 **Before you begin**
-* Make sure that timestamps are enabled for build logs
+* Make sure build logs have timestamps
 
 **How to**
 1. In the **Builds** page, select a build. 
