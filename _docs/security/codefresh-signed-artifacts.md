@@ -17,13 +17,35 @@ Verify the authenticity of all artifacts that Codefresh provides with this comma
 `$ cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/oci-sigstore/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" <IMAGE>`  
 
 where: 
-`<IMAGE>` is the name of the container image to verify
+`<IMAGE>` is the name of the container image to verify.
 
-## Verify forked-Argo images for Codefresh GitOps Runtimes
-???
+## Verify authenticity of forked Argo images for Codefresh GitOps Runtimes
+Verify the authenticity of forked Argo images for Codefresh GitOps Runtimes with this procedure.
+
+1. Find the release of the forked Argo Project component you want to verify.  
+  For example, Argo CD images in [https://github.com/codefresh-io/argo-cd/releases](https://github.com/codefresh-io/argo-cd/releases){:target="\_blank"}. 
+1. If needed, install [Cosign](https://docs.sigstore.dev/system_config/installation/){:target="\_blank"}.
+1. Run:
+  `cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" <REGISTRY>/<COMPONENT>:<TAG>`  
+
+  where:  
+  * `<REGISTRY>` is the registry containing the forked Argo image to verify, for example, `quay.io/codefresh`.
+  * `<COMPONENT>` is the Argo CD component to verify, for example, `argocd`. 
+  * `<TAG>` is the version of the forked Argo image to verify, for example, `v2.8.1-cap-CR-21281-new-reporter 1>/dev/null`.
+
+**Example**: 
+`$ cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" quay.io/codefresh/argocd:v2.8.1-cap-CR-21281-new-reporter 1>/dev/null`  
+returns the following:  
+
+   `Verification for quay.io/codefresh/argocd:v2.8.1-cap-CR-21281-new-reporter --`
+    `The following checks were performed on each of these signatures:`
+      `- The cosign claims were validated`
+      `- Existence of the claims in the transparency log was verified offline`
+      `- The code-signing certificate was verified using trusted certificate authority certificates`
+
 
 ## Third-party images in Codefresh
-To verify the authenticity of third-party images that Codefresh uses, such as NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets, refer to the official documentation of each component.
+To verify the authenticity of third-party images such as  NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets, that Codefresh uses, refer to the official documentation of each component.
 
 
 ## Related articles
