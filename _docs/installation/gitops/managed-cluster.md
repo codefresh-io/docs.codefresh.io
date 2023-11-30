@@ -1,5 +1,5 @@
 ---
-title: "Add external clusters to GitOps Runtimes"
+title: "Adding external clusters to GitOps Runtimes"
 description: "Manage multiple remote clusters with a  GitOps Runtime"
 group: installation
 sub_group: gitops

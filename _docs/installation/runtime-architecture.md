@@ -185,7 +185,7 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 * PostgreSQL
   The PostgreSQL database stores:
     * Audit logs of API calls from the Codefresh and GitOps APIs
-    * Analytics information (OF WHAT WOULD BE HELPFUL)
+    * Analytics information 
 
 
 * NATS
@@ -196,9 +196,9 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 
 ## Codefresh Runner architecture
-This section shows a detailed view of the Codefresh Runner architecture, and a description of the components. See [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+<!--- This section shows a detailed view of the Codefresh Runner architecture, and a description of the components. See also [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).  -->
 
-DIAGRAM TO BE INSERTED
+
 
 
 The Codefresh Runner includes two main components:
@@ -238,7 +238,7 @@ Optional. When installed, provides visibility on cluster resources in Codefresh,
 Another optional component, the App-Proxy serves as an extension to the Codefresh platform. Its purpose is to enable remote operations, such as displaying Git repositories for Git providers behind firewalls and creating webhooks, while maintaining security.
 
 
-### Codefresh Platform
+### Clients
 
 Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/), consumed both by the Web user interface and the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
 
