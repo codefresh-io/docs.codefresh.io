@@ -208,7 +208,7 @@ file="/images/runtime/architecture/arch-runner.png"
 url="/images/runtime/architecture/arch-runner.png"
 alt="Codefresh Runner architecture"
 caption="Codefresh Runner architecture"
-max-width="100%"
+max-width="80%"
 %}
 
 
