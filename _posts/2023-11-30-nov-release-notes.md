@@ -38,6 +38,25 @@ steps:
 ```
 For details, see [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) and [Add timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
+### Pipelines: Share log URLs for pipeline builds
+Our latest enhancement simplifies troubleshooting and resolution process for issues in pipeline builds! How? By introducing the ability to share the URL of the build log with your team! 
+
+By selecting the part of the build log you want your team to look at: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+url="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+alt="Sharing URL for build logs" 
+caption="Sharing URL for build logs" 
+max-width="50%" 
+%}
+
+When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
+
+For details, see [Sharing log URLs for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#sharing-log-urls-for-pipeline-builds).
+
 ### Pipelines: Custom audiences for OIDC
 You’ll be happy with our latest enhancement for OIDC in Codefresh pipelines. Now, our OIDC integration supports multiple audiences. This flexibility is crucial for working with audiences that require distinct names instead of defaulting to the platform’s hostname, such as the Codefresh platform URL.
 
@@ -55,11 +74,6 @@ obtain_id_token:
 ```
 
 For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-pipelines/#standard-oidc-claims).
-
-### GitOps: Share logs for Helm Runtimes
-
-???
-
 
 
 ### Other changes
