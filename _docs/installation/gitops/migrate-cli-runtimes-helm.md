@@ -13,7 +13,7 @@ When you migrate the CLI-based Runtime, the Git Sources, external clusters, and 
 The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
 
 >**NOTE**:  
-Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.53 and higher. 
+Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.54 and higher. 
 
 ## Before you begin
 Make sure you have:
