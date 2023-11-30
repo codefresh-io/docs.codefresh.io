@@ -237,7 +237,7 @@ View logs for running and completed builds and download them in HTML or text for
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
 The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
-You can also [share logs](#sharing-logs-for-builds) with other users logged in to the same account.
+You can also [share logs](#sharing-log-urls-for-pipeline-builds) with other users logged in to the same account.
 
 >**NOTE**:  
   The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size exceeds the maximum permitted. 
@@ -286,9 +286,9 @@ caption="Sharing build logs"
 max-width="60%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. In the pop-up that appears, click **Copy to clipboard**.
-1. Share the URL with users logged in to the same account.
+1. Share the URL with users logged in to the same account.  
   On accessing the link, the browser opens the Builds page, with the shared section highlighted in the build log.  
 
    {% include 
