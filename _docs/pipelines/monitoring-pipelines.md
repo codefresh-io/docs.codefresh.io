@@ -237,8 +237,10 @@ View logs for running and completed builds and download them in HTML or text for
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
 The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
->Note:  
-  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
+You can also [share logs](#sharing-logs-for-builds) with other users logged in to the same account.
+
+>**NOTE**:  
+  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size exceeds the maximum permitted. 
   For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
 
 1. In the **Builds** page, select a build. 
@@ -258,6 +260,46 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
+### Sharing logs for builds
+Resolve issues in pipeline builds more efficiently by sharing relevant log segments with your team members.  
+Select the entire or any part of the log to share with others in your team who are logged in to the same account.
+
+>**NOTE**:  
+Users with whom you share the logs must be logged in to the same account.
+
+**Before you begin**
+* Make sure that timestamps are enabled for build logs
+
+**How to**
+1. In the **Builds** page, select a build. 
+1. To view logs online for the selected build, click **Output** in the lower part of the Build page.
+1. Select the log lines you want to share.
+1. Click **Share** in the top-right corner.
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-select-lines.png" 
+url="/images/pipeline/monitoring/share-logs-select-lines.png"
+alt="Sharing build logs" 
+caption="Sharing build logs" 
+max-width="60%"
+%}
+
+{:start="4"}
+1. In the pop-up that appears, click **Copy to clipboard**.
+1. Share the URL with users logged in to the same account.
+  On accessing the link, the browser opens the Builds page, with the shared section highlighted in the build log.  
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-view-shared.png" 
+url="/images/pipeline/monitoring/share-logs-view-shared.png"
+alt="Shared build logs" 
+caption="Shared build logs" 
+max-width="60%"
+%}
 
 ### Viewing variables in pipeline builds
 
