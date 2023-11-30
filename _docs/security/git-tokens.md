@@ -1,6 +1,6 @@
 ---
 title: "Git tokens for GitOps"
-description: "Understand what Git tokens and scopes required by Codefresh"
+description: "Understand what Git tokens and scopes required for GitOps"
 group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
@@ -67,5 +67,5 @@ You need to create a service or robot account with your Git provider, generate t
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
-[Secrets]({site.baseurl}}/docs/security/secrets/)  
-[Signed artifacts in Codefresh]({site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
+[Secrets for GitOps]({site.baseurl}}/docs/security/secrets/)  
+[Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
