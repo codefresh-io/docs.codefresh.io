@@ -36,6 +36,8 @@ Depending on the type of GitOps installation, the GitOps Runtime is installed ei
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
+See [Codefresh Runner architecture](#codefresh-runner-architecture) in this article. Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+
 ### GitOps Clients
 
 GitOps Clients include the  UI and the GitOps CLI.   
@@ -66,7 +68,7 @@ max-width="100%"
 #### Codefresh Runner
 The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
-Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+See [Codefresh Runner architecture](#codefresh-runner-architecture) in this article. Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 <br>
 
@@ -196,9 +198,18 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 
 ## Codefresh Runner architecture
-<!--- This section shows a detailed view of the Codefresh Runner architecture, and a description of the components. See also [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).  -->
+The diagram shows a high-level view of the Codefresh Runner and its components. See also [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/). 
 
 
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/architecture/arch-runner.png"
+url="/images/runtime/architecture/arch-runner.png"
+alt="Codefresh Runner architecture"
+caption="Codefresh Runner architecture"
+max-width="100%"
+%}
 
 
 The Codefresh Runner includes two main components:
@@ -238,9 +249,10 @@ Optional. When installed, provides visibility on cluster resources in Codefresh,
 Another optional component, the App-Proxy serves as an extension to the Codefresh platform. Its purpose is to enable remote operations, such as displaying Git repositories for Git providers behind firewalls and creating webhooks, while maintaining security.
 
 
-### Clients
+<!--- ### Clients
 
 Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api/), consumed both by the Web user interface and the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}. The API is also available for any custom integration with external tools or services.
+-->
 
 
 
