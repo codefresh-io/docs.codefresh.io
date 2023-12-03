@@ -264,7 +264,8 @@ max-width="60%"
 Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues.  
 Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
 
->**NOTE**:  
+>**NOTES**:  
+This functionality will be available to all customers starting December 14. <br> <br> 
 Users with whom you share the logs must be logged in to the same account.
 
 **Before you begin**
