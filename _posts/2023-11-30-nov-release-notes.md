@@ -41,7 +41,10 @@ For details, see [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clon
 ### Pipelines: Share log URLs for pipeline builds
 Our latest enhancement simplifies troubleshooting and resolution process for issues in pipeline builds! How? By introducing the ability to share the URL of the build log with your team! 
 
+**Please note** that this functionality will be available starting December 14.
+
 By selecting the part of the build log you want your team to look at: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
+When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
 
 {% include 
 image.html 
@@ -53,7 +56,6 @@ caption="Sharing URL for build logs"
 max-width="50%" 
 %}
 
-When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
 
 For details, see [Sharing log URLs for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#sharing-log-urls-for-pipeline-builds).
 
