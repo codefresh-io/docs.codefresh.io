@@ -264,9 +264,12 @@ max-width="60%"
 Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues.  
 Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
 
->**NOTES**:  
-This functionality requires timestamps for build logs which will be enabled for al Codefresh accounts. Timestamps in logs can affect automation you may have created based on log outputs without timestamps. To opt out, please contact Codefresh Support.  
-This functionality  will be available to all customers starting December 14. <br> <br> 
+>**IMPORTANT**:  
+This functionality requires timestamps for build logs which will be enabled for al Codefresh accounts. Timestamps in logs can affect automation you may have created based on log outputs without timestamps. This functionality will be available to all customers starting December 14.
+To opt out of timestamps in logs, please contact Codefresh Support.  
+
+
+>**NOTE**:  
 Users with whom you share the logs must be logged in to the same account.
 
 **Before you begin**
