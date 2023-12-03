@@ -44,7 +44,7 @@ Verify the authenticity of forked Argo Project images for Codefresh GitOps Runti
       `- The code-signing certificate was verified using trusted certificate authority certificates`
 ```
 
-## Third-party images in Codefresh
+## Authenticity of third-party images in Codefresh
 To verify the authenticity of third-party images such as  NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets, that Codefresh uses, refer to the official documentation of each component.
 
 
