@@ -101,9 +101,9 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Webhook for Bitbucket triggers three builds for a single event. 
 * Helm step does not support latest Helm versions. 
 * CR-21024 Mikhail
-* Incorrect error message for Glob expressions. (CR-20956 - Victor)
+* Incorrect error message for Glob expressions. 
 * Incorrect results for CLI command `codefresh get pip --label`. 
-* Long response times for Bitbucket when loading large numbers of repos and branches through **Use YAML from repo** option.
+* Long response times when loading large numbers of repos and branches for Bitbucket.
 * Builds stuck indefinitely in `terminating` state. 
 <br>
 
@@ -113,6 +113,6 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Unable to add managed clusters to GitOps Runtimes. (CR-21030 - Mikhail)
 * CR-20998 Mikhail
 * Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
-* Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. (CR-20837 - Pasha)
+* Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. 
 * Not found screen for analysis run (CR-20808 - Victor - verify if customer issue)
 * (On-premises?) Truncated Labels on clicking More filters in GitOps Apps dashboard. (CR-20792 Alina)
