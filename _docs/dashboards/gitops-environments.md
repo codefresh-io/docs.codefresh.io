@@ -170,7 +170,7 @@ Delete unused or legacy Environments to avoid clutter. Deleting an Environment r
 In the Environments dashboard, you get both visibility into applications running in different Environments, detailed information on each application, and the ability to sync, refresh, and perform other actions for the application.  
 
 ### Filter applications in Environments by health status
-Quickly filter applications within an environment by health status. For a description, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).
+Quickly filter applications within an environment by health status. For health status descriptions, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).
 
 1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. From any Environment, click the Health status or statuses by which to filter.  
