@@ -125,7 +125,7 @@ The table describes the arguments required to connect a GitHub Action to Codefre
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
-| `CF_GITHUB_TOKEN`            | The GitHub authentication token. See [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens). | Required  |
+| `CF_GITHUB_TOKEN`            | The GitHub authentication token. See [Git tokens]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens). | Required  |
 | `CF_GERRIT_CHANGE_ID`              | Relevant only for Gerrit accounts. <br>The change ID or the commit message containing the Change ID to add to the image. For Gerrit, use this instead of `CF_GIT_BRANCH`.    | Required  |
 | `CF_GERRIT_HOST_URL`              | Relevant only for Gerrit accounts. <br> The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.   | Required  |
 | `CF_GERRIT_USERNAME`              | Relevant only for Gerrit accounts. <br> The username for your user account in Gerrit.| Required  |
