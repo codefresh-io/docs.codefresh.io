@@ -90,6 +90,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 
 **General**  
 * Removing users from Codefresh UI, via API, or Terraform, results in 504 error.
+* Organizations list not sorted in alphabetical order. 
 * Events missing from Audit log. 
 
 <br>
@@ -115,3 +116,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Some GitOps Runtimes not displayed in List view.
 * Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. 
 * Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
+* Unable to add managed clusters to GitOps Runtimes.
+* Unable to add a non-OpenShift cluster to GitOps Runtimes.
+* Truncated names for the Labels filter when clicking **More filters** in GitOps Apps dashboard. 
+
