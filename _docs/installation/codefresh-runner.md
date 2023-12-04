@@ -17,7 +17,7 @@ Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architec
 >**IMPORTANT**:  
 We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.<br>  
 We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
-The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will be actively maintained going forward. 
+The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will not be actively maintained going forward. 
 
 >**Codefresh Runner with spot instances**:<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
