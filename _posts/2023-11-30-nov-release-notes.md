@@ -41,7 +41,7 @@ For details, see [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clon
 ### Pipelines: Share log URLs for pipeline builds with timestamps
 Our latest enhancement simplifies troubleshooting and resolution process for issues in pipeline builds! How? By introducing the ability to share the URL of the build log with your team! 
 
-By selecting the part of the build log you want your team to look at: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
+By selecting the part of the build log you want your team to look at for a specific step or for the entire build: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
 When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
 
 {% include 
@@ -95,16 +95,15 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 **Pipelines**  
 * Branch information for Gerrit as Git provider not loaded in Codefresh. 
 * Branches not loaded for GitLab repos within sub-groups. 
-* CR-21202 Zhenya to ask if valid
-* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
+* `stepTemplate` runs in default volume path ignoring `WORKING_DIR` environment variable. 
 * For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.
 * Incorrectly sorted list of volumes in Volume Provisioner results in less than optimal volume selected for caching. 
-* `stepTemplate` runs in default volume path ignoring `WORKING_DIR` environment variable. 
 * Webhook for Bitbucket triggers three builds for a single event. 
 * Helm step does not support latest Helm versions. 
-* Incorrect error message for Glob expressions. 
-* Incorrect results for CLI command `codefresh get pip --label`. 
 * Long response times when loading large numbers of repos and branches for Bitbucket.
+* Incorrect error message for Glob expressions in Modified Files for Triggers. 
+* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
+* Incorrect results for CLI command `codefresh get pip --label`. 
 * Builds stuck indefinitely in `terminating` state. 
 
 <br>
@@ -112,9 +111,5 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 
 **GitOps**  
 * Some GitOps Runtimes not displayed in List view.
-<!--- * Unable to add managed clusters to GitOps Runtimes. (CR-21030 - Mikhail)
-* CR-20998 Mikhail  -->
-* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
 * Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. 
-<!--- * Analysis Run screen not available. (CR-20808 - Victor - verify if customer issue)
-* (On-premises?) Truncated Labels on clicking More filters in GitOps Apps dashboard. (CR-20792 Alina)--  .
+* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
