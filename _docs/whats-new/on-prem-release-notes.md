@@ -11,7 +11,8 @@ Welcome to the release notes for our on-premises release versions, starting with
 
 ### Bug fixes
 **General**  
-* Removing users from Codefresh UI, or via API or Terraform results in 504 error. (CR-21192 - Vadim)
+* Removing users from Codefresh UI, or via API or Terraform results in 504 error. 
+* Organizations list not sorted in alphabetical order. 
 
 **Pipelines**
 * Slow loading for Builds and Workflow pages for pipelines. 
@@ -35,7 +36,10 @@ Welcome to the release notes for our on-premises release versions, starting with
 **GitOps**
 * Rollouts panel does not display control to expand Analysis Run. 
 * Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when k8s Deployments and Rollouts are both used in the same application. 
+* Unable to add managed clusters to GitOps Runtimes.
+* Unable to add a non-OpenShift cluster to GitOps Runtimes.
 * Creating a Git Source using Bitbucket does not load all available repos for selection. 
+* Clicking More filters in GitOps Apps dashboard shows truncated names for Labels filter. 
 
  Subscription & Billing page is inconsistent when the account is paying via Wire Transfer (or any other non-Stripe related method) CR-2589 Alexey
 
