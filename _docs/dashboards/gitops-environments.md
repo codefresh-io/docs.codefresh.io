@@ -84,7 +84,7 @@ The table describes the information displayed in the GitOps Environments dashboa
 | --------------    | --------------           |
 |**Filters**              | Predefined filters that allow you to customize the Environment dashboard view by Product or Application.<br>Each Environment allows filtering the applications within it by health status which correspond to Argo CD's official list of health status. | 
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star a card with a product and application as a favorite and view only the starred products.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, select <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
-|**Detailed/Compact views**              | View details on the application in an Environment, including the version deployed in each environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's version, health, and sync status.<br> <img src="../../../images/gitops-environments/app-compact-view.png?display=inline-block" width="60%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, Git hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../images/gitops-environments/app-detailed-view.png?display=inline-block" width="60%">.</li></ul>{:/}|
+|**Detailed/Compact views**              | View details on the application in an Environment, including the version deployed in each environment.{::nomarkdown}<ul><li><b>Compact</b>: The default view, displays the application's version, health, and sync status.<br> <img src="../../../images/gitops-environments/app-compact-view-mode.png?display=inline-block" width="60%"></li><li><b>Detailed</b>: Includes commit information that resulted in the application being promoted, including the commit message, Git hash, user who made the commit.<br>Cluster and namespace the application is deployed to.<br><img src="../../../images/gitops-environments/app-detailed-view-mode.png?display=inline-block" width="60%">.</li></ul>{:/}|
 |**Environments**              | Environments are organized into columns, color-coded to differentiate between non-production Environments (in gray) and production Environments (in blue).<br>The column title is the name of the Environment. Mouse over displays the edit, delete, and move icons to manage Environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with GitOps Environments</a>.<br>Each Environment is populated with the applications in the cluster-namespace pairs mapped to it. <br>An empty Environment indicates that there are no applications in the cluster-namespaces mapped to it.<br>Each Environment allows filtering its applications based on their Health status.  |
 |**Applications**| Applications in different Environments are displayed as a list of cards. Every card has the following information:{::nomarkdown}<ul><li>Product/application name: If the application is assigned to a Product, the Product name is displayed as the title. If not, the application name is used.</li><li>Version: Currently supported for Helm-based applications. The version of the Helm chart identifying the specific release of the application in the different environments. Clicking the version displays additional information and options.<br>See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#identify-application-versions-in-different-environments">Identify application versions in different Environments</a>.</li><li>Deployment history: Clicking the application name displays the deployment history. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#view-deployment-timeline-history-for-applications">View deployment (Timeline) history for applications</a>.</li><li>Actions: Every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#manage-applications-from-within-environments">Manage applications in Environments</a>.</li></ul>{:/} |
 
@@ -200,8 +200,8 @@ Here too, see which applications are running on each Environment, the most recen
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/gitops-environments/app-trace-across-envs.png" 
-	url="/images/gitops-environments/app-trace-across-envs.png" 
+	file="/images/gitops-environments/app-trace-across-envs-example.png" 
+	url="/images/gitops-environments/app-trace-across-envs-example.png" 
 	alt="Example: Tracing application progress across different GitOps Environments" 
 	caption="Example: Tracing application progress across different GitOps Environments"
   max-width="60%" 
@@ -225,8 +225,8 @@ You can:
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/gitops-environments/version-info.png" 
-	url="/images/gitops-environments/version-info.png" 
+	file="/images/gitops-environments/app-version-info.png" 
+	url="/images/gitops-environments/app-version-info.png" 
 	alt="Helm chart version for application" 
 	caption="Helm chart version for application"
   max-width="60%" 
@@ -322,8 +322,8 @@ Manage applications from within Environments through the application's context m
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/gitops-environments/app-context-menu.png" 
-	url="/images/gitops-environments/app-context-menu.png" 
+	file="/images/gitops-environments/app-context-menu-actions.png" 
+	url="/images/gitops-environments/app-context-menu-actions.png" 
 	alt="Context menu with actions for Argo CD applications within GitOps Environments" 
 	caption="Context menu with actions for Argo CD applications within GitOps Environments"
   max-width="60%" 
