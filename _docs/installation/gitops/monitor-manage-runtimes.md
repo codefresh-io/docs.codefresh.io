@@ -208,7 +208,7 @@ The methods for updating any Git token are the same regardless of the reason for
 ### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/reference/git-tokens/#git-runtime-token-scopes)
+* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/security/git-tokens/#git-runtime-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -526,9 +526,7 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 ## (Helm GitOps) Download logs for GitOps Runtimes
-Download logs for the GitOps Runtime from the Kubernetes cluster.
 
-<!---
 Download the logs for a completed GitOps Runtime installation.<br>
 The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
@@ -547,6 +545,7 @@ The Runtime log is downloaded as a `.tar.gz` file, which contains the individual
     max-width="60%"
 %}
 
+<!--- 
 ## (Legacy CLI Hybrid GitOps) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.
 
