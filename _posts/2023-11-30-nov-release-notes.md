@@ -55,8 +55,10 @@ max-width="50%"
 %}
 
 **Please note**  
-Sharing build log URLs requires timestamps in the logs. Enabling timestamps can affect automation you may have created based on log output formats without timestamps. To opt out, please contact Codefresh Support.  
+Sharing build log URLs requires timestamps in the logs. Codefresh will enable timestamps for all accounts, which can affect automation you may have created based on log output formats without timestamps. To opt out, please contact Codefresh Support.  
 This functionality will be available for all customers starting December 14.
+
+
 For details, see [Sharing log URLs for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#sharing-log-urls-for-pipeline-builds).
 
 ### Pipelines: Custom audiences for OIDC
