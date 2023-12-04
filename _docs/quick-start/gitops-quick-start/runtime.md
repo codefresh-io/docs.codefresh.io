@@ -50,7 +50,7 @@ For details on these access modes, review [GitOps Runtime architecture]({{site.b
 
 ### GitHub as Git provider  
 Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git providers and Git runtime tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).  
+The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git providers and Git runtime tokens]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes).  
 
 Have your GitHub Runtime token ready for Runtime installation with a valid expiration date and access permissions:
   * Expiration: Either the default of 30 days or any duration you consider logical.
