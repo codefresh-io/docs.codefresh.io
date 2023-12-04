@@ -81,8 +81,8 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 
 
 ### Other changes
-**Pipelines**: Helm steps now support Helm releases 3.9.0 and higher.
-**GitOps**: We have restored the option in the UI to Download logs for GitOps Helm Runtimes.
+* **Pipelines**: Helm steps now support Helm releases 3.9.0 and higher.
+* **GitOps**: We have restored the option in the UI to Download logs for GitOps Helm Runtimes.
 
 
 
