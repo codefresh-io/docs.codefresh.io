@@ -9,6 +9,42 @@ Welcome to the release notes for our on-premises release versions, starting with
 ## On-premises version 2.2
 
 
+### Features & enhancements
+<br>
+
+### Feature Flags
+
+**New Feature Flags in v2.2**  
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.1.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `abacAndRule`       | When enabled, supports creating ABAC rules using "AND".| TRUE  |
+| `appDiffView`       | When enabled, ??.| FALSE  |
+|`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Souces from users without Git permissions or Git credentials for the same. ???   | FALSE         |
+| `genAICronExpression`       | When enabled, supposts generateing Cron expressions in the Codefresh UI using Generative AI . FALSE  |
+| `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the side bar .????      | FALSE         |
+| `showCompositionsMenuItem`     | When enabled (the default), displays Compositions as an option within Artifacts & Insights in the side bar .      | TRUE         |
+| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard and trigger a promotion flow. <br>See ???| FALSE         |
+| `promotionWorkflows` | When enabled, allows you to drag an application in the GitOps Product dashboard and trigger a promotion flow. <br>See ???| FALSE         |
+| `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to standard Git Sources. <br>See ???| FALSE         |
+| `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the <duration> and <units> to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br>`timeout` is supported for these step types: flag  to any of these step types: `git-clone`, `freestyle`, `build` , `push`, `composition`, `pending-approval`. See ??? in this article.                                                     | TRUE         |`
+| `useRepoAndBranchesNextPagination`         | When enabled, displays promotion workflows in the application's context menu. (Need to ask)  | FALSE         |
+
+
+
+**Updated Feature Flags in v2.2**  
+The table below lists the Feature Flags which are _now enabled by default_.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `gitopsAppGroups`       | When enabled, allows users to group Argo CD applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See ??? | TRUE   |
+|`nextGenTerminal` | When enabled (the default), uses the new terminal emulator for improved performance, online rendering for large logs (more than 100,000 lines), search functionality, and Screen Reader support for accessibility. | TRUE|
+|`cronTriggersInPipelineSpec`	| When enabled, allows users to define Cron triggers in the pipeline YAMLs as a spec.cronTriggers array, instead of using a separate API. <br>See ??? | TRUE|
+| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See ??.    | TRUE         |
+
 ### Bug fixes
 **General**  
 * Removing users from Codefresh UI, or via API or Terraform results in 504 error. 
