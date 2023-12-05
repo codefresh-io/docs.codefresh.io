@@ -10,32 +10,123 @@ Welcome to the release notes for our on-premises release versions, starting with
 
 
 ### Features & enhancements
-<br>
+
+#### Pipelines: New `timeout` functionality for pipeline steps
+
+We are happy to announce a new field for pipeline steps, the `timeout` flag to further enhance control over your pipelines!
+The `timeout` flag, when assigned to a step, prevents that step from running beyond a specific duration if so required.
+
+Add the `timeout` flag with the <duration> and <units> to any of these step types: `git-clone`, `freestyle`, `build`, `push`, `composition`, `pending-approval`.
+
+**How it works**  
+* Steps that exceed the timeout limit are automatically terminated. If the steps are completed before the timeout limits are exceeded, the timeout values are ignored.
+* Steps terminated through timeouts have the same behavior as failed steps. If you notice any inconsistencies, kindly report them as bugs.
+* In parallel steps, by default, the timeout defined for the parent is inherited by child steps.
+
+**Example**  
+
+```yaml
+version: '1.0'
+steps:
+  parallel:
+    type: parallel
+    timeout: 1m
+    steps:
+      first:
+        image: alpine
+      second:
+        image: alpine
+        timeout: 2m 
+      third:
+        image: alpine
+        timeout: null 
+```
+For details, see [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) and [Add timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+#### Pipelines: Share log URLs for pipeline builds with timestamps
+Our latest enhancement simplifies troubleshooting and resolution process for issues in pipeline builds! How? By introducing the ability to share the URL of the build log with your team! 
+
+By selecting the part of the build log you want your team to look at for a specific step or for the entire build: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
+When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+url="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+alt="Sharing URL for build logs" 
+caption="Sharing URL for build logs" 
+max-width="50%" 
+%}
+
+**Please note**  
+Sharing build log URLs requires timestamps in the logs. Codefresh will enable timestamps for all accounts, which can affect automation you may have created based on log output formats without timestamps. To opt out, please contact Codefresh Support.  
+This functionality will be available for all customers starting December 14.
+
+
+For details, see [Sharing log URLs for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#sharing-log-urls-for-pipeline-builds).
+
+#### Pipelines: Custom audiences for OIDC
+You’ll be happy with our latest enhancement for OIDC in Codefresh pipelines. Now, our OIDC integration supports multiple audiences. This flexibility is crucial for working with audiences that require distinct names instead of defaulting to the platform’s hostname, such as the Codefresh platform URL.
+
+**Customize your audience**  
+In the `obtain-oidc-id-token` step, tailor your audience by defining custom values — either a single value or multiple values separated by commas.
+
+Here’s an example of a single custom audience:
+
+```yaml
+obtain_id_token:
+  title: Obtain ID Token
+  type: obtain-oidc-id-token
+  arguments:
+    AUDIENCE: "cosign"
+```
+
+For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-pipelines/#standard-oidc-claims).
+
+
+### Other changes
+**Pipelines**  
+* Helm steps now support Helm releases 3.9.0 and higher.
+* Character limit for Glob expressions increased to 65k.
+* Bitbucket and Azure Devops: Pull Request (PR) commit event to list of supported events.
+* Higher throttle time ensures that delayed builds for pipelines do not affect performance. 
+* Pipelines list 
+* Accurate memory metrics for pipeline builds that use buildx and docker driveerinactive memory ex
+
+**GitOps**
+* Restored option to download logs for GitOps Helm Runtimes from the Codefresh UI.
+* Performance enhancements:
+  * Current State tab in the GitOps Apps dashboard now loads quickly even for Argo CD applications with hundreds of resources.
+
+
+Quick loading for Current State 
 
 ### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and existing Feature Flags which are now enabled by default.  
 
 **New Feature Flags in v2.2**  
-The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.1.
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.2.
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `abacAndRule`       | When enabled, supports creating ABAC rules using "AND".| TRUE  |
-| `appDiffView`       | When enabled, ??.| FALSE  |
-|`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Souces from users without Git permissions or Git credentials for the same. ???   | FALSE         |
+| `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND".| TRUE  |
+| `appDiffView`       | When enabled, displays the differences for each resource in the application in either Compact or Split view modes. See ???| FALSE  |
+|`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same. ???   | FALSE         |
 | `genAICronExpression`       | When enabled, supposts generateing Cron expressions in the Codefresh UI using Generative AI . FALSE  |
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the side bar .????      | FALSE         |
 | `showCompositionsMenuItem`     | When enabled (the default), displays Compositions as an option within Artifacts & Insights in the side bar .      | TRUE         |
-| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard and trigger a promotion flow. <br>See ???| FALSE         |
-| `promotionWorkflows` | When enabled, allows you to drag an application in the GitOps Product dashboard and trigger a promotion flow. <br>See ???| FALSE         |
-| `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to standard Git Sources. <br>See ???| FALSE         |
-| `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the <duration> and <units> to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br>`timeout` is supported for these step types: flag  to any of these step types: `git-clone`, `freestyle`, `build` , `push`, `composition`, `pending-approval`. See ??? in this article.                                                     | TRUE         |`
+| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. <br>See ???| FALSE         |
+| `promotionWorkflows` | When enabled, ??? <br>See ???| FALSE         |
+| `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See ???| FALSE         |
+| `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the <duration> and <units> to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br>`timeout` is supported for these step types: `git-clone`, `freestyle`, `build` , `push`, `composition`, `pending-approval`. See ??? in this article.                                                     | TRUE         |`
 | `useRepoAndBranchesNextPagination`         | When enabled, displays promotion workflows in the application's context menu. (Need to ask)  | FALSE         |
 
 
 
 **Updated Feature Flags in v2.2**  
-The table below lists the Feature Flags which are _now enabled by default_.
+The table below lists the Feature Flags which are _now enabled by default_ and set to _TRUE_.
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
