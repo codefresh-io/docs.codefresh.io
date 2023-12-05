@@ -97,12 +97,15 @@ step_name:
 | `no_cf_cache`   | Defines if to enable or disable Codefresh build optimization for the build. When set to `false`, the default, enables Codefresh build optimization. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |                                                                          |
 | `build_arguments`   | The set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg){:target="\_blank"} to pass to the build process.   | Optional                  |
 | `target`  | The target stage at which to stop the build in a multistage build. | Optional                  |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`  | Define the build behavior on step failure. When set to `true`, the default, ff a step fails, the build is stopped as well. To continue the build on step failure, set to `false`. | Default     |
 | `when`       | The set of conditions that need to be satisfied in order to execute this step.<br>For more information, see [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) .   | Optional |
 | `metadata`   | Annotate the built image with [key-value metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).  | Optional   |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).      | Optional                  |
 | `retry`   | Define retry behavior for the build step, as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
 | `buildkit`  | When set to `true`, enables [Buildkit](#buildkit-support) and all of its enhancements. When using `buildkit` with `cache_from`, to allow the built image to be used as cache for future images, you must  specify `BUILDKIT_INLINE_CACHE=1` in the build_arguments. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"}| Optional   | 
+| `ssh`  | Available when using [Buildkit](#buildkit-support) for ssh keys. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#ssh){:target="\_blank"}| Optional   | 
+| `secrets`  | Available when using [Buildkit](#buildkit-support) for secret mounting. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#secret){:target="\_blank"}| Optional   | 
 | `platform`  | The [target platform or platforms](https://docs.docker.com/build/building/multi-platform/){:target="\_blank"} to which to push the image. For example, `linux/amd64`. To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`. <br>NOTE: To use this property, you must enable `buildx`. | Optional   | 
 | `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can configure settings for <code class="highlighter-rouge">qemu</code> and <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image to use to install the <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries. Currently, Codefresh supports the <code class="highlighter-rouge">tonistiigi/binfmt</code> Docker image. <br>By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image. </li><li><code class="highlighter-rouge">platforms</code>: The binaries of platform emulators to install with the Docker image defined for <code class="highlighter-rouge">image</code>. The default value is <code class="highlighter-rouge">all</code>.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code>  <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver_opts</code>: Additional driver-specific configuration options to customize the driver. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   | 
 
@@ -112,6 +115,70 @@ step_name:
 - Image ID, which you can use to [annotate images]({{site.baseurl}}/docs/pipelines/docker-image-metadata/)
 
 ## Build image step examples
+
+### Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**:  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+  `YAML`
+{% highlight yaml %}
+step_name:
+  type: build
+  title: Step Title
+  description: Free text description
+  working_directory: {% raw %}${{clone_step_name}}{% endraw %}
+  dockerfile: path/to/Dockerfile
+  image_name: owner/new-image-name
+  tag: develop
+  platform: 'linux/arm64'
+  buildx: true
+  build_arguments:
+    - key=value
+  cache_from:
+    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:main
+  target: stage1
+  no_cache: false
+  no_cf_cache: false
+  tag_policy: original
+  timeout: 45m
+  fail_fast: false
+  metadata:
+    set:
+      - qa: pending
+  when:
+    condition:
+      all:
+        noDetectedSkipCI: "includes('{% raw %}${{CF_COMMIT_MESSAGE}}{% endraw %}', '[skip ci]') == false"
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ...
+{% endhighlight %} 
+
+
+**Timeout info in logs**  
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
 
 ### Using Dockerfile in root project folder
 

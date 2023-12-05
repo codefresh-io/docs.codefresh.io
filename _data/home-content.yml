@@ -89,8 +89,12 @@
   icon: images/home-icons/guides.png
   url: ""
   links:
-    - title: Home dashboard
-      localurl: /docs/dashboards/home-dashboard/
+    - title: Home
+      localurl: /docs/dashboards/home-dashboard/  
+    - title: GitOps Environments
+      localurl: /docs/dashboards/gitops-environments/   
+    - title: GitOps Products
+      localurl: /docs/dashboards/gitops-products/   
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images
@@ -181,11 +185,11 @@
       localurl: /docs/deployments/helm/helm-releases-management/
     - title: Promoting Helm environments
       localurl: /docs/deployments/helm/helm-environment-promotion/
-    - title: Creating GitOps applications
+    - title: Creating    Argo CD applications
       localurl: /docs/deployments/gitops/create-application/
-    - title: Monitoring GitOps applications
+    - title: Monitoring Argo CD applications
       localurl: /docs/deployments/gitops/applications-dashboard/
-    - title: Managing GitOps applications
+    - title: Managing Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
 - title: Argo CD Workflows
@@ -221,6 +225,8 @@
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: On-premises GitOps Runtime installation
       localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/
+    - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
+      localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/
 
 - title: Administration
   icon: images/home-icons/administration.svg
@@ -247,14 +253,16 @@
     - title: Single Sign-On
       localurl: /docs/administration/single-sign-on/
 
-- title: Reference
+- title: Security
   icon: images/home-icons/guides.png
   url: ""
   links:
-    - title: Git tokens
-      localurl: /docs/reference/git-tokens/
+    - title: Git tokens for GitOps
+      localurl: /docs/security/git-tokens/
     - title: Secrets for GitOps
-      localurl: /docs/reference/secrets
+      localurl: /docs/security/secrets/
+    - title: Verify authenticity of Codefresh artifacts
+      localurl: /docs/security/codefresh-signed-artifacts/
 
 - title: "Incubation"
   icon: images/home-icons/plugins.svg

@@ -219,17 +219,17 @@ For details, see [Pipeline limit in projects](https://artifacthub.io/packages/he
 <br><br>
 
 
-#### GitOps: ABAC for GitOps applications
-In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to GitOps application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
-To enable this, you need to turn on the `abacHermesTriggers` feature flag. 
+#### GitOps: ABAC for Argo CD applications
+In this release, we bring the power of ABAC for access control to GitOps for the first time as a Beta version. You can define fine-grained access to Argo CD application entities. Similar to ABAC for pipelines, access is controlled through the use of rules, created by defining teams, actions, and attributes.  
+To enable this, you need to turn on the `abacV2` feature flag. 
 
  {% include 
 image.html 
 lightbox="true" 
 file="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
 url="/images/whats-new/aug23/rel-notes-aug23-gitops-add-rule.png" 
-alt="Access control for GitOps application entities" 
-caption="Access control for GitOps application entities" 
+alt="Access control for Argo CD application entities" 
+caption="Access control for Argo CD application entities" 
 max-width="40%" 
 %}
 
@@ -294,7 +294,7 @@ We've introduced a new environment variable, `FRAME_OPTIONS`, which is now avail
 * Pipeline trigger for BitBucket server does not fire on commit.
 * Creating a Git trigger for a repo name containing spaces fails with error: `Failed to create trigger...fails to match the required pattern...`.
 * “Internal server error” displayed when creating a pipeline with project-level permissions though pipeline is created.
-* Discrepancy in list of builds returned when running `GET {{baseUrl/workflow?pipeline=[pipeline-id]}}` query.
+* Discrepancy in list of builds returned when running `{% raw %}GET {{baseUrl/workflow?pipeline=[pipeline-id]}}{% endraw %} ` query.
 * Composition stops randomly with error: `Could not get status for container <container-name>`. 
 * Image enrichment with GitHub Actions fails with message: `EventSourceError: Request-URI Too Large`.
 * In Pipelines dashboard (Home Dashboard), for a renamed pipeline, the Pipeline filter displays the original name instead of the new name. 
@@ -339,7 +339,7 @@ The table below describes the new Feature Flags in the Codefresh On-Premises rel
 |`supportOpenIdConnectInBuilds`| When enabled (the default), supports OIDC in pipeline builds, including obtaining and using ID tokens to authenticate and authorize pipeline actions on cloud providers.<br>See [Pipelines: OPenID Connect (OIDC) integration](#pipelines-openid-connect-oidc-integration) in this article. |TRUE|
 `supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for Pipelines and GitOps](#gerrit-as-git-provider-for-pipelines-and-gitops) in this article.    | FALSE         |
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipelines: Access control for endpoints](#pipelines-access-control-for-endpoints) in this article.    | FALSE         |
-| `gitopsAppGroups`       | When enabled, allows users to group GitOps applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
+| `gitopsAppGroups`       | When enabled, allows users to group Argo CD applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [GitOps: Application Groups in GitOps Apps dashboard](#gitops-application-groups-in-gitops-apps-dashboard) in this article. | FALSE   |
 
 
 

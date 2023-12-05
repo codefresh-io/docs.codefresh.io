@@ -418,7 +418,7 @@ spec:
 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)   
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 
 

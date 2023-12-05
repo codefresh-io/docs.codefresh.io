@@ -1,19 +1,19 @@
 ---
-title: "Create and commit resources for application"
+title: "Create & commit resources for `codefresh-guestbook` application"
 description: ""
 group: getting-started
 sub-group: gitops-quick-start
 toc: true
 ---
 
-Now that you have created an application, you need to deploy the application. Let's deploy the `codefresh-guestbook` application by creating and commiting resources.  
+Now that you have created `codefresh-guestbook` as an Argo CD application, you need to deploy it. Let's deploy the `codefresh-guestbook` application by creating and committing resources.  
 You will create and commit the following resources:  
 1. A folder in Git to save resources for the application 
 1. `Rollout` resource defining the deployment strategy 
 1. `Service` resource to expose the application to external traffic
 
 ### Before you begin
-* [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/)  
+* [Create `codefresh-guestbook` Argo CD application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/)  
 * Make sure [Argo Rollouts is installed]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/) on the target cluster
 
 ### Create folder in Git for application resources
@@ -110,9 +110,9 @@ spec:
 | `selector.app`            | The pods to select, and MUST be identical to that defined in `rollouts.yaml`, `codefresh-guestbook` in our example.| 
 
 ### View application resources in Codefresh
-Once you create and commit the `rollout` and `service` resources, return to the GitOps Apps dashboard. The Current State  to see these resources.
+Once you create and commit the `rollout` and `service` resources, return to the GitOps Apps dashboard. After selecting the application, the Current State tab displays the application's resources.
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
 1. Select the application. 
   The Current State tab is now populated with the `rollout` and `service` resources you added. 
 
@@ -127,4 +127,4 @@ Once you create and commit the `rollout` and `service` resources, return to the 
    %}
 
 ### What to do next
-[(Optional) Update image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout/)
+[(Optional) Update image tag for Argo CD application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout/)

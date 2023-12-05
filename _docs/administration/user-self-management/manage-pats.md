@@ -6,7 +6,7 @@ sub_group: user-self-management
 toc: true
 ---
 
-As a user in Codefresh, you must authorize access to your Git provider accounts, and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/).
+As a user in Codefresh, you must authorize access to your Git provider accounts, and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/).
 
 The authorization mode depends on the authorization method set up by your account admin: 
 * OAuth2  
@@ -176,4 +176,4 @@ max-width="70%"
 
 
 ## Related articles  
-[Git tokens in Codefresh]({{site.baseurl}}/docs/reference/git-tokens/)
+[Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/)

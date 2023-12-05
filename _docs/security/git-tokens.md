@@ -1,9 +1,10 @@
 ---
-title: "Git tokens"
-description: ""
-group: reference
+title: "Git tokens for GitOps"
+description: "Understand what Git tokens and scopes required for GitOps"
+group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
+  - /docs/reference/git-tokens/ 
 toc: true
 ---
 
@@ -35,7 +36,7 @@ The table below lists the scopes required for Git Runtime tokens for the differe
 | Git provider                  | Required scopes for Git Runtime token           | 
 | ---------------------------- | ------------------------------ | 
 | GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Webhook: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul></li></ul>{:/}|
-| GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">api</code></li><li><code class="highlighter-rouge">read_repository</code></li></ul> {:/}         |             
+| GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">read_api</code></li><li><code class="highlighter-rouge">read_repository</code></li></ul> {:/}         |             
 | Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
 
 
@@ -66,3 +67,5 @@ You need to create a service or robot account with your Git provider, generate t
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
+[Secrets for GitOps]({site.baseurl}}/docs/security/secrets/)  
+[Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  

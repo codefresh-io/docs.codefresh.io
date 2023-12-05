@@ -17,7 +17,7 @@ Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architec
 >**IMPORTANT**:  
 We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.<br>  
 We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
-The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will be actively maintained going forward. 
+The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will not be actively maintained going forward. 
 
 >**Codefresh Runner with spot instances**:<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
@@ -332,11 +332,11 @@ runtimeScheduler:
 | `envVars`       | object | Override or add environment variables passed into the dind pod. See [IN-DIND cleaner](https://github.com/codefresh-io/dind/tree/master/cleaner){:target="\_blank"}  |
 | `userVolumeMounts` with `userVolumes`       | object | Add volume mounts to the pipeline.<br>See [Custom Volume Mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}. |
 | `cluster`       | object | k8s related information (`namespace`, `serviceAccount`, `nodeSelector`) |
-| `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu) |
+ `defaultDindResources`       | object | Override `requests` and `limits` for dind pod (defaults are `cpu: 400m` and `memory:800Mi`). For memory, use `Mi` (mebibytes); for CPU, use `m` (millicpu).<br>See also [How to: Update Runtime Environment memory and CPU settings]({{site.baseurl}}/docs/kb/articles/update-runtime-mem-cpu/). |
 | `tolerations`       | array | Add tolerations to dind pod |
 | `annotations`       | object | Add custom annotations to dind pod (empty by default `{}`) |
 | `labels`       | object | Add custom labels to dind pod (empty by default `{}`) |
-| `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. See [Volume reuse policy](#volume-reuse-policy)  |
+| `pvc`       | object | Override default storage configuration for PersistentVolumeClaim (PVC) with `storageClassName`, `volumeSize`, `reuseVolumeSelector`. <br>See [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}.  |
 | `dnsPolicy`       | string | Dind pod's [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy){:target="\_blank"} |
 | `dnsConfig`       | object | Dind pod's [DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config){:target="\_blank"} |
 
