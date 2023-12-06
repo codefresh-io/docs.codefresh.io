@@ -196,6 +196,10 @@ The table below lists the Feature Flags which are _now enabled by default_ and s
 * Memory usage graph in Builds page shows **Mib** instead of **MiB**. 
 
 
+* "No such file or directory" error in Test History/Trends page for Allure test reports. CR-21392 Vadim
+* Listing branches when setting up trigger or in **Use YAML from repository** results in error 'Error: Failed to retrieve file'. CR-21377 Andrii
+* Builds stuck in Terminating state in Codefresh UI CR-21470 Andrii
+
 **GitOps**
 * Rollouts panel does not display control to expand Analysis Run. 
 * Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. 
@@ -208,10 +212,10 @@ The table below lists the Feature Flags which are _now enabled by default_ and s
  Subscription & Billing page is inconsistent when the account is paying via Wire Transfer (or any other non-Stripe related method) CR-2589 Alexey
 
 
- * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images. 20635 Andrii
-
-
+ * `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images. 20635 Andri
  * Frequent timeouts when pushing to Codefresh Helm repo via Helm step. CR-18160
+In Codefresh UI, clicking Retry in Workflows does not update workflow view. CR-20887 Sasha
+Missing Git Runtime tokens in Personal Access Token page - CR-21368 Oleg
 
 
  
