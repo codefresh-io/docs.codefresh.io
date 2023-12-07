@@ -55,7 +55,8 @@ step_name:
 | `description`                              | A basic, free-text description of the step.    | Optional                  |
 | `timeout`                                  | Defines an automatic approval/rejection if a specified amount of time has passed. The `duration` field is hours. By default it is set to 168 (i.e, 7 days). The `finalState` field defines what will happen after the duration time has elapsed. Possible values are `approved`/`denied`/`terminated`    | Optional                  |
 | `timeUnit`                               | This field defines possible options of `minutes`, or `hours`. If the field is not set, the default is `hours` | Optional                       
-| `fail_fast`                              | If set to false, the pipeline will continue even when the step is rejected | Optional                  |
+| `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li>`true`: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li> `false`: Continues pipeline execution upon step failure. The Build status returns `Build completed successfully`. <br>To change the Build status, set `strict_fail_fast` to `true`.</li></ul>{:/}See also | Optional                  |
+| `strict_fail_fast`                              | Specifies how to report the Build status `fail_fast` is set to `false`. {::nomarkdown}<ul><li>`true`:  Returns a Build status of failed on step failure.</li> <li>`false`: Returns a Build status of successful regardless of step failures.</li></ul>{:/}**NOTE**: `strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
 | `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.    | Optional                  |
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article. | Optional                  |
 
@@ -157,7 +158,7 @@ is scheduled in the same node once the pipeline resumes. Otherwise the volume wi
 
 By default if you reject a pipeline, it will stop right away and it will be marked as failed. All subsequent steps after the approval one will not run at all.
 
-You might want to continue running the pipeline even when it is rejected by adding the `fail_fast` property in the approval step:
+You might want to continue running the pipeline even when one of the steps fail execution by adding the `fail_fast` property in the `approval` step. In this case, you can specify whether the build status at the end of execution should return failed instead of successful which is the default, through the `strict-fail_fast` field.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -166,6 +167,7 @@ version: '1.0'
 steps:
  waitForInputBeforeProduction:
    fail_fast: false
+   strict_fail_fast: true
    type: pending-approval
    title: Deploy to Production?
 {% endraw %}
@@ -295,7 +297,7 @@ it, the other two steps will be ignored.
 
 ## Define Concurrency Limits
 
-Codefresh has the ability to limit the amount of running builds for a specific pipeline with several concurrency policies in the pipeline settings. You can choose if a build that is in a pending approval state will count against the concurrency limits or not.
+Codefresh has the ability to limit the amount of running builds for a specific pipeline with several concurrency policies in the pipeline settings. You can choose if a build pending approval state counts against the concurrency limits or not.
 
 As an example let's say that the concurrency limit for a specific pipeline is set to 2. Currently there is one active/running build  and a second build that is pending approval.
 
