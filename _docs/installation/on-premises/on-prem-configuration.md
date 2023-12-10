@@ -4,9 +4,9 @@ description: "Set up accounts and users in Codefresh after installing the on-pre
 group: installation
 toc: true
 ---
-After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administrator you need to complete setup tasks, as described in this article.
+After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administrator you need to complete the setup tasks described in this article.
 
-The Codefresh Admin Management panel provides all the options you need for setup.
+The Codefresh Admin Management panel provides all the options you need to set up accounts and users.
 
 
 Review the options available in [Admin Management](#quick-reference-admin-management-settings) and [Account management](#quick-reference-account-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
@@ -71,34 +71,36 @@ For a description of all settings available for a Codefresh account, see [Quick 
   url="/images/installation/on-prem-setup/admin-accounts-page.png"
   alt="Account setup and management for on-premises"
   caption="Account setup management for on-premises"
-  max-width="60%"
+  max-width="70%"
     %} 
 
 {:start="3"}
 1. In the toolbar on the right, click the **+** icon.
 1. In **Create New Account**, enter the account name and click **Create**.  
   The new account is displayed in the list of Accounts.
-1. Click the **System Typee** column, and do the following:
+1. Click the **System Type** column, and do the following:
   1. Select the System Type for the account:
-    * **Classic**: Codefresh pipelines only.
-    * **GitOps**: GitOps applications integrated with ArgoCD.
-    * **Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. 
-    * **GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.
+      * **Classic**: Codefresh pipelines only.
+      * **GitOps**: GitOps applications integrated with ArgoCD.
+      * **Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. 
+      * **GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.
   1. Click **Save**.
+
+{:start="6"}
 1. Set the number of **Runtime Environments** for this account.
 1. Set the number of **Parallel Builds**.
 1. In the **Collaborators** column, click the **Edit** icon and increase the count to equal the number of users you plan on inviting to the account, and then click the **Save** icon. 
   You can always change this later.
 1. If you have a Windows environment, set the number of **Nodes**.
 1. To enable username-password login for the users in this account, set **User/Pass Enabled** to **ON**.
-1. To disable users in this account from creating personal after first signing in to Codefresh, set **Disable Personal Account** to **ON**.
+1. To disable users in this account from creating personal accounts after signing in to Codefresh, set **Disable Personal Account** to **ON**.
 1. For Windows environments, set the **Codefresh Env** to use.
 1. Continue with [Step 3: Invite a user to a Codefresh account](#step-3-invite-a-user-to-a-codefresh-account).
 
 ### Step 3: Invite a user to a Codefresh account
 
 Invite one or more to the Codefresh account you created.  
-The maximum number of users you can invite to your account depends on the number of Collaborators defined for the account. A Collaborator is a Codefresh user who can access the UI and perform actions.
+The maximum number of users you can invite to your account depends on the number of Collaborators defined for the account. A Collaborator is a Codefresh user who can access the UI and perform different actions.
 Once users are invited, their statuses remain as Pending until they accept the invitations.
 
 
@@ -162,7 +164,7 @@ To enable features selectively for specific accounts, or for all accounts in the
 #### Enable/disable features for a specific account
 
 **Before you begin**  
-Review [feature descriptions]()
+Review [feature descriptions]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/#on-premises-feature-list)
 
 **How to**  
 
@@ -212,7 +214,7 @@ If you need to turn on a feature, we recommend to first contact Codefresh suppor
 
 
 You have now created a Codefresh account, added one or more users the account, and enabled or disabled features for the account.
-Review **What to do next** for next steps.
+Review **What to do next** on how to proceed.
 
     
 
@@ -223,7 +225,7 @@ Review **What to do next** for next steps.
   * [Projects and pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
   * Pipeline integrations for [Git providers]({{site.baseurl}}/docs/integrations/git-providers/), [Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/) and more
   * [GitOps]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) integrations for image enrichment
-* [GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)
+  * [GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)
 
 See our quick starts for [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/).
 
