@@ -154,11 +154,11 @@ max-width="90%"
 >Notice also that you if you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is set up with local volumes, then the volume will only be present if the dind pod
 is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
 
-## Controlling the Rejection Behavior
+## Controlling the rejection behavior
 
-By default if you reject a pipeline, it will stop right away and it will be marked as failed. All subsequent steps after the approval one will not run at all.
+By default if you reject a pipeline, it will stop right away and it will be marked as failed. All subsequent steps after the `approval` one will not run at all.
 
-You might want to continue running the pipeline even when one of the steps fail execution by adding the `fail_fast` property in the `approval` step. In this case, you can specify whether the build status at the end of execution should return failed instead of successful which is the default, through the `strict-fail_fast` field.
+You might want to continue running the pipeline even when one of the steps fail execution by adding the `fail_fast` property in the `approval` step. In this case, you can also add the `strict-fail_fast` flag to specify if the build status at the end of execution should return failed instead of successful which is the default.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -173,7 +173,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this case you can also read the approval result and make the pipeline work differently according to each choice (demonstrated in the following section).
+You can also read the approval result and make the pipeline work differently according to each choice (demonstrated in the following section).
 
 
 ## Getting the Approval Result
@@ -203,8 +203,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-In this example the second step that is destroying an environment will only run if the user
-approves the first step. In case of rejection the second step will be skipped.
+In this example, the second step that destroys an environment will only run if the user
+approves the first step. In case of rejection the second step is skipped.
 
 You can follow the same pattern for running steps when an approval step was rejected.
 Here is a full example with both cases.
