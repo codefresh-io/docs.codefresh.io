@@ -26,9 +26,20 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
   max-width="60%"
     %}  
 
+<!--- ## Enable System Features  
+System Features are generally for internal use.   
+For more information, see ???
+
+>**IMPORTANT:**  
+Codefresh _strongly recommends against enabling the System Features not explicitly mentioned here_, unless you are familiar with the implications of turning on each of the features.  
+If you need to turn on a feature, we recommend to first contact Codefresh support. 
+
+-->
+
+
 
 ## On-premises feature list 
-
+The table describes the Feature Flags available for Codefresh accounts, in alphabetical order.
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 
