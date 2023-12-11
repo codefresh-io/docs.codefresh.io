@@ -16,7 +16,7 @@ Codefresh has native support for AWS in the following areas:
 See also [other Amazon deployments](#other-amazon-deployments).
 
 >**IMPORTANT**:  
-The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
 
 ## Amazon Container Registries
 
