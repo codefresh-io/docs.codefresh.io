@@ -1,6 +1,6 @@
 ---
 title: "Error: Context <context-name> already exists"
-description: Naming conflict when creating an integration or shared configuration context for pipelines 
+description: 
 group: kb
 sub-group: articles
 toc: true
@@ -11,7 +11,7 @@ categories: [Pipelines, Settings]
 support-reviewed: 2023-04-18 LG
 ---
 
-Creating an integration or a Shared Configuration context for pipelines results in the error message that `Context <context-name> already exists`.
+Creating an integration or a Shared Configuration context for pipelines displays an error message that the `Context <context-name> already exists`.
 
 ## Possible cause
 
@@ -26,8 +26,10 @@ _OR_
 
   `codefresh get context --type <context-type>`
 
-   where:
+   where:  
    `<context-type>` is the type of context you want to retrieve, for example, `secret`
+
+{:start="2"}
 1. Change the name to make it unique in the account. 
 
 See [Get context](https://codefresh-io.github.io/cli/contexts/get-context/){:target="\_blank"} command description for all options.
