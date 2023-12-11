@@ -1,5 +1,5 @@
 ---
-title: "Error: Context <context-name> already exists"
+title: "Error: Context already exists"
 description: 
 group: kb
 sub-group: articles

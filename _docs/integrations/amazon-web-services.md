@@ -15,6 +15,9 @@ Codefresh has native support for AWS in the following areas:
 
 See also [other Amazon deployments](#other-amazon-deployments).
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.
+
 ## Amazon Container Registries
 
 Amazon Container Registries are fully compliant with the Docker registry API that Codefresh follows. 
@@ -29,17 +32,7 @@ Once the registry is added, you can use the [standard push step]({{site.baseurl}
 Codefresh has native support for connecting an EKS cluster through the integration options for Kubernetes in Pipeline Integrations.
 See [Adding an EKS cluster]({{site.baseurl}}/docs/integrations/kubernetes/#adding-eks-cluster) in [Kubernetes pipeline integrations]({{site.baseurl}}/docs/integrations/kubernetes/).
 
-<!-- ask Kostis which is correct? 
-{% 
-	include image.html 
-	lightbox="true" 
-file="/images/integrations/aws/aws-integration.png" 
-url="/images/integrations/aws/aws-integration.png" 
-alt="Connecting an Amazon cluster" 
-caption="Connecting a Amazon cluster" 
-max-width="40%" 
-%}
--->
+
 {% 
 	include image.html 
 	lightbox="true" 
@@ -109,6 +102,7 @@ For any other Amazon deployment, you can use the [Amazon CLI from a Docker image
 
 
 ## Related articles
+[Troubleshooting Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/)  
 [Add your cluster]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster)  
 [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Cloning Git repositories]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
