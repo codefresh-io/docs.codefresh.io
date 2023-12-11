@@ -16,21 +16,19 @@ support-reviewed: 2023-04-18 LG
 You are trying to run a specific step only if a variable is set. You are trying to have branching logic in one pipeline.
 
 
-This condition determines how values are substituted for variables, when and if referenced variables do not exist in the pipeline definitions. Codefresh retains the variable name string as-is, without substituting it with values.
+This condition determines how values are substituted for variables, when and if referenced variables do not exist in the pipeline definitions. In such cases, Codefresh retains the variable name string as-is, without substituting it with a value.
  
-For example, when referencing a variable `MyVar` that does not exist in the pipeline YAML, the condition checks for the part of the string `{{MyVar}}`. If {{MyVar}} is missing the  "$" notation, it will remain as is even if it exists in the pipeline.  
-When ${{MyVar}} does exist, it is substituted by the variable value, which should not contain the substring {{MyVar}} for standard use cases.
 
-So this condition:
-    {% raw %}
+The following condition:
+
+  {% raw %}
 
     ```yaml
-    'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
+      'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
     ```
+  {% endraw %}
 
-    {% endraw %}
-
-is expected to evaluate to true if MyVar does not exist, and false if it does exist.
+evaluates to `true` if `CF_RELEASE_TAG` does not exist, and `false` if it does exist.
 
 ## Details
 
