@@ -35,4 +35,4 @@ _OR_
 See [Get context](https://codefresh-io.github.io/cli/contexts/get-context/){:target="\_blank"} command description for all options.
 
 ## Related articles
-[Shared configuration for pipelines]({{site.baseurl}}/docs/docs/pipelines/configuration/shared-configuration/)  
+[Shared configuration for pipelines]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)  
