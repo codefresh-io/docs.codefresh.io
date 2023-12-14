@@ -21,7 +21,7 @@ For detailed instructions on installing v2.2, visit ????[ArtifactHub](https://ar
 
 **Upgrading to v2.2**  
 This major release includes new services and updates to existing services.  
-Before initiating the upgrade process, review the instructions ?????[here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-1-0){:target="\_blank"}.
+Before initiating the upgrade process, review the instructions ?????[here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-2-0){:target="\_blank"}.
 
 <br>
 
@@ -168,8 +168,8 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 |`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same. ???   | FALSE         |
 | `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
-| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. <!--- <br>See ??? -->| FALSE         |
-| `promotionWorkflows` | When enabled, ??? <!--- <br>See ??? -->| FALSE         |
+| `promotionFlow` | New feature currently in development.<br>When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. <!--- <br>See ??? -->| FALSE         |
+| `promotionWorkflows` | New feature currently in development.<br>When enabled, allows you create and run workflows when a promotion is triggered. <!--- <br>See ??? -->| FALSE         |
 | `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See ???| FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
 | `useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown  displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
