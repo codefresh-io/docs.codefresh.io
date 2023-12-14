@@ -1,5 +1,5 @@
 ---
-title: "How To: Skip Step If Pipeline Is Triggered With Cron"
+title: "How To: Skip step if pipeline triggered with Cron"
 description: 
 group: kb
 sub-group: articles
@@ -13,17 +13,17 @@ support-reviewed: 2023-12-12 MB
 
 ## Overview
 
-You have a build that is triggered by multiple triggers, and you need to skip a certain step if the pipeline was launched using a cron trigger.
+You have a build with multiple triggers, and you need to skip a certain step if the pipeline was launched using a Cron trigger.
 
 ## Details
 
-### Configure Cron Trigger Message
+### Configure Cron trigger message
 
-In your cron trigger configuration, set a message (e.g., "using cron") in the Message field.
+In the **Message** field in the Cron trigger configuration, set a message, for example, "using cron".
 
 ### Implement Conditional Step
 
-Utilize the EVENT_MESSAGE variable in your pipeline steps with a condition like:
+Utilize the `EVENT_MESSAGE` variable in your pipeline steps with a condition as in the following example:
 
 {% raw %} 
 
@@ -43,14 +43,10 @@ Utilize the EVENT_MESSAGE variable in your pipeline steps with a condition like:
 
 {% endraw %}
 
-This ensures specific steps execute only when the cron job message is different from "using cron" and pipeline is triggered by cron.
+The condition ensures that specific steps execute only when the pipeline is triggered by Cron and the Cron job message is different from the one defined in the Message field ("using cron" in our example).
 
 ## Related Items
-
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)
-
-[Cron trigger event variables]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/#cron-event-payload)
-
-[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
-
-[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
+[Cron trigger event variables]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/#cron-event-payload)  
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
+[Freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/)  
