@@ -213,6 +213,8 @@
       localurl: /docs/installation/codefresh-runner/
     - title: On-Premises platform installation
       localurl: /docs/installation/on-premises/codefresh-on-prem/
+    - title: On-Premises platform account & user setup
+      localurl: /docs/installation/on-premises/on-prem-configuration/     
     - title: On-Premises platform upgrade
       localurl: /docs/installation/on-premises/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
