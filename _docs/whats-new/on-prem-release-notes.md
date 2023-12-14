@@ -125,14 +125,15 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 
 #### GitOps: Restricted Git Sources for enhanced application deployment
 
-We have added a new type of Git Source to GitOps Runtimes, the Restricted Git Source, to deliver enhanced control and precision over application deployment within multi-tenant environments!
+We have added a new type of Git Source to GitOps Runtimesto deliver enhanced control and precision over application deployment within multi-tenant environments! Welcome to Restricted Git Sources in Codefresh!
 
-Restricted Git Sources empower organizations managing multiple development teams to deploy applications for various customers on a shared cluster. By being able to configure the Application Projects for applications and the namespaces to which to deploy them, Restricted Git Sources allow precise control over which teams can create specific applications and dictate their deployment destinations.
+Restricted Git Sources empower organizations managing multiple development teams to deploy applications for various customers on a shared cluster. By being able to configure the Application Projects and the namespaces to which to deploy the applications, Restricted Git Sources allow precise control over which teams can create specific applications and dictate their deployment destinations.
 
 Codefresh removes the complexity from the manual configuration required to configure Application Projects, and sync and manage applications and their resources in different namespaces. 
-
 * Administrators set up Restricted Git Sources in Codefresh with the Git repo, cluster, and namespace definitions
 * Codefresh manages the Argo CD applications synced to the Restricted Git Source, ensuring secure compliance without complex administrative overhead
+
+
 
 For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
@@ -166,9 +167,9 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `appDiffView`       | When enabled, displays the differences for each resource in the application in either Compact or Split view modes. <!--- See ??? -->| FALSE  |
 |`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same. ???   | FALSE         |
 | `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
-| `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the side bar of the Codefresh UI. | FALSE         |
-| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. <br>See ???| FALSE         |
-| `promotionWorkflows` | When enabled, ??? <br>See ???| FALSE         |
+| `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
+| `promotionFlow` | When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. <!--- <br>See ??? -->| FALSE         |
+| `promotionWorkflows` | When enabled, ??? <!--- <br>See ??? -->| FALSE         |
 | `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See ???| FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
 | `useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown  displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
