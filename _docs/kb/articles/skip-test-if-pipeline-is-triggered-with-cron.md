@@ -13,17 +13,17 @@ support-reviewed: 2023-12-12 MB
 
 ## Overview
 
-You have a build with multiple triggers, and you need to skip a certain step if the pipeline was launched using a Cron trigger.
+You have a build with multiple triggers and you need to skip a certain step if the pipeline was launched using a Cron trigger.
 
 ## Details
 
 ### Configure Cron trigger message
 
-In the **Message** field in the Cron trigger configuration, set a message, for example, "using cron".
+In the **Message** field of the Cron trigger configuration settings, set a message, for example, "using cron".
 
 ### Implement Conditional Step
 
-Utilize the `EVENT_MESSAGE` variable in your pipeline steps with a condition as in the following example:
+Use the `EVENT_MESSAGE` variable in your pipeline steps with a condition as in the following example:
 
 {% raw %} 
 
@@ -43,7 +43,7 @@ Utilize the `EVENT_MESSAGE` variable in your pipeline steps with a condition as 
 
 {% endraw %}
 
-The condition ensures that specific steps execute only when the pipeline is triggered by Cron and the Cron job message is different from the one defined in the Message field ("using cron" in our example).
+The condition ensures that specific steps execute only when the pipeline is triggered by Cron, _and_ if the Cron job message differs from the one defined in the Message field (`using cron` in our example).
 
 ## Related Items
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
