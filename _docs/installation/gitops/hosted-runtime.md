@@ -25,7 +25,7 @@ The Argo CD applications created in Hosted GitOps Runtimes are the customer's re
 |CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs defined declaratively with Crossplane        |
 |Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud (contact Support)</li><li>Gerrit (contact Support)</li></ul>{:/}|
 |Git repo for manifests   | Up to 100MB|
-|CMP (Cloud Management Platform) plugins                  | Plugin images without contain high or critical vulnerabilities.  |
+|CMP (Cloud Management Platform) plugins                  | Only for Enterprise customers.  |
 
 For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
@@ -145,7 +145,7 @@ max-width="70%"
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  
 
 **Authorize access**  
-  Based on the Git provider you select, you need to authorize access through OAuth or access token, and then select the Git organizations or accounts in which to create the required Git repos. 
+  Based on the Git provider you select, you need to authorize access through OAuth or an access token, and then select the Git organizations or accounts in which to create the required Git repos. 
 
 **Git organizations/accounts**  
   Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).

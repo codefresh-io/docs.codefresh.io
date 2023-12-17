@@ -198,7 +198,7 @@ The table below highlights the main differences in functionality and resources b
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
+| CD  Ops                 |Applications        |{::nomarkdown}<ul><li>Deployment supported only on target clusters</li><li>Self-healing interval: 90 seconds<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li><li>Reconciliation timeout: 5 seconds</li></ul> {:/}  | {::nomarkdown}<ul><li>Deployment supported on both in-cluster and managed clusters</li><li>Self-healing interval: 5 seconds (Argo CD default)<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li><li>Reconciliation timeout: Argo CD default</li></ul> {:/}|
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
