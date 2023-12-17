@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises setup"
+title: "Codefresh on-premises account & user setup"
 description: "Set up accounts and users in Codefresh after installing the on-premises platform"
 group: installation
 toc: true
@@ -9,7 +9,11 @@ After installing Codefresh on-premises successfully, before users can work magic
 The Codefresh Admin Management panel provides all the options you need to set up accounts and users.
 
 
-Review the options available in [Admin Management](#quick-reference-admin-management-settings) and [Account management](#quick-reference-account-settings), or continue with the steps below to complete the setup for Codefresh on-premises for your organization:
+Review the options available in [Admin Management](#quick-reference-admin-management-settings) and [Account management](#quick-reference-account-settings)
+   
+OR
+
+Continue with the steps below to complete the setup for Codefresh on-premises for your organization:
 1. Sign in to Codefresh
 1. Add a Codefresh account 
 1. Invite a user to the Codefresh account
@@ -188,10 +192,11 @@ To enable features selectively for specific accounts, or for all accounts in the
 
 #### Enable System Features  
 System Features are generally for internal use. 
-For convenience and ease of set up, _turn on ONLY the System Features listed in this section_. You can turn them on for all Codefresh accounts, if you have created more than one account.
+For convenience and ease of set up, _turn on ONLY the System Features listed in this section_.   
+When you enable System Features, the behavior for a specific feature is identical to that of the other Feature Flags: you can enable/disable it for a single, for specific, or for all accounts.
 
 >**IMPORTANT:**  
-Codefresh strongly recommends against enabling the System Features not explicitly mentioned here, unless you are familiar with the implications of turning on each of the features.  
+Codefresh _strongly recommends against enabling the System Features not explicitly mentioned here_, unless you are familiar with the implications of turning on each of the features.  
 If you need to turn on a feature, we recommend to first contact Codefresh support. 
 
 1. Make sure you are in **Admin Management**.
@@ -213,8 +218,13 @@ If you need to turn on a feature, we recommend to first contact Codefresh suppor
 
 
 
+<<<<<<< Updated upstream
 You have now created a Codefresh account, added one or more users the account, and enabled or disabled features for the account.  
 Review **What to do next** on how to proceed.
+=======
+You have now created a Codefresh account, added one or more users the account, and enabled or disabled features for the account.
+Review **What to do next** for tips on how to proceed.
+>>>>>>> Stashed changes
 
     
 
