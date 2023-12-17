@@ -9,7 +9,8 @@ blockquote,
   padding: 1.5rem;
   margin: 1.5rem 0;
   font-size: 1rem;
-  background: #fff9df;
+  background: transparentize($bd-info, .85);
+
 
   &::before {
     position: absolute;
@@ -18,7 +19,7 @@ blockquote,
     width: 8px;
     height: 100%;
     content: "";
-    background: #ffe58f;
+    background-color: $bd-info;
   }
 
   @include media-breakpoint-up(xxl) {
@@ -49,7 +50,11 @@ blockquote,
 
 // Variations
 @mixin bs-callout-variant($color) {
-  border-left-color: $color;
+  background: transparentize($color, .85);
+
+  &::before {
+    background-color: $color;
+  }
 
   h4 { color: $color; }
 }
@@ -58,3 +63,4 @@ blockquote,
 .bd-callout-warning { @include bs-callout-variant($bd-warning); }
 .bd-callout-danger { @include bs-callout-variant($bd-danger); }
 .bd-callout-success { @include bs-callout-variant($bd-success); }
+.bd-callout-tip { @include bs-callout-variant($bd-tip); }

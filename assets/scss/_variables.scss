@@ -15,10 +15,14 @@ $bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%) !default;
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%) !default;
 $bd-dark:          #231f20 !default;
 $bd-download:      #ffe484 !default;
-$bd-info:          #5bc0de !default;
-$bd-warning:       #f0ad4e !default;
+$bd-info:          #bec2ed !default;
+$bd-warning:       #ffcc30 !default;
 $bd-danger:        #d9534f !default;
-$bd-success:       #11b5a4 !default;
+$bd-success:       #03c77c !default;
+$bd-tip:           #508eeb !default;
+
+$bd-link-default:  #34af9d !default;
+$bd-link-external: #508eeb !default;
 
 $bd-topaz-extra-light:    #e4f3f1 !default;
 

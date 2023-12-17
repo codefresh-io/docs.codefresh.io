@@ -87,17 +87,13 @@
 
   // Links
   a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
-    color: $bd-topaz-main;
-    background-color: rgba($bd-topaz-main, .1);
-    border-bottom: 1px solid  rgba($cf-dark-alt, .2);
-    transition: background .2s ease, border-color, .2s ease;
 
-    &:hover {
-      color: $bd-topaz-main;
-      text-decoration: none;
-      background-color: rgba($bd-topaz-main, .16);
-      border-bottom-color: rgba($bd-topaz-main, .9);
-    }
+    color: $bd-link-default;
+    text-decoration: underline;
+  }
+
+  .bd-link-external {
+    color: $bd-link-external !important;
   }
 
   // Tables

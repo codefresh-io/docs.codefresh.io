@@ -28,6 +28,11 @@ Codefresh currently supports the following IdPs:
 
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
+<div class="bd-callout bd-callout-danger">
+Notes: <br>
+For Git repositories, the logout method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. 
+</div>
+
 >NOTES:  
   For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
