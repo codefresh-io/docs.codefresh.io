@@ -188,16 +188,17 @@ The table below highlights the main differences in functionality and resources b
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
 |                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
+|                         | Number of external clusters | Depends on package size and can range from 5 to 20 or higher       | Any number |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
 |Resources                |CRDs (Custom Resource Definitions)| Between 300 and 400 CRDs with Crossplane |Unlimited |
 |                         |Mono Git repo for manifests | Max size up to 100MB | Unlimited |
-|                         | CMP (Cloud Management Platform) plugins |Plugin images without high or critical vulnerabilities.  |N/A |
+|                         | CMP (Cloud Management Platform) plugins |Only for Enterprise customers    |N/A |
 | Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Supported                  | Supported |
+| CD  Ops                 |Applications        | Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
@@ -213,7 +214,7 @@ The table below highlights the main differences in functionality and resources b
 Codefresh Runner and GitOps environments can co-exist giving you the best of both worlds. 
 
 {: .table .table-bordered .table-hover}
-| Characteristic | Hybrid Runner                | On Premise              | GitOps
+| Characteristic | Hybrid Runner                | On Premises              | GitOps
 | -------------- | ---------------------------- |-------------------------| ----------------|
 | Managed by      | Codefresh and customer      | Customer                | Codefresh and customer |
 | UI runs on      | Public cloud                | Private cluster          | Public cloud|
