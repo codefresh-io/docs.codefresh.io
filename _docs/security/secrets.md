@@ -37,7 +37,7 @@ For more details, you can read our [blog post for sealed secrets](https://codefr
 
 ## Configuring the Sealed Secrets controller
 
-The Sealed Secret controller is fully managed by the Codefresh runtime, and secret encryption and decryption are fully automated.
+The Sealed Secret controller is fully managed by the Codefresh Runtime, and encryption and decryption of secrets are fully automated.
 
 > **Warning!** DO NOT tamper with the controller or its private/public keys in any way. 
 
