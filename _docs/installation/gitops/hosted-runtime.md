@@ -21,9 +21,9 @@ The Argo CD applications created in Hosted GitOps Runtimes are the customer's re
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster               | Server version 1.18|
-|Managed Kubernetes clusters      | At least one managed cluster to which to deploy Argo CD applications. <br>The actual number of managed clusters depends on package sizing. |
+|Target Kubernetes clusters      | {::nomarkdown} <ul><li>At least one managed cluster to which to deploy Argo CD applications. <br>The actual number of managed clusters depends on package sizing.</li><li>Must have public access from Internet</li></ul>{:/}|
 |CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs defined declaratively with Crossplane        |
-|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li><li>Gerrit</li></ul>{:/}|
+|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud (contact Support)</li><li>Gerrit (contact Support)</li></ul>{:/}|
 |Git repo for manifests   | Up to 100MB|
 |CMP (Cloud Management Platform) plugins                  | Plugin images without contain high or critical vulnerabilities.  |
 

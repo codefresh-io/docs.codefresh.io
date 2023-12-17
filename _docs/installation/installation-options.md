@@ -187,11 +187,11 @@ The table below highlights the main differences in functionality and resources b
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
 |                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
-|                         | External cluster   | Managed by customer        | Managed by customer         |
-|                         | Number of external clusters | Depends on package size and can range from 5 to 20 or higher       | Any number |
+|                         | Target cluster     |  {::nomarkdown}<ul><li>Managed by customer</li><li>Number supported depends on package size and can range from 5 to 20 or higher</li><li>Network access: Public access from internet</li></ul>{:/}      | {::nomarkdown}<ul><li>Managed by customer</li><li>Any number</li><li>Network access: Public or private access</li></ul>{:/} |
+|                         | Number of target clusters |        | Any number |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
-|Resources                |CRDs (Custom Resource Definitions)| Between 300 and 400 CRDs with Crossplane |Unlimited |
+|Resources                |Argo CD managed CRDs (Custom Resource Definitions)| Between 300 and 400 CRDs |Unlimited |
 |                         |Mono Git repo for manifests | Max size up to 100MB | Unlimited |
 |                         | CMP (Cloud Management Platform) plugins |Only for Enterprise customers    |N/A |
 | Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
