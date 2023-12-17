@@ -9,8 +9,8 @@ toc: true
 
 Codefresh provides out-of-the-box management for secrets, generally to store secrets for third-party integrations.  
 
-For secure secret storage, every Codefresh runtime uses the [Bitnami Sealed Secrets controller](https://github.com/bitnami-labs/sealed-secrets){:target="_blank"} behind the scenes.
-This controller is installed as part of the runtime and automatically managed by Codefresh.
+For secure secret storage, every Codefresh GitOps Runtime uses the [Bitnami Sealed Secrets controller](https://github.com/bitnami-labs/sealed-secrets){:target="_blank"} behind the scenes.
+This controller is installed as part of the Runtime and automatically managed by Codefresh.
 
 ## How Sealed Secrets work
 
@@ -18,16 +18,16 @@ Sealed Secrets are based on [public/private key encryption](https://en.wikipedia
 
 Any kind of secret can be encrypted with the public key (also via the `kubeseal` executable), and then passed to the cluster for decryption when needed.  
 
-For GitOps applications, encryption for secrets is critical, as it means that you can commit any kind of secret in Git as long as it is encrypted.  
+Codefresh handles Sealed Secrets at the level of the account, meaning that you need to create a Sealed Secret for an integration once, and it is then available to all clusters managed in the account. To ensure maximum security, only the ConfigMap with the public key of the SealedSecret is commited to Git. 
 
-Here's the event flow for Sealed Secrets:  
 
-1. A secret is encrypted by an operator and/or developer with the `kubeseal` executable.
-1. A custom Kubernetes resource called SealedSecret is created.
-1. The secret is committed in Git.
-1. During application deployment, the Codefresh runtime applies this secret to the cluster.
-1. The Sealed Secret controller identifies the Sealed Secret object and decrypts it using the private key of the cluster.
-1. The Sealed Secret is converted to a [standard Kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/){:target="_blank"} inside the cluster.
+Here's the event flow for Sealed Secrets in GitOps:  
+1. The operator or developer creates an encrypted secret with the `kubeseal` executable.
+1. Codefresh creates the `SealedSecret` custom Kubernetes resource.
+1. Codefresh also creates another Kubernetes resource, the `ConfigMap` containing the public key of the `SealedSecret`.
+1. The `ConfigMap` resource is committed to Git. 
+1. When required for an application or a resource, the Sealed Secret controller identifies the Sealed Secret object and decrypts it using the private key of the cluster.
+1. The Sealed Secret is converted to a [standard Kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/){:target="_blank"} within the cluster.
 1. It is then passed to the application like any other secret, as a mounted file or environment variable.
 1. The application uses the secret in its decrypted form.
 
