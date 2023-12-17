@@ -12,22 +12,22 @@ Codefresh provides out-of-the-box management for secrets, generally to store sec
 For secure secret storage, every Codefresh GitOps Runtime uses the [Bitnami Sealed Secrets controller](https://github.com/bitnami-labs/sealed-secrets){:target="_blank"} behind the scenes.
 This controller is installed as part of the Runtime and automatically managed by Codefresh.
 
+
 ## How Sealed Secrets work
 
 Sealed Secrets are based on [public/private key encryption](https://en.wikipedia.org/wiki/Public-key_cryptography){:target="_blank"}. When the controller is installed, it gets a public and private key. The private key stays within the cluster. The public key can be given anywhere to encrypt secrets.  
 
 Any kind of secret can be encrypted with the public key (also via the `kubeseal` executable), and then passed to the cluster for decryption when needed.  
 
-Codefresh manages Sealed Secrets at the account level, requiring the creation of a Sealed Secret for an integration just once. This Sealed Secret then becomes available across all clusters managed within the account. For security purposes, only the ConfigMap containing the public key of the SealedSecret is committed to Git.
-
+Codefresh employs a mechanism that applies a Sealed Secret consistently across multiple clusters, in complete alignment with the GitOps paradigm. It also facilitates sharing the public and private keys between the Codefresh platform and the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in the user's GitOps Runtime environment.
 
 Here's the event flow for Sealed Secrets in GitOps:  
 1. The operator or developer generates an encrypted secret using the `kubeseal` executable.
 1. Codefresh creates two Kubernetes resources:
-  * `SealedSecret` custom Kubernetes resource
-  * `ConfigMap` containing the public key of the `SealedSecret`
-1. The `ConfigMap` resource is committed to Git. 
-1. When required for an application or a resource:
+  * `SealedSecret` custom Kubernetes resource.
+  * `ConfigMap` containing the public key of the `SealedSecret`.
+1. The `ConfigMap` resource is committed to Git. When the `configmap` is synced to the cluster from the Shared Configuration Repo by its Argo CD application, the App-proxy reconciles this `configmap` into a sealing key secret. 
+1. When required by an application:
   * The Sealed Secret controller identifies and decrypts the Sealed Secret object using the private key specific to the cluster.
   * Transforms the decrypted Sealed Secret to a [standard Kubernetes secret](https://kubernetes.io/docs/concepts/configuration/secret/){:target="_blank"} within the cluster.
 1. The decrypted secret is provided to the application like any other secret, either as a mounted file or environment variable.
@@ -50,7 +50,7 @@ The applications you deploy with Codefresh should also have no knowledge of the 
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 
 
-<!--- Codefresh provides out-of-the-box management for secrets, generally to store secrets for third-party integrations. For secure secret storage, every Codefresh GitOps Runtime uses the [Bitnami Sealed Secrets controller](https://github.com/bitnami-labs/sealed-secrets){:target="_blank"} behind the scenes. This controller is installed as part of the Runtime and automatically managed by Codefresh.
+
 
 Codefresh employs a mechanism that applies a Sealed Secret consistently across multiple clusters, in complete alignment with the GitOps paradigm. It also facilitates sharing the public and private keys between the Codefresh platform and the Shared Configuration Repository in the user's GitOps Runtime environment.
 
@@ -69,7 +69,7 @@ The Sealed Secrets controller in a GitOps Runtime generates a sealing key, which
 1. Half the private key is saved in a `configmap` that represents this sealing key, stored in the Shared Configuration Repo
 2. The other half of the private key is stored in the Codefresh platform
 
-When the `configmap` is synced to the cluster from the Shared Configuration Repo by its Argo CD application, the App-proxy reconciles this `configmap` into a sealing key secret. 
+
 
 For more details, you can read our [blog post for sealed secrets](https://codefresh.io/blog/handle-secrets-like-pro-using-gitops/){:target="_blank"}.
 
