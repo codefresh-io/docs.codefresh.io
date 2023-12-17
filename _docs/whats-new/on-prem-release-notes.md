@@ -17,11 +17,10 @@ Welcome to the release notes for our on-premises release versions, starting with
 Welcome to our newest  on-premises release! 
 
 **Installing v2.2**  
-For detailed instructions on installing v2.2, visit ????[ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+For detailed instructions on installing v2.2, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 **Upgrading to v2.2**  
-This major release includes new services and updates to existing services.  
-Before initiating the upgrade process, review the instructions ?????[here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-2-0){:target="\_blank"}.
+Before initiating the upgrade process, review the instructions [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-2-0){:target="\_blank"}.
 
 <br>
 
@@ -164,7 +163,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Pipelines: Enhanced RBAC with AND logic for tags](#pipelines-enhanced-rbac-with-and-logic-for-tags) in this article.| TRUE  |
-| `appDiffView`       | When enabled, displays the differences for each resource in the application in either Compact or Split view modes. <!--- See ??? -->| FALSE  |
+| `appDiffView`       | When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes. <!--- See ??? -->| FALSE  |
 |`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same. ???   | FALSE         |
 | `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
@@ -172,7 +171,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `promotionWorkflows` | New feature currently in development.<br>When enabled, allows you create and run workflows when a promotion is triggered. <!--- <br>See ??? -->| FALSE         |
 | `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See ???| FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
-| `useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown  displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
+| `useRepoAndBranchesNextPagination`         | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server.  | FALSE         |
 
 
 
@@ -184,7 +183,6 @@ The table below lists the Feature Flags which are _now enabled by default_ and s
 | -----------        | --------------------------------------------------------- | ------------------------- |
 |`cronTriggersInPipelineSpec`	| When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API. <br>See [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers) in our documentation.  | _TRUE_|
 | `gitopsAppGroups`       | When enabled, allows users to group Argo CD applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [Application Groups for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/) in our documentation. | _TRUE_   |
-|`nextGenTerminal` | When enabled (the default), uses the new terminal emulator for improved performance, online rendering for large logs (more than 100,000 lines), search functionality, and Screen Reader support for accessibility. | _TRUE_|
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipeline settings: Scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes) in our documentation.     | _TRUE_         |
 
 ### Bug fixes
