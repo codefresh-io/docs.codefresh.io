@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises upgrade"
+title: "Codefresh on-premises platform upgrade"
 description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
