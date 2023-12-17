@@ -42,6 +42,7 @@ For Git repositories, the logout method is less important, as you can access Git
     1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
     1. Select the IdP for sign-up.
 
+<div class="ml-5">
 {% include 
 image.html 
 lightbox="true" 
@@ -49,8 +50,9 @@ file="/images/administration/create-account/select-identity-provider.png"
 url="/images/administration/create-account/select-identity-provider.png"
 alt="Codefresh sign-up page" 
 caption="Codefresh sign-up page" 
-max-width="40%" 
+max-width="40%"
 %}
+</div>
 
 {:start="2"}
 1. Accept the permissions request for the selected IdP:
