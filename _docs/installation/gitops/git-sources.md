@@ -5,6 +5,8 @@ group: installation
 toc: true
 ---
 
+>**NOTE**: This feature is currently in Beta.
+
 A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. 
 
 The Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
@@ -334,6 +336,7 @@ You cannot change the name and type of the Git Source.
 1. In the row with the Git Source to edit, from the context menu select **Details**.
 1. In the panel that appears, click **Edit**.
 
+<!--->
 {% include 
 	image.html 
 	lightbox="true" 
@@ -345,6 +348,7 @@ You cannot change the name and type of the Git Source.
 %}
 {:start="4"}
 1. Update **Source**, **Destination**, and **Include** and **Exclude** definitions for the Git Source, and select **Save**. 
+ -->
 
 <!--- ## Delete a Git Source
 Delete a Git Source 
