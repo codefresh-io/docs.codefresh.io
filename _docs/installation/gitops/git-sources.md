@@ -344,7 +344,44 @@ Delete a Git Source
 ## Example YAMLs of Git Source resources
  
 ### Example: Standard Git Source manifest
-TBD
+Here's an example of the Standard Git Source application manifest, which is similar to any Argo CD application. 
+
+{% highlight yaml %}
+{% raw %}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: in-cluster:argoproj.io/Application:runtime/loans-gs
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/instance: in-cluster
+    codefresh.io/entity: git-source
+    codefresh.io/internal: "false"
+  name: loans-gs
+  namespace: runtime
+spec:
+  destination:
+    namespace: runtime
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      exclude: ""
+      include: "*"
+      jsonnet: {}
+      recurse: true
+    path: atgardner-git-source
+    repoURL: https://github.com/noam-codefresh/git-source.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+{% endraw %}
+{% endhighlight %} 
 
 ### Example: Restricted Git Source app manifest
 Here's an example of the Restricted Git Source application manifest.
