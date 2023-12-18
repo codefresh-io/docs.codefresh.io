@@ -257,12 +257,12 @@ You must be in the List View for GitOps Runtimes to create Git Sources.
 1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
 1. In the List View, select the Runtime for which to create a Git Source, and then click the **Git Sources** tab.  
 1. Click **Create Git Source**, and in the Create Git Source panel, follow the instructions to define the settings for the Git Source.  
-<!--- change screenshot -->
-     {% include 
+
+  {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/runtime/create-git-source.png" 
-	url="/images/runtime/create-git-source.png" 
+	file="/images/runtime/git-source/create-git-source.png" 
+	url="/images/runtime/git-source/create-git-source.png" 
 	alt="Create Git Source" 
 	caption="Create Git Source"
     max-width="60%" 
@@ -275,8 +275,18 @@ You must be in the List View for GitOps Runtimes to create Git Sources.
 
 
 ## Git Source settings
-The table describes the settings you can define for Standard and Restricted Git Sources.
+The table describes the settings you can define for Standard and Restricted Git Sources.  
 For how-to, see [Create a Git Source](#create-a-git-source).
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/git-source/git-source-settings.png" 
+	url="/images/runtime/git-source/git-source-settings.png" 
+	alt="Git Source Settings" 
+	caption="Git Source Settings"
+    max-width="60%" 
+%}
 
 {: .table .table-bordered .table-hover}
 | Setting            | Description      |
