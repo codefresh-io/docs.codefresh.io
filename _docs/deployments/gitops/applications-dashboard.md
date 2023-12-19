@@ -7,13 +7,14 @@ toc: true
 ---
 
 
-Monitor individual applications or groups of Argo CD applications in the GitOps Apps dashboard. This article focuses on individual Argo CD applications.
+Monitor Argo CD applications individually or within groups in the GitOps Apps dashboard.
 
-* **Applications**  
-  Monitor deployments, resources, and services of individual applications.  
-  As a one-stop shop for Argo Rollouts and Argo CD, the Applications tab in the GitOps Apps dashboard delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility to your deployments.  
+This article focuses on monitoring individual Argo CD applications in the GitOps Apps dashboard. To monitor deployments of a group of applications in parallel, see [Application Group information]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
-  
+**Monitor deployments, resources, and services of individual applications**  
+As a one-stop shop for Argo Rollouts and Argo CD, the GitApps dashboard and its Applications tab delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility of deployments. 
+
+
 {% include
 image.html
 lightbox="true"
@@ -24,9 +25,11 @@ caption="GitOps Apps dashboard: List view"
 max-width="70%"
 %}
 
-  Select the view format for Applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
+
+Select the view format for applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
+
   
-  Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
+Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
   * [Get status from application header](#monitor-gitops-application-status-in-application-header)
   * [View deployment and configuration info for selected Argo CD application](#view-deployment-configuration-info-for-selected-argo-cd-application)
   * [Monitor resources for selected Argo CD application](#monitor-resources-for-selected-argo-cd-application)
@@ -34,17 +37,50 @@ max-width="70%"
   * [Monitor services for selected Argo CD application](#monitor-services-for-selected-argo-cd-application)
 
 
-
-* **Application Groups**  
-  Monitor the deployments of a group of applications in parallel. Instead of having to switch between applications, see the deployment history, compare and analyze build, PR (Pull Request), and issue tracking information across similar applications to gain insights.
-
-  See [Application Group information]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
-
-
->**NOTE**:  
-For information on creating and managing Application Groups, Argo CD applications and application resources, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+>**TIP**:  
+Codefresh adds a whole new dimension to monitoring Argo CD applications through two unique GitOps dashboards: [GitOps Environments](#gitops-environments--argo-cd-applications) and [GitOps Products](#gitops-products--argo-cd-applications). 
 
   
+For information on creating and managing Argo CD applications, application resources, and Application Groups, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
+
+## GitOps Environments & Argo CD applications
+To track, optimize, and manage deployments at scale you need a way to visualize applications at every stage of their development and deployment lifecycle. Our custom Environment resource allows you to do just this without the need for complex configuration and maintenance overhead. 
+
+Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces. Visualize the environments and their applications in the GitOps Environments dashboard to track promotions and view version and details on the most recent commits that caused the change.
+
+Here's a visualization of Argo CD applications in the GitOps Environments dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	alt="Argo CD applications organized in GitOps Environments" 
+	caption="Argo CD applications organized in GitOps Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with Argo CD applications and Environments in Codefresh, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+
+## GitOps Products & Argo CD applications
+The Product is another custom resource from Codefresh, also enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
+
+Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments, Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+Codefresh seamlessly collates the Environments where each application in the Product is deployed, along with insights into commits, contributors, and features deployed across versions.
+
+Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Argo CD applications grouped by Products and organized by Environments" 
+	caption="Argo CD applications grouped by Products and organized by Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 ## Select view mode for the GitOps Apps dashboard 
@@ -87,9 +123,9 @@ Here's a description of the information and actions you can see for individual a
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|Application filters       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application state<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/docs/docs/installation/gitops/git-sources/">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
+|**Application filters**       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application health<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources">Health status</a> in this article, and Argo CD's official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/docs/docs/installation/gitops/git-sources/">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
 |{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the GitOps Apps dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
-|Application actions| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications/">Refresh/hard refresh GitOps applications</a>.{:/} |
+|**Application actions**| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications/">Refresh/hard refresh GitOps applications</a>.{:/} |
 
 
 
@@ -721,6 +757,8 @@ max-width="50%"
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
 [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 

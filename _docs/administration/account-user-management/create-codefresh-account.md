@@ -24,6 +24,8 @@ alt="Codefresh account creation steps"
 max-width="90%" 
 %}
 
+For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration).
+
 ## Step 1: Select your Identity Provider
 As the first step in setting up your account in Codefresh, select the identity provider (IdP) to use. 
 Codefresh currently supports the following IdPs:

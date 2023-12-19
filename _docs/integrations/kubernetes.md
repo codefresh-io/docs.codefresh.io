@@ -27,6 +27,9 @@ Codefresh has native support for Kubernetes in the following areas:
 Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
 in your cluster. To activate this dashboard, you need to connect your cluster to your Codefresh account first.
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+
 ## Connect a Kubernetes cluster
 
 ### Prerequisites

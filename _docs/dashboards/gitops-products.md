@@ -5,6 +5,11 @@ group: dashboards
 toc: true
 ---
 
+
+
+
+
+
 >**NOTE**: This feature is currently in Beta.
 
 Explore the power of GitOps Products for Argo CD applications. 
@@ -50,8 +55,17 @@ In a simple two-step process:
 
 Codefresh automatically identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
-<!--- The diagram illustrates how Argo CD applications are grouped by Products and organized by Environment. -->
+The diagram illustrates how Argo CD applications connected to a Product are grouped by that Product, and organized by Environment. It also shows applications not assigned to any Product.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Argo CD applications grouped by Products and organized by Environments" 
+	caption="Argo CD applications grouped by Products and organized by Environments"
+  max-width="70%" 
+%}
 
 
 
@@ -68,10 +82,20 @@ Create a Product with a unique name and define the annotations by which to conne
       *  To use a custom annotation, click **Add custom annotation**, and then define the Key-Value for the annotation. Copy and paste it into the manifest.
     1. **Tags**: Any metadata providing additional context and information about the Product, used for filtering and organization purposes.
 
-<!--- screenshot TBD -->
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/create-product.png" 
+	url="/images/gitops-products/create-product.png" 
+	alt="Add Product" 
+	caption="Add Product"
+  max-width="60%" 
+%}
 
 {:start="4"}
-1. Click **Add**. The Product is added to and displayed in the Products dashboard. 
+1. Click **Add**. The Product is displayed in the Products dashboard. 
+
+
 
 ## GitOps Products dashboard
 
@@ -358,6 +382,8 @@ Displays issue-tracking information that correlates software features with their
   max-width="60%" 
 %}
 
+
+
 ### Identify application versions in different Environments
 Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
 
@@ -381,7 +407,7 @@ You can:
 %}
 
 {:start="3"}
-1. Switch been tabular and YAML views to see the dependencies and their versions.
+1. Switch been **Table** and **YAML** views to see the dependencies and their versions.
 
 {% include 
 	image.html 
@@ -393,18 +419,47 @@ You can:
   max-width="60%" 
 %}
 
-{:start="4"}
-1. To compare the selected application with its counterparts in different environment, enable **Compare**.
+
+
+
+### Compare dependency versions and diffs across Environments
+
+Compare the versions of dependencies dependency in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two Environments.  
+
+* The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
+* The YAML view displays a diff between two Environments.
+
+
+1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. Click the version number of the application.
+1. To compare the versions of dependencies in the selected application  across different Environments, enable **Compare**.
+1. Select the Environments with the applications to compare to. 
+1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/app-dependency-list.png" 
+	url="/images/gitops-products/app-dependency-list.png" 
+	alt="App dependencies and versions" 
+	caption="App dependencies and versions"
+  max-width="60%" 
+%}
+
+{:start="6"}
+1. To see the actual diffs between the applications, switch to **YAML** view, and then toggle between **Full**/**Compact** views.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-environments/version-compare-apps.png" 
 	url="/images/gitops-environments/version-compare-apps.png" 
-	alt="Compare versions dependencies of application in different environments" 
-	caption="Compare versions dependencies of application in different environments"
+	alt="Compare versions for dependencies in different Environments" 
+	caption="Compare versions for dependencies in different Environments"
   max-width="60%" 
 %}
+
+
 
 ### View deployment (Timeline) history for applications
 Review the deployments for an application. Clicking the application name takes you to the familiar Timeline tab in the GitOps Apps dashboard with the deployment history for the application. See [Monitor deployments for selected Argo CD application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitor-deployments-for-selected-argo-cd-application).
@@ -448,5 +503,8 @@ Manage applications from within Products through the application's context menu,
 %}
 
 ## Related information
-[GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)   
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)

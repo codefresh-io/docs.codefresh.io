@@ -367,7 +367,7 @@ my-subproject//pom.xml
 
 >You can also use relative paths with dot-slash. Therefore `./package.json` and `package.json` are exactly the same thing. They both refer to the file `package.json` found at the root of the git project that was checked out as part of the build.
 
-You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm){:target="\_blank"} like this (but notice that there is a limit of 150 characters for the field):
+You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm){:target="\_blank"} like this, with a maximum of 65k characters for the field:
 
 ```
 {app/,test/}

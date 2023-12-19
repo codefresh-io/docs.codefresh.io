@@ -185,7 +185,7 @@
       localurl: /docs/deployments/helm/helm-releases-management/
     - title: Promoting Helm environments
       localurl: /docs/deployments/helm/helm-environment-promotion/
-    - title: Creating Argo CD applications
+    - title: Creating    Argo CD applications
       localurl: /docs/deployments/gitops/create-application/
     - title: Monitoring Argo CD applications
       localurl: /docs/deployments/gitops/applications-dashboard/
@@ -217,6 +217,8 @@
       localurl: /docs/installation/codefresh-runner/
     - title: On-Premises platform installation
       localurl: /docs/installation/on-premises/codefresh-on-prem/
+    - title: On-Premises platform account & user setup
+      localurl: /docs/installation/on-premises/on-prem-configuration/     
     - title: On-Premises platform upgrade
       localurl: /docs/installation/on-premises/codefresh-on-prem-upgrade/
     - title: Hosted GitOps Runtime installation
@@ -253,14 +255,16 @@
     - title: Single Sign-On
       localurl: /docs/administration/single-sign-on/
 
-- title: Reference
+- title: Security
   icon: images/home-icons/guides.png
   url: ""
   links:
-    - title: Git tokens
-      localurl: /docs/reference/git-tokens/
+    - title: Git tokens for GitOps
+      localurl: /docs/security/git-tokens/
     - title: Secrets for GitOps
-      localurl: /docs/reference/secrets
+      localurl: /docs/security/secrets/
+    - title: Verify authenticity of Codefresh artifacts
+      localurl: /docs/security/codefresh-signed-artifacts/
 
 - title: "Incubation"
   icon: images/home-icons/plugins.svg

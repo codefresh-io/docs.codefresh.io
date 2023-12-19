@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises upgrade"
+title: "Codefresh on-premises platform upgrade"
 description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
@@ -630,7 +630,7 @@ Version 2.0.0 incorporates a major version and chart change, including breaking 
 > The `kcfi`installer has been deprecated from Version 2.0.0 and higher.  
 >Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections. 
 
-Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-0-0){:target="\_blank"}.
+Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
 ## Upgrade to 2.2.0
 Version 2.2.0 incorporates changes.
@@ -638,4 +638,7 @@ Version 2.2.0 incorporates changes.
 Follow the instructions in [Upgrading to 2.2.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-2-0){:target="\_blank"}.
 
 
+## Related articles
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[On-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
 

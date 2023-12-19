@@ -128,7 +128,9 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 
 
 ### GitOps Runtime with Argo CD: Align Argo CD chart's minor versions 
-To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.   
+To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
+
+If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minorappversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
 
 1. Get the Argo CD chart version used by Codefresh from the Dependencies either in ArtifactHub or from the GitOps Runtime's `Chart.yaml` in Git: 
   * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
@@ -170,6 +172,11 @@ To avoid potentially incompatible changes or mismatches, ensure that the Communi
   caption="Check versions"
   max-width="60%"
 %}
+
+{:start="4"}
+1. If the minor appversion you have differs from that used by Codefresh, do one of the following: 
+  * Lower version: Upgrade to the required minor appversion.
+  * Higher version: If not available in Codefresh forks, please contact Codefresh Support.
 
 
 

@@ -12,7 +12,7 @@ Codefresh has a native module for GitOps deployments powered by Argo CD and Argo
 * You can [edit/delete/rollback]({{site.baseurl}}/docs/deployments/gitops/manage-application/) applications while still keeping the state in Git.
 * Perform [Canary releases]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/) via the dedicated UI.
 
-
+Explore our unique GitOps [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) dashboards, designed for visualizing, monitoring, and managing Argo CD applications within their deployment environments. 
 
 
 

@@ -1,21 +1,29 @@
 ---
 title: "Codefresh on-premises feature management"
-description: "Enable/disable features in the Codefresh platform"
+description: "Enable/disable features for Codefresh accounts in your organization"
 group: installation
 toc: true
 ---
 
-Codefresh platform/system administrators can toggle specific features of the Codefresh platform in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
+Codefresh account administrators can toggle specific features of the Codefresh platform on/off in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
 
-## Manage features in on-premises platforms
-Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. The overrides are retained when you change the default setting for the feature. 
+You can enable or disable features for:
+1. A single account
+1. Specific accounts
+1. All accounts in the organization 
+
+
+
+
+## Enable/disable features in on-premises platforms
+Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. Account-level feature overrides are retained when you change the default setting for the feature. 
 Review the [feature list](#on-premises-feature-list) to understand the implications of enabling a feature.
 
 1. Sign in to Codefresh.
 1. On the top-right, click your avatar and then select **Admin Panel**.
 1. From the sidebar, click **Feature Management**. 
-1. To enable a feature for all accounts under **Enable**, toggle the required feature to **ON**. 
-1. To enable or disable the feature for specific accounts, click the **Edit** icon, and then select the accounts from the **Enable feature for** and **Disable feature for** lists, as required.
+1. To enable a feature for _all accounts_ under **Enable**, toggle the required feature to **ON**. 
+1. To enable or disable the feature for _a single account or for specific accounts_, click the **Edit** icon, and then select the accounts from the **Enable feature for** and **Disable feature for** lists, as required.
 
 {% include image.html
   lightbox="true"
@@ -26,9 +34,29 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
   max-width="60%"
     %}  
 
+## System Features
+System Features are generally only for internal use, and should not be changed. For more information, see [Enable System Features]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/#enable-system-features).
+
+>**IMPORTANT:**  
+>Codefresh _strongly recommends against enabling System Features_ unless you are familiar with the implications of turning on a System Feature.  
+>If you need to turn on a System Feature, we recommend to first contact Codefresh support.
+
+
 
 ## On-premises feature list 
 
+Here is an example of the Feature Management page in Admin Management for the organization. Any feature enabled or disabled in this page affects all Codefresh accounts in the organization.
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/on-prem-setup/feature-management.png"
+  url="/images/installation/on-prem-setup/feature-management.png"
+  alt="Feature Management for accounts"
+  caption="Feature Management for accounts"
+  max-width="60%"
+    %}
+
+The table describes the features you can open for Codefresh accounts, in alphabetical order. 
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 
@@ -53,7 +81,6 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE  |
 |`injectClusterListFromPipelineSettings` | When enabled, turns on the pipeline setting **Kubernetes cluster context pipeline injection** for the account. Individual users can then selectively inject clusters for pipelines from those to which they they access.<br><br> This feature requires the users to have the Update Cluster permission. If not granted, then this feature has no impact when enabled. <br>See [Enabling cluster-contexts for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#enabling-cluster-contexts-for-pipelines). | FALSE| 
 |`logMasking` |When enabled, secrets in build logs, both online and offline logs, are masked and replaced by asterisks. <br><br>This feature is currently available only for Enterprise customers. |FALSE|
-|`nextGenTerminal`|	When enabled, uses the new terminal emulator for improved performance, online rendering for large logs (up to 100,000 lines), search functionality, and Screen Reader support for accessibility.|	TRUE|
 |`parallelKubectlOperations` |When enabled, allows running parallel steps that includes `kubectl`. Especially Helm `install` and `deploy` steps that deploy to multiple clusters with `kubectl` in parallel. |FALSE|
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Configure pipeline scopes]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).  | TRUE         |
 |`supportGerrit`      | When enabled, adds the capability to connect to Gerrit as a Git provider. <br>See [Gerrit as Git provider for pipelines]({{site.baseurl}}/docs/integrations/git-providers/#gerrit).     | FALSE         |
@@ -62,11 +89,13 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 | `promotionWorkflows` | When enabled, ??? <!--- <br>See ??? -->| FALSE         |
 | `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <!--- <br>See ??? -->| FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/) and browse the Field descriptions for any step type that is supported, [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields) for example.  | TRUE         |
-|`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br><br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
+|`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br>This flag must be enabled to share URL for build logs.<br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
 | `useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown  displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
 
 
 
 
 ## Related articles
-[Codefresh on-premises]({{site.baseurl}}/docs/installation/on-premises/)  
+[Codefresh on-premises installation]({{site.baseurl}}/docs/installation/on-premises/)  
+[Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)  
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  

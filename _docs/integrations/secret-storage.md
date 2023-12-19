@@ -39,6 +39,10 @@ kubectl create configmap my-config-map --from-literal=key1=config1
 
 ### Set up Kubernetes secret integration in Codefresh UI
 
+
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
 1. From the **Add Provider** dropdown, select **Kubernetes**.
