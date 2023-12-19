@@ -28,11 +28,6 @@ Codefresh currently supports the following IdPs:
 
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
-<div class="bd-callout bd-callout-danger">
-Notes: <br>
-For Git repositories, the logout method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. 
-</div>
-
 >NOTES:  
   For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
@@ -42,7 +37,6 @@ For Git repositories, the logout method is less important, as you can access Git
     1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
     1. Select the IdP for sign-up.
 
-<div class="ml-5">
 {% include 
 image.html 
 lightbox="true" 
@@ -50,9 +44,8 @@ file="/images/administration/create-account/select-identity-provider.png"
 url="/images/administration/create-account/select-identity-provider.png"
 alt="Codefresh sign-up page" 
 caption="Codefresh sign-up page" 
-max-width="40%"
+max-width="40%" 
 %}
-</div>
 
 {:start="2"}
 1. Accept the permissions request for the selected IdP:

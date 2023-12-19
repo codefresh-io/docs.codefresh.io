@@ -12,7 +12,7 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
   font-family: $headings-font-family;
   font-weight: $font-weight-bold;
   color: $headings-color;
@@ -25,7 +25,7 @@ h1,
 
 h2,
 .h2 {
-  @include heading($h2-font-size, $font-weight-medium, $h2-line-height);
+  @include heading($h2-font-size, $font-weight-bold, $h2-line-height);
 }
 
 h3,
@@ -40,5 +40,5 @@ h4,
 
 h5,
 .h5 {
-  @include heading($h5-font-size, $font-weight-medium, $h5-line-height);
+  @include heading($h5-font-size, $font-weight-bold, $h5-line-height);
 }
