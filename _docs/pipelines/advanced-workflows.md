@@ -231,7 +231,7 @@ Running different types of tests (unit/integration/load/acceptance) in parallel 
 
 ### Defining success criteria for a parallel step
 
-By default, any failed step in a Codefresh pipeline will fail the whole pipeline. There are ways to change this behavior (the `fail_fast` property is explained later in this page), but specifically for parallel steps you can define exactly when the whole step succeeds or fails.
+By default, any failed step in a Codefresh pipeline will fail the whole pipeline. You can change the default execution behavior through the `fail_fast` field, but specifically for parallel steps you can define exactly when the whole step succeeds or fails.
 
 You can define steps that will be used to decide if a parallel step succeeds with this syntax:
 
@@ -557,7 +557,8 @@ of matrix variations can quickly grow if you add too many dimensions.
 Notice that, as with the `scale` syntax, the defined values/properties are merged between parent step (`MyUnitTests` in the example above) and children steps. For example, if you set an environment variable on the parent and also on child matrix steps , the result will a merged environment where all values are available.
 
 ## Parallel pipeline execution
-> If you use parallel execution mode for pipelines, you _cannot_ use _implicit parallel steps_.
+>**NOTE**:  
+If you use parallel execution mode for pipelines, you _cannot_ use _implicit parallel steps_.
 
 To activate advanced parallel mode for the whole pipeline, you need to declare it explicitly at the root of the `codefresh.yml` file:
 
@@ -695,7 +696,8 @@ steps:
 
 If you run the pipeline you will see that Codefresh automatically understands that `MyIntegrationTests` and `MyCleanupPhase` can run in parallel right after the unit tests finish.
 
-Also notice the `fail_fast: false` line in the unit tests. By default, if *any* steps fails in a pipeline the whole pipeline is marked as a failure. With the `fail_fast` directive we can allow the pipeline to continue so that other steps that depend on the failed step can still run even.
+Also notice the `fail_fast: false` line in the unit tests. 
+By default, if *any* step fails in a pipeline, the whole pipeline is marked as a failure. With `fail_fast` set to `false` as in the example, we can allow the pipeline to continue and complete execution.
 
 
 ### Multiple step dependencies
@@ -935,15 +937,19 @@ steps:
 
 ## Handling error conditions in a pipeline
 
-It is important to understand the capabilities offered by Codefresh when it comes to error handling. You have several options in different levels of granularity to select what constitutes a failure and what not.
+It is important to understand the capabilities offered by Codefresh when it comes to error handling. You have several options at different levels of granularity to select what constitutes a failure and what not.
 
 By default, *any* failed step in a pipeline will abort the whole pipeline and mark it as failure.
 
-You can use the directive `fail_fast: false`:
-* In a specific step to mark it as ignored if it fails  
+**`fail_fast` with `strict_fail_fast`**  
+
+You can use the f`lag `fail_fast: false`:
+* In a specific step to ignore it if it fails and continue execution
 * At the root level of the pipeline if you want to apply it to all steps
 
-Therefore, if you want your pipeline to keep running to completion regardless of errors the following syntax is possible:
+If a parallel step has `fail_fast: false` in its definition, adding `strict_fail_fast: true` does not change the Build status returned even if a child step fails. This is because the parallel step itself is considered successful regardless of errors in child steps.
+
+Therefore, if you want your pipeline to keep running to completion regardless of errors, you can add the following:
 
 ```
 version: '1.0'
