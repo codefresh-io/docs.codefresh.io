@@ -1,21 +1,29 @@
 ---
 title: "Codefresh on-premises feature management"
-description: "Enable/disable features in the Codefresh platform"
+description: "Enable/disable features for Codefresh accounts in your organization"
 group: installation
 toc: true
 ---
 
-Codefresh platform/system administrators can toggle specific features of the Codefresh platform in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
+Codefresh account administrators can toggle specific features of the Codefresh platform on/off in on-premises environments. Feature management helps you to easily implement and manage functionality on an as- and when-needed basis. 
 
-## Manage features in on-premises platforms
-Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. The overrides are retained when you change the default setting for the feature. 
+You can enable or disable features for:
+1. A single account
+1. Specific accounts
+1. All accounts in the organization 
+
+
+
+
+## Enable/disable features in on-premises platforms
+Enable a feature for all accounts, or override the default setting and enable/disable the feature selectively for specific accounts. Account-level feature overrides are retained when you change the default setting for the feature. 
 Review the [feature list](#on-premises-feature-list) to understand the implications of enabling a feature.
 
 1. Sign in to Codefresh.
 1. On the top-right, click your avatar and then select **Admin Panel**.
 1. From the sidebar, click **Feature Management**. 
-1. To enable a feature for all accounts under **Enable**, toggle the required feature to **ON**. 
-1. To enable or disable the feature for specific accounts, click the **Edit** icon, and then select the accounts from the **Enable feature for** and **Disable feature for** lists, as required.
+1. To enable a feature for _all accounts_ under **Enable**, toggle the required feature to **ON**. 
+1. To enable or disable the feature for _a single account or for specific accounts_, click the **Edit** icon, and then select the accounts from the **Enable feature for** and **Disable feature for** lists, as required.
 
 {% include image.html
   lightbox="true"
@@ -29,6 +37,18 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 
 ## On-premises feature list 
 
+Here is an example of the Feature Management page in Admin Management for the organization. Any feature enabled or disabled in this page affects all Codefresh accounts in the organization.
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/on-prem-setup/feature-management.png"
+  url="/images/installation/on-prem-setup/feature-management.png"
+  alt="Feature Management for accounts"
+  caption="Feature Management for accounts"
+  max-width="60%"
+    %}
+
+The table describes the features you can open for Codefresh accounts, in alphabetical order. 
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 
@@ -60,4 +80,6 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 
 
 ## Related articles
-[Codefresh on-premises]({{site.baseurl}}/docs/installation/on-premises/)  
+[Codefresh on-premises installation]({{site.baseurl}}/docs/installation/on-premises/)  
+[Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)  
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
