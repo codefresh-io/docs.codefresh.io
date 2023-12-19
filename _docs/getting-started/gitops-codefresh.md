@@ -72,7 +72,7 @@ See:
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
-## Codefresh & Community Argo CD  
+## Codefresh & Argo Project  
 
 Codefresh integrates Argo CD to your Kubernetes deployments through the Codefresh GitOps Runtime, providing an enterprise-supported version enhanced with unique functionality.
 

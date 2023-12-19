@@ -92,7 +92,7 @@ You can use [your own GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/
 
 Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
 
-### Codefresh & Community Argo
+### Codefresh & Argo Project
 Codefresh brings the power of the Argo Project to your Kubernetes deployments through the Codefresh GitOps Runtime, providing an enterprise-supported version enhanced with unique functionality:
 * Argo CD for declarative continuous deployment
 * Argo Rollouts for progressive delivery
