@@ -187,8 +187,7 @@ The table below highlights the main differences in functionality and resources b
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
 |                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
-|                         | Target cluster     |  {::nomarkdown}<ul><li>Managed by customer</li><li>Number supported depends on package size and can range from 5 to 20 or higher</li><li>Network access: Public access from internet</li></ul>{:/}      | {::nomarkdown}<ul><li>Managed by customer</li><li>Any number</li><li>Network access: Public or private access</li></ul>{:/} |
-|                         | Number of target clusters |        | Any number |
+|                         | Target cluster     | {::nomarkdown}<ul><li>Managed by customer</li><li>Number supported depends on package size and can range from 5 to 20 or higher</li><li>Network access: Public access from internet</li></ul>{:/}      | {::nomarkdown}<ul><li>Managed by customer</li><li>Any number</li><li>Network access: Public or private access</li></ul>{:/} |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
 |Resources                |Argo CD managed CRDs (Custom Resource Definitions)| Between 300 and 400 CRDs |Unlimited |
@@ -198,7 +197,7 @@ The table below highlights the main differences in functionality and resources b
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        |{::nomarkdown}<ul><li>Deployment supported only on target clusters</li><li>Self-healing interval: 90 seconds<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li></ul> {:/}  | {::nomarkdown}<ul><li>Deployment supported on both in-cluster and managed clusters</li><li>Self-healing interval: 5 seconds (Argo CD default)<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li></ul> {:/}|
+| CD  Ops                 |Applications        |{::nomarkdown}<ul><li>Deployment supported only on target clusters</li><li>Self-healing interval: 90 seconds<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li></ul> {:/}  | {::nomarkdown}<ul><li>Deployment supported on both in-cluster and target clusters</li><li>Self-healing interval: 5 seconds (Argo CD default)<br>See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">Argo CD automatic self-healing</a></li></ul> {:/}|
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
@@ -228,5 +227,5 @@ Codefresh Runner and GitOps environments can co-exist giving you the best of bot
 ## Related articles
 [Architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
 [Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
-[Shared Configuration Repositorysitory]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 

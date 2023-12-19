@@ -21,13 +21,13 @@ The Argo CD applications created in Hosted GitOps Runtimes are the customer's re
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
 |Kubernetes cluster               | Server version 1.18|
-|Target Kubernetes clusters      | {::nomarkdown} <ul><li>At least one managed cluster to which to deploy Argo CD applications. <br>The actual number of managed clusters depends on package sizing.</li><li>Must have public access from Internet</li></ul>{:/}|
-|CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs defined declaratively with Crossplane        |
+|Target Kubernetes clusters      | {::nomarkdown} <ul><li>At least one target cluster to which to deploy Argo CD applications. <br>The actual number of target clusters depends on package sizing.</li><li>Must have public access from Internet</li></ul>{:/}|
+|Argo CD managed CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs         |
 |Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud (contact Support)</li><li>Gerrit (contact Support)</li></ul>{:/}|
 |Git repo for manifests   | Up to 100MB|
-|CMP (Cloud Management Platform) plugins                  | Only for Enterprise customers.  |
+|CMP (Cloud Management Platform) plugins                  | Only for Enterprise customers |
 
-For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
+For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
 ## Where to start with Hosted GitOps Runtimes
 If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
