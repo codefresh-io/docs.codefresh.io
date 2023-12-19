@@ -70,22 +70,23 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 ## Fields
 
 {: .table .table-bordered .table-hover}
-| Field                                      | Description                                                                                                                                                                                                                        | Required/Optional/Default |
-| ------------------------------------------ | ----------------------------------------------------------  -------- | ------------------------- |
-| `title`                                    | The free-text display name of the step                               | Optional                  |
-| `description`                              | A basic, free-text description of the step.                          | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
-| `kind`                        | Currently only `kubernetes` is supported                | Required                   |
-| `cluster`                        | Name of your K8s cluster as found in the dashboard               | Required                   |
-| `namespace`                        | Namespace where the deployment will take place           | Required                   |
-| `service`                        | Name of the existing service that will updated. You need to provide `service` OR `file_path`               | Required/Optional                   |
-| `file_path`                        | A deployment manifest. You need to provide `service` OR `file_path`                | Required/Optional                  |
-| `timeout`                        | Seconds to wait for the deployment to be completed. Default is 120 seconds               | Default                   |
-| `candidate`                        | Docker image that will be deployed. Only valid if `service` is defined. Should contain `image` and name of registry as it appears in the [registry integration page]({{site.baseurl}}/docs/integrations/docker-registries/).                | Optional                  |                  
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                               | Optional                  |
-| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step). | Optional                  |
+| Field         | Description               | Required/Optional/Default |
+| -------------- | -------------------------------------------------| ------------------------- |
+| `title`  | The free-text display name of the step                               | Optional                  |
+| `description`    | A basic, free-text description of the step.                          | Optional                  |
+| `stage`    | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information. | Optional  |
+| `kind`     | Currently only `kubernetes` is supported                | Required                   |
+| `cluster`  | Name of your K8s cluster as found in the dashboard               | Required                   |
+| `namespace` | Namespace where the deployment will take place           | Required                   |
+| `service`    | Name of the existing service that will updated. You need to provide `service` OR `file_path` | Required/Optional  |
+| `file_path`   | A deployment manifest. You need to provide `service` OR `file_path`                | Required/Optional                  |
+| `timeout`   | Seconds to wait for the deployment to be completed. Default is 120 seconds               | Default                   |
+| `candidate`    | Docker image that will be deployed. Only valid if `service` is defined. Should contain `image` and name of registry as it appears in the [registry integration page]({{site.baseurl}}/docs/integrations/docker-registries/).   | Optional  |                  
+| `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
+| `strict_fail_fast`                              | Specifies how to report the Build status `fail_fast` is set to `false`. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:  Returns a Build status of failed on step failure.</li> <li><code class="highlighter-rouge">false</code>: Returns a Build status of successful regardless of step failures.</li></ul>{:/}**NOTE**: <code class="highlighter-rouge">strict_fail_fast</code> does not impact the Build status reported for parallel steps with <code class="highlighter-rouge">fail_fast</code> enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
+| `when`  | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.   | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).   | Optional                  |
+| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step). | Optional   |
 
 ## Examples
 

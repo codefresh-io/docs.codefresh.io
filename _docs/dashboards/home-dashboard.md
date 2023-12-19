@@ -363,6 +363,8 @@ Identify outliers in terms of executions and duration in the scatter chart map, 
 You can then filter by the specific pipeline or pipelines and analyze success rate, overall, and phase-level duration.   
 
 ## Related articles
+[GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
+
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)   

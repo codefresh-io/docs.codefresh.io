@@ -63,6 +63,7 @@ step_name:
   composition_variables:
     - key=value
   fail_fast: false
+  strict_fail_fast: true
   when:
     condition:
       all:
@@ -88,24 +89,26 @@ One subtle difference is that Docker compose will interpolate environment variab
 The following describes the fields available in a step of type `composition`
 
 {: .table .table-bordered .table-hover}
-| Field                                      | Description                                                                                                                                                                                                                              | Required/Optional/Default |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| `title`                                    | The free-text display name of the step.                                                                                                                                                                                                  | Optional                  |
-| `description`                              | A basic, free-text description of the step.                                                                                                                                                                                              | Optional                  |
-| `stage`                              | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.                                                                                                                                                                                          | Optional                  |
-| `working_directory`                        | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
-| `composition`                              | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of Docker compose [version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"}  and [3.0](https://docs.docker.com/compose/compose-file/){:target="\_blank"}                                            | Required                  |
-| `version`                              | Version for docker compose. Use `2` or `3`                                          | Required                  |
-| `composition_candidates`                   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.                                                                                                                                                                                              | Required                  |
-| `environment` (service level)                             | environment that will be accessible to the container                                                                                                                                                                                     | Optional                  |
-| `working_dir` (service level)                             | defines the working directory that will be used in a service before running a command. By default it is defined by the docker image that is used by the service.                                                                                                                             | Optional                  |
-| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
-| `volumes` (service level)                             | Extra volumes for individual services. Used for transferring information between your steps. Explained in detail later in this page.                                                                                                                             | Optional                  |
-| `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these variables are docker-compose variables and **NOT** environment variables                                                                                                                                                                         | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                 | Default                   |
-| `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
-| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                            | Optional                  |
-| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
+| Field      | Description    | Required/Optional/Default |
+| ------------------------------------------ | ------------------------- | ------------------------- |
+| `title`      | The free-text display name of the step.                  | Optional                  |
+| `description`    | A basic, free-text description of the step.             | Optional                  |
+| `stage`     | Parent group of this step. See [using stages]({{site.baseurl}}/docs/pipelines/stages/) for more information.  | Optional  |
+| `working_directory`   | The directory in which to search for the composition file. It can be an explicit path in the container's file system, or a variable that references another step. The default is {% raw %}`${{main_clone}}`{% endraw %}. Note that this is completely different from `working_dir` which is on the service level.             | Default                   |
+| `composition`     | The composition you want to run. This can be an inline YAML definition or a path to a composition file on the file system, e.g. `docker-compose.yml`, or the logical name of a composition stored in the Codefresh system. We support most features of Docker compose [version 2.0](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"}  and [3.0](https://docs.docker.com/compose/compose-file/){:target="\_blank"}                                            | Required                  |
+| `version`    | Version for docker compose. Use `2` or `3`                      | Required                  |
+| `composition_candidates`   | The definition of the service to monitor. Each candidate has a **single** `command` parameter that decides what will be tested.      | Required                  |
+| `environment` (service level)   | environment that will be accessible to the container             | Optional                  |
+| `working_dir` (service level)     | defines the working directory that will be used in a service before running a command. By default it is defined by the docker image that is used by the service.      | Optional                  |
+| `registry_contexts`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)  | Optional       |
+| `volumes` (service level)   | Extra volumes for individual services. Used for transferring information between your steps. Explained in detail later in this page.    | Optional                  |
+| `composition_variables`                    | A set of environment variables to substitute in the composition. Notice that these variables are docker-compose variables and **NOT** environment variables      | Optional                  |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
+| `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
+| `strict_fail_fast`                              | Specifies how to report the Build status `fail_fast` is set to `false`. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:  Returns a Build status of failed on step failure.</li> <li><code class="highlighter-rouge">false</code>: Returns a Build status of successful regardless of step failures.</li></ul>{:/}**NOTE**: <code class="highlighter-rouge">strict_fail_fast</code> does not impact the Build status reported for parallel steps with <code class="highlighter-rouge">fail_fast</code> enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
+| `when`    | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.                               | Optional                  |
+| `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).   | Optional                  |
+| `retry`   | Define retry behavior as described in [retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).   | Optional                  |
 
 ## Composition versus Composition Candidates
 
@@ -157,6 +160,67 @@ If you run this composition, you will see in the logs that the alpine image will
 my_service_1       | /tmp
 my_test_service_1  | /root
 ```
+## Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**:  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+  `codefresh.yml`
+{% highlight yaml %}
+step_name:
+  type: composition
+  title: Step Title
+  description: Free text description
+  working_directory: {% raw %}${{a_clone_step}}{% endraw %}
+  composition:
+    version: '2'
+    services:
+      db:
+        image: postgres
+  composition_candidates:
+    test_service:
+      image: {% raw %}${{build_step}}{% endraw %}
+      command: gulp integration_test
+      working_dir: /app
+      environment:
+        - key=value
+  composition_variables:
+    - key=value
+  timeout: 45m
+  fail_fast: false
+  when:
+    condition:
+      all:
+        notFeatureBranch: 'match("{% raw %}${{CF_BRANCH}}{% endraw %}", "/FB-/", true) == false'
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ...  
+{% endhighlight %}
+
+
+**Timeout info in logs**  
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
+
 
 ## Composition networking
 

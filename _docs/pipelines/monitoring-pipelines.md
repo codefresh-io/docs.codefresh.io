@@ -237,8 +237,10 @@ View logs for running and completed builds and download them in HTML or text for
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
 The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
->Note:  
-  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
+You can also [share logs](#sharing-log-urls-for-pipeline-builds) with other users logged in to the same account.
+
+>**NOTE**:  
+  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size exceeds the maximum permitted. 
   For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
 
 1. In the **Builds** page, select a build. 
@@ -258,6 +260,56 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
+### Sharing log URLs for pipeline builds
+
+Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues, either for a specific build step or for the entire build.  
+Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
+
+>**IMPORTANT**:  
+This functionality requires timestamps for build logs which will be enabled for all Codefresh accounts. Enabling timestamps in logs can affect any automation you may have created based on log outputs without timestamps. To opt out of timestamps in logs, please contact Codefresh Support. <br>
+This functionality will be available to all customers starting December 14.
+
+  
+
+
+>**NOTE**:  
+Users with whom you share the logs must be logged in to the same account.
+
+**Before you begin**
+* Make sure build logs have timestamps
+
+**How to**
+1. In the **Builds** page, select a build. 
+1. Do one of the following:  
+  * To view logs for a specific step, click the step.
+  * To view logs for the entire build, click **Output** in the lower part of the Build page.
+1. Select the lines you want to share.
+1. Click **Share** in the top-right corner.
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-select-lines.png" 
+url="/images/pipeline/monitoring/share-logs-select-lines.png"
+alt="Sharing build logs" 
+caption="Sharing build logs" 
+max-width="60%"
+%}
+
+{:start="5"}
+1. In the pop-up that appears, click **Copy to clipboard**.
+1. Share the URL with users logged in to the same account.  
+  On accessing the link, the browser opens the Builds page, with the shared section highlighted in the build log.  
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-view-shared.png" 
+url="/images/pipeline/monitoring/share-logs-view-shared.png"
+alt="Shared build logs" 
+caption="Shared build logs" 
+max-width="60%"
+%}
 
 ### Viewing variables in pipeline builds
 

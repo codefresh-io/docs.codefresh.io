@@ -42,6 +42,8 @@ By default, you have direct access to Git repositories that exist in the Git pro
 1. From the **Add Git Provider** drop-down, select the Git provider to add. 
 1. Define the settings as required. 
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
 
 {% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
 

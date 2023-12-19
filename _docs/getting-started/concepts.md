@@ -35,12 +35,12 @@ Argo CD applications conform to Argo CD's application definition CRD (Custom Res
 
 Create Argo CD applications that are fully GitOps-compliant in Codefresh. Identify and fix errors before commit with our built-in validations. The application manifest is generated, committed to Git, and synced to your cluster.   
 See:
-[Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) GitOps applications  
+[Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) Argo CD applications  
 
 
 Just as with Dockerized applications, you get full visibility into the applications and their deployment through the global Analytics, DORA metrics, and the Application dashboards. The Applications dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
 See:
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
 
 
 ## Pipeline

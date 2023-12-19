@@ -9,6 +9,7 @@ toc: true
 
 Codefresh provides out-of-the-box management for secrets, generally to store secrets for third-party integrations.  
 
+
 For secure secret storage, every Codefresh GitOps Runtime uses the [Bitnami Sealed Secrets Controller](https://github.com/bitnami-labs/sealed-secrets){:target="_blank"} behind the scenes.
 This Controller is installed as part of the Runtime and automatically managed by Codefresh.
 
@@ -52,35 +53,6 @@ The applications you deploy with Codefresh should also have no knowledge of the 
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 
 
-
-
-Codefresh employs a mechanism that applies a Sealed Secret consistently across multiple clusters, in complete alignment with the GitOps paradigm. It also facilitates sharing the public and private keys between the Codefresh platform and the Shared Configuration Repository in the user's GitOps Runtime environment.
-
-
-
-
-## How Sealed Secrets work
-
-Sealed Secrets are based on [public/private key encryption](https://en.wikipedia.org/wiki/Public-key_cryptography){:target="_blank"}. When the controller is installed, it gets a public and private key. The private key stays within the cluster. The public key can be given anywhere to encrypt secrets.  Any kind of secret can be encrypted with the public key (also via the `kubeseal` executable), and then passed to the cluster for decryption when needed.  
-
-For Argo CD applications, it is critical to encrypt secrets, as it means that you can commit any kind of secret in Git as long as it is encrypted.  
-
-
-The Sealed Secrets controller in a GitOps Runtime generates a sealing key, which is then divided into two parts:
-
-1. Half the private key is saved in a `configmap` that represents this sealing key, stored in the Shared Configuration Repo
-2. The other half of the private key is stored in the Codefresh platform
-
-
-
-For more details, you can read our [blog post for sealed secrets](https://codefresh.io/blog/handle-secrets-like-pro-using-gitops/){:target="_blank"}.
-
-The Sealed Secrets controller is completely managed by the Codefresh GitOps Runtime, and secret encryption and decryption are fully automated.
-
-> **WARNING!**  
-_DO NOT_ tamper with the controller or its private/public keys in any way. 
-
-The Argo CD applications you deploy with Codefresh should also have no knowledge of the controller. Access the secrets that you need in your own applications using the standard Kubernetes methods.
 
 
 

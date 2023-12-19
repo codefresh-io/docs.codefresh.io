@@ -20,6 +20,9 @@ even if you don't have an external Helm repository. See our [quick start guide f
 
 For each Helm integration, you can toggle the level of access for [non-admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators). 
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+
 ## Set up external Helm integration
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 

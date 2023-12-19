@@ -1,5 +1,5 @@
 ---
-title: "Add Git Sources to GitOps Runtimes"
+title: "Adding Git Sources to GitOps Runtimes"
 description: "Manage Git Sources storing resources"
 group: installation
 toc: true
@@ -95,7 +95,7 @@ Edit an existing Git Source by changing the source and destination definitions, 
 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)   
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 
 

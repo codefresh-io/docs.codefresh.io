@@ -1,16 +1,16 @@
 ---
-title: "Update image tag for application"
+title: "Update image tag for `codefresh-guestbook` application"
 description: ""
 group: getting-started
 sub-group: gitops-quick-start
 toc: true
 ---
 
-You will now make a change in the application manifest, and update the image tag. Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and triggers the new rollout. <!---The rollout runs the analysis template you defined (`background-analysis` in the quick start).--->
+You will now make a change in the `codefresh-guestbook` application manifest, and update the image tag. Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and triggers the new rollout. <!---The rollout runs the analysis template you defined (`background-analysis` in the quick start).--->
 
 ### Before you begin
 
-* [Create resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
+* [Create & commit resources for `codefresh-guestbook` application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
 
 
 ### Update image tag in rollout.yaml
@@ -41,7 +41,7 @@ template:
 ### View the rollout in the GitOps Apps dashboard
 When the image tag is updated, the auto-sync initiates the rollout. 
 
-1. Go back to the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
+1. Go back to the [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.  
 1. Select the application you created.  
   The deployment entry for the application is displayed as progressing.
 
@@ -71,6 +71,6 @@ When the image tag is updated, the auto-sync initiates the rollout.
 {:start="4"}
 1. To view metric validation details, expand **Background Analysis** in the panel. 
 
-You have created and deployed an application in Codefresh. 
+You have now created and deployed an Argo CD application in Codefresh. 
 
   
