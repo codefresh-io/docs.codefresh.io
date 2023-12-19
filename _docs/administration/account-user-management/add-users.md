@@ -11,7 +11,8 @@ redirect_from:
 toc: true
 ---
 
-Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.   
+Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.  For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration).
+
 
 
 You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an orgranization.

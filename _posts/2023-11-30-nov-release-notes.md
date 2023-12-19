@@ -11,7 +11,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 We are happy to announce a new field for pipeline steps, the `timeout` flag to further enhance control over your pipelines!
 The `timeout` flag, when assigned to a step, prevents that step from running beyond a specific duration if so required.
 
-Add the `timeout` flag with the <duration> and <units> to any of these step types: `git-clone`, `freestyle`, `build`, `push`, `composition`, `pending-approval`.
+Add the `timeout` flag with the `<duration>` and `<units>` to any of these step types: `git-clone`, `freestyle`, `build`, `push`, `composition`, `pending-approval`.
 
 **How it works**  
 * Steps that exceed the timeout limit are automatically terminated. If the steps are completed before the timeout limits are exceeded, the timeout values are ignored.

@@ -26,6 +26,8 @@ When you add a new Jira integration in Codefresh, you can authenticate either us
  
 * [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details)
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
 <br />
 
 **Before you begin**  

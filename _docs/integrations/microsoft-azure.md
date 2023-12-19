@@ -17,6 +17,9 @@ Codefresh has native support for Azure in the following areas:
 - [Using Azure Storage for Helm charts]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
 - [Azure SSO]({{site.baseurl}}/docs/single-sign-on/oidc/oidc-azure/)
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+
 ## Using Azure Git repositories
 
 Codefresh can easily check out code from Azure Git repositories:

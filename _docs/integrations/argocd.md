@@ -6,7 +6,7 @@ toc: true
 ---
 
 > **IMPORTANT**:  
-  We are planning to deprecate the ArgoCD agent for Codefresh pipelines. It has now been replaced with the GitOps runtime, that offers a superset of the functionality of the agent, and is also better integrated
+  We are planning to deprecate the ArgoCD agent for Codefresh pipelines. It has now been replaced with the GitOps Runtime, that offers a superset of the functionality of the agent, and is also better integrated
   with the Codefresh dashboards.  
 
   For an overview, read [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/), and then click the links for detailed information.
@@ -25,6 +25,9 @@ Before you can use Codefresh and ArgoCD together, you need to connect your ArgoC
 
 
 ## Set up ArgoCD integration in Codefresh
+
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **GitOps** and then click **Configure**.
@@ -176,6 +179,7 @@ Note this will only uninstall the Codefresh agent. Your Argo CD installation
 will remain unaffected.
 
 ## Related articles
+[Troubleshooting Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/) 
 [Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  
 [Kubernetes integration]({{site.baseurl}}/docs/integrations/kubernetes/)  
 

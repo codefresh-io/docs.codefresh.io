@@ -23,12 +23,14 @@ Codefresh enables you to integrate with several Docker container registries, inc
 * [Quay.io](quay-io)
 * [GitHub Container Registry](github-container-registry)
 
-For a different registry choose to configure using the [Other](other-registries) option.
+For a different registry, choose to configure using the [Other](other-registries) option.
 
 The registries can either be public or private.
 
 ## General Configuration
 
+>**IMPORTANT**:  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.

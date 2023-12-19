@@ -72,7 +72,7 @@ There are two parts to creating a Cron trigger in the UI:
 1. (Optional) Selecting additional options:  
   * Git trigger event to simulate when the Cron trigger timer is activated. The pipeline is populated with the information from the Git repo such as the repo URL, branch name, latest commit information, including the date and author of the commit.
   * Variables to populate for the build
-  * Caching, volume resuse and notification behavior to override for the build  
+  * Caching, volume reuse and notification behavior to override for the build  
 
 
 
@@ -197,6 +197,9 @@ For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 h
 
 >**NOTE:**  
 The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
+
+### Conditional triggers for Cron jobs
+Take a look at our Knowledge Base how-to: [Skip pipeline step if triggered by Cron job]({{site.baseurl}}/docs/kb/articles/skip-test-if-pipeline-is-triggered-with-cron/).
 
 ## Cron triggers with Codefresh CLI
 
