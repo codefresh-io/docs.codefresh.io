@@ -193,7 +193,7 @@ To enable features selectively for specific accounts, or for all accounts in the
 #### Enable System Features  
 System Features are generally for internal use. 
 For convenience and ease of set up, _turn on ONLY the System Features listed in this section_.   
-When you enable System Features, the behavior for a specific feature is identical to that of the other Feature Flags: you can enable/disable it for a single, for specific, or for all accounts.
+When you enable System Features, the behavior for a specific System Feature is identical to that of the other Feature Flags: you can enable/disable it for a single, for specific, or for all accounts.
 
 >**IMPORTANT:**  
 Codefresh _strongly recommends against enabling the System Features not explicitly mentioned here_, unless you are familiar with the implications of turning on each of the features.  
