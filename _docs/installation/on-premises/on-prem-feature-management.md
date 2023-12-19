@@ -29,8 +29,8 @@ Review the [feature list](#on-premises-feature-list) to understand the implicati
 ## System Features
 System Features are generally only for internal use, and should not be changed. For more information, see [Enable System Features]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/#enable-system-features).
 
->**IMPORTANT:**
->Codefresh _strongly recommends against enabling System Features_ unless you are familiar with the implications of turning on a System Feature.
+>**IMPORTANT:** 
+>Codefresh _strongly recommends against enabling System Features_ unless you are familiar with the implications of turning on a System Feature.  
 >If you need to turn on a System Feature, we recommend to first contact Codefresh support.
 
 
