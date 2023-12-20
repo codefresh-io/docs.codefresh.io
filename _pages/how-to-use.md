@@ -37,7 +37,7 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 * {% raw %}`{{site.data.callout.callout_success}}`{% endraw %} - callout with `success` style
 * {% raw %}`{{site.data.callout.callout_warning}}`{% endraw %} - callout with `warning` style 
 * {% raw %}`{{site.data.callout.callout_danger}}`{% endraw %} - callout with `danger` style 
-* * {% raw %}`{{site.data.callout.callout_tip}}`{% endraw %} - callout with `tip` style
+* {% raw %}`{{site.data.callout.callout_tip}}`{% endraw %} - callout with `tip` style
 
 ---
 

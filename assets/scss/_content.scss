@@ -88,12 +88,11 @@
   // Links
   a:not([data-type="image"]):not([data-anchorjs-icon="#"]),
   .bd-link {
-
     color: $bd-link-default;
     text-decoration: underline;
   }
 
-  .bd-link-external {
+  @mixin link-icon($icon) {
     color: $bd-link-external !important;
 
     &::after {
@@ -104,25 +103,17 @@
       vertical-align: middle;
       content: "";
 
-      background: url("/images/icons/external-link.svg") no-repeat;
+      background: url("/images/icons/#{$icon}.svg") no-repeat;
       background-size: contain;
     }
   }
 
+  .bd-link-external {
+    @include link-icon("external-link");
+  }
+
   .bd-link-codefresh {
-    color: $bd-link-external !important;
-
-    &::after {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin-left: 2px;
-      vertical-align: middle;
-      content: "";
-
-      background: url("/images/icons/codefresh-leaves.svg") no-repeat;
-      background-size: contain;
-    }
+    @include link-icon("codefresh-leaves");
   }
 
   // Tables
@@ -207,16 +198,16 @@
 .bd-content-inner {
   position: relative;
   > h2:not(:first-child) {
-    margin-top: 36px;
+    margin-top: 2.25rem;
   }
 
   > h3 {
-    margin-top: 36px;
+    margin-top: 2.25rem;
   }
 
   > h4 {
     margin-top: 0;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
 
     &::after {
       display: block;
@@ -225,7 +216,7 @@
       margin-top: 2px;
       content: "";
 
-      background-color: #dce7e8;
+      background-color: $bd-divider-color;
     }
   }
 

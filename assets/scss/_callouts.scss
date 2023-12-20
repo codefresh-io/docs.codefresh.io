@@ -2,14 +2,16 @@
 // Callouts
 //
 
+$backgroundTransparentFilterValue: .85;
+
 blockquote,
 .blockquote,
 .bd-callout {
   position: relative;
   padding: 1.5rem;
-  margin: 1.5rem 0 1.5rem;
+  margin: 1.5rem 0;
   font-size: 1rem;
-  background: transparentize($bd-info, .85);
+  background: transparentize($bd-info, $backgroundTransparentFilterValue);
 
 
   &::before {
@@ -23,7 +25,7 @@ blockquote,
   }
 
   @include media-breakpoint-up(xxl) {
-    margin: 1.5rem -1.5rem;
+    margin: 1.5rem 0;
   }
 
   p:last-child {
@@ -50,7 +52,7 @@ blockquote,
 
 // Variations
 @mixin bs-callout-variant($color) {
-  background: transparentize($color, .85);
+  background: transparentize($color, $backgroundTransparentFilterValue);
 
   &::before {
     background-color: $color;
