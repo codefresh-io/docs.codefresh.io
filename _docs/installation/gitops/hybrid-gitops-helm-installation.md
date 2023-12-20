@@ -543,7 +543,6 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 
 {:start="3"}  
 1. Continue with [Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-optional-gitops-with-argo-cd-remove-rollouts-controller-deployment).
-t).
 
 
 ### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
