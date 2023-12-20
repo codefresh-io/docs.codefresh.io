@@ -17,19 +17,29 @@ Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI ver
 
 ## Before you begin
 Make sure you have:
-<!--- * Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes))
+* Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes))
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
-  * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.  -->
+  * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.  
 * CLI version 0.1.57 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
 ## Step 1: Update `values.yaml`
 
-Before migrating the CLI-based Runtime and installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration established in the CLI Runtime's setup.  
+Before migrating the CLI-based Runtime and installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration in the CLI Runtime's setup.  
 
 The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
+
+>TIP:  
+For info on customizing options for Argo components in the `values.yaml`, check out the following:  
+>[Argo CD](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-cd/README.md){target="\_blank"}  
+>[Argo Events](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-events/README.md){target="\_blank"}  
+>[Argo Workflows](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-workflows/README.md){target="\_blank"}  
+>[Argo Rollouts](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-rollouts/README.md){target="\_blank"}  
+
+
+
 
 1. Update `values.yaml`.
 1. Continue with [Step 2: Migrate CLI-based GitOps Runtime](#step-2-migrate-cli-based-gitops-runtime).
