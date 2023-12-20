@@ -143,15 +143,14 @@ We're thrilled to introduce a significant enhancement simplifying troubleshootin
 With our new Diff View feature, you can instantly view the differences between the current state and the desired configuration of out-of-sync applications.
 The Diff View option provides a display of all updated resources within the application, allowing you to easily pinpoint changes and swiftly identify the root cause of the sync failure. 
 
-
 The option is always available in the application's context menu in the GitOps Apps dashboard, and is enabled whenever the application is out-of-sync. If you have already selected an application, the Diff View option is available in the context menu at the top right of the page. 
 
-
+Diff View for application resources is supported from Helm chart version 0.4.1 and higher. To enable this feature, you need to turn on the `appDiffView` feature flag.
 
 <br>
 
 
-#### GitOps: Restricted Git Sources for enhanced application deployment
+#### GitOps: (Beta) Restricted Git Sources for enhanced application deployment
 
 We have added a new type of Git Source to GitOps Runtimes to deliver enhanced control and precision over application deployment within multi-tenant environments! Welcome to Restricted Git Sources in Codefresh!
 
@@ -180,6 +179,8 @@ alt="Settings for Restricted Git Sources"
 caption="Settings for Restricted Git Sources" 
 max-width="40%" 
 %}
+
+To enable this feature, you need to turn on the `restrictedGitSource` feature flag. 
 
 For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
