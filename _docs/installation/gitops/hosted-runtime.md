@@ -8,7 +8,7 @@ toc: true
 
 
 
-Set up your environment with the Hosted GitOps Runtime to leverage Codefresh GitOps capabilities.
+Set up your environment with the Hosted GitOps Runtime to leverage Codefresh's GitOps capabilities.
 
 >**IMPORTANT**:  
 Codefresh is responsible for the _availability of Hosted GitOps Runtimes_.<br>
