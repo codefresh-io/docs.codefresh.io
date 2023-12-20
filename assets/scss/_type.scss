@@ -30,12 +30,12 @@ h2,
 
 h3,
 .h3 {
-  @include heading($h3-font-size, $font-weight-normal, $h3-line-height);
+  @include heading($h3-font-size, $font-weight-medium, $h3-line-height);
 }
 
 h4,
 .h4 {
-  @include heading($h4-font-size, $font-weight-bold, $h4-line-height);
+  @include heading($h4-font-size, $font-weight-medium, $h4-line-height);
 }
 
 h5,
