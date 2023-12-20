@@ -86,7 +86,9 @@
   }
 
   // Links
-  @mixin link-icon($icon) {
+  @mixin external-link($icon) {
+    color: $bd-link-external;
+    border-bottom: 1px solid $bd-link-external;
     &::after {
       display: inline-block;
       width: 12px;
@@ -104,11 +106,11 @@
     border-bottom: 1px solid $bd-link-default;
 
     &[href^="https://g.codefresh.io/"] {
-      @include link-icon("codefresh-leaves");
+      @include external-link("codefresh-leaves");
     }
 
     &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]) {
-      @include link-icon("external-link");
+      @include external-link("external-link");
     }
   }
 
