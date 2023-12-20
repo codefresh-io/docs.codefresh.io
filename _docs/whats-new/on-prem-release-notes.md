@@ -137,7 +137,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 ### Beta features
 This section describes features and enhancements currently in Beta.
 
-<!--- #### GitOps: Diff View for out-of-sync applications
+#### GitOps: Diff View for out-of-sync applications
 
 We're thrilled to introduce a significant enhancement simplifying troubleshooting Argo CD applications within Codefresh. 
 With our new Diff View feature, you can instantly view the differences between the current state and the desired configuration of out-of-sync applications.
@@ -148,12 +148,8 @@ The option is always available in the application's context menu in the GitOps A
 
 
 
-For details, see 
-
-
 <br>
 
--->
 
 #### GitOps: Restricted Git Sources for enhanced application deployment
 
