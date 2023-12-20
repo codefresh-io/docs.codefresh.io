@@ -13,7 +13,7 @@ When you migrate the CLI-based Runtime, the Git Sources, external clusters, and 
 The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
 
 >**NOTE**:  
-Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.54 and higher. 
+Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.57 and higher. 
 
 ## Before you begin
 Make sure you have:
@@ -22,7 +22,7 @@ Make sure you have:
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
   * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.
-* CLI version 0.1.53 or higher  
+* CLI version 0.1.57 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
 ## Step 1: Update `values.yaml`
@@ -235,97 +235,18 @@ helm upgrade --install <helm-release-name> \
 %}
 
 {:start="5"}
-1. Continue with [Step 5: Configure Git credentials for GitOps Runtime](#step-5-configure-git-credentials-for-gitops-runtime).
-
-## Step 5: Configure Git credentials for GitOps Runtime
-Configure Git credentials to authorize access to and ensure proper functioning of the Helm-based GitOps Runtime. 
-
-Git credentials include authorizing access to Git through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
-
-**Git authorization**
-* OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
-* Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
-
-**SSH access to Git**  
-By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
-When SSH is configured for a GitOps Runtime, on creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
-
-For more information on generating SSH private keys, see the official documentation:
-* [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
-* [GitLab](https://docs.gitlab.com/ee/ssh/#generating-a-new-ssh-key-pair){:target="\_blank"}
-* [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
-* [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
-
-<br>
-
-**Before you begin**
-* To authenticate through a Git Runtime access token, make sure your token is valid and has the required scopes for GitOps Runtimes
-* To use SSH, copy the SSH private key for your Git provider
-
-<br>
-
-**How to**
-1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**.
-  Codefresh displays the steps needed to complete the installation.
-
-   {% include
-image.html
-lightbox="true"
-file="/images/runtime/helm/helm-complete-install-widgets.png"
-url="/images/runtime/helm/helm-complete-install-widgets.png"
-alt="Steps to complete installing Hybrid GitOps Runtime"
-caption="Steps to complete installing Hybrid GitOps Runtime"
-max-width="60%"
-%}
-
-{:start="2"}
-1. Do one of the following:
-  * If your admin has set up OAuth access, click **Authorize Access to Git Provider**. Go to _step 3_.
-  * Alternatively, authenticate with an access token from your Git provider. Go to _step 4_.
-
- {% include
-image.html
-lightbox="true"
-file="/images/runtime/helm/helm-git-runtime-token.png"
-url="/images/runtime/helm/helm-git-runtime-token.png"
-alt="Configure Git Runtime credentials"
-caption="Configure Git Runtime credentials"
-max-width="50%"
-%}
-
-{:start="3"}
-1. For OAuth2 authorization:
-  > **NOTE**:
-    If the application is not registered and you get an error, contact your admin for help.
-      * Enter your credentials, and select **Sign In**.
-      * If required, as for example with two-factor authentication, complete the verification.
-
-    {% include
-      image.html
-      lightbox="true"
-      file="/images/administration/user-settings/oauth-user-authentication.png"
-      url="/images/administration/user-settings/oauth-user-authentication.png"
-      alt="Authorizing access with OAuth2"
-      caption="Authorizing access with OAuth2"
-      max-width="60%"
-   %}
-
-{:start="4"}
-1. For Git token authentication, in the **Git Runtime Token** field, paste the Git Runtime token you generated.
-1. Optional. To configure SSH access to Git, expand **Connect Repo using SSH**, and then paste the raw SSH private key into the field.
-1. Click **Update Credentials**. Codefresh displays a message that the Git Runtime credentials have been updated.
-1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
+1. Continue with [Step 5: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
 
 
 
 
-## Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application
+## Step 5: (Optional) Configure Hybrid GitOps Runtime as Argo Application
 
-Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.
+Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the migration process.
 We recommend completing this step, as by doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
 
->**NOTE**:
-You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.
+<!--- >>**NOTE**:
+You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.  -->
 
 
 1. Go back to the List view.
@@ -353,7 +274,7 @@ You can also create [Environments]({{site.baseurl}}/docs/dashboards/gitops-envir
 
 ## Related articles
 [Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
