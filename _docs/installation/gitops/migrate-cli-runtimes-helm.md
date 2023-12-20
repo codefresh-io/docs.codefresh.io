@@ -33,10 +33,10 @@ The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gi
 
 >TIP:  
 For info on customizing options for Argo components in the `values.yaml`, check out the following:  
->[Argo CD](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-cd/README.md){target="\_blank"}  
->[Argo Events](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-events/README.md){target="\_blank"}  
->[Argo Workflows](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-workflows/README.md){target="\_blank"}  
->[Argo Rollouts](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-rollouts/README.md){target="\_blank"}  
+>[Argo CD](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-cd/README.md){:target="\_blank"}  
+>[Argo Events](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-events/README.md){:target="\_blank"}  
+>[Argo Workflows](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-workflows/README.md){:target="\_blank"}  
+>[Argo Rollouts](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-rollouts/README.md){:target="\_blank"} 
 
 
 
@@ -228,11 +228,11 @@ helm upgrade --install <helm-release-name> \
 {:start="4"}
 1. Wait for a few minutes, and then click **Close**.
   You are taken to the List View for GitOps Runtimes where:
-  * The Hybrid GitOps Runtime you added is prefixed with a green dot indicating that it is online.
+  * The Hybrid GitOps Runtime you migrated is prefixed with a green dot indicating that it is online.
   * The Type column for the Runtime displays **Helm**.
   * The Sync Status column displays **Complete Installation**, indicating that there are pending steps to complete the installation.  
   * Drilling down into the Runtime shows empty tabs for Runtime Components, Git Sources, and Managed Clusters.  
-    The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, described later on in the installation process.
+    The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, described in the step that follows.
  
 {% include
    image.html
