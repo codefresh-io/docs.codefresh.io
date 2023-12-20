@@ -88,7 +88,6 @@
   // Links
   @mixin external-link($icon) {
     color: $bd-link-external;
-    border-bottom: 1px solid $bd-link-external;
     &::after {
       display: inline-block;
       width: 12px;
@@ -99,12 +98,24 @@
       background: url("../../images/icons/#{$icon}.png") no-repeat;
       background-size: contain;
     }
+
+    &:hover {
+      color: $bd-link-external-hover;
+      border-bottom: 1px solid $bd-link-external-hover;
+    }
   }
 
   a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
     color: $bd-link-default;
-    text-decoration: none;
-    border-bottom: 1px solid $bd-link-default;
+    border-bottom: none;
+    transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: 1px solid $bd-link-default-hover;
+      color: $bd-link-default-hover;
+    }
+
 
     &[href^="https://g.codefresh.io/"] {
       @include external-link("codefresh-leaves");
