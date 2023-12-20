@@ -2739,6 +2739,10 @@ h5,
   color: #11b5a4 !important;
 }
 
+.bd-improve-link a::after {
+  display: none !important;
+}
+
 .bd-text-purple {
   color: #563d7c;
 }
