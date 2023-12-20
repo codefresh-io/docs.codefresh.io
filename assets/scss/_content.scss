@@ -86,15 +86,7 @@
   }
 
   // Links
-  a:not([data-type="image"]):not([data-anchorjs-icon="#"]),
-  .bd-link {
-    color: $bd-link-default;
-    text-decoration: underline;
-  }
-
   @mixin link-icon($icon) {
-    color: $bd-link-external !important;
-
     &::after {
       display: inline-block;
       width: 12px;
@@ -102,18 +94,22 @@
       margin-left: 2px;
       vertical-align: middle;
       content: "";
-
       background: url("/images/icons/#{$icon}.svg") no-repeat;
       background-size: contain;
     }
   }
 
-  .bd-link-external {
-    @include link-icon("external-link");
-  }
+  a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
+    color: $bd-link-default;
+    border-bottom: 1px solid $bd-link-default;
 
-  .bd-link-codefresh {
-    @include link-icon("codefresh-leaves");
+    &[href^="https://g.codefresh.io/"] {
+      @include link-icon("codefresh-leaves");
+    }
+
+    &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]) {
+      @include link-icon("external-link");
+    }
   }
 
   // Tables
