@@ -96,7 +96,7 @@
       margin-left: 2px;
       vertical-align: middle;
       content: "";
-      background: url("/images/icons/#{$icon}.png") no-repeat;
+      background: url("../../images/icons/#{$icon}.png") no-repeat;
       background-size: contain;
     }
   }
