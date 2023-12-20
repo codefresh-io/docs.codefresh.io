@@ -96,20 +96,21 @@
       margin-left: 2px;
       vertical-align: middle;
       content: "";
-      background: url("/images/icons/#{$icon}.svg") no-repeat;
+      background: url("/images/icons/#{$icon}.png") no-repeat;
       background-size: contain;
     }
   }
 
   a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
     color: $bd-link-default;
+    text-decoration: none;
     border-bottom: 1px solid $bd-link-default;
 
     &[href^="https://g.codefresh.io/"] {
       @include external-link("codefresh-leaves");
     }
 
-    &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]) {
+    &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]):not([href^="#"]) {
       @include external-link("external-link");
     }
   }
