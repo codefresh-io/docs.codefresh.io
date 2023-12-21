@@ -12,10 +12,8 @@ We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for
 The CLI-based installation for Hybrid GitOps is considered legacy. We will deprecate this installation mode permanently in the coming months.<br>
 You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
 
+
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
-
-For Hosted GitOps Runtimes, see [Hosted GitOps Runtime Setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/). 
-
 
 **Installation options for GitOps Runtimes**  
 There are two options for Hybrid GitOps Runtime installation via Helm, each catering to specific use cases:
@@ -44,8 +42,7 @@ Choose the installation option that best aligns with your specific requirements 
 * **Additional GitOps Runtime installation**  
   If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
   When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
-
-
+  
 >**ArgoCD password WARNING**:  
   Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.
 
@@ -546,7 +543,6 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 
 {:start="3"}  
 1. Continue with [Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-optional-gitops-with-argo-cd-remove-rollouts-controller-deployment).
-t).
 
 
 ### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
@@ -938,8 +934,6 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
 |Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/reference/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
-
-For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
 
 ## Ingress controller configuration
@@ -1646,4 +1640,4 @@ providers:
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [GitOps architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
-[Installation options]({{site.baseurl}}/docs/installation/installation-options/)  
+
