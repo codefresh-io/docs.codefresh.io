@@ -44,22 +44,24 @@ ul > li {
 }
 
 @mixin content-links() {
-  color: $bd-link-default;
-  border-bottom: none;
-  transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
+  a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
+    color: $bd-link-default;
+    border-bottom: none;
+    transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
 
-  &:hover {
-    color: $bd-link-default-hover;
-    text-decoration: none;
-    border-bottom: 1px solid $bd-link-default-hover;
-  }
+    &:hover {
+      color: $bd-link-default-hover;
+      text-decoration: none;
+      border-bottom: 1px solid $bd-link-default-hover;
+    }
 
 
-  &[href^="https://g.codefresh.io/"] {
-    @include external-link("codefresh-leaves");
-  }
+    &[href^="https://g.codefresh.io/"] {
+      @include external-link("codefresh-leaves");
+    }
 
-  &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]):not([href^="#"]){
-    @include external-link("external-link");
+    &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]):not([href^="#"]){
+      @include external-link("external-link");
+    }
   }
 }

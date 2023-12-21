@@ -87,9 +87,7 @@
   }
 
   // Links
-  a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
-    @include content-links();
-  }
+  @include content-links();
 
   // Tables
   > table {
