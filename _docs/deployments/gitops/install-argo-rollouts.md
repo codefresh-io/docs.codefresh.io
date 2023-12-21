@@ -26,4 +26,4 @@ If Argo Rollouts has not been installed, an **Install Argo Rollouts** button is 
 %}
 
 ## Related articles
-[Add external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
