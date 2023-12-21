@@ -632,6 +632,10 @@ Version 2.0.0 incorporates a major version and chart change, including breaking 
 
 Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
+## Upgrade to 2.2.0
+Version 2.2.0 incorporates changes.
+
+Follow the instructions in [Upgrading to 2.2.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-2-0){:target="\_blank"}.
 
 
 ## Related articles

@@ -6,6 +6,261 @@ toc: true
 
 Welcome to the release notes for our on-premises release versions, starting with our latest release, version 2.0.3.
 
+## On-premises version 2.2
+
+
+### Features & enhancements
+Features and enhancements are divided into those in general availability and those currently in Beta.
+<br>
+
+#### Install/upgrade to v2.2 
+Welcome to our newest on-premises release! 
+
+**Installing v2.2**  
+For detailed instructions on installing v2.2, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+**Upgrading to v2.2**  
+Before initiating the upgrade process, review the instructions [here](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-2-0){:target="\_blank"}.
+
+<br>
+
+#### Pipelines: Enhanced RBAC with AND logic for tags
+
+We are excited to introduce a powerful enhancement to Codefresh pipelines: AND logic for rules in RBAC permissions. Now, you have even more control and precision when it comes to managing permissions for entities.
+
+Up until this point, we've been all about OR logic, allowing you to define rules with a choice of **Any of these** tags. But we recognize that you need to be more specific in certain scenarios, and that's where AND logic comes into play.  
+With AND logic, you can require **All of these** tags to be present, providing a level of granularity to tighten security and ensure that only the right teams have access to entities.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/sep23/rel-notes-sep23-classic-and-policies.png" 
+url="/images/whats-new/sep23/rel-notes-sep23-classic-and-policies.png" 
+alt="Rules with OR/AND logic for tags" 
+caption="Rules with OR/AND logic for tags" 
+max-width="40%" 
+%}
+
+For details, see [ABAC for entities with tags and rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#abac-for-entities-with-tags-and-rules).
+
+<br>
+
+#### Pipelines: New `timeout` functionality for pipeline steps
+We are happy to announce a new field for pipeline steps, the `timeout` flag to further enhance control over your pipelines!
+The `timeout` flag, when assigned to a step, prevents that step from running beyond a specific duration if so required.
+
+Add the `timeout` flag with the `<duration>` and `<units>` to any of these step types: `git-clone`, `freestyle`, `build`, `push`, `composition`, `pending-approval`.
+
+**How it works**  
+* Steps that exceed the timeout limit are automatically terminated. If the steps are completed before the timeout limits are exceeded, the timeout values are ignored.
+* Steps terminated through timeouts have the same behavior as failed steps. If you notice any inconsistencies, please report them as bugs.
+* In parallel steps, by default, the timeout defined for the parent is inherited by child steps.
+
+**Example**  
+
+```yaml
+version: '1.0'
+steps:
+  parallel:
+    type: parallel
+    timeout: 1m
+    steps:
+      first:
+        image: alpine
+      second:
+        image: alpine
+        timeout: 2m 
+      third:
+        image: alpine
+        timeout: null 
+```
+For details, see [Git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) and [Add timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+<br>
+
+#### Pipelines: Share log URLs for pipeline builds with timestamps
+Our latest enhancement simplifies troubleshooting and resolution process for issues in pipeline builds! How? By introducing the ability to share the URL of the build log with your team! 
+
+By selecting the part of the build log you want your team to look at for a specific step or for the entire build: a single row, a specific segment, or whatever you need, and clicking **Share**, you get a unique URL. 
+When colleagues, logged in to the same account, access the shared URL link, the build log opens directly to the highlighted section for easy identification.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+url="/images/whats-new/nov23/rel-notes-nov-23-share-logs-select-lines.png" 
+alt="Sharing URL for build logs" 
+caption="Sharing URL for build logs" 
+max-width="50%" 
+%}
+
+<!-- **Please note**  
+Sharing build log URLs requires timestamps in the logs. Codefresh will enable timestamps for all accounts, which can affect automation you may have created based on log output formats without timestamps. To opt out, please contact Codefresh Support.  
+This functionality will be available for all customers starting December 14.  -->
+
+For details, see [Sharing log URLs for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#sharing-log-urls-for-pipeline-builds).
+
+<br>
+
+#### Pipelines: Custom audiences for OIDC
+You’ll be happy with our latest enhancement for OIDC in Codefresh pipelines. Now, our OIDC integration supports multiple audiences. This flexibility is crucial for working with audiences that require distinct names instead of defaulting to the platform’s hostname, such as the Codefresh platform URL.
+
+**Customize your audience**  
+In the `obtain-oidc-id-token` step, tailor your audience by defining custom values — either a single value or multiple values separated by commas.
+
+Here’s an example of a single custom audience:
+
+```yaml
+obtain_id_token:
+  title: Obtain ID Token
+  type: obtain-oidc-id-token
+  arguments:
+    AUDIENCE: "cosign"
+```
+
+For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-pipelines/#standard-oidc-claims).
+
+<br>
+
+#### Other changes
+**Pipelines**  
+* Helm steps now support Helm releases 3.9.0 and higher.
+* Glob expressions support up to 65k characters.
+* Bitbucket and Azure Devops: Supported events include Pull Request (PR) commit events.
+* Higher throttle time ensures that delayed builds for pipelines do not affect performance. 
+* Accurate memory metrics for pipeline builds that use `buildx` and `docker driver`.
+
+**GitOps**
+* Restored option to download logs for GitOps Runtimes from the Codefresh UI.
+* Fast loading for Current State tab in the GitOps Apps dashboard for Argo CD applications with hundreds of resources.
+
+### Beta features
+This section describes features and enhancements currently in Beta. Note that these features may not be available to on-premises customers. Please consult with Customer Support for details.
+
+#### GitOps: Diff View for out-of-sync applications
+
+We're thrilled to introduce a significant enhancement simplifying troubleshooting Argo CD applications within Codefresh. 
+With our new Diff View feature, you can instantly view the differences between the current state and the desired configuration of out-of-sync applications.
+The Diff View option provides a display of all updated resources within the application, allowing you to easily pinpoint changes and swiftly identify the root cause of the sync failure. 
+
+The option is always available in the application's context menu in the GitOps Apps dashboard, and is enabled whenever the application is out-of-sync. If you have already selected an application, the Diff View option is available in the context menu at the top right of the page. 
+
+Diff View for application resources is supported from Helm chart version 0.4.1 and higher. To enable this feature, you need to turn on the `appDiffView` feature flag.
+
+<br>
+
+
+#### GitOps: (Beta) Restricted Git Sources for enhanced application deployment
+
+We have added a new type of Git Source to GitOps Runtimes to deliver enhanced control and precision over application deployment within multi-tenant environments! Welcome to Restricted Git Sources in Codefresh!
+
+Restricted Git Sources empower organizations managing multiple development teams to deploy applications for various customers on a shared cluster. By being able to configure the Application Projects and the namespaces to which to deploy the applications, Restricted Git Sources allow precise control over which teams can create specific applications and dictate their deployment destinations.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/nov23/rel-notes-nov-23-create-restricted-git-source.png" 
+url="/images/whats-new/nov23/rel-notes-nov-23-create-restricted-git-source.png" 
+alt="Creating a Restricted Git Source" 
+caption="Creating a Restricted Git Source" 
+max-width="40%" 
+%}
+
+Codefresh removes the complexity from the manual configuration required to configure Application Projects, and sync and manage applications and their resources in different namespaces. 
+* Administrators set up Restricted Git Sources in Codefresh with the Git repo, cluster, and namespace definitions
+* Codefresh manages the Argo CD applications synced to the Restricted Git Source, ensuring secure compliance without complex administrative overhead
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/nov23/rel-notes-nov-23-restricted-gs-settings.png" 
+url="/images/whats-new/nov23/rel-notes-nov-23-restricted-gs-settings.png" 
+alt="Settings for Restricted Git Sources" 
+caption="Settings for Restricted Git Sources" 
+max-width="40%" 
+%}
+
+To enable this feature, you need to turn on the `restrictedGitSource` feature flag. 
+
+For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.  
+
+**New Feature Flags in v2.2**  
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.2.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Pipelines: Enhanced RBAC with AND logic for tags](#pipelines-enhanced-rbac-with-and-logic-for-tags) in this article.| TRUE  |
+| `appDiffView`       | When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes. | FALSE  |
+|`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same.   | TRUE         |
+| `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
+| `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
+| `promotionFlow` | New feature currently in development.<br>When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. | FALSE         |
+| `promotionWorkflows` | New feature currently in development.<br>When enabled, allows you create and run workflows when a promotion is triggered. | FALSE         |
+| `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See [GitOps: Restricted Git Sources for enhanced application deployment](#gitops-restricted-git-sources-for-enhanced-application-deployment) in this article.| FALSE         |
+| `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
+| `useRepoAndBranchesNextPagination`         | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server.  | FALSE         |
+
+
+
+**Updated Feature Flags in v2.2**  
+The table below lists existing Feature Flags which are _now enabled by default_ and set to _TRUE_.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+|`cronTriggersInPipelineSpec`	| When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API. <br>See [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers) in our documentation.  | _TRUE_|
+| `gitopsAppGroups`       | When enabled, allows users to group Argo CD applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [Application Groups for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/) in our documentation. | _TRUE_   |
+| `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipeline settings: Scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes) in our documentation.     | _TRUE_         |
+
+### Bug fixes
+**General**  
+* Removing users from Codefresh UI, or via API or Terraform results in 504 error. 
+* Organizations list not sorted in alphabetical order. 
+* Page keeps on loading indefinitely when switching active account from a ProjectOne account to a Classic one.
+
+**Pipelines**
+* Slow loading for Builds and Workflow pages for pipelines. 
+* Cannot save views including Annotations as filters. 
+* In **Use YAML from repository** screen, selecting a new Git integration resets all custom settings, including PATH TO YAML.
+* In **Use YAML from repository** screen, selecting a new Git integration without selecting a branch results in "undefined is not an object (evaluating '(0,v.first)(this.branchData.selectedItem).displayName')" error. 
+* Listing branches when setting up trigger or in **Use YAML from repository** results in error ‘Error: Failed to retrieve file’. 
+* For Azure DevOps Pull Request (PR) (push commit, push reviewers changed, votes score changed, status changed) events, the build status in Azure DevOps is not identical to the build status in Codefresh.
+* Webhook for Bitbucket triggers two-three builds for a single event. 
+* Builds stuck in Terminating state in Codefresh UI
+* Helm step does not support latest Helm versions.
+* Frequent timeouts when pushing to Codefresh Helm repo via Helm step.
+* Unable to upload more than 100 Allure reports from Codefresh.
+* “No such file or directory” error in Test History/Trends page for Allure test reports. 
+* After upgrade to v2.0.9, Test reports screen does not display all elements.
+* For enhanced Cron triggers, restarting a Cron build or restarting a Cron build from a failed step results in error: "There was a problem rebuilding the selected item. Please make sure that the branch <BRANCH> is accessible".
+* Bitbucket builds triggered for events not defined in pipeline. 
+* Incorrect step-level metrics for `build` step when `buildx` is set to `true` and the `builder driver` is set to `docker-container`. 
+* `stepTemplate`ignores path in `WORKING_DIR` environment variable and runs in default volume path. 
+* Statuses in build log outputs not color-coded.
+* Memory usage graph in Builds page shows **Mib** instead of **MiB**. 
+
+<br>
+
+**GitOps**  
+* Rollouts panel does not display control to expand Analysis Run. 
+* Incorrect behavior with `ServerSideApply` for Hybrid GitOps Runtimes. 
+* Incomplete list of Pull Requests and Jira issues in Timeline tab of GitOps Apps dashboard when Kubernetes and deployments and Rollouts are both used in the same application.  
+* Unable to add managed clusters to GitOps Runtimes.
+* Unable to add a non-OpenShift cluster to GitOps Runtimes.
+* Creating a Git Source using Bitbucket does not load all available repos for selection. 
+* `codefresh-image-reporter` failure for ECR (Elastic Container Registry) images.
+* Truncated names for the Labels filter when clicking **More filters** in GitOps Apps dashboard. 
+* Missing Git Runtime tokens in Personal Access Token page.
+
+
+ 
+
+
 ## On-premises version 2.1
 
 ### Features & enhancements
