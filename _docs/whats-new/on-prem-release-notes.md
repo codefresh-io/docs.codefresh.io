@@ -135,7 +135,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Fast loading for Current State tab in the GitOps Apps dashboard for Argo CD applications with hundreds of resources.
 
 ### Beta features
-This section describes features and enhancements currently in Beta.
+This section describes features and enhancements currently in Beta. Note that these features may not be available to on-premises customers. Please consult with Customer Support for details.
 
 #### GitOps: Diff View for out-of-sync applications
 
