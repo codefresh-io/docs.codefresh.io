@@ -146,7 +146,7 @@ Displays aggregated chart views for the selected date range, and insights into a
 
 Use the Argo Workflows dashboard to:  
 
-1. Compare aggregrated data for the date range with the same data for the reference period to validate improvements and identify trends
+1. Compare aggregated data for the date range with the same data for the reference period to validate improvements and identify trends
 1. Identify performance issues in specific Delivery Pipelines, both in terms of number of executions and execution duration
 1. Drill down on a specific Delivery Pipeline for additional analysis 
 
@@ -202,7 +202,7 @@ Filters narrow the scope of data, allowing you to focus on the information you w
 
 KPI metrics for active Delivery Pipelines such as number of executions, duration, and success rates, are displayed as aggregated averages, day-by-day averages, and individual averages. 
 
-**Delivery Pipeline metric displays**
+##### Delivery Pipeline metric displays
 
 * Aggregated averages
   These are the average percentages compared to the reference period, and indicate general trends. 
@@ -212,7 +212,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   The tables display granular metrics for individual Delivery Pipelines, organized by ten of the **Most Active** (number of executions), and ten of the **Longest** running (average duration) ones. 
   You can drill down on any Delivery Pipeline to go to the pipeline's dashboard with Step Analaytis, and details on the Workflows, Configuration, Manifests, and Update History.
 
-**Delivery Pipeline metrics**
+##### Delivery Pipeline metrics
 
 * **Success Rate**  
   The average number of Delivery Pipelines that completed execution successfully, in percentage.
@@ -283,13 +283,13 @@ The pipelines that completed execution successfully, from the total number of pi
 The time it takes for a pipeline workflow to complete the build, calculated from the total number of pipelines executed within the selected date range, unless you apply additional filters. 
 You can switch between average (the default), and percentile views. 
 
-**Duration as average or percentile**  
+##### Duration as average or percentile 
 The average duration calculation shows the duration across all the pipelines within the selected date range. 
 To better understand the performance over time, switch to duration by the median (P-50) or the 90th (P-90) percentiles. 
 
 The comparison percentage is derived from the reference time period. The reference period corresponds to the same length of time that precedes selected the date range. <br>
 
-**Pipeline duration breakdown**  
+##### Pipeline duration breakdown 
 The workflow of every pipeline can be divided into phases, some of which apply to all pipelines, while others depend on the settings configured for each pipeline. The initialization phase in the workflow is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits, depend on the settings configured for each pipeline.
 
 >**TIP**:  
@@ -344,7 +344,7 @@ The list view shows the following information.
 
 <br>
 
-**Correlate scatter chart with list view**  
+##### Correlate scatter chart with list view
 
 Identify outliers in terms of executions and duration in the scatter chart map, and correlate with the list view. For example, a pipeline with more than 174 executions, that always exceeds 2 minutes in duration, can indicate potential for improvements.
 
@@ -364,7 +364,6 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 
 ## Related articles
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
-
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)   
