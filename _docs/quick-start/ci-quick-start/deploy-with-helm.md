@@ -101,6 +101,7 @@ Here we override the name of tag (to match the Docker image built in the previou
 1. Click **Create**.
     In the Workflow tab, you'll see that the Inline YAML editor already has a sample YAML.
 1. Replace the existing content in the Inline YAML editor with the example below.
+
 `YAML`
 {% highlight yaml %}
 {% raw %}
@@ -144,7 +145,8 @@ steps:
       - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
-{:start="5"}
+
+{:start="6"}
 1. Click **Save** and then click **Run** twice to run the pipeline. 
 1. Continue with [View Helm release](#view-helm-release).
 
@@ -342,7 +344,7 @@ caption="Storing Helm chart"
 max-width="100%" 
 %}
 
-{:start="8"}click the 
+{:start="9"}
 1. When the pipeline build completes execution, expand Artifacts from the sidebar, and select **Helm charts**.
 
  {% include 

@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Check out our CD quick starts to get up and running with Codefresh pipelines and deployments.  
+Check out our CI/CD quick starts to get up and running with Codefresh pipelines and deployments.  
 
 The quick start guides you through:
 * Creating a basic pipeline
