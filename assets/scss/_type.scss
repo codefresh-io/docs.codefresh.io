@@ -41,4 +41,5 @@ h4,
 h5,
 .h5 {
   @include heading($h5-font-size, $font-weight-bold, $h5-line-height);
+  margin-bottom: 6px;
 }
