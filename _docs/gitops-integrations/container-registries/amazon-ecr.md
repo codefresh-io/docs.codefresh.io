@@ -31,15 +31,15 @@ For detailed information, see [How Amazon Elastic Container Registry Works with 
 
 ### IAM Role integration
 
-* IAM Role for ECR integration  
-  Amazon ECR integration in Codefresh requires an Identity and Access Management (IAM) Role with permissions to the ECR registry.
-  For details, see [Create the ECR integration IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}.
+##### IAM Role for ECR integration  
+Amazon ECR integration in Codefresh requires an Identity and Access Management (IAM) Role with permissions to the ECR registry.
+For details, see [Create the ECR integration IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}.
 
-* Other IAM roles  
-  Once you have an ECR integration IAM Role, you can use a different IAM role if that Role can assume the ECR integration IAM Role.  
-  To use an IAM Role assigned to the Service Account used by app-proxy for example, the Role must be explicitly configured with a trust relationship to assume the ECR integration IAM Role - even if the other IAM Role is the ECR integration IAM Role.
+##### Other IAM roles  
+Once you have an ECR integration IAM Role, you can use a different IAM role if that Role can assume the ECR integration IAM Role.  
+To use an IAM Role assigned to the Service Account used by app-proxy for example, the Role must be explicitly configured with a trust relationship to assume the ECR integration IAM Role - even if the other IAM Role is the ECR integration IAM Role.
 
-  For example:  
+For example:  
 ```yaml
 {
   "Effect": "Allow",

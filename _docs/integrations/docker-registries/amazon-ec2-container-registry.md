@@ -83,10 +83,10 @@ runtimeScheduler:
 
 ### How to
 
-**Before you begin**  
+##### Before you begin 
 * Define a Kubernetes  service account for the runtime, account, pipeline, or pipeline-trigger
 
-**How to**  
+##### How to  
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
@@ -167,7 +167,7 @@ max-width="40%"
 %}   
 
 {:start="4"}
-3. Click **Promote**.
+1. Click **Promote**.
 
 
 >**NOTE**:  

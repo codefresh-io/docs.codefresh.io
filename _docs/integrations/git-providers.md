@@ -25,7 +25,7 @@ Currently Codefresh supports:
 * GitLab Cloud
 * GitLab On-premises
 * Azure DevOps Git
-* Atlassian Stash (old version of Bibucket Server)
+* Atlassian Stash (old version of Bitbucket Server)
 * Gerrit
 
 

@@ -127,12 +127,10 @@ Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populat
 
 Codefresh pipelines have [system variables]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### CF_IMAGE examples
-**Example: Report full repo and branch information**  
+
+##### Example: Report full repo and branch information
 This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and branch, with the Git hash.
 
   Value:  
@@ -144,7 +142,7 @@ This example illustrates how to define the value for `CF_IMAGE` to report the re
   * {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} reports the normalized version of the branch name, without invalid characters in case the branch name is the Docker image tag name. For example, `pr-2345`, `new-auth-strategy` (branch names without normalization required), and `gcr.io/codefresh-inc/codefresh-io/argo-platform-audit.1.1909.0` (normalized version of original branch name `gcr.io/codefresh-inc/codefresh-io/argo-platform-audit:1.1909.0`).
   * {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %} reports the abbreviated 7-character revision hash, as used in Git. For example, `40659e7`.
 
-**Example: Report a specific image tag**  
+##### Example: Report a specific image tag  
 This example illustrates how to define the value for `CF_IMAGE` value when you know the specific image version you want to report.
 
   Value:  
@@ -154,7 +152,7 @@ This example illustrates how to define the value for `CF_IMAGE` value when you k
   * {% raw %}`${{CF_REPO_OWNER}}`{% endraw %} and  {% raw %}`${{CF_REPO_NAME}}`{% endraw %} report the names of the repository owner and the repository, respectively. For example, `nr-codefresh` and `codefresh-production`, respectively.
   * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag `v1.0`.  
 
-**Example: Report the latest Git tag available on repository**
+##### Example: Report the latest Git tag available on repository
 This example illustrates how to define the value for `CF_IMAGE` value to report the latest Git tag on the repository.
 
 Value:  
@@ -165,13 +163,10 @@ where:
 * {% raw %}`${{CF_REPO_NAME}}`{% endraw %} reports the name of the repository that triggered the pipeline. For example, `codefresh-production`.
 * {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${{CF_REPO_NAME}}`{% endraw %}. For example, `v1.0.4-14-g2414721`. 
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### CF_GIT_BRANCH examples
 
-**Example: Report Git branch or tag with committer and commit message**  
+##### Example: Report Git branch or tag with committer and commit message 
 
 This example illustrates how to report the name or tag of the Git branch with committer and commit message.
 
@@ -185,7 +180,7 @@ This example illustrates how to report the name or tag of the Git branch with co
   * {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %} reports the commit message of the repository. For example, `support oauth authentication for ci integrations`.
 
 
-**Example: Report normalized Git branch or tag with committer and commit message**  
+##### Example: Report normalized Git branch or tag with committer and commit message
 
 This example illustrates how to report the normalized name or tag of the Git branch with committer and commit message.  
 Normalizing the branch name removes any invalid characters in the name if the branch name is also used as the Docker image tag name.
@@ -200,7 +195,7 @@ Normalizing the branch name removes any invalid characters in the name if the br
   * {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %} reports the name of the user who made the commit. For example, `nr-codefresh`.
   * {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}reports the commit message of the repository. For example, `support oauth authentication for ci integrations`.
 
-**Example: Report normalized Git branch or tag in lowercase with PR information**  
+##### Example: Report normalized Git branch or tag in lowercase with PR information  
 
 This example illustrates how to report the normalized name or tag of the Git branch in lowercase, with PR (pull request) information.  
 Normalizing the branch name removes any invalid characters in the name if the branch name is also used as the Docker image tag name.  
@@ -214,9 +209,6 @@ Value:
   * {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %} reports the target branch of the PR. For example, `new-auth-strategy`.
   * {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %} reports the number of the PR. For example, `#323`.
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### CF_JIRA_MESSAGE examples
 The Jira message represents an existing Jira issue, and must be a literal string.  
@@ -239,7 +231,7 @@ caption="Codefresh pipelines: Logs tab"
 max-width="50%"
 %}
 
-**Build in Codefresh**  
+##### Build in Codefresh
 
 The Run column includes the link to the pipeline in Codefresh.  
 

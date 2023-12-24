@@ -270,7 +270,7 @@
       url: "/codecov-integration"
     - title: Google Cloud builder
       url: "/gcloud-builder"
-    - title: Google Marketplace Installation
+    - title: Google Marketplace
       url: "/google-marketplace"
     - title: GitHub Actions
       url: "/github-actions"
