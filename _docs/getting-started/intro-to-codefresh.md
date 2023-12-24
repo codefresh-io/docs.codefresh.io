@@ -67,11 +67,11 @@ Helm Releases
 ### Where to go from here
 Here are several useful links to further explore CI/CD with Codefresh:
 
-**Quick starts**  
+##### Quick starts
 To get up and running, follow our quick starts. The quick start modules are a series of flows that guide you from setting up your first account in Codefresh, to creating a basic pipeline, and deploying to Kubernetes.
 See [CI/CD quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/).
 
-**Example catalog**  
+##### Example catalog 
 If you are familiar with CI/CD, we have an extensive collection of examples that cover several CI and CD scenarios: 
 [CI examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
 [CD examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
