@@ -21,10 +21,10 @@ See [Connecting a Kubernetes cluster]({{site.baseurl}}/docs/integrations/kuberne
 Codefresh offers a variety of options for you to choose from when deploying to Kubernetes.
 Deploy to Kubernetes from the Codefresh UI, or programmatically through dedicated steps in pipelines, avoiding the need for `kubectl` commands.    
 
-**On-demand deployment**  
+##### On-demand deployment
 For quick and easy deployment, you can deploy on-demand from the Codefresh UI.
 
-**Dedicated steps in pipelines**  
+##### Dedicated steps in pipelines 
 For more flexibility, we have dedicated steps for pipelines: the `deploy` step, and the more advanced `cf-deploy-kubernetes` step which enables simple templating on Kubernetes manifests.   
 
 Codefresh pipelines also support Kustomize and Helm for deployments through `freestyle` steps. 
@@ -74,13 +74,13 @@ Our operational dashboards expose the most critical application and environmenta
 
 You can customize all dashboards to display just the information most relevant to your business issues.
 
-**Kubernetes**  
+##### Kubernetes
 The Kubernetes (Kubernetes Services) dashboard displays the clusters in your environments, their state, and actions if you have the required access privileges.  
 
 This dashboard is a centralized location from which to view, add, modify, and remove Kubernetes services. You can deploy services with images from the Codefresh registry or from external Docker registries.  
 See [Accessing the Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/#accessing-the-kubernetes-dashboard).
 
-**Helm dashboards**  
+##### Helm dashboards 
 For Helm, we have a Helm Board, and a Helm Releases dashboard.
 
 * Helm Boards
@@ -95,7 +95,7 @@ For Helm, we have a Helm Board, and a Helm Releases dashboard.
   See [View Helm releases and release information]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/#view-helm-releases-and-release-information).
 
 
-**Environment dashboard**
+##### Environment dashboard
 
 The Kubernetes dashboard shows cluster status and focuses more on the service aspects such as pods and Docker images. The Helm Board offers an application-level view of your cluster, as it applies to Helm deployments.
 
@@ -103,7 +103,7 @@ To bridge this gap, Codefresh also offers an Environment dashboard that combines
 
 See [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/). 
 
-**Home Dashboard**  
+##### Home Dashboard  
 The Home Dashboard presents system-wide highlights in real-time for GitOps deployments,  Argo CD Workflows, and pipelines, making it an ideal tool for management.
 * GitOps Dashboard: Get insights into important KPIs for entities across runtimes and clusters, in the same location. View status of runtimes and managed clusters, deployment history, and most active applications.
 * Argo Workflows Dashboard: Get insights into Argo Workflows and Delivery Pipelines.
@@ -111,8 +111,9 @@ The Home Dashboard presents system-wide highlights in real-time for GitOps deplo
 
 See [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).
 
-**DORA metrics**  
+##### DORA metrics 
 The DORA (DevOps Research and Assessment) metrics dashboard pulls out critical metrics for our GitOps deployments. The metrics include deployment frequency, lead time for changes, mean time to recovery, and change failure rate. The metric graphs show performance by default for the last 90 days, with the option to select daily/weekly/monthly granularity views.   
+
 See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
 
