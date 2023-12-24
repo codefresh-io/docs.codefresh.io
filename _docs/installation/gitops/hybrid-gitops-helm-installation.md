@@ -543,7 +543,6 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 
 {:start="3"}  
 1. Continue with [Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-optional-gitops-with-argo-cd-remove-rollouts-controller-deployment).
-t).
 
 
 ### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
@@ -1638,7 +1637,7 @@ providers:
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [GitOps architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
 
