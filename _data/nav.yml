@@ -503,6 +503,8 @@
           url: "/codefresh-on-prem"
         - title: Platform upgrade
           url: "/codefresh-on-prem-upgrade"
+        - title: Account and user setup
+          url: "/on-prem-configuration"            
         - title: Feature management
           url: "/on-prem-feature-management"
     - title: GitOps
@@ -522,9 +524,9 @@
           url: "/monitor-manage-runtimes"
         - title: Shared Configuration Repository
           url: "/shared-configuration"
-        - title: Adding external clusters to GitOps Runtimes
+        - title: Managing external clusters in GitOps Runtimes
           url: "/managed-cluster"
-        - title: Adding Git Sources to GitOps Runtimes
+        - title: Managing Git Sources in GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
