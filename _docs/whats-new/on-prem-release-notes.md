@@ -134,55 +134,7 @@ For details, see [Standard OIDC claims]({{site.baseurl}}/docs/integrations/oidc-
 * Restored option to download logs for GitOps Runtimes from the Codefresh UI.
 * Fast loading for Current State tab in the GitOps Apps dashboard for Argo CD applications with hundreds of resources.
 
-### Beta features
-This section describes features and enhancements currently in Beta. Note that these features may not be available to on-premises customers. Please consult with Customer Support for details.
 
-#### GitOps: Diff View for out-of-sync applications
-
-We're thrilled to introduce a significant enhancement simplifying troubleshooting Argo CD applications within Codefresh. 
-With our new Diff View feature, you can instantly view the differences between the current state and the desired configuration of out-of-sync applications.
-The Diff View option provides a display of all updated resources within the application, allowing you to easily pinpoint changes and swiftly identify the root cause of the sync failure. 
-
-The option is always available in the application's context menu in the GitOps Apps dashboard, and is enabled whenever the application is out-of-sync. If you have already selected an application, the Diff View option is available in the context menu at the top right of the page. 
-
-Diff View for application resources is supported from Helm chart version 0.4.1 and higher. To enable this feature, you need to turn on the `appDiffView` feature flag.
-
-<br>
-
-
-#### GitOps: (Beta) Restricted Git Sources for enhanced application deployment
-
-We have added a new type of Git Source to GitOps Runtimes to deliver enhanced control and precision over application deployment within multi-tenant environments! Welcome to Restricted Git Sources in Codefresh!
-
-Restricted Git Sources empower organizations managing multiple development teams to deploy applications for various customers on a shared cluster. By being able to configure the Application Projects and the namespaces to which to deploy the applications, Restricted Git Sources allow precise control over which teams can create specific applications and dictate their deployment destinations.
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/whats-new/nov23/rel-notes-nov-23-create-restricted-git-source.png" 
-url="/images/whats-new/nov23/rel-notes-nov-23-create-restricted-git-source.png" 
-alt="Creating a Restricted Git Source" 
-caption="Creating a Restricted Git Source" 
-max-width="40%" 
-%}
-
-Codefresh removes the complexity from the manual configuration required to configure Application Projects, and sync and manage applications and their resources in different namespaces. 
-* Administrators set up Restricted Git Sources in Codefresh with the Git repo, cluster, and namespace definitions
-* Codefresh manages the Argo CD applications synced to the Restricted Git Source, ensuring secure compliance without complex administrative overhead
-
- {% include 
-image.html 
-lightbox="true" 
-file="/images/whats-new/nov23/rel-notes-nov-23-restricted-gs-settings.png" 
-url="/images/whats-new/nov23/rel-notes-nov-23-restricted-gs-settings.png" 
-alt="Settings for Restricted Git Sources" 
-caption="Settings for Restricted Git Sources" 
-max-width="40%" 
-%}
-
-To enable this feature, you need to turn on the `restrictedGitSource` feature flag. 
-
-For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
 ### Feature Flags
@@ -195,13 +147,13 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Pipelines: Enhanced RBAC with AND logic for tags](#pipelines-enhanced-rbac-with-and-logic-for-tags) in this article.| TRUE  |
-| `appDiffView`       | When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes. | FALSE  |
+| `appDiffView`       | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments._ We will notify you when you can enable the Feature Flag for on-premises environments. <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.| FALSE  |
 |`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same.   | TRUE         |
 | `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
 | `promotionFlow` | New feature currently in development.<br>When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. | FALSE         |
 | `promotionWorkflows` | New feature currently in development.<br>When enabled, allows you create and run workflows when a promotion is triggered. | FALSE         |
-| `restrictedGitSource` | When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. <br>See [GitOps: Restricted Git Sources for enhanced application deployment](#gitops-restricted-git-sources-for-enhanced-application-deployment) in this article.| FALSE         |
+| `restrictedGitSource` | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments._ We will notify you when you can enable the Feature Flag for on-premises environments. <br>  When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. | FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
 | `useRepoAndBranchesNextPagination`         | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server.  | FALSE         |
 
