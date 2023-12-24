@@ -18,6 +18,14 @@ h1, h2, h3, h4, h5, h6,
   color: $headings-color;
 }
 
+.heading + .heading {
+  margin-bottom: 2.5rem; // Add spacing of 2.5 rems between headings
+}
+
+.heading + .content {
+  margin-bottom: 6px; // Add spacing of 6px between heading and content
+}
+
 h1,
 .h1 {
   @include heading($h1-font-size, $font-weight-bold, $h1-line-height);
@@ -41,5 +49,4 @@ h4,
 h5,
 .h5 {
   @include heading($h5-font-size, $font-weight-bold, $h5-line-height);
-  margin-bottom: 6px;
 }
