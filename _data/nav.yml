@@ -456,9 +456,9 @@
 - title: Argo Workflows
   url: "/workflows"
   pages:
-    - title: Creating workflows
+    - title: Creating Argo Workflows
       url: "/create-pipeline"
-    - title: Nested workflows
+    - title: Nested Argo Workflows
       url: "/nested-workflows"
     - title: Configure artifact repository
       url: "/configure-artifact-repository"
