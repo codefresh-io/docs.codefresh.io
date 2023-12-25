@@ -103,7 +103,7 @@ step_name:
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
-**Exported resources:**
+### Exported resources
 - Working Directory.
 
 ## Add a timeout to terminate step execution
@@ -156,7 +156,7 @@ step_name:
 {% endhighlight %} 
 
 
-**Timeout info in logs**  
+##### Timeout info in logs
 Timeout information is displayed in the logs, as in the example below. 
 
 {% include image.html
@@ -173,7 +173,7 @@ max-width="60%"
 Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [Git repositories]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 so the source code is already checked out and available to all pipeline steps.
 
-**Creating a [JAR file]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/):**
+### Creating a [JAR file]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -188,7 +188,7 @@ steps:
 
 Note how we [cache Maven dependencies]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
 
-**Running unit tests in Node.JS({{site.baseurl}}/docs/example-catalog/examples/#ci-examples):**
+### Running unit tests in Node.JS({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -202,7 +202,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-**Packaging a [GO application]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/):**
+### Packaging a [GO application]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -216,7 +216,7 @@ steps:
      - go build
 {% endhighlight %}
 
-**Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment){:target="\_blank"}:** 
+### Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment){:target="\_blank"}
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -316,7 +316,8 @@ When you use the `commands` field, it will override the container original `entr
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
 Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) utility.
 
-> Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
+>**TIP**:  
+  Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
 
 ### Commands and Entry point
 

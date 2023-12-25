@@ -125,7 +125,8 @@ max-width="60%"
 
 ## Examples
 
-Push an image to a registry connected with the [integration name]({{site.baseurl}}/docs/integrations/docker-registries/) of  `myazureregistry`.
+### Push an image to a registry connected with the integration 
+Push an image to a registry connected with the integration [integration name]({{site.baseurl}}/docs/integrations/docker-registries/) of  `myazureregistry`.
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -151,6 +152,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+### Push an image as the name of the branch in the external registry
 Push an image as the name of the branch in the external registry and also use a different image than the default. The same image will also by pushed as `latest` in the internal Codefresh registry (with the default name of `my-app-image`).
 
 `codefresh.yml`
@@ -180,7 +182,7 @@ steps:
 {% endhighlight %}
 
 
-Push an image with multiple tags.
+### Push an image with multiple tags
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -255,7 +257,8 @@ steps:
 
 This option enables you to push your images without pre-saving the credentials in Codefresh's registry integration view.
 
->Note that this method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
+>**NOTE**:  
+  This method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
 
   `YAML`
 {% highlight yaml %}
@@ -302,7 +305,7 @@ step_name:
 | `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps. | Optional |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
                                        
-**Exported resources:**
+### Exported resources
 - Image ID.
 
 ## Related articles
