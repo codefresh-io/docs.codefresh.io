@@ -60,7 +60,7 @@ ul > li {
       @include external-link("codefresh-leaves");
     }
 
-    &:not([href^="https://g.codefresh.io/"]):not([href^="/docs/"]):not([href^="#"]){
+    &:not([href^="https://g.codefresh.io/"]):not([href*="/docs/"]):not([href^="#"]){
       @include external-link("external-link");
     }
   }
