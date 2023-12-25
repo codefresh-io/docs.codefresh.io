@@ -9,11 +9,13 @@ toc: true
 ---
 
 Set up SSO for PingID using SAML in Codefresh.
-> The configuration described here is for PingID SSO and not PingID Federate. The steps can be used as a general guide for Ping Federate. 
+>**NOTE**:  
+  The configuration described here is for PingID SSO and not PingID Federate. The steps can be used as a general guide for Ping Federate. 
 
 For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/).
 
->If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
+>**NOTE**:  
+  If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
 Setting up SAML SSO for PingID includes:
 1. Configuring SSO settings for PingID via SAML in Codefresh
@@ -59,7 +61,8 @@ Configure SSO for PingID via SAML in Codefresh. The Assertion URL is automatical
     - **firstName**: Given name
     - **lastName**: Family name
 
-    > For PingID Federate, you must add the follwing mapping: NameID <- Email Address
+    >**NOTE**:  
+      For PingID Federate, you must add the following mapping: NameID <- Email Address
 
 1. Toggle the **Enable** option to on to make the application available.
 1. Continue with [Step 3: Complete SSO configuration for PingID in Codefresh](#step-3-complete-sso-configuration-for-pingid-in-codefresh).
@@ -70,7 +73,8 @@ As the final step in configuring SSO for PingID, add the IDP Entry and Certifica
 
 1. **IDP Entry**: The IDP URL from the SSO tab in Jump Cloud.
 1. **Application Certificate**: Copy and paste the content between `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` from the certificate you downloaded into the field. You can also include the BEGIN and END lines. 
-    - **Note**: You will get a warning when editing the Certificate section.
+    >**NOTE**:  
+      You will get a warning when editing the Certificate section.
 1. Click **Save**.
 
 You have completed SSO integration for PingID via SAML in Codefresh.
