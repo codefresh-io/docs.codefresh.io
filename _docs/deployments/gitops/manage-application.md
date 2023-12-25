@@ -12,7 +12,7 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * Optimizing deployments through GitOps Environments and Products 
 * Managing individual applications 
 
-**Optimizing application deployments**  
+##### Optimizing application deployments 
 
 * [GitOps Environments](#gitops-environments--argo-cd-applications)  
   The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
@@ -20,10 +20,10 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [GitOps Products](#gitops-products--argo-cd-applications)  
   The GitOps Products dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
 
-**Managing individual applications**  
+##### Managing individual applications
 
->**NOTE**:
-The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
+>**NOTE**:  
+  The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
 
 
 * [Edit Argo CD applications](#edit-argo-cd-application-definitions)  
@@ -156,9 +156,7 @@ Update General or Advanced configuration settings for a deployed Argo CD applica
 1. To confirm all changes, at the bottom-left, click **Commit**.
   The changes are committed to Git, and in a few moments also synced to the cluster. 
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 
 ## Manage Application Groups
@@ -210,7 +208,7 @@ You can also synchronize _application resources_ with sync statuses such as `Ser
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
 
-<br><br>
+
 
 
 
@@ -232,9 +230,7 @@ When selected, allows you to preview the application before changes are made to 
 **Force**  
 When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Additional Options for application sync
 
@@ -265,9 +261,7 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Synchronize resources in the application
 Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
@@ -301,9 +295,7 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    %} 
 
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 
 
@@ -444,9 +436,7 @@ max-width="70%"
 ## Manage rollouts for Argo CD application deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Pause/resume ongoing rollouts
 Pause and resume ongoing rollouts directly from the Timeline tab in the GitOps Apps dashboard.  
@@ -468,9 +458,7 @@ If the rollout is already automatically paused as result of a step definition, t
    max-width="70%" 
    %}
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Manage an ongoing rollout with the Rollout Player
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
@@ -503,9 +491,7 @@ The table describes the controls in the Rollout Player.
 | **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Manually rollback completed rollout to previous revision
 <!--- add screenshots -->
