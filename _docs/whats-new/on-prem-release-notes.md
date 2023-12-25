@@ -160,11 +160,12 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 
 
 **Updated Feature Flags in v2.2**  
-The table below lists existing Feature Flags which are _now enabled by default_ and set to _TRUE_.
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
+| `accountInfoCopyButton`  | When enabled, the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.   | _FALSE_         |
 |`cronTriggersInPipelineSpec`	| When enabled, allows users to define Cron triggers in the pipeline YAMLs as a `spec.cronTriggers` array, instead of using a separate API. <br>See [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers) in our documentation.  | _TRUE_|
 | `gitopsAppGroups`       | When enabled, allows users to group Argo CD applications by annotations, and view these applications in the Groups tab of the GitOps Apps dashboard. <br>See [Application Groups for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/) in our documentation. | _TRUE_   |
 | `pipelineScopes`      | When enabled, enables Codefresh administrators to configure the API scopes for pipelines at account level. All pipelines in the account inherit these scopes. Codefresh administrators can also override these scopes for individual pipelines.<br>See [Pipeline settings: Scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes) in our documentation.     | _TRUE_         |
