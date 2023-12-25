@@ -336,7 +336,7 @@ You cannot change the name and type of the Git Source.
 1. In the row with the Git Source to edit, from the context menu select **Details**.
 1. In the panel that appears, click **Edit**.
 
-<!--->
+<!---
 {% include 
 	image.html 
 	lightbox="true" 
