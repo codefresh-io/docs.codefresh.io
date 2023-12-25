@@ -14,13 +14,13 @@ The Git repository referenced by the Git Source stores application manifests and
 
 <br>
 
-**Types of Git Sources**  
+##### Types of Git Sources  
 Codefresh allows you to create two types of Git Sources: Standard and Restricted Git Sources.
 
 Both types of Git Sources sync Argo CD application manifests. The main difference lies in the namespace to which Argo CD applications are synced. With a Restricted Git Source, you can sync Argo CD applications to the namespace of your choice, instead of to the default namespace which is the Runtime's namespace. 
 
 
-**More on Restricted Git Sources**  
+##### More on Restricted Git Sources 
 Restricted Git Sources:
 * Are optimized for multi-tenant organizations where multiple development teams create and deploy applications for different customers on the same cluster 
 * Control which teams can create what applications and where they can deploy them
@@ -50,7 +50,7 @@ Codefresh allows you to create two types of Git Sources:
 ### Standard Git Source
 The Standard Git Source is created as an Argo CD application within the GitOps Runtime's namespace. Manifests of Argo CD applications synced to a Standard Git Source are also deployed to the Runtime's namespace. Standard Git Sources are typically assigned to the default Application Project.
 
-**Features of Standard Git Sources**  
+##### Features of Standard Git Sources  
 
 * Application Project  
   The default or user-defined Application Project allows deployments from any Git repository, to any destination cluster and namespace(s). 
@@ -66,7 +66,7 @@ The Restricted Git Source is also created as an Argo CD application within the G
 
 The most notable feature of the Restricted Git Source is its ability to control access to the Git repositories with Argo CD applications, and to enforce deployments only to specific clusters and namespaces. 
 
-**Features of Restricted Git Sources**  
+##### Features of Restricted Git Sources
 
 * Application Projects  
   All Argo CD applications synced to the same Restricted Git Source must belong to the same Application Project. Codefresh simplifies this by automatically creating the Application Project for the Restricted Git Source. As a user, you do not have the option to manually select the Application Project to which your applications should belong to when working with Restricted Git Sources.

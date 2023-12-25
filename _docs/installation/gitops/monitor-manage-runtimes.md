@@ -551,7 +551,7 @@ Logs are available for completed Runtimes, both for the runtime and for individu
 
 Log files include events from the date of the application launch, with the newest events listed first.
 
-<br>
+
 
 ### Download logs for GitOps Runtimes
 Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
@@ -590,9 +590,7 @@ Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz
 {:start="5"}
 1. Open a log file with the text editor of your choice.
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### View/download logs for Runtime components
 View online logs for any Runtime component, and if needed, download the log file for offline viewing and analysis.
@@ -653,9 +651,7 @@ Restoring the runtime:
   `ingressController`
   `ingressHost`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Restore a Hybrid GitOps Runtime
 Reinstall the Hybrid Runtime from the existing installation repository to restore it to the same or a different cluster.
@@ -699,9 +695,7 @@ Reinstall the Hybrid Runtime from the existing installation repository to restor
 1. If needed, create a new Git integration:
   `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Ingress example
 This is an example of the `ingress.yaml` for `workflows`.
