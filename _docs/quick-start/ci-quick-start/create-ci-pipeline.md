@@ -48,7 +48,7 @@ For the pipeline, we'll use a sample application, the [Python/Flask](https://www
 You can either use the sample application to follow along, or create your own Docker based example (don't forget to write unit tests).
 
 {{site.data.callout.callout_info}}
-> **NOTE**:  
+**NOTE**:  
 With Codefresh you can create a Docker image from without any local Docker installation (Docker building as a service).
 {{site.data.callout.end}}
 
@@ -67,7 +67,7 @@ With Codefresh you can create a Docker image from without any local Docker insta
 We use an example application located in GitHub. 
 
 {{site.data.callout.callout_info}}
-> **NOTE**: 
+**NOTE**: 
 Codefresh supports GitLab, Bitbucket and Azure GIT repositories apart from GitHub. The
 same principles presented in this tutorial apply for all Git providers.
 {{site.data.callout.end}}
