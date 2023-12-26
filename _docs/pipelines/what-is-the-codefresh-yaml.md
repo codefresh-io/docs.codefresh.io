@@ -193,8 +193,8 @@ The `retry:` block has the following parameters, all of which are optional:
 The `exponentialFactor` works like this:
 * `exponentialFactor=1` and `delay=5` maintains a constant 5-second interval between each retry, regardless of the number of retries.
 * `exponentialFactor=2` and `delay=5` exponentially increases the interval between retries, based on the preceding interval:
-  * The first retry has a delay of 5^5 = 25 seconds
-  * The second retry has a delay of 25^5 = 625 seconds
+  * The first retry has a delay of 5^2 = 25 seconds
+  * The second retry has a delay of 25^2 = 625 seconds
   * The same pattern continues for subsequent retries
 
 
