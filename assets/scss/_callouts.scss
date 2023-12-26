@@ -63,6 +63,5 @@ blockquote,
 
 .bd-callout-info { @include bs-callout-variant($bd-info); }
 .bd-callout-warning { @include bs-callout-variant($bd-warning); }
-.bd-callout-danger { @include bs-callout-variant($bd-danger); }
 .bd-callout-success { @include bs-callout-variant($bd-success); }
 .bd-callout-tip { @include bs-callout-variant($bd-tip); }
