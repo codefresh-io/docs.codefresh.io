@@ -68,12 +68,9 @@ We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/adminis
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
 If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
-
-[AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
-
-[EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
-
-[GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
+* [AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
+* [EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
+* [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/)  

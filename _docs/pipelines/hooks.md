@@ -380,7 +380,8 @@ steps:
 {% endhighlight %}
 
 
->Notice that the `fail_fast` property is only available for `on_elected` hooks. The other types of hooks (`on_finish`, `on_success`, `on_fail`) do not affect the outcome of the pipeline in any way. Even if they fail, the pipeline will continue running to completion. This behavior is not configurable.
+>**NOTE**:  
+  The `fail_fast` property is only available for `on_elected` hooks. The other types of hooks (`on_finish`, `on_success`, `on_fail`) do not affect the outcome of the pipeline in any way. Even if they fail, the pipeline will continue running to completion. This behavior is not configurable.
 
 
 ### Using multiple steps for hooks
@@ -535,7 +536,7 @@ The pipeline is not correct, because the first segment of annotations is directl
 
 We offer the following options to simplify the syntax for hooks.
 
-**Not using metadata or annotations in your hook**  
+### Not using metadata or annotations in your hook
 Omit the keyword `exec`:
 
 `codefresh.yml`
@@ -561,7 +562,7 @@ steps:
 {% endhighlight %}
 
 
-**Not specify teh Docker image**  
+### Not specifying the Docker image**  
 If you do not want to specify the Docker image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
 
 
@@ -593,7 +594,7 @@ steps:
 
 
 
-## Using Type Steps / Plugins in hooks
+## Using Type Steps/Plugins in hooks
 
 You can use a type step / plugins in hooks.  With this you will need to change `exec` into `steps` with the information needed for the step.  
 

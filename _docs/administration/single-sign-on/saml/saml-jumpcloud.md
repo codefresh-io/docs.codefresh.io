@@ -9,7 +9,8 @@ toc: true
 Set up SSO for JumpCloud using SAML.
 For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml).
 
->If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
+>**NOTE**:  
+  If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
 Set up SAML SSO for JumpCloud by:
 1. Configuring SSO settings for JumpCloud via SAML in Codefresh
@@ -41,7 +42,8 @@ Set up SAML SSO for JumpCloud by:
 1. Add a **Display Label** for the application you will create.
 1. Click the **SSO** tab, and enter the following:
     1. **IDP Entity ID**: Enter the user-defined or generated Client Name from Codefresh. For example, `gujNGnhXTSmK`.
-        > Make sure there no spaces before the name when copying and pasting.
+        >**TIP**:  
+          Make sure there no spaces before the name when copying and pasting.
     1. **SP Entity ID**: `g.codefresh.io`.
     1. **ACS URL**: Enter the Assertion URL (Callback URL) generated in Codefresh.
     1. **Login URL**: Enter the Assertion URL without the `/callback`.
@@ -59,7 +61,8 @@ As the final step in configuring SSO for JumpCloud, add the IDP Entry and Certif
  
 1. **IDP Entry**: The IDP URL from the SSO tab in Jump Cloud.
 1. **Application Certificate**: Copy and paste the content between the `-----BEGIN CERTIFICATE-----` and  `-----END CERTIFICATE-----` lines, from the certificate you downloaded into the field. 
-    - **Note**: You will get a warning when editing the Certificate section.
+    >**NOTE**:  
+      You will get a warning when editing the Certificate section.
 1. Click **Save**.
 
 You have completed SSO integration for JumpCloud via SAML in Codefresh.

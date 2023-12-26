@@ -12,7 +12,8 @@ toc: true
 Helm packages are just TAR files. Helm repositories are simple file hierarchies with an extra [index.yaml](https://helm.sh/docs/developing_charts/#the-chart-repository-structure){:target="\_blank"}.
 You can run custom commands and manually upload indexes and packages to a Helm repo.
 
->This article shows some non-standard Helm examples.  
+>**NOTE**:  
+  This article shows some non-standard Helm examples.  
   For the basic use cases, or if you are just getting started with Helm, see our [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  and [Using Helm in pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/).
 
 ## Package a Helm chart
@@ -32,6 +33,7 @@ The `helm package` command expects a path to an unpacked chart. Replace `<mychar
 See [Helm package docs](https://helm.sh/docs/helm/helm_package/){:target="_blank"} and [Helm charts overview](https://helm.sh/docs/topics/charts/){:target="_blank"} for more information.
 
 {{site.data.callout.callout_info}}
+**NOTE**:    
 To use `cf_export`and make the variable available to other steps in the pipeline, see [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables). 
 {{site.data.callout.end}}
 

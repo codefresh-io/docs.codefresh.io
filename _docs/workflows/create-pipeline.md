@@ -1,5 +1,5 @@
 ---
-title: "Creating workflows"
+title: "Creating Argo Workflows"
 description: ""
 group: workflows
 toc: true
@@ -10,28 +10,28 @@ Delivery Pipelines are where all the CI magic happens in Codefresh. Delivery Pip
 Codefresh integrates with Argo Workflows and Argo Events, while greatly simplifying the process of creating pipelines and triggering them to submit workflows. 
 
 
-### Delivery Pipeline concepts
+## Delivery Pipeline concepts
 Let's start by reviewing the main concepts around Codefresh Delivery Pipelines.  
 In Codefresh, the Delivery Pipeline is a logical entity that connects an event-source, a sensor, and a Workflow Template. 
 
-#### Pipeline per trigger
-Every sensor-trigger pair is a unique pipeline in Codefresh. The same sensor with multiple triggers creates a different pipeline for every trigger.
+* Pipeline per trigger  
+  Every sensor-trigger pair is a unique pipeline in Codefresh. The same sensor with multiple triggers creates a different pipeline for every trigger.
 
-#### Git-Ops permission model
-Access to Git Sources and Git repositories are based on the user's write permissions, as defined in their Git provider accounts.
+* Git-Ops permission model  
+  Access to Git Sources and Git repositories are based on the user's write permissions, as defined in their Git provider accounts.
 
-#### Git Source for pipeline
-The Delivery Pipeline is connected to a specific Codefresh runtime installation, and is also run on this runtime through a Git Source.  
+* Git Source for pipeline  
+  The Delivery Pipeline is connected to a specific Codefresh runtime installation, and is also run on this runtime through a Git Source. 
 
-When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the pipeline workflow template's manifest. 
+  When the pipeline is created and synced with the cluster, all manifests generated for the pipeline are stored in the Git repository. These include the sensor and event-source manifests, and the pipeline workflow template's manifest. 
 
-#### Centralized location for Argo Event-entities
-Codefresh uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in Codefresh.  
+* Centralized location for Argo Event-entities  
+  Codefresh uses Argo Events to listen to events from different sources and define the conditions that trigger the events. All entities for creating and managing an Argo Event - from the event-source and its events, the sensor and its triggers - are available in a centralized location in Codefresh.  
 
-An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as Codefresh automatically generates them after the entities are set up.   
+  An intuitive selection mechanism enables you to easily select and configure each entity. Predefined variables and automated mapping to event payload makes parameterization easy. There is no need to manually create the YAML manifests for the different entities, as Codefresh automatically generates them after the entities are set up.   
 
 
-### Delivery Pipeline creation flow
+## Delivery Pipeline creation flow
 Here's a high-level overview of the Delivery Pipeline creation flow.  
 For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.baseurl}}/docs/workflows/create-pipeline/#how-to-create-a-delivery-pipeline).
 
@@ -41,7 +41,7 @@ For step-by-step instructions, see [How to: create a Delivery Pipeline]({{site.b
 1. Generate manifests
 1. Commit resource files and create pipeline
 
-#### Define pipeline name and select Workflow Template to execute
+### Define pipeline name and select Workflow Template to execute
 The Delivery Pipeline creation flow starts with defining a name for the pipeline, selecting the Git Source with the runtime, and selecting the Workflow Template to execute when the pipeline is run. You can use the Codefresh starter Workflow Template, or select an existing Workflow Template you have downloaded to a Git Source.
 
 Both Argo and Codefresh have examples and libraries of Workflow Templates you can use:
@@ -50,17 +50,19 @@ Both Argo and Codefresh have examples and libraries of Workflow Templates you ca
 * For a fully-certified library of ready-to-use Workflow Templates by Codefresh, see [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
 In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or the option to select an existing one, or copy and paste any Workflow Template, and then modify as needed. 
->Important:  
+
+>**IMPORTANT**:  
 >  If you select the starter Workflow Template or one of the example templates from the Codefresh Hub for Argo, it is converted to a standalone, independent pipeline workflow template.  
  > To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original starter or example Workflow Template are also not updated in the pipeline workflow template.  
    
 
 
-> To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository/).
+>**NOTE**:  
+  To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository/).
  
 
 
-#### Define default values for Workflow Template arguments
+### Define default values for Workflow Template arguments
 Workflow Template arguments are the list of arguments described in the Workflow Template, and expected to be passed to the workflow when submitted. They are displayed in the **Arguments** tab. You can define the default values for any argument here.
 
 {% include 
@@ -73,10 +75,11 @@ Workflow Template arguments are the list of arguments described in the Workflow 
    max-width="30%" 
    %} 
 
-#### Configure Trigger Conditions for events
+### Configure Trigger Conditions for events
 The **Trigger Conditions** tab in the Delivery Pipeline wizard collates the requirements to set up and configure entities for Argo Events. Here you select the event-source, the event of interest, the Git repositories to listen to for the event, and the sensor trigger for the event.  
 
-> To create a Delivery Pipeline, you must have _at least one_ Trigger Condition.
+>**TIP**:  
+  To create a Delivery Pipeline, you must have _at least one_ Trigger Condition.
 
 
 {% include 
@@ -94,16 +97,18 @@ For conceptual information on Argo Events, read the [official documentation](htt
 The Delivery Pipeline wizard guides you through selecting the event-source, the event to listen to, and the conditions to trigger the event. 
 Let's review the main entities in Trigger Conditions. 
 
-**Git repositories**  
+##### Git repositories 
 For every sensor trigger condition, you can select single or multiple Git repositories to which to listen to for the event. 
-> Only those Git repos to which you have write-permissions are displayed. 
+>**NOTE**:  
+  Only those Git repos to which you have write-permissions are displayed. 
 
-**Event-sources and Events**  
+##### Event-sources and Events
 Currently, we support GitHub as an event-source, and an extensive list of GitHub events you can select from.  
 
-**Sensor trigger arguments**  
+##### Sensor trigger arguments  
 The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. 
-> If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
+>**NOTE**:  
+If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
 
 You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_. For more information, see [Parameterization for Argo Events](https://argoproj.github.io/argo-events/tutorials/02-parameterization/){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
 
@@ -112,10 +117,10 @@ Argo Events uses parameterization to pass data from the event payload to the wor
 Every event has a specific payload and a specific list of predefined variables you can select from. You can either parameterize an argument through one or more predefined variables, or use Sprig template functions to define the values. In either case, when the manifests are generated, Codefresh replaces the variables or templated values with the actual JSON path in the event payload.  
 
 
-**Filters**  
+##### Filters
 Filters create conditions for event triggers by enforcing validity constraints on when to trigger the event. For example, add a filter to a Git push event that triggers that event only on push to a particular _branch_.  
 
-**Examples of common events and use of filters**  
+##### Examples of common events and use of filters
 
 Here are some examples of common Git events that are triggers to run pipelines, and when you would use filters to further control when these Git events run the pipeline.
 
@@ -146,7 +151,7 @@ Now let's review the use cases in more detail.
 #5 The `PR opened` event with the `PR Target Branch` and `PR label` filters is a more complex scenario that runs the pipeline when a PR is opened on the target branch, but only when the PR name starts with or includes the provided value. Useful when collaborating on features or when deploying a critical fix. Both the `PR Target Branch` and `PR label` must match for the pipeline to run. The filters automatically excludes all PRs opened on the `production` branch but not matching the `PR label`, `hotfix-runtime`.
 
 
-#### Generate manifests
+### Generate manifests
 Manifests are automatically generated on committing changes after defining at least one Trigger Condition.   
 
 Manifests typically include:
@@ -163,11 +168,11 @@ Manifests typically include:
    caption="Argo resources in Delivery Pipeline wizard"
    max-width="30%" 
    %}
-#### Commit resource files and create pipeline
+### Commit resource files and create pipeline
 Once Codefresh generates the manifests, and you validate them, you commit all the changes. The commits are synced to the Git source defined for the pipeline, and then synced to the cluster.
 
 
-### How to: Create a Delivery Pipeline
+## How to: Create a Delivery Pipeline
 Follow the step-by-step instructions to guide you through Delivery Pipeline wizard and create a Codefresh pipeline.
 
 1. In the Codefresh UI, go to [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"}.

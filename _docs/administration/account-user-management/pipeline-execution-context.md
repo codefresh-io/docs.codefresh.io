@@ -11,7 +11,8 @@ toc: true
 
 **Account Level:** Pro and above
 
-> At this time, you will need to reach out to support to enable pipeline execution context.
+>**NOTE**:  
+  At this time, you will need to reach out to support to enable pipeline execution context.
 
 ## About Pipeline Execution Context
 
@@ -42,8 +43,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-You can use cf_export instead of export to make CF_API_KEY available for the following steps if needed.
+You can use `cf_export` instead of export to make `CF_API_KEY` available for the steps that follow if needed.
 
 ## Related articles
-[API Key Creation]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#api-key-creation)  
+[API key creation]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#api-key-creation)  
 

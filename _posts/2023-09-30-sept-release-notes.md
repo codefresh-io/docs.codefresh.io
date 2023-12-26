@@ -90,7 +90,7 @@ The new Helm installation for the Runner is described in [Chart Configuration](h
 
 Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
 
-<br><br>
+
 
 ### Pipelines: Superior performance and UX with new terminal emulator
 We have introduced a new terminal emulator for a superior user experience, featuring fast scrolling, online rendering for large logs, enhanced accessibility support, and more...
@@ -112,7 +112,7 @@ The new terminal emulator provides:
 * Improved search functionality
 * Accessibility support with Screen Reader Mode
 
-<br><br>
+
 
 ### GitOps: ABAC for Argo CD applications
 We are excited to bring the power of ABAC for access control to the GitOps platform!  

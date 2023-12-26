@@ -155,7 +155,7 @@ step_name:
 {% endhighlight %}
 
 
-**Timeout info in logs**  
+##### Timeout info in logs
 Timeout information is displayed in the logs, as in the example below. 
 
 {% include image.html

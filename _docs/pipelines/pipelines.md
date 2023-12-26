@@ -145,7 +145,7 @@ max-width="60%"
 
 Unlike other CI options, the Git repository that contains the pipeline can be completely different from the Git repository that has the source code of your application.
 
-**Use branch from Git trigger**  
+##### Use branch from Git trigger
 
 The **Use branch from Git trigger** option is very important, as it defines the branch in the Git repo from which the pipeline is loaded. In most cases, you want to keep this enabled as it loads the pipeline from the same branch that triggered the build.
 
@@ -525,7 +525,7 @@ caption="Create pipeline from a pipeline template"
 max-width="70%"
 %}
 
->**TIP**: 
+>**TIP**:  
 You can also quickly convert a pipeline to a template, in the General tab of the pipeline's settings. 
 
 

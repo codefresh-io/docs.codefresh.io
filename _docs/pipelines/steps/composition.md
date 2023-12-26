@@ -11,7 +11,8 @@ toc: true
 ---
 The composition step runs a Docker Composition as a means to execute finite commands in a more complex interaction of services.
 
->Note that while composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/).
+>**TIP**:  
+  While composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/).
 
 ## Motivation for Compositions
 
@@ -19,7 +20,8 @@ The primary purpose of compositions is to run tests that require multiple servic
 
 The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/){:target="\_blank"} files, but is technically not 100% the same (there are some important differences).  However, if you are already familiar with Docker compose, you will be immediately familiar with Codefresh compositions.
 
-> Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
+>**NOTE**:  
+  Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
 
 The big difference between the Codefresh and Docker compose is that Codefresh is distinguishes between two kinds of services:
 
@@ -209,7 +211,7 @@ step_name:
 {% endhighlight %}
 
 
-**Timeout info in logs**  
+##### Timeout info in logs
 Timeout information is displayed in the logs, as in the example below. 
 
 {% include image.html

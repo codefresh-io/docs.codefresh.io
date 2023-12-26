@@ -16,7 +16,8 @@ You can easily create:
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
->In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
+>**NOTE**:  
+  In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
@@ -31,7 +32,8 @@ The sequential mode is very easy to understand and visualize.
 
 In sequential mode, the Codefresh execution engine starts from the first step defined at the top of the `codefresh.yml` file, and executes all steps one by one going down to the end of the file. A step is either executed or skipped according to its conditions.  
 
->The condition for each step is only examined **once**.
+>**NOTE**:  
+  The condition for each step is only examined **once**.
 
 `YAML`
 {% highlight yaml %}

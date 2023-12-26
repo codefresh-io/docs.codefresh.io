@@ -48,9 +48,6 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
    %} 
 
 
-{::nomarkdown}
-</br></br>
-{:/}
 
 
 ## Upgrade the GitOps CLI

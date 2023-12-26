@@ -163,7 +163,7 @@ This step describes how to enable features for a single account at a time.
 >**NOTE**:  
 To enable features selectively for specific accounts, or for all accounts in the organization, see [Codefresh on-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/).
 
-<br><br>
+
 
 #### Enable/disable features for a specific account
 
@@ -188,7 +188,7 @@ To enable features selectively for specific accounts, or for all accounts in the
 {:start="4"}
 1. To enable a feature for the account, below **Enable**, toggle the required feature to **ON**. 
 
-<br><br>
+
 
 #### Enable System Features  
 System Features are generally for internal use. 
