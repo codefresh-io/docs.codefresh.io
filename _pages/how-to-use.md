@@ -35,8 +35,7 @@ Just head over to the example [__repository__](https://github.com/codefreshdemo/
 
 * {% raw %}`{{site.data.callout.callout_info}}`{% endraw %} - callout with `info` style
 * {% raw %}`{{site.data.callout.callout_success}}`{% endraw %} - callout with `success` style
-* {% raw %}`{{site.data.callout.callout_warning}}`{% endraw %} - callout with `warning` style 
-* {% raw %}`{{site.data.callout.callout_danger}}`{% endraw %} - callout with `danger` style 
+* {% raw %}`{{site.data.callout.callout_warning}}`{% endraw %} - callout with `warning` style
 * {% raw %}`{{site.data.callout.callout_tip}}`{% endraw %} - callout with `tip` style
 
 ---
@@ -138,7 +137,7 @@ Fenced code blocks require a blank line before and after.
 If you're using an HTML file, you can also use the `highlight` command with Liquid markup.
 
 
-{{site.data.callout.callout_danger}}
+{{site.data.callout.callout_info}}
 ##### Important 
 
 Make sure expressions like {% raw %}`${{step_id}}`{% endraw %} should be wrapped with special delimiters <code class="highlighter-rouge">&#123;% raw %&#125;</code> and <code class="highlighter-rouge">&#123;% endraw %&#125;</code> to prevent its erroneous translations.  

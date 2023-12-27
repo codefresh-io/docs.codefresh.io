@@ -557,7 +557,7 @@ max-width="70%"
 %}
 
 {{site.data.callout.callout_info}}
->**NOTE**:  
+**NOTE**:  
 Now you have two Docker registries connected to Codefresh. After the build completes execution, the Docker image of the sample application is stored **both** in the default Docker registry and in Docker Hub.
 {{site.data.callout.end}}
 
