@@ -49,10 +49,10 @@ codefresh install gitops argocd-agent
 
 1. Answer the questions asked by the wizard. These include:
 
- * The name of the integration (user-defined)
- * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/){:target="\_blank"} instead of password)
- * The context and namespace in the cluster where ArgoCD is installed
- * If you want to automatically import your ArgoCD applications to Codefresh
+  * The name of the integration (user-defined)
+  * Your ArgoCD URL, username and password (you can also use [an auth token](https://argoproj.github.io/argo-cd/operator-manual/user-management/){:target="\_blank"} instead of password)
+  * The context and namespace in the cluster where ArgoCD is installed
+  * If you want to automatically import your ArgoCD applications to Codefresh
 
 ```
 codefresh install gitops argocd-agent

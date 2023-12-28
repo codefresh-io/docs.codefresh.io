@@ -149,10 +149,11 @@ caption="Preserve Codefresh volume after an approval"
 max-width="90%"
 %}
 
->Notice that if you do decide to keep the volume after an approval, the pipeline will still count as "running" against your pricing plan (if you use the SAAS version of Codefresh). If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your pricing plan. We advise you to keep the volume only for pipelines that really need this capability.
+>**NOTE**:
+  If you do decide to keep the volume after an approval, and you are using the SaaS version of Codefresh, the pipeline will still count as "running" against your pricing plan. If you don't keep the volume, the pipeline is stopped/paused while it is waiting for approval and doesn't count against your pricing plan. We advise you to keep the volume only for pipelines that really need this capability.
 
->Notice also that you if you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is set up with local volumes, then the volume will only be present if the dind pod
-is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
+>**NOTE**:  
+  If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/behind-the-firewall/) and your [Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is set up with local volumes, then the volume will only be present if the dind pod is scheduled in the same node once the pipeline resumes. Otherwise the volume will not be reused.
 
 ## Controlling the rejection behavior
 

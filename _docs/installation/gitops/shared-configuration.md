@@ -69,9 +69,7 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
     └── runtime2                  │ # referenced by "staging-isc" argo-cd application, applied to the cluster by "cap-app-proxy
         └── in-cluster.yaml      ─┘ #     manage `include` field determines which dirs/files to sync to cluster
 ```
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### `resources` directory 
 
@@ -83,9 +81,7 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
   * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### `runtimes` directory 
 The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster. Every subdirectory always has an `in-cluster.yaml`, and optionally, application manifest YAMLs for other clusters. 

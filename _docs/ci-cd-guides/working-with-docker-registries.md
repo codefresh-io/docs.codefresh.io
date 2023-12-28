@@ -31,7 +31,7 @@ To see all images from [all connected registries]({{site.baseurl}}/docs/integrat
 * To view image metadata, click on the image. For details, see [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).
 
 
-**Filters for Docker images**  
+##### Filters for Docker images  
 The top left of the Images page has several filters that allow you to search for a specific subset of Docker images.  
 Filters include:  
 * Tagged/untagged images
@@ -53,7 +53,7 @@ Multiple filters work in an `AND` manner.
 %}
 
 
-**Actions for Docker images**  
+##### Actions for Docker images  
 On the right are the actions available foreach Docker image.  
 You can:  
 * Launch a Docker image as a [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)

@@ -355,7 +355,7 @@ The variables are grouped by granularity, starting with the global project-level
 
 A variable with a strikethrough indicates an override by the same variable in a lower-level group. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/pipelines/variables/).  
 
->Notes:  
+>**NOTES**:  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
   * Secret-type variables are always masked.
 
@@ -396,7 +396,7 @@ In both cases you can copy to clipboard the yaml shown using the button at the t
 Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources
 consumed by your pipeline.
 
-**Pipeline metrics**  
+#### Pipeline metrics 
 
 At the most basic level, Codefresh displays quick metrics while the pipeline is running that include
 memory consumed and size of logs:
@@ -429,7 +429,7 @@ max-width="70%"
 %}
 
 
-**Pipeline-step metrics**  
+#### Pipeline-step metrics  
 For step-specific metrics, first select the step, and then click the **Metrics** tab.
 Step metrics are available for memory and CPU usage (not disk space).
 
@@ -449,22 +449,25 @@ max-width="70%"
 
 You can restart a failed pipeline either from the beginning or from a failed step.
 
-* Restart from beginning  
+##### Restart from beginning  
   Restarts the pipeline with the **same** state as in its original execution, including the original Git commit. 
-  >To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+  >**TIP**:  
+    To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
 
-* Restart from failed step  
+##### Restart from failed step  
   Restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit. You can restart from the Builds page or directly from the specific step that failed.
 
 
   
-    >The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
+    >**NOTE**:  
+      The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
        If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
 
-**Restart pipeline from Builds view**
+#### Restart pipeline from Builds view
 
 * In the row with the pipeline to restart, click **Restart**, and then select the required option.
-  >Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+  >**TIP**:  
+    Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
 
 
 {% include 
@@ -477,7 +480,7 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
-**Restart from step view**
+##### Restart from step view
 * Click the pipeline to view its steps. 
 * Go to the failed step, right-click and then select **Restart from this step**.
 

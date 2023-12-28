@@ -22,7 +22,8 @@ docker run hello-world
 
 You should get a short welcome message.
 
->At the time of writing local builds can only run on Linux and Mac workstations. We are working to remove this limitation and allow developers with Windows machines to also run Codefresh pipelines locally.
+>**TIP**:  
+  At the time of writing local builds can only run on Linux and Mac workstations. We are working to remove this limitation and allow developers with Windows machines to also run Codefresh pipelines locally.
 
 Then install the [open-source Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"} and [set up authentication](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"} with your Codefresh account.
 

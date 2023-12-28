@@ -151,7 +151,7 @@ Every notification identifies:
 All errors are Argo CD-generated errors. Codefresh generates custom warnings for the following:
 
 
-<br>
+
 
 
 ### Warning: Missing Rollouts reporter in cluster
@@ -161,9 +161,7 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 
 **Corrective Action**: Click **Install** and install Argo Rollouts on the target cluster.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Warning: Long sync 
 **Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation).
@@ -536,9 +534,7 @@ Here's what you can see and do in the Summary tab:
 * Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same view of the resource.
 * Hide Managed Fields: In the Live state version of the manifest, you can hide managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Logs for application resources
 In either Tree or List views, double-click an application resource to see its logs. Logs are available only for resource types such as pods.
@@ -561,9 +557,7 @@ max-width="50%"
 * Wrap: Enable/disable line wrapping 
 * Download: Download the complete log into a text file for offline viewing and analysis.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Events for application resources
 In either Tree or List views, double-click an application resource to see events in the Events tab. 

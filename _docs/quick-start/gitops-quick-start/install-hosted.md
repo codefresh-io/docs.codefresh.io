@@ -89,7 +89,7 @@ caption="Connect a K8s cluster for hosted runtime"
 max-width="70%" 
 %}
 
-{:start="4"}
+{:start="5"}
 1. Install Argo Rollouts on the cluster you added. You'll need this to apply the `rollout` resource we will create for the application in the next task.
   * Go to [Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
   * In either the **List View** or **Topology View**, click the name of the cluster on which to install Argo Rollouts.

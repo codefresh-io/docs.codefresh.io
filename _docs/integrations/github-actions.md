@@ -30,7 +30,7 @@ To use a GitHub Action in Codefresh you need to make sure that the following app
 1. You have read the documentation of the GitHub Action and know what arguments/input it requires
 
 
->Tip:  
+>**TIP**:  
   Since GitHub Actions are created by the community, it is your responsibility to filter and curate any GitHub Action you wish to use in Codefresh pipelines. If for example you use a GitHub Action that is then removed by its owner, the Codefresh pipeline that uses it will break as well.  
   We suggest you first use a GitHub Action in a GitHub workflow in order to understand its requirements, before you use it in a Codefresh pipeline.
 

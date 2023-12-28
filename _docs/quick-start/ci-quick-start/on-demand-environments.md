@@ -37,19 +37,6 @@ max-width="80%"
 
 1. In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 1. Select the image and click **Launch**.
-
-<!--- remember to change screenshot>
-{% include 
-image.html 
-lightbox="true" 
-file="/images/quick-start/quick-start-test-pr/launch.png" 
-url="/images/quick-start/quick-start-test-pr/launch.png" 
-alt="Launching a Docker image" 
-caption="Launching a Docker image" 
-max-width="80%" 
-%}
-
--->
 1. As our sample application consists of only a single Docker image, select **standalone**. 
   Codefresh automatically knows which port should be exposed in the test environment, that is, which port of the Docker container should be made available for external connections.  
   Our sample application exposes its web interface at port 5000, but a random port is actually assigned for external connections.

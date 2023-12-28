@@ -75,7 +75,7 @@ Each step produces a resource, which you can [reference](https://github.com/code
 
 ##### Variables
 
-Steps chaining and referencing is possible due to implementation of variables in the YAML file - read more on relevant [section]({{site.baseurl}}/docs/pipelines/variables/).
+You can add variables in the YAML file to chain and reference steps and referencing is possible due to implementation of variables. See [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/).
 
 
 {: .table .table-bordered .table-hover}

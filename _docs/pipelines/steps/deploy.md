@@ -90,7 +90,7 @@ with the `candidate` field (otherwise Codefresh will just reuse the docker image
 
 ## Examples
 
-Update an existing service using the same Docker image (tagged with branch)
+### Update existing service using the same Docker image (tagged with branch)
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -114,7 +114,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-Update an existing service using a different Docker image (tagged with git hash)
+### Update existing service using a different Docker image (tagged with git hash)
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -146,7 +146,9 @@ steps:
 {% endhighlight %}
 
 
-Deploy a custom Kuberentes Manifest as is. (Only a deployment will be created)
+### Deploy a custom Kuberentes Manifest as is
+
+In this case, only a deployment is created.
 
 `codefresh.yml`
 {% highlight yaml %} 

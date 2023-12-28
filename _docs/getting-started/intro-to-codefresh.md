@@ -67,16 +67,16 @@ Helm Releases
 ### Where to go from here
 Here are several useful links to further explore CI/CD with Codefresh:
 
-**Quick starts**  
+##### Quick starts
 To get up and running, follow our quick starts. The quick start modules are a series of flows that guide you from setting up your first account in Codefresh, to creating a basic pipeline, and deploying to Kubernetes.
 See [CI/CD quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/).
 
-**Example catalog**  
+##### Example catalog 
 If you are familiar with CI/CD, we have an extensive collection of examples that cover several CI and CD scenarios: 
 [CI examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
 [CD examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
 
-**Guides**  
+##### Guides 
 And finally, you can dive in to our detailed guides. Look for CI/CI guides in the documentation such as [Packaging/Compilations]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [Building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
 
 
@@ -99,10 +99,15 @@ Codefresh brings the power of the Argo Project to your Kubernetes deployments th
 * Argo Workflows as the workflow engine
 * Argo Events for event-driven workflow automation framework
 
+
+Codefresh unified all 4 projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
+
+
 >**Argo CD release policy**  
 Our users rely on the Codefresh platform for consistent and uninterrupted software delivery.   
 To maintain this high standard, we rigorously test and refine new versions of Argo CD before integrating them into the Codefresh GitOps Runtime.   
 Generally, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+
 
 ### Argo CD applications and deployments
 
@@ -127,19 +132,19 @@ See [GitOps image enrichment with integrations]({{site.baseurl}}/docs/gitops-int
 
 Dashboards are key to providing the right information at the right time. Similar to our CI/CD dashboards, we have dedicated dashboards optimized for GitOps, for all stakeholders, developers, product owners, and management.
 
-**Operational GitOps dashboard** 
+##### Operational GitOps dashboard
 
 The GitOps and the Argo Workflows Dashboards in the Home Dashboard display the most commonly needed application and environmental information to developers so that they can troubleshoot without needing assistance from the DevOps teams, even in production.  
 See [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/).  
 
 
-**DORA metrics** 
+##### DORA metrics
 
 Developers often need to reach out to DevOps to get statistics and metrics around builds and deployments. Codefresh automatically generates DORA metrics as well as many other key indicators of build and deployment efficiency. These analytics are presented to be easily understood by product owners and management alike.
 
 See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
-**Applications dashboard**  
+##### Applications dashboard  
 The GitOps Apps dashboard displays a unified view of applications across runtimes and clusters. No matter what the volume and frequency of your deployments, the GitOps dashboard makes it easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application.
 
 Drill down into an application to view resources, timelines, services and more.

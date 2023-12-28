@@ -15,10 +15,17 @@ $bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%) !default;
 $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%) !default;
 $bd-dark:          #231f20 !default;
 $bd-download:      #ffe484 !default;
-$bd-info:          #5bc0de !default;
-$bd-warning:       #f0ad4e !default;
-$bd-danger:        #d9534f !default;
-$bd-success:       #11b5a4 !default;
+
+$bd-info:          #ffcc30 !default;
+$bd-warning:       #d9534f !default;
+$bd-danger:       #d9534f !default;
+$bd-success:       #03c77c !default;
+$bd-tip:           #508eeb !default;
+
+$bd-link-default:  #34af9d !default;
+$bd-link-default-hover: #228164 !default;
+$bd-link-external: #508eeb !default;
+$bd-link-external-hover: #646fd4 !default;
 
 $bd-topaz-extra-light:    #e4f3f1 !default;
 
@@ -28,6 +35,8 @@ $bd-topaz-light:  lighten(saturate($bd-topaz-main, 5%), 45%) !default;
 $bd-topaz-dark:    rgb(11, 111, 99) !default;
 
 $bd-greenish-blue: #2a897d;
+
+$bd-divider-color: #dce7e8;
 
 // Navbar colors
 $bd-topaz-navbar-g1: #0f9c8d;
@@ -77,18 +86,18 @@ $font-weight-medium: 500;
 // stylelint-enable value-keyword-case
 
 // Headings
-$headings-color:              #212437;
+$headings-color:              #212438;
 $headings-font-family:       roboto, sans-serif;
-$h1-font-size: 28px;
-$h2-font-size: 22px;
-$h3-font-size: 20px;
-$h4-font-size: 18px;
+$h1-font-size: 30px;
+$h2-font-size: 24px;
+$h3-font-size: 22px;
+$h4-font-size: 20px;
 $h5-font-size: 16px;
-$h1-line-height: 36px;
-$h2-line-height: 26px;
-$h3-line-height: 26px;
-$h4-line-height: 24px;
-$h5-line-height: 19px;
+$h1-line-height: 38px;
+$h2-line-height: 32px;
+$h3-line-height: 30px;
+$h4-line-height: 28px;
+$h5-line-height: 24px;
 
 // Override grids
 

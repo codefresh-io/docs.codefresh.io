@@ -41,7 +41,7 @@ max-width="60%"
 
 We are always adding more options, so stay tuned to our online announcements.
 
->**NOTE**:
+>**NOTE**:  
 >The Global Search & Navigation feature establishes an initial handshake request with the data source API on inital loading. The outcome of this request does not impact functionality, even in on-premises or air-gapped environments where it will fail.  
 >Although your monitoring or alerting systems may flag it as a failure, you can safely disregard the failure notification.
 
