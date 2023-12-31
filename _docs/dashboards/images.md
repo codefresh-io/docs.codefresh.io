@@ -87,7 +87,11 @@ Each row displays information on the tag:
 * The date and time of the most recent update.
 * The size of the tag.
 
-> For Summary, Dockerfile, and Layer information on a tag, click **more details**.
+{{site.data.callout.callout_tip}}
+**TIP**:  
+For Summary, Dockerfile, and Layer information on a tag, click **more details**.
+{{site.data.callout.end}}
+
 
 ##  Image Summary 
 The Summary view summarizes the metadata for the image. 
