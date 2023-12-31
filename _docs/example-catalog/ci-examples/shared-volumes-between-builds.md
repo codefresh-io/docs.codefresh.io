@@ -23,7 +23,8 @@ max-width="90%"
 
 This volume exists at `/codefresh/volume` by default. Simply copy files there to have them available to all Codefresh steps (as well as subsequent builds of the same pipeline).
 
->The [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) deletes any files **not** specified in `.gitignore`. To cache a folder that exists in your project directory (such as `node_modules`), you must also add it to `.gitignore`
+>**NOTE**:  
+The [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) deletes any files **not** specified in `.gitignore`. To cache a folder that exists in your project directory (such as `node_modules`), you must also add it to `.gitignore`
 
 ## Using the shared volume
 

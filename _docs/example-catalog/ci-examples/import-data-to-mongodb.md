@@ -54,7 +54,8 @@ services:
 {% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_info}}
+{{site.data.callout.callout_tip}}
+**TIP**:  
 You can add the following example to your GitHub or Bitbucket account, and build the [example](https://github.com/codefreshdemo/cf-example-manage-mongodb){:target="_blank"}.
 {{site.data.callout.end}}
 

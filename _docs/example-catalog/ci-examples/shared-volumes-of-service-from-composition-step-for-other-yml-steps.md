@@ -13,7 +13,10 @@ Using this repository, we'll help you get up to speed with basic functionality s
 This project uses Node Js to build an application which will eventually become a distributable Docker image.
 To share volumes of service in composition step for other yml steps you can use the variable {% raw %}```${{CF_VOLUME_NAME}}```{% endraw %}. It will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.
 
->Read more about caching build dependencies our [blog](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target="_blank"}.
+{{site.data.callout.callout_tip}}
+**TIP**:  
+Read more about caching build dependencies our [blog](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target="_blank"}.
+{{site.data.callout.end}}
 
 ## Looking around
 In the root of this repository you'll find a file named `codefresh.yml`, this is our build descriptor that describes the different steps that comprise our process. Let's quickly review the contents of this file:
