@@ -23,15 +23,15 @@ The table below summarizes the main differences between the Git Runtime and user
 {: .table .table-bordered .table-hover}
 |                            | Git Runtime token                  | Git user token         |
 | -------------------------- | ---------------------          | ------------------ |
-| Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li><code class="highlighter-rouge">cap-app-proxy</code> to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
+| Usage                      | {::nomarkdown}<ul><li>During installation, to create the Git repository and install the GitOps Runtime.</li><li>After installation, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li><code class="highlighter-rouge">cap-app-proxy</code> to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. <br>Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
 | Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user tokens](#git-user-access-token-scopes).
 | Managed by                    | Admin at account-level                    | User   |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
 
 
 ## Git Runtime token scopes
+As mentioned earlier, Git Runtime tokens are required during Runtime installation.  
 The table below lists the scopes required for Git Runtime tokens for the different Git providers.
-
 
 | Git provider                  | Required scopes for Git Runtime token           | 
 | ---------------------------- | ------------------------------ | 
@@ -39,24 +39,50 @@ The table below lists the scopes required for Git Runtime tokens for the differe
 | GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">read_api</code></li><li><code class="highlighter-rouge">read_repository</code></li></ul> {:/}         |             
 | Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
 
+### Git Runtime token with custom scopes 
+During GitOps Runtime installation, Codefresh validates the Git Runtime token and its associated scopes. If you require custom scopes that don't meet the default Codefresh requirements, you can include the following flag in your `values.yaml` file to bypass token validation.
 
+```yaml
+app-proxy:
+  config:
+    skipGitPermissionValidation: "true"
+```
+### Multiple Git Runtime tokens
+You may need to utilize multiple Git access tokens for GitOps Runtimes, each with different scopes. For instance, a Git Runtime token with read-only access for Argo CD, and another token with read-write access for the Shared Configuration Repository.
+
+
+In such cases, you need to:
+* Configure the repositories with multiple `repo-creds` secrets, as described in [Argo CD Repositories](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories){:target="\_blank"}. 
+* Speci token saved within `runtime-repo-creds-secret` Secret.
+
+### Git Runtime token in values.yaml
+You also have the option to directly add your Git Runtime token, or a reference to a secret that contains the Git Runtime token, to `values.yaml` (typically the latter).  
+To skip token validation both during installation and upgrade in this scenario, if not present in `values.yaml`, add:
+
+```yaml
+installer:
+  skipValidation: false
+```
 
 ## Git user access token scopes
 The table below lists the scopes required for Git user access tokens for the different Git providers.
-
-
-<!--- > **TIP**:  
-  If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user access token to authenticate and authorize all the Runtimes to which they have access.     
-  The user must configure the Git user token for each Runtime separately.   
-  User can manage their Git user tokens for Runtimes, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
-
--->
 
 | Git provider                  | Required scopes for Git user token          | 
 | ---------------------------- | ------------------------------ | 
 | GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}|
 | GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">write_repository</code> (includes <code class="highlighter-rouge">read_repository</code>) </li><li><code class="highlighter-rouge">api_read</code></li></ul> {:/}  |
 | Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
+
+### Same Git user token for multiple GitOps Runtimes
+If a user has access to multiple GitOps Runtimes in the same or in different accounts in Codefresh, they can use the same Git user access token to authenticate and authorize all the Runtimes to which they have access.     
+The user must configure the Git user token for each Runtime separately.  
+
+>**NOTE**:
+  Codefresh does not support different Git user tokens for different repositories.
+
+### Manage Git user tokens
+User can manage their Git user tokens for Runtimes, as described in [Managing Git PATS]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
+
 
 ## Use a service/robot account for GitOps Runtimes
 For GitOps Runtime installation, we recommend using an account not related to any specific user in your organization. 
