@@ -51,7 +51,8 @@ max-width="80%"
 %}
 
 
->The secret is created as soon as you select your Docker registry from the dropdown. There is no need to actually deploy anything from this screen for the changes to take effect.
+>**NOTE**:  
+The secret is created as soon as you select your Docker registry from the dropdown. There is no need to actually deploy anything from this screen for the changes to take effect.
 
  {% include 
 image.html 
@@ -67,7 +68,8 @@ From now on, the cluster in this namespace can deploy Docker images from the sel
 To apply the changed secret, you don't really need to finish the deployment. Feel free to
 close the screen and go to another Codefresh page.
 
->Codefresh automatically uses the secret you defined in all deployments that are performed via the UI by dynamically creating the correct manifests for you behind the scenes.
+>**NOTE**:  
+Codefresh automatically uses the secret you defined in all deployments that are performed via the UI by dynamically creating the correct manifests for you behind the scenes.
 If you wish to use your own manifests, you need to include the secret yourself, as explained in the next section.
 
 
@@ -85,7 +87,8 @@ The credentials depend upon the [type of registry]({{site.baseurl}}/docs/integra
 - The username is your account username.
 - The password is a specific Docker registry password or any other kind of token. You need to check the documentation of your registry provider for the exact details.
 
->Be sure to create the secret in the namespace in which your application will run.
+>**NOTE**:  
+Be sure to create the secret in the namespace in which your application will run.
 Pull secrets are specific to a namespace. If you want to deploy to multiple namespaces, you need to create a secret for each one of them.
 
 This is an example of creating a pull secret to the Azure registry. You can use the same command for any other private registry.
