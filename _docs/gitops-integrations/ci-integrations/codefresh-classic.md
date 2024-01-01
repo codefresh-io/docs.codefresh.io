@@ -80,7 +80,10 @@ steps:
 ## Codefresh pipeline-GitOps integration settings
 The table describes the arguments required to connect Codefresh pipelines to Codefresh GitOps. 
 
->Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
+{{site.data.callout.callout_tip}}
+**TIP**  
+Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
+{{site.data.callout.end}}
 
 For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).
 
