@@ -105,8 +105,11 @@ Install a chart from a Helm repository to your cluster.
   * Insert your values YAML, and click **Save**.
     The YAML is saved and added to the list of configuration files that you can import from.
 1. To override variable values, click **+Add variable**, and then enter the Key and Value.
-  > **TIP**:  
-    The order of value configurations matter for Helm: most recently provided values override earlier ones.  
+    {{site.data.callout.callout_tip}}
+    **TIP**  
+    The order of value configurations matter for Helm: most recently provided values override earlier ones. 
+    {{site.data.callout.end}}
+
 1. Click **Install**. You can observe the newly installed release in Helm Releases.
 
 You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
