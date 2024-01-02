@@ -130,7 +130,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ### GitOps Runtime with Argo CD: Align Argo CD chart's minor versions 
 To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
 
-If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minorappversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
+If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minor appversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
 
 1. Get the Argo CD chart version used by Codefresh from the Dependencies either in ArtifactHub or from the GitOps Runtime's `Chart.yaml` in Git: 
   * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
@@ -427,15 +427,19 @@ helm upgrade --install <helm-release-name> \
 
 
 ### Step 4: Configure Git credentials for Hybrid GitOps Runtime
-Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime. This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the next steps.
+Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime.  
+This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the steps that follow this one.
 
-Git credentials include authorizing access to Git through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
+Git credentials include authorizing access to Git repositories through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
-**Git authorization**
-* OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
-* Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
+##### Git OAuth2 authorization
+OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
 
-**SSH access to Git**  
+##### Git access token authorization
+Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime with the required scopes. For detailed information on Git Runtime token, including using tokens with custom scopes, review [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
+
+
+##### SSH access to Git
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 When SSH is configured for a GitOps Runtime, on creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
@@ -448,7 +452,7 @@ For more information on generating SSH private keys, see the official documentat
 <br>
 
 **Before you begin**
-* To authenticate through a Git Runtime access token, make sure your token is valid and has the required scopes for GitOps Runtimes
+* To authenticate through a Git Runtime access token, make sure your [token is valid and has the required scopes and is set up as required]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes)
 * To use SSH, copy the SSH private key for your Git provider
 
 <br>
@@ -510,8 +514,10 @@ max-width="50%"
 Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
 
+This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
+
 >**TIP**:  
-If you already have a Git user token defined, you can skip this step.  
+If you already have added a Git user token, you can skip this step.  
 
 1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
 1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
