@@ -36,7 +36,7 @@ h3,
 
 h4,
 .h4 {
-  @include heading($h4-font-size, $font-weight-medium, $h4-line-height);
+  @include heading($h4-font-size, $font-weight-light, $h4-line-height);
 }
 
 h5,
