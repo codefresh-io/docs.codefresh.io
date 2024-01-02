@@ -15,7 +15,7 @@ Codefresh has the unique capability of launching Docker images in temporary test
 are ephemeral, and are perfect for quick demos. Use them to quickly share a feature with a colleague or a customer.  
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 Test environments are not intended to be used as QA (let alone production) environments. 
 {{site.data.callout.end}} 
 
@@ -71,7 +71,7 @@ caption="Test environment"
 max-width="60%" 
 %}
 
->**NOTE**:  
+>**NOTE**  
   If the environment is not functioning correctly for your own application, make sure that the port exposed by Codefresh in the **Launch settings** is the one that is actually used in your application as an HTTP endpoint. 
 
 You can also view your on-demand environment in Codefresh, and get additional details on the environment.

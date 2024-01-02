@@ -23,7 +23,7 @@ Use a container image with a [freestyle step]({{site.baseurl}}/docs/pipelines/st
 1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
  {{site.data.callout.callout_tip}}
-**TIP**: 
+**TIP** 
 To integrate with Slack, see [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks){:target="_blank"}.
 {{site.data.callout.end}}
 

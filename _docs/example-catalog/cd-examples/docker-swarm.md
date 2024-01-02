@@ -66,7 +66,7 @@ docker stack deploy --compose-file docker-stack.yml vote
 {% endraw %}
 {% endhighlight %}
 
->**NOTE**:  
+>**NOTE**  
 The swarm master _must_ have Python installed.
 
 

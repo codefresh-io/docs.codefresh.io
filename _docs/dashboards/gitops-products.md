@@ -10,7 +10,7 @@ toc: true
 
 
 
->**NOTE**:  
+>**NOTE**  
 This feature is currently in Beta.
 
 Explore the power of GitOps Products for Argo CD applications. 
@@ -217,7 +217,7 @@ The annotation is defined as part of the Product's settings when creating Produc
 ### Unassign an application from a Product
 Unassign an application from a Product directly from the Products dashboard. This is a quick option for applications manually assigned to Products from the Products dashboard.
 
->**TIP:**  
+>**TIP**  
 If you used annotations to connect applications to Products, to unassign the application, remove the annotation from the application manifest.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.

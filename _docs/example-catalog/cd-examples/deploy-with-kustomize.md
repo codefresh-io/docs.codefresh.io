@@ -141,7 +141,7 @@ The above pipeline does the following:
 2. Connects to our Kubernetes cluster we have integrated with Codefresh using `kubectl`, and deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap using Kustomize (the `-k` flag), through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
   `kustomize build overlays/production | kubectl apply -f`
 {{site.data.callout.end}}
@@ -204,7 +204,7 @@ The above pipeline does the following:
 
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
   `kustomize build overlays/production | kubectl apply -f`
 {{site.data.callout.end}}
