@@ -29,6 +29,7 @@ Codefresh currently supports the following IdPs:
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
 {{site.data.callout.callout_info}}   
+  **NOTE**:  
   For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
   If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 {{site.data.callout.end}}
