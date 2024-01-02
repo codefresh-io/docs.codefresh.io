@@ -5,7 +5,8 @@ group: dashboards
 toc: true
 ---
 
->**NOTE**: This feature is currently in Beta.
+>**NOTE**:  
+This feature is currently in Beta.
 
 Codefresh offers a range of dashboards, each offering unique insights into Argo CD applications and their deployments. The GitOps Overview dashboard offers a high-level view, showcasing essential Key Performance Indicators (KPIs). The GitOps Apps dashboard centralizes the monitoring and management of individual application deployments, resources, and configurations.
 

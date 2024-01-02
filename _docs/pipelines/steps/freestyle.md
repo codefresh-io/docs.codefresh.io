@@ -112,7 +112,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
@@ -316,8 +316,10 @@ When you use the `commands` field, it will override the container original `entr
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
 Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) utility.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
+{{site.data.callout.end}}
 
 ### Commands and Entry point
 

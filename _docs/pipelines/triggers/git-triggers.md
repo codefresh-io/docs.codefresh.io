@@ -16,8 +16,8 @@ At the trigger level, you can select:
 * The branches affected by a pipeline
 * If a trigger applies to a Pull Request (PR) or not
 
-> You can select a repository other than the one the project itself belongs to. It is possible
- to trigger a build on project A even though a commit happened on project B.
+>**NOTE**  
+You can select a repository other than the one the project itself belongs to. It is possible to trigger a build on project A even though a commit happened on project B.
 
 You can also use [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) at the pipeline level to further fine-tune the way specific steps (or other transitive pipelines) are executed.
 
@@ -187,10 +187,11 @@ A `Ref updated` trigger event in Gerrit is mapped in Codefresh to `Push commits`
 * WIP state changed        
 * Vote deleted     
 
->**WARNING**:  
+{{site.data.callout.callout_warning}}
+**WARNING**  
 Selecting both `Push commits` and `Change merged` as trigger events will result in the pipeline being _triggered twice_, as Gerrit sends the `Change merged` event followed by the `Push commits` event.  
 To avoid duplicate pipelines, select any one of these triggers. 
-
+{{site.data.callout.end}}
 
 
 ### Filter settings for Git triggers
@@ -233,7 +234,7 @@ max-width="50%"
 The default behavior triggers the pipeline on a commit action.  
 Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
 
->**NOTE**:  
+>**NOTE**  
 Remember to include the opening and closing parentheses when adding the strings. 
 
 * `[skip ci]`
@@ -252,7 +253,7 @@ There are two options:
   This option triggers an event when PR comments are made by any user, regardless of their permissions.  
   Because it is not restricted to owners and collaborators, this option is useful in GitHub, to enable triggers for PR comments made by users in GitHub teams.
 
-     > **NOTE**:  
+     > **NOTE**  
      We strongly recommend selecting this option only for _private repositories_.  
 
 
@@ -270,7 +271,7 @@ max-width="50%"
 The Pull Request Target Branch option allows you to trigger the pipeline only when the target of a Pull Request (PR), that is, where the PR will be merged to, matches the
 branch name in the regular expression. Common examples for branch names would be `master` or `production`.
 
->**NOTE**:  
+>**NOTE**  
   >The Pull Request Target Branch option is available for all Git providers, except Atlassian Stash.
   >
   >When using Terraform, please use the [Go regex syntax](https://github.com/google/re2/wiki/Syntax){:target="\_blank"} as some Perl regex syntax is not compatible.
@@ -348,7 +349,8 @@ files affected by a commit are in a specific folder or match a specific naming p
 you can have a big Git repository with multiple projects, and build only the parts that actually change.
 
 
->Currently, the option is supported only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, Bitbucket (Cloud), and Gerrit. We will support other Git providers as soon as they add the respective feature. 
+>**NOTE**  
+Currently, the option is supported only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, Bitbucket (Cloud), and Gerrit. We will support other Git providers as soon as they add the respective feature. 
 
 
 ### Using the Modified files option to constrain triggers to specific folder/files
@@ -365,7 +367,10 @@ my-subproject//pom.xml
 
 ```
 
->You can also use relative paths with dot-slash. Therefore `./package.json` and `package.json` are exactly the same thing. They both refer to the file `package.json` found at the root of the git project that was checked out as part of the build.
+{{site.data.callout.callout_tip}}
+**TIP**  
+You can also use relative paths with dot-slash. Therefore `./package.json` and `package.json` are exactly the same thing. They both refer to the file `package.json` found at the root of the git project that was checked out as part of the build.
+{{site.data.callout.end}}
 
 You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm){:target="\_blank"} like this, with a maximum of 65k characters for the field:
 
@@ -377,7 +382,10 @@ You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-S
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the Git provider and trigger the build only if the changed files match the glob expression. If there is no match no build will be triggered.
 
-> Notice that the `{}` characters are only needed if you have more than one expression. Do not use them if you have a single glob expression in the field.
+{{site.data.callout.callout_tip}}
+**TIP**  
+The `{}` characters are only needed if you have more than one expression. Do not use them if you have a single Glob expression in the field.
+{{site.data.callout.end}}
 
 This is a very useful feature for organizations who have chosen to have multiple projects on the same GIT repository (monorepos). Let's assume for example that a single system has a Java backend, a NestJS frontend and a Ruby-on-Rails internal dashboard.
 
@@ -453,7 +461,7 @@ This error means that Codefresh could not create the webhook and verify that it 
 1. Click "Done" in the Add Trigger form.
 1. Test your webhook by making an event in the repository that will cause the Trigger to start the build.
 
-> **NOTES**:
+> **NOTES**
   * You are responsible for syncing the Trigger By to the Events sent to us for the webhook. You can select "Send me everything" if you do not want to manually match the Trigger By in the Trigger with the Webhook Events in GitHub.
   * The Trigger will remain "Unverified" until the integration has the correct permissions to the repository.
 

@@ -139,7 +139,8 @@ This way there is a clear separation of concerns.
 
 You can find the secrets themselves at [https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets](https://github.com/codefresh-contrib/gitops-secrets-sample-app/tree/main/never-commit-to-git/unsealed_secrets){:target="\_blank"}. There are encoded with base64 so they are **NOT** safe to commit in Git.
 
->Note that for demonstration purposes, the Git repository contains raw secrets so that you can encrypt them yourself. In a production application, the Git repository must only contain sealed/encrypted secrets.
+>**NOTE**:  
+For demonstration purposes, the Git repository contains raw secrets so that you can encrypt them yourself. In a production application, the Git repository must only contain sealed/encrypted secrets.
 
 ## Preparing the secrets
 
@@ -218,8 +219,9 @@ max-width="90%"
 %}
 
 
->Note that for simplicity reasons the same Git repository holds both the application source code and its
-manifests. In an actual application, you should have two Git repositories (one of the source code only and one of the manifests).
+>**NOTE**: 
+For reasons of simplicity, the same Git repository holds both the application source code and its
+manifests. In an actual application, you should have two Git repositories (one for the source code only and one for the manifests).
 
 
 ## Related articles

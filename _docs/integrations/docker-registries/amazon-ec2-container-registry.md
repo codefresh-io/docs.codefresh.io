@@ -36,7 +36,7 @@ Codefresh makes sure to automatically refresh the AWS token for you.
 
 For more information on how to obtain the needed tokens, read the [AWS documentation](http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys){:target="_blank"}.
 
-> **NOTE**:
+>**NOTE**  
   You must have an active registry set up in AWS.<br /><br />
   Amazon ECR push/pull operations are supported with two permission options: user-based and resource-based.
 
@@ -170,8 +170,8 @@ max-width="40%"
 1. Click **Promote**.
 
 
->**NOTE**:  
-It is possible to change the image name if you want, but make sure that the new name exists as a repository in ECR.
+>**NOTE**   
+You can change the image name if you want, but make sure that the new name exists as a repository in ECR.
 
 
 ## Related articles

@@ -12,7 +12,8 @@ toc: true
 The Launch Composition step provides the ability to launch long term running environments that can live outside the context of a running pipeline.
 You can use this step to automate your test environment creation through a codefresh.yml file instead of manually launching an environment from the UI.
 
->Note that "launch-composition" creates a permanent test environment that keeps running even after a pipeline has finished. If you just want temporary test environments that run *only while* a pipeline is running, see [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) and the documentation page for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
+>**NOTE**  
+`launch-composition` creates a permanent test environment that keeps running even after a pipeline has finished. If you just want temporary test environments that run *only while* a pipeline is running, see [service containers]({{site.baseurl}}/docs/pipelines/service-containers/) and the documentation page for [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
 
 ## Usage
 
@@ -94,7 +95,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:

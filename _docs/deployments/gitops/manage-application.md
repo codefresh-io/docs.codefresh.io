@@ -22,7 +22,7 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 
 ##### Managing individual applications
 
->**NOTE**:  
+>**NOTE**  
   The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
 
 
@@ -98,7 +98,7 @@ For detailed information on how to work with Argo CD applications and Products i
 ## Edit Argo CD application definitions 
 Update General or Advanced configuration settings for a deployed Argo CD application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the GitOps Apps dashboard. 
 
->**NOTE**:  
+>**NOTE**  
   You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
 
 **How to**  
@@ -140,7 +140,10 @@ Update General or Advanced configuration settings for a deployed Argo CD applica
    * To _commit all changes_, click **Commit**. This final commit screen is displayed with a diff view of the changes.  
    * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the GitOps Apps dashboard.
 
-   >If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
+      {{site.data.callout.callout_tip}}
+      **TIP**  
+      If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
+      {{site.data.callout.end}}
 
   {% include 
    image.html 
@@ -181,8 +184,10 @@ Once you assign an application to a group, you can add it to or remove it from d
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
 You can also synchronize _application resources_ with sync statuses such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. Select the Sync option from resource's context menu. 
+{{site.data.callout.end}}
 
 **Before you begin**  
 * Review:  
@@ -368,8 +373,10 @@ max-width="80%"
   By default, you can rollback to any the previous ten deployments (same as Argo CD). 
   If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
 
-  >TIP:  
-  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
+    {{site.data.callout.callout_tip}}
+    **TIP**    
+    To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
+    {{site.data.callout.end}}
  
 
 * **Deleted version of application**  
@@ -540,9 +547,12 @@ The table describes the options for the `Rollout` resource.
 ## Delete Argo CD applications
 Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
  
->**Prune resources** in the application's General settings determines the scope of the delete action.  
+{{site.data.callout.callout_warning}}
+**WARNING**  
+**Prune resources** in the application's General settings determines the scope of the delete action.  
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.

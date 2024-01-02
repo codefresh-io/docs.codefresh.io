@@ -10,10 +10,9 @@ redirect_from:
 toc: true
 ---
 
-{{site.data.callout.callout_info}}
-
+>**NOTE**  
 If you use only the default Docker registry of your account this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the default Docker registry. No further configuration is needed to achieve this behavior.
-{{site.data.callout.end}}
+
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
 
@@ -79,7 +78,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
@@ -257,7 +256,7 @@ steps:
 
 This option enables you to push your images without pre-saving the credentials in Codefresh's registry integration view.
 
->**NOTE**:  
+>**NOTE**  
   This method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
 
   `YAML`

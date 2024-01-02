@@ -158,7 +158,7 @@
           url: "/import-data-to-mongodb"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
-        - title: Vault secrets pipelines
+        - title: Vault secrets in pipelines
           url: "/vault-secrets-in-the-pipeline"
         - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"

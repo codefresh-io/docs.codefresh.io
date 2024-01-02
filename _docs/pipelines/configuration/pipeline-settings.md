@@ -76,9 +76,10 @@ caption="Scopes for pipelines"
 max-width="60%"
 %}
 
->**TIP**:
- As a Codefresh administrator, you can override the account-level scopes for a specific pipeline by [configuring custom scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes). The custom scopes are inherited by all the builds for that pipeline. 
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+As a Codefresh administrator, you can override the account-level scopes for a specific pipeline by [configuring custom scopes]({{site.baseurl}}/docs/pipelines/pipelines/#scopes). The custom scopes are inherited by all the builds for that pipeline. 
+{{site.data.callout.end}}
 
 
 ## Auto-create projects for teams
@@ -128,7 +129,8 @@ caption="Auto-created rule for Pipeline entity"
 max-width="60%"
 %}
 
-> Once created, there is no synchronization between the project and the team. Modifying or deleting the team has no impact on the project and its tags.
+>**NOTE**  
+Once created, there is no synchronization between the project and the team. Modifying or deleting the team has no impact on the project and its tags.
 
 **What are the benefits?**  
 As you can see, this option both simplifies and strengthens access-control:
@@ -182,8 +184,10 @@ Memory-usage thresholds for pipeline builds are useful to both avoid premature a
 Accounts with pipelines that do not consume a lot of memory can have higher thresholds, or even the maximum threshold, as they are unikely to hit available memory limits.  
 Resource-intensive pipelines on the contrary require lower thresholds for timely warnings to prevent build failures. 90% is recommended for such pipelines.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   Since Codefresh displays the banner alert when the build memory _exceeds_ the selected threshold, setting the threshold at 100%, means that the pipeline has already failed when you see the alert banner.
+{{site.data.callout.end}}
 
 {% include image.html
 lightbox="true"
@@ -206,7 +210,7 @@ Here you can set the defaults for advanced pipeline behavior. The options are:
 * Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) for Amazon ECR integration.
 * Set the default registry from which to pull images for all _public_ Public Marketplace Steps. You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration setup in Codefresh.
   * Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration, all Public Marketplace Step images are pulled from `quay.io` instead of Docker Hub.
-  > **NOTE**:  
+  > **NOTE**  
     The default registry selected for Public Marketplace steps is _ignored_ in all built-in pipeline steps: `git-clone`, `freestyle`, `build`, `push`, `composition`, `launch test environment`, `deploy`, and `approval`. For detailed information on built-in steps, see [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/).
     The selected registry affects only custom or typed steps.
 

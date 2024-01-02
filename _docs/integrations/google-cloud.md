@@ -21,8 +21,11 @@ Codefresh has native support for Google Cloud in the following areas:
 
 Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/).
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
 The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
 
 {% 
 	include image.html 

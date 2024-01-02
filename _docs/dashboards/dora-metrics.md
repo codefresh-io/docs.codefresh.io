@@ -52,9 +52,6 @@ To view filters that are not displayed, click **More filters**.
 * **App Groups**: Show metrics from applications within the specified [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
 
-
-
-
 ## Metrics for favorite applications
 If you have [starred applications as favorites]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#gitops-apps-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
 
@@ -76,8 +73,10 @@ In addition, you can select the granularity for each graph:
 * Weekly
 * Monthly
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**:  
   Remember that the graphs for the DORA metrics reflect metrics of application deployments, not workflows. 
+{{site.data.callout.end}}
 
 ### Deployment Frequency
   The frequency at which applications are deployed to production, including both successful (Healthy) and failed (Degraded), deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  

@@ -380,7 +380,7 @@ steps:
 {% endhighlight %}
 
 
->**NOTE**:  
+>**NOTE**   
   The `fail_fast` property is only available for `on_elected` hooks. The other types of hooks (`on_finish`, `on_success`, `on_fail`) do not affect the outcome of the pipeline in any way. Even if they fail, the pipeline will continue running to completion. This behavior is not configurable.
 
 

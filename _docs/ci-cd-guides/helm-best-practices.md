@@ -157,7 +157,10 @@ The steps are the following:
 
 Notice that in this pipeline there is no Helm repository involved.
 
-> We recommend this workflow only while you are learning Helm. Storing your Helm charts in a Helm repository is a better practice as described in the next section.
+{{site.data.callout.callout_tip}}
+**TIP**:  
+We recommend this workflow only while you are learning Helm. Storing your Helm charts in a Helm repository is a better practice as described in the next section.
+{{site.data.callout.end}}
 
 ### Package/push and then deploy
 

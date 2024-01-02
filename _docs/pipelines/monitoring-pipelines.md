@@ -239,7 +239,7 @@ The Filter Logs option is useful to view and manage logs, especially for large b
 
 You can also [share logs](#sharing-log-urls-for-pipeline-builds) with other users logged in to the same account.
 
->**NOTE**:  
+>**NOTE**  
   The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size exceeds the maximum permitted. 
   For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
 
@@ -265,14 +265,15 @@ max-width="60%"
 Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues, either for a specific build step or for the entire build.  
 Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
 
->**IMPORTANT**:  
+{{site.data.callout.callout_tip}}
+**IMPORTANT**    
 This functionality requires timestamps for build logs which will be enabled for all Codefresh accounts. Enabling timestamps in logs can affect any automation you may have created based on log outputs without timestamps. To opt out of timestamps in logs, please contact Codefresh Support. <br>
 This functionality will be available to all customers starting December 14.
-
+{{site.data.callout.end}}
   
 
 
->**NOTE**:  
+>**NOTE**  
 Users with whom you share the logs must be logged in to the same account.
 
 **Before you begin**
@@ -355,7 +356,7 @@ The variables are grouped by granularity, starting with the global project-level
 
 A variable with a strikethrough indicates an override by the same variable in a lower-level group. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/pipelines/variables/).  
 
->**NOTES**:  
+>**NOTES**  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
   * Secret-type variables are always masked.
 
@@ -451,23 +452,25 @@ You can restart a failed pipeline either from the beginning or from a failed ste
 
 ##### Restart from beginning  
   Restarts the pipeline with the **same** state as in its original execution, including the original Git commit. 
-  >**TIP**:  
-    To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+{{site.data.callout.callout_tip}}
+**TIP**    
+To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+{{site.data.callout.end}}
 
 ##### Restart from failed step  
   Restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit. You can restart from the Builds page or directly from the specific step that failed.
 
-
-  
-    >**NOTE**:  
-      The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
-       If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
+>**NOTE**    
+The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
+If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
 
 #### Restart pipeline from Builds view
 
 * In the row with the pipeline to restart, click **Restart**, and then select the required option.
-  >**TIP**:  
-    Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+{{site.data.callout.callout_tip}}
+**TIP**   
+Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+{{site.data.callout.end}}
 
 
 {% include 

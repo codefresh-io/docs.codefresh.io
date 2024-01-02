@@ -71,8 +71,10 @@ build-step:
 {% endhighlight %}
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   We use [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions){:target="\_blank"} for the syntax in branch conditions.
+{{site.data.callout.end}}
 
 
 ## Conditional expressions
@@ -81,7 +83,7 @@ Alternatively, you can use more advanced condition expressions.
 
 This follows the standard [condition expression  syntax](#condition-expression-syntax). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
 
->**NOTE**:  
+>**NOTE**  
   Use "" around variables with text to avoid errors in processing the conditions. Example: "${{CF_COMMIT_MESSAGE}}"
 
 Here are some examples. 
@@ -250,7 +252,7 @@ steps:
 
 Try running the pipeline above and see how it behaves when a variable called `MY_VAR` exists (or doesn't exist).
 
->**NOTE**:  
+>**NOTE**  
    If you use this pattern frequently it means that you are trying to create a complex pipeline that is very smart. We suggest you create instead multiple [simple pipelines for the same project]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
 
 

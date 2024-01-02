@@ -185,7 +185,8 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
->Note the special use of `mode: parallel` declared at the root of our yaml.  This syntax makes the pipeline use the full parallel mode. 
+>**NOTE**:  
+ The special syntax of `mode: parallel` declared at the root of our yaml makes the pipeline use the full parallel mode. 
 The order of your build steps doesn't matter in this case, each step is executed according to its [condition]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).
 
 - Step1 (unit tests) fans out to Step2 and Step4 (web tests), which run in parallel

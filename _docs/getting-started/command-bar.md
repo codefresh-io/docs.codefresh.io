@@ -25,11 +25,13 @@ When you click the Global Search field, you can see the predefined categories to
 To start the search, click a category or directly type in the first letters of what you're looking for. 
 Select the option or use the shortcut keys. See [Keyboard shortcuts for Global Search & Navigation](#keyboard-shortcuts-for-global-search--navigation).
 
->**TIP**:   
+{{site.data.callout.callout_tip}}
+**TIP**:   
 The results are synced to your permissions and account settings. 
+{{site.data.callout.end}}
 
 
- {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/administration/command-bar/quick-search-options.png" 
