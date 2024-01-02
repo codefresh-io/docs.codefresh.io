@@ -47,10 +47,10 @@ For the pipeline, we'll use a sample application, the [Python/Flask](https://www
 
 You can either use the sample application to follow along, or create your own Docker based example (don't forget to write unit tests).
 
-{{site.data.callout.callout_info}}
-**NOTE**:  
+
+>**NOTE**  
 With Codefresh you can create a Docker image from without any local Docker installation (Docker building as a service).
-{{site.data.callout.end}}
+
 
 
 
@@ -66,11 +66,10 @@ With Codefresh you can create a Docker image from without any local Docker insta
 ### Download source code of the sample application
 We use an example application located in GitHub. 
 
-{{site.data.callout.callout_info}}
-**NOTE**: 
+>**NOTE**  
 Codefresh supports GitLab, Bitbucket and Azure GIT repositories apart from GitHub. The
 same principles presented in this tutorial apply for all Git providers.
-{{site.data.callout.end}}
+
 
 1. Go to the GitHub repo with the [Python Flask](https://github.com/codefresh-contrib/python-flask-sample-app) sample application. 
 1. At the top-right, click **Fork** to bring the source code to your own account.
@@ -556,10 +555,10 @@ caption="Pushing to Docker Hub (click image to enlarge)"
 max-width="70%" 
 %}
 
-{{site.data.callout.callout_info}}
-**NOTE**:  
+
+>**NOTE**    
 Now you have two Docker registries connected to Codefresh. After the build completes execution, the Docker image of the sample application is stored **both** in the default Docker registry and in Docker Hub.
-{{site.data.callout.end}}
+
 
 To verify the latter, visit your profile in Docker Hub and look at the image details:
 

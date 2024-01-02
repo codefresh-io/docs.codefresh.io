@@ -16,7 +16,7 @@ Stay where you are in Codefresh and get to what you want without extra clicks! B
 Global Search & Navigation is always available in the toolbar, displayed on the top-left. 
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If you don't see the Global Search field in the toolbar, you may have to [enable the Codefresh New Experience]({{site.baseurl}}/docs/new-codefresh/enable-new-experience/#enable-the-codefresh-new-experience).
 {{site.data.callout.end}}
 
@@ -26,7 +26,7 @@ To start the search, click a category or directly type in the first letters of w
 Select the option or use the shortcut keys. See [Keyboard shortcuts for Global Search & Navigation](#keyboard-shortcuts-for-global-search--navigation).
 
 {{site.data.callout.callout_tip}}
-**TIP**:   
+**TIP**   
 The results are synced to your permissions and account settings. 
 {{site.data.callout.end}}
 
@@ -44,7 +44,7 @@ max-width="60%"
 
 We are always adding more options, so stay tuned to our online announcements.
 
->**NOTE**:  
+>**NOTE**  
 >The Global Search & Navigation feature establishes an initial handshake request with the data source API on inital loading. The outcome of this request does not impact functionality, even in on-premises or air-gapped environments where it will fail.  
 >Although your monitoring or alerting systems may flag it as a failure, you can safely disregard the failure notification.
 

@@ -145,7 +145,7 @@ Displays up to five of the most active applications and their current deployment
 Displays aggregated chart views for the selected date range, and insights into active Delivery Pipelines triggered from Workflows. An active Delivery Pipeline is one with at least one active or completed Argo Workflow. 
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If you can't see this dashboard, go to the [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}, and toggle **Enable pipelines with Argo Workflows** to ON.
 {{site.data.callout.end}}
 
@@ -156,7 +156,7 @@ Use the Argo Workflows dashboard to:
 1. Drill down on a specific Delivery Pipeline for additional analysis 
 
 
->**NOTE**:  
+>**NOTE**  
 Delivery Pipeline data is shown for Hybrid GitOps Runtimes.
 
 
@@ -260,7 +260,7 @@ Filters narrow the scope of aggregated data, allowing you to focus on the inform
 Unless otherwise indicated, all filters support multi-selection.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 Different filter types have an AND relationship.
 {{site.data.callout.end}}
 
@@ -279,7 +279,7 @@ Different filter types have an AND relationship.
 
 ### Pipeline success rate
 The pipelines that completed execution successfully, from the total number of pipelines executed within the selected date range, as percentage. 
-> **NOTE**:  
+> **NOTE**  
   Pipelines in Pending status are excluded from the Success Rate calculations.
 
 
@@ -298,7 +298,7 @@ The comparison percentage is derived from the reference time period. The referen
 The workflow of every pipeline can be divided into phases, some of which apply to all pipelines, while others depend on the settings configured for each pipeline. The initialization phase in the workflow is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits, depend on the settings configured for each pipeline.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
  Each phase is color-coded for easy visualization. To show/hide phases in the chart, click the name of the phase in the legend. 
 {{site.data.callout.end}}
 
@@ -323,7 +323,7 @@ The workflow of every pipeline can be divided into phases, some of which apply t
 *  **Pending concurrency policy**  
   The average duration of pipeline workflows pending execution due to the concurrency limits configured for the pipelines. Workflows with pipeline, trigger, and branch concurrency limits are included in the calculation.
   
-  >**NOTE**:  
+  >**NOTE**  
    Pipeline workflows pending execution due to concurrency policies are affected by the global account settings or the pipeline's settings for Pending approval.
                          
 *  **Delayed due to license limit**  

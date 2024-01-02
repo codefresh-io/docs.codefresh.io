@@ -185,7 +185,7 @@ max-width="80%"
 
 This is a more granular way to control how your branch affects your pipeline.
 
->**NOTE**:  
+>**NOTE**  
 We recommend you follow the first method of having multiple simple pipelines with different branch expressions in the trigger dialog, instead of having a single complex pipeline using step conditions.<br>Remember that in Codefresh you can create as many pipelines as you want for a single project instead of being limited to one pipeline per project.
 
 ## Handling pull request events
@@ -203,7 +203,7 @@ caption="Choosing PR events for a pipeline"
 max-width="80%"
 %}
 
->**NOTE**:  
+>**NOTE**  
 Remember that the events shown are those supported by your Git provider. Not all Git providers support all possible pull request events.
 
 You can select multiple pull request events for a single pipeline, or have multiple pipelines that respond to individual pull request events. There is no right or wrong answer as it mostly depends on how your team handles pull requests.
@@ -310,7 +310,7 @@ With this configuration, the whole process is as follows:
 You can fine-tune this workflow according to your needs. For example, you might also specify a naming pattern on the branches for the PR (e.g. feature-xxx) to further restrict which branches are considered ready for production.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 We didn't need to handle the PR close/merge events. As soon as a PR is merged back to master, the Git provider sends anyway an event that a commit has happened in master, which means that the main production pipeline will take care of releasing the contents of master.
 {{site.data.callout.end}}
 

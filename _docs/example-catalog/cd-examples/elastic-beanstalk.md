@@ -38,7 +38,7 @@ max-width="40%"
 %}
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 The ``${{AWS_VERSION}}`` of application you can find in the Elastic Beanstalk service.
 {{site.data.callout.end}}
 
@@ -52,7 +52,7 @@ max-width="40%"
 %}
 
 {{site.data.callout.callout_tip}}
-**TIP**: 
+**TIP**  
 The ``${{AWS_ENV_NAME}}`` of application you can find in the Elastic Beanstalk service.
 {{site.data.callout.end}}
 
@@ -102,7 +102,7 @@ max-width="40%"
 
 
 
->**NOTE**:  
+>**NOTE**  
   If you don't have `awsebcli`, install [EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="\_blank"}.
 
 

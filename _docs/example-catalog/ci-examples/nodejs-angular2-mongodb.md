@@ -45,7 +45,7 @@ services:
 {% endhighlight %}
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 Just head over to the example [__repository__](https://github.com/codefreshdemo/nodejs-angular2-mongo){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 

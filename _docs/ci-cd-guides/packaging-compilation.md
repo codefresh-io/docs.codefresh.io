@@ -8,7 +8,7 @@ toc: true
 When you use Codefresh for continuous integration (CI), one of the most basic tasks is compiling and packaging applications. Though Codefresh has native support for Docker artifacts, it still works great with traditional (non-Dockerized) applications that don't use a Dockerfile for the actual build.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If your application is deployed as a Docker image, see [building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) instead.
 {{site.data.callout.end}}
 
@@ -218,7 +218,7 @@ steps:
       - npm install  
 {% endhighlight %}
 
->**NOTE**:  
+>**NOTE**  
  These versions are per pipeline. So each team can use the versions they need for their projects without affecting the other teams.
 
 So one team in your company might use Terraform 0.10 in their pipelines:

@@ -14,7 +14,7 @@ This project uses Node Js to build an application which will eventually become a
 To share volumes of service in composition step for other yml steps you can use the variable {% raw %}```${{CF_VOLUME_NAME}}```{% endraw %}. It will refer to the volume that was generated for the specific flow. Can be used in conjunction with a composition to provide access to your cloned repository.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 Read more about caching build dependencies our [blog](https://codefresh.io/blog/caching-build-dependencies-codefresh-volumes/){:target="_blank"}.
 {{site.data.callout.end}}
 

@@ -11,7 +11,7 @@ toc: true
 Codefresh has first-class Docker build support. You can build Docker images in your pipeline in a declarative manner using the [build step]({{site.baseurl}}/docs/pipelines/steps/build/).
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 If your application is not deployed as a Docker image, see the [basic compilation/packaging guide]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) instead.
 {{site.data.callout.end}}
 
@@ -193,7 +193,7 @@ It is important however to note that the Dockerfile is still self-contained. It 
 
 An alternative way to create Docker images is to just package an existing artifact or application which is created earlier in the CI process.
 
->**NOTE**:  
+>**NOTE**  
 Though this is a very popular way to create Dockerfiles, and Codefresh supports it, we do **NOT** recommend writing Dockerfiles like this. Please learn about Docker multistage builds if you are not familiar with them.
 
 You can see this pattern in all kinds of Dockerfiles that assume the application is already there (or that dependencies are already downloaded). Here is a [Dockerfile that packages an existing JAR]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#spring-boot-2-and-docker-package-only) file.

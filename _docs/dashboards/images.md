@@ -88,7 +88,7 @@ Each row displays information on the tag:
 * The size of the tag.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 For Summary, Dockerfile, and Layer information on a tag, click **more details**.
 {{site.data.callout.end}}
 

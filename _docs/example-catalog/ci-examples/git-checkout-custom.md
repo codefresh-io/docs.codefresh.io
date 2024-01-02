@@ -10,7 +10,7 @@ redirect_from:
 toc: true
 ---
 
->**NOTE**:  
+>**NOTE**  
 Manually running Git commands is an advanced technique. For most use cases you should use the [native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
 
 For complex cloning, you can still use custom clone commands in a freestyle step. In this case,

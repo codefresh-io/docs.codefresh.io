@@ -131,7 +131,7 @@ This pipeline does the following:
 1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run, we launch another container with the `psql` executable to load database data.
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 In this simple example, we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
 {{site.data.callout.end}}
 

@@ -41,7 +41,7 @@ max-width="80%"
 * Either our sample application or your own application that has a Dockerfile. 
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 For the quick start, you **don't** need a Kubernetes deployment file. Codefresh creates one for you through the UI. 
 {{site.data.callout.end}}
 
@@ -59,7 +59,7 @@ Deploy the Docker image to your Kubernetes cluster without writing any configura
 <!--- add screenshot -->
 
 
->**NOTE**:  
+>**NOTE**  
   Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed.  
   Use either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster.  
 
@@ -131,7 +131,7 @@ Set up a pipeline in Codefresh so that any commits in GitHub automatically redep
 To do this, we will add a new [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) at the end of the pipeline. Deploy steps allow you to deploy Kubernetes applications in a declarative manner. 
 
 
->**NOTE**:  
+>**NOTE**  
   Remember that the application itself is already running successfully in the Kubernetes cluster after the manual deployment. 
 
 1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Pipelines**.

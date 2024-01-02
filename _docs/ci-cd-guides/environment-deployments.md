@@ -58,7 +58,7 @@ The values contained in the files are both for the application (e.g. payment ser
 Note that the values for the application are dummy values that are not actually used by the application (they are simply shown in the web page). The number of replicas will take real effect on the cluster (the production configuration defines 2 replicas instead of 1).
 
 {{site.data.callout.callout_tip}}
-**TIP**:  
+**TIP**  
 For reasons of simplicity, the chart of the application is hosted in the same Git repository as the source code. As an alternative, you could also have a second Git repository with just the chart. Codefresh supports both ways.
 {{site.data.callout.end}}
 
@@ -225,7 +225,7 @@ As you can see the step that deploys to production is now skipped, and the step 
 
 This is a great starting point for your own workflows. Codefresh can handle more complicated scenarios as you will see in the later sections.
 
->**NOTE**:  
+>**NOTE**  
  For reasons of brevity, the pipeline deploys the Helm chart directly from the Git repo. In an actual pipeline, you [should also store the Helm chart in a Helm repository]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/#packagepush-and-then-deploy).
 
 For more details on Helm deployments see our [dedicated Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/). 
