@@ -71,7 +71,7 @@ step_name:
 -  Working Directory
 
 {{site.data.callout.callout_info}}
-**NOTE**:  
+**NOTE**  
 If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/example-catalog/ci-examples/git-clone-private-repository-using-freestyle-step/).
 {{site.data.callout.end}}
 
@@ -81,7 +81,7 @@ The easiest way to use a Git clone step is to use your default Git provider as c
 
 Here is an example of a pipeline that will automatically check out the repository that triggered it (i.e. a commit happened on that repository).
 
->**NOTE**:  
+>**NOTE**  
   The name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin). This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
 
 
@@ -278,7 +278,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:

@@ -146,7 +146,8 @@ Once you are happy with your debugging session, click the continue button to res
 
 The pipeline will continue and then stop for the next breakpoint (if any). You can still revisit the debugger window for previous steps to see what debugging commands you had executed.
 
->Notice that to conserve resources, there is a 15 minute limit on each open debug session. If you don't resume the pipeline within 15 minutes after hitting a breakpoint the whole pipeline will stop with a timeout error.
+>**NOTE**  
+To conserve resources, there is a 15 minute limit on each open debug session. If you don't resume the pipeline within 15 minutes after hitting a breakpoint the whole pipeline will stop with a timeout error.
 
 It is important to understand that if you have chosen the `override` phase in a freestyle step, then the commands mentioned in the pipeline definition are completely ignored.
 

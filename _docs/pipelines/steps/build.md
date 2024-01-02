@@ -123,7 +123,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
@@ -405,7 +405,8 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 All images built successfully with the build step are automatically pushed to the default Docker registry defined for your account. This behavior is completely automatic and happens without any extra configuration on your part. To disable this, add the `disable_push` property set to `true` to your build step. Remember that if you are using `buildx`, you cannot set the `disable_push` property to `true`. 
 
->The [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional, and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/). 
+>**NOTE**  
+The [push step]({{site.baseurl}}/docs/pipelines/steps/push/) in Codefresh is optional, and is only needed if you want to push to [external Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/). 
 
 {% 
   include image.html 

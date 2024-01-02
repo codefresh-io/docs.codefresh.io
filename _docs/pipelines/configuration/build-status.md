@@ -105,7 +105,8 @@ If you are working on an open-source project and wish for greater visibility, yo
 
 Public logs are disabled by default and you need to explicitly enable them.
 
->This happens for security reasons. Make sure that the logs you are exposing to the Internet do not have any sensitive information. If you are unsure, you can still use the private badge that shows project status only as explained in the previous section.
+>**NOTE**  
+This happens for security reasons. Make sure that the logs you are exposing to the Internet do not have any sensitive information. If you are unsure, you can still use the private badge that shows project status only as explained in the previous section.
 
 To enable the public logs, toggle the respective switch in the pipeline settings:
 

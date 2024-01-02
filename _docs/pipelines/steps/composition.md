@@ -11,8 +11,10 @@ toc: true
 ---
 The composition step runs a Docker Composition as a means to execute finite commands in a more complex interaction of services.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   While composition steps are still supported, the recommended way to run integrations tests going forward is with [service containers]({{site.baseurl}}/docs/pipelines/service-containers/).
+{{site.data.callout.end}}
 
 ## Motivation for Compositions
 
@@ -20,7 +22,7 @@ The primary purpose of compositions is to run tests that require multiple servic
 
 The syntax offered by Codefresh closely follows the syntax for [Docker-compose](https://docs.docker.com/compose/overview/){:target="\_blank"} files, but is technically not 100% the same (there are some important differences).  However, if you are already familiar with Docker compose, you will be immediately familiar with Codefresh compositions.
 
->**NOTE**:  
+>**NOTE**  
   Codefresh only understands Docker compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
 
 The big difference between the Codefresh and Docker compose is that Codefresh is distinguishes between two kinds of services:
@@ -168,7 +170,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:
@@ -411,7 +413,8 @@ In this pipeline:
 Therefore, in this pipeline you can see both ways of data sharing, bringing files into a composition and getting results out of it. Notice that we need to mount the shared volume only in the composition services. The freestyle steps automatically mount `/codefresh/volume` on their own.
 
 
->Note: In order to mount the shared volume in one of your composition services, you must mount it in the `composition_candidate` also. It is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
+>**NOTE**  
+To mount the shared volume in one of your composition services, you must mount it in the `composition_candidate` also. It is not compulsory to mount the shared volume in all services of a composition. Only those that actually use it for file transfer, should mount it.
 
 
 ## Composition variables versus environment variables

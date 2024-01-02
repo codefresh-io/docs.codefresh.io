@@ -20,7 +20,8 @@ The process involves two parts:
 1. Creating a trigger in Codefresh (this will result in a special Codefresh webhook URL)
 1. Creating a new notification in Quay that will use this URL to call Codefresh
 
-> Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html){:target="\_blank"} (or pushed a Docker image at least once).
+>**NOTE**  
+Make sure that you have a Quay account and have already [created a repository](https://docs.quay.io/guides/create-repo.html){:target="\_blank"} (or pushed a Docker image at least once).
 
 
 ### Create a new Quay trigger
