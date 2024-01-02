@@ -40,7 +40,9 @@ The table below lists the scopes required for Git Runtime tokens for the differe
 | Bitbucket Cloud and Bitbucket Server | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
 
 ### Git Runtime token in values.yaml
+
 You also have the option to directly add your Git Runtime token, or a reference to a secret that contains the Git Runtime token, to `values.yaml` (typically the latter).  
+
 To skip token validation both during installation and upgrade in this scenario, add the `skipValidation` flag to `values.yaml`. 
 
 ```yaml
@@ -55,11 +57,9 @@ If you set the flag to skip validation, _the onus is on you to provide a valid a
 
 
 
-
 ## Git user access token scopes
 The table below lists the scopes required for Git user access tokens for the different Git providers. 
 As with the Git Runtime token, you can create and use Git user tokens with custom scopes per GitOps Runtime, and per Git repository to which the Runtime has access. 
-
 
 
 | Git provider                  | Required scopes for Git user token          | 
@@ -71,8 +71,11 @@ As with the Git Runtime token, you can create and use Git user tokens with custo
 
 ### Git user tokens with custom scopes 
 Codefresh validates Git user tokens and their associated scopes when authorizing Git actions for the Runtime.  
-If you require custom scopes in Git user tokens that don't meet the default Codefresh requirements, you can create Git user tokens with custom scopes.  
-Codefresh provides the `skipGitPermissionValidation` flag which you can add to your `values.yaml` file to bypass token validation for such cases.  You may want to have Git user tokens without `admin` scopes, or use the new fine-grained tokens for GitHub (currently not supported by Codefresh).
+
+
+If you require custom scopes in Git user tokens that don't meet the default Codefresh requirements, you can create Git user tokens with custom scopes. You may want to have Git user tokens without `admin` scopes, or use the new fine-grained tokens for GitHub (currently not officially supported by Codefresh). 
+
+Codefresh provides the `skipGitPermissionValidation` flag which you can add to your `values.yaml` file to bypass token validation for such cases. 
 
 
 ```yaml
@@ -88,8 +91,7 @@ If you set this flag, make sure that:
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
-If you set the flag to skip validation, _the onus is on you to provide valid and secure tokens_.  
-Codefresh does not validate the tokens whenever Git Runtime and Git user tokens are updated. 
+If you set the flag to skip validation, _the onus is on you to provide valid and secure tokens_. Codefresh does not validate the tokens whenever Git Runtime and Git user tokens are updated. 
 {{site.data.callout.end}}
 
 ### Use same Git user tokens for multiple GitOps Runtimes
