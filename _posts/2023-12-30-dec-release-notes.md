@@ -47,17 +47,21 @@ The option is always available in the application’s context menu in the GitOps
 
 ## Bug fixes
 
+**General**  
+* Empty page on selecting Account settings in UI for some accounts with Classic and GitOps modules. 
+* **Home** dashboard does not load analytics data for some accounts. 
+
 **Pipelines**  
 
 * Values of encrypted variables Cron triggers are corrupted in database when updating pipelines.
 * ‘Error: Failed to retrieve file’ on listing branches when setting up trigger or in **Use YAML from repository**. 
 * Build fails when restarting pipeline from Failed with Approval step.
-* Labels for DIND and ENGINE pods missing from Helm chart. (CR-21739 - Idan)
-* Debug Console toolbar not displayed in Debug mode for PRO accounts. (CR-21736 - Oleg)
+* Labels for DIND and ENGINE pods missing from Helm chart. 
+* Debug Console toolbar not displayed in Debug mode for PRO accounts. 
 * Unable to upload more than 100 Allure reports from Codefresh.
 * “No such file or directory” error in Test History/Trends page for Allure test reports. 
-* Trigger options for pipelines (no_cache, no_cf_cache ..) in Terraform Provider incorrectly defined as strings instead of Boolean values. (CR-7468 Pasha)
-* Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco)
+* Trigger options for pipelines (no_cache, no_cf_cache ..) in Terraform Provider incorrectly defined as strings instead of Boolean values. 
+<!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
 
 
 <br>
@@ -65,7 +69,7 @@ The option is always available in the application’s context menu in the GitOps
 
 **GitOps**  
 
-* Plug-in information missing in Form and YAML views of Application manifest. (CR-20884 Bogdan Volynets)
+* Plug-in information missing in Form and YAML views of Application manifest. 
 * **Promote Full** options in Rollout Player and Current State enabled for user without **Promote full rollout** permission for Argo CD applications.
 * Missing Git Runtime tokens in Personal Access Token page.
 
