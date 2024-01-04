@@ -265,7 +265,7 @@ max-width="60%"
 Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues, either for a specific build step or for the entire build.  
 Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
 
-{{site.data.callout.callout_tip}}
+{{site.data.callout.callout_warning}}
 **IMPORTANT**    
 This functionality requires timestamps for build logs which will be enabled for all Codefresh accounts. Enabling timestamps in logs can affect any automation you may have created based on log outputs without timestamps. To opt out of timestamps in logs, please contact Codefresh Support. <br>
 This functionality will be available to all customers starting December 14.
