@@ -287,7 +287,7 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
 ### Tunnel-based Hybrid GitOps Runtime architecture
 Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
->**NOTE**:  
+>**NOTE**  
 Tunnel-based access mode is not supported for GitOps on-premises installations.
 
 Note: Tunnel-based architecture is not supported for on-prem instances.
@@ -343,10 +343,11 @@ The Argo Project includes:
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
->**NOTE**:  
+>**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
-Typically, new versions of Argo are available within 30 days of release in Argo.
+Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+
 
 
 
@@ -354,9 +355,11 @@ Typically, new versions of Argo are available within 30 days of release in Argo.
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
   The Request Routing Service is available from Runtime version 0.0.543 and higher.   
   Older Runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
+{{site.data.callout.end}}
 
 ### Tunnel Server
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  

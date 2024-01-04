@@ -79,7 +79,7 @@ Codefresh integrates Argo CD to your Kubernetes deployments through the Codefres
 >**Argo CD release policy**  
 Our users rely on the Codefresh platform for consistent and uninterrupted software delivery.   
 To maintain this high standard, we rigorously test and refine new versions of Argo CD before integrating them into the Codefresh GitOps Runtime.   
-Generally, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
 
 ## Related articles

@@ -160,7 +160,7 @@ Once users are invited, their statuses remain as Pending until they accept the i
 Enable features to open them for Codefresh accounts in your organization.  
 This step describes how to enable features for a single account at a time.
 
->**NOTE**:  
+>**NOTE**  
 To enable features selectively for specific accounts, or for all accounts in the organization, see [Codefresh on-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/).
 
 
@@ -195,9 +195,11 @@ System Features are generally for internal use.
 For convenience and ease of set up, _turn on ONLY the System Features listed in this section_.   
 When you enable System Features, the behavior for a specific System Feature is identical to that of the other Feature Flags: you can enable/disable it for a single, for specific, or for all accounts.
 
->**IMPORTANT:**  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
 Codefresh _strongly recommends against enabling the System Features not explicitly mentioned here_, unless you are familiar with the implications of turning on each of the features.  
 If you need to turn on a feature, we recommend to first contact Codefresh support. 
+{{site.data.callout.end}}
 
 1. Make sure you are in **Admin Management**.
 1. From the sidebar, click **Feature Management**. 
@@ -282,7 +284,7 @@ Here's an example of the Account settings page in Admin Management.
 
 The table describes the settings for available Codefresh accounts. 
 
->**NOTE**:  
+>**NOTE**    
 Settings that are _not_ described in this table are not applicable to on-premises environments and can be ignored.
 
 

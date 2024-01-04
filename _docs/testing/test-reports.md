@@ -285,8 +285,10 @@ By default, Allure creates a folder named `allure-results` containing all the te
 
 To pass the reports to the next step, you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   You can also leave the test results in the project folder that was checked out from Git, as this folder is already inside the shared Codefresh volume.
+{{site.data.callout.end}}
 
 Therefore, once you create the reports with your testing framework, make sure to copy them to `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` which is the [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) that points to the shared volume.  
 
@@ -447,7 +449,7 @@ Here is an example:
 {% endraw %}
 {% endhighlight %}
 
->**NOTE**:
+>**NOTE**  
  In the **Built-in test (Allure) reporting mode**, Codefresh automatically clears the test results. There is no need to manually define the `CLEAR_TEST_REPORT` variable.
 
 ## Creating multiple reports

@@ -10,10 +10,11 @@ toc: true
 
 A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
 Only Codefresh account administrators should have access to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
 While it is useful to understand its structure, we recommend using it for reference only, and NOT for making commits or manual changes. 
-
+{{site.data.callout.end}}
 
 * **Centralized Runtime configuration management**  
   With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
@@ -38,7 +39,7 @@ Here are a few types of configuration definitions stored in the Shared Configura
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-3-set-up-gitops-git-account).  
 
 
-> **NOTE**:
+>**NOTE**  
   Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
@@ -136,9 +137,10 @@ Here's how to do this with the Shared Configuration Repo:
 1. Specify the desired configuration settings and resources required for the application in the manifest file.
 1. Save and commit the changes to the Git repository.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**    
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
-
+{{site.data.callout.end}}
 
 
 ## Related articles

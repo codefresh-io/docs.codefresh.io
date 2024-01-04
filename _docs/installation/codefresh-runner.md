@@ -14,12 +14,14 @@ Install the Codefresh Runner on your Kubernetes cluster to run pipelines and acc
 The Codefresh Runner does not rely on specific dockershim features. It can work with any container runtime that adheres to the standards. In Codefresh pipelines, the docker socket/daemon is an internal docker daemon created and managed by the pipeline itself. It is also distinct from the docker daemon on the host node, which may not even exist in cases where containerd or cri-o is used.
 Review [Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) and how the [Runner works behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**:  
 We have transitioned to a new Helm-based installation for the Codefresh Runner, which is now the default for all Runner installations.<br>  
 We encourage you to transition existing installations, both CLI- and Helm-based, to the new Helm installation.
 The [CLI-based installation and configuration](#cli-based-codefresh-runner-installation) is considered legacy, and will not be actively maintained going forward. 
+{{site.data.callout.end}}
 
->**Codefresh Runner with spot instances**:<br>
+>**Codefresh Runner with spot instances**<br>
   Using spot instances can cause failures in Codefresh builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
 
 After installing the Codefresh Runner, you can:
@@ -111,7 +113,7 @@ The following table shows the **minimum** resources for each Runner component:
   You have completed installing the Codefresh Runner with CLI Wizard.
 
 
->**NOTES**:  
+>**NOTES**  
 Components that are always-on consume resources all the time. Components that are not always-on consume resources only when pipelines are running. Such resources are automatically both created and destroyed for each pipeline.
 
 
@@ -121,9 +123,10 @@ Node size and count depends entirely on how many pipelines you want to be “rea
 
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
 The size of your nodes relates directly to the size required for your pipelines and is thus dynamic. If you find that only a few large pipelines require larger nodes, you may want to have two Codefresh Runners associated with different node pools.
-
+{{site.data.callout.end}}
 
 
 ### Storage
@@ -390,9 +393,11 @@ See [Troubleshooting this error on ArtifactHub](https://artifacthub.io/packages/
 
 ## CLI-based Codefresh Runner installation
 
->**LEGACY CONTENT**  
+{{site.data.callout.callout_warning}}
+**LEGACY CONTENT**  
 Please be aware that the content in this section, including installation and configuration, is _no longer actively updated_.  
 We have transitioned to a [new Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
+{{site.data.callout.end}}
 
 Access to the Codefresh CLI is only needed when installing the Codefresh Runner. After installation, the Runner authenticates on its own using the details provided. You don't need to install the Codefresh CLI on the cluster running Codefresh pipelines.
 
@@ -401,7 +406,7 @@ During installation, you can see which API token will be used by the Runner (if 
 If the Kubernetes cluster with the Codefresh Runner is behind a proxy server without direct access to `g.codefresh.io`, you need additional steps to complete the installation.
 
 
->**NOTE**:  
+>**NOTE**  
 Only a Codefresh account administrator can install the Codefresh Runner. 
 
 ### Install Codefresh Runner through CLI Wizard
@@ -428,9 +433,10 @@ codefresh auth create-context --api-key {API_KEY}
 ```shell
 codefresh runner init 
 ```
-  >**TIP**:   
+  {{site.data.callout.callout_tip}}
+  **TIP**:   
     To inspect all available options run `init` with the `--help` flag: `codefresh runner init --help`
-
+  {{site.data.callout.end}}
 {:start="4"}  
 1. Follow the instructions in the CLI Wizard to complete the installation. 
 
@@ -505,7 +511,8 @@ After installation, configure the Kubernetes cluster with the Codefresh Runner t
 
 For Codefresh Runners on [EKS](https://aws.amazon.com/eks/){:target="\_blank"} or any other custom cluster in Amazon, such as kops for example, configure the Runner to work with EBS volumes to support [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) during pipeline execution.
 
-> The configuration assumes that you have installed the Runner with the default options: `codefresh runner init`
+>**NOTE**  
+The configuration assumes that you have installed the Runner with the default options: `codefresh runner init`.
 
 <br />
 
@@ -552,7 +559,8 @@ There are three options for this:
 #### Configuration 
 
 **Step 1:** Create Storage Class for EBS volumes:
-  >Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
+  >**NOTE**  
+  Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
 
   * **Storage Class (gp2)**
 
@@ -677,16 +685,13 @@ kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 **Step 7:** Restart the volume provisioner pod.
 
 
-
-
-
 ### GKE (Google Kubernetes Engine) backend volume configuration
 
 GKE volume configuration includes:
 * [Local SSD storage configuration](#local-ssd-storage-configuration)
 * [GCE disk storage configuration](#gce-disk-storage-configuration)
 
-<br />
+
 
 #### Local SSD storage configuration
 
@@ -694,7 +699,6 @@ Configure the Codefresh Runner to use local SSDs for your pipeline volumes:
 
 [How-to: Configuring an existing Runtime Environment with Local SSDs (GKE only)]({{site.baseurl}}/docs/kb/articles/config-re-gke-ssd){:target="\_blank"}
 
-<br />
 
 #### GCE  disk storage configuration
 
@@ -957,7 +961,8 @@ codefresh patch re my-eks-cluster/codefresh -f runtime.yaml
 
 You may want to uninstall the Codefresh Runner. 
 
->Uninstalling the Codefresh Runner does not affect pipelines. You continue to see existing pipelines and can create new pipelines.
+>**NOTE**  
+Uninstalling the Codefresh Runner does not affect pipelines. You continue to see existing pipelines and can create new pipelines.
 
 
 * Run:
@@ -991,7 +996,8 @@ App-Proxy requires a Kubernetes cluster:
   The ingress controller must allow incoming connections from the VPC/VPN where users are browsing the Codefresh UI.
   The ingress connection **must** have a hostname assigned for this route, and **must** be configured to perform SSL termination.
 
->Currently, App-Proxy is supported for both SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Server.
+>**NOTE**  
+Currently, App-Proxy is supported for both SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Server.
 
 #### Install App-Proxy
 
@@ -1043,13 +1049,15 @@ The App-Proxy has to work over HTTPS, and by default it uses the ingress control
 
 ### Install multiple runtimes with a single Runner (Agent)
 
->**DEPRECATED CONTENT**  
+{{site.data.callout.callout_warning}}
+**DEPRECATED CONTENT**  
 Please be aware that the content in this section is _no longer actively updated_.  
 We have transitioned to a [new Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
+{{site.data.callout.end}}
 
 Advanced users can install a single Codefresh Runner (agent) to manage multiple runtime environments.
 
->Note:
+>**NOTE**  
   Make sure the cluster on which the Runner (agent) is installed has network access to the other clusters in the runtime environments.
 
 ```shell
@@ -1226,9 +1234,11 @@ gcloud iam service-accounts add-iam-policy-binding \
 ###  Install Codefresh Runner on EKS
 
 
->**LEGACY CONTENT**  
+{{site.data.callout.callout_warning}}
+**LEGACY CONTENT**  
 Please be aware that the content in this section is _no longer receiving active updates_.  
 We have transitioned to a [Helm-based installation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"} for the Codefresh Runner. As a result, this content will be deprecated in the coming months. 
+{{site.data.callout.end}}
 
 Installing the Codefresh Runner on EKS includes:  
 [Step 1: Create an EKS cluster](#step-1-create-an-eks-cluster)  
@@ -1445,7 +1455,8 @@ spec:
 kubectl -n kube-system set image deployment.apps/cluster-autoscaler cluster-autoscaler=us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v1.15.6
 ```
 
-> Check your version of the EKS to make sure that the you have the correct autoscaler version for it.
+>**NOTE**  
+Check your version of the EKS to make sure that the you have the correct autoscaler version for it.
 
 #### Step 3: (Optional) Configure overprovisioning with Cluster Autoscaler
 
@@ -1828,7 +1839,7 @@ helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f valu
 
 
 
->**NOTE:**  
+>**NOTE**  
   You cannot run *both* amd64 and arm64 images within the same pipeline. As we do not support multi-architecture builds, and one pipeline can map only to one runtime, you can run either amd64 or arm64 within the same pipeline.
 
 

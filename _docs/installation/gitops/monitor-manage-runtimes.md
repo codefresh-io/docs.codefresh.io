@@ -42,13 +42,16 @@ View Runtime components and information in [List or Topology view formats](/#git
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log) -->
 
 
-> **TIP**:
->Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.callout_tip}}
+**TIP**  
+Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.end}}
 
->**WARNING**:
+{{site.data.callout.callout_warning}}
+**WARNING**
 Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.
 Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
-
+{{site.data.callout.end}}
 
 
 
@@ -123,8 +126,10 @@ The upgrade procedure differs depending on whether the GitOps Runtime has been c
 
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
->The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -187,10 +192,13 @@ dependencies:
 Provisioned GitOps Runtimes require valid Git Runtime tokens at all times to authenticate and authorize the Runtime.
 The Git Runtime token differs from the Git user token which is a personal access token unique to each user. As such, you can use the same Git Runtime token for multiple Runtimes.
 
->**TIP**:
+{{site.data.callout.callout_tip}}
+**TIP**  
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
+{{site.data.callout.end}}
 
-**When to update**
+
+**When to update**  
 If your Git Runtime token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
 
 Otherwise, you have to update Git tokens in the following situations:
@@ -235,8 +243,8 @@ The methods for updating any Git token are the same regardless of the reason for
 
 {:start="6"}
 1. For OAuth2 authorization:
-  >**NOTE**:
-  >If the application is not registered, you get an error. Contact your admin for help.
+  >**NOTE**  
+  If the application is not registered, you get an error. Contact your admin for help.
 
       * Enter your credentials, and select **Sign In**.
       * If required, as for example if two-factor authentication is configured, complete the verification.
@@ -275,7 +283,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 
->**NOTE**:
+>**NOTE**  
 When SSH is configured for a GitOps Runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
 **SSH keys**
@@ -391,7 +399,8 @@ Deep Links is an Argo CD feature that redirects users to third-party application
 In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo where you installed the Hybrid GitOps Runtime.
 When configured, deep links are displayed in the application's Current State tab in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
 
->Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
+>**NOTE**  
+Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
 
 
 
@@ -433,8 +442,10 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 ## (Helm Hybrid GitOps) Remove GitOps Runtimes
 Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
 
->The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.

@@ -39,8 +39,10 @@ Codefresh supports out-of-the-box Git logins with your local username and passwo
 When [SSO sign-in]({{site.baseurl}}/docs/administration/single-sign-on/) is configured, as a Codefresh administrator, you can select the providers you want to enable for SSO in your organization, for both new and existing accounts.  
 SSO providers who are disabled are not displayed during sign-up/sign-in.
 
->You can always renable an SSO provider that you disabled when needed.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+You can always renable an SSO provider that you disabled when needed.
+{{site.data.callout.end}}
 
 1. Sign in as Codefresh admin.
 1. From the left pane, select **Providers**.
