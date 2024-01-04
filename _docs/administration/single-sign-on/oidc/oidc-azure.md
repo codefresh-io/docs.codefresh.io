@@ -86,7 +86,8 @@ max-width="70%"
 1. Next add **Delegated permissions** on the right
    * Add `User > Read.All`
 
-> The `User.Read (Delegated)` permission is added by default.
+    >**NOTE**  
+    The `User.Read (Delegated)` permission is added by default.
 
 {% include image.html
 lightbox="true"
@@ -130,8 +131,10 @@ caption="Description for client secret"
 max-width="70%"
 %}
 
->**TIP**:  
+  {{site.data.callout.callout_tip}}
+  **TIP**    
   Make a note of the expiry date in your calendar to renew the key before the expiry date and prevent service interruptions.
+  {{site.data.callout.end}}
 
 {:start="3"}
 1. Click **Add**.  

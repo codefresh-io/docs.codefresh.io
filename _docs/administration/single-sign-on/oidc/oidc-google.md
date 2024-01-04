@@ -166,9 +166,6 @@ max-width="60%"
 
 ## Step 3: Configure SSO settings for Google in Codefresh
 
-
-
-
 **Before you begin**  
 * Make sure you have:
   * The **Client ID** and **Client Secret** from Google in Step 1

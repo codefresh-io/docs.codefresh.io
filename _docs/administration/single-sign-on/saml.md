@@ -52,10 +52,9 @@ max-width="100%"
 
 Once Federated SSO has been configured, the process works as follows:
 
-<div class="bd-callout bd-callout-info" markdown="1">
+>**NOTE**  
+Steps 2 to 7 occur in the background and are transparent to the user.
 
-  Steps 2 to 7 occur in the background and are transparent to the user.
-</div>
 
 1. A user logs in to Codefresh and enters the email address.
 2. The user is redirected to the Codefresh Service Provider (SP) to initiate SSO.
@@ -84,13 +83,13 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
    <!---For GSuite, you can define the sync settings, Admin Email and the JSON Keyfile.
           For instructions, see [Google SSO]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#cli-synchronize-teams).-->
 
-    > **NOTE**:  
+    >**NOTE**  
     These settings are for the SaaS version of Codefresh. For an on-premises setup, use the URLs that match your installation.
 
 {:start="2"}
 1. Test integration with the IdP: 
     
-    >**NOTE**:  
+    >**NOTE**  
     Before enabling SSO for users, you **MUST** make sure that it is working for the test user. If SSO is enabled for a user, Codefresh blocks logins through other IDPs for this user and only the enabled SSO is allowed. If the selected SSO method does not work for some reason, the user will be locked out of Codefresh.
 
     1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
@@ -124,7 +123,7 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 1. (Optional) [Select SSO method for individual users]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#select-sso-method-for-individual-users)  
   You can also select if needed, a different SSO provider for every user or for specific users.
 
-> **NOTE**:  
+> **NOTE**  
   Codefresh has an internal cache for SSO configuration, and it can take up to five minutes for your changes to take effect.
 
 ## Related articles

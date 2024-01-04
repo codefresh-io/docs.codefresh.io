@@ -59,7 +59,7 @@ By default, there are two teams:
 * Users
 * Admins with users [invited as collaborators](#assign-a-user-to-a-team)  
 
->**NOTE**:  
+>**NOTE**    
   Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/){:target="\_blank"} to upgrade to an Enterprise plan.
 
 ### Automatically creating projects for teams
@@ -74,7 +74,7 @@ Create a team in Codefresh and then assign users to the team. You can assign the
 1. From the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
 1. Select **Teams**, and then select **Create a Team**.  
 1. Enter the **Team Name**.
-  > **NOTE**:  
+  > **NOTE**  
     The team name can include only lower-case alphanumeric characters and hyphens, without spaces.
   
   See the screenshot below for some sample team names.
@@ -97,7 +97,7 @@ Create a team in Codefresh and then assign users to the team. You can assign the
 ## Define session timeouts and domain restrictions for user accounts
 As an administrator, you can optionally define session timeouts to automatically log out users who have been inactive for the specified duration, and restrict invitations to specific email domains.  
 
->**NOTE**:  
+>**NOTE**    
   The maximum duration for inactivity is 30 days. Inactive users are warned 15 minutes before they are logged out.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then select **Account Settings**.
