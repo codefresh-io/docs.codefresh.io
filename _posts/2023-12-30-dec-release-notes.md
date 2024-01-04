@@ -43,7 +43,8 @@ With our new Diff View feature, you can instantly view the differences between t
 The Diff View option displays all the updated resources within the application, allowing you to easily pinpoint changes and swiftly identify the root cause of the sync failure.
 
 The option is always available in the application’s context menu in the GitOps Apps dashboard, and is enabled whenever the application is out-of-sync. If you have already selected an application, the Diff View option is available in the context menu at the top right of the page.
->Diff View for application resources is supported Runtime v1.0.38 and higher. To enable this feature, you need to turn on the `appDiffView` feature flag.
+>**NOTE****  
+Diff View for application resources is supported Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
 
 ## Bug fixes
 
