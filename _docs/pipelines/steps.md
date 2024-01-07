@@ -26,7 +26,7 @@ max-width="80%"
 
 ## Built-in step types
 
-The steps offered by Codefresh are:
+Codefresh offers the following step types:
 
 * [Git clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
   **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
