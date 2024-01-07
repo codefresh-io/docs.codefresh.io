@@ -7,11 +7,12 @@ redirect_from:
 toc: true
 ---
 
->**ATTENTION**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
 We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance, which is now the default Runtime for GitOps. <br><br>
 The CLI-based installation for Hybrid GitOps is considered legacy. We will deprecate this installation mode permanently in the coming months.<br>
 You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
-
+{{site.data.callout.end}}
 
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
 
@@ -43,8 +44,10 @@ Choose the installation option that best aligns with your specific requirements 
   If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
   When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
   
->**ArgoCD password WARNING**:  
-  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.
+{{site.data.callout.callout_warning}}
+**ArgoCD password WARNING**  
+  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
+{{site.data.callout.end}}
 
 
 
@@ -111,7 +114,7 @@ See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/ma
 
 You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster.
 
->**NOTE**:
+>**NOTE**  
 If you already adopted all Argo Project CRDs, you can skip this part.
 
 
@@ -272,11 +275,12 @@ max-width="40%"
 Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.<br> 
   If the Helm installation is terminated with the error message: `Job has reached the specified backoff limit`, get more detailed information on the reason for the validation failure with:  
   `kubectl logs jobs/validate-values -n ${NAMESPACE}`, replacing `{NAMESPACE}` with the namespace of the Hybrid GitOps Runtime. 
-
+{{site.data.callout.end}}
 <br><br>
 
 
@@ -488,8 +492,9 @@ max-width="50%"
 
 {:start="3"}
 1. For OAuth2 authorization:
-  > **NOTE**:
+  > **NOTE**  
     If the application is not registered and you get an error, contact your admin for help.
+
       * Enter your credentials, and select **Sign In**.
       * If required, as for example with two-factor authentication, complete the verification.
 
@@ -516,8 +521,10 @@ Verify that you have an [access token from your Git provider with the correct sc
 
 This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
 If you already have added a Git user token, you can skip this step.  
+{{site.data.callout.end}}
 
 1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
 1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
@@ -529,7 +536,7 @@ If you already have added a Git user token, you can skip this step.
 Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.
 By doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
 
->**NOTE**:
+>**NOTE**  
 You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.
 
 
@@ -554,8 +561,10 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 ### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
 For GitOps with Argo CD, if you have Argo Rollouts also installed, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads. 
+{{site.data.callout.end}}
 
 1. Remove the duplicate Argo Rollouts controller:  
   `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
@@ -720,10 +729,11 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
 {:start="6"}
 1. For GitOps with Community Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller `deployment` to avoid having two controllers in the cluster.   
   
-  >**IMPORTANT**:  
+  {{site.data.callout.callout_warning}}
+  **IMPORTANT**  
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads.  
     `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
-
+  {{site.data.callout.end}}
 
 
 ### What to do next   
@@ -966,9 +976,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
 
 #### Valid TLS certificate
 For secure installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
-
+{{site.data.callout.end}}
 
 
 
@@ -1002,9 +1013,11 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
-  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
+{{site.data.callout.callout_tip}}
+**TIP**:  
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
 
 #### TCP support
@@ -1027,8 +1040,10 @@ spec:
 
 #### Create an alias to load balancer in route53
 
->**IMPORTANT**:  
-  The alias  must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Configure the alias _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 1. Make sure a DNS record is available in the correct hosted zone.
 1. _After_ Hybrid GitOps Runtime installation, in Amazon Route 53, create an alias to route traffic to the load balancer that is automatically created during the installation:
@@ -1080,9 +1095,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
-
+{{site.data.callout.end}}
 
 
 #### TCP support
@@ -1093,8 +1109,10 @@ Configure the ingress controller to handle TCP requests.
 
 
 #### Cluster routing service
->**IMPORTANT**:  
-  The cluster routing service must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Configure the cluster routing service _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 Based on the Hybrid GitOps Runtime version, you need to configure single or multiple `VirtualService` resources for the `app-proxy`, `webhook`, and `workflow` services.
 
@@ -1232,9 +1250,10 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
-
+{{site.data.callout.end}}
 
 
 #### TCP support
@@ -1277,8 +1296,10 @@ You will need to add this to the `ingress-master` when you have completed runtim
 
 
 #### Patch certificate secret
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
   The certificate secret must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 Patch the certificate secret in `spec.tls` of the `ingress-master` resource.
 The secret must be in the same namespace as the Hybrid GitOps Runtime.
@@ -1314,9 +1335,10 @@ Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNA
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**    
   Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
-
+{{site.data.callout.end}}
 
 
 #### TCP support
@@ -1332,7 +1354,7 @@ OR
 
 #### Provider-specific configuration
 
->**NOTE**:  
+>**NOTE**    
   The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
 <details>
@@ -1560,9 +1582,11 @@ Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
->**TIP**:  
-  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
+{{site.data.callout.callout_tip}}
+**TIP**    
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
 
 

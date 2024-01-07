@@ -51,13 +51,14 @@ Both Argo and Codefresh have examples and libraries of Workflow Templates you ca
 
 In the Delivery Pipeline wizard, we have our starter Workflow Template to use as a base, or the option to select an existing one, or copy and paste any Workflow Template, and then modify as needed. 
 
->**IMPORTANT**:  
->  If you select the starter Workflow Template or one of the example templates from the Codefresh Hub for Argo, it is converted to a standalone, independent pipeline workflow template.  
- > To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original starter or example Workflow Template are also not updated in the pipeline workflow template.  
-   
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+If you select the starter Workflow Template or one of the example templates from the Codefresh Hub for Argo, it is converted to a standalone, independent pipeline workflow template.  
+To avoid conflicts, the pipeline workflow template is not synced to the original Workflow Template. Any changes to the original starter or example Workflow Template are also not updated in the pipeline workflow template.  
+{{site.data.callout.end}} 
 
 
->**NOTE**:  
+>**NOTE**  
   To share artifacts between steps in workflows, and to view archived logs for completed workflows, you must [configure an artifact repository in Codefresh]({{site.baseurl}}/docs/workflows/configure-artifact-repository/).
  
 
@@ -78,9 +79,10 @@ Workflow Template arguments are the list of arguments described in the Workflow 
 ### Configure Trigger Conditions for events
 The **Trigger Conditions** tab in the Delivery Pipeline wizard collates the requirements to set up and configure entities for Argo Events. Here you select the event-source, the event of interest, the Git repositories to listen to for the event, and the sensor trigger for the event.  
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**    
   To create a Delivery Pipeline, you must have _at least one_ Trigger Condition.
-
+{{site.data.callout.end}}
 
 {% include 
    image.html 
@@ -99,7 +101,7 @@ Let's review the main entities in Trigger Conditions.
 
 ##### Git repositories 
 For every sensor trigger condition, you can select single or multiple Git repositories to which to listen to for the event. 
->**NOTE**:  
+>**NOTE**  
   Only those Git repos to which you have write-permissions are displayed. 
 
 ##### Event-sources and Events
@@ -107,7 +109,7 @@ Currently, we support GitHub as an event-source, and an extensive list of GitHub
 
 ##### Sensor trigger arguments  
 The sensor trigger arguments are identical to the Workflow Template arguments. If Workflow Template arguments have default values, these values are displayed for the corresponding Sensor arguments as well. 
->**NOTE**:  
+>**NOTE**  
 If values are defined for an argument both in the Workflow Template and in Trigger Conditions, the value defined in Trigger Conditions takes precedence. 
 
 You can override the default values or define custom values for trigger condition arguments through _parameterization_ and _Sprig template functions for Go_. For more information, see [Parameterization for Argo Events](https://argoproj.github.io/argo-events/tutorials/02-parameterization/){:target="\_blank"}, and [Sprig Function Documentation](http://masterminds.github.io/sprig/){:target="\_blank"}.
@@ -195,14 +197,17 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
   * **Trigger Name**: The template that defines the context of the trigger and the actual resources the sensor must execute. For example, the flow that will be run,`ci`.
 1. Select the **Codefresh Starter Template** or **Browse Existing Template**.  
 1. From the list of **Git Sources**, select the Git Source to which to commit the resources for this pipeline.  
-  > Only those Git Sources to which you have write permissions are displayed.   
+  >**NOTE**  
+    Only those Git Sources to which you have write permissions are displayed.   
     If you have multiple runtimes installed, the Git Source you select also determines the runtime on which the pipeline is executed.
 1. Select **Next**.
 1. If needed, select the Git Source, and then the Workflow Template to work with.  
   In the **Configuration** tab, **Workflow Templates** is selected. Our CI Starter Workflow Template is shown.   
   Copy and paste any Workflow Template you want to work with, or edit the starter template as needed.  
-  > Tip:  
-  >  Codefresh notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition.
+  {{site.data.callout.callout_tip}}
+  **TIP**  
+  Codefresh notifies you that you have uncommitted changes. The Commit button remains disabled until you define at least one Trigger Condition.
+  {{site.data.callout.end}}
   
   {% include 
    image.html 

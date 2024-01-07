@@ -9,7 +9,7 @@ toc: true
 Set up SSO for OneLogin using SAML in Codefresh.
 For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml).
 
->**NOTE**:  
+>**NOTE**  
   If you do not see SAML in the SSO list, please create a support ticket to enable SAML for your account.
 
 

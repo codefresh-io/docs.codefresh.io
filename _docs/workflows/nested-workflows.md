@@ -88,9 +88,10 @@ Once the parent workflow is submitted, the Summary tab of the step in the parent
 * Submit workflow template: In the parent workflow, the nested-workflow step has a link to the child workflow. In the child workflow, the step has a link to the parent template.
 * Create PR template: The child workflow indicates that it was triggered by the PR request. 
   
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   To navigate to the Workflows tab with step visualizations, select the workflow and then **View workflow details**.  
-
+{{site.data.callout.end}}
      
 ### Example: Submit template - parent workflow with link to child workflow
 

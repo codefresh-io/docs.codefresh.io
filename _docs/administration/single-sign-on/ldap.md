@@ -46,7 +46,7 @@ Make sure also that you know the scope of the search, that is, where users to se
 {:start="4"} 
 1. Select **+ Add**. LDAP users can now log in to Codefresh.
 
->**NOTE**:  
+>**NOTE**    
   Each user who logs in to Codefresh must:
   1. Have a defined email address on the LDAP server
   1. Use the same email address as defined on the LDAP server
@@ -55,8 +55,10 @@ Make sure also that you know the scope of the search, that is, where users to se
 ## Step 2: Synchronize teams with LDAP 
 Synchronize teams in Codefresh with LDAP using the Codefresh CLI.
 
->**TIP**:  
-  Team synchronization is implemented based on the SSO options configured for LDAP in Codefresh. 
+{{site.data.callout.callout_tip}}
+**TIP**  
+Team synchronization is implemented based on the SSO options configured for LDAP in Codefresh. 
+{{site.data.callout.end}}
 
 * Run the synchronize teams command:  
   `codefresh synchronize teams <client_name> --client-type ldap`  

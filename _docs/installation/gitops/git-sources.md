@@ -5,7 +5,8 @@ group: installation
 toc: true
 ---
 
->**NOTE**: This feature is currently in Beta.
+>**NOTE**  
+This feature is currently in Beta.
 
 A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. 
 
@@ -247,7 +248,7 @@ The diagram below is a visual representation of the above use case, illustrating
 ## Create a Git Source
 Create Standard or Restricted Git Sources for any provisioned GitOps Runtime.  You can then commit manifests of Argo CD applications to any of these Git Sources. 
 
->**NOTE**:  
+>**NOTE**    
 You must be in the List View for GitOps Runtimes to create Git Sources. 
 
 **Before you begin**  
@@ -327,7 +328,7 @@ Drill down on a GitOps Runtime in List View to see its Git Sources.
 ## Edit Git Source settings
 Edit an existing Git Source by changing the source and destination definitions, and included/excluded files.  
 
->**NOTE**:  
+>**NOTE**  
 You cannot change the name and type of the Git Source.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.

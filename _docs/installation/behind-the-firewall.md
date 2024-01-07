@@ -69,7 +69,7 @@ You can easily create pipelines that:
  Any of these pipelines will work out the box without extra configuration. In all cases,
  all data stays within the private local network and does not exit the firewall.
 
- >**INFO**:  
+ >**NOTE**  
  [Long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh Runner.
 
 
@@ -125,7 +125,7 @@ steps:
 
 Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
->**NOTE**:  
+>**NOTE**  
  Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
@@ -143,7 +143,7 @@ If you haven't installed the app-proxy, then adding a Git trigger is a two-step 
 1. First we set up a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
 
->**NOTE**:  
+>**NOTE**  
   To support triggers based on PR (Pull Request) events, it is mandatory to install `app-proxy`.
 
 For the Codefresh side, follow the usual instructions for creating a [basic Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
@@ -239,7 +239,7 @@ To connect a cluster that is behind the firewall follow the [connecting cluster 
 
 The cluster where the runner works on should have network connectivity with the cluster you wish to deploy to.
 
->**NOTE**:  
+>**NOTE**  
   The service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build Runner. The privileges needed by the Runner are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deployments/kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).

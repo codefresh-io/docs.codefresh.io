@@ -25,7 +25,8 @@ Currently two types of environments are supported (they look identical in the UI
 
 In any pipeline that implements a deployment, you can add an extra `env` property to instruct Codefresh on which environments are affected by that build. The first time that you run the build, the environment GUI screen is automatically populated with an entry for that environment. Any subsequents builds with then update the environment entry with build and deployment status.
 
->You can also create an environment manually from the GUI and then a pipeline will update it automatically if *ALL* properties of the environment match those described in the pipeline YAML.
+>**NOTE**  
+You can also create an environment manually from the UI, and a pipeline will update it automatically if *ALL* properties of the environment match those described in the pipeline YAML.
 
 
 ## Usage

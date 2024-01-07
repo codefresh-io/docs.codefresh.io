@@ -16,9 +16,10 @@ In addition, managed clusters registered to Hosted GitOps Runtimes must be confi
 
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
 If you do use these IPs, we **strongly recommend** that you monitor this page on a regular basis.
-
+{{site.data.callout.end}}
 
 
 
@@ -50,7 +51,7 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 54.160.88.80  
 - 72.44.39.224
 
->**NOTE**:  
+>**NOTE**    
 We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
  
 ## Codefresh IPs for Hosted GitOps Runtimes

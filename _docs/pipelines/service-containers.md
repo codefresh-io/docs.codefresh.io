@@ -11,7 +11,7 @@ toc: true
 
 Sometimes you wish to run sidecar containers in a pipeline that offer additional services for your builds. The most common scenario is launching services such as databases in order to accommodate [integration tests]({{site.baseurl}}/docs/testing/integration-tests/). Or you might wish to launch the application itself in order to run integration tests **against** it as part of the pipeline.
 
->**NOTE**: 
+>**NOTE**  
   While [composition steps]({{site.baseurl}}/docs/pipelines/steps/composition/) are still supported, the recommended way to run integrations tests going forward is with service containers. The underlying implementation is shared so check the composition documentation page for more available options
 and properties.
 
@@ -41,9 +41,10 @@ steps:
 
 This pipeline will run integration tests during the freestyle step called `my_integration_tests` and at that point a Redis instance will be available at hostname `my-redis-db-host` and port 6379. Note how in this example, the service container is placed at the root of the pipeline (as opposed to inside a specific step).  This ensures that the Redis instance is running for [the duration of the pipeline]({{site.baseurl}}/docs/pipelines/service-containers/#running-services-for-the-duration-of-the-pipeline).
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Service Containers are based on Docker Compose. This document does not have the complete list of available options available. Please refer to Docker Compose versions [2](https://docs.docker.com/compose/compose-file/compose-file-v2/){:target="\_blank"} and [3](https://docs.docker.com/compose/compose-file/){:target="\_blank"}, but not point releases such as 2.1.
-
+{{site.data.callout.end}}
 
 ## Viewing service containers
 
@@ -497,11 +498,12 @@ Sometimes however, and especially in legacy applications, your application might
 In that case, you can use the attribute `shared_host_network: true` on the services definition. Now all linked containers can access each other's services via `localhost`. 
 When `composition: ./docker-compose.yml` is used, this parameter is supported only in on-premises and hybrid environments. In cloud environments, for security reasons, this parameter is ignored.
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
   We recommend that you only use this option as a last resort. Hard coding `localhost` as a requirement in your services adds extra constraints to integration tests, especially in dynamic test environments.
+{{site.data.callout.end}}
 
-
-> **NOTE**:  
+>**NOTE**   
   The value of `shared_host_network` affects how you access service containers:  
   * To access all containers on `localhost`, set `shared_host_network` to `true`.
   * To access all containers by `name`, set `shared_host_network` to `false`.

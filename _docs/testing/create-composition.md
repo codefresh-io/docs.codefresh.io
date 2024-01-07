@@ -101,7 +101,8 @@ max-width="70%"
 
 {:start="5"}
 1. Click **Next**.
-  >We don’t support the `build` property of Docker Compose. We will replace it with images automatically using a pipeline that is automatically created.
+  >**NOTE**  
+  We don’t support the `build` property of Docker Compose. We will replace it with images automatically using a pipeline that is automatically created.
 
 {% include 
 image.html 
@@ -158,8 +159,10 @@ caption="Edit selected template"
 max-width="70%"
 %}
 
-> To launch this composition, click the rocket icon.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+To launch this composition, click the rocket icon.
+{{site.data.callout.end}}
 
 ### Empty composition
 Create a composition from scratch. 

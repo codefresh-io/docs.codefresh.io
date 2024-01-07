@@ -337,7 +337,8 @@ first.txt   second.txt
 
 This illustrates the side effects for both parallel steps that were executed on the same volume.
 
->It is therefore your responsibility to make sure that steps that run in parallel play nice with each other. Currently, Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps, (e.g. multiple steps writing at the same files), the final behavior is undefined. It is best to start with a fully sequential pipeline, and use parallelism in a gradual manner if you are unsure about the side effects of your steps
+>**NOTE**  
+It is your responsibility to make sure that steps that run in parallel play nicely with each other. Currently, Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps, (e.g. multiple steps writing in the same files), the final behavior is undefined. It is best to start with a fully sequential pipeline, and use parallelism in a gradual manner if you are unsure about the side effects of your steps.
 
 ## Implicit parallel steps
 >**NOTE**  

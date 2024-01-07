@@ -21,7 +21,7 @@ Authorize Git access to GitOps Runtimes with OAuth2 if your account admin has se
 
 If you have access to more than one GitOps Runtime in the same or in different accounts, you can use the same Git user token for all the Runtimes you have access to. _You must however authorize access for each GitOps Runtime individually_.  
 
->**NOTE**:  
+>**NOTE**    
   For OAuth2, the administrator pre-configures the permissions and expiry date. Once you supply your credentials for authorization, you are automatically directed to the Git Personal Tokens page. 
 
 **Before you begin**  
