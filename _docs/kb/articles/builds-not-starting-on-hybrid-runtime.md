@@ -37,6 +37,6 @@ kubectl -n codefresh-runtime get pod engine-<build_id> -o yaml
 
 {% endraw %}
 
-* If errors are still not clear, please use the following script with the build to gather diagnostics: [https://github.com/codefresh-support/hybrid-runner-support](https://github.com/codefresh-contrib/venona-support)
+* If errors are still not clear, please use the following script with the build to gather diagnostics: [https://github.com/codefresh-support/hybrid-runner-support](https://github.com/codefresh-support/hybrid-runner-support)
 
 Please include the above information and open a ticket with our Support team.
