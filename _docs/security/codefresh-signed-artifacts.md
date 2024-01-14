@@ -26,15 +26,15 @@ Verify the authenticity of forked Argo Project images for Codefresh GitOps Runti
 1. Find the release of the forked Argo Project component you want to verify.  
   For example, Argo CD images in [https://github.com/codefresh-io/argo-cd/releases](https://github.com/codefresh-io/argo-cd/releases){:target="\_blank"}. 
 1. Install [Cosign](https://docs.sigstore.dev/system_config/installation/){:target="\_blank"}.
-1. Run:
+1. Run:  
   `cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" <REGISTRY>/<COMPONENT>:<TAG>`  
 
-  where:  
-  * `<REGISTRY>` is the registry containing the forked Argo image to verify, for example, `quay.io/codefresh`.
-  * `<COMPONENT>` is the Argo CD component to verify, for example, `argocd`. 
-  * `<TAG>` is the version of the forked Argo image to verify, for example, `v2.8.1-cap-CR-21281-new-reporter`.
+    where:  
+    * `<REGISTRY>` is the registry containing the forked Argo image to verify, for example, `quay.io/codefresh`.
+    * `<COMPONENT>` is the Argo CD component to verify, for example, `argocd`. 
+    * `<TAG>` is the version of the forked Argo image to verify, for example, `v2.8.1-cap-CR-21281-new-reporter`.
 
-**Example of verification with Cosign**  
+###### Example of verification with Cosign
 ``` 
 `$ cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" quay.io/codefresh/argocd:v2.8.1-cap-CR-21281-new-reporter`  
 
