@@ -394,8 +394,13 @@ In both cases you can copy to clipboard the yaml shown using the button at the t
 
 ### Viewing pipeline metrics
 
-Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources
-consumed by your pipeline.
+Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources consumed by your pipeline.
+
+
+>**NOTE**  
+When your pipeline includes at least one step that **does not use buildx**, memory usage is not displayed, _both for the build and for individual steps_.  
+For information on `buildx`, see [Fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields) in the Build step.
+
 
 #### Pipeline metrics 
 
@@ -483,7 +488,7 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
-##### Restart from step view
+#### Restart from step view
 * Click the pipeline to view its steps. 
 * Go to the failed step, right-click and then select **Restart from this step**.
 
