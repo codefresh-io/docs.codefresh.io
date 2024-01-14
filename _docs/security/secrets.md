@@ -42,8 +42,10 @@ For more details, you can read our [blog post for sealed secrets](https://codefr
 
 The Sealed Secrets Controller is fully managed by the Codefresh GitOps Runtime, and encryption and decryption of secrets are fully automated.
 
-> **WARNING**!  
-  DO NOT tamper with the Controller or its private/public keys in any way. 
+{{site.data.callout.callout_warning}}
+**WARNING**  
+DO NOT tamper with the Controller or its private/public keys in any way. 
+{{site.data.callout.end}}
 
 The applications you deploy with Codefresh should also have no knowledge of the Controller. All secrets that you need in your own applications should be accessed using the standard Kubernetes methods.
 
