@@ -378,16 +378,16 @@ Use this technique if you have complex expressions that have issues with the `cf
 ## Export external link with `CF_OUTPUT_URL`
 
 Codefresh has native support to trigger child builds from parent builds, and navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).
+You can also navigate from the child build back to the parent build through the `CF_OUTPUT_URL` variable.
 
-By adding a step with an in-step link, you can navigate from the child build back to the parent build through the `CF_OUTPUT_URL` variable.  
-Since all the information can be inferred from the child-build itself, there's nothing to add or modify in the parent-build.
-Simply add a step to the child-build with an in-step link to the parent build.  
+Simply add a step to the child build with an in-step link to the parent build. You don't need to modify the parent build.  
 
-
-
-##### `cf_predecessor` annotation
+{{site.data.callout.callout_tip}}
+**TIP**  
 Every build executed by a call to a `codefresh-run` plugin is enriched with a special annotation that precisely identifies its parent, the `cf_predecessor` annotation.  
-You can get the ID of the parent-build by querying the value of this annotation in the child-build.
+You can get the ID of the parent build by querying the value of this annotation in the child build.
+{{site.data.callout.end}}
+
 
 ##### Add `CF_OUTPUT_URL` with `cf_export `
 Create a link to the parent-build using `cf_export` and `CF_OUTPUT_URL`. 
@@ -397,7 +397,7 @@ Create a link to the parent-build using `cf_export` and `CF_OUTPUT_URL`.
 
 Add the following step at the beginning of the pipeline. 
 
->**NOTE**:  
+>**NOTE**  
   The name of the variable exported by `cf_export` must have the format `<name|key_of_step>_CF_OUTPUT_URL`. It's value is the URL of the parent build to link to.
 
 {% raw %}
