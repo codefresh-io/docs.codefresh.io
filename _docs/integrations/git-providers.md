@@ -180,6 +180,7 @@ If you need additional permission for your integration, use the Manual Creation 
      1. Define the **Homepage URL** as `http://www.codefresh.io`.
      1. In the **Webhook** section, clear the **Active** checkbox.
      1. In the **Permissions > Repository permissions** section, select required access levels for the following:   
+          * **Contents**: Read-only
           * **Issues**: Read-only
           * **Metadata**: Read-only
           * **Pull requests**: Read-only
