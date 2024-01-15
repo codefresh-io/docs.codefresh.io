@@ -236,7 +236,7 @@ As a one-time action, define the Shared Configuration Repository and the Git pro
 
 The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
-**Shared Configuration Repository** 
+**Shared Configuration Repository**  
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 **Git provider**  
