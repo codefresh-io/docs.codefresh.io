@@ -176,19 +176,18 @@ If you need additional permission for your integration, use the Manual Creation 
 1. Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. 
 1. Click **New GitHub App**.
 1. Do the following in the New GitHub App screen:
-     1. Give an arbitrary name to your app (e.g. codefresh-integration)
-     1. Fill *Homepage URL* with `http://www.codefresh.io`
-     1. Uncheck the *Active* checkbox under the Webhook section
-     1. In the *Repository permissions* section give the minimum of
-       * **Contents** - read
-       * **Issues** - read
-       * **Metadata** - read
-       * **Pull requests** - read
-       * **Webhooks** - read, write
-       * **Commit statuses** - read, write
-       * **Email addresses** - read 
-     1. Click the *Create GitHub app* button.
-
+     1. Give an arbitrary name to your app, for example, `codefresh-integration`.
+     1. Define the **Homepage URL** as `http://www.codefresh.io`.
+     1. In the **Webhook** section, clear the **Active** checkbox.
+     1. In the **Permissions > Repository permissions** section, select required access levels for the following:   
+          * **Contents**: Read-only
+          * **Issues**: Read-only
+          * **Metadata**: Read-only
+          * **Pull requests**: Read-only
+          * **Webhooks**: Read and write
+          * **Commit statuses**: Read and write
+     1. In the **Account permissions > Email addresses** section, select Read-only as the access level.
+     1. Click **Create GitHub app**.
 1. In the next screen, do the following:
      1. Note down the **App ID** number under the About section.
      1. Click **Generate a private key**,  and save the file locally.
