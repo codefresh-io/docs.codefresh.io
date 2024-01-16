@@ -32,20 +32,20 @@ Here is a visual representation of the CI/CD flow between the Runner in the cust
 
 The advantages for this scenario are multi-fold: 
 
-**Regarding platform maintenance** 
+##### Regarding platform maintenance
 
  1. Codefresh is responsible for the heavy lifting for platform maintenance, instead of the customer.
  1. Updates to the UI, build engine, integrations etc., happen automatically, without any customer involvement.
  1. Actual builds run in the customer premises under fully controlled conditions.
  1. Codefresh Runner is fully automated. It handles volume claims and build scheduling on its own within the Kubernetes cluster it is placed.
 
-**Regarding security of services**
+##### Regarding security of services
 
  1. Pipelines can run in behind-the-firewall clusters with internal services.
  1. Pipelines can use integrations (such as Docker registries) that are private and secure.
  1. Source code does not ever leave the customer premises.
 
-**Regarding firewall security**
+##### Regarding firewall security
 
  1. Uni-directional, outgoing communication between the Runner and Codefresh. The Runner polls the platform for jobs. 
  1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
@@ -69,7 +69,7 @@ You can easily create pipelines that:
  Any of these pipelines will work out the box without extra configuration. In all cases,
  all data stays within the private local network and does not exit the firewall.
 
- >**INFO**:  
+ >**NOTE**  
  [Long-running compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) (preview test environments) are not yet available via the Codefresh Runner.
 
 
@@ -125,7 +125,8 @@ steps:
 
 Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
->Note that currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
+>**NOTE**  
+ Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
@@ -142,7 +143,8 @@ If you haven't installed the app-proxy, then adding a Git trigger is a two-step 
 1. First we set up a webhook endpoint in Codefresh.
 1. Then we create the webhook call in the side of the the GIT provider.
 
-> To support triggers based on  PR (Pull Request) events, it is mandatory to install `app-proxy`.
+>**NOTE**  
+  To support triggers based on PR (Pull Request) events, it is mandatory to install `app-proxy`.
 
 For the Codefresh side, follow the usual instructions for creating a [basic Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
@@ -237,7 +239,8 @@ To connect a cluster that is behind the firewall follow the [connecting cluster 
 
 The cluster where the runner works on should have network connectivity with the cluster you wish to deploy to.
 
->Notice that the service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build runner. The privileges needed by the runner are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
+>**NOTE**  
+  The service account used in the cluster configuration is completely independent from the privileges granted to the Codefresh build Runner. The privileges needed by the Runner are only used to launch Codefresh pipelines within your cluster. The Service account used in the "custom provider" setting should have the needed privileges for deployment.
 
 Once your cluster is connected you can use any of the familiar deployment methods such as the [dedicated deploy step]({{site.baseurl}}/docs/deployments/kubernetes/) or [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 

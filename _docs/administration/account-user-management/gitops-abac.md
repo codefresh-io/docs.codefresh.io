@@ -27,6 +27,8 @@ For each rule, you must select or define:
 * The action or actions permitted for the entity, with at least one action being mandatory
 * The attribute or attributes determining where access is permitted
 
+<br>
+
 **How to**
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.

@@ -16,9 +16,11 @@ The Home Dashboard includes three different dashboards:
 * **Argo Workflows Dashboard**  
   Displays aggregated metrics on Argo Workflows and Delivery Pipelines to identify trends.
  
- >**TIP**  
+ {{site.data.callout.callout_tip}}
+  **TIP**  
   The Argo Workflows dashboard is displayed only when pipelines with Argo Workflows are enabled for the account. 
   Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.  
+{{site.data.callout.end}}
 
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
@@ -142,18 +144,20 @@ Displays up to five of the most active applications and their current deployment
 ## Argo Workflows Dashboard
 Displays aggregated chart views for the selected date range, and insights into active Delivery Pipelines triggered from Workflows. An active Delivery Pipeline is one with at least one active or completed Argo Workflow. 
 
->If you can't see this dashboard, go to the [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}, and toggle **Enable pipelines with Argo Workflows** to ON.
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you can't see this dashboard, go to the [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}, and toggle **Enable pipelines with Argo Workflows** to ON.
+{{site.data.callout.end}}
 
 Use the Argo Workflows dashboard to:  
 
-1. Compare aggregrated data for the date range with the same data for the reference period to validate improvements and identify trends
+1. Compare aggregated data for the date range with the same data for the reference period to validate improvements and identify trends
 1. Identify performance issues in specific Delivery Pipelines, both in terms of number of executions and execution duration
 1. Drill down on a specific Delivery Pipeline for additional analysis 
 
 
-
-
-> Delivery Pipeline data is shown for Hybrid GitOps Runtimes.
+>**NOTE**  
+Delivery Pipeline data is shown for Hybrid GitOps Runtimes.
 
 
 
@@ -202,7 +206,7 @@ Filters narrow the scope of data, allowing you to focus on the information you w
 
 KPI metrics for active Delivery Pipelines such as number of executions, duration, and success rates, are displayed as aggregated averages, day-by-day averages, and individual averages. 
 
-**Delivery Pipeline metric displays**
+##### Delivery Pipeline metric displays
 
 * Aggregated averages
   These are the average percentages compared to the reference period, and indicate general trends. 
@@ -212,7 +216,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   The tables display granular metrics for individual Delivery Pipelines, organized by ten of the **Most Active** (number of executions), and ten of the **Longest** running (average duration) ones. 
   You can drill down on any Delivery Pipeline to go to the pipeline's dashboard with Step Analaytis, and details on the Workflows, Configuration, Manifests, and Update History.
 
-**Delivery Pipeline metrics**
+##### Delivery Pipeline metrics
 
 * **Success Rate**  
   The average number of Delivery Pipelines that completed execution successfully, in percentage.
@@ -255,9 +259,10 @@ Use the Pipelines dashboard to:
 Filters narrow the scope of aggregated data, allowing you to focus on the information you want to see.  
 Unless otherwise indicated, all filters support multi-selection.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
 Different filter types have an AND relationship.
-
+{{site.data.callout.end}}
 
 {: .table .table-bordered .table-hover}
 |  Filter          |  Description|  
@@ -274,7 +279,7 @@ Different filter types have an AND relationship.
 
 ### Pipeline success rate
 The pipelines that completed execution successfully, from the total number of pipelines executed within the selected date range, as percentage. 
-> **TIP**:  
+> **NOTE**  
   Pipelines in Pending status are excluded from the Success Rate calculations.
 
 
@@ -283,18 +288,20 @@ The pipelines that completed execution successfully, from the total number of pi
 The time it takes for a pipeline workflow to complete the build, calculated from the total number of pipelines executed within the selected date range, unless you apply additional filters. 
 You can switch between average (the default), and percentile views. 
 
-**Duration as average or percentile**  
+##### Duration as average or percentile 
 The average duration calculation shows the duration across all the pipelines within the selected date range. 
 To better understand the performance over time, switch to duration by the median (P-50) or the 90th (P-90) percentiles. 
 
 The comparison percentage is derived from the reference time period. The reference period corresponds to the same length of time that precedes selected the date range. <br>
 
-**Pipeline duration breakdown**  
+##### Pipeline duration breakdown 
 The workflow of every pipeline can be divided into phases, some of which apply to all pipelines, while others depend on the settings configured for each pipeline. The initialization phase in the workflow is common to all pipelines. Other phases such as pending approval to continue execution, and pending execution due to concurrency limits, depend on the settings configured for each pipeline.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
  Each phase is color-coded for easy visualization. To show/hide phases in the chart, click the name of the phase in the legend. 
- 
+{{site.data.callout.end}}
+
 {% include image.html
   lightbox="true"
   file="/images/pipeline/dashboard/duration-all-stages-versus-selected.png"
@@ -316,7 +323,7 @@ The workflow of every pipeline can be divided into phases, some of which apply t
 *  **Pending concurrency policy**  
   The average duration of pipeline workflows pending execution due to the concurrency limits configured for the pipelines. Workflows with pipeline, trigger, and branch concurrency limits are included in the calculation.
   
-  >**TIP**:
+  >**NOTE**  
    Pipeline workflows pending execution due to concurrency policies are affected by the global account settings or the pipeline's settings for Pending approval.
                          
 *  **Delayed due to license limit**  
@@ -344,7 +351,7 @@ The list view shows the following information.
 
 <br>
 
-**Correlate scatter chart with list view**  
+##### Correlate scatter chart with list view
 
 Identify outliers in terms of executions and duration in the scatter chart map, and correlate with the list view. For example, a pipeline with more than 174 executions, that always exceeds 2 minutes in duration, can indicate potential for improvements.
 
@@ -364,7 +371,6 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 
 ## Related articles
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
-
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)   

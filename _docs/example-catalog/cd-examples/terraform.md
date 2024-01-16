@@ -23,7 +23,8 @@ max-width="80%"
 %}
 
 
-> Note that this page explains how to run Terraform inside a Codefresh pipeline. If you want to use Terraform to manage Codefresh itself see the [Terraform provider](https://registry.terraform.io/providers/codefresh-io/codefresh/latest).
+>**NOTE**  
+This page explains how to run Terraform inside a Codefresh pipeline. If you want to use Terraform to manage Codefresh itself see the [Terraform provider](https://registry.terraform.io/providers/codefresh-io/codefresh/latest).
 
 ## The example Terraform project
 
@@ -83,7 +84,8 @@ This pipeline does the following:
 1. Creates a pipeline variable with the path of the Google service account by running [cf_export]({{site.baseurl}}/docs/pipelines/variables/#exporting-environment-variables-from-a-freestyle-step). 
 1. Creates the VM on Google cloud by running `terraform init/apply`.
 
->For simplicity, we auto-approve the Terraform plan in the example pipeline. In a production pipeline, you would instead use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan before actually applying it.
+>**NOTE**  
+For simplicity, we auto-approve the Terraform plan in the example pipeline. In a production pipeline, you would instead use an [approval step]({{site.baseurl}}/docs/pipelines/steps/approval/) to inspect the plan before actually applying it.
 
 The pipeline needs a [single environment variable]({{site.baseurl}}/docs/pipelines/variables/) that holds the content of the service account.
 

@@ -12,7 +12,7 @@ Clones a Git repository to the filesystem.
 
 A pipeline can have any number of Git clone steps (even none). You can check out code from any private or public repository. Cloning a repository is not constrained to the trigger of a pipeline. You can trigger a pipeline from a commit that happened on Git repository A while the pipeline is checking out code from Git Repository B.
 
->Notice that if you are an existing customer before May 2019, Codefresh will automatically checkout the code from a [connected Git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository. In this case an implicit Git clone step is included in your pipeline. You can still override it with your own git clone step as explained in this page.
+<!--- >Notice that if you are an existing customer before May 2019, Codefresh will automatically checkout the code from a [connected Git repository]({{site.baseurl}}/docs/integrations/git-providers/) when a pipeline is created on that repository. In this case an implicit Git clone step is included in your pipeline. You can still override it with your own git clone step as explained in this page.  -->
 
 ## Usage
 
@@ -62,7 +62,7 @@ step_name:
 | `credentials`  | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .            | Optional                  |
 |`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
-| `strict_fail_fast`                              | Specifies how to report the Build status `fail_fast` is set to `false`. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:  Returns a Build status of failed on step failure.</li> <li><code class="highlighter-rouge">false</code>: Returns a Build status of successful regardless of step failures.</li></ul>{:/}**NOTE**: <code class="highlighter-rouge">strict_fail_fast</code> does not impact the Build status reported for parallel steps with <code class="highlighter-rouge">fail_fast</code> enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
+| `strict_fail_fast`   |Specifies how to report the Build status when `fail_fast` is set to `false`.<br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
 | `when`      | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in the [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.   | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-Step Operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).   | Optional   |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).  | Optional                  |
@@ -71,6 +71,7 @@ step_name:
 -  Working Directory
 
 {{site.data.callout.callout_info}}
+**NOTE**  
 If you want to extend the git-clone step you can use the freestyle step. Example how to do it you can find [here]({{site.baseurl}}/docs/example-catalog/ci-examples/git-clone-private-repository-using-freestyle-step/).
 {{site.data.callout.end}}
 
@@ -80,7 +81,8 @@ The easiest way to use a Git clone step is to use your default Git provider as c
 
 Here is an example of a pipeline that will automatically check out the repository that triggered it (i.e. a commit happened on that repository).
 
->Notice that the name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin). This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
+>**NOTE**  
+  The name of the clone step is `main_clone`. This will automatically set the working directory of all other steps that follow it **inside** the folder of the project that was checked out. This only applies to [built-in]({{site.baseurl}}/docs/pipelines/steps/#built-in-steps) Codefresh steps and not [custom plugins]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin). This is normally what you want for a pipeline that only checks out a single project. If you use any other name apart from `main_clone` the working directory for all subsequent steps will not be affected and it will default on the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) which is the [parent folder]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code) of checkouts.
 
 
 
@@ -276,7 +278,7 @@ When defined:
 * The `timeout` is activated at the beginning of the step, before the step pulls images.
 * When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
 
->**NOTE**:  
+>**NOTE**  
 To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
 
 Here's an example of the `timeout` field in the step:

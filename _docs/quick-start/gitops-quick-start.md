@@ -22,9 +22,7 @@ Hosted GitOps Runtimes are hosted on a Codefresh cluster and managed by Codefres
 1. [Provision a Hosted GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted)  
   Provision the Hosted GitOps Runtime with a single click, and complete the setup for your hosted environment.  
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Hybrid
 Hybrid GitOps Runtimes are hosted on a customer cluster and managed by the customer. You can provision multiple Hybrid GitOps Runtimes in the same account.  

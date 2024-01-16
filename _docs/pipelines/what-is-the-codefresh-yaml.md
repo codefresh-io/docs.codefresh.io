@@ -75,7 +75,7 @@ Each step produces a resource, which you can [reference](https://github.com/code
 
 ##### Variables
 
-Steps chaining and referencing is possible due to implementation of variables in the YAML file - read more on relevant [section]({{site.baseurl}}/docs/pipelines/variables/).
+You can add variables in the YAML file to chain and reference steps and referencing is possible due to implementation of variables. See [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/).
 
 
 {: .table .table-bordered .table-hover}
@@ -172,7 +172,7 @@ Sometimes you want to retry a step that has a problem. Network hiccups, transien
 
 Codefresh allows you to retry any of your steps with the built-in syntax:
 
-  `yaml`
+`yaml`
 {% highlight yaml %}
 {% raw %}
 step-name:
@@ -184,18 +184,21 @@ step-name:
 {% endraw %}
 {% endhighlight %}
 
-The `retry:` block has the following parameters:
 
-  * `maxAttempts` defines how many times this step will run again if there are execution errors (default is 1 and the Max. is 10).
-  * `delay` is the number of seconds to wait before each attempt (default is 5 seconds and the Max. is 60 seconds).
-  * `exponentialFactor` defines how many times the delay should be multiplied by itself after each attempt (default is 1 and Max. is 5).
+The `retry:` block has the following parameters, all of which are optional:
+  * `maxAttempts` defines the maximum number of retry attempts for the step if there are execution errors, and can range from 1 (the default), to a maximum of 10.
+  * `delay` is the interval in seconds between retries, and can range from a minimum of 5 (the default), to a maximum of 60 seconds.
+  * `exponentialFactor` is the rate by which to exponentially increase the `delay` between each retry attempt, and can be from 1 (the default) to a maximum of 5. When the `exponentialFactors` is greater than 1, each subsequent delay is a multiple of the previous one. 
 
-All parameters are optional. The exponentialFactor works like this:
-* exponentialFactor=1, delay=5 => each time wait 5 seconds before trying again, no matter the number of attempts.
-* exponentialFactor=2, delay=5 => first retry will have a delay of 25 seconds, third will have 125 and so on.
+The `exponentialFactor` works like this:
+* `exponentialFactor=1` and `delay=5` maintains a constant 5-second interval between each retry, regardless of the number of retries.
+* `exponentialFactor=2` and `delay=5` exponentially increases the interval between retries, based on the preceding interval:
+  * The first retry has a delay of 5^2 = 25 seconds
+  * The second retry has a delay of 25^2 = 625 seconds
+  * The same pattern continues for subsequent retries
 
 
-Here is a full example:
+Here is a complete example:
 
   `codefresh.yml`
 {% highlight yaml %}

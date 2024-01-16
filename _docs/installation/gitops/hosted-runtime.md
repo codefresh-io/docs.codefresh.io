@@ -38,7 +38,8 @@ caption="Hosted GitOps Runtime setup"
 max-width="80%"
 %}
 
-  >You can provision a single Hosted GitOps Runtime per Codefresh account.
+  >**NOTE**  
+  You can provision a single Hosted GitOps Runtime per Codefresh account.
 
 ## Before you begin
 * Set up integrations with the Git provider for the Hosted GitOps Runtime
@@ -71,7 +72,10 @@ max-width="80%"
   * In the Codefresh UI, click the **Settings** icon on the toolbar.
   * From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtime**.
   * Select **Hosted Runtime** and click **Add**.
-  >An account can be provisioned with a single Hosted GitOps Runtime. If you have already provisioned a Hosted GitOps Runtime for your account, the Hosted GitOps Runtime option is disabled.
+    {{site.data.callout.callout_tip}}
+    **TIP**  
+    An account can be provisioned with a single Hosted GitOps Runtime. If you have already provisioned a Hosted GitOps Runtime for your account, the Hosted GitOps Runtime option is disabled.
+    {{site.data.callout.end}}
   * Continue from _step 3_. 
 
 {:start="3"}
@@ -88,8 +92,11 @@ caption="Runtime components for Hosted GitOps Runtime"
 max-width="70%"
 %}
 
-> You can see that there are two steps to complete Hosted GitOps setup.  
+{{site.data.callout.callout_tip}}
+**TIP**  
+  You can see that there are two steps to complete Hosted GitOps setup.  
   The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
+{{site.data.callout.end}}
 
 If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
 
@@ -192,7 +199,8 @@ max-width="40%"
 
 {:start="3"}
 1. Optional. If required for your Git provider, select the **Git Organization for which to create the repos**.
-  >If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
+  >**NOTE**  
+  If the organization does not appear in the list, you need to authorize access to it. See [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
 1. Click **Create**.
   Codefresh creates the two Git repositories in the paths shown.
 
@@ -209,7 +217,6 @@ max-width="50%"
 {:start="5"}
 1. Verify that both repositories have been created in your Git account.  
 
-  Shared Configuration Repo
   
   {% include
 image.html
@@ -221,17 +228,7 @@ caption="Shared Configuration Repository in Git"
 max-width="70%"
 %}
 
-  Runtime Git Source repo
 
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hosted-git-shared-repo.png"
-url="/images/runtime/hosted-git-shared-repo.png"
-alt="Shared Configuration Repository in Git"
-caption="Shared Configuration Repository in Git"
-max-width="70%"
-%}
 
 {:start="6"}  
 1. Optional. To see your tokens, click **View Tokens**. 
@@ -323,7 +320,7 @@ See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integratio
 
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)

@@ -42,13 +42,16 @@ View Runtime components and information in [List or Topology view formats](/#git
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log) -->
 
 
-> **TIP**:
->Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.callout_tip}}
+**TIP**  
+Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.end}}
 
->**WARNING**:
+{{site.data.callout.callout_warning}}
+**WARNING**
 Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.
 Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
-
+{{site.data.callout.end}}
 
 
 
@@ -110,7 +113,7 @@ Here is a description of the information in the Topology view.
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
 |**Runtime**             | ![](../../../../images/icons/runtime-topology-name.png?display=inline-block) the provisioned Runtime. <br>Hybrid Runtimes display the name of the K8s API server endpoint with the cluster. <br>Hosted Runtimes display 'Codefresh hosted'.  |
-|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
+|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
@@ -123,8 +126,10 @@ The upgrade procedure differs depending on whether the GitOps Runtime has been c
 
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
->The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -187,10 +192,13 @@ dependencies:
 Provisioned GitOps Runtimes require valid Git Runtime tokens at all times to authenticate and authorize the Runtime.
 The Git Runtime token differs from the Git user token which is a personal access token unique to each user. As such, you can use the same Git Runtime token for multiple Runtimes.
 
->**TIP**:
+{{site.data.callout.callout_tip}}
+**TIP**  
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
+{{site.data.callout.end}}
 
-**When to update**
+
+**When to update**  
 If your Git Runtime token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
 
 Otherwise, you have to update Git tokens in the following situations:
@@ -235,8 +243,8 @@ The methods for updating any Git token are the same regardless of the reason for
 
 {:start="6"}
 1. For OAuth2 authorization:
-  >**NOTE**:
-  >If the application is not registered, you get an error. Contact your admin for help.
+  >**NOTE**  
+  If the application is not registered, you get an error. Contact your admin for help.
 
       * Enter your credentials, and select **Sign In**.
       * If required, as for example if two-factor authentication is configured, complete the verification.
@@ -275,7 +283,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 
->**NOTE**:
+>**NOTE**  
 When SSH is configured for a GitOps Runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
 **SSH keys**
@@ -391,7 +399,8 @@ Deep Links is an Argo CD feature that redirects users to third-party application
 In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo where you installed the Hybrid GitOps Runtime.
 When configured, deep links are displayed in the application's Current State tab in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
 
->Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
+>**NOTE**  
+Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
 
 
 
@@ -433,8 +442,10 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 ## (Helm Hybrid GitOps) Remove GitOps Runtimes
 Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
 
->The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -551,7 +562,7 @@ Logs are available for completed Runtimes, both for the runtime and for individu
 
 Log files include events from the date of the application launch, with the newest events listed first.
 
-<br>
+
 
 ### Download logs for GitOps Runtimes
 Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
@@ -590,9 +601,7 @@ Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz
 {:start="5"}
 1. Open a log file with the text editor of your choice.
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### View/download logs for Runtime components
 View online logs for any Runtime component, and if needed, download the log file for offline viewing and analysis.
@@ -653,9 +662,7 @@ Restoring the runtime:
   `ingressController`
   `ingressHost`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Restore a Hybrid GitOps Runtime
 Reinstall the Hybrid Runtime from the existing installation repository to restore it to the same or a different cluster.
@@ -699,9 +706,7 @@ Reinstall the Hybrid Runtime from the existing installation repository to restor
 1. If needed, create a new Git integration:
   `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Ingress example
 This is an example of the `ingress.yaml` for `workflows`.
@@ -770,8 +775,8 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
 
 

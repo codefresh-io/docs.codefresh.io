@@ -12,7 +12,7 @@ When you migrate the CLI-based Runtime, the Git Sources, external clusters, and 
 
 The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
 
->**NOTE**:  
+>**NOTE**  
 Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI version 0.1.57 and higher. 
 
 ## Before you begin
@@ -31,13 +31,14 @@ Before migrating the CLI-based Runtime and installing the Helm-based Runtime, re
 
 The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
 
->TIP:  
+{{site.data.callout.callout_tip}}
+**TIP**  
 For info on customizing options for Argo components in the `values.yaml`, check out the following:  
->[Argo CD](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-cd/README.md){:target="\_blank"}  
->[Argo Events](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-events/README.md){:target="\_blank"}  
->[Argo Workflows](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-workflows/README.md){:target="\_blank"}  
->[Argo Rollouts](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-rollouts/README.md){:target="\_blank"} 
-
+* [Argo CD](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-cd/README.md){:target="\_blank"}  
+* [Argo Events](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-events/README.md){:target="\_blank"}  
+* [Argo Workflows](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-workflows/README.md){:target="\_blank"}  
+* [Argo Rollouts](https://github.com/codefresh-io/argo-helm/blob/argo-cd/charts/argo-rollouts/README.md){:target="\_blank"} 
+{{site.data.callout.end}}
 
 
 
@@ -101,14 +102,15 @@ You can also run the install command by applying the `values.yaml` file with the
 **values.yaml validation**    
 Before initiating the installation, Codefresh automatically validates the `values.yaml` file. If the supplied values are incorrect,Codefresh terminates the installation. For troubleshooting details, see [Job has reached the specified backoff limit error during Helm installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/#job-has-reached-the-specified-backoff-limit-error-during-helm-installation).
  
+<br>
 
-<br><br>
 
-
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
 **Runtime Name** and **Namespace**  
 The name of the Helm-based Runtime _must be identical_ to that of the CLI-based Runtime.  
 The `namespace` is required only if it is different from the Runtime name.  
+{{site.data.callout.end}}
 
 **Install by applying `values.yaml`**  
 Run this command to install the GitOps Helm Runtime by applying `values.yaml`. Remember to replace with the correct name of the file if needed. 

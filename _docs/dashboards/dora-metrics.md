@@ -38,7 +38,7 @@ max-width="100%"
 Use filters to define the exact subset of Argo CD applications you are interested in. All filters support auto-complete and multiselect. 
 More than one option within the same filter type has an OR relationship. Multiple filter types when defined share an AND relationship.  
 
-> **NOTES**:  
+> **NOTES**  
 When no filters are defined, all metrics are shown for the last 90 days.  
 To view filters that are not displayed, click **More filters**. 
 
@@ -50,9 +50,6 @@ To view filters that are not displayed, click **More filters**.
 * **Products**: Show metrics from applications within the specified [Product(s)]({{site.baseurl}}/docs/dashboards/gitops-products/).
 * **Environments**: Show metrics from applications within the specified [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 * **App Groups**: Show metrics from applications within the specified [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
-
-
-
 
 
 ## Metrics for favorite applications
@@ -76,8 +73,10 @@ In addition, you can select the granularity for each graph:
 * Weekly
 * Monthly
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Remember that the graphs for the DORA metrics reflect metrics of application deployments, not workflows. 
+{{site.data.callout.end}}
 
 ### Deployment Frequency
   The frequency at which applications are deployed to production, including both successful (Healthy) and failed (Degraded), deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  

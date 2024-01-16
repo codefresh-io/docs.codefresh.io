@@ -21,7 +21,7 @@ Usually, you'll want to define a branch condition, be it of the type ```ignore``
 
 Here are some examples:
 
-Only execute for the ```master``` branch:
+### Only execute for the `master` branch
   
   `only-master-branch.yml`
 {% highlight yaml %}
@@ -36,7 +36,9 @@ build-step:
         - master
 {% endhighlight %}
 
-Only execute for branches whose name begins with ```FB-``` prefix (feature branches):
+### Only execute for feature branches
+
+Only execute for branches whose name begins with `FB-` prefix, (feature branches):
 
   `only-feature-branches.yml`
 {% highlight yaml %}
@@ -51,7 +53,8 @@ build-step:
         - /^FB-.*/i
 {% endhighlight %}
 
-Ignore the develop branch and master branch:
+### Ignore specific branches 
+Ignore the development branch and master branch:
 
   `ignore-master-and-develop-branch.yml`
 {% highlight yaml %}
@@ -68,18 +71,25 @@ build-step:
 {% endhighlight %}
 
 
->We use [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions){:target="\_blank"} for the syntax in branch conditions.
+{{site.data.callout.callout_tip}}
+**TIP**   
+  We use [JavaScript regular expressions](https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions){:target="\_blank"} for the syntax in branch conditions.
+{{site.data.callout.end}}
 
 
-## Condition expressions
+## Conditional expressions
 
 Alternatively, you can use more advanced condition expressions.
 
 This follows the standard [condition expression  syntax](#condition-expression-syntax). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
 
-> Note: Use "" around variables with text to avoid errors in processing the conditions. Example: "${{CF_COMMIT_MESSAGE}}"
+>**NOTE**  
+  Use "" around variables with text to avoid errors in processing the conditions. Example: "${{CF_COMMIT_MESSAGE}}"
 
-Here are some examples. Execute if the string ```[skip ci]``` is not part of the main repository commit message AND if the branch is ```master```
+Here are some examples. 
+
+### AND conditional expression
+Execute if the string ```[skip ci]``` is not part of the main repository commit message AND if the branch is ```master```
 
   `all-conditions.yml`
 {% highlight yaml %}
@@ -95,6 +105,7 @@ build-step:
         masterBranch: '{% raw %}"${{CF_BRANCH}}{% endraw %}" == "master"'
 {% endhighlight %}
 
+### OR conditional expression
 Execute if the string ```[skip ci]``` is not part of the main repository commit message, OR if the branch is not a feature branch (i.e. name starts with FB-)
 
   `any-condition.yml`
@@ -111,9 +122,10 @@ build-step:
         notFeatureBranch: 'match({% raw %}"${{CF_BRANCH}}"{% endraw %}, "^FB-", true) == false'
 {% endhighlight %}
 
+### ALL conditions to be met
 Each step in `codefresh.yml` file can contain conditions expressions that must be satisfied for the step to execute.
 
-This is a small example of where a condition expression  can be used:
+This is a small example of where a condition expression can be used:
   `YAML`
 {% highlight yaml %}
 step-name:
@@ -128,8 +140,8 @@ step-name:
         executeForMasterBranch: "{% raw %}'${{CF_BRANCH}}{% endraw %}' == 'master'"
 {% endhighlight %}
 
-### Condition expression syntax
-A condition expression is a basic expression that is evaluated to true/false (to decide whether to execute or not to execute), and can have the following syntax:
+### Conditional expression syntax
+A conditional expression is a basic expression that is evaluated to true/false (to decide whether to execute or not to execute), and can have the following syntax:
 
 #### Types
 
@@ -240,7 +252,8 @@ steps:
 
 Try running the pipeline above and see how it behaves when a variable called `MY_VAR` exists (or doesn't exist).
 
->Notice that if you use this pattern a lot it means that you are trying to create a complex pipeline that is very smart. We suggest you create instead multiple [simple pipelines for the same project]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
+>**NOTE**  
+   If you use this pattern frequently it means that you are trying to create a complex pipeline that is very smart. We suggest you create instead multiple [simple pipelines for the same project]({{site.baseurl}}/docs/ci-cd-guides/pull-request-branches/#trunk-based-development).
 
 
 ## Single step dependencies
