@@ -39,17 +39,17 @@ There are two modes for processing test reports in Codefresh, built-in and custo
 
 1. **Built-in test reporting** based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
   Allure is an open-source test framework that can produce HTML reports, as in the example below.  
-  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}. 
-    
+  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+  <br>
   Allure supports popular testing frameworks such as:  
-    * Java/JUnit/TestNG/Cucumber
-    * Python/pytest
-    * JavaScript/Jasmine/Mocha
-    * Ruby/Rspec
-    * Groovy/Spock
-    * .NET/Nunit/mstest
-    * Scala/Scalatest
-    * PHP/PhpUnit
+  * Java/JUnit/TestNG/Cucumber
+  * Python/pytest
+  * JavaScript/Jasmine/Mocha
+  * Ruby/Rspec
+  * Groovy/Spock
+  * .NET/Nunit/mstest
+  * Scala/Scalatest
+  * PHP/PhpUnit
   
 {% include 
 image.html 

@@ -1,5 +1,5 @@
 ---
-title: "Jira notification integrations for piplines"
+title: "Jira notification integrations for pipelines"
 description: ""
 group: integrations
 sub_group: notifications
