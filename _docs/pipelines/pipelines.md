@@ -32,7 +32,10 @@ max-width="60%"
 %}
 
 * **Projects**: The top-level concept in Codefresh CI/CD. Projects are used to group related CI pipelines. In most cases, a single project will be a single application that itself contains many microservices. You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or for a specific team/department.
->**NOTE**: A project can include up to 500 pipelines.
+
+>**NOTE**  
+A project can include up to 500 pipelines.
+
 
 * **Pipelines**: Each project can have multiple pipelines.  Pipelines that belong to a single project can be managed as a unit. You can also create a new pipeline by copying an existing pipeline. Notice that unlike other CI solutions, a pipeline in Codefresh is **NOT** tied to a specific Git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different Git repositories (a fairly typical setup for microservices).
 
@@ -54,7 +57,10 @@ Of course, you can also have a simpler scenario where the trigger, the pipeline 
 
 You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
 
->**NOTE**: You can assign up to 500 pipelines to a project.
+
+>**NOTE**  
+You can assign up to 500 pipelines to a project.
+
 
 Once you are inside the project view you can start editing pipelines with a UI environment that works similar to a traditional IDE.
 
