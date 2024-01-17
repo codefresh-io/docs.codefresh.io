@@ -33,7 +33,7 @@ step_name:
     ...  
   ...
 ```
-For details, check out the **Fields** table in the documentation for the different step types, as in the [`git-clone` step]({{site.baseurl}}/docs//pipelines/steps/git-clone/) for example. 
+For details, check out the **Fields** table in the documentation for the different step types, as in the [`git-clone` step]({{site.baseurl}}/docs/pipelines/steps/git-clone/) for example. 
 
 
 
