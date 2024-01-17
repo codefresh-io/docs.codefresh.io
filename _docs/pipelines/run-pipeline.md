@@ -47,8 +47,11 @@ The table below describes the settings in the Triggers page.
 
 
 
-## Sharing build run settings 
-Override settings for a pipeline build with colleagues who have access to the same account.    
+## Share build run settings 
+>**NOTE**  
+This feature is currently a Beta version.
+
+Override settings for a pipeline build and share them with colleagues who have access to the same account.    
 This option is useful to test automation for integration with third-party tools for infrastructure teams, or for developers to trigger pipelines in specific scenarios without having to redefine the same manually.  
 
 You can modify any of the settings available for a manual build run of the pipeline. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security.  
