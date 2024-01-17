@@ -1,20 +1,16 @@
 ---
-title: "Manual pipeline builds"
-description: "Trigger Codefresh pipelines from Azure Registry events"
+title: "Manually running pipeline builds"
+description: "Manually trigger a pipeline build"
 group: pipelines
-sub_group: triggers
-redirect_from:
-  - /docs/configure-ci-cd-pipeline/triggers/azure-triggers/
-  - /docs/pipeline-triggers/configure-azure-trigger/
 toc: true
 ---
 
 In Codefresh, you have the flexibility to control when your pipeline builds execute, offering both automated and manual options. 
-While [automated triggers] ensure a swift and continuous integration process, manual runs allows you to initiate a build at your discretion.
+While pipeline builds through [automated triggers] ensure a swift and continuous integration process, manual builds allows you to initiate a build at your discretion.
 
-This option allows you to override build settings for the pipeline to try out specific integration, testing, or other scenarios. You can also share the build run settings with colleagues who have access to the same account, or run the build in debug mode. 
+Manually running the build for a pipeline allows you to override build settings for the pipeline to try out specific scenarios, share build settings with colleagues who have access to the same account, or run the build in debug mode to verify changes. See [Manual build run settings](#manual-build-run-settings) and [Share build run settings](#share-build-run-settings).
 
-The manually triggered build is added to the Builds page where you can monitor and manage it as any other build.
+The manually-triggered build is added to the Builds page where you can [monitor and manage])({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) it as any other build.
 
 
 
@@ -49,7 +45,7 @@ The table below describes the settings in the Triggers page.
 
 ## Share build run settings 
 >**NOTE**  
-This feature is currently a Beta version.
+This feature is currently in Beta.
 
 Override settings for a pipeline build and share them with colleagues who have access to the same account.    
 This option is useful to test automation for integration with third-party tools for infrastructure teams, or for developers to trigger pipelines in specific scenarios without having to redefine the same manually.  
