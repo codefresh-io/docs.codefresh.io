@@ -6,11 +6,13 @@ toc: true
 ---
 
 In Codefresh, you have the flexibility to control when your pipeline builds execute, offering both automated and manual options. 
-While pipeline builds through [automated triggers] ensure a swift and continuous integration process, manual builds allows you to initiate a build at your discretion.
+While pipeline builds through [automated triggers]({{site.baseurl}}/docs/pipelines/triggers/) ensure a swift and continuous integration process, manual builds allows you to initiate a build at your discretion.
 
-Manually running the build for a pipeline allows you to override build settings for the pipeline to try out specific scenarios, share build settings with colleagues who have access to the same account, or run the build in debug mode to verify changes. See [Manual build run settings](#manual-build-run-settings) and [Share build run settings](#share-build-run-settings).
+Manually running the build for a pipeline allows you to override build settings for the pipeline. On-demand builds are useful for one-off jobs that do not require repetition, or when there is no automation for the pipeline, or to verify changes. See [Manual build run settings](#manual-build-run-settings).  
 
-The manually-triggered build is added to the Builds page where you can [monitor and manage])({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) it as any other build.
+In addition, without running a build you can share build settings with colleagues who have access to the same account. See [Share build run settings](#share-build-run-settings). 
+
+The manually-triggered build is added to the Builds page for [monitoring and management]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) like any other build.
 
 
 
@@ -33,7 +35,7 @@ The table below describes the settings in the Triggers page.
 | Manual build run setting | Description            |  
 | --------------        | --------------         |  
 |**Simulate trigger from**      | The trigger to simulate for the manual run of the pipeline. All the triggers defined for the pipeline are available.|
-|**Select branch**      | The branch on which to to run the build on.|
+|**Select branch**      | The branch on which to run the build on.|
 |**Build variables**       | The variables to use for this build. All the variables defined for the pipeline are displayed. You can modify the values of existing variables or manually add one or more new variables. Clicking the Lock icon, encrpts the variable.    |
 |**Advanced options**        | Select the options to override the behavior for the manual run. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Docker engine cache</a></li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See <a href="https://codefresh.io/docs/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/" target="_blank">Hangs on restoring data from pre-existing image</a>.</li><li><b>Report notification on pipeline execution</b>: When selected, sends <a href="https://codefresh.io/docs/docs/integrations/notifications/slack-integration/" target="_blank">Slack notifications</a>, in addition to status updates to your Git provider</li></ul>{:/}|
 |**Runtime Environment**        |{::nomarkdown}<ul><li><b>Use regular settings</b>: Use the <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#pipeline-settings">settings</a> defined at the pipeline level.</li><li>Override settings</b>:Override the settings for the manual build run, and select the Runtime Environment and OS, the CPI and Memory resource allocation, and the Minimum disk space required for the build. See <a href="https://codefresh.io/docs/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger">Set minimum disk space for build volume by trigger<a/>.</li></ul>{:/} |
@@ -50,7 +52,7 @@ This feature is currently in Beta.
 Override settings for a pipeline build and share them with colleagues who have access to the same account.    
 This option is useful to pre-populate build settings to test automation for integration with third-party tools, or to trigger pipelines in specific scenarios without the need to redefine the same manually each time.  
 
-You can simulate a different trigger, select a different branch, modify existing or add new  build variables, and modify the build behavior. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security.  
+You can simulate a different trigger, select a different branch, modify existing or add new  build variables, and modify the build behavior. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security. Shared settings also do not include the Runtime environment settings defined for the pipeline if any.  
 
 The URL opens the Trigger page with the sections expanded to indicate updated/new settings. New or modified Build Variables are highlighted for easy identification. 
 
