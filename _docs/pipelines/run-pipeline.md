@@ -50,7 +50,7 @@ This feature is currently in Beta.
 Override settings for a pipeline build and share them with colleagues who have access to the same account.    
 This option is useful to pre-populate build settings to test automation for integration with third-party tools, or to trigger pipelines in specific scenarios without the need to redefine the same manually each time.  
 
-You can simulate a different trigger, select a different branch, modify existing or add new  build variables, and modify the build behavior. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security. Shared settings also do not include the Runtime environment settings defined for the pipeline if any.  
+You can simulate a different trigger, select a different branch, modify existing or add new  build variables, and modify the build behavior. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security.  
 
 The URL opens the Trigger page with the sections expanded to indicate updated/new settings. New or modified Build Variables are highlighted for easy identification. 
 
@@ -84,8 +84,8 @@ image.html
 lightbox="true" 
 file="/images/pipeline/manual-run/share-run-config-result.png" 
 url="/images/pipeline/manual-run/share-run-config-result.png"
-alt="Sharing build configuration" 
-caption="Sharing build configuration"
+alt="Result of shared build configuration" 
+caption="Result of shared build configuration"
 max-width="50%"
 %}
 
