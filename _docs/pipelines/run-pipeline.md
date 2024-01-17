@@ -67,12 +67,14 @@ caption="Sharing build configuration"
 max-width="50%"
 %}
 
+{:start="3"}
 1. Click **Share Run Configuration**.
   Codefresh generates a URL with the new settings appended as query parameters.
   
-  >**NOTE**  
-  Encrypted variables are excluded from the generated URL.
+    >**NOTE**  
+    Encrypted variables are excluded from the generated URL.
 
+{:start="4"}
 1. Paste the URL in your browser.
   The browser opens the Trigger page with all sections with updates automatically expanded.  
   You can see in the example below that the encrypted variable in step 2 has not been copied.
