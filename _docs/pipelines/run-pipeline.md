@@ -24,7 +24,7 @@ file="/images/pipeline/manual-run/trigger-dialog.png"
 url="/images/pipeline/manual-run/trigger-dialog.png"
 alt="Trigger settings for manual build run" 
 caption="Trigger settings for manual build run"
-max-width="70%"
+max-width="50%"
 %}
 
 The table below describes the settings in the Triggers page. 
@@ -64,7 +64,7 @@ file="/images/pipeline/manual-run/share-run-configuration.png"
 url="images/pipeline/manual-run/share-run-configuration.png"
 alt="Sharing build configuration" 
 caption="Sharing build configuration"
-max-width="70%"
+max-width="50%"
 %}
 
 1. Click **Share Run Configuration**.
@@ -84,7 +84,7 @@ file="/images/pipeline/manual-run/share-run-configuration.png"
 url="images/pipeline/manual-run/share-run-configuration.png"
 alt="Sharing build configuration" 
 caption="Sharing build configuration"
-max-width="70%"
+max-width="50%"
 %}
 
 ## Related articles
