@@ -61,7 +61,7 @@ The URL opens the Trigger page with the sections expanded to indicate updated/ne
 image.html 
 lightbox="true" 
 file="/images/pipeline/manual-run/share-run-configuration.png" 
-url="images/pipeline/manual-run/share-run-configuration.png"
+url="/images/pipeline/manual-run/share-run-configuration.png"
 alt="Sharing build configuration" 
 caption="Sharing build configuration"
 max-width="50%"
@@ -80,8 +80,8 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/pipeline/manual-run/share-run-configuration.png" 
-url="images/pipeline/manual-run/share-run-configuration.png"
+file="/images/pipeline/manual-run/share-run-config-result.png" 
+url="/images/pipeline/manual-run/share-run-config-result.png"
 alt="Sharing build configuration" 
 caption="Sharing build configuration"
 max-width="50%"
