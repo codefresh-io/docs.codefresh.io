@@ -119,7 +119,6 @@ Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` varia
 | {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline" |
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system  |
-| {% raw %}`${{CF_OUTPUT_URL}}`{% endraw %}          | Add an external URL link to a step. For example, link to a parent-build from the child-build.<br>See [Generate external link with CF_OUTPUT_URL](#export-external-link-with-cf_output_url) in this article. |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`  |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
 | Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
@@ -375,7 +374,7 @@ steps:
 
 Use this technique if you have complex expressions that have issues with the `cf_export` command.
 
-## Export external link with `CF_OUTPUT_URL`
+<!--- ## Export external link with `CF_OUTPUT_URL`
 
 Codefresh has native support to trigger child builds from parent builds, and navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).
 You can also navigate from the child build back to the parent build through the `CF_OUTPUT_URL` variable.
@@ -418,7 +417,7 @@ Add the following step at the beginning of the pipeline.
 
 The step details of the child build in the Build page displays the Output URL link to the parent build as in the image below.
 
-![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png)
+![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png) -
 
 ## Masking variables in logs
 
