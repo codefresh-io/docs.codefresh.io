@@ -51,6 +51,6 @@ To verify the authenticity of third-party images such as NGINX, Bitnami charts f
 
 
 ## Related articles
-[Secrets for GitOps]({site.baseurl}}/docs/security/secrets/)  
-[Git tokens for GitOps]({site.baseurl}}/docs/security/git-tokens/)  
+[Secrets for GitOps]({{site.baseurl}}/docs/security/secrets/)  
+[Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)  
 
