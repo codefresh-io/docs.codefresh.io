@@ -112,6 +112,6 @@ You need to create a service or robot account with your Git provider, generate t
 
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
-[User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
+[User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)  
 [Secrets for GitOps]({{site.baseurl}}/docs/security/secrets/)  
 [Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
