@@ -379,7 +379,7 @@ If you want to remove your step from the marketplace, you can delete it complete
 codefresh delete step-type kostis-codefresh/sample
 {% endhighlight %}
 
-### Versioning of typed steps
+### Versioning for typed steps
 
 The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
 
