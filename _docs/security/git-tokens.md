@@ -30,7 +30,7 @@ The table below summarizes the main differences between the Git Runtime and user
 
 
 ## Git Runtime token scopes
-The table below lists the scopes required for Git Runtime tokens for the different Git providers. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](Git Runtime token in values.yaml).
+The table below lists the scopes required for Git Runtime tokens for the different Git providers. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](#git-runtime-token-in-valuesyaml).
 
 
 | Git provider                  | Required scopes for Git Runtime token           | 
@@ -113,5 +113,5 @@ You need to create a service or robot account with your Git provider, generate t
 ## Related articles  
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)
-[Secrets for GitOps]({site.baseurl}}/docs/security/secrets/)  
+[Secrets for GitOps]({{site.baseurl}}/docs/security/secrets/)  
 [Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
