@@ -1,6 +1,6 @@
 ---
-title: "Hosted GitOps Runtime setup"
-description: "Provision Hosted GitOps environment"
+title: "Hosted GitOps Runtime installation"
+description: "Set up your Hosted GitOps environment"
 group: installation
 sub_group: gitops
 toc: true
@@ -8,7 +8,14 @@ toc: true
 
 
 
-Set up your environment with the Hosted GitOps Runtime to leverage Codefresh GitOps capabilities.
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops). 
+
+This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.<br>
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
+>**NOTE**  
+You can install a _single Hosted GitOps Runtime per Codefresh account_. 
+
 
 
 ## System requirements for Hosted GitOps Runtimes
@@ -38,8 +45,7 @@ caption="Hosted GitOps Runtime setup"
 max-width="80%"
 %}
 
-  >**NOTE**  
-  You can provision a single Hosted GitOps Runtime per Codefresh account.
+
 
 ## Before you begin
 * Set up integrations with the Git provider for the Hosted GitOps Runtime

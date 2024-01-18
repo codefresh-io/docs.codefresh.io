@@ -14,7 +14,14 @@ The CLI-based installation for Hybrid GitOps is considered legacy. We will depre
 You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
 {{site.data.callout.end}}
 
-This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops). 
+
+This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts.  
+For Hosted GitOps Runtime installation, see [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+
+##### Number of Hybrid GitOps Runtimes
+Within the same account, you can install _one Hosted and one Hybrid GitOps Runtime on a cluster_.  
+For additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster, and must have a unique name.
 
 ##### Installation options for GitOps Runtimes 
 There are two options for Hybrid GitOps Runtime installation via Helm, each catering to specific use cases:
