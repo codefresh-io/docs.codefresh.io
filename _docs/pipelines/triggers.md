@@ -19,7 +19,7 @@ Codefresh not only allows you to define different pipelines on a single project 
 
 The following types of triggers are currently supported in pipelines:
 
-* [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/git-triggers)
+* [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)
 * [Docker Hub triggers]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers)
 * [Azure Registry triggers]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers)
 * [Quay triggers]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers)
