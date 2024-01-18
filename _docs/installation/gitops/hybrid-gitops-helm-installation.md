@@ -19,10 +19,9 @@ For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps R
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts.  
 For Hosted GitOps Runtime installation, see [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
-##### Number of GitOps Runtimes
-You can install a _single Hosted or Hybrid GitOps Runtime on a cluster within the same account_.
-
-For additional GitOps Runtimes in the same account, each Runtime must be installed on a different cluster, and every Runtime must have a unique name.
+##### Number of Hybrid GitOps Runtimes
+Within the same account, you can install _one Hosted and one Hybrid GitOps Runtime on a cluster_.  
+For additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster, and must have a unique name.
 
 ##### Installation options for GitOps Runtimes 
 There are two options for Hybrid GitOps Runtime installation via Helm, each catering to specific use cases:
