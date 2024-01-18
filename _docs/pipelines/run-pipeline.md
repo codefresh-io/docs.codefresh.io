@@ -6,13 +6,13 @@ toc: true
 ---
 
 In Codefresh, you have the flexibility to control when your pipeline builds execute, offering both automated and manual options. 
-While pipeline builds through [automated triggers]({{site.baseurl}}/docs/pipelines/triggers/) ensure a swift and continuous integration process, manual builds allows you to initiate a build at your discretion.
+While pipeline builds through [automated triggers]({{site.baseurl}}/docs/pipelines/triggers/) are usually the norm, ensuring a swift and continuous integration process, manual builds allows you to initiate a build at your discretion.
 
-Manually running the build for a pipeline allows you to override build settings for the pipeline. On-demand builds are useful for one-off jobs that do not require repetition, or when there is no automation for the pipeline, or to verify changes. See [Manual build run settings](#manual-build-run-settings).  
+Manually running the build for a pipeline allows you to override build settings for the pipeline. On-demand builds are useful for one-off jobs that do not require repetition for example, or to verify changes or when the pipeline build has not been automated as yet. See [Manual build run settings](#manual-build-run-settings).  
 
-In addition, without running a build you can share build settings with colleagues who have access to the same account. See [Share build run settings](#share-build-run-settings). 
+In addition, with the manual build run option, you can share build settings with colleagues who have access to the same account without running the build. See [Share build run settings](#share-build-run-settings). 
 
-The manually-triggered build is added to the Builds page for [monitoring and management]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) like any other build.
+When run, the manually-triggered build is added to the Builds page for [monitoring and management]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) like any other build.
 
 
 
@@ -50,11 +50,12 @@ The table below describes the settings in the Triggers page.
 This feature is currently in Beta.
 
 Override settings for a pipeline build and share them with colleagues who have access to the same account.    
-This option is useful to pre-populate build settings to test automation for integration with third-party tools, or to trigger pipelines in specific scenarios without the need to redefine the same manually each time.  
+This option is useful to pre-populate build settings without having to redefine the same manually every time. For example, share build settings to test automation for integration with third-party tools, or to trigger pipelines in specific scenarios.  
 
-You can simulate a different trigger, select a different branch, modify existing or add new  build variables, and modify the build behavior. Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security. Shared settings also do not include the Runtime environment settings defined for the pipeline if any.  
+When sharing settings, you can simulate a different trigger, select a different branch, modify existing or add new build variables, and modify the build behavior.  
+Codefresh generates a URL with the modified and new settings appended as query parameters, while excluding encrypted variables to not compromise security. Shared build settings also do not include the Runtime environment settings defined for the pipeline if any.  
 
-The URL opens the Trigger page with the sections expanded to indicate updated/new settings. New or modified Build Variables are highlighted for easy identification. 
+The URL opens the Trigger page with the sections expanded to indicate updated/new settings. For easy identification, new or modified Build Variables are highlighted. 
 
 1. In the Pipelines page, click **Run** either to the right of the pipeline, or in the Workflows tab of the pipeline.
 1. Update settings as required.
@@ -93,7 +94,6 @@ max-width="50%"
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
-[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Debugging pipelines]({{site.baseurl}}/docs/pipelines/debugging-pipelines/)  

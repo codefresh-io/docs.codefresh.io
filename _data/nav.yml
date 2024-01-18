@@ -436,7 +436,7 @@
       url: "/stages"
     - title: Caching in pipelines
       url: "/pipeline-caching"
-    - title: Running pipeline builds manually
+    - title: Manually running pipeline builds
       url: "/run-pipeline"
     - title: Debugging pipelines
       url: "/debugging-pipelines"
