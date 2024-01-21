@@ -417,7 +417,7 @@ Add the following step at the beginning of the pipeline.
 
 The step details of the child build in the Build page displays the Output URL link to the parent build as in the image below.
 
-![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png) -
+![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png) -->
 
 ## Masking variables in logs
 

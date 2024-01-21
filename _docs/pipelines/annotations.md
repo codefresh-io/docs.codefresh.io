@@ -174,9 +174,9 @@ codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
 
 You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
 
-##  Built-in  BUILD_ID  of parent pipeline  
+##  `cf_predecessor` for  BUILD_ID  of parent pipeline  
 Codefresh has native support to navigate from parent to child builds. 
-To navigate from the child build to its parent, we have the `cf_predecessor` annotation. This  annotation precisely identifies the  parent of a child build.  
+To navigate from the child build to its parent, we have the `cf_predecessor` annotation.
 
 The `cf_predecessor` annotation is automatically added for builds executed by a call to a [`codefresh-run` plugin](https://codefresh.io/steps/step/codefresh-run){target="\_blank"}.
 Get the ID of the parent build by querying the value of this annotation in the child build.
