@@ -26,7 +26,7 @@ max-width="80%"
 
 ## Built-in step types
 
-The steps offered by Codefresh are:
+Codefresh offers the following step types:
 
 * [Git clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
   **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
@@ -55,7 +55,8 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 
 
->Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/), as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/).
+>**NOTE**  
+Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/), as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/).
 
 ## Step directory
 
@@ -357,7 +358,8 @@ The property `additionalProperties` defines how strict the plugin will be with i
 
 The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
 
->Note that currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
+>**NOTE**  
+Currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
@@ -377,7 +379,7 @@ If you want to remove your step from the marketplace, you can delete it complete
 codefresh delete step-type kostis-codefresh/sample
 {% endhighlight %}
 
-### Versioning of typed steps
+### Versioning for typed steps
 
 The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
 
@@ -1034,7 +1036,8 @@ You can still use `cf_export` command inside the plugin as well (as shown in the
 
 As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate){:target="\_blank"} library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/){:target="\_blank"}.
 
-> Note: Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
+>**NOTE**  
+Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
 
 As a simple example lets say we want to create a single step that checks out any number of git repositories. Of course you could just copy-paste the git clone step multiple times in a single pipeline. To make things easier we will create a single step that takes an array of git repositories and checks them out on its own:
 

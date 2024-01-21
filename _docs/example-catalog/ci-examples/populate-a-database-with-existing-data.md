@@ -130,8 +130,10 @@ This pipeline does the following:
 1. Compiles the code that runs `go build` through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/). 
 1. Runs the tests while launching a [service container]({{site.baseurl}}/docs/pipelines/service-containers/) for an active PostgreSQL instance. Before tests are run, we launch another container with the `psql` executable to load database data.
 
-
-> In this simple example, we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
+{{site.data.callout.callout_tip}}
+**TIP**  
+In this simple example, we use `psql` to preload the database. In a production application you might also use dedicated db tools such as [liquibase](https://hub.docker.com/r/liquibase/liquibase){:target="\_blank"} or [flyway](https://hub.docker.com/r/flyway/flyway){:target="\_blank"} or other command line tools that communicate with your database.
+{{site.data.callout.end}}
 
 Notice that we also use the `readiness` property in the testing phase so that we can verify PostgreSQL is ready and listening, before running the tests. The exact order of events is:
 

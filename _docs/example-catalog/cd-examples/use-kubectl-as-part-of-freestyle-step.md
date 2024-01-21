@@ -16,7 +16,9 @@ Running Kubernetes commands in Codefresh as part of the workflow is very easy.
 Codefresh is adding all your clusters into the workflow ready to be used as part of your CI/CD pipeline.
 The context remains the same as it appears in the [Codefresh Kubernetes dashboard]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/).
 
->If your cluster name includes spaces then make sure that you use quotes in the `kubectl` command.
+>**NOTE**  
+If your cluster name includes spaces then make sure that you use quotes in the `kubectl` command.
+
 
 * Use image: `codefresh/kubectl`
 * Add your commands:

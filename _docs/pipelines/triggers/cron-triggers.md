@@ -21,7 +21,7 @@ By integrating these additional options, Cron triggers can initiate pipeline exe
 Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article.  
 For the specifications, see [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
 
->**NOTE**:  
+>**NOTE**  
 Cron triggers are created in the UTC timezone.
 
 
@@ -68,13 +68,12 @@ Create and manage Cron triggers for pipelines in the Codefresh UI.
 
 There are two parts to creating a Cron trigger in the UI:
 1. Defining the schedule for the trigger  
-  To learn about supported `cron` expression formats and aliases, visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"}.
+  To learn about supported `cron` expression formats and aliases, see [Cron expression formats](#cron-expression-formats) in this article.
 1. (Optional) Selecting additional options:  
   * Git trigger event to simulate when the Cron trigger timer is activated. The pipeline is populated with the information from the Git repo such as the repo URL, branch name, latest commit information, including the date and author of the commit.
   * Variables to populate for the build
-  * Caching, volume resuse and notification behavior to override for the build  
+  * Caching, volume reuse and notification behavior to override for the build  
 
-  >**NOTE**: Settings for Cron triggers is currently in Beta.
 
 
 ## How to: Create a Cron trigger in UI
@@ -83,6 +82,7 @@ There are two parts to creating a Cron trigger in the UI:
 Review:  
 * [Git trigger settings]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#git-trigger-settings) 
 * [Working with Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#working-with-git-triggers)
+* [Cron expression formats](#cron-expression-formats)
 
 **How to**  
 
@@ -139,13 +139,72 @@ max-width="60%"
   * If you defined both the Timer and additional Settings, the build is triggered according to the Cron expression, and depending on the settings, the pipeline is populated with the information from the Git repo, additional variables, and notifications when configured.
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
 To edit a Cron trigger after creating it, click the Edit icon.
+{{site.data.callout.end}}
 
+## Cron expression formats
+
+A Cron expression represents a set of time fields through six space-separated fields. You can also use predefined schedules or fixed interval scheduling in place of Cron expressions.
+
+### Cron expression fields
+The table below describes the fields you can define in a Cron expression.
+
+{: .table .table-bordered .table-hover}
+Field    | Mandatory | Allowed values  | Allowed special characters
+|----------   | ---------- | --------------  | --------------------------|
+Seconds      | No         | 0-59            | * / , -|
+Minutes      | Yes        | 0-59            | * / , -|
+Hours        | Yes        | 0-23            | * / , -|
+Day of month | Yes        | 1-31            | * / , - ?|
+Month        | Yes        | 1-12 or JAN-DEC | * / , -|
+Day of week  | Yes        | 0-6 or SUN-SAT  | * / , - ?|
+
+
+### Special characters in Cron expressions
+The table below describes the purpose of the special characters in a Cron expression.
+
+{: .table .table-bordered .table-hover}
+|Special Character | Description | 
+|----------   | ---------- | 
+|**Asterisk** (`*`) | Indicates that the Cron expression will match for all values of the field.<br>Using an asterisk in the 5th field (month), would indicate every month.|
+|**Slash** (`/`) | Slashes are used to describe increments of ranges. <br>For example `3-59/15` in the 1st field (minutes) would indicate the 3rd minute of the hour and every 15 minutes thereafter. <br>The form `*\/...` is equivalent to the form `first-last/...`, that is, an increment over the largest possible range of the field. <br>The form `N/...` is accepted as meaning `N-MAX/...`, that is, starting at `N`, use the increment until the end of that specific range. It does not wrap around.|
+|**Comma** (`,`) | Commas are used to separate items of a list. For example, using `MON,WED,FRI` in the 5th field (day of week) would mean Mondays, Wednesdays and Fridays.|
+|**Hyphen** (`-`) | Hyphens are used to define ranges. For example, `9-17` would indicate every hour between 9am and 5pm inclusive.|
+|**Question mark** (`?`) | Question marks can be used instead of asterisks (`*`) for leaving either day-of-month or day-of-week blank.|
+
+
+### Predefined scheduling for Cron jobs
+
+You can use one of several predefined schedules instead of a Cron expression.
+The table below describes the predefined schedules supported.
+
+{: .table .table-bordered .table-hover}
+|Predefined schedule                  | Description                                | Equivalent to|
+|-----                  | -----------                                | -------------|
+|@yearly (or @annually) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *|
+|@monthly               | Run once a month, midnight, first of month | 0 0 0 1 * *|
+|@weekly                | Run once a week, midnight on Sunday        | 0 0 0 * * 0|
+|@daily (or @midnight)  | Run once a day, midnight                   | 0 0 0 * * *|
+|@hourly                | Run once an hour, beginning of hour        | 0 0 * * * *|
+
+
+### Fixed interval scheduling for Cron jobs
+
+You can also schedule a job to execute at fixed intervals by adding `@every <interval>`. The <interval> is a string that represents the desired frequency.
+
+For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 hour, 30 minutes, 10 seconds.
+
+>**NOTE**  
+The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
+
+### Conditional triggers for Cron jobs
+Take a look at our Knowledge Base how-to: [Skip pipeline step if triggered by Cron job]({{site.baseurl}}/docs/kb/articles/skip-test-if-pipeline-is-triggered-with-cron/).
 
 ## Cron triggers with Codefresh CLI
 
->**NOTE**:  
+>**NOTE**  
 This section is relevant only for legacy Cron triggers and will be deprecated. 
 
 You can also create and manage Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.
@@ -155,7 +214,7 @@ You can also create and manage Cron triggers for pipelines via the [Codefresh CL
 ### Create Cron trigger event via CLI
 
 Create a new `cron` trigger by defining a Cron expression and message.  
-To learn about supported `cron` expression formats and aliases, visit [this page](https://github.com/codefresh-io/cronus/blob/master/docs/expression.md){:target="\_blank"}.  
+To learn about supported `cron` expression formats and aliases, see [Cron expression formats](#cron-expression-formats) in this article.  
 The text message is passed to linked pipelines, whenever the specified `cron` timer is triggered.
 
 

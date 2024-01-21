@@ -1,5 +1,5 @@
 ---
-title: "Managing & monitoring GitOps Runtimes"
+title: "Monitoring & managing GitOps Runtimes"
 description: "Optimize GitOps Runtimes"
 group: runtime
 sub_group: gitops
@@ -42,13 +42,16 @@ View Runtime components and information in [List or Topology view formats](/#git
 * [(Hybrid GitOps) View notifications in Activity Log](#hybrid-gitops-view-notifications-in-activity-log) -->
 
 
-> **TIP**:
->Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.callout_tip}}
+**TIP**  
+Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
+{{site.data.callout.end}}
 
->**WARNING**:
+{{site.data.callout.callout_warning}}
+**WARNING**
 Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.
 Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
-
+{{site.data.callout.end}}
 
 
 
@@ -87,7 +90,7 @@ Here is a description of the information in the List View.
 |**Version**| The version of the Runtime currently installed (CLI installations), including the version of the Helm chart (Helm installations) . **Update Available!** indicates there are newer versions of the Runtime or Helm chart. To see all the commits, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See [Update Git credentials for GitOps Runtimes](#update-git-credentials-for-gitops-runtimes).</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <li><b>Download All Logs</b>: Valid only for _legacy_ Hybrid GitOps Runtimes.<br>Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <!--- <li><b>Download All Logs</b>: Valid only for _legacy_ Hybrid GitOps Runtimes.<br>Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li>--><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Remove Runtime</b>: Available only when the runtime is Offline. <br>Remove the runtime from Codefresh. The runtime remains on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#remove-gitops-runtimes">Remove GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}
 
 
 ### Topology view
@@ -110,7 +113,7 @@ Here is a description of the information in the Topology view.
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
 |**Runtime**             | ![](../../../../images/icons/runtime-topology-name.png?display=inline-block) the provisioned Runtime. <br>Hybrid Runtimes display the name of the K8s API server endpoint with the cluster. <br>Hosted Runtimes display 'Codefresh hosted'.  |
-|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
+|**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
@@ -119,12 +122,14 @@ Here is a description of the information in the Topology view.
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
 The upgrade procedure differs depending on whether the GitOps Runtime has been configured as an Argo CD application or not:
 * Argo CD GitOps Runtimes: For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
-* Non-Argo CD GitOps Runtimes: Run the upgrade command.  
+* Non-Argo CD GitOps Runtimes: Run the upgrade command.
 
 If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime automatically updates runtime components within the managed cluster as well.
 
->The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The `Update Available! Notification` in the List View's Version column indicates that a newer version of the Runtime, Helm chart, or both are available.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -174,7 +179,7 @@ name: codefresh-gitops-runtime
 version: <version>
 dependencies:
   - name: gitops-runtime
-    repository: https://chartmuseum.codefresh.io/gitops-runtime
+    repository: oci://quay.io/codefresh
     version: <version>
 ```
 1. For non-GitOps Runtimes, do the following:
@@ -187,10 +192,13 @@ dependencies:
 Provisioned GitOps Runtimes require valid Git Runtime tokens at all times to authenticate and authorize the Runtime.
 The Git Runtime token differs from the Git user token which is a personal access token unique to each user. As such, you can use the same Git Runtime token for multiple Runtimes.
 
->**TIP**:
+{{site.data.callout.callout_tip}}
+**TIP**  
 Git credentials are synced to the Shared Configuration Repository defined during installation. If you change your Git credentials, the Git account must match that of the Shared repo. For example, if the Shared repo is defined as `http://github.com/my-org/isc.git` and the Git provider is defined  as `bitbucket`, the update will fail.
+{{site.data.callout.end}}
 
-**When to update**
+
+**When to update**  
 If your Git Runtime token is valid, you can update it at any time by deleting the existing token and replacing it with a new token.
 
 Otherwise, you have to update Git tokens in the following situations:
@@ -208,7 +216,7 @@ The methods for updating any Git token are the same regardless of the reason for
 ### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/reference/git-tokens/#git-runtime-token-scopes)
+* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/security/git-tokens/#git-runtime-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -235,8 +243,8 @@ The methods for updating any Git token are the same regardless of the reason for
 
 {:start="6"}
 1. For OAuth2 authorization:
-  >**NOTE**:
-  >If the application is not registered, you get an error. Contact your admin for help.
+  >**NOTE**  
+  If the application is not registered, you get an error. Contact your admin for help.
 
       * Enter your credentials, and select **Sign In**.
       * If required, as for example if two-factor authentication is configured, complete the verification.
@@ -275,7 +283,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 
->**NOTE**:
+>**NOTE**  
 When SSH is configured for a GitOps Runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
 **SSH keys**
@@ -327,10 +335,10 @@ Codefresh creates and validates the [Shared Configuration Repository]({{site.bas
 
 The Shared Configuration Repo is created in your Git provider account. You can reset the repo defined for your account under the following conditions:
 
-* **Incorrect/missing URL**  
+* **Incorrect/missing URL**
   Mandatory when Codefresh notifies you through the UI that the Shared Configuration Repo URL is either incorrect or missing.
 
-    * Incorrect URL  
+    * Incorrect URL
       The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
     * Undefined URL<br>
       You installed the GitOps Runtime through a script or an automated mechanism without providing the URL to the Shared Configuration Repository.
@@ -346,7 +354,7 @@ The Shared Configuration Repo is created in your Git provider account. You can r
   max-width="100%"
 %}
 
-* **No active Runtimes**  
+* **No active Runtimes**
   If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Shared Configuration Repo URL.
   To do so, you must contact Codefresh Support.
 
@@ -364,7 +372,7 @@ Verify that you have [authorized access to the Codefresh app's organizations]({{
 1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
 1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
 
-### Reset Shared Config Repo via CLI 
+### Reset Shared Config Repo via CLI
 You can reset the Shared Configuration Repo via the CLI when:
 * You receive the notification that the URL is incorrect or missing
 * There are no active GitOps Runtimes in your account.
@@ -382,7 +390,7 @@ You can reset the Shared Configuration Repo via the CLI when:
   where:
   `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
 1. When prompted, select the Git provider.
-1. Confirm to create the Shared Configuration Repo. 
+1. Confirm to create the Shared Configuration Repo.
 
 ## (Hybrid GitOps) Configure Deep Links to applications & resources
 
@@ -391,7 +399,8 @@ Deep Links is an Argo CD feature that redirects users to third-party application
 In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo where you installed the Hybrid GitOps Runtime.
 When configured, deep links are displayed in the application's Current State tab in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
 
->Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
+>**NOTE**  
+Deep link configuration in Codefresh requires Runtime v0.1.27 or higher.
 
 
 
@@ -433,8 +442,10 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 ## (Helm Hybrid GitOps) Remove GitOps Runtimes
 Remove Helm GitOps Runtimes that are offline from the Codefresh UI. The Runtime is not removed from the cluster.
 
->The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+The Remove option is available in List View, and is enabled only when a Helm Runtime is offline.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
@@ -545,12 +556,13 @@ The Runtime log is downloaded as a `.tar.gz` file, which contains the individual
     max-width="60%"
 %}
 
+<!--- 
 ## (Legacy CLI Hybrid GitOps) View/download logs for GitOps Runtimes
 Logs are available for completed Runtimes, both for the runtime and for individual runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component, and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.
 
 Log files include events from the date of the application launch, with the newest events listed first.
 
-<br>
+
 
 ### Download logs for GitOps Runtimes
 Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
@@ -589,9 +601,7 @@ Download the log file for a Runtime. The Runtime log is downloaded as a `.tar.gz
 {:start="5"}
 1. Open a log file with the text editor of your choice.
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### View/download logs for Runtime components
 View online logs for any Runtime component, and if needed, download the log file for offline viewing and analysis.
@@ -633,7 +643,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
   The file is downloaded as `<component-name>.log`.
 
 
-
+-->
 
 
 ## (Legacy CLI Hybrid GitOps) Restoring provisioned GitOps Runtimes
@@ -652,9 +662,7 @@ Restoring the runtime:
   `ingressController`
   `ingressHost`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Restore a Hybrid GitOps Runtime
 Reinstall the Hybrid Runtime from the existing installation repository to restore it to the same or a different cluster.
@@ -698,9 +706,7 @@ Reinstall the Hybrid Runtime from the existing installation repository to restor
 1. If needed, create a new Git integration:
   `cf integration git add default --runtime <runtime-name> --provider github --api-url https://api.github.com`
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 ### Ingress example
 This is an example of the `ingress.yaml` for `workflows`.
@@ -769,8 +775,8 @@ The Activity Log is a quick way to monitor notifications for Runtime events such
 
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Add external clusters to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
 
 

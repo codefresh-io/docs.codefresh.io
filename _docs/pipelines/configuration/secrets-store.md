@@ -10,13 +10,15 @@ toc: true
 
 Once you have [connected Codefresh to your secrets storage]({{site.baseurl}}/docs/integrations/secret-storage/), you can use them in any pipeline or UI screen.
 
-> Note: This feature is for Enterprise accounts only.
+> **NOTE**  
+  This feature is for Enterprise accounts only.
 
 ## Using secrets in pipelines
 
 The syntax for using the secret is {% raw %}`${{secrets.NAME_IN_CODEFRESH.KEY}}`{% endraw %}.
 
-> If you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:  
+> **NOTE**  
+  If you did not include the resource-name as a part of your secret store context creation, the syntax for using your secret differs slightly:  
   {% highlight yaml %}{% raw %}${{secrets.NAME_IN_CODEFRESH.RESOURCE-NAME@KEY}}{% endraw %}{% endhighlight %  
   The previous KEY portion is now made of two parts separated using @, where the left side is the name of the resource in the namespace, and the right side the key in that resource.
 

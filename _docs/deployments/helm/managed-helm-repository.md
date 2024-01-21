@@ -13,14 +13,17 @@ While we automatically create a default managed repo for every Codefresh account
 
 The built-in Helm repo that Codefresh creates, is private by default, allowing access only via Codefresh or via a Codefresh API token. 
 
-> Tip:  
-  You may be familiar with the popular open source Helm repository implementation called 'ChartMuseum', that Codefresh sponsors. Codefresh-managed repositories are based on, and therefore compatible with, ChartMuseum and its unique features. For details, see [ChartMuseum](https://github.com/kubernetes-helm/chartmuseum){:target="\_blank"}. 
+{{site.data.callout.callout_tip}}
+**TIP**  
+You may be familiar with the popular open source Helm repository implementation called 'ChartMuseum', that Codefresh sponsors. Codefresh-managed repositories are based on, and therefore compatible with, ChartMuseum and its unique features. For details, see [ChartMuseum](https://github.com/kubernetes-helm/chartmuseum){:target="\_blank"}. 
+{{site.data.callout.end}}
 
 ## View Helm repository integrations
 
 The Codefresh-managed Helm repo is displayed with other Helm repositories you have added to Helm integrations. 
 
->You cannot delete the built-in Helm repo that Codefresh creates for you.
+>**NOTE**   
+  You cannot delete the built-in Helm repo that Codefresh creates for you.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Pipeline Integrations**.
 1. Scroll to **Helm Repositories**, and then click **Configure**.  

@@ -9,7 +9,7 @@ toc: true
 
 Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. Configure Gerrit as the primary Git provider for Codefresh GitOps. Codefresh can fetch the approved changes from Gerrit and build, test, and deploy the application based on your predefined workflows.
 
->**NOTE**:  
+>**NOTE**   
 Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.
 
 
@@ -76,7 +76,7 @@ The HTTP Password in Gerrit is required as an access token to authenticate HTTP 
    max-width="60%" 
    %}
 
->**NOTE**:  
+>**NOTE**   
 Regenerating the HTTP Password automatically revokes the current password. 
 
 <!---To generate an HTTP

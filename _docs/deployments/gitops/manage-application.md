@@ -1,51 +1,105 @@
 ---
-title: "Managing GitOps applications"
+title: "Managing Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
 toc: true
 ---
 
-Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications when needed. 
+Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is optimizing deployed applications as and when needed. 
 
->**NOTE**:
-The actions you can perform depend on the permissions assigned to you. 
+There are two aspects to managing and optimizing Argo CD applications in Codefresh:
+* Optimizing deployments through GitOps Environments and Products 
+* Managing individual applications 
+
+##### Optimizing application deployments 
+
+* [GitOps Environments](#gitops-environments--argo-cd-applications)  
+  The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
+
+* [GitOps Products](#gitops-products--argo-cd-applications)  
+  The GitOps Products dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
+
+##### Managing individual applications
+
+>**NOTE**  
+  The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
 
 
-* [Edit applications](#edit-application-definitions)  
+* [Edit Argo CD applications](#edit-argo-cd-application-definitions)  
   Optimize deployed applications by changing application definitions when needed.
 
-* [Synchronize applications](#manually-synchronize-an-application)   
+* [Manage Application Groups](#manage-application-groups)  
+  Add to and remove applications from Application Groups.
+
+* [Synchronize Argo CD applications](#manually-synchronize-an-argo-cd-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
-* [Terminate sync for applications](#terminate-on-going-sync-for-gitops-applications)  
+* [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
 
-* [Refresh applications](#refreshhard-refresh-gitops-applications)  
+* [Refresh Argo CD applications](#refreshhard-refresh-argo-cd-applications)  
   Manually refresh applications with a single-click, as an alternative to manually synchronizing them.
 
-* [Rollback applications](#rollback-gitops-applications)   
+* [Rollback Argo CD applications](#rollback-aro-cd-applications)   
   Rollback applications to previous deployment versions.
 
-* [Rollback applications](#rollback-gitops-applications)   
-  Rollback applications to previous deployment versions.
 
-* [Manage rollouts for deployments](#manage-rollouts-for-gitops-application-deployments)  
+* [Manage rollouts for deployments](#manage-rollouts-for-argo-cd-application-deployments)  
   Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
-* [Delete applications](#delete-gitops-applications)  
+* [Delete Argo CD applications](#delete-argo-cd-applications)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
 
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#delete-application-resources).
 
 
+## GitOps Environments & Argo CD applications
+To track, optimize, and manage deployments at scale you need a way to visualize applications at every stage of their development and deployment lifecycle. Our custom Environment resource allows you to do just this without the need for complex configuration and maintenance overhead. 
+
+Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces. Visualize the environments and their applications in the GitOps Environments dashboard to track promotions and view version and details on the most recent commits that caused the change.
+
+Here's a visualization of Argo CD applications in the GitOps Environments dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	alt="Argo CD applications organized in GitOps Environments" 
+	caption="Argo CD applications organized in GitOps Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with Argo CD applications and Environments in Codefresh, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+
+## GitOps Products & Argo CD applications
+The Product is another custom resource from Codefresh, also enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
+
+Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments, Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+Codefresh seamlessly collates the Environments where each application in the Product is deployed, along with insights into commits, contributors, and features deployed across versions.
+
+Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Argo CD applications grouped by Products and organized by Environments" 
+	caption="Argo CD applications grouped by Products and organized by Environments"
+  max-width="70%" 
+%}
+
+For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 
-## Edit application definitions 
-Update General or Advanced configuration settings for a deployed application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the GitOps Apps dashboard. 
+## Edit Argo CD application definitions 
+Update General or Advanced configuration settings for a deployed Argo CD application through the Configuration tab. Once the application is deployed to the cluster, the Configuration tab is available on selecting the application in the GitOps Apps dashboard. 
 
-> You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
+>**NOTE**  
+  You cannot change application definitions (the application name and the selected runtime), and the Git Source selected for the application.
 
 **How to**  
 
@@ -86,7 +140,10 @@ Update General or Advanced configuration settings for a deployed application thr
    * To _commit all changes_, click **Commit**. This final commit screen is displayed with a diff view of the changes.  
    * To _undo all changes_ and return to the previous settings, click **Discard Changes**. This action removes all the changes you have made so far and returns you to the GitOps Apps dashboard.
 
-   >If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
+      {{site.data.callout.callout_tip}}
+      **TIP**  
+      If you change settings and then restore existing values for the same, Codefresh automatically removes the Commit and Discard Changes buttons as there are no new changes to commit or discard. 
+      {{site.data.callout.end}}
 
   {% include 
    image.html 
@@ -102,17 +159,15 @@ Update General or Advanced configuration settings for a deployed application thr
 1. To confirm all changes, at the bottom-left, click **Commit**.
   The changes are committed to Git, and in a few moments also synced to the cluster. 
 
-{::nomarkdown}
-<br><br>
-{:/}
 
 
-## Manage application groups
 
-Clicking on an application group in the Group tab navigates to the list of applications in the Group.
+## Manage Application Groups
+
+Clicking on an Application Group in the Group tab navigates to the list of applications in the Group.
 You can see the collective timelines for all applications within the group, instead of the individual source, health, or target information for each application.
 
-Once you assign an application to a group, you can add it to or remove it from different Application Groups through the application's Configuration settings.
+Once you assign an application to a group, you can add it to or remove it from different Application Groups through the application's Configuration settings. See also [Application Groups for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
@@ -125,12 +180,14 @@ Once you assign an application to a group, you can add it to or remove it from d
 
 
 
-## Manually synchronize an application
+## Manually synchronize an Argo CD application
 Manually synchronize an application to expedite Git-to-cluster sync.  The sync options selected for manual sync override the sync options defined for the application.  
 The sync options, grouped into Revision and Additional Settings, are identical to the Sync options in the General settings when you created the application. 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
 You can also synchronize _application resources_ with sync statuses such as `Service`, `AnalysisTemplate`, and `Rollouts` resources for example, in the Current State tab. Select the Sync option from resource's context menu. 
+{{site.data.callout.end}}
 
 **Before you begin**  
 * Review:  
@@ -156,7 +213,7 @@ You can also synchronize _application resources_ with sync statuses such as `Ser
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
 
-<br><br>
+
 
 
 
@@ -178,9 +235,7 @@ When selected, allows you to preview the application before changes are made to 
 **Force**  
 When selected, orphans the dependents of a deleted resource during the sync operation. This option is useful to prevent 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Additional Options for application sync
 
@@ -211,9 +266,7 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Synchronize resources in the application
 Synchronize Resource options allow you to selectively sync application resources. You can bypass sync settings at the application level, and directly select the resources you want to sync, by state or otherwise.  
@@ -247,13 +300,11 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    %} 
 
 
-{::nomarkdown}
-<br><br>
-{:/}
 
 
 
-## Terminate on-going sync for GitOps applications
+
+## Terminate on-going sync for Argo CD applications
 Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 
 Terminating a sync operation reverts the deployment to the previously deployed version or image.  
 
@@ -274,7 +325,7 @@ Terminating a sync operation reverts the deployment to the previously deployed v
 
 
 
-## Refresh/hard refresh GitOps applications
+## Refresh/hard refresh Argo CD applications
 
 As an alternative to manually syncing an application, either refresh or hard refresh the application. Both options are always available in the application toolbar.
 
@@ -293,8 +344,8 @@ As an alternative to manually syncing an application, either refresh or hard ref
    max-width="50%" 
    %} 
 
-## Rollback GitOps applications
-Rollback to a previously deployed version of active GitOps applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
+## Rollback Argo CD applications
+Rollback to a previously deployed version of active Argo CD applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
 
 ### Prerequisites for rollback
 
@@ -322,8 +373,10 @@ max-width="80%"
   By default, you can rollback to any the previous ten deployments (same as Argo CD). 
   If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
 
-  >TIP:  
-  >To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
+    {{site.data.callout.callout_tip}}
+    **TIP**    
+    To configure a different number, edit the application manifest and add `RevisionHistoryLimit` set to the number of previous deployments you need in the `spec` section.
+    {{site.data.callout.end}}
  
 
 * **Deleted version of application**  
@@ -387,12 +440,10 @@ caption="Rollback completed for application"
 max-width="70%"
 %}
 
-## Manage rollouts for GitOps application deployments
+## Manage rollouts for Argo CD application deployments
 Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Pause/resume ongoing rollouts
 Pause and resume ongoing rollouts directly from the Timeline tab in the GitOps Apps dashboard.  
@@ -414,9 +465,7 @@ If the rollout is already automatically paused as result of a step definition, t
    max-width="70%" 
    %}
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Manage an ongoing rollout with the Rollout Player
 Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
@@ -449,9 +498,7 @@ The table describes the controls in the Rollout Player.
 | **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Manually rollback completed rollout to previous revision
 <!--- add screenshots -->
@@ -497,12 +544,15 @@ The table describes the options for the `Rollout` resource.
 |**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
 
-## Delete GitOps applications
-Delete an application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
+## Delete Argo CD applications
+Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
  
->**Prune resources** in the application's General settings determines the scope of the delete action.  
+{{site.data.callout.callout_warning}}
+**WARNING**  
+**Prune resources** in the application's General settings determines the scope of the delete action.  
 When selected, both the application and its resources are deleted. When cleared, only the application is deleted. For more information, review [Sync settings]({{site.baseurl}}/docs/deployments/gitops/create-application/#sync-settings).  
 Codefresh warns you of the implication of deleting the selected application in the Delete form. 
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application to delete.
@@ -539,7 +589,10 @@ Codefresh warns you of the implication of deleting the selected application in t
 
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
+[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
 

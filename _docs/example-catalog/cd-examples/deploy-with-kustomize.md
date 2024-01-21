@@ -140,8 +140,11 @@ The above pipeline does the following:
 1. Clones the main repository through a [git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/).
 2. Connects to our Kubernetes cluster we have integrated with Codefresh using `kubectl`, and deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap using Kustomize (the `-k` flag), through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
->If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
   `kustomize build overlays/production | kubectl apply -f`
+{{site.data.callout.end}}
 
 ## Create the production environment pipeline 
 
@@ -200,8 +203,11 @@ The above pipeline does the following:
 1. Connects to our Kubernetes cluster we have integrated with Codefresh using `kubectl`, and deploys the application as a staging environment with the appropriate value for `MY_MYSQL_DB` as defined in our configMap using Kustomize (the `-k` flag), through a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
 
->Note that if you are using kubectl prior to 1.14, you can use the following command to deploy with Kustomize: 
->`kustomize build overlays/production | kubectl apply -f`
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you are using `kubectl` prior to 1.14, you can use the following command to deploy with Kustomize:  
+  `kustomize build overlays/production | kubectl apply -f`
+{{site.data.callout.end}}
 
 ## Verification
 

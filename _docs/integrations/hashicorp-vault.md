@@ -7,7 +7,8 @@ toc: true
 
 Codefresh can use secrets from your HashiCorp Vault installation. This way you have full control over secret storage and rotation.
 
->This feature is for Enterprise accounts only.
+>**NOTE**  
+This feature is for Enterprise accounts only.
 
 ## Prerequisites
 
@@ -28,6 +29,12 @@ Codefresh can use secrets from your HashiCorp Vault installation. This way you h
 
 ## Set up HashiCorp Vault integration in the Codefresh UI
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**     
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
 1. From the **Add Provider** dropdown, select **Hashicorp vault**.
@@ -35,7 +42,8 @@ Codefresh can use secrets from your HashiCorp Vault installation. This way you h
   * **Name**: A unique name for the integration which is referenced in `codefresh.yaml`.
   * If your Vault instance is behind a firewall, toggle **Vault is behind a firewall** to ON.  
   * To allow only Codefresh admins to change the Vault configuration, toggle **Allow access to all users** to OFF.
-  > The other settings are specific to your [Vault authentication](https://www.vaultproject.io/docs/auth){:target="\_blank"} method. Refer to the  Vault documentation on how to get the required values.
+  >**NOTE**  
+    The other settings are specific to your [Vault authentication](https://www.vaultproject.io/docs/auth){:target="\_blank"} method. Refer to the  Vault documentation on how to get the required values.
 
 {% include image.html
 lightbox="true"

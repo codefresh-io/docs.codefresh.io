@@ -2,6 +2,8 @@
 // Callouts
 //
 
+$backgroundTransparentFilterValue: .85;
+
 blockquote,
 .blockquote,
 .bd-callout {
@@ -9,7 +11,8 @@ blockquote,
   padding: 1.5rem;
   margin: 1.5rem 0;
   font-size: 1rem;
-  background: #fff9df;
+  background: transparentize($bd-info, $backgroundTransparentFilterValue);
+
 
   &::before {
     position: absolute;
@@ -18,11 +21,11 @@ blockquote,
     width: 8px;
     height: 100%;
     content: "";
-    background: #ffe58f;
+    background-color: $bd-info;
   }
 
   @include media-breakpoint-up(xxl) {
-    margin: 1.5rem -1.5rem;
+    margin: 1.5rem 0;
   }
 
   p:last-child {
@@ -49,12 +52,16 @@ blockquote,
 
 // Variations
 @mixin bs-callout-variant($color) {
-  border-left-color: $color;
+  background: transparentize($color, $backgroundTransparentFilterValue);
+
+  &::before {
+    background-color: $color;
+  }
 
   h4 { color: $color; }
 }
 
 .bd-callout-info { @include bs-callout-variant($bd-info); }
 .bd-callout-warning { @include bs-callout-variant($bd-warning); }
-.bd-callout-danger { @include bs-callout-variant($bd-danger); }
 .bd-callout-success { @include bs-callout-variant($bd-success); }
+.bd-callout-tip { @include bs-callout-variant($bd-tip); }

@@ -196,7 +196,11 @@ The full integration is now ready, and you can start running Codefresh pipelines
 
 Now whenever you set up a [Codefresh pipeline]({{site.baseurl}}/docs/pipelines/pipelines/), you can choose its execution environment and point it to your own cluster with the Codefresh builder. 
 
->At this point if you have a Codefresh browser window open, make sure that you log out and then log in again so that the new UI options regarding your cluster become available.
+{{site.data.callout.callout_tip}}
+**TIP**  
+At this point if you have a Codefresh browser window open, make sure that you log out and then log in again so that the new UI options regarding your cluster become available.
+{{site.data.callout.end}}
+
 
 Open any Codefresh pipeline and toggle the *Run on Environment* switch. Select the cluster and the namespace that you used for the installation in step 2.
 

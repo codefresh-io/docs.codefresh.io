@@ -72,11 +72,15 @@ See:
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 
-## Codefresh & the Argo Project 
+## Codefresh & Argo Project  
 
-Codefresh unified all 4 projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
+Codefresh integrates Argo CD to your Kubernetes deployments through the Codefresh GitOps Runtime, providing an enterprise-supported version enhanced with unique functionality.
 
->Our users rely on the Codefresh platform to deliver software, reliably and predictably, without disruptions. To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh. Typically, new versions of Argo are available within 30 days of their release.
+>**Argo CD release policy**  
+Our users rely on the Codefresh platform for consistent and uninterrupted software delivery.   
+To maintain this high standard, we rigorously test and refine new versions of Argo CD before integrating them into the Codefresh GitOps Runtime.   
+Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+
 
 ## Related articles
 [Codefresh for CI]({{site.baseurl}}/docs/getting-started/ci-codefresh/)  

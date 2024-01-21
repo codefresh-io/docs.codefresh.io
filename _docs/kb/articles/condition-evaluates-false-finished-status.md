@@ -51,7 +51,7 @@ my_step:
 
 {% endraw %}
 
-Since the `finished` alias is just available for step-dependencies|conditions, then you can workaround this by specifying the possible step-status of the step you're interested in, applying a logical `OR` (`||`) in the custom-condition.
+Since the `finished` alias is just available for step-dependencies/conditions, then you can workaround this by specifying the possible step-status of the step you're interested in, applying a logical `OR` (`||`) in the custom-condition.
 
 For example, following the same example above, this would be the solution:
 

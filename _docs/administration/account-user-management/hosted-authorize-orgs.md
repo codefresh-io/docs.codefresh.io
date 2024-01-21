@@ -7,7 +7,8 @@ toc: true
 ---
 
 If your Git provider has an OAuth application for Codefresh, you need to authorize access to the app's organizations/projects to see them in Codefresh.
-> Authorization is per organization.
+>**NOTE**  
+Authorization is per organization.
 
 ## Authorize organizations in GitHub
 

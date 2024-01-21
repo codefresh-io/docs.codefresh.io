@@ -13,7 +13,8 @@ For Datadog and Codefresh integration, you need:
 * An API token from your Datadog account
 * To define the settings in Codefresh
 
-> Note: Please reach out to Support if you’re interested in enabling Datadog for your account.
+>**NOTE**  
+If you’re interested in enabling Datadog for your account, please reach out to Support.
 
 ## Get API token from Datadog account
 If you already have a Datadog account, you can copy the API key if you have one, or generate a new API key. 

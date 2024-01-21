@@ -155,7 +155,10 @@ and creating them from an external system.
 
 First you need a YAML file that defines the pipeline. This is a pipeline [specification](#full-pipeline-specification).
 
->It is also very easy to create a a dummy pipeline in the Codefresh UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
+{{site.data.callout.callout_tip}}
+**TIP**    
+It is also very easy to create a a dummy pipeline in the Codefresh UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
+{{site.data.callout.end}}
 
 Here is an example:
 
@@ -237,10 +240,11 @@ Use shared configuration contexts in your pipelines by referencing it in the pip
 
 Add the `spec.contexts` field followed by the name or names of the shared configuration context or contexts to use. 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**     
 Referencing shared configuration contexts with `spec.contexts` only works programmatically via the CLI/API.  
 The UI-based YAML options (**inline YAML**, **Use YAML from Repository/URL**) do not support this.  
-
+{{site.data.callout.end}}
 
 If you have a shared configuration named `test-hello` that includes the variable `test=hello`, you can add `spec.contexts.test-hello` to the pipeline YAML, and then reference this variable in the pipeline as you would any other variable.
 
@@ -265,7 +269,8 @@ spec:
 
 If you don't want to create a pipeline from an existing one, you can also create your own YAML from scratch.  
 The following sections contain an explanation of the fields. 
-> Codefresh automatically generates additional fields, usually fields with dates and internal ID numbers. While you cannot edit these fields, you can view them by exporting the pipeline.
+>**NOTE**  
+Codefresh automatically generates additional fields, usually fields with dates and internal ID numbers. While you cannot edit these fields, you can view them by exporting the pipeline.
 
 ### Top level fields
 
@@ -473,7 +478,8 @@ The possible values for the `events` array are the following (only those support
  * `pullrequest.labeled` - pull request labeled
  * `pullrequest.unlabeled` - pull request unlabeled
  * `pullrequest.synchronize` - pull request synchronized
- * `pullrequest.commentAdded` - pull request comment added
+ * `pullrequest.commentAdded` - pull request comment added (restricted)
+ * `pullrequest.commentAddedUnrestricted` - Any pull request comment will trigger a build. We recommend using only on private repositories.
  * `release` - Git release event
 
 The `variables` and `runtimeEnvironment` fields have exactly the same format as in the parent pipeline fields but values defined in the trigger will take higher priority.
