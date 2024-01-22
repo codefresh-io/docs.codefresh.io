@@ -577,8 +577,8 @@ Rename an Application Set and point all existing applications to the Application
 
 {:start="4"}
 1. In Git, open the `appset.yaml`, click **Edit**, and do the following:
-  * Rename the ApplicationSet as needed. 
-  Disable auto-sync by commenting out the lines with sync options.
+  * Rename the ApplicationSet as needed.  
+  * Disable auto-sync by commenting out the lines with sync options.  
   * Commit the changes.
 
 {% include 
@@ -609,7 +609,7 @@ Rename an Application Set and point all existing applications to the Application
 1. Go to the cluster with the applications, and change Owner Reference of the existing applications to point them to the new ApplicationSet by running:
   
   ```
-  kubectl get applications -o=json | \ jq -r '.items[] | select(.metadata.ownerReferences[0].name == "<orginal-appset-name>") | .metadata.name' | \ xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "<new-appset-name>"}]'
+  kubectl get applications -o=json -n argocd | jq -r '.items[] | select(.metadata.ownerReferences[0].name == "<orginal-appset-name>") | .metadata.name' | xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "<new-appset-name>"}]' -n argocd
   ```
   where:
   * `<orginal-appset-name>` is the _old name_ of the ApplicationSet, for example, `"example-appset-v4"`. 
