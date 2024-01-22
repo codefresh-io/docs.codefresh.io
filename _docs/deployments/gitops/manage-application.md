@@ -44,9 +44,11 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Rollback Argo CD applications](#rollback-aro-cd-applications)   
   Rollback applications to previous deployment versions.
 
-
 * [Manage rollouts for deployments](#manage-rollouts-for-argo-cd-application-deployments)  
-  Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+  Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts. 
+
+* [Rename an ApplicationSet](#rename-an-application-set)  
+  Change the name of an existing ApplicationSet and point all its applications to the new ApplicationSet.
 
 * [Delete Argo CD applications](#delete-argo-cd-applications)  
   Delete unused or legacy applications to avoid clutter and remove unnecessary resources.
@@ -543,6 +545,102 @@ The table describes the options for the `Rollout` resource.
 |**Resume**             | Resume a rollout that has been paused. | 
 |**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
 |**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
+
+## Rename an Application Set
+Rename an Application Set and point all existing applications to the Application Set.
+
+1. In the Codefresh UI, from the sidebar, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Click the Git Source application with the Application Set.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/rename-appset/appset-view.png" 
+   url="/images/applications/rename-appset/appset-view.png" 
+   alt="GitOps Apps dashboard with example ApplicationSet" 
+   caption="GitOps Apps dashboard with example ApplicationSet"
+   max-width="70%" 
+   %}
+
+{:start="3"}
+1. From the Application Header, click the link in Source to go the repo in your Shared Configuration Repository.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/source-repo-link.png" 
+	url="/images/applications/rename-appset/source-repo-link.png" 
+	alt="Link to source repo in Application Header" 
+	caption="Link to source repo in Application Header"
+  max-width="50%" 
+%}
+
+{:start="4"}
+1. In Git, open the `appset.yaml`, click **Edit**, and do the following:
+  * Rename the ApplicationSet as needed.  
+  * Disable auto-sync by commenting out the lines with sync options.  
+  * Commit the changes.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/auto-sync-rename-appset.png" 
+	url="/images/applications/rename-appset/auto-sync-rename-appset.png" 
+	alt="Rename ApplicationSet and comment out sync options" 
+	caption="Rename ApplicationSet and comment out sync options"
+  max-width="50%" 
+%}
+
+{:start="5"}
+1. Go back to the **GitOps Apps** dashboard in the Codefresh UI, and verify that the **Current State** tab displays the renamed ApplicationSet.  
+  As you can see in the picture below, the Current State tab displays the new ApplicationSet, but the applications still point to the old ApplicationSet. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/renamed-appset-current-state.png" 
+	url="/images/applications/rename-appset/renamed-appset-current-state.png" 
+	alt="Renamed ApplicationSet as new ApplicationSet in Current State tab" 
+	caption="Renamed ApplicationSet as new ApplicationSet in Current State tab"
+  max-width="50%" 
+%}
+
+{:start="6"}
+1. Go to the cluster with the applications, and change Owner Reference of the existing applications to point them to the new ApplicationSet by running:
+  ```
+  kubectl get applications -o=json -n <namespace> | jq -r '.items[] | select(.metadata.ownerReferences[0].name == "<orginal-appset-name>") | .metadata.name' | xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "<new-appset-name>"}]' -n <namespace>
+  ```
+  where:  
+    * `<namespace>` is the namespace on the cluster where the applications are deployed, for example, `argocd`.
+    * `<orginal-appset-name>` is the _old name_ of the ApplicationSet, for example, `"example-appset-v4"`. 
+    * `<new-appset-name>` is the _new name_ of the renamed ApplicationSet, for example, `"example-appset-v5"`.
+
+{:start="7"}
+1. Go back to the GitOps dashboard in the Codefresh UI, and in the Current State tab make sure that the applications are now linked to the renamed (new) ApplicationSet.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/apps-point-to-new-appset.png" 
+	url="/images/applications/rename-appset/apps-point-to-new-appset.png" 
+	alt="Applications linked to new ApplicationSet in Current State tab" 
+	caption="Applications linked to new ApplicationSet in Current State tab"
+  max-width="50%" 
+%}
+
+{:start="8"}
+1. Click **Synchronize** and wait for the synchronization to complete.
+1. Delete the old ApplicationSet, as described in [Delete Argo CD applications](#delete-argo-cd-applications) in this article.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/delete-old-appset.png" 
+	url="/images/applications/rename-appset/delete-old-appset.png" 
+	alt="Delete old ApplicationSet" 
+	caption="Delete old ApplicationSet"
+  max-width="50%" 
+%}
 
 ## Delete Argo CD applications
 Delete an Argo CD application from Codefresh. Deleting an application deletes the manifest from the Git repository, and then from the cluster where it is deployed. When deleted from the cluster, the application is removed from the GitOps Apps dashboard in Codefresh.
