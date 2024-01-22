@@ -611,9 +611,9 @@ Rename an Application Set and point all existing applications to the Application
   ```
   kubectl get applications -o=json -n argocd | jq -r '.items[] | select(.metadata.ownerReferences[0].name == "<orginal-appset-name>") | .metadata.name' | xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "<new-appset-name>"}]' -n argocd
   ```
-  where:
-  * `<orginal-appset-name>` is the _old name_ of the ApplicationSet, for example, `"example-appset-v4"`. 
-  * `<new-appset-name>` is the _new name_ of the renamed ApplicationSet, for example, `"example-appset-v5"`.
+    where:  
+      * `<orginal-appset-name>` is the _old name_ of the ApplicationSet, for example, `"example-appset-v4"`. 
+      * `<new-appset-name>` is the _new name_ of the renamed ApplicationSet, for example, `"example-appset-v5"`.
 
 {:start="7"}
 1. Go back to the GitOps dashboard in the Codefresh UI, and in the Current State tab make sure that the applications are now linked to the renamed (new) ApplicationSet.
