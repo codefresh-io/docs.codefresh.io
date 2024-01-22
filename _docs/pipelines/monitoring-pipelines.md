@@ -28,6 +28,16 @@ max-width="80%"
 
 In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#pipelines-dashboard) serves as a centralized location to track pipelines performance by KPIs. 
 
+
+## Concurrency recommendation per Runtime Environment
+
+Concurrency limits control the number of simultaneous builds for Codefresh pipelines. Concurrency limits are set at both the account and specific pipeline levels. 
+
+**Balancing concurrency and performance**
+While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
+
+
+
 ## Starring projects and pipelines as favorites
 
 Mark frequently used or high-priority pipelines as favorites in the Projects and Pipelines pages. This allows for easy and quick access to important projects or pipelines.  
@@ -227,8 +237,10 @@ View logs for running and completed builds and download them in HTML or text for
 You can view logs online, for the entire build or for single or specific steps in the build. Similarly, you can download the logs for the entire build, or for single or specific steps.  
 The Filter Logs option is useful to view and manage logs, especially for large builds as there is a max size limit for logs. You can also search logs.
 
->Note:  
-  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size is exceeded. 
+You can also [share logs](#sharing-log-urls-for-pipeline-builds) with other users logged in to the same account.
+
+>**NOTE**  
+  The max log size for the entire build is 100MB, and 20MB per step. The system stops generating logs once the build size exceeds the maximum permitted. 
   For large builds, it is easier to filter the logs by single or multiple steps, and then view/download them.
 
 1. In the **Builds** page, select a build. 
@@ -248,6 +260,57 @@ caption="Build log in Codefresh"
 max-width="60%"
 %}
 
+### Sharing log URLs for pipeline builds
+
+Resolve issues in pipeline builds more efficiently and quickly by sharing relevant log segments with your colleagues, either for a specific build step or for the entire build.  
+Select the part of the log and share the generated URL with members logged in to the same account. The URL opens to the exact location in the build log that you selected.
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
+This functionality requires timestamps for build logs which will be enabled for all Codefresh accounts. Enabling timestamps in logs can affect any automation you may have created based on log outputs without timestamps. To opt out of timestamps in logs, please contact Codefresh Support. <br>
+This functionality will be available to all customers starting December 14.
+{{site.data.callout.end}}
+  
+
+
+>**NOTE**  
+Users with whom you share the logs must be logged in to the same account.
+
+**Before you begin**
+* Make sure build logs have timestamps
+
+**How to**
+1. In the **Builds** page, select a build. 
+1. Do one of the following:  
+  * To view logs for a specific step, click the step.
+  * To view logs for the entire build, click **Output** in the lower part of the Build page.
+1. Select the lines you want to share.
+1. Click **Share** in the top-right corner.
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-select-lines.png" 
+url="/images/pipeline/monitoring/share-logs-select-lines.png"
+alt="Sharing build logs" 
+caption="Sharing build logs" 
+max-width="60%"
+%}
+
+{:start="5"}
+1. In the pop-up that appears, click **Copy to clipboard**.
+1. Share the URL with users logged in to the same account.  
+  On accessing the link, the browser opens the Builds page, with the shared section highlighted in the build log.  
+
+   {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/share-logs-view-shared.png" 
+url="/images/pipeline/monitoring/share-logs-view-shared.png"
+alt="Shared build logs" 
+caption="Shared build logs" 
+max-width="60%"
+%}
 
 ### Viewing variables in pipeline builds
 
@@ -293,7 +356,7 @@ The variables are grouped by granularity, starting with the global project-level
 
 A variable with a strikethrough indicates an override by the same variable in a lower-level group. For rules on precedence and overrides for variables in builds, see [Variables]({{site.baseurl}}/docs/pipelines/variables/).  
 
->Notes:  
+>**NOTES**  
   * Variables exported across steps with `cf_export` are not identified as `cf-exported` variables in the list.  
   * Secret-type variables are always masked.
 
@@ -331,10 +394,15 @@ In both cases you can copy to clipboard the yaml shown using the button at the t
 
 ### Viewing pipeline metrics
 
-Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources
-consumed by your pipeline.
+Codefresh offers several metrics for the pipeline, and for steps in the pipeline, that allow you to get a better overview of the resources consumed by your pipeline.
 
-**Pipeline metrics**  
+
+>**NOTE**  
+When your pipeline includes at least one step that **does not use buildx**, memory usage is not displayed, _both for the build and for individual steps_.  
+For information on `buildx`, see [Fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields) in the Build step.
+
+
+#### Pipeline metrics 
 
 At the most basic level, Codefresh displays quick metrics while the pipeline is running that include
 memory consumed and size of logs:
@@ -367,7 +435,7 @@ max-width="70%"
 %}
 
 
-**Pipeline-step metrics**  
+#### Pipeline-step metrics  
 For step-specific metrics, first select the step, and then click the **Metrics** tab.
 Step metrics are available for memory and CPU usage (not disk space).
 
@@ -387,22 +455,27 @@ max-width="70%"
 
 You can restart a failed pipeline either from the beginning or from a failed step.
 
-* Restart from beginning  
+##### Restart from beginning  
   Restarts the pipeline with the **same** state as in its original execution, including the original Git commit. 
-  >To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+{{site.data.callout.callout_tip}}
+**TIP**    
+To restart the pipeline with a _new_ state, use the **Run** button in the [pipeline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor), and select any of the available [triggers]({{site.baseurl}}/docs/pipelines/triggers/).
+{{site.data.callout.end}}
 
-* Restart from failed step  
+##### Restart from failed step  
   Restarts the pipeline from the step that failed in the previous execution. Similar to restarting from the beginning, restarting from a failed step also restarts the pipeline with the same state at that point in time, including the original Git commit. You can restart from the Builds page or directly from the specific step that failed.
 
+>**NOTE**    
+The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
+If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
 
-  
-    >The option to restart from a failed step is available only when **Permit restart pipeline from failed step** is enabled in the pipeline's settings. See [Restart pipeline option in Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).<br>  
-       If your pipeline has some flaky steps, you can also use the [retry syntax]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step) in your YAML instead of restarting them manually each time they fail.
-
-**Restart pipeline from Builds view**
+#### Restart pipeline from Builds view
 
 * In the row with the pipeline to restart, click **Restart**, and then select the required option.
-  >Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+{{site.data.callout.callout_tip}}
+**TIP**   
+Disabled **From Failed Steps** indicates that the option is not enabled for the pipeline.
+{{site.data.callout.end}}
 
 
 {% include 
@@ -415,7 +488,7 @@ caption="Restart a pipeline"
 max-width="70%"
 %}
 
-**Restart from step view**
+#### Restart from step view
 * Click the pipeline to view its steps. 
 * Go to the failed step, right-click and then select **Restart from this step**.
 

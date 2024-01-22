@@ -815,7 +815,7 @@ If you are not sure which OS to select for `curl`, simply select one, and Codefr
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
-* Make sure you have [Runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/reference/git-tokens)
+* Make sure you have [Runtime token with the required scopes from your Git provider]({{site.baseurl}}/docs/security/git-tokens)
 * [Download or upgrade to the latest version of the CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Review [Hybrid Runtime installation flags](#hybrid-runtime-installation-flags)
 * For ingress-based runtimes, make sure your ingress controller is configured correctly:
@@ -1000,7 +1000,7 @@ Skip validating scopes for the token provided (for any Git provider). This flag 
 To skip token validation, add `--skip-permission-validation true`.
 
   > IMPORTANT:  
-    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes). <br><br>
+    Before using this flag, [review the required scopes for runtime tokens]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes). <br><br>
     When defined, Codefresh does not validate the scopes assigned to the token provided. If the token does not include the scopes required for Codefresh to automatically create the repositories for the runtime and Git Source during installation, the installation will fail.  
     The alternative is to create both repos before the installation.
 
@@ -1008,7 +1008,7 @@ To skip token validation, add `--skip-permission-validation true`.
 #### GitHub
 GitHub is the default Git provider for Hybrid Runtimes. Being the default provider, for both the CLI wizard and Silent install, you need to provide only the repository URL and the Git runtime token.
 
-> For the required scopes, see [GitHub and GitHub Enterprise Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
+> For the required scopes, see [GitHub and GitHub Enterprise Runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
 `--repo <repo_url> --git-token <git-runtime-token>`  
 
@@ -1025,7 +1025,7 @@ where:
 
   Example:  
   `https://github.com/nr-codefresh/codefresh.io.git/runtimes/defs?ref=codefresh-prod`  
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).
 
 {::nomarkdown}
 </br>
@@ -1033,7 +1033,7 @@ where:
 
 #### GitHub Enterprise 
 
-> For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
+> For the required scopes, see [GitHub and GitHub Enterprise runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#github-and-github-enterprise-runtime-token-scopes).
 
 
 `--provider github --repo <repo_url> --git-token <git-runtime-token>`  
@@ -1052,7 +1052,7 @@ where:
 
   Example:  
   `https://ghe-trial.devops.cf-cd.com/codefresh-io/codefresh.io.git/runtimes/defs?ref=codefresh-prod`
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitHub runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#github-and-github-enterprise-runtime-token-scopes)).  
 
 
 {::nomarkdown}
@@ -1060,7 +1060,7 @@ where:
 {:/}
 
 #### GitLab Cloud
-> For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
+> For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
 
 `--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
@@ -1086,7 +1086,7 @@ where:
 
   `https://gitlab.com/parent-group/child-group/codefresh.git/runtimes/defs?ref=codefresh-prod` (group hierarchy)
 
-* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).  
+* `--git-token <git-runtime-token>` (required), is the Git token authenticating access to the Runtime installation repository (see [GitLab runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes)).  
 
 
 {::nomarkdown}
@@ -1096,7 +1096,7 @@ where:
 
 #### GitLab Server
 
-> For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
+> For the required scopes, see [GitLab Cloud and GitLab Server runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#gitlab-cloud-and-gitlab-server-runtime-token-scopes).
 
 `--provider gitlab --repo <https_project_url> --git-token <git_runtime_token>`  
 
@@ -1310,8 +1310,8 @@ data:
   
 
 ## Related articles
-[Add external clusters to Hybrid and Hosted Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Add Git Sources to runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
 [Troubleshoot Hybrid Runtime installation]({{site.baseurl}}/docs/kb/articles/runtime-issues/)

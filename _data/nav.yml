@@ -51,6 +51,10 @@
   pages:
     - title: Home dashboard
       url: "/home-dashboard"
+    - title: GitOps Environments
+      url: "/gitops-environments"
+    - title: GitOps Products
+      url: "/gitops-products"
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images
@@ -154,7 +158,7 @@
           url: "/import-data-to-mongodb"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
-        - title: Vault secrets pipelines
+        - title: Vault secrets in pipelines
           url: "/vault-secrets-in-the-pipeline"
         - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
@@ -213,6 +217,8 @@
       url: "/codefresh-hosted-gitops"
     - title: Git Providers
       url: "/git-providers"
+    - title: OpenID Connect
+      url: "/oidc-pipelines"      
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Web Services
@@ -264,7 +270,7 @@
       url: "/codecov-integration"
     - title: Google Cloud builder
       url: "/gcloud-builder"
-    - title: Google Marketplace Installation
+    - title: Google Marketplace
       url: "/google-marketplace"
     - title: GitHub Actions
       url: "/github-actions"
@@ -349,17 +355,17 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating GitOps applications
+        - title: Creating Argo CD applications
           url: "/create-application"
-        - title: Monitoring GitOps applications
+        - title: Monitoring Argo CD applications
           url: "/applications-dashboard"
-        - title: Application Groups for GitOps applications
+        - title: Application Groups for Argo CD applications
           url: "/gitops-app-groups"
-        - title: Managing GitOps applications
+        - title: Managing Argo CD applications
           url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Troubleshooting GitOps applications
+        - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines
@@ -398,7 +404,7 @@
         - title: Deploy
           url: "/deploy"
         - title: Approval
-          url: "/approval"
+          url: "/approval"   
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
@@ -450,9 +456,9 @@
 - title: Argo Workflows
   url: "/workflows"
   pages:
-    - title: Creating workflows
+    - title: Creating Argo Workflows
       url: "/create-pipeline"
-    - title: Nested workflows
+    - title: Nested Argo Workflows
       url: "/nested-workflows"
     - title: Configure artifact repository
       url: "/configure-artifact-repository"
@@ -497,6 +503,8 @@
           url: "/codefresh-on-prem"
         - title: Platform upgrade
           url: "/codefresh-on-prem-upgrade"
+        - title: Account and user setup
+          url: "/on-prem-configuration"            
         - title: Feature management
           url: "/on-prem-feature-management"
     - title: GitOps
@@ -505,16 +513,20 @@
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops-helm-installation"
+          url: "/hybrid-gitops-helm-installation" 
+        - title: Hybrid GitOps Runtime alongside Community Argo CD
+          url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
-        - title: Managing & monitoring GitOps Runtimes
+        - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
+          url: "/migrate-cli-runtimes-helm"  
+        - title: Monitoring & managing GitOps Runtimes
           url: "/monitor-manage-runtimes"
         - title: Shared Configuration Repository
           url: "/shared-configuration"
-        - title: Add external clusters to GitOps Runtimes
+        - title: Managing external clusters in GitOps Runtimes
           url: "/managed-cluster"
-        - title: Add Git Sources to GitOps Runtimes
+        - title: Managing Git Sources in GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"
@@ -583,13 +595,15 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
-- title: Reference
-  url: "/reference"
+- title: Security
+  url: "/security"
   pages:
-    - title: Git tokens
+    - title: Git tokens for GitOps
       url: "/git-tokens"
-    - title: Secrets
+    - title: Secrets for GitOps
       url: "/secrets"
+    - title: Verify authenticity of Codefresh artifacts
+      url: "/codefresh-signed-artifacts"
 
 - title: What's new
   url: "/whats-new"

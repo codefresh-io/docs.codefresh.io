@@ -155,12 +155,10 @@ Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populat
 
 Jenkins offers a Git plugin with [environment variables](https://plugins.jenkins.io/git/#plugin-content-environment-variables){:target="\_blank"} you can use to templatize argument values.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### CF_IMAGE
-**Example: Report repo, branch with Git hash**  
+##### Example: Report repo, branch with Git hash
 This example illustrates how to define the value for `CF_IMAGE` to report Git repo, branch, committer, and Git hash information.
 
   Value:   
@@ -173,7 +171,7 @@ This example illustrates how to define the value for `CF_IMAGE` to report Git re
   * {% raw %}`${env.GIT_REVISION}`{% endraw %} reports the Git SHA1 commit ID pointing to the commit that was built. For example, `fa53bfa91df14c4c9f46e628a65ee21dd574490a`.
 
 
-**Example: Report a specific image tag**  
+##### Example: Report a specific image tag
 This example illustrates how to define the value for `CF_IMAGE` when you know the specific image version you want to report.
 
   Value:  
@@ -184,7 +182,7 @@ This example illustrates how to define the value for `CF_IMAGE` when you know th
   * {% raw %}`<v1.0>`{% endraw %} reports the hard-coded tag `v1.0`.
 
 
-**Example: Report the latest Git tag available on repository**  
+##### Example: Report the latest Git tag available on repository
 This example illustrates how to define the value for `CF_IMAGE` value to report the latest Git tag on the repository.   
   
   Value:  
@@ -195,13 +193,11 @@ This example illustrates how to define the value for `CF_IMAGE` value to report 
   * {% raw %}`${env.GIT_URL}`{% endraw %} reports the name of the repository that triggered the integration.  
   * {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${env.GIT_URL}`{% endraw %}. For example, `v1.0.4-14-g2414721`. 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### CF_GIT_BRANCH
 
-**Example: Report the fully-formed Git branch**  
+##### Example: Report the fully-formed Git branch  
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report the fully-formed Git branch.   
 
   Value:  
@@ -212,7 +208,7 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
   * {% raw %}`${env.GIT_BRANCH}`{% endraw %} is the fully-formed name of the Git branch. For example, `origin/auth-feature-branch`. 
 
 
-**Example: Report the local Git branch**  
+##### Example: Report the local Git branch 
 This example illustrates how to define the value for `CF_GIT_BRANCH` value to report only the branch in the repository that triggerred the pipeline.   
 
   Value:  
@@ -222,9 +218,7 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` value to re
   * {% raw %}`${env.GIT_URL}`{% endraw %} is the name of the repository that triggered the piepline.
   * {% raw %}`${env.GIT_LOCAL_BRANCH}`{% endraw %} is the name of the Git branch. For example, `auth-feature-branch`. 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### CF_JIRA_MESSAGE
 The Jira message represents an existing Jira issue, and must be a literal string.  
@@ -239,7 +233,7 @@ You can:
 * Navigate to the build file in Jenkins, and view the Codefresh report image step.
 
 
-**Build in Jenkins**  
+##### Build in Jenkins
 
 The Run column includes the link to the pipeline in Jenkins.  
 

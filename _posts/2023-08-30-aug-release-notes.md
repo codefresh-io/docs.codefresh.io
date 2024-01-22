@@ -21,12 +21,12 @@ max-width="60%"
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
-<br><br>
+
 
 ### Pipelines: Initialization metric in Datadog
 Codefresh now reports an additional pipeline metric to Datadog. Reported metrics includes the duration of the initialization step for pipelines.
 
-<br><br>
+
 
 
 ### GitOps: Application Groups in GitOps Apps dashboard
@@ -52,7 +52,7 @@ Codefresh also adds the Group name as an annotation to the application manifest 
 
 For details, see [Application Groups for GitOps applications]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
-<br><br>
+
 
 
 
@@ -75,7 +75,7 @@ For details, see [Application Groups for GitOps applications]({{site.baseurl}}/d
 * Out of memory for Hosted GitOps Runtimes.
 * Clicking the **Current State** or the **Timeline** tab of an application opens the Home dashboard instead of the tabs.
 * Unable to connect to a Git provider when installing Hosted GitOps Runtimes.
-* Deleted GitOps applications continue to be displayed in the GitOps Apps dashboard.
+* Deleted Argo CD applications continue to be displayed in the GitOps Apps dashboard.
 * (On-premises only) `DISABLED_CONCURRENT_SESSIONS` set to `true` results in `UNAUTHORIZED_ERROR token is not valid` error for graphql API call. 
 
 

@@ -18,6 +18,7 @@ Once you set up the Jira integration for pipelines, you can reference it in your
   When set up, you can reference the specific Jira integration in the pipeline by name, and Codefresh will automatically retrieve the integration credentials for authentication.  
   There is no need to repeatedly define authentication credentials. 
 
+
 * Image enrichment  
   Jira integration for pipelines enriches the deployment image. Image enrichment exposes metadata such as feature requests, pull requests, and logs for visibility into all aspects of the deployment, making it easier to track actions and identify root cause of failures. 
 
@@ -37,9 +38,10 @@ When you add a new Jira integration in Codefresh, you can authenticate using eit
 <!---The goal of the Codefresh [GitOps Dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) is to provide the highest observability into your deployments. The Codefresh GitOps Dashboard tags the Jira issues associated to deployments automatically through the Codefresh Jira Integration. This section will provide an overview of setting up the integration. -->
 
 {{site.data.callout.callout_warning}}
-**IMPORTANT**  
+**IMPORTANT**    
 The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
 {{site.data.callout.end}}
+
 
 ##### Before you begin 
 

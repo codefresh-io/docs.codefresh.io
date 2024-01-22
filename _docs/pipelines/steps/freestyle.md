@@ -61,6 +61,7 @@ step_name:
     - arg1
   shell: sh  
   fail_fast: false
+  strict_fail_fast: true
   volumes:
     - ./relative-dir-under-cf-volume1:/absolute-dir-in-container1
     - ./relative-dir-under-cf-volume2:/absolute-dir-in-container2
@@ -93,22 +94,86 @@ step_name:
 | `entry_point`                                 | Override the default container entry point. can be string or array of strings.                                                                                                                                                                                                                                                                                                                                      | Optional                  |
 | `shell`                                    | Explicitly set the executing shell to bash or sh. If not set the default will be sh. Note the `bash` option requires that you specify an `image` that includes `/bin/bash`; many images do not.                                                                                                                                                                                                                                                                                                                                     | Optional                  |
 | `environment`                              | A set of environment variables for the container.                                                                                                                                                                                                                                                                                                                           | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                                                                                                                                                                                                                    | Default                   |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
+| `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
+| `strict_fail_fast`   |Specifies how to report the Build status when `fail_fast` is set to `false`.<br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
 | `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
 | `volumes` | One or more volumes for the container. All volumes must be mounted from the existing shared volume (see details below) |Optional 
 | `when`                                     | Define a set of conditions that need to be satisfied in order to execute this step. You can find more information in [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/).     | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                                                                                                                                                                                             | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
-**Exported resources:**
+### Exported resources
 - Working Directory.
+
+## Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+{% highlight yaml %}
+{% raw %}
+step_name:
+  title: Step Title
+  description: Step description
+  image: image/id
+  working_directory: ${{step_id}}
+  commands: 
+    - bash-command1
+    - bash-command2
+  cmd:
+    - arg1
+    - arg2
+  environment:
+    - key=value
+  entry_point:
+    - cmd
+    - arg1
+  timeout: 45m
+  shell: sh  
+  fail_fast: false
+  volumes:
+    - ./relative-dir-under-cf-volume1:/absolute-dir-in-container1
+    - ./relative-dir-under-cf-volume2:/absolute-dir-in-container2
+  when:
+    branch:
+      only: [ master ]
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ...  
+{% endraw %}
+{% endhighlight %} 
+
+
+##### Timeout info in logs
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
 
 ## Examples
 
 Here are some full pipelines with freestyle steps. Notice that in all cases the pipelines are connected to [Git repositories]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 so the source code is already checked out and available to all pipeline steps.
 
-**Creating a [JAR file]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/):**
+### Creating a [JAR file]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -123,7 +188,7 @@ steps:
 
 Note how we [cache Maven dependencies]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/#caching-the-maven-dependencies) using the internal Codefresh Volume.
 
-**Running unit tests in Node.JS({{site.baseurl}}/docs/example-catalog/examples/#ci-examples):**
+### Running unit tests in Node.JS({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -137,7 +202,7 @@ steps:
      - npm run test
 {% endhighlight %}
 
-**Packaging a [GO application]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/):**
+### Packaging a [GO application]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/)
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -151,7 +216,7 @@ steps:
      - go build
 {% endhighlight %}
 
-**Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment){:target="\_blank"}:** 
+### Performing a [blue/green deployment](https://github.com/codefresh-io/k8s-blue-green-deployment){:target="\_blank"}
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -251,7 +316,10 @@ When you use the `commands` field, it will override the container original `entr
 The provided commands are concatenated into a single command using the shell's `;` operator, and are run using the default shell `/bin/sh` as an entry point.  
 Additional settings that are set only when using commands are `set -e`, and the [`cf_export`]({{site.baseurl}}/docs/pipelines/variables/#using-cf_export-command) utility.
 
-> Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
+{{site.data.callout.callout_tip}}
+**TIP**   
+  Using complex commands in the freestyle step requires use of [YAML block scalars](http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines){:target="\_blank"}.
+{{site.data.callout.end}}
 
 ### Commands and Entry point
 

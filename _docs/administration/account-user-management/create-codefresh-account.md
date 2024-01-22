@@ -24,6 +24,8 @@ alt="Codefresh account creation steps"
 max-width="90%" 
 %}
 
+For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration).
+
 ## Step 1: Select your Identity Provider
 As the first step in setting up your account in Codefresh, select the identity provider (IdP) to use. 
 Codefresh currently supports the following IdPs:
@@ -36,7 +38,7 @@ Codefresh currently supports the following IdPs:
 
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
->NOTES:  
+>**NOTE**  
   For Git repositories, the login method is less important, as you can Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process.  
 
   If you have multiple sign-up methods, as long as you use the same email address for all sign-ups, Codefresh automatically redirects you to the account dashboard.

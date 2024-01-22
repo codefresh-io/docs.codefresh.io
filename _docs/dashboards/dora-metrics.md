@@ -35,15 +35,22 @@ max-width="100%"
 
 ## Filters
 
-Use filters to define the exact subset of applications you are interested in. All filters support auto-complete and multiselect. 
-More than one option within the same filter type has an OR relationship. Multiple filter types when defined share an AND relationship. 
+Use filters to define the exact subset of Argo CD applications you are interested in. All filters support auto-complete and multiselect. 
+More than one option within the same filter type has an OR relationship. Multiple filter types when defined share an AND relationship.  
 
-* Runtimes: Show metrics for applications from selected runtimes 
-* Clusters: Show metrics for applications deployed to selected clusters
-* Applications: Show metrics for selected applications. 
-* Time: Show metrics from application for a specific time period
+> **NOTES**  
+When no filters are defined, all metrics are shown for the last 90 days.  
+To view filters that are not displayed, click **More filters**. 
 
-> When no filters are defined, all metrics are shown for the last 90 days. 
+
+* **Runtimes**: Show metrics for applications from selected runtimes 
+* **Clusters**: Show metrics for applications deployed to selected clusters
+* **Applications**: Show metrics for selected applications. 
+* **Time**: Show metrics from application for a specific time period
+* **Products**: Show metrics from applications within the specified [Product(s)]({{site.baseurl}}/docs/dashboards/gitops-products/).
+* **Environments**: Show metrics from applications within the specified [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+* **App Groups**: Show metrics from applications within the specified [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
+
 
 ## Metrics for favorite applications
 If you have [starred applications as favorites]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#gitops-apps-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
@@ -66,8 +73,10 @@ In addition, you can select the granularity for each graph:
 * Weekly
 * Monthly
 
->Tip:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   Remember that the graphs for the DORA metrics reflect metrics of application deployments, not workflows. 
+{{site.data.callout.end}}
 
 ### Deployment Frequency
   The frequency at which applications are deployed to production, including both successful (Healthy) and failed (Degraded), deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  
@@ -92,6 +101,8 @@ In addition, you can select the granularity for each graph:
   The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## Related articles    
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 

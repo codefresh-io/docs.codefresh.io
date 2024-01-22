@@ -27,20 +27,20 @@ First, you need to create a trigger event ([CLI docs](https://codefresh-
 io.github.io/cli/triggers/create-trigger-event/)):
 
 ```shell
-codefresh create trigger-event --type cron --kind codefresh --value expression="0 0/5 0 ? * --value message=5min
+codefresh create trigger-event --type cron --kind codefresh --value expression="0 0/5 * 1/1 * *" --value message=5min
 ```
   
 The output will be something like this:
 
 ```shell
-Trigger event: cron:codefresh:0 0/5 0 ? * *:5min:53be218399** was successfully created.
+Trigger event: cron:codefresh:0 0/5 * 1/1 * *:5min:53be218399** was successfully created.
 ```
   
 Then you need to attach the trigger-event to a pipeline ([CLI
 doc](https://codefresh-io.github.io/cli/triggers/create-pipeline-trigger/)):
 
 ```shell
-codefresh create t 'cron:codefresh:0 0/5 0 ? * *:test:53be218399**' <pipeline_ID>
+codefresh create t 'cron:codefresh:0 0/5 * 1/1 * *:5min:53be218399**' <pipeline_ID>
 ```
 
 ### API
@@ -52,14 +52,14 @@ The process is the same as with the CLI. First, we create a trigger event
 curl -X POST \  
 -H "Authorization: ${API_KEY}" \  
 -H 'Content-Type: application/json; charset=utf-8' \  
--d "{\"type\":\"cron\",\"kind\":\"codefresh\",\"values\":{\"expression\":\"0 0/5 0 ? * *\",\"message\":\"5min\"}}" \  
+-d "{\"type\":\"cron\",\"kind\":\"codefresh\",\"values\":{\"expression\":\"0 0/5 * 1/1 * *\",\"message\":\"5min\"}}" \  
 "https://g.codefresh.io/api/hermes/events?public=$false"
 ```
 
 Output:
 
 ```shell
-"cron:codefresh:0 0/5 0 ? * *:5min:53be218399**"
+"cron:codefresh:0 0/5 * 1/1 * *:5min:53be218399**"
 ```
 
 And then attach this event to a pipeline using the output event URI (URL-incoded) from the previous call ([APIdocs](https://g.codefresh.io/api/#operation/triggers-create)):

@@ -1,5 +1,5 @@
 ---
-title: "Codefresh on-premises upgrade"
+title: "Codefresh on-premises platform upgrade"
 description: "Upgrade the Codefresh On-Premises platform"
 group: installation
 redirect_from:
@@ -23,10 +23,11 @@ This major release **deprecates** the following Codefresh managed charts:
 
 See the instructions below for each of the affected charts.
 
-> Before the upgrade remove any seed jobs left from previous release with:
-   `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `
-
-> Before the upgrade remove PDBs for Redis and RabbitMQ left from previous release with:
+>**NOTES**  
+Before the upgrade:  
+* Remove any seed jobs left from previous release with:
+  `kubectl delete job --namespace ${CF_NAMESPACE} -l release=cf `<br><br>
+* Remove PDBs for Redis and RabbitMQ left from previous release with:  
    `kubectl delete pdb cf-rabbitmq --namespace ${CF_NAMESPACE}` <br />
    `kubectl delete pdb cf-redis --namespace ${CF_NAMESPACE}`
 
@@ -34,7 +35,8 @@ See the instructions below for each of the affected charts.
 From version **1.2.0 and higher**, we have deprecated support for `Codefresh-managed-ingress`.
 Kubernetes community public `ingress-nginx` chart replaces `Codefresh-managed-ingress` chart. For more information on the `ingress-nginx`, see [kubernetes/ingress-nginx](https://github.com/kubernetes/ingress-nginx).
 
-> Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:
+>**NOTE**  
+Parameter locations have changed as the ingress chart name was changed from `ingress` to `ingress-nginx`:
   **NGINX controller** parameters are now defined under `ingress-nginx`
   **Ingress object** parameters are now defined under `ingress`
 
@@ -115,7 +117,8 @@ ingress-nginx:
     admissionWebhooks:
       enabled: false
 ```
-> New `ingress-nginx` subchart creates a new `cf-ingress-nginx-controller` service (`type: LoadBalancer`) instead of old `cf-ingress-controller` service. So make sure to update DNS record for `global.appUrl` to point to a new external load balancer IP.
+>**NOTE**  
+New `ingress-nginx` subchart creates a new `cf-ingress-nginx-controller` service (`type: LoadBalancer`) instead of old `cf-ingress-controller` service. So make sure to update DNS record for `global.appUrl` to point to a new external load balancer IP.
   You can get external load balancer IP with:
   `kubectl get svc cf-ingress-nginx-controller -o jsonpath={.status.loadBalancer.ingress[0].ip`
 
@@ -123,10 +126,10 @@ ingress-nginx:
 ### Update configuration for RabbitMQ chart
 From version **1.2.2 and higher**, we have deprecated support for the `Codefresh-managed Rabbitmq` chart. Bitnami public `bitnami/rabbitmq` chart has replaced the `Codefresh-managed rabbitmq`. For more information, see [bitnami/rabbitmq](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
-> Configuration updates are not required if you are running an **external** RabbitMQ service.
-
-> RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
+>**NOTE**  
+Configuration updates are not required when running an **external** RabbitMQ service.<br><br>
+RabbitMQ chart was replaced so as a consequence values structure might be different for some parameters.
+For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/rabbitmq/values.yaml)
 
 **`existingPvc` changed to `existingClaim` and defined under `persistence`**
 
@@ -196,7 +199,8 @@ From version **1.2.2 and higher**, we have deprecated support for the `Codefresh
 Redis storage contains **CRON and Registry** typed triggers so you must migrate existing data from the old deployment to the new stateful set.
 This is done by backing up the existing data before upgrade, and then restoring the backed up data after upgrade.
 
-> Configuration updates are not required:
+>**NOTE**  
+Configuration updates are not required:
   * When running an **external** Redis service.
   * If CRON and Registy triggers have not been configured.
 
@@ -250,8 +254,9 @@ Restore the data after the upgrade:
   kubectl scale deployment cf-cfapi-base --replicas=2 -n codefresh
   ```
 
-> Redis chart was replaced so as a consequence values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
+>**NOTE**  
+Redis chart was replaced so as a consequence values structure might be different for some parameters.<br>
+For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml).
 
 **`existingPvc` changed to `existingClaim` and defined under `master.persistence`**
 
@@ -318,7 +323,8 @@ redis:
       size: 32Gi
 ```
 
-> If you run the upgrade without redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
+>**NOTE**  
+If you run the upgrade without Redis backup and restore procedure, **Helm Releases Dashboard** page might be empty for a few minutes after the upgrade.
 
 ## Upgrade to 1.3.0 and higher
 This major release **deprecates** the following Codefresh managed charts:
@@ -330,15 +336,17 @@ From version **1.3.0 and higher**, we have deprecated the Codefresh-managed `con
 
 Consul storage contains data about **Windows** worker nodes, so if you had any Windows nodes connected to your OnPrem installation, see the following instruction:
 
-> Use `https://<your_onprem_domain>/admin/nodes` to check for any existing Windows nodes.
+>**NOTE**  
+Use `https://<your_onprem_domain>/admin/nodes` to check for any existing Windows nodes.
 
 #### Back up existing consul data
 _Before starting the upgrade_, back up existing data.
 
-> Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.
-  Direct upgrade will most likely fail with:
-  `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
-  After backing up existing data, you must delete the old StatefulSet.
+>**NOTE**  
+Because `cf-consul` is a StatefulSet and has some immutable fields in its spec with both old and new charts having the same names, you cannot perform a direct upgrade.<br><br>
+Direct upgrade will most likely fail with:  
+  `helm.go:84: [debug] cannot patch "cf-consul" with kind StatefulSet: StatefulSet.apps "cf-consul" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`<br><br>
+After backing up existing data, you must delete the old StatefulSet.
 
 
 1. Exec into the consul pod and create a snapshot:
@@ -368,15 +376,17 @@ kubectl cp -n codefresh backup.snap cf-consul-0:/tmp/backup.snap
 ```
 kubectl exec -it cf-consul-0 -n codefresh -- consul snapshot restore /tmp/backup.snap
 ```
-> Consul chart was replaced, and values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
+>**NOTE**  
+Consul chart was replaced, and values structure might be different for some parameters.<br>
+For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/consul/values.yaml)
 
 
 ### Update Nats configuration
 From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` chart in favor of Bitnami public `bitnami/nats` chart. For more information, see [bitnami/nats](https://github.com/bitnami/charts/tree/master/bitnami/consul).
 
-> Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.
-  Direct upgrade will most likely fail with:
+>**NOTE**  
+Because `cf-nats` is a StatefulSet and  has some immutable fields in its spec, both the old and new charts have the same names, preventing a direct upgrade.<br><br>
+Direct upgrade will most likely fail with:  
   `helm.go:84: [debug] cannot patch "cf-nats" with kind StatefulSet: StatefulSet.apps "cf-nats" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden`
 
 * **Delete the old** `cf-nats` stateful set.
@@ -385,8 +395,9 @@ From version **1.3.0 and higher**, we have deprecated Codefresh-managed `nats` c
 kubectl delete statefulset cf-nats -n codefresh
 ```
 
-> Nats chart was replaced, and values structure might be different for some parameters.
-  For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml).
+>**NOTE**  
+Nats chart was replaced, and values structure might be different for some parameters.<br>
+For the complete list of values, see [values.yaml](https://github.com/bitnami/charts/blob/master/bitnami/nats/values.yaml).
 
 ### Upgrade to 1.3.1 and higher
 
@@ -397,7 +408,8 @@ W1010 03:03:55.553858     280 warnings.go:70] spec.template.spec.containers[0].e
 ```
 
 
-> Due to Helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741), you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
+>**NOTE**  
+Due to Helm issue [Removal of duplicate array entry removes completely from Kubernetes](https://github.com/helm/helm/issues/10741), you shoud run `kcfi deploy` or `helm upgrade` two times consecutively.
 
 
 With chart **v1.3.1** [insecure registy](https://docs.docker.com/registry/insecure/) property has been moved under `builder` section:
@@ -413,29 +425,37 @@ builder:
 Affected values:
 - `HorizontalPodAutoscaler` is renamed to `hpa`
 
-> Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18){:target="\_blank"} version
+>**NOTE**  
+Update `kcfi` tool to the latest [0.5.18](https://github.com/codefresh-io/kcfi/releases/tag/0.5.18){:target="\_blank"} version.
 
 This major release **deprecates** the following Codefresh managed charts and replaces them with Bitnami charts:
 * [Postgresql](#update-configuration-for-postgresql-chart)
 * [Mongodb](#update-configuration-for-mongodb-chart)
 
->Read instructions _before_ the upgrade.
+>**NOTE**  
+Read instructions _before_ the upgrade.
 
-> **Important!**  
-There is a known issue with releases **1.4.0-1.4.6**, where ABAC feature for git contexts doesn't work as expected and has to be disabled.
-Two options to mitigate the issue is to install patch release **1.4.7** or higher, where the issue is fixed or to apply a manual workaround:  
-To do that, sign in with a platform admin user and proceed to  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+There is a known issue with releases **1.4.0-1.4.6**, where ABAC feature for git contexts doesn't work as expected and has to be disabled.<br>
+Two options to mitigate the issue is to install patch release **1.4.7** or higher, where the issue is fixed or to apply a manual workaround:<br>  
+* To do that, sign in with a platform admin user and proceed to  
 `https://<YOUR_ONPREM_URL>/admin/features-management?filter=search:abacGitContext` page  
-On the page enable **System Features** switch (confirm in the pop up window)  
-After that, **abacGitContext** feature appears on the screen, toggle it's switch **ON** and then back to **OFF** state.
+* On the page enable **System Features** switch (confirm in the pop up window)  
+* After that, **abacGitContext** feature appears on the screen, toggle it's switch **ON** and then back to **OFF** state.
+{{site.data.callout.end}}
 
 ### Update configuration for Postgresql chart
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed Postgresql` chart. It has been replaced with Bitnami public chart `bitnami/postgresql`.  
 For more information, see [bitnami/postgresql](https://github.com/bitnami/charts/tree/master/bitnami/postgresql){:target="\_blank"}.
 
-> If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
+>**NOTE**  
+If in `config.yaml`, `postgresql.enabled=false` indicating that you are running and [**external** Postgresql service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-postgres-database), you can ignore the configuration instructions.
 
-> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Run the upgrade with `global.seedJobs=true` flag:
+{{site.data.callout.end}}
 
 ```yaml
 global:
@@ -468,7 +488,8 @@ cd psqlbackup
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_dump -Fc --dbname audit -h host.docker.internal -p 5432 -f /app/audit.dump
 ```
 
-> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+>**NOTE**  
+The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`.
 
 Here:  
 * The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
@@ -493,12 +514,14 @@ cd psqlbackup
 docker run --rm --name postgresql-backup -e PGPASSWORD=$PGPASSWORD -v $(pwd):/app --net="host" bitnami/postgresql:13 pg_restore -Fc --create --dbname postgres -h host.docker.internal -p 5432 /app/audit.dump
 ```
 
-> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+>**NOTE**  
+The above command is true for Windows and macOS, for Linux users `host.docker.internal` must be replaced with `127.0.0.1`.
 
 #### Backup and restore via Helm hooks
 
 You can also run Postgresql database migration with `pre-upgrade` and `post-upgrade` helm hooks.
-> It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
+>**NOTE**  
+It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
 
 
 **To enable backup and restore via Helm hooks:**  
@@ -528,9 +551,13 @@ postgresql:
 From version **1.4.0 and higher**, we have deprecated support for the `Codefresh-managed MongoDB` chart. It has been replaced with Bitnami public chart `bitnami/mongodb`.  
 For more information, see [bitnami/mongodb](https://github.com/bitnami/charts/tree/master/bitnami/mongodb){:target="\_blank"}.
 
-> If in `config.yaml`, `mongo.enabled=false`, indicating that you are running an [**external** MongoDB service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-mongodb), you can ignore the configuration updates.
+>**NOTE**  
+If in `config.yaml`, `mongo.enabled=false`, indicating that you are running an [**external** MongoDB service]({{site.baseurl}}/docs/installation/codefresh-on-prem/#configuring-an-external-mongodb), you can ignore the configuration updates.
 
-> **Important!** Run the upgrade with `global.seedJobs=true` flag:
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Run the upgrade with `global.seedJobs=true` flag:
+{{site.data.callout.end}}
 
 ```yaml
 global:
@@ -562,7 +589,8 @@ cd mongobackup
 docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongodump --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD -o /app
 ```
 
-> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+>**NOTE**  
+The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`.
 
 Here:  
 * The *--net* parameter lets the Docker container use the host's network stack and thereby gain access to the forwarded port.
@@ -587,7 +615,8 @@ cd mondgobackup
 docker run --rm --name mongodb-backup -v $(pwd):/app --net="host" bitnami/mongodb:4.2 mongorestore --host="host.docker.internal:27017" -u root -p $MONGODB_ROOT_PASSWORD /app
 ```
 
-> The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`
+>**NOTE**  
+The above command is true for Windows and macOS, for Linux users `host.docker.internal` has to be replaced with `127.0.0.1`.
 
 1. Stop the service port forwarding by terminating the background process.
 1. Connect to the new stateful set and confirm that your data has been successfully restored:
@@ -599,7 +628,8 @@ kubectl run --namespace $NAMESPACE mongodb-new-client --rm --tty -i --restart='N
 
 You can also run MongoDB database migration with `pre-upgrade` and `post-upgrade` helm hooks.
 
-> It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
+>**NOTE**  
+It's strongly recommended to create a **MANUAL** backup prior to the upgrade!
 
 
 **To enable backup and restore via Helm hooks:**  
@@ -626,12 +656,21 @@ mongodb:
 ## Upgrade to 2.0.0
 Version 2.0.0 incorporates a major version and chart change, including breaking changes that need you to take actions manually for compatibility.
 
->**WARNING**:
-> The `kcfi`installer has been deprecated from Version 2.0.0 and higher.  
->Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections. 
+{{site.data.callout.callout_warning}}
+**WARNING**  
+The `kcfi`installer has been deprecated from Version 2.0.0 and higher.<br>  
+Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections.
+{{site.data.callout.end}} 
 
 Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
 
+## Upgrade to 2.2.0
+Version 2.2.0 incorporates changes.
+
+Follow the instructions in [Upgrading to 2.2.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-2-0){:target="\_blank"}.
 
 
+## Related articles
+[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[On-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
 

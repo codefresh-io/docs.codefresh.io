@@ -14,6 +14,12 @@ For every cloud storage provider, you need to first create a storage bucket in y
 
 When you connect your storage provider account to Codefresh, Codefresh creates subfolders in the storage bucket for every build, with the build IDs as folder names. Test reports generated for a build are uploaded to the respective folder. The same bucket can store test reports from multiple pipeline builds.
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts. <br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
+
 1. In the Codefresh UI, on the toolbar, click the Settings icon, and then from the sidebar select **Pipeline Integrations**. 
 1. Scroll down to **Cloud Storage**, and click **Configure**.
 
@@ -62,7 +68,7 @@ max-width="80%"
 
 The integration is ready. You will use the name of the integration as an environment variable in your Codefresh pipeline.
 
-> **NOTE**:  
+> **NOTE**  
   An alternative authentication method is to use **JSON Config** with a [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey){:target="\_blank"}.  
   In that case, download the JSON file locally and paste its contents in the **JSON config** field.
   For more information, see the [official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys){:target="\_blank"}. 
