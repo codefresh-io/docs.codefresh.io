@@ -7,10 +7,11 @@ redirect_from:
   - /docs/integrations/jira-integration-1/
 toc: true
 ---
-Codefresh integrates with Jira in several ways, both to pull information from Jira to Codefresh for enriched images, and to push information from Codefresh to Jira for notifications in Jira.  
-This article describes how set up the integration with Jira for the highest visibility into your CD deployments with image enrichment. For information on Jira integration for notifications, see [Jira notification integrations for pipelines]({{site.baseurl}}/docs/integrations/jira/).
+Codefresh integrates with Jira in several ways, both to pull information from Jira to Codefresh for enriched images, and to push information from Codefresh to Jira for notifications.  
+This article describes how set up the integration with Jira for the highest visibility into your CD deployments with image enrichment.  
+For information on Jira integration for notifications, see [Jira notification integrations for pipelines]({{site.baseurl}}/docs/integrations/jira-integration/).
 
-Once you set up the Jira integration for pipelines, you can reference it in your pipeline through a custom, or Marketplace step -  [report-image-step](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"} or [jira-issue-extractor](https://codefresh.io/steps/step/jira-issue-extractor){:target="\_blank"}.
+Once you set up the Jira integration for pipelines, you can reference it in your pipeline through a custom step, or a Marketplace step such as [report-image-step](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"} or [jira-issue-extractor](https://codefresh.io/steps/step/jira-issue-extractor){:target="\_blank"}.
 
 **What are the benefits of integrating with Jira in Codefresh pipelines?**
 * Auotmated authentication  
@@ -80,7 +81,7 @@ You can now use the Jira integration in your pipelines.
 ### Configure Codefresh app in Atlassian Jira
 You need to generate the Organization URL and Client Key for the Codefresh application in Atlassian Jira.
 
->**NOTE**
+>**NOTE**  
 Currently Codefresh must provide you with access to use the Codefresh app in the Atlassian Marketplace App. Please get in touch for more information. 
 
 ##### Before you begin
@@ -141,14 +142,6 @@ Currently Codefresh must provide you with access to use the Codefresh app in the
 {:start="7"} 
 1. Copy the **Client Key**. You will need these to set up Jira integration for pipelines in Codefresh with the Jira Marketplace App. 
 
-## More Jira integration options
-Other integration options that Codefresh supports include using:
-
-* [Custom step]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#use-jira-within-your-codefresh-pipeline) integration
-  Use the custom step from our step Marketplace to connect your pipelines with Jira.
-* [Jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
-* GitOps-Jira integration: Set up a Jira integration for GitOps, connect GitOpsEnrich connect your CI tool with Codefresh to enrich and report images to the Codefresh platform with no disruptions to existing CI processes and flows. 
-
 
 ## Example of Jira integration to enrich image
 Here's an example of a pipeline step that 
@@ -193,6 +186,14 @@ steps:
       JIRA_CONTEXT: jira-p
 {% endraw %}
 {% endhighlight %}
+
+## More integration options for Jira
+Other integration options that Codefresh supports include using:
+* [Custom step]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#use-jira-within-your-codefresh-pipeline) integration  
+  Use the custom step from our step Marketplace to connect your pipelines with Jira.
+* [Jira-cli]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#using-your-own-jira-cli)
+* [GitOps-Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/)  
+  Set up a Jira integration for GitOps, connect your CI tool with the GitOps Jira integration to enrich and report images to the Codefresh platform with no disruptions to existing CI processes and flows. 
 
 ## Using the Jira Integration
 Once Jira is connected to your Codefresh account, you can use both platforms in combination and integrate Jira into your [GitOps workflow]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/).
