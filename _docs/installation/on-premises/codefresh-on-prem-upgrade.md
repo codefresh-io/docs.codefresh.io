@@ -662,7 +662,7 @@ The `kcfi`installer has been deprecated from Version 2.0.0 and higher.<br>
 Helm is the recommended way to install Codefresh On-Premises. The `kcfi config.yaml` is NOT compatible with Helm-based installation. To reuse the same `config.yaml` for the Helm chart, you need to remove deprecated sections, and update configuration for other sections.
 {{site.data.callout.end}} 
 
-Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/2.0.0-alpha.13#upgrading){:target="\_blank"}.
+Follow the instructions in [Upgrading to 2.0.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-0-0){:target="\_blank"}.
 
 ## Upgrade to 2.2.0
 Version 2.2.0 incorporates changes.
