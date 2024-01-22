@@ -175,7 +175,7 @@ Rename an Application Set and point all existing applications to the Application
    %}
 
 {:start="3"}
-1. From the Application Header, click the link in Source to go the repo in your Shared Configuration Repository in .
+1. From the Application Header, click the link in Source to go the repo in your Shared Configuration Repository.
 
 {% include 
 	image.html 
@@ -188,9 +188,9 @@ Rename an Application Set and point all existing applications to the Application
 %}
 
 {:start="4"}
-1. In Git, open the `appset.yaml` and do the following:
-  * Disable auto-sync by commenting out the lines with sync options.
+1. In Git, open the `appset.yaml`, click **Edit**, and do the following:
   * Rename the ApplicationSet as needed. 
+  Disable auto-sync by commenting out the lines with sync options.
   * Commit the changes.
 
 {% include 
@@ -198,32 +198,61 @@ Rename an Application Set and point all existing applications to the Application
 	lightbox="true" 
 	file="/images/applications/rename-appset/auto-sync-rename-appset.png" 
 	url="/images/applications/rename-appset/auto-sync-rename-appset.png" 
-	alt="Comment out sync options and rename ApplicationSet" 
-	caption="Comment out sync options and rename ApplicationSet"
+	alt="Rename ApplicationSet and comment out sync options" 
+	caption="Rename ApplicationSet and comment out sync options"
   max-width="50%" 
 %}
 
 {:start="5"}
-1. Go back to the **GitOps Apps** dashboard in the Codefresh UI, and verify that the **Current State** tab displays the renamed ApplicationSet.
+1. Go back to the **GitOps Apps** dashboard in the Codefresh UI, and verify that the **Current State** tab displays the renamed ApplicationSet.  
+  As you can see in the picture below, the Current State tab displays the new ApplicationSet, but the applications still point to the old ApplicationSet. 
 
-SCREENSHOT WITH CURRENT STATE tab with NEW APPSET
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/renamed-appset-current-state.png" 
+	url="/images/applications/rename-appset/renamed-appset-current-state.png" 
+	alt="Renamed ApplicationSet as new ApplicationSet in Current State tab" 
+	caption="Renamed ApplicationSet as new ApplicationSet in Current State tab"
+  max-width="50%" 
+%}
 
 {:start="6"}
-1. Go to the cluster with the applications, and rename Owner Reference of the existing applications to point them to new ApplicationSet by running:
+1. Go to the cluster with the applications, and change Owner Reference of the existing applications to point them to the new ApplicationSet by running:
   
   ```
-  kubectl get applications -o=json | \ jq -r '.items[] | select(.metadata.ownerReferences[0].name == "example-appset-v4") | .metadata.name' | \ xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "example-appset-v6"}]'
+  kubectl get applications -o=json | \ jq -r '.items[] | select(.metadata.ownerReferences[0].name == "<orginal-appset-name>") | .metadata.name' | \ xargs -I {} kubectl patch application {} --type="json" -p='[{"op": "replace", "path": "/metadata/ownerReferences/0/name", "value": "<new-appset-name>"}]'
   ```
-  Make sure to replace  `"example-appset-v6"` with the name of the renamed ApplicationSet.
+  where:
+  * `<orginal-appset-name>` is the _old name_ of the ApplicationSet, for example, `"example-appset-v4"`. 
+  * `<new-appset-name>` is the _new name_ of the renamed ApplicationSet, for example, `"example-appset-v5"`.
 
 {:start="7"}
 1. Go back to the GitOps dashboard in the Codefresh UI, and in the Current State tab make sure that the applications are now linked to the renamed (new) ApplicationSet.
 
-SCREENSHOT WITH CURRENT STATE tab showing apps linked to new app set
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/apps-point-to-new-appset.png" 
+	url="/images/applications/rename-appset/apps-point-to-new-appset.png" 
+	alt="Applications linked to new ApplicationSet in Current State tab" 
+	caption="Applications linked to new ApplicationSet in Current State tab"
+  max-width="50%" 
+%}
 
 {:start="8"}
 1. Click **Synchronize** and wait for the synchronization to complete.
 1. Delete the old ApplicationSet, as described in [Delete Argo CD applications](#delete-argo-cd-applications) in this article.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/applications/rename-appset/delete-old-appset.png" 
+	url="/images/applications/rename-appset/delete-old-appset.png" 
+	alt="Delete old ApplicationSet" 
+	caption="Delete old ApplicationSet"
+  max-width="50%" 
+%}
 
 
 ## Manage Application Groups
