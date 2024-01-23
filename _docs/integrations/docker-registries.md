@@ -29,8 +29,10 @@ The registries can either be public or private.
 
 ## General Configuration
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
 The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.
@@ -111,7 +113,8 @@ For more details, see the [example for image push]({{site.baseurl}}/docs/example
 
 You can also select a single registry that will serve as your [caching registry]({{site.baseurl}}/docs/pipelines/pipeline-caching/#docker-registry-caching).
 
-> You cannot select Dockerhub as a caching registry, because it has very strict requirements for naming images, and our caching mechanism needs capabilities which are not possible with Dockerhub.
+>**NOTE**  
+ You cannot select Dockerhub as a caching registry, because it has very strict requirements for naming images, and our caching mechanism needs capabilities which are not possible with Dockerhub.
 
 Codefresh uses that registry efficiently to perform advanced caching logic for your builds by automatically:
 
@@ -127,13 +130,15 @@ We give you the ability to define a separate registry for caching purposes for t
 
 Therefore, in most cases you should make your main registry your caching registry as well. For extra control, you can either define a different caching registry or disable selectively automatic pushes with the `disable_push` property.
 
->Notice that the dynamic image feature of Codefresh (creating docker images on demand in the same pipeline that is using them) will always work regardless of a caching registry.
+>**NOTE**  
+The dynamic image feature of Codefresh (creating docker images on demand in the same pipeline that is using them) will always work regardless of a caching registry.
 
 ## Default registry
 
 If you define more than one registry, you can select a registry as the default one. Codefresh uses the default registry in both [build]({{site.baseurl}}/docs/pipelines/steps/build/) and [push]({{site.baseurl}}/docs/pipelines/steps/push/) steps if they don't already include a `registry` property.  
 
-> Successful build steps always push to the default Codefresh registry, unless you also define the `disable_push` property.
+>**NOTE**  
+Successful build steps always push to the default Codefresh registry, unless you also define the `disable_push` property.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Docker Registries** and then click **Configure**.

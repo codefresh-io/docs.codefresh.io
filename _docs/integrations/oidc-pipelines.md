@@ -11,13 +11,13 @@ With OpenID Connect (OIDC), you can take a different approach by configuring you
 
 Whether you are a SaaS user or running Codefresh on-premises, you can obtain these ID tokens from the Codefresh OIDC provider (trusted by the cloud provider), and use them in your pipelines to perform the actions you need.
 
-**What are the benefits of OIDC ID tokens?**  
+##### What are the benefits of OIDC ID tokens? 
 In Codefresh, cloud provider credentials are defined and stored as static credentials when setting up the integration with the provider, and then referenced in the pipeline through the integration name. 
 
 With OIDC, Codefresh pipelines can utilize short-lived ID tokens for authentication during execution, instead of long-lived static credentials.
 These ID tokens do not need to be stored and managed in Codefresh. See [OIDC ID tokens, standard & custom claims](#oidc-id-tokens-standard--custom-claims).
 
-**How do you set up OIDC for Codefresh pipelines?**  
+##### How do you set up OIDC for Codefresh pipelines?
 The bulk of the process to setup the OIDC ID token in Codefresh pipelines is on the cloud provider's platform.  
 The setup requires configuring Codefresh as an OIDC provider, establishing the trust relationship, and defining the OIDC claims to enable secure authentication for the actions performed by the pipeline. 
 
@@ -45,7 +45,6 @@ To enforce secure access, _you must configure at least one condition on the `sub
 
 OIDC provides a list of common claims, as described in [standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims){:target="\_blank"}. 
 Codefresh supports a subset of standard claims which are listed below. Generally, both the audience (`aud`) and the subject (`sub`) claims are used to authorize access.
-
 
 * **audience (`aud`) claim**    
   The `aud` claim is the Client ID, which is the URL of the Codefresh platform instance.  
@@ -161,10 +160,11 @@ To create trust, define the claims, and configure the conditions for each claim.
 
 See [Custom Codefresh claims](#custom-codefresh-claims) and [Codefresh trigger types for Subject claims](#codefresh-trigger-types-for-subject-claims) in this article.
 
->**WARNING**:  
+{{site.data.callout.callout_warning}}
+**WARNING**   
 It is essential that you configure _at least one condition_ to enforce secure access.  
 As the cloud providers themselves do not enforce conditions by default, without conditions in place, anyone can request an ID token and potentially perform actions.
-
+{{site.data.callout.end}}
 
 This completes the OIDC setup for Codefresh pipelines in the cloud provider.  
 You can move on to the Codefresh platform to obtain and use the OIDC ID token in the pipeline workflow, as described in the steps that follow. 
@@ -187,13 +187,13 @@ max-width="60%"
 
 
 
-**What does the `obtain-oidc-id-token` Marketplace step do?**  
+##### What does the `obtain-oidc-id-token` Marketplace step do?  
 
 The step:  
 
 1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
   
-  >**NOTE**:  
+  >**NOTE**    
   Codefresh injects these two variables for every pipeline build, ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
 
 
@@ -211,15 +211,15 @@ The step:
 
 <br>
 
-**Requesting new OIDC ID tokens during build**  
+##### Requesting new OIDC ID tokens during build  
 * OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
 
 * The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
 
 
-<br><br>
 
-**How to**  
+
+##### How to
 
 * Add the step to your Codefresh pipeline's workflow.
 ```yaml
@@ -391,6 +391,7 @@ max-width="50%"
     In the example, for S3 services, you would select S3 from the list of services, and to allow these actions such as adding and listing objects, you would add these statements to the Policy Editor  `AllowReadWriteAccess` and `AllowListAccess`.
     1. Click **Next**.
     1. In Policy details, enter a meaningful **Policy name** to identify the policy with the required permissions, and click **Create policy**
+
 {:start="5"}
 1. Copy the ARN string for the role.  
   This step completes the setup for Codefresh as an OIDC provider for Amazon Web Services.
@@ -445,10 +446,7 @@ assume_role:
     commands: 
       - aws s3 ls "s3://$BUCKET_NAME/"
 ```
->**NOTE:**  
-
-
-
+>**NOTE**   
 The cloud provider uses the ID token to authenticate the request to assume the role, after which the pipeline’s build performs the permitted action for the role, such as listing the objects in the S3 bucket.
 
 

@@ -10,7 +10,8 @@ redirect_from:
 toc: true
 ---
 
->Manually running Git commands is an advanced technique. For most use cases you should use the [native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
+>**NOTE**  
+Manually running Git commands is an advanced technique. For most use cases you should use the [native Git checkout]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/) offered by Codefresh.
 
 For complex cloning, you can still use custom clone commands in a freestyle step. In this case,
 you lose the native Codefresh integration such as Git authentication and automatic workdir setup. Use custom clone commands only as a last resort.

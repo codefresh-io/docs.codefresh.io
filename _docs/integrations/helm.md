@@ -20,8 +20,11 @@ even if you don't have an external Helm repository. See our [quick start guide f
 
 For each Helm integration, you can toggle the level of access for [non-admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators). 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
 The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
 
 ## Set up external Helm integration
 
@@ -38,7 +41,8 @@ The name assigned to the integration must be unique within the account. Using th
 
 
 1. To restrict access to only Codefresh admins, toggle **Allow access to all users** to OFF.
-  >When access is restricted, users **cannot** use the [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} or [API]({{site.baseurl}}/docs/integrations/codefresh-api/) to [programmatically access this Helm repository](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.  
+  >**NOTE**  
+  When access is restricted, users **cannot** use the [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} or [API]({{site.baseurl}}/docs/integrations/codefresh-api/) to [programmatically access this Helm repository](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.  
    Otherwise, all users from all your Codefresh teams will be able to access this Helm repository with CLI commands or API calls.
 
 ### Azure Registry Helm repository settings
@@ -48,7 +52,8 @@ The name assigned to the integration must be unique within the account. Using th
 1. Click **Authenticate**. 
 1. In the permissions dialog, to allow Codefresh to access the Azure services, click **Accept**.
 
->Make sure that you are using an organizational/company Azure account, and not a personal one. We are currently working with Microsoft to improve this integration.
+>**NOTE**  
+Make sure that you are using an organizational/company Azure account, and not a personal one. We are currently working with Microsoft to improve this integration.
 
 **Settings**  
 
@@ -67,8 +72,10 @@ Setting|Description
 **Subscriptions**|Select your Azure subscription.
 **Registry**|The Helm repository to connect to.
 
->If you are already authenticated to Azure, and cannot find your Helm repository in the list, try revoking access, and authenticating again.
-
+{{site.data.callout.callout_tip}}
+**TIP**   
+If you are already authenticated to Azure, and cannot find your Helm repository in the list, try revoking access, and authenticating again.
+{{site.data.callout.end}}
 
 ### Azure Registry with Service Principal (SP) Helm repository settings
 
@@ -130,7 +137,8 @@ max-width="60%"
 
 You also add the private Helm repository of another Codefresh user as your integration.
 
->We **don't** recommend sharing the Codefresh Helm repository between accounts. The built-in Helm repository of each account is best used as a private Helm repository of that account. See more details on [how to make your private Helm public]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/#repo-access-level).
+>**NOTE**  
+We **don't** recommend sharing the Codefresh Helm repository between accounts. The built-in Helm repository of each account is best used as a private Helm repository of that account. See more details on [how to make your private Helm public]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/#repo-access-level).
 
 The table below describes the settings. 
 

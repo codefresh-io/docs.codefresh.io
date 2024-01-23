@@ -25,7 +25,7 @@ Codefresh employs a mechanism to consistently apply Sealed Secrets across multip
 It also facilitates sharing the public and private keys between the Codefresh platform and the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) 
 in the user's GitOps Runtime environment.
 
-**Sealed Secrets mechanism in Codefresh**    
+##### Sealed Secrets mechanism in Codefresh   
 1. The Sealed Secrets Controller generates both the public and private keys.
 1. Codefresh creates a `ConfigMap` resource representing these keys, and enables their sharing across clusters.  
   The `ConfigMap` contains the public key of the `SealedSecret`.
@@ -42,14 +42,17 @@ For more details, you can read our [blog post for sealed secrets](https://codefr
 
 The Sealed Secrets Controller is fully managed by the Codefresh GitOps Runtime, and encryption and decryption of secrets are fully automated.
 
-> **Warning!** DO NOT tamper with the Controller or its private/public keys in any way. 
+{{site.data.callout.callout_warning}}
+**WARNING**  
+DO NOT tamper with the Controller or its private/public keys in any way. 
+{{site.data.callout.end}}
 
 The applications you deploy with Codefresh should also have no knowledge of the Controller. All secrets that you need in your own applications should be accessed using the standard Kubernetes methods.
 
 ## Related articles 
 [Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
 [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)  
-[Set up a Hosted GitOps environment)]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Set up a Hosted GitOps environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 
 

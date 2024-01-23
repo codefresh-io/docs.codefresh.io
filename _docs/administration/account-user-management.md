@@ -15,4 +15,4 @@ Review:
 * Get [audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit/) for runtimes (hosted or private)
 * Learn [which IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/) are used for SAAS runtimes
 
-<!--- For on-premises environments, see [On-premises account and user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).  -->
+For on-premises environments, see [On-premises account and user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/). 

@@ -22,13 +22,15 @@ Alternatively, you can connect to Jira:
 When you add a new Jira integration in Codefresh, you can authenticate either using the:  
 * [Codefresh Marketplace App]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#authenticate-with-the-jira-client-key)  
   We recommended setting up your Jira integration through our Marketplace App.  
-  > Note that Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
+  >**NOTE**  
+  Codefresh currently has to provide you with access to use the Jira Marketplace App. Please get in touch for more information.
  
 * [Jira Account Details]({{site.baseurl}}/docs/integrations/notifications/jira-integration/#provide-account-details)
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
 The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
-<br />
+{{site.data.callout.end}}
 
 **Before you begin**  
 

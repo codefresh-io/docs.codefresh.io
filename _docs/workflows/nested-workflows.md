@@ -1,11 +1,11 @@
 ---
-title: "Nested workflows"
+title: "Nested Argo Workflows"
 description: ""
 group: workflows
 toc: true
 ---
 
-Define single or multiple nested workflows within a workflow. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.  
+Define single or multiple nested Argo workflows within a workflow. A nested workflow is a step within the parent workflow that either submits a new workflow or creates a PR (Pull Request) that runs a different workflow based on the PR result.  
 
 Nested workflows run independently of the parent workflow that submitted them. A nested submit workflow has traceability in both directions, from the parent to child, and from the child to the parent. A workflow triggered by a nested PR identifies the PR that triggered it. 
 
@@ -15,11 +15,11 @@ Codefresh has two ready-to-use Workflow Templates to:
  
  
 
-### Create the Workflow Template
+## Create the Workflow Template
 
 Use the examples below to create the Workflow Templates that run the nested workflows.
 
-**Submit Workflow**  
+### Submit Workflow
 
 The example references the `submit-workflow` template, `argo-hub.argo-workflows.0.0.3` and higher, in the Codefresh Hub for Argo.
 
@@ -46,7 +46,7 @@ spec:
                   value: 'echo'
 ```
 
-**Create a PR Workflow**  
+### Create a PR Workflow 
 
 The example references the `create-pr` template, `argo-hub.github.0.0.4` and higher, in the Codefresh Hub for Argo.
 
@@ -82,16 +82,18 @@ spec:
 
 
 
-### Navigate to parent/child workflows
+## Navigate to parent/child workflows
 
 Once the parent workflow is submitted, the Summary tab of the step in the parent or child workflow illustrates the nested relationship. 
 * Submit workflow template: In the parent workflow, the nested-workflow step has a link to the child workflow. In the child workflow, the step has a link to the parent template.
 * Create PR template: The child workflow indicates that it was triggered by the PR request. 
   
-> To navigate to the Workflows tab with step visualizations, select the workflow and then **View workflow details**.  
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+  To navigate to the Workflows tab with step visualizations, select the workflow and then **View workflow details**.  
+{{site.data.callout.end}}
      
-**Example: Submit template - parent workflow with link to child workflow** 
+### Example: Submit template - parent workflow with link to child workflow
 
       {% include 
    image.html 
@@ -103,7 +105,7 @@ Once the parent workflow is submitted, the Summary tab of the step in the parent
    max-width="50%" 
    %}
 
-**Example: Submit template - child workflow with link to parent**
+### Example: Submit template - child workflow with link to parent
      
    {% include 
    image.html 
@@ -115,7 +117,7 @@ Once the parent workflow is submitted, the Summary tab of the step in the parent
    max-width="50%" 
    %}
 
-**Example: Create PR template: - child workflow triggered by PR**
+### Example: Create PR template: - child workflow triggered by PR
       
   {% include 
    image.html 

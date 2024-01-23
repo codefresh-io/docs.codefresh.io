@@ -13,7 +13,7 @@ At times when launching a composition, you need to pass many environment variabl
 To do so, you can use `docker-compose 'env_file'` field on any service, and use files from the current working directory from which the composition is being launched.
 This works for both `composition` and `launch-composition` step types.
 
->**Note**:  
+>**NOTE**:  
   When launching a composition directly from the Compositions view, using `env_file` does not work as it is being launched in an empty working directory.  
   Consider moving the composition launch as part of a usual pipeline which will give you ability to use files from your cloned repository. 
 

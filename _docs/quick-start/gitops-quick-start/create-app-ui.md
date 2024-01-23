@@ -24,7 +24,8 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
   * **Name for YAML file**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.  
     You can click the Edit icon and change the name, if needed.
 
-  >You cannot change the application definitions once you continue to the Configuration settings.
+  >**NOTE**  
+  You cannot change the application definitions once you continue to the Configuration settings.
 
 {% include 
    image.html 

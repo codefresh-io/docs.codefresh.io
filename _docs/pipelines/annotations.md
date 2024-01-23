@@ -16,7 +16,8 @@ You can add, view, and manage annotations:
 * Directly in Codefresh steps 
 
 
->The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
+>**NOTE**  
+The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
 see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 
@@ -25,7 +26,8 @@ see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 You can add annotations to projects, pipelines, builds, and Docker images. The method is identical for all entities. 
 Every annotation has a name, type, and value.
 
-> Annotation names must start with a letter, can be alphanumeric, and include the underscore character. 
+>**NOTE**  
+Annotation names must start with a letter, can be alphanumeric, and include the underscore character. 
 
 
 ### Add annotations in the Codefresh UI
@@ -319,7 +321,8 @@ max-width="50%"
 
 Delete annotations by defining them by name in the YAML with `unset`. 
 
->Use `unset` annotation with all post-step operations, `on_success`, `on_fail`, `on_finish`.
+>**NOTE**  
+Use `unset` annotation with all post-step operations, `on_success`, `on_fail`, `on_finish`.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -368,7 +371,8 @@ You can also use both `unset` and `set` block in a single `annotations` block. A
 
 Apart from scalar values, you can also store more complex expressions in annotations, using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build, and even evaluations from  [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
->The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+>**NOTE**  
+The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 `codefresh.yml`
 {% highlight yaml %}

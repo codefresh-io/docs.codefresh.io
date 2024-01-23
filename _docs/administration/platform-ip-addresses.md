@@ -16,9 +16,10 @@ In addition, managed clusters registered to Hosted GitOps Runtimes must be confi
 
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
 If you do use these IPs, we **strongly recommend** that you monitor this page on a regular basis.
-
+{{site.data.callout.end}}
 
 
 
@@ -50,7 +51,7 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 54.160.88.80  
 - 72.44.39.224
 
->**NOTE**:  
+>**NOTE**    
 We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
  
 ## Codefresh IPs for Hosted GitOps Runtimes
@@ -68,12 +69,9 @@ We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/adminis
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
 If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
-
-[AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
-
-[EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
-
-[GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
+* [AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
+* [EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
+* [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/)  

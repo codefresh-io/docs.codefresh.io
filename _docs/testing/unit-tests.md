@@ -8,7 +8,10 @@ toc: true
 ---
 Easily run  unit tests for every commit or pull request.
 
->For the purposes of this article, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases), then see [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
+{{site.data.callout.callout_tip}}
+**TIP**  
+For the purposes of this article, "unit tests" are the tests that use only the source code of the application and nothing else. If you are interested in running tests with external services (such as databases), then see [integration tests]({{site.baseurl}}/docs/testing/integration-tests/).
+{{site.data.callout.end}}
 
 Different companies have different types of unit tests, and in several cases, the type of programming language also affects when/what tests are run. Codefresh supports all testing frameworks (including mocking frameworks) for all popular programming languages.
 

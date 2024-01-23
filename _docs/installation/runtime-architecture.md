@@ -63,14 +63,12 @@ max-width="100%"
 ### External Components
 
 
-<br>
 
 #### Codefresh Runner
 The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
 See [Codefresh Runner architecture](#codefresh-runner-architecture) in this article. Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
-<br>
 
 #### GitOps Runtime
 The GitOps Runtime, similar to the Codefresh Runner can be installed on the same cluster as the On-Premises platform on a remote cluster. It includes Codefresh-signed versions of the Argo Project components, Argo CD, Argo Workflows, Argo Rollouts, and Argo Events.
@@ -78,7 +76,6 @@ The GitOps Runtime reports events in clusters and GitOps repositories through AP
 
 Read more in [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
 
-<br>
 
 #### Codefresh UI & CLI
 Codefresh provides a web-based UI and CLI to work with the Codefresh On-Premises platform through API calls. 
@@ -89,35 +86,35 @@ The CLI provides a flexible option for developers to interact with the On-Premis
 
 ### On-Premises Platform Components
 
-<br>
+
 
 #### Ingress Controller
 
 The Codefresh On-Premises platform uses an ingress controller to handle incoming traffic. The NGINX Ingress Controller is deployed within the cluster hosting the Codefresh platform. The ingress controller serves as the entry point for requests originating from Codefresh Runners, GitOps Runtimes, and Clients, and routes them to the appropriate destinations, namely the Pipelines API/UI and the GitOps API/UI.
 
-<br>
+
 
 #### Pipelines API
 
 The Pipelines API serves as the primary gateway for the Codefresh Pipelines module in the On-Premises platform. It handles a wide range of system functionalities, including authentication, authorization, audit logging, user management, and pipeline builds, among others. The Pipelines API utilizes a REST API interface with OpenAPI (Swagger v3) specifications.  
 
-<br>
+
 
 #### Pipelines UI
 The Pipelines UI acts as a static file server that hosts and delivers all the user interface pages for Codefresh Pipelines. It provides visualization of pipelines, builds, third-party integrations and more.
 
-<br>
+
 
 #### GitOps API
 The GitOps API serves as the primary gateway for the Codefresh GitOps module in the On-Premises platform. It interfaces between Codefresh GitOps, Git, and Argo CD, to sync 
 It utilizes a GraphQL interface to provide a user interface
 
-<br>
+
 
 #### GitOps UI
 The GitOps UI provides a unified, enterprise-wide view of deployments, Runtimes, clusters, and applications in the same location.  
 
-<br>
+
 
 #### Pipelines
 
@@ -143,7 +140,7 @@ The Codefresh Runner and clients (UI/CLI) forward incoming requests to the Pipel
 * GitOps Manager 
   Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. The dashboard is now populated by Codefresh GitOps. 
 
-<br>
+
 
 #### GitOps
 
@@ -167,7 +164,7 @@ The GitOps module comprises the microservices for Codefresh and Argo users to co
 * Argo Hub
   Interfaces with the Argo Hub platform for working with pre-built Argo Workflow templates. Visit ​​https://codefresh.io/argohub/ for more details.
 
-<br>
+
 
 #### Infrastructure
 Codefresh stores entity, configuration, and integration data for Codefresh Pipelines and Codefresh GitOps in different databases.
@@ -231,19 +228,16 @@ Acting as a Persistent Volume (PV) Kubernetes controller
 Managing DinD Persistent Volume Claim s(PVCs)
 Optimizing Docker caching volumes to enhance cache utilization for Codefresh builds
 
-<br>
 
 **Volume Cleaners**  
 The Volume Cleaners are responsible for PV management based on the environment setup:
 * LV-Monitor: Installed when local volumes are used to allocate disk space for PVs on the cluster nodes.
 * Dind Volume Cleanup: Installed instead of the LV Monitor when local volumes are not used, to delete PVs according to retention policies. 
 
-<br>
 
-**Cluster Monitor**
+**Cluster Monitor**  
 Optional. When installed, provides visibility on cluster resources in Codefresh, through the Kubernetes Services dashboard.
 
-<br>
 
 **App-Proxy**  
 Another optional component, the App-Proxy serves as an extension to the Codefresh platform. Its purpose is to enable remote operations, such as displaying Git repositories for Git providers behind firewalls and creating webhooks, while maintaining security.
@@ -275,7 +269,7 @@ The sections that follow show detailed views of the GitOps Runtime architecture 
   * [Tunnel Server](#tunnel-server)
   * [Tunnel Client](#tunnel-client)
 
-<br>
+
 
 ### Hosted GitOps Runtime architecture
 In the hosted environment, the Codefresh Runtime is installed on a K8s cluster managed by Codefresh. 
@@ -293,7 +287,7 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
 ### Tunnel-based Hybrid GitOps Runtime architecture
 Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
->**NOTE**:  
+>**NOTE**  
 Tunnel-based access mode is not supported for GitOps on-premises installations.
 
 Note: Tunnel-based architecture is not supported for on-prem instances.
@@ -349,10 +343,11 @@ The Argo Project includes:
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
 
->**NOTE**:  
+>**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
-Typically, new versions of Argo are available within 30 days of release in Argo.
+Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+
 
 
 
@@ -360,9 +355,11 @@ Typically, new versions of Argo are available within 30 days of release in Argo.
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
   The Request Routing Service is available from Runtime version 0.0.543 and higher.   
   Older Runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
+{{site.data.callout.end}}
 
 ### Tunnel Server
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
