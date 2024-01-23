@@ -178,8 +178,8 @@ You can also define `entity_type` as `image` and don't enter any `entity_id`. In
 Codefresh has native support to navigate from parent to child builds. 
 To navigate from the child build to its parent, we have the `cf_predecessor` annotation.
 
-The `cf_predecessor` annotation is automatically added for builds executed by a call to a [`codefresh-run` plugin](https://codefresh.io/steps/step/codefresh-run){target="\_blank"}.
-Get the ID of the parent build by querying the value of this annotation in the child build.
+The `cf_predecessor` annotation is automatically added to builds executed by a call to a [`codefresh-run` plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"}.
+By querying the value of this annotation in the child buil, you can get the ID of the parent build, and then display the URL using [CF_EXPORT_URL]({{site.baseurl}}/docs/pipelines/variables/#export-external-link-with-cf_output_url).
 
 
 ## Managing annotations
