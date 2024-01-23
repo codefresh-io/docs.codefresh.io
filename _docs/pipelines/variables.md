@@ -207,8 +207,6 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
 ## Gerrit changeId & change message variables
-
-
 Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
 
 
@@ -290,7 +288,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
-<br>
+
 
 #### `cf_export` syntax 
 
