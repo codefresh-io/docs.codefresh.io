@@ -325,7 +325,8 @@ spec:
 Create a service resource to expose your application to external traffic. 
 
 * Create a `service.yaml` resource for the application you want to deploy, as in the example below.  
-  > Create it in the same folder in which you saved `rollout.yaml`. 
+  >**NOTE**  
+  Create it in the same folder in which you saved `rollout.yaml`. 
 
 ```yaml
 apiVersion: v1
@@ -413,7 +414,10 @@ Here you can view the live state of the application's resources (Kubernetes obje
 * Logs
 * Events
  
->To quickly filter by resource type, click the type in the Resource Inventory (bottom-left).
+{{site.data.callout.callout_tip}}
+**TIP**  
+To quickly filter by resource type, click the type in the Resource Inventory (bottom-left).
+{{site.data.callout.end}}
 
 For detailed information, see [Monitor resources for selected application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitor-resources-for-selected-application).
 
@@ -515,9 +519,10 @@ Clicking on the parent application takes you to the Current State tab with the c
   max-width="90%"
  %}
 
-> Tip:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   The app of apps pattern is best suited for related but not interdependent applications. If you have applications that depend on each other, such as a frontend that needs a backend, and a backend that needs a database, we suggest using the standard [Helm dependency mechanism](https://helm.sh/docs/helm/helm_dependency/){:target="\_blank"}.
-
+{{site.data.callout.end}}
 
 
 <!---## Related articles

@@ -21,12 +21,12 @@ max-width="60%"
 
 For details, see [Configure scopes for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#configure-pipeline-scopes).
 
-<br><br>
+
 
 ### Pipelines: Initialization metric in Datadog
 Codefresh now reports an additional pipeline metric to Datadog. Reported metrics includes the duration of the initialization step for pipelines.
 
-<br><br>
+
 
 
 ### GitOps: Application Groups in GitOps Apps dashboard

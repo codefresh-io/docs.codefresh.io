@@ -22,7 +22,8 @@ This article explains how to create advanced view of your images and enrich them
   max-width="65%" 
 %}
 
->We have since expanded this feature, and now you can add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/pipelines/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax, see [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
+>**NOTE**  
+We have since expanded this feature, and now you can add custom annotations to [pipelines and builds as well]({{site.baseurl}}/docs/pipelines/annotations/). Notice also that the syntax shown in this page is deprecated but still supported. For the new syntax, see [Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 ## Metadata types
 

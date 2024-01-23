@@ -21,7 +21,7 @@ By integrating these additional options, Cron triggers can initiate pipeline exe
 Create and manage Cron triggers for pipelines through [Codefresh UI](#cron-triggers-in-codefresh-ui), as described in this article.  
 For the specifications, see [Cron trigger specifications in pipelines]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers).
 
->**NOTE**:  
+>**NOTE**  
 Cron triggers are created in the UTC timezone.
 
 
@@ -139,9 +139,10 @@ max-width="60%"
   * If you defined both the Timer and additional Settings, the build is triggered according to the Cron expression, and depending on the settings, the pipeline is populated with the information from the Git repo, additional variables, and notifications when configured.
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
 To edit a Cron trigger after creating it, click the Edit icon.
-
+{{site.data.callout.end}}
 
 ## Cron expression formats
 
@@ -195,7 +196,7 @@ You can also schedule a job to execute at fixed intervals by adding `@every <int
 
 For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 hour, 30 minutes, 10 seconds.
 
->**NOTE:**  
+>**NOTE**  
 The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
 
 ### Conditional triggers for Cron jobs
@@ -203,7 +204,7 @@ Take a look at our Knowledge Base how-to: [Skip pipeline step if triggered by Cr
 
 ## Cron triggers with Codefresh CLI
 
->**NOTE**:  
+>**NOTE**  
 This section is relevant only for legacy Cron triggers and will be deprecated. 
 
 You can also create and manage Cron triggers for pipelines via the [Codefresh CLI](https://cli.codefresh.io/){:target="\_blank"}.

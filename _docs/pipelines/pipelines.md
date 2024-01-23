@@ -33,6 +33,10 @@ max-width="60%"
 
 * **Projects**: The top-level concept in Codefresh CI/CD. Projects are used to group related CI pipelines. In most cases, a single project will be a single application that itself contains many microservices. You are free to use projects as you see fit. For example, you could create a project for a specific Kubernetes cluster or for a specific team/department.
 
+>**NOTE**  
+A project can include up to 500 pipelines.
+
+
 * **Pipelines**: Each project can have multiple pipelines.  Pipelines that belong to a single project can be managed as a unit. You can also create a new pipeline by copying an existing pipeline. Notice that unlike other CI solutions, a pipeline in Codefresh is **NOT** tied to a specific Git repository. You should try to make your pipelines generic enough so that they can be reused for similar applications even when they exist in different Git repositories (a fairly typical setup for microservices).
 
 * **Pipeline steps**: Each pipeline has a definition that defines the [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) that are executed each time the pipeline is triggered. The definition of a pipeline is described in a special [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file. The `codefresh.yml` file can be fetched from the same repository as that of the source code, from a completely different repository, or even defined in-place in the Codefresh pipeline editor. Again, notice you can have a pipeline that checks out its source code from Git repository A, but actually defines its steps in a `codefresh.yml` file that is fetched from Git repository B.
@@ -52,6 +56,11 @@ Of course, you can also have a simpler scenario where the trigger, the pipeline 
 ## Creating a pipeline
 
 You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
+
+
+>**NOTE**  
+You can assign up to 500 pipelines to a project.
+
 
 Once you are inside the project view you can start editing pipelines with a UI environment that works similar to a traditional IDE.
 
@@ -106,7 +115,10 @@ On the top right of the panel you have additional controls:
 
 Notice that in the editor you can expand/collapse individual yaml blocks using the arrow triangles on the left of each blocks. The initial pipeline presented in the editor is suggested by Codefresh according to the contents of your Git repository.
 
-> You can also see the suggested Codefresh pipeline for any public git repository by using the [analyze option](https://codefresh-io.github.io/cli/analyzer/){:target="\_blank"} of the Codefresh CLI.
+{{site.data.callout.callout_tip}}
+**TIP**  
+You can also see the suggested Codefresh pipeline for any public Git repository by using the Codefresh CLI's [analyze option](https://codefresh-io.github.io/cli/analyzer/){:target="\_blank"}.
+{{site.data.callout.end}}
 
 
 ## Loading codefresh.yml from Version Control
@@ -145,7 +157,7 @@ max-width="60%"
 
 Unlike other CI options, the Git repository that contains the pipeline can be completely different from the Git repository that has the source code of your application.
 
-**Use branch from Git trigger**  
+##### Use branch from Git trigger
 
 The **Use branch from Git trigger** option is very important, as it defines the branch in the Git repo from which the pipeline is loaded. In most cases, you want to keep this enabled as it loads the pipeline from the same branch that triggered the build.
 
@@ -173,9 +185,10 @@ max-width="70%"
 You can then copy and paste the URL to a raw Codefresh YAML file.  This will allow you to load a Codefresh YAML from any URL. 
 
 
-> GitHub requires a raw URL.  
-  As an example:  
-  Instead of `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml`,  
+>**NOTE**  
+GitHub requires a raw URL.  
+As an example:  
+  Instead of: `https://github.com/codefresh-contrib/example-voting-app/blob/master/codefresh.yml`,  
   use:    
   `https://raw.githubusercontent.com/codefresh-contrib/example-voting-app/master/codefresh.yml`
 
@@ -187,7 +200,11 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 - **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
 - **Pipeline ID**: The ID of your pipeline (useful for working with the Codefresh CLI)
-  > When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
+    {{site.data.callout.callout_tip}}
+    **TIP**  
+    When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
+    {{site.data.callout.end}}
+
 - **Pipeline Description**: Free text description of the pipeline. 
 - **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
 - **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) can view the builds of this pipeline.
@@ -206,8 +223,10 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 
 - **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
-  > **TIP**:  
-  A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
+    {{site.data.callout.callout_tip}}
+    **TIP**   
+    A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
+    {{site.data.callout.end}}
 - **Trigger Concurrency**: The maximum number of concurrent builds per trigger (1-15 or unlimited). Define the trigger concurrency when your pipeline has multiple triggers.
 - **Branch Concurrency**: The maximum number of concurrent builds per branch (1-15 or unlimited). Define this when your pipeline can build different branches.
 - **Build Termination**: Options that determine when a build from the pipeline should terminate:
@@ -232,7 +251,9 @@ Once you create your pipeline you can also click on the top tab called *Settings
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
 The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 
-> This option is only available for Enterprise customers.
+
+>**NOTE**  
+This option is only available for Enterprise customers.
 
 Increase security by restricting access to users from different teams.   
 Codefresh authenticates the credentials of each cluster during the build initialization phase. Fewer clusters mean shorter initializations and reduced build durations. 
@@ -280,7 +301,7 @@ The **Pipeline and Trigger Concurrency** limits are very important as they allow
 **Balancing concurrency and performance**  
 While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
 
-> **NOTE**:  
+> **NOTE**  
 Pipeline and trigger concurrency limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/). 
 
 Some common scenarios are:
@@ -348,7 +369,9 @@ max-width="60%"
 %}
 
 - **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
-> You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
+
+>**NOTE**  
+You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
 
 
 - **Runtime OS**: Set to Linux by default
@@ -424,7 +447,10 @@ caption="Set disk space for pipeline builds"
 max-width="60%"
 %}
 
-> Track the actual disk usage in Builds > Metrics.
+{{site.data.callout.callout_tip}}
+**TIP**  
+Track the actual disk usage in **Builds > Metrics**.
+{{site.data.callout.end}}
 
 #### Set memory-usage threshold for pipeline build
 If needed, select a memory-usage threshold for the pipeline build to override the account-level setting for the same. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
@@ -512,7 +538,7 @@ max-width="90%"
 ### Create a pipeline from a pipeline template
 Now when you create a new pipeline, you can also select which pipeline template will be used as an initial pipeline definition:
 
->**NOTE**:  
+>**NOTE**    
  Selecting a pipeline template, applies the template's settings when the pipeline is created. Subsequent changes to the pipeline template _do not_ impact pipelines already created from that template.
 
 {% include 
@@ -525,9 +551,10 @@ caption="Create pipeline from a pipeline template"
 max-width="70%"
 %}
 
->**TIP**: 
-You can also quickly convert a pipeline to a template, in the General tab of the pipeline's settings. 
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+You can also quickly convert a pipeline to a template in the **General** tab of the pipeline's settings. 
+{{site.data.callout.end}}
 
 
   

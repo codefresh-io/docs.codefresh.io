@@ -33,7 +33,7 @@ Here's an example of the notification you would receive in Slack.
  max-width="50%"
 %}
 
-<br>
+
 
 ### Pipelines: Multiple Helm contexts for pipelines
 
@@ -41,7 +41,7 @@ With support for multiple Helm registry contexts in the same pipeline, dependenc
 For the Helm `install` and `push` actions, you can select the primary Helm registry context for the command.
 For details, see [Import Helm configurations into your pipeline definition]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#step-4-optional-import-helm-configurations-into-your-pipeline-definition) and [Action modes]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/#helm-step-action-modes).
 
-<br>
+
 
 ### Pipelines: Multiple cache sources for pipeline builds
 
@@ -70,7 +70,7 @@ steps:
 
 For details, see [`cache_from` in `build` step fields]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
 
-<br>
+
 
 ### Pipelines: Control thresholds for memory usage warning banner
 
@@ -92,20 +92,20 @@ As part of the account-level configuration settings for pipelines (**Toolbar Set
 Users can then override the memory-usage threshold for individual pipelines.
 See [Memory usage warning for pipeline builds]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#memory-usage-warning-for-pipeline-builds).
 
-<br>
+
 
 ### Pipelines: New flow for Cloud Builds for pipelines
 
 Previously, all Codefresh accounts had access to a SaaS runtime environment to run pipelines. However, this is no longer the case. Account administrators can request SaaS runtime environments by clicking **Enable Cloud Builds** in Codefresh. This action triggers an email request to Codefresh, and you should receive a response within 24 hours.
 
-<br>
+
 
 ### GitOps: Upgrade to Argo CD 2.6
 
 We have upgraded the Argo CD version for our GitOps module to v2.6.
 For details, see [Argo CD Releases](https://github.com/argoproj/argo-cd/releases){:target="\_build"}.
 
-<br>
+
 
 ### Usability enhancements
 
@@ -142,7 +142,7 @@ We moved the **Terminate Sync** button from the Sync details drawer to the appli
 
 See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#get-status-from-application-header) in [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
 
-<br>
+
 
 ## Bug fixes
 
@@ -160,7 +160,7 @@ See [Application header]({{site.baseurl}}/docs/deployments/gitops/applications-d
 * (On-premises only) Liveness probe failures on `cf-api` pods.
 * (On-premises only) Tooltip on hover over build/project names in the Builds page, shows _topbar.title_ instead of the build/project name.
 
-<br>
+
 
 ### GitOps
 

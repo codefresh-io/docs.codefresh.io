@@ -7,15 +7,23 @@ redirect_from:
 toc: true
 ---
 
->**ATTENTION**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
 We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance, which is now the default Runtime for GitOps. <br><br>
 The CLI-based installation for Hybrid GitOps is considered legacy. We will deprecate this installation mode permanently in the coming months.<br>
 You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
+{{site.data.callout.end}}
 
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops). 
 
-This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
+This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts.  
+For Hosted GitOps Runtime installation, see [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
-**Installation options for GitOps Runtimes**  
+##### Number of Hybrid GitOps Runtimes
+Within the same account, you can install _one Hosted and one Hybrid GitOps Runtime on a cluster_.  
+For additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster, and must have a unique name.
+
+##### Installation options for GitOps Runtimes 
 There are two options for Hybrid GitOps Runtime installation via Helm, each catering to specific use cases:
 * **Clean cluster installation with only GitOps Runtime**  
   The _clean cluster_ installation option is suitable for environments where you want to deploy the GitOps Runtime on a cluster without Argo CD.
@@ -27,7 +35,7 @@ There are two options for Hybrid GitOps Runtime installation via Helm, each cate
 
 Choose the installation option that best aligns with your specific requirements and current environment setup. 
 
-**GitOps Runtime installation**
+##### GitOps Runtime installation
 
 
 * **First-time GitOps Runtime installation**
@@ -43,8 +51,10 @@ Choose the installation option that best aligns with your specific requirements 
   If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
   When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
   
->**ArgoCD password WARNING**:  
-  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.
+{{site.data.callout.callout_warning}}
+**ArgoCD password WARNING**  
+  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
+{{site.data.callout.end}}
 
 
 
@@ -111,7 +121,7 @@ See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/ma
 
 You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster.
 
->**NOTE**:
+>**NOTE**  
 If you already adopted all Argo Project CRDs, you can skip this part.
 
 
@@ -130,7 +140,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ### GitOps Runtime with Argo CD: Align Argo CD chart's minor versions 
 To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
 
-If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minorappversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
+If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minor appversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
 
 1. Get the Argo CD chart version used by Codefresh from the Dependencies either in ArtifactHub or from the GitOps Runtime's `Chart.yaml` in Git: 
   * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
@@ -206,7 +216,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
   * [NGINX Enterprise ingress configuration](#nginx-enterprise-ingress-configuration)
   * [NGINX Community ingress configuration](#nginx-community-version-ingress-configuration)
   * [Traefik ingress configuration](#traefik-ingress-configuration)
-<br><br>
+
 
 
 ### Step 1: Select Hybrid Runtime install option
@@ -233,7 +243,7 @@ As a one-time action, define the Shared Configuration Repository and the Git pro
 
 The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
-**Shared Configuration Repository** 
+**Shared Configuration Repository**  
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 **Git provider**  
@@ -272,11 +282,12 @@ max-width="40%"
 Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
 
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
   Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.<br> 
   If the Helm installation is terminated with the error message: `Job has reached the specified backoff limit`, get more detailed information on the reason for the validation failure with:  
   `kubectl logs jobs/validate-values -n ${NAMESPACE}`, replacing `{NAMESPACE}` with the namespace of the Hybrid GitOps Runtime. 
-
+{{site.data.callout.end}}
 <br><br>
 
 
@@ -427,15 +438,19 @@ helm upgrade --install <helm-release-name> \
 
 
 ### Step 4: Configure Git credentials for Hybrid GitOps Runtime
-Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime. This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the next steps.
+Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime.  
+This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the steps that follow this one.
 
-Git credentials include authorizing access to Git through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
+Git credentials include authorizing access to Git repositories through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
-**Git authorization**
-* OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
-* Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime, with the correct scopes. See [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
+##### Git OAuth2 authorization
+OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
 
-**SSH access to Git**  
+##### Git access token authorization
+Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime with the required scopes. For detailed information on Git Runtime token, including using tokens with custom scopes, review [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
+
+
+##### SSH access to Git
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 When SSH is configured for a GitOps Runtime, on creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
@@ -448,7 +463,7 @@ For more information on generating SSH private keys, see the official documentat
 <br>
 
 **Before you begin**
-* To authenticate through a Git Runtime access token, make sure your token is valid and has the required scopes for GitOps Runtimes
+* To authenticate through a Git Runtime access token, make sure your [token is valid and has the required scopes and is set up as required]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes)
 * To use SSH, copy the SSH private key for your Git provider
 
 <br>
@@ -484,8 +499,9 @@ max-width="50%"
 
 {:start="3"}
 1. For OAuth2 authorization:
-  > **NOTE**:
+  > **NOTE**  
     If the application is not registered and you get an error, contact your admin for help.
+
       * Enter your credentials, and select **Sign In**.
       * If required, as for example with two-factor authentication, complete the verification.
 
@@ -510,8 +526,12 @@ max-width="50%"
 Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
 
->**TIP**:  
-If you already have a Git user token defined, you can skip this step.  
+This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you already have added a Git user token, you can skip this step.  
+{{site.data.callout.end}}
 
 1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
 1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
@@ -523,7 +543,7 @@ If you already have a Git user token defined, you can skip this step.
 Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.
 By doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
 
->**NOTE**:
+>**NOTE**  
 You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.
 
 
@@ -548,8 +568,10 @@ You cannot configure the Runtime as an Argo Application if you have not configur
 ### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
 For GitOps with Argo CD, if you have Argo Rollouts also installed, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads. 
+{{site.data.callout.end}}
 
 1. Remove the duplicate Argo Rollouts controller:  
   `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
@@ -714,10 +736,11 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
 {:start="6"}
 1. For GitOps with Community Argo CD, after confirming successful installation, remove the duplicate Argo Rollouts controller `deployment` to avoid having two controllers in the cluster.   
   
-  >**IMPORTANT**:  
+  {{site.data.callout.callout_warning}}
+  **IMPORTANT**  
   Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads.  
     `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
-
+  {{site.data.callout.end}}
 
 
 ### What to do next   
@@ -951,30 +974,26 @@ This section lists the specific configuration requirements for Codefresh to be c
 * Valid TLS certificate
 * TCP support
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
-  {::nomarkdown}
-</br>
-{:/}
+
+
 
 #### Valid TLS certificate
 For secure installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.callout_tip}}
+**TIP**  
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ### AWS ALB ingress configuration
 
@@ -992,31 +1011,26 @@ This table lists the specific configuration requirements for Codefresh.
 |Alias DNS record in route53 to load balancer | _After_ installing Hybrid GitOps Runtime|
 |(Optional) Git integration registration | |
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
-{::nomarkdown}
-</br>
-{:/}
+{{site.data.callout.callout_tip}}
+**TIP**:  
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
+
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Controller configuration
 In the ingress resource file, verify that `spec.controller` is configured as `ingress.k8s.aws/alb`.
@@ -1030,13 +1044,13 @@ spec:
   controller: ingress.k8s.aws/alb
 ```
 
-{::nomarkdown}
-</br>
-{:/}
 
 #### Create an alias to load balancer in route53
 
->  The alias  must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Configure the alias _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 1. Make sure a DNS record is available in the correct hosted zone.
 1. _After_ Hybrid GitOps Runtime installation, in Amazon Route 53, create an alias to route traffic to the load balancer that is automatically created during the installation:
@@ -1057,18 +1071,14 @@ For more information, see [Creating records by using the Amazon Route 53 console
   max-width="60%"
 %}
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### (Optional) Git integration registration
 If the installation failed, as can happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ### Istio ingress configuration
 For detailed configuration information, see [Istio ingress controller documentation](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress){:target="\_blank}.
@@ -1083,36 +1093,33 @@ The table below lists the specific configuration requirements for Codefresh.
 |TCP support |  |
 |Cluster routing service | _After_ installing Hybrid GitOps Runtime |
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.callout_tip}}
+**TIP**  
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
-{::nomarkdown}
-</br>
-{:/}
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 
 
 #### Cluster routing service
->  The cluster routing service must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Configure the cluster routing service _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 Based on the Hybrid GitOps Runtime version, you need to configure single or multiple `VirtualService` resources for the `app-proxy`, `webhook`, and `workflow` services.
 
@@ -1161,9 +1168,7 @@ spec:
 
 Configure two different `VirtualService` resources, one to route traffic to the `app-proxy`, and the second to route traffic to the `webhook` services, as in the examples below.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 **`VirtualService` example for `app-proxy`:**
 
@@ -1223,9 +1228,7 @@ spec:
             number: 80
 ```
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ### NGINX Enterprise ingress configuration
 
@@ -1243,31 +1246,27 @@ The table below lists the specific configuration requirements for Codefresh.
 |NGINX Ingress Operator: Enable report status to cluster| |
 |Patch certificate secret |_After_ installing Hybrid GitOps Runtime|
 
-{::nomarkdown}
-</br>
-{:/}
+
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
 
-{::nomarkdown}
-</br>
-{:/}
+
+
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.callout_tip}}
+**TIP**  
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
-{::nomarkdown}
-</br>
-{:/}
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### NGINX Ingress: Enable report status to cluster
 
@@ -1282,9 +1281,7 @@ spec:
       - --report-ingress-status
 ```
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### NGINX Ingress Operator: Enable report status to cluster
 
@@ -1303,12 +1300,13 @@ If the ingress controller is not configured to report its status to the cluster,
 1. Make sure you have a certificate secret in the same namespace as the Hybrid GitOps Runtime. Copy an existing secret if you don't have one.
 You will need to add this to the `ingress-master` when you have completed runtime installation.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Patch certificate secret
->  The certificate secret must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
+  The certificate secret must be configured _after_ installing the Hybrid GitOps Runtime.
+{{site.data.callout.end}}
 
 Patch the certificate secret in `spec.tls` of the `ingress-master` resource.
 The secret must be in the same namespace as the Hybrid GitOps Runtime.
@@ -1323,9 +1321,7 @@ The secret must be in the same namespace as the Hybrid GitOps Runtime.
      secretName: <secret_name>
    ```
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ### NGINX Community version ingress configuration
 
@@ -1337,24 +1333,20 @@ This section lists the specific configuration requirements for Codefresh to be c
 * Valid TLS certificate
 * TCP support
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services, and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.callout_tip}}
+**TIP**    
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
 
-{::nomarkdown}
-</br>
-{:/}
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
@@ -1366,13 +1358,11 @@ Verify that the `ingress-nginx-controller` service manifest has either of the fo
 OR
 `service.beta.kubernetes.io/aws-load-balancer-type: nlb`
 
-{::nomarkdown}
-</br>
-{:/}
 
 #### Provider-specific configuration
 
-> The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
+>**NOTE**    
+  The instructions are valid for `k8s.io/ingress-nginx`, the community version of NGINX.
 
 <details>
 <summary><b>AWS</b></summary>
@@ -1573,9 +1563,7 @@ For additional configuration options, see <a target="_blank" href="https://kuber
 
 </details>
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ### Traefik ingress configuration
 For detailed configuration information, see [Traefik ingress controller documentation](https://doc.traefik.io/traefik/providers/kubernetes-ingress){:target="\_blank}.
@@ -1591,31 +1579,28 @@ The table below lists the specific configuration requirements for Codefresh.
 |TCP support |  |
 |Enable report status to cluster|  |
 
-{::nomarkdown}
-</br>
-{:/}
+
+
 
 #### Valid external IP address
 Run `kubectl get svc -A` to get a list of services and verify that the `EXTERNAL-IP` column for your ingress controller shows a valid hostname.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Valid TLS certificate
 For secure runtime installation, the ingress controller must have a valid TLS certificate.
-> Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
 
-{::nomarkdown}
-</br>
-{:/}
+{{site.data.callout.callout_tip}}
+**TIP**    
+  Use the FQDN (Fully Qualified Domain Name) of the ingress controller for the TLS certificate.
+{{site.data.callout.end}}
+
+
 
 #### TCP support
 Configure the ingress controller to handle TCP requests.
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 #### Enable report status to cluster
 By default, the Traefik ingress controller is not configured to report its status to the cluster.  If not configured,  Argo’s health check reports the health status as “progressing”, resulting in a timeout error during installation.

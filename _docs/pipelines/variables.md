@@ -22,8 +22,10 @@ There are two ways to use a Codefresh variable in your pipelines:
 1. Directly in YAML properties
    Use variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
-> **TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**   
 If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
+{{site.data.callout.end}}
 
 **Example: Print out the branch as an environment variable**  
 In this example, we use simple `echo` commands, but any program or script that reads environment variables can also read them in the same manner.
@@ -76,7 +78,7 @@ develop-ba1cd68
 feature-vb145dh
 ```
 
->**NOTE**:  
+>**NOTE**  
  > This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
 
 
@@ -84,7 +86,7 @@ feature-vb145dh
 
 System variables are automatically injected to any freestyle step as environment variables.
 
-> **NOTE**:  
+> **NOTE**  
 It is important to understand that all Git-related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. come directly from the Git provider you use, and therefore have the same limitations of that provider. <br><br>
 For example, GitLab sends less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event. <br><br>
 Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` variables, such as `CF_PULL_REQUEST_ID` and more. 
@@ -256,8 +258,10 @@ There are two ways to add variables to the shared file:
 ### Exporting variables with `cf_export` 
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
->**NOTE**:  
-  The variables exported through `cf_export` overrides those at the pipeline-level.
+
+>**NOTE**  
+The variables exported through `cf_export` overrides those at the pipeline-level.
+
 
 You can either:
 - Explicitly state a VAR=VAL pair  
@@ -444,7 +448,8 @@ caption="Encrypted variables"
 max-width="60%"
 %}
 
->Notice that this feature is currently available only in Enterprise accounts.
+>**NOTE**  
+This feature is currently available only in Enterprise accounts.
 
 
 ## Encrypt variables for pipeline build runs

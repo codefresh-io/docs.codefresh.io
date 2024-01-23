@@ -185,20 +185,20 @@
       localurl: /docs/deployments/helm/helm-releases-management/
     - title: Promoting Helm environments
       localurl: /docs/deployments/helm/helm-environment-promotion/
-    - title: Creating    Argo CD applications
+    - title: Creating Argo CD applications
       localurl: /docs/deployments/gitops/create-application/
     - title: Monitoring Argo CD applications
       localurl: /docs/deployments/gitops/applications-dashboard/
     - title: Managing Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
-- title: Argo CD Workflows
+- title: Argo Workflows
   icon: images/home-icons/pipeline.svg
   url: ""
   links:
-    - title: Creating Argo CD workflows
+    - title: Creating Argo Workflows
       localurl: /docs/workflows/create-pipeline
-    - title: Nested Argo CD workflows
+    - title: Nested Argo Workflows
       localurl: /docs/workflows/nested-workflows/
     - title: Configure artifact repository
       localurl: /docs/workflows/configure-artifact-repository/

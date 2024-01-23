@@ -71,40 +71,32 @@ Select an existing group or groups, or create a new application group by typing 
 
 ### Source 
 The Git repository to be tracked for changes to the application's source code.  
-{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
+{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
 
-{::nomarkdown}
-<br>
-{:/} 
+
 
 ### Destination
 The cluster and namespace to which to deploy the application.  
-{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
+{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul>{:/}
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### Sync Settings
-#### Sync Policy
-{::nomarkdown}The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
 
-{::nomarkdown}
-<br>
-{:/} 
+
+#### Sync Policy
+The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.{::nomarkdown}<ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI.</li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul></ul>{:/}
+
+
 
 #### Sync Options 
-{::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+Common to both manual and automatic sync policies.{% raw %}{::nomarkdown}<ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul>{:/}{% endraw %} 
 
-{::nomarkdown}
-<br><br>
-{:/} 
 
 #### Prune propagation policy
-{::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
-For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
+Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. For more information, see [Kubernetes - Cascading deletion](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion){:target="\_blank"}.{::nomarkdown}<ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
-**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="_blank"}.  
+
+**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="\_blank"}.  
 
 **Retry**: When selected, retries a failed sync operation, based on the retry settings configured:   
 * Maximum number of sync retries (**Limit**)  
@@ -112,9 +104,7 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ## Application: Advanced configuration settings
 
@@ -130,18 +120,13 @@ Advanced settings define the tool used to create the application, and related to
    max-width="70%" 
    %} 
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 ### ArgoCD Project
 The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications and roles. If not defined, the application is automatically assigned to the `default` project, which is created automatically by Argo CD and has no restrictions.  
 For more information, see Argo CD's documentation on [Projects](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects){:target="\_blank"}.
 
 
-{::nomarkdown}
-</br>
-{:/}
 
 ### Propagation policy for application deletion
 Defines how resources are pruned, applying Kubernetes cascading deletion prune policies when you delete the application. 
@@ -153,9 +138,7 @@ For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.i
 * **Non-cascading**
   When selected, Kubernetes deletes only the application and not its resources.  
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 ### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
@@ -181,7 +164,7 @@ The tool used to create the application's manifests.  Codefresh supports definin
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
 
-<br>
+
 
 ## Create an Argo CD application
 Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
@@ -203,7 +186,8 @@ Edit the manifest directly in YAML mode, or define the settings in the Form mode
   * Runtime: The runtime to associate with the application.  
   * YAML filename: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name. Change the name as required.
 
-  >The application definitions cannot be changed after you continue to the Configuration settings.
+    >**NOTE**  
+    The application definitions cannot be changed after you continue to the Configuration settings.
 
 {% include 
    image.html 
@@ -266,9 +250,7 @@ Edit the manifest directly in YAML mode, or define the settings in the Form mode
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
 Monitor the application.
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 
 ## Related articles

@@ -10,7 +10,8 @@ toc: true
 
 
 
->**NOTE**: This feature is currently in Beta.
+>**NOTE**  
+This feature is currently in Beta.
 
 Explore the power of GitOps Products for Argo CD applications. 
 
@@ -32,7 +33,7 @@ With Products, Codefresh allows you to group and track them as a cohesive entity
 
 Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/) on the world's first dashboard for GitOps Environments and Products.
 
-**What are the benefits of GitOps Products?**  
+##### What are the benefits of GitOps Products?  
 
 * Group applications  
   Group and connect Argo CD applications based on a common element through Products. For example, bring all your billing applications under the **Billing** Product. Assign your applications to logical Products for a consolidated perspective on these applications. 
@@ -44,7 +45,7 @@ Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboar
   With GitOps Products, Codefresh brings you critical information beyond sync and Git hash deployment information. The Products dashboard automatically correlates sync information with other important information from the software lifecycle such as the source code commits and the affected services.
   All stakeholders, including product and project managers and not just developers can instantly see the information they need for all the applications in the different Environments.
 
-**How do you view applications by Product?**  
+##### How do you view applications by Product?  
 In a simple two-step process:
 
 1. [Create the Product](#create-products)  
@@ -216,7 +217,7 @@ The annotation is defined as part of the Product's settings when creating Produc
 ### Unassign an application from a Product
 Unassign an application from a Product directly from the Products dashboard. This is a quick option for applications manually assigned to Products from the Products dashboard.
 
->**TIP:**  
+>**TIP**  
 If you used annotations to connect applications to Products, to unassign the application, remove the annotation from the application manifest.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
@@ -301,10 +302,10 @@ For the selected Product, search for a specific application, or locate the appli
   max-width="60%" 
 %}
 
-**Search**  
+##### Search  
 Search by free-text to locate the applications you need.
 
-**Filters**  
+##### Filters
 * Image name: The image created for the application.
 * Committer: The user who committed the change. 
 * Jira ticket: The bug or feature request that initiated the change.
@@ -316,8 +317,6 @@ Switch between Kubernetes (Pods), version control (Git) and issue-tracking (Feat
 Instead of switching between different systems to get answers to common questions that you have as a project or product manager, you can get your answers for  all the applications in the Product through the different view modes. 
 
 
-<br>
-<br>
 
 #### Pods
 Displays Deployment, Rollout, and Promotion information for the application:
@@ -392,7 +391,7 @@ You can:
 * View the charts (dependencies) deployed with the application and the release for each
 * Compare dependency versions with applications in different environments
 
-**How to**  
+##### How to
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
 
@@ -429,7 +428,7 @@ Compare the versions of dependencies dependency in the same application across d
 * The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
 * The YAML view displays a diff between two Environments.
 
-
+##### How to
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. Click the version number of the application.
 1. To compare the versions of dependencies in the selected application  across different Environments, enable **Compare**.

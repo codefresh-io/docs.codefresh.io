@@ -63,8 +63,7 @@ Once deployed, view enriched information in the Codefresh UI:
 * Go to the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}  
 
 
-View:  
-
+Enriched information:   
 * Commit information as well as committer
 * Links to build and deployment pipelines
 * PRs included in the deployment

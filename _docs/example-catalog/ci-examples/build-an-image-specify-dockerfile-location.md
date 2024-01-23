@@ -11,7 +11,10 @@ toc: true
 
 You may have a project where the Dockerfile is **not** in the root folder of the project. Maybe the repository has multiple projects inside, each with its own Dockerfile, or you simply want to use a different folder for the Docker context.
 
->The source code of the repository is at [https://github.com/codefreshdemo/cf-example-dockerfile-other-location](https://github.com/codefreshdemo/cf-example-dockerfile-other-location){:target="\_blank"}. Feel free to fork it if you want to follow along.
+{{site.data.callout.callout_tip}}
+**TIP**  
+The source code of the repository is at [https://github.com/codefreshdemo/cf-example-dockerfile-other-location](https://github.com/codefreshdemo/cf-example-dockerfile-other-location){:target="\_blank"}. Feel free to fork it if you want to follow along.
+{{site.data.callout.end}}
 
 If you don't have a Codefresh account already, you can easily create a free one from the [sign-up page]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
 

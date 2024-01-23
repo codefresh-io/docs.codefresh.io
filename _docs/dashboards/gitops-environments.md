@@ -5,7 +5,8 @@ group: dashboards
 toc: true
 ---
 
->**NOTE**: This feature is currently in Beta.
+>**NOTE**  
+This feature is currently in Beta.
 
 Codefresh offers a range of dashboards, each offering unique insights into Argo CD applications and their deployments. The GitOps Overview dashboard offers a high-level view, showcasing essential Key Performance Indicators (KPIs). The GitOps Apps dashboard centralizes the monitoring and management of individual application deployments, resources, and configurations.
 
@@ -27,18 +28,18 @@ The **GitOps Environments** dashboard introduces a new dimension to your GitOps 
 
 Read this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/) on the world's first dashboard for GitOps Environments.
 
-**What is an Environment in Codefresh GitOps?**  
+##### What is an Environment in Codefresh GitOps?
 An Environment is a custom entity in Codefresh defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
 
 Codefresh allows you to define Environments that can exist without any applications deployed to them.
 
 
-**What can you view in a GitOps Environment?**  
+##### What can you view in a GitOps Environment? 
 1. Argo CD applications: Environments are populated by the Argo CD applications in the clusters and namespaces mapped to them. 
 1. Deployment lifecycle phase: The current phase of each application's deployment.
 1. Commit information: Trace the commit/pull request (PR) history, such as the developer who initiated the promotion to each Environment.
 
-**Benefits of GitOps Environments**  
+##### Benefits of GitOps Environments 
 
 * Account-level visibility:  GitOps Environments in Codefresh are managed at the account level, providing a holistic view of all Argo CD applications across GitOps Runtimes in clusters mapped to the Environments. 
 * Application traceability: Gain insights into application promotions across diverse Environments, enriched with commit and PR histories, and developers responsible for each change.
@@ -218,7 +219,7 @@ You can:
 * View the charts (dependencies) deployed with the application and the release for each
 * Compare dependency versions with applications in different environments  -->
 
-**How to**  
+##### How to  
 1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. Click the version number of the application.
 

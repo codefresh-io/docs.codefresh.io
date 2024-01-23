@@ -16,7 +16,8 @@ You can easily create:
 
 With the parallel execution mode, you can define complex pipelines with fan-in/out configurations capable of matching even the most complicated workflows within an organization.
 
->In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
+>**NOTE**  
+  In Codefresh, parallel execution is unrelated to [stages]({{site.baseurl}}/docs/pipelines/stages/). Stages are only a way to visually organize your pipeline steps. The actual execution is independent from the visual layout in the logs view.
 
 Before going any further make sure that you are familiar with the [basics of Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
@@ -31,7 +32,8 @@ The sequential mode is very easy to understand and visualize.
 
 In sequential mode, the Codefresh execution engine starts from the first step defined at the top of the `codefresh.yml` file, and executes all steps one by one going down to the end of the file. A step is either executed or skipped according to its conditions.  
 
->The condition for each step is only examined **once**.
+>**NOTE**  
+  The condition for each step is only examined **once**.
 
 `YAML`
 {% highlight yaml %}
@@ -98,13 +100,13 @@ The final order of execution will be
 
 This is the recommended way to start using parallelism in your Codefresh pipelines. It is sufficient for most scenarios that require parallelism.
 
->**NOTE**:  
+>**NOTE**  
 The names of the parallel steps must be unique within the same pipeline. The parent and child steps should NOT share the same name.
 
 ### Add timeouts for parallel steps
 You can add `timeouts`for parallel steps either by defining a parent `timeout` inherited by the other parallel steps, or by defining individual timeouts for every step.  
 
->**NOTES**:  
+>**NOTES**  
 The `timeout` field in the `deploy` and `pending-approval` steps has a specialized syntax and behavior to match the requirements of these steps.<br><br> 
 When _both_ parent and step-specific timeouts are defined for parallel steps, the step-specific timeouts override the parent timeout.
 
@@ -335,10 +337,12 @@ first.txt   second.txt
 
 This illustrates the side effects for both parallel steps that were executed on the same volume.
 
->It is therefore your responsibility to make sure that steps that run in parallel play nice with each other. Currently, Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps, (e.g. multiple steps writing at the same files), the final behavior is undefined. It is best to start with a fully sequential pipeline, and use parallelism in a gradual manner if you are unsure about the side effects of your steps
+>**NOTE**  
+It is your responsibility to make sure that steps that run in parallel play nicely with each other. Currently, Codefresh performs no conflict detection at all. If there are race conditions between your parallel steps, (e.g. multiple steps writing in the same files), the final behavior is undefined. It is best to start with a fully sequential pipeline, and use parallelism in a gradual manner if you are unsure about the side effects of your steps.
 
 ## Implicit parallel steps
-> If you use implicit parallel steps, you _cannot_ use _parallel pipeline mode_.
+>**NOTE**  
+If you use implicit parallel steps, you _cannot_ use _parallel pipeline mode_.
 
 In all the previous examples, all parallel steps have been defined explicitly in a pipeline. This works well for a small number of steps, but in some cases it can be cumbersome to write such a pipeline, especially when the parallel steps are similar.
 
@@ -557,7 +561,7 @@ of matrix variations can quickly grow if you add too many dimensions.
 Notice that, as with the `scale` syntax, the defined values/properties are merged between parent step (`MyUnitTests` in the example above) and children steps. For example, if you set an environment variable on the parent and also on child matrix steps , the result will a merged environment where all values are available.
 
 ## Parallel pipeline execution
->**NOTE**:  
+>**NOTE**  
 If you use parallel execution mode for pipelines, you _cannot_ use _implicit parallel steps_.
 
 To activate advanced parallel mode for the whole pipeline, you need to declare it explicitly at the root of the `codefresh.yml` file:
@@ -631,7 +635,8 @@ second_step:
 Notice that `success` is the default behavior so if you omit the last two lines (i.e., the `on:` part) the second step
 will wait for the next step to run successfully.
 
->Also notice that the name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
+>**NOTE**  
+The name `main_clone` is reserved for the automatic clone that takes place in the beginning of pipelines that are linked to a git repository. You need to define which steps depend on it (probably the start of your graph) so that `git checkout` happens before the other steps.
 
 As an example, let's assume that you have the following steps in a pipeline:
 

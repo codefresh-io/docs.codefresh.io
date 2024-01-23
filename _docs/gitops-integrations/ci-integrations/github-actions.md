@@ -143,13 +143,11 @@ Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populat
 
 See GitHub Actions [environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables) you can use to templatize argument values.
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### CF_IMAGE
 
-**Example: Report full repo and branch information**  
+##### Example: Report full repo and branch information  
 This example illustrates how to define the value for `CF_IMAGE` to report the repo owner, name, and short branch, with the Git hash.
 
   Value:  
@@ -162,7 +160,7 @@ This example illustrates how to define the value for `CF_IMAGE` to report the re
  
 
 
-**Example: Report a specific image tag**  
+##### Example: Report a specific image tag 
 This example illustrates how to define the value for `CF_IMAGE`  when you know the specific image version you want to report.
 
 Value:  
@@ -173,7 +171,7 @@ where:
 * `<v1.0>` reports the hard-coded tag `v1.0`.
 
 
-**Example: Report the latest Git tag available on repository**
+##### Example: Report the latest Git tag available on repository
 This example illustrates how to define the value for `CF_IMAGE` to report the latest Git tag on the repository.
 
 Value:  
@@ -184,13 +182,10 @@ where:
 * {% raw %}`${{ github.repository }}`{% endraw %} reports the owner of the repository and the name of the repository. For example, `nr-codefresh/codefresh-production`. 
 * {% raw %}`latest`{% endraw %} reports the latest Git tag available for the repository defined by {% raw %}`${{ github.repository }}`{% endraw %}. For example, `v1.0.4-14-g2414721`.
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### CF_GIT_BRANCH 
 
-**Example: Report fully-formed reference of the branch or tag**  
+##### Example: Report fully-formed reference of the branch or tag
 This example illustrates how to define the value for `CF_GIT_BRANCH` to report the fully-formed reference of the branch or tag that triggered the workflow run.  
 For workflows triggered by push events, this is the branch or tag ref that was pushed. 
 For workflows triggered by pull_requests, this is the pull request merge branch.
@@ -201,7 +196,7 @@ Value:
 where:
 * {% raw %}`${{ github.ref }}`{% endraw %} is the reference to the branch or tag. For example, `refs/heads/auth-feature-branch` (branch), and `refs/pull/#843/merge` (pull request).
 
-**Example: Report short reference name of the branch or tag**  
+##### Example: Report short reference name of the branch or tag 
 This example illustrates how to define the value for `CF_GIT_BRANCH` to report only the name of the branch or tag that triggered the workflow run.  
 
 
@@ -211,9 +206,7 @@ Value:
 where: 
 * {% raw %}`${{ github.ref-name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### CF_JIRA_MESSAGE
 The Jira message represents an existing Jira issue, and must be a literal string.  
@@ -236,7 +229,7 @@ caption="GitHub Action: Logs tab"
 max-width="50%"
 %}
 
-**Build YAML in GitHub Action**  
+##### Build YAML in GitHub Action
 
 The Run column includes the link to the build files for the actions.  
 

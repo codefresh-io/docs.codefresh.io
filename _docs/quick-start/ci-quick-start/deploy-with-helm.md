@@ -101,6 +101,7 @@ Here we override the name of tag (to match the Docker image built in the previou
 1. Click **Create**.
     In the Workflow tab, you'll see that the Inline YAML editor already has a sample YAML.
 1. Replace the existing content in the Inline YAML editor with the example below.
+
 `YAML`
 {% highlight yaml %}
 {% raw %}
@@ -144,7 +145,8 @@ steps:
       - 'image_pullSecret=codefresh-generated-r.cfcr.io-cfcr-default'
 {% endraw %}
 {% endhighlight %}
-{:start="5"}
+
+{:start="6"}
 1. Click **Save** and then click **Run** twice to run the pipeline. 
 1. Continue with [View Helm release](#view-helm-release).
 
@@ -213,9 +215,10 @@ caption="Helm values"
 max-width="70%" 
 %}
 
->Tip:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   To view the services/pods/deployments that comprise the helm release, go to the [Kubernetes Services dashboard](https://g.codefresh.io/kubernetes/services/){:target="\_blank"}.
-
+{{site.data.callout.end}}
 
 ## Roll back a Helm release
 
@@ -342,7 +345,7 @@ caption="Storing Helm chart"
 max-width="100%" 
 %}
 
-{:start="8"}click the 
+{:start="9"}
 1. When the pipeline build completes execution, expand Artifacts from the sidebar, and select **Helm charts**.
 
  {% include 
@@ -356,7 +359,8 @@ max-width="70%"
 %}
 
 
-> You can click the **Install** button to manually deploy manually the chart. Codefresh will allow to enter your own values in that case and also select your target cluster.
+>**NOTE**  
+You can click the **Install** button to manually deploy manually the chart. Codefresh will allow to enter your own values in that case and also select your target cluster.
 
 <!--- You can also create a single pipeline that [both stores the chart as well as deploys it in a cluster]({{site.baseurl}}/docs/yaml-examples/examples/helm/). You can learn more about [Helm best practices and Helm pipelines]({{site.baseurl}}/docs/docs/new-helm/helm-best-practices/#helm-concepts) to determine which solution is best.  -->
 
