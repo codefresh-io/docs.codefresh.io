@@ -536,7 +536,7 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 
-## (Helm GitOps) View/download logs for GitOps Runtimes
+## View/download logs for GitOps Runtimes
 Logs are available for installed GitOps Runtimes, both for the Runtime and for individual Runtime components. Download log files for offline viewing and analysis, or view online logs for a Runtime component and download if needed for offline analysis. Online logs support free-text search, search-result navigation, and line-wrap for enhanced readability.
 
 Log files include events from the date of the application launch, with the newest events listed first.
@@ -555,6 +555,9 @@ Download the log file for a GitOps Runtime. The Runtime log is downloaded as a `
 ### View/download logs for Runtime components
 View online logs for any Runtime component, and if needed, download the log file for offline viewing and analysis.
 
+>**NOTE**  
+Downloading logs for Runtime components is supported from Runtime v0.1.39 and higher.
+
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events, from the date and time of application launch to the date and time of download.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -569,7 +572,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 	url="/images/runtime/runtime-logs-view-component.png"
 	alt="View log option for individual runtime component"
 	caption="View log option for individual runtime component"
-    max-width="40%"
+    max-width="60%"
 %}
 
 
@@ -585,7 +588,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 	url="/images/runtime/runtime-logs-screen-view.png"
 	alt="Online log example for runtime component"
 	caption="Online log example for runtime component"
-    max-width="50%"
+    max-width="60%"
 %}
 
 {:start="5"}
