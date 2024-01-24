@@ -39,12 +39,15 @@ For details, check out the **Fields** table in the documentation for the differe
 
 ### GitOps: Diff View for out-of-sync applications
 We’re thrilled to introduce a significant enhancement simplifying troubleshooting Argo CD applications within Codefresh.
-With our new Diff View feature, you can instantly view the differences between the current state and the desired configuration of out-of-sync applications.
+With our new Diff View feature, you can instantly view the differences between the current and the desired states of out-of-sync applications.
 The Diff View option displays all the updated resources within the application, allowing you to easily pinpoint changes and swiftly identify the root cause of the sync failure.
 
-The option is always available in the application’s context menu in the GitOps Apps dashboard, and is enabled whenever the application is out-of-sync. If you have already selected an application, the Diff View option is available in the context menu at the top right of the page.
+If you have selected an application, the Diff View option is available in the context menu at the top right of the page. The option is enabled whenever the application is out-of-sync. 
+
 >**NOTE**  
-Diff View for application resources is supported Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
+Diff View for application resources is supported from Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
+
+For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view).
 
 ## Bug fixes
 
