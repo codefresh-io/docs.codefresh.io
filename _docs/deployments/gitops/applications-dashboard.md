@@ -211,7 +211,7 @@ Available in the context menu when you select an application, the Diff View pres
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Filter by **Status** for **Out of sync** applications, and select the application you need.
-1. From the context menu on the upper-right, select **Diff View**.
+1. From the context menu on the upper-right, select **Diff View**.  
   The default Diff View highlights the differences in Inline and Compact view modes.
 
 {% include
@@ -225,7 +225,7 @@ max-width="50%"
 %} 
 
 {:start="4"}
-1. For a side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
+1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
 
 ## View deployment configuration info for selected Argo CD application
 
