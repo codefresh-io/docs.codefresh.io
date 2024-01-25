@@ -128,7 +128,7 @@ steps:
       dockerfile: Dockerfile
     stage: package
   DeployMyChart:
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./python-flask-sample-app
     arguments:
@@ -318,7 +318,7 @@ steps:
     stage: package
   deploy:
     title: Storing Helm chart
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./python-flask-sample-app
     arguments:
