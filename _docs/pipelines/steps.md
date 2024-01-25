@@ -432,7 +432,7 @@ Note that Codefresh step versions function like Docker tags in the sense that th
 If you do not define a version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use different versions of the same plugin within the same pipeline.
 
 >**TIP**  
-Using the latest version may introduce breaking changes that can fail the pipeline. Codefresh issues a warning on identifying typed steps without versions in a pipeline. 
+If your pipeline includs typed steps without corresponding version numbers, Codefresh issues a warning as assigning the latest version can introduce breaking changes and fail the pipeline. 
 
 
 
