@@ -48,7 +48,7 @@ steps:
     SLACK_TEXT: 'There is a build pending approval'
 
   approval:
-    type: pending-approval:1.0.2
+    type: pending-approval
 ```
 
 {% endraw %}

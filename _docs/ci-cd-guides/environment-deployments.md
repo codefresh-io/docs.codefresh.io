@@ -469,7 +469,7 @@ steps:
       custom_value_files:
       - ./chart/values-staging.yaml
   askForPermission:
-    type: pending-approval:1.0.2
+    type: pending-approval
     stage: prod
     title: Deploy to production?
   deployProd:
