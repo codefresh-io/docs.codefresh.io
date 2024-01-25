@@ -279,7 +279,7 @@ metadata:
         steps:
           Vault_to_Env:
             title: Importing vault values
-            type: vault
+            type: vault:0.0.7
             arguments:
               VAULT_ADDR: '${{VAULT_ADDR}}'
               VAULT_PATH: '${{VAULT_PATH}}'
@@ -369,7 +369,7 @@ You can set it to either `false` or `true`:
 The final part is the step implementation. Here you can define exactly the YAML that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh, and even add multiple steps.
 
 >**NOTE**  
-Currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time of writing you cannot use a typed step inside another typed step.
+Currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time of writing you cannot use a typed step within another typed step.
 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
@@ -428,11 +428,11 @@ codefresh delete step-type 'account/plugin:<version>'
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-type` command.
 
-**Latest plugin version for typed steps**
-If you do not define a version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use and specify different versions of the same plugin within the same pipeline.
+**Latest plugin version for typed steps**  
+If you do not define a version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use different versions of the same plugin within the same pipeline.
 
 >**TIP**  
-Using the latest version may introduce breaking changes that may fail the pipeline. Codefresh issues a warning on identifying typed steps (`steps.type` flag) without versions in a pipeline. 
+Using the latest version may introduce breaking changes that can fail the pipeline. Codefresh issues a warning on identifying typed steps without versions in a pipeline. 
 
 
 
