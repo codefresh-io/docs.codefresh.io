@@ -32,7 +32,7 @@ Some example scenarios for using the approval step:
 {% highlight yaml %}
 {% raw %}
 step_name:
-  type: pending-approval
+  type: pending-approval:1.0.2
   title: Step Title
   description: Step description
   timeout:
@@ -89,7 +89,7 @@ By default, a pipeline that contains an approval step will pause for 7 days (168
 version: '1.0'
 steps:
  waitForInputBeforeProduction:
-   type: pending-approval
+   type: pending-approval:1.0.2
    title: Deploy to Production?
    timeout:
      duration: 2
@@ -169,7 +169,7 @@ steps:
  waitForInputBeforeProduction:
    fail_fast: false
    strict_fail_fast: true
-   type: pending-approval
+   type: pending-approval:1.0.2
    title: Deploy to Production?
 {% endraw %}
 {% endhighlight %}
@@ -189,7 +189,7 @@ Here is an example:
 version: '1.0'
 steps:
  askForPermission:
-   type: pending-approval
+   type: pending-approval:1.0.2
    title: Destroy QA environment?
  destroyQaEnvNow:
    image: alpine:3.8
@@ -228,7 +228,7 @@ steps:
    - echo "prepare"
  deployToProdNow:
    fail_fast: false
-   type: pending-approval
+   type: pending-approval:1.0.2
    title: Should we deploy to prod
    stage: prepare
  step_2:

@@ -128,7 +128,7 @@ The example below illustrates how to provide variables as part of the Helm step 
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: install
     chart_name: test_chart
@@ -202,7 +202,7 @@ The following example includes the minimum configuration to install a Helm chart
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: install
     chart_name: /home/user/charts/mywebapp
@@ -217,7 +217,7 @@ The following example illustrates how to package and push a Helm chart into a re
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: push
     chart_name: /codefresh/volume/repo/chart
@@ -235,7 +235,7 @@ The following example illustrates the Helm mode for authentication only.
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: auth
     kube_context: my-kubernetes-context
@@ -251,7 +251,7 @@ The following example illustrates executing custom Helm commands.
 {% highlight yaml %}
 {% raw %}
 my_custom_helm_command:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: auth
     kube_context: my-kubernetes-context
@@ -352,7 +352,7 @@ steps:
         - python setup.py test
   StoreChart:
     title: Storing Helm Chart
-    type: helm
+    type: helm:1.1.12
     stage: store
     working_directory: ./python-flask-sample-app
     arguments:
@@ -360,7 +360,7 @@ steps:
       chart_name: charts/python
       kube_context: kostis-demo@FirstKubernetes
   DeployMyChart:
-      type: helm
+      type: helm:1.1.12
       stage: deploy
       working_directory: ./python-flask-sample-app
       arguments:

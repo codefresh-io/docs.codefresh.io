@@ -84,7 +84,7 @@ steps:
           - xcodebuild -workspace DemoWebServer.xcworkspace -scheme DemoWebServer archive -archivePath ../build/DemoWebServer.xcarchive | xcpretty
 
   pending-approval:
-    type: pending-approval
+    type: pending-approval:1.0.2
     description: 'Stop pipeline until approval. Just as an example'
     stage: 'Approve'
     fail_fast: true

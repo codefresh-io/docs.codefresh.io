@@ -57,7 +57,7 @@ steps:
 
   conform:
     title: Fix docker compose
-    type: composition-editor
+    type: composition-editor:1.1.0
     stage: Build
     arguments:
       DIRECTORY: ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}

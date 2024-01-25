@@ -42,13 +42,13 @@ version: "1.0"
 
 steps:
   slack_notify:
-    type: slack-notifier
+    type: slack-notifier:0.0.8
     arguments:
     SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
     SLACK_TEXT: 'There is a build pending approval'
 
   approval:
-    type: pending-approval
+    type: pending-approval:1.0.2
 ```
 
 {% endraw %}

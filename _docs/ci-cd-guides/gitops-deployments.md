@@ -130,7 +130,7 @@ steps:
 
   ReportImageMetadataAll:
     title: Report image to Codefresh CD
-    type: codefresh-report-image
+    type: codefresh-report-image:1.0.10
     working_directory: /code
     stage: "report"
     arguments:

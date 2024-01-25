@@ -26,7 +26,7 @@ Set up a separate cron-triggered pipeline as the parent pipeline. From this pare
     ```yaml
     codeamlfresh-run:
       title: Run a codefresh pipeline
-      type: codefresh-run
+      type: codefresh-run:1.5.3
       arguments:
         PIPELINE_ID: <project-name/pip_name>
         TRIGGER_ID: <trigger-name>
