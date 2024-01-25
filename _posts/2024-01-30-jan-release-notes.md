@@ -56,7 +56,7 @@ For details, see [View/download logs for GitOps Runtime components]({{site.baseu
 
 **Pipelines**  
 * For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
-* Builds for Gerrit in Codefresh are triggered twice at random. (CR-20179 Olek)
+* Builds for Gerrit in Codefresh are triggered twice because of timeouts for webhook data delivery requests or connection issues.
 * Replaced misleading warning message in logs for successful builds: `The security token included in the request is invalid`.
 <!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
 
