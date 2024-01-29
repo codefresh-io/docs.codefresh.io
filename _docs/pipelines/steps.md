@@ -428,14 +428,16 @@ codefresh delete step-type 'account/plugin:<version>'
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-type` command.
 
-**Latest plugin version for typed steps**  
-If you do not define a version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use different versions of the same plugin within the same pipeline.
 
->**TIP**  
+#### Latest plugin version for typed steps 
+If you do not define an explicit version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use different versions of the same plugin within the same pipeline.
+
+These typed steps do not require a version number: `pending-approval`, `github-action`, `parallel`, and `services`.
+
+{{site.data.callout.callout_tip}}
+**TIP**  
 If your pipeline includes typed steps without corresponding version numbers, Codefresh issues a warning as assigning the latest version can introduce breaking changes and fail the pipeline. 
-
-
-
+{{site.data.callout.end}}
 
  `codefresh.yml`
 {% highlight yaml %}
