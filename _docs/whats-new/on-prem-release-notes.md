@@ -113,7 +113,7 @@ Here’s an example of a single custom audience:
 ```yaml
 obtain_id_token:
   title: Obtain ID Token
-  type: obtain-oidc-id-token
+  type: obtain-oidc-id-token:1.2.1
   arguments:
     AUDIENCE: "cosign"
 ```

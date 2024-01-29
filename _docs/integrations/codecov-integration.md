@@ -62,7 +62,7 @@ With the integration in place, you can reference it by name in any Codefresh pip
   codecov-report:
 	stage: "prepare"
 	title: Codecov report
-	type: codecov-reporter
+	type: codecov-reporter:2.1.0
 	arguments:
   	codecov_integration: my-codecov-integration
 ```	  

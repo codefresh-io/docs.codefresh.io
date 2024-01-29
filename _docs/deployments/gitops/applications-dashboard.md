@@ -31,6 +31,7 @@ Select the view format for applications in the GitOps Apps dashboard, as either 
   
 Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
   * [Get status from application header](#monitor-gitops-application-status-in-application-header)
+  * [Analyze out-of-sync applications in Diff View](#analyze-out-of-sync-applications-with-diff-view)
   * [View deployment and configuration info for selected Argo CD application](#view-deployment-configuration-info-for-selected-argo-cd-application)
   * [Monitor resources for selected Argo CD application](#monitor-resources-for-selected-argo-cd-application)
   * [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application)
@@ -202,6 +203,30 @@ max-width="80%"
   You can also view the current health and sync status for the application as a resource in the Current State tab. 
 {{site.data.callout.end}}
 
+## Analyze out-of-sync applications with Diff View
+Identify discrepancies between the desired and live states for out-of-sync applications using Diff View. The Diff View provides a visual representation of discrepancies to help troubleshoot issues more effectively.
+
+Available in the context menu when you select an application, the Diff View presents Inline and Split views, in either full or summary modes.
+
+
+1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. Filter by **Status** for **Out of sync** applications, and select the application you need.
+1. From the context menu on the upper-right, select **Diff View**.  
+  The default Diff View highlights the differences in Inline and Compact view modes.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/diff-view/app-diff-view.png"
+url="/images/applications/diff-view/app-diff-view.png"
+alt="Diff View of application in Inline and Compact view modes"
+caption="Diff View of application in Inline and Compact view modes"
+max-width="50%"
+%} 
+
+{:start="4"}
+1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
+
 ## View deployment configuration info for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
@@ -217,8 +242,8 @@ image.html
 lightbox="true"
 file="/images/applications/quick-view-context-menu.png"
 url="/images/applications/quick-view-context-menu.png"
-alt="Selecting Quick View from the context menu"
-caption="Selecting Quick View from the context menu"
+alt="Quick View option in application's context menu"
+caption="Quick View option in application's context menu"
 max-width="80%"
 %} 
 

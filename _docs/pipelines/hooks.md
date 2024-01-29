@@ -275,7 +275,7 @@ hooks: #run slack-notifier hook on build completion
   on_finish:
     steps:
       exec:
-        type: slack-notifier
+        type: slack-notifier:0.0.8
         arguments:
           SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
           SLACK_TEXT: '${{SLACK_TEXT}}' 
@@ -291,7 +291,7 @@ steps:
       on_finish:
         steps:
           exec:
-            type: slack-notifier
+            type: slack-notifier:0.0.8
             arguments:
               SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
               SLACK_TEXT: '${{SLACK_TEXT}}'       
@@ -607,7 +607,7 @@ hooks:
     steps:
       exec:
         slack_pending:
-          type: slack-notifier
+          type: slack-notifier:0.0.8
           arguments:
             SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
             SLACK_TEXT: '*Build Started* now'

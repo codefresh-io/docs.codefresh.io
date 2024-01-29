@@ -134,9 +134,9 @@ steps:
 
 
 
-## Add annotations to the current build/image
+#### Example 3: Add annotations to the current build/image
 
-Define annotations at the root level of the `build` step to add an annotation to the current build or image without defining the entity type and ID.
+To add an annotation to the current build or image without defining the entity type and ID, add it at the root level of the `build` step.
 
 This method provides a way to add annotations without the entity type and ID, compared to post-step operations where you explicitly define the target type and ID.
 
@@ -176,6 +176,12 @@ codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
 
 You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
 
+##  `cf_predecessor` for  BUILD_ID  of parent pipeline  
+Codefresh has native support to navigate from parent to child builds. 
+To navigate from the child build to its parent, we have the `cf_predecessor` annotation.
+
+The `cf_predecessor` annotation is automatically added to builds executed by calls to a [`codefresh-run` plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"}.
+By querying the value of this annotation in the child build, you can get the ID of the parent build.
 
 
 ## Managing annotations
