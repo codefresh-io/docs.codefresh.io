@@ -6,10 +6,10 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ## Features & enhancements
 
 ### Pipelines: Share build run settings
-Our newest enhancement to pipeline build runs is designed to enhance collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who share access to the same account.
+Our newest enhancement to pipeline builds is designed to increase collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who have access to the same account.
 
 **How does it work?**
-By sharing settings, you enable colleagues to pre-populate build configurations without the need for redundant manual input. This feature is useful for various scenarios, whether it's testing automation integration with third-party tools or triggering pipelines in specific situations.
+By sharing build settings, you enable colleagues to pre-populate build configurations without the need for redundant manual input. This feature is useful for various scenarios, whether it's for testing automation integration with third-party tools or triggering pipelines in specific situations.
 
 **Customizing build settings**
 You can override any existing setting - simulate a different trigger, select a different branch, modify existing or add new build variables, and even modify the build behavior.
@@ -29,11 +29,15 @@ With a click of the **Share build settings** button, Codefresh generates a uniqu
 For details, see [Share build run settings]({{site.baseurl}}/docs/pipelines/run-pipeline/#share-build-run-settings).
 
 ### Pipelines: Version for typed steps
-As you know, Codefresh is continually optimizing our typed step-library in the Marketplace. To prevent breaking changes in typed steps, we will issue a warning when we find typed steps in your pipelines without the version number.
+As you're aware, Codefresh consistently enhances our typed step library in the Marketplace.
+
+When typed steps in pipelines lack a specified version, Codefresh automatically associates them with the latest version of the step type. To avoid potential issues with breaking changes in typed steps, we now provide a warning if there are steps in your pipelines without an explicit version number.
+
+For details, see [Versioning in typed steps]({{site.baseurl}}/docs/pipelines/steps/#versioning-for-typed-steps).
 
 ### GitOps: View/download logs for GitOps Runtime components
-We're are glad to announce that you can now view and download logs for individual GitOps Runtime components!
-Previously available for legacy CLI Runtimes, this functionality is now back for Helm GitOps Runtimes, with online viewing in our terminal and offline downloads as you need.
+We are glad to announce that you can now view and download logs for individual GitOps Runtime components!
+Previously available for legacy CLI Runtimes, this functionality is now back for Helm GitOps Runtimes, with online viewing in our smart terminal and offline downloads as you need.
 
 As a reminder, here's where you can find the **View logs** option:
 
@@ -49,8 +53,13 @@ As a reminder, here's where you can find the **View logs** option:
 
 For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
 
+<!--- ## GitOps: Argo Events upgrade
+We've recently upgraded Argo Events to its latest version, v1.9.0, ensuring you can leverage all enhancements. For detailed information about the changes in this version, please refer to the [Argo documentation](https://github.com/argoproj/argo-events/releases).
 
+Please be aware that this upgrade may introduce a potential breaking change for existing event sources that have defined `githubBaseUrl` without defining `githubUploadURL` which is required. In such cases, event sources will fail to sync, and the Git Source application will return a `..githubUploadURL is required when githubBaseURL is set` error.
 
+To address this, you'll need to edit the event source YAMLs and add `githubUploadURL` where required.
+ -->
 
 ## Bug fixes
 
