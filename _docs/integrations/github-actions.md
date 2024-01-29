@@ -113,7 +113,7 @@ steps:
   snyk-cli-action:
     title: snyk
     description: snyk
-    type: github-action-executor:0.2.2
+    type: github-action-executor
     arguments:
       url: 'https://github.com/marketplace/actions/snyk-cli-action'
       envs: 
