@@ -29,7 +29,7 @@ With a click of the **Share build settings** button, Codefresh generates a uniqu
 
 For details, see [Share build run settings]({{site.baseurl}}/docs/pipelines/run-pipeline/#share-build-run-settings).
 
-### Pipelines: Version for typed steps
+### Pipelines: Explicit versions for typed steps
 As you're aware, Codefresh consistently enhances our typed step library in the Marketplace.
 
 When typed steps in pipelines lack a specified version, Codefresh automatically associates them with the latest version of the step. To avoid potential issues with breaking changes in typed steps, we now provide a warning if there are steps in your pipelines without an explicit version number.
@@ -44,7 +44,7 @@ When typed steps in pipelines lack a specified version, Codefresh automatically 
   max-width="60%" 
 %}
 
-For details, see [Versioning in typed steps]({{site.baseurl}}/docs/pipelines/steps/#versioning-for-typed-steps).
+For details, see [Versioning for typed steps]({{site.baseurl}}/docs/pipelines/steps/#versioning-for-typed-steps).
 
 ### GitOps: View/download logs for GitOps Runtime components
 We are glad to announce that you can now view and download logs for individual GitOps Runtime components!
