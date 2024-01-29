@@ -24,7 +24,7 @@ With a click of the **Share build settings** button, Codefresh generates a uniqu
 	url="/images/whats-new/jan24/rel-notes-jan-24-share-run-configuration.png" 
 	alt="Share build settings" 
 	caption="Share build settings"
-  max-width="60%" 
+  max-width="40%" 
 %}
 
 For details, see [Share build run settings]({{site.baseurl}}/docs/pipelines/run-pipeline/#share-build-run-settings).
@@ -59,7 +59,7 @@ As a reminder, here's where you can find the **View logs** option:
 	url="/images/whats-new/jan24/rel-notes-jan-24-runtime-component-log.png" 
 	alt="View logs for GitOps Runtime components" 
 	caption="View logs for GitOps Runtime components"
-  max-width="60%" 
+  max-width="70%" 
 %}
 
 For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
@@ -73,6 +73,8 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
  -->
 
 ## Bug fixes
+
+<br>
 
 **Pipelines**  
 * For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. (CR-22200 vadim)
