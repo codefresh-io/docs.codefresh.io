@@ -31,7 +31,17 @@ For details, see [Share build run settings]({{site.baseurl}}/docs/pipelines/run-
 ### Pipelines: Version for typed steps
 As you're aware, Codefresh consistently enhances our typed step library in the Marketplace.
 
-When typed steps in pipelines lack a specified version, Codefresh automatically associates them with the latest version of the step type. To avoid potential issues with breaking changes in typed steps, we now provide a warning if there are steps in your pipelines without an explicit version number.
+When typed steps in pipelines lack a specified version, Codefresh automatically associates them with the latest version of the step. To avoid potential issues with breaking changes in typed steps, we now provide a warning if there are steps in your pipelines without an explicit version number.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/jan24/rel-notes-jan-24-typed-step-warning.png" 
+	url="/images/whats-new/jan24/rel-notes-jan-24-typed-step-warning.png" 
+	alt="Warning for typed steps without version numbers" 
+	caption="Warning for typed steps without version numbers"
+  max-width="60%" 
+%}
 
 For details, see [Versioning in typed steps]({{site.baseurl}}/docs/pipelines/steps/#versioning-for-typed-steps).
 
