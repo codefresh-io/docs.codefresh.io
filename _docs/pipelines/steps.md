@@ -433,11 +433,6 @@ If you do not define an explicit version for the plugin, the latest version (acc
 
 These typed steps do not require a version number: `pending-approval`, `github-action`, `parallel`, and `services`.
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-If your pipeline includes typed steps without corresponding version numbers, Codefresh issues a warning as assigning the latest version can introduce breaking changes and fail the pipeline. 
-{{site.data.callout.end}}
-
  `codefresh.yml`
 {% highlight yaml %}
 {% raw %}
@@ -451,6 +446,23 @@ steps:
     type: kostis-codefresh/sample:1.3.5
 {% endraw %}
 {% endhighlight %}
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+If your pipeline includes typed steps without corresponding version numbers, Codefresh issues a warning as assigning the latest version can introduce breaking changes and fail the pipeline. 
+{{site.data.callout.end}}
+
+{% include image.html 
+lightbox="true" 
+file="/images/pipeline/typed-steps/typed-step-version-warning.png" 
+url="/images/pipeline/typed-steps/typed-step-version-warning.png"
+alt="Warning for typed steps without explicit versions"
+caption="Warning for typed steps without explicit versions"
+max-width="60%" 
+%}
+
+
+
 
 ### Example with input parameters
 
