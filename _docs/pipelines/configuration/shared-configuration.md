@@ -194,7 +194,7 @@ Add the shared variables to your Helm step:
 {% highlight shell %}
 {% raw %}
 deploy:
-  type: "helm"
+  type: "helm:1.1.12"
   working_directory: "./react-article-display"
   stage: "deploy"
   arguments:

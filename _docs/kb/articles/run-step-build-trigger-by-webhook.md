@@ -27,7 +27,7 @@ To execute a step only when a build is manually triggered, you can create a cond
 ```yaml
 steps:
   SendToSlack:
-    type: slack-notifier
+    type: slack-notifier:0.0.8
     arguments:
       SLACK_HOOK_URL: '${{SLACK_WEBHOOK_URL}}'
       SLACK_TEXT: '${{SLACK_TEXT}}'
@@ -51,7 +51,7 @@ To get around this, you can explicitly pass this variable from the parent to the
 ```yaml
 steps:
   run_child_pipeline:
-    type: codefresh-run  
+    type: codefresh-run:1.5.3 
     arguments:
       ...
       VARIABLE:

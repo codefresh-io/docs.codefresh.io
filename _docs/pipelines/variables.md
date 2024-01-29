@@ -121,6 +121,7 @@ Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` varia
 | {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline" |
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of Codefresh system  |
+| {% raw %}`${{CF_OUTPUT_URL}}`{% endraw %}          | Display link to an external URL on step execution. For example, display the link to a parent-build from the child-build.<br>See [Export external link with CF_OUTPUT_URL](#export-external-link-with-cf_output_url) in this article. |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`  |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
 | Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
@@ -169,13 +170,13 @@ Variables that are created by steps can have members. The members depend on the 
 {: .table .table-bordered .table-hover}
 | Step Type              | Members      |
 | ----------------------- | -------------------------------------- |
-| All step types           | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/}  
-| [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)        | -                                                                                                                                                                              |
-| [Composition]({{site.baseurl}}/docs/pipelines/steps/composition/)        | -                                                                                                                                                                              |
-| [Build]({{site.baseurl}}/docs/pipelines/steps/build/)             | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/}                                                                            |
-| [Git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)       | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/}                                                                                  |
-| [Push]({{site.baseurl}}/docs/pipelines/steps/push/)               | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}                                                                 |
-| [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)               | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/}                                                                 |
+| All step types   | {::nomarkdown}<ul><li>name</li><li>type</li><li>description</li><li>workingDirectory</li><li>result</li></ul>{:/} | 
+| [Freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/)        | -   |
+| [Composition]({{site.baseurl}}/docs/pipelines/steps/composition/)    | -   |
+| [Build]({{site.baseurl}}/docs/pipelines/steps/build/)  | {::nomarkdown}<ul><li>imageName</li><li>imageTagName</li><li>imageId</li></ul>{:/} |
+| [Git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/) | {::nomarkdown}<ul><li>revision</li><li>repo</li></ul>{:/} |
+| [Push]({{site.baseurl}}/docs/pipelines/steps/push/) | {::nomarkdown}<ul><li>registry</li><li>imageId</li><li>imageRepoDigest</li></ul>{:/}  |
+| [Approval]({{site.baseurl}}/docs/pipelines/steps/approval/)  | {::nomarkdown}<ul><li>authEntity.name</li><li>authEntity.type</li></ul>{:/} |
 
 
 
@@ -208,8 +209,6 @@ When a pull request is closed in GitHub, the following variables are also availa
 | {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
 
 ## Gerrit changeId & change message variables
-
-
 Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
 
 
@@ -224,11 +223,11 @@ Gerrit has no explicit concept of pull requests, as in other version control sys
 
 ## User-defined variables
 
-User variables can be defined at 6 levels:
+User variables can be defined at six levels:
 
-1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"} command or in any **subsequent** step with the [cf_export](#using-cf_export-command) command
-1. [Freestyle step definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) (using the `environment` field)
-1. Specific build Execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
+1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"} command, or in any **subsequent** step using the [cf_export](#using-cf_export-command) command
+1. [Freestyle step definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples), using the `environment` field
+1. Specific build execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
 1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines))
 1. [Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
 1. Variables defined on the Project level (Under the variables tab on any project view)
@@ -236,6 +235,12 @@ User variables can be defined at 6 levels:
 The options are listed in order of priority (from the most important to the least important), so in case of multiple variables defined at different locations with the same name, the order of overriding will be as listed here.
 
 For example if a pipeline variable is defined both in project level and as an execution parameter of a specific build, then the final result will be the value defined as a build parameter and the project level variable will not take effect. 
+
+
+
+
+
+
 
 ## Exporting environment variables from a freestyle step
 
@@ -245,11 +250,18 @@ There are two ways to add variables to the shared file:
 * Using the `cf_export` command
 * Writing directly to the file
 
+
+
+
+
+
 ### Exporting variables with `cf_export` 
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
+
 >**NOTE**  
 The variables exported through `cf_export` overrides those at the pipeline-level.
+
 
 You can either:
 - Explicitly state a VAR=VAL pair  
@@ -364,6 +376,51 @@ steps:
 {% endhighlight %}
 
 Use this technique if you have complex expressions that have issues with the `cf_export` command.
+
+## Export external link with `CF_OUTPUT_URL`
+
+Codefresh has native support to trigger child builds from parent builds, and to navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).  
+Using the `CF_OUTPUT_URL` variable, you can also navigate from the child build back to the parent build. 
+
+Simply add a step to the child build with an in-step link to the parent build. The URL link to the parent build is displayed as part of the step details in the Builds page.  
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+Every build executed by a call to a `codefresh-run` plugin is enriched with a special annotation that precisely identifies its parent, the [`cf_predecessor` annotation]({{site.baseurl}}/docs/pipelines/annotations/#cf_predecessor-for--build_id--of-parent-pipeline).  
+You can get the ID of the parent build by querying the value of this annotation in the child build.
+{{site.data.callout.end}}
+
+
+##### Add `CF_OUTPUT_URL` with `cf_export `
+Create a link to the parent-build using `cf_export` and `CF_OUTPUT_URL`. 
+`
+
+##### Example step in child build to output link to parent
+
+Add the following step at the beginning of the pipeline. 
+
+>**NOTE**  
+  The name of the variable exported by `cf_export` must have the format `<name|key_of_step>_CF_OUTPUT_URL`. It's value is the URL of the parent build to link to.
+
+{% raw %}
+
+```yaml
+    steps:
+      ...
+      linkToParentBuild:
+        image: codefresh/cli
+        commands:
+          - export parentBuildId=$(codefresh get annotation build ${{CF_BUILD_ID}} cf_predecessor -o json | jq -r '.value')
+          - cf_export linkToParentBuild_CF_OUTPUT_URL="${{CF_URL}}/build/${parentBuildId}"
+      ...
+```
+{% endraw %}
+
+
+
+In the Builds page, the step details of the child build displays the **Output URL** which is the link to the parent build, as in the image below.
+
+![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png) 
 
 ## Masking variables in logs
 

@@ -26,7 +26,7 @@ This documentation uses the following [example](https://github.com/codefresh-con
 {% highlight yaml %}
   JiraCommentCreate:
     title: "Add Jira Comment"
-    type: "jira-issue-manager"
+    type: "jira-issue-manager:1.0.11"
     stage: "deploy"
     arguments:
       JIRA_BASE_URL: '${{JIRA_BASE_URL}}'

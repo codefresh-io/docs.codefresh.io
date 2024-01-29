@@ -28,14 +28,10 @@ Codefresh currently supports the following IdPs:
 
 If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
 
-<<<<<<< Updated upstream
-{{site.data.callout.callout_info}}   
-  **NOTE**:  
-=======
+
 >**NOTE**     
->>>>>>> Stashed changes
-  For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
-  If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
+If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
 
 1. Select the identity provider (IdP) to use:  

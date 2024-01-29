@@ -128,7 +128,7 @@ steps:
       dockerfile: Dockerfile
     stage: package
   DeployMyChart:
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./python-flask-sample-app
     arguments:
@@ -169,10 +169,10 @@ This is the easiest way to deploy to Kubernetes without having to manually chang
 
 When a Helm package is deployed to your Kubernetes cluster, Codefresh displays it in the [Helm releases]({{site.baseurl}}/docs/new-helm/helm-releases-management/) dashboard.
 
-### Before you begin
+##### Before you begin
 * [Deploy a Helm Release to your Kubernetes cluster](#deploy-a-helm-release-to-your-kubernetes-cluster)
 
-### How to
+##### How to
 
 1. In the Codefresh UI, expand Ops from the sidebar, and select **Helm Releases**.
    The new release is displayed.
@@ -256,10 +256,10 @@ To store a Helm chart, you either need to import the shared configuration that d
 For the quick start, we will import the shared configuration. 
 
 
-### Before you begin
+##### Before you begin
 * [Create and run pipeline with a Helm step](#create-and-run-pipeline-with-a-helm-step)
 
-### How to
+##### How to
 
 1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Pipelines**.
 1. Select the pipeline with the Helm deploy step.
@@ -318,7 +318,7 @@ steps:
     stage: package
   deploy:
     title: Storing Helm chart
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./python-flask-sample-app
     arguments:

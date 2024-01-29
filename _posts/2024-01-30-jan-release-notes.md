@@ -5,6 +5,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
+
 ### Pipelines: Share build run settings
 Our newest enhancement to pipeline builds is designed to increase collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who have access to the same account.
 
@@ -74,14 +75,16 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
 ## Bug fixes
 
 **Pipelines**  
-* For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
-* Builds for Gerrit in Codefresh are triggered twice because of timeouts for webhook data delivery requests or connection issues.
-* Replaced misleading warning message in logs for successful builds: `The security token included in the request is invalid`.
+* For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. (CR-22200 vadim)
+* Builds for Gerrit in Codefresh are triggered twice at random. (CR-20179 Olek)
+* Replaced misleading warning message "The security token included in the request is invalid" for successful builds. (CR-18186 kim)
+
 <!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
 
 <br>
 
 **GitOps**  
+
 * Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
 * Audit log missing manual actions executed in Rollouts Player.

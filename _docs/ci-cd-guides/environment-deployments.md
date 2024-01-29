@@ -167,7 +167,7 @@ steps:
     registry: dockerhub  
   deployStaging:
     title: Deploying to Staging
-    type: helm
+    type: helm:1.1.12
     stage: deployment
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -185,7 +185,7 @@ steps:
           - master 
   deployProd:
     title: Deploying to Production
-    type: helm
+    type: helm:1.1.12
     stage: deployment
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -332,7 +332,7 @@ steps:
     registry: dockerhub  
   deployStaging:
     title: Deploying to Staging
-    type: helm
+    type: helm:1.1.12
     stage: deployment
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -360,7 +360,7 @@ steps:
         releaseName: example-staging  
   deployProd:
     title: Deploying to Production
-    type: helm
+    type: helm:1.1.12
     stage: deployment
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -456,7 +456,7 @@ steps:
     registry: dockerhub  
   deployStaging:
     title: Deploying to Staging
-    type: helm
+    type: helm:1.1.12
     stage: staging
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -474,7 +474,7 @@ steps:
     title: Deploy to production?
   deployProd:
     title: Deploying to Production
-    type: helm
+    type: helm:1.1.12
     stage: prod
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -564,7 +564,7 @@ steps:
 
   deployStaging:
     title: Deploying to Staging
-    type: helm
+    type: helm:1.1.12
     stage: staging
     working_directory: ./helm-promotion-sample-app
     arguments:
@@ -639,7 +639,7 @@ steps:
             - 8080     
   deployProd:
     title: Deploying to Production
-    type: helm
+    type: helm:1.1.12
     stage: prod
     working_directory: ./helm-promotion-sample-app
     arguments:

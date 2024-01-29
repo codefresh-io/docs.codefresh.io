@@ -62,7 +62,7 @@ steps:
   call_qa_pipeline:
     title: Deploy to QA
     stage: deploy
-    type: codefresh-run
+    type: codefresh-run:1.5.3
     arguments:
       PIPELINE_ID: child-pipelines/qa-pipeline
       VARIABLE:
@@ -76,7 +76,7 @@ steps:
   call_prod_pipeline:
     title: Deploy to Prod
     stage: deploy
-    type: codefresh-run
+    type: codefresh-run:1.5.3
     arguments:
       PIPELINE_ID: child-pipelines/prod-pipeline
       VARIABLE:
