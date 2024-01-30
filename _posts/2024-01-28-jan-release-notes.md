@@ -29,6 +29,29 @@ With a click of the **Share build settings** button, Codefresh generates a uniqu
 
 For details, see [Share build run settings]({{site.baseurl}}/docs/pipelines/run-pipeline/#share-build-run-settings).
 
+### Pipelines: Restart from failed step 
+At Codefresh, we highly value your feedback and are committed to continually enhancing your experience. In response to your feedback, we introduced the ability to configure the default restart behavior for failed steps in a pipeline at the account level. 
+
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/jan24/rel-notes-jan-24-restart-failed-step.png" 
+	url="/images/whats-new/jan24/rel-notes-jan-24-restart-failed-step.png" 
+	alt="Restart from failed step in Pipeline Settings" 
+	caption="Restart from failed step in Pipeline Settings"
+  max-width="50%" 
+%}
+
+When disabled (the default), the user can restart the entire pipeline from the beginning.
+Being able to configure the restart behavior for failed steps centrally simplifies management and ensures consistency across pipelines, without the need for individual adjustments.   
+Imagine a scenario where you’re onboarding a large team of developers. You can disable failed-step restart for the account, and have the pipelines use the account-level setting, saving valuable time and promoting a consistent experience.  
+
+You can always change the behavior at any time based on evolving requirements.
+And users have the flexibility to override the account-level behavior for individual pipelines based on specific needs.
+
+For details, see ???
+
+
 ### Pipelines: Explicit versions for typed steps
 As you're aware, Codefresh consistently enhances our typed step library in the Marketplace.
 
@@ -64,13 +87,13 @@ As a reminder, here's where you can find the **View logs** option:
 
 For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
 
-<!--- ## GitOps: Argo Events upgrade
+## GitOps: Argo Events upgrade
 We've recently upgraded Argo Events to its latest version, v1.9.0, ensuring you can leverage all enhancements. For detailed information about the changes in this version, please refer to the [Argo documentation](https://github.com/argoproj/argo-events/releases).
 
 Please be aware that this upgrade may introduce a potential breaking change for existing event sources that have defined `githubBaseUrl` without defining `githubUploadURL` which is required. In such cases, event sources will fail to sync, and the Git Source application will return a `..githubUploadURL is required when githubBaseURL is set` error.
 
 To address this, you'll need to edit the event source YAMLs and add `githubUploadURL` where required.
- -->
+ 
 
 ## Bug fixes
 
