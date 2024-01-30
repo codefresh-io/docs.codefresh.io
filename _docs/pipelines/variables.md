@@ -416,11 +416,18 @@ Add the following step at the beginning of the pipeline.
 ```
 {% endraw %}
 
-
-
 In the Builds page, the step details of the child build displays the **Output URL** which is the link to the parent build, as in the image below.
 
-![Link to Parent-build]({{site.baseurl}}/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png) 
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png"
+url="/images/troubleshooting/how-to-navigate-to-parent-build-from-child-build.png"
+alt="Output URL link"
+caption="Output URL link"
+max-width="60%"
+%}
+
 
 ## Masking variables in logs
 
