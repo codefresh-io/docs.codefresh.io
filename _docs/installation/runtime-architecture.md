@@ -350,46 +350,43 @@ Typically, new versions of Argo CD are available in the Codefresh Runtime within
 
 
 ### Reporters
-Reporters function as the means to detect changes to resources deployed on the cluster and report them back to the Codefresh platform.
+Reporters monitor changes to resources deployed on the cluster and report these changes back to the Codefresh platform.
+
 Codefresh has two types of reporters:
 * Resource Reporter
 * Application Reporter
 
 ##### Resource Reporter
-The Resource Reporter monitors specific types of resources on the cluster, identifies changes in the live-state of these resources, and sends the live-state manifest with the changes without preprocessing them to Codefresh.  
+The Resource Reporter monitors specific types of resources on the cluster, tracking changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
 
 The Resource Reporter monitors changes to these resource types:
 * Rollouts (Argo Rollouts)
 * ReplicaSets and Workflows (Argo Workflows)
 
-Resource Reporters use Argo Event components such as Event Sources to monitor changes,and Sensors to send the live-state manifests to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
+Resource Reporters leverage Argo Event components such as Event Sources to monitor changes and Sensors to send the live-state manifests, to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
 
 ##### Application Reporter
-The Application Reporter is dedicated to monitoring changes to Argo CD applications deployed on the cluster. Unlike the Resource Reporter which utilizes Argo Events, the Application Reporter employs a proprietary implementation which features an event queue for efficient event processing and sharding for a robust and scalable setup. Another signifcant difference is that the Application Reporter retrieves both the live-state manifest of the application and Git manifests for all the application's managed resources. 
+The Application Reporter specializes in monitoring changes to Argo CD applications deployed on the cluster. 
 
-The Application Reporter (**event-reporter** on the cluster):
+In contrast to the Resource Reporter which utilizes Argo Events, the Application Reporter employs a proprietary implementation. The implementation includes an event queue for efficient event processing and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application and the Git manifests for all the application's managed resources. 
+
+The Application Reporter (identified on the cluster as **event-reporter**):
 
 * Monitors changes to Argo CD applications 
-  The Application Reporter subscribes to the Kubernetes API to capture application-change events. It adds the application-change event to the Event Queue for subsequent processing. Every instance of the Application Reporter can queue up to 1,000 events at a time.
+  The Application Reporter subscribes to the Kubernetes API to capture application-change events. It adds the captured application-change event to the Event Queue for processing.  
+  Each instance of the Application Reporter can queue up to 1,000 events at a time.
 
 * Retrieves live-state and Git manifests
-  For each processed application-change event, the Application Reporter collaborates with the Argo CD server to retrieve both the live-state manifest of the application and Git manifests for all the application's managed resources. The Argo CD server acquires the Git manifests from the Argo CD repo-server for seamless integration.
+  For each processed application-change event, the Application Reporter communicates with the Argo CD server to retrieve both the application's live-state manifests and the Git manifests for all the application's managed resources. The Argo CD server retrieves the Git manifests from the Argo CD repo-server for seamless integration.
 
 * Distributes application-change events for efficient load-sharing  
-  To ensure scalability and efficient load-sharing, the Application Reporter supports sharding. Application-change events are distributed across multiple Reporter instances based on the number of replicas configured (five by default) which can be customized as need. By default, there are 5 replicas, though this is [configurable](add here the link to the values file), allowing for a customized setup.  
-  For example, if the cluster has 100 apps and 5 replicas for the Application Reporter, each Reporter instance can handle events from 20 apps. By default, Codefresh recommends a ratio of 25-30 apps per instance of the Application Reporter.
+  To ensure scalability, optimal event handling, and resource utilization, the Application Reporter supports sharding. 
+  
+  Application-change events are distributed across the Application Reporter instances using a hash-function on the application name.   
+  
+  The distribution is limited to the number of replicas configured. By default, there are 5 replicas, but this number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file. [add here link to values file] 
+  For example, if the cluster has 100 apps and 5 replicas, each Reporter instance handles events from 20 apps. Codefresh recommends a ratio of 25-30 apps per instance of the Application Reporter.
 
-
-Codefresh introduces a Sharding mechanism for the Application Reporter component. This ensures optimized event handling and resource utilization. Configuration of reporter replicas is easily achieved through the corresponding Helm value: argo-cd.eventReporter.replicas. (Note: This value should also be added to our runtime chart documentation for reference.)
-
-Scaling Considerations:
-It is essential to scale the Argo CD server and repo-server in tandem with the Application Reporter. Monitoring the memory consumption of these components is crucial. An increase in memory usage indicates a need for vertical or horizontal scaling. Codefresh recommends assessing and adjusting scaling strategies to maintain optimal performance.
-
-That’s why Codefresh introduced Sharding mechanism for Application Reporter component.
-
-Configuring the reporter replicas is possible through the corresponding helm value: `argo-cd.eventReporter.replicas`. [we also need to add this value to our runtime chart docs] 
-
-Make sure to scale Argo CD server and repo-server accordingly. If you see that their memory consumption starts to grow — this mostly means that these components are no longer capable of processing amount of requests sent to them and you need to consider scaling them either vertically or horizontally.
 
 ### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
