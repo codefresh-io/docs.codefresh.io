@@ -37,9 +37,9 @@ Codefresh creates subfolders for every build in the bucket with the build IDs as
 
 There are two modes for processing test reports in Codefresh, built-in and custom test reporting:
 
-1. **Built-in test reporting** based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
+1. **Built-in test reporting** based on the [Allure Report](https://allurereport.org/){:target="\_blank"}  
   Allure is an open-source test framework that can produce HTML reports, as in the example below.  
-  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+  For more details, see the [official Allure documentation](https://allurereport.org/docs/){:target="\_blank"}.  
   <br>
   Allure supports popular testing frameworks such as:  
   * Java/JUnit/TestNG/Cucumber
