@@ -382,10 +382,10 @@ The Application Reporter (identified on the cluster as **event-reporter**):
 * Distributes application-change events for efficient load-sharing  
   To ensure scalability, optimal event handling, and resource utilization, the Application Reporter supports sharding. 
   
-  Application-change events are distributed across the Application Reporter instances using a hash-function on the application name.   
-  
+  Application-change events are distributed across the Application Reporter instances using a hash-function on the application name.  
   The distribution is limited to the number of replicas configured. By default, there are 5 replicas, but this number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file. [add here link to values file] 
-  For example, if the cluster has 100 apps and 5 replicas, each Reporter instance handles events from 20 apps. Codefresh recommends a ratio of 25-30 apps per instance of the Application Reporter.
+  
+  For example, if the cluster has 100 apps and 5 replicas, each Reporter instance handles events from 20 apps. Codefresh recommends a default ratio of 25-30 apps per instance of the Application Reporter.
 
 
 ### Request Routing Service
