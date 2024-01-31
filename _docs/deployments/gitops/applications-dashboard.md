@@ -167,14 +167,24 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 
 
 ### Warning: Long sync 
-**Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation).
+**Reason**: Ongoing sync for application exceeds the [configured timeout]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-sync-timeout-for-argo-cd-applications).  
+The Codefresh default is Argo CD's default duration of 30 minutes for a sync operation.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-sync-timeout-warning.png" 
+   url="/images/applications/app-sync-timeout-warning.png" 
+   alt="Example of sync timeout exceeded warning in **Warnings/Errors** panel" 
+   caption="Example of sync timeout exceeded warning in **Warnings/Errors** panel"
+   max-width="60%" 
+   %} 
 
 **Corrective Action**: 
-* Click **View Details** to take you directly to the Sync Result tab. 
-  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are dsiplayed at the top. 
-* To see more details such as the message and sync duration, switch to **Sync Info**.
-* To stop the sync operation, click **Terminate**. 
-* Drill down into the application to investigate the issue and make changes.
+1. Click **View Details** to take you directly to the Sync Result tab. 
+  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are displayed at the top. 
+1. To see more details such as the message and sync duration, switch to **Sync Info**.
+1. Drill down into the application to investigate the issue and make changes.
 
 ## Monitor Argo CD application status in application header
 When you select an application from the Applications tab in the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application, including health and sync statuses. 
