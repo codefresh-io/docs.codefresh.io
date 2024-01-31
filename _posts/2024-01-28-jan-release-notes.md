@@ -42,14 +42,16 @@ At Codefresh, we highly value your feedback and are committed to continually enh
   max-width="50%" 
 %}
 
-When disabled (the default), the user can restart the entire pipeline from the beginning.
+When enabled (the default), the user can restart the pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.  
+By default, individual pipelines are configured to inherit the account setting. 
+
 Being able to configure the restart behavior for failed steps centrally simplifies management and ensures consistency across pipelines, without the need for individual adjustments.   
 Imagine a scenario where you’re onboarding a large team of developers. You can disable failed-step restart for the account, and have the pipelines use the account-level setting, saving valuable time and promoting a consistent experience.  
+You can always change the behavior at any time based on evolving requirements. And users have the flexibility to override the account-level behavior for individual pipelines based on specific needs.
 
-You can always change the behavior at any time based on evolving requirements.
-And users have the flexibility to override the account-level behavior for individual pipelines based on specific needs.
+Note that this does not impact existing pipelines.
 
-For details, see ???
+For details, see 
 
 
 ### Pipelines: Explicit versions for typed steps
