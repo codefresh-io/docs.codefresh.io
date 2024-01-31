@@ -1,6 +1,6 @@
 ---
 title: "Account-level settings for pipelines"
-description: "Configure settings pipelines at the account-level"
+description: "Configure global pipeline settings for the account"
 group: pipelines
 sub_group: configuration
 redirect_from:
@@ -25,20 +25,26 @@ As a Codefresh account administrator, you can define [global settings for pipeli
 | |[Restarting from failed steps](#restarting-from-failed-steps) | Enable option to restart pipelines from failed steps instead of from the beginning.|
 | |[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
 | |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
-| |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if pending-approval steps require manual action. |
+| |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if `pending-approval` steps require manual action. |
 |Other|[Advanced options for pipelines](#advanced-options-for-pipelines)| Configure options for build approval and pipeline volumes. |
-|Argo Workflows |Enable pipelines with Argo Workflows | Create pipelines based on Argo Workflows. |
+|Argo Workflows |[Enable pipelines with Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline/) | Create pipelines based on Argo Workflows. |
 
 
 
 ## Configure account-level settings for pipelines
-Configure default settings for pipelines to be inherited by all pipelines in the account. 
+Configure default settings for all pipelines in the account. 
+
+##### Before you begin
+* Review [account-level pipeline settings](#account-level-pipeline-settings)
+
+##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
 
 ## Auto-create projects for teams
-Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. It also creates access-control rules for the same team to projects and pipeline, simplifying setup and saving time.
+Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account.  
+It also creates access-control rules for the same team to projects and pipelines, simplifying setup and saving time.
 
   {% include image.html
 lightbox="true"
@@ -90,7 +96,7 @@ Once created, there is no synchronization between the project and the team. Modi
 **What are the benefits?**  
 As you can see, this option both simplifies and strengthens access-control:
 
-* Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the other projects.
+* Using the Project rule automatically created for the team to grants access to additional projects simply by assigning the same tag to the other projects.
 * Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
 * Easily grant the same permissions to other teams for the same pipelines by creating Pipeline rules for the teams with the same project tags.
 
@@ -110,12 +116,11 @@ Define if users can create pipelines from pipeline templates or by cloning exist
 
 If required, restrict the sources from which users can create or upload YAML files for a pipeline workflow.
 
-The options are:
 * **Inline YAML**: Enable/disable the [inline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
 * **YAML from repository**: Enable/disable pipeline uploading YAMLs from connected Git repositories
 * **YAML from external URLs**: Enable/disable loading YAMLs for pipelines from [external URLs]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 
->**NOTE**
+>**NOTE**  
 You must allow at least one of these options so that users can create new pipelines.  
 We suggest selecting the **Inline YAML** option when users are still learning about Codefresh and want to experiment. 
 
@@ -138,16 +143,14 @@ As a Codefresh administrator, you can override the account-level scopes for a sp
 
 
 ## Kubernetes cluster-contexts for pipelines
-By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling cluster-injection for individual pipelines in the account.
+By default, all pipelines in the account can access all clusters integrated with Codefresh.  
+Restrict pipeline access to clusters by enabling cluster-injection for pipelines in the account. When enabled, users are required to select the clusters for the pipeline build.
 
 Selectively restricting access to clusters for a pipeline:  
 * Enhances security by restricting access to users from different teams. 
 * Reduces the overall duration of the build by shortening the initialization phase.
   Codefresh authenticates the credentials of every cluster that the pipeline accesses during the initialization phase. This action affects build duration for accounts with large numbers of clusters. 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
-1. Toggle **Kubernetes cluster context pipeline injection** to ON.
 
 {% include image.html
 lightbox="true"
@@ -184,14 +187,23 @@ max-width="60%"
 ## Restarting from failed steps
 Enable or disable restarting pipelines directly from the failed step for all pipelines in the account. The setting affects the restart options displayed in the [Builds view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restart-pipeline-from-builds-view) and [step view]({{site.baseurl}}docs/pipelines/monitoring-pipelines/#restart-from-step-view). 
 
-* When **enabled**, allows users to restart the pipeline directly from the specific step that failed. 
+{% include image.html
+lightbox="true"
+file="/images/pipeline/settings/account-permit-restart.png"
+url="/images/pipeline/settings/account-permit-restart.png"
+alt="Enable/disable restart from failed step"
+caption="Enable/disable restart from failed step"
+max-width="60%"
+%}
+
+* When **enabled** (the default), allows users to restart the pipeline directly from the specific step that failed. 
 * When **disabled**, allows users to restart the pipeline from the beginning.
 
 Individual pipeline are set to use the account's setting by default, but users can override this setting to enable/disable failed step restart for the specific pipeline. See [Pipeline settings - Policies]({{site.baseurl}}/docs/docs/pipelines/pipelines/#policies).
 
 ## Memory usage warning for pipeline builds
 Select the memory-usage threshold for pipeline builds at which to display alerts. <br>
-Memory-usage thresholds for pipeline builds are useful to both avoid premature and unnecessary warnings, and get timely warnings to avoid build failures, as needed.
+Memory-usage thresholds for pipeline builds are useful get timely warnings and prevent build failures, while at the same time avoiding premature and unnecessary warnings.
 
 Accounts with pipelines that do not consume a lot of memory can have higher thresholds, or even the maximum threshold, as they are unikely to hit available memory limits.  
 Resource-intensive pipelines on the contrary require lower thresholds for timely warnings to prevent build failures. 90% is recommended for such pipelines.
@@ -240,7 +252,7 @@ Configure if manual confirmation is required after clicking the Approve or Rejec
 Configure the default settings that define the advanced behavior for pipelines.
 
 
-* Manage shared volumes for builds pending approval
+* Manage shared volumes for builds pending approval  
   Define if to [retain or discard]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) the volume when a pipeline build is pending approval.
   
   >**NOTE**  
@@ -248,7 +260,7 @@ Configure the default settings that define the advanced behavior for pipelines.
     It will also affect users of existing pipelines that depend on this behavior.  
     Once you either enable or disable this option for an account, we recomend leaving it unchanged.
 
-* Concurrency policy for build pending approval
+* Concurrency policy for build pending approval  
   Determines whether pipelines pending approval are [included or excluded from the concurrency count]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).
 
 * Service Account for Amazon ECR authentication  
