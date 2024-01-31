@@ -307,10 +307,10 @@ Codefresh uses Argo CD's default duration of 30 minutes which you can customize 
 
 Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, get timely warnings from Codefresh.
 
-* Add the following annotation to the application's YAML:
+* Add the following annotation to the application's YAML with the timeout you need:
   ```yaml
   annotation:
-  codefresh.io/app-sync-warning-threshold: "30"
+  codefresh.io/app-sync-warning-threshold: "35"
   ```
   Codefresh displays a warning in the **Warnings/Errors** button at the top right of the Applications tab in the GitOps Apps dashboard, when the sync duration exceeds the timeout specified.
 

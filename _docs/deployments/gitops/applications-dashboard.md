@@ -167,7 +167,18 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 
 
 ### Warning: Long sync 
-**Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation) or the configured timeout.
+**Reason**: Ongoing sync for application exceeds the [configured timeout]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-sync-timeout-for-argo-cd-applications).  
+The Codefresh default is Argo CD's default duration of 30 minutes for a sync operation.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-sync-timeout-warning.png" 
+   url="/images/applications/app-sync-timeout-warning.png" 
+   alt="Example of sync timeout exceeded warning in **Warnings/Errors** panel" 
+   caption="Example of sync timeout exceeded warning in **Warnings/Errors** panel"
+   max-width="60%" 
+   %} 
 
 **Corrective Action**: 
 1. Click **View Details** to take you directly to the Sync Result tab. 
