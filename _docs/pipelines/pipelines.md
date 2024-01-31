@@ -17,7 +17,7 @@ Before creating a pipeline, make sure you are familiar with the theory behind [C
 
 ## Pipeline concepts
 
-The aim of Codefresh pipelines is to have re-usable sequences of steps that can be used for different applications (or micro-services) via the use of Git triggers.
+The aim of Codefresh pipelines is to have reusable sequences of steps that can be used for different applications (or microservices) via the use of Git triggers.
 
 The main concepts are shown below:
 
@@ -91,7 +91,7 @@ or by copying an existing one from the same project or a completely different pr
 
 ### Using the Inline pipeline editor
 
-When first creating a pipeline, you will see an inline editor that allows you to define the [pipeline YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the yml steps, run a build, edit again, run a build and so on. 
+When first creating a pipeline, you will see an inline editor that allows you to define the [pipeline YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) right there in the Codefresh UI. This is great when you are starting a new project because it offers you really quick feedback. You can edit the YAML steps, run a build, edit again, run a build and so on. 
 
 
 {% include 
@@ -215,11 +215,12 @@ Once you create your pipeline you can also click on the top tab called *Settings
 
 
 
-- **Kubernetes clusters**: Control pipeline access to Kubernetes clusters integrated with Codefresh.  
-    * To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle **Inject all Kubernetes cluster context to pipeline builds** to ON. 
-    *  To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh.  
+##### Kubernetes clusters
+Control pipeline access to Kubernetes clusters integrated with Codefresh.  
+  * To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle **Inject all Kubernetes cluster context to pipeline builds** to ON. 
+  *  To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh.  
     When defined, the initialization step in the pipeline displays the clusters selected for it.  
-  See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
+See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
 
 
 - **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
@@ -244,9 +245,12 @@ Once you create your pipeline you can also click on the top tab called *Settings
   - Honor the option defined globally in your Codefresh account  
 
 - **Restart pipeline**  
-  **Permit restart pipeline from failed step**: When enabled (the default), allows users to restart the pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
+  **Permit restart pipeline from failed step**: Allows users to restart this pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
+      * Use account settings: Inherits the account-level setting defined.
+      * Permit: Always permits users to restart this pipeline from the failed step.
+      * Forbid: Always disables the restart from failed step option for this pipeline.  
 
-  As this option restarts the failed step with the same state, you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
+  Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
 
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
