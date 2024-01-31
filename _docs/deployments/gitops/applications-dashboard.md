@@ -170,8 +170,16 @@ Applications with `rollout` resources need Argo Rollouts on the target cluster, 
 **Reason**: Ongoing sync for application exceeds 30 minutes (Argo CD's default duration for a sync operation).
 
 **Corrective Action**: 
+* Configure the sync-timeout threshold for the application:
+  Add this annotation to the application's YAML:
+  ```yaml
+  annotation:
+  codefresh.io/app-sync-warning-threshold: "30"
+  ```
+  Codefresh then displays a warning when the duration of the sync operation exceeds 30 minutes.
+
 * Click **View Details** to take you directly to the Sync Result tab. 
-  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are dsiplayed at the top. 
+  Here you can see details on the sync job that was started, and info on the Hooks if any. Failed hooks are displayed at the top. 
 * To see more details such as the message and sync duration, switch to **Sync Info**.
 * To stop the sync operation, click **Terminate**. 
 * Drill down into the application to investigate the issue and make changes.

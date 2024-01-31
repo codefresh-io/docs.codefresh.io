@@ -35,6 +35,9 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Synchronize Argo CD applications](#manually-synchronize-an-argo-cd-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
+* Configure sync-timeout for applications  
+  Configure the sync-timeout through an annotation to be warned of long sync operations.
+
 * [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
 
@@ -215,8 +218,16 @@ You can also synchronize _application resources_ with sync statuses such as `Ser
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
 
+### Configure sync-timeout warning for applications
+Argo CD has a default duration of 30 minutes for a sync operation.  
+Add an annotation with the timeout threshold for the application to get notified when an ongoing sync exceeds the limit.
 
-
+* Add the following annotation to the application's YAML:
+  ```yaml
+  annotation:
+  codefresh.io/app-sync-warning-threshold: "30"
+  ```
+  Codefresh displays a warning when the duration of the sync operation exceeds 30 minutes.
 
 
 ### Revision settings for application sync
