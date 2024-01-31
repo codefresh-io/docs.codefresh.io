@@ -245,10 +245,10 @@ See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
   - Honor the option defined globally in your Codefresh account  
 
 - **Restart pipeline**  
-  **Permit restart pipeline from failed step**: Allows users to restart this pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
-      * Use account settings: Inherits the account-level setting defined.
-      * Permit: Always permits users to restart this pipeline from the failed step.
-      * Forbid: Always disables the restart from failed step option for this pipeline.  
+  **Permit restart pipeline from failed step**: Allows users to override the account-level setting for this option, and enable/disable restart directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.  
+  * Use account settings (default): Inherits the account-level setting defined.
+  * Permit: Always permits users to restart this pipeline from the failed step.
+  * Forbid: Always disables the restart from failed step option for this pipeline.  
 
   Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
 
