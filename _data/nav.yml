@@ -378,7 +378,7 @@
     - title: Configuration for pipelines
       url: "/configuration"
       sub-pages:
-        - title: Global pipeline settings
+        - title: Account-level pipeline settings
           url: "/pipeline-settings"
         - title: Shared configuration
           url: "/shared-configuration"
