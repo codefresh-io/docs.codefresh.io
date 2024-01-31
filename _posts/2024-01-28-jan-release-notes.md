@@ -43,19 +43,31 @@ At Codefresh, we highly value your feedback and are committed to continually enh
 %}
 
 When enabled (the default), the user can restart the pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.  
-By default, individual pipelines are configured to inherit the account setting. 
+By default, individual pipelines are configured to inherit the account setting.  
+Note that this does not impact existing pipelines.
 
 Being able to configure the restart behavior for failed steps centrally simplifies management and ensures consistency across pipelines, without the need for individual adjustments.   
 Imagine a scenario where you’re onboarding a large team of developers. You can disable failed-step restart for the account, and have the pipelines use the account-level setting, saving valuable time and promoting a consistent experience.  
 You can always change the behavior at any time based on evolving requirements. And users have the flexibility to override the account-level behavior for individual pipelines based on specific needs.
 
-Note that this does not impact existing pipelines.
+For details, see [Restarting from failed steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#restarting-from-failed-steps).
 
-For details, see 
+### Pipelines: Add tags during pipeline creation
+With this update, you can effortlessly add tags when you create a pipeline, further streamlining the pipeline creation process. Add tags as you usually do, and they are instantly available in both the General Settings and the Permissions panel.
+
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/jan24/rel-notes-jan-24-tags-in-create-pipeline.png" 
+	url="/images/whats-new/jan24/rel-notes-jan-24-tags-in-create-pipeline.png" 
+	alt="Add tags when creating pipeline" 
+	caption="Add tags when creating pipeline"
+  max-width="70%" 
+%}
 
 
 ### Pipelines: Explicit versions for typed steps
-As you're aware, Codefresh consistently enhances our typed step library in the Marketplace.
+As you're aware, Codefresh is continually enhancing our typed step library in the Marketplace.
 
 When typed steps in pipelines lack a specified version, Codefresh automatically associates them with the latest version of the step. To avoid potential issues with breaking changes in typed steps, we now provide a warning if there are steps in your pipelines without an explicit version number.
 
@@ -70,6 +82,28 @@ When typed steps in pipelines lack a specified version, Codefresh automatically 
 %}
 
 For details, see [Versioning for typed steps]({{site.baseurl}}/docs/pipelines/steps/#versioning-for-typed-steps).
+
+
+
+### GitOps: Tailored sync timeouts for Argo CD applications
+
+Tailor the timeout thresholds for sync operations for different application, and receive instant alerts when the sync duration execeeds the threshold.  
+Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, Codefresh provides you with timely warnings to proactively investigate and resolve sync issues.
+
+Just include an annotation in the application's YAML, and either retain the default timeout of 30 minutes (also Argo CD's default for sync operations) or change it as needed.  
+Codefresh will display a warning in the **Warnings/Errors** panel for the app when the sync operation exceeds the timeout.
+
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/jan24/rel-notes-jan-24-sync-timeout.png" 
+	url="/images/whats-new/jan24/rel-notes-jan-24-sync-timeout.png" 
+	alt="Sync timeout warning for Argo CD applications" 
+	caption="Sync timeout warning for Argo CD applications"
+  max-width="70%" 
+%}
+
+For details, see [Configure sync-timeout for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-sync-timeout-for-argo-cd-applications).
 
 ### GitOps: View/download logs for GitOps Runtime components
 We are glad to announce that you can now view and download logs for individual GitOps Runtime components!
