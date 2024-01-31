@@ -35,8 +35,8 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Synchronize Argo CD applications](#manually-synchronize-an-argo-cd-application)   
   Sync applications on-demand by manually applying sync options or by manually selecting the resources to sync.
 
-* Configure sync-timeout for applications  
-  Configure the sync-timeout through an annotation to be warned of long sync operations.
+* [Configure sync-timeout for Argo CD applications](#configure-sync-timeout-for-argo-cd-applications)  
+  Configure the sync-timeout through an annotation to be notified of long sync operations.
 
 * [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
@@ -218,18 +218,6 @@ You can also synchronize _application resources_ with sync statuses such as `Ser
   * **Out of sync**: Sync _only_ resources that are `Out of sync`.  
 
 
-### Configure sync-timeout warning for applications
-Argo CD has a default duration of 30 minutes for a sync operation.  
-Add an annotation with the timeout threshold for the application to get notified when an ongoing sync exceeds the limit.
-
-* Add the following annotation to the application's YAML:
-  ```yaml
-  annotation:
-  codefresh.io/app-sync-warning-threshold: "30"
-  ```
-  Codefresh displays a warning when the duration of the sync operation exceeds 30 minutes.
-
-
 ### Revision settings for application sync
 Revision settings determine the behavior for the branch you select.  
 
@@ -313,9 +301,31 @@ For example, if you made changes to `api` resources or `audit` resources, type `
    %} 
 
 
+## Configure sync-timeout for Argo CD applications
+Add an annotation with the timeout threshold for the application to get notified when an ongoing sync exceeds the defined timeout.  
+Codefresh uses Argo CD's default duration of 30 minutes which you can customize as needed.  
+
+Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, get timely warnings from Codefresh.
+
+* Add the following annotation to the application's YAML:
+  ```yaml
+  annotation:
+  codefresh.io/app-sync-warning-threshold: "30"
+  ```
+  Codefresh displays a warning in the **Warnings/Errors** button at the top right of the Applications tab in the GitOps Apps dashboard, when the sync duration exceeds the timeout specified.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/applications/app-sync-timeout-warning.png" 
+   url="/images/applications/app-sync-timeout-warning.png" 
+   alt="Sync duration exceeded warning for application" 
+   caption="Sync duration exceeded warning for application"
+   max-width="60%" 
+   %} 
 
 
-
+You can view more [details on the sync]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#warning-long-sync) or [terminate](#terminate-on-going-sync-for-argo-cd-applications) it.
 
 ## Terminate on-going sync for Argo CD applications
 Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 
