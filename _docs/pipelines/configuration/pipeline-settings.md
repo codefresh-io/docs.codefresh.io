@@ -199,7 +199,7 @@ max-width="60%"
 * When **enabled** (the default), allows users to restart the pipeline directly from the specific step that failed. 
 * When **disabled**, allows users to restart the pipeline from the beginning.
 
-Individual pipeline are set to use the account's setting by default, but users can override this setting to enable/disable failed step restart for the specific pipeline. See [Pipeline settings - Policies]({{site.baseurl}}/docs/docs/pipelines/pipelines/#policies).
+Individual pipeline are set to use the account's setting by default, but users can override this setting to enable/disable failed step restart for the specific pipeline. See [Pipeline settings - Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
 
 ## Memory usage warning for pipeline builds
 Select the memory-usage threshold for pipeline builds at which to display alerts. <br>
