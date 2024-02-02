@@ -14,8 +14,8 @@ For a general overview on SAML, see [Setting up SAML2 Federated SSO]({{site.base
 
 Setting up SAML SSO for Okta includes:
 1. Configuring SSO settings for Okta via SAML in Codefresh
-1. Configuring SSO settings for Codefresh in JumpCloud
-1. Completing SSO configuration for JumpCloud in Codefresh
+1. Configuring SSO settings for Codefresh in Okta
+1. Completing SSO configuration for Okta in Codefresh
 
 ## Step 1: Configure SSO settings for Okta via SAML in Codefresh
 Create a SAML account for Okta in Codefresh  to create an integration for Codefresh in Okta.
