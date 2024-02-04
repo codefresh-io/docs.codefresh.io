@@ -20,16 +20,16 @@ We are happy to announce a highly-requested feature: the ability to use _empty v
 
 This enhancement unlocks a myriad of possibilities that were previously unavailable. 
 
-* Dynamic population during pipeline execution
-  With empty variables, you can dynamically populate values during the execution of your pipelines.
-   For example, fetch sensitive credentials from a secure vault at runtime, enhancing security.
+* Dynamic population during pipeline execution   
+  With empty variables, you can dynamically populate values during the execution of your pipelines.<br>
+  For example, fetch sensitive credentials from a secure vault at runtime, enhancing security.
 
-* Custom values for build runs
+* Custom values for build runs  
   Empower users to customize their build runs with the values they require. For example, add variables for environments without tying them to a specific environment, and let users add the value as needed.
 
-* Conditional step executions
-  Utilize empty variables to conditionally execute or skip specific steps in your pipeline.
- Create flexible workflows that adapt to changing conditions during runtime.
+* Conditional step executions  
+  Utilize empty variables to conditionally execute or skip specific steps in your pipeline.<br>
+  Create flexible workflows that adapt to changing conditions during runtime.
 
 Remember that the priority for variable overrides remains unchanged. 
 
