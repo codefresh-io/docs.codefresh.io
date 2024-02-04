@@ -71,7 +71,7 @@ If you have turned on notifications for GitOps Runtimes, Codefresh alerts you to
 You can turn off these notifications for selectively for Runtimes for which these alerts are less critical.
 
 ##### Before you begin 
-Heve your Git user token handy
+Have your Git user token handy
 
 ##### How to  
 1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
