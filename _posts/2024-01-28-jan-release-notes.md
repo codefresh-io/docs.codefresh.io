@@ -15,7 +15,7 @@ We are happy to announce a highly-requested feature: the ability to use _empty v
 	url="/images/whats-new/jan24/rel-notes-jan-24-empty-variables.png" 
 	alt="Empty variables in Codefresh entities" 
 	caption="Empty variables in Codefresh entities"
-  max-width="40%" 
+  max-width="60%" 
 %}
 
 This enhancement unlocks a myriad of possibilities that were previously unavailable. 
@@ -36,10 +36,10 @@ Remember that the priority for variable overrides remains unchanged.
 ### Pipelines: Share build run settings
 Our newest enhancement to pipeline builds is designed to increase collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who have access to the same account.
 
-**How does it work?**
+**How does it work?**  
 By sharing build settings, you enable colleagues to pre-populate build configurations without the need for redundant manual input. This feature is useful for various scenarios, whether it's for testing automation integration with third-party tools or triggering pipelines in specific situations.
 
-**Customizing build settings**
+**Customizing build settings**  
 You can override any existing setting - simulate a different trigger, select a different branch, modify existing or add new build variables, and even modify the build behavior.
 
 With a click of the **Share build settings** button, Codefresh generates a unique URL. The URL includes modified and new settings as query parameters. Encrypted variables are excluded to ensure data protection. 
@@ -75,6 +75,7 @@ Note that this does not impact existing pipelines.
 
 Being able to configure the restart behavior for failed steps centrally simplifies management and ensures consistency across pipelines, without the need for individual adjustments.   
 Imagine a scenario where you’re onboarding a large team of developers. You can disable failed-step restart for the account, and have the pipelines use the account-level setting, saving valuable time and promoting a consistent experience.  
+
 You can always change the behavior at any time based on evolving requirements. And users have the flexibility to override the account-level behavior for individual pipelines based on specific needs.
 
 For details, see [Restarting from failed steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#restarting-from-failed-steps).
@@ -89,7 +90,7 @@ With this update, you can effortlessly add tags when you create a pipeline, furt
 	url="/images/whats-new/jan24/rel-notes-jan-24-tags-in-create-pipeline.png" 
 	alt="Add tags when creating pipeline" 
 	caption="Add tags when creating pipeline"
-  max-width="70%" 
+  max-width="40%" 
 %}
 
 
@@ -163,9 +164,9 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
 <br>
 
 **Pipelines**  
-* For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. (CR-22200 vadim)
-* Builds for Gerrit in Codefresh are triggered twice at random. (CR-20179 Olek)
-* Replaced misleading warning message "The security token included in the request is invalid" for successful builds. (CR-18186 kim)
+* For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
+* Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
+* Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 
 <!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
 
@@ -176,8 +177,8 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
 * Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
 * Audit log missing manual actions executed in Rollouts Player.
-* Long time for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. (CR-21281 Yarik)
+* Long time for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
 * For GitLab Actions, `codefresh-image-reporter` log displays actual values of encrypted secrets.
-* Codefresh UI not in sync with native Argo CD UI. (CR-20811 Yarik)
+* Codefresh UI not in sync with native Argo CD UI. 
 
 
