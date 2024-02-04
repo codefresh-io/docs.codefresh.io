@@ -7,27 +7,39 @@ redirect_from:
   - /docs/codefresh-yaml/variables/
 toc: true
 ---
-Codefresh provides a set of predefined variables automatically in each build, that you can use to parameterize the way your pipeline works. You can also define your own variables. Some common examples of predefined variables include:
+Variables in pipelines allow you to parameterize the way your pipeline works. Codefresh provides a set of system variables, and the capability to define custom variables.
 
-* `CF_BRANCH` is the Git branch that was used for this pipeline.
-* `CF_REVISION` is the Git hash that was used for this pipeline.
-* `CF_BUILD_URL` is the url of the pipeline build.
+* [System variables](#system-variables) are predefined variables prefixed with `CF`.  
+  System variables are automatically included in every pipeline build. Here are some examples of system variables.  
+  * `CF_BRANCH` is the Git branch that was used for this pipeline.
+  * `CF_REVISION` is the Git hash that was used for this pipeline.
+  * `CF_BUILD_URL` is the url of the pipeline build.
 
-## Using Codefresh variables in your pipelines
+* [User-defined variables](#create-user-defined-variables) are custom variables which you create.  
+  You can create user-defined variables for different entities in Codefresh, such as projects, pipelines and steps, with or without a default value. You can also import variables you may have already defined. 
+
+Codefresh supports [two syntaxes](#using-codefresh-variables-in-pipelines) for variables: the UNIX syntax, and a proprietary syntax for use in YAML files. 
+
+
+
+
+
+## Using Codefresh variables in pipelines
 
 There are two ways to use a Codefresh variable in your pipelines:
 
-1. Expose as UNIX environment variables
-   This is the default method, where all variables in all freestyle steps are exposed as UNIX environment variables: `$MY_VARIABLE_EXAMPLE`.
-1. Directly in YAML properties
-   Use variables can be used in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
+1. Expose as UNIX environment variables   
+  This is the default method. All variables in all [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/) steps are exposed as UNIX environment variables. For example, `$MY_VARIABLE_EXAMPLE`.
+1. Directly in YAML properties  
+   This format, specific to Codefresh, can be used in in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
 {{site.data.callout.callout_tip}}
 **TIP**   
-If you are unsure about which form you need to use, feel free to use {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere. This is the Codefresh specific form and should function in all sections of `codefresh.yml`. 
+If you are unsure about which format to use, feel free to use the Codefresh-specific format with the {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere.  
+This is the Codefresh specific format and should function in all sections of `codefresh.yml`. 
 {{site.data.callout.end}}
 
-**Example: Print out the branch as an environment variable**  
+##### Example: Print out the branch as an environment variable  
 In this example, we use simple `echo` commands, but any program or script that reads environment variables can also read them in the same manner.
 
 `YAML`
@@ -43,7 +55,7 @@ MyOwnStep:
 {% endhighlight %}
 
 
-**Example: Use directly in YAML properties**  
+##### Example: Use directly in YAML properties
 
 `YAML`
 {% highlight yaml %}
@@ -57,7 +69,7 @@ MyAppDockerImage:
 {% endhighlight %}
 
 
-**Example: Concatenating variables**
+##### Example: Concatenating variables
 
 `YAML`
 {% highlight yaml %}
@@ -79,44 +91,46 @@ feature-vb145dh
 ```
 
 >**NOTE**  
- > This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself. If you want to write scripts or programs that use the Codefresh variables, you need to make them aware of the environment variable form.
+This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself.  
+To write scripts or programs that use Codefresh variables, you need to make them aware of the environment variable form.
 
 
 ## System variables
 
 System variables are automatically injected to any freestyle step as environment variables.
+The table below describes the system variables.
 
 > **NOTE**  
-It is important to understand that all Git-related variables such `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. come directly from the Git provider you use, and therefore have the same limitations of that provider. <br><br>
-For example, GitLab sends less information in pull request events than normal pushes, and Bitbucket sends only the short hash of a commit in pull request events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event. <br><br>
-Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` variables, such as `CF_PULL_REQUEST_ID` and more. 
+Git-based system variables, such as `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are retrieved directly from the Git provider you use, and therefore have the same limitations of that provider. <br><br>
+For example, GitLab sends less information in Pull Request (PR) events than normal pushes, and Bitbucket sends only the short hash of a commit in PR events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event. <br><br>
+Gerrit for example, has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` variables, such as `CF_PULL_REQUEST_ID` and more. 
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description |
 | ------------------------------------------------- | ------------------------------------------------------ |
-| {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | Repository owner.  |
-| {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | Repository name. |
-| {% raw %}`${{CF_BRANCH}}`{% endraw %}             | Branch name (or Tag depending on the payload json) of the Git repository of the main pipeline, at the time of execution. <br/>You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %} to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
-| {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag |
+| {% raw %}`${{CF_REPO_OWNER}} `{% endraw %}        | The repository owner.  |
+| {% raw %}`${{CF_REPO_NAME}}`{% endraw %}          | The repository name. |
+| {% raw %}`${{CF_BRANCH}}`{% endraw %}             | The branch name or tag depending on the payload JSON, of the Git repository of the main pipeline, at the time of execution. <br/>To use the normalized version of the branch name use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED}}`{% endraw %}.Using this variable ensures that special characters   to get the branch name normalized. It will be without any chars that are illegal in case the branch name were to be used as the Docker image tag name. You can also use {% raw %}`${{CF_BRANCH_TAG_NORMALIZED_LOWER_CASE}}`{% endraw %} to force lowercase. |
+| {% raw %}`${{CF_BASE_BRANCH}}`{% endraw %}      | The base branch used during creation of Tag. |
 | {% raw %}`${{CF_PULL_REQUEST_ACTION}}`{% endraw %}      | The pull request action. Values are those defined by your Git provider such as [GitHub](https://developer.github.com/webhooks/){:target="\_blank"}, [GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html), [Bitbucket](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html){:target="\_blank"} etc. |
-| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The ID of the pull request.<br>For Gerrit, use this in place of `changeId`.   |
-| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The target branch of the pull request. <br>For Gerrit, use this in place of `Change target branch name`. |
-| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The pull request number |
-| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | For GitHub and GitLab, the labels assigned to the pull requests.<br>For Gerrit, the `change hashtags`. |
-| {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}      | The comment added to the pull request.<br>For Gerrit, use this in place of `Change message`.  |
-| {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %}      | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
-| {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | Commit author.                                                                                              |
-| {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The person (username) that started the build. If the build was started by a Git webhook (e.g. from a Pull request) it will hold the webhook user. Notice that if a build is restarted manually it will always hold the username of the person that restarted it.  |
-| {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | Codefresh account for this build |
-| {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | Commit url.  |
-| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \"). |
-| {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %}     | Commit message of the Git repository revision, at the time of execution.<br/> Special characters are escaped.  |
-| {% raw %}`${{CF_REVISION}}`{% endraw %}           | Revision of the Git repository of the main pipeline, at the time of execution. <br/> You can also use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}  to get the abbreviated 7-character revision hash, as used in Git. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}                 |
-| {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | Refers to the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) defined in [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/).    |
-| {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | Refers to the mounted path of the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) inside a Freestyle container. In the current implementation it expands to `/codefresh/volume`. |
+| {% raw %}`${{CF_PULL_REQUEST_ID}}`{% endraw %}      | The ID of the Pull Request (PR).<br>For Gerrit, use this in place of `changeId`.   |
+| {% raw %}`${{CF_PULL_REQUEST_TARGET}}`{% endraw %}      | The target branch of the PR. <br>For Gerrit, use this in place of `Change target branch name`. |
+| {% raw %}`${{CF_PULL_REQUEST_NUMBER}}`{% endraw %}      | The PR (Pull Request) number. |
+| {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | For GitHub and GitLab, the labels assigned to the PRs.<br>For Gerrit, the `change hashtags`. |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}      | The comment added to the PR.<br>For Gerrit, use this in place of `Change message`.  |
+| {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %}      | The user who added the comment to the PRt.<br>For Gerrit, use this in place of `Change author`.  |
+| {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | The name of the user who authored the commit.        |
+| {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The username of the user who initiated the build.<br> If the build is initiated by a Git webhook, as for example from a PR, this variable returns the webhook user.<br>If the build is restarted manually, the variable always returns the username of the person who restarted the build.  |
+| {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | The Codefresh account for this build. |
+| {% raw %}`${{CF_COMMIT_URL}}`{% endraw %}         | The commit URL.  |
+| {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %}     | The commit message of the Git repository revision, at the time of execution.<br/> The messages quotes are escaped (i.e. ' is not \', " is now \"). |
+| {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %}     | The commit message of the Git repository revision, at the time of execution.<br/> Special characters are escaped.  |
+| {% raw %}`${{CF_REVISION}}`{% endraw %}  | The revision of the Git repository of the main pipeline, at the time of execution. <br/> To get the abbreviated 7-character revision hash as used in Git, use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %}. <br>**NOTE**: To tag the image as a string with quotes, use {% raw %}`${{CF_SHORT_REVISION}}`{% endraw %} .                |
+| {% raw %}`${{CF_VOLUME_NAME}}`{% endraw %}        | The [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) defined in [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/).    |
+| {% raw %}`${{CF_VOLUME_PATH}}`{% endraw %}        | The mounted path of the [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) within a freestyle container. In the current implementation it expands to `/codefresh/volume`. |
 | {% raw %}`${{CF_BUILD_TRIGGER}}`{% endraw %}      | Will be an indication of the current build was triggered: *build: The build was triggered from the build button* webhook: The build was triggered from a control version webhook |
-| {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build id. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %} |
-| {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}  |
+| {% raw %}`${{CF_BUILD_ID}}`{% endraw %}           | The build ID. <br>Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_ID}}`{% endraw %} |
+| {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}    | The timestamp when the build was created. Note: use this variable as string with quotes to tag the image {% raw %}`${{CF_BUILD_TIMESTAMP}}`{% endraw %}  |
 | {% raw %}`${{CF_BUILD_URL}}`{% endraw %}          | The URL to the build in Codefresh  |
 | {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, i.e. "project/pipeline" |
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | the name of the step, i.e. "MyUnitTests" |
@@ -126,8 +140,9 @@ Gerrit has `change-Id` and `Changes` that you can map to `CF_PULL_REQUEST` varia
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected kubeconfig if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically setup by Codefresh in all pipelines. |
 | Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
 
-## Context-related Variables
-Context-related variables are created dynamically during the workflow execution and according to the used steps.
+### Context-related variables
+Context-related variables are system variables created dynamically during the workflow execution, according to the steps used in the pipeline.
+
 
 {: .table .table-bordered .table-hover}
 | Variable                                          | Description   |
@@ -156,16 +171,18 @@ steps:
 
 In the example above you can see the `MyAppDockerImage` variable that denotes a Docker image created dynamically within this single pipeline. In the second step we use it as a Docker context in order to run unit tests. See also the [unit testing example app]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/).
 
-## Step variables
+### Step variables
 
 Every [step]({{site.baseurl}}/docs/pipelines/steps/) in a Codefresh pipeline also exposes several built-in variables. You can access them via the global `steps` parent variable.
 
- * Each step  creates a variable based on the name of the step. You can then use the members of each variable for status conditions such as: `steps.MyUnitTests.result == 'error'` for a step called `MyUnitTests`.
-  * To access variables that have a non-standard (i.e. only alphanumeric and _ characters) names, use the Variable() function.
+Each step creates a variable based on the name of the step. You can then use the members of each variable for status conditions such as: `steps.MyUnitTests.result == 'error'` for a step called `MyUnitTests`.
 
-### Step Member variables
+To access variables that have non-standard names with only alphanumeric and underscore (_) characters, use the Variable() function.
 
-Variables that are created by steps can have members. The members depend on the step type. For example if you have a build step named `myBuildStep` you can get the ID of the docker image that gets created with {% raw %}`echo ${{steps.myBuildStep.imageId}}`{% endraw %}
+#### Step-member variables
+
+Variables that are created by steps can have members. The members depend on the step type.  
+For example, if you have a build step named `myBuildStep`, you can get the ID of the docker image that is created, with {% raw %}`echo ${{steps.myBuildStep.imageId}}`{% endraw %}.
 
 {: .table .table-bordered .table-hover}
 | Step Type              | Members      |
@@ -180,36 +197,36 @@ Variables that are created by steps can have members. The members depend on the 
 
 
 
-## GitHub release variables
+### GitHub release variables
 
-GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/){:target="\_blank"} for marking specific Git tags for general availability.
+GitHub allows you to create [releases](https://help.github.com/articles/creating-releases/){:target="\_blank"} to mark specific Git tags for general availability. 
 
-You can set a [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for GitHub releases. When a GitHub release happens, the following variables are also available:
+You can set a [trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) for GitHub releases. When there is a GitHub release, the following variables are also available:
 
 
-
-{: .table .table-bordered .table-hover}
-| Variable        | Description                                            |
-| --------------- | ------------------------------------------------------ |
-| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | GitHub release title   |
-| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | Git tag version   |
-| {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | Internal ID for this release   |
-| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | true if the release if marked as non-production ready, false if it is ready for production   |
-
-## GitHub Pull Request variables
-
-When a pull request is closed in GitHub, the following variables are also available
 
 {: .table .table-bordered .table-hover}
 | Variable        | Description                                            |
 | --------------- | ------------------------------------------------------ |
-| {% raw %}`${{CF_PULL_REQUEST_MERGED}}`{% endraw %}     | true if the pull request was merged to base branch    |
-| {% raw %}`${{CF_PULL_REQUEST_HEAD_BRANCH}}`{% endraw %}      | the head branch of the PR (the branch that we want to merge to master)  |
-| {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | the commit SHA on the base branch after the pull request was merged (in most cases it will be master)   |
-| {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | the commit SHA on the head branch (the branch that we want to push)  |
+| {% raw %}`${{CF_RELEASE_NAME}}`{% endraw %}     | The GitHub release title.   |
+| {% raw %}`${{CF_RELEASE_TAG}}`{% endraw %}      | The Git tag version.   |
+| {% raw %}`${{CF_RELEASE_ID}}`{% endraw %}       | The internal ID for the release.   |
+| {% raw %}`${{CF_PRERELEASE_FLAG}}`{% endraw %}  | Set to:<br>`true`: The release is marked as non-production ready.<br>`false`: The release is ready for production.   |
 
-## Gerrit changeId & change message variables
-Gerrit has no explicit concept of pull requests, as in other version control systems, to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as pull requests. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
+### GitHub Pull Request variables
+
+The table lists the variables available when a PR (Pull Request) is closed in GitHub.
+
+{: .table .table-bordered .table-hover}
+| Variable        | Description                                            |
+| --------------- | ------------------------------------------------------ |
+| {% raw %}`${{CF_PULL_REQUEST_MERGED}}`{% endraw %}     | Set to:<br>`true`: The PR was merged to base branch.<br>`false`: The PR was not merged.    |
+| {% raw %}`${{CF_PULL_REQUEST_HEAD_BRANCH}}`{% endraw %}      |The head branch of the PR, which is the branch to be merged to master.|
+| {% raw %}`${{CF_PULL_REQUEST_MERGED_COMMIT_SHA}}`{% endraw %}       | The commit SHA on the base branch after the PR was merged. In most cases it will be the master. |
+| {% raw %}`${{CF_PULL_REQUEST_HEAD_COMMIT_SHA}}`{% endraw %}  | The commit SHA on the head branch, which is the branch to push to master.  |
+
+### Gerrit changeId & change message variables
+Gerrit has no explicit concept of PRs as in other version control systems to map trigger event payloads to builds. Instead, Gerrit uses `Changes` which serves a similar purpose and functionality as PRs. You can achieve the same functionality in Codefresh with our `CF_PULL_REQUEST` group of environment variables. 
 
 
 {: .table .table-bordered .table-hover}
@@ -221,37 +238,122 @@ Gerrit has no explicit concept of pull requests, as in other version control sys
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %} | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
 
 
-## User-defined variables
+## Create user-defined variables
 
-User variables can be defined at six levels:
-
-1. Manually within a step using the [export](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"} command, or in any **subsequent** step using the [cf_export](#using-cf_export-command) command
-1. [Freestyle step definition]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples), using the `environment` field
-1. Specific build execution (after clicking the "Build" button open the "Build Variables" section, or use the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines))
-1. Pipeline Definition (under "Environment variables" section in the [pipeline view]({{site.baseurl}}/docs/pipelines/pipelines/#creating-new-pipelines))
-1. [Shared Configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
-1. Variables defined on the Project level (Under the variables tab on any project view)
-
-The options are listed in order of priority (from the most important to the least important), so in case of multiple variables defined at different locations with the same name, the order of overriding will be as listed here.
-
-For example if a pipeline variable is defined both in project level and as an execution parameter of a specific build, then the final result will be the value defined as a build parameter and the project level variable will not take effect. 
+Create user-defined variables by manually adding them with default values as key-value pairs, or by adding the variable keys without default values.  
+Empty variables are either dynamically populated during pipeline execution or can be manully defined/modified on-the-fly for build runs. 
 
 
+#### Step 1: Select the entity to which to add variables:  
+
+* **Projects**  
+  In the row with the Project to which to add variables, click the **Settings** icon, and then click the **Variables** tab.
+
+        {% include 
+        image.html 
+        lightbox="true" 
+        file="/images/pipeline/variables/project-variables.png" 
+        url="/images/pipeline/variables/project-variables.png"
+        alt="Adding user-defined variables to projects" 
+        caption="Adding user-defined variables to projects"
+        max-width="60%"
+        %}
+
+* **Pipelines**  
+  * In the row with the Pipeline to which to add variables, click the **Settings** icon.
+  * On the right, click **Variables**.
+
+        {% include 
+        image.html 
+        lightbox="true" 
+        file="/images/pipeline/variables/pipeline-variables.png" 
+        url="/images/pipeline/variables/pipeline-variables.png"
+        alt="Adding user-defined variables to pipelines" 
+        caption="Adding user-defined variables to pipelines"
+        max-width="60%"
+        %}
+
+  * **Steps**
+    * Select the pipeline.
+    * In the **Workflow** tab, add the variable with the correct syntax to the step as required.
+
+  * **Builds**
+    * From the Builds page, in the Pipelines column, click the pipeline name.
+    * Click **Run**.
+    * Expand Build Variables.
+
+        {% include 
+        image.html 
+        lightbox="true" 
+        file="/images/pipeline/variables/build-variables.png" 
+        url="/images/pipeline/variables/build-variables.png"
+        alt="Adding user-defined variables to build runs" 
+        caption="Adding user-defined variables to build runs"
+        max-width="60%"
+        %}
+
+
+#### Step 2: Add variables
+1. To manually add variables, click **Add Variable**. 
+  * To add the variable with its default value, enter the key-value pair.  
+    For build-variables, to encrypt the variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+  * To add an empty variable without a default value, simply type the key. 
+        {% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/variables/example-empty-variable.png" 
+url="/images/pipeline/variables/example-empty-variable.png"
+alt="Example of empty variable in project" 
+caption="Example of empty variable in project"
+max-width="60%"
+%}
+
+{:start="2"}
+1. (Applies only to projects and pipelines only) To import existing variables individually, click **Import from Text**.
+  * Add the names of the variables to import.
+  * Click **Import**
+1. (Applies only to projects and pipelines only) To import them from a file, click **Import from File**.
+  * Browse to the file to import, and then click **Import**.
+1. Click **Save**. 
 
 
 
+### Priority for user-defined variable overrides
+In Codefresh, you can define custom variables for different entities, providing variable definitions at six levels. 
+
+If the same variable is defined at multiple levels, the override rules are based on the priority of the variable. Variables at levels with higher priority override those at levels with lower priority.  
+For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
+
+Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest. 
+
+1. Steps
+  * `export`command
+     Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#using-cf_export-command) commands.
+  * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field
+  
+    >**NOTE**  
+    Step-level variables with `export` take precedence over freestyle-step variables. 
+
+{:start="2"}
+1. Builds  
+  Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
+1. Pipelines
+1. [Shared-configurations]
+   ({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) (defined under your account settings, and used using the "Import from shared configuration" button under the "Environment Variables" section in the pipeline view)
+1. Projects
+
+The variables are injected into pipelines from different sources and at different levels. To see the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
+   
 
 
 ## Exporting environment variables from a freestyle step
 
-Steps defined within steps are scoped to the step they were created in (even if you used the `export` command). To use variables across steps, we provide a shared file through which you can import and export variables. 
-There are two ways to add variables to the shared file:
+Steps defined within steps are scoped to the step within which they were created, even when using the `export` command.  
+To use variables across steps, we provide a shared file through which you can import and export variables. 
 
+There are two ways to add variables to the shared file:
 * Using the `cf_export` command
 * Writing directly to the file
-
-
-
 
 
 
@@ -260,7 +362,7 @@ Within every freestyle step, the `cf_export` command allows you to export variab
 
 
 >**NOTE**  
-The variables exported through `cf_export` overrides those at the pipeline-level.
+Variables exported through `cf_export` override those at the pipeline-level.
 
 
 You can either:
@@ -297,14 +399,12 @@ steps:
 #### `cf_export` syntax 
 
 `cf_export` has the same syntax as the [bash export command](https://www.gnu.org/software/bash/manual/html_node/Environment.html){:target="\_blank"}.   
-This means that when you use it you **don't** need any dollar signs for the variable that is created/assigned.
+This means that when you use `cf_export`, you **don't** need any dollar signs for the variable that is created/assigned.
 
 ```
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
-
-
 
 #### Masking variables within `cf_export`
 
@@ -322,9 +422,9 @@ steps:
     title: Free styling
     image: alpine:latest
     commands:
-      - export EXISTING_VAR=some-value
+      - export EXISTING_VAR=some-value 
 
-      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask
+      - cf_export VAR1=alpine:latest VAR2=VALUE2 EXISTING_VAR --mask #masked version
 {% endraw %}      
 {% endhighlight %}
 
@@ -333,15 +433,15 @@ steps:
 
 #### Export variables to all steps with `cf_export`
 
-By default, `cf_export` works only on *subsequent* steps.  
-To export a variable both in the current and to all the remaining steps, do the following:
+By default, `cf_export` works only *subsequent* steps - the steps that follow the step in which it is defined.  
+To export a variable both in the current step, and to all the remaining steps, do the following:
 
 ```
 export MY_VAR='example' # Makes MY_VAR available in this step only
 cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this one
 ```
 
-There is nothing really magic about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline.
+There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline.
 
 For more information on its limitations, see the [troubleshooting page]({{site.baseurl}}/docs/kb/articles/cf-export-limitations/).
 
@@ -350,9 +450,10 @@ For more information on its limitations, see the [troubleshooting page]({{site.b
 
 For more advanced use cases, you can write directly to the shared variable file that Codefresh reads to understand which variables need to be available to all steps.
 
-This file has a simple format where each line is a variable and its value in the form of `VARIABLE=VALUE`. The `cf_export` command mentioned in the previous section is just a shorthand for writing on this file.
+This file has a simple format where each line is a variable, and its value in the form of `VARIABLE=VALUE`.  
+The `cf_export` command mentioned in the previous section is just a shorthand for writing on this file.
 
-The variables file is available inside freestyle steps in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`** 
+The variables file is available inside freestyle steps in the following path: **`{% raw %}${{CF_VOLUME_PATH}}{% endraw %}/env_vars_to_export`**.
 
 {% highlight yaml %}
 {% raw %}
@@ -377,23 +478,17 @@ steps:
 
 Use this technique if you have complex expressions that have issues with the `cf_export` command.
 
-## Export external link with `CF_OUTPUT_URL`
+## Exporting external link with `CF_OUTPUT_URL`
 
-Codefresh has native support to trigger child builds from parent builds, and to navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).  
-Using the `CF_OUTPUT_URL` variable, you can also navigate from the child build back to the parent build. 
+Use the `CF_OUTPUT_URL` variable to export any external in the form of a URL. 
 
+This variable is useful to navigate from child to parent builds for pipelines. Codefresh has native support to trigger child builds from parent builds, and to navigate from the parent to the child build through the `codefresh-run` plugin ([link](https://codefresh.io/steps/step/codefresh-run)).  
+
+##### Add `CF_OUTPUT_URL` with `cf_export`
 Simply add a step to the child build with an in-step link to the parent build. The URL link to the parent build is displayed as part of the step details in the Builds page.  
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-Every build executed by a call to a `codefresh-run` plugin is enriched with a special annotation that precisely identifies its parent, the [`cf_predecessor` annotation]({{site.baseurl}}/docs/pipelines/annotations/#cf_predecessor-for--build_id--of-parent-pipeline).  
-You can get the ID of the parent build by querying the value of this annotation in the child build.
-{{site.data.callout.end}}
-
-
-##### Add `CF_OUTPUT_URL` with `cf_export `
 Create a link to the parent-build using `cf_export` and `CF_OUTPUT_URL`. 
-`
+
 
 ##### Example step in child build to output link to parent
 
@@ -431,7 +526,7 @@ max-width="60%"
 
 ## Masking variables in logs
 
-Codefresh has the built-in capability to automatically mask variables in logs if they are encrypted. The values of encrypted variables will be replaced with asterisks in build logs.
+Codefresh has the built-in capability to automatically mask encyrpted variables in logs. In build logs, the values of encrypted variables are replaced with asterisks.
 
 {% include
 image.html
@@ -443,7 +538,7 @@ caption="Masked variables"
 max-width="80%"
 %}
 
-The variables can be defined in any of the usual ways Codefresh offers such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings):
+The variables can be defined in any of the usual ways Codefresh offers, such as [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) or [within the pipeline]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings):
 
 {% include
 image.html
@@ -461,8 +556,7 @@ This feature is currently available only in Enterprise accounts.
 
 ## Encrypt variables for pipeline build runs
 
-When you run a pipeline manually, you can either add variables on the fly or change the value of existing variables for the specific run of the build.
-You can also encrypt the build-specific variables, new or existing, at the same time. 
+For manual pipeline build runs, encrypt the new or existing build-specific variables. 
 
 1. Do one of the following:
   * From the Pipelines page, select the pipeline and click **Run** on the right.
@@ -483,8 +577,8 @@ max-width="50%"
 %}
 
 ## Escape special characters in variables
-When passing special characters through environmental variables, use `\` as an escape character.  
-For example, to pass a cassandra connection string, you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`. 
+When passing special characters through environment variables, use `\` as an escape character.  
+For example, to pass a Cassandra connection string, you might do something like `Points\=hostname\;Port\=16376\;Username\=user\;Password\=password`. 
 
 This will safely escape `;` and `=`.
 
