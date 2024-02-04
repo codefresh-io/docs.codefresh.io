@@ -5,6 +5,33 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
+### Pipelines: Empty variables 
+We are happy to announce a highly-requested feature: the ability to use _empty variables_ to Codefresh. Now, you can add variables without default values to any entity in Codefresh, whether it's a project, pipeline, step, or build. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/jan24/rel-notes-jan-24-empty-variables.png" 
+	url="/images/whats-new/jan24/rel-notes-jan-24-empty-variables.png" 
+	alt="Empty variables in Codefresh entities" 
+	caption="Empty variables in Codefresh entities"
+  max-width="40%" 
+%}
+
+This enhancement unlocks a myriad of possibilities that were previously unavailable. 
+
+* Dynamic population during pipeline execution
+  With empty variables, you can dynamically populate values during the execution of your pipelines.
+   For example, fetch sensitive credentials from a secure vault at runtime, enhancing security.
+
+* Custom values for build runs
+  Empower users to customize their build runs with the values they require. For example, add variables for environments without tying them to a specific environment, and let users add the value as needed.
+
+* Conditional step executions
+  Utilize empty variables to conditionally execute or skip specific steps in your pipeline.
+ Create flexible workflows that adapt to changing conditions during runtime.
+
+Remember that the priority for variable overrides remains unchanged. 
 
 ### Pipelines: Share build run settings
 Our newest enhancement to pipeline builds is designed to increase collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who have access to the same account.
