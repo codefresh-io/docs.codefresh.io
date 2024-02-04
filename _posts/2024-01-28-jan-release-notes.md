@@ -168,7 +168,6 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
 * Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 
-<!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
 
 <br>
 
