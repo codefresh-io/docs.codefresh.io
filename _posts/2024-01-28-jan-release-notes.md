@@ -6,7 +6,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ## Features & enhancements
 
 ### Pipelines: Empty variables 
-We are happy to announce a highly-requested feature: the ability to use _empty variables_ to Codefresh. Now, you can add variables without default values to any entity in Codefresh, whether it's a project, pipeline, step, or build. 
+We are happy to announce a highly-requested feature: the ability to use _empty variables_ in Codefresh pipelines. Now, you can add variables without default values to any entity in Codefresh, whether it's a project, pipeline, step, or build. 
 
 {% include 
 	image.html 
@@ -115,10 +115,10 @@ For details, see [Versioning for typed steps]({{site.baseurl}}/docs/pipelines/st
 
 ### GitOps: Tailored sync timeouts for Argo CD applications
 
-Tailor the timeout thresholds for sync operations for different application, and receive instant alerts when the sync duration execeeds the threshold.  
+Tailor the timeout thresholds for sync operations for different applications, and receive instant alerts when the sync duration exceeds the threshold defined.  
 Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, Codefresh provides you with timely warnings to proactively investigate and resolve sync issues.
 
-Just include an annotation in the application's YAML, and either retain the default timeout of 30 minutes (also Argo CD's default for sync operations) or change it as needed.  
+Just include an annotation in the application's YAML, and either retain the default timeout of 30 minutes (also Argo CD's default for sync operations), or change it as needed.  
 Codefresh will display a warning in the **Warnings/Errors** panel for the app when the sync operation exceeds the timeout.
 
    {% include 
@@ -151,7 +151,7 @@ As a reminder, here's where you can find the **View logs** option:
 
 For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
 
-## GitOps: Argo Events upgrade
+### GitOps: Argo Events upgrade
 We've recently upgraded Argo Events to its latest version, v1.9.0, ensuring you can leverage all enhancements. For detailed information about the changes in this version, please refer to the [Argo documentation](https://github.com/argoproj/argo-events/releases).
 
 Please be aware that this upgrade may introduce a potential breaking change for existing event sources that have defined `githubBaseUrl` without defining `githubUploadURL` which is required. In such cases, event sources will fail to sync, and the Git Source application will return a `..githubUploadURL is required when githubBaseURL is set` error.
@@ -176,7 +176,7 @@ To address this, you'll need to edit the event source YAMLs and add `githubUploa
 * Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
 * Audit log missing manual actions executed in Rollouts Player.
-* Long time for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
+* Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
 * For GitLab Actions, `codefresh-image-reporter` log displays actual values of encrypted secrets.
 * Codefresh UI not in sync with native Argo CD UI. 
 
