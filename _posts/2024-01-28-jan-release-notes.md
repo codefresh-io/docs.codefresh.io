@@ -6,7 +6,8 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ## Features & enhancements
 
 ### Pipelines: Empty variables 
-We are happy to announce a highly-requested feature: the ability to use _empty variables_ in Codefresh pipelines. Now, you can add variables without any values to any entity in Codefresh, whether it's a project, pipeline, or trigger. The enhancement unlocks a myriad of possibilities that were previously unavailable. 
+We are happy to announce a highly-requested feature: the ability to use _empty variables_ in Codefresh pipelines.  
+Now, you can add variables without any values to entities in Codefresh, whether it's a project, pipeline, or trigger. The enhancement unlocks a myriad of possibilities that were previously unavailable. 
 
 {% include 
 	image.html 
@@ -142,7 +143,7 @@ As a reminder, here's where you can find the **View logs** option:
 For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
 
 ### GitOps: Argo Events upgrade
-We've recently upgraded Argo Events to its latest version, v1.9.0, ensuring you can leverage all enhancements. For detailed information about the changes in this version, please refer to the [Argo documentation](https://github.com/argoproj/argo-events/releases).
+We've recently upgraded Argo Events to its latest version, v1.9.0, ensuring you can leverage all enhancements. For detailed information about the changes in this version, please refer to the [Argo documentation](https://github.com/argoproj/argo-events/releases){:target="\_blank"}.
 
 Please be aware that this upgrade may introduce a potential breaking change for existing event sources that have defined `githubBaseUrl` without defining `githubUploadURL` which is required. In such cases, event sources will fail to sync, and the Git Source application will return a `..githubUploadURL is required when githubBaseURL is set` error.
 
