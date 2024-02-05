@@ -379,8 +379,6 @@ max-width="60%"
 1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**.
   * Browse to the file to import, and then click **Import**.
 1. Click **Save**. 
-
-{:start="4"}
 1. To encrypt the variables (not supported for empty variables), click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
 
 
