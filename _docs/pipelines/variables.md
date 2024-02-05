@@ -241,10 +241,8 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 
 
 ## Create user-defined variables
-
 Create user-defined variables by manually adding them with default values as key-value pairs, or by adding the variable keys without default values.  
 Empty variables are either dynamically populated during pipeline execution or can be manully defined/modified on-the-fly for build runs. 
-
 
 #### Step 1: Select the entity to which to add variables
 You can create user-defined variables for projects, pipelines, build runs, and steps.   
@@ -317,10 +315,10 @@ max-width="60%"
 %}
 
 {:start="2"}
-1. (Applies only to projects and pipelines only) To import existing variables individually, click **Import from Text**.
+1. (Applies only to projects and pipelines) To import existing variables individually, click **Import from Text**.
   * Add the names of the variables to import.
   * Click **Import**
-1. (Applies only to projects and pipelines only) To import them from a file, click **Import from File**.
+1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**.
   * Browse to the file to import, and then click **Import**.
 1. Click **Save**. 
 
@@ -561,17 +559,13 @@ max-width="60%"
 This feature is currently available only in Enterprise accounts.
 
 
-## Encrypt variables in pipeline build runs
-
+## Encrypting variables in pipelines
+Encrypt sensitive variables when you first define them, or edit them. Encrypt variable values that are already defined or to be automatically populated, in projects, pipelines, and builds.   
 For manual pipeline build runs, encrypt the new or existing build-specific variables. 
 
-1. Do one of the following:
-  * From the Pipelines page, select the pipeline and click **Run** on the right.
-  * From the Builds page, select the pipeline to run manually, and then click **Run**.
-1. Expand Build Variables.
-1. To add a variable, click **Add Variable**.
-    1. Enter the **Key** and **Value** for the new variable.
-    1. To encrypt, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+* Select the entity with the variables to encrypt.
+  * (Project- and pipeline-level variables): To encrypt the variable, click the lock icon and click **OK** to confirm.
+  * (Build-level variables) To encrypt the variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
 
 {% include
 image.html
