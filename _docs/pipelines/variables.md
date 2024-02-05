@@ -240,11 +240,40 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %} | The user who added the comment to the pull request.<br>For Gerrit, use this in place of `Change author`.  |
 
 
-## Create user-defined variables
-Create user-defined variables by manually adding them with default values as key-value pairs, or by adding the variable keys without default values.  
-Empty variables are either dynamically populated during pipeline execution or can be manully defined/modified on-the-fly for build runs. 
 
-#### Step 1: Select the entity to which to add variables
+## Create custom variables
+Create user-defined variables by manually adding them or by importing predefined variables from files. 
+Add user-defined variables to projects, pipelines, builds, and shared configuration. See how variables are used in pipeline runs by [priority](#priority-for-user-defined-variable-overrides).
+
+### Priority for user-defined variable overrides
+In Codefresh, you can add user-defined variables to different entities, providing variable definitions at several levels. 
+
+If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable.  
+Variables at levels with higher priority override those at levels with lower priority.  
+For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
+
+Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest. 
+
+1. Steps
+  * `export`command
+     Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#using-cf_export-command) commands.
+  * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field
+  
+    >**NOTE**  
+    Step-level variables with `export` take precedence over freestyle-step variables with `environment`. 
+
+{:start="2"}
+1. Builds  
+  Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
+1. Pipelines
+1. [Shared-configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
+1. Projects
+
+The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
+
+### How to
+
+#### Step 1: Select entity to which to add variables
 You can create user-defined variables for projects, pipelines, build runs, and steps.   
 
 * **Projects**  
@@ -322,34 +351,7 @@ max-width="60%"
   * Browse to the file to import, and then click **Import**.
 1. Click **Save**. 
 
-
-
-### Priority for user-defined variable overrides
-In Codefresh, you can add user-defined variables to different entities, providing variable definitions at several levels. 
-
-If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable.  
-Variables at levels with higher priority override those at levels with lower priority.  
-For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
-
-Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest. 
-
-1. Steps
-  * `export`command
-     Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#using-cf_export-command) commands.
-  * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field
-  
-    >**NOTE**  
-    Step-level variables with `export` take precedence over freestyle-step variables with `environment`. 
-
-{:start="2"}
-1. Builds  
-  Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
-1. Pipelines
-1. [Shared-configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
-1. Projects
-
-The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
-   
+ 
 
 ## Exporting environment variables from a freestyle step
 
