@@ -140,7 +140,7 @@ The table below describes the system variables.
 | {% raw %}`${{CF_OUTPUT_URL}}`{% endraw %}          | Display link to an external URL on step execution. For example, display the link to a parent-build from the child-build.<br>See [Export external link with CF_OUTPUT_URL](#export-external-link-with-cf_output_url) in this article. |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`.  |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected `kubeconfig` if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically set up by Codefresh in all pipelines. |
-| Any variable specified in the pipeline settings   | For example, if you configure the pipeline settings with a variable named PORT, you can put the variable in your YAML build descriptor as {% raw %}`${{PORT}}`{% endraw %}.  |
+
 
 ### Context-related variables
 Context-related variables are system variables created dynamically during the workflow execution, according to the steps used in the pipeline.
@@ -241,9 +241,28 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 
 
 
-## Create custom variables
-Create user-defined variables by manually adding them or by importing predefined variables from files. 
-Add user-defined variables to projects, pipelines, builds, and shared configuration. See how variables are used in pipeline runs by [priority](#priority-for-user-defined-variable-overrides).
+## Create user-defined variables
+Create user-defined variables manually or by importing predefined variables from files. 
+Add user-defined variables to projects, pipelines, builds, and triggers.  
+
+### Empty user-defined variables
+Codefresh allows you to add variables with just the key definition, without the value. The value is populated automatically during pipeline execution or defined manually.
+You can add empty variables to projects, pipelines, and build triggers.
+
+>**NOTE**  
+Encryption is not supported for empty variables.
+
+
+### Import user-defined variables in bulk
+Add custom variables in bulk by pasting them into a text file or by importing them from a file.  
+
+* Import from text
+  This is a quick option to add variables defined locally or in specific environments to a pipeline. 
+  You simply copy the set of variables and paste them into the text editor.
+
+* Import from file
+  Importing from a file is useful when you have a file containing the predefined variables.
+
 
 ### Priority for user-defined variable overrides
 In Codefresh, you can add user-defined variables to different entities, providing variable definitions at several levels. 
@@ -257,7 +276,7 @@ Listed below are the different levels for user-defined variables in order of pri
 1. Steps
   * `export`command
      Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#using-cf_export-command) commands.
-  * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field
+  * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field.
   
     >**NOTE**  
     Step-level variables with `export` take precedence over freestyle-step variables with `environment`. 
@@ -303,14 +322,14 @@ You can create user-defined variables for projects, pipelines, build runs, and s
         max-width="60%"
         %}
 
-  * **Steps**
-    * Select the pipeline.
-    * In the **Workflow** tab, add the variable with the correct syntax to the step as required.
+* **Steps**
+  * Select the pipeline.
+  * In the **Workflow** tab, add the variable with the correct syntax to the step as required.
 
-  * **Builds**
-    * From the Builds page, in the Pipelines column, click the pipeline name.
-    * Click **Run**.
-    * Expand Build Variables.
+* **Builds**
+  * From the Builds page, in the Pipelines column, click the pipeline name.
+  * Click **Run**.
+  * Expand Build Variables.
 
         {% include 
         image.html 
@@ -324,16 +343,15 @@ You can create user-defined variables for projects, pipelines, build runs, and s
 
 
 #### Step 2: Add variables
-Add variables manually by defining them as key-value pairs, importing them from files.  
-When adding variables manually, you can add only the key for the variable and leave the value empty to be dynamically or manually populated.  
-For sensitive variables, you can also turn on encryption to ensure that the values are always encrypted and security is not compromised.
+Add variables manually by defining them as key-value pairs, or by importing them from files.  
+When adding variables both manually or through import, you can add/include empty variables, that is add only the key for the variable and leave the value empty to be dynamically or manually populated. 
+Apart from empty variables, you can also encrypt sensitive variables for reasons of security.
 
 1. To manually add variables, click **Add Variable**. 
   * To add the variable with its default value, enter the key-value pair.  
   * To add an empty variable without a default value, simply type the key. 
-  * (Build-level variables) To encrypt the variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
-  * (Project- and pipeline-level variables): To encrypt the variable, click the lock icon and click **OK** to confirm.
-        {% include 
+
+{% include 
 image.html 
 lightbox="true" 
 file="/images/pipeline/variables/example-empty-variable.png" 
@@ -343,15 +361,26 @@ caption="Example of empty variable in project"
 max-width="60%"
 %}
 
+
 {:start="2"}
-1. (Applies only to projects and pipelines) To import existing variables individually, click **Import from Text**.
-  * Add the names of the variables to import.
+1. (Applies only to projects and pipelines) To import by copy and paste, click **Import from Text**.
+  * Copy the set of variables to add.
+  * Paste into the text editor.
   * Click **Import**
+
+
+
+{:start="3"}
 1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**.
   * Browse to the file to import, and then click **Import**.
 1. Click **Save**. 
 
- 
+{:start="4"}
+1. To encrypt the variables (not supported for empty variables):
+  * For build-level variables, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
+  * For project- and pipeline-level variables, click the lock icon and then click **OK** to confirm.
+
+
 
 ## Exporting environment variables from a freestyle step
 
