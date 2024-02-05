@@ -19,7 +19,9 @@ We are happy to announce a highly-requested feature: the ability to use _empty v
 %}
 
 
-Remember that encryption is not supported for empty variables.  The priority for variable overrides remains unchanged. 
+Remember that encryption is not supported for empty variables. The priority for variable overrides remains unchanged. 
+
+For details, see [User-defined variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#user-defined-variables).
 
 ### Pipelines: Share build run settings
 Our newest enhancement to pipeline builds is designed to increase collaboration and productivity! How? Instead of redefining build settings manually, you can effortlessly share pipeline build settings with colleagues who have access to the same account.
