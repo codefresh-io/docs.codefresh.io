@@ -247,7 +247,10 @@ Add user-defined variables to projects, pipelines, builds, and triggers.
 
 ### Empty user-defined variables
 Codefresh allows you to add variables with just the key definition, without the value. The value is populated automatically during pipeline execution or defined manually.
-You can add empty variables to projects, pipelines, and build triggers.
+You can add empty variables to:
+* Projects
+* Pipelines
+* Build triggers
 
 >**NOTE**  
 Encryption is not supported for empty variables.
