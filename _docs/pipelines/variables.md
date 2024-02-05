@@ -137,7 +137,7 @@ The table below describes the system variables.
 | {% raw %}`${{CF_PIPELINE_NAME}}`{% endraw %}      | The full path of the pipeline, including the project to which it is assigned, if any, as in "project/pipeline". |
 |  {% raw %}`${{CF_STEP_NAME}}`{% endraw %}      | The name of the step, for example, "MyUnitTests". |
 | {% raw %}`${{CF_URL}}`{% endraw %}          | The URL of the Codefresh platform.  |
-| {% raw %}`${{CF_OUTPUT_URL}}`{% endraw %}          | Display link to an external URL on step execution. For example, display the link to a parent-build from the child-build.<br>See [Export external link with CF_OUTPUT_URL](#export-external-link-with-cf_output_url) in this article. |
+| {% raw %}`${{CF_OUTPUT_URL}}`{% endraw %}          | Display link to an external URL on step execution. For example, display the link to a parent-build from the child-build.<br>See [Export external link with CF_OUTPUT_URL](#exporting-external-link-with-cf_output_url) in this article. |
 | {% raw %}`${{CI}}`{% endraw %}          | The value is always `true`.  |
 | {% raw %}`${{CF_KUBECONFIG_PATH}}`{% endraw %}    | Path to injected `kubeconfig` if at least one Kubernetes cluster is [configured]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster). You can easily run [custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/) since it is automatically set up by Codefresh in all pipelines. |
 
@@ -257,13 +257,13 @@ Encryption is not supported for empty variables.
 
 
 ### Import user-defined variables in bulk
-Add custom variables in bulk by pasting them into a text file or by importing them from a file.  
+Add custom variables in bulk by pasting them into the text editor or by importing them from a file.  
 
-* Import from text
+* Import from text  
   This is a quick option to add variables defined locally or in specific environments to a pipeline. 
   You simply copy the set of variables and paste them into the text editor.
 
-* Import from file
+* Import from file  
   Importing from a file is useful when you have a file containing the predefined variables.
 
 
