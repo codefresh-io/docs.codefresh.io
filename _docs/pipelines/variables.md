@@ -246,7 +246,7 @@ User-defined variables are custom variables you add to Codefresh entities such a
 You create such variables manually or by importing predefined variables from files (see [How to](#create-user-defined-variables)). You can also create empty variables, without any values.
 
 ### Empty user-defined variables
-Codefresh allows you to add variables with just the key definition, without the value. The value is populated automatically during pipeline execution or defined manually.
+Codefresh allows you to add variables with just the key definitions, without values. The values are automatically populated during pipeline execution or defined manually.
 You can add empty variables to:
 * Projects
 * Pipelines
@@ -277,7 +277,7 @@ For example if a pipeline variable is defined both within a project, and as an e
 Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest. 
 
 1. Steps
-  * `export`command
+  * `export`command  
      Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#using-cf_export-command) commands.
   * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field.
   
@@ -294,7 +294,7 @@ Listed below are the different levels for user-defined variables in order of pri
 The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
 
 ### Create user-defined variables
-Create user-defined variables by selecting the target entity and then adding the variables individually, or in bulk through import.
+Create user-defined variables by selecting the target entity and then adding the variables.
 
 #### Step 1: Select entity to which to add variables
 You can create user-defined variables for projects, pipelines, build runs, and steps.   
@@ -347,8 +347,9 @@ You can create user-defined variables for projects, pipelines, build runs, and s
 
 
 #### Step 2: Add variables
-Add variables manually by defining them as key-value pairs, or by importing them from files.  
-When adding variables both manually or through import, you can add/include empty variables, that is add only the key for the variable and leave the value empty to be dynamically or manually populated. 
+Add variables manually by defining them as key-value pairs, or by importing them from files. 
+
+When adding variables, manually or through import, you can add/include empty variables, that is add only the key for the variable and leave the value empty to be dynamically or manually populated. 
 Apart from empty variables, you can also encrypt sensitive variables for reasons of security.
 
 1. To manually add variables, click **Add Variable**. 
@@ -380,9 +381,7 @@ max-width="60%"
 1. Click **Save**. 
 
 {:start="4"}
-1. To encrypt the variables (not supported for empty variables):
-  * For build-level variables, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
-  * For project- and pipeline-level variables, click the lock icon and then click **OK** to confirm.
+1. To encrypt the variables (not supported for empty variables), click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block> <b>Encrypt</b>{:/}, and confirm. 
 
 
 
@@ -445,6 +444,31 @@ This means that when you use `cf_export`, you **don't** need to add dollar signs
 cf_export $MY_VAR # Don't do this
 cf_export MY_VAR # Correct syntax
 ```
+
+<!--- #### Support multi-line variables with `cf_export`
+
+When exporting a multi-line variable using `cf_export`, to prevent truncation, encode it in `base64`.
+
+{% highlight yaml %}
+{% raw %}
+version: "1.0"
+steps:
+  assign:
+    image: alpine
+    commands:
+      - apk add --update coreutils
+      - export TEST=`echo "line1" && echo "line2" && echo "line3"`
+      - echo $TEST
+      - cf_export TEST=`echo $TEST | base64 -w 0`
+  test:
+    image: alpine
+    commands:
+      - echo $TEST
+      - echo `echo $TEST | base64 -d`
+{% endraw %}
+{% endhighlight %}
+
+-->
 
 #### Masking variables within `cf_export`
 
@@ -594,7 +618,7 @@ max-width="60%"
 This feature is currently available only in Enterprise accounts.
 
 
-## Encrypting variables in pipelines
+<!--- ## Encrypting variables in pipelines
 Encrypt sensitive variables when you first define them, or edit them. Encrypt variable values that are already defined or to be automatically populated, in projects, pipelines, and builds.   
 For manual pipeline build runs, encrypt the new or existing build-specific variables. 
 
@@ -611,7 +635,7 @@ alt="Encrypt variables for build run"
 caption="Encrypt variables for build run"
 max-width="50%"
 %}
-
+-->
 
 ## Escape special characters in variables
 When passing special characters through environment variables, use `\` as an escape character.  
