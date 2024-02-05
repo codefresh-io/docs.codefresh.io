@@ -15,7 +15,7 @@ Variables in pipelines allow you to parameterize the way your pipeline works. Co
   * `CF_REVISION` is the Git hash that was used for this pipeline.
   * `CF_BUILD_URL` is the url of the pipeline build.
 
-* [User-defined variables](#create-user-defined-variables) are custom variables which you create.  
+* [User-defined variables](#user-defined-variables) are custom variables which you create.  
   You can create user-defined variables for different entities in Codefresh, such as projects, pipelines and steps, with or without a default value. You can also import variables you may have already defined. 
 
 Codefresh supports [two syntaxes](#using-codefresh-variables-in-pipelines) for variables: the UNIX syntax, and a proprietary syntax for use in YAML files. 
@@ -241,9 +241,9 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 
 
 
-## Create user-defined variables
-Create user-defined variables manually or by importing predefined variables from files. 
-Add user-defined variables to projects, pipelines, builds, and triggers.  
+## User-defined variables
+User-defined variables are custom variables you add to Codefresh entities such as projects, pipelines, build triggers, and manual build runs.  
+You create such variables manually or by importing predefined variables from files (see [How to](#create-user-defined-variables)). You can also create empty variables, without any values.
 
 ### Empty user-defined variables
 Codefresh allows you to add variables with just the key definition, without the value. The value is populated automatically during pipeline execution or defined manually.
@@ -268,7 +268,7 @@ Add custom variables in bulk by pasting them into a text file or by importing th
 
 
 ### Priority for user-defined variable overrides
-In Codefresh, you can add user-defined variables to different entities, providing variable definitions at several levels. 
+In Codefresh, becuase you can add user-defined variables to different entities, variable definitions are available at levels. 
 
 If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable.  
 Variables at levels with higher priority override those at levels with lower priority.  
@@ -293,7 +293,8 @@ Listed below are the different levels for user-defined variables in order of pri
 
 The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
 
-### How to
+### Create user-defined variables
+Create user-defined variables by selecting the target entity and then adding the variables individually, or in bulk through import.
 
 #### Step 1: Select entity to which to add variables
 You can create user-defined variables for projects, pipelines, build runs, and steps.   
