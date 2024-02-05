@@ -561,7 +561,7 @@ max-width="60%"
 This feature is currently available only in Enterprise accounts.
 
 
-## Encrypt variables for pipeline build runs
+## Encrypt variables in pipeline build runs
 
 For manual pipeline build runs, encrypt the new or existing build-specific variables. 
 
@@ -582,6 +582,7 @@ alt="Encrypt variables for build run"
 caption="Encrypt variables for build run"
 max-width="50%"
 %}
+
 
 ## Escape special characters in variables
 When passing special characters through environment variables, use `\` as an escape character.  
