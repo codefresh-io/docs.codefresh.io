@@ -1,6 +1,6 @@
 ---
 title: "Runner behind firewalls"
-description: "Run Codefresh pipelines in your own secure infrastructure"
+description: "Learn how Hybrid Runner for pipelines works behind firewalls"
 group: installation
 redirect_from:
   - /docs/administration/behind-the-firewall/

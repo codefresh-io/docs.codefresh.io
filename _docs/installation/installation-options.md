@@ -17,21 +17,18 @@ The Codefresh platform supports three different installation options, all compli
   max-width="40%"
     %} 
 
-
-
-* **Hybrid Runner**  
-  The Runner installation is the hybrid installation mode for Codefresh pipelines. The Codefresh UI runs in the Codefresh cloud, and the builds run on customer premises. The Runner combines flexibility with security, and is optimal for Enterprise customers looking for a "behind-the-firewall" solution.  
-  See [Hybrid Runner](#hybrid-runner).
-  
-
-* **On-Premises**  
-  On-Premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
+* **On-premises**  
+  On-premises installation is for customers who want full control over their environments. Both the UI and the builds run on the Kubernetes cluster in an environment fully managed by you as our customer.  
 
   While Codefresh can still help with maintenance of the On-Premises platform, we would recommend the Hybrid Runner as it combines flexibility without compromising on security.  
   See [On-premises](#on-premises).
 
+* **Hybrid Runner for pipelines**  
+  The Runner installation is the hybrid installation mode for Codefresh pipelines. The Codefresh UI runs in the Codefresh cloud, and the builds run on customer premises. The Runner combines flexibility with security, and is optimal for Enterprise customers looking for a "behind-the-firewall" solution.  
+  See [Hybrid Runner](#hybrid-runner).
+  
 
-* **GitOps**  
+* **GitOps for Argo CD Applications**  
   GitOps installation is a full-featured solution for application deployments and releases powered by the Argo Project. Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
 
   GitOps installations support Hosted and Hybrid options.  
@@ -58,11 +55,15 @@ As an account admin, you can then grant access to users or have the users explic
 If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime) with a Hybrid Runner runtime environment.  
 
 
+## On-premises   
 
+For customers who want full control, Codefresh also offers on-premises installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
+
+See [Codefresh On-Prem Installation & Configuration]({{site.baseurl}}/docs/installation/codefresh-on-prem).
 
 ## Hybrid Runner
 
-The Hybrid Runner installation is for organizations who want their source code to live within their premises, or have other security constraints. For implementation details, see [[Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall).
+The Hybrid Runner installation for Codefresh pipelines is for organizations who want their source code to live within their premises, or have other security constraints. For implementation details, see [[Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall).
 The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes cluster in the customer's premises.
 
 {% include image.html
@@ -111,12 +112,6 @@ The table lists the security implications of Hybrid Runner installation.
 | Access control rules | Managed via Codefresh Web application | |
 
 
-
-## On-premises   
-
-For customers who want full control, Codefresh also offers on-premises installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
-
-See [Codefresh On-Prem Installation & Configuration]({{site.baseurl}}/docs/installation/codefresh-on-prem).
 
 
 ## GitOps 

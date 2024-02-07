@@ -494,10 +494,6 @@
       url: "/installation-options"
     - title: Architecture
       url: "/runtime-architecture"
-    - title: Runner installation behind firewalls
-      url: "/behind-the-firewall"
-    - title: Runner
-      url: "/codefresh-runner"
     - title: On-premises
       url:
       sub-pages:
@@ -509,6 +505,11 @@
           url: "/on-prem-configuration"            
         - title: Feature management
           url: "/on-prem-feature-management"
+    - title: Runner for pipelines
+      url: "/codefresh-runner"
+      sub-pages:
+        - title: Runner installation behind firewalls
+          url: "/behind-the-firewall"
     - title: GitOps
       url:
       sub-pages:
