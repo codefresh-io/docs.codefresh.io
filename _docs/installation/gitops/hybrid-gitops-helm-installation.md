@@ -38,7 +38,7 @@ Choose the installation option that best aligns with your specific requirements 
 ##### GitOps Runtime installation
 
 
-* **First-time GitOps Runtime installation**
+* **First-time GitOps Runtime installation**  
   If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
 
   * [Complete pre-requisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete pre-requisites.
@@ -47,7 +47,7 @@ Choose the installation option that best aligns with your specific requirements 
 
 
 
-* **Additional GitOps Runtime installation**  
+* **Additional GitOps Runtime installations**  
   If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
   When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
   
@@ -184,7 +184,7 @@ If the chart's minor appversion is lower than the version used by Codefresh, you
 %}
 
 {:start="4"}
-1. If the minor appversion you have differs from that used by Codefresh, do one of the following: 
+1. If your minor appversion differs from that used by Codefresh, do one of the following: 
   * Lower version: Upgrade to the required minor appversion.
   * Higher version: If not available in Codefresh forks, please contact Codefresh Support.
 
@@ -222,7 +222,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 ### Step 1: Select Hybrid Runtime install option
 
 1. In the Welcome page, select **+ Install Runtime**.
-1. Select **Hybrid Runtime**.
+1. Select **Hybrid Runtime**, and click **Add**.
 
  {% include
 image.html
@@ -331,7 +331,7 @@ max-width="50%"
 {:start="2"}
 1. If needed, select **Customize runtime values**, and define the **Runtime Name** and **Namespace**.
    The default names are `codefresh` for both.
-1. Copy and run the command to install the runtime Helm chart:
+1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
   Unless otherwise indicated, values are automatically populated by Codefresh. If you're using a terminal, remember to copy the values from the UI beforehand.<br>
   
@@ -443,14 +443,14 @@ This is the first of the three steps needed to complete installing Hybrid GitOps
 
 Git credentials include authorizing access to Git repositories through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
-##### Git OAuth2 authorization
+**Git OAuth2 authorization**  
 OAuth2 authorization is possible if your admin has registered an OAuth Application for Codefresh. See [OAuth2 setup for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/).
 
-##### Git access token authorization
+**Git access token authorization**  
 Git access token authentication requires you to generate an access token in your Git provider account for the GitOps Runtime with the required scopes. For detailed information on Git Runtime token, including using tokens with custom scopes, review [GitOps Runtime token scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes).
 
 
-##### SSH access to Git
+**SSH access to Git**  
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
 When SSH is configured for a GitOps Runtime, on creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
@@ -462,13 +462,13 @@ For more information on generating SSH private keys, see the official documentat
 
 <br>
 
-**Before you begin**
+##### Before you begin
 * To authenticate through a Git Runtime access token, make sure your [token is valid and has the required scopes and is set up as required]({{site.baseurl}}/docs/reference/git-tokens/#git-runtime-token-scopes)
 * To use SSH, copy the SSH private key for your Git provider
 
 <br>
 
-**How to**
+##### How to
 1. In the Sync Status column for the Runtime you just installed, click **Complete Installation**.
   Codefresh displays the steps needed to complete the installation.
 
