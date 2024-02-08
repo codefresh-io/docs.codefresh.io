@@ -19,14 +19,14 @@ This article explains how to install and use the [External Secrets Operator](htt
 
 - GitOps Runtime Installed
 - A Git Source is added to the Runtime
-  - Usage in this doc has it pointing to the path of `/gitops/argocd`
+  - Usage in this doc has it pointing to the path of `gitops/argocd`
 - AWS Account
 
 ## Details
 
 ### Installation
 
-First, you need to install the External Secrets Operator. To do that, we are going to add an Application to your Git Source. Create a file in your Git Source called `external-secrets-operator.yaml` and use the below application to install. Once done, save, commit, and push to your repo
+First, you need to install the External Secrets Operator. To do that, we are going to add an Application to your Git Source. Create a file in your Git Source called `external-secrets-operator.yaml` and use the below application to install. Once done, save, commit, and push to your repo.
 
 {% raw %}
 
@@ -64,13 +64,13 @@ spec:
 
 {% endraw %}
 
-You should now see this application when viewing the [application dashboard](https://g.codefresh.io/2.0/applications-dashboard/list)
+You should now see this application when viewing the [application dashboard](https://g.codefresh.io/2.0/applications-dashboard/list).
 
 ### Usage
 
 #### AWS Set Up
 
-Now that we have the External Secrets Operator Installed, we can set up the Secret Store. First, we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets. You will need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below are the minimum permissions needed to access the secrets that start with `testing/`. You can edit the Resource section that suits your needs
+Now that we have the External Secrets Operator Installed, we can set up the Secret Store. First, we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets. You will need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below are the minimum permissions needed to access the secrets that start with `testing/`. You can edit the Resource section that suits your needs.
 
 {% raw %}
 
@@ -188,7 +188,7 @@ spec:
   project: default
   source:
     path: gitops/test-applications
-    repoURL: https://github.com/OWNER/REPO.git
+    repoURL: https://github.com/OWNER/REPO.git # replace with your repo URL
     targetRevision: main
   destination:
     name: in-cluster
