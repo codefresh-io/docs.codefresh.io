@@ -26,7 +26,9 @@ This article explains how to install and use the [External Secrets Operator](htt
 
 ### Installation
 
-First you need to install the External Secrets Operator.  To do that, we are going to add an Application to your Git Source. Create a file in your Git Source called `external-secrets-operator.yaml` and use the below application to install.  Once done, save, commit, and push to your repo.
+First, you need to install the External Secrets Operator. To do that, we are going to add an Application to your Git Source. Create a file in your Git Source called `external-secrets-operator.yaml` and use the below application to install. Once done, save, commit, and push to your repo
+
+{% raw %}
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -60,13 +62,17 @@ spec:
       - RespectIgnoreDifferences=false
 ```
 
+{% endraw %}
+
 You should now see this application when viewing the [application dashboard](https://g.codefresh.io/2.0/applications-dashboard/list)
 
 ### Usage
 
 #### AWS Set Up
 
-Now that we have the External Secrets Operator Installed, Now we can set up the Secret Store.  First we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets.  First you need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below is the minium permissions needed to access the secrets that starts with `testing/`. You can edit the Resource section that suites your needs.
+Now that we have the External Secrets Operator Installed, we can set up the Secret Store. First, we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets. You will need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below are the minimum permissions needed to access the secrets that start with `testing/`. You can edit the Resource section that suits your needs
+
+{% raw %}
 
 ```json
 {
@@ -88,21 +94,28 @@ Now that we have the External Secrets Operator Installed, Now we can set up the 
 }
 ```
 
-Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east-1 in this example). Use the "Other type of Secret" when creating the secret. Add your key value pairs that you want.  When naming, use the prefix of `testing/` for this example.  The rest of the options, use the defaults.
+{% endraw %}
+
+Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east-1 in this example). Use the "Other type of Secret" when creating the secret. Add the key-value pairs that you want. When naming, use the prefix of `testing/` for this example. The rest of the options, use the defaults.
 
 #### Adding Secrets to Git Source
 
-Now that we have everything set up on AWS, time to create a Service Account, Secret Store, and External Secret.  First create a Directory in your Git Source Repo thats outside of the path for the Git Source.  In this example my Git Source path is `gitops/argocd` but my files will be located in `gitops/test-applications`.
+Now that we have everything set up on AWS, time to create a Service Account, Secret Store, and External Secret. First, create a Directory in your Git Source Repo that's outside of the path for the Git Source. In this example, my Git Source path is `gitops/argocd` but my files will be located in `gitops/test-applications`.
+
+{% raw %}
 
 ```shell
 ├── gitops
 │   ├── argocd
 │   │   └── external-secrets-operator.yaml
 │   ├── test-applications
-
 ```
 
+{% endraw %}
+
 Inside test-applications directory create a file called `secret-store.yaml`.  Here we will create a Service Account and Secret Store config.  The SecretStore will allow us to access AWS Secrets Manager and use the Service Account to make the API Calls to AWS.
+
+{% raw %}
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -127,7 +140,11 @@ metadata:
   name: aws-secret-store
 ```
 
+{% endraw %}
+
 Now create another file called `external-secret.yaml` in the testing-applications directory.  This is where we are going to use to generate a kubernets secret.  We will define a refresh interval so the screte is up to date in the cluster, how to access the secret via the Secret Store, the name of the scret in AWS Secret Manager, and what to name the k8s secret kind once retrieved.
+
+{% raw %}
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -150,9 +167,13 @@ spec:
       metadataPolicy: None
 ```
 
+{% endraw %}
+
 #### Adding Application for Example
 
 Now we have the information, we are going to add another application under `gitops/argocd` to simulate an application that needs a secret.  Create a file called `test-application.yaml` with the following values.
+
+{% raw %}
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -188,17 +209,25 @@ spec:
       - RespectIgnoreDifferences=false
 ```
 
-This application is going to deploy in the `testing` namespace. so all the items before are name spaced spacific and can be reused in different namespace.  Now save, commit and push these items to your git repo.
+{% endraw %}
+
+This application is going to be deployed in the `testing` namespace. All the items before are name-spaced specific and can be reused in different namespaces. Now save, commit, and push these items to your git repo.
 
 #### Verification
 
-Now you should see the Application in your the dashboard.  You should see a k8s secret that has all the key value pairs that you created in AWS Secrets Manager.   You can run the following command to verify its there.
+Now you should see the Application in your dashboard. You should see a k8s secret that has all the key-value pairs that you created in AWS Secrets Manager. You can run the following command to verify it's there.
+
+{% raw %}
 
 ```shell
 kubectl get secrets -n testing my-secret -o yaml
 ```
 
-You should see something similiar below for your secret.
+{% endraw %}
+
+You should see something similar below for your secret.
+
+{% raw %}
 
 ```yaml
 apiVersion: v1
@@ -229,6 +258,8 @@ metadata:
   uid: 99ef0789-4d70-486f-b846-9c9ef685612c
 type: Opaque
 ```
+
+{% endraw %}
 
 ## Related Items
 
