@@ -53,7 +53,7 @@ The table lists the security implications of Hybrid Runner installation.
 | Helm charts | Stay behind the firewall | |
 | Other deployment resources/script (e.g. terraform) | Stay behind the firewall | |
 | Shared configuration variables | Defined in Codefresh Web application |  |
-| Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
+| Deployment secrets (from Git/Puppet/Vault etc) | Stay behind the firewall|  |
 | Audit logs | Managed via Codefresh Web application |  |
 | SSO/Idp Configuration | Managed via Codefresh Web application |  |
 | User emails | Managed via Codefresh Web application |  |

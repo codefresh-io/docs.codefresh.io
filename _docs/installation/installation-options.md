@@ -1,6 +1,6 @@
 ---
 title: "Codefresh platform deployment"
-description: "On-premises and SaaS deployment models"
+description: "On-premises and SaaS deployment options"
 group: installation
 redirect_from:
   - /docs/administration/installation-security/
@@ -9,10 +9,11 @@ toc: true
 
 Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
 
-Both deployment models provide seamless integration and support for Codefresh pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.
-In addition to other components, Codefresh Runtimes are pivotal components within the modules. Codefresh pipelines and GitOps support different types of Runtimes, as you can see in the SaaS and on-premises platform architectures sections that follow.
+Both deployment options provide seamless integration and support for Codefresh pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules, or co-existing side-by-side.
 
-Note that both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
+In addition to other components, Codefresh Runtimes are pivotal components within the modules. Codefresh pipelines and Codefresh GitOps support different types of Runtimes, as described in the SaaS and on-premises platform architecture sections that follow.
+
+Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
 
 {% include image.html
   lightbox="true"
@@ -26,7 +27,7 @@ Note that both deployment options are compliant with [SOC2 - Type2](https://us.a
 
 ## Codefresh SaaS platform architecture
 
-The diagram shows a high-level view of the SaaS deployment model and its core components. 
+The diagram shows a high-level architecture for Codefresh SaaS deployment and its core components. 
 
 
 {% include
@@ -50,25 +51,30 @@ Depending on the type of GitOps installation, the GitOps Runtime is installed ei
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
-See [Codefresh Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture) in this article. Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Read more about it in [Codefresh Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture), and  on how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 ### Codefresh Clients
 
 Codefresh Clients include the UI and the CLI.     
 
 ##### Codefresh UI
-The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications.  
-The global (Home) dashboard displays unified, enterprise-wide insights into CI pipelines and Argo CD applications. For in-depth analysis, there are dedicated Kubernetes and Helm dashboards for CI releases and deployments. For GitOps, there are dedicated dashboards for Products, Environments dashboards focus on Argo CD application, Runtime, and cluster metrics and performance.
+The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications. 
+
+The global (Home) dashboard displays unified, enterprise-wide insights into CI pipelines and Argo CD applications. 
+For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Codefresh pipeline, and Argo CD application functionality and performance. For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.
+For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
 ##### Codefresh CLI 
-There are flavors of the Codefresh CLI:
-  The CLI for pipelines includes commands to create, run, and manage CI pipelines.
-  The CLI for GitOps and Argo CD applications is primarily used to download the latest versions of GitOps Runtimes.
+There are two flavors of the Codefresh CLI:  
+* Pipelines CLI  
+  This CLI is dedicated to managing Codefresh pipelines, providing commands to create, run, and manage them.
+* GitOps CLI
+  The CLI for GitOps and Argo CD applications is primarily used to install the latest versions of GitOps Runtimes.
 
 
 ## Codefresh on-premises platform architecture
 
-The diagram shows a high-level view of the on-premises deployment model, and its core components. 
+The diagram shows a high-level view of the Codefresh on-premises architecure, and its core components. 
 
 {% include
 image.html
@@ -88,7 +94,7 @@ max-width="100%"
 #### Codefresh Runner
 The Codefresh Runner can be installed on the same cluster as the On-Premises platform or on a remote cluster.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
-See [Codefresh Runner architecture](#codefresh-runner-architecture) in this article. Read more about how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Read more about it in [Codefresh Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture), and  on how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
 
 
 #### GitOps Runtime
@@ -99,10 +105,20 @@ Read more in [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/ru
 
 
 #### Codefresh UI & CLI
-Codefresh provides a web-based UI and CLI to work with the Codefresh On-Premises platform through API calls. 
 
-The UI allows users to visually manage and control CI/CD pipelines, Argo CD applications and deployments with  applications and deployments, and more.
-The CLI provides a flexible option for developers to interact with the On-Premises platform.
+##### Codefresh UI
+The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications. 
+
+The global (Home) dashboard displays unified, enterprise-wide insights into CI pipelines and Argo CD applications. 
+For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Codefresh pipeline, and Argo CD application functionality and performance. For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.
+For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
+
+##### Codefresh CLI 
+There are two flavors of the Codefresh CLI:  
+* Pipelines CLI  
+  This CLI is dedicated to managing Codefresh pipelines, providing commands to create, run, and manage them.
+* GitOps CLI
+  The CLI for GitOps and Argo CD applications is primarily used to install the latest versions of GitOps Runtimes.
 
 
 ### On-Premises Platform Components
@@ -213,112 +229,9 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 
 
-
-## Codefresh Runtimes
-
-### Runner for CI pipelines**  
-  
-
-
-
-### GitOps Runtimes
-
-
-
-
-  
-
-* **GitOps for Argo CD Applications**  
-  GitOps installation is a full-featured solution for application deployments and releases powered by the Argo Project. Codefresh uses Argo CD, Argo Workflows, Argo Events, and Argo Rollouts, extended with unique functionality and features essential for enterprise deployments.
-
-  GitOps installations support Hosted and Hybrid options.  
-  See [GitOps](#gitops).
-
-
-
-
-## On-premises   
-
-For customers who want full control, Codefresh also offers on-premises installation. Both the UI and builds run on a Kubernetes cluster fully managed by the customer.
-
-See [Codefresh On-Prem Installation & Configuration]({{site.baseurl}}/docs/installation/codefresh-on-prem).
-
-## Hybrid Runner
-
-The Hybrid Runner installation for Codefresh pipelines is for organizations who want their source code to live within their premises, or have other security constraints. For implementation details, see [[Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall).
-The UI runs on Codefresh infrastructure, while the builds happen in a Kubernetes cluster in the customer's premises.
-
-{% include image.html
-  lightbox="true"
-  file="/images/installation/hybrid-installation.png"
-  url="/images/installation/hybrid-installation.png"
-  caption="Hybrid installation.png"
-  alt="Hybrid installation.png"
-  max-width="70%"
-    %}    
-
-
-Hybrid Runner installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. Sensitive data such as source code and internal services never leave customer premises.  
-Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/installation/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
-The UI is still compliant with Soc2.
-  
-
-The table lists the security implications of Hybrid Runner installation.
-
-{: .table .table-bordered .table-hover}
-| Company Asset          | Flow/Storage of data                 | Comments                  |
-| -------------- | ---------------------------- |-------------------------|
-| Source code       | Stays behind the firewall | |
-| Binary artifacts  | Stay behind the firewall |   |
-| Build logs        | Also sent to Codefresh Web application |  |
-| Pipeline volumes   | Stay behind the firewall | |
-| Pipeline variables   | Defined in Codefresh Web application | |
-| Deployment docker images | Stay behind the firewall| Stored on your Docker registry |
-| Development docker images | Stay behind the firewall | Stored on your Docker registry|
-| Testing docker images | Stay behind the firewall|  Stored on your Docker registry |
-| Inline pipeline definition | Defined in Codefresh Web application |  |
-| Pipelines as YAML file | Stay behind the firewall |  |
-| Test results | Stay behind the firewall | | 
-| HTML Test reports | Shown on Web application |  Stored in your S3 or Google bucket or Azure storage  |
-| Production database data | Stays behind the firewall | |
-| Test database data | Stays behind the firewall | |
-| Other services (e.g. Queue, ESB) | Stay behind the firewall | |
-| Kubernetes deployment specs | Stay behind the firewall | |
-| Helm charts | Stay behind the firewall | |
-| Other deployment resources/script (e.g. terraform) | Stay behind the firewall | |
-| Shared configuration variables | Defined in Codefresh Web application |  |
-| Deployment secrets (from git/Puppet/Vault etc) | Stay behind the firewall|  |
-| Audit logs | Managed via Codefresh Web application |  |
-| SSO/Idp Configuration | Managed via Codefresh Web application |  |
-| User emails | Managed via Codefresh Web application |  |
-| Access control rules | Managed via Codefresh Web application | |
-
-
-
-
-
-
-
-
-
-##  Installation options comparison
-Codefresh Runner and GitOps environments can co-exist giving you the best of both worlds. 
-
-{: .table .table-bordered .table-hover}
-| Characteristic | Hybrid Runner                | On Premise              | GitOps
-| -------------- | ---------------------------- |-------------------------| ----------------|
-| Managed by      | Codefresh and customer      | Customer                | Codefresh and customer |
-| UI runs on      | Public cloud                | Private cluster          | Public cloud|
-| Builds run on   | Private cluster             | Private cluster          | Private cluster (Hybrid)/Codefresh cluster (Hosted)|
-| Access to secure/private services | Yes       | Yes                      | Yes |
-| Customer maintenance effort | Some            | Full                     | Some |
-| Best for        | Companies with security constraints  | Large scale installations | Companies with security constraints |
-| Available to    |[Enterprise plans](https://codefresh.io/contact-us/){:target="\_blank"} | [Enterprise plans](https://codefresh.io/contact-us/) |[Enterprise plans](https://codefresh.io/contact-us/) |
-
-
 ## Related articles
+[On-premises platform deployment]({{site.baseurl}}/docs/installation/on-premises/)  
 [Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
-[Shared Configuration Repositorysitory]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+
 
 

@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers the Hybrid Runner option for Codefresh pipelines.
+As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/installation-options/), the Hybrid Runner Runtime is for Codefresh pipelines.
 This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
@@ -48,7 +48,7 @@ The advantages for this scenario are multi-fold:
 ##### Regarding firewall security
 
  1. Uni-directional, outgoing communication between the Runner and Codefresh. The Runner polls the platform for jobs. 
- 1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the Runner to work.
  1. Codefresh Runner is fully open-sourced, so its code can be scrutinized by any stakeholder.
 
 
@@ -58,13 +58,12 @@ The advantages for this scenario are multi-fold:
 After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
 
 You can easily create pipelines that:
-
- * Use databases internal to the company
- * Run integration tests against services internal to the company
- * Launch [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) that communicate with other secure services
- * Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
- * Deploy to any other cluster accessible in the secure network
- * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
+* Use databases internal to the company
+* Run integration tests against services internal to the company
+* Launch [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) that communicate with other secure services
+* Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
+* Deploy to any other cluster accessible in the secure network
+* Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
  Any of these pipelines will work out the box without extra configuration. In all cases,
  all data stays within the private local network and does not exit the firewall.
