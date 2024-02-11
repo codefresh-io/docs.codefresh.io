@@ -2,7 +2,6 @@
 title: "How To: External Secrets Operator with AWS Secrets Manager"
 description: 
 group: kb
-sub-group: articles
 toc: true
 kb: false
 ht: true
