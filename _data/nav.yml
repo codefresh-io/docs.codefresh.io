@@ -487,53 +487,57 @@
     - title: SonarQube scanning
       url: "/sonarqube-integration"
 
-- title: Installation
+- title: Platform deployment
   url: "/installation"
   pages:
-    - title: Options
+    - title: Deployment options
       url: "/installation-options"
-    - title: Architecture
+      sub-pages:
+        - title: On-premises deployment
+          url: "/on-premises"
+          sub-pages:
+            - title: Installation & configuration
+              url: "/codefresh-on-prem"
+            - title: Upgrade
+              url: "/codefresh-on-prem-upgrade"
+            - title: Account and user setup
+              url: "/on-prem-configuration"            
+            - title: Feature management
+              url: "/on-prem-feature-management"
+    - title: Runtimes
       url: "/runtime-architecture"
-    - title: On-premises
-      url:
       sub-pages:
-        - title: Platform installation & configuration
-          url: "/codefresh-on-prem"
-        - title: Platform upgrade
-          url: "/codefresh-on-prem-upgrade"
-        - title: Account and user setup
-          url: "/on-prem-configuration"            
-        - title: Feature management
-          url: "/on-prem-feature-management"
-    - title: Runner for pipelines
-      url: "/codefresh-runner"
-      sub-pages:
-        - title: Runner installation behind firewalls
-          url: "/behind-the-firewall"
-    - title: GitOps
-      url:
-      sub-pages:
-        - title: Hosted GitOps Runtime
-          url: "/hosted-runtime"
-        - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops-helm-installation" 
-        - title: Hybrid GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"        
-        - title: On-premises GitOps Runtime
-          url: "/on-prem-gitops-runtime-install"
-        - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
-          url: "/migrate-cli-runtimes-helm"  
-        - title: Monitoring & managing GitOps Runtimes
-          url: "/monitor-manage-runtimes"
-        - title: Shared Configuration Repository
-          url: "/shared-configuration"
-        - title: Managing external clusters in GitOps Runtimes
-          url: "/managed-cluster"
-        - title: Managing Git Sources in GitOps Runtimes
-          url: "/git-sources"
-        - title: Download/upgrade GitOps CLI
-          url: "/upgrade-gitops-cli"
-    - title: CLI
+        - title: Codefresh Runner
+          url: "/runner"
+          sub-pages:
+            - title: Runner installation for pipelines
+              url: "/install-codefresh-runner"
+            - title: Runner installation behind firewalls
+              url: "/behind-the-firewall"
+        - title: GitOps Runtimes
+          url: "/gitops"
+          sub-pages:
+          - title: Hosted GitOps Runtime
+            url: "/hosted-runtime"
+          - title: Hybrid GitOps Runtime
+            url: "/hybrid-gitops-helm-installation" 
+          - title: Hybrid GitOps Runtime alongside Community Argo CD
+            url: "/argo-with-gitops-side-by-side"        
+          - title: On-premises GitOps Runtime
+            url: "/on-prem-gitops-runtime-install"
+          - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
+            url: "/migrate-cli-runtimes-helm"  
+          - title: Shared Configuration Repository
+            url: "/shared-configuration"
+          - title: Monitoring & managing GitOps Runtimes
+            url: "/monitor-manage-runtimes"
+          - title: Managing external clusters in GitOps Runtimes
+            url: "/managed-cluster"
+          - title: Managing Git Sources in GitOps Runtimes
+            url: "/git-sources"
+          - title: Download/upgrade GitOps CLI
+            url: "/upgrade-gitops-cli"
+    - title: Codefresh CLI
       url: "/cli"
 
 - title: Administration

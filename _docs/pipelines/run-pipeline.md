@@ -92,6 +92,26 @@ caption="Result of shared build configuration"
 max-width="50%"
 %}
 
+
+## Note on Cloud Builds for Codefresh pipelines
+
+
+Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
+Account admins can request Codefresh to enable Cloud Builds for an account. There is no manual action required except to click on the Enable Cloud Builds button as shown below. The timeframe for the response is up to 24 hours.<br>
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/enable-cloud-builds-request.png"
+  url="/images/installation/enable-cloud-builds-request.png"
+  caption="Enable Cloud Builds for pipelines"
+  alt="Enable Cloud Builds for pipelines"
+  max-width="70%"
+    %} 
+
+As an account admin, you can then grant access to users or have the users explicitly request access to a runtime environment to run pipelines. 
+
+If you [create a free account]({{site.baseurl}}/docs/quick-start/create-codefresh-account/), to run pipelines, you need to configure [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime) with a Hybrid Runner runtime environment.  
+
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
