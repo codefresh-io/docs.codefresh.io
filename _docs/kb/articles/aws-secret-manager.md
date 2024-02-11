@@ -73,30 +73,7 @@ You should now see this application when viewing the [application dashboard](htt
 
 Now that we have the External Secrets Operator Installed, we can set up the Secret Store. First, we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets. You will need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below are the minimum permissions needed to access the secrets that start with `testing/`. You can edit the Resource section that suits your needs.
 
-<!--- 
-`JSON`
-{% highlight json %}
-{% raw %}
 
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "secretsmanager:GetResourcePolicy",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:ListSecretVersionIds"
-            ],
-            "Resource": [
-                "arn:aws:secretsmanager:us-east-1:<ACCOUNT_ID>>:secret:testing/*"
-            ]
-        }
-    ]
-}
-{% endraw %}
-{% endhighlight %}
 -->
 
 Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east-1 in this example). Use the "Other type of Secret" when creating the secret. Add the key-value pairs that you want. When naming, use the prefix of `testing/` for this example. The rest of the options, use the defaults.
@@ -105,11 +82,5 @@ Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east
 
 Now that we have everything set up on AWS, time to create a Service Account, Secret Store, and External Secret. First, create a Directory in your Git Source Repo that's outside of the path for the Git Source. In this example, my Git Source path is `gitops/argocd` but my files will be located in `gitops/test-applications`.
 
-```shell
-├── gitops
-│   ├── argocd
-│   │   └── external-secrets-operator.yaml
-│   ├── test-applications
-```
 
 Inside test-applications directory create a file called `secret-store.yaml`.  Here we will create a Service Account and Secret Store config.  The SecretStore will allow us to access AWS Secrets Manager and use the Service Account to make the API Calls to AWS.
