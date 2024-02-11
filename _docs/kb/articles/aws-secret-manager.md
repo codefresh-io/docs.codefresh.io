@@ -104,18 +104,19 @@ Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east
 
 Now that we have everything set up on AWS, time to create a Service Account, Secret Store, and External Secret. First, create a Directory in your Git Source Repo that's outside of the path for the Git Source. In this example, my Git Source path is `gitops/argocd` but my files will be located in `gitops/test-applications`.
 
-
+<!---
 ```shell
 ├── gitops
 │   ├── argocd
 │   │   └── external-secrets-operator.yaml
 │   ├── test-applications
 ```
+-->
 
 Inside test-applications directory create a file called `secret-store.yaml`.  Here we will create a Service Account and Secret Store config.  The SecretStore will allow us to access AWS Secrets Manager and use the Service Account to make the API Calls to AWS.
 
 
-
+<!---
 ```yaml
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
@@ -138,10 +139,11 @@ metadata:
     eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME> # The Role that you created to have access to Secrets Manager 
   name: aws-secret-store
 ```
-
+-->
 
 Now create another file called `external-secret.yaml` in the testing-applications directory.  This is where we are going to use to generate a kubernets secret.  We will define a refresh interval so the screte is up to date in the cluster, how to access the secret via the Secret Store, the name of the scret in AWS Secret Manager, and what to name the k8s secret kind once retrieved.
 
+<!--- 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -162,3 +164,4 @@ spec:
       decodingStrategy: None
       metadataPolicy: None
 ```
+-->
