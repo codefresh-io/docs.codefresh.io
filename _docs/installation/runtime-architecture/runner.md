@@ -12,7 +12,7 @@ toc: true
 
 
 
-The Hybrid Runner installation for Codefresh pipelines is for organizations who want their source code to live within their premises, or have other security constraints. For implementation details, see [[Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall).
+The Hybrid Runner installation for Codefresh pipelines is for organizations who want their source code to live within their premises, or have other security constraints. For implementation details, see [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall).
 The UI runs on Codefresh infrastructure, while the builds happen on a Kubernetes cluster in the customer's premises.
 
 {% include image.html
@@ -25,9 +25,9 @@ The UI runs on Codefresh infrastructure, while the builds happen on a Kubernetes
     %}    
 
 
-Hybrid Runner installation strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. Sensitive data such as source code and internal services never leave customer premises.  
+Hybrid Runner strikes the perfect balance between security, flexibility, and ease of use. Codefresh still does the heavy lifting for maintaining most of the platform parts. Sensitive data such as source code and internal services never leave customer premises.  
 Codefresh can easily connect to internal [secure services]({{site.baseurl}}/docs/installation/behind-the-firewall/#using-secure-services-in-your-pipelines) that have no public presence.
-The UI is still compliant with Soc2.
+The UI is compliant with Soc2.
   
 
 The table lists the security implications of Hybrid Runner installation.

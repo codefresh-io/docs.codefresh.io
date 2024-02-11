@@ -17,7 +17,7 @@ Review on-premises:
 * [Upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)  
   Upgrade to the latest version to ensure access to the latest features and improvements.
 
-* [Account and user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)
+* [Account and user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
   Set up accounts and users in Codefresh after installation.
   
 * [Feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  

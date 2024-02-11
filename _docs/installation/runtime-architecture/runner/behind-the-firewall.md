@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/installation-options/), the Hybrid Runner Runtime is for Codefresh pipelines.
+As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/installation-options/), the Hybrid Runner is the Runtime for Codefresh pipelines.
 This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
@@ -159,7 +159,7 @@ Once you select your GIT provider, you need to manually enter your username and 
   max-width="60%"
     %}
 
-All other details (git events, branch naming, monorepo pattern, etc.) are still the same as normal SAAS GIT providers.
+All other details (Git events, branch naming, monorepo pattern, etc.) are still the same as for SaaS Git providers.
 Once that is done, Codefresh will show you the webhook endpoint along with a secret for triggering this pipeline. Note them down.
 
 
