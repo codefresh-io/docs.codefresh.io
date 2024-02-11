@@ -6,6 +6,7 @@ redirect_from:
   - /docs/administration/codefresh-on-prem/
   - /docs/enterprise/codefresh-on-prem/
   - /docs/installation/codefresh-on-prem/
+  - /docs/installation/on-premises/codefresh-on-prem/
 toc: true
 ---
 

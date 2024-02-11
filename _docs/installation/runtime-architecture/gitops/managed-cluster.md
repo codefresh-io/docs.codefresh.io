@@ -3,6 +3,8 @@ title: "Managing external clusters in GitOps Runtimes"
 description: "Add multiple remote clusters to a GitOps Runtime"
 group: installation
 sub_group: gitops
+redirect_from:
+  - /docs/installation/gitops/managed-cluster/
 toc: true
 ---
 

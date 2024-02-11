@@ -6,6 +6,7 @@ sub_group: gitops
 redirect_from:
   - /monitor-manage-runtimes/
   - /monitor-manage-runtimes
+  - /docs/installation/gitops/monitor-manage-runtimes/
 toc: true
 ---
 

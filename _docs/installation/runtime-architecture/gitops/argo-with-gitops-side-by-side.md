@@ -2,6 +2,8 @@
 title: "Install GitOps Runtime alongside Community Argo CD"
 description: "Install GitOps Runtime on cluster with existing Argo CD"
 group: installation
+redirect_from:
+  - /docs/installation/gitops/argo-with-gitops-side-by-side/
 toc: true
 ---
 

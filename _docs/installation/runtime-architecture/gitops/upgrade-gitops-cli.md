@@ -3,6 +3,8 @@ title: "Download/upgrade GitOps CLI"
 description: "Have the latest version of the GitOps CLI"
 group: installation
 sub_group: gitops
+redirect_from:
+  - /docs/installation/gitops/upgrade-gitops-cli/
 toc: true
 ---
 

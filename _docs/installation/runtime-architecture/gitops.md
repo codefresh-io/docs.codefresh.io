@@ -2,6 +2,8 @@
 title: "GitOps Runtimes"
 description: " Create and deploy Argo CD applications with GitOps Runtimes"
 group: installation
+redirect_from:
+  - /docs/installation/gitops/
 toc: true
 ---
 

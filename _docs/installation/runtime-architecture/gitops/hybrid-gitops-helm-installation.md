@@ -4,6 +4,7 @@ description: "Provision Hybrid GitOps Runtimes through Helm"
 group: installation
 redirect_from:
   - /docs/installation/gitops/hybrid-gitops/
+  - /docs/installation/gitops/hybrid-gitops-helm-installation/
 toc: true
 ---
 

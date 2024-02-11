@@ -5,6 +5,7 @@ group: installation
 redirect_from:
   - /docs/administration/behind-the-firewall/
   - /docs/enterprise/behind-the-firewall/
+  - /docs/installation/behind-the-firewall/
 toc: true
 ---
 

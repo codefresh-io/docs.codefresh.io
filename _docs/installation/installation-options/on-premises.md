@@ -2,6 +2,8 @@
 title: "On-premises installation"
 description: "Install Codefresh platform on-premises"
 group: installation
+redirect_from:
+  - /docs/installation/on-premises/
 toc: true
 ---
 

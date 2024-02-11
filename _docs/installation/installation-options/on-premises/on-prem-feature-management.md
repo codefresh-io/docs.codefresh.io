@@ -2,6 +2,8 @@
 title: "Codefresh on-premises feature management"
 description: "Enable/disable features for Codefresh accounts in your organization"
 group: installation
+redirect_from:
+  - /docs/installation/on-premises/on-prem-feature-management/
 toc: true
 ---
 

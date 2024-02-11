@@ -2,6 +2,8 @@
 title: "On-premises GitOps Runtime installation"
 description: "Install GitOps Runtime in on-premises environments using Helm"
 group: installation
+redirect_from:
+  - /docs/installation/gitops/on-prem-gitops-runtime-install/
 toc: true
 ---
 

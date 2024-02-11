@@ -4,6 +4,7 @@ description: "Share configuration settings across GitOps Runtimes"
 group: installation
 redirect_from:
   - /docs/reference/shared-configuration/
+  - /docs/installation/gitops/shared-configuration/
 toc: true
 ---
 
