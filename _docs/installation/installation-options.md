@@ -9,9 +9,9 @@ toc: true
 
 Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
 
-Both deployment options provide seamless integration and support for Codefresh pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules, or co-existing side-by-side.
-
-In addition to other components, Codefresh Runtimes are pivotal components within the modules. Codefresh pipelines and Codefresh GitOps support different types of Runtimes, as described in the SaaS and on-premises platform architecture sections that follow.
+Both deployment options provide seamless integration and support for Codefresh pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules, or co-existing side-by-side.  
+In addition to other components, Codefresh Runtimes are pivotal components of both deployments.
+Read more on the platform architecture for [SaaS](#codefresh-saas-platform-architecture) and [on-premises](#codefresh-on-premises-platform-architecture) deployments.
 
 Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
 
@@ -46,12 +46,12 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 ### GitOps Runtime
 The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more about it in [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/).
 
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
 
-Read more about it in [Codefresh Runner architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#codefresh-runner-architecture), and  on how it works in [Runner behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/).
+Read more about it in [Codefresh Runner]({{site.baseurl}}/docs/installation/runtime-architecture/runner/).
 
 ### Codefresh Clients
 

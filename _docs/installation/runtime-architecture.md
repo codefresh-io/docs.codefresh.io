@@ -1,11 +1,15 @@
 ---
-title: "Runtime architecture"
+title: "Codefresh Runtimes"
 description: "Runner and GitOps Runtimes architecture"
 group: installation
 toc: true
 ---
 
-If you have familiarized yourself with our SaaS and on-premises platform architecture, here's a deep dive into the architecture of the Codefresh Runtimes.
+Whether you opt for our [SaaS or on-premises deployment]({{site.baseurl}}/docs/installation/installation-options/), both deployments include Codefresh Runtimes as integral components. The Runtimes play a critical role in managing and facilitating smooth execution of Codefresh pipelines and Argo CD applications. 
+
+Here's a deep dive into the architecture of the [Codefresh Runner](#codefresh-runner-architecture) for CI pipelines, and [GitOps Runtimes](#gitops-runtime-architecture) for Argo CD applications. 
+
+Both types of Runtimes can co-exist with one another. Review the differences in [Runtimes comparison](#runtimes-comparison). 
 
 
 
