@@ -73,6 +73,7 @@ You should now see this application when viewing the [application dashboard](htt
 
 Now that we have the External Secrets Operator Installed, we can set up the Secret Store. First, we need to create an IAM Role for Service Accounts (IRSA) that is going to be used to access the secrets. You will need to create a role based on the [EKS Documentation](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html). Below are the minimum permissions needed to access the secrets that start with `testing/`. You can edit the Resource section that suits your needs.
 
+<!--- 
 {% raw %}
 {% highlight json %}
 {
@@ -104,4 +105,60 @@ Once the IRSA is created, create a secret in AWS Secrets Manager (region us-east
 Now that we have everything set up on AWS, time to create a Service Account, Secret Store, and External Secret. First, create a Directory in your Git Source Repo that's outside of the path for the Git Source. In this example, my Git Source path is `gitops/argocd` but my files will be located in `gitops/test-applications`.
 
 
+```shell
+├── gitops
+│   ├── argocd
+│   │   └── external-secrets-operator.yaml
+│   ├── test-applications
+```
+
 Inside test-applications directory create a file called `secret-store.yaml`.  Here we will create a Service Account and Secret Store config.  The SecretStore will allow us to access AWS Secrets Manager and use the Service Account to make the API Calls to AWS.
+
+
+
+```yaml
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: secretstore-sample # the name you want to call the Secret Store
+spec:
+  provider:
+    aws:
+      service: SecretsManager # Specifing AWS Scret Manager
+      region: us-east-1
+      auth:
+        jwt:
+          serviceAccountRef:
+            name: aws-secret-store # use an SA with IRSA to gain access to the Secrets.
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME> # The Role that you created to have access to Secrets Manager 
+  name: aws-secret-store
+```
+
+
+Now create another file called `external-secret.yaml` in the testing-applications directory.  This is where we are going to use to generate a kubernets secret.  We will define a refresh interval so the screte is up to date in the cluster, how to access the secret via the Secret Store, the name of the scret in AWS Secret Manager, and what to name the k8s secret kind once retrieved.
+
+```yaml
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: example-secret
+spec:
+  refreshInterval: 1h # allows us to update secret if values change
+  secretStoreRef:
+    kind: SecretStore
+    name: secretstore-sample # name of the secret store so we can access AWS Secret Manager
+  target:
+    name: my-secret  # name of the k8s Secret to be created. aka kind: Secert
+    creationPolicy: Owner
+  dataFrom:
+  - extract:
+      key: testing/my-secret  # name of the secret from AWS Secret Manager
+      conversionStrategy: Default
+      decodingStrategy: None
+      metadataPolicy: None
+```
