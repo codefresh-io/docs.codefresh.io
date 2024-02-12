@@ -66,7 +66,7 @@ GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){
 
 This is easy with our GitOps Runtimes. Argo CD is installed automatically on installing a GitOps runtime, either the Hosted or Hybrid versions.  
 See:  
-[Hosted GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)   
+[Hosted GitOps runtime]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/)   
 [Hybrid GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 
 If you don't have a runtime installed already, for this guide, install the Hosted GitOps runtime.

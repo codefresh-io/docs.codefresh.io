@@ -75,6 +75,6 @@ If you haven't configured your clusters with the required IPs, use the links bel
 
 ## Related articles
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/)  
-[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/)  
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 [Codefresh architecture]({{site.baseurl}}/docs/installation/runtime-architecture/) 

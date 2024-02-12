@@ -7,10 +7,10 @@ redirect_from:
 toc: true
 ---
 
-Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are considered legacy and will be deprecated.  
+Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are deprecated.  
 If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve important data and install the new Helm GitOps Runtime.
 
-When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/).
 
 The `values.yaml` file for Helm installation is the central configuration hub for customizing and controlling various aspects of the Runtime installation. You need to replicate all patches and customizations applied to the CLI Runtime to the `values.yaml` for the new Helm Runtime.
 
@@ -19,7 +19,7 @@ Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI ver
 
 ## Before you begin
 Make sure you have:
-* Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes))
+* Git user token (see [Git tokens]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes))
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
@@ -278,18 +278,18 @@ You cannot configure the Runtime as an Argo Application if you have not configur
    %}
 
 You have completed migrating your CLI-based GitOps Runtime to a Helm-based one.  
-In the Runtimes page, you can see that the Type column for the Runtime displays Helm. Drill down displays the [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/) and [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/) you had already created for the CLI-based Runtime.
+In the Runtimes page, you can see that the Type column for the Runtime displays Helm. Drill down displays the [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/) and [external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/) you had already created for the CLI-based Runtime.
 
 ## What to do next
 
-If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#optional-gitops-runtime-configuration). 
+If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/#optional-gitops-runtime-configuration). 
 
 You can also create [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) for your Argo CD applications.
 
 ## Related articles
-[Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

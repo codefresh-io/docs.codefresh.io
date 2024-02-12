@@ -14,7 +14,7 @@ If you have Hosted GitOps, set up your hosted runtime environment:
 1. Install Argo Rollouts on the cluster   
 
 Read our [blog on Hosted GitOps](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).  
-For detailed information on each of the steps below, see [Set up a Hosted GitOps Runtime environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
+For detailed information on each of the steps below, see [Set up a Hosted GitOps Runtime environment]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/).  
 
 ## Before you begin
 

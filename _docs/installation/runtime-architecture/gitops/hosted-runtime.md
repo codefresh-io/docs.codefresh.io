@@ -10,10 +10,10 @@ toc: true
 
 
 
-For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops). 
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/#hosted-vshybrid-gitops). 
 
 This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.<br>
-For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/).
 
 >**NOTE**  
 You can install a _single Hosted GitOps Runtime per Codefresh account_. 
@@ -118,35 +118,7 @@ caption="Hosted GitOps Runtime in List view"
 max-width="70%"
 %}
 
-<!--- Ask Idan if to keep this:
-### Troubleshoot failed Hosted GitOps Runtime installation
-Your Hosted GitOps Runtime may fail to install with an error as in the image below. We are closely moinitoring the Hosted GitOps Runtime installation process and activley working to prevent and iron out all installation errors. Follow the instructions to uninstall and reinstall the Hosted GitOps Runtime.
 
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hosted-runtime-error.png"
-url="/images/runtime/hosted-runtime-error.png"
-alt="Hosted runtime installation error"
-caption="Hosted runtime installation error"
-max-width="70%"
-%}
-
-
-1. Download the CLI
-  * If you have installed the Codefresh CLI already, make sure you have the latest version:  
-     `cf version`  
-     To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
-  * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
-
-1. Uninstall the failed Hosted GitOps Runtime:  
-  `cf runtime uninstall codefresh-hosted --force`  
-  where:  
-  `hosted-codefresh` is the name of your Hosted GitOps Runtime, automatically assigned by Codefresh.
-1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
-1. Refresh the page and start with [Step 1: Install Hosted GitOps Runtime](#step-1-install-hosted-gitops-runtime).
-
--->
 ## Step 2: Connect Git provider
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  
 
@@ -171,12 +143,12 @@ max-width="80%"
 Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/).
 
 
 * Git Source application repo  
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
-  Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+  Read about [Git sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
 
 ### Before you begin
 Make sure you have the credentials for the Git provider handy
@@ -258,7 +230,7 @@ max-width="80%"
 ## Step 3: Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/).
 
 
  {% include 
@@ -307,7 +279,7 @@ max-width="70%"
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
 If you could not connect a cluster, you may not have the latest version of the CLI:  
-[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).
+[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/upgrade-gitops-cli/).
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -327,9 +299,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

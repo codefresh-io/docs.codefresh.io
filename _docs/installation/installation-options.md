@@ -20,7 +20,7 @@ Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/i
   file="/images/installation/soc2-type2-certified.png"
   url="/images/installation/soc2-type2-certified.png"
   alt="sso-diagram.png"
-  max-width="40%"
+  max-width="35%"
     %} 
 
 
@@ -46,11 +46,11 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 ### GitOps Runtime
 The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps). Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/).
+Depending on the type of GitOps installation, the GitOps Runtime is installed either in the Codefresh platform (Hosted GitOps), or in the customer environment (Hybrid GitOps).  
+Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/).
 
 ### Codefresh Runner
-The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.
-
+The Codefresh Runner, also known as the Agent, enables running Codefresh pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.  
 Read more about it in [Codefresh Runner]({{site.baseurl}}/docs/installation/runtime-architecture/runner/).
 
 ### Codefresh Clients
@@ -60,15 +60,16 @@ Codefresh Clients include the UI and the CLI.
 ##### Codefresh UI
 The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications. 
 
-The global (Home) dashboard displays unified, enterprise-wide insights into CI pipelines and Argo CD applications. 
-For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Codefresh pipeline, and Argo CD application functionality and performance. For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.
+The global (Home) dashboard consolidates unified, enterprise-wide insights into CI pipelines and Argo CD applications.  
+For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Codefresh pipeline, and Argo CD application functionality and performance.  
+For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.  
 For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
 ##### Codefresh CLI 
 There are two flavors of the Codefresh CLI:  
 * Pipelines CLI  
   This CLI is dedicated to managing Codefresh pipelines, providing commands to create, run, and manage them.
-* GitOps CLI
+* GitOps CLI  
   The CLI for GitOps and Argo CD applications is primarily used to install the latest versions of GitOps Runtimes.
 
 
@@ -88,7 +89,7 @@ max-width="100%"
 
 
 
-### External Components
+### External components
 
 
 #### Codefresh Runner
@@ -117,13 +118,13 @@ For GitOps, you have our unique Products and Environments dashboards to track an
 There are two flavors of the Codefresh CLI:  
 * Pipelines CLI  
   This CLI is dedicated to managing Codefresh pipelines, providing commands to create, run, and manage them.
-* GitOps CLI
+* GitOps CLI  
   The CLI for GitOps and Argo CD applications is primarily used to install the latest versions of GitOps Runtimes.
 
 
-### On-Premises Platform Components
+### On-premises platform components
 
-#### Ingress Controller
+#### Ingress controller
 
 The Codefresh On-Premises platform uses an ingress controller to handle incoming traffic. The NGINX Ingress Controller is deployed within the cluster hosting the Codefresh platform. The ingress controller serves as the entry point for requests originating from Codefresh Runners, GitOps Runtimes, and Clients, and routes them to the appropriate destinations, namely the Pipelines API/UI and the GitOps API/UI.
 
@@ -225,7 +226,7 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
   Legacy message bus.
 
 * Consul
-  Stores data for legacy builder and windows nodes.
+  Stores data for legacy builder and Windows nodes.
 
 
 

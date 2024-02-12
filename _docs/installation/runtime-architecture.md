@@ -5,11 +5,12 @@ group: installation
 toc: true
 ---
 
-Whether you opt for our [SaaS or on-premises deployment]({{site.baseurl}}/docs/installation/installation-options/), both deployments include Codefresh Runtimes as integral components. The Runtimes play a critical role in managing and facilitating smooth execution of Codefresh pipelines and Argo CD applications. 
+Whether you opt for our [SaaS or on-premises deployment]({{site.baseurl}}/docs/installation/installation-options/), both deployment options include Codefresh Runtimes as integral components.  
+The Runtimes play a critical role in managing and facilitating smooth execution of Codefresh pipelines and Argo CD applications. 
 
-Here's a deep dive into the architecture of the [Codefresh Runner](#codefresh-runner-architecture) for CI pipelines, and [GitOps Runtimes](#gitops-runtime-architecture) for Argo CD applications. 
+This article provides a deep dive into the architecture of the [Codefresh Runner](#codefresh-runner-architecture) for CI pipelines, and [GitOps Runtimes](#gitops-runtime-architecture) for Argo CD applications. 
 
-Both types of Runtimes can co-exist with one another. Review the differences in [Runtimes comparison](#runtimes-comparison). 
+Both types of Runtimes can coexist. To understand their distinctions, review [Runtimes comparison](#runtimes-comparison). 
 
 
 
@@ -67,10 +68,11 @@ Another optional component, the App-Proxy serves as an extension to the Codefres
 ## GitOps Runtime architecture
 The sections that follow show detailed views of the GitOps Runtime architecture for the different installation options, and descriptions of the GitOps Runtime components.
 
-* [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
+* [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)  
   For Hosted GitOps, the GitOps Runtime is installed on a _Codefresh-managed cluster_ in the Codefresh platform.  
-* Hybrid GitOps Runtime architecture:
-  For Hybrid GitOps, the GitOps Runtime is installed on a _customer-managed cluster_ in the customer environment. The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
+* Hybrid GitOps Runtime architecture:  
+  For Hybrid GitOps, the GitOps Runtime is installed on a _customer-managed cluster_ in the customer environment.  
+  The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 * GitOps Runtime components
@@ -83,7 +85,7 @@ The sections that follow show detailed views of the GitOps Runtime architecture 
 
 
 ### Hosted GitOps Runtime architecture
-In the hosted environment, the Codefresh Runtime is installed on a K8s cluster managed by Codefresh. 
+In the hosted environment, the GitOps Runtime is installed on a K8s cluster managed by Codefresh. 
 
 {% include
    image.html
@@ -101,7 +103,6 @@ Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers
 >**NOTE**  
 Tunnel-based access mode is not supported for GitOps on-premises installations.
 
-Note: Tunnel-based architecture is not supported for on-prem instances.
 
 {% include
    image.html
@@ -115,7 +116,7 @@ Note: Tunnel-based architecture is not supported for on-prem instances.
 
 
 ### Ingress-based Hybrid GitOps Runtime architecture
-Ingress-based Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform. Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
+Ingress-based Hybrid GitOps Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh platform. Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
 
 
 
@@ -131,16 +132,16 @@ Ingress-based Runtimes use ingress controllers to control communication between 
 
 
 ### Application Proxy
-The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
+The Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
-For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 
-For Hybrid GitOps Runtimes with ingress, the App-Proxy is the single point-of-contact between the GitOps Runtime, and the GitOps Clients, the GitOps Platform, and any organizational systems in the customer environment.  
+For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy.   
+For Hybrid GitOps Runtimes with ingress, the App-Proxy is the single point-of-contact between the GitOps Runtime, and the GitOps Clients, the GitOps platform, and any organizational systems in the customer environment.  
 
  
-The GitOps App-Proxy:  
+The App-Proxy:  
 * Accepts and serves requests from GitOps Clients either via the UI or CLI 
 * Retrieves a list of Git repositories for visualization in the Client interfaces  
-* Retrieves permissions from the GitOps Control Plane to authenticate and authorize users for the required operations.    
+* Retrieves permissions from the Codefresh Control Plane to authenticate and authorize users for the required operations   
 * Implements commits for GitOps-controlled entities, such as Delivery Pipelines and other CI resources
 * Implements state-change operations for non-GitOps controlled entities, such as terminating Argo Workflows
 
@@ -157,7 +158,7 @@ The Argo Project includes:
 >**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
-Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
+Typically, new versions of Argo CD are available in the GitOps Runtime within 30 days of their official release.
 
 
 
@@ -196,37 +197,37 @@ The Tunnel Client:
 
 
 ### Customer environment
-The customer environment that communicates with the GitOps Runtime and Codefresh, generally includes:
+The customer environment communicates with the GitOps Runtime and Codefresh, and generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#ingress-controller).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps Runtimes for application deployment.  
   Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  
   Hybrid GitOps allow you to add external clusters after provisioning the Runtimes.  
-  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
-  Either the ingress controller (ingress hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
+  Either the ingress controller (ingress-based hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the Application Proxy. 
 
 ##  Runtimes comparison
-Codefresh Runner for CI pipelines and GitOps Runtimes can co-exist giving you the best of both worlds. 
+Codefresh Runner for CI pipelines and GitOps Runtimes can coexist giving you the best of both worlds. 
 
 {: .table .table-bordered .table-hover}
-| Characteristic | Hybrid Runner                | On Premise              | GitOps
+| Characteristic | Hybrid Runner                |  GitOps
 | -------------- | ---------------------------- |-------------------------| ----------------|
-| Managed by      | Codefresh and customer      | Customer                | Codefresh and customer |
-| UI runs on      | Public cloud                | Private cluster          | Public cloud|
-| Builds run on   | Private cluster             | Private cluster          | Private cluster (Hybrid)/Codefresh cluster (Hosted)|
-| Access to secure/private services | Yes       | Yes                      | Yes |
-| Maintenance effort | Partial by customer      | Full by customer          | Partial by customer |
-| Best for        | Companies with security constraints  | Large scale installations | Companies with security constraints |
-| Available to    |[Enterprise plans](https://codefresh.io/contact-us/){:target="\_blank"} | [Enterprise plans](https://codefresh.io/contact-us/) |[Enterprise plans](https://codefresh.io/contact-us/) |
+| Managed by      | Codefresh and customer      | Codefresh and customer |
+| UI runs on      | Public cloud                |  Public cloud|
+| Builds run on   | Private cluster             |  Private cluster (Hybrid)/Codefresh cluster (Hosted)|
+| Access to secure/private services | Yes       |  Yes |
+| Maintenance effort | Partial by customer      | Partial by customer |
+| Best for        | Companies with security constraints  | Companies with security constraints |
+| Available to    |[Enterprise plans](https://codefresh.io/contact-us/){:target="\_blank"} |[Enterprise plans](https://codefresh.io/contact-us/) |
 
 
 ## Related articles
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/install-codefresh-runner/)  
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)   
 
 

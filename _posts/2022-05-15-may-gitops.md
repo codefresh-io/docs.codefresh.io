@@ -62,7 +62,7 @@ caption="Delete Git Source"
 max-width="90%"
 %}
 
-For details, see [Add and manage Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+For details, see [Add and manage Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
 
 ## Bug fixes
 

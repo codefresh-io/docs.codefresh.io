@@ -61,11 +61,11 @@ The process to migrate an Argo CD Application is simple:
 
 After installing the GitOps Runtime successfully, you can add a Git Source to the Runtime and commit your applications to it.
 A Git Source is a Git repository managed by Codefresh as an Argo CD Application.
-Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+Read about [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
 
 
 
-* Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
+* Add a [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
 
 ### Step 2: Modify Argo CD Applications
 

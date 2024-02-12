@@ -74,7 +74,7 @@ use it.
    %}
 
 ### Related articles
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/)  
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
 

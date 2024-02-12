@@ -175,10 +175,9 @@ argo-cd:
 ```
 
 ## Ingress controller configuration 
-Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
+Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
 Depending on the ingress controller used, you may need post-installation configuration as well.
 
 
 ## Related articles
-[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[On-premises platform architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
+[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/monitor-manage-runtimes/)  

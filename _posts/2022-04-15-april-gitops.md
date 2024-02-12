@@ -43,7 +43,7 @@ caption="Install Argo Rollouts for managed cluster in topology view"
 * Seamless upgrades: Upgrades to runtimes or to runtime components in the local cluster automatically upgrades those in managed clusters as well.
 * Integration with dashboards: Applications dashboards reflect deployment information for applications in all managed clusters. When Argo Rollouts are installed, application rollouts are also reported to the dashboard.
 
-For details, see [Managed clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+For details, see [Managed clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/).
 
 ### Topology views for runtimes
   

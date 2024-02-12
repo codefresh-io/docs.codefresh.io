@@ -71,7 +71,7 @@ Have your GitHub Runtime token ready for Runtime installation with a valid expir
 ### Shared Configuration Repository
 When you select the Git provider, Codefresh prompts you to also select the Shared Configuration Repository for your account. The repo stores account-level configuration settings and manifests.
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
-Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/).
 
 ## Install Hybrid GitOps Runtime
 

@@ -22,4 +22,4 @@ Keep up to date with the latest features through the GitOps CLI.
 The GitOps CLI is required to install GitOps runtimes.  As several new features are available only with the latest GitOps CLI release, it's important to have the latest one.  
 Upgrade is easy as you don't have to keep track of the different versions. The GitOps CLI automatically checks its own version and prints a banner if there is a newer version.  
 
-For details, see [Download/Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).
+For details, see [Download/Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/upgrade-gitops-cli/).

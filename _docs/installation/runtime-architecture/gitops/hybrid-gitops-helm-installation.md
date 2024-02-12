@@ -12,13 +12,13 @@ toc: true
 **IMPORTANT**   
 We have transitioned to a Helm-based installation for Hybrid GitOps Runtimes for improved experience and performance, which is now the default Runtime for GitOps. <br><br>
 The CLI-based installation for Hybrid GitOps is considered legacy. We will deprecate this installation mode permanently in the coming months.<br>
-You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
+You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/migrate-cli-runtimes-helm/). 
 {{site.data.callout.end}}
 
-For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops). 
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/#hosted-vshybrid-gitops). 
 
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts.  
-For Hosted GitOps Runtime installation, see [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+For Hosted GitOps Runtime installation, see [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/).
 
 ##### Number of Hybrid GitOps Runtimes
 Within the same account, you can install _one Hosted and one Hybrid GitOps Runtime on a cluster_.  
@@ -245,7 +245,7 @@ As a one-time action, define the Shared Configuration Repository and the Git pro
 The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
 **Shared Configuration Repository**  
-The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
+The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 **Git provider**  
 On-premises Git providers require you to define the API URL:
@@ -525,7 +525,7 @@ max-width="50%"
 
 ### Step 5: Add Git user token
 Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
-Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
+Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
 
@@ -583,7 +583,7 @@ For GitOps with Argo CD, if you have Argo Rollouts also installed, after confirm
 Create a Git Source for the Runtime. A Git Source is a Git repository managed by Codefresh as an Argo CD application.  
 You can always create Git Sources after installation whenever you need to in the Codefresh UI.
 
-1. Optional. Create a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source).
+1. Optional. Create a [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/#create-a-git-source).
 1. Continue with [Step 9: (Optional) Configure ingress-controllers](#step-9-optional-configure-ingress-controllers).
 
 ### Step 9: (Optional) Configure ingress-controllers
@@ -605,7 +605,7 @@ Depending on your configuration:
 * If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 * If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to Codefresh Argo CD applications.
 
-You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+You can now add [external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 
@@ -675,7 +675,7 @@ You can use the same Git Runtime token you used for the first Runtime.
 
 **Git user token**  
 The Git user token is a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
-Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes).
+Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 **Configure as Argo CD application**  
 Configuring the Runtime an an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
@@ -750,7 +750,7 @@ Depending on your configuration:
 * If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 * If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to Codefresh Argo CD applications.
 
-You can now add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+You can now add [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/), [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 ## Install GitOps Runtime via Terraform
@@ -793,7 +793,7 @@ Depending on your configuration:
 * If you installed the GitOps Runtime on a cluster with Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops) to GitOps applications.
 
 
-By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 ## Optional GitOps Runtime configuration
@@ -844,11 +844,11 @@ The process to migrate an Argo CD Application is simple:
 
 After installing the GitOps Runtime successfully, you can add a Git Source to the Runtime and commit your applications to it.
 A Git Source is a Git repository with an opinionated folder structure managed by Codefresh.
-Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+Read about [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
 
 
 
-* Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
+* Add a [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
 
 ### Step 2: Modify Argo CD Application
 
@@ -1623,7 +1623,7 @@ providers:
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/)  
 [GitOps architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
 
