@@ -9,8 +9,8 @@ toc: true
 
 Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
 
-Both deployment options provide seamless integration and support for Codefresh pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.  
-In addition to other components, the Codefresh Runner for pipelines and GitOps Runtimes are pivotal components of both deployments.
+Both deployment options provide seamless integration and support for Codefresh Pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.  
+In addition to other components, the Codefresh Runner for pipelines and GitOps Runtimes for Argo CD applications are pivotal components of both deployments.
 
 Read more on the platform architecture for [SaaS](#codefresh-saas-platform-architecture) and [on-premises](#codefresh-on-premises-platform-architecture) deployments.
 
@@ -67,7 +67,7 @@ For pipelines, you have Kubernetes and Helm dashboards to monitor releases and d
 For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
 ##### Codefresh CLI 
-The CLI for the Pipelines module interacts with Codefresh to:
+The CLI for Codefresh Pipelines can:
 * Perform any UI operation
 * Create complex automation from your local machine
 * Create and run pipelines for complex use cases using the CLI within pipeline steps
@@ -117,7 +117,7 @@ For in-depth analysis, the UI has several additional dashboards, each dedicated 
 For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
 ##### Codefresh CLI 
-The CLI for the Pipelines module interacts with Codefresh to:
+The CLI for Codefresh Pipelines can:
 * Perform any UI operation
 * Create complex automation from your local machine
 * Create and run pipelines for complex use cases using the CLI within pipeline steps
@@ -235,7 +235,8 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 ## Related articles
 [On-premises platform deployment]({{site.baseurl}}/docs/installation/on-premises/)  
-[Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
+[Codfresh Runner architecture]({{site.baseurl}}/docs/installation/runner/runner-architecture/)  
+[GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/)  
 
 
 
