@@ -517,7 +517,7 @@
       url: "/gitops"
       sub-pages:
         - title: GitOps Runtime architecture
-          url: "/gitops-runtime-architecture"
+          url: "/runtime-architecture"
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime

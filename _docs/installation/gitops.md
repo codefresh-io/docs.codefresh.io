@@ -8,10 +8,9 @@ toc: true
 ---
 
 
+The Codefresh GitOps module requires you to install GitOps Runtimes.  
 
-
-GitOps Runtimes are available as Hosted with Argo CD installed in the Codefresh cluster, and Hybrid with Argo CD installed in the customer's cluster.
-Review the comparison
+GitOps Runtimes are available as hosted Runtimes with Argo CD installed in the Codefresh cluster, and hybrid Runtimes with Argo CD installed in the customer's cluster. Review the [comparison](#hosted-vshybrid-gitops) between both Runtime modes.
 
 
 ## Hosted GitOps
@@ -19,7 +18,7 @@ The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh
 Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
 Hosted environments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer.  
 Currently, you can add one Hosted GitOps Runtime per account.
-For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/).
+For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
   
 {% include

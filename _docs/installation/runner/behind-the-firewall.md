@@ -56,7 +56,7 @@ The advantages for this scenario are multi-fold:
 
 ## Using secure services in your pipelines
 
-After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
+After [installing the Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
 
 You can easily create pipelines that:
 * Use databases internal to the company

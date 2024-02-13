@@ -1,11 +1,11 @@
 ---
 title: "Runner architecture"
-description: "Runner components"
+description: "Codefresh Runner components"
 group: installation
 toc: true
 ---
 
-This article focuses on the  a high-level architecture of the Codefresh Runner and its components.
+This article focuses on the architecture of the Codefresh Runner.
 
 
 ## Runner architecture

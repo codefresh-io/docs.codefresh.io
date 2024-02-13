@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-The sections that follow show detailed views of the GitOps Runtime architecture for the different installation modes, and descriptions of the GitOps Runtime components.
+See detailed views of GitOps Runtime architecture for the different installation modes, and descriptions of the GitOps Runtime components.
 
 * [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
 * Hybrid GitOps Runtime architecture:
@@ -100,7 +100,7 @@ To maintain that high standard, we add several weeks of testing and bug fixes to
 Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
 
-## Reporters
+<!-- ## Reporters
 Reporters monitor changes to resources deployed on the cluster and report these changes back to the Codefresh platform.
 
 Codefresh has two types of reporters:
@@ -160,6 +160,7 @@ The Application Reporter (identified on the cluster as **event-reporter**):
   
   For example, if the cluster has 100 apps and 5 replicas, each Reporter instance handles events from 20 apps. Codefresh recommends a default ratio of 25-30 apps per instance of the Application Reporter.
 
+-->
 
 ## Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
@@ -198,7 +199,7 @@ The Tunnel Client:
 The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#ingress-controller).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned Hosted or Hybrid GitOps Runtimes for application deployment.  
   Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  

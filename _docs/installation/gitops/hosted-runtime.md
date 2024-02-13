@@ -141,7 +141,7 @@ max-width="80%"
 Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+  Read about [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 
 * Git Source application repo  
@@ -276,8 +276,8 @@ max-width="70%"
 {:start="5"} 
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
-If you could not connect a cluster, you may not have the latest version of the CLI:  
-[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).
+<!-- If you could not connect a cluster, you may not have the latest version of the CLI:  
+[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).-->
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -286,7 +286,7 @@ Optional. Create an application in Codefresh, deploy it to the cluster, and trac
 
 1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/).  
   OR    
-  Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/)   
+  Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).   
 
 {:start="2"}
 2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
