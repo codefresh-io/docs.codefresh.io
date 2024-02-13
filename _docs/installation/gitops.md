@@ -32,7 +32,7 @@ For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/
     max-width="80%"
 %} 
 
-  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/).  
+  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
 
 ## Hybrid GitOps
 The hybrid version of GitOps, has Argo CD installed in the customer's cluster.    

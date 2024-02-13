@@ -222,13 +222,13 @@
     - title: Codefresh Runner installation
       localurl: /docs/installation/runtime-architecture/runner/
     - title: Hosted GitOps Runtime installation
-      localurl: /docs/installation/runtime-architecture/gitops/hosted-runtime/
+      localurl: /docs/installation/gitops/hosted-runtime/
     - title: Hybrid GitOps Runtime installation
-      localurl: /docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/
+      localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: On-premises GitOps Runtime installation
-      localurl: /docs/installation/runtime-architecture/gitops/on-prem-gitops-runtime-install/
+      localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/
     - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
-      localurl: /docs/installation/runtime-architecture/gitops/migrate-cli-runtimes-helm/
+      localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/
 
 - title: Administration
   icon: images/home-icons/administration.svg

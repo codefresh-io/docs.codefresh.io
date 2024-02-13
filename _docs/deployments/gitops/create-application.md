@@ -23,7 +23,7 @@ The Create application wizard guides you through the process of creating an appl
 
 For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
   
-Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/) to be able to create and commit an Argo CD application.
+Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
  
 Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) individual Argo CD applications.
 
@@ -171,7 +171,7 @@ Create a new application from the GitOps Apps dashboard with the Add Application
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
-* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
+* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 
 * Review:    
   [General configuration](#application-general-configuration-settings)  

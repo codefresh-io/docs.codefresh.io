@@ -259,7 +259,7 @@ max-width="50%"
 %}
 
 ## Related articles
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
 [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  

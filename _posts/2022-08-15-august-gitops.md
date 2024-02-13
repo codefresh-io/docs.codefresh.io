@@ -28,7 +28,7 @@ See [GitHub Container registry]({{site.baseurl}}/docs/gitops-integrations/contai
 The Codefresh CLI supports labels and annotations for managed clusters.  
 When you add a managed cluster in Codefresh, you can optionally add labels and annotations with the  `--labels` and the `--annotations` flags.  Codefresh supports the standard key-value formats for both, with multiple items separated by `,`. K8s rules for labels and annotations are valid here as well.  
 
-See [Add a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/#add-a-managed-cluster-with-gitops-cli)and [Add a managed cluster with Kustomize]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/#add-a-managed-cluster-with-kustomize).
+See [Add a managed cluster with Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-gitops-cli)and [Add a managed cluster with Kustomize]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-kustomize).
 
 ### Event information for application resources
 

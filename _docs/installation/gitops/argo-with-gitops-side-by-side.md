@@ -2,8 +2,6 @@
 title: "Install GitOps Runtime alongside Community Argo CD"
 description: "Install GitOps Runtime on cluster with existing Argo CD"
 group: installation
-redirect_from:
-  - /docs/installation/gitops/argo-with-gitops-side-by-side/
 toc: true
 ---
 
@@ -61,11 +59,11 @@ The process to migrate an Argo CD Application is simple:
 
 After installing the GitOps Runtime successfully, you can add a Git Source to the Runtime and commit your applications to it.
 A Git Source is a Git repository managed by Codefresh as an Argo CD Application.
-Read about [Git Sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
+Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
 
-* Add a [Git Source]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
+* Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
 
 ### Step 2: Modify Argo CD Applications
 
@@ -114,7 +112,7 @@ spec:
 
 ### Step 3: Commit Argo CD application to Git Source
 As the final step in migrating your Argo CD Application to a Codefresh GitOps Runtime, manually commit the updated application manifest to the Git Source you created in Step 1.
-Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
+Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you would any GitOps resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest to the Git Source.

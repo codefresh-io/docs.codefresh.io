@@ -88,7 +88,7 @@ Codefresh is a full-featured, turn-key solution for application deployments and 
 
 
 **GitOps Runtimes**
-You can use [your own GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or get started quick with a [runtime hosted by Codefresh]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/).
+You can use [your own GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or get started quick with a [runtime hosted by Codefresh]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
 Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
 

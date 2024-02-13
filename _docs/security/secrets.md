@@ -22,7 +22,7 @@ The Controller manages a public and a private key. The private key stays within 
 Any kind of secret encrypted with the public key (or via the `kubeseal` executable), can be passed to the cluster for decryption when needed.
 
 Codefresh employs a mechanism to consistently apply Sealed Secrets across multiple clusters in the same account, in complete alignment with the GitOps paradigm. 
-It also facilitates sharing the public and private keys between the Codefresh platform and the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/) 
+It also facilitates sharing the public and private keys between the Codefresh platform and the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) 
 in the user's GitOps Runtime environment.
 
 ##### Sealed Secrets mechanism in Codefresh   
@@ -52,7 +52,7 @@ The applications you deploy with Codefresh should also have no knowledge of the 
 ## Related articles 
 [Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
 [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)  
-[Set up a Hosted GitOps environment]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/)  
+[Set up a Hosted GitOps environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
 
 

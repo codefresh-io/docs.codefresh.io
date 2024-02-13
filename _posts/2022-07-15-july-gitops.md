@@ -50,7 +50,7 @@ Setting up your hosted environment takes just a few clicks. All you need is a Co
 
 Codefresh guides you through the simple three-step process of provisioning your hosted runtime.  From that point, Codefresh handles administration and maintenance of the hosted runtime, including version and security updates.  
 
-See [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/).
+See [Set up a hosted (Hosted GitOps) environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
 
 ### DORA metrics
 

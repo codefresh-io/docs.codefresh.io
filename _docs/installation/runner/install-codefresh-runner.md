@@ -23,7 +23,7 @@ The [CLI-based installation and configuration](#cli-based-codefresh-runner-insta
 {{site.data.callout.end}}
 
 >**Codefresh Runner with spot instances**<br>
-  Using spot instances can cause failures in Codefresh builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
+  Using spot instances can cause failures in Codefresh pipeline builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
 
 After installing the Codefresh Runner, you can:
 * View the Runner Agent and its Runtime Environments
@@ -1777,9 +1777,8 @@ helm install cf-runtime cf-runtime/cf-runtime -f ./generated_values.yaml -f valu
 For troubleshooting information, refer to the [Knowledge Base]({{site.baseurl}}/docs/kb/troubleshooting/#runtimes){:target="\_blank"}.
 
 ## Related articles
-
-[Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
-[Codefresh On-Premises installation]({{site.baseurl}}/docs/installation/codefresh-on-prem/)  
+[Codefresh platform deployment]({{site.baseurl}}/docs/installation/installation-options/)  
+[Codefresh On-premises deployment]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
 
 

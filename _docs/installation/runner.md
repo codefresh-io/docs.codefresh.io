@@ -6,7 +6,6 @@ redirect_from:
   - /docs/administration/codefresh-runner/
   - /docs/enterprise/codefresh-runner/
   - /docs/administration/codefresh-hybrid/
-  - /docs/installation/codefresh-runner/
 toc: true
 ---
 
@@ -19,8 +18,8 @@ The UI runs on Codefresh infrastructure, while the builds happen on a Kubernetes
   lightbox="true"
   file="/images/installation/hybrid-installation.png"
   url="/images/installation/hybrid-installation.png"
-  caption="Hybrid installation.png"
-  alt="Hybrid installation.png"
+  caption="Hybrid Runner installation.png"
+  alt="Hybrid Runner installation.png"
   max-width="70%"
     %}    
 

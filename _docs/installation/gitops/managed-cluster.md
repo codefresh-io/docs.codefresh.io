@@ -3,12 +3,10 @@ title: "Managing external clusters in GitOps Runtimes"
 description: "Add multiple remote clusters to a GitOps Runtime"
 group: installation
 sub_group: gitops
-redirect_from:
-  - /docs/installation/gitops/managed-cluster/
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation//) or [Hosted]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so.
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation//) or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
 
@@ -207,6 +205,6 @@ Run `helm delete <release_name>` with the name of the release that was created d
 Use the `terraform destroy` command.
 
 ## Related articles
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 

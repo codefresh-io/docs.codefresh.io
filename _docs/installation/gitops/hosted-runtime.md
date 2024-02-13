@@ -3,17 +3,15 @@ title: "Hosted GitOps Runtime installation"
 description: "Set up your Hosted GitOps environment"
 group: installation
 sub_group: gitops
-redirect_from:
-  - /docs/installation/gitops/hosted-runtime/
 toc: true
 ---
 
 
 
-For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/#hosted-vshybrid-gitops). 
+For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops). 
 
 This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.<br>
-For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/hybrid-gitops-helm-installation/).
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 >**NOTE**  
 You can install a _single Hosted GitOps Runtime per Codefresh account_. 
@@ -143,12 +141,12 @@ max-width="80%"
 Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/).
+  Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 
 * Git Source application repo  
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
-  Read about [Git sources]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/).
+  Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 ### Before you begin
 Make sure you have the credentials for the Git provider handy
@@ -230,7 +228,7 @@ max-width="80%"
 ## Step 3: Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/managed-cluster/).
+For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 
 
  {% include 
@@ -279,7 +277,7 @@ max-width="70%"
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
 If you could not connect a cluster, you may not have the latest version of the CLI:  
-[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/upgrade-gitops-cli/).
+[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
@@ -299,9 +297,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/monitor-manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/git-sources/)  
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/runtime-architecture/gitops/shared-configuration/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

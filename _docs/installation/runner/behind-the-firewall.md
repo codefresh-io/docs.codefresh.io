@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/installation-options/), the Hybrid Runner is the Runtime for Codefresh pipelines.
+As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/), the Hybrid Runner is required to run Codefresh pipelines.
 This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
@@ -74,7 +74,7 @@ You can easily create pipelines that:
 
 
 
-### Checking out code from a private GIT repository
+### Checking out code from a private Git repository
 
 To check out code from your private Git repository, you need to connect first to Codefresh via  [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise*, you also need to mark it as *behind the firewall* as well:
 
