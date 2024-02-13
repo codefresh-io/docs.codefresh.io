@@ -168,10 +168,10 @@ max-width="40%"
 
 
 ## Rename/delete Codefresh accounts
-Codefresh administrators can rename Codefresh accounts, and delete any account.
+Codefresh administrators can rename and delete Codefresh accounts.
 
 ##### Rename Codefresh account
-You want to rename your existing account, either due to a sign-up error or change of business name.
+You may want to rename your existing account, for example, either due to a sign-up error or change of business name.
 
 At this time, only Codefresh Support can rename accounts.  
 Please submit a support ticket with the following details:
@@ -180,6 +180,10 @@ Please submit a support ticket with the following details:
   If the new account name already exists due to a sign-up error, please indicate this as well.
 
 ##### Delete Codefresh account
+
+>**NOTE:**  
+Only account owners can delete the account. 
+
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Organization Information**.
 1. Scroll down to Delete Account and click **Delete Account**.
