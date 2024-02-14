@@ -54,6 +54,11 @@ Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/installation/gitop
 The Codefresh Runner, also known as the Agent, is required for Codefresh pipelines, and enables running pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.  
 Read more about it in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/).
 
+### Managed Clusters
+Managed clusters are external clusters added to provisioned GitOps Runtimes. You can deploy applications to the clusters without having to install Argo CD on the clusters in order to do so.
+
+
+
 ### Codefresh Clients
 
 Codefresh Clients include the UI and the CLI.     
