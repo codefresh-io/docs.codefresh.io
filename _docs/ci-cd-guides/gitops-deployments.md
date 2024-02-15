@@ -73,7 +73,7 @@ If you don't have a runtime installed already, for this guide, install the Hoste
 
 <!--- Add hosted runtime image-->
 
-## Creating a CI Pipeline for GitOps
+## Creating a CI Pipeline for image enrichment with GitOps Jira integration
 
 Creating a CI pipeline for GitOps is no different from creating a standard pipeline. The only difference is that as the final action for the pipeline, you should add the report image action provided by Codefresh. The report image action correlates the Docker image with the Git repository details, Jira issues associated with it, and additional information from the registry that stores the image. 
 
@@ -86,7 +86,6 @@ Follow these steps to create a CI pipeline for GitOps:
 1. Create your Codefresh pipeline as you usually do, using the Example CI pipeline for GitOps as a guide:  
    Use existing CI actions for compiling code, running unit tests, security scanning etc.
      1. Place the final action in the pipeline as the “report image” action provided by Codefresh.  
-  See Codefresh report image
      1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified.
 1. View the enriched image in Codefresh’s Images dashboard, and in any application in which it is used.
 
