@@ -9,7 +9,7 @@ toc: true
 ---
 Codefresh integrates with Jira in several ways, both to pull information from Jira to Codefresh and to push information from Codefresh to Jira for notifications.  
 
-Set up a Jira integration for pipelines, and then reference the integration in your pipeline through a custom or the `jira-issue-extractor` Marketplace step to extract the Jira issue. See [set up the integration with Jira for CI pipelines](#set-up-jira-integration-in-codefresh) and [example of Jira integration in pipelines](#example-of-jira-integration-in-codefresh-pipeline).
+Set up a Jira integration for pipelines, and then reference the integration in your pipeline through a custom or the `jira-issue-extractor` Marketplace step to extract the Jira issue. See [Set up the integration with Jira for CI pipelines](#set-up-jira-integration-in-codefresh) and [Example of Jira integration in pipelines](#example-of-jira-integration-in-codefresh-pipeline).
 
 Optionally, a [GitOps-based Jira integration](#gitops-based-jira-integration-for-image-enrichment) allows you to enrich images with Jira information through another Marketplace step.  
 
