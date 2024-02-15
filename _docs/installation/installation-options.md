@@ -165,22 +165,22 @@ The Pipelines module comprises a set of microservices for managing Codefresh pip
 The Codefresh Runner and clients (UI/CLI) forward incoming requests to the Pipelines API, which in turn forwards them to the different Pipeline microservices.
 
 
-* Broadcaster
+* Broadcaster  
   Forwards requests from the Codefresh Runner and client to the Codefresh API when Firebase is not used.
 
-* Runtime Manager 
+* Runtime Manager  
   Manages the runtime environments for the Codefresh Runner in the Codefresh On-Premises platform.
 
-* Context Manager 
+* Context Manager   
   Stores information on Pipeline Integrations created in Codefresh.
 
-* Pipeline Manager 
+* Pipeline Manager   
   Stores and manages projects and pipeline entities. 
 
-* Helm Manager 
+* Helm Manager   
    Provides an interface for aggregated views of Helm integrations in Codefresh Pipelines. 
 
-* GitOps Manager 
+* GitOps Manager  
   Deprecated. Stored information for populating the GitOps Dashboard in Codefresh Pipelines. The dashboard is now populated by Codefresh GitOps. 
 
 
@@ -189,22 +189,22 @@ The Codefresh Runner and clients (UI/CLI) forward incoming requests to the Pipel
 
 The GitOps module comprises the microservices for Codefresh and Argo users to consume and share Argo Workflow templates.
 
-* Cron executer
-   The Cron Executor performs periodic internal tasks required for platform functionality.
+* Cron executer  
+  The Cron Executor performs periodic internal tasks required for platform functionality.
 
-* API Events
+* API Events  
   Receives events from GitOps Runtimes and publishes them to the Event Bus.
 
-* Event Handler
+* Event Handler  
   The Event Handler subscribes to events originating from the API Events received via the Event Bus, processes, and updates them.
 
-* Audit Manager
+* Audit Manager  
   The Audit Manager reports and stores audit logs of API calls to Codefresh GitOps.
 
-* Analytics Reporter
+* Analytics Reporter  
   Reports analytics information to populate deployment, runtime, and cluster data for GitOps in the different dashboards and widgets.
 
-* Argo Hub
+* Argo Hub  
   Interfaces with the Argo Hub platform for working with pre-built Argo Workflow templates. Visit ​​https://codefresh.io/argohub/ for more details.
 
 
@@ -214,26 +214,26 @@ Codefresh stores entity, configuration, and integration data for Codefresh Pipel
 Each microservice within the Codefresh Pipeline and GitOps modules has its own dedicated database, which is independent from the databases used by other microservices. Communication between each microservice and its respective database is exclusive.
 
 
-* mongoDB
+* mongoDB  
   The main database for entity storage for Pipeline and GitOps microservices. 
 
-* Redis
+* Redis  
     * Optimizes caching for faster response times to requests and reduce load on the database
     * When Firebase is not used, interacts with the Broadcaster microservice to serve pipeline build logs to the client
 
-* RabbitMQ
+* RabbitMQ  
   RabbitMQ serves as a message bus to move tasks and information between microservices in the Pipeline and GitOps modules.
 
-* PostgreSQL
+* PostgreSQL  
   The PostgreSQL database stores:
     * Audit logs of API calls from the Codefresh and GitOps APIs
     * Analytics information 
 
 
-* NATS
+* NATS  
   Legacy message bus.
 
-* Consul
+* Consul  
   Stores data for legacy builder and Windows nodes.
 
 
