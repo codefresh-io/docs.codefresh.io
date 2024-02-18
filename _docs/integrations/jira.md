@@ -11,7 +11,7 @@ Codefresh integrates with Jira in several ways, both to pull information from Ji
 
 Set up a Jira integration for pipelines, and then reference the integration in your pipeline through a custom or the `jira-issue-extractor` Marketplace step to extract the Jira issue. See [Set up the integration with Jira for CI pipelines](#set-up-jira-integration-in-codefresh) and [Example of Jira integration in pipelines](#example-of-jira-integration-in-codefresh-pipeline).
 
-Optionally, a [GitOps-based Jira integration](#gitops-based-jira-integration-for-image-enrichment) allows you to enrich images with Jira information through another Marketplace step.  
+Optionally, a [GitOps-based Jira integration](#gitops-based-jira-integration-for-image-enrichment) allows you to enrich images with Jira information through a different Marketplace step.  
 
 For information on Jira integration for notifications, see [Jira notification integrations for pipelines]({{site.baseurl}}/docs/integrations/jira-integration/).
 
@@ -27,7 +27,7 @@ When you add a new Jira integration in Codefresh, you can authenticate using eit
 * Jira account
   Provide the username and password credentials for your Jira account.
 
-## Set up Jira integration in Codefresh
+## Set up Jira integration for pipelines in Codefresh
 <!---The goal of the Codefresh [GitOps Dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) is to provide the highest observability into your deployments. The Codefresh GitOps Dashboard tags the Jira issues associated to deployments automatically through the Codefresh Jira Integration. This section will provide an overview of setting up the integration. -->
 
 {{site.data.callout.callout_warning}}
@@ -138,7 +138,7 @@ Currently Codefresh must provide you with access to use the Codefresh app in the
 1. Copy the **Client Key**. You will need these to set up Jira integration for pipelines in Codefresh with the Jira Marketplace App. 
 
 
-## Example of Jira integration in Codefresh pipeline
+## Example of Jira integration usage in Codefresh pipeline
 Here's an example of a pipeline with the [`jira-issue-extractor` step](https://codefresh.io/steps/step/jira-issue-extractor){:target="\_blank"} that extracts the Jira issue matching the project prefix defined.
 
 `YAML`
@@ -165,12 +165,13 @@ steps:
 {% endhighlight %}
 
 ## GitOps-based Jira integration for image enrichment
-A GitOps-based Jira integration]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/) allows you to connect your CI pipeline with the integration to enrich and report images to the Codefresh platform. 
+Codefresh also supports [Jira integration for GitOps]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  
+GitOps-based Jira integration, combined with a registry integration also for GitOps, allows you to connect your CI pipeline with the integration to enrich the built image and report the enriched image to Codefresh. 
 
 Here's how you would do it:
 1. Set up Jira and registry integrations for GitOps  
-  You need to connect Jira and your container registry to Codefresh. These integrations are specific to GitOps, and differ from the pipeline integrations that you may have already set up.    
-  Once you set up the GitOps integrations, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
+  You need to connect Jira and your container registry to Codefresh . These integrations are specific to GitOps, and differ from the pipeline integrations that you may have already set up.    
+  Once you set up the GitOps-based Jira and registry integrations, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
 1. Create your Codefresh pipeline as you usually do.  
   * Place the final action in the pipeline as the _report image_ action.  
   * When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified.
@@ -179,7 +180,7 @@ Here's how you would do it:
 
 ### Example CI pipeline with image enrichment step
 
-Below is an example of a CI pipeline using the GitOps-based Jira integration. 
+Below is an example of a CI pipeline using the _Jira and registry integrations for GitOps_. 
 
 The [`codefresh-report-image` step](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}, the last step in the pipeline, reports Jira and registry information to Codefresh. The values of the Git variables are populated from those you defined in the respective GitOps integrations. 
 
