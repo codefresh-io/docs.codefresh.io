@@ -30,12 +30,12 @@ Select the view format for applications in the GitOps Apps dashboard, as either 
 
   
 Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-  * [Get status from application header](#monitor-gitops-application-status-in-application-header)
+  * [Get status from application header](#monitoring-status-of-argo-cd-application-in-application-header)
   * [Analyze out-of-sync applications in Diff View](#analyze-out-of-sync-applications-with-diff-view)
-  * [View deployment and configuration info for selected Argo CD application](#view-deployment-configuration-info-for-selected-argo-cd-application)
+  * [View deployment and configuration summary for selected Argo CD application](#view-deployment-and-configuration-summary-for-selected-argo-cd-application)
   * [Monitor resources for selected Argo CD application](#monitoring-resources-for-selected-argo-cd-application)
   * [Monitor deployments for selected Argo CD application](#monitoring-deployments-for-selected-argo-cd-application)
-  * [Monitor services for selected Argo CD application](#monitor-services-for-selected-argo-cd-application)
+  * [Monitor services for selected Argo CD application](#monitoring-services-for-selected-argo-cd-application)
 
 
 {{site.data.callout.callout_tip}}
@@ -195,9 +195,9 @@ Correlate details such as the sync revision in the Application Header with the r
 
 
 ##### Information and actions in the Application Header  
-* **App HealthDisplays health status of the current release
-* Displays Current Sync sync status of the current release with the current revision and results of current and previous sync operation
-* Auto-sync enabled/disabled indication
+* **App Health** displays health status of the current release
+* **Current Sync** sync status of the current release with the sync revision. The sync revision should be identical to the release revision in the Current Release depolyment record previous sync operation
+* **Auto-sync** enabled/disabled indication
 * **More** links for sync statuses for details on the date, tags, and message
 * **Terminate Sync** option for active sync operations to stop the sync if needed
 
@@ -242,7 +242,7 @@ max-width="50%"
 {:start="4"}
 1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
 
-## View deployment configuration summary for selected Argo CD application
+## View deployment and configuration summary for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
@@ -638,6 +638,7 @@ max-width="50%"
 Monitor ongoing and historical deployments for the selected application. 
 The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases. 
 
+
 {% include
 image.html
 lightbox="true"
@@ -658,15 +659,17 @@ To view information on historical deployments, mouse over the dot on the deploym
 * The release revision is identical to the sync revision displayed in Last Sync Result. If the release and sync revisions are not identical, which can be the case for different reasons, the Current Release displays a loading status instead of the release revision. 
 
 
-{% include
-image.html
+
+{% include image.html
 lightbox="true"
 file="/images/applications/apps-dashboard-current-release.png"
 url="/images/applications/apps-dashboard-current-release.png"
 alt="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
 caption="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
-max-width=50%"
+max-width="50%"
 %}
+
+
 
 You can:  
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
@@ -795,7 +798,7 @@ max-width="50%"
 
 
 
-## Monitor services for selected Argo CD application
+## Monitoring services for selected Argo CD application
 
 
 The Services tab shows the K8s services for each deployment of the application. 
