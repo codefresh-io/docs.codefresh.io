@@ -461,7 +461,7 @@ Compare the versions of dependencies dependency in the same application across d
 
 
 ### View deployment (Timeline) history for applications
-Review the deployments for an application. Clicking the application name takes you to the familiar Timeline tab in the GitOps Apps dashboard with the deployment history for the application. See [Monitor deployments for selected Argo CD application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitor-deployments-for-selected-argo-cd-application).
+Review the deployments for an application. Clicking the application name takes you to the familiar Timeline tab in the GitOps Apps dashboard with the deployment history for the application. See [Monitor deployments for selected Argo CD application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitoring-deployments-for-selected-argo-cd-application).
  
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
 1. In the Environment column with the application, click the application name to view deployment history.
