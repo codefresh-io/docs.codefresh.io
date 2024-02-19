@@ -186,12 +186,17 @@ The Codefresh default is Argo CD's default duration of 30 minutes for a sync ope
 1. To see more details such as the message and sync duration, switch to **Sync Info**.
 1. Drill down into the application to investigate the issue and make changes.
 
-## Monitor Argo CD application status in application header
-When you select an application from the Applications tab in the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application, including health and sync statuses. 
-Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
+## Monitoring status of Argo CD application in Application Header
+When you select an application from the Applications tab in the GitOps Apps dashboard, the Application Header, at the top of the page, displays the information you need on the current release, including health and sync statuses. 
 
-Information and actions in the application header:  
-* Displays health and status, and results of current and previous sync operation
+The Application Header is always displayed for the selected application, no matter what tab you navigate to. 
+
+Correlate details such as the sync revision in the Application Header with the release revision in the Current Release's deployment record in the Timeline tab.  
+
+
+##### Information and actions in the Application Header  
+* **App HealthDisplays health status of the current release
+* Displays Current Sync sync status of the current release with the current revision and results of current and previous sync operation
 * Auto-sync enabled/disabled indication
 * **More** links for sync statuses for details on the date, tags, and message
 * **Terminate Sync** option for active sync operations to stop the sync if needed
@@ -237,11 +242,11 @@ max-width="50%"
 {:start="4"}
 1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
 
-## View deployment configuration info for selected Argo CD application
+## View deployment configuration summary for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
-Access the Quick View from the GitOps Apps dashboard, either from the application's context menu, or after drilldown, from the Current State tab.
+Access the Quick View from the GitOps Apps dashboard, either from the application's context menu, or after drill down, from the Current State tab.
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following:  
@@ -630,10 +635,8 @@ max-width="50%"
 
 ## Monitor deployments for selected Argo CD application  
 
-Monitor an ongoing deployment for the selected application, and review its historical deployments. 
-The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
-
-The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.  
+Monitor ongoing and historical deployments for the selected application. 
+The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases. 
 
 {% include
 image.html
@@ -642,7 +645,27 @@ file="/images/applications/dashboard-timeline-main.png"
 url="/images/applications/dashboard-timeline-main.png"
 alt="GitOps Apps dashboard: Timeline tab"
 caption="GitOps Apps dashboard: Timeline tab"
-max-width="30%"
+max-width="50%"
+%}
+
+**Deployment Chart**  
+The Deployment Chart below the Application Header displays the day-to-day deployments for the selected time period.  
+To view information on historical deployments, mouse over the dot on the deployment chart.  
+
+**Current Release**
+* The deployment record for the Current Release is tagged as Current Version. 
+* The health status of the Current Release is the application's health status as displayed in the Application Header.
+* The release revision is identical to the sync revision displayed in Last Sync Result. If the release and sync revisions are not identical, which can be the case for different reasons, the Current Release displays a loading status instead of the release revision. 
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/apps-dashboard-current-release.png"
+url="/images/applications/apps-dashboard-current-release.png"
+alt="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
+caption="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
+max-width=50%"
 %}
 
 You can:  
@@ -651,7 +674,7 @@ You can:
 
 See also [Troubleshoot Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
-**How to monitor deployments**
+##### How to monitor deployments
 1. If required, set filters to narrow the number of deployments for the selected application.
 1. To view GitOps details for a deployment, in the deployment chart mouse over the dot that represents the deployment. 
 1. To view additional details, expand the record for that deployment.
@@ -670,14 +693,10 @@ max-width="60%"
 ### Monitor CI details by deployment
 
 Each deployment record displays the complete CI history for that deployment.
-
-
 * The **CI Builds** shows the Argo Workflow run in the deployment. Click the build name to see the Argo Workflow in a new browser window.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
-
-
 
 ### Monitor rollouts by deployment
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
