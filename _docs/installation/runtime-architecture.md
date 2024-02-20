@@ -349,10 +349,10 @@ To maintain that high standard, we add several weeks of testing and bug fixes to
 Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
 
-### Reporters
-Reporters monitor changes to resources deployed on the cluster and report these changes back to the Codefresh platform.
+### Event Reporters
+Event Reporters monitor changes to resources deployed on the cluster and report these changes back to the Codefresh platform.
 
-Codefresh has two types of reporters:
+Codefresh has two types of Event Reporters:
 * Resource Reporter
 * Application Reporter
 
