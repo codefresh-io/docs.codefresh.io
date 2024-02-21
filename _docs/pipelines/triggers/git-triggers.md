@@ -360,10 +360,11 @@ The Modified files option accepts glob expressions. The paths are relative to th
 ```
 /package.json
 /Dockerfile*
-my-subproject/
+my-subproject/*
+my-subproject/**
 my-subproject/sub-subproject/package.json
 my-subproject//pom.xml
-!config/
+!config/**
 
 ```
 
@@ -375,9 +376,9 @@ You can also use relative paths with dot-slash. Therefore `./package.json` and `
 You can also define [multiple expressions](http://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm){:target="\_blank"} like this, with a maximum of 65k characters for the field:
 
 ```
-{app/,test/}
-{/package.json,my-subproject/}
-!{deployment/,/version.cfg}
+{app/*,test/**}
+{/package.json,my-subproject/**}
+!{deployment/*,/version.cfg}
 ```
 
 Once a commit happens to a code repository, Codefresh will see which files are changed from the Git provider and trigger the build only if the changed files match the glob expression. If there is no match no build will be triggered.
@@ -409,9 +410,9 @@ max-width="70%"
 
 And then in the Git trigger for each one we set the modified files field to the following values:
 
-* For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/`.
-* For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/`.
-* For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/`.
+* For the *build-nestjs-only* pipeline *MODIFIED FILES* has `my-nestjs-project/**`.
+* For the *build-java-only* pipeline *MODIFIED FILES* has `my-java-project/**`.
+* For the *build-rails-only* pipeline *MODIFIED FILES* has `my-rails-project/**`.
 
 This way as multiple developers work on the Git repository only the affected projects will actually build. A change to the NestJS project will *not* build the Rails project as well. Also, if somebody changes *only* the README file and nothing else, no build will be triggered at all (which is a good thing as the source code is exactly the same).
 
