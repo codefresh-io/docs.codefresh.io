@@ -367,6 +367,9 @@
           url: "/install-argo-rollouts"
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
+        - title: Promotions
+          url: "/promotions"
+
 
 - title: Pipelines
   url: "/pipelines"
