@@ -60,8 +60,7 @@ As we have transitioned to Helm-based Runtimes for GitOps, we have permanently d
 ## Bug fixes
 
 **General**  
-* (On-premises) Unable to access Account Settings from the Admin Management panel. (CR-21125 - Denis)
-Multiple ABAC rules in GO for the same user in not correctlyIncorrect handling for ABAC rules intersections in GO. (CR-2264 - Andrii)
+* Multiple ABAC rules in GO for the same user not correctly resolved. (CR-2264 - Andrii)
 * Unmasked access token for Okta (CR-19131 Alina)
 <br>
 
@@ -78,12 +77,17 @@ Multiple ABAC rules in GO for the same user in not correctlyIncorrect handling f
 **GitOps**  
 * `Prune skipped` message for Argo CD applications after upgrading to GitOps Runtime v0.4.2.
 * Unable to delete clusters in the Codefresh UI. (CR_22346 Daniel Maizel)
-* Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2 (CR-22345 - Mikhail)
-* When adding a Git Source and manually defining the branch, metacharacters are not encoded as HTML in the YAML. (CR-22192 - Noam)
+* Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2. (CR-22345 - Mikhail)
+* When adding a Git Source and manually defining the branch, metacharacters are not encoded as HTML in the YAML. 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then readds them. (Pasha)
-* (Onpremises)On-premises GitOps Runtime causes Mongo read-models database to grow unmanagabky (CR-21738 Noam)
 * Quay.io registir (CR-21342 Ilia)
 * Empty page on clicking **View Native Workflow** for the selected workflow in the Workflows tab. (CR-17118 Ilia/Zhenya)
+* (On-premises) Accessing Account Settings from the Admin Management panel with both GitOps and Pipelines does not load GitOps features.
+
+
+
+
+
 
 
 
