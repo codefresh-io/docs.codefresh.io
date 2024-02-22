@@ -5,6 +5,56 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
+### Blobless Git clone
+
+Here's one more enhancement which contributes to workflow optimization. Our new field for our `git_clone` step: the `exclude_blob` field.
+
+Filter out blob files from the Git repository to further streamline your development process - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`.  
+To always include blob files, simply retain the default value of `false`.
+
+
+### Argo CD application enhancements
+
+We have a couple of usability enhancements for Argo CD applications in Codefresh.  
+
+##### Deployment record for Current Release**
+To more accurately represent of the selected application's live deployment status, we now clearly differentiate between current and historical deployments in the Timeline tab.
+
+The Current Release is now prominently displayed as a dedicated deployment record at the top of the Timelines tab, tagged as the Current Version. It is followed by the list of Previous Releases. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/feb24/rel-notes-feb24-current-release-record.png"
+url="/images/whats-new/feb24/rel-notes-feb24-current-release-record.png"
+alt="Current Release deployment record in Timeline tab"
+caption="Current Release deployment record in Timeline tab"
+max-width="70%"
+%}
+
+* To prevent confusion with duplicate statuses, the application's health and sync statuses are now exclusively displayed and tracked within the Application Header. 
+
+* To validate that the current release as the live state, the release revision in the deployment record mirrors the sync revision displayed in Last Sync Result. 
+
+For details, see [Monitoring deployments for selected Argo CD application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#monitoring-deployments-for-selected-argo-cd-application).
+
+##### Quick links
+The Configuration tab displays handy links to the application's GitOps Runtime, Git Source, and YAML manifest in the Git repo.
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/feb24/rel-notes-feb24-apps-quick-links.png"
+url="/images/whats-new/feb24/rel-notes-feb24-apps-quick-links.png"
+alt="Quick links for application in Configuration tab"
+caption="Quick links for application in Configuration tab"
+max-width="70%"
+%}
+
+
+### Deprecation for GitOps CLI
+
+As we have transitioned to Helm-based Runtimes for GitOps, we have permanently deprecated the CLI for GitOps.
 
 
 ## Bug fixes
