@@ -5,22 +5,21 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ## Features & enhancements
 
-### Blobless Git clone
+### Pipelines: Blobless Git clone
 
-Here's one more enhancement which contributes to workflow optimization. Our new field for our `git_clone` step: the `exclude_blob` field.
+Here's an enhancement which contributes to workflow optimization. A new field for our `git_clone` step: the `exclude_blob` field.
 
-Filter out blob files from the Git repository to further streamline your development process - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`.  
-To always include blob files, simply retain the default value of `false`.
+Filter out blob files from the Git repository to further streamline your development process - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`. To always include blob files, simply retain the default value of `false`.
 
 
-### Argo CD application enhancements
+### GitOps: Argo CD application enhancements
 
-We have a couple of usability enhancements for Argo CD applications in Codefresh.  
+We introduced a couple of usability enhancements for Argo CD applications in Codefresh.  
 
-##### Deployment record for Current Release**
-To more accurately represent of the selected application's live deployment status, we now clearly differentiate between current and historical deployments in the Timeline tab.
+##### Deployment record for Current Release
+To more accurately represent the live deployment status of the selected application in the Timeline tab, we now clearly differentiate between current and historical deployments.
 
-The Current Release is now prominently displayed as a dedicated deployment record at the top of the Timelines tab, tagged as the Current Version. It is followed by the list of Previous Releases. 
+The Current Release is prominently displayed as a dedicated deployment record at the top of the Timelines tab, tagged as the Current Version. It is followed by the list of Previous Releases. 
 
 {% include
 image.html
@@ -52,7 +51,7 @@ max-width="70%"
 %}
 
 
-### Deprecation for GitOps CLI
+### GitOps: Deprecation of GitOps CLI
 
 As we have transitioned to Helm-based Runtimes for GitOps, we have permanently deprecated the CLI for GitOps.
 
