@@ -636,7 +636,8 @@ max-width="50%"
 ## Monitoring deployments for selected Argo CD application  
 
 Monitor ongoing and historical deployments for the selected application. 
-The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases. 
+The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases.  
+
 
 
 {% include
@@ -649,16 +650,20 @@ caption="GitOps Apps dashboard: Timeline tab"
 max-width="50%"
 %}
 
+
 **Deployment Chart**  
 The Deployment Chart below the Application Header displays the day-to-day deployments for the selected time period.  
 To view information on historical deployments, mouse over the dot on the deployment chart.  
 
 **Current Release**
+* The Current Release deployment record is only displayed in the first page of deployments. 
 * The deployment record for the Current Release is tagged as Current Version. 
 * The health status of the Current Release is the application's health status as displayed in the Application Header.
 * The release revision is identical to the sync revision displayed in Last Sync Result. If the release and sync revisions are not identical, which can be the case for different reasons, the Current Release displays a loading status instead of the release revision. 
 
-
+{{site.data.callout.callout_tip}}
+If the Current Release deployment record is not displayed, it could be because filters are applied. 
+{{site.data.callout.end}}
 
 {% include image.html
 lightbox="true"
