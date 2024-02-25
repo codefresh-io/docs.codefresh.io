@@ -121,8 +121,8 @@ The Application Event Reporter specializes in monitoring changes to Argo CD appl
 
 In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application and the Git manifests for all the application's managed resources. 
 
-
-Here's an illustration of the data flow for the Application Event Reporter (identified on the cluster as **event-reporter**):
+##### Application Event Reporter data flow
+The diagram below illustrates the data flow for the Application Event Reporter (identified on the cluster as **event-reporter**):
 
 {% include
    image.html
@@ -145,7 +145,8 @@ Here's an illustration of the data flow for the Application Event Reporter (iden
   
   >**NOTE**  
   The number of Application Event Reporters are equal to the configured number of replicas. By default, there are five replicas, but the number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
-  
+
+{:start="4"}  
 1. The Application Event Reporter requests both the application's live-state manifest and the Git manifests for all the application's managed resources from the Argo CD Server.  
 
 1. The Argo CD server retrieves these manifests from the Argo CD repo-server and forwards them to the Application Event Reporter.
