@@ -67,7 +67,7 @@ alt="Account Information"
 max-width="90%" 
 %}
 
-{:start="7"}
+{:start="8"}
 1. For integration through Jira Marketplace App authentication, to verify the connection details, click **Test Connection**.
 1. To apply the changes, click **Save**.
 
@@ -166,14 +166,14 @@ steps:
 
 ## GitOps-based Jira integration for image enrichment
 Codefresh also supports [Jira integration for GitOps]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/).  
-GitOps-based Jira integration, combined with a registry integration also for GitOps, allows you to connect your CI pipeline with the integration to enrich the built image and report the enriched image to Codefresh. 
+GitOps-based Jira integration, combined with a registry integration, also GitOps-based, allows you to connect your CI pipeline with the integration to enrich the built image, and report the enriched image to Codefresh. 
 
 Here's how you would do it:
 1. Set up Jira and registry integrations for GitOps  
-  You need to connect Jira and your container registry to Codefresh . These integrations are specific to GitOps, and differ from the pipeline integrations that you may have already set up.    
-  Once you set up the GitOps-based Jira and registry integrations, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
+  You need to connect Jira and your container registry to Codefresh. These integrations are specific to GitOps, and differ from the Jira and registry integrations that you may have already set up for your CI pipelines.    
+  Once you set up the GitOps-based integrations, you can reference them in the CI pipeline through the report image step for Codefresh to retrieve the necessary information.
 1. Create your Codefresh pipeline as you usually do.  
-  * Place the final action in the pipeline as the _report image_ action.  
+  * Place the final action in the pipeline as the _report image_ action. See the example in the following section. 
   * When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified.
 1. View the enriched image in Codefresh’s Images dashboard, and in any application in which it is used.
 
