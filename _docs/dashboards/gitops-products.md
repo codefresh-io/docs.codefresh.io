@@ -183,8 +183,8 @@ Connect an application to a Product by adding the default or custom annotation t
 The annotation is defined as part of the Product's settings when creating Products.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
-1. Mouse over the row with the Product name, and then click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-1. In the Edit Product form, copy the annotation to add to the application's manifest.
+1. Mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+1. In the Edit Product form, copy the annotation to add to the application's manifest, and close the form.
 
 {% include 
 	image.html 
@@ -197,9 +197,9 @@ The annotation is defined as part of the Product's settings when creating Produc
 %}
 
 {:start="4"}
-1. Expand the Product.
-1. From the application's context menu, select **Edit**.
-1. In the **Configuration** tab, switch to the **YAML** format and add the annotation.
+1. Click on the Product name to view its applications.
+1. From the context menu of the application to which to add the annotation, select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+1. In the **Configuration** tab, switch to **YAML** format and add the annotation.
 
 {% include 
 	image.html 
