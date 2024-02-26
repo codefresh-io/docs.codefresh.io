@@ -184,7 +184,7 @@ The annotation is defined as part of the Product's settings when creating Produc
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-1. In the Edit Product form, copy the annotation to add to the application's manifest, and close the form.
+1. In the Edit Product form, copy the annotation to add to the application's manifest and close the form.
 
 {% include 
 	image.html 
@@ -217,8 +217,11 @@ The annotation is defined as part of the Product's settings when creating Produc
 ### Unassign an application from a Product
 Unassign an application from a Product directly from the Products dashboard. This is a quick option for applications manually assigned to Products from the Products dashboard.
 
->**TIP**  
+{{site.data.callout.callout_tip}}
+**TIP**  
 If you used annotations to connect applications to Products, to unassign the application, remove the annotation from the application manifest.
+{{site.data.callout.end}}
+
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Do one of the following:
