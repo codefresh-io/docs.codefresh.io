@@ -76,31 +76,6 @@ The application can comprise and usually comprises microservices
 The application must be promoted through  single or mu;ltiple Envionments.
 
 
-## Validate promotion eligibility for environment
- how to promote
-When a promotion is triggered,  either manually or declaratively or programmtically in the current environment you can define how to validate the promotion in the current environment.
-
-Validation verifies that the application meets the requirements and standards necessary for deployment in the target environment. This may include checks for code quality, passing tests, compatibility with dependencies, security compliance, and other factors relevant to the deployment environment.
-
-The validations comprise promotion workflows and the promotion action. It is at the level of the environment. So it can be shared between environments or can be unique to each environment. 
-This can be shared between t
-
-Promotion validation includes:
-Workflows to run 
-Workflows are meant to validate the promotion. They are completely optional. In general, any promotion to any environment from developement generally includes validations such as unit tests, smoke tests, and any other tasks.
-Unit tests
-Integration tests
-Notifications
-Smoke tests
-
-Promotion action
-The promotion action is mandatory. 
-Similar to the promotion trigger that initiated the promotion, it the action that promotes the application in the current envrionment.
-
-Commit: automated approval-less promotion. Does not require manual intervention.
-Pull Request (PR): Requires approval therough manual intervention
-
-Promotion Policy
 
 
 
