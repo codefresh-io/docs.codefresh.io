@@ -211,9 +211,9 @@
   icon: images/home-icons/runtimes.svg
   url: ""
   links:
-    - title: Deployment options
+    - title: Codefresh platform deployment
       localurl: /docs/installation/installation-options/
-    - title: On-Premises deployment
+    - title: On-Premises platform installation & configuration
       localurl: /docs/installation/installation-options/on-premises/
     - title: On-Premises platform account & user setup
       localurl: /docs/installation/installation-options/on-premises/on-prem-configuration/     
@@ -225,8 +225,6 @@
       localurl: /docs/installation/gitops/hosted-runtime/
     - title: Hybrid GitOps Runtime installation
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
-    - title: On-premises GitOps Runtime installation
-      localurl: /docs/installation/gitops/on-prem-gitops-runtime-install/
     - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
       localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/
 
