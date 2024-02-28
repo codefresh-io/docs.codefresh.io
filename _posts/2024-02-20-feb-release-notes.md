@@ -51,37 +51,29 @@ max-width="70%"
 %}
 
 
-### GitOps: Deprecation of GitOps CLI
+### GitOps: Deprecation of GitOps CLI for Runtime installation
 
-As we have transitioned to Helm-based Runtimes for GitOps, we have permanently deprecated the CLI for GitOps.
+As we have transitioned to Helm-based Runtimes for GitOps, we have permanently deprecated the CLI-based installation for GitOps Runtimes.
 
 
 ## Bug fixes
 
-**General**  
-* Multiple ABAC rules in GO for the same user not correctly resolved. (CR-2264 - Andrii)
-* Unmasked access token for Okta (CR-19131 Alina)
+##### General 
+* ABAC (Attribute-based access control) rules in GO not correctly resolved when multiple rules are configured for the same user. 
+* Access token for Okta is not masked. (CR-19131 Alina)
 <br>
 
-**Pipelines**  
+##### Pipelines
 (On-premises) Unable to deploy Helm charts to Helm boards after upgrade to v2.2.4 (CR-22370 - Denis)
 
-
-
-
-
-
-<br>
-
-**GitOps**  
+##### GitOps 
 * `Prune skipped` message for Argo CD applications after upgrading to GitOps Runtime v0.4.2.
-* Unable to delete clusters in the Codefresh UI. (CR_22346 Daniel Maizel)
-* Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2. (CR-22345 - Mikhail)
+* Unable to delete clusters in the Codefresh UI. 
+* Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2. 
 * When adding a Git Source and manually defining the branch, metacharacters are not encoded as HTML in the YAML. 
-* Renaming an ApplicationSet or GitSource removes all application's resources and then readds them. (Pasha)
-* Quay.io registir (CR-21342 Ilia)
-* Empty page on clicking **View Native Workflow** for the selected workflow in the Workflows tab. (CR-17118 Ilia/Zhenya)
-* (On-premises) Accessing Account Settings from the Admin Management panel with both GitOps and Pipelines does not load GitOps features.
+* Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again. 
+* Empty page on clicking **View Native Workflow** for the selected workflow in the Workflows tab.
+* (On-premises) GitOps features not loaded on accessing Account Settings from the Admin Management panel with both GitOps and Pipeline modules.
 
 
 
