@@ -5,7 +5,7 @@ group: installation
 toc: true
 ---
 
-Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are considered legacy and will be deprecated.  
+Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are deprecated.  
 If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve important data and install the new Helm GitOps Runtime.
 
 When you migrate the CLI-based Runtime, the Git Sources, external clusters, and Argo Rollouts installed on external clusters, are moved from the installation repository to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
@@ -17,7 +17,7 @@ Migration from CLI-based to Helm-based Runtimes is supported from GitOps CLI ver
 
 ## Before you begin
 Make sure you have:
-* Git user token (see [Git tokens]({{site.baseurl}}/docs/reference/git-tokens/#git-user-access-token-scopes))
+* Git user token (see [Git tokens]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes))
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
@@ -287,7 +287,7 @@ You can also create [Environments]({{site.baseurl}}/docs/dashboards/gitops-envir
 ## Related articles
 [Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 
