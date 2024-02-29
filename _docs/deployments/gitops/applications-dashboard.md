@@ -30,12 +30,12 @@ Select the view format for applications in the GitOps Apps dashboard, as either 
 
   
 Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-  * [Get status from application header](#monitor-gitops-application-status-in-application-header)
+  * [Get status from application header](#monitoring-status-of-argo-cd-application-in-application-header)
   * [Analyze out-of-sync applications in Diff View](#analyze-out-of-sync-applications-with-diff-view)
-  * [View deployment and configuration info for selected Argo CD application](#view-deployment-configuration-info-for-selected-argo-cd-application)
-  * [Monitor resources for selected Argo CD application](#monitor-resources-for-selected-argo-cd-application)
-  * [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application)
-  * [Monitor services for selected Argo CD application](#monitor-services-for-selected-argo-cd-application)
+  * [View deployment and configuration summary for selected Argo CD application](#view-deployment-and-configuration-summary-for-selected-argo-cd-application)
+  * [Monitor resources for selected Argo CD application](#monitoring-resources-for-selected-argo-cd-application)
+  * [Monitor deployments for selected Argo CD application](#monitoring-deployments-for-selected-argo-cd-application)
+  * [Monitor services for selected Argo CD application](#monitoring-services-for-selected-argo-cd-application)
 
 
 {{site.data.callout.callout_tip}}
@@ -128,7 +128,7 @@ Here's a description of the information and actions you can see for individual a
 | --------------         | --------------           |  
 |**Application filters**       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application health<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources">Health status</a> in this article, and Argo CD's official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/docs/docs/installation/gitops/git-sources/">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
 |{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the GitOps Apps dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
-|**Application actions**| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Monitor deployments for selected Argo CD application](#monitor-deployments-for-selected-argo-cd-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications/">Refresh/hard refresh GitOps applications</a>.{:/} |
+|**Application actions**| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Monitor deployments for selected Argo CD application](#monitoring-deployments-for-selected-argo-cd-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications/">Refresh/hard refresh GitOps applications</a>.{:/} |
 
 
 
@@ -186,13 +186,18 @@ The Codefresh default is Argo CD's default duration of 30 minutes for a sync ope
 1. To see more details such as the message and sync duration, switch to **Sync Info**.
 1. Drill down into the application to investigate the issue and make changes.
 
-## Monitor Argo CD application status in application header
-When you select an application from the Applications tab in the GitOps Apps dashboard, the application header, at the top of the page, displays critical information on the application, including health and sync statuses. 
-Once you select an application, the quickest option to monitor statuses is through the application header which is always displayed, no matter what tab you navigate to.  
+## Monitoring status of Argo CD application in Application Header
+When you select an application from the Applications tab in the GitOps Apps dashboard, the Application Header, at the top of the page, displays the information you need on the current release, including health and sync statuses. 
 
-Information and actions in the application header:  
-* Displays health and status, and results of current and previous sync operation
-* Auto-sync enabled/disabled indication
+The Application Header is always displayed for the selected application, no matter what tab you navigate to. 
+
+Correlate details such as the sync revision in the Application Header with the release revision in the Current Release's deployment record in the Timeline tab.  
+
+
+##### Information and actions in the Application Header  
+* **App Health** displays health status of the current release
+* **Current Sync** sync status of the current release with the sync revision. The sync revision should be identical to the release revision in the Current Release depolyment record previous sync operation
+* **Auto-sync** enabled/disabled indication
 * **More** links for sync statuses for details on the date, tags, and message
 * **Terminate Sync** option for active sync operations to stop the sync if needed
 
@@ -237,11 +242,11 @@ max-width="50%"
 {:start="4"}
 1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
 
-## View deployment configuration info for selected Argo CD application
+## View deployment and configuration summary for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
-Access the Quick View from the GitOps Apps dashboard, either from the application's context menu, or after drilldown, from the Current State tab.
+Access the Quick View from the GitOps Apps dashboard, either from the application's context menu, or after drill down, from the Current State tab.
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Do one of the following:  
@@ -294,7 +299,7 @@ The Quick View includes the following tabs:
 
 
 
-## Monitor resources for selected Argo CD application
+## Monitoring resources for selected Argo CD application
 
 
 Monitor the resources deployed in the current version of the selected application in the Current State tab.  
@@ -628,12 +633,12 @@ max-width="50%"
 
 
 
-## Monitor deployments for selected Argo CD application  
+## Monitoring deployments for selected Argo CD application  
 
-Monitor an ongoing deployment for the selected application, and review its historical deployments. 
-The Timeline tab displays the history of deployments for the selected application, sorted by the most recent deployment (default), labeled **Current Version** at the top. 
+Monitor ongoing and historical deployments for the selected application. 
+The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases.  
 
-The deployment chart displays the day-to-day deployments for the selected time period. Mouse over the dot on the deployment chart for information on historical deployments.  
+
 
 {% include
 image.html
@@ -642,8 +647,35 @@ file="/images/applications/dashboard-timeline-main.png"
 url="/images/applications/dashboard-timeline-main.png"
 alt="GitOps Apps dashboard: Timeline tab"
 caption="GitOps Apps dashboard: Timeline tab"
-max-width="30%"
+max-width="50%"
 %}
+
+
+**Deployment Chart**  
+The Deployment Chart below the Application Header displays the day-to-day deployments for the selected time period.  
+To view information on historical deployments, mouse over the dot on the deployment chart.  
+
+**Current Release**
+* The Current Release deployment record is only displayed in the first page of deployments. 
+* The deployment record for the Current Release is tagged as Current Version. 
+* The health status of the Current Release is the application's health status as displayed in the Application Header.
+* The release revision is identical to the sync revision displayed in Last Sync Result. If the release and sync revisions are not identical, which can be the case for different reasons, the Current Release displays a loading status instead of the release revision. 
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+If the Current Release deployment record is not displayed, it could be because filters are applied. 
+{{site.data.callout.end}}
+
+{% include image.html
+lightbox="true"
+file="/images/applications/apps-dashboard-current-release.png"
+url="/images/applications/apps-dashboard-current-release.png"
+alt="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
+caption="GitOps Apps dashboard: Current Release deployment record in Timeline tab"
+max-width="50%"
+%}
+
+
 
 You can:  
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
@@ -651,7 +683,7 @@ You can:
 
 See also [Troubleshoot Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
-**How to monitor deployments**
+##### How to monitor deployments
 1. If required, set filters to narrow the number of deployments for the selected application.
 1. To view GitOps details for a deployment, in the deployment chart mouse over the dot that represents the deployment. 
 1. To view additional details, expand the record for that deployment.
@@ -670,14 +702,10 @@ max-width="60%"
 ### Monitor CI details by deployment
 
 Each deployment record displays the complete CI history for that deployment.
-
-
 * The **CI Builds** shows the Argo Workflow run in the deployment. Click the build name to see the Argo Workflow in a new browser window.
 * The **Pull Request (PRs)** used for the commit.
 * The Jira **Issues** the PR aims to resolve or has resolved, with the current status.
 * The **Committer** who made the changes.
-
-
 
 ### Monitor rollouts by deployment
 A rollout is initiated when there is an Argo CD sync due to a change in the desired state.  
@@ -776,7 +804,7 @@ max-width="50%"
 
 
 
-## Monitor services for selected Argo CD application
+## Monitoring services for selected Argo CD application
 
 
 The Services tab shows the K8s services for each deployment of the application. 

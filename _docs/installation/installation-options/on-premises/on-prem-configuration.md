@@ -2,6 +2,8 @@
 title: "Codefresh on-premises platform account & user setup"
 description: "Set up accounts and users in Codefresh after installing the on-premises platform"
 group: installation
+redirect_from:
+  - /docs/installation/on-premises/on-prem-configuration/
 toc: true
 ---
 After installing Codefresh on-premises successfully, before users can work magic with Codefresh pipelines, as the Codefresh account administrator you need to complete the setup tasks described in this article.

@@ -112,7 +112,7 @@ spec:
 
 ### Step 3: Commit Argo CD application to Git Source
 As the final step in migrating your Argo CD Application to a Codefresh GitOps Runtime, manually commit the updated application manifest to the Git Source you created in Step 1.
-Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
+Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you would any GitOps resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest to the Git Source.

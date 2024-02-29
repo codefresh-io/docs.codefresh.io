@@ -1,5 +1,5 @@
 ---
-title: How To's
+title: How Tos
 description: ""
 group: kb
 toc: true

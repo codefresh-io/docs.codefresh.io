@@ -11,9 +11,9 @@ redirect_from:
   - /docs/getting-started/introduction/
 toc: true
 ---
-Before you can do create pipelines, build, and deploy applications in Codefresh, you need to create a Codefresh account.
+Before you can create pipelines, build, and deploy applications in Codefresh, you need to create a Codefresh account.
 
-Creating an account in Codefresh is free (no credit card is required) and can be done in three simple steps
+Creating an account in Codefresh is free (no credit card is required) and can be done in three simple steps:
 
 {% include 
 image.html 
@@ -167,50 +167,29 @@ max-width="40%"
 %}
 
 
+## Rename/delete Codefresh accounts
+Codefresh administrators can rename and delete Codefresh accounts.
 
-<!---nned to verify
-The next step is learning how to [build your first application]({{site.baseurl}}/docs/administration/create-a-basic-pipeline/).
+##### Rename Codefresh account
+You may want to rename your existing account, for example, either due to a sign-up error or change of business name.
 
+At this time, only Codefresh Support can rename accounts.  
+Please submit a support ticket with the following details:
+* Current account name
+* New account name  
+  If the new account name already exists due to a sign-up error, please indicate this as well.
 
-## Other Git connection options
+##### Delete Codefresh account
 
-
-
-Codefresh also supports Atlassian Stash/Bitbucket Server. You need to [contact us](https://codefresh.io/contact-us/) to enable this integration before you can use it for your account.
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/administration/create-account/stash.png" 
-url="/images/administration/create-account/stash.png" 
-alt="Codefresh and Atlassian Stash" 
-caption="Codefresh and Atlassian Stash" 
-max-width="100%" 
-%}
+>**NOTE:**  
+Only account owners can delete the account. 
 
 
-Once that is done, follow the [Stash instructions]({{site.baseurl}}/docs/integrations/git-providers/#atlassian-stash) for more information. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Organization Information**.
+1. Scroll down to Delete Account and click **Delete Account**.
+1. To confirm, click **Delete Account** once again. 
+ 
 
-
-
-## Using Codefresh in a secure corporate environment
-
-If your source code repositories are in a private Git account that lies behind your company firewall, or simply has no access to the Internet, we can still help you!
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/administration/create-account/git-firewall.png" 
-url="/images/administration/create-account/git-firewall.png" 
-alt="Git behind firewall" 
-caption="Git behind firewall" 
-max-width="100%" 
-%}
-
-We can establish a VPN / tunnel to your network or discuss options for an on-premises Codefresh deployment. Please [contact us to get started](https://codefresh.io/contact-us/).
-
--->
 ## Related articles
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Configuring access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  

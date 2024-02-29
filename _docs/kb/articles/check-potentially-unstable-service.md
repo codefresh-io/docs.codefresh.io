@@ -1,5 +1,5 @@
 ---
-title: "How To: Check against potentially unstable service"
+title: "How To: Check potentially unstable service for pipelines"
 description: 
 group: kb
 sub-group: articles
@@ -11,18 +11,15 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
-
-You are trying to check against a service that may be inaccessible for a number of reasons, including:
-
+This article describes how to check for a service that may be inaccessible for a number of reasons, including:
 * Connectivity issues
 * Connection limits
 * Rate limits
 * Unstable service
 
-## Details
+## How to
 
-In your step, add the `retry` feature. An example follows:
+* In the pipline step, add the `retry` attribute, as in the following example:
 
 ```yaml
 steps:
@@ -36,10 +33,10 @@ steps:
       exponentialFactor: 2
 ```  
 
->_**Note**:_
->
->During the retry stages, the build will still use up one of your concurrent builds. For that reason, we suggest limiting the amount of retries.
+>**NOTE**
+Every retry attempt uses up one of your concurrent builds. For this reason, we suggest limiting the amount of retries.
 
-## Related Items
-
-[Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step)
+## Related articles
+[Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step)  
+[Pipeline policy settings]({{site.baseurl}}/docs/pipelines/pipelines/#policies)  
+[Pipeline concurrency]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concurrency)   

@@ -6,6 +6,7 @@ redirect_from:
   - /docs/administration/codefresh-on-prem/
   - /docs/enterprise/codefresh-on-prem/
   - /docs/installation/codefresh-on-prem/
+  - /docs/installation/on-premises/codefresh-on-prem/
 toc: true
 ---
 
@@ -61,8 +62,8 @@ These providers are not displayed as options during sign-up/sign-in.
 
 ## Related articles
 [Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)   
-[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
-[On-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
+[Codefresh on-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[Codefresh on-premises feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
 
 
 
