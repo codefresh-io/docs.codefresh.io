@@ -78,7 +78,7 @@ Every Runner installation creates a runtime environment in your account. Assign 
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
 
 ## Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.

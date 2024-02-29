@@ -13,7 +13,7 @@ Set up a Jira integration for pipelines, and then reference the integration in y
 
 Optionally, a [GitOps-based Jira integration](#gitops-based-jira-integration-for-image-enrichment) allows you to enrich images with Jira information through a different Marketplace step.  
 
-For information on Jira integration for notifications, see [Jira notification integrations for pipelines]({{site.baseurl}}/docs/integrations/jira-integration/).
+For information on Jira integration for notifications, see [Jira notification integrations for pipelines]({{site.baseurl}}/docs/integrations/notifications/jira-integration/).
 
 ## Authentication for Jira integrations
 
