@@ -7,11 +7,12 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### Pipelines: Blobless Git clone
 
-Here's another enhancement which contributes to workflow optimization. We have a new field for our `git_clone` step: the `exclude_blob` field.
+Here's an enhancement which contributes to workflow optimization -  a new field in our `git_clone` step: the `exclude_blob` field.
+Filter out blob files from the Git repository and further streamline your development process. Fewer unnecessary files to clone and faster cloning times!  
 
-Further streamline your development process by filtering out blob files from the Git repository - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`.   
-To always include blob files, you can retain the default value of `false`.
+For blobless cloning, simply set `exclude_blob` to `true`. To always include blob files, you can retain the default value of `false`.
 
+For details, see [Fields in git-clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields).
 
 ### GitOps: Argo CD application enhancements
 
@@ -61,7 +62,6 @@ As we have transitioned to Helm-based Runtimes for GitOps, we have permanently d
 
 ##### General 
 * ABAC (Attribute-based access control) rules in GO not correctly resolved when multiple rules are configured for the same user. 
-* Access token for Okta in SSO settings is not masked. 
 <br>
 
 <!-- ##### Pipelines
