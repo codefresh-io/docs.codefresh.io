@@ -26,7 +26,7 @@ max-width="80%"
 
 ## Built-in step types
 
-The steps offered by Codefresh are:
+Codefresh offers the following step types:
 
 * [Git clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
   **Git clone** steps allow you to checkout code in your pipeline from any internal or external repository. Existing accounts that still use repositories instead of [projects]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-concepts) have an implicit clone step in the pipelines.  
@@ -55,11 +55,12 @@ Freestyle steps are a secure replacement for `docker run` commands.
 
 
 
->Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/), as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/).
+>**NOTE**  
+Codefresh also supports [parallel workflows]({{site.baseurl}}/docs/pipelines/advanced-workflows/), as well as running pipelines [locally on your workstation]({{site.baseurl}}/docs/pipelines/running-pipelines-locally/).
 
 ## Step directory
 
-For freestyle steps, we also offer a [plugin marketplace](https://codefresh.io/steps/){:target="\_blank"} with several existing plugins for popular integrations.
+For freestyle steps, we also offer a [plugin Marketplace](https://codefresh.io/steps/){:target="\_blank"} with several existing plugins for popular integrations.
 
 {% include 
 image.html 
@@ -73,11 +74,11 @@ max-width="80%"
 
 Codefresh steps can be:
 
-* Private (visible only to you and your team) or public (visible to everybody via the marketplace)
+* Private (visible only to you and your team) or public (visible to everybody via the Marketplace)
 * Official (supported by the Codefresh team) or community based
-* Ready for production or still incubating.
+* Ready for production or still in incubation
 
-You can use any your pipelines any of the public steps already in the marketplace, any steps created by your team and any steps that you create for yourself.
+In your pipelines, you can use any of the public steps already in the Marketplace, any steps created by your team, and any steps that you create for yourself.
 
 ## Using custom pipeline steps
 
@@ -96,7 +97,7 @@ caption="Choosing a custom step"
 max-width="60%" 
 %}
 
-To use a step, first click on the pipeline section where you want to insert the step.
+To use a step, first click in the section of the pipeline where you want to insert the step.
 You will get a new dialog with all the details of the step along with a live preview of the exact
 [YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) that will be inserted in your pipeline.
 
@@ -133,15 +134,15 @@ Here is a summary on the two ways:
 
 
 
-We suggest that you start with custom freestyle steps first and only create typed plugins once you are familiar with Codefresh pipelines or want your plugin to appear in the marketplace.
+We suggest that you start with custom freestyle steps first, and only create typed plugins once you are familiar with Codefresh pipelines or want your plugin to appear in the marketplace.
 
 
 ### Creating a custom freestyle step
 
-As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/){:target="\_blank"} in a pipeline in order to interact with a Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
+As an example let's say that you need to use the [JFrog CLI](https://jfrog.com/getcli/){:target="\_blank"} in a pipeline in order to interact with Artifactory or Bintray. JFrog does not offer any Docker image that contains the CLI and you already know that all Codefresh steps [are actually Docker images]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/).
 
 Therefore you can easily package the CLI into a Docker image and then make it available to any Codefresh pipeline that wishes to use it.
-First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI
+First you create [a Dockerfile](https://github.com/kostis-codefresh/step-examples/blob/master/jfrog-cli-wrapper/Dockerfile) that packages the CLI:
 
  `Dockerfile`
 {% highlight docker %}
@@ -167,7 +168,8 @@ CMD ["/jfrog-cli/jfrog"]
 {% endraw %}
 {% endhighlight %}
 
-This is a standard Dockerfile. There is nothing specific to Codefresh in the image that gets created. You can test this Dockerfile locally with 
+This is a standard Dockerfile. There is nothing specific to Codefresh in the image that gets created.  
+You can test this Dockerfile locally with:
 
 {% highlight shell %}
 {% raw %}
@@ -231,7 +233,9 @@ If you want to use multiple versions of the step in the same pipeline, you can j
 
 ### Creating a typed Codefresh plugin
 
-You can use the [step-type resource](https://codefresh-io.github.io/cli/steps/){:target="\_blank"} in the Codefresh CLI to create your own typed step. Each Codefresh step is composed from two parts:
+You can use the [step-type resource](https://codefresh-io.github.io/cli/steps/){:target="\_blank"} in the Codefresh CLI to create your own typed step.  
+
+Every Codefresh step is composed of two parts:
 
 1. The step description in the special YAML syntax for describing Codefresh steps
 1. A Docker image that implements the step (optional)
@@ -275,7 +279,7 @@ metadata:
         steps:
           Vault_to_Env:
             title: Importing vault values
-            type: vault
+            type: vault:0.0.7
             arguments:
               VAULT_ADDR: '${{VAULT_ADDR}}'
               VAULT_PATH: '${{VAULT_PATH}}'
@@ -336,28 +340,36 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
-For each step you define the following sections:
+For each step, you define the following sections:
 
 * Metadata to describe the characteristics of the step
 * The description of its arguments
-* The implementation (i.e. what yaml gets inserted in the pipeline)
+* The implementation (i.e. which yaml gets inserted in the pipeline)
 
-For the metadata section note the following:
 
-* `isPublic` decides if this step is visible only to your and your team, or visible to all (in the marketplace)
-* The `name` of the step **must** be prefixed with your Codefresh account name. Steps created by the Codefresh team are on the root level of the hierarchy (without prefix). This is the same pattern that Dockerhub is using for images.
-* `stage` shown if this step is ready for production or still incubating. This is just an indication to users. It doesn't affect the implementation of the step in any way
-* `icon`. Ideally you provide a transparent svg so that the icon is scalable. The icon for a step is used both in the marketplace as well as the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the svg approach
-* The `version` property allows you to update your plugin and keep multiple variants of it in the marketplace
-* The `examples` section will be shown in the marketplace as documentation for your step
+**Metadata section in step**  
+Note the following:
 
-For the argument section we follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html){:target="\_blank"}. You can use the [Schema generator](https://jsonschema.net/){:target="\_blank"} to easily create a schema. JSON schema is used for arguments (i.e. input parameters) as well as output parameters as we will see later on.
+* `isPublic` decides if this step is visible only to your and your team, or visible to all (in the Marketplace)
+* The `name` of the step **must** be prefixed with your Codefresh account name. Steps created by the Codefresh team are at the root level of the hierarchy, without a prefix. This is the same pattern that Dockerhub uses for images.
+* `stage` shown if this step is ready for production or still in incubation. This is just an indication to users. It doesn't affect the implementation of the step in any way.
+* `icon`. Ideally you provide a transparent .SVG so that the icon is scalable. The icon for a step is used both in the Marketplace as well as in the pipeline view. You can also select a default background to be used. Alternatively, you can define jpg/png icons for large/medium/small sizes. We suggest the SVG approach.
+* The `version` property allows you to update your plugin and keep multiple variants of it in the Marketplace.
+* The `examples` section will be shown in the Marketplace as documentation for your step.
 
-The property `additionalProperties` defines how strict the plugin will be with its arguments. If you set it to `false` (which is usually what you want) the pipeline will fail if the plugin is given more arguments that it is expecting. If you set it to `true`, then the plugin will only use the arguments it understands and will ignore the rest.
+**Argument section in step**  
+We follow the [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html){:target="\_blank"}. You can use the [Schema generator](https://jsonschema.net/){:target="\_blank"} to easily create a schema. JSON schema is used for arguments, that is, input parameters, as well as output parameters as we will see later on.
 
-The final part is the step implementation. Here you can define exactly the yaml that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh and even add multiple steps.
+The property `additionalProperties` defines how strict the plugin will be with its arguments.  
+You can set it to either `false` or `true`:
+  * `false`, which is usually what you want, fails the pipeline will fail if the plugin is given more arguments that it is expecting.
+  * `true`, the plugin will only use the arguments it understands and will ignore the rest.
 
->Note that currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time or writing you cannot use a typed step inside another typed step.
+**Implementation section of step**  
+The final part is the step implementation. Here you can define exactly the YAML that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh, and even add multiple steps.
+
+>**NOTE**  
+Currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time of writing you cannot use a typed step within another typed step.
 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
@@ -377,9 +389,9 @@ If you want to remove your step from the marketplace, you can delete it complete
 codefresh delete step-type kostis-codefresh/sample
 {% endhighlight %}
 
-### Versioning of typed steps
+### Versioning for typed steps
 
-The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh will keep all previous plugins and users are free to choose which version they want.
+The `version` property under `metadata` in the plugin manifest allows you to publish multiple releases of the same plugin in the marketplace. Codefresh retains all previous plugins and users are free to choose which version they want.
 
 To create a new version of your plugin:
 
@@ -390,7 +402,7 @@ To create a new version of your plugin:
 codefresh create step-type -f custom-plugin.yaml
 {% endhighlight %}
 
-You will now be able to see the new versions of your plugin in the step marketplace drop-down:
+You will now be able to see the new versions of your plugin in the step Marketplace drop-down:
 
 {% include
 image.html
@@ -402,7 +414,7 @@ caption="Different step versions"
 max-width="60%"
 %}
 
-You can also use the Codefresh CLI to list all version:
+You can also use the Codefresh CLI to list all versions:
 
 {% highlight bash %}
 codefresh get step-types kostis-codefresh/sample --versions
@@ -416,8 +428,11 @@ codefresh delete step-type 'account/plugin:<version>'
 
 Note that Codefresh step versions function like Docker tags in the sense that they are *mutable*. You can overwrite an existing plugin version with a new plugin manifest by using the `codefresh replace step-type` command.
 
-If users do not define a version once they use the plugin, the latest one (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. Alternatively they can specify the exact version they need (even different versions within the same pipeline.)
 
+#### Latest plugin version for typed steps 
+If you do not define an explicit version for the plugin, the latest version (according to [semantic versioning](https://semver.org/){:target="\_blank"}) will be used. You can also use different versions of the same plugin within the same pipeline.
+
+These typed steps do not require a version number: `pending-approval`, `github-action`, `parallel`, and `services`.
 
  `codefresh.yml`
 {% highlight yaml %}
@@ -433,9 +448,26 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+{{site.data.callout.callout_tip}}
+**TIP**  
+If your pipeline includes typed steps without corresponding version numbers, Codefresh issues a warning as assigning the latest version can introduce breaking changes and fail the pipeline. 
+{{site.data.callout.end}}
+
+{% include image.html 
+lightbox="true" 
+file="/images/pipeline/typed-steps/typed-step-version-warning.png" 
+url="/images/pipeline/typed-steps/typed-step-version-warning.png"
+alt="Warning for typed steps without explicit versions"
+caption="Warning for typed steps without explicit versions"
+max-width="60%" 
+%}
+
+
+
+
 ### Example with input parameters
 
-Let's create a very simple step called *node-version*. This step will read the application version from a NodeJS project and expose it as an environment variable. This way we can use the application version later in the pipeline (for example to tag a docker image).
+Let's create a very simple step called *node-version*. This step will read the application version from a NodeJS project and expose it as an environment variable. This way we can use the application version later in the pipeline, for example to tag a docker image.
 
 Here is the respective [step YAML](https://github.com/kostis-codefresh/step-examples/blob/master/node-version-plugin/read-app-version.yml){:target="\_blank"}.
 
@@ -572,7 +604,7 @@ caption="Step input parameters"
 max-width="60%" 
 %}
 
-The input parameter is also shown as required in the marketplace.
+The input parameter is also shown as required in the Marketplace.
 
 {% include 
 image.html 
@@ -592,7 +624,7 @@ In the previous example our plugin had an output parameter (`APP_VERSION`) that 
 
 If you define output parameters in the step definition their names will appear on the marketplace and users will have an easier time understand what your step produces. You will be able to define complete JSON objects in addition to output strings. Formal output parameters are also available under a special notation (`step.outputs`) that we will explain in this example.
 
-We suggest you always formalize your output parameters in your step definition, especially when your step is having a large number of output parameters.
+We suggest you always formalize your output parameters in your step definition, especially when your step has a large number of output parameters.
 
 The same [JSON Schema](http://json-schema.org/learn/miscellaneous-examples.html){:target="\_blank"} is also used for output parameters as with input ones.
 Here is a [very simple example](https://github.com/kostis-codefresh/step-examples/blob/master/output-parameters/output-parameters-sample.yml) {:target="\_blank"} that shows the different types of output parameters you can have.
@@ -893,13 +925,13 @@ spec:
 {% endraw %}
 {% endhighlight %}
 
-We place this plugin into the marketplace with
+We place this plugin into the Marketplace with:
 
 ```
 codefresh create step-type -f read-maven-version.yml
 ```
 
-If you look at the plugin entry in the marketplace you will see both input (the folder of the pom.xml) and output parameters (mvn coordinates) defined:
+If you look at the plugin entry in the Marketplace you will see both input (the folder of the pom.xml) and output parameters (mvn coordinates) defined:
 
 {% include 
 image.html 
@@ -1034,7 +1066,8 @@ You can still use `cf_export` command inside the plugin as well (as shown in the
 
 As an advanced technique, Codefresh allows you to define a custom step using templating instead of fixed YAML. We support templates inside the `spec:` block of a plugin definition by taking advantage of the [Gomplate](https://github.com/hairyhenderson/gomplate){:target="\_blank"} library that offers additional templating functions on top of vanilla [Go templates](https://golang.org/pkg/text/template/){:target="\_blank"}.
 
-> Note: Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
+>**NOTE**  
+Gomplate Data functions will not work since Codefresh does not pass the Data object to gomplate functions.
 
 As a simple example lets say we want to create a single step that checks out any number of git repositories. Of course you could just copy-paste the git clone step multiple times in a single pipeline. To make things easier we will create a single step that takes an array of git repositories and checks them out on its own:
 
@@ -1220,5 +1253,7 @@ More specifically:
  * If you try to define a custom plugin where a step inside it has a service container attached, the custom plugin will fail when executed
 
 ## Related articles
-[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+[Introduction to Pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
+[Grouping steps into stages]({{site.baseurl}}/docs/pipelines/stages/)  
+[Post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/)  
 

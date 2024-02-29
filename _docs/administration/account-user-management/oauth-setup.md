@@ -59,47 +59,46 @@ Supported Git providers:
 * GitLab Cloud and GitLab Server
 * Bitbucket Cloud (hosted) and Bitbucket Server (hybrid)
 
-{::nomarkdown}
+
 <br>
-{:/}
+
 
 To set up OAuth2 authorization in Codefresh, you must:
 1. [Create Custom OAuth2 Application in Git](#step-1-create-a-custom-oauth2-application-in-git) 
 1. [Create a K8s `secret` in the runtime cluster](#step-2-create-a-k8s-secret-resource-in-the-runtime-cluster)
 1. [Configure OAuth2 settings for Custom Application in Codefresh](#step-3-configure-oauth2-settings-for-custom-application-in-codefresh)
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
 1. Follow the step-by-step instructions for your Git provider:   
 
-  * [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}:      
-    * For **Authorization callback URL**, enter this value:  
+    * [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}:      
+      * For **Authorization callback URL**, enter this value:  
        `<ingressHost>/app-proxy/api/git-auth/github/callback`  
        where:  
        `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
-    * Make sure **Enable Device Flow** is _not_ selected. 
-    * Select **Register application**. 
+      * Make sure **Enable Device Flow** is _not_ selected. 
+      * Select **Register application**. 
        The client ID is automatically generated, and you are prompted to generate the client secret.
-    * Select **Generate a new client secret**, and copy the generated secret.  
+      * Select **Generate a new client secret**, and copy the generated secret.  
 
-  * [GitLab Cloud and Server](https://docs.gitlab.com/ee/integration/oauth_provider.html#user-owned-applications){:target="\_blank"}:   
-    * For **Redirect URI**, enter this value:   
+    * [GitLab Cloud and Server](https://docs.gitlab.com/ee/integration/oauth_provider.html#user-owned-applications){:target="\_blank"}:   
+      * For **Redirect URI**, enter this value:   
       `<ingressHost>/app-proxy/api/git-auth/gitlab/callback`  
-      where:  
-      `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.  
+        where:  
+        `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.  
 
-  * [Bitbucket Server](https://confluence.atlassian.com/adminjiraserver0902/configure-an-outgoing-link-1168853925.html){:target="\_blank"}:      
-    * For **Callback URL**, enter this value:  
+    * [Bitbucket Server](https://confluence.atlassian.com/adminjiraserver0902/configure-an-outgoing-link-1168853925.html){:target="\_blank"}:      
+      * For **Callback URL**, enter this value:  
       `<ingressHost>/app-proxy/api/git-auth/bitbucket-server/callback`  
-      where:  
-      `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
+        where:  
+        `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
     
-    > OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#authorize-git-access-in-codefresh) in such cases.
+    >**NOTE**  
+      OAuth2 is not supported for hybrid runtimes with Bitbucket Cloud as the Git provider. Users can authorize access with their [Git personal access tokens]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#authorize-git-access-in-codefresh) in such cases.
 
 
 {:start="2"}
@@ -108,14 +107,15 @@ Create and register an OAuth App under your organization to authorize Codefresh.
   * GitLab Cloud and Server: Application ID and Secret
   * Bitbucket Server: Key and Secret
 
-{::nomarkdown}
+
 <br>
-{:/}
+
 
 ### Step 2: Create a K8s secret resource in the runtime cluster 
 Create a K8s secret in the runtime cluster, using the example below as a guideline. You must define the application ID (`appId`), client ID (`clientId`) and the client secret (`clientSecret`) from the OAuth2 Application you created in your Git provider, and the Git URL (`url`).  
 
-> All fields in the secret _must be_ encoded in `base64`.  
+>**NOTE**    
+  All fields in the secret _must be_ encoded in `base64`.  
   To encode, use this command: `echo -n VALUE | base64`.  
 
 
@@ -151,23 +151,29 @@ data:
 1. Apply the secret to the runtime cluster:  
    `kubectl apply -f <filename>`   
    
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### Step 3: Configure OAuth2 settings for Custom Application in Codefresh 
 
 Configure the settings for the Custom OAuth2 Application in Codefresh. Configuring the settings creates a K8s ConfigMap that references the OAuth secret credentials. When configuring the settings, you can work in Form mode, or directly update the YAML manifest. 
 
->Important:  
-  > The values for all the settings in the ConfigMap are the `keys` in the secret file. 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+The values for all the settings in the ConfigMap are the `keys` in the secret file. 
+{{site.data.callout.end}}
+
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
   The list always shows the default predefined Codefresh provider account and custom provider accounts created, organized by Runtime, Type (Codefresh or Custom) and Status. 
 1. From the list, select the Git provider and the runtime to which to apply the current configuration. 
-   >The runtime must be identical to the runtime to which you saved the K8s secret.
+   >**NOTE**  
+    The runtime must be identical to the runtime to which you saved the K8s secret.
 1. Click **Edit** and then select **Use custom provider**.
-   > If you have managed clusters registered to the selected runtime, the authentication account is available to all the clusters.  
+    {{site.data.callout.callout_tip}}
+    **TIP**  
+     If you have managed clusters registered to the selected runtime, the authentication account is available to all the clusters.  
+    {{site.data.callout.end}}
+
   The settings page is opened in **Form** mode.
     
 {% include 
@@ -214,7 +220,8 @@ You have completed the setup to authorize Codefresh as an OAuth App for your Git
 ## Select authentication mechanism for runtime
 For a Git provider and a runtime account, select the authentication mechanism: Codefresh account, Custom provider account if one exists, or token-based authentication.
 
->Hosted GitOps runtimes support either Codefresh or token-based authentication.
+>**NOTE**  
+Hosted GitOps runtimes support either Codefresh or token-based authentication.
 
 1. In the Codefresh UI, go to [Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"}.
 1. Select the runtime, and click **Edit**. 

@@ -14,7 +14,7 @@ toc: true
 
 We created a [special Helm step](https://codefresh.io/steps/step/helm){:target="\_blank"} for easy integration of Helm in Codefresh pipelines. The Helm step facilitates authentication, configuration, and execution of Helm commands.
 
->**NOTE:**  
+>**NOTE**  
 If you have a special use case that is not covered by the Codefresh Helm step, you can always use the regular `helm` CLI command in a `freestyle` step.  
 In this case, you can use the simpler container `codefresh/kube-helm` which includes only Kubectl and helm tools. `kube-helm` is available on DockerHub: [https://hub.docker.com/r/codefresh/kube-helm/](https://hub.docker.com/r/codefresh/kube-helm/){:target="\_blank"}.
 
@@ -55,7 +55,11 @@ The Helm pipeline step requires the configuration of a `kube_context` variable t
 1. [Connect your Kubernetes cluster with Codefresh]({{site.baseurl}}/docs/integrations/kubernetes/#connect-a-kubernetes-cluster).  
 
 1. Provide the cluster to the Helm step by adding the `KUBE_CONTEXT` variable, where the value is the connection *name* entered when you created the connection. 
-> The connection name also appears as the title of the cluster in Kubernetes integration settings (Settings >Pipeline Integrations > Kubernetes).
+  
+    {{site.data.callout.callout_tip}}
+    **TIP**  
+    The connection name also appears as the title of the cluster in Kubernetes integration settings (**Settings > Pipeline Integrations > Kubernetes**).
+    {{site.data.callout.end}}
 
 {% include image.html 
 lightbox="true" 
@@ -89,7 +93,13 @@ Once you have Helm repositories connected to Codefresh, you can import one or mo
   * To import a single context, select the context. The `CF_HELM_DEFAULT` is the Helm repo provided by Codefresh. See also [shared configuration]({{site.baseurl}}/docs/configure-ci-cd-pipeline/shared-configuration/).
   * To import multiple contexts, select each context to import.  
 
- {% include image.html 
+      {{site.data.callout.callout_tip}}
+      **TIP**  
+      You can also click on *Add shared configuration* directly from the three dots menu for the same functionality.
+      {{site.data.callout.end}}
+
+
+{% include image.html 
 lightbox="true" 
 file="/images/deployments/helm/import-helm-configuration.png" 
 url="/images/deployments/helm/import-helm-configuration.png" 
@@ -98,8 +108,6 @@ caption="Importing Helm repositories into the pipeline"
 max-width="50%" 
 %}
 
-> You can also click on *Add shared configuration* directly from the three dots menu for the same functionality.
-
 This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle step in the pipeline `codefresh.yml` file.
 
 
@@ -107,7 +115,7 @@ This concludes the Helm setup for Codefresh. Now you can use the Helm freestyle 
 
 You can now use the Helm freestyle step in the `codefresh.yml` file. This step is only needed in pipelines that actually upload/fetch Helm charts to/from Helm repositories. If your pipeline directly installs a Helm chart from the Git filesystem, there is no need to import a Helm configuration.
 
->**NOTE:**  
+>**NOTE**  
 Currently, you can use only one Helm configuration in the same pipeline. We are aware
 of this limitation, and will soon improve the way Codefresh works with multiple Helm configurations.
 
@@ -120,7 +128,7 @@ The example below illustrates how to provide variables as part of the Helm step 
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: install
     chart_name: test_chart
@@ -194,7 +202,7 @@ The following example includes the minimum configuration to install a Helm chart
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: install
     chart_name: /home/user/charts/mywebapp
@@ -209,14 +217,14 @@ The following example illustrates how to package and push a Helm chart into a re
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: push
     chart_name: /codefresh/volume/repo/chart
     chart_repo_url: 'cm://h.cfcr.io/useraccount/default'
 ```
 
-> **NOTES**:  
+> **NOTES**    
   - Assumes that a Git repository with the Helm chart files was cloned as a part of the pipeline.
   - The Git repository contains the chart files in the `chart` directory.
   - `chart_repo_url` is optional. If a [Helm repository configuration](#step-4-optional-import-the-helm-configuration-into-your-pipeline-definition) is attached to the pipeline, this setting is ignored.
@@ -227,7 +235,7 @@ The following example illustrates the Helm mode for authentication only.
 
 ```yaml
 deploy:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: auth
     kube_context: my-kubernetes-context
@@ -243,7 +251,7 @@ The following example illustrates executing custom Helm commands.
 {% highlight yaml %}
 {% raw %}
 my_custom_helm_command:
-  type: helm
+  type: helm:1.1.12
   arguments:
     action: auth
     kube_context: my-kubernetes-context
@@ -257,7 +265,7 @@ my_custom_helm_command:
 {% endraw %}
 {% endhighlight %}
 
-> **NOTES**: 
+> **NOTE**   
   The directory that contains a chart MUST have the same name as the chart. Thus, a chart named `my-chart` MUST be created in a directory called `my-chart/`. This is a requirement of the [Helm Chart format](https://helm.sh/docs/chart_template_guide/){:target="\_blank"}.
 
 ## Helm step configuration fields
@@ -344,7 +352,7 @@ steps:
         - python setup.py test
   StoreChart:
     title: Storing Helm Chart
-    type: helm
+    type: helm:1.1.12
     stage: store
     working_directory: ./python-flask-sample-app
     arguments:
@@ -352,7 +360,7 @@ steps:
       chart_name: charts/python
       kube_context: kostis-demo@FirstKubernetes
   DeployMyChart:
-      type: helm
+      type: helm:1.1.12
       stage: deploy
       working_directory: ./python-flask-sample-app
       arguments:

@@ -1,12 +1,12 @@
 ---
-title: "Add external clusters to GitOps Runtimes"
-description: "Manage multiple remote clusters with a  GitOps Runtime"
+title: "Managing external clusters in GitOps Runtimes"
+description: "Add multiple remote clusters to a GitOps Runtime"
 group: installation
 sub_group: gitops
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so.
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation//) or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
 
@@ -18,7 +18,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 ## Prerequisites
 
 * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
-* Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/reference/git-tokens)
+* Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens)
 * [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Codefresh token in user settings
 * For ingress-based GitOps Runtimes, the ingress host of the Runtime (use `cf runtime list` to get this)
@@ -74,7 +74,8 @@ The new cluster is registered to the GitOps Runtime as a managed cluster.
 1. Update `configmap.yml` and `secret.yml` with the requires values.
 1. Run `kustomize build` or `kubectl -k` to apply the final result to the cluster.
 
-> For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+>**NOTE**  
+For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
 
 
 ### Add a managed cluster with Helm
@@ -89,7 +90,8 @@ To deploy the chart:
 helm install oci://quay.io/codefresh/charts/csdp-add-cluster -f values.yaml --generate-name
 ```
 
-> For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+>**NOTE**  
+For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
 
 
 ### Add a managed cluster with Terraform
@@ -141,7 +143,8 @@ Install Argo Rollouts with a single click to execute rollout instructions, deplo
 
 Removing a cluster as a deployment target means removing it from the GitOps Runtime that manages it.
 
-> This action only removes the management link between your GitOps Runtime and your cluster. Applications that are already running on the cluster are not affected.
+>**NOTE**  
+This action only removes the management link between your GitOps Runtime and your cluster. Applications that are already running on the cluster are not affected.
 
 Remove a managed cluster in any of the following ways:
 * [Codefresh UI](#remove-a-managed-cluster-from-the-codefresh-ui)
@@ -154,7 +157,10 @@ Remove a managed cluster in any of the following ways:
 ### Remove a managed cluster from the Codefresh UI
 Remove a cluster from the list managed by the GitOps Runtime in the Codefresh UI.
 
-> You can also remove it through the CLI.
+{{site.data.callout.callout_tip}} 
+**TIP**  
+You can also remove it through the CLI.
+{{site.data.callout.end}}
 
 In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Select either the **Topology View** or the **List View** tabs.
@@ -199,5 +205,6 @@ Run `helm delete <release_name>` with the name of the release that was created d
 Use the `terraform destroy` command.
 
 ## Related articles
-[Add Git Sources to GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+

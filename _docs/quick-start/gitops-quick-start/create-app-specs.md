@@ -85,7 +85,8 @@ spec:
 Create a service resource to expose your application to external traffic. 
 
 * Create a `service.yaml` resource for the application you want to deploy, as in the example below.  
-  > Create it in the same folder in which you saved `rollout.yaml`. 
+  >**NOTE**  
+  Create it in the same folder in which you saved `rollout.yaml`. 
 
 ```yaml
 apiVersion: v1

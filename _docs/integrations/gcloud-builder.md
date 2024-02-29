@@ -97,7 +97,8 @@ The `build` step of the pipeline has an extra property, `provider`, that specifi
 
 The only required argument is the repository to be used for [Kaniko caching](https://cloud.google.com/cloud-build/docs/kaniko-cache){:target="\_blank"} and speed up subsequent builds. 
 
->Note that the Kaniko repo should NOT be the same as the repository used for the image itself.
+>**NOTE**  
+The Kaniko repo _should NOT_ be the same as the repository used for the image itself.
 
 {% include image.html 
 lightbox="true" 

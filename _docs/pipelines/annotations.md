@@ -16,7 +16,8 @@ You can add, view, and manage annotations:
 * Directly in Codefresh steps 
 
 
->The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
+>**NOTE**  
+The syntax shown for the step examples in this article is deprecated but still supported. For the new syntax,
 see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 
 
@@ -25,7 +26,8 @@ see [hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/).
 You can add annotations to projects, pipelines, builds, and Docker images. The method is identical for all entities. 
 Every annotation has a name, type, and value.
 
-> Annotation names must start with a letter, can be alphanumeric, and include the underscore character. 
+>**NOTE**  
+Annotation names must start with a letter, can be alphanumeric, and include the underscore character. 
 
 
 ### Add annotations in the Codefresh UI
@@ -132,9 +134,9 @@ steps:
 
 
 
-## Add annotations to the current build/image
+#### Example 3: Add annotations to the current build/image
 
-Define annotations at the root level of the `build` step to add an annotation to the current build or image without defining the entity type and ID.
+To add an annotation to the current build or image without defining the entity type and ID, add it at the root level of the `build` step.
 
 This method provides a way to add annotations without the entity type and ID, compared to post-step operations where you explicitly define the target type and ID.
 
@@ -174,6 +176,12 @@ codefresh get annotation build 5ce26f5ff2ed0edd561fa2fc
 
 You can also define `entity_type` as `image` and don't enter any `entity_id`. In this case the image created from the build step will be annotated.
 
+##  `cf_predecessor` for  BUILD_ID  of parent pipeline  
+Codefresh has native support to navigate from parent to child builds. 
+To navigate from the child build to its parent, we have the `cf_predecessor` annotation.
+
+The `cf_predecessor` annotation is automatically added to builds executed by calls to a [`codefresh-run` plugin](https://codefresh.io/steps/step/codefresh-run){:target="\_blank"}.
+By querying the value of this annotation in the child build, you can get the ID of the parent build.
 
 
 ## Managing annotations
@@ -313,7 +321,8 @@ max-width="50%"
 
 Delete annotations by defining them by name in the YAML with `unset`. 
 
->Use `unset` annotation with all post-step operations, `on_success`, `on_fail`, `on_finish`.
+>**NOTE**  
+Use `unset` annotation with all post-step operations, `on_success`, `on_fail`, `on_finish`.
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -362,7 +371,8 @@ You can also use both `unset` and `set` block in a single `annotations` block. A
 
 Apart from scalar values, you can also store more complex expressions in annotations, using [Codefresh variables]({{site.baseurl}}/docs/pipelines/variables/), text files from the build, and even evaluations from  [conditional expressions]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#condition-expression-syntax).
 
->The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+>**NOTE**  
+The pipeline in this example uses dynamic Git repository variables. For the pipeline to work, it must be linked to least one [Git trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 `codefresh.yml`
 {% highlight yaml %}

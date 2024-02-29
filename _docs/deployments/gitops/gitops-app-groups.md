@@ -6,8 +6,6 @@ sub_group: gitops
 toc: true
 ---
 
->**NOTE**: This feature is currently in Beta.
-
 
 The Group view for Argo CD applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
 A Codefresh feature, the Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
@@ -28,6 +26,7 @@ max-width="60%"
 
 Assign an application to one or more Groups when you create the application, or through the Configuration settings for existing applications. Changes to the Group have no impact on its applications.  
 
+You can also monitor and manage them in the GitOps Environments and Products dashboards by creating Environment and Product custom resources. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 
 
 

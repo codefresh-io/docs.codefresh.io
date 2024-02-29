@@ -80,8 +80,9 @@ As you can see the modifications needed are:
 1. To list all the stage names at the root of the pipeline file 
 1. To use the `stage` property on each step to assign it to a stage
 
->This updated pipeline view affects only the visualization of the pipeline. It does not affect the order of step execution. Steps are still executed in the same order as listed in the `codefresh.yml` file.   
-  If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/) page.
+>**NOTE**  
+This updated pipeline view affects only the visualization of the pipeline. It does not affect the order of step execution. Steps are still executed in the same order as listed in the `codefresh.yml` file. <br> 
+If you wish to use parallel execution and advanced workflows see the [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/) page.
 
 
 ## Example pipeline with several stages

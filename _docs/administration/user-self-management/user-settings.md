@@ -16,7 +16,11 @@ As a Codefresh user, you can manage several settings and resources through your 
 * Account access to Codefresh support
 * API keys
 
-> To manage Git user personal access tokens for GitOps, see [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
+{{site.data.callout.callout_tip}}
+**TIP**    
+  To manage Git user personal access tokens for GitOps, see [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
+{{site.data.callout.end}}
+
 
 ## Access user settings
 * In the Codefresh UI, on the toolbar, click the **Settings** icon and then select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.
@@ -25,7 +29,7 @@ As a Codefresh user, you can manage several settings and resources through your 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
 
->**NOTES**:  
+>**NOTES**  
 By default, email notifications for builds are disabled for _all users_.<br><br> 
 When you enable notifications, remember that you will receive notifications only for those builds:<br>
 >- That you have permissions to access. If you don’t have access to a pipeline, you will not have access also to its builds.
@@ -33,9 +37,9 @@ When you enable notifications, remember that you will receive notifications only
 
 <br><br>
 
-* In **Notifications**, define the email address and select the notifications:    
-  * Email address for the notifications. By default, it's the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
-* Select the build statuses for which to receive notifications.
+1. In **Notifications**, define the email address and select the notifications:    
+  * Email address for the notifications is b default the same address you used to [sign up]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/).
+1. Select the build statuses for which to receive notifications.
 
 
 {% include image.html
@@ -51,7 +55,8 @@ max-width="50%"
 
 Select your preferred formats for date (US or international) and time (24 or 12 hours) display in the Codefresh UI.
 
->Currently applies only to pipeline modules. 
+>**NOTE**  
+  Currently applies only to pipeline modules. 
 
 
 
@@ -68,7 +73,11 @@ Enable Codefresh support personnel to access your user account. Access to your a
 
 You can disable this security setting at any time.
 
->Codefresh personnel takes action only after confirmation from you, and all actions are audited.
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
+  Codefresh personnel takes action only after confirmation from you, and all actions are audited.
+{{site.data.callout.end}}
+
 
 * In **Security**, select **Allow Codefresh support team to log in…**..
 
@@ -90,8 +99,10 @@ max-width="100%"
 Generate new API keys to access Codefresh functionality from your scripts or applications, outside the Codefresh UI. Edit scopes for existing keys, or revoke them when needed.  
 For details, see [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions).
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
 Tokens are visible only during creation. You cannot "view" an existing token. To re-enable API access for an existing application, you must delete the old token and create a new one.  
+{{site.data.callout.end}}
 
 The UI shows the first few characters in the second part of the key, after the `.`, and not the characters at the beginning of the key.
 

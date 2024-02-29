@@ -64,7 +64,7 @@ steps:
   vault:
     title: Importing vault values...
     stage: "vault"
-    type: vault
+    type: vault:0.0.7
     arguments:
       VAULT_ADDR: 'http://<YOUR_VAULT_SERVER_IP>:<PORT>'
       VAULT_PATH: 'path/to/secret'

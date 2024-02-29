@@ -17,15 +17,15 @@ Codefresh not only allows you to define different pipelines on a single project 
 
 ## Pipeline trigger types
 
-The following types of triggers are currently supported pipelines:
+The following types of triggers are currently supported in pipelines:
 
-* [Git triggers](git-triggers)
-* [Docker Hub triggers](dockerhub-triggers)
-* [Azure Registry triggers](azure-triggers)
-* [Quay triggers](quay-triggers)
-* [Helm triggers](helm-triggers)
-* [Artifactory triggers](jfrog-triggers)
-* [Cron trigger](cron-triggers)
+* [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)
+* [Docker Hub triggers]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers)
+* [Azure Registry triggers]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers)
+* [Quay triggers]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers)
+* [Helm triggers]({{site.baseurl}}/docs/pipelines/triggers/helm-triggers)
+* [Artifactory triggers]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers)
+* [Cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers)
 * [API/CLI trigger]({{site.baseurl}}/docs/integrations/codefresh-api/)
 
 As an example, this project contains four pipelines:
@@ -102,7 +102,10 @@ max-width="70%"
 Then click the toggle switch on each trigger that you want to enable/disable. You can later enable the same trigger again
 by clicking the same switch.
 
->For Git triggers, you can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See [Skip triggering pipeline on commit]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#skip-triggering-pipeline-on-commit).
+{{site.data.callout.callout_tip}}
+**TIP**  
+For Git triggers, you can also skip triggering the pipeline without disabling the trigger by adding a predefined string to the commit message. See [Skip triggering pipeline on commit]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#skip-triggering-pipeline-on-commit).
+{{site.data.callout.end}}
 
 ## Related articles
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
