@@ -11,21 +11,23 @@ categories: [Pipelines, CLI, Settings]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
 
-You need to option to stop status update to github from a pipeline
 
-## Details
+This article describes how to stop status update from a pipeline to GitHub.
 
-To disable status updates to Github, please follow these steps (it's currently supported only via CLI):
+>**NOTE**  
+Disabling status updates to GitHub is currently supported only via CLI for Codefresh pipelines.
 
-1. Install the Codefresh CLI: <https://codefresh-io.github.io/cli/installation/>
+## Before you begin 
 
-2. Authenticate the CLI to your Codefresh account: <https://codefresh-io.github.io/cli/authentication/>
+* Install the CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"}
+* [Authenticate the CLI to your Codefresh account](https://codefresh-io.github.io/cli/authentication/){:target="\_blank"}
 
-3. Run `codefresh get pipeline <project_name/pipeline_name> -o yaml > pipeline_name_spec.yaml` to export the full pipeline spec as a YAML file
+## How to
 
-4. Add the options section under `spec`, set `enableNotifications: false` and save the changes. The updated YAML should look like this:
+1. Export the full pipeline spec as a YAML file:  
+   `codefresh get pipeline <project_name/pipeline_name> -o yaml > pipeline_name_spec.yaml` to
+1. Below `spec`, add `options` and then add  `enableNotifications: false`, as in the example below.
 
     ```yaml
     version: '1.0'
@@ -35,5 +37,5 @@ To disable status updates to Github, please follow these steps (it's currently s
       options:
         enableNotifications: false
     ```
-
-5. Run the `codefresh replace pipeline -f pipeline_name_spec.yaml` to update your pipeline from the YAML file
+1. Save the changes and close the YAML. 
+5. Run the `codefresh replace pipeline -f pipeline_name_spec.yaml` to update your pipeline with the specifications from the YAML file.
