@@ -99,6 +99,58 @@ Codefresh users rely on our platform to deliver software reliably, and predictab
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
 Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
+## Event Reporters
+Event Reporters monitor changes to resources deployed on the cluster and report the changes back to the Codefresh platform.
+
+Codefresh has two types of Event Reporters:
+* Resource Event Reporter
+* Application Event Reporter
+
+### Resource Event Reporter
+The Resource Event Reporter monitors specific types of resources on the cluster, tracking changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
+
+The Resource Event Reporter monitors changes to these resource types:
+* Rollouts (Argo Rollouts)
+* ReplicaSets and Workflows (Argo Workflows)
+
+Resource Event Reporters leverage Argo Event components such as Event Sources to monitor changes and Sensors to send the live-state manifests, to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
+
+### Application Event Reporter
+The Application Event Reporter specializes in monitoring changes to Argo CD applications deployed on the cluster. 
+
+In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application and the Git manifests for all the application's managed resources. 
+
+##### Application Event Reporter data flow
+The diagram below illustrates the data flow for the Application Event Reporter (identified on the cluster as **event-reporter**):
+
+{% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/architecture/app-event-reporter-flow.png"
+ url="/images/runtime/architecture/app-event-reporter-flow.png"
+  alt="Application Event Reporter flow"
+  caption="Application Event Reporter flow"
+  max-width="100%"
+%}
+
+
+1. The user makes changes to the application manifest or its managed resources and commits them to the Git repository.
+
+1. The Argo CD Application Controller monitors the Git repo for changes, synchronizes the updates with the cluster, and forwards the changes to the Kubernetes API.
+
+1. The Application Event Reporter subscribes to the Kubernetes API to receive application-change events. 
+  * If there are multiple instances of the Application Event Reporter, each instance subscribes to a set of specific applications determined through a hash function on the application name.
+  * The application-change event is added to the Event Queue of the appropriate Application Reporter instance for processing based on the shard to which it belongs.  Each instance of the Application Reporter can queue up to 1,000 events at a time.
+  
+  >**NOTE**  
+  The number of Application Event Reporters are equal to the configured number of replicas. By default, there are five replicas, but the number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
+
+{:start="4"}  
+1. The Application Event Reporter requests both the application's live-state manifest and the Git manifests for all the application's managed resources from the Argo CD Server.  
+
+1. The Argo CD server retrieves these manifests from the Argo CD repo-server and forwards them to the Application Event Reporter.
+
+1. The Application Event Reporter reports the application-change events to the Codefresh platform.
 
 ## Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
