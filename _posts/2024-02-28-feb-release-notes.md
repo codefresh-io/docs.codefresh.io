@@ -7,9 +7,10 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### Pipelines: Blobless Git clone
 
-Here's an enhancement which contributes to workflow optimization. A new field for our `git_clone` step: the `exclude_blob` field.
+Here's another enhancement which contributes to workflow optimization. We have a new field for our `git_clone` step: the `exclude_blob` field.
 
-Filter out blob files from the Git repository to further streamline your development process - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`. To always include blob files, simply retain the default value of `false`.
+Further streamline your development process by filtering out blob files from the Git repository - fewer unnecessary files to clone and faster cloning times!  Simply set `exclude_blob` to `true`.   
+To always include blob files, you can retain the default value of `false`.
 
 
 ### GitOps: Argo CD application enhancements
@@ -60,11 +61,11 @@ As we have transitioned to Helm-based Runtimes for GitOps, we have permanently d
 
 ##### General 
 * ABAC (Attribute-based access control) rules in GO not correctly resolved when multiple rules are configured for the same user. 
-* Access token for Okta is not masked. (CR-19131 Alina)
+* Access token for Okta in SSO settings is not masked. 
 <br>
 
-##### Pipelines
-(On-premises) Unable to deploy Helm charts to Helm boards after upgrade to v2.2.4 (CR-22370 - Denis)
+<!-- ##### Pipelines
+(On-premises) Unable to deploy Helm charts to Helm boards after upgrade to v2.2.4 -->
 
 ##### GitOps 
 * `Prune skipped` message for Argo CD applications after upgrading to GitOps Runtime v0.4.2.
