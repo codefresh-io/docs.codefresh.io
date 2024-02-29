@@ -110,7 +110,7 @@ caption="Quick Start: Install Hybrid GitOps Runtime"
 max-width="60%"
 %}
 
-{:start="5"}
+{:start="6"}
 1. Wait for a few minutes, and then click **Close**.  
    You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added with a green dot indicating that it is online, and the Type column for the Runtime displaying Helm.
 1. Complete the installation by clicking **Configure as Argo Application**.  
