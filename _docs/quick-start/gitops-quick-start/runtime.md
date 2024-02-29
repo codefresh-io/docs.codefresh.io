@@ -115,7 +115,7 @@ max-width="60%"
    You are taken to the List View for GitOps Runtimes where you can see the Hybrid GitOps Runtime you added with a green dot indicating that it is online, and the Type column for the Runtime displaying Helm.
 1. Complete the installation by clicking **Configure as Argo Application**.  
   There is no need for any further action from you, as Codefresh takes care of the configuration.
-  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime and view and monitor Runtime components. 
+  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime, and view and monitor Runtime components. 
 
 
 You are now ready to create and deploy a GitOps application in Codefresh.
