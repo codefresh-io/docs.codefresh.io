@@ -673,10 +673,10 @@ There are three options to provide cloud credentials:
 
 Notice that builds run in a single Availability Zone (AZ), so you must specify Availability Zone parameters.
 
-**Configuration**
+<!-- **Configuration**
 [How-to: Configuring an existing Runtime Environment with GCE disks]({{site.baseurl}}/docs/kb/articles/config-re-gke-gce-disk){:target="\_blank"}
 
-<br />
+<br /> -->
 
 ##### Using multiple Availability Zones
 
