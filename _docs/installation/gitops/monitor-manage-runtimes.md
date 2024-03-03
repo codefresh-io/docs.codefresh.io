@@ -508,8 +508,6 @@ Uninstalling a GitOps Runtime permanently removes:
 * The Runtime from the Codefresh platform and from the cluster it is provisioned on
 * The Git Sources and managed clusters associated with it
 
-<br>
-
 ##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -544,7 +542,7 @@ Uninstalling a GitOps Runtime permanently removes:
 %}
 
 {:start="6"}
-1. Copy and run the uninstall command:
+1. Copy and run the uninstall command:  
   `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm uninstall ${RELEASE_NAME} -n codefresh-gitops-runtime`
 
 {:start="7"}
