@@ -28,10 +28,7 @@ Different builds may have different caches. Initial builds may not have images o
   4. Select the options to ignore Docker engine cache and Codefresh cache optimizations
   5. Run the build
 
-## Related Items
-
-[Pipeline Caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/)
-
-[Disabling caching mechanisms]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/)
-
-[About reuseVolumeSelector options]({{site.baseurl}}/docs/kb/articles/about-reusevolumeselector-options/)
+## Related articles
+[Caching in pipelines]({{site.baseurl}}/docs/pipelines/pipeline-caching/)  
+[Disabling caching mechanisms]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/)  
+<!-- [About reuseVolumeSelector options]({{site.baseurl}}/docs/kb/articles/about-reusevolumeselector-options/)-->
