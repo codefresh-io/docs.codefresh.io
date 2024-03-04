@@ -6,7 +6,7 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
-## On-premises version ???
+## On-premises version 2.3
 
 ### Features & enhancements
 Features and enhancements are divided into those in general availability and those currently in Beta.
@@ -254,13 +254,22 @@ As we have transitioned to Helm-based Runtimes for GitOps, we have permanently d
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
-**New Feature Flags in v???**
-The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v???.
+**New Feature Flags in v2.3**
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.3.
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Pipelines: Enhanced RBAC with AND logic for tags](#pipelines-enhanced-rbac-with-and-logic-for-tags) in this article.| TRUE  |
+| `buildsTreeView`   | When enabled, shows a visualization of the parent and child builds of pipelines.<br> ???  | FALSE  |
+| `gitopsRuntimeObservability` | When enabled, displays metrics for GitOps Runtimes in dashboards. NIMA: which dashboards ??| FALSE  |
+| `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.<br>NIMA: Add xref   | TRUE  |
+| `preFillBuildVariablesFromURL`   | When enabled (the default), allows sharing pipeline build settings through the **Share build settings** button.<br> See [Pipelines: Share build run settings](#pipelines-share-build-run-settings) in this article.   | TRUE  |
+| `promotionFlowsManagement`   | _New feature currently in development._<br>When enabled, allows users to create and execute Promotion Lifecycles in Codefresh.  | FALSE  |
+| `productReleasesPage`        | _New feature currently in development._<br>When enabled, displays the Releases tab in the GitOps Products dashboard. | FALSE  |
+| `promotionPolicies`   | _New feature currently in development._<br>When enabled, shows the Promotion Policies option in the sidebar. Clicking this displays the Promotion Policy page where you can create and view Promotion Policies.  | FALSE  |
+| `helmHostedRuntime`   |_This feature is not relevant for on-premises environments._ <br>When enabled, installs the Hosted GitOps Runtime using the GitOps Runtime's Helm chart.  | FALSE  |
+
+
 
 **Updated Feature Flags in v???**
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
@@ -268,7 +277,8 @@ The table below lists existing Feature Flags which have been updated by default 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `accountInfoCopyButton`  | When enabled, the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.   | _FALSE_         |
+| `appDiffView`  | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments. We will notify you when you can enable the Feature Flag for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.  | _TRUE_         |
+| `useRepoAndBranchesNextPagination`  | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server. NIMA: IDan same value as before  | _TRUE_         |
 
 ### Bug fixes
 
@@ -414,13 +424,13 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Pipelines: Enhanced RBAC with AND logic for tags](#pipelines-enhanced-rbac-with-and-logic-for-tags) in this article.| TRUE  |
-| `appDiffView`       | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments._ We will notify you when you can enable the Feature Flag for on-premises environments. <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.| FALSE  |
+| `appDiffView`       | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments. We will notify you when you can enable the Feature Flag for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.| FALSE  |
 |`csdpFilterAppsByGitPermissions`      | When enabled (the default), does not display the Git Sources and the Argo CD applications committed to these Git Sources for users without Git permissions or Git credentials for the same.   | TRUE         |
 | `genAICronExpression`       | When enabled, supports generating Cron expressions in the Codefresh UI using Generative AI.| FALSE  |
 | `hideCompositionsMenuItem`     | When enabled, does not show Compositions within Artifacts & Insights in the sidebar of the Codefresh UI. | FALSE         |
 | `promotionFlow` | New feature currently in development.<br>When enabled, allows you to drag an application in the GitOps Product dashboard from its current Environment to a different Environment and trigger a promotion flow. | FALSE         |
-| `promotionWorkflows` | New feature currently in development.<br>When enabled, allows you create and run workflows when a promotion is triggered. | FALSE         |
-| `restrictedGitSource` | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments._ We will notify you when you can enable the Feature Flag for on-premises environments. <br>  When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. | FALSE         |
+| `promotionWorkflows` | _New feature currently in development._<br>When enabled, allows you create and run workflows when a promotion is triggered. | FALSE         |
+| `restrictedGitSource` | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments. We will notify you when you can enable the Feature Flag for on-premises environments._<br>  When enabled, allows you to create a Restricted Git Source in addition to a standard Git Source. | FALSE         |
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Pipelines: New timeout functionality for pipeline steps](#pipelines-new-timeout-functionality-for-pipeline-steps) in this article.  | TRUE         |
 | `useRepoAndBranchesNextPagination`         | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server.  | FALSE         |
 
