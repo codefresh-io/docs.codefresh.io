@@ -97,7 +97,7 @@ Codefresh has a [native Docker build step]({{site.baseurl}}/docs/pipelines/steps
 
 ## Installing the Codefresh runner from the Google Marketplace
 
-The [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
+The [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
 
 
 ## Traditional Google Cloud deployments
