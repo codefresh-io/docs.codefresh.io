@@ -278,10 +278,27 @@ The table below lists existing Feature Flags which have been updated by default 
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `appDiffView`  | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments. We will notify you when you can enable the Feature Flag for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.  | _TRUE_         |
-| `useRepoAndBranchesNextPagination`  | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server. NIMA: IDan same value as before  | _TRUE_         |
+| `useRepoAndBranchesNextPagination`  | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server. NIMA: IDan same value as before  | _FALSE_         |
 
 ### Bug fixes
 
+Jan 2024
+**Pipelines**  
+* For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
+* Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
+* Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
+
+
+<br>
+
+**GitOps**  
+
+** Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
+* `Failed to create binary image error` from Image reporter for images exceeding 2GB.
+* Audit log missing manual actions executed in Rollouts Player.
+* Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
+* For GitLab Actions, `codefresh-image-reporter` log displays actual values of encrypted secrets.
+* Codefresh UI not in sync with native Argo CD UI. 
 
 ## On-premises version 2.2
 
