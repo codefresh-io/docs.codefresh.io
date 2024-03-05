@@ -9,7 +9,7 @@ Welcome to the release notes for our on-premises releases.
 ## On-premises version 2.3
 
 ### Features & enhancements
-Features and enhancements are divided into those in general availability and those currently in Beta.
+Here are the features and enhancements included in Codefresh On-Premises v2.3.
 
 #### Pipelines: New `strict_fail_fast` to control pipelines
 You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
@@ -260,7 +260,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `buildsTreeView`   | When enabled, shows a visualization of the parent and child builds of pipelines.<br> ???  | FALSE  |
+| `buildsTreeView`   | _New feature currently in development._<br>When enabled, shows a visualization of the parent and child builds of pipelines.<br> ???  | FALSE  |
 | `gitopsRuntimeObservability` | When enabled, displays metrics for GitOps Runtimes in dashboards. NIMA: which dashboards ??| FALSE  |
 | `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.<br>NIMA: Add xref   | TRUE  |
 | `preFillBuildVariablesFromURL`   | When enabled (the default), allows sharing pipeline build settings through the **Share build settings** button.<br> See [Pipelines: Share build run settings](#pipelines-share-build-run-settings) in this article.   | TRUE  |
@@ -271,34 +271,41 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 
 
 
-**Updated Feature Flags in v???**
+**Updated Feature Flags in v2.3**
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `appDiffView`  | _This feature is currently in Beta, and the Feature Flag can be enabled only for SaaS environments. We will notify you when you can enable the Feature Flag for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.  | _TRUE_         |
+| `appDiffView`  | _This feature is now available for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.  | _TRUE_         |
 | `useRepoAndBranchesNextPagination`  | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server. NIMA: IDan same value as before  | _FALSE_         |
 
 ### Bug fixes
 
-Jan 2024
-**Pipelines**  
+##### General 
+* GitOps features not loaded on accessing Account Settings from the Admin Management panel with both GitOps and Pipeline modules.
+* ABAC (Attribute-based access control) rules in GO not correctly resolved when multiple rules are configured for the same user. 
+
+##### Pipelines  
+* Unable to deploy Helm charts to Helm boards after upgrade to v2.2.4 
 * For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
 * Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 
 
-<br>
-
-**GitOps**  
-
-** Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
+##### GitOps 
+** Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again. 
+** `Prune skipped` message for Argo CD applications after upgrading to GitOps Runtime v0.4.2.
+* Unable to delete clusters in the Codefresh UI. 
+* Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
 * Audit log missing manual actions executed in Rollouts Player.
 * Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
+* Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2. 
 * For GitLab Actions, `codefresh-image-reporter` log displays actual values of encrypted secrets.
 * Codefresh UI not in sync with native Argo CD UI. 
+* When adding a Git Source and manually defining the branch, metacharacters are not encoded as HTML in the YAML. 
+* Empty page on clicking **View Native Workflow** for the selected workflow in the Workflows tab.
 
 ## On-premises version 2.2
 
