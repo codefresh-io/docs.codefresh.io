@@ -97,7 +97,7 @@ where:
 ## Secret store setup for Codefresh Runner installation
 
 
-For [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installations, you can also store secrets in your own runtime.
+For [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) installations, you can also store secrets in your own runtime.
 
 ### Set up runtime secret store in Codefresh UI
 
