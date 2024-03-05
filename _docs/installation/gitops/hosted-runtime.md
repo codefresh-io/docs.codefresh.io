@@ -78,18 +78,15 @@ max-width="80%"
   * In the Codefresh UI, click the **Settings** icon on the toolbar.
   * From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtime**.
   * Select **Hosted Runtime** and click **Add**.
-  * Continue from _step 3_. 
+
 
 {:start="3"}
 1. Optional. When complete, click **View Runtime**.  
-  You are directed to the Runtime Components tab which is empty as Runtime components are hosted and managed by Codefresh.     
-  When Argo Rollouts are deployed on target clusters, the Runtime Components tab displays rollout reporters whose manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
+  * You can see that there are two steps to complete setup for the Hosted GitOps Runtime. 
+  * The Runtime Components tab is empty as the Runtime components are hosted and managed by Codefresh.       
+    When Argo Rollouts is deployed on target clusters, the Runtime Components tab displays rollout reporters whose manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
+  * The Git Sources and the Managed Clusters tabs are also empty as they will be set up in the next steps.  
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-  You can see that there are two steps to complete Hosted GitOps Runtime setup.  
-  The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
-{{site.data.callout.end}}
 
 {% include
 image.html
@@ -102,8 +99,7 @@ max-width="70%"
 %}
 
 
-
-If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
+If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted) and the Cluster/Namespace column (Codefresh).
 
 {% include
 image.html
