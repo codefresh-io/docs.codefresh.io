@@ -47,8 +47,8 @@ max-width="80%"
 
 
 
-## Before you begin
-* Set up integrations with the Git provider for the Hosted GitOps Runtime
+## Prerequisites
+* Set up integrations with the Git provider for the Hosted GitOps Runtime:
   * GitHub
   * Bitbucket Cloud
   * Gerrit
@@ -86,7 +86,8 @@ max-width="80%"
 
 {:start="3"}
 1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.
-  You are directed to the Runtime Components tab.  
+  You are directed to the Runtime Components tab which is empty as Runtime components are hosted and managed by Codefresh.   
+  When Argo Rollouts are deployed on target clusters, the Runtime Components tab displays rollout reporters as their manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
 
 {% include
 image.html
@@ -116,35 +117,7 @@ caption="Hosted GitOps Runtime in List view"
 max-width="70%"
 %}
 
-<!--- Ask Idan if to keep this:
-### Troubleshoot failed Hosted GitOps Runtime installation
-Your Hosted GitOps Runtime may fail to install with an error as in the image below. We are closely moinitoring the Hosted GitOps Runtime installation process and activley working to prevent and iron out all installation errors. Follow the instructions to uninstall and reinstall the Hosted GitOps Runtime.
 
-{% include
-image.html
-lightbox="true"
-file="/images/runtime/hosted-runtime-error.png"
-url="/images/runtime/hosted-runtime-error.png"
-alt="Hosted runtime installation error"
-caption="Hosted runtime installation error"
-max-width="70%"
-%}
-
-
-1. Download the CLI
-  * If you have installed the Codefresh CLI already, make sure you have the latest version:  
-     `cf version`  
-     To compare with the latest version from Codefresh, [click here](https://github.com/codefresh-io/cli-v2/releases){:target="\_blank"}.  
-  * [Download the CLI]({{site.baseurl}}/docs/clients/csdp-cli/).
-
-1. Uninstall the failed Hosted GitOps Runtime:  
-  `cf runtime uninstall codefresh-hosted --force`  
-  where:  
-  `hosted-codefresh` is the name of your Hosted GitOps Runtime, automatically assigned by Codefresh.
-1. In the Codefresh UI, return to Codefresh [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
-1. Refresh the page and start with [Step 1: Install Hosted GitOps Runtime](#step-1-install-hosted-gitops-runtime).
-
--->
 ## Step 2: Connect Git provider
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  
 
@@ -166,7 +139,7 @@ max-width="80%"
 %}
 
 
-Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
+Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings as a Git Source:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared Configuration Repositories]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
@@ -176,11 +149,11 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
   Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
-### Before you begin
+##### Before you begin
 Make sure you have the credentials for the Git provider handy
 
 
-### How to 
+##### How to 
 
 1. From the list, select the Git provider.
 1. Enter the credentials for the selected Git provider:  
@@ -240,7 +213,7 @@ max-width="70%"
 1. Optional. To see your tokens, click **View Tokens**. 
 
 If you return to the Runtimes page and select the Git Source tab, you will now see the Git Source that Codefresh created.  
-The Sync State may be Unknown for a few moments until it is synced to the Codefresh cluster. 
+The Sync State may be Unknown for a few moments until the Git Source is synced to the Codefresh cluster. 
 
 {% include
 image.html
@@ -269,10 +242,10 @@ caption="Step 3: Connect a K8s cluster for Hosted GitOps Runtime"
 max-width="70%" 
 %}
 
-**Before you begin**  
+##### Before you begin
 * Make sure your cluster has internet access  
 
-**How to**  
+##### How to 
 1. Click **Connect**.
 1. In the Add Managed Cluster panel, copy the command `cf cluster add`, and run it in the terminal.  
 1. When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`.  
