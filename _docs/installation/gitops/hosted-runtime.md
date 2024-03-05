@@ -85,9 +85,9 @@ max-width="80%"
   * Continue from _step 3_. 
 
 {:start="3"}
-1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.
-  You are directed to the Runtime Components tab which is empty as Runtime components are hosted and managed by Codefresh.   
-  When Argo Rollouts are deployed on target clusters, the Runtime Components tab displays rollout reporters as their manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
+1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.  
+  You are directed to the Runtime Components tab which is empty as Runtime components are hosted and managed by Codefresh.     
+  When Argo Rollouts are deployed on target clusters, the Runtime Components tab displays rollout reporters whose manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
 
 {% include
 image.html
