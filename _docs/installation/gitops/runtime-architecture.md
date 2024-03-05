@@ -107,18 +107,18 @@ Codefresh has two types of Event Reporters:
 * Application Event Reporter
 
 ### Resource Event Reporter
-The Resource Event Reporter monitors specific types of resources on the cluster, tracking changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
+The Resource Event Reporter monitors specific types of resources on the cluster and tracks changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
 
 The Resource Event Reporter monitors changes to these resource types:
 * Rollouts (Argo Rollouts)
 * ReplicaSets and Workflows (Argo Workflows)
 
-Resource Event Reporters leverage Argo Event components such as Event Sources to monitor changes and Sensors to send the live-state manifests, to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
+Resource Event Reporters leverage Argo Event components such as Event Sources to monitor changes to the live-state manifests, and Sensors to send the live-state manifests to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
 
 ### Application Event Reporter
 The Application Event Reporter specializes in monitoring changes to Argo CD applications deployed on the cluster. 
 
-In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application and the Git manifests for all the application's managed resources. 
+In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application, and the Git manifests for all the application's managed resources. 
 
 ##### Application Event Reporter data flow
 The diagram below illustrates the data flow for the Application Event Reporter (identified on the cluster as **event-reporter**):
@@ -159,7 +159,7 @@ It receives requests from the the Tunnel Client (tunnel-based) or the ingress co
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
   The Request Routing Service is available from Runtime version 0.0.543 and higher.   
-  Older Runtime versions are not affected as there is complete backward compatibility, and the ingress controller continues to route incoming requests.
+  Older Runtime versions are not affected as the ingress controller continues to route incoming requests and there is full backward compatibility.
 {{site.data.callout.end}}
 
 ## Tunnel Server
