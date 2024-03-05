@@ -136,7 +136,7 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 1. The user makes changes to the application manifest or its managed resources and commits them to the Git repository.
 
-1. The Argo CD Application Controller monitors the Git repo for changes, synchronizes the updates with the cluster, and forwards the changes to the Kubernetes API.
+1. The Argo CD Application Controller monitors the Git repository for changes, synchronizes the updates with the cluster, and forwards the changes to the Kubernetes API.
 
 1. The Application Event Reporter subscribes to the Kubernetes API to receive application-change events. 
   * If there are multiple instances of the Application Event Reporter, each instance subscribes to a set of specific applications determined through a hash function on the application name.
