@@ -8,13 +8,25 @@ toc: true
 
 
 
-For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. Hosted GitOps Runtimes are fully managed and maintained by Codefresh. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops). 
+ For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes.  
+ Hosted GitOps Runtimes are fully managed and maintained by Codefresh. 
+ 
+This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.
 
-This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.<br>
-For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
+For a comparison between the two types of Runtime installations, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops).
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
+Codefresh is responsible for the _availability of Hosted GitOps Runtimes_.<br>
+The Argo CD applications created in Hosted GitOps Runtimes are the customer's responsibility. Codefresh Support is happy to assist as needed.
+{{site.data.callout.end}}
+
 
 >**NOTE**  
 You can install a _single Hosted GitOps Runtime per Codefresh account_. 
+
 
 
 
@@ -23,16 +35,21 @@ You can install a _single Hosted GitOps Runtime per Codefresh account_.
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |  
 | --------------         | --------------           |  
-|Kubernetes cluster      | Server version 1.18 and higher to which to deploy applications|
-|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud</li><li>Gerrit</li></ul>{:/}|
+|Kubernetes cluster               | Server version 1.18|
+|Target Kubernetes clusters      | {::nomarkdown} <ul><li>At least one target cluster to which to deploy Argo CD applications. <br>The actual number of target clusters depends on package sizing.</li><li>Must have public access from Internet</li></ul>{:/}|
+|Argo CD managed CRDs (Custom Resource Definitions)   | Between 300 and 400 CRDs         |
+|Git provider      | {::nomarkdown}<ul><li>GitHub</li><!---<li>GitLab Cloud</li>--><li>Bitbucket Cloud (contact Support)</li><li>Gerrit (contact Support)</li></ul>{:/}|
+|Git repo for manifests   | Up to 100MB|
+|CMP (Cloud Management Platform) plugins                  | Only for Enterprise customers |
 
+For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
 ## Where to start with Hosted GitOps Runtimes
 If you have not provisioned a Hosted GitOps Runtime, Codefresh presents you with the setup instructions in the **Home** dashboard.   
 
   
 
-* In the Codefresh UI, from OPS in the sidebar, select [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.
+* In the Codefresh UI, from Ops in the sidebar, select [Home](https://g.codefresh.io/2.0/?time=LAST_7_DAYS){:target="\_blank"}.  
   Codefresh guides you through the three-step setup, as described below.
 
 {% include
@@ -116,7 +133,7 @@ max-width="70%"
 Connect your Hosted GitOps Runtime to a Git provider for Codefresh to create the required Git repos.  
 
 **Authorize access**  
-  Based on the Git provider you select, you need to authorize access through OAuth or access token, and then select the Git organizations or accounts in which to create the required Git repos. 
+  Based on the Git provider you select, you need to authorize access through OAuth or an access token, and then select the Git organizations or accounts in which to create the required Git repos. 
 
 **Git organizations/accounts**  
   Only authorized organizations are displayed in the list. To authorize organizations for the Codefresh application in GitHub, see [Authorize organizations/projects]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/).
@@ -239,7 +256,9 @@ max-width="70%"
 ##### Before you begin
 * Make sure your cluster has internet access  
 
-##### How to 
+
+##### How to  
+
 1. Click **Connect**.
 1. In the Add Managed Cluster panel, copy the command `cf cluster add`, and run it in the terminal.  
 1. When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`.  
@@ -271,25 +290,25 @@ max-width="70%"
 {:start="5"} 
 1. Configure access to the IP addresses required. See [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/). 
 
-<!-- If you could not connect a cluster, you may not have the latest version of the CLI:  
-[Upgrade the GitOps CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/).-->
+
 
 You have completed setting up your Hosted GitOps Runtime. You are ready to create applications, and connect third-party CI tools for image enrichment.
 
-## (Optional) Create application
-Optional. Create an application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
+## (Optional) Create an Argo CD application
+Optional. Create an Argo CD application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
 1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/).  
   OR    
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).   
 
 {:start="2"}
-2. In the Codefresh UI, view your application in the [Applications dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+2. In the Codefresh UI, view your application in the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+  For more information, see [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
 
 ## (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  
 
-See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) 
+See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## Related articles
 [Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
