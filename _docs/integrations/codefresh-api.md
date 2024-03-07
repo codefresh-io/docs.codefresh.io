@@ -367,7 +367,7 @@ Encrypted variables cannot be read back by exporting the pipeline.
 
 ### Runtime environment
 
-The `runtimeEnvironment` selects the cluster that will execute the pipeline (mostly useful for organizations using the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/))
+The `runtimeEnvironment` selects the cluster that will execute the pipeline (mostly useful for organizations using the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)).
 
 {: .table .table-bordered .table-hover}
 | Field name          | Parent field                 | Type                  | Value |

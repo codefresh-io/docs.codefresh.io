@@ -74,7 +74,7 @@ If you haven't configured your clusters with the required IPs, use the links bel
 * [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
-[Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/)  
+[Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
 [Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Codefresh architecture]({{site.baseurl}}/docs/installation/runtime-architecture/) 
+[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   

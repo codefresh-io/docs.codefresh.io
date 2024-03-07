@@ -95,33 +95,28 @@ max-width="80%"
   * In the Codefresh UI, click the **Settings** icon on the toolbar.
   * From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}, and click **+ Add Runtime**.
   * Select **Hosted Runtime** and click **Add**.
-    {{site.data.callout.callout_tip}}
-    **TIP**  
-    An account can be provisioned with a single Hosted GitOps Runtime. If you have already provisioned a Hosted GitOps Runtime for your account, the Hosted GitOps Runtime option is disabled.
-    {{site.data.callout.end}}
-  * Continue from _step 3_. 
+
 
 {:start="3"}
-1. When complete, to view the components for the Hosted GitOps Runtime, click **View Runtime**.
-  You are directed to the Runtime Components tab.  
+1. Optional. When complete, click **View Runtime**.  
+  * You can see that there are two steps to complete setup for the Hosted GitOps Runtime. 
+  * The Runtime Components tab is empty as the Runtime components are hosted and managed by Codefresh.       
+    When Argo Rollouts is deployed on target clusters, the Runtime Components tab displays rollout reporters whose manifests are stored in the customer's Shared Configuration Repository created for the Runtime (described in Step 2). 
+  * The Git Sources and the Managed Clusters tabs are also empty as they will be set up in the next steps.  
+
 
 {% include
 image.html
 lightbox="true"
 file="/images/runtime/hosted-runtime-components.png"
 url="/images/runtime/hosted-runtime-components.png"
-alt="Runtime components for Hosted GitOps Runtime"
-caption="Runtime components for Hosted GitOps Runtime"
+alt="Hosted GitOps Runtime after installation"
+caption="Hosted GitOps Runtime after installation"
 max-width="70%"
 %}
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-  You can see that there are two steps to complete setting up the Hosted GitOps Runtime.  
-  The Git Sources and the Managed Clusters are empty as they will be set up in the next steps.  
-{{site.data.callout.end}}
 
-If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted), the Cluster/Namespace column (Codefresh), and the Module column (CD Ops).
+If you navigate to **Runtimes > List View**, you can identify the Hosted GitOps Runtime through the Type column (Hosted) and the Cluster/Namespace column (Codefresh).
 
 {% include
 image.html
@@ -155,7 +150,7 @@ max-width="80%"
 %}
 
 
-Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings:
+Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings as a Git Source:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
@@ -229,7 +224,7 @@ max-width="70%"
 1. Optional. To see your tokens, click **View Tokens**. 
 
 If you return to the Runtimes page and select the Git Source tab, you will now see the Git Source that Codefresh created.  
-The Sync State may be Unknown for a few moments until it is synced to the Codefresh cluster. 
+The Sync State may be Unknown for a few moments until the Git Source is synced to the Codefresh cluster. 
 
 {% include
 image.html
@@ -261,7 +256,9 @@ max-width="70%"
 ##### Before you begin
 * Make sure your cluster has internet access  
 
+
 ##### How to  
+
 1. Click **Connect**.
 1. In the Add Managed Cluster panel, copy the command `cf cluster add`, and run it in the terminal.  
 1. When prompted to select the `kube-context`, select from the list of available clusters as defined in `kubeconfig`.  

@@ -19,7 +19,7 @@ Codefresh has native support for Kubernetes in the following areas:
 - [Viewing the environment dashboard](/#viewing-the-environment-dashboard)
 - [Deploying to a cluster with the GUI](#ad-hoc-deployments-with-the-codefresh-ui)
 - [Deploying to a cluster with a pipeline](#automated-deployments-with-codefresh-pipelines)
-- [Running pipelines on a cluster]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- [Running pipelines on a cluster]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
 
 
 
@@ -738,7 +738,9 @@ Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/c
 
 ## Using a cluster for running CI/CD pipelines
 
-Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) to run pipelines in your cluster.
+
+Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner//) to run pipelines in your cluster.
+
 
 
 
