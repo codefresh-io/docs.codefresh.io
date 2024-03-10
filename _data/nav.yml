@@ -370,9 +370,10 @@
     - title: GitOps Promotions
       url: "/promotions"
       sub-pages:
-        - title: Configuring changes for promotions
+        - title: Promotion changes for applications
           url: "/promotion-template"
-
+        - title: Promotions API
+          url: "/promotions-api"
 - title: Pipelines
   url: "/pipelines"
   pages:
