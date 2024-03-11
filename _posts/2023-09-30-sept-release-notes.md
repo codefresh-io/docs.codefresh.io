@@ -88,7 +88,7 @@ Helm has become the default installation method for the Codefresh Runner. This c
 
 The new Helm installation for the Runner is described in [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target="\_blank"} on ArtifactHub.
 
-Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
+Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) in the documentation.
 
 
 

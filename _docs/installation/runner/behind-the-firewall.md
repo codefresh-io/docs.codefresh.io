@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 
-As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/), the Hybrid Runner is required to run Codefresh pipelines.
+As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner), the Hybrid Runner is required to run Codefresh pipelines.
 This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
@@ -126,7 +126,7 @@ steps:
 Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
 >**NOTE**  
- Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
+ Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
@@ -136,7 +136,7 @@ You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clo
 In the previous section we have seen how a pipeline can check out code from an internal Git repository. We also need to set up a trigger,
 so that every time a commit or any other supported event occurs, the Codefresh pipeline is triggered automatically.
 
-If you have installed the [optional app-proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
+If you have installed the optional app-proxy, adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
 
 If you haven't installed the app-proxy, then adding a Git trigger is a two-step process:
 

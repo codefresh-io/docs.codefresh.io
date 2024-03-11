@@ -12,7 +12,7 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-A user wants to have better performance for their containers/builds in their private Kubernetes clusters using the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)(Hybrid).
+A user wants to have better performance for their containers/builds in their private Kubernetes clusters using the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)(Hybrid).
 
 ## Details
 
