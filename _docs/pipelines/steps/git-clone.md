@@ -190,7 +190,7 @@ steps:
 
 ## Check out code using the Codefresh Runner
 
-If you are using the [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/), you need to use
+If you are using the [Codefresh runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/), you need to use
 the fully qualified path of the Git repository:
 
 `codefresh.yml`
@@ -452,7 +452,7 @@ steps:
 
 ## Using Git behind a proxy
 
-If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/pipelines/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
+If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/pipelines/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
 and then activate the property `use_proxy: true` in the clone step. Example:
 
 `codefresh.yml`
