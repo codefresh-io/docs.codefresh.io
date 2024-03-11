@@ -403,7 +403,7 @@ max-width="50%"
 %}
 
 **Configure runtime environment**<br>
-As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/codefresh-runner/).
+As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/).
 
 {% include 
 image.html 
