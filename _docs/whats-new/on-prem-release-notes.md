@@ -11,6 +11,9 @@ Welcome to the release notes for our on-premises releases.
 ### Features & enhancements
 Here are the features and enhancements included in Codefresh On-Premises v2.3.
 
+#### Migrate container registry from GCR to GAR
+In this release, we have migrated our container registry from Google Container Registry (GCR) to Google Artifact Registry (GAR). GAR extends the capabilities of GCR with support for both container images and non-container artifacts. Enjoy the benefits of this change.
+
 #### Pipelines: New `strict_fail_fast` to control pipelines
 You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
 But what if you want to indicate that a step failed in the Build status even when the pipeline completes execution? Enter our new `strict_fail_fast` flag! Now, you can indicate that the step failed execution by simply adding `strict_fail_fast` to the step and setting it to `true`. After the pipeline completes execution, the Build status is designated as Failed.
@@ -261,7 +264,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `buildsTreeView`   | _New feature currently in development._<br>When enabled, shows a visualization of the parent and child builds of pipelines.<br> ???  | FALSE  |
-| `gitopsRuntimeObservability` | When enabled, displays metrics for GitOps Runtimes in dashboards. NIMA: which dashboards ??| FALSE  |
+| `gitopsRuntimeObservability` | _New feature currently in development._ <br>When enabled, displays metrics for GitOps Runtimes in dashboards. | FALSE  |
 | `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.<br>NIMA: Add xref   | TRUE  |
 | `preFillBuildVariablesFromURL`   | When enabled (the default), allows sharing pipeline build settings through the **Share build settings** button.<br> See [Pipelines: Share build run settings](#pipelines-share-build-run-settings) in this article.   | TRUE  |
 | `promotionFlowsManagement`   | _New feature currently in development._<br>When enabled, allows users to create and execute Promotion Lifecycles in Codefresh.  | FALSE  |
@@ -294,8 +297,7 @@ The table below lists existing Feature Flags which have been updated by default 
 
 
 ##### GitOps 
-** Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again. 
-** `Prune skipped` message for Argo CD applications after upgrading to GitOps Runtime v0.4.2.
+** Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
 * Unable to delete clusters in the Codefresh UI. 
 * Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
@@ -542,7 +544,7 @@ Starting with this version, Helm becomes the default installation method for the
 
 The new Helm installation for the Runner is described in [Chart Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#chart-configuration){:target="\_blank"} on ArtifactHub.
 
-Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner/) in the documentation.
+Refer also to [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) in the documentation.
 
 <br><br>
 
