@@ -8,7 +8,7 @@ toc: true
 
 After creating Products and setting up Environments in Codefresh, the next step is to promote the Product and its applications between the different Environments. 
 
-Promotion orchestration across Environments is the act of defining 
+TBD
 
 
 
@@ -52,27 +52,26 @@ The criteria you define in the Promotion Template CRD determines how changes are
 
 ADD HERE A FLOW DIAGRAM?
 
-1. Selects the applications to promote
+1. Selects the applications to promote  
   Applications are selected for promotion via Kubernetes labels, defined through a key-value/operator pair. This allows flexibility in defining the application identifier as loosely or tightly as needed. 
  
-  Examples:
-  Select applications based on Environment, Product, or any other relevant criteria.
-  Utilize operators like Exists, In, or NotIn for precise application targeting.
+    Examples:
+    Select applications based on Environment, Product, or any other relevant criteria.
+    Utilize operators like Exists, In, or NotIn for precise application targeting.
   
 
-EXAMPLES
+    EXAMPLES
 
-1. If required, applies the priority
+1. If required, applies the priority  
   When multiple Promotion Templates match the same application, the priority assigned to the Promotion Template comes into play to determines the changes that are promoted.  
   In such cases, the priority, in ascending order, determines the precedence of Promotion Templates that defines which changes are promoted in the application. 
   
-  Codefresh generates a composite Promotion Template by merging the specifications from all relevant Promotion Templates: 
-    * The Template with the highest priority serves as the _base_ template, with its specifications taking precedence over conflicting specifications from other templates. 
-    * Specifications from other templates not present in the base Template are added to it.  
-      In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have  lower-priority.
+    Codefresh generates a composite Promotion Template by merging the specifications from all relevant Promotion Templates: 
+      * The Template with the highest priority serves as the _base_ template, with its specifications taking precedence over conflicting specifications from other templates. 
+      * Specifications from other templates not present in the base Template are added to it.  
+        In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have  lower-priority.
 
-
-
+{:start="3"}
 1. Applies the changes to promote
   As the final step, the Promotion Template applies the changes defined within it to the application, either at the file level or to attributes in the file. 
 

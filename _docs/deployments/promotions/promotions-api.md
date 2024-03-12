@@ -43,7 +43,7 @@ file="/images/gitops-promotions/promotion-templates/api-ingress-host.png"
 url="/images/gitops-promotions/promotion-templates/api-ingress-host.png"
 alt="Identify ingress host for GitOps Runtime"
 caption="Identify ingress host for GitOps Runtime"
-max-width="60%"
+max-width="90%"
 %}
 
 
@@ -69,56 +69,58 @@ The API authorization token must be included in the header of the API request. S
 
 ### Request body
 
+For a description of the fields, see [Request parameters](#request-parameters).
+
 ```
+
 {
     "srcAppId": {
-        "runtime": "[required] runtime-name",
-        "namespace": "[required] namespace",
-        "name": "[required] name"
+        "runtime": "<runtime-name>",
+        "namespace": "<namespace>",
+        "name": "<source-application-name>"
     },
     "destAppId": {
-        "runtime": "[required] runtime-name",
-        "namespace": "[required] namespace",
-        "name": "[required] name"
+        "runtime": "<runtime-name>",
+        "namespace": <namespace>",
+        "name": "<destination-application-name>"
     },
-    "message": "[required] commit message"
+    "message": "<commit message>"
 }
 ```
 
-### `commit` request example
+### Request example
 
 The request is formatted in curl.
 
 ```
-curl -X POST http://https://619b9decc7787b8015528f-codefresh.tunnels.cf-cd.com/api/promotions/commit \
-    --header "content-type: application/json" \
-    --header "Authorization: ${42eda0011a96999bfab09d1.111ffb4cdf0d331a6a11c7e9004f1111}" \
-    --data "{
-        \"srcAppId\": {
-            \"runtime\": \"codefresh\",
-            \"namespace\": \"orders\",
-            \"name\": \"orders-qa-us-east\"
-        },
-        \"destAppId\": {
-            \"runtime\": \"codefresh\",
-            \"namespace\": \"orders\",
-            \"name\": \"orders-prod-us-east\"
-        },
+{
+    \"srcAppId\": {
+        \"runtime\": \"codefresh\",
+        \"namespace\": \"orders\",
+        \"name\": \"orders-qa-us-east\"
+    },
+    \"destAppId\": {
+        \"runtime\": \"codefresh\",
+        \"namespace\": \"orders\",
+        \"name\": \"orders-prod-us-east\"
+    },
         \"message\": \"Update image tag and bump version\"
-    }"
+}"
 ```
-### `commit` response example
+### Response example
 
 #### Success
 Here's an example of the response for a successful request.
-It includes the commit SHA, the commit message, and the name and email of the user who authored the commit.
+It includes the:
+* Commit SHA
+* Commit message
+* Name and email of the user who authored the commit
 
 ```
-{"COMMIT_SHA":"ff46cab5a4c94fc2db215b2bd2102da05c5314ba","COMMIT_MESSAGE":"commit message","COMMIT_AUTHOR":"codefresh-user <codefresh.user@codefresh.io>"}
+{"COMMIT_SHA":"ff46cab5a4c94fc2db215b2bd2102da05c5314ba","COMMIT_MESSAGE":"bumped version","COMMIT_AUTHOR":"codefresh-user <codefresh.user@codefresh.io>"}
 ```
 #### Failure
 Here's an example of the response for a failed request when there were no changes to promote between the source and the destination applications.
-
 
 ```
 {"statusCode":400,"message":"no changes found between source and destination applications","error":"Bad Request"}
@@ -129,6 +131,27 @@ Here's an example of the response for a failed request when there were no change
 
 Promotes the application from the source environment to the destination or target environment through a `pull request`  as the promotion action.
 
+### `pullRequest` request body
+
+```
+{
+        \"srcAppId\": {
+            \"runtime\": \"<runtime name>\",
+            \"namespace\": \"[<namespace>\",
+            \"name\": \"[<source-application-name>\"
+        },
+        \"destAppId\": {
+            \"runtime\": \"<runtime-name>\",
+            \"namespace\": \"<namespace>\",
+            \"name\": \"<destination-application-name>\"
+        },
+        \"head\": \"<branch-of-destination-application>\",
+        \"title\": \"<pr-title>\",
+        \"description\": \"<pr-description\",
+        \"commitMessage\": \"<commit-message-if empty-uses-title>\",
+        \"commitDescription\": \"<commit-description>\",
+    }"
+```
 
 ### `pullRequest` request example
 The request is formatted in curl.
@@ -159,19 +182,12 @@ curl -X POST http://<ingressHost>/api/promotions/pullRequest \
 ### `pullRequest` response example
 
 #### Success
-Here's an example of the response for a successful request.
-It includes the commit SHA, the commit message, and the name and email of the user who authored the commit.
+TBD
 
-```
-{"COMMIT_SHA":"ff46cab5a4c94fc2db215b2bd2102da05c5314ba","COMMIT_MESSAGE":"commit message","COMMIT_AUTHOR":"codefresh-codefresh <codefresh.user@codefresh.io>"}
-```
+
 #### Failure
-Here's an example of the response for a failed request when there were no changes to promote between the source and the destination applications.
+TBD
 
-
-```
-{"statusCode":400,"message":"no changes found between source and destination applications","error":"Bad Request"}
-```
 
 
 ## Request parameters
