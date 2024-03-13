@@ -69,7 +69,9 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 | CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Supported                  | Supported |
+| CD  Ops                 |Applications        | Supported: see below for details                  | Supported: see below for details |
+|                         |                    |Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
+|                         |                     |Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}| Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}.|
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
