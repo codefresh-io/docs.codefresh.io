@@ -11,8 +11,17 @@ Welcome to the release notes for our on-premises releases.
 ### Features & enhancements
 Here are the features and enhancements included in Codefresh On-Premises v2.3.
 
-#### Migrate container registry from GCR to GAR
-In this release, we have migrated our container registry from Google Container Registry (GCR) to Google Artifact Registry (GAR). GAR extends the capabilities of GCR with support for both container images and non-container artifacts. Enjoy the benefits of this change.
+#### Install/upgrade to v2.3
+Welcome to our newest on-premises release!
+
+**Installing v2.3**
+For detailed instructions on installing v2.3, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+**Upgrading to v2.3**
+In this release, we changed the default registry for Codefresh _private_ images from Google Container Registry (GCR) `gcr.io` to Google Artifact Registry (GAR) `us-docker.pkg.dev`.  
+If you are upgrading to v2.3, you will need to update `.Values.imageCredentials.registry` to `us-docker.pkg.dev`. 
+
+For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
 
 #### Pipelines: New `strict_fail_fast` to control pipelines
 You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
