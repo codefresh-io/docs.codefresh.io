@@ -23,6 +23,28 @@ If you are upgrading to v2.3, you will need to update `.Values.imageCredentials.
 
 For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
 
+#### Pipelines: Explore build relationships with Build Tree
+Introducing Build Tree for easy rendering of relationships between pipeline builds!  
+Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png" 
+	url="/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png" 
+	alt="Build Tree view for pipeline builds" 
+	caption="Build Tree view for pipeline builds"
+  max-width="60%" 
+%}
+ 
+In addition to the effortless visualization, other key benefits include:  
+
+* Clear reference point: The selected build is always tagged as Current giving you a solid reference point. 
+* Build status: Build status is always updated and failed steps are listed for quick alerts.
+* Context menu for build management: Every build has a context menu for quick access to essential actions without navigating away from the Build Tree. If you need detailed insights, a single click opens the Builds view to the Build Tree for the build.
+
+For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
+
 #### Pipelines: New `strict_fail_fast` to control pipelines
 You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
 But what if you want to indicate that a step failed in the Build status even when the pipeline completes execution? Enter our new `strict_fail_fast` flag! Now, you can indicate that the step failed execution by simply adding `strict_fail_fast` to the step and setting it to `true`. After the pipeline completes execution, the Build status is designated as Failed.
