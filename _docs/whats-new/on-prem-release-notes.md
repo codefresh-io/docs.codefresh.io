@@ -38,10 +38,10 @@ Seamlessly visualize complex parent-child-sibling relationships within the conte
 %}
  
 In addition to the effortless visualization, other key benefits include:  
-
-* Clear reference point: The selected build is always tagged as Current giving you a solid reference point. 
-* Build status: Build status is always updated and failed steps are listed for quick alerts.
-* Context menu for build management: Every build has a context menu for quick access to essential actions without navigating away from the Build Tree. If you need detailed insights, a single click opens the Builds view to the Build Tree for the build.
+* The selected build as an anchor reference point to linked builds, indicated by the **Current** tag assigned to it. 
+* Updated status for every build, with failed steps listed for quick alerting.
+* Quick access to essential actions without navigating away from the Build Tree, through the build's context menu.  
+* Single-click access to the individual build view for detailed insights.
 
 For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
 
