@@ -23,27 +23,6 @@ If you are upgrading to v2.3, you will need to update `.Values.imageCredentials.
 
 For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
 
-#### Pipelines: Explore build relationships with Build Tree
-Introducing Build Tree for easy rendering of relationships between pipeline builds!  
-Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png" 
-	url="/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png" 
-	alt="Build Tree view for pipeline builds" 
-	caption="Build Tree view for pipeline builds"
-  max-width="60%" 
-%}
- 
-In addition to the effortless visualization, other key benefits include:  
-* The selected build as an anchor reference point to linked builds, indicated by the **Current** tag assigned to it. 
-* Updated status for every build, with failed steps listed for quick alerting.
-* Quick access to essential actions without navigating away from the Build Tree, through the build's context menu.  
-* Single-click access to the individual build view for detailed insights.
-
-For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
 
 #### Pipelines: New `strict_fail_fast` to control pipelines
 You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
