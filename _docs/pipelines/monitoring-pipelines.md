@@ -14,7 +14,7 @@ View activity for Codefresh pipelines in the **Builds** tab.
  
 As a user, you can see builds from all pipelines you have access to. If your permissions do not include access to specific pipelines, you will not see builds from those pipelines. 
 
-The Builds page for a pipeline displays by default all builds sorted from the most recent to the oldest. To narrow the list, you can use the date range filter, and additional filters at the top of the page.
+The Builds page for a pipeline displays by default all builds sorted from the most recent to the oldest. To narrow the list, you can use the date range filter and additional filters at the top of the page.
 
 {% include 
 image.html 
@@ -501,6 +501,40 @@ alt="Step view: Restart from failed step"
 caption="Step view: Restart from failed step"
 max-width="70%"
 %}
+
+## Visualize build relationships for pipeline
+Select a build for a pipeline with a parent build, and visualize all linked builds at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
+
+1. From the sidebar, below Pipelines, select **Builds**. 
+1. Click the build to go to the step view for the build.
+1. In the lower part of the page, click **Build Tree**.
+
+### Build Tree view
+
+Here's an example of the Build Tree view for a pipeline build displaying the hierarchical relationships between the builds. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-tree-view.png" 
+url="/images/pipeline/monitoring/build-tree-view.png"
+alt="Build Tree for selected pipeline build" 
+caption="Build Tree for selected pipeline build"
+max-width="60%"
+%}
+
+
+1. **Build reference point**  
+  The selected build is the reference point for all the other builds it is linked to. For easy identification, the selected build is tagged as **Current**.
+
+1. **Build status**  
+  Every build displayed in the Build Tree showcases its status, and explicitly lists failed steps if any. 
+
+1. **Build context menu**  
+  Every build has a context menu including all the actions available for an individual pipeline build. 
+
+1. **Navigation to individual builds**  
+  Clicking {::nomarkdown}<img src="../../../images/icons/external-link.png" display=inline-block/> {:/} for any build opens a Builds page displaying the step-view and the Build Tree for that build. The selected build is tagged as the Current build. 
 
 
 
