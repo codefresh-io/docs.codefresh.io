@@ -502,8 +502,8 @@ caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
-## Visualize build relationships for pipeline
-Select a build for a pipeline with a parent build, and visualize all linked builds at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
+## Visualize build relationships for pipelines
+Select a build for a pipeline to visualize all linked builds at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
 
 1. From the sidebar, below Pipelines, select **Builds**. 
 1. Click the build to go to the step view for the build.
@@ -511,7 +511,7 @@ Select a build for a pipeline with a parent build, and visualize all linked buil
 
 ### Build Tree view
 
-Here's an example of the Build Tree view for a pipeline build displaying the hierarchical relationships between the builds. 
+Here's an example of the Build Tree for a pipeline build displaying the hierarchical relationships between the selected and interconnected builds. 
 
 {% include 
 image.html 
@@ -524,18 +524,20 @@ max-width="60%"
 %}
 
 
-1. **Build reference point**  
-  The selected build is the reference point for all the other builds it is linked to. For easy identification, the selected build is tagged as **Current**.
+* **Build reference point**  
+  The selected build is the focal point to all linked builds. For easy identification, the selected build is tagged as **Current**.
 
-1. **Build status**  
-  Every build displayed in the Build Tree showcases its status, and explicitly lists failed steps if any. 
+* **Build status**  
+  Every build displayed in the Build Tree showcases its status and explicitly lists failed steps if any. 
 
-1. **Build context menu**  
-  Every build has a context menu including all the actions available for an individual pipeline build. 
+* **Build context menu**  
+  Every build has a context menu for quick access to useful actions available for an individual pipeline build. 
 
-1. **Navigation to individual builds**  
+* **Navigation to individual builds**  
   Clicking {::nomarkdown}<img src="../../../images/icons/external-link.png" display=inline-block/> {:/} for any build opens a Builds page displaying the step-view and the Build Tree for that build. The selected build is tagged as the Current build. 
 
+* **View controls**  
+  View controls at the top left allow you to zoom in or out, and collapse the branches. 
 
 
 ## Monitoring pipelines outside the Codefresh UI
