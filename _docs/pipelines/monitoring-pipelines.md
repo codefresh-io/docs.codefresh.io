@@ -502,12 +502,12 @@ caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
-## Visualize build relationships for pipelines
+## Visualize relationships for pipeline builds
 
 >**NOTE**  
 This feature is currently in Beta.
 
-Select a build for a pipeline to visualize all linked builds at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
+Select a build for a pipeline to visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
 
 1. From the sidebar, below Pipelines, select **Builds**. 
 1. Click the build to go to the step view for the build.
@@ -532,16 +532,25 @@ max-width="50%"
   The selected build is the focal point to all linked builds. For easy identification, the selected build is tagged as **Current**.
 
 * **Build status**  
-  Every build displayed in the Build Tree showcases its status and explicitly lists failed steps if any. 
+  * Every build displayed in the Build Tree showcases its status. 
+  * For easy identification and alerting, steps in builds with an error status or a status requiring manual action are always displayed.  
+    These statuses include:
+    * Denied
+    * Failed
+    * Pending Approval
+    * Terminating or Terminated
+
 
 * **Build context menu**  
   Every build has a context menu for quick access to useful actions available for an individual pipeline build. 
 
 * **Navigation to individual builds**  
-  Clicking {::nomarkdown}<img src="../../../images/icons/external-link.png" display=inline-block/> {:/} for any build opens a Builds page displaying the step-view and the Build Tree for that build. The selected build is tagged as the Current build. 
+  Clicking {::nomarkdown}<img src="../../../images/icons/external-link.png" display=inline-block/> {:/} for any build opens the Builds page displaying the step-view for that build. 
 
 * **View controls**  
-  View controls at the top left allow you to zoom in or out, and collapse the branches. 
+  View controls located at the top left:
+    *  Allow zooming in or out.
+    * **Collapse all**: Restores the default view of the Build Tree and collapses builds without errors (Success, Pending, Approved statuses). 
 
 
 ## Monitoring pipelines outside the Codefresh UI
