@@ -64,7 +64,7 @@ Now, you can add variables without any values to entities in Codefresh, whether 
 	url="/images/whats-new/jan24/rel-notes-jan-24-empty-variables.png" 
 	alt="Empty variables in a Codefresh project" 
 	caption="Empty variables in a Codefresh project"
-  max-width="60%" 
+  max-width="40%" 
 %}
 
 
