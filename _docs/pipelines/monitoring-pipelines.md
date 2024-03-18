@@ -524,7 +524,7 @@ file="/images/pipeline/monitoring/build-tree-view.png"
 url="/images/pipeline/monitoring/build-tree-view.png"
 alt="Build Tree for selected pipeline build" 
 caption="Build Tree for selected pipeline build"
-max-width="60%"
+max-width="50%"
 %}
 
 
