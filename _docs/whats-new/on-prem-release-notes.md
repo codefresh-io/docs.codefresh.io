@@ -25,8 +25,10 @@ For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packag
 
 
 #### Pipelines: New `strict_fail_fast` to control pipelines
-You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.
-But what if you want to indicate that a step failed in the Build status even when the pipeline completes execution? Enter our new `strict_fail_fast` flag! Now, you can indicate that the step failed execution by simply adding `strict_fail_fast` to the step and setting it to `true`. After the pipeline completes execution, the Build status is designated as Failed.
+You’re probably familiar with the `fail_fast` flag available for steps in Codefresh pipelines. The flag determines the pipeline’s behavior when there is a step failure. Accordingly, when set to `false`, the pipeline continues execution and returns a Build status of `Build completed successfully`.  
+
+But what if you want to indicate that a step failed in the Build status even when the pipeline completes execution? Enter our new `strict_fail_fast` flag!  
+Now, you can indicate that the step failed execution by simply adding `strict_fail_fast` to the step and setting it to `true`. After the pipeline completes execution, the Build status is designated as Failed.
 
 ```yaml
 step_name:
@@ -267,7 +269,7 @@ As we have transitioned to Helm-based Runtimes for GitOps, we have permanently d
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
-**New Feature Flags in v2.3**
+##### New Feature Flags in v2.3
 The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.3.
 
 {: .table .table-bordered .table-hover}
@@ -284,7 +286,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 
 
 
-**Updated Feature Flags in v2.3**
+##### Updated Feature Flags in v2.3
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
 
 {: .table .table-bordered .table-hover}
