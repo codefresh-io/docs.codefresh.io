@@ -15,15 +15,16 @@ The Promotions API uses HTTP POST requests with JSON arguments and JSON response
 To make calls to the Promotions API, you need authorization through an API key passed in the header of the API request.  
 
 >**NOTE**  
-The user who generates the API token must be an account administrator. 
+The user who generates the API token must be an account administrator.  
+Currently you do not need to select specific scopes for the API key.
 
 ##### How to get the API key
 1. From your avatar dropdown in the Codefresh toolbar, select **User Settings**.
 1. Do one of the following:
-  * To use an existing API key, click **Edit**, and then copy the value in the **API Key** field.
-  * To generate a new API key, click Generate.
+  * If you have an existing API key you have saved, use that key.
+  * To generate a new API key, click **Generate**.
     1. In **Key Name**, type a new name for the API key. 
-      This name is prefixed to the API key value and displaed in the UI.
+      This name is displayed in the UI with random numbers and letters.
     1. Click **Create**.
     1. Copy the API key to a handy location.
 
@@ -63,8 +64,8 @@ POST http://<ingressHost>/api/promotions/commit
 ### Headers
 The API authorization token must be included in the header of the API request. See [Authorization](#authorization).
 ```
-`content-type: application/json`
-`Authorization: <TOKEN>`
+content-type: application/json
+Authorization: <TOKEN>
 ```
 
 ### Request body
@@ -93,15 +94,19 @@ For a description of the fields, see [Request parameters](#request-parameters).
 The request is formatted in curl.
 
 ```
+curl -X POST https://codefresh-hosted-gitops-runtime.com/api/promotions/commit \
+    --header "content-type: application/json" \
+    --header "Authorization: 214ffb**************" \
+    --data 
 {
     \"srcAppId\": {
         \"runtime\": \"codefresh\",
-        \"namespace\": \"orders\",
+        \"namespace\": \"orders-qa\",
         \"name\": \"orders-qa-us-east\"
     },
     \"destAppId\": {
         \"runtime\": \"codefresh\",
-        \"namespace\": \"orders\",
+        \"namespace\": \"orders-prod\",
         \"name\": \"orders-prod-us-east\"
     },
         \"message\": \"Update image tag and bump version\"
@@ -135,21 +140,21 @@ Promotes the application from the source environment to the destination or targe
 
 ```
 {
-        \"srcAppId\": {
-            \"runtime\": \"<runtime name>\",
-            \"namespace\": \"[<namespace>\",
-            \"name\": \"[<source-application-name>\"
+        "srcAppId": {
+            "runtime": "<runtime name>",
+            "namespace": "<namespace>",
+            "name": "<source-application-name>"
         },
-        \"destAppId\": {
-            \"runtime\": \"<runtime-name>\",
-            \"namespace\": \"<namespace>\",
-            \"name\": \"<destination-application-name>\"
+        "destAppId": {
+            "runtime": "<runtime-name>",
+            "namespace": "<namespace>",
+            "name": "<destination-application-name>"
         },
-        \"head\": \"<branch-of-destination-application>\",
-        \"title\": \"<pr-title>\",
-        \"description\": \"<pr-description\",
-        \"commitMessage\": \"<commit-message-if empty-uses-title>\",
-        \"commitDescription\": \"<commit-description>\",
+        "head": "<branch-of-destination-application>",
+        "title": "<pr-title>",
+        "description": "<pr-description",
+        "commitMessage": "<commit-message-when-empty-uses-title>",
+        "commitDescription": "<commit-description>",
     }"
 ```
 
@@ -157,18 +162,18 @@ Promotes the application from the source environment to the destination or targe
 The request is formatted in curl.
 
 ```
-curl -X POST http://<ingressHost>/api/promotions/pullRequest \
+curl -X POST https://codefresh-hosted-gitops-runtime.com/api/promotions/pullRequest \
     --header "content-type: application/json" \
-    --header "Authorization: ${TOKEN}" \
+    --header "Authorization: 214ffb**************" \
     --data "{
         \"srcAppId\": {
             \"runtime\": \"codefresh\",
-            \"namespace\": \"membership\",
+            \"namespace\": \"membership-staging\",
             \"name\": \"membership-staging\"
         },
         \"destAppId\": {
             \"runtime\": \"codefresh\",
-            \"namespace\": \"membership\",
+            \"namespace\": \"membership-prod\",
             \"name\": \"membership-prod\"
         },
         \"head\": \"main\",

@@ -69,7 +69,7 @@ ADD HERE A FLOW DIAGRAM?
     Codefresh generates a composite Promotion Template by merging the specifications from all relevant Promotion Templates: 
       * The Template with the highest priority serves as the _base_ template, with its specifications taking precedence over conflicting specifications from other templates. 
       * Specifications from other templates not present in the base Template are added to it.  
-        In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have  lower-priority.
+        In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have lower-priority.
 
 {:start="3"}
 1. Applies the changes to promote
@@ -99,7 +99,7 @@ spec:
   priority: 0                         # applied in ascending order; can be negative
   versionSource:                      # versionSource or promotion
     file: Chart.yaml
-    jsonPath: appVersion
+    jsonPath: $appVersion
   promotion:                         #  promotion or versionSource  
     Chart.yaml:
       jsonPaths:
