@@ -1,14 +1,15 @@
 ---
 title: "Runner behind firewalls"
-description: "Run Codefresh pipelines in your own secure infrastructure"
+description: "Learn how Hybrid Runner for pipelines works behind firewalls"
 group: installation
 redirect_from:
   - /docs/administration/behind-the-firewall/
   - /docs/enterprise/behind-the-firewall/
+  - /docs/installation/behind-the-firewall/
 toc: true
 ---
 
-As described in [installation options]({{site.baseurl}}/docs/installation/installation-options/), Codefresh offers the Hybrid Runner option for Codefresh pipelines.
+As described in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner), the Hybrid Runner is required to run Codefresh pipelines.
 This articles focuses on how the Runner works within infrastructure behind firewalls.
 
 ## Running Codefresh in secure environments
@@ -48,23 +49,22 @@ The advantages for this scenario are multi-fold:
 ##### Regarding firewall security
 
  1. Uni-directional, outgoing communication between the Runner and Codefresh. The Runner polls the platform for jobs. 
- 1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the runner to work.
+ 1. Codefresh never connects to the customer network. No ports need to be open in the customer firewall for the Runner to work.
  1. Codefresh Runner is fully open-sourced, so its code can be scrutinized by any stakeholder.
 
 
 
 ## Using secure services in your pipelines
 
-After installing the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
+After [installing the Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) on your private Kubernetes cluster in your infrastructure, all pipelines in the private Kubernetes cluster have access to all other internal services that are network reachable. 
 
 You can easily create pipelines that:
-
- * Use databases internal to the company
- * Run integration tests against services internal to the company
- * Launch [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) that communicate with other secure services
- * Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
- * Deploy to any other cluster accessible in the secure network
- * Create infrastructure such as machines, load balancers, auto-scaling groups etc.
+* Use databases internal to the company
+* Run integration tests against services internal to the company
+* Launch [compositions]({{site.baseurl}}/docs/pipelines/steps/composition/) that communicate with other secure services
+* Upload and download artifacts from a private artifact repository (e.g., Nexus or Artifactory)
+* Deploy to any other cluster accessible in the secure network
+* Create infrastructure such as machines, load balancers, auto-scaling groups etc.
 
  Any of these pipelines will work out the box without extra configuration. In all cases,
  all data stays within the private local network and does not exit the firewall.
@@ -74,7 +74,7 @@ You can easily create pipelines that:
 
 
 
-### Checking out code from a private GIT repository
+### Checking out code from a private Git repository
 
 To check out code from your private Git repository, you need to connect first to Codefresh via  [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/). However, once you define your GIT provider as *on premise*, you also need to mark it as *behind the firewall* as well:
 
@@ -126,7 +126,7 @@ steps:
 Once you trigger the pipeline, the Codefresh Build Runtimes communicates with your private Git instance and checks out code.
 
 >**NOTE**  
- Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
+ Currently there is a limitation on the location of the `codefresh.yml` file. Only the [inline mode]({{site.baseurl}}/docs/pipelines/pipelines/#writing-codefresh-yml-in-the-gui) is supported by default. You will need to install the [App-Proxy]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#app-proxy-installation) to be able to use the YAML from Repository.
 
 You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clone/#using-git-behind-a-proxy) for the Git clone step.
 
@@ -136,7 +136,7 @@ You can also use a [network proxy]({{site.baseurl}}/docs/pipelines/steps/git-clo
 In the previous section we have seen how a pipeline can check out code from an internal Git repository. We also need to set up a trigger,
 so that every time a commit or any other supported event occurs, the Codefresh pipeline is triggered automatically.
 
-If you have installed the [optional app-proxy]({{site.baseurl}}/docs/installation/codefresh-runner/#optional-installation-of-the-app-proxy), adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
+If you have installed the optional app-proxy, adding a trigger can be done exactly like the SAAS version of Codefresh, using only the Codefresh UI.
 
 If you haven't installed the app-proxy, then adding a Git trigger is a two-step process:
 
@@ -159,7 +159,7 @@ Once you select your GIT provider, you need to manually enter your username and 
   max-width="60%"
     %}
 
-All other details (git events, branch naming, monorepo pattern, etc.) are still the same as normal SAAS GIT providers.
+All other details (Git events, branch naming, monorepo pattern, etc.) are still the same as for SaaS Git providers.
 Once that is done, Codefresh will show you the webhook endpoint along with a secret for triggering this pipeline. Note them down.
 
 

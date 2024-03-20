@@ -73,7 +73,7 @@ description: "Changelog for Pipelines 2019 (Classic)"
 - Custom annotations on projects, pipelines, builds - [documentation]({{site.baseurl}}/docs/pipelines/annotations/)
 - Deployments with Pulumi - [documentation]({{site.baseurl}}/docs/example-catalog/cd-examples/pulumi/)
 - Deployments with Terraform - [documentation]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/)
-- Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
 - Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/)
 
 ## April 2019

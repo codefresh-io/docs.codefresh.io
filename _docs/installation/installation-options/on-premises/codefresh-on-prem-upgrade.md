@@ -6,6 +6,7 @@ redirect_from:
   - /docs/enterprise/codefresh-on-prem-upgrade/
   - /docs/administration/codefresh-on-prem-upgrade/
   - /docs/installation/codefresh-on-prem-upgrade/
+  - /docs/installation/on-premises/codefresh-on-prem-upgrade/
 toc: true
 ---
 Upgrade the Codefresh on-premises platform to the latest version:

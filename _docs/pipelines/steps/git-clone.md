@@ -58,6 +58,7 @@ step_name:
 | `repo`            | The path of the repository without the domain name in the form of `my_username/ my_repo`. {::nomarkdown} <br>Note: To clone a GitHub wiki, specify the full URL of the wiki,{:/} for example, `"https://github.com/wikis/examples.wiki"`.  | Required                  |
 | `revision`        | The revision of the repository you are checking out. It can be a revision hash or a branch name. The default value is the branch you have specified in your Git provider (e.g `master` or `main`).   | Default    |
 | `depth`    |  The number of commits to pull from the repo to create a shallow clone. Creating a shallow clone truncates the history to the number of commits specified, instead of pulling the entire history. | Optional      |
+| `exclude_blob`    | Specifies if to include or exclude blob (Binary Large Object) objects from the Git repo being cloned. <br>The options are:{::nomarkdown}<ul><li><code class="highlighter-rouge">false</code>: The default, includes blob objects from the Git repo being cloned. </li><li><code class="highlighter-rouge">true</code>: Excludes blob objects from the Git repo being cloned. Blob objects in the HEAD are always included, while historical versions are not.</li></ul>{:/}| Optional      |
 | `use_proxy`    | If set to true the Git clone process will honor `HTTP_PROXY` and `HTTPS_PROXY` variables if present for [working via a proxy](#using-git-behind-a-proxy). Default value is `false`.      | Default                   |
 | `credentials`  | Credentials to access the repository, if it requires authentication. It can an object containing `username` and `password` fields. Credentials are optional if you are using the [built-in Git integrations]({{site.baseurl}}/docs/integrations/git-providers/) .            | Optional                  |
 |`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
@@ -189,7 +190,7 @@ steps:
 
 ## Check out code using the Codefresh Runner
 
-If you are using the [Codefresh runner]({{site.baseurl}}/docs/installation/codefresh-runner/), you need to use
+If you are using the [Codefresh runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/), you need to use
 the fully qualified path of the Git repository:
 
 `codefresh.yml`
@@ -451,7 +452,7 @@ steps:
 
 ## Using Git behind a proxy
 
-If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/pipelines/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
+If you use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  and need to use a network proxy in your clone step you need to set the [variables]({{site.baseurl}}/docs/pipelines/variables/) `HTTP_PROXY` and/or `HTTPS_PROXY` in the pipeline
 and then activate the property `use_proxy: true` in the clone step. Example:
 
 `codefresh.yml`

@@ -15,7 +15,7 @@ We have changed the routing mechanism for hybrid runtimes. URL requests and webh
 
 The change is effective from runtime version 0.0.543 and higher. If you already have runtimes installed, this change does not require any action from you, both to upgrade to the new runtime version or retain existing runtimes. Older runtimes continue to use the ingress controller for routing purposes.  
 
-See the description for Request Routing Service in [Hybrid runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
+See the description for Request Routing Service in [Hybrid runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
 ### More Git providers for runtimes
 

@@ -179,4 +179,3 @@ Depending on the ingress controller used, you may need post-installation configu
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[On-premises platform architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  

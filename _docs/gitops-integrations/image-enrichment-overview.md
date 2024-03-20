@@ -1,5 +1,5 @@
 ---
-title: "GitOps image enrichment with integrations"
+title: "Image enrichment with integrations for GitOps"
 description: ""
 group: gitops-integrations
 redirect_from:

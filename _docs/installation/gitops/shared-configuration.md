@@ -33,16 +33,17 @@ Here are a few types of configuration definitions stored in the Shared Configura
 ## GitOps Runtimes & Shared Configuration Repos
 
 * Hosted GitOps Runtimes  
-  As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
+  As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid GitOps Runtimes  
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-3-set-up-gitops-git-account).  
 
 
->**NOTE**  
+<!--- 
+>>**NOTE**  
   Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
-
+-->
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration. 
