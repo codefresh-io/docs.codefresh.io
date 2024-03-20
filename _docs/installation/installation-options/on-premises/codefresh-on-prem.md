@@ -10,7 +10,9 @@ redirect_from:
 toc: true
 ---
 
-To install the on-premises version of the Codefresh platform, look at the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.
+To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.
+
+Codefresh supports High-Availability for on-premises installations. See [On-premises High Availability guidelines](#on-premises-high-availability-guidelines). 
 
 After you install Codefresh on-premises, review the platform configuration options described in ArtifactHub:
 * [Helm chart configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#helm-chart-configuration){:target="\_blank"}
@@ -20,7 +22,54 @@ This article describes configuration options available in the Codefresh UI:
 * [Disable user and team management](#disable-user-and-team-management-via-codefresh-ui)
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 
- 
+
+## On-premises High Availability guidelines 
+
+Codefresh supports HA for Codefresh subcharts, and infrastructure services. For details, review the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"}.  
+
+For infrastructure services (Redis, MongoDB, Redis, PostgresSQL,RabbitMQ, Ingress (NGINX)), the general guideline is to externalize the services, disable the non-HA setting, and enable the HA setting in the chart.
+
+Below is an example of the chart for infrastructure services with HA.
+
+```yaml
+ingress-nginx:
+  controller:
+    autoscaling:
+      enabled: true
+
+mongodb:
+  architecture: replicaset
+  replicaCount: 3
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
+
+nats:
+  replicaCount: 3
+
+postgresql:  
+  enabled: false   ## non-HA 
+
+postgresql-ha:
+  enabled: true
+  volumePermissions:  
+    enabled: true  ## HA
+
+rabbitmq:
+  enabled: false
+  
+rabbitmq-ha:
+  enabled: true
+  replicaCount: 3
+
+redis:
+  enabled: false
+
+redis-ha:
+  enabled: true
+```
+
 ## Disable user and team management
 
 If you use an external provider, such as Terraform or an IdP (Identity Provider), to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
