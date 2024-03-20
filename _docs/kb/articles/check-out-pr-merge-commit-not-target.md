@@ -1,5 +1,5 @@
 ---
-title: "How To: Check out only the PR merge commit, and not the HEAD of the target branch"
+title: "How To: Check out only pull request merge commit for target branch instead of HEAD"
 description:
 group: kb
 sub-group: articles
@@ -11,22 +11,24 @@ categories: [Pipelines]
 support-reviewed: 2023-05-04 LG
 ---
 
-## Overview
+This article describes how to check out only the merge commit of a PR (Pull Request) instead of the HEAD of the target branch.
 
-Sometimes, when you re-run a pipeline based on a PR you might find your tests that passed the first time failing the second time. This can happen because the default behavior of your pipeline is to run based on a merge of the PR and the HEAD of the target branch - so it includes the latest changes to HEAD that may not have present when the PR itself was first made.
+When re-running a pipeline based on a PR, tests that passed the previous fails during the rerun.  
+This can happen because the default behavior of the pipeline is to run based on a merge of the PR and the HEAD of the target branch. This behavior includes the latest changes to HEAD which may not have been present when the PR itself was created.
 
 ## Details
 
-If you want a pipeline to only run against the target branch as it was at the time of the pull request, you can clone your repository using the exact SHA of the merge request.
+To only run the pipeline against the target branch as at the time of the PR, clone your repository using the exact SHA of the merge request.
 
-When Codefresh is triggered by a Pull Request, your pipeline will have access to some additional variables [1]. This includes CF_PULL_REQUEST_MERGED_COMMIT_SHA, which is the commit SHA on the base branch after the pull request was merged.
+When the pipeline is triggered by a PR, it has access to additional variables including `CF_PULL_REQUEST_MERGED_COMMIT_SHA`, which is the commit SHA on the base branch after the PR was merged.
 
-You can set up your pipeline to test and see if this variable exists [2], and depending on it's existence do two different clone steps. One clone as your existing clone if the variable is not there, or a second clone step if it is that uses CF_PULL_REQUEST_MERGED_COMMIT_SHA in the `revision` field of your clone step [3] to check out your codebase as it was at the exact moment of the PR with the PR merged into it.
+Configure [conditional execution for the pipeline]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) to check if the `CF_PULL_REQUEST_MERGED_COMMIT_SHA` variable exists.  
+Depending on result, execute one of two `git-clone` steps:
+* If the variable exists, specify it in the `revision` field of your `git-clone` step. This ensures that your codebase is checked out to the state it was at the precise moment the PR was merged.
+* If the variable does not exist, continue with your regular clone process.
 
-## Related Items
 
-[1] <https://codefresh.io/docs/docs/pipelines/variables/#github-pull-request-variables>
-
-[2] <https://codefresh.io/docs/docs/kb/articles/check-env-vars-in-conditionals/>
-
-[3] <https://codefresh.io/docs/docs/pipelines/steps/git-clone/#fields>
+## Related articles
+[GitHub Pull Request variables]({{site.baseurl}}/docs/pipelines/variables/#github-pull-request-variables)  
+[Check environment variable value or existence in conditionals]({{site.baseurl}}/kb/articles/check-env-vars-in-conditionals)  
+[Fields for `git-clone` step]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields)  
