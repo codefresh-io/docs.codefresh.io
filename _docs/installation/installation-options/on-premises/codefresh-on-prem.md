@@ -68,9 +68,6 @@ postgresql-ha:
 ```yaml
 ...
 rabbitmq:
-  enabled: false
-  
-rabbitmq-ha:
   enabled: true
   replicaCount: 3
 ...
