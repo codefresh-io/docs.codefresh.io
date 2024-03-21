@@ -24,7 +24,7 @@ This article describes configuration options available in the Codefresh UI:
 
 ## On-premises High-Availability configuration 
 
-Codefresh supports HA (High Availability) for infrastructure services, depending on how they are configured to run, either:
+Codefresh supports HA (High Availability) for infrastructure services, depending on how they are configured to run:
 * As in-cluster K8s (Kubernetes) workloads using Codefresh subcharts
 * Externally through a different cloud provider
 
