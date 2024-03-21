@@ -10,9 +10,7 @@ redirect_from:
 toc: true
 ---
 
-To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.
-
-Codefresh supports High-Availability for on-premises installations. See [On-premises High Availability guidelines](#on-premises-high-availability-guidelines). 
+To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub. To turn on High Availability (HA) for infrastcure . See [On-premises High-Availability configuration guidelines](#on-premises-high-availability-guidelines). 
 
 After you install Codefresh on-premises, review the platform configuration options described in ArtifactHub:
 * [Helm chart configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#helm-chart-configuration){:target="\_blank"}
@@ -23,20 +21,21 @@ This article describes configuration options available in the Codefresh UI:
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 
 
-## On-premises High Availability guidelines 
+## On-premises High-Availability configuration 
 
-Codefresh supports HA for Codefresh subcharts, and infrastructure services. For details, review the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"}.  
+Codefresh supports HA (High Availability) for infrastructure services, depending on how they are configured to run, either:
+* As in-cluster K8s (Kubernetes) workloads using Codefresh subcharts
+* Externally through a different cloud provider
 
-For infrastructure services (Redis, MongoDB, Redis, PostgresSQL,RabbitMQ, Ingress (NGINX)), the general guideline is to externalize the services, disable the non-HA setting, and enable the HA setting in the chart.
+### HA for in-cluster workloads
+In this scenario, the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"} provides examples to configure infrastructure services for HA.
 
-Below is an example of the chart for infrastructure services with HA.
+
+* **MongoDB**  
+  Configure `bitnami/mongodb` chart in `replicaset` mode instead of standalone.
 
 ```yaml
-ingress-nginx:
-  controller:
-    autoscaling:
-      enabled: true
-
+...
 mongodb:
   architecture: replicaset
   replicaCount: 3
@@ -44,10 +43,14 @@ mongodb:
     enabled: true
     service:
       type: ClusterIP
+...
+```
 
-nats:
-  replicaCount: 3
+* **PostgresSQL**  
+  Use `bitnami/postgresql-ha` instead of `bitnami/postgresql`.
 
+```yaml
+...
 postgresql:  
   enabled: false   ## non-HA 
 
@@ -55,20 +58,44 @@ postgresql-ha:
   enabled: true
   volumePermissions:  
     enabled: true  ## HA
+...
+```
 
+* **RabbitMQ**  
+  Scale up the number of replicas  with `bitnami/rabbitmq-ha`.
+
+```yaml
+...
 rabbitmq:
   enabled: false
   
 rabbitmq-ha:
   enabled: true
   replicaCount: 3
+...
+```
 
+* **Redis**  
+  Use the `redis-ha` chart instead of `bitnami/redis`.
+
+```yaml
+...
 redis:
   enabled: false
 
 redis-ha:
   enabled: true
+...
 ```
+
+### HA with external cloud providers
+
+For infrastructure services running externally with a different cloud provider, refer to provider-specific documentation for HA configuration details.
+
+Here are a few links you may find helpful:
+* Mongodb: [Creating a cluster as a replica set](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/){:target="\_blank"}
+* PostgresSQL: [Creating an Amazon Aurora DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html){:target="\_blank"}
+* Rabbitmq: [Creating and connecting to a RabbitMQ broker](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/getting-started-rabbitmq.html){:target="\_blank"}
 
 ## Disable user and team management
 
