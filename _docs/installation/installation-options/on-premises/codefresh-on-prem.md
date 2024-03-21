@@ -10,7 +10,8 @@ redirect_from:
 toc: true
 ---
 
-To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub. To turn on High Availability (HA) for infrastcure . See [On-premises High-Availability configuration guidelines](#on-premises-high-availability-guidelines). 
+To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.  
+To turn on High Availability (HA), see [On-premises High-Availability configuration guidelines](#on-premises-high-availability-guidelines). 
 
 After you install Codefresh on-premises, review the platform configuration options described in ArtifactHub:
 * [Helm chart configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#helm-chart-configuration){:target="\_blank"}
