@@ -1,5 +1,5 @@
 ---
-title: "How To: Gather Codefresh Related Metrics and Build Logs"
+title: "How To: Gather Codefresh-related metrics and build logs"
 description: 
 group: kb
 sub-group: articles
@@ -11,25 +11,27 @@ categories: [CLI, API, Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article describes useful API calls to retrieve information on a pipeline build and its steps. It also describes the fields included as part of the response to those calls - to be used as-is or how to infer new metrics from the values.
 
-This document summarizes some API calls that can be useful to get information about a build and its steps.
+## Calls for pipeline build information
 
-It also describes the fields included as part of the response to those calls to be used as-is or to infer new metrics out of those values.
+We will explore three main calls to programmatically get information about the build:
+* General build information  
+  `codefresh get build <BUILD_ID>` (could be changed to an API call, since that one has more information)
+* Build and steps information  
+  `GET /api/workflow/<BUILD_ID/context-revision`
+* Logs  
+  `GET https://g.codefresh.io/api/progress/<PROGRESS_ID>`  
+  This GET call also includes resource-consumption metrics. As they are not Prometheus-based, they are not accurate for specific step types, such as the build-step.
 
-## Details
 
-We’ll explore three main calls to programmatically get information about the build:
+## Usage script for CLI/API calls
 
-* General build information: `codefresh get build <BUILD_ID>` (could be changed to an API call, since that one has more information)
-* Build and Steps information: `GET /api/workflow/<BUILD_ID/context-revision`
-* Logs: `GET https://g.codefresh.io/api/progress/<PROGRESS_ID>` (this one also has resource-consumption metrics, but they are not Prometheus-based, thus, for some steps, such as the build-step, they are not accurate)
+The following script is a suggestion on how to use the different CLI and API calls available.
 
-The following script is a suggestion on how to use the different CLI and API calls available
+The idea is to run this asynchronously. For example, using a cron-trigger in a pipeline in Codefresh to execute the pipeline daily.
 
-The idea is to run this in an asynchronous fashion. For example, using a cron-trigger in a pipeline in Codefresh, to execute the pipeline every day.
-
-The same calls can be used if you want to incorporate the process of pushing metrics into your monitoring platform, as part of the build itself (e.g., in a hook, at the end of the pipeline)
+You can also use the same calls to incorporate the process of pushing metrics into your monitoring platform, as part of the build itself. For example, in a hook, at the end of the pipeline.
 
 ```shell
 #!/bin/bash
@@ -66,7 +68,8 @@ do
 done
 ```
 
-This script will generate a JSON file per build, with the following structure:
+### Script response
+This script generates a JSON file per build with the following structure:
 
 ```json
 {
@@ -86,32 +89,34 @@ This script will generate a JSON file per build, with the following structure:
 }
 ```
 
-Description of each field:
+The table describes the fields in the JSON response. 
 
-* `created`: timestamp indicating when the build was created (“submitted“). Example: `2021-05-17T21:31:35.779Z`
-* `started`: timestamp indicating when the build was started (the Initializing Process started). Example: `2021-05-17T21:31:47.742Z`
-* `finished`: timestamp indicating when the build was started. Example: `2021-05-17T21:32:21.435Z`
-* `totalTime`: duration (in HH:MM:SS) of the build from `created` to `finished`
-* `buildTime`: duration (in HH:MM:SS) of the build from `started` to `finished`
-* `status`: status of the build (error, success, etc)
-* `pipeline-name`: Full name of the pipeline
-* `repository`: Name of the repo associated with the build execution. This will only be different to `/` if a git-trigger is used to trigger a build.
-* `webhook`: boolean indicating if the build was triggered by a webhook (sent by a git-provider, for example) or not.
-* `pipeline-Id`: the ID of the pipeline for the build
-* `stateYaml`: Object representing the last State of the build. It contains detailed information about the build and its steps. When the build doesn’t have a State YAML (e.g., the build was terminated before it could start), the value of this field will be an empty Object: `{}`.
+{: .table .table-bordered .table-hover}
+| Field            | Description                                                                                                    |
+|------------------|--------------------------------------------------------------------------------------------------------------|
+| `created`        | The timestamp indicating when the build was created (submitted). Example: `2021-05-17T21:31:35.779Z`.           |
+| `started`        | The timestamp indicating when the build started execution, that is the start of the Initializing Process. Example: `2021-05-17T21:31:47.742Z`. |
+| `finished`       | The timestamp indicating when the build completed execution. Example: `2021-05-17T21:32:21.435Z`. |
+| `totalTime`      | The duration of the build, in HH:MM:SS, from `created` to `finished`.|
+| `buildTime`      | The duration of the build, in HH:MM:SS, from `started` to `finished`. |
+| `status`         | The status of the build. See [Viewing status for pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-status-for-pipeline-builds).|
+| `pipeline-name`  | The full name of the pipeline .|
+| `repository`     | The name of the repo associated with the build execution. This will only be different to `/` if a git-trigger is used to trigger a build. |
+| `webhook`        | The boolean indication indicating if the build was triggered by a webhook, sent by a git-provider, for example or not.|
+| `pipeline-Id`    | The ID of the pipeline for the build run. |
+| `stateYaml`      | The object representing the last state of the build, containing detailed information about the build and its steps.<br> When the build doesn’t have a State YAML, as when it was terminated before it could start, the value of this field will be an empty Object: `{}`. |
 
-### State YAML
 
-The State YAML of the build is represented in the `stateYaml` field of each JSON file.
+#### State YAML
 
-It’s composed of several fields, but the most relevant one is the `context` element.
+The State YAML of the build is represented in the `stateYaml` field of each JSON file.  
+It includes several fields, but the most relevant one is the `context` element.
 
-#### Context (`stateYaml.context`)
-
+##### Context (`stateYaml.context`)
 * `workflowMetadata`: contains general information about the workflow (the build)
 * `stepsMetadata`: contains information about every step executed in the build
 
-#### Workflow Metadata (`workflowMetadata`)
+##### Workflow Metadata (`workflowMetadata`)
 
 * `startTimestamp`: when the build process started. The next action is the execution of the pre-steps. Example: `2021-05-17T21:31:47.481Z`
 * `preStepsStartTimestamp`: once the build starts, it first executes the “preSteps“ (including the “Initializing Process“ step). This field is the timestamp when those pre-steps start. The next action would be the execution of the actual build-steps. Example: `2021-05-17T21:31:48.118Z`. Relative position in time: `startTimestamp`< `preStepsStartTimestamp`
@@ -124,22 +129,26 @@ It’s composed of several fields, but the most relevant one is the `context` el
 * `finishTimestamp`: timestamp indicating when the workflow is finished. Relative position in time: `preStepsFinishTimestamp`<`finishTimestamp`
 * `totalTime`: Integer. Duration in milliseconds of the build. This contemplates the time from the moment the pre-steps started to the moment the last step is executed. This doesn’t include the time the build was waiting to start (pending), nor the time the **post** -steps of the build. Example: `33708`
 
-#### Steps Metadata (`stepsMetadata`)
+##### Steps Metadata (`stepsMetadata`)
 
-This object will have N Objects inside of it. Each of them representing a step in the build.
+This object has N Objects within, each representing a step in the build.  
+The key of each object within `stepsMetadata` is the name of the step.
 
-The key of each object inside `stepsMetadata` will be the name of the step.
+In general, each object within `stepsMetadata` include:
 
-In general, each object inside the `stepsMetadata` field will have:
-
-* `type`: the type of the step. Possible values: `freestyle`, `build`, `push`, `parallel`, etc (anything you put in `type` when defining your step
+* `type`: The step type. Possible values: `freestyle`, `build`, `push`, `parallel`, etc (anything you put in `type` when defining your step.
 * `result`:
-* `status` : same as `result`
+* `status`: Same as `result`
 * `totalTime`
 
-Some clarification: the key `Initializing Process` is the one representing the Initializing Process, and it will only have `startTimestamp`, `status`, `finishTimestamp` and `totalTime`.
 
-There’s a key called `Initializing` , it could be ignored.
+{{site.data.callout.callout_tip}}
+**TIP**
+The key `Initializing Process` representing the pipeline initialization stage has these values: `startTimestamp`, `status`, `finishTimestamp` and `totalTime`.  
+The key `Initializing` can be ignored.
+{{site.data.callout.end}}
+
+
 
 ### Example of a build JSON created by the script
 
@@ -226,11 +235,12 @@ There’s a key called `Initializing` , it could be ignored.
 }
 ```
 
-### Getting the build logs
+## Get build logs
 
-Most of the time the information provided by the State YAML is enough, but if you require to push the logs of builds as well, then, this call(s) may help you.
+Generally, `State YAML` provides the information you need.  
+If you also need to push the build logs, we have these calls to help.
 
-To get the logs of a build `BUILD_ID`, you need to:
+**Get build logs by `BUILD_ID`**:
 
 ```shell
 BUILD_ID=123xyz
@@ -256,7 +266,7 @@ printf "\tDownloading logs to ${BUILD_ID}.json \n"
 curl --silent $LOGS_URL --output ${BUILD_ID}.json
 ```
 
-The `<BUILD_ID>.json` file will have the following structure:
+This call results in a `<BUILD_ID>.json` file with the following structure:
 
 ```json
 ...
@@ -274,10 +284,13 @@ steps:
     ...
 ```
 
-`steps` is an array of Steps, and each of the elements has a `logs` array.
+where:  
+* `steps` is an array of steps, with each element including a `logs` array.
+* The `logs` array includes the log content for a step, a line per array element.
 
-The `logs` array has the content of the logs for a step in specific (a line per array element).
 
-It’s important to mention that the calls above are only valid for builds that have already been finished (successful, failure, terminated)
-
-You can use the script suggested at the beginning of this document to iterate over all the builds on a timeframe and get the logs from them.
+{{site.data.callout.callout_tip}}
+**TIP**
+The calls above are only valid for _completed_ successful, failure, or terminated builds.
+You can use the script at the beginning of this article to iterate over all the builds over a time frame and get the logs from them.
+{{site.data.callout.end}}
