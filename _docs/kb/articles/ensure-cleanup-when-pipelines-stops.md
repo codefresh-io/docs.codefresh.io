@@ -21,7 +21,7 @@ The parallel step always runs at the end of the pipeline, regardless of its buil
 
 ## How to
 
-In a sequential pipeline, which is the default execution mode for pipelines, manually terminating the pipeline, also terminates the execution of subsequent steps, including any pipeline hooks set to run on success or failure.  
+In a sequential pipeline, which is the default execution mode for pipelines, manually terminating the pipeline also terminates the execution of subsequent steps, including any pipeline hooks set to run on success or failure.  
 
 You can circumvent this behavior by inserting a parallel step within the pipeline.
 

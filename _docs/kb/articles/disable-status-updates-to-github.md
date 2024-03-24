@@ -13,7 +13,7 @@ support-reviewed: 2023-04-18 LG
 
 
 
-This article describes how to stop status update from a pipeline to GitHub.
+This article describes how to stop status update to GitHub from a pipeline.
 
 >**NOTE**  
 Disabling status updates to GitHub is currently supported only via CLI for Codefresh pipelines.

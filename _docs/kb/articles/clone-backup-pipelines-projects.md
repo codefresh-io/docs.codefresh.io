@@ -1,5 +1,5 @@
 ---
-title: "How To: Clone or backup Pipelines or Projects"
+title: "How To: Clone or back up pipelines or projects"
 description: 
 group: kb
 sub-group: articles
