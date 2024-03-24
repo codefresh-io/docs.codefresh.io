@@ -143,7 +143,7 @@ In general, each object within `stepsMetadata` include:
 
 
 {{site.data.callout.callout_tip}}
-**TIP**
+**TIP**  
 The key `Initializing Process` representing the pipeline initialization stage has these values: `startTimestamp`, `status`, `finishTimestamp` and `totalTime`.  
 The key `Initializing` can be ignored.
 {{site.data.callout.end}}
@@ -290,7 +290,7 @@ where:
 
 
 {{site.data.callout.callout_tip}}
-**TIP**
+**TIP**  
 The calls above are only valid for _completed_ successful, failure, or terminated builds.
 You can use the script at the beginning of this article to iterate over all the builds over a time frame and get the logs from them.
 {{site.data.callout.end}}
