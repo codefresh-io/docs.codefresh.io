@@ -94,8 +94,8 @@ steps:
 ```
 {% endraw %}
 
-In the `conform` step, `.arguments.KEYVALUE_PAIRS`:
-* Volumes mount is replaced to {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}.
+In the step `conform.arguments.KEYVALUE_PAIRS`:
+* Volumes mount is replaced by {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}.
 * The command {% raw %}`bash -c "ln -s ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/<DIR>/ /database && ./start.sh"`{% endraw %}:
   * Symlinks the directory in the Git repo to the `/database` directory
   * Executes the script already in the container
