@@ -28,7 +28,7 @@ commands:
   - npm install
 ```
 
->**NOTE**
+>**NOTE**  
 Apply this logic whenever you need to use subdirectories.
 
 ## Related articles

@@ -1,5 +1,5 @@
 ---
-title: "How To: Know the builder pod used to run build"
+title: "How To: Find the builder pod used to run build"
 description: 
 group: kb
 sub-group: articles
