@@ -917,7 +917,7 @@ codefresh get re my-eks-cluster/codefresh -o json > runtime.json
 codefresh patch re my-eks-cluster/codefresh -f runtime.yaml
 ```
 
-### Customized Codefresh Runner installations - move to legacy CLI
+### Customized Codefresh Runner installations
 
 
 #### App-Proxy installation
