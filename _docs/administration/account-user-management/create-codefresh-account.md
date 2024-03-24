@@ -168,7 +168,7 @@ max-width="40%"
 
 
 ## Rename/delete Codefresh accounts
-Codefresh administrators can rename Codefresh accounts, and delete any account.
+Codefresh administrators can rename and delete Codefresh accounts.
 
 ##### Rename Codefresh account
 You may want to rename your existing account, for example, either due to a sign-up error or change of business name.
