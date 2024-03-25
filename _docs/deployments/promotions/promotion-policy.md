@@ -11,10 +11,13 @@ toc: true
 When a promotion is triggered in an environment for a Product, it is customary to validate the environment's readiness before deploying the changes and promoting the Product in that environment.
 Readiness validation for an environment verifies that the application and its dependencies meet the requirements and standards necessary for deployment in the target environment. Validations can include checks for code quality, passing unit or smoke tests, verifying compatibility with dependencies, security compliance, and other factors relevant to the target environment.
 
-In Codefresh you have the complete functionality create and auatomate these validations and connect them to any combination of Products or Environments. These validations are implemented or run when
-You can set up your validation to run wirkflows before submitting the action that will triffer the promotion, and then run validations after the action to make sure that all is as required.
+In Codefresh you have the complete functionality to create and automate these validations for any combination of Products and Environments.  
+These validations are triggered on updates to the Git repositories to run as Argo Workflows. They include steps to run tests, notifications, and whatever else is required. 
 
-Automated Enforcement: Streamline your deployment process with automated enforcement of promotion policies, minimizing the risk of errors and ensuring consistent and reliable deployments across your pipeline.
+TBD
+
+
+<!--- Automated enforcement: Streamline your deployment process with automated enforcement of promotion policies, minimizing the risk of errors and ensuring consistent and reliable deployments across your pipeline.
 
 Scalable Governance: Scale effortlessly with your evolving infrastructure and application landscape, as promotion policies adapt to accommodate changes in products, environments, and deployment strategies.
 Youc an create any number of validations, at any level, and for any combination
@@ -27,7 +30,7 @@ Defining the Promotion Workflows
 Validate environment-readiness for promotion
 
 Flexible 
-Promotion Policies are highly customizable to suit your needs. Define policies per Product and per Environment, or with broader coverage for a Product across multiple Environments, or even for different Products for a single Environment. 
+Promotion Policies are highly customizable to suit your needs. Define policies per Product and per Environment, or with broader coverage for a Product across multiple Environments, or even for different Products for a kind of Environment. 
 
 Priority-driven
 When multiple Promotion Policies match the same Product or Environment, Codefresh applies the Promotion Policy based on the predefined priroty to ensuring seamless enforcement.
@@ -35,12 +38,12 @@ When multiple Promotion Policies match the same Product or Environment, Codefres
 Versatile Promotion Actions
 Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates diverse workflows and deployment strategies with ease.
 
-
+-->
 
 
 ##### How do you define validation for promotion-readiness?
 
-You define the validation process for the target environment through Promotion Policies. A Promotion Policy is a Kubernetes CRD created per Product and Environment, or any combinations of Products and Environments.
+You define the validation process through Promotion Policies. A Promotion Policy is a Kubernetes CRD created per Product and Environment, or any combination of Products and Environments.
 
 Every Promotion Policy includes these settings:
 
@@ -53,13 +56,17 @@ The Promotion Workflow is an Argo Workflow executed before or after the Promotio
 Products and Environments
 The Products and Environments to which to assign the Promotion Policy.
 
+
+##### Where do you define the Promotion Policy?
+You can define dedicated Promotion Policies through the UI, or you can define it as part of the Promotion Lifecycle which orchestrates 
+
 ### How does the Promotion Policy work?
 
-When a promotion is triggered and Codefresh identifies a Promotion Lifecycle for the tarhet environment, 
+When a promotion is triggered in an environment and Codefresh identifies a Promotion Lifecycle for the tarhet environment, 
 
 1. Identifies the Promotion Policy to apply
 
-1. If defined, runs the Pre-Action Promotion Workflow if defined
+1. If defined, runs the Pre-Action Promotion Workflow 
 
 If successful, 
 If failed
@@ -74,6 +81,7 @@ If failed
 When there is 
 
 
+## Promotion Policies
 
 
 ### Promotion Policy settings
@@ -86,7 +94,7 @@ The table below describes the settings you can define for a Promotion Policy.
 |**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. |
 |**Policy Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>Optional. The Promotion Workflow to run before the Promotion Action. </li>.<li><b>Action</b>Required. The Promotion Action to update the target application's source repository.<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval.</li><li><b>No Action</b>: Run the selected Pre- and Post- Promotion Workflows without performing a commit or opening a pull request.<br>Selecting this option requires a Pre- or a Post-Action Workflow to be selected that includes an action to promote the target application.<br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}|
 |**Products** |Single or multiple Products to which to apply the Promotion Policy.<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}|
-|**Environments** |Single or multiple Environments to which to apply the Promotion Policy.<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b>Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
+|**Environments** |Single or multiple Environments to which to apply the Promotion Policy.<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
 
 
 ### Create a Promotion Policy
@@ -106,9 +114,10 @@ Connect the Policy to multiple Products and Environments
 1. Commit the changes.
 
 
-The Promotion Policy is added to the Promotion List. (NIMA: is the newest policy displayed first by default??)
-If there are multiple Promotion Polcies, you can define the priority of the Policies, and 
-
+* The Promotion Policy is added to the Promotion List. (NIMA: is the newest policy displayed first by default??)
+* If there are multiple Promotion Policies that match the same Product or Environments, the order in which the Policies are listed determines which Promotion Policy is applied. 
+The priority is in descending order. 
+* The Match Promotion Policy allows you to select any Product and Environment pair and review the Promotion Policy associated with it. 
 
 
 ### Define priority for Promotion Policies
@@ -154,11 +163,11 @@ Deleting a Promotion Policy removes it from all the Products and Environments it
 
 What are Promotion Workflows?
 
-Promotion Worflows are Argo CD Workflows that you can run as part of a Promotion Policy to validate readiness of the current environment for promotion.
+Promotion Worflows are Argo CD Workflows you can run as part of a Promotion Policy to validate readiness of the current environment for promotion.
 
-The Promotion Workflows run steps with the steps consisting of tests
+The Promotion Workflow run steps that execute tests, validations, sends notifications of tests
 
-Create your own Promotion Workflows or use Codefresh's starter Workflow Templates as your base and
+Create your own Promotion Workflows or use Codefresh's starter Workflow Template as your base
 
 Why define or create a Promotion Workflow?
 Though they are optional, Promotion Workflows are designed to run tests before and after the promotion to ensure that
@@ -169,13 +178,6 @@ Production Environment
 
 
 
-Promotion Workflow settings
-
-The table below describes the settings you can define for a Promotion Policy.
-
-{: .table .table-bordered .table-hover}
-| Item                     | Description            |  
-| --------------         | --------------           |  
 |
 
 
@@ -211,10 +213,17 @@ SCREENSHOT
 
 When the YAML file is synced to the cluster, it is displayed in the Promotion Workflows list.
 
+SCREENSHOT
+
+<!--- * Name and Description: Retrieved from workflow manifest. These are as defined when you added the Promotion Workflow or as updated in the manifest.
+* Version: The version of the Promotion Workflow retrieved from the manifest. It should be manually updated whenever the workflow manifest is updated.
+* Last Modified: The date and time when the workflow manifest was modified.
+* Sync Status: The  -->
+
 
 ## Analyze Promotion Workflows
 
-Clicking on a Promotion Workflow in the list takes you to the detailed view or detailed information on the workflow manifest and workflow runs.
+Clicking on a Promotion Workflow in the list takes you to the detailed view of the workflow manifest and workflow runs.
 
 SCREENSHOT 
 
@@ -229,7 +238,7 @@ SCREENSHOT
 * View workflow logs: Real-time logs for ongoing workflows, and archived logs for completed workflows
 * Manage the workflow: Retry, resubmit, or delete workflows
 
-### View Workflow runs Submitted Workflows
+### View submitted Workflows
 
 The Workflows tab displays all the instances of the Promotion Workflow submitted and run as part of different Promotion Policies.
 
@@ -252,7 +261,7 @@ Visualize the steps in the Workflow, the connection between them, and detailed i
 * **Summary**: ???.
 * **Resubmit**: Rerun or re-execute the Workflow. Resubmitting a Workflow, creates a new instance of the Workflow.  to create a new workflow and submit it. You can resubmit both successful and failed workflows.
 * **Delete**: Remove unused or legacy workflows. Deleting a Workflow removes it from the Workflows list and frp, .
-**Logs**: View online logs for ongoing or completed Workflow, . As with logs in any standard terminal, you can copy/cut/paste log info. The commands differ based on the OS.
+* **Logs**: View online logs for ongoing or completed Workflow, . As with logs in any standard terminal, you can copy/cut/paste log info. The commands differ based on the OS.
   * For an ongoing Workflow, view live logs for steps as they are being executed.  
   * For a completed Workflow, view logs for the Workflow, or for any step in the workflow.  
 
@@ -262,13 +271,27 @@ For additional information on the step, click the step to open the pull-out pane
 * The tabs displayed differ according to the step type:  
   * The Summary, Manifest, Containers, Inputs, Outputs tabs are displayed for all alomst all step types. (NIMA: what about Artifacts??)
   * The Logs tab is displayed for Pod step types.
-  * Event-step types display Manifest, Summary and Payload.
+  * Event-step types display Manifest, Summary, and Payload.
     For Cron and Unknown event types, only the Event Sources are shown. 
 
 
 
-## Manage Promotion Workflows
+### Manage Promotion Workflows
 
+Manage existing Promotion Workflows by modifying, copying, deleting them.
+
+: Modify Workflow manifest settings. You must be in Git State to edit Workflow manifest.   
+
+1. In the Codefresh UI, from Promotions in the sidebar, select [Promotion Workflows](https://g.codefresh.io/2.0/?????){:target="\_blank"}.
+1. In the **Promotion Workflows** list, select the Promotion Workflow to copy/edit/delete.
+1. Open the context menu, and select the required option. 
+
+{: .table .table-bordered .table-hover}
+| Item                     | Description            |  
+| --------------         | --------------           |  
+|Edit  | Update manifest. Clicking Edit opens You must be in Git State to enable Edit. After updating the manifest, before committing changes you can Run the workflow. |
+|Copy  | Copy existing workflow with a new Name, Description, and resource filename  |
+|Delete  | Delete existing workflow. Deleting the workflow removes it from all the Promotion Policies it is assigned to or selected for. |
 
 ### Copy Promotion Workflow
 
