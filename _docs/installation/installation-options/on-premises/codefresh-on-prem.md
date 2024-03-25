@@ -107,7 +107,7 @@ redis-ha:
 
 ### HA with external cloud providers
 
-For infrastructure services running externally with a different cloud provider, for HA configuration details, refer to provider-specific documentation.
+For infrastructure services running externally with a different cloud provider, to configure HA, refer to provider-specific documentation.
 
 Here are a few links you may find helpful:
 * Mongodb: [Creating a cluster as a replica set](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/){:target="\_blank"}
