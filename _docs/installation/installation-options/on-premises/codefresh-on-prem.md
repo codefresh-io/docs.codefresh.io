@@ -31,6 +31,22 @@ Codefresh supports HA (High Availability) for infrastructure services, depending
 ### HA for in-cluster workloads
 In this scenario, the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"} provides examples to configure infrastructure services for HA.
 
+>**NOTE**  
+When you change charts for HA, you must update the configurations in your `values.yaml` (`global`) to reflect the changes in the new charts or services being deployed. 
+
+##### Update chart values
+When you change charts for HA, you must update the corresponding values in the `global` section of `values.yaml` to match the configurations of the new charts or services you're deploying. 
+
+Here's an example of the `global` settings in `values.yaml`:
+
+```yaml
+global:
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+  redisUrl: cf-redis-ha-haproxy
+```
+
 
 ##### Examples of HA configurations
 * **MongoDB**  
@@ -86,22 +102,12 @@ redis-ha:
   enabled: true
 ...
 ```
-##### Update chart values
-When you change charts for HA, you must update the corresponding values in the `global` section of `values.yaml` to match the configurations of the new charts or services you're deploying. 
 
-Here's an example of the `global` settings in `values.yaml`:
 
-```yaml
-global:
-  postgresService: postgresql-ha-pgpool
-  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
-  mongodbOptions: replicaSet=rs0&retryWrites=true
-  redisUrl: cf-redis-ha-haproxy
-```
 
 ### HA with external cloud providers
 
-For infrastructure services running externally with a different cloud provider, refer to provider-specific documentation for HA configuration details.
+For infrastructure services running externally with a different cloud provider, for HA configuration details, refer to provider-specific documentation.
 
 Here are a few links you may find helpful:
 * Mongodb: [Creating a cluster as a replica set](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/){:target="\_blank"}
