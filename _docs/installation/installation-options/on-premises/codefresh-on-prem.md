@@ -32,6 +32,7 @@ Codefresh supports HA (High Availability) for infrastructure services, depending
 In this scenario, the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"} provides examples to configure infrastructure services for HA.
 
 
+##### Examples of HA configurations
 * **MongoDB**  
   Configure `bitnami/mongodb` chart in `replicaset` mode instead of standalone.
 
@@ -84,6 +85,18 @@ redis:
 redis-ha:
   enabled: true
 ...
+```
+##### Update chart values
+When you change charts for HA, you must update the corresponding values in the `global` section of `values.yaml` to match the configurations of the new charts or services you're deploying. 
+
+Here's an example of the `global` settings in `values.yaml`:
+
+```yaml
+global:
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+  redisUrl: cf-redis-ha-haproxy
 ```
 
 ### HA with external cloud providers
