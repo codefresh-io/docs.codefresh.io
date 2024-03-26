@@ -10,7 +10,8 @@ redirect_from:
 toc: true
 ---
 
-To install the on-premises version of the Codefresh platform, look at the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.
+To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.  
+To turn on High Availability (HA), see [On-premises High-Availability configuration guidelines](#on-premises-high-availability-guidelines). 
 
 After you install Codefresh on-premises, review the platform configuration options described in ArtifactHub:
 * [Helm chart configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#helm-chart-configuration){:target="\_blank"}
@@ -20,7 +21,99 @@ This article describes configuration options available in the Codefresh UI:
 * [Disable user and team management](#disable-user-and-team-management-via-codefresh-ui)
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 
- 
+
+## On-premises High-Availability configuration 
+
+Codefresh supports HA (High Availability) for infrastructure services, depending on how they are configured to run:
+* As in-cluster K8s (Kubernetes) workloads using Codefresh subcharts
+* Externally through a different cloud provider
+
+### HA for in-cluster workloads
+In this scenario, the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"} provides examples to configure infrastructure services for HA.
+
+>**NOTE**  
+When you change charts for HA, you must update the configurations in your `values.yaml` (`global`) to reflect the changes in the new charts or services being deployed. 
+
+##### Update chart values
+When you change charts for HA, you must update the corresponding values in the `global` section of `values.yaml` to match the configurations of the new charts or services you're deploying. 
+
+Here's an example of the `global` settings in `values.yaml`:
+
+```yaml
+global:
+  postgresService: postgresql-ha-pgpool
+  mongodbHost: cf-mongodb-0,cf-mongodb-1,cf-mongodb-2  # Replace `cf` with your Helm Release name
+  mongodbOptions: replicaSet=rs0&retryWrites=true
+  redisUrl: cf-redis-ha-haproxy
+```
+
+
+##### Examples of HA configurations
+* **MongoDB**  
+  Configure `bitnami/mongodb` chart in `replicaset` mode instead of standalone.
+
+```yaml
+...
+mongodb:
+  architecture: replicaset
+  replicaCount: 3
+  externalAccess:
+    enabled: true
+    service:
+      type: ClusterIP
+...
+```
+
+* **PostgresSQL**  
+  Use `bitnami/postgresql-ha` instead of `bitnami/postgresql`.
+
+```yaml
+...
+postgresql:  
+  enabled: false   ## non-HA 
+
+postgresql-ha:
+  enabled: true
+  volumePermissions:  
+    enabled: true  ## HA
+...
+```
+
+* **RabbitMQ**  
+  Scale up the number of replicas  with `bitnami/rabbitmq-ha`.
+
+```yaml
+...
+rabbitmq:
+  enabled: true
+  replicaCount: 3
+...
+```
+
+* **Redis**  
+  Use the `redis-ha` chart instead of `bitnami/redis`.
+
+```yaml
+...
+redis:
+  enabled: false
+
+redis-ha:
+  enabled: true
+...
+```
+
+
+
+### HA with external cloud providers
+
+For infrastructure services running externally with a different cloud provider, to configure HA, refer to provider-specific documentation.
+
+Here are a few links you may find helpful:
+* Mongodb: [Creating a cluster as a replica set](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/){:target="\_blank"}
+* PostgresSQL: [Creating an Amazon Aurora DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html){:target="\_blank"}
+* Rabbitmq: [Creating and connecting to a RabbitMQ broker](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/getting-started-rabbitmq.html){:target="\_blank"}
+
 ## Disable user and team management
 
 If you use an external provider, such as Terraform or an IdP (Identity Provider), to provision users and teams, you can disable user/team operations in the Codefresh UI. Blocking user- and team-related operations in the UI means that admins cannot make changes locally that may conflict with or override those via the external provider.
