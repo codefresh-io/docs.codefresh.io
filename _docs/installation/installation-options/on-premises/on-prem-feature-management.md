@@ -64,6 +64,7 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 
 | --------------              | --------------         | ------- | 
+| `appDiffView`  |When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.<br>See [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view) | TRUE         |
 | `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Configuring rules for access control in pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/#rules-for-access-control).| TRUE  |
 |`abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
 | `accountInfoCopyButton`  | When enabled, the account ID is added to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.   | FALSE         |
@@ -93,7 +94,7 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 |`supportOpenIdConnectInBuilds`| When enabled (the default), supports OIDC in pipeline builds, including obtaining and using ID tokens to authenticate and authorize pipeline actions on cloud providers.<br>See [OpenID Connect for pipeline integrations]({{site.baseurl}}/docs/integrations/oidc-pipelines/). |TRUE|
 | `stepTimeout`  | When enabled (the default), allows you to add the `timeout` flag with the `<duration>` and `<units>` to steps in pipelines. When added, the step terminates execution automatically if the step exceeds the duration of the specified timeout.<br> See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/) and browse the Field descriptions for any step type that is supported, [git-clone]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields) for example.  | TRUE         |
 |`useLogsTimestamps` |When enabled, prepends the date and time to every line in the log. <br>This flag must be enabled to share URL for build logs.<br>When enabled, and you have build automation, you may need to adjust the regex for search as the line does not start with the log text.| FALSE| 
-|`useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown  displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
+|`useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown displays repositories and branches in paginated format, with the Next button for navigating between pages.  | FALSE         |
 
 
 
@@ -101,4 +102,4 @@ The table describes the features you can open for Codefresh accounts, in alphabe
 ## Related articles
 [Codefresh on-premises installation]({{site.baseurl}}/docs/installation/on-premises/)  
 [Codefresh on-premises upgrade]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem-upgrade/)  
-[Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
+[Codefresh on-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
