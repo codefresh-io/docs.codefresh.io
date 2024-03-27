@@ -293,7 +293,7 @@ The table below lists existing Feature Flags which have been updated by default 
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `appDiffView`  | _This feature is now available for on-premises environments._ <br>When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.  | _TRUE_         |
-| `useRepoAndBranchesNextPagination`  | When enabled, the **Repository** dropdown to select branches and repositories for Triggers, supports infinite scrolling, and search on the server. NIMA: IDan same value as before  | _FALSE_         |
+
 
 ### Bug fixes
 
