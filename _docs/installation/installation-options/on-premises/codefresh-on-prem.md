@@ -31,8 +31,6 @@ Codefresh supports HA (High Availability) for infrastructure services, depending
 ### HA for in-cluster workloads
 In this scenario, the [High Availability section in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#high-availability){:target="\_blank"} provides examples to configure infrastructure services for HA.
 
->**NOTE**  
-When you change charts for HA, you must update the configurations in your `values.yaml` (`global`) to reflect the changes in the new charts or services being deployed. 
 
 ##### Update chart values
 When you change charts for HA, you must update the corresponding values in the `global` section of `values.yaml` to match the configurations of the new charts or services you're deploying. 
