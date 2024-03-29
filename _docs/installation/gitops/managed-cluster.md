@@ -21,7 +21,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 * Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens)
 * [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Codefresh token in user settings
-* For ingress-based GitOps Runtimes, the ingress host of the Runtime (use `cf runtime list` to get this)
+* For ingress-based GitOps Runtimes, the ingress host of the Runtime (use `cf runtime list` to get this).
 
 ## Adding managed clusters
 Add a managed cluster in any of the following ways:
