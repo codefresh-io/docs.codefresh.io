@@ -97,8 +97,9 @@ To deploy the chart:
 helm install oci://quay.io/codefresh/charts/csdp-add-cluster -f values.yaml --generate-name
 ```
 
->**NOTE**  
-For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+>**NOTES**  
+1 - For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
+<br/>2 - The Helm Chart is installed by default in the `kube-system` namespace. To change the namespace, configure the `systemNamespace` value. The `--namespace` option won't work in this Helm Chart.
 
 
 ### Add a managed cluster with Terraform
