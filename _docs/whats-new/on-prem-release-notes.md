@@ -192,7 +192,7 @@ Codefresh will display a warning in the **Warnings/Errors** panel for the app wh
 	url="/images/whats-new/jan24/rel-notes-jan-24-sync-timeout.png" 
 	alt="Sync timeout warning for Argo CD applications" 
 	caption="Sync timeout warning for Argo CD applications"
-  max-width="70%" 
+  max-width="60%" 
 %}
 
 For details, see [Configure sync-timeout for Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-sync-timeout-for-argo-cd-applications).
@@ -309,7 +309,7 @@ The table below lists existing Feature Flags which have been updated by default 
 
 
 ##### GitOps 
-** Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
+* Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
 * Unable to delete clusters in the Codefresh UI. 
 * Codefresh UI unresponsive when clicking Warnings/Errors button in the **GitOps Apps** dashboard.
 * `Failed to create binary image error` from Image reporter for images exceeding 2GB.
