@@ -277,7 +277,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `buildsTreeView`   | _New feature currently in development._<br>When enabled, shows a visualization of the parent and child builds of pipelines.<br>   | FALSE  |
 | `gitopsRuntimeObservability` | _New feature currently in development._ <br>When enabled, displays metrics for GitOps Runtimes in dashboards. | FALSE  |
-| `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.<br>NIMA: Add xref   | TRUE  |
+| `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.  | TRUE  |
 | `preFillBuildVariablesFromURL`   | When enabled (the default), allows sharing pipeline build settings through the **Share build settings** button.<br> See [Pipelines: Share build run settings](#pipelines-share-build-run-settings) in this article.   | TRUE  |
 | `promotionFlowsManagement`   | _New feature currently in development._<br>When enabled, allows users to create and execute Promotion Lifecycles in Codefresh.  | FALSE  |
 | `productReleasesPage`        | _New feature currently in development._<br>When enabled, displays the Releases tab in the GitOps Products dashboard. | FALSE  |
@@ -307,7 +307,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 * Cloning a pipeline in UI fails with “Unknown error” when triggered from UI. 
-* Outage for external MongoDB on increasing the number of connections to the permitted limit.
+<!--- * Outage for external MongoDB on increasing the number of connections to the permitted limit.-->
 
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
