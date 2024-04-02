@@ -63,7 +63,7 @@ For details, see [Analyze out-of-sync applications with Diff View]({{site.baseur
 * Debug Console toolbar not displayed in Debug mode for PRO accounts. 
 * Unable to upload more than 100 Allure reports from Codefresh.
 * “No such file or directory” error in Test History/Trends page for Allure test reports. 
-<!--- * Notifications not send for builds triggered by Cron timers. (CR-3927 Franscisco) -->
+
 
 <br>
 

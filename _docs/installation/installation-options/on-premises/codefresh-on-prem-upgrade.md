@@ -670,6 +670,11 @@ Version 2.2.0 incorporates changes.
 
 Follow the instructions in [Upgrading to 2.2.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh/#to-2-2-0){:target="\_blank"}.
 
+## Upgrade to 2.3.0
+Version 2.3.0 incorporates a change to the default registry for Codefresh private images from GCR `gcr.io` to GAR `us-docker.pkg.dev`.  
+
+Follow the instructions in [Upgrading to 2.3.0](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
+
 
 ## Related articles
 [Codefresh on-premises setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/)  
