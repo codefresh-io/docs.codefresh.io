@@ -16,6 +16,7 @@ Read more on the platform architecture for [SaaS](#codefresh-saas-platform-archi
 
 Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
 
+
 {% include image.html
   lightbox="true"
   file="/images/installation/soc2-type2-certified.png"
@@ -27,6 +28,7 @@ Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/i
 
 
 ## Codefresh SaaS platform architecture
+
 
 The diagram shows the high-level architecture for Codefresh SaaS deployment and its core components. 
 
@@ -59,6 +61,7 @@ Managed clusters are external clusters added to provisioned GitOps Runtimes. You
 
 
 
+
 ### Codefresh Clients
 
 Codefresh Clients include the UI and the CLI.     
@@ -80,6 +83,8 @@ The CLI for Codefresh Pipelines can:
 For installation instructions and CLI command descriptions, see the [CLI documentation](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"}.
 
 
+
+
 ## Codefresh on-premises platform architecture
 
 The diagram shows a high-level view of the Codefresh on-premises deployment, and its core components. 
@@ -93,6 +98,7 @@ alt="Platform architecture: Codefresh on-premises deployments"
 caption="Platform architecture: Codefresh on-premises deployments"
 max-width="100%"
 %}
+
 
 
 
@@ -143,8 +149,10 @@ The Pipelines API serves as the primary gateway for the Codefresh Pipelines modu
 
 
 
+
 #### Pipelines UI
 The Pipelines UI acts as a static file server that hosts and delivers all the user interface pages for Codefresh Pipelines. It provides visualization of pipelines, builds, third-party integrations and more.
+
 
 
 
@@ -156,7 +164,6 @@ It utilizes a GraphQL interface to provide a user interface
 
 #### GitOps UI
 The GitOps UI provides a unified, enterprise-wide view of deployments, Runtimes, clusters, and applications in the same location.  
-
 
 
 #### Pipelines

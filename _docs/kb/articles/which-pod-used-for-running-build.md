@@ -1,5 +1,5 @@
 ---
-title: "How To: Know which builder pod was used for running a build"
+title: "How To: Find the builder pod used to run build"
 description: 
 group: kb
 sub-group: articles
@@ -11,10 +11,16 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article describes how to retrieve the specific builder pod used to run a build. 
 
-By default codefresh on-premises uses codefresh builders to run your builds. In case you configured more than one builder, you might need to know on which builder pod specific build was run on for debug purposes for example in case of networking issues in your k8s cluster
+## Multiple builders
+By default, Codefresh on-premises uses Codefresh builders to run your builds. 
 
-## Details
+If you configured more than one builder, you might need to know the builder pod that the specific build was run on, for debug purposes for example, to resolve networking issues in your k8s cluster.
 
-One of the ways you can use for this purpose is to output the builder pod name to the build logs so it can be easily found there in future. You just need to add `echo $CF_HOST_NAME` to the commands list of one of the freestyle steps in the pipeline for which you need to track the builder name it runs on.
+To always locate the builder pod, simply output the builder pod name to the build logs. 
+
+## How to
+
+* Add `echo $CF_HOST_NAME` to the commands list of one of the `freestyle` steps in the pipeline for which you need to track the builder name it runs on.
+

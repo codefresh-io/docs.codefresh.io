@@ -46,7 +46,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ### Tunnel-based Runtime
 Hybrid GitOps Runtimes support tunnel-based, ingress-based, and service-mesh-based access modes.  
 For the quick start, we'll use the tunnel-based mode which is the default access mode that does not require an ingress controller.  
-For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-runtime-architecture).
+For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
 ### GitHub as Git provider  
 Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  

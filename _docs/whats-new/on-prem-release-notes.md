@@ -309,6 +309,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Cloning a pipeline in UI fails with “Unknown error” when triggered from UI. 
 * `build-manager` microservice causing increased number of MongoDB connections.
 
+
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
 * Unable to delete clusters in the Codefresh UI. 

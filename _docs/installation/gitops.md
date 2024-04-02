@@ -61,19 +61,21 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
-|                         | Number per account | One runtime                | Multiple runtimes, one per cluster            |
+|                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
 | Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
-| CI Ops                  | Delivery Pipelines |Not supported               | Supported  |
+| CI Ops                  |Delivery Pipelines |Not supported               | Supported  |
 |                         |Workflows           | Not supported              | Supported  |
 |                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Supported                  | Supported |
+| CD  Ops                 |Applications        | Supported: see below for details                  | Supported: see below for details |
+|                         |                    |Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
+|                         |                     |Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}| Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}|
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |Home                | Hosted runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |
 

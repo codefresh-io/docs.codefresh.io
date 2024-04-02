@@ -1,5 +1,5 @@
 ---
-title: "How To: Run a step depending on if the build is webhook triggered"
+title: "How To: Run a step conditionally for build triggered by webhook"
 description: 
 group: kb
 sub-group: articles
@@ -11,16 +11,24 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
 
-You want to run a step only if the build is directly triggered by a webhook event, or only if it's started manually.
+This article explains how to run a step conditionally based on whether the build is triggered by a webhook event or manually.
 
-For example, you may have your Slack notifications set up as steps using the [Slack notifier plugin](https://codefresh.io/steps/step/slack-notifier) within your pipeline in order to get more granular control over when and how these notifications are sent, and you want to send these notifications only if the build is automatically started via webhook, not when the build is manually
+
+## Conditional execution of steps
+
+You want to execute a step only when a specfic condition is met.
+
+For example,  to get more granular control over when and how Slack notifications are sent, you may have your Slack notifications set up as steps using the [Slack notifier plugin](https://codefresh.io/steps/step/slack-notifier){:target="\_blank"} within your pipeline.
+
+You want to send these notifications only when the build is automatically triggerd via webhook, and not when it is manually
 triggered.
 
-## Details
+## How to
 
-To execute a step only when a build is manually triggered, you can create a condition to check for the value of the [system-provided variable]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) `CF_BUILD_TRIGGER`. This variable's value will be `webhook` if the build was started by a webhook event, and `build` if it was started manually (through UI, CLI, or API).
+To execute a step only when a build is manually triggered, you can create a condition to check for the value of the [system variable]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) `CF_BUILD_TRIGGER`. 
+
+This variable's value is `webhook` when the build is triggered by a webhook event, and `build` when triggered manually through the UI, CLI, or API.
 
 {% raw %}
 
@@ -40,11 +48,13 @@ steps:
 
 {% endraw %}
 
-Similarly, you can match for the value `build` if you want to execute a step only if the build is manually initiated.
+Conversely, to execute a step only if the build is manually initiated, you can set a condition to match the value `build`.
 
-In child builds started with codefresh run, the value of `CF_BUILD_TRIGGER` will always be `build`. This is because although the parent build may be webhook-triggered, the child build is always started via API, which counts as a "manual" start.
+##### Child builds
+In child builds started with Codefresh run, the value of `CF_BUILD_TRIGGER` will always be `build`.  
+This is because although the parent build may be webhook-triggered, the child build is always started via API, which is considered as a "manual" start.
 
-To get around this, you can explicitly pass this variable from the parent to the child build to override the default value.
+As a workaround, you can explicitly pass this variable from the parent to the child build to override the default value.
 
 {% raw %}
 
@@ -57,5 +67,4 @@ steps:
       VARIABLE:
         - CF_BUILD_TRIGGER=${{CF_BUILD_TRIGGER}}
 ```
-
 {% endraw %}

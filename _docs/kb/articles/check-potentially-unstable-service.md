@@ -19,7 +19,9 @@ This article describes how to check for a service that may be inaccessible for a
 
 ## How to
 
-* In the pipline step, add the `retry` attribute, as in the following example:
+* In the pipeline step, add the `retry` attribute, as in the following example:
+
+
 
 ```yaml
 steps:
@@ -33,7 +35,8 @@ steps:
       exponentialFactor: 2
 ```  
 
->**NOTE**
+
+>**NOTE**  
 Every retry attempt uses up one of your concurrent builds. For this reason, we suggest limiting the amount of retries.
 
 ## Related articles
