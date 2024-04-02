@@ -275,7 +275,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-| `buildsTreeView`   | _New feature currently in development._<br>When enabled, shows a visualization of the parent and child builds of pipelines.<br> ???  | FALSE  |
+| `buildsTreeView`   | _New feature currently in development._<br>When enabled, shows a visualization of the parent and child builds of pipelines.<br>   | FALSE  |
 | `gitopsRuntimeObservability` | _New feature currently in development._ <br>When enabled, displays metrics for GitOps Runtimes in dashboards. | FALSE  |
 | `headerLiveState`   | When enabled (the default), in Codefresh GitOps, updates Health and Sync statuses in the Application Header from Argo CD instead of Argo Events.<br>NIMA: Add xref   | TRUE  |
 | `preFillBuildVariablesFromURL`   | When enabled (the default), allows sharing pipeline build settings through the **Share build settings** button.<br> See [Pipelines: Share build run settings](#pipelines-share-build-run-settings) in this article.   | TRUE  |
@@ -306,7 +306,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * For Bitbucket Cloud, `codefresh-report-image` step fails with errors to get Pull Requests (PRs) and branches. 
 * Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
-
+* Outage for external MongoDB on increasing the number of connections to the permitted limit.
 
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
