@@ -307,7 +307,8 @@ The table below lists existing Feature Flags which have been updated by default 
 * Builds for Gerrit in Codefresh are triggered twice because of webhook data delivery request timeouts or connection issues.
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 * Cloning a pipeline in UI fails with “Unknown error” when triggered from UI. 
-<!--- * Outage for external MongoDB on increasing the number of connections to the permitted limit.-->
+* `build-manager` microservice causing increased number of MongoDB connections.
+
 
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
