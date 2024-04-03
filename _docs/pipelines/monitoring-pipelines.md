@@ -14,7 +14,7 @@ View activity for Codefresh pipelines in the **Builds** tab.
  
 As a user, you can see builds from all pipelines you have access to. If your permissions do not include access to specific pipelines, you will not see builds from those pipelines. 
 
-The Builds page for a pipeline displays by default all builds sorted from the most recent to the oldest. To narrow the list, you can use the date range filter, and additional filters at the top of the page.
+The Builds page for a pipeline displays by default all builds sorted from the most recent to the oldest. To narrow the list, you can use the date range filter and additional filters at the top of the page.
 
 {% include 
 image.html 
@@ -502,6 +502,59 @@ caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
+## Visualize parent-child relationships for pipeline builds
+
+>**NOTE**  
+This feature is currently in Beta.
+
+Select a build for a pipeline and visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
+
+1. From the sidebar, below Pipelines, select **Builds**. 
+1. Click the build to go to the step view for the build.
+1. In the lower part of the page, click **Build Tree**.
+
+### Build Tree view
+
+Here's an example of the Build Tree for a pipeline build displaying the hierarchical relationships between the selected and interconnected builds. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/pipeline/monitoring/build-tree-view.png" 
+url="/images/pipeline/monitoring/build-tree-view.png"
+alt="Build Tree for selected pipeline build" 
+caption="Build Tree for selected pipeline build"
+max-width="50%"
+%}
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+To view different areas of the Build Tree, drag the mouse to pan horizontally or vertically.
+{{site.data.callout.end}}
+
+* **Build reference point**  
+  The selected build is the focal point to all linked builds. For easy identification, the selected build is tagged as **Current**.
+
+* **Build status**  
+  * Every build displayed in the Build Tree showcases its status. 
+  * For easy identification and alerting, steps in builds with an error status or a status requiring manual action are always displayed.  
+    These statuses include:
+    * Denied
+    * Failed
+    * Pending Approval
+    * Terminating or Terminated
+
+
+* **Build context menu**  
+  Every build has a context menu for quick access to useful actions available for an individual pipeline build. 
+
+* **Navigation to individual builds**  
+  Clicking {::nomarkdown}<img src="../../../images/icons/external-link.png" display=inline-block/> {:/} for any build opens the Builds page displaying the step-view for that build. 
+
+* **View controls**  
+  View controls located at the top left:
+    *  Allow zooming in or out.
+    * **Collapse all**: Restores the default view of the Build Tree and collapses builds without errors (Success, Pending, Approved statuses). 
 
 
 ## Monitoring pipelines outside the Codefresh UI
