@@ -78,10 +78,10 @@ Whether you are installing the GitOps Runtime on a cluster with or without Commu
 |-------------------------------------                                   |:------------:   |:-------------:      |
 |[Argo Project components](#gitops-runtime-only-argo-project-components)        |    ✅            |     N/A                |
 |[SealedSecrets controller](#gitops-runtime-only-sealedsecrets-controller)        |    ✅            |     N/A                |
-|[Argo Project CRDs(Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
-|[Argo Rollout CRDs(Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
+|[Argo Project CRDs (Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
+|[Argo Rollout CRDs (Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
 |[Align Argo CD chart's minor versions](#gitops-runtime-with-argo-cd-align-argo-cd-charts-minor-versions) |     N/A           | ✅        |
-|[Set Community Argo CD resource tracking to `label](#gitops-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
+|[Set Community Argo CD resource tracking to `label`](#gitops-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
 
 ### GitOps Runtime only: Argo Project components
 When installing only the GitOps Runtime on the cluster, the cluster should not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
