@@ -502,12 +502,12 @@ caption="Step view: Restart from failed step"
 max-width="70%"
 %}
 
-## Visualize relationships for pipeline builds
+## Visualize parent-child relationships for pipeline builds
 
 >**NOTE**  
 This feature is currently in Beta.
 
-Select a build for a pipeline to visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
+Select a build for a pipeline and visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
 
 1. From the sidebar, below Pipelines, select **Builds**. 
 1. Click the build to go to the step view for the build.
@@ -527,6 +527,9 @@ caption="Build Tree for selected pipeline build"
 max-width="50%"
 %}
 
+{{site.data.callout.callout_tip}}
+To view different areas of the Build Tree, drag the mouse to pan horizontally or vertically.
+{{site.data.callout.end}}
 
 * **Build reference point**  
   The selected build is the focal point to all linked builds. For easy identification, the selected build is tagged as **Current**.
