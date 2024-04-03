@@ -528,6 +528,7 @@ max-width="50%"
 %}
 
 {{site.data.callout.callout_tip}}
+**TIP**  
 To view different areas of the Build Tree, drag the mouse to pan horizontally or vertically.
 {{site.data.callout.end}}
 
