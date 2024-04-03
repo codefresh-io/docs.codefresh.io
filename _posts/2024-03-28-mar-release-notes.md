@@ -15,8 +15,6 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 
 ##### GitOps 
-* API error "Cannot return null for non-nullable field".   
-* Empty Runtime Components tab on selecting Hosted GitOps Runtime. 
 * New Argo CD application deployed in Codefresh remains as Out of Sync in GitOps Apps > Current State.
 * Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
 * Error on enabling Argo CD notifications in Helm chart `values.yaml` for Codefresh GitOps Runtime v0.4.2 
