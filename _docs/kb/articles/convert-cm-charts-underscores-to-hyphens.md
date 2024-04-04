@@ -21,7 +21,7 @@ Error: chart "<chart name>" version "1.0.0-cf-<branch name with underscores>-0bd
 
 Branch name contains underscores
 
-Adding this step in the beggining of the pipeline will convert underscores in
+Adding this step in the beginning of the pipeline will convert underscores in
 branch name to hyphens
 
 {% raw %}

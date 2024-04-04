@@ -37,10 +37,9 @@ alt="codefresh_eb_env_vars.png"
 max-width="40%"
 %}
 
-{{site.data.callout.callout_info}}
-{% raw %}
+{{site.data.callout.callout_tip}}
+**TIP**  
 The ``${{AWS_VERSION}}`` of application you can find in the Elastic Beanstalk service.
-{% endraw %}
 {{site.data.callout.end}}
 
 {% include 
@@ -52,10 +51,9 @@ alt="codefresh_eb_version_label.png"
 max-width="40%"
 %}
 
-{{site.data.callout.callout_info}}
-{% raw %}
+{{site.data.callout.callout_tip}}
+**TIP**  
 The ``${{AWS_ENV_NAME}}`` of application you can find in the Elastic Beanstalk service.
-{% endraw %}
 {{site.data.callout.end}}
 
 {% include 
@@ -104,8 +102,8 @@ max-width="40%"
 
 
 
->Note:  
-  If you don't have awsebcli - install EB CLI [http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="_blank"}.
+>**NOTE**  
+  If you don't have `awsebcli`, install [EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html){:target="\_blank"}.
 
 
 {% include 

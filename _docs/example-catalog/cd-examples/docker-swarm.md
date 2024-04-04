@@ -66,9 +66,9 @@ docker stack deploy --compose-file docker-stack.yml vote
 {% endraw %}
 {% endhighlight %}
 
-{{site.data.callout.callout_warning}}
-The swarm master must have Python installed.
-{{site.data.callout.end}}
+>**NOTE**  
+The swarm master _must_ have Python installed.
+
 
 ## Deploy to Remote Swarm with Codefresh
 

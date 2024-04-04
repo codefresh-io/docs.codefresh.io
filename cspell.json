@@ -1,0 +1,19 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "dictionaries": ["dictionary-codefresh"],
+    "dictionaryDefinitions": [{
+            "name": "dictionary-codefresh",
+            "path": "./dictionary-codefresh.txt",
+            "addWords": false
+    }],
+    "flagWords": [
+        "hte"
+    ],
+    "ignorePaths": [
+        "cspell.json",
+        "package.json",
+        "package-lock.json",
+        "node_modules/**"
+    ]
+}

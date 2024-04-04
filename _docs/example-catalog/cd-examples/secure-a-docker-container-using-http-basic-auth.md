@@ -80,9 +80,8 @@ alt="codefresh_nginx_container.png"
 max-width="40%"
 %}
 
-{{site.data.callout.callout_info}}
-##### Example 
-
+{{site.data.callout.callout_tip}}
+**TIP**  
 Just head over to the example [__repository__](https://github.com/codefreshdemo/cf-example-basic-auth-container){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 

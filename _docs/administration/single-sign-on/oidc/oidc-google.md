@@ -81,7 +81,7 @@ To synchronize users and teams through a service account, create a service accou
   max-width="60%"
   %}
 
-{:start=2"}
+{:start="2"}
 1. Delegate from the Google admin console the following permissions:
   * `https://www.googleapis.com/auth/admin.directory.user.readonly`
   * `https://www.googleapis.com/auth/admin.directory.group.readonly`
@@ -166,9 +166,6 @@ max-width="60%"
 
 ## Step 3: Configure SSO settings for Google in Codefresh
 
-
-
-
 **Before you begin**  
 * Make sure you have:
   * The **Client ID** and **Client Secret** from Google in Step 1
@@ -212,11 +209,11 @@ max-width="60%"
   max-width="90%"
   %}
 
-{:start="5"}
+{:start="6"}
 1. Note down the Client Name, as you need it to set the redirect URI in Google.
 1. Continue with [Step 4: Set up Redirect URI in Google](#step-4-set-up-redirect-uri-in-google).
 
-### Step 4: Set up Redirect URI in Google
+## Step 4: Set up Redirect URI in Google
 1. Go back to the Google Console Developer dashboard, and click the edit button on the OAuth 2.0 Client IDs that you created before.
 1. For **Authorized Redirect URIs**, in the **URIs** field, enter the Client Name you noted down to generate the **Authorized Redirect URIs**:
   * Example Client Name: `t0nlUJoqQlDv`

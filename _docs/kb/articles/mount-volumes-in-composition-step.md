@@ -11,17 +11,29 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
+This article describes how to mount a volume within a named Docker volume to overcome the Docker limitation. 
+
+>**NOTE**  
+This article is relevant when `docker-compose.yml` file in the `composition` step.
+
+
+
+
 ## Overview
 
-Compositions steps can only mount {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}, but you need to mount `/codefresh/volume/<REPO>/<DIR>/` to `/<DIR>` . This is a limitation of docker where you cannot specify a directory inside a named docker volume [1].
+Compositions steps can only mount {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}.
 
-**Note** : this is for using a `docker-compose.yml` file in the composition step.
+If you need to mount `/codefresh/volume/<REPO>/<DIR>/` to `/<DIR>`, due to a Docker limitation, you cannot specify a directory inside a named Docker volume. See [here](https://github.com/moby/moby/issues/32582){:target="\_blank"}.
 
-## Details
+## How to
 
-I have in my git rep sample data and need to mount this to the `/database` directory. My custom image is expecting data to be in `/database` to be able to run. My docker file already runs a script at startup when the container starts.
+##### Scenario
 
-Sample `docker-compose.yml`
+* Sample data in Git repo must be mounted to `/database` directory. 
+* The custom image needs access to `/database` for proper execution. 
+* The Dockerfile already runs a script on container startup.
+
+##### Sample `docker-compose.yml`
 
 ```yaml
 version: '3.0' 
@@ -32,7 +44,7 @@ services:
       - ./:/database
 ```
 
-`Sample codefresh.yml`
+##### Sample `codefresh.yml`
 
 {% raw %}
 
@@ -57,7 +69,7 @@ steps:
 
   conform:
     title: Fix docker compose
-    type: composition-editor
+    type: composition-editor:1.1.0
     stage: Build
     arguments:
       DIRECTORY: ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}
@@ -80,11 +92,17 @@ steps:
           volumes:
             - ${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}
 ```
-
 {% endraw %}
 
-In the conform step, we are replacing the volumes mount to be {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}. Then add a command of {% raw %}`bash -c "ln -s ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/<DIR>/ /database && ./start.sh"`{% endraw %} to symlink the directory in my repo to the `/database` directory and then execute my script that's already in the container. Once this is done, my composition steps will run and have the correct mounts and directories where it is needed.
+In the step `conform.arguments.KEYVALUE_PAIRS`:
+* Volumes mount is replaced by {% raw %}`${{CF_VOLUME_NAME}}:${{CF_VOLUME_PATH}}`{% endraw %}.
+* The command {% raw %}`bash -c "ln -s ${{CF_VOLUME_PATH}}/${{CF_REPO_NAME}}/<DIR>/ /database && ./start.sh"`{% endraw %}:
+  * Symlinks the directory in the Git repo to the `/database` directory
+  * Executes the script already in the container
 
-## Related Items
+Once this is done, `composition` steps will run and have the correct mounts and directories where needed.
 
-[1] <https://github.com/moby/moby/issues/32582>
+## Related articles
+[Composition steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/composition/)  
+[Pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
+

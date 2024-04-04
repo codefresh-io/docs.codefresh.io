@@ -62,6 +62,5 @@ max-width="60%"
 %}
 
 ## Related articles
-
 [Manage your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Environment dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  

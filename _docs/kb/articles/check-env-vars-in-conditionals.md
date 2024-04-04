@@ -11,13 +11,26 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article outlines how to execute a specific step conditionally based on the presence or absence of a variable in Codefresh pipelines, enabling branching logic within a single pipeline.
 
-You are trying to run a specific step only if a variable is set. You are trying to have branching logic in one pipeline.
+The condition determines how variable values are substituted within the pipeline's build when these variables are not defined in the pipeline configuration. In such instances, Codefresh maintains the variable name string unchanged, without replacing it with a value.
 
-## Details
+The following condition:
 
-1. Using the following syntax, you can check whether a variable exists for the current build:
+  {% raw %}
+
+    ```yaml
+      'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
+    ```
+  {% endraw %}
+
+evaluates to `true` if `CF_RELEASE_TAG` does not exist, and `false` if it does exist.
+
+## How to
+
+##### Check if variable exists for the current build 
+
+Use the following syntax:
 
    {% raw %}
 
@@ -30,7 +43,9 @@ You are trying to run a specific step only if a variable is set. You are trying 
 
     {% endraw %}
 
-2. The following syntax can be used to check for a specific value:
+##### Check if variable has a specific value
+
+Use the following syntax:
 
    {% raw %}
 
@@ -43,8 +58,9 @@ You are trying to run a specific step only if a variable is set. You are trying 
 
     {% endraw %}
 
-3. If desired, you can combine multiple checks.
+Combine multiple checks as required.
 
-## Related Items
 
-[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
+
+## Related articles
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  

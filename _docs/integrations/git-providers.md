@@ -25,7 +25,7 @@ Currently Codefresh supports:
 * GitLab Cloud
 * GitLab On-premises
 * Azure DevOps Git
-* Atlassian Stash (old version of Bibucket Server)
+* Atlassian Stash (old version of Bitbucket Server)
 * Gerrit
 
 
@@ -42,6 +42,10 @@ By default, you have direct access to Git repositories that exist in the Git pro
 1. From the **Add Git Provider** drop-down, select the Git provider to add. 
 1. Define the settings as required. 
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
 
 {% include image.html lightbox="true" file="/images/integrations/codefresh-integrations.png" url="/images/integrations/codefresh-integrations.png" alt="Codefresh Account Integration" max-width="80%" %}
 
@@ -65,7 +69,8 @@ In the case of an on-premises Git provider, you also need to fill in the URL whe
 
 ## SSH Keys
 
-> Please contact support to enable this feature.
+>**NOTE**  
+To enable this feature, please contact Codefresh Support.
 
 You have the ability to specify whether you want to clone via HTTPS or SSH.  
 
@@ -103,7 +108,8 @@ For the **Access Token** method you need
 * A friendly name for the Git context (it can be anything you want)
 * An access token
 
->Note that the access token for an organization should be created by somebody who has **Owner** role and not just **Member** role.
+>**NOTE**  
+Make sure that the user who creates the access token for an organization _also has the **Owner** role_ in addition to the **Member** role.
 
 To create an [access token](https://github.com/settings/tokens){:target="\_blank"}, go to your GitHub *settings* and select the *Developer settings* option from the left
 sidebar. Then select *Personal access tokens* from the left menu.
@@ -144,7 +150,8 @@ This option has the following impact on pipelines:
 * When cleared, the user who runs a pipeline cannot use this integration.
 In both cases, the user cannot decrypt the token used in Git integration with CLI or API.
 
->Important note: The credentials will be shared only to clone repos using an official git-clone step.
+>**NOTE**  
+The credentials will be shared only to clone repos using an official `git-clone` step.
 
 ## GitHub-App
 
@@ -152,7 +159,9 @@ An alternative way to authenticate with Github is via the App mechanism.
 
 ### Codefresh Github App
 
-> The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks. If you need additional permission for your integration, use the Manual Creation steps.
+>**NOTE**  
+The Codefresh App has READ permissions to issues, metadata, and pull requests, and READ and WRITE permissions to code, commit statuses, and repository hooks.  
+If you need additional permission for your integration, use the Manual Creation steps.
 
 1. In the Codefresh UI, follow the steps to [add a new Git provider](#adding-more-git-providers-to-your-codefresh-account). 
 1. From the list of Git providers, select **Codefresh Github App**.
@@ -167,19 +176,18 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. Log in your GitHub account and visit [https://github.com/settings/apps](https://github.com/settings/apps){:target="\_blank"}. 
 1. Click **New GitHub App**.
 1. Do the following in the New GitHub App screen:
-     1. Give an arbitrary name to your app (e.g. codefresh-integration)
-     1. Fill *Homepage URL* with `http://www.codefresh.io`
-     1. Uncheck the *Active* checkbox under the Webhook section
-     1. In the *Repository permissions* section give the minimum of
-       * **Contents** - read
-       * **Issues** - read
-       * **Metadata** - read
-       * **Pull requests** - read
-       * **Webhooks** - read, write
-       * **Commit statuses** - read, write
-       * **Email addresses** - read 
-     1. Click the *Create GitHub app* button.
-
+     1. Give an arbitrary name to your app, for example, `codefresh-integration`.
+     1. Define the **Homepage URL** as `http://www.codefresh.io`.
+     1. In the **Webhook** section, clear the **Active** checkbox.
+     1. In the **Permissions > Repository permissions** section, select required access levels for the following:   
+          * **Contents**: Read-only
+          * **Issues**: Read-only
+          * **Metadata**: Read-only
+          * **Pull requests**: Read-only
+          * **Webhooks**: Read and write
+          * **Commit statuses**: Read and write
+     1. In the **Account permissions > Email addresses** section, select Read-only as the access level.
+     1. Click **Create GitHub app**.
 1. In the next screen, do the following:
      1. Note down the **App ID** number under the About section.
      1. Click **Generate a private key**,  and save the file locally.
@@ -196,7 +204,8 @@ An alternative way to authenticate with Github is via the App mechanism.
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
 
->If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+>**NOTE**  
+If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
 
@@ -274,7 +283,8 @@ On the screen that will appear click the *New token* Button. Enter an arbitrary 
 **Organization** from the drop-down menu. Remember your organization name as you will use it later in the Codefresh side.
 Select an expiration date for your token
 
-> At the time of writing Azure DevOps does not have the option to create a token that is valid for ever. Choose a large
+>**NOTE**  
+At the time of writing, Azure DevOps does not have the option to create a token without an expiration date. Choose a long
 time period and make sure that you have a policy in place for renewing your tokens so that Codefresh can continue to read your Git repo.
 
 {% include image.html
@@ -383,7 +393,7 @@ Gerrit has a special **Service Users** access-group for CI systems and other bot
 ### Step 2: Generate password for user in Gerrit
 Generate an HTTP Password in Gerrit as an access token to authenticate HTTP requests. 
 
->**NOTE**:  
+>**NOTE**    
 Regenerating the HTTP Password automatically revokes the current password. 
 
 1. Log in to Gerrit with the Codefresh user you created in _Step 1_.
@@ -419,8 +429,8 @@ caption="Select Git provider"
 alt="Select Git provider"
 %}
 
->Notice that for all supported Git providers, Codefresh automatically creates all the webhooks needed for
-triggering pipelines when a commit (or another event) happens.
+>**NOTE**  
+For all supported Git providers, Codefresh automatically creates all the webhooks needed for triggering pipelines when a commit (or another event) happens.
 
 After adding the repository, Codefresh behavior is identical for all Git providers.
 You can [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) for different Git providers in exactly the same manner.
@@ -429,7 +439,8 @@ You can [create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/) for diffe
 
 **Account Level:** Pro and above
 
-> At this time, you will need to reach out to support to enable ABAC for Git Context and [Pipeline Execution Context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).
+>**NOTE**  
+At this time, you will need to reach out to support to enable ABAC for Git Context and [Pipeline Execution Context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).
 
 ABAC for Git Context gives the ability to restrict using and handling of Git Contexts. We use tags on the git context to limit Teams and Execution Contexts for access control. There are four actions controlled by ABAC: Creating, Updating, Deleting, and Using Git Contexts.
 

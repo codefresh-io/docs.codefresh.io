@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-Check out our CD quick starts to get up and running with Codefresh pipelines and deployments.  
+Check out our CI/CD quick starts to get up and running with Codefresh pipelines and deployments.  
 
 The quick start guides you through:
 * Creating a basic pipeline
@@ -17,7 +17,7 @@ The quick start guides you through:
 
 
 ## Provision Codefresh Runner or Cloud Builds
-Based on your deployment model, start by installing the Codefresh Runner or enabling Cloud Builds.
+Based on your deployment model, start by installing the [Codefresh Runner]({{site.baseurl}}/docs/getting-started/concepts/#runner) or enabling Cloud Builds.
 
 
 ## Create a Codefresh account

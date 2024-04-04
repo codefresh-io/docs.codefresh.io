@@ -14,7 +14,8 @@ toc: true
 - A [Codefresh account]- A [Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
 - A remote machine with an FTP server and SSH setup (ensure that your FTP directory, I.e., `/srv/ftp/pub` has the proper write permissions for the FTP user).
 
->Note that as you may already know, FTP is extremely insecure as it relies on plain-text passwords and usernames, making data very vulnerable to sniffing.  A more secure solution would be to use SFTP or SCP.
+>**NOTE**  
+As you may already know, FTP is extremely insecure as it relies on plain-text passwords and usernames, making data very vulnerable to sniffing.  A more secure solution would be to use SFTP or SCP.
 
 ## Example PHP project
 

@@ -24,7 +24,10 @@ They are much more flexible than compositions in these areas:
 1. Attaching service containers to the whole pipeline instead of individual steps .
 1. Auto-mounted Codefresh [shared volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) for freestyle steps (unlike compositions), making file access very easy. You can execute your tests from the Git repository that was cloned.
 
->This article explains how to run additional services that are automatically discarded once the pipeline has completed its run. If you are interested in temporary test environments, see the [preview environments]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/).
+{{site.data.callout.callout_tip}}
+**TIP**  
+This article explains how to run additional services that are automatically discarded once the pipeline has completed its run. If you are interested in temporary test environments, see the [preview environments]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/).
+{{site.data.callout.end}}
 
 ## How integration tests work in Codefresh
 
@@ -40,7 +43,8 @@ They are much more flexible than compositions in these areas:
   Even better, make the hostname completely configurable with an environment variable so that you can change it within the Codefresh pipeline at will.  
   Basically, make sure that your integration tests work fine with `docker compose` locally on your workstation, before converting them to a Codefresh pipeline.
 
->The services you launch in a Codefresh pipeline consume resources (memory/CPU) from the pipeline's runtime environment. The more services you launch, the less resources you have for the actual pipeline. We also suggest that you do **NOT** use service containers for load or performance testing. 
+>**NOTE**  
+The services you launch in a Codefresh pipeline consume resources (memory/CPU) from the pipeline's runtime environment. The more services you launch, the less resources you have for the actual pipeline. We also suggest that you do **NOT** use service containers for load or performance testing. 
 
 ## Running integration tests directly from source code
 

@@ -199,8 +199,8 @@ This means that unlike other CI solutions where you have to manually describe wh
 
 The main choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default without any further action on your part.
 
->Note that if you are using [Codefresh on-premises]({{site.baseurl}}/docs/installation/codefresh-on-prem/), this kind of caching is not available for the built-in runtime. You need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/)
-with your own runtime to activate volume caching.
+>**NOTE**  
+ If you are using [Codefresh on-premises]({{site.baseurl}}/docs/installation/installation-options/on-premises/), this kind of caching is not available for the built-in runtime.<br>You need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) with your own runtime to activate volume caching.
 
 The simplest way to see this caching mechanism in action is this pipeline:
 
@@ -224,7 +224,8 @@ steps:
 
 If you run this pipeline multiple times you will see multiple entries in the file `sample.txt`.
 
->Note that if you run concurrent builds too quickly after one another, the Codefresh Volume will refresh [from scratch]({{site.baseurl}}/docs/pipelines/pipeline-caching/#issues-with-parallel-builds-and-parallel-pipelines) instead of being cached between builds.
+>**NOTE**  
+  If you run concurrent builds too quickly after one another, the Codefresh Volume will refresh [from scratch]({{site.baseurl}}/docs/pipelines/pipeline-caching/#issues-with-parallel-builds-and-parallel-pipelines) instead of being cached between builds.
 
 {% include image.html 
 lightbox="true" 

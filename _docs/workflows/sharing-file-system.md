@@ -10,7 +10,7 @@ If you are working with Codefresh pipelines or similar systems, the ability to s
 
 Argo Workflows provides different ways to share a file system between steps. We have outlined the different approaches, and the suggested best approach by use case.
 
-### Use previous step outputs as inputs
+## Use previous step outputs as inputs
 This approach passes outputs of previous steps as inputs to subsequent steps. You leverage the artifacts option and pass a file system to the step.
 Argo Workflows pulls the artifact from the artifact repository that is configured (MinIO, S3, GCS). An increase in the size of the artifact, also increases the initialization time for the step pod.  
 

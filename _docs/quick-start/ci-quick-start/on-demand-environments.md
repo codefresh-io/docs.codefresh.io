@@ -14,7 +14,10 @@ This quick start guides you through creating separate demo environments to test 
 Codefresh has the unique capability of launching Docker images in temporary test environments. These test environments
 are ephemeral, and are perfect for quick demos. Use them to quickly share a feature with a colleague or a customer.  
 
-> Test environments are not intended to be used as QA (let alone production) environments. 
+{{site.data.callout.callout_tip}}
+**TIP**  
+Test environments are not intended to be used as QA (let alone production) environments. 
+{{site.data.callout.end}} 
 
 ## Launch a Docker image using Codefresh
 
@@ -37,19 +40,6 @@ max-width="80%"
 
 1. In the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
 1. Select the image and click **Launch**.
-
-<!--- remember to change screenshot>
-{% include 
-image.html 
-lightbox="true" 
-file="/images/quick-start/quick-start-test-pr/launch.png" 
-url="/images/quick-start/quick-start-test-pr/launch.png" 
-alt="Launching a Docker image" 
-caption="Launching a Docker image" 
-max-width="80%" 
-%}
-
--->
 1. As our sample application consists of only a single Docker image, select **standalone**. 
   Codefresh automatically knows which port should be exposed in the test environment, that is, which port of the Docker container should be made available for external connections.  
   Our sample application exposes its web interface at port 5000, but a random port is actually assigned for external connections.
@@ -81,7 +71,8 @@ caption="Test environment"
 max-width="60%" 
 %}
 
->If the environment is not functioning correctly for your own application, make sure that the port exposed by Codefresh in the **Launch settings** is the one that is actually used in your application as an HTTP endpoint. 
+>**NOTE**  
+  If the environment is not functioning correctly for your own application, make sure that the port exposed by Codefresh in the **Launch settings** is the one that is actually used in your application as an HTTP endpoint. 
 
 You can also view your on-demand environment in Codefresh, and get additional details on the environment.
 

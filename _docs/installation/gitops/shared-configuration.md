@@ -10,10 +10,11 @@ toc: true
 
 A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
->**IMPORTANT**:  
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
 Only Codefresh account administrators should have access to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
 While it is useful to understand its structure, we recommend using it for reference only, and NOT for making commits or manual changes. 
-
+{{site.data.callout.end}}
 
 * **Centralized Runtime configuration management**  
   With the Shared Configuration Repository, you can store configuration manifests for account-level resources in a centralized location. The Git repository is accessible to all GitOps Runtimes within the same Codefresh account, ensuring that account-level resources are consistently deployed and managed across all environments.
@@ -32,16 +33,17 @@ Here are a few types of configuration definitions stored in the Shared Configura
 ## GitOps Runtimes & Shared Configuration Repos
 
 * Hosted GitOps Runtimes  
-  As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider) in Hosted GitOps setup.  
+  As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid GitOps Runtimes  
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-3-set-up-gitops-git-account).  
 
 
-> **NOTE**:
+<!--- 
+>>**NOTE**  
   Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
-
+-->
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration. 
@@ -69,9 +71,7 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
     └── runtime2                  │ # referenced by "staging-isc" argo-cd application, applied to the cluster by "cap-app-proxy
         └── in-cluster.yaml      ─┘ #     manage `include` field determines which dirs/files to sync to cluster
 ```
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### `resources` directory 
 
@@ -83,9 +83,7 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
   * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
-{::nomarkdown}
-<br>
-{:/}
+
 
 ### `runtimes` directory 
 The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster. Every subdirectory always has an `in-cluster.yaml`, and optionally, application manifest YAMLs for other clusters. 
@@ -140,9 +138,10 @@ Here's how to do this with the Shared Configuration Repo:
 1. Specify the desired configuration settings and resources required for the application in the manifest file.
 1. Save and commit the changes to the Git repository.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**    
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
-
+{{site.data.callout.end}}
 
 
 ## Related articles

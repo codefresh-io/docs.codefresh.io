@@ -1,5 +1,5 @@
 ---
-title: "Creating GitOps applications"
+title: "Creating Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
@@ -9,21 +9,30 @@ toc: true
 
 
 Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
-* Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
-  Creating an application in Codefresh includes:  
-  * Application definitions
+
+Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
+
+Creating an Argo CD application in Codefresh includes defining:  
+
+  * Application name and location
   * General configuration settings
-  * Advanced configuration settings  
+  * Advanced configuration settings
 
-  The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an application](#create-an-application).
-  For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.
 
-* Edit and delete applications
-  Once the application is created and synced to the cluster, it is displayed in the GitOps Apps dashboard. Here, you can select an application to update the application's configuration settings, or delete it.  
-  To monitor the health and sync status, deployments, and resources for the application, see [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).  
+The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
+
+For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
+  
+Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
+ 
+Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) individual Argo CD applications.
+
+After creating Argo CD applications in Codefresh, you can also monitor and manage them in the GitOps Environments and Products dashboards by creating Environment and Product resources. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+
+
 
 ## Application: Definitions
-Application definitions include the name, runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
+Application definitions include the application name, the GitOps Runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
 
 {% include 
    image.html 
@@ -50,50 +59,44 @@ General configuration settings define the group to which the application belongs
    max-width="70%" 
    %} 
 
-<!--- ### Groups
+
+### Groups
 Optional. The group or groups to which to add the application.  
-You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for GitOps Application, App Groups allow you to collate multiple applications view their timelines.
+You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for Argo CD applications, Groups allow you to collate multiple applications and view their timelines.
 
-Select an existing group, or create a new application group by typing a name and pressing Enter.
+Select an existing group or groups, or create a new application group by typing a name and pressing Enter.
 
--->
+ 
+
 
 ### Source 
 The Git repository to be tracked for changes to the application's source code.  
-{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul> {:/}   
+{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
 
-{::nomarkdown}
-<br>
-{:/} 
+
 
 ### Destination
 The cluster and namespace to which to deploy the application.  
-{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul> {:/}
+{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul>{:/}
 
-{::nomarkdown}
-<br>
-{:/}
 
 ### Sync Settings
-#### Sync Policy
-{::nomarkdown}The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.</br><ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI. </li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul> {:/}
 
-{::nomarkdown}
-<br>
-{:/} 
+
+#### Sync Policy
+The synchronization policy to apply when there are differences between the desired state in Git and the actual state in the cluster.{::nomarkdown}<ul><li><b>Manual</b>: Manually sync the changes from the Argo CD UI.</li><li><b>Automatic</b>: Automatically sync changes, with the following options if selected:<ul><li><b>Prune resources</b>:When selected, removes legacy resources that do not exist currently in Git. </li><li><b>Self heal</b>: When selected, always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing" target="_blank">Automatic self-healing</a>.</li></li></ul></ul>{:/}
+
+
 
 #### Sync Options 
-{::nomarkdown}Common to both manual and automatic sync policies.</br><ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul> {:/}
+Common to both manual and automatic sync policies.{% raw %}{::nomarkdown}<ul><li><b>Skip schema validation</b>: When selected, bypasses validating the YAML schema.</li><li><b>Auto-create namespace</b>: When selected, automatically create the namespace if the specified namespace does not exist in the cluster.</li><li><b>Prune last</b>: When selected, removes those resources that do not exist in the currently deployed version during the final wave of the sync operation. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last" target="_blank">Prune last</a>.</li><li><b>Apply out of sync only</b>: When selected, syncs only those resources in the application that have been changed and are <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">OutOfSync</span>, instead of syncing every resource regardless of their state. This option is useful to reduce load and save time when you have thousands of resources in an application. See <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#selective-sync" target="_blank">Selective Sync</a>.</li></ul>{:/}{% endraw %} 
 
-{::nomarkdown}
-<br><br>
-{:/} 
 
 #### Prune propagation policy
-{::nomarkdown}Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. 
-For more information, see <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion" target="_blank">Kubernetes - Cascading deletion</a>.</br><ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
+Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. For more information, see [Kubernetes - Cascading deletion](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion){:target="\_blank"}.{::nomarkdown}<ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
-**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="_blank"}.  
+
+**Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="\_blank"}.  
 
 **Retry**: When selected, retries a failed sync operation, based on the retry settings configured:   
 * Maximum number of sync retries (**Limit**)  
@@ -101,9 +104,7 @@ All Prune propagation policies can be used with:
 * Maximum duration permitted for each retry (**Max Duration**)  
 * Factor by which to multiply the Duration in the event of a failed retry (**Factor**). A factor of 2 for example, attempts the second retry in 2 X 2 seconds, where 2 seconds is the Duration.
 
-{::nomarkdown}
-</br></br>
-{:/}
+
 
 ## Application: Advanced configuration settings
 
@@ -119,18 +120,13 @@ Advanced settings define the tool used to create the application, and related to
    max-width="70%" 
    %} 
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 ### ArgoCD Project
 The project group to which the application belongs. A project is useful to enforce restrictions on permitted sources and targets for applications and roles. If not defined, the application is automatically assigned to the `default` project, which is created automatically by Argo CD and has no restrictions.  
 For more information, see Argo CD's documentation on [Projects](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#projects){:target="\_blank"}.
 
 
-{::nomarkdown}
-</br>
-{:/}
 
 ### Propagation policy for application deletion
 Defines how resources are pruned, applying Kubernetes cascading deletion prune policies when you delete the application. 
@@ -142,9 +138,7 @@ For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.i
 * **Non-cascading**
   When selected, Kubernetes deletes only the application and not its resources.  
 
-{::nomarkdown}
-</br>
-{:/}
+
 
 ### Type of Application
 The tool used to create the application's manifests.  Codefresh supports defining application manifests as a directory, Helm charts, or Kustomize. If you are using other tools to define application manifests, use the Plugin type. For more information, see the Argo CD's documentation on [Tools](https://argo-cd.readthedocs.io/en/stable/user-guide/application_sources/){:target="_blank"}.
@@ -170,17 +164,18 @@ The tool used to create the application's manifests.  Codefresh supports definin
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
   
 
-<br />
 
-## Create an application
+
+## Create an Argo CD application
 Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
 Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
 
 **Before you begin**  
+* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 
-Review:    
-[General configuration](#application-general-configuration-settings)  
-[Advanced configuration](#application-advanced-configuration-settings)  
+* Review:    
+  [General configuration](#application-general-configuration-settings)  
+  [Advanced configuration](#application-advanced-configuration-settings)  
 
 
 **How to**  
@@ -191,7 +186,8 @@ Review:
   * Runtime: The runtime to associate with the application.  
   * YAML filename: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name. Change the name as required.
 
-  >The application definitions cannot be changed after you continue to the Configuration settings.
+    >**NOTE**  
+    The application definitions cannot be changed after you continue to the Configuration settings.
 
 {% include 
    image.html 
@@ -254,13 +250,13 @@ Review:
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
 Monitor the application.
 
-{::nomarkdown}
-<br><br>
-{:/}
+
 
 
 ## Related articles
-[Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

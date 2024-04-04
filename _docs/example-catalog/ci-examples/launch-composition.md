@@ -59,8 +59,11 @@ The pipeline clones the source code, builds a docker image and then
  [creates a preview environment]({{site.baseurl}}/docs/pipelines/steps/launch-composition/) with that image.
 
 
->**Your environments are limited** 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**:  
+  **Your environments are limited**  
   Be aware that the number of environments you can run is limited. When using the same environment, define that the old one would terminate before launching the new environment. That way you can control the number of environments running in your account. 
+{{site.data.callout.end}}
 
 
 ### Example

@@ -13,7 +13,8 @@ Secret-Store is an additional context in Codefresh. Codefresh supports two types
 
 You can set up both types either in the Codefresh UI or via the CLI (`codefresh create context secret-store --help`).
 
-> This feature is for Enterprise accounts only.
+>**NOTE**  
+This feature is for Enterprise accounts only.
 
 ## Kubernetes secret store setup
 Kubernetes  the native secrets supported by a cluster.
@@ -38,6 +39,11 @@ kubectl create configmap my-config-map --from-literal=key1=config1
 
 
 ### Set up Kubernetes secret integration in Codefresh UI
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Secret Store** and then click **Configure**.
@@ -91,7 +97,7 @@ where:
 ## Secret store setup for Codefresh Runner installation
 
 
-For [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installations, you can also store secrets in your own runtime.
+For [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) installations, you can also store secrets in your own runtime.
 
 ### Set up runtime secret store in Codefresh UI
 

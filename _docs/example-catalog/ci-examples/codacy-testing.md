@@ -64,7 +64,7 @@ alt="Create Codacy Pipeline"
 max-width="80%" 
 %}
 
-**Setting-up step**
+##### Setting-up step
 
 This step is based on our [TypeScript application](https://github.com/codefresh-contrib/codacy-sample-app){:target="\_blank"}. Before we set up our pipeline, we will add our Project API token as our environment variable. Note that we have specified our token in the variables section on the right, as displayed in the following screenshot.
 

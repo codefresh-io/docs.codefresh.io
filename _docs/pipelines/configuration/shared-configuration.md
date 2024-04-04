@@ -51,7 +51,8 @@ You can create four types of shared configuration contexts:
 * **YAML**: for Helm values or any other generic information
 * **Secret YAML**: for above, but encrypts the contents
 
->RBAC is supported for all types of shared configurations. 
+>**NOTE**  
+RBAC is supported for all types of shared configurations. 
 
 You can create as many shared snippets as you want (with unique names).
 
@@ -193,7 +194,7 @@ Add the shared variables to your Helm step:
 {% highlight shell %}
 {% raw %}
 deploy:
-  type: "helm"
+  type: "helm:1.1.12"
   working_directory: "./react-article-display"
   stage: "deploy"
   arguments:

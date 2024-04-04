@@ -21,6 +21,12 @@ Codefresh has native support for Google Cloud in the following areas:
 
 Google Container registries are fully compliant with the Docker registry API that Codefresh follows. You can connect GCR like any [other Docker registry]({{site.baseurl}}/docs/integrations/docker-registries/google-container-registry/).
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
+
 {% 
 	include image.html 
 	lightbox="true" 
@@ -91,7 +97,7 @@ Codefresh has a [native Docker build step]({{site.baseurl}}/docs/pipelines/steps
 
 ## Installing the Codefresh runner from the Google Marketplace
 
-The [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
+The [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) is a Kubernetes native application that allows you to run pipelines on your own Kubernetes cluster (even behind the firewall). Specifically for Google Cloud, the runner is also available via the [marketplace]({{site.baseurl}}/docs/integrations/google-marketplace/).
 
 
 ## Traditional Google Cloud deployments
