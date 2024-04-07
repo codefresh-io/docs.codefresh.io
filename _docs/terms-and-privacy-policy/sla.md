@@ -43,7 +43,7 @@ Percentage”).
 
 {:/}
 
-**3. <a name="slaresponsetimes"></a>ERROR PRIORITIES AND RESPONSE TIMES**.   
+[**3. ERROR PRIORITIES AND RESPONSE TIMES**.](#slaresponsetimes)
 
 Issues with the Codefresh Platform are classified based on severity of the issues and the required resources needed to resolve them. Codefresh will designate the severity and impact of the reported
 issue as defined below and will use commercially reasonable efforts to respond and commence working on the applicable issue in accordance with the time periods below.
