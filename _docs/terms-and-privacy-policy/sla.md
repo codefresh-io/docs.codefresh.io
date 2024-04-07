@@ -43,7 +43,7 @@ Percentage”).
 
 {:/}
 
-##### 3. ERROR PRIORITIES AND RESPONSE TIMES
+##### [3. ERROR PRIORITIES AND RESPONSE TIMES](#3-error-priorities-and-response-times)
 
 
 Issues with the Codefresh Platform are classified based on severity of the issues and the required resources needed to resolve them. Codefresh will designate the severity and impact of the reported
