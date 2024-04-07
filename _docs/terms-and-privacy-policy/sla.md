@@ -7,7 +7,7 @@ toc: true
 
 This Service Level Agreement (“**SLA**”) sets forth the terms and conditions under which Codefresh will provide service levels to Licensee and Users pursuant to the applicable Terms of Service in effect between Codefresh and Licensee and/or Users (the “**Terms**”).
 
-**1. DEFINITIONS**. The following definitions will apply to this SLA. All capitalized terms not defined in
+##### 1. DEFINITIONS. The following definitions will apply to this SLA. All capitalized terms not defined in
 this SLA will have the meaning given them in the Terms.  
   
 
@@ -23,7 +23,7 @@ not exceed four (4) hours per month; and (ii) any additional maintenance for whi
 **1.4. “Uptime”** means any time that is not Downtime.  
   
 
-**2. SERVICE AVAILABILITY**.  
+##### 2. SERVICE AVAILABILITY.  
 
 **2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “Target Uptime Percentage”).  
   
@@ -89,7 +89,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 
 ****Slack:** Not intended to be used for critical issues.
 
-**4. VERSION HISTORY**.
+##### 4. VERSION HISTORY.
 
 {: .table .table-bordered .table-hover}
 | Version Number | Nature of Change              | Date Approved    |
