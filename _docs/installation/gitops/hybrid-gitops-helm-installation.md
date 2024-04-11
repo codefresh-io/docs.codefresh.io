@@ -1069,7 +1069,9 @@ For more information, see [Creating records by using the Amazon Route 53 console
 
 #### (Optional) Git integration registration
 If the installation failed, as can happen if the DNS record was not created within the timeframe, manually create and register Git integrations using these commands:
+
   `cf integration git add default --runtime <RUNTIME-NAME> --api-url <API-URL>`
+  
   `cf integration git register default --runtime <RUNTIME-NAME> --token <RUNTIME-AUTHENTICATION-TOKEN>`
 
 
