@@ -112,7 +112,7 @@ Define the configuration of the Environment through a unique name, it's intended
 %} 
 
 {:start="3"}  
-1. Click **Add**. The environment is displayed in the GitOps Environments dashboard. 
+1. Click **Add**. The Environment is displayed in the Environments dashboard. 
 
  
 
