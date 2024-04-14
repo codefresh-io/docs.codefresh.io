@@ -135,7 +135,7 @@ max-width="70%"
 1. Define the following:
   * Token name
   * Expiration date
-  * Select these scopes: `read_api`, `read_repository`, `write_repository`
+  * Select these scopes: `write_repository` (includes `read_repository`), `api_read` 
 
  {% include 
    image.html 
