@@ -46,3 +46,8 @@ Hybrid GitOps Runtimes are hosted on a customer cluster and managed by the custo
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 
+## Streamline application deployments with Environments and Products
+1. [Create an Environment]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/#create-an-environment)
+  Create a `dev` Environment and map clusters and namespaces.
+1. [Create and work with Products]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/#create--work-with-products)
+  Add a Product `demo-trioapp`, assign interrelated Argo CD applications to it.
