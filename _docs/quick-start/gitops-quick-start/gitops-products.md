@@ -219,7 +219,8 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 
 {% include 
 	image.html 
-	lightboimages/quick-start/envionments-products/products-gitops-apps.png" 
+	lightbox="true"
+	file="/images/quick-start/envionments-products/products-gitops-apps.png" 
 	url="/images/quick-start/envionments-products/products-gitops-apps.png" 
 	alt="Applications assigned to Product" 
 	caption="Applications assigned to Product"
