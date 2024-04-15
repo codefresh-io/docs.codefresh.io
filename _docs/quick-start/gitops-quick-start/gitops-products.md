@@ -41,8 +41,8 @@ There is no limit on the number of Environments you can create.
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/environment-add.png" 
-	url="/images/quick-start/envionments-products/environment-add.png" 
+	file="/images/quick-start/environments-products/environment-add.png" 
+	url="/images/quick-start/environments-products/environment-add.png" 
 	alt="Quick start: Create an Environment" 
 	caption="Quick start: Create an Environment"
   max-width="60%" 
@@ -67,8 +67,8 @@ For instance, consider three versions of the `demo-trioapp`application: `demo-tr
 {% include 
 image.html 
 lightbox="true" 
-file="/images/quick-start/envionments-products/products-gitops-apps.png" 
-url="/images/quick-start/envionments-products/products-gitops-apps.png" 
+file="/images/quick-start/environments-products/products-gitops-apps.png" 
+url="/images/quick-start/environments-products/products-gitops-apps.png" 
 alt="Argo CD applications in GitOps Apps dashboard" 
 caption="Argo CD applications in GitOps Apps dashboard" 
 max-width="70%" 
@@ -97,26 +97,26 @@ A Product requires a unique name, and optionally an annotation to connect differ
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-create.png" 
-	url="/images/quick-start/envionments-products/products-create.png" 
+	file="/images/quick-start/environments-products/products-create.png" 
+	url="/images/quick-start/environments-products/products-create.png" 
 	alt="Create Product" 
 	caption="Create Product"
   max-width="60%" 
 %}
 
 {:start="4"}
-1. Click **Add**.
+1. Click **Add**.  
    The Product is displayed in the Products dashboard. 
-1. Click the Product name to view details.
+1. Click the Product name to view details.  
    You'll notice that the Product currently has no assigned applications.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-no-apps-assigned.png" 
-	url="/images/quick-start/envionments-products/products-no-apps-assigned.png" 
-	alt="New Product with no applications" 
-	caption="New Product with no applications"
+	file="/images/quick-start/environments-products/products-no-apps-assigned.png" 
+	url="/images/quick-start/environments-products/products-no-apps-assigned.png" 
+	alt="Quick start: New Product with no applications" 
+	caption="Quick start: New Product with no applications"
   max-width="60%" 
 %}
 
@@ -125,7 +125,7 @@ We'll now assign applications to the `demo-trioapp` Product.
 
 Codefresh offers two methods:
 * Manual assignment from the Products dashboard
-* Adding an annotation to the application's manifest
+* Declarative assignment through annotations
 
 ### Manually assign application to a Product
 Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioapps` Product from the Products dashboard. 
@@ -133,43 +133,44 @@ Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioa
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Expand the new Product, `demo-trioapp` in our case. 
-1. Click **Manage Applications**.
+1. Click **Manage Applications**.  
   On the left, you'll see the list of **Unassigned apps**, including `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-no-apps-assigned.png" 
-	url="/images/quick-start/envionments-products/products-no-apps-assigned.png" 
-	alt="Product with unassigned applications" 
-	caption="Product with unassigned applications"
+	file="/images/quick-start/environments-products/products-unassigned-apps.png" 
+	url="/images/quick-start/environments-products/products-unassigned-apps.png" 
+	alt="Quick start: `demo-trioapps` Product with unassigned applications" 
+	caption="Quick start: `demo-trioapps` Product with unassigned applications"
   max-width="60%" 
 %}
 
 {:start="3"}
-1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application name, `demo-trioapp-dev` in our case.
+1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our case.
 
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-manually-assign-apps.png" 
-	url="/images/quick-start/envionments-products/products-manually-assign-apps.png" 
-	alt="Manually assign apps to Product" 
-	caption="Manually assign apps to Product"
+	file="/images/quick-start/environments-products/products-manually-assign-apps.png" 
+	url="/images/quick-start/environments-products/products-manually-assign-apps.png" 
+	alt="Quick start: Manually assign `demo-trioapp-dev` to Product" 
+	caption="Quick start: Manually assign `demo-trioapp-dev` to Product"
   max-width="60%" 
 %}
- 
-1. To confirm, click **Save**. 
+
+{:start="4"}
+1. To confirm, click **Save**.  
   Codefresh adds the application to the Environment defined for it.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-manually-assigned-app.png" 
-	url="/images/quick-start/envionments-products/products-manually-assigned-app.png" 
-	alt="Application assigned to Product in defined Environment" 
-	caption="Application assigned to Product in defined Environment"
+	file="/images/quick-start/environments-products/products-manually-assigned-app.png" 
+	url="/images/quick-start/environments-products/products-manually-assigned-app.png" 
+	alt="Quick start: `demo-trioapp-dev` assigned to Product in defined Environment" 
+	caption="Quick start: `demo-trioapp-dev` assigned to Product in defined Environment"
   max-width="60%" 
 %}
 
@@ -180,16 +181,16 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 
 1. If needed, copy the Product's annotation.
   If not, continue from _Step 2_.
-  1. In the Products dashboard, mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-  1. Copy the annotation and close the form.
+    1. In the Products dashboard, mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+    1. Copy the annotation and close the form.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-copy-annotation.png" 
-	url="/images/quick-start/envionments-products/products-copy-annotation.png" 
-	alt="Copy annotation from Product" 
-	caption="Copy annotation from Product"
+	file="/images/quick-start/environments-products/products-copy-annotation.png" 
+	url="/images/quick-start/environments-products/products-copy-annotation.png" 
+	alt="Quick start: Copy annotation from Product" 
+	caption="Quick start: Copy annotation from Product"
   max-width="60%" 
 %}
 
@@ -203,10 +204,10 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-add-annotation-manifest.png" 
-	url="/images/quick-start/envionments-products/products-add-annotation-manifest.png" 
-	alt="Add annotation to application manifest" 
-	caption="Add annotation to application manifest"
+	file="/images/quick-start/environments-products/products-add-annotation-manifest.png" 
+	url="/images/quick-start/environments-products/products-add-annotation-manifest.png" 
+	alt="Quick start: Add annotation to `demo-trioapp-prod` manifest" 
+	caption="Quick start: Add annotation to `demo-trioapp-prod` manifest"
   max-width="60%" 
 %}
 
@@ -220,10 +221,10 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 {% include 
 	image.html 
 	lightbox="true"
-	file="/images/quick-start/envionments-products/products-gitops-apps.png" 
-	url="/images/quick-start/envionments-products/products-gitops-apps.png" 
-	alt="Applications assigned to Product" 
-	caption="Applications assigned to Product"
+	file="/images/quick-start/environments-products/products-dashboard-apps.png" 
+	url="/images/quick-start/environments-products/products-dashboard-apps.png" 
+	alt="Quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to Product" 
+	caption="Quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to Product"
   max-width="60%" 
 %}
 
@@ -245,33 +246,32 @@ Here's an example of the Products dashboard.
   max-width="60%" 
 %}
 
-The Products dashboard showcases the Products created, whether or not applications are connected. <br>
-Clicking a Product provides detailed information on its applications.  
+The Products dashboard showcases the Products created, whether or not applications are connected. Clicking a Product provides detailed information on its applications.  
 
-For this quick start, we'll focus on two key features: application versions and contextual insights.
+For this quick start, we'll focus on two key features: versions and contextual insights for applications.
 
-### Application version information
+### Version information
 Helm-based applications show the release version of the application. This is the version of the Helm chart identifying the specific release version of the application in the different Environments. 
 
 You can:
 * View the application's dependencies and their versions
 * Compare release versions of the dependencies across deployments in different Environments
 
-##### View application dependencies
+##### View dependencies
 1. Click the version to display the application's dependencies.
 
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/products-app-version-number.png" 
-	url="/images/quick-start/envionments-products/products-app-version-number.png" 
-	alt="Helm chart version for application" 
-	caption="Helm chart version for application"
+	file="/images/quick-start/environments-products/products-app-version-number.png" 
+	url="/images/quick-start/environments-products/products-app-version-number.png" 
+	alt="Quick start: Helm chart version for application" 
+	caption="Quick start: Helm chart version for application"
   max-width="60%" 
 %}
 
 
-##### Compare deployed versions for applications
+##### Compare deployed versions across applications
 Compare the dependency versions in the different applications associated with the Product.
 
 1. In the same panel, enable **Compare**.
@@ -279,9 +279,17 @@ Compare the dependency versions in the different applications associated with th
   * For up to two applications, switch between YAML and Table views.  
   * For more than two applications, the comparison view switches to **Table** automatically.
 
-In this quick start, dependency versions across all three applications.
+In this quick start, dependency versions are identical across all three applications.
 
-
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/environments-products/products-app-version-compare.png" 
+	url="/images/quick-start/environments-products/products-app-version-compare.png" 
+	alt="Quick start: Helm chart version for application" 
+	caption="Quick start: Helm chart version for application"
+  max-width="60%" 
+%}
 
 ### Contextual insights for applications 
 Selecting a Product in the Products dashboard, show three tabs on the right: **Pods**, **Git**, and **Features**. 
@@ -299,23 +307,15 @@ If you are a project or product manager, these unique insights on the real-time 
 #### Pods
 
 When you select a Product, the Pods tab is the tab in focus by default.   
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/pod-view-deployments.png" 
-	url="/images/gitops-products/pod-view-deployments.png" 
-	alt="Products: Pod view of application with Deployments" 
-	caption="Products: Pod view of application with Deployments"
-  max-width="60%" 
-%}
+
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-products/pod-view-rollouts.png" 
 	url="/images/gitops-products/pod-view-rollouts.png" 
-	alt="Products: Pod view of application with Rollouts" 
-	caption="Products: Pod view of application with Rollouts"
+	alt="Quick start: Pod view of application with Rollouts" 
+	caption="Quick start: Pod view of application with Rollouts"
   max-width="60%" 
 %}
 
@@ -325,8 +325,8 @@ When you select a Product, the Pods tab is the tab in focus by default.
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/product-git-info.png" 
-	url="/images/quick-start/envionments-products/product-git-info.png" 
+	file="/images/quick-start/environments-products/product-git-info.png" 
+	url="/images/quick-start/environments-products/product-git-info.png" 
 	alt="Products: Git view of applications" 
 	caption="Products: Git view of applications"
   max-width="60%" 
@@ -338,10 +338,10 @@ When you select a Product, the Pods tab is the tab in focus by default.
 {% include 
 	image.html 
 	lightbox="true" 
-	file="/images/quick-start/envionments-products/product-features-info.png" 
-	url="/images/quick-start/envionments-products/product-features-info.png" 
-	alt="Products: Features view of applications" 
-	caption="Products: Features view of applications"
+	file="/images/quick-start/environments-products/product-features-info.png" 
+	url="/images/quick-start/environments-products/product-features-info.png" 
+	alt="Quick start: Features view of applications" 
+	caption="Quick start: Features view of applications"
   max-width="60%" 
 %}
 
