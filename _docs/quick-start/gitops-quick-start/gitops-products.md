@@ -191,15 +191,15 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 	url="/images/quick-start/environments-products/products-copy-annotation.png" 
 	alt="Quick start: Copy annotation from Product" 
 	caption="Quick start: Copy annotation from Product"
-  max-width="60%" 
+  max-width="50%" 
 %}
 
 {:start="2"}
 1. Add the annotation to the application's manifest:
-  1. From Ops in the sidebar, select **GitOps Apps**.
-  1. Select the application to which to add the annotation, `demo-trioapp-prod` for the quick start.
-  1. Click the **Configuration** tab and switch to **YAML** format.
-  1. Add the annotation as in the example below.
+    1. From Ops in the sidebar, select **GitOps Apps**.
+    1. Select the application to which to add the annotation, `demo-trioapp-prod` for the quick start.
+    1. Click the **Configuration** tab and switch to **YAML** format.
+    1. Add the annotation as in the example below.
 
 {% include 
 	image.html 
@@ -211,8 +211,8 @@ For the quick start, we'll use the default annotation Codefresh generated when y
   max-width="60%" 
 %}
 
-  {:start="5"}
-  1. Commit to save the changes.
+    {:start="5"}
+    1. Commit to save the changes.
 
 {:start="3"}
 1. Return to the Products dashboard and select the Product, `demo-trioapp` in our case.
@@ -276,8 +276,8 @@ Compare the dependency versions in the different applications associated with th
 
 1. In the same panel, enable **Compare**.
 1. Click within the field **Select applications to compare**, and select the applications.
-  * For up to two applications, switch between YAML and Table views.  
-  * For more than two applications, the comparison view switches to **Table** automatically.
+  * For up to two applications, switch between **YAML** and **Table** views.  
+  * For more than two applications, the comparison view automatically switches to **Table**.
 
 In this quick start, dependency versions are identical across all three applications.
 
@@ -301,12 +301,13 @@ From this central location:
 * Identify deployed features
 * Monitor deployment timelines
 
-If you are a project or product manager, these unique insights on the real-time status of features and their deployment progress help prioritize and align with project goals.
+If you are a project or product manager, these unique insights into which features are deployed in which Environments for a release are of extremely valuable.
 
 
 #### Pods
 
-When you select a Product, the Pods tab is the tab in focus by default.   
+When you select a Product, the Pods tab is the tab in focus by default.  
+Here's a view of the Pods tab with Rollout information. 
 
 
 {% include 
@@ -346,7 +347,7 @@ When you select a Product, the Pods tab is the tab in focus by default.
 %}
 
 
-You have completed 
+
 
 
 
