@@ -61,10 +61,11 @@ The Argo CD applications grouped within a Product generally has the same softwar
 You have a fairly good idea of where we are going with these, so let's continue with some key tasks and functionality, starting with Environments.
  
 ## Create an Environment
-The first task is to create an Environment. Environment are meant to replicate the deployment lifecycle of your software, so feel free to create one or more of them accordingly. 
+First, you'll need to set up an Environment. Environments mirror the deployment lifecycle of your software, so create as many as you need to match your process.
 
-You would find these Environments in most organizationss: `development`, `qa`, `staging`, and `production`. There is no limit on the number of Environments you can create.  
-For the purpose of this quick start, we'll create a single Environment.
+Typically, organizations use environments like `development`, `qa`, `staging`, and `production`, but you can customize these to suit your needs. There's no cap on the number of Environments you can set up.  
+For this quick start, we'll set up just one Environment.
+
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
