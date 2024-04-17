@@ -297,7 +297,7 @@ Clicking a Product provides detailed information on its applications.
 For this quick start, we'll focus on two key features: release versions and contextual insights.
 
 ### Release versions
-Helm-based applications show the release version of the application. This is the version of the Helm chart identifying the specific release version in the different Environments. 
+Helm-based applications show the release version of the application. This is the app version as defined in the Helm chart identifying the specific release version in the different Environments. 
 
 You can:
 * View the application's dependencies and their versions
