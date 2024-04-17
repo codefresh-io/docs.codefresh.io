@@ -6,36 +6,76 @@ toc: true
 ---
 
 
-If you have been working with Codefresh GitOps, you must be familiar working with Argo CD applications in Codefresh.
+If you've been working with Codefresh GitOps, you're likely familiar with managing Argo CD applications in Codefresh — from creating them to monitoring deployments and resources.
+
+! Our Environments and Products feature takes your software development and deployment game to a whole new level!  
+It makes them easier to manage, more transparent, and more accessible, enhancing your software development and deployment processes.
+
+In this quick start, we'll introduce you to the concept and purpose of Environments and Products.  
+We'll then delve into how to work with them to streamline and empower your software development lifecycle.
+
+For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 
 
-This quick start introduces Environments and Products in Codefresh GitOps and  as the next dimensions to empower Argo CD application development and deployment in Codefresh.
 
-We'll walk through creating an Environment and a Product, assign Argo CD applications to the Product, and end by reviewing key insights on the applications in the Product.
+Hey there, DevOps enthusiast! If you've been diving into Codefresh GitOps, you're probably already pretty comfy with Argo CD applications in Codefresh. From creating apps to keeping an eye on resources and deployments, you've got it down.
 
+But guess what? It's time to level up! Our Environments and Products feature takes your software development and deployment game to a whole new level. We're talking easier workflows, total transparency, and making the whole process more accessible than ever.
+
+First up, we'll break down what Environments and Products are all about, and why they're game-changers for your software development lifecycle. Ready to empower your DevOps journey? Let's dive in!
+
+For all the nitty-gritty details,
 ## About Environments & Products
+
+
 
 **What is an Environment in Codefresh?**  
 As a developer, you must be familair with the role of environments in the lifecyle of applications. 
 In Codefresh GitOps, an Environment is a custom entity, identified by a unique name, comprising one or more pairs of clusters and namespaces. Once defined, an Environment is automatically populated by the applications deployed to it. 
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	alt="Quick start: Representation of an Environment in Codefresh GitOps"
+	caption="Quick start: Representation of an Environment in Codefresh GitOps"
+  max-width="60%" 
+%} 
+
+
 **What is a Product in Codefresh?**  
 A Product unifies different but interrelated Argo CD applications as a cohesive entity as they move through different Environments.
 The Argo CD applications grouped within a Product generally has the same software but different versions as they are deployed in diverse Environments.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Quick start: Representation of a Product in Codefresh GitOps" 
+	caption="Quick start: Representation of a Product in Codefresh GitOps"
+  max-width="60%" 
+%} 
 
+You have a fairly good idea of where we are going with these, so let's continue with some key tasks and functionality, starting with Environments.
  
 ## Create an Environment
-The first task is to create an Environment.
-There is no limit on the number of Environments you can create.
+The first task is to create an Environment. Your Environment is meant to replicate the deployment lifecycle of your software, so feel free to create one or more of them accordingly. 
+
+You would find these Environments in most organizationss: `development`, `qa`, `staging`, and `production`. There is no limit on the number of Environments you can create.  
+For the purpose of this quick start, we'll create a single Environment.
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
     1. **Name**: A unique name for your GitOps Environment, which is meaningful in the context of your development and deployment cycle. 
 	  For the quick start, we'll use `dev`.
-    1. **Kind**: The purpose of this GitOps Environment. Select **Non-production** where development, testing, staging versions of applications are deployed.
-    1. **Tags**: Leave empty.
-    1. **Clusters and Namespaces**: Single or multiple cluster-namespace pairs to map to the GitOps Environment. 
+    1. **Kind**: The purpose of this GitOps Environment. Select **Non-production** where development, testing, staging versions of applications are deployed.  
+	Just a heads up that the Kind (**Production** and **Non-production**) will be used when defining policies and ABAC for 
+    1. **Tags**: Leave this empty for the quick start.
+    1. **Clusters and Namespaces**: Single or multiple cluster/namespace/cluster-namespace pairs to map to the GitOps Environment.
+	  The Environment is populated by all the applications deployed to the mapped clusters and namespaces.  
+	  To include all namespaces in a cluster, leave the Namespace empty.   
 	  For the quick start, we'll add the `in-cluster` and the `demo-ta-dev` namespace to map to `dev`.
 
 {% include 
@@ -53,15 +93,16 @@ There is no limit on the number of Environments you can create.
   The environment is displayed in the Environments dashboard. 
 
 ## Create & work with Products
-After creating an Environment, the next step is to create Products to group Argo CD applications.
+After creating at least one Environment, we can start creating Products, connecting Argo CD applications to it, and concluding with key insights in the Products dashboard.
+
 
 ### Identify applications in GitOps Apps dashboard
 
-In the GitOps Apps dashboard, identify the applications you want to group as a Product.
+Let's first identify the applications you want to group as a Product in the GitOps Apps dashboard.
 Look for different versions of the same software deployed in different Environments, utilizing similar microservices and dependencies. 
 These are the applications ideal for grouping and monitoring as a Product.
 
-For instance, consider three versions of the `demo-trioapp`application: `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`. We'll group these into a Product. 
+For instance, consider three versions of the `demo-trioapp` application: `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`. We'll group these into a Product. 
 
 
 {% include 
@@ -77,7 +118,7 @@ max-width="70%"
 
 ### Create the `demo-trioapps` Product
 Once you identify the applications, create the Product.
-A Product requires a unique name, and optionally an annotation to connect different Argo CD applications.
+A Product requires a unique name, and optionally an annotation to connect the different Argo CD applications.
 
 ##### Before you begin
 * Make sure you have [created at least one Environment](#create-an-environment)
@@ -91,7 +132,7 @@ A Product requires a unique name, and optionally an annotation to connect differ
     1. **Connect Applications**: The annotation to associate with this Product and use to connect different applications to it.  
 	  For the quick start, we'll use the default annotation automatically created, `codefresh.io/product: demo-trioapps`. 
 	1. Copy the annotation to the clipboard.
-    1. **Tags**: For the quick start, leave empty.
+    1. **Tags**: Leave this empty for the quick start.
 
 
 {% include 
@@ -121,11 +162,17 @@ A Product requires a unique name, and optionally an annotation to connect differ
 %}
 
 ## Assign applications to Product `demo-trioapp` 
-We'll now assign applications to the `demo-trioapp` Product.
+The next step is to assign applications to the Product you created, `demo-trioapp` in our case for the quick start.
 
 Codefresh offers two methods:
 * Manual assignment from the Products dashboard
+  This method is a single-click action quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.  
+  Recommended for trying and testing rather than as the go-to method.
+  
 * Declarative assignment through annotations
+  This method defines an annotation with the Product name in the application manifest.
+  If the Product doesn't exist, Codefresh automatically creates one for you.  
+  Recommended as the go-to method as it is fully GitOps-compatible.  
 
 ### Manually assign application to a Product
 Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioapps` Product from the Products dashboard. 
@@ -176,8 +223,8 @@ Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioa
 
 
 ### Add annotation to connect application to Product
-Now, let's connect an application to a Product by adding an annotation to the application's manifest.
-For the quick start, we'll use the default annotation Codefresh generated when you created the Product to connect `demo-trioapp-prod`.
+Now, let's connect an application to a Product declaratively, by adding an annotation to the application's manifest.
+For the quick start, we'll use the default annotation Codefresh generated when we created the Product, to connect `demo-trioapp-prod`.
 
 1. If needed, copy the Product's annotation.
   If not, continue from _Step 2_.
@@ -200,6 +247,7 @@ For the quick start, we'll use the default annotation Codefresh generated when y
     1. Select the application to which to add the annotation, `demo-trioapp-prod` for the quick start.
     1. Click the **Configuration** tab and switch to **YAML** format.
     1. Add the annotation as in the example below.
+    1. Commit to save the changes.
 
 {% include 
 	image.html 
@@ -210,9 +258,6 @@ For the quick start, we'll use the default annotation Codefresh generated when y
 	caption="Quick start: Add annotation to `demo-trioapp-prod` manifest"
   max-width="60%" 
 %}
-
-    {:start="5"}
-    1. Commit to save the changes.
 
 {:start="3"}
 1. Return to the Products dashboard and select the Product, `demo-trioapp` in our case.
@@ -246,16 +291,20 @@ Here's an example of the Products dashboard.
   max-width="60%" 
 %}
 
-The Products dashboard showcases the Products created, whether or not applications are connected. Clicking a Product provides detailed information on its applications.  
+The Products dashboard showcases the Products created, whether or not applications are connected.   
+Clicking a Product provides detailed information on its applications.  
 
-For this quick start, we'll focus on two key features: versions and contextual insights for applications.
+For this quick start, we'll focus on two key features: release versions and contextual insights.
 
-### Version information
-Helm-based applications show the release version of the application. This is the version of the Helm chart identifying the specific release version of the application in the different Environments. 
+### Release versions
+Helm-based applications show the release version of the application. This is the version of the Helm chart identifying the specific release version in the different Environments. 
 
 You can:
 * View the application's dependencies and their versions
+  This is useful to identify which version is deployed where.
 * Compare release versions of the dependencies across deployments in different Environments
+  This is useful for troubleshooting as you can identify if the version that works in dev is the same as the version with the problem in staging.
+
 
 ##### View dependencies
 1. Click the version to display the application's dependencies.
@@ -286,22 +335,44 @@ In this quick start, dependency versions are identical across all three applicat
 	lightbox="true" 
 	file="/images/quick-start/environments-products/products-app-version-compare.png" 
 	url="/images/quick-start/environments-products/products-app-version-compare.png" 
-	alt="Quick start: Helm chart version for application" 
-	caption="Quick start: Helm chart version for application"
+	alt="Quick start: Dependency versions across applications" 
+	caption="Quick start: Dependency versions across applications"
   max-width="60%" 
 %}
 
 ### Contextual insights for applications 
-Selecting a Product in the Products dashboard, show three tabs on the right: **Pods**, **Git**, and **Features**. 
-These tabs offer Kubernetes (Pods), version control (Git), and issue-tracking (Features) insights on the Product's applications.
 
-From this central location:
-* Understand deployment technicalities
-* Identify the latest commit triggering the deployment
-* Identify deployed features
-* Monitor deployment timelines
+Products offer more than just standard Git commit or hash information; they provide enriched insights into your applications.
 
-If you are a project or product manager, these unique insights into which features are deployed in which Environments for a release are of extremely valuable.
+When you select a Product in the Products dashboard, three tabs appear on the right: **Pods**, **Git**, and **Features**. These tabs consolidate Kubernetes (Pods), version control (Git), and issue-tracking (Features) data into a single location.
+
+##### Git
+In the Git tab, you gain direct insights from the application repository, not the GitOps repository. This allows you to trace the complete commit history of the application's repo up to the commit that initiated the build and deployed the new version. View detailed history of individual commits and deep links to source control.
+
+##### Features
+The Features tab allows you to connect these commits seamlessly with tickets in your issue-tracking tool or system. This integration enhances traceability and context, enabling you to monitor the deployment's impact by tying deployed features to specific feature requests or bug fixes.
+
+From this unified view, you can:
+* Gain insights into deployment specifics
+* Review all commits leading up to the latest one that triggered the deployment
+* Align deployed features with related feature requests
+* Track deployment timelines effectively
+
+
+
+**Why are these insights crucial?**
+When troubleshooting issues in production, having access to this comprehensive information is invaluable. You can pinpoint what occurred, when it happened, who made the change, and which feature or bug was addressed, streamlining your debugging process.
+
+
+
+#### Connect your CI platforms/tools to GitOps 
+If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps.
+The same applies to issue-tracking systems like Jira.
+For an overview of the setup process, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
+
+
+Once set up, Codefresh takes care of the heavy lifting and retrieves the information.
+You can view this information in the Products dashboard when selecting a Product, as detailed below, and also in our[Images dashboard]({{site.baseurl}}/docs/dashboards/images/).
 
 
 #### Pods
@@ -348,7 +419,7 @@ Here's a view of the Pods tab with Rollout information.
 
 
 
-
+Explore and try out more of our functionality in Environments and Products.
 
 
 
