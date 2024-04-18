@@ -6,17 +6,28 @@ toc: true
 ---
 
 
-If you've been working with Codefresh GitOps, you're probably already familiar with managing Argo CD applications in Codefresh. From creating applications, to monitoring deployments and resources.  
-If you are just starting out with Codefresh GitOps, you may want to work through our [quick start on Argo CD applications]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/) to get started. 
+If you've been working with Codefresh GitOps, you're likely familiar with managing Argo CD applications in Codefresh. From creating applications, to monitoring deployments and resources.  
 
-This quick start will focus on the next generation features for Argo CD applications in Codefresh GitOps, Environments and Products, for a whole new development and deployment experience!  
-For detailed information on tasks and features, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+If you're new to Codefresh GitOps, start with our [quick start on Argo CD applications]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/) to familiarize yourself. 
 
+This quick start focuses on introducing you to the next-generation features in Codefresh GitOps: Environments and Products for a new development and deployment experience!  
 
-Let's start with why you would to   you to what oyou get the concept and purpose of Environments and Products.  
-We'll then delve into how to work with them to streamline and empower your software development lifecycle.
+Remember for detailed information on all tasks and features, refer to the [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) documentation.  
+
+Let's begin by exploring the key benefits of Environments and Products.  
+We'll then guide you through how to work with these features to streamline and empower your software development lifecycle.
 
 ##### What do you get from Environments? 
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
+	alt="Quick start: Representation of an Environment in Codefresh GitOps"
+	caption="Quick start: Representation of an Environment in Codefresh GitOps"
+  max-width="60%" 
+%} 
 
 Here are some key benefits of Environments:
 
@@ -29,9 +40,9 @@ Here are some key benefits of Environments:
 * Contextual visibility  
   Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
 
-* Simply scalability and maintenance
-  Environments are equally simple to scale and maintain as they are to create, without complicating the setup. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
-  For flexibility, Codefresh allows you to add Environments without deploying any applications.
+* Simply scalability and maintenance  
+  Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
+  For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
 
   {% include 
 	image.html 
@@ -45,20 +56,7 @@ Here are some key benefits of Environments:
 
 ##### What do you get from Products?
 
-Now that we have briefly explored what you can accomplish with Environments, let's see how Products in Codefresh GitOps complements Environments
-
-
-* Unified application management
-  Managing complex Argo CD applications across multiple Environments can be challenging.  
-  By allowing you to group similar Argo CD applications into a cohesive unit, Products allow you to also efficiently manage them as a unit.* Bridging applications and Environments  
-  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
-
-* Effortless creation  
-  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
-
-* Real-time insights with integrated views  
-  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
-
+Now that we have briefly explored what you can accomplish with Environments, let's see how Products in Codefresh GitOps complements Environments.
 
 {% include 
 	image.html 
@@ -69,6 +67,19 @@ Now that we have briefly explored what you can accomplish with Environments, let
 	caption="Quick start: Representation of a Product in Codefresh GitOps"
   max-width="60%" 
 %} 
+
+* Unified application management  
+  Managing complex Argo CD applications across multiple Environments can be challenging.  
+  By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
+
+* Bridging applications and Environments  
+  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+
+* Effortless creation  
+  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
+
+* Real-time insights with integrated views  
+  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
 
 
 We'll now take you through the key tasks and functionality, starting with Environments.
@@ -85,12 +96,11 @@ For this quick start, we'll set up just one Environment.
     1. **Name**: A unique name for your GitOps Environment, which is meaningful in the context of your development and deployment cycle. 
 	  For the quick start, we'll use `dev`.
     1. **Kind**: The purpose of this GitOps Environment. Select **Non-production** where development, testing, staging versions of applications are deployed.  
-	Just a heads up that the Kind (**Production** and **Non-production**) will be used when defining policies and ABAC for 
     1. **Tags**: Leave this empty for the quick start.
     1. **Clusters and Namespaces**: Single or multiple cluster/namespace/cluster-namespace pairs to map to the GitOps Environment.
 	  The Environment is populated by all the applications deployed to the mapped clusters and namespaces.  
 	  To include all namespaces in a cluster, leave the Namespace empty.   
-	  For the quick start, we'll add the `in-cluster` and the `demo-ta-dev` namespace to map to `dev`.
+	  For the quick start, we'll add the `in-cluster` and the `demo-ta-dev` namespace.
 
 {% include 
 	image.html 
@@ -179,17 +189,17 @@ A Product requires a unique name, and optionally an annotation to connect the di
 The next step is to assign applications to the Product you created, `demo-trioapp` in our case for the quick start.
 
 Codefresh offers two methods:
-* Manual assignment from the Products dashboard
-  This method is a single-click action quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.  
+* Manual assignment from the Products dashboard  
+  This method is a single-click action for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.  
   Recommended for trying and testing rather than as the go-to method.
   
-* Declarative assignment through annotations
+* Declarative assignment through annotations  
   This method defines an annotation with the Product name in the application manifest.
   If the Product doesn't exist, Codefresh automatically creates one for you.  
   Recommended as the go-to method as it is fully GitOps-compatible.  
 
 ### Manually assign application to a Product
-Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioapps` Product from the Products dashboard. 
+Here we'll manually assign the application `demo-trioapp-dev` to the Product `demo-trioapps` from the Products dashboard. 
 
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
@@ -207,8 +217,8 @@ Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioa
   max-width="60%" 
 %}
 
-{:start="3"}
-1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our case.
+{:start="4"}
+1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our case.
 
 
 {% include 
@@ -221,7 +231,7 @@ Here we'll manually assign the application `demo-trioapp-dev` to the `demo-trioa
   max-width="60%" 
 %}
 
-{:start="4"}
+{:start="5"}
 1. To confirm, click **Save**.  
   Codefresh adds the application to the Environment defined for it.
 
@@ -374,7 +384,7 @@ From this unified view, you can:
 
 
 
-**Why are these insights crucial?**
+**Why are these insights crucial?**  
 When troubleshooting issues in production, having access to such comprehensive information is invaluable. You can pinpoint what occurred, when it happened, who made the change, and which feature or bug was addressed, streamlining your debugging process.
 
 

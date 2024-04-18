@@ -45,7 +45,7 @@
           url: "/create-app-specs"
         - title: Update the image tag for application
           url: "/create-rollout"
-        - title: Environments & Products
+        - title: Work with Environments & Products
           url: "/gitops-products"
 
 - title: Dashboards & insights
