@@ -66,7 +66,7 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
 
 
 ##### How do you view applications by Product?  
-In just two simple steps:
+In two simple steps:
 
 1. [Create the Product](#create-products)  
   Begin by creating a Product, and assigning a meaningful name based on your use case. You can do this in the UI, or through annotations in app manifests.
@@ -146,7 +146,7 @@ Here's an example of the Products dashboard.
 %}
 
 
-As with all Codefresh dashboards, filters allow you to customize the view of the Products dashboard by Product Name, Application, or  Environment. 
+As with all Codefresh dashboards, filter the view of the Products dashboard by Product Name, Application, or  Environment. 
 
 Here are some key features of the Products dashboard.
 
@@ -156,7 +156,7 @@ Here are some key features of the Products dashboard.
 
 ### Product management options
 Mouse over the row with the Product to display possible actions:
-{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the Product's settings. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the Product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} |
+{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the Product's settings. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the Product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} 
 
 
 ### Drill into individual Products
@@ -306,7 +306,7 @@ If you return to the GitOps Products dashboard and expand the Product, you'll no
 Depending on how you assigned the application to the Product, unassign it either directly from the Products dashboard or by removing the annotation from its manifest.
 
 
-##### Unassign application from the GitOps Product dashboard
+#### Unassign application from the GitOps Product dashboard
 Unassign an application manually assigned to a Product directly from the GitOps Products dashboard. 
 
 A disabled icon indicates that the application is connected through an annotation. 
@@ -340,7 +340,7 @@ A disabled icon indicates that the application is connected through an annotatio
   max-width="60%" 
 %}
 
-##### Unassign application by removing annotation
+#### Unassign application by removing annotation
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Select the Product with the application to unassign.
 1. In the card with the application to unassign, click the application name, and then click **Go to Full View**.
@@ -556,7 +556,7 @@ Applications assigned to Products are only relevant in the context of the Enviro
 Either create an Environment or add the cluster-namespace defined for the application to the existing Environment's definition.
 
 **Create an Environment**
-Create one as described in ???.
+[Create an Environment]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments).
 
 
 **Add application's destination settings to Environment definition**
