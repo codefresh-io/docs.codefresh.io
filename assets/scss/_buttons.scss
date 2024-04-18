@@ -61,3 +61,23 @@
     background-color: lighten($btn-get-started, 15%);
   }
 }
+
+.helpbub-toggler {
+  width: 100%;
+  padding: 4px 12px 4px 8px;
+
+  color: #b0c4e7;
+  cursor: pointer;
+  background-color: #3f4255;
+
+  border: 1px solid #35384b;
+  border-radius: 16px;
+
+  .helpbub-toggler--hotkey {
+    color: #fff;
+  }
+}
+
+.helpbub-toggler--small {
+  max-width: 275px;
+}
