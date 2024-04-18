@@ -6,18 +6,15 @@ toc: true
 ---
 
 
-
-
-
-
 >**NOTE**  
 This feature is currently in Beta.
 
 Explore the power of Products for Argo CD applications in Codefresh GitOps. 
 
-Products introduce a new dimension to managing Argo CD applications, enabling you to group different yet interconnected applications for comprehensive management and deployment.
+Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
 
-The Products dashboard serves as a centralized location for viewing and managing complex applications within their deployment environments. 
+In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
+By grouping applications, Products enhance Environments, allowing complete visibility for efficient management across Environments.
 
 
 
@@ -39,28 +36,7 @@ Consider a practical scenario of numerous applications connected to billing or p
 
 Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/)[](gitops-environments.md){:target="\_blank"}.
 
-##### What are the benefits of Products?  
-
-* Application grouping  
-  Easily group and connect interrelated Argo CD applications through Products. Assign applications to logical Products for a consolidated perspective. For example, streamline all billing applications within the Billing Product. 
-
-* Bridging applications and Environments  
-  By creating Products and linking applications to them, the Products dashboard efficiently bridges the gap between applications and their respective Environments. Easily track which applications are deployed in specific Environments and monitor their journey through them.
-
-* Unified insights   
-  Beyond traditional sync and Git hash deployment, the Products dashboard offers real-time insights by syncing with the software lifecycle of applications. 
-  Insights from issue-tracking systems, for example, provide information on promoted features and their inclusion in each release. Project and product managers can gain a clear understanding of deployed changes without relying solely on developer input.
-
-##### How do you view applications by Product?  
-In just two simple steps:
-
-1. [Create the Product](#create-products)  
-  Begin by creating a Product, and assigning a meaningful name based on your use case.
-
-1. [Connect applications to the Product](#assigning-applications-to-products)  
-  Bring your applications into the picture. Link applications to the Products you've created to create the associations you need. 
-
-Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+##### Benefits of Products
 
 The diagram illustrates how Argo CD applications connected to a Product are grouped by that Product and organized by Environments. It also shows applications not assigned to any Product.
 
@@ -74,25 +50,55 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
   max-width="70%" 
 %}
 
+
+* Unified application management  
+  Managing complex Argo CD applications across multiple Environments can be challenging.  
+  By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
+
+* Bridging applications and Environments  
+  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+
+* Effortless creation  
+  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
+
+* Real-time insights with integrated views  
+  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
+
+
+##### How do you view applications by Product?  
+In just two simple steps:
+
+1. [Create the Product](#create-products)  
+  Begin by creating a Product, and assigning a meaningful name based on your use case. You can do this in the UI, or through annotations in app manifests.
+
+1. [Connect applications to the Product](#assigning-applications-to-products)  
+  Bring your applications into the picture. Link applications to the Products you've created to create the associations you need. 
+
+Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+
+
+
 You can then [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).
 
 ## Understanding the role of Environments for Products
 
-In the Products dashboard, the visibility of applications is closely tied to the definition and mapping of Environments. 
+In the Products dashboard, application visibility is closely tied to the definition and mapping of Environments. 
 
-It's important to note that Products will not display any applications in these scenarios:
+Note that Products will not display any applications in these scenarios:
 
-* No Environments defined
+* No Environments defined  
   If you have not created Environments in Codefresh, the Products dashboard will not display any applications, even when applications are assigned to Products. 
 
-* Unmapped application cluster-namespace
-  Even if Environments are defined, applications are not displayed within Products if their cluster-namespace is not mapped to any existing Environment. 
+* Unmapped cluster-namespace  
+  Even if Environments are defined, applications are not displayed within Products if the corresponding clusters or namespaces are not mapped to any existing Environment. 
 
-In summary, Environments play a crucial role in determining the visibility and organization 
+
 
 
 ## Create Products
 Create a Product with a unique name and define the annotations through which to connect related Argo CD applications to it.
+
+
 
 ##### Before you begin
 * Create one or more [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-gitops-environments) for applications
@@ -140,31 +146,32 @@ Here's an example of the Products dashboard.
 %}
 
 
-As with Codefresh's dashbaords, filters allow you to customize the Products dashboard view by Product Name, Application, or by Environment. 
+As with all Codefresh dashboards, filters allow you to customize the view of the Products dashboard by Product Name, Application, or  Environment. 
 
 Here are some key features of the Products dashboard.
 
 ### Collapsed & expanded views
-{::nomarkdown}<ul><li><b>Collapsed view</b>: The default view, displays the Product name alongside the Environments with the number of applications in each Environment.<br> The options on the right allow you to manage Product.  </li><li><b>Expanded view</b>: The expanded view displays the applications in the Product organized by their Environments.</li></ul>{:/} 
+* **Collapsed view**: The default view, displays the Product name alongside the Environments with the number of applications in each Environment.<br> The options on the right allow you to manage Product.  
+* **Expanded view**: The expanded view displays the applications in the Product organized by their Environments.</li></ul>{:/} 
 
-### Managing Products**
+### Product management options
 Mouse over the row with the Product to display possible actions:
 {::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Edit the Product's settings. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#manually-assign-applications-to-products">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the Product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} |
 
 
-### Explore applications in Product
-Clicking on a Product name navigates you to a detailed view of its applications. Each application provides essential information such as sync and health status, deployment, and rollout details. 
+### Drill into individual Products
+Clicking a Product name navigates you to a detailed view of the Product and its applications. Unique to Product view are integrated insights into Git and issue-tracking systems and how they relate to deployments. 
  
 In addition, the application version and enriched image information are especially useful.
 
 
-##### Application version
+##### Application release version
 * Version information, currently supported for Helm-based applications, identifies the specific release of the application in different Environments.
 * Clicking the version displays the application's dependencies, enabling comparison across different applications.
 
 See [View and compare deployed versions for dependencies](#view-and-compare-deployed-versions-for-dependencies).
 
-##### Pod/Git/Feature information
+##### Integrated Pod/Git/Feature information
 * The Products dashboard correlates sync information with other parts of the software lifecycle, such as issue-tracking systems.
 * Switch between Pods, Git, and Features views to gain insights beyond development, including source code commits, affected services, commit authorship, and incorporated features in releases. 
 
@@ -181,7 +188,15 @@ Manage individual applications without navigating away from the Products dashboa
 
 
 ### Assigning applications to Products
-Manually assign an application directly from the Products dashboard, or by adding an annotation to the application's manifest.
+Codefresh offers two methods to assign applications to a Product:
+
+* Manual assignment from the Products dashboard 
+  A once-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
+  Recommended for testing and not as the preferred method.
+
+* Declarative assignment through annotations  
+  This method defines an annotation with the Product name in the application manifest. If the Product doesn’t exist, Codefresh automatically creates it for you.  
+  Recommended method which is fully GitOps-compatible.
 
 #### Manually assign applications to Products
 Manually assign an application to a Product directly from the Products dashboard. 
@@ -369,25 +384,16 @@ Edit settings for an existing Product or delete the Product from the Products da
 ## Working with applications in Products
 Selecting a Product displays the applications assigned to that Product, organized by the Environments defined for them.
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-**Products, applications, and Environments**  
-Applications assigned to Products are only valid in the context of the Environment to which they belong.  
-If you haven't created an Environment, or if the applications in the Product are not in the cluster or namespace mapped to existing Environments, selecting the Product displays an empty page. 
-{{site.data.callout.end}}
+
 
 ### View and compare deployed versions for dependencies
-View the dependencies included with each application, and compare versions of the application and dependencies deployed in different Environments. Track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+View the dependencies included with each application, and compare versions of the application and dependencies deployed in different Environments. 
 
-**Table and YAML views**
-* Table: Compare more than two applications.
-* YAML: Compare up to two applications.
+Helm-based applications show the release version of the application. This is the _app version_ as defined in the Helm chart, identifying the specific release version in the different Environments.
 
-**Dependency chart versions**
-* List the charts (dependencies) deployed with the application and the release version for each
-* Compare versions of dependencies in the different applications
-* Show a concise view of the 
-
+You can:
+* View the application’s dependencies and their versions. Useful to identify which version is deployed where.
+* Compare release versions of the dependencies across deployments in different Environments.  Useful for troubleshooting as you can identify if the version that works in dev is the same as the version with the problem in staging.
 
 
 ##### How to
@@ -408,14 +414,12 @@ View the dependencies included with each application, and compare versions of th
 {:start="3"}
 1. To compare different applications, enable **Compare**.
 1. Click within the field **Select applications to compare**, and select the applications.
-    When selecting up to two applications, you can switch between YAML and Table views.  
-	When selecting more than two applications, the comparison view automatically switches to the **Table** view.
+  * For up to two applications, switch between YAML and Table views.
+  * For more than two applications, the comparison view automatically switches to Table.
 <!--- add here new screenshot and also step describing what is Summary View> -->  
 
-### Unified insights with Pod, Git, Feature views  
-Navigate seamlessly between Kubernetes (Pods), version control (Git), and issue-tracking (Features) views of the applications assigned to the selected Product.
-
-From the same location, get the information you need as a stakeholder, be it technical details on the deployment, information on the latest commit that caused the deployment, or features included in releases.  
+### Integrated insights with Pod, Git, Feature views  
+Navigate seamlessly between Kubernetes (Pods), version control (Git), and issue-tracking (Features) views for the Product to get consolidated data from the same location.
 
 
 
@@ -447,7 +451,9 @@ Deployment, Rollout, and Promotion information for the application.
 %}
 
 #### Git
-Version control information to track changes, code history, and collaboration, showing the evolution of the application's codebase.  
+Codefresh retrieves the data here directly _from the application repository_, not the GitOps repository. You can trace the complete commit history of the application’s repo, up to the commit that initiated the build and deployed the new version.  
+
+History of individual commits with deep links to source control.  
 
 Useful for project managers and developers to trace: 
 * PR (pull request) history
@@ -466,12 +472,10 @@ Useful for project managers and developers to trace:
 %}
 
 #### Features
-Issue-tracking information linking features with their deployment.
-* Bug/feature request and description
-* User to whom the bug/feature request is assigned
-* Status of the bug/feature request
-* Promotion information
-* Cluster and Namespace the application is deployed to
+Connect commits to the application repo to tickets in your issue-tracking tool or system. This integration enhances traceability and context, enabling you to monitor the deployment’s impact by tying deployed features to specific feature requests or bug fixes.
+* Gain insights into deployment specifics
+* Review all commits leading up to the latest one that triggered the deployment
+* Align deployed features with related feature requests
 
 {% include 
 	image.html 
