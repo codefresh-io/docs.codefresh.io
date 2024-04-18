@@ -6,34 +6,34 @@ toc: true
 ---
 
 
-If you've been working with Codefresh GitOps, you're likely familiar with managing Argo CD applications in Codefresh — from creating them to monitoring deployments and resources.
+If you've been working with Codefresh GitOps, you're probably already familiar with managing Argo CD applications in Codefresh. From creating applications, to monitoring deployments and resources.  
+If you are just starting out with Codefresh GitOps, you may want to work through our [quick start on Argo CD applications]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/) to get started. 
 
-! Our Environments and Products feature takes your software development and deployment game to a whole new level!  
-It makes them easier to manage, more transparent, and more accessible, enhancing your software development and deployment processes.
+This quick start will focus on the next generation features for Argo CD applications in Codefresh GitOps, Environments and Products, for a whole new development and deployment experience!  
+For detailed information on tasks and features, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 
-In this quick start, we'll introduce you to the concept and purpose of Environments and Products.  
+
+Let's start with why you would to   you to what oyou get the concept and purpose of Environments and Products.  
 We'll then delve into how to work with them to streamline and empower your software development lifecycle.
 
-For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+##### What do you get from Environments? 
 
+Here are some key benefits of Environments:
 
+* Mirror your SDLC  
+  Codefresh Environments are designed to mirror your software development life cycle (SDLC). By aligning applications with their development stages, Environments offer a clear and contextual view of the entire application lifecycle, as it moves from development to production.
 
-Hey there, DevOps enthusiast! If you've been diving into Codefresh GitOps, you're probably already pretty comfy with Argo CD applications in Codefresh. From creating apps to keeping an eye on resources and deployments, you've got it down.
+*  Effortless creation  
+  Creating an Environment in Codefresh is straightforward and intuitive. All you need is a unique name and the Kubernetes clusters and namespaces to associate with the Environment. 
 
-But guess what? It's time to level up! Our Environments and Products feature takes your software development and deployment game to a whole new level. We're talking easier workflows, total transparency, and making the whole process more accessible than ever.
+* Contextual visibility  
+  Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
 
-First up, we'll break down what Environments and Products are all about, and why they're game-changers for your software development lifecycle. Ready to empower your DevOps journey? Let's dive in!
+* Simply scalability and maintenance
+  Environments are equally simple to scale and maintain as they are to create, without complicating the setup. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
+  For flexibility, Codefresh allows you to add Environments without deploying any applications.
 
-For all the nitty-gritty details,
-## About Environments & Products
-
-
-
-**What is an Environment in Codefresh?**  
-As a developer, you must be familair with the role of environments in the lifecyle of applications. 
-In Codefresh GitOps, an Environment is a custom entity, identified by a unique name, comprising one or more pairs of clusters and namespaces. Once defined, an Environment is automatically populated by the applications deployed to it. 
-
-{% include 
+  {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
@@ -43,10 +43,22 @@ In Codefresh GitOps, an Environment is a custom entity, identified by a unique n
   max-width="60%" 
 %} 
 
+##### What do you get from Products?
 
-**What is a Product in Codefresh?**  
-A Product unifies different but interrelated Argo CD applications as a cohesive entity as they move through different Environments.
-The Argo CD applications grouped within a Product generally has the same software but different versions as they are deployed in diverse Environments.
+Now that we have briefly explored what you can accomplish with Environments, let's see how Products in Codefresh GitOps complements Environments
+
+
+* Unified application management
+  Managing complex Argo CD applications across multiple Environments can be challenging.  
+  By allowing you to group similar Argo CD applications into a cohesive unit, Products allow you to also efficiently manage them as a unit.* Bridging applications and Environments  
+  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+
+* Effortless creation  
+  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
+
+* Real-time insights with integrated views  
+  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
+
 
 {% include 
 	image.html 
@@ -58,7 +70,8 @@ The Argo CD applications grouped within a Product generally has the same softwar
   max-width="60%" 
 %} 
 
-You have a fairly good idea of where we are going with these, so let's continue with some key tasks and functionality, starting with Environments.
+
+We'll now take you through the key tasks and functionality, starting with Environments.
  
 ## Create an Environment
 First, you'll need to set up an Environment. Environments mirror the deployment lifecycle of your software, so create as many as you need to match your process.
@@ -94,7 +107,7 @@ For this quick start, we'll set up just one Environment.
   The environment is displayed in the Environments dashboard. 
 
 ## Create & work with Products
-After creating at least one Environment, we can start creating Products, connecting Argo CD applications to it, and concluding with key insights in the Products dashboard.
+After creating at least one Environment, we can start creating Products and connect Argo CD applications to it. We'll conclude with key insights in the Products dashboard.
 
 
 ### Identify applications in GitOps Apps dashboard
@@ -295,10 +308,10 @@ Here's an example of the Products dashboard.
 The Products dashboard showcases the Products created, whether or not applications are connected.   
 Clicking a Product provides detailed information on its applications.  
 
-For this quick start, we'll focus on two key features: release versions and contextual insights.
+For this quick start, we'll focus on two key features: release versions and integrated insights.
 
 ### Release versions
-Helm-based applications show the release version of the application. This is the app version as defined in the Helm chart identifying the specific release version in the different Environments. 
+Helm-based applications show the release version of the application. This is the _app version_ as defined in the Helm chart, identifying the specific release version in the different Environments. 
 
 You can:
 * View the application's dependencies and their versions
@@ -341,17 +354,17 @@ In this quick start, dependency versions are identical across all three applicat
   max-width="60%" 
 %}
 
-### Contextual insights for applications 
+### Integrated insights into Product applications 
 
-Products offer more than just standard Git commit or hash information; they provide enriched insights into your applications.
+Products offer more than just standard Git commit or hash information: they provide enriched insights into your applications.
 
 When you select a Product in the Products dashboard, three tabs appear on the right: **Pods**, **Git**, and **Features**. These tabs consolidate Kubernetes (Pods), version control (Git), and issue-tracking (Features) data into a single location.
 
 ##### Git
-In the Git tab, you gain direct insights from the application repository, not the GitOps repository. This allows you to trace the complete commit history of the application's repo up to the commit that initiated the build and deployed the new version. View detailed history of individual commits and deep links to source control.
+In the Git tab, you gain direct insights from the application repository, not the GitOps repository. This allows you to trace the complete commit history of the application's repo up to the commit that initiated the build and deployed the new version. Commit history includes  history of individual commits with deep links to source control.
 
 ##### Features
-The Features tab allows you to connect these commits seamlessly with tickets in your issue-tracking tool or system. This integration enhances traceability and context, enabling you to monitor the deployment's impact by tying deployed features to specific feature requests or bug fixes.
+The Features tab allows you to connect these commits with tickets in your issue-tracking tool or system. This integration enhances traceability and context, enabling you to monitor the deployment's impact by tying deployed features to specific feature requests or bug fixes.
 
 From this unified view, you can:
 * Gain insights into deployment specifics
@@ -362,18 +375,18 @@ From this unified view, you can:
 
 
 **Why are these insights crucial?**
-When troubleshooting issues in production, having access to this comprehensive information is invaluable. You can pinpoint what occurred, when it happened, who made the change, and which feature or bug was addressed, streamlining your debugging process.
+When troubleshooting issues in production, having access to such comprehensive information is invaluable. You can pinpoint what occurred, when it happened, who made the change, and which feature or bug was addressed, streamlining your debugging process.
 
 
 
 #### Connect your CI platforms/tools to GitOps 
-If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps.
-The same applies to issue-tracking systems like Jira.
+To view this integrated information from Git and issue-tracking systems, you need to tie your CI with CD. 
+If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking systems like Jira.
+
 For an overview of the setup process, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
-
-Once set up, Codefresh takes care of the heavy lifting and retrieves the information.
-You can view this information in the Products dashboard when selecting a Product, as detailed below, and also in our[Images dashboard]({{site.baseurl}}/docs/dashboards/images/).
+Once these integrations are in place, Codefresh takes care of the heavy lifting and retrieves the information.
+You can view this information in the Products dashboard when selecting a Product, as detailed below, and also in our [Images dashboard]({{site.baseurl}}/docs/dashboards/images/).
 
 
 #### Pods
@@ -420,7 +433,7 @@ Here's a view of the Pods tab with Rollout information.
 
 
 
-Explore and try out more of our functionality in Environments and Products.
+Try out more of our functionality in Environments and Products.
 
 
 
