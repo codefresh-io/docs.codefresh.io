@@ -17,7 +17,7 @@ Remember for detailed information on all tasks and features, refer to the [Envir
 Let's begin by exploring the key benefits of Environments and Products.  
 We'll then guide you through how to work with these features to streamline and empower your software development lifecycle.
 
-##### What do you get from Environments? 
+##### Why would you want to create Environments? 
 
   {% include 
 	image.html 
@@ -40,7 +40,7 @@ Here are some key benefits of Environments:
 * Contextual visibility  
   Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
 
-* Simply scalability and maintenance  
+* Simple scalability and maintenance  
   Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
   For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
 
@@ -96,6 +96,7 @@ For this quick start, we'll set up just one Environment.
     1. **Name**: A unique name for your GitOps Environment, which is meaningful in the context of your development and deployment cycle. 
 	  For the quick start, we'll use `dev`.
     1. **Kind**: The purpose of this GitOps Environment. Select **Non-production** where development, testing, staging versions of applications are deployed.  
+	  Just a heads up that we will use this to define permissions for ABAC (Attribute Based Access Control).
     1. **Tags**: Leave this empty for the quick start.
     1. **Clusters and Namespaces**: Single or multiple cluster/namespace/cluster-namespace pairs to map to the GitOps Environment.
 	  The Environment is populated by all the applications deployed to the mapped clusters and namespaces.  
@@ -153,7 +154,7 @@ A Product requires a unique name, and optionally an annotation to connect the di
 1. Click **Add Product**.
 1. Define the following:
     1. **Name**: A unique name for the Product, `demo-trioapps` for the quick start.
-    1. **Connect Applications**: The annotation to associate with this Product and use to connect different applications to it.  
+    1. **Connect Applications**: The annotation to associate with this Product, and use to connect the different applications to it.  
 	  For the quick start, we'll use the default annotation automatically created, `codefresh.io/product: demo-trioapps`. 
 	1. Copy the annotation to the clipboard.
     1. **Tags**: Leave this empty for the quick start.
@@ -204,7 +205,7 @@ Here we'll manually assign the application `demo-trioapp-dev` to the Product `de
 
 1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
 1. Expand the new Product, `demo-trioapp` in our case. 
-1. Click **Manage Applications**.  
+1. Click **Manage Apps**.  
   On the left, you'll see the list of **Unassigned apps**, including `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
 
 {% include 
