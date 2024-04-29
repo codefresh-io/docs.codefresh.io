@@ -201,10 +201,10 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` to report o
 
 
 Value:  
-{% raw %}`${{ github.ref-name }}`{% endraw %}  
+{% raw %}`${{ github.ref_name }}`{% endraw %}  
 
 where: 
-* {% raw %}`${{ github.ref-name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
+* {% raw %}`${{ github.ref_name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
 
 
 
