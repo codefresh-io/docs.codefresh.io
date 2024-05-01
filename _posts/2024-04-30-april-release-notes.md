@@ -65,12 +65,12 @@ This table provides build and credit consumption metrics by pipelines for the se
 
 {% include
   image.html
-  lightbox=“true”
-  file=“/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png”
-  url=“/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png”
-  alt=“Credit Consumption: Usage per month by pipelines”
-  caption=“Credit Consumption: Usage per month by pipelines”
-  max-width=“60%”
+  lightbox="true"
+  file="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
+  url=“/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
+  alt="Credit Consumption: Usage per month by pipelines"
+  caption="Credit Consumption: Usage per month by pipelines"
+  max-width="60%"
 %}
 
 ### Pipelines: More Pull Request events support for GitHub
@@ -83,12 +83,12 @@ You can now trigger builds for the following PR events:
 
 {% include
   image.html
-  lightbox=“true”
-  file=“/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png”
-  url=“/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png”
-  alt=“New Pull Request events for GitHub in Codefresh”
-  caption=“New Pull Request events for GitHub in Codefresh”
-  max-width=“60%”
+  lightbox="true"
+  file="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  url="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  alt="New Pull Request events for GitHub in Codefresh"
+  caption="New Pull Request events for GitHub in Codefresh"
+  max-width="60%"
 %}
 
 For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
@@ -104,9 +104,6 @@ A small but significant usability improvement, entity names are now consistently
 * Discrepancy between number of active committers and that displayed in Usage tab (CR-22776)
 
 ##### Pipelines 
-<!--- * (On-premises only) Builds fail with message "Build was terminated because of prolonged inactivity" for v2.1 and higher. (CR-23444 vadim kharin)
-* ??https://codefresh-io.atlassian.net/browse/CR-23033 - Zhenya
-* (On-premiess only) "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue" error when selecting **Account settings > Pipeline integrations > Kubernetes**. (CR-22998 Vadim Kharin) -->
 * Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
 * Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * 500 error for BitBucket webhooks including deleted branches. 
@@ -114,7 +111,7 @@ A small but significant usability improvement, entity names are now consistently
 * Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
 * Builds for Gerrit in Codefresh triggered twice.
 * CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage.
-* `git-commit` steps return `error URL using bad/illegal format or missing URL` when password includes special characters.
+* `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
 
 
 ##### GitOps 
