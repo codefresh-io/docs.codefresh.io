@@ -65,6 +65,7 @@ Create Environments by defining settings (see [Create Environments](#create-envi
 
 Products adds another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
 
+
 <!--- ## Key aspects when creating Environments
 
 When setting up Environments in Codefresh GitOps, consider these key aspects and best practices to optimize your deployment and management processes:
@@ -72,9 +73,13 @@ When setting up Environments in Codefresh GitOps, consider these key aspects and
 * Naming
   When creating Environments, define clear naming conventions to easily identify and categorize each Environment based on its purpose, region, or development stage. 
 
+* Unlimited 
+  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
+
 * Customized 
   In addition to the development lifecyle, consider all aspects of your organization's processes, deployment requirememnts.
   Create Environments based on various criteria, such as development stages, deployment regions, or specific project requirements. This flexibility ensures that each Environment is tailored to its intended purpose, whether it's a specialized testing environment or a broad production deployment.
+
 
 * Number of Environments 
   There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
@@ -247,7 +252,7 @@ View the dependencies included with each application, and compare versions of th
 **Dependency chart versions**
 * List the charts (dependencies) deployed with the application and the release version for each
 * Compare versions of dependencies in the different applications
-* Show a concise view of the 
+
 
 
 
@@ -264,62 +269,8 @@ View the dependencies included with each application, and compare versions of th
 	caption="Helm chart version for application"
   max-width="60%" 
 %}
-
+  
 {:start="3"}
-1. To compare different applications, enable **Compare**.
-1. Click within the field **Select applications to compare**, and select the applications.
-    When selecting up to two applications, you can switch between YAML and Table views.  
-	When selecting more than two applications, the comparison view automatically switches to the **Table** view.
-<!--- add here new screenshot and also step describing what is Summary View> -->  
-
-<!--- ### Identify application versions in different Environments
-Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
-
-Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
-You can:  
-* View the charts (dependencies) deployed with the application and the release for each
-* Compare dependency versions with applications in different environments  
-
-##### How to  
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
-1. Click the version number of the application.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/app-version-info.png" 
-	url="/images/gitops-environments/app-version-info.png" 
-	alt="Helm chart version for application" 
-	caption="Helm chart version for application"
-  max-width="60%" 
-%}
-
-{:start="3"}
-1. Switch been **Table** and **YAML** views to see the dependencies and their versions.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/version-table-yaml-view.png" 
-	url="/images/gitops-environments/version-table-yaml-view.png" 
-	alt="Table and YAML views of chart dependencies" 
-	caption="Table and YAML views of chart dependencies"
-  max-width="60%" 
-%}
-
-
-
-
-### Compare dependency versions and diffs across Environments
-
-Compare the versions of dependencies in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two or more Environments.  
-
-* The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
-* The YAML view displays a diff between two Environments.
-
-
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
-1. Click the version number of the application.
 1. To compare the versions of dependencies for the selected application across different Environments, enable **Compare**.
 1. Select the Environments to compare to. 
 1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
@@ -347,7 +298,7 @@ Compare the versions of dependencies in the same application across different En
   max-width="60%" 
 %}
 
--->
+
 ### View deployment (Timeline) history for applications
 Review the deployments for a specific application in the Environments dashboard. 
 

@@ -17,7 +17,14 @@ When navigating through the Codefresh UI. I am experiencing slowness or I am see
 
 ## Details
 
-For troubleshooting UI-related issues, it's helpful to provide the Codefresh support team with a HAR file. This file is a log of network requests that occurred during a recorded period.
+In order to troubleshooting UI-related issues, Codefresh support requires at minimum the following information:
+
+* Codefresh username of affected user
+* Link to UI page being accessed
+* Action being performed
+* Timestamp of incident
+
+It's also helpful to provide the Codefresh support team with a HAR file. This file is a log of network requests that occurred during a recorded period.
 
 ### Important
 
