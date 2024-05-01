@@ -99,10 +99,9 @@ A small but significant usability improvement, entity names are now consistently
 <!--- * (On-premises only) Builds fail with message "Build was terminated because of prolonged inactivity" for v2.1 and higher. (CR-23444 vadim kharin)
 * ??https://codefresh-io.atlassian.net/browse/CR-23033 - Zhenya
 * (On-premiess only) "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue" error when selecting **Account settings > Pipeline integrations > Kubernetes**. (CR-22998 Vadim Kharin) -->
-* Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. (CR-22977 Bohdan Pysarenko)
+* Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
 * Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * 500 error for BitBucket webhooks including deleted branches. 
-https://codefresh-io.atlassian.net/browse/CR-22639 Andrii
 * Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps.
 * Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
 * Builds for Gerrit in Codefresh triggered twice.
@@ -112,7 +111,7 @@ https://codefresh-io.atlassian.net/browse/CR-22639 Andrii
 
 ##### GitOps 
 * Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  
-* `Slow loading...` message when selecting GitOps Apps option from sidebar. (CR-23126 Victor Plakyda) 
+* `Slow loading...` message when selecting GitOps Apps option from sidebar.  
 * GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
 * In GitOps Apps dashboard, selecting **More filters** shows truncated Kubernetes **Label** names. 
 
