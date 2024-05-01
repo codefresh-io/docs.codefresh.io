@@ -4,6 +4,29 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
+### General: More power to Global Search & Navigation
+
+We're excited to announce major enhancements adding to the power and ease of our Global Search & Navigation: 
+
+* **Actions through Search**
+  Execute actions using search or keyboard shortcuts:
+  * Run a pipeline: Search to navigate to a specific pipeline and then press `R` and `N` to trigger that pipeline.
+  * Refresh an application: Search for the application you need, and press `R` and `F` to instantly refresh the application.
+  * Sync an application: Within an application, use `S` and `Y` shortcut keys to open the sync dialog.
+
+* **Quick navigation**
+
+App Proxy Logs: Dive straight into your GitOps Runtime logs.
+GitOps Runtime: Leap over to your runtimes page in a flash.
+GitOps Permissions: Head to your permissions page with a click.
+
+* **Integrated link to `app-proxy` logs**
+  We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
+* **GitOps Runtimes for admins** 
+  Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
+* **GitOps Permissions for admins**
+  Type `GitOps Permissions` and click it to go directly to the Permissions page.
+
 ### Pipelines: Explore build relationships with Build Tree
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
 Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
@@ -26,21 +49,11 @@ In addition to the effortless visualization, other key benefits include:
 
 For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
 
-### Command Bar: More quick actions
 
-* **Integrated link to `app-proxy` logs**
-  We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
-* Added a link to Runtimes in the navigation bsr [CR-21227]
-* **GitOps Runtimes** & **GitOps Permissions for admins**
-  Codefresh administrators can:
-  * Search for GitOps Runtimes.
-  * Search for GitOps Permissions and click it to go directly to the Permissions page.
-* **Run pipeline**  
-  Added an action to run a pipeline [CR-21226]
 
-### Monthly credit consumption usage by pipelines
-We added a new table below the Credit Consumption chart, **Usage per month**.  
-This table provides build and credit comsumption metrics by pipelines for the selected month. 
+### Pipelines: Monthly credit consumption usage by pipelines
+We added the **Usage per month** table, below the Credit Consumption chart.  
+This table provides build and credit consumption metrics by pipelines for the selected month. 
 
 {% include
   image.html
@@ -52,8 +65,30 @@ This table provides build and credit comsumption metrics by pipelines for the se
   max-width=“60%”
 %}
 
-### Entity names set to lowercase in breadcrumbs
-As a small but significant usability improvement, entity names are now consistently displayed in lowercase within the breadcrumbs.
+### Pipelines: More Pull Request events support for GitHub
+Our integration with GitHub events is now even stronger with the addition of more types of Pull Request (PR) event triggers.
+
+You can now trigger builds for the following PR events:
+* Pull Request review approved
+* Pull Request review changes requested
+* Pull Request review commented
+
+{% include
+  image.html
+  lightbox=“true”
+  file=“/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png”
+  url=“/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png”
+  alt=“New Pull Request events for GitHub in Codefresh”
+  caption=“New Pull Request events for GitHub in Codefresh”
+  max-width=“60%”
+%}
+
+For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+
+### Usability: Entity names set to lowercase in breadcrumbs
+A small but significant usability improvement, entity names are now consistently displayed in lowercase within the breadcrumbs.
+
+
 
 ## Bug fixes
 
@@ -61,11 +96,11 @@ As a small but significant usability improvement, entity names are now consisten
 * Discrepancy between number of active committers and that displayed in Usage tab (CR-22776)
 
 ##### Pipelines 
-<!--- * (On-premises only) Builds fail with message "Build was terminated because of prolonged inactivity" for v2.1 and higher. (CR-23444 vadim kharin)-->
+<!--- * (On-premises only) Builds fail with message "Build was terminated because of prolonged inactivity" for v2.1 and higher. (CR-23444 vadim kharin)
 * ??https://codefresh-io.atlassian.net/browse/CR-23033 - Zhenya
-<!--- * (On-premiess only) "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue" error when selecting **Account settings > Pipeline integrations > Kubernetes**. (CR-22998 Vadim Kharin) -->
+* (On-premiess only) "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue" error when selecting **Account settings > Pipeline integrations > Kubernetes**. (CR-22998 Vadim Kharin) -->
 * Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. (CR-22977 Bohdan Pysarenko)
-* `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories for **YAML from repository settings**.(CR-22941 - VadimKharin)
+* Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * 500 error for BitBucket webhooks including deleted branches. 
 https://codefresh-io.atlassian.net/browse/CR-22639 Andrii
 * Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps.
@@ -76,12 +111,10 @@ https://codefresh-io.atlassian.net/browse/CR-22639 Andrii
 
 
 ##### GitOps 
-* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime. (CR-23479 Daniel Maizel) 
+* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  
 * `Slow loading...` message when selecting GitOps Apps option from sidebar. (CR-23126 Victor Plakyda) 
-* Applications tab in GitOps Apps dashboard displays `Unknown` status for Argo CD applications. (CR-23096 - Vadim Kharin)
-* Application status in Codefresh UI displayed as Unknown when logs show app healthy
-* In GitOps Apps dashboard, selecting **More filters** shows truncated Kubernetes **Label** names. (CR-22526 - Bogdan Volynets)
-, 
+* GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
+* In GitOps Apps dashboard, selecting **More filters** shows truncated Kubernetes **Label** names. 
 
 
 
