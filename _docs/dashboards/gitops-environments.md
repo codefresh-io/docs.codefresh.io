@@ -65,23 +65,26 @@ Create Environments by defining settings (see [Create Environments](#create-envi
 
 Products adds another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
 
-## Key aspects when creating Environments
+<!--- ## Key aspects when creating Environments
 
-When setting up Environments in Codefresh GitOps, consider the following key aspects and best practices to optimize your deployment and management processes:
+When setting up Environments in Codefresh GitOps, consider these key aspects and best practices to optimize your deployment and management processes:
 
-* Unlimited 
-  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
+* Naming
+  When creating Environments, define clear naming conventions to easily identify and categorize each Environment based on its purpose, region, or development stage. 
 
 * Customized 
   In addition to the development lifecyle, consider all aspects of your organization's processes, deployment requirememnts.
   Create Environments based on various criteria, such as development stages, deployment regions, or specific project requirements. This flexibility ensures that each Environment is tailored to its intended purpose, whether it's a specialized testing environment or a broad production deployment.
-  For example, you can create 
 
+* Number of Environments 
+  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
 
-  When creating Environments, define clear naming conventions and labels to easily identify and categorize each Environment based on its purpose, region, or development stage. 
+* Environments without applications
+  Codefresh allows 
+
 
 * Seamless infrastructure integration
-  Adding new infrastructure or new applications is as simple as adding the required Kubernetes clusters and namespaces to the existing Environment's definition. 
+  Adding new infrastructure or new applications is as simple as adding the required Kubernetes clusters and namespaces to the existing Environment's definition.   -->
 
 
 ## Create Environments
