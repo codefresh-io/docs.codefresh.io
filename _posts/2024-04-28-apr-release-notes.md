@@ -34,8 +34,8 @@ Seamlessly visualize complex parent-child-sibling relationships within the conte
 {% include
   image.html
   lightbox=“true”
-  file=“/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png”
-  url=“/images/whats-new/mar24/rel-notes-mar24-build-tree-view.png”
+  file=“/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png”
+  url=“/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png”
   alt=“Build Tree view for pipeline builds”
   caption=“Build Tree view for pipeline builds”
   max-width=“60%”
