@@ -555,14 +555,14 @@ One of the following:
 Applications assigned to Products are only relevant in the context of the Environments they are defined in.
 Either create an Environment or add the cluster-namespace defined for the application to the existing Environment's definition.
 
-**Create an Environment**
+**Create an Environment**  
 [Create an Environment]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments).
 
 
 **Add application's destination settings to Environment definition**
 1. Update Environment settings:
-   * In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
-     In the example below, there are two Environments defined: `test` and `prod`. There are no applications in the `test` Environment.
+     * In the Codefresh UI, from the Ops in the sidebar, select **Environments**.  
+      In the example below, there are two Environments defined: `test` and `prod`. There are no applications in the `test` Environment.
    
    {% include 
 	image.html 
@@ -571,12 +571,12 @@ Either create an Environment or add the cluster-namespace defined for the applic
 	url="/images/gitops-products/trble-env-without-apps.png" 
 	alt="Defined Environment without applications" 
 	caption="Defined Environment without applications"
-  max-width="70%" 
+  max-width="60%" 
   %}
    
-   * Mouse over the toolbar for the Environment and click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-   * Check the **Clusters and Namespaces** mapped to the Environment.
-    In the example, the namespace `dev` is mapped to this Environment.
+     * Mouse over the toolbar for the Environment and click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+     * Check the **Clusters and Namespaces** mapped to the Environment.  
+      In the example, the namespace `dev` is mapped to this Environment.
 
   {% include 
 	image.html 
@@ -585,11 +585,12 @@ Either create an Environment or add the cluster-namespace defined for the applic
 	url="/images/gitops-products/trble-edit-env-settings.png" 
 	alt="Example: Environment settings" 
 	caption="Example: Environment settings"
-  max-width="70%" 
+  max-width="60%" 
   %} 
-  * Add the namespace defined for the application to the Environment settings.
+    * Add the namespace defined for the application to the Environment settings.
+
 {:start="2"}
-1. Go back to the Products dashboard.
+1. Go back to the Products dashboard.  
   You will now see your application in the Product and in the correct Environment.
 <!--- add screenshot -->
 ## Related articles
