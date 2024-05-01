@@ -31,7 +31,7 @@ GitOps Permissions: Head to your permissions page with a click.
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
 Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
 
-{% include
+<!--- {% include
   image.html
   lightbox=“true”
   file=“/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png”
@@ -40,6 +40,7 @@ Seamlessly visualize complex parent-child-sibling relationships within the conte
   caption=“Build Tree view for pipeline builds”
   max-width=“60%”
 %}
+-->
 
 In addition to the effortless visualization, other key benefits include:
 * The selected build as an anchor reference point to linked builds, indicated by the **Current** tag assigned to it.
