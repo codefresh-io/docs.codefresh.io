@@ -52,7 +52,7 @@ For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/
 
 
 ### Pipelines: Monthly credit consumption usage by pipelines
-We added the **Usage per month** table, below the Credit Consumption chart.  
+We added a **Usage per month** table below the Credit Consumption chart.  
 This table provides build and credit consumption metrics by pipelines for the selected month. 
 
 {% include
