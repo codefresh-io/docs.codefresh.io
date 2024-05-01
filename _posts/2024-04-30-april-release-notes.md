@@ -16,9 +16,16 @@ We're excited to announce major enhancements adding to the power and ease of our
 
 * **Quick navigation**
 
-App Proxy Logs: Dive straight into your GitOps Runtime logs.
-GitOps Runtime: Leap over to your runtimes page in a flash.
-GitOps Permissions: Head to your permissions page with a click.
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+alt="Global Search & Navigation: app-proxy logs" 
+caption="Global Search & Navigation: app-proxy logs" 
+max-width="60%" 
+%}
+
 
 * **Integrated link to `app-proxy` logs**
   We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
@@ -30,6 +37,16 @@ GitOps Permissions: Head to your permissions page with a click.
 ### Pipelines: Explore build relationships with Build Tree
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
 Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+alt="Pipeline builds: Build Tree view" 
+caption="Pipeline builds: Build Tree view" 
+max-width="60%" 
+%}
 
 
 In addition to the effortless visualization, other key benefits include:
