@@ -67,7 +67,7 @@ This table provides build and credit consumption metrics by pipelines for the se
   image.html
   lightbox="true"
   file="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
-  url=“/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
+  url="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
   alt="Credit Consumption: Usage per month by pipelines"
   caption="Credit Consumption: Usage per month by pipelines"
   max-width="60%"
