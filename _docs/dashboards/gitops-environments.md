@@ -65,9 +65,13 @@ Create Environments by defining settings (see [Create Environments](#create-envi
 
 Products adds another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
 
-## Key aspects when creating Environments
 
-When setting up Environments in Codefresh GitOps, consider the following key aspects and best practices to optimize your deployment and management processes:
+<!--- ## Key aspects when creating Environments
+
+When setting up Environments in Codefresh GitOps, consider these key aspects and best practices to optimize your deployment and management processes:
+
+* Naming
+  When creating Environments, define clear naming conventions to easily identify and categorize each Environment based on its purpose, region, or development stage. 
 
 * Unlimited 
   There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
@@ -75,13 +79,17 @@ When setting up Environments in Codefresh GitOps, consider the following key asp
 * Customized 
   In addition to the development lifecyle, consider all aspects of your organization's processes, deployment requirememnts.
   Create Environments based on various criteria, such as development stages, deployment regions, or specific project requirements. This flexibility ensures that each Environment is tailored to its intended purpose, whether it's a specialized testing environment or a broad production deployment.
-  For example, you can create 
 
 
-  When creating Environments, define clear naming conventions and labels to easily identify and categorize each Environment based on its purpose, region, or development stage. 
+* Number of Environments 
+  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
+
+* Environments without applications
+  Codefresh allows 
+
 
 * Seamless infrastructure integration
-  Adding new infrastructure or new applications is as simple as adding the required Kubernetes clusters and namespaces to the existing Environment's definition. 
+  Adding new infrastructure or new applications is as simple as adding the required Kubernetes clusters and namespaces to the existing Environment's definition.   -->
 
 
 ## Create Environments
@@ -132,7 +140,7 @@ The table describes the information displayed in the Environments dashboard.
 |**Filters**              | Predefined filters to customize the Environment dashboard view by Product or Application. | 
 |{::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star an application to mark it as a favorite and easily locate applications of interest.{::nomarkdown}<br>Select the <img src="../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star as a favorite.<br><br>To filter by favorites, on the filters bar, click <img src="../../../images/icons/icon-fav-starred.png?display=inline-block">. {:/} |
 |**Detailed/Compact views**              | Switch between views to get information on applications that populate an Environment.{::nomarkdown}<ul><li><b>Compact</b>: Default view presenting a flat list of applications with the version, health, and sync status for each.<br> <img src="../../../images/gitops-environments/app-compact-view-mode.png?display=inline-block" width="60%"></li><li><b>Detailed</b>: Displays a record for each application including assigned Product, commit information, and cluster-namespace deployment details.<br>If not assigned to a Product, the application name is used.<img src="../../../images/gitops-environments/app-detailed-view-mode.png?display=inline-block" width="60%">.</li><li>Application version: Available for Helm-based applications, indicating the specific release in different Environments. Clicking the version displays additional information and options.<br>See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#view-and-compare-deployed-versions-for-dependencies">Identify application versions in different Environments</a>.</li></ul>{:/}In both view modes, every application has a context-menu with quick access to frequently performed actions, such as Synchronize and Refresh. See [Manage applications in Environments](#manage-applications-from-within-environments). |
-|**Environments**              | Organized in color-coded columns to differentiate between non-production Environments (gray) and production Environments (blue).{::nomarkdown}<ul><li>The column title represents the name of the Environment. Mouse over displays the options available to manage Environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with Environments</a>.</li><li>Quick filter for applications within Environment: The top row displays applciation breakdown by health statuses. To filter applications, click on statuses.</li><li>Each Environment is populated with the applications in the cluster-namespace pairs mapped to it. <br>An empty Environment indicates that there are no applications in the cluster-namespaces mapped to it. <br>**Unassigned Apps** show applications not assigned to any Product.  |
+|**Environments**              | Organized in color-coded columns to differentiate between non-production Environments (gray) and production Environments (blue).{::nomarkdown}<ul><li>The column title represents the name of the Environment. Mouse over displays the options available to manage Environments. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/#working-with-gitops-environments">Working with Environments</a>.</li><li>Quick filter for applications within Environment: The top row displays applciation breakdown by health statuses. To filter applications, click on statuses.</li><li>Each Environment is populated with the applications in the cluster-namespace pairs mapped to it. <br>An empty Environment indicates that there are no applications in the cluster-namespaces mapped to it. <br>**Unassigned Apps** show applications not assigned to any Product.</li></ul>{:/}  |
 
 
 
@@ -244,7 +252,7 @@ View the dependencies included with each application, and compare versions of th
 **Dependency chart versions**
 * List the charts (dependencies) deployed with the application and the release version for each
 * Compare versions of dependencies in the different applications
-* Show a concise view of the 
+
 
 
 
@@ -261,62 +269,8 @@ View the dependencies included with each application, and compare versions of th
 	caption="Helm chart version for application"
   max-width="60%" 
 %}
-
+  
 {:start="3"}
-1. To compare different applications, enable **Compare**.
-1. Click within the field **Select applications to compare**, and select the applications.
-    When selecting up to two applications, you can switch between YAML and Table views.  
-	When selecting more than two applications, the comparison view automatically switches to the **Table** view.
-<!--- add here new screenshot and also step describing what is Summary View> -->  
-
-<!--- ### Identify application versions in different Environments
-Identify the version of the application deployed in different Environments to track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
-
-Codefresh does more than just show you the version of the application currently deployed in an Environment. Our UI provides intuitive diff views of Environments. 
-You can:  
-* View the charts (dependencies) deployed with the application and the release for each
-* Compare dependency versions with applications in different environments  
-
-##### How to  
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
-1. Click the version number of the application.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/app-version-info.png" 
-	url="/images/gitops-environments/app-version-info.png" 
-	alt="Helm chart version for application" 
-	caption="Helm chart version for application"
-  max-width="60%" 
-%}
-
-{:start="3"}
-1. Switch been **Table** and **YAML** views to see the dependencies and their versions.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/version-table-yaml-view.png" 
-	url="/images/gitops-environments/version-table-yaml-view.png" 
-	alt="Table and YAML views of chart dependencies" 
-	caption="Table and YAML views of chart dependencies"
-  max-width="60%" 
-%}
-
-
-
-
-### Compare dependency versions and diffs across Environments
-
-Compare the versions of dependencies in the same application across different Environments. View detailed or summarized diffs for Helm charts, values, and Kubernetes resource definitions between an application in two or more Environments.  
-
-* The tabular view displays a complete list of all dependencies and their versions across more than two Environments.  
-* The YAML view displays a diff between two Environments.
-
-
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
-1. Click the version number of the application.
 1. To compare the versions of dependencies for the selected application across different Environments, enable **Compare**.
 1. Select the Environments to compare to. 
 1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
@@ -344,7 +298,7 @@ Compare the versions of dependencies in the same application across different En
   max-width="60%" 
 %}
 
--->
+
 ### View deployment (Timeline) history for applications
 Review the deployments for a specific application in the Environments dashboard. 
 
@@ -360,6 +314,8 @@ Review the deployments for a specific application in the Environments dashboard.
 	caption="View deployment history for application from Environments dashboard"
   max-width="60%" 
 %}
+
+{:start="3"}
 1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top of the deployment view.
 
 ### Manage applications from within Environments
