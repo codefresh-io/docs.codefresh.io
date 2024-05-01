@@ -106,7 +106,7 @@ A small but significant usability improvement, entity names are now consistently
 * Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
 * Builds for Gerrit in Codefresh triggered twice.
 * CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage.
-
+* `git-commit` steps return `error URL using bad/illegal format or missing URL` when password includes special characters.
 
 
 ##### GitOps 
