@@ -98,8 +98,6 @@ A small but significant usability improvement, entity names are now consistently
 
 ## Bug fixes
 
-##### General
-* Discrepancy between number of active committers and that displayed in Usage tab.
 
 ##### Pipelines 
 * Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
