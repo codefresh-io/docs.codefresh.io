@@ -6,13 +6,13 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### General: More power to Global Search & Navigation
 
-We're excited to announce major enhancements adding to the power and ease of our Global Search & Navigation: 
+We're excited to announce major enhancements powering our Global Search & Navigation: 
 
-* **Actions through Search**
+* **Actions through Search**  
   Execute actions using search or keyboard shortcuts:
-  * Run a pipeline: Search to navigate to a specific pipeline and then press `R` and `N` to trigger that pipeline.
-  * Refresh an application: Search for the application you need, and press `R` and `F` to instantly refresh the application.
-  * Sync an application: Within an application, use `S` and `Y` shortcut keys to open the sync dialog.
+  * Run a pipeline: Search to navigate to a specific pipeline, and then use the `R` and `N` shortcut keys to trigger that pipeline.
+  * Refresh an application: Search for the application you need, and then use the `R` and `F` shortcut keys to instantly refresh the application.
+  * Sync an application: Within an application, use the `S` and `Y` shortcut keys to open the sync dialog.
 
 * **Quick navigation**
 
@@ -27,12 +27,12 @@ max-width="60%"
 %}
 
 
-* **Integrated link to `app-proxy` logs**
+* **Integrated link to `app-proxy` logs**  
   We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
-* **GitOps Runtimes for admins** 
+* **GitOps Runtimes for admins**  
   Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
-* **GitOps Permissions for admins**
-  Type `GitOps Permissions` and click it to go directly to the Permissions page.
+* **GitOps Permissions for admins**  
+  Type `GitOps Permissions` and click to go directly to the Permissions page.
 
 ### Pipelines: Explore build relationships with Build Tree
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
@@ -74,20 +74,20 @@ This table provides build and credit consumption metrics by pipelines for the se
 %}
 
 ### Pipelines: More Pull Request events support for GitHub
-Our integration with GitHub events is now even stronger with the addition of more types of Pull Request (PR) event triggers.
+Our integration with GitHub events is now even stronger with the addition of more types of pull request (PR) event triggers.
 
 You can now trigger builds for the following PR events:
-* Pull Request review approved
-* Pull Request review changes requested
-* Pull Request review commented
+* Pull request review approved
+* Pull request review changes requested
+* Pull request review commented
 
 {% include
   image.html
   lightbox="true"
   file="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
   url="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
-  alt="New Pull Request events for GitHub in Codefresh"
-  caption="New Pull Request events for GitHub in Codefresh"
+  alt="New pull request events for GitHub in Codefresh"
+  caption="New pull request events for GitHub in Codefresh"
   max-width="60%"
 %}
 
@@ -101,7 +101,7 @@ A small but significant usability improvement, entity names are now consistently
 ## Bug fixes
 
 ##### General
-* Discrepancy between number of active committers and that displayed in Usage tab (CR-22776)
+* Discrepancy between number of active committers and that displayed in Usage tab.
 
 ##### Pipelines 
 * Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
@@ -118,4 +118,4 @@ A small but significant usability improvement, entity names are now consistently
 * Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  
 * `Slow loading...` message when selecting GitOps Apps option from sidebar.  
 * GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
-* In GitOps Apps dashboard, selecting **More filters** shows truncated Kubernetes **Label** names. 
+* Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**. 
