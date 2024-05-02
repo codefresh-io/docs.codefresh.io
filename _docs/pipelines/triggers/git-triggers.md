@@ -69,7 +69,7 @@ max-width="50%"
 | **Trigger Name**      | Required. A freetext name for the Git trigger. |
 |**Description**       | Optional. A freetext description. |
 |**Repository**        | The repository in the Git provider account to track for the trigger event. You can select any repository, even one different from that used for the code checkout.|
-|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events vary according to the Git provider selected. <br>The Push Commit option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  <br>The PR options mean that this pipeline will run only on the respective events that happen on a Pull Request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select Any Pull Request event. <br><br>See: <br>[GitHub trigger events](#github-trigger-events)<br>[Azure DevOps trigger events](#azure-devops-trigger-events)<br>[Bitbucket trigger events](#bitbucket-trigger-events)<br>[GitLab trigger events](#gitlab-trigger-events)<br>[Gerrit trigger events](#gerrit-trigger-events) |
+|**Trigger By**        | The event or events for which to trigger the pipeline. Trigger events vary according to the Git provider selected. <br>The Push Commit option, enabled by default, means that this pipeline will run for *any* commit as long as its source branch matches the naming scheme. This includes commits on pull requests.  <br>The PR options mean that this pipeline will run only on the respective events that happen on a pull request. You can select multiple options to further fine-tune the exact event. If you are interested in all events, select Any pull request event. <br><br>See: <br>[GitHub trigger events](#github-trigger-events)<br>[Azure DevOps trigger events](#azure-devops-trigger-events)<br>[Bitbucket trigger events](#bitbucket-trigger-events)<br>[GitLab trigger events](#gitlab-trigger-events)<br>[Gerrit trigger events](#gerrit-trigger-events) |
 
 
 
@@ -80,23 +80,33 @@ For a description of the events, see [GitHub documentation](https://docs.github.
 
 * Push commits
 * Push tags
-* Any Pull Request event
-* Pull Request opened
-* Pull Request closed
-* Pull Request merged
-* Pull Request closed (not merged)
-* Pull Request reopened
-* Pull Request edited
-* Pull Request assigned
-* Pull Request unassigned
-* Pull Request review requested
-* Pull Request review request removed
-* Pull Request labeled
-* Pull Request unlabeled
-* Pull Request synchronized
-* Pull Request comment added (restricted)
-* Pull Request comment added
-* Release
+* Any pull request event
+* Pull request opened
+* Pull request closed
+* Pull request merged
+* Pull request closed (not merged)
+* Pull request reopened
+* Pull request edited
+* Pull request assigned
+* Pull request unassigned
+* Pull request review requested
+* Pull request review request removed
+* Pull request labeled
+* Pull request unlabeled
+* Pull request synchronized
+* Pull request comment added (restricted)
+* Pull request comment added
+* Pull request review approved
+* Pull request review commented
+* Pull request review changes requested
+* Release published
+* Release unpublished
+* Release created
+* Release edited
+* Release deleted
+* Release prereleased
+* Release released
+
 
 
 #### Azure DevOps trigger events
@@ -117,7 +127,7 @@ For a description of the events and their payload, see [Bitbucket Cloud document
 * Commit
 * Push tags
 * Push new branch
-* Any Pull Request event
+* Any pull request event
 * Pull request created
 * Pull request updated
 * Pull request approved
@@ -137,7 +147,7 @@ For a description of the events and their payload, see [Bitbucket Server documen
 * Push commits
 * Push new branch
 * Delete branch
-* Any Pull request event
+* Any pull request event
 * Pull request created
 * Pull request updated
 * Pull request merged
@@ -157,12 +167,12 @@ For a description of the events and their payload, see [Bitbucket Server documen
 For a description of the events, see [GitLab documentation](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html){:target="\_blank"}.
 
 * Commit
-* Any Pull Request event
-* Pull Request opened
-* Pull Request edited
-* Pull Request closed
-* Pull Request merged
-* Pull Request push commit
+* Any Pull request event
+* Pull request opened
+* Pull request edited
+* Pull request closed
+* Pull request merged
+* Pull request push commit
 
 
 #### Gerrit trigger events
@@ -243,9 +253,9 @@ Remember to include the opening and closing parentheses when adding the strings.
 * `[skip codefresh]`
 * `[codefresh skip]`
 
-### Pull Requests from comments 
+### Pull requests from comments 
 
-Pull Requests from comments are supported for all Git providers, for both private and public repositories.  
+Pull requests from comments are supported for all Git providers, for both private and public repositories.  
 There are two options:
 * Pull request comment added (restricted)  
   This option triggers an event only when the PR comments are made by repository owners or collaborators.  
@@ -330,7 +340,7 @@ caption="Triggering a public build from a comment"
 max-width="50%"
 %}
 
-Once that is done, Codefresh will launch your pipeline against the Pull Request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) as well.
+Once that is done, Codefresh will launch your pipeline against the pull request. If you manage an open source project with Codefresh, remember to enable [public builds]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) as well.
 
 When supporting building of pull requests from forks there are a few "gotchas" to look out for:
 
