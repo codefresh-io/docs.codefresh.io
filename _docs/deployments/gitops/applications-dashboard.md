@@ -313,7 +313,7 @@ caption="Monitor application resources in Current State tab"
 max-width="60%"
 %}
 
-The icon for a resource node identifies the type of Kubernetes resource it represents. For general information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
+The icon for a resource node identifies the type of Kubernetes resource it represents. For information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
 What can you do with application resources?
 * View application resources in [List or Tree views](#view-modes-for-application-resources)
