@@ -14,7 +14,13 @@ We're excited to announce major enhancements powering our Global Search & Naviga
   * Refresh an application: Search for the application you need, and then use the `R` and `F` shortcut keys to instantly refresh the application.
   * Sync an application: Within an application, use the `S` and `Y` shortcut keys to open the sync dialog.
 
-* **Quick navigation**
+* **Quick navigation**  
+  * **Integrated link to `app-proxy` logs**  
+    We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
+  * **GitOps Runtimes for admins**  
+    Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
+  * **GitOps Permissions for admins**  
+    Type `GitOps Permissions` and click to go directly to the Permissions page.
 
  {% include 
 image.html 
@@ -25,14 +31,6 @@ alt="Global Search & Navigation: app-proxy logs"
 caption="Global Search & Navigation: app-proxy logs" 
 max-width="60%" 
 %}
-
-
-* **Integrated link to `app-proxy` logs**  
-  We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
-* **GitOps Runtimes for admins**  
-  Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
-* **GitOps Permissions for admins**  
-  Type `GitOps Permissions` and click to go directly to the Permissions page.
 
 ### Pipelines: Explore build relationships with Build Tree
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
