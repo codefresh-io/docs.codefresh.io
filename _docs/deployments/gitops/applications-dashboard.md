@@ -151,10 +151,7 @@ Every notification identifies:
 * If it is health or sync related 
 * If it is a warning or error.
 
-All errors are Argo CD-generated errors. Codefresh generates custom warnings for the following:
-
-
-
+All errors are Argo CD-generated errors. Codefresh generates custom warnings for missing Rollouts reporter and longer than expected sync operations.
 
 
 ### Warning: Missing Rollouts reporter in cluster
@@ -195,11 +192,11 @@ Correlate details such as the sync revision in the Application Header with the r
 
 
 ##### Information and actions in the Application Header  
-* **App Health** displays health status of the current release
-* **Current Sync** sync status of the current release with the sync revision. The sync revision should be identical to the release revision in the Current Release depolyment record previous sync operation
-* **Auto-sync** enabled/disabled indication
-* **More** links for sync statuses for details on the date, tags, and message
-* **Terminate Sync** option for active sync operations to stop the sync if needed
+* **App Health** displays health status of the current release.
+* **Current Sync** sync status of the current release with the sync revision. The sync revision should be identical to the release revision in the Current Release deployment record previous sync operation.
+* **Auto-sync** enabled/disabled indication.
+* **More** links for sync statuses for details on the date, tags, and message.
+* **Terminate Sync** option for active sync operations to stop the sync if needed.
 
 
 
