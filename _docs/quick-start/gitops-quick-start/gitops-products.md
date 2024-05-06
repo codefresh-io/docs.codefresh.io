@@ -123,7 +123,7 @@ For this quick start, we'll set up just three Environments, `dev`, `qa`, and `pr
 After creating at least one Environment, we can start creating Products and connect Argo CD applications to it. We'll conclude with key insights in the Products dashboard.
 
 ### (Optional) Create applications 
-If you don't have Argo CD applications, feel free to fork the example repository and create three applications pointing to each of the environments we created above.  
+If you don't have Argo CD applications, fork the example repository and create three applications for each of the environments we created above.  
 Otherwise, continue with [Identify applications in GitOps Apps dashboard](#identify-applications-in-gitops-apps-dashboard).
 
 1. Fork the repository: [https://github.com/idan-codefresh/promotion-example/tree/main/example-manifests/trio-app](https://github.com/idan-codefresh/promotion-example/tree/main/example-manifests/trio-app){:target="\_blank"}.
@@ -386,7 +386,7 @@ In this quick start, dependency versions are identical across all three applicat
 
 Products offer more than just standard Git commit or hash information by providing enriched insights into your applications.
 
-When you select a Product in the Products dashboard, three tabs appear on the right: **Pods**, **Git**, and **Features**. These tabs consolidate Kubernetes (Pods), version control (Git), and issue-tracking (Features) data into a single location.
+When you select a Product in the Products dashboard, three tabs appear on the right: **Pods**, **Git**, and **Features**. These tabs consolidate Kubernetes (Pods), version control (Git), and issue-tracking (Features) data into a single location. 
 
 ##### Git
 In the Git tab, you gain direct insights from the application repository, not the GitOps repository. This allows you to trace the complete commit history of the application's repo up to the commit that initiated the build and deployed the new version. Commit history includes  history of individual commits with deep links to source control.
