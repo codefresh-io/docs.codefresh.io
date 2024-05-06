@@ -457,10 +457,10 @@ spec:
   - group: '*'
     kind: '*'
   destinations:                # Destination Namespace defined in Restricted GitSource
-  - namespace: hulk-apps-zone
+  - namespace: cf-hulk-apps-zone
     server: https://kubernetes.default.svc
   sourceNamespaces:
-  - hulk-app-manifests     # Source Namespace defined in Restricted Git Source for syncing apps
+  - cf-hulk-app-manifests     # Source Namespace defined in Restricted Git Source for syncing apps
   sourceRepos:                    # Allowed Git repos defined in Restricted Git Source; by default allows all source repositories
   - '*'
 ​
@@ -488,7 +488,7 @@ spec:
   - group: argoproj.io
     kind: ApplicationSet
   destinations:
-  - namespace: hulk-app-manifests     # maps to the Source Namespace defined in Restricted Git Source to sync app manifests
+  - namespace: cf-hulk-app-manifests     # maps to the Source Namespace defined in Restricted Git Source to sync app manifests
     server: https://kubernetes.default.svc
   sourceRepos:
   - '*'                                     # allowed Git repos defined in Restricted Git Source; by default allows all source repositories
