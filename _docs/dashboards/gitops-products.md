@@ -29,11 +29,6 @@ By grouping applications, Products enhance Environments, allowing complete visib
 Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/)[](gitops-environments.md){:target="\_blank"}.
 
 
-
-
-
-## Benefits of Products
-
 ##### What is a Product in Codefresh GitOps?
 In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view as the applications progress through the development and deployment lifecyle.  
 
@@ -51,7 +46,7 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
   max-width="70%" 
 %}
 
-
+##### Benefits of Products
 * **Unified application management**  
   Managing complex Argo CD applications across multiple Environments can be challenging.  
   By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
@@ -66,7 +61,7 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
   The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
 
 
-## How do you view applications by Product?  
+##### How do you view applications by Product?  
 In two simple steps:
 
 1. [Create the Product](#create-products)  
@@ -75,10 +70,7 @@ In two simple steps:
 1. [Connect applications to the Product](#assigning-applications-to-products)  
   Bring your applications into the picture. Link applications to the Products you've created to create the associations you need. 
 
-Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
-
-
-
+Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).  
 You can then [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).
 
 ## Understanding the role of Environments for Products
