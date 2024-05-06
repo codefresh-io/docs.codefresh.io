@@ -27,15 +27,6 @@ The Environments dashboard fills this gap by providing a holistic perspective on
 
 Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
-Review the [benefits](#benefits-of-environments) of GitOps Environments. Create Environments by defining settings (see [Create Environments](#create-environments)), and explore how Codefresh pulls in all the information into an intuitive dashboard (see [Environments dashboard](#environments-dashboard)).  
-
-Learn how to [work with Environments](#working-with-gitops-environments), and [work with Argo CD applications](#working-with-applications-in-gitops-environments) within Environments.
-
-Products add another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
-
-
-
-## Benefits of Environments 
 
 ##### What is an Environment in Codefresh GitOps?
 In Codefresh GitOps, an Environment is a custom entity defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
@@ -52,6 +43,7 @@ The diagram illustrates how Codefresh organizes different Argo CD applications w
   max-width="70%" 
 %}
 
+##### Benefits of Environments
 Let's review some of the key benefits of Environments:
 
 * **Mirror your SDLC**  
@@ -66,7 +58,12 @@ Let's review some of the key benefits of Environments:
 * **Simple scalability and maintenance**  
   Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
   For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
+ 
+Create Environments by defining settings (see [Create Environments](#create-environments)), and explore how Codefresh pulls in all the information into an intuitive dashboard (see [Environments dashboard](#environments-dashboard)).  
 
+Learn how to [work with Environments](#working-with-gitops-environments), and [work with Argo CD applications](#working-with-applications-in-gitops-environments) within Environments.
+
+Products add another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 ## Create Environments
