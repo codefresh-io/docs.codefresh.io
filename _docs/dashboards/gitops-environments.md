@@ -69,7 +69,6 @@ Let's review some of the key benefits of Environments:
 
 
 
-
 ## Create Environments
 Create one or more Environments corresponding to any stage in your development and deployment lifecycle.  
 Define the configuration of the Environment through a unique name, it's intended usage, and any number of clusters and namespaces. 
