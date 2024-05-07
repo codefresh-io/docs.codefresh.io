@@ -135,7 +135,7 @@ Otherwise, continue with [Identify applications in GitOps Apps dashboard](#ident
   * **Path**: `example-manifests/trio-app/trio-dev`
 1. Leave the rest of the settings unchanged.
 1. Commit the changes.
-1. Repeat _step 2_ through _step 5_ to create the `trio-dev` and `trio-qa` applications.
+1. Repeat _step 2_ through _step 5_ to create the `trio-qa` and `trio-prod` applications.
 
 
 ### Identify applications in GitOps Apps dashboard
