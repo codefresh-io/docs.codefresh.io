@@ -1,17 +1,19 @@
 
+
 Unveiling the value proposition of Codefresh GitOps
 
-Let's start from the top
+top-dpwn from the top
 
 
-Argo CD applications in GitOps Apps 
 
 
-## GitOps Apps dashboard: Your command center for application management
 
-As a one-stop shop for Argo CD and Argo Rollouts, the GitApps dashboard tackles the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. 
+## GitOps Apps dashboard: Command center for application management
 
-DevOps engineers get a consolidated bird's-eye view of the applications under your care.  Flexible view formats, a wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility of deployments. 
+As a one-stop shop for Argo CD and Argo Rollouts, the GitOps Apps dashboard is where you create and manage Argo CD applications.
+The GitOps Apps dashboard tackles the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. 
+
+DevOps engineers get a consolidated bird's-eye view of the applications under their care.  Flexible view formats, a wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility of deployments. 
 
 {% include
 image.html
@@ -23,88 +25,144 @@ caption="GitOps Apps dashboard: List view"
 max-width="70%"
 %}
 
+Let's touch on the main features and functionality in the GitOps Apps dashboard.
 
-
-### Global details
+### Global application views
 
 #### Flexible viewing options
 View applications in List or Card views, and tailor the information displayed to just what you need with our customizable filters. 
 
+The Card view is similar to Argo CD's application view, presenting applications in a flat list.
+The List view displays the hierarchical structure of your applications.
 
-For a hierarchical structure of your applications, switch to List view. The Card view presents applications as a flat list. 
 
-Whichever the view format, a wide range of filters, application- and attribute-based, allow you to customize the data.
-
-Application-based and attribute-based filters. 
-The Health status filter brings you a snapshot of deployed applications by their health status. Simply click the status to view the applications with the status. 
-Attribute-based filters include Application Type, Clusters, Namespaces and more. 
-
-#### Warnings & errors
-Stay on top of issues with instant alerts for problematic applications through the Warnings/Errors button. Whether it's Argo CD-generated errors or custom warnings from Codefresh.
+Whichever the view format, a wide range of filters, application- and attribute-based, allow you to customize the data presented.
+* Application-based filters such as the Health status filter brings you a snapshot of deployed applications by their health statuses. Clicking a status filters by applications that match the status. 
+* Attribute-based filters include Application Type, Clusters, Namespaces and more. 
 
 SCREENSHOT
 
-#### Convenient access to actions
-* Effortless management  
-  Need to take action for a specific application in the GitOps Apps dashboard? Easily take action using the context menu for quick access to commonly-used options, such as diff views, manual sync, edit, refresh, and delete.
-
-* Discrepancy detection with Diff View  
-  Spot disparities between desired and live states with the Diff View option in the context menu. Get a visual representation of discrepancies between the desired and live states for out-of-sync applications to troubleshoot issues more effectively.
+#### Warning & error alerts 
+The Warnings/Errors button on the toolbar allows you to stay on top of issues with instant alerts for problematic applications. Whether it's Argo CD-generated errors or custom warnings from Codefresh.
 
 SCREENSHOT
 
-###  Drill-down 
-Dive deeper into individual applications to explore resource states, deployments, configuration, and more. We have dedicated tabs for every aspect of application management.
+#### Convenient access to frequently-used actions
 
-Here we'll call out tow 
 
-Here are 
+* **Effortless application management**  
+  Need to take action for a specific application? Do so directly from the global application view in the GitOps Apps dashboard.  
+  The context menu of every application provides quick access to commonly-used options, such as diff views, manual sync, edit, refresh, and delete.
 
-#### Instant insights with Application Header
-The Application Header provides at-a-glance information on health and sync statuses, plus handy links for more details. 
-No matter which tab you navigate to, the Application Header is always in view for always-on access to crucial information.  
-
-Instantly get insights into health and sync statuses, auto-sync enabled/disabled indication, and convenient access to repos via handy links.
+* **Discrepancy detection with Diff View**  
+  Spot disparities between desired and live states with the Diff View option in the application's context menu, again directly from the GitOps Apps dashboard. Get a visual representation of discrepancies between the desired and live states for out-of-sync applications to troubleshoot issues more effectively.
 
 SCREENSHOT
 
-#### Monitor live states of app resources
-The Current State tab, which is where you get to on drill down to an app, is where as its =title indicates .  Keep track of resources, manifests, and logs, in  hierarchical Tree or flat List views.
-in a hierarchical tree view when you have complex deployments with multiple clusters and large numbers of resources or as a flat it. 
-
-Quick actions with Every resource comes with its own context menu, offering options for quick intervention. 
+###  Drill-down application views
+Dive deeper into individual applications to explore resource states, deployment history, configuration, and more. We have dedicated tabs for every aspect of application management.
 
 
+Here are a few highlights.
 
-The GitOps Apps Dashboard is your go-to hub for application management, offering unparalleled visibility and control. 
-Codefresh GitOps comes with additional dashboards to round out or complement information. Two such dashboards 
+#### Always-on information in Application Header
+The Application Header provides at-a-glance information on health and sync statuses, auto-sync enabled/disabled indications, plus handy links to repositories. 
+No matter which tab you navigate to, the Application Header is displayed for always-on access to crucial information.  
+
+
+SCREENSHOT
+
+#### Live monitoring of app resources in Current State 
+The Current State tab, which is where you get to when you drill down to an app, keep track of application resources, manifests, and logs.
+
+* **Tree vs List views**   
+  Here too, we have flexible view formats, as hierarchical Tree, or flat List views.  
+  The Tree view is optimal when you have complex deployments with multiple clusters and large numbers of resources.
+
+
+* **Resource inventory**   
+  The Resource inventory, in the bottom-left of the Tree view is a unique feature.
+  It summarizes the aggregated count for each resource type in the application, with `out-of-sync` items for that resource type if any,  numbered in red.  
+
+  The Resource inventory acts as a click-filter. Selecting any resource type, filters the Current State by that resource type and sync status.
+  These filters are automatically applied to the default filter list for both Tree and List views. 
+
+* **Quick actions**  
+  Every resource comes with its own context menu, offering options for quick actions. 
+
+
+#### Manifest optimization
+Optimize definitions for an application through the Configuration tab, in Form or YAML formats.  
+
+
+SCREENSHOT
+
+#### Deployment history
+
+Monitor ongoing and historical deployments for an application. 
+The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases.  
+SCREENSHOT
 
 ## DORA Metrics dashboard: Unlock performance insights
 
-The DORA Metrics dashboard is your key to optimizing your software delivery pipeline. Codefresh supports DORA metrics out-of-the-box 
+DORA metrics is ubiquitous in the world of DevOps as a software lifecycle improvement tool for engineers and managers.  
+Codefresh has out-of-the-box support for DORA metrics, and our DORA Metrics dashboard provides enterprise-wide visibility into performance.
+ 
+*  Tagging applications as favorites in the GitOps Apps dashboard and cthe performance of those applications and metrics in the DORA metrics dashboard.  
+
+* The Totals snapshot distills key metrics for quick recap and  failure rate and to a 
+
+Correlate inshts from the GitOps Apps dashboard with DORA metrics for data drvien insighst and 
 
 Platform managers
 By monitoring DORA metrics, platform managers can gain insights into team efficiency, identify areas for improvement, and track the impact of process changes over time. This data-driven approach enables organizations to optimize their software delivery pipelines and achieve higher levels of performance and productivity.
 
 DevOps engineers benefit from actionable insights into their development processes, empowering them to identify areas for optimization and enhance collaboration.rs
  gain valuable visibility into team efficiency and effectiveness, enabling data-driven decision-making and fostering a culture of continuous improvement. 
- 
- Scenario:
-Imagine you're a DevOps engineer responsible for managing the deployment of an e-commerce application. You regularly monitor the application's performance and health using the GitOps Apps Dashboard, which provides a consolidated view of all applications under your care.
 
-For example, correlating a significant increase in deployment lead time for an application in the GitOps Apps Dashboard can lead you to discover that spike in the lead time spike coincides with an uptick in deployment frequency and a higher change failure rate, as indicated by the DORA Metrics Dashboard. This suggests that the team's recent efforts to increase deployment velocity may have inadvertently introduced instability into the deployment process.
 
-Armed with this insight, you collaborate with the development team to identify the root cause of the issue. Through discussions and analysis, you determine that the surge in deployment frequency has led to a higher risk of introducing bugs and errors into the production environment.
+For example, a significant increase in deployment lead time for an application in the GitOps Apps Dashboard can lead you to discover that spike in the lead time spike coincides with an uptick in deployment frequency and a higher change failure rate, as indicated by our DORA Metrics dashboard. This correlation suggests that efforts to increase deployment velocity may have inadvertently introduced instability into the deployment process.
 
-As a result, you work with the team to implement stricter testing protocols and improve automation in the deployment pipeline. Over time, you observe a gradual decrease in lead time, accompanied by improvements in deployment frequency and change failure rate, as reflected in the DORA Metrics Dashboard.
 
-By leveraging data from both the GitOps Apps Dashboard and the DORA Metrics Dashboard, you were able to identify potential bottlenecks in the deployment process, collaborate effectively with the development team, and implement targeted improvements to enhance overall delivery efficiency and stability. This scenario highlights how the actionable insights derived from correlating data across dashboards can drive continuous improvement and optimize software delivery pipelines.
- Development teams will  With metrics like lead time, deployment frequency, change failure rate, and mean time to recover (MTTR), everyone from executives to individual contributors can align their efforts to drive DevOps excellence and accelerate delivery cycles.
+## Images dashboard: Streamlined container views for applications
+The Images Dashboard streamlines container management for DevOps teams and infrastructure administrators by providing a centralized hub for monitoring and managing container images. 
+TBD
 
-## Images dashboard for streamlined con
-The Images Dashboard streamlines container management for DevOps teams and infrastructure administrators by providing a centralized hub for monitoring and managing container images. Development teams will gain visibility into image versions and deployment locations, enabling them to ensure consistency and reliability across their applications. Operations teams will benefit from real-time insights into image lifecycle statuses and security vulnerabilities, empowering them to proactively manage containerized environments and mitigate risks. Whether you're orchestrating deployments, managing infrastructure, or ensuring compliance, the Images Dashboard equips you with the tools you need to streamline operations and enhance security.
 
-### DORA 
+## GitOps Runtimes: Unified visibility and simplified 
+
+Enterprises using Argo CD for deployments often come up against the complexity of using Argo CD at scale.  
+Codefresh GitOps has native support for Argo CD, and we are also an active maintainer of the open source community version of Argo CD. 
+
+Installing Codefresh GitOps through the GitOps Runtime installs a forked version of the Argo Project with its components: Argo CD, Argo Rollouts, Argo Workflows and Argo Events.
+
+* Every GitOps Runtime is an Argo CD instance. 
+* Every GitOps Runtime can connect to and manage any number of external clusters.
+* All GitOps Runtimes are managed and synchronized by a single control plane.
+
+Here are a few key benefits of GitOps Runtimes over Argo CD instances for deployment:
+
+* **Scalability**  
+  Single control plane management eliminates the challenge of scaling and maintaining multiple Argo CD instances. 
+  
+  Scaling down on Argo CD instances is equally straightforward: by connecting additional remote clusters to an existing GitOps Runtime, you can reduce the number of Argo CD instances.
+
+
+* **Single pane of glass visibility**  
+  All Argo CD instances in Codefresh being managed through a single control plane means full visibility for all Runtimes and clusters.  Runtime and cluster topology can be viewed in the same location.
+  SCREENSHOT
+
+  The single pane of glass visibility extends also to the Argo CD applications associated with these Runtimes, removing the pain of fragmented views between Argo CD instances. All applications are displayed in the GitOps Apps dashboard regardless of the clusters on which they are deployed. There's no need to track applications across clusters manually.
+
+  SCREENSHOT
+
+* **Centralized administration**
+  Enterprise-level administrative functionality for user, permission, and audit management is centralized, and Argo CD agnostic.
+
+
+
+
+
 
 
 
