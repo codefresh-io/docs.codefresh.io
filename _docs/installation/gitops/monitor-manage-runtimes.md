@@ -38,6 +38,55 @@ Changing the ArgoCD password can result in system instability, and disrupt the p
 
 
 
+## Designate a Configuration Runtime
+Designate a GitOps Runtime as a Configuration Runtime to manage resources that need to be synced to the cluster but are Runtime-agnostic. These resources are crucial for functionality relating to Products and Promotions in GitOps, such as Promotion Policies, Promotion Templates, and Promotion Flows. 
+
+##### Single vs multiple Configuration Runtimes
+You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codeffresh makes sure that there are no duplicate resources for Promotions among designated Runtimes. 
+
+
+##### How to
+1. In the `values.yaml` file, navigate to `global.runtime`.
+1. To designate a specific Runtime, set the `isConfigurationRuntime` flag for that Runtime to `true` (default is `false`).
+  
+```yaml
+  global:
+  codefresh:
+    url: https://codefresh-platform.ngrok.io # ngrok
+
+    userToken:
+      token: <TOKEN>
+
+  runtime:
+    name: ngrok-noam
+    isConfigurationRuntime: true # saves all promotion configuration in this Runtime 
+
+    ingress:
+      enabled: true
+      className: nginx-public
+      hosts:
+      - codefresh.rnd.sandbox.codefresh.io 
+```
+
+When designated, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different promotion settings.
+
+```
+├── resources <───────────────────┐
+│   ├── all-runtimes-all-clusters 
+│   ├── configurations            │ # new folder storing promotion configuration
+│       ├── promotion-flows       │ 
+│       └── promotion-templates   │
+│       └── promotion-policies    │
+│   ├── control-planes            │        
+│   ├── runtimes                  │
+│   │   ├── runtime1              │    
+│   │   └── runtime2              │    
+│   └── manifest6.yaml            │
+└── runtimes                      │
+│    ├── runtime1                 │ 
+│   │   ├── in-cluster.yaml       ┤     
+```
+
 ## GitOps Runtime views
 
 View provisioned GitOps Runtimes in List or Topology view formats.
