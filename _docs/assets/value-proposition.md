@@ -128,8 +128,56 @@ For example, a significant increase in deployment lead time for an application i
 The Images Dashboard streamlines container management for DevOps teams and infrastructure administrators by providing a centralized hub for monitoring and managing container images. 
 TBD
 
+## Environments & Products: Next-generation development and deployment
+The GitOps Apps dashboard presents a comprehensive view , and the DORA metrics   ,it doesn't give you the context between applications.
+Our Environments and Products brings you the
+
+##### What is an Environment in Codefresh GitOps? 
+
+In Codefresh GitOps, an Environment is a custom entity defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
+
+ SCREENSHOT
+Here are some key benefits of Environments:
+
+* **Mirror your SDLC**  
+  Environments are designed to mirror your software development life cycle (SDLC). By aligning applications with their development stages, Environments offer a clear and contextual view of the entire application lifecycle, as it moves from development to production.
+
+*  **Effortless creation**  
+  Creating an Environment in Codefresh is straightforward and intuitive. All you need is a unique name and the Kubernetes clusters and namespaces to associate with the Environment. 
+
+* **Contextual visibility**  
+  Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
+
+* **Simple scalability and maintenance**  
+  Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
+  For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
+
+
+### What do you get from Products?
+
+In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view of these applications as they progress through the development and deployment lifecyle.  
+
+Consider any practical scenario of numerous indivdiual but connected applications, such as user management or billing. Instead of monitoring and managing each application separately, creating a Product enables you to track and manage them collectively.
+
+
+
+
+* **Unified application management**  
+  Managing complex Argo CD applications across multiple Environments can be challenging.  
+  By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
+
+* **Bridging applications and Environments**  
+  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+
+* **Effortless creation**  
+  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
+
+* **Real-time insights with integrated views**  
+  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
 
 ## GitOps Runtimes: Unified visibility and simplified 
+
+Finally we come to what 
 
 Enterprises using Argo CD for deployments often come up against the complexity of using Argo CD at scale.  
 Codefresh GitOps has native support for Argo CD, and we are also an active maintainer of the open source community version of Argo CD. 
