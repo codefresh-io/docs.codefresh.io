@@ -16,14 +16,6 @@ Managing complex applications across multiple environments is a common challenge
 In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
 By grouping applications, Products enhance Environments, allowing complete visibility for efficient management across Environments.
 
-
-
-##### What is a Product in Codefresh GitOps?
-In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view as the applications progress through the development and deployment lifecyle.  
-
-Consider a practical scenario of numerous applications connected to billing or payment. Instead of monitoring each application separately, creating a Product enables you to track and manage them collectively.
-
-
 {% include 
 	image.html 
 	lightbox="true" 
@@ -36,7 +28,11 @@ Consider a practical scenario of numerous applications connected to billing or p
 
 Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/)[](gitops-environments.md){:target="\_blank"}.
 
-##### Benefits of Products
+
+##### What is a Product in Codefresh GitOps?
+In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view as the applications progress through the development and deployment lifecyle.  
+
+Consider a practical scenario of numerous applications connected to billing or payment. Instead of monitoring each application separately, creating a Product enables you to track and manage them collectively.
 
 The diagram illustrates how Argo CD applications connected to a Product are grouped by that Product and organized by Environments. It also shows applications not assigned to any Product.
 
@@ -50,18 +46,18 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
   max-width="70%" 
 %}
 
-
-* Unified application management  
+##### Benefits of Products
+* **Unified application management**  
   Managing complex Argo CD applications across multiple Environments can be challenging.  
   By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
 
-* Bridging applications and Environments  
+* **Bridging applications and Environments**  
   Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
 
-* Effortless creation  
+* **Effortless creation**  
   As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
 
-* Real-time insights with integrated views  
+* **Real-time insights with integrated views**  
   The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
 
 
@@ -74,10 +70,7 @@ In two simple steps:
 1. [Connect applications to the Product](#assigning-applications-to-products)  
   Bring your applications into the picture. Link applications to the Products you've created to create the associations you need. 
 
-Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
-
-
-
+Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).  
 You can then [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).
 
 ## Understanding the role of Environments for Products
