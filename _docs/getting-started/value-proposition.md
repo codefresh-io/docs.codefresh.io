@@ -1,7 +1,9 @@
-
-
-## Unveiling the value proposition of Codefresh GitOps
-
+---
+title: "GitOps value proposition"
+description: "Unveiling the value proposition of Codefresh GitOps"
+group: getting-started
+toc: true
+---
 
 Discover how Codefresh's GitOps offering revolutionizes application development and deployment with streamlined operations and unified visibility. 
 
