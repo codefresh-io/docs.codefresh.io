@@ -1,16 +1,17 @@
 
 
-Unveiling the value proposition of Codefresh GitOps
-
-top-dpwn from the top
+## Unveiling the value proposition of Codefresh GitOps
 
 
+Discover how Codefresh's GitOps offering revolutionizes application development and deployment with streamlined operations and unified visibility. 
+
+Let us take you through the key features and benefits....
 
 
 
 ## GitOps Apps dashboard: Command center for application management
 
-As a one-stop shop for Argo CD and Argo Rollouts, the GitOps Apps dashboard is where you create and manage Argo CD applications.
+As a one-stop shop for Argo CD and Argo Rollouts, the GitOps Apps dashboard is where you create, monitor, and manage Argo CD applications.
 The GitOps Apps dashboard tackles the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. 
 
 DevOps engineers get a consolidated bird's-eye view of the applications under their care.  Flexible view formats, a wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility of deployments. 
@@ -27,7 +28,8 @@ max-width="70%"
 
 Let's touch on the main features and functionality in the GitOps Apps dashboard.
 
-### Global application views
+### Global application view
+When you get to the GitOps Apps dashboard, you see all applications in your account, across clusters and namespaces. 
 
 #### Flexible viewing options
 View applications in List or Card views, and tailor the information displayed to just what you need with our customizable filters. 
@@ -35,12 +37,13 @@ View applications in List or Card views, and tailor the information displayed to
 The Card view is similar to Argo CD's application view, presenting applications in a flat list.
 The List view displays the hierarchical structure of your applications.
 
-
 Whichever the view format, a wide range of filters, application- and attribute-based, allow you to customize the data presented.
 * Application-based filters such as the Health status filter brings you a snapshot of deployed applications by their health statuses. Clicking a status filters by applications that match the status. 
 * Attribute-based filters include Application Type, Clusters, Namespaces and more. 
 
 SCREENSHOT
+
+Read more in 
 
 #### Warning & error alerts 
 The Warnings/Errors button on the toolbar allows you to stay on top of issues with instant alerts for problematic applications. Whether it's Argo CD-generated errors or custom warnings from Codefresh.
@@ -63,7 +66,7 @@ SCREENSHOT
 Dive deeper into individual applications to explore resource states, deployment history, configuration, and more. We have dedicated tabs for every aspect of application management.
 
 
-Here are a few highlights.
+Here are the highlights.
 
 #### Always-on information in Application Header
 The Application Header provides at-a-glance information on health and sync statuses, auto-sync enabled/disabled indications, plus handy links to repositories. 
@@ -103,112 +106,115 @@ Monitor ongoing and historical deployments for an application.
 The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases.  
 SCREENSHOT
 
-## DORA Metrics dashboard: Unlock performance insights
+## DORA Metrics: Unlock performance insights
 
 DORA metrics is ubiquitous in the world of DevOps as a software lifecycle improvement tool for engineers and managers.  
 Codefresh has out-of-the-box support for DORA metrics, and our DORA Metrics dashboard provides enterprise-wide visibility into performance.
  
-*  Tagging applications as favorites in the GitOps Apps dashboard and cthe performance of those applications and metrics in the DORA metrics dashboard.  
+TBD
 
-* The Totals snapshot distills key metrics for quick recap and  failure rate and to a 
-
-Correlate inshts from the GitOps Apps dashboard with DORA metrics for data drvien insighst and 
-
-Platform managers
-By monitoring DORA metrics, platform managers can gain insights into team efficiency, identify areas for improvement, and track the impact of process changes over time. This data-driven approach enables organizations to optimize their software delivery pipelines and achieve higher levels of performance and productivity.
-
-DevOps engineers benefit from actionable insights into their development processes, empowering them to identify areas for optimization and enhance collaboration.rs
- gain valuable visibility into team efficiency and effectiveness, enabling data-driven decision-making and fostering a culture of continuous improvement. 
-
-
-For example, a significant increase in deployment lead time for an application in the GitOps Apps Dashboard can lead you to discover that spike in the lead time spike coincides with an uptick in deployment frequency and a higher change failure rate, as indicated by our DORA Metrics dashboard. This correlation suggests that efforts to increase deployment velocity may have inadvertently introduced instability into the deployment process.
+[Read more]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
 
 ## Images dashboard: Streamlined container views for applications
 The Images Dashboard streamlines container management for DevOps teams and infrastructure administrators by providing a centralized hub for monitoring and managing container images. 
 TBD
 
+[Read more]({{site.baseurl}}/docs/dashboards/images/).
+
 ## Environments & Products: Next-generation development and deployment
-The GitOps Apps dashboard presents a comprehensive view , and the DORA metrics   ,it doesn't give you the context between applications.
-Our Environments and Products brings you the
+The GitOps Apps dashboard presents a comprehensive view of your applications, allowing you to drill down into their resources, deployment timelines, and more for insights. 
 
-##### What is an Environment in Codefresh GitOps? 
-
-In Codefresh GitOps, an Environment is a custom entity defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
-
- SCREENSHOT
-Here are some key benefits of Environments:
-
-* **Mirror your SDLC**  
-  Environments are designed to mirror your software development life cycle (SDLC). By aligning applications with their development stages, Environments offer a clear and contextual view of the entire application lifecycle, as it moves from development to production.
-
-*  **Effortless creation**  
-  Creating an Environment in Codefresh is straightforward and intuitive. All you need is a unique name and the Kubernetes clusters and namespaces to associate with the Environment. 
-
-* **Contextual visibility**  
-  Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
-
-* **Simple scalability and maintenance**  
-  Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
-  For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
+These insights are crucial for individual applications. What is also crucial for DevOps engineers and managers are insights for these applications in the wider context of their development and deployment lifecycle. This is exactly what Codefresh GitOps offers through Enviroments and Products, the next-generation paradigm for deployment and development. 
 
 
-### What do you get from Products?
+In Codefresh GitOps:
 
-In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view of these applications as they progress through the development and deployment lifecyle.  
+An Environment consolidates information for all Argo CD applications deployed to  clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
 
-Consider any practical scenario of numerous indivdiual but connected applications, such as user management or billing. Instead of monitoring and managing each application separately, creating a Product enables you to track and manage them collectively.
+A Product allows you to group interconnected Argo CD applications, providing a cohesive view of these applications as they progress through the development and deployment lifecyle.  Consider any practical scenario of numerous separate but interrelated applications, such as user management or billing. Instead of monitoring and managing each application separately, creating a Product enables you to track and manage them collectively.
+
+Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different Environments, providing clarity and control over your deployment pipelines.
+ 
+### Creating Environments & Products
+
+Similar to the GitOps Apps dashboard, we have the Environments and Products dashboards where you create, view, and manage Environments, Products, and applications.
+
+Creating Environments and Products is straightforward and intuitive:
+* For Environments, all you need is a unique name, and the Kubernetes clusters and namespaces to associate with the Environment to "catch" deployed applications. [Read more]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments).
+* Creating a Product is equally straightforward. You can create Products from the UI, or declaratively through simple annotations in application manifests. [Read more]({{site.baseurl}}/docs/dashboards/gitops-products/#assigning-applications-to-products).
 
 
+Let's review key highlights for the Environments & Products dashboards. 
+ 
+
+### Environments & Products: App versions and dependencies 
+A unique feature common to both Environments and Products is the release version of applications.  Helm-based applications display the release version of the application, the _app version_ as defined in the Helm chart, identifying the specific release versions in the different Environments.
+Displayed prominently for each application, this information is invaluable to easily track what's actually deployed across Environments. 
+
+Clicking the version displays the application’s dependencies and their versions, and allows you to compare them across deployments in different Environments.  
+You can easily see which version is deployed where. The comparison view is useful for troubleshooting to identify if the version that works in `dev` is the same as the version with the problem in `staging`.
+
+We are working to also support this feature for non-Helm applications as well.
+
+[Read more]({{site.baseurl}}/docs/dashboards/gitops-products/#view-and-compare-deployed-versions-for-dependencies).
+
+### Environments & Products: Quick actions for applications
+Take action for applications without navigating from wherever you are, Environments or Products. Manage applications through each application's context menu, including manual sync, refresh, and other frequently used options. These options are identical to those available for individual applications in the GitOps Apps dashboard.
+
+[Read more]({{site.baseurl}}/docs/dashboards/gitops-products/#manage-applications-in-products).
 
 
-* **Unified application management**  
-  Managing complex Argo CD applications across multiple Environments can be challenging.  
-  By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
+### Environments: Applications by Health status
+In every Environment, a toolbar displays the number of applications categorized by health status. Clicking on a status filters the displayed applications accordingly.
 
-* **Bridging applications and Environments**  
-  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
 
-* **Effortless creation**  
-  As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
+### Products: Real-time insights with integrated views
+The Products dashboard offers three distinct views: Pods, Git, and Features. Beyond the standard technical details and Git hash information, these enriched views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. 
 
-* **Real-time insights with integrated views**  
-  The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
+Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
 
-## GitOps Runtimes: Unified visibility and simplified 
+[Read more]({{site.baseurl}}/docs/dashboards/gitops-products/#integrated-insights-with-pod-git-feature-views).
 
-Finally we come to what 
 
-Enterprises using Argo CD for deployments often come up against the complexity of using Argo CD at scale.  
-Codefresh GitOps has native support for Argo CD, and we are also an active maintainer of the open source community version of Argo CD. 
+## GitOps Runtimes: Superior visibility and simplified operations
 
-Installing Codefresh GitOps through the GitOps Runtime installs a forked version of the Argo Project with its components: Argo CD, Argo Rollouts, Argo Workflows and Argo Events.
+Enterprises leveraging Argo CD for deployments often face the complexity of managing deployments at scale.  
+Codefresh GitOps offers native support for Argo CD, while serving as an active maintainer of the open source community version. 
 
+Our GitOps Runtime solves these issues with unique benefits. A wizard guides you through the steps required to install the GitOps Runtime. The installation includes a forked version of the Argo Project with its components: Argo CD, Argo Rollouts, Argo Workflows and Argo Events.
+[Read more]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
+In summary:
 * Every GitOps Runtime is an Argo CD instance. 
 * Every GitOps Runtime can connect to and manage any number of external clusters.
 * All GitOps Runtimes are managed and synchronized by a single control plane.
 
-Here are a few key benefits of GitOps Runtimes over Argo CD instances for deployment:
+And these are the benefits: 
 
-* **Scalability**  
-  Single control plane management eliminates the challenge of scaling and maintaining multiple Argo CD instances. 
+* **Single pane of glass visibility**  
+  All Argo CD instances in Codefresh being managed through a single control plane means full visibility for all Runtimes.
+  Installed Runtimes are displayed in the GitOps Runtimes page with all the information you need on the Runtime, and actions to manage it.  
+  The Topology view is particularly useful for Runtime and cluster topology in the same location.
+  SCREENSHOT
+
+  The single pane of glass visibility extends also to the Argo CD applications associated with these Runtimes, removing the pain of fragmented views between different Argo CD instances. All applications are displayed in the GitOps Apps dashboard regardless of the clusters on which they are deployed. There's no need to track applications across clusters manually.
+
+* **Effortless maintenance** 
+  The Version column of the Runtime notifies whenever a new version is available, providing  a link to the complete changelog for informed decisions on upgrades.
+  
+* **Flexibile scalability**  
+  Single control plane management eliminates the challenge of maintaining multiple Argo CD instances. You can install any number of Argo CD instances and the Runtime handles the logistics.
   
   Scaling down on Argo CD instances is equally straightforward: by connecting additional remote clusters to an existing GitOps Runtime, you can reduce the number of Argo CD instances.
 
-
-* **Single pane of glass visibility**  
-  All Argo CD instances in Codefresh being managed through a single control plane means full visibility for all Runtimes and clusters.  Runtime and cluster topology can be viewed in the same location.
-  SCREENSHOT
-
-  The single pane of glass visibility extends also to the Argo CD applications associated with these Runtimes, removing the pain of fragmented views between Argo CD instances. All applications are displayed in the GitOps Apps dashboard regardless of the clusters on which they are deployed. There's no need to track applications across clusters manually.
-
-  SCREENSHOT
+* **Faster security remediations**
+  As an active maintainer of Argo CD, Codefresh ensures timely fixes for security vulnerabilities in our forked version, before rollout to the community version. 
 
 * **Centralized administration**
   Enterprise-level administrative functionality for user, permission, and audit management is centralized, and Argo CD agnostic.
 
-
-
+[Read more]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/).
 
 
 
