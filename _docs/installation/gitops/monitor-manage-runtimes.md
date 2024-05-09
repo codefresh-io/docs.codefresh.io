@@ -38,55 +38,6 @@ Changing the ArgoCD password can result in system instability, and disrupt the p
 
 
 
-## Designate a Configuration Runtime
-Designate a GitOps Runtime as a Configuration Runtime to manage resources that need to be synced to the cluster but are Runtime-agnostic. These resources are crucial for functionality relating to Products and Promotions in GitOps, such as Promotion Policies, Promotion Templates, and Promotion Flows. 
-
-##### Single vs multiple Configuration Runtimes
-You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codeffresh makes sure that there are no duplicate resources for Promotions among designated Runtimes. 
-
-
-##### How to
-1. In the `values.yaml` file, navigate to `global.runtime`.
-1. To designate a specific Runtime, set the `isConfigurationRuntime` flag for that Runtime to `true` (default is `false`).
-  
-```yaml
-  global:
-  codefresh:
-    url: https://codefresh-platform.ngrok.io # ngrok
-
-    userToken:
-      token: <TOKEN>
-
-  runtime:
-    name: ngrok-noam
-    isConfigurationRuntime: true # saves all promotion configuration in this Runtime 
-
-    ingress:
-      enabled: true
-      className: nginx-public
-      hosts:
-      - codefresh.rnd.sandbox.codefresh.io 
-```
-
-When designated, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different promotion settings.
-
-```
-├── resources <───────────────────┐
-│   ├── all-runtimes-all-clusters 
-│   ├── configurations            │ # new folder storing promotion configuration
-│       ├── promotion-flows       │ 
-│       └── promotion-templates   │
-│       └── promotion-policies    │
-│   ├── control-planes            │        
-│   ├── runtimes                  │
-│   │   ├── runtime1              │    
-│   │   └── runtime2              │    
-│   └── manifest6.yaml            │
-└── runtimes                      │
-│    ├── runtime1                 │ 
-│   │   ├── in-cluster.yaml       ┤     
-```
-
 ## GitOps Runtime views
 
 View provisioned GitOps Runtimes in List or Topology view formats.
@@ -148,6 +99,55 @@ Here is a description of the information in the Topology view.
 |**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster). |
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
+
+## Designate a Configuration Runtime
+Designate a GitOps Runtime as a Configuration Runtime to manage resources that need to be synced to the cluster but are Runtime-agnostic. These resources are crucial for functionality relating to Products and Promotions in GitOps, such as Promotion Policies, Promotion Templates, and Promotion Flows. 
+
+##### Single vs multiple Configuration Runtimes
+You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codeffresh makes sure that there are no duplicate resources for Promotions among designated Runtimes. 
+
+
+##### How to
+1. In the `values.yaml` file, navigate to `global.runtime`.
+1. To designate a specific Runtime, set the `isConfigurationRuntime` flag for that Runtime to `true` (default is `false`).
+  
+```yaml
+  global:
+  codefresh:
+    url: https://codefresh-platform.ngrok.io # ngrok
+
+    userToken:
+      token: <TOKEN>
+
+  runtime:
+    name: ngrok-noam
+    isConfigurationRuntime: true # saves all promotion configuration in this Runtime 
+
+    ingress:
+      enabled: true
+      className: nginx-public
+      hosts:
+      - codefresh.rnd.sandbox.codefresh.io 
+```
+##### Configuration folder in Shared Configuration Repository
+When designated, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different promotion settings.
+
+```
+├── resources <───────────────────┐
+│   ├── all-runtimes-all-clusters 
+│   ├── configurations            │ # new folder storing promotion configuration
+│       ├── promotion-flows       │ 
+│       └── promotion-templates   │
+│       └── promotion-policies    │
+│   ├── control-planes            │        
+│   ├── runtimes                  │
+│   │   ├── runtime1              │    
+│   │   └── runtime2              │    
+│   └── manifest6.yaml            │
+└── runtimes                      │
+│    ├── runtime1                 │ 
+│   │   ├── in-cluster.yaml       ┤     
+```
 
 ## (Hybrid GitOps) Upgrade GitOps Runtimes
 
