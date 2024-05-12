@@ -581,6 +581,11 @@ max-width="90%"
 
 Pipelines that belong to a project will mention it below their name so it is very easy to understand which pipelines belong to a project and which do not.
 
+## Data retention for pipeline builds and logs
+Codefresh retains build and log data for pipelines for a period of six months, for both on-premises and SaaS installation configurations. 
+
+For on-premises, for configuration details, see [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"}.
+
 
 ## Related articles
 [Global pipeline settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/)  
