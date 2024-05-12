@@ -199,7 +199,7 @@ The methods for updating any Git token are the same regardless of the reason for
 ### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
-* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}//docs/security/git-tokens/#git-runtime-token-scopes)
+* To authenticate through a Git Runtime token, make sure your token is valid and has [the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes)
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
