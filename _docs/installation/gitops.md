@@ -8,13 +8,45 @@ toc: true
 ---
 
 
-The Codefresh GitOps module requires you to install GitOps Runtimes.  
+Enterprises leveraging Argo CD for deployments often face the complexity of managing deployments at scale.  
+Codefresh GitOps offers native support for Argo CD, while serving as an active maintainer of the open source community version.  
+Our GitOps Runtime solves these issues with unique benefits.
 
-GitOps Runtimes are available as hosted Runtimes with Argo CD installed in the Codefresh cluster, and hybrid Runtimes with Argo CD installed in the customer's cluster. Review the [comparison](#hosted-vshybrid-gitops) between both Runtime modes.
+
+GitOps Runtimes come in two options:
+* Hosted Runtimes with Argo CD installed within the Codefresh cluster (see [Hosted GitOps](#hosted-gitops))
+* Hybrid Runtimes with Argo CD installed within the customer's cluster
+
+Explore the [benefits](#benefits-of-gitops-runtimes) of GitOps Runtimes, and [compare their features/functionality](#hosted-vshybrid-gitops).
+
+
+
+
+## Benefits of GitOps Runtimes
+
+* **Single pane of glass visibility**  
+  All Argo CD instances in Codefresh are managed through a single control plane, which means full visibility for all Runtimes.
+  Installed Runtimes are displayed in the GitOps Runtimes page with all the information you need on the Runtime, and actions to manage it.  
+
+
+* **Effortless maintenance** 
+  In the Runtimes page, the Version column notifies whenever a new version is available for the Runtime, providing a link to the complete changelog for full transparency when making decisions on upgrades.
+  
+* **Flexibile scalability**  
+  Single control plane management eliminates the challenge of maintaining multiple Argo CD instances. You can install any number of Argo CD instances and the Runtime will handle the logistics.
+  
+  Scaling down on Argo CD instances is equally straightforward: by connecting additional remote clusters to an existing GitOps Runtime, you can reduce the number of Argo CD instances.
+
+* **Faster security remediations**
+  As an active maintainer of Argo CD, Codefresh ensures timely fixes for security vulnerabilities in our forked version, before rollout to the community version. 
+
+* **Centralized administration**
+  Administrative functionality for user, permission, and audit management is centralized and Argo CD agnostic.
 
 
 ## Hosted GitOps
 The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh cluster.
+
 Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
 Hosted environments are full-cloud environments, where all updates and improvements are managed by Codefresh, with zero-maintenance overhead for you as the customer.  
 Currently, you can add one Hosted GitOps Runtime per account.
@@ -36,7 +68,13 @@ For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/
 ## Hybrid GitOps
 The hybrid version of GitOps, has Argo CD installed in the customer's cluster.    
 Hybrid GitOps is installed in the customer's cluster, and managed by the customer.  
+
 The Hybrid GitOps Runtime is optimal for organizations with security constraints, wanting to manage CI/CD operations within their premises. Hybrid GitOps strikes the perfect balance between security, flexibility, and ease of use. Codefresh maintains and manages most aspects of the platform, apart from installing and upgrading Hybrid GitOps Runtimes which are managed by the customer.  
+
+Hybrid GitOps Runtime installation includes a forked version of the Argo Project with its components: Argo CD, Argo Rollouts, Argo Workflows and Argo Events.
+
+
+
 
  
 {% include
