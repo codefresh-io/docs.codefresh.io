@@ -8,62 +8,76 @@ toc: true
 
 
 
-When a promotion is triggered in an environment for a Product, it is customary to validate the environment's readiness before deploying the changes and promoting the Product in that environment.
-Readiness validation for an environment verifies that the application and its dependencies meet the requirements and standards necessary for deployment in the target environment. Validations can include checks for code quality, passing unit or smoke tests, verifying compatibility with dependencies, security compliance, and other factors relevant to the target environment.
-
-In Codefresh you have the complete functionality to create and automate these validations for any combination of Products and Environments.  
-These validations are triggered on updates to the Git repositories to run as Argo Workflows. They include steps to run tests, notifications, and whatever else is required. 
-
-TBD
+When a promotion is triggered for a Product in an Environment, it is customary to validate the environment's readiness before deploying changes and promoting the Product in that environment.
+Readiness validation confirms that the application and its dependencies meet the necessary requirements and standards for deployment in the target environment. These validations encompass various checks, including code quality, unit or smoke tests, compatibility with dependencies, security compliance, and other relevant factors specific to the target environment.
 
 
-<!--- Automated enforcement: Streamline your deployment process with automated enforcement of promotion policies, minimizing the risk of errors and ensuring consistent and reliable deployments across your pipeline.
+Codefresh empowers you to create and automate these validations for any combination of Products and Environments through Promotion Policies. You can create dedicated Promotion Policies through the UI, or you can define it as part of a Promotion Flow which orchestrates the promotion and deployment of the Product across all the Environments.
 
-Scalable Governance: Scale effortlessly with your evolving infrastructure and application landscape, as promotion policies adapt to accommodate changes in products, environments, and deployment strategies.
-Youc an create any number of validations, at any level, and for any combination
+ 
+
+##### How do you define validations for promotion-readiness?
 
 
-Define the Promotion Policy for the Product-Environment combination
-Defining the Promotion Workflows 
-## Promotion Policies 
+ 
+Every Promotion Policy includes:
 
-Validate environment-readiness for promotion
+Promotion Action
+The Promotion Action is the action that triggers the promotion in the target environment. It is typically a Git action in the application's source repository. Codefresh also permits a no-action Policy for organizations which utilize custom compilation or build mechanisms.
 
-Flexible 
-Promotion Policies are highly customizable to suit your needs. Define policies per Product and per Environment, or with broader coverage for a Product across multiple Environments, or even for different Products for a kind of Environment. 
+Promotion Workflows
+The Promotion Workflow is an Argo Workflow executed before or after the Promotion Action.
+The Pre-Action Workflow is run before, and the Post-Action Workflow after, the Promotion Action. Both are optional, but we recommend 
 
-Priority-driven
-When multiple Promotion Policies match the same Product or Environment, Codefresh applies the Promotion Policy based on the predefined priroty to ensuring seamless enforcement.
+Products and Environments
+The Products and Environments the Promotion Policy applies to.
 
-Versatile Promotion Actions
-Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates diverse workflows and deployment strategies with ease.
+See ???
+
+
+
+## How or where does the Promotion Policy fit in the Promotion Flow?
+
+
+Promotion Policies are run:
+Upon manually promoting the Product from the trigger Environment to the destination Environment.
+OR
+Upon updating the Git repository with the application manifest.
+
+The validations comprising the Pre Promotion Workflow, the Action, and the Postare condifured  to run as Argo Workflows, and . They include steps to run tests, notifications, and whatever else is required. 
+
+## Benefits of Promotion Policies
+ 
+
+* **Automated validation**   
+  Validations defined in the Promotion Policy are enforced automatically, minimizing the risk of errors while ensuring consistent and reliable deployments.
+
+* **Flexible configuration**  
+  Promotion Policies are highly customizable to match your requirements. Define Policies per Product and per Environment, or with broader coverage for a specific Product across multiple Environments, or for different Products for a specific kind of Environment. 
+
+## Unique features of Promotion Policies
+On-demand evaluation
+Select a Product-Environment pair to see which Promotion Policy is applied to the combination. Either optimize the Policy or redefine its priority in the Policy list.
+
+Priority-driven enforcement
+In cases where multiple Promotion Policies match the same Product or Environment, Codefresh applies the Policy with the highest predefined priority, ensuring seamless enforcement.
+
+Versatile promotion Actions
+Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates both types of actions to trigger pro .
 
 -->
 
 
-##### How do you define validation for promotion-readiness?
-
-You define the validation process through Promotion Policies. A Promotion Policy is a Kubernetes CRD created per Product and Environment, or any combination of Products and Environments.
-
-Every Promotion Policy includes these settings:
-
-Promotion Action
-The Promotion Action is typically a Git action in the application's source repository that triggers the promotion in the target environment. 
-
-Promotion Workflows
-The Promotion Workflow is an Argo Workflow executed before or after the Promotion Action.
-
-Products and Environments
-The Products and Environments to which to assign the Promotion Policy.
 
 
-##### Where do you define the Promotion Policy?
-You can define dedicated Promotion Policies through the UI, or you can define it as part of the Promotion Lifecycle which orchestrates 
+
+
 
 ### How does the Promotion Policy work?
 
-When a promotion is triggered in an environment and Codefresh identifies a Promotion Lifecycle for the tarhet environment, 
+In the Trigger Environment, a the Promotion Action is manual When a promotion is triggered in an environment and Codefresh identifies a Promotion Lifecycle for the tarhet environment, 
 
+In the 
 1. Identifies the Promotion Policy to apply
 
 1. If defined, runs the Pre-Action Promotion Workflow 
@@ -99,8 +113,13 @@ The table below describes the settings you can define for a Promotion Policy.
 
 ### Create a Promotion Policy
 
-Create a Promotion Policy to validate an environment's readiness before promoting and deploying changes.  
-Connect the Policy to multiple Products and Environments 
+##### Before you begin
+
+* Create Promotion Workflows
+
+##### How to
+Create a Promotion Policy to validate an environment's readiness before promoting and deploying changes to a Product.  
+
 
 1. In the Codefresh UI, from Promotions in the sidebar, select [Promotion Policies](https://g.codefresh.io/2.0/?????){:target="\_blank"}.
 1. Do one of the following:
@@ -133,10 +152,10 @@ Define which Promotion Policy is applied to the Product/Environment when there i
  
  SCREENSHOT
 
-### Match Promotion Policy to Products and Environments 
-Select a specific Product-Environment pair to match the Promotion Policy that will be applied. Codefresh matches the Promotion Policy with the highest priority for the selected combination. 
+### Evaluate Promotion Policy for Products and Environments 
+Select a specific Product-Environment pair to match the Promotion Policy that will be applied for it. Codefresh matches the Promotion Policy with the highest priority for the selected combination. 
 
-When there are multiple Promotion Policies for a Product or Environment, the Match Promotion Policy functionality is valuable to review the policy that will be applied and potentially adjusting its priority as required.
+When there are multiple Promotion Policies for a Product or Environment, evaluating the Promotion Policy is valuable to review the policy that will be applied and potentially adjusting its priority as required.
 
 1. From the sidebar, select **Promotion Policies**.
 1. In the Promotion Policies page, click **Match Promotion Policy**.
@@ -165,9 +184,9 @@ What are Promotion Workflows?
 
 Promotion Worflows are Argo CD Workflows you can run as part of a Promotion Policy to validate readiness of the current environment for promotion.
 
-The Promotion Workflow run steps that execute tests, validations, sends notifications of tests
+The Promotion Workflow runs steps that execute tests, validations, sends notifications of tests.
 
-Create your own Promotion Workflows or use Codefresh's starter Workflow Template as your base
+Create your own Promotion Workflows or use Codefresh's starter Workflow Template as your base.
 
 Why define or create a Promotion Workflow?
 Though they are optional, Promotion Workflows are designed to run tests before and after the promotion to ensure that
@@ -229,7 +248,7 @@ SCREENSHOT
 
 ### Work with Workflow manifests
 
-* Toggle between the Git State, Desired State and Live State
+* Toggle between the Git State, Desired State, and Live State
 * Diff View of all three states
 * Edit mode for updates.
  Option to Run the Promotion Workflow and validate changes before committing them. 
