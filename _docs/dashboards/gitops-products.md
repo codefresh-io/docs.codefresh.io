@@ -26,7 +26,7 @@ By grouping applications, Products enhance Environments, allowing complete visib
   max-width="70%" 
 %}
 
-Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/)[](gitops-environments.md){:target="\_blank"}.
+Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
 
 ##### What is a Product in Codefresh GitOps?
