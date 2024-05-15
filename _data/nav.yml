@@ -9,6 +9,8 @@
       url: "/cd-codefresh"
     - title: Codefresh for GitOps
       url: "/gitops-codefresh"
+    - title: GitOps value proposition
+      url: "/value-proposition"      
     - title: Concepts in Codefresh
       url: "/concepts"
     - title: Global Search & Navigation
