@@ -91,7 +91,7 @@ Review [Key aspects when creating Environments](#key-aspects-when-creating-envir
 %} 
 
 {:start="3"}  
-1. Click **Add**. The environment is displayed in the GitOps Environments dashboard. 
+1. Click **Add**. The Environment is displayed in the Environments dashboard. 
 
 ## Environments dashboard
 Here's an example of the Environments dashboard.
