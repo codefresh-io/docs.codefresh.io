@@ -10,9 +10,9 @@ toc: true
 ---
 
 
-The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid, and the Hosted Runtime if you have one.
+The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid Runtimes, and the Hosted Runtime if you have one.
 
-View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views), to manage and monitor them.
+View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views) to manage and monitor them.
 
 {% include
    image.html
@@ -32,8 +32,8 @@ Unless specified otherwise, all options are common to both types of GitOps Runti
 
 {{site.data.callout.callout_warning}}
 **WARNING**
-Do not change the ArgoCD password by logging into the ArgoCD UI with the `argocd-initial-admin-secret`.
-Changing the ArgoCD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
+Do not change the Argo CD password by logging into the Argo CD UI with the `argocd-initial-admin-secret`.
+Changing the Argo CD password can result in system instability, and disrupt the proper functioning of the Codefresh platform.
 {{site.data.callout.end}}
 
 
@@ -70,7 +70,7 @@ Here is a description of the information in the List View.
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
 |**Modules**| The modules installed based on the type of provisioned Runtime. Hybrid GitOps (both Helm and CLI) Runtimes include CI and CD Ops modules. Hosted runtimes include CD Ops.   |
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
-|**Version**| The version of the Runtime currently installed, and the version of the Helm chart in parentheses. <br><br>**Update Available!** indicates there are newer versions of the Runtime, Helm chart, or both. <br>To see all the commits and changes for the version, mouse over **Update Available!**, and select **View Complete Change Log**. <br> See [Upgrade GitOps Runtimes](#hybrid-gitops-upgrade-gitops-runtimes) and [View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases). |
+|**Version**| The version of the Runtime currently installed, and the version of the Helm chart in parentheses. <br><br>**Update Available!** indicates there are newer versions of the Runtime, Helm chart, or both. <br>To see all the commits and changes for the version, mouse over **Update Available!**, and select **View Complete Change Log**. <br> See:<br>[Upgrade GitOps Runtimes](#hybrid-gitops-upgrade-gitops-runtimes)<br>[View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases)<br>[Rollback GitOps Runtimes](#hybrid-gitops-rollback-gitops-runtimes) |
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes">Update Git credentials for GitOps Runtimes</a>.</li>  </ul> {:/} |
 |**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <li><b>Download All Logs</b>:Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Delete Runtime</b>: Available only when the Hybrid GitOps Runtime is Offline. <br>Delete the GitOps Runtime from the Codefresh platform, retaining it on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-delete-gitops-runtimes">Delete GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}|
@@ -202,8 +202,8 @@ Changelogs for all versions, including historical versions are available on GitH
 
 * [Changelogs for GitOps Runtimes](https://github.com/codefresh-io/gitops-runtime-helm/releases){:target="\_blank"}
 
-## Rollback GitOps Runtimes
-Rollback to a previous version after upgrading a GitOps Runtime.
+## (Hybrid GitOps) Rollback GitOps Runtimes
+After upgrading a GitOps Runtime, rollback to a previous or a specific version of the Runtime.
 
 The rollback procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not.
 
@@ -217,7 +217,7 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 1. Commit the change, and push to your Git server.
 
 ##### Non-Argo CD GitOps Runtimes  
-Use Helm commands such as `rollback` (rollback to a specfic version) or `upgrade` (upgrade to a specific previous version).
+Use Helm commands such as `rollback` or `upgrade`.
 
 * `helm rollback`
   Example: 
