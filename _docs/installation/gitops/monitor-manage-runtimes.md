@@ -102,7 +102,7 @@ Here is a description of the information in the Topology view.
 
 ## (Hybrid GitOps) Upgrade GitOps Runtimes
 
-Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components. 
+Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, new functionality, and the latest versions of all components. 
 
 **Changelog for new versions**  
 Codefresh alerts you to newer versions of Runtimes, through `Update Available! Notification` in the List View's Version column. A new version of the GtiOps Runtime includes a link to the changelog, detailing the changes in that version.  
@@ -182,7 +182,7 @@ dependencies:
 Each version of a GitOps Runtime includes a changelog detailing the changes in that release. 
 
 ##### Changelog for latest Runtime release
-In the GitOps Runtimes List view, the Version column displays the current version installed.  
+In the GitOps Runtimes List view, the Version column displays the version currently installed.  
 
 Whenever there is a newer version of the Runtime, Helm chart, or both, the **Update Available!** notification appears in the same column.  
 Mouse over shows a link to the changelog for that version on GitHub.  
@@ -222,8 +222,8 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 ##### Non-Argo CD GitOps Runtimes  
 Use Helm commands such as `rollback` or `upgrade`.
 
-* `helm rollback`  
-  Example: 
+* `helm rollback`   
+  Example:  
   `helm rollback <runtime_name>  <rollback-version>`  
   where:  
   * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
