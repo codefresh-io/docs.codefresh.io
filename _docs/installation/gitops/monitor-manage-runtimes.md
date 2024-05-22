@@ -159,7 +159,7 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 1. For GitOps Runtimes, do the following:
     1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`
        where, `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
-    1. In the `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
+    1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
     1. Commit the change, and push to your Git server.
 ```yaml
 apiVersion: v2
@@ -201,6 +201,38 @@ Mouse over shows a link to the changelog for that version on GitHub, labeled as 
 Changelogs for all versions, including historical versions are available on GitHub.
 
 * [Changelogs for GitOps Runtimes](https://github.com/codefresh-io/gitops-runtime-helm/releases){:target="\_blank"}
+
+## Rollback GitOps Runtimes
+Rollback to a previous version after upgrading a GitOps Runtime.
+
+The rollback procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not.
+
+##### Argo CD GitOps Runtimes  
+Manually change the version in the Helm chart (`chart.yaml`) located in the Shared Configuration Repository.
+
+1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`  
+   where:  
+   `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
+1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
+1. Commit the change, and push to your Git server.
+
+##### Non-Argo CD GitOps Runtimes  
+Use Helm commands such as `rollback` (rollback to a specfic version) or `upgrade` (upgrade to a specific previous version).
+
+* `helm rollback`
+  Example: 
+  `helm rollback <runtime_name>  <rollback-version>`  
+  where:  
+  * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
+  * `<rollback-version>` is the version of the GitOps Runtime to roll back to.
+
+* `helm upgrade`
+  Example:  
+  `helm upgrade <runtime_name> --version <rollback-version>`  
+  where:  
+  * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
+  * `<rollback-version>` is the version of the GitOps Runtime to roll back to.
+
 
 
 ## Update Git credentials for GitOps Runtimes
