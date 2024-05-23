@@ -180,8 +180,9 @@ dependencies:
 
 ## (Hybrid GitOps) View changelogs for GitOps Runtimes
 Each version of a GitOps Runtime includes a changelog detailing the changes in that release. 
+Changelogs are available in ArtifactHub and GitHub
 
-##### Changelog for latest Runtime release
+##### Changelog for latest Runtime release in Codefresh
 In the GitOps Runtimes List view, the Version column displays the version currently installed.  
 
 Whenever there is a newer version of the Runtime, Helm chart, or both, the **Update Available!** notification appears in the same column.  
@@ -200,9 +201,21 @@ The example below shows the changelog for the **Latest** release of the GitOps R
 
 
 ##### Changelogs for all Runtime releases
-Changelogs for all versions, including historical versions, are available on GitHub.
+Changelogs for all versions, including historical versions, are available on ArtifactHub and GitHub.
 
-* Go to [GitHub](https://github.com/codefresh-io/gitops-runtime-helm/releases){:target="\_blank"} to see changelogs for all GitOps Runtime versions.
+* [GitHub](https://github.com/codefresh-io/gitops-runtime-helm/releases){:target="\_blank"}
+* [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime#prerequisites)  
+  On the right, select the chart version, and then click **Changelog** above.
+  
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/helm/runtime-changelog-artifacthub.png"
+ url="/images/runtime/helm/runtime-changelog-artifacthub.png"
+ alt="Accessing changelog for GitOps Runtime on ArtifactHub"
+ caption="Accessing changelog for GitOps Runtime on ArtifactHub"
+  max-width="50%"
+%}
 
 ## (Hybrid GitOps) Roll back GitOps Runtimes
 After upgrading a GitOps Runtime, roll back to the previous or a specific version of the Runtime.
