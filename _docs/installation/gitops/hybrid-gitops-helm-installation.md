@@ -302,10 +302,12 @@ You can define one of three different access modes:
 * Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 
 
+
 **GitOps Runtime cluster with existing Argo CD**
 * `fullnameOverride` configuration for resource conflicts  
   Installing the GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
   Customizing `fullnameOverride` values for Argo CD (and Argo Rollouts if installed) in the GitOps Runtime's `values` file prevents these conflicts.
+
 
 * Resource tracking with `annotation`  
   Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
