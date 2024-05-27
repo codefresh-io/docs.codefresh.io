@@ -11,8 +11,10 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 Previously, SSO integration with different SSO providers allowed automatic user and team synchronization with Codefresh at fixed hourly intervals.
 
-With our update, you can now customize the auto-sync intervals to better suit your organization’s needs.  
-The new option allows you to set the sync interval ranging from 5 minutes to 60 minutes. This flexibility ensures more timely updates and improved efficiency in user and team management.
+With our latest update, you can now customize the auto-sync intervals to better suit your organization’s needs.  
+The new options allow you to set the sync frequency in minutes or hours. Alternatively, you can enable auto-sync without defining a specific interval, and Codefresh will automatically perform the sycn every 12 hours. 
+
+This flexibility ensures more timely updates and improved efficiency in user and team management.
 
 For details, see [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
