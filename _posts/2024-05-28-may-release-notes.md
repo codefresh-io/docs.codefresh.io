@@ -51,7 +51,7 @@ lightbox="true"
 file="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
 url="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
 alt="New Pull Request review triggers for GitHub" 
-caption=""New Pull Request review triggers for GitHub" 
+caption="New Pull Request review triggers for GitHub" 
 max-width="50%" 
 %}
 
