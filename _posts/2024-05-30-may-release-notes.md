@@ -48,8 +48,8 @@ The new supported triggers in Codefresh are:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/whats-new/may24/gitub-pr-approved-triggers.png" 
-url="/images/whats-new/may24/gitub-pr-approved-triggers.png" 
+file="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
+url="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
 alt="New Pull Request review triggers for GitHub" 
 caption=""New Pull Request review triggers for GitHub" 
 max-width="50%" 
@@ -59,11 +59,21 @@ For details, see [GitHub trigger events]({{site.baseurl}}/docs/docs/pipelines/tr
 
 ### GitOps: Rollout enhancements 
 
-##### Templated arguments in AnalysisTemplates
+* **Templated arguments in AnalysisTemplates**  
 Codefresh now supports templated arguments declared in AnalysisTemplates for metric configurations in AnalysisRuns. 
 
-##### Rollout Player
+* **Rollout Player**  
 To make Rollouts easier to manage, we added the Abort and Retry buttons to the Rollout Player. These options were previously available for the Rollout resource in the Current State tab.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+url="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+alt="Abort & Retry in Rollout Player" 
+caption="Abort & Retry in Rollout Player" 
+max-width="50%" 
+%}
 
 For details, see [Manage rollouts for Argo CD application deployments]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manage-rollouts-for-argo-cd-application-deployments).
 
@@ -82,8 +92,8 @@ You can now find the link to your Shared Configuration Repository directly in th
 {% include 
 image.html 
 lightbox="true" 
-file="/images/whats-new/may24/shared-config-repo-org-page.png" 
-url="/images/whats-new/may24/shared-config-repo-org-page.png" 
+file="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
+url="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
 alt="Link to Shared Configuration Repository in Organization Information" 
 caption="Link to Shared Configuration Repository in Organization Information" 
 max-width="50%" 
