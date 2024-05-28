@@ -368,7 +368,7 @@ As an alternative to manually syncing an application, either refresh or hard ref
    %} 
 
 ## Rollback Argo CD applications
-Rollback to a previously deployed version of active Argo CD applications. You may want to rollback a newly deployed version due to errors in your code or misconfigurations, etc.  
+Rollback to a previously deployed version of active Argo CD applications. You may want to roll back a newly deployed version due to errors in your code or misconfigurations, etc.  
 
 ### Prerequisites for rollback
 
@@ -393,8 +393,8 @@ max-width="80%"
 %}
 
 * **Deployment version for rollback older than history limit**  
-  By default, you can rollback to any the previous ten deployments (same as Argo CD). 
-  If you try to rollback to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
+  By default, you can roll back to any the previous ten deployments (same as Argo CD). 
+  If you try to roll back to a deployment older than ten of the most recent deployments, the Rollback option is disabled with a tooltip, that the 'Release is not in history'.
 
     {{site.data.callout.callout_tip}}
     **TIP**    
@@ -515,9 +515,11 @@ The table describes the controls in the Rollout Player.
 {: .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
-| **Rollback**      | Not available currently.  | 
+| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback)   | 
+|**Abort**          | Terminate the current rollout. | 
 | **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause pauses the rollout also after the pause duration. | 
 | **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | 
+|**Retry**              | Retry a rollout that has been aborted. Restarts the rollout from the beginning. Available only when a rollout has been aborted. | 
 | **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
 | **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
 
@@ -536,9 +538,9 @@ Manual rollback changes the live state of the rollout resource to the state in t
 1. In the Rollout Player, click **Rollback to**.
 
 
-### Manage the `rollout` resource
+### Manage the Rollout resource
 
-Control the rollout through the options available for the Rollout resource. 
+Control the rollout through the options available for the Rollout resource in the Current State tab. 
 
 1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
 1. Select the application and go to the Current State tab.
