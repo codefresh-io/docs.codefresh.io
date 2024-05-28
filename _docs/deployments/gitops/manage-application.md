@@ -515,7 +515,7 @@ The table describes the controls in the Rollout Player.
 {: .table .table-bordered .table-hover}
 | Rollback player option   | Description |  
 | --------------  | ------------| 
-| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback)   | 
+| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback).  | 
 |**Abort**          | Terminate the current rollout. | 
 | **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause pauses the rollout also after the pause duration. | 
 | **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | 
