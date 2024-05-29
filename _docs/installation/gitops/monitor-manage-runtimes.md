@@ -244,7 +244,7 @@ Use Helm commands such as `rollback` or `upgrade`.
 
 * `helm upgrade`  
   Example:  
-  `helm upgrade <runtime_name> --version <rollback-version>`  
+  `helm upgrade ... <runtime_name> --version <rollback-version>`  
   where:  
   * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
   * `<rollback-version>` is the version of the GitOps Runtime to roll back to.
