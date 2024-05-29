@@ -61,7 +61,10 @@
 
   document.addEventListener("keydown", function (event) {
     if (event.metaKey && event.key === "k") {
-      window.CommandBar.toggleHelpHub();
+      window.CommandBar.openHelpHub();
+      setTimeout(() => {
+        document.querySelector('input[data-testid=helphub-input]').focus()
+      }, 100);
     }
   });
 </script>
