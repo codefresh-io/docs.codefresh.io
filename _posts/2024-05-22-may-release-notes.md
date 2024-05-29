@@ -35,27 +35,6 @@ Please make sure to add them at the earliest to your allowed list. You can also 
 
 For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
 
-### Pipelines: More GitHub triggers with Pull Request review events
-
-We have expanded the list of supported triggers for GitHub to include Pull Request review events.   
-These additional triggers enhance the functionality of your CI pipelines in Codefresh. 
-
-The new supported triggers in Codefresh are:
-* Pull Request Review approved (`pull_request.review_approved`)
-* Pull Request Review commented (`pull_request.review_commented`)
-* Pull Request Review changes requested (`pull_request.review_requested`)
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
-url="/images/whats-new/may24/rel-notes-may-24-gitub-pr-approved-triggers.png" 
-alt="New Pull Request review triggers for GitHub" 
-caption="New Pull Request review triggers for GitHub" 
-max-width="50%" 
-%}
-
-For details, see [GitHub trigger events]({{site.baseurl}}/docs/docs/pipelines/triggers/git-triggers/#github-trigger-events).
 
 ### GitOps: Rollout enhancements 
 
