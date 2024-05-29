@@ -6,6 +6,233 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.4
+
+### Features & enhancements
+
+### General: More power to Global Search & Navigation
+
+We're excited to announce major enhancements powering our Global Search & Navigation: 
+
+* **Actions through Search**  
+  Execute actions using search or keyboard shortcuts:
+  * Run a pipeline: Search to navigate to a specific pipeline, and then use the `R` and `N` shortcut keys to trigger that pipeline.
+  * Refresh an application: Search for the application you need, and then use the `R` and `F` shortcut keys to instantly refresh the application.
+  * Sync an application: Within an application, use the `S` and `Y` shortcut keys to open the sync dialog.
+
+* **Quick navigation**  
+  * **Integrated link to `app-proxy` logs**  
+    We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
+  * **GitOps Runtimes for admins**  
+    Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
+  * **GitOps Permissions for admins**  
+    Type `GitOps Permissions` and click to go directly to the Permissions page.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+alt="Global Search & Navigation: app-proxy logs" 
+caption="Global Search & Navigation: app-proxy logs" 
+max-width="60%" 
+%}
+
+### General: Custom auto-sync intervals for SSO
+
+Previously, integration with different SSO providers allowed automatic user and team synchronization with Codefresh at fixed hourly intervals.
+
+With our latest update, you can now customize the auto-sync intervals to better suit your organization’s needs.  
+The new options allow you to set the sync frequency in minutes or hours. Alternatively, you can enable auto-sync without defining a specific interval, and Codefresh will automatically perform the sync every 12 hours. 
+
+SCREENSHOT
+
+This flexibility ensures more timely updates and improved efficiency in user and team management.
+
+For details, see [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
+
+### General: New platform IP addresses
+
+We are preparing for an upgrade to our production cluster. While the upgrade is still a couple of months away, here's an early heads up about changes in IP addresses.
+
+We've added new platform IP addresses as listed below:
+* 54.86.228.102
+* 54.221.236.3  
+* 54.235.42.99
+* 23.21.197.195
+* 34.238.37.0
+* 107.22.212.247
+
+Please make sure to add them at the earliest to your allowed list. You can also find these IPs listed in Codefresh docs.
+
+For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
+
+
+### Pipelines: Explore build relationships with Build Tree
+Introducing Build Tree for easy rendering of relationships between pipeline builds!
+Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+alt="Pipeline builds: Build Tree view" 
+caption="Pipeline builds: Build Tree view" 
+max-width="60%" 
+%}
+
+
+In addition to the effortless visualization, other key benefits include:
+* The selected build as an anchor reference point to linked builds, indicated by the **Current** tag assigned to it.
+* Updated status for every build, with failed steps listed for quick alerting.
+* Quick access to essential actions without navigating away from the Build Tree, through the build’s context menu.
+* Single-click access to the individual build view for detailed insights.
+
+For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
+
+
+
+### Pipelines: Monthly credit consumption usage by pipelines
+We added a **Usage per month** table below the Credit Consumption chart.  
+This table provides build and credit consumption metrics by pipelines for the selected month. 
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
+  url="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
+  alt="Credit Consumption: Usage per month by pipelines"
+  caption="Credit Consumption: Usage per month by pipelines"
+  max-width="60%"
+%}
+
+### Pipelines: More Pull Request events support for GitHub
+Our integration with GitHub events is now even stronger with the addition of more types of pull request (PR) event triggers.
+
+You can now trigger builds for the following PR events:
+* Pull request review approved
+* Pull request review changes requested
+* Pull request review commented
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  url="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  alt="New pull request events for GitHub in Codefresh"
+  caption="New pull request events for GitHub in Codefresh"
+  max-width="60%"
+%}
+
+For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+
+
+
+
+
+
+### GitOps: Rollout enhancements 
+
+* **Templated arguments in AnalysisTemplates**  
+Codefresh now supports templated arguments declared in AnalysisTemplates for metric configurations in AnalysisRuns. 
+
+* **Rollout Player**  
+To make Rollouts easier to manage, we added the Abort and Retry buttons to the Rollout Player. These options were previously available for the Rollout resource in the Current State tab.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+url="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+alt="Abort & Retry in Rollout Player" 
+caption="Abort & Retry in Rollout Player" 
+max-width="50%" 
+%}
+
+For details, see [Manage rollouts for Argo CD application deployments]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manage-rollouts-for-argo-cd-application-deployments).
+
+
+
+
+### Usability enhancements
+
+##### GitOps: Breadcrumbs
+We have improved the implementation of breadcrumbs for a smoother navigation experience.
+
+**Entity names in lowercase**  
+Within the breadcrumbs path, entity names are now consistently displayed in lowercase.
+
+**Sibling display and navigation**    
+The end of the path now shows all sibling items if available.  
+Clicking the dropdown displays all siblings, and clicking an item navigates directly to it.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+url="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+alt="Viewing and navigating to siblings in breadcrumbs" 
+caption="Viewing and navigating to siblings in breadcrumbs" 
+max-width="40%" 
+%}
+
+**Clean selection for copy**  
+Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies that item.  
+
+
+
+##### GitOps: Shared Configuration Repo in Organization Information
+As a usability enhancement, we have made it easier to locate the Shared Configuration Repository used by GitOps Runtimes. 
+
+You can now find the link to your Shared Configuration Repository directly in the Organization Information page.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
+url="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
+alt="Link to Shared Configuration Repository in Organization Information" 
+caption="Link to Shared Configuration Repository in Organization Information" 
+max-width="50%" 
+%}
+
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+##### New Feature Flags in v2.4
+
+##### Updated Feature Flags in v2.4
+
+### Bug fixes
+
+
+##### Pipelines
+* Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
+* Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
+* 500 error for BitBucket webhooks including deleted branches. 
+* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps.
+* Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
+* Builds for Gerrit in Codefresh triggered twice.
+* CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage.
+* `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
+
+* Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
+* For Gerrit, username of build initiator not displayed.
+* Usability issues when selecting clone pipeline option from UI. 
+
+##### GitOps
+* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  
+* `Slow loading...` message when selecting GitOps Apps option from sidebar.  
+* GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
+* Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**. 
+
+* GitOps UI does not show logs for pods. 
+* Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
+
+
 ## On-premises version 2.3
 
 ### Features & enhancements
