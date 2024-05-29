@@ -82,7 +82,27 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 
 ### Usability enhancements
 
-##### Global Search & Navigation
+##### GitOps: Breadcrumbs
+We have improved the implementation of breadcrumbs for a smoother navigation experience.
+
+**Sibling display and navigation**    
+The end of the path now shows all sibling items if available.  
+Clicking the dropdown displays all siblings, and clicking an item navigates directly to it.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+url="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+alt="Viewing and navigating to siblings in breadcrumbs" 
+caption="Viewing and navigating to siblings in breadcrumbs" 
+max-width="50%" 
+%}
+
+**Clean copy**  
+Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies that item.  
+
+
 
 ##### GitOps: Shared Configuration Repo in Organization Information
 As a usability enhancement, we have made it easier to locate the Shared Configuration Repository used by GitOps Runtimes. 
@@ -99,15 +119,7 @@ caption="Link to Shared Configuration Repository in Organization Information"
 max-width="50%" 
 %}
 
-##### GitOps: Breadcrumbs
-We have improved the implementation of breadcrumbs for a smoother navigation experience.
 
-**Clean copy**  
-Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies that item.  
-
-**Sibling display and navigation**    
-The end of the path now shows all sibling items if available. Click the dropdown to see all siblings.
-Click any item in the dropdown to navigate directly to it.
 
 
 
