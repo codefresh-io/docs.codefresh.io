@@ -236,7 +236,7 @@ Here we'll manually assign the application `demo-trioapp-dev` to the Product `de
 %}
 
 {:start="4"}
-1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our case.
+1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our case.
 
 
 {% include 
@@ -270,7 +270,7 @@ For the quick start, we'll use the default annotation Codefresh generated when w
 
 1. If needed, copy the Product's annotation.
   If not, continue from _Step 2_.
-    1. In the Products dashboard, mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+    1. In the Products dashboard, mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../../images/icons/edit.png?display=inline-block">{:/}.
     1. Copy the annotation and close the form.
 
 {% include 
