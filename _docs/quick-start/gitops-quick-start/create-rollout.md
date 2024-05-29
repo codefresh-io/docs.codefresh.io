@@ -74,9 +74,11 @@ When the image tag is updated, the auto-sync initiates the rollout.
 
 You have now created and deployed an Argo CD application in Codefresh. 
 
-### What to do next
-Continue with:  
+
+### What to do next  
 [Work with Environments & Products]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/)  
+
+
 
 
   
