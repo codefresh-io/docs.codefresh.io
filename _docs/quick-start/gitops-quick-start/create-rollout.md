@@ -76,7 +76,7 @@ You have now created and deployed an Argo CD application in Codefresh.
 
 ### What to do next
 Continue with:  
-[Work with Environments & Products]({{site.baseurl}}/docs/getting-started/quick-start/gitops-products)  
+[Work with Environments & Products]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/)  
 
 
   
