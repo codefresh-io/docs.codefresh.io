@@ -96,7 +96,7 @@ file="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png"
 url="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
 alt="Viewing and navigating to siblings in breadcrumbs" 
 caption="Viewing and navigating to siblings in breadcrumbs" 
-max-width="50%" 
+max-width="40%" 
 %}
 
 **Clean copy**  
@@ -136,6 +136,6 @@ max-width="50%"
 
 
 ##### GitOps 
-* GitOps UI does not show logs for pods. (CR-23578 - Victor)
+* GitOps UI does not show logs for pods. 
 * Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
 
