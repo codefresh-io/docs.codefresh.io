@@ -945,7 +945,8 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |
 | --------------         | --------------           |
-|Kubernetes cluster      | Server version 1.21 to 1.27, _without_ Argo Project components. {::nomarkdown}<br><b>Tip</b>: To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
+|Kubernetes cluster      | Server version 1.23 or higher {::nomarkdown}<br><b>Tip</b>: To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>{:/}|
+|Helm| 3.8.0 or higher|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
