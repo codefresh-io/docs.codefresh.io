@@ -37,9 +37,14 @@ For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/p
 
 ### GitOps: Early access to Environments and Products
 
-Codefresh is revolutionlizing Continuous Deployment with our latest innovations: Environments and Products!  
+Codefresh is revolutionizing Continuous Deployment with our latest innovations: Environments and Products!  
+
+Environments are designed to mirror your software development lifecycle. Organize your applications within Environments for a clear, contextual view of the entire application lifecycle, as applications move from development to production.
+
+Products, another groundbreaking concept in GitOps, represent a cohesive unit of Argo CD applications. Bridging the gap between Argo CD applications and Environments, Products allow you to group similar Argo CD applications with different versions, deployed across various Environments.
 
 Read our [blog](https://codefresh.io/blog/introducing-products-and-environments-early-access/){:target="\_blank"} to discover how these features can orchestrate your deployments. 
+
 
 ### GitOps: Rollout enhancements 
 
