@@ -35,6 +35,11 @@ Please make sure to add them at the earliest to your allowed list. You can also 
 
 For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
 
+### GitOps: Early access to Environments and Products
+
+Codefresh is revolutionlizing Continuous Deployment with our latest innovations: Environments and Products!  
+
+Read our [blog](https://codefresh.io/blog/introducing-products-and-environments-early-access/){:target="\_blank"} to discover how these features can orchestrate your deployments. 
 
 ### GitOps: Rollout enhancements 
 
@@ -62,6 +67,8 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 ### Usability enhancements
 
 ##### GitOps: Breadcrumbs
+These enhancements are coming soon...stay tuned for the announcement.
+
 We have improved the implementation of breadcrumbs for a smoother navigation experience.
 
 **Sibling display and navigation**    
