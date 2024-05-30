@@ -235,19 +235,7 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 ##### Non-Argo CD GitOps Runtimes  
 Use Helm commands such as `rollback` or `upgrade`.
 
-* `helm rollback`   
-  Example:  
-  `helm rollback <runtime_name>  <rollback-version>`  
-  where:  
-  * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
-  * `<rollback-version>` is the version of the GitOps Runtime to roll back to.
-
-* `helm upgrade`  
-  Example:  
-  `helm upgrade ... <runtime_name> --version <rollback-version>`  
-  where:  
-  * `<runtime_name>` is the name of the Hybrid GitOps Runtime to roll back to.
-  * `<rollback-version>` is the version of the GitOps Runtime to roll back to.
+If you need details, see the documentation on [Helm commands](https://helm.sh/docs/helm/helm_init/){:target="\_blank"}.
 
 
 
