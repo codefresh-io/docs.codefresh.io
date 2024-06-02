@@ -37,12 +37,31 @@ For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/p
 ### GitOps: Early access to Environments and Products
 
 Codefresh is revolutionizing Continuous Deployment with our latest innovations: Environments and Products!  
-
 We are excited to showcase these features as a beta version. This is your opportunity to explore, try, and share feedback that will shape their future development!
 
 Environments are designed to mirror your software development lifecycle. Organize your applications within Environments for a clear, contextual view of the entire application lifecycle, as applications move from development to production.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-environments-dashboard.png" 
+url="/images/whats-new/may24/rel-notes-may24-environments-dashboard.png" 
+alt="GitOps Environments dashboard" 
+caption="GitOps Environments dashboard" 
+max-width="60%" 
+%}
+
 Products, another groundbreaking concept in GitOps, represent a cohesive unit of Argo CD applications. Bridging the gap between Argo CD applications and Environments, Products allow you to group similar Argo CD applications with different versions, deployed across various Environments.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-products-expanded-view.png" 
+url="images/whats-new/may24/rel-notes-may24-products-expanded-view.png" 
+alt="GitOps Products dashboard" 
+caption="GitOps Products dashboard" 
+max-width="60%" 
+%}
 
 Read our [blog](https://codefresh.io/blog/introducing-products-and-environments-early-access/){:target="\_blank"} to explore on how they  can orchestrate your deployments. 
 
