@@ -1,5 +1,5 @@
 ---
-title: "Release Notes: June 2024"
+title: "Release Notes: May 2024"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
@@ -72,9 +72,8 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 ### Usability enhancements
 
 ##### GitOps: Breadcrumbs
-These enhancements are coming soon...stay tuned for the announcement.
+We are improving the implementation of breadcrumbs for a smoother navigation experience. These enhancements are coming soon...so stay tuned for the announcement.
 
-We have improved the implementation of breadcrumbs for a smoother navigation experience.
 
 **Sibling display and navigation**    
 The end of the path now shows all sibling items if available.  
@@ -91,7 +90,7 @@ max-width="40%"
 %}
 
 **Clean copy**  
-Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies that item.  
+Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies only that item.  
 
 
 
