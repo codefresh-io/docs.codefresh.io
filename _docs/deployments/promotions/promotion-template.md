@@ -1,5 +1,5 @@
 ---
-title: "Promotion changes"
+title: "Promotable changes"
 description: "Declaratively configure changes to promote between applications in Environments"
 group: deployments
 sub_group: gitops
@@ -48,7 +48,7 @@ TBD
 
 ### How does the Promotion Template work?
 
-The criteria you define in the Promotion Template CRD determines how changes are promoted in applications across Environments:
+The criteria you define in the Promotion Template CRD determines the changes which are promoted in applications across Environments:
 
 ADD HERE A FLOW DIAGRAM?
 
@@ -119,13 +119,26 @@ spec:
 | `metadata.name`  | The name of the Promotion Template, which can correspond to the name of the Product, or any other meaningful identifier.|Optional|
 | `.applicationSourceSelector`  | The label used to match the application to which to apply the Promotion Template. Application selectors conform to Kubernetes _label selectors_, defined as  `matchLabels` with `key-value` pairs, `matchExpressions` with `key-operator` pairs, or a combination of both. The values identify all the Promotion Template manifests that match the specific application or applications within the target Environment.<br>For example:{::nomarkdown}<ul><li><code class="highlighter-rouge">codefresh.io/environment: production</code> applies the Promotion Template to all applications within the Production Environment.</li><li><code class="highlighter-rouge">codefresh.io/product: loans</code> applies the Promotion Template only to applications belonging to the Loans Product.</li><li><code class="highlighter-rouge">key: codefresh.io/product</code> and <code class="highlighter-rouge">operator: Exists</code> applies the Promotion Template to any application containing the label <code class="highlighter-rouge">codefresh.io/product</code></li></ul>{:/}.|Required|
 | `.priority`  | The priority of the Promotion Template, determining the order in which Promotion Templates are applied when multiple Promotion Templates match the same application. The priority is ranked in ascending order, ranging from 0 or a negative number to higher values.   |Optional|
-|`.versionSource`|The location of the file and the field from which to extract the release version of the application. This is the version displayed in the UI for that application, in the Products and Environments dashboards for example.<br>If you choose to omit `.versionSource`, you must define at least one `.promotion`element containing the file and the version attribute.   | Optional|
+|`.versionSource`|The location of the file and the field from which to extract the release version of the application. This is the version displayed in the Codfresh UI, in the Products and Environments dashboards.<br>If you choose to omit `.versionSource`, you must define at least one `.promotion`element containing the file and the version attribute.   | Optional|
 | |{::nomarkdown}<ul><li><code class="highlighter-rouge">.versionSource.file</code>: The file path relative to the application's file path from which to extract the application's release version.  For example, <code class="highlighter-rouge">chart.yaml</code> indicates that the application version should be extracted from this file. </li><li><code class="highlighter-rouge">.versionSource.jsonPath</code>: The JSON path expression pointing to the location of the element containing the application version within the specified <code class="highlighter-rouge">.file</code>.<br>For example, <code class="highlighter-rouge">$.appVersion</code> indicates the value should be extracted from the field <code class="highlighter-rouge">.appVersion</code> in <code class="highlighter-rouge">chart.yaml</code> </li></ul>{:/} | Required|
-|`.promotion` |The top-level element listing the files and attributes containing the changes to be promoted to the target Environment, specified through a list of  `<filename>:jsonPaths` pairs.<br>Required when `versionSource` not defined, and must include at least one file and its JSON path containing the application release version.<br>If not defined, _all_ changes in _all_ the application's files are promoted.| Optional|
+|`.promotion` |The top-level element listing the files and attributes containing the changes to be promoted to the target Environment, specified through a list of  `<filename>:jsonPaths` pairs.<br>Required when `versionSource` not defined, and must include at least one file and its JSON path containing the application release version.<br>When empty, _all_ changes in _all_ the application's files are promoted.| Optional|
 
 
 
+### More about `.versionSource`
 
+Where does Codefresh looks for .versionSource information?
+
+**File and path context**  
+The `.versionSource.file` attribute in the Promotion Template CRD is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the application's configuration manifest. This is where Codefresh looks for the file from which to retrieve version information.
+
+JSON path expressions
+Specifies the JSON path expression pointing to the location of the element containing the application version within the specified file. For example, $..appVersion indicates that the version should be extracted from the appVersion field in the specified file.The file context is the  to the spec.source.repoURL attribute defined in the application's Source settings.
+The path is the 
+
+Version does notappear om te If the version does not appear in the UI, after defining the `.versionSource` attributes inthe Promptop Template CRD, it could be because Codefresh could not find the values in the repoURL and path.
+
+Double-chck that the Source settings for the application correspond to the `.versionSource` attributes inthe Promptop Template CRD
 
 
 
