@@ -210,27 +210,51 @@ Feature Flags are divided into new Feature Flags released in the current version
 
 
 ##### Pipelines
-* Incorrect Credits utilization: Credits Remaining versus Estimated Depletion. 
+MARCH
+* “Unknown error” failure on cloning a pipeline that includes a trigger. 
+* Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
+* Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. Oleg
+* Long loading time for Git repos when creating new pipelines and triggers.
+
+
+APRIL
+* "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue” error when selecting **Account settings > Pipeline integrations > Kubernetes**.
 * Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
-* 500 error for BitBucket webhooks including deleted branches. 
-* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps.
-* Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
+* Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
+* 500 error for BitBucket webhooks including deleted branches. (Vasil to check)
+* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
+* Build failure for pipeline including mixture of regular and `buildx` parallel build steps. 
 * Builds for Gerrit in Codefresh triggered twice.
-* CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage.
+* CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage. (oleg)
 * `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
 
+MAY
 * Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
 * For Gerrit, username of build initiator not displayed.
 * Usability issues when selecting clone pipeline option from UI. 
 
 ##### GitOps
-* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  
-* `Slow loading...` message when selecting GitOps Apps option from sidebar.  
+MARCH
+* New Argo CD application deployed in Codefresh remains as Out of Sync in **GitOps Apps > Current State**.
+* Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
+
+APRIL
+* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  (Daniel Maizel)
 * GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
 * Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**. 
 
+MAY
 * GitOps UI does not show logs for pods. 
 * Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
+
+
+
+##### Pipelines 
+
+
+
+##### GitOps 
+
 
 
 ## On-premises version 2.3
@@ -535,7 +559,6 @@ The table below lists existing Feature Flags which have been updated by default 
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 * Cloning a pipeline in UI fails with “Unknown error” when triggered from UI. 
 * `build-manager` microservice causing increased number of MongoDB connections.
-
 
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
