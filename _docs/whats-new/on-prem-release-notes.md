@@ -203,8 +203,33 @@ max-width="50%"
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
 ##### New Feature Flags in v2.4
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.4.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+|`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
+|`abacRuntimeEnvironments`    | When enabled, account administrators cam configure ABAC (Attribute Based Access Control) rules for Runtime Environments.| FALSE  |
+|`autoBuildSwitchAccount`      | When enabled, automatically switches the account instead of displayig the Swictc Account prompt wich requires manual action from the user.    | TRUE         |
+| `delightedSurvey`            | When enabled, displays Delighted CX surverys in the Codefresh UI. | FALSE|
+| `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
+| `gitopsDynamicBreadcrumbs`     | When enabled (the default), support rendering dynamic breadcrumbs for GitOps.   | TRUE         |
+| `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
+| `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled ???  | TRUE         |
+| `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
+| `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, after build execution displays build status per `pipelineId`, `triggerId`, and trigger event. | FALSE         |
+| `runtimeEnvironmentTags` | When enabled, supports adding tags to Runtime Environments for pipelines. | FALSE         |
+| `rolloutPlayerLiveState` | When enabled (the default), ??? displays rollout from AppProxy. | TRUE         |
+
+
 
 ##### Updated Feature Flags in v2.4
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `buildsTreeView`  | _This feature is now available for on-premises environments._ <br>When enabled (the default), shows a visualization of the parent and child builds of pipelines.<br>See [Explore build relationships with Build Tree](#pipelines-explore-build-relationships-with-build-tree) in this article. | _TRUE_         |
 
 ### Bug fixes
 
