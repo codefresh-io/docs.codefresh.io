@@ -71,7 +71,7 @@ The Runner is the hybrid installation option for pipelines in your Codefresh acc
 
 Codefresh Runner gives you: 
 * Access to secure services (such as Git repositories or databases) that are behind the firewall and normally not accessible to the public cloud.
-* The ability to use special resources in your Codefresh pipeline that are unique to your application, GPU nodes or other special hardware only present in your data center.
+* The ability to use special resources in your Codefresh pipeline that are unique to your application or other special hardware only present in your data center.
 * Complete control over the build environment in addition to resources for pipelines.
 
 Every Runner installation creates a runtime environment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
