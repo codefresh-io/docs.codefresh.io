@@ -132,7 +132,7 @@ You can designate a single Runtime or multiple Runtimes as Configuration Runtime
 ##### Configuration folder in Shared Configuration Repository
 When designated as a Configuration Runtime, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different promotion settings.
 
->>**NOTE**  
+>**NOTE**  
 Only GitOps Runtimes designated as Configuration Runtimes sync to this folder and its subfolders.
 
 ```
