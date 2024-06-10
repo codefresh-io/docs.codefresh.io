@@ -258,6 +258,11 @@ MAY
 * For Gerrit, username of build initiator not displayed.
 * Usability issues when selecting clone pipeline option from UI. 
 
+JUNE
+* Upgrade to on-premises v2.3.2 causes RabbitM out-of-disk issue. (CR23876 - Yarik)
+* Pipeline permissions override project permissions when both are defined for teams. (CR-23426 - Olek)
+* 
+
 ##### GitOps
 MARCH
 * New Argo CD application deployed in Codefresh remains as Out of Sync in **GitOps Apps > Current State**.
@@ -272,13 +277,10 @@ MAY
 * GitOps UI does not show logs for pods. 
 * Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
 
+JUNE
+* Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
 
 
-##### Pipelines 
-
-
-
-##### GitOps 
 
 
 
