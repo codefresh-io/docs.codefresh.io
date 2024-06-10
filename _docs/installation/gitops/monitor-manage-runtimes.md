@@ -104,7 +104,7 @@ Here is a description of the information in the Topology view.
 Designate a GitOps Runtime as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality relating to Products and Promotions in GitOps, such as Promotion Policies, Promotion Templates, and Promotion Flows. 
 
 ##### Single vs multiple Configuration Runtimes
-You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources for Promotions among designated Configuration Runtimes. 
+You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources for Promotions among the designated Configuration Runtimes if there are multiple such Runtimes. 
 
 
 ##### How to
