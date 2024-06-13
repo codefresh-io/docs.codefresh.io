@@ -66,14 +66,14 @@ Here is a description of the information in the List View.
 | List View Item|  Description   |
 | --------------          | ---------------- |
 |**Name**| The name of the provisioned GitOps Runtime.<br>Hybrid GitOps Runtimes installed with Helm show the status as either Online (green dot) or Offline (red dot).  |
-|**Type**| The type of GitOps Runtime provisioned, and can be either **Hosted**, **Helm**, or **CLI** for legacy Hybrid GitOps Runtimes.  |
+|**Type**| The type of GitOps Runtime provisioned, and can be either **Hosted** or **Helm**.<br>**Config Runtime** indicates that the Runtime has been designated to store platform resources. See [Designating Configuration Runtimes](#designating-configuration-runtimes) |
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
 |**Modules**| The modules installed based on the type of provisioned Runtime. Hybrid GitOps (both Helm and CLI) Runtimes include CI and CD Ops modules. Hosted runtimes include CD Ops.   |
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
 |**Version**| The version of the Runtime currently installed (CLI installations), including the version of the Helm chart (Helm installations) . **Update Available!** indicates there are newer versions of the Runtime or Helm chart. To see all the commits, mouse over **Update Available!**, and select **View Complete Change Log**.
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes">Update Git credentials for GitOps Runtimes</a>.</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <li><b>Download All Logs</b>:Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Delete Runtime</b>: Available only when the Hybrid GitOps Runtime is Offline. <br>Delete the GitOps Runtime from the Codefresh platform, retaining it on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-delete-gitops-runtimes">Delete GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}|
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Set as Configuration Runtime</b>: Designate the selected Runtime to store platform resources which are runtime-agnostic. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes">Designating Configuration Runtimes</a></li><li> <b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a></li> <li><b>Download All Logs</b>:Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a></li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See </li><li><b>Delete Runtime</b>: Available only when the Hybrid GitOps Runtime is Offline. <br>Delete the GitOps Runtime from the Codefresh platform, retaining it on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-delete-gitops-runtimes">Delete GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a></li> </ul> {:/}|
 
 
 ### Topology view
@@ -100,14 +100,46 @@ Here is a description of the information in the Topology view.
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
-## Designate a Configuration Runtime
-Designate a GitOps Runtime as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality relating to Products and Promotions in GitOps, such as Promotion Policies, Promotion Templates, and Promotion Flows. 
+## Designating Configuration Runtimes 
+Designate any GitOps Runtime, including the Hosted GitOps Runtime, as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality relating to Products in GitOps, and Promotions such as Promotion Policies, Promotion Templates, and Promotion Flows (coming later). 
+  
+You can designate Configuration Runtimes through either the user interface (UI) or by editing the `values` file.  
+Conversely, you can also unset any Runtime or all Runtimes designated as such when needed. If there are no Configuration Runtimes, platform resources are synced to the cluster. 
 
-##### Single vs multiple Configuration Runtimes
-You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources for Promotions among the designated Configuration Runtimes if there are multiple such Runtimes. 
+Single vs multiple Configuration Runtimes  
+You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources among the designated Configuration Runtimes if there are multiple such Runtimes. 
 
 
-##### How to
+### Designating a Configuration Runtime in the UI
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Select the Runtime to designate as the Configuration Runtime, and from the context menu, select **Set as Configuration Runtime**.
+
+  {% include
+    image.html
+  lightbox="true"
+  file="/images/runtime/helm/set-as-config-runtime.png"
+  url="/images/runtime/helm/set-as-config-runtime.png"
+  alt="Set GitOps Runtime as Configuration Runtime"
+  caption="Set GitOps Runtime as Configuration Runtime"
+  max-width="60%"
+  %}
+
+  You'll see that Type column displays Config Runtime.
+
+  {% include
+    image.html
+  lightbox="true"
+  file="/images/runtime/helm/config-runtime-in-ui.png"
+  url="/images/runtime/helm/config-runtime-in-ui.png"
+  alt="GitOps Runtime designated as Configuration Runtime"
+  caption="GitOps Runtime designated as Configuration Runtime"
+  max-width="60%"
+  %}
+
+1. To remove the designation, from the context menu of the Runtime, select **Unset as Configuration Runtime**.
+
+### Designating a Configuration Runtime in values.yaml
 1. In the `values.yaml` file, navigate to `global.runtime`.
 1. To designate a specific Runtime, set the `isConfigurationRuntime` flag for that Runtime to `true` (default is `false`).
   
@@ -121,7 +153,7 @@ You can designate a single Runtime or multiple Runtimes as Configuration Runtime
 
   runtime:
     name: ngrok-noam
-    isConfigurationRuntime: true # saves all promotion configuration in this Runtime 
+    isConfigurationRuntime: true # saves platform configuration in this Runtime 
 
     ingress:
       enabled: true
@@ -129,12 +161,29 @@ You can designate a single Runtime or multiple Runtimes as Configuration Runtime
       hosts:
       - codefresh.rnd.sandbox.codefresh.io 
 ```
-##### Configuration folder in Shared Configuration Repository
-When designated as a Configuration Runtime, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different promotion settings.
+
+### Configuration folder in Shared Configuration Repository
+When a Configuration Runtime is designated, Codefresh creates a folder entitled `configuration` in the Shared Configuration Repository within `resources`. The folder includes additional subfolders for the different platform settings.
 
 >**NOTE**  
 Only GitOps Runtimes designated as Configuration Runtimes sync to this folder and its subfolders.
 
+```
+├── resources <───────────────────┐
+│   ├── all-runtimes-all-clusters 
+│   ├── configurations            │ # new folder storing promotion configuration
+│       ├── products              │
+│   ├── control-planes            │        
+│   ├── runtimes                  │
+│   │   ├── runtime1              │    
+│   │   └── runtime2              │    
+│   └── manifest6.yaml            │
+└── runtimes                      │
+│    ├── runtime1                 │ 
+│   │   ├── in-cluster.yaml       ┤     
+```
+
+<!---
 ```
 ├── resources <───────────────────┐
 │   ├── all-runtimes-all-clusters 
@@ -151,7 +200,7 @@ Only GitOps Runtimes designated as Configuration Runtimes sync to this folder an
 │    ├── runtime1                 │ 
 │   │   ├── in-cluster.yaml       ┤     
 ```
-
+-->
 ## (Hybrid GitOps) Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, get new functionality, and the latest versions of all components.
@@ -167,7 +216,7 @@ The `Update Available! Notification` in the List View's Version column indicates
 {{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
 1. **List view**:
     1. To see all the commits to the Runtime, in the Version column, mouse over **Update Available!**, and select **View Complete Change Log**.
@@ -255,7 +304,7 @@ The methods for updating any Git token are the same regardless of the reason for
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View**.
 1. Do one of the following:
   * To the right of the row with the Runtime to update, click the context menu and select **Update Git Runtime Credentials**.
@@ -376,7 +425,7 @@ Log files include events from the date of the application launch, with the newes
 Download the log file for a GitOps Runtime. The Runtime log is downloaded as a `.tar.gz` file, which contains the individual log files for each runtime component.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. If needed, switch to **List View**, and then select the runtime for which to download logs.
 1. From the context menu, select **Download All Logs**.
   The log file is downloaded to the Downloads folder or the folder designated for downloads, with the filename, `<runtime-name>.tar.gz`. For example, `codefreshv2-production2.tar.gz`.
@@ -390,7 +439,7 @@ Downloading logs for Runtime components is supported from Runtime v0.1.39 and hi
 Online logs show up to 1000 of the most recent events (lines), updated in real time. Downloaded logs include all the events, from the date and time of application launch to the date and time of download.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. If needed, switch to **List View**, and then select the Runtime.
 1. In the Runtime Components tab, from the context menu of the required component, select **View Logs**.
 
@@ -544,7 +593,7 @@ The Delete option is available in List View, and is enabled only when a Helm Run
 {{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to the **List View**.
 1. To the right of the row with the Runtime to delete, click the context menu and select **Delete**.
 1. Type the name of the Runtime and click **Delete** to confirm.
@@ -563,7 +612,7 @@ Uninstalling a GitOps Runtime permanently removes:
 ##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
 1. Switch to either the **List View** or to the **Topology View**.
 1. To uninstall from the **List view**, do one of the following:
   * To the right of the row with the Runtime to uninstall, click the context menu and select **Uninstall**.

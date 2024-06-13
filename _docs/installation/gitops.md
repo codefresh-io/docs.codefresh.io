@@ -15,7 +15,7 @@ Our GitOps Runtime solves these issues with unique benefits.
 
 GitOps Runtimes come in two options:
 * Hosted Runtimes with Argo CD installed within the Codefresh cluster (see [Hosted GitOps](#hosted-gitops))
-* Hybrid Runtimes with Argo CD installed within the customer's cluster
+* Hybrid Runtimes with Argo CD installed within the customer's cluster (see [Hybrid GitOps](#hybrid-gitops))
 
 Explore the [benefits](#benefits-of-gitops-runtimes) of GitOps Runtimes, and [compare their features/functionality](#hosted-vshybrid-gitops).
 
@@ -27,7 +27,6 @@ Explore the [benefits](#benefits-of-gitops-runtimes) of GitOps Runtimes, and [co
 * **Single pane of glass visibility**  
   All Argo CD instances in Codefresh are managed through a single control plane, which means full visibility for all Runtimes.
   Installed Runtimes are displayed in the GitOps Runtimes page with all the information you need on the Runtime, and actions to manage it.  
-
 
 * **Effortless maintenance** 
   In the Runtimes page, the Version column notifies whenever a new version is available for the Runtime, providing a link to the complete changelog for full transparency when making decisions on upgrades.
