@@ -126,7 +126,7 @@ Conversely, you can also unset any GitOps Runtime designated as such when needed
   max-width="60%"
   %}
 
-  You'll see that Type column displays Config Runtime.
+  You'll see that the Type column displays Config Runtime.
 
   {% include
     image.html
