@@ -245,7 +245,7 @@ The default behavior triggers the pipeline on a commit action.
 Override the default behavior by adding any one of the predefined strings anywhere in the commit message.
 
 >**NOTE**  
-Remember to include the opening and closing parentheses when adding the strings. 
+Remember to include the opening and closing square brackets when adding the strings. 
 
 * `[skip ci]`
 * `[ci skip]`

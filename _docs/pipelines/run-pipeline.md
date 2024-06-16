@@ -92,9 +92,12 @@ caption="Result of shared build configuration"
 max-width="50%"
 %}
 
+## Data retention for pipeline builds and logs
+Codefresh retains build and log data for pipelines for a period of six months, for both on-premises and SaaS installation configurations. 
+
+For on-premises, for configuration details, see [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"}.
 
 ## Note on Cloud Builds for Codefresh pipelines
-
 
 Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
 Account admins can request Codefresh to enable Cloud Builds for an account. There is no manual action required except to click on the Enable Cloud Builds button as shown below. The timeframe for the response is up to 24 hours.<br>
