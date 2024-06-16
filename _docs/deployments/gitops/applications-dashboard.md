@@ -771,8 +771,8 @@ The table lists the controls in the Rollout Player to manage an ongoing rollout.
 
  
 #### View analysis run
-If you have defined an analysis template for the rollout, you can check the run results and the manifest. 
- The result of an analysis run determines if the rollout is completed, paused, or aborted. For detailed information, see the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"}.  
+If you have defined an AnalysisTemplate for the rollout, you can check the run results and the manifest. 
+ The result of an AnalysisRun determines if the rollout is completed, paused, or aborted. For detailed information, see the [Analysis section in Argo Rollouts](https://argoproj.github.io/argo-rollouts/features/analysis/){:target="\_blank"}.  
 
 If you are running Background Analysis for example, the first step shows the list of analysis metrics.
 

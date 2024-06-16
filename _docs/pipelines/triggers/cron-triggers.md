@@ -146,7 +146,7 @@ To edit a Cron trigger after creating it, click the Edit icon.
 
 ## Cron expression formats
 
-A Cron expression represents a set of time fields through six space-separated fields. You can also use predefined schedules or fixed interval scheduling in place of Cron expressions.
+A Cron expression represents a set of time fields through five space-separated fields. You can also use predefined schedules or fixed interval scheduling in place of Cron expressions.
 
 ### Cron expression fields
 The table below describes the fields you can define in a Cron expression.

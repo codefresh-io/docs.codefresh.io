@@ -200,7 +200,8 @@ Let's see how to achieve this for a single team, the Hulk team.
   Let's name the Git repo `marvel-hulk-team-apps`. 
 
 1. **Create destination namespace for deployment**  
-  Create the namespace on the cluster to which Hulk applications can be deployed. Let's name it, `hulk-apps-zone`.
+  Create the namespace on the cluster to which Hulk applications can be deployed. Let's name it, `cf-hulk-apps-zone`.  
+  Note that the Namespace must start with the prefix `cf-`.  
 
 1. **Create a Restricted Git Source**  
   Create the Restricted Git Source for the Hulk team that will define the namespace to which to deploy application manifests, and the namespace to which to deploy the applications themselves.
@@ -215,7 +216,7 @@ Let's see how to achieve this for a single team, the Hulk team.
       * **Path**: `.`
     1. Leave the other settings empty, and click **Next**.
     1. Specify the deployment settings: 
-      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `hulk-app-manifests` as the namespace. If the namespace does not exist, Codefresh will automatically create it.
+      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `cf-hulk-app-manifests` as the namespace. The `cf-` prefox is mandatory for the namespace. If the namespace does not exist, Codefresh will automatically create it.
       * **Allowed Clusters & Namespaces**: Select the relevant cluster and namespace to which to deploy the applications. Let's select `hulk-apps-zone` as the namespace to which to deploy applications.
     1. Click **Create**.
   You have now created the Restricted Git Source.
@@ -279,7 +280,7 @@ You must be in the List View for GitOps Runtimes to create Git Sources.
 
 ## Git Source settings
 The table describes the settings you can define for Standard and Restricted Git Sources.  
-For how-to, see [Create a Git Source](#create-a-git-source).
+For how-to instructions, see [Create a Git Source](#create-a-git-source).
 
   {% include 
 	image.html 
@@ -298,7 +299,7 @@ For how-to, see [Create a Git Source](#create-a-git-source).
 | **Type**| The type of Git Source to create. {::nomarkdown}<ul><li><b>Standard Git Source</b>: The Git Source is created as an Argo CD Application in the Runtime's namespace, and belongs to the default or user-defined Application Project without deployment and repo restrictions.</li><li><b>Restricted Git Source</b>: The Git Source is created as an Argo CD application also in the Runtime's namespace, and belongs to the Application Projects created and automatically assigned by Codefresh. Applications synced with a Restricted Git Source must belong to the same Application Project and can deploy only to allowed clusters and namespaces.</li></ul>{:/}|
 | **Source**| The Git repository where the application manifests, including that of the Git Source application, are stored. {::nomarkdown}<ul><li><b>Repository</b>: Mandatory. The URL of the Git repo.</li><li><b>Branch</b>: Optional. The specific branch within the repo in which to create the Git Source application manifest.</li><li><b>Path</b>: Optional. The specific path within the repo, and branch if one is specified, in which to create the Git Source application manifest.</li></ul>{:/}|
 | **Include Files** and **Exclude Files** |The file or files to include or exclude from the Git repo when syncing to the destination cluster. <br>Use GLOB to define patterns using wildcards to match path names in the source Git repo. <br><br>For example, `workflows/**/*.yaml`, in the Include Files field would include all files in the `workflows` directory and all its child directories, with `.yaml` as the extension. <br><br>`**/images/**/*` in the Exclude Files field, would ignore all directories entitled `images`. <br>For GLOB guidelines and examples, see this [article](https://deepsource.io/blog/glob-file-patterns/){:target="\_blank"}.|
-|**Source Namespace** | Applies to Restricted Git Sources only. <br>The namespace in the cluster to which to deploy the manifests of Argo CD applications synced with this Git Source.<br>If the namespace doesn't exist on the cluster with Argo CD, Codefresh automatically creates it.|
+|**Namespace** | Applies to Restricted Git Sources only. <br>The namespace in the cluster to which to deploy the manifests of Argo CD applications synced with this Git Source, and _must start_ with the prefix `cf-`.<br>If the namespace doesn't exist on the cluster, Codefresh automatically creates it. <br><br>These namespaces are added to the configmap `argocd-cmd-params-cm` in `data.application.namespaces` as `cf-*`. You can define a different prefix for the namespaces by replacing `cf` with your preferred prefix, `<prefix>-*` and use that prefix in Restricted Git Sources. Argo CD monitors these additional namespaces for application reconciliation.  |
 | **Application Project Scope** | Applies to Restricted Git Sources only. <br>The destination clusters and namespaces to which the applications synced to the Git Source and belonging to this Application Project can be deployed, and the trusted Git repos for the applications.{::nomarkdown}<ul><li><b>Allowed clusters and namespaces</b>: Single or multiple pairs of predefined clusters and namespaces to which applications belonging to the Application Project can be deployed. <br>For example, specifying a cluster-namespace pair <code class="highlighter-rouge">codefresh-production/game-apps:marvel-apps</code> will deploy the applications only to the defined cluster and namespace.<br>You can add multiple namespaces to the cluster-namespace pair. <br><br>You can also use pattern matching for clusters and namespaces with the <code class="highlighter-rouge">* </code> wildcard for broad matching. For example, <code class="highlighter-rouge">marvel-apps*</code> as the namespace would include the <code class="highlighter-rouge">marvel-apps-asia</code>, <code class="highlighter-rouge">marvel-apps-eu</code>, and <code class="highlighter-rouge">marvel-apps-us</code> namespaces. </li><li><b>Allowed Git Repos</b>: One or more trusted Git repositories for Argo CD applications synced to this Restricted Git Source. An Argo CD application that references a repository not in the trusted list is not synced to the Source Namespace in the cluster.</li></ul>{:/}| 
 
 
@@ -307,7 +308,7 @@ For how-to, see [Create a Git Source](#create-a-git-source).
 Drill down on a GitOps Runtime in List View to see its Git Sources. 
 
 1. In the Codefresh UI, go to the [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
-1. From the **List View** (the default), select a Runtime name, and then select the **Git Sources** tab.  
+1. From the **List View** (the default), click a Runtime name, and then select the **Git Sources** tab.  
 
   {% include 
 	image.html 
@@ -414,7 +415,7 @@ metadata:
   namespace: runtime
 spec:
   destinations:                             # destination clusters and namespaces allowed by the Application Project 
-  - namespace: hulk-apps-zone
+  - namespace: cf-hulk-apps-zone
     server: https://kubernetes.default.svc
   source:                                    # source repos for the Git Source and other Argo CD Applications
     directory:
@@ -424,7 +425,7 @@ spec:
     path: applications
     repoURL: https://github.com/team-hulk/marvel-hulk-apps.git/
     targetRevision: HEAD
-  sourceNamespace: hulk-app-manifests     # namespace to which to sync application manifests
+  sourceNamespace: cf-hulk-app-manifests     # namespace to which to sync application manifests
   sourceRepos:                                   #  Git repos allowed by the Application Project
   - '*'
   syncPolicy:                                    
@@ -456,10 +457,10 @@ spec:
   - group: '*'
     kind: '*'
   destinations:                # Destination Namespace defined in Restricted GitSource
-  - namespace: hulk-apps-zone
+  - namespace: cf-hulk-apps-zone
     server: https://kubernetes.default.svc
   sourceNamespaces:
-  - hulk-app-manifests     # Source Namespace defined in Restricted Git Source for syncing apps
+  - cf-hulk-app-manifests     # Source Namespace defined in Restricted Git Source for syncing apps
   sourceRepos:                    # Allowed Git repos defined in Restricted Git Source; by default allows all source repositories
   - '*'
 ​
@@ -487,7 +488,7 @@ spec:
   - group: argoproj.io
     kind: ApplicationSet
   destinations:
-  - namespace: hulk-app-manifests     # maps to the Source Namespace defined in Restricted Git Source to sync app manifests
+  - namespace: cf-hulk-app-manifests     # maps to the Source Namespace defined in Restricted Git Source to sync app manifests
     server: https://kubernetes.default.svc
   sourceRepos:
   - '*'                                     # allowed Git repos defined in Restricted Git Source; by default allows all source repositories

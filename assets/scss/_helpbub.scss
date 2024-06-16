@@ -1,0 +1,29 @@
+.helpbub-toggler {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 4px 12px 4px 8px;
+
+  color: $helpbub-text-color;
+  cursor: pointer;
+  background-color: $helpbub-bg;
+
+  border: 1px solid $helpbub-border;
+  border-radius: 16px;
+
+  .helpbub-toggler--hotkey {
+    color: $bd-doc-content-bg;
+  }
+
+  &:focus {
+    outline: 1px solid $cf-bright-green;
+    box-shadow: 0 0 0 5px rgba(95, 255, 191, .24);
+  }
+}
+
+.helpbub-toggler--small {
+  max-width: 275px;
+}

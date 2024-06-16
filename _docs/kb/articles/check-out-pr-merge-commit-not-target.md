@@ -30,5 +30,5 @@ Depending on result, execute one of two `git-clone` steps:
 
 ## Related articles
 [GitHub Pull Request variables]({{site.baseurl}}/docs/pipelines/variables/#github-pull-request-variables)  
-[Check environment variable value or existence in conditionals]({{site.baseurl}}/kb/articles/check-env-vars-in-conditionals)  
+[Check environment variable value or existence in conditionals]({{site.baseurl}}/docs/kb/articles/check-env-vars-in-conditionals)  
 [Fields for `git-clone` step]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields)  

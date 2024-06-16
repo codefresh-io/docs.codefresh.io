@@ -27,11 +27,9 @@ The Environments dashboard fills this gap by providing a holistic perspective on
 
 Read more on the world's first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
+
 ##### What is an Environment in Codefresh GitOps?
 In Codefresh GitOps, an Environment is a custom entity defined by one or more pairs of K8s clusters and namespaces. It consolidates information for all Argo CD applications deployed to those clusters and namespaces, allowing you to easily track what's deployed where at any given moment.
-
-
-##### Benefits of Environments 
 
 The diagram illustrates how Codefresh organizes different Argo CD applications within their deployment contexts in the Environments dashboard.
 
@@ -45,51 +43,27 @@ The diagram illustrates how Codefresh organizes different Argo CD applications w
   max-width="70%" 
 %}
 
+##### Benefits of Environments
 Let's review some of the key benefits of Environments:
 
-* Mirror your SDLC  
+* **Mirror your SDLC**  
   Codefresh Environments are designed to mirror your software development life cycle (SDLC). By aligning applications with their development and deployment stages, Environments offer a clear and contextual view of the entire application lifecycle, as it moves from development to production.
 
-*  Effortless creation  
+*  **Effortless creation**  
   Creating an Environment in Codefresh is straightforward and intuitive. All you need is a unique name and the Kubernetes clusters and namespaces to associate with the Environment. 
 
-* Contextual visibility  
+* **Contextual visibility**  
   Environments consolidate Kubernetes clusters and namespaces, providing a unified view of all Argo CD applications deployed within. This centralized perspective allows teams to effortlessly track application deployments across various clusters and namespaces, enhancing operational transparency.
 
-* Simply scalability and maintenance  
+* **Simple scalability and maintenance**  
   Environments are equally simple to scale and maintain as they are to create. Whether expanding infrastructure or adapting to evolving project requirements, scaling is as simple as adding more Environments, or adding more clusters or namespaces to existing Environments. 
   For flexibility, Codefresh allows you to also add Environments without deploying any applications to them.
+ 
+Create Environments by defining settings (see [Create Environments](#create-environments)), and explore how Codefresh pulls in all the information into an intuitive dashboard (see [Environments dashboard](#environments-dashboard)).  
 
+Learn how to [work with Environments](#working-with-gitops-environments), and [work with Argo CD applications](#working-with-applications-in-gitops-environments) within Environments.
 
-Create Environments by defining settings (see [Create Environments](#create-environments)), and explore how Codefresh pulls in all the information into an intuitive dashboard (see [Environments dashboard](#environments-dashboard)). Learn how to [work with Environments](/#working-with-gitops-environments), and [work with Argo CD applications](#working-with-applications-in-gitops-environments) within Environments.
-
-Products adds another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}docs/dashboards/gitops-products/).
-
-
-<!--- ## Key aspects when creating Environments
-
-When setting up Environments in Codefresh GitOps, consider these key aspects and best practices to optimize your deployment and management processes:
-
-* Naming
-  When creating Environments, define clear naming conventions to easily identify and categorize each Environment based on its purpose, region, or development stage. 
-
-* Unlimited 
-  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
-
-* Customized 
-  In addition to the development lifecyle, consider all aspects of your organization's processes, deployment requirememnts.
-  Create Environments based on various criteria, such as development stages, deployment regions, or specific project requirements. This flexibility ensures that each Environment is tailored to its intended purpose, whether it's a specialized testing environment or a broad production deployment.
-
-
-* Number of Environments 
-  There's no limit to the number of Environments you can create in Codefresh GitOps. Whether you're managing multiple development stages, testing environments, or production deployments, Environments can scale according to your project requirements.
-
-* Environments without applications
-  Codefresh allows 
-
-
-* Seamless infrastructure integration
-  Adding new infrastructure or new applications is as simple as adding the required Kubernetes clusters and namespaces to the existing Environment's definition.   -->
+Products add another dimension to the experiences by bridging applications and Environments. Read about it in [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 ## Create Environments
@@ -117,7 +91,7 @@ Review [Key aspects when creating Environments](#key-aspects-when-creating-envir
 %} 
 
 {:start="3"}  
-1. Click **Add**. The environment is displayed in the GitOps Environments dashboard. 
+1. Click **Add**. The Environment is displayed in the Environments dashboard. 
 
 ## Environments dashboard
 Here's an example of the Environments dashboard.
