@@ -215,7 +215,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | -----------        | --------------------------------------------------------- | ------------------------- |
 |`abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 |`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
-|`abacRuntimeEnvironments`    | When enabled, account administrators cam configure ABAC (Attribute Based Access Control) rules for Runtime Environments.| FALSE  |
+|`abacRuntimeEnvironments`    | When enabled, allows creating a rule for Pipelines Permissions with Set runtime environment which enable users to select the Runtime Environment in the **Pipeline > Settings > Build Runtime**. | FALSE  |
 |`autoBuildSwitchAccount`      | When enabled, user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article.   | FALSE         |
 | `delightedSurvey`            | When enabled, displays Delighted CX surveys in the Codefresh UI. | FALSE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
@@ -224,7 +224,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
 | `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
-| `runtimeEnvironmentTags` | When enabled, supports adding tags to Runtime Environments for pipelines. | FALSE         |
+| `runtimeEnvironmentTags` | When enabled, allows creating rules for Build Runtime Environments in Permissions to enable/disable Runtime Environments available for assignment to pipelines by tags. Those Environments not permitted are disabled in the **Pipeline > Settings > Build Runtime**.| FALSE         |
 | `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
 | `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management.| FALSE         |
 
@@ -247,7 +247,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
 * Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
 * `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
-* All repositories not displayed in **Repository** list when creating trigger for Bitbucket server.
+* Some repositories not displayed in **Repository** list when creating trigger for BitBucket server.
 * Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
