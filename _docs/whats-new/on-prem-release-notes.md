@@ -10,6 +10,14 @@ Welcome to the release notes for our on-premises releases.
 
 ### Features & enhancements
 
+Welcome to our newest on-premises release!
+
+**Installing v2.4**
+For detailed instructions on installing v2.4, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+**Upgrading to v2.4**
+For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
+
 ### General: More power to Global Search & Navigation
 
 We're excited to announce major enhancements powering our Global Search & Navigation: 
@@ -45,27 +53,10 @@ Previously, integration with different SSO providers allowed automatic user and 
 With our latest update, you can now customize the auto-sync intervals to better suit your organization’s needs.  
 The new options allow you to set the sync frequency in minutes or hours. Alternatively, you can enable auto-sync without defining a specific interval, and Codefresh will automatically perform the sync every 12 hours. 
 
-SCREENSHOT
-
 This flexibility ensures more timely updates and improved efficiency in user and team management.
 
 For details, see [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
-### General: New platform IP addresses
-
-We are preparing for an upgrade to our production cluster. While the upgrade is still a couple of months away, here's an early heads up about changes in IP addresses.
-
-We've added new platform IP addresses as listed below:
-* 54.86.228.102
-* 54.221.236.3  
-* 54.235.42.99
-* 23.21.197.195
-* 34.238.37.0
-* 107.22.212.247
-
-Please make sure to add them at the earliest to your allowed list. You can also find these IPs listed in Codefresh docs.
-
-For details, see [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/).
 
 
 ### Pipelines: Explore build relationships with Build Tree
@@ -92,21 +83,6 @@ In addition to the effortless visualization, other key benefits include:
 For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
 
 
-
-### Pipelines: Monthly credit consumption usage by pipelines
-We added a **Usage per month** table below the Credit Consumption chart.  
-This table provides build and credit consumption metrics by pipelines for the selected month. 
-
-{% include
-  image.html
-  lightbox="true"
-  file="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
-  url="/images/whats-new/apr24/rel-notes-apr-24-credit-usage-by-pipeline.png"
-  alt="Credit Consumption: Usage per month by pipelines"
-  caption="Credit Consumption: Usage per month by pipelines"
-  max-width="60%"
-%}
-
 ### Pipelines: More Pull Request events support for GitHub
 Our integration with GitHub events is now even stronger with the addition of more types of pull request (PR) event triggers.
 
@@ -128,9 +104,38 @@ You can now trigger builds for the following PR events:
 For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
 
+## Pipelines: Automatic account switching for pipeline builds
+
+Another usability enhancement for a seamless experience when navigating between accounts.  
+
+When accessing pipeline builds from an account different to the one you're logged into, Codefresh automatically switches you to the correct account. This means no more prompts and having to manually select the account.
+
+To support this enhancement, you need to enable the `autoBuildSwitchAccount` Feature Flag.
 
 
 
+## GitOps: GitOps Runtimes as Configuration Runtimes
+We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
+Configuration Runtimes handle platform-level resources that are runtime-agnostic, such as those for GitOps Products.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-june-24-set-as-config-runtime.png"
+  url="/images/whats-new/june24/rel-notes-june-24-set-as-config-runtime.png"
+  alt="Set GitOps Runtime as Configuration Runtime"
+  caption="Set GitOps Runtime as Configuration Runtime"
+  max-width="60%"
+%}
+
+
+Key features to note:
+* Redundancy  
+  Designate single or multiple GitOps Runtimes as Configuration Runtimes. Codefresh ensures that resources are not duplicated even when there are multiple Configuration Runtimes.
+* Ease of use  
+  Set and unset a Configuration Runtime with just a click in the UI or a quick edit in your `values.yaml` file.
+
+For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
 
 ### GitOps: Rollout enhancements 
 
@@ -138,7 +143,7 @@ For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/tr
 Codefresh now supports templated arguments declared in AnalysisTemplates for metric configurations in AnalysisRuns. 
 
 * **Rollout Player**  
-To make Rollouts easier to manage, we added the Abort and Retry buttons to the Rollout Player. These options were previously available for the Rollout resource in the Current State tab.
+To make Rollouts easier to manage, we added the Abort and Retry buttons to the Rollout Player. These options were previously available for the Rollout resource only in the Current State tab.
 
 {% include 
 image.html 
@@ -208,18 +213,20 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
+|`abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 |`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 |`abacRuntimeEnvironments`    | When enabled, account administrators cam configure ABAC (Attribute Based Access Control) rules for Runtime Environments.| FALSE  |
-|`autoBuildSwitchAccount`      | When enabled, automatically switches the account instead of displayig the Swictc Account prompt wich requires manual action from the user.    | TRUE         |
-| `delightedSurvey`            | When enabled, displays Delighted CX surverys in the Codefresh UI. | FALSE|
+|`autoBuildSwitchAccount`      | When enabled, user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article.   | FALSE         |
+| `delightedSurvey`            | When enabled, displays Delighted CX surveys in the Codefresh UI. | FALSE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
-| `gitopsDynamicBreadcrumbs`     | When enabled (the default), support rendering dynamic breadcrumbs for GitOps.   | TRUE         |
+| `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps. <br> See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
 | `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
-| `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled ???  | TRUE         |
-| `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
-| `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, after build execution displays build status per `pipelineId`, `triggerId`, and trigger event. | FALSE         |
+| `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
+| `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
+| `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
 | `runtimeEnvironmentTags` | When enabled, supports adding tags to Runtime Environments for pipelines. | FALSE         |
-| `rolloutPlayerLiveState` | When enabled (the default), ??? displays rollout from AppProxy. | TRUE         |
+| `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
+| `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management.| FALSE         |
 
 
 
@@ -235,49 +242,34 @@ The table below lists existing Feature Flags which have been updated by default 
 
 
 ##### Pipelines
-MARCH
 * “Unknown error” failure on cloning a pipeline that includes a trigger. 
-* Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
-* Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. Oleg
-* Long loading time for Git repos when creating new pipelines and triggers.
-
-
-APRIL
 * "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue” error when selecting **Account settings > Pipeline integrations > Kubernetes**.
-* Azure repos with **YAML from repository settings** throws  `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
-* Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
-* 500 error for BitBucket webhooks including deleted branches. (Vasil to check)
-* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
-* Build failure for pipeline including mixture of regular and `buildx` parallel build steps. 
-* Builds for Gerrit in Codefresh triggered twice.
-* CPU utilization for a pipeline build incorrectly displayed in the Metrics tab as 100% instead of the actual usage. (oleg)
+* Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
+* Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
 * `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
-
-MAY
+* All repositories not displayed in **Repository** list when creating trigger for Bitbucket server.
+* Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
+* Builds for Gerrit in Codefresh triggered twice. 
+* Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
+* Long loading time for Git repos when creating new pipelines and triggers.
+* Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
+<!--- * 500 error for BitBucket webhooks including deleted branches. (Vasil to check)  -->
+* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
+* Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
 * Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
 * For Gerrit, username of build initiator not displayed.
 * Usability issues when selecting clone pipeline option from UI. 
+* Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
 
-JUNE
-* Upgrade to on-premises v2.3.2 causes RabbitM out-of-disk issue. (CR23876 - Yarik)
-* Pipeline permissions override project permissions when both are defined for teams. (CR-23426 - Olek)
-* 
 
 ##### GitOps
-MARCH
+<!--- * GitOps UI does not show logs for pods. Victor Plakyda to check -->
 * New Argo CD application deployed in Codefresh remains as Out of Sync in **GitOps Apps > Current State**.
 * Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
-
-APRIL
-* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime.  (Daniel Maizel)
+* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime. 
 * GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
-* Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**. 
-
-MAY
-* GitOps UI does not show logs for pods. 
+* Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**.  
 * Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
-
-JUNE
 * Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
 
 
