@@ -220,22 +220,25 @@ Feature Flags are divided into new Feature Flags released in the current version
 The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.4.
 
 {: .table .table-bordered .table-hover}
-| Feature Flag       | Description                                               | Default Value |
-| -----------        | --------------------------------------------------------- | ------------------------- |
-|`abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
-|`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
-|`abacRuntimeEnvironments`    | When enabled, allows creating rules in **Permissions** with **Set runtime environment**. When selected, users can select the Runtime Environment for the pipeline in **Pipeline > Settings > Build Runtime**. | FALSE  |
-|`autoBuildSwitchAccount`      | When enabled, and a user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article.   | FALSE         |
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
+| `abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
+| `abacRuntimeEnvironments`    | When enabled, allows creating rules in **Permissions** for the following: {::nomarkdown}<ul><li><b>Pipeline actions which impact options in <strong>Pipeline > Settings > Build Runtime</strong></b>:<ul><li><b>Modify resources</b>: Select CPU and Memory for the pipeline/build run.</li><li><b>Set runtime environment</b>: Selecting Runtime Environments from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Select Cloud build from the Runtime Environments list for the pipeline/build run.</li></ul></li><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for assignment to pipelines based on tags. Restricted Runtime Environments will be disabled in the Runtime Environments list for the pipeline/build run.</li></ul> {:/}| FALSE  |
+| `autoBuildSwitchAccount`  | When enabled, and a user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article. | FALSE         |
 | `delightedSurvey`            | When enabled, displays Delighted CX surveys in the Codefresh UI. | FALSE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
-| `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps. <br> See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
+| `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps.<br>See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
 | `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
-| `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
-| `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
+| `productCRD`  | _New feature currently in development for GitOps._<br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
+| `promotionOrchestration` | _New feature currently in development for GitOps._<br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
-| `runtimeEnvironmentTags` | When enabled, allows creating rules in **Permissions** for **Build Runtime Environments** to enable or disable the Runtime Environments available for assignment to pipelines based on tags. Restricted Runtime Environments will appear disabled in **Pipeline > Settings > Build Runtime**.| FALSE         |
 | `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
-| `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management.| FALSE         |
+| `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions manage
+
+
+
+
 
 
 
