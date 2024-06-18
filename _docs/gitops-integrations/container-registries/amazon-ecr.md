@@ -36,7 +36,7 @@ The IAM Role/Access Key user must have one of the following permissions:
 * `AmazonEC2ContainerRegistryFullAccess` for administrative access to Amazon ECR resources.
 * `AmazonEC2ContainerRegistryPowerUser` for full access to Amazon EC2 Container Registry repositories, without permissions to delete repositories or make changes to policies.
 
-If one of these permissions are not granted, images are not reported successfully from ECR.
+If any of these permissions are not granted, images cannot be successfully reported from ECR.
 
 
 ### IAM Role integration
