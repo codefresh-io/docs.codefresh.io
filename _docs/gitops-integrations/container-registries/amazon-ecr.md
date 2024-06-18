@@ -29,6 +29,15 @@ For detailed information, see [How Amazon Elastic Container Registry Works with 
 
 ## Prerequisites
 
+### Permissions for IAM Role and Access Key integrations
+
+The IAM Role/Access Key user must have one of the following permissions:
+* `AmazonEC2ContainerRegistryReadOnly` for read-only access to Amazon EC2 Container Registry repositories.
+* `AmazonEC2ContainerRegistryFullAccess` for administrative access to Amazon ECR resources.
+* `AmazonEC2ContainerRegistryPowerUser` for full access to Amazon EC2 Container Registry repositories, without permissions to delete repositories or make changes to policies.
+
+If any of these permissions are not granted, images cannot be successfully reported from ECR.
+
 
 ### IAM Role integration
 
