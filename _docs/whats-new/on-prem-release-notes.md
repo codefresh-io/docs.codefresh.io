@@ -12,11 +12,11 @@ Welcome to the release notes for our on-premises releases.
 
 Welcome to our newest on-premises release!
 
-**Installing v2.4**
+##### Installing v2.4 
 For detailed instructions on installing v2.4, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
-**Upgrading to v2.4**
-For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-3-0){:target="\_blank"}.
+##### Upgrading to v2.4
+For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
 
 ### General: More power to Global Search & Navigation
 
@@ -103,8 +103,17 @@ You can now trigger builds for the following PR events:
 
 For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
+### Gerrit topic variable mapping  
 
-## Pipelines: Automatic account switching for pipeline builds
+We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
+
+With `CF_GERRIT_CHANGE_TOPIC` in Codefresh pipelines, based on the topic’s context, you can:
+* Dynamically manage and execute steps .
+* Conditionally trigger specific actions or entire pipelines.
+
+For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
+
+### Pipelines: Automatic account switching for pipeline builds
 
 Another usability enhancement for a seamless experience when navigating between accounts.  
 
@@ -114,7 +123,7 @@ To support this enhancement, you need to enable the `autoBuildSwitchAccount` Fea
 
 
 
-## GitOps: GitOps Runtimes as Configuration Runtimes
+### GitOps: GitOps Runtimes as Configuration Runtimes
 We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
 Configuration Runtimes handle platform-level resources that are runtime-agnostic, such as those for GitOps Products.
 
@@ -215,8 +224,8 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | -----------        | --------------------------------------------------------- | ------------------------- |
 |`abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 |`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
-|`abacRuntimeEnvironments`    | When enabled, allows creating a rule for Pipelines Permissions with Set runtime environment which enable users to select the Runtime Environment in the **Pipeline > Settings > Build Runtime**. | FALSE  |
-|`autoBuildSwitchAccount`      | When enabled, user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article.   | FALSE         |
+|`abacRuntimeEnvironments`    | When enabled, allows creating rules in **Permissions** with **Set runtime environment**. When selected, users can select the Runtime Environment for the pipeline in **Pipeline > Settings > Build Runtime**. | FALSE  |
+|`autoBuildSwitchAccount`      | When enabled, and a user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article.   | FALSE         |
 | `delightedSurvey`            | When enabled, displays Delighted CX surveys in the Codefresh UI. | FALSE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
 | `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps. <br> See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
@@ -224,7 +233,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `productCRD`  | _New feature currently in development for GitOps._ <br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
 | `promotionOrchestration` | _New feature currently in development for GitOps._ <br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
-| `runtimeEnvironmentTags` | When enabled, allows creating rules for Build Runtime Environments in Permissions to enable/disable Runtime Environments available for assignment to pipelines by tags. Those Environments not permitted are disabled in the **Pipeline > Settings > Build Runtime**.| FALSE         |
+| `runtimeEnvironmentTags` | When enabled, allows creating rules in **Permissions** for **Build Runtime Environments** to enable or disable the Runtime Environments available for assignment to pipelines based on tags. Restricted Runtime Environments will appear disabled in **Pipeline > Settings > Build Runtime**.| FALSE         |
 | `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
 | `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management.| FALSE         |
 
