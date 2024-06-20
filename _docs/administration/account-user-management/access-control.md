@@ -245,9 +245,7 @@ For each rule, select:
 
 See [Define rules for entities/resources](#define-rules-for-entitiesresources). 
 
-For examples on how to control access to projects and to pipelines through project tags:
-* [Example 1: Create rule to define access to projects by teams](#example-1-create-rule-to-define-access-to-projects-by-teams)  
-* [Example 2: Create rule to define access across teams to pipelines by projects and project tags](#example-2-create-rule-to-define-access-across-teams-to-pipelines-by-projects-and-project-tags)
+Also review our examples in [Creating rules for pipelines by project tags](#creating-rules-for-pipelines-by-project-tags) and [Creating rules for runtime environments](#creating-rules-for-runtime-environments).
 
 
 ### Define rules for entities/resources 
@@ -486,8 +484,8 @@ We want the DevOps team to have:
   lightbox="true"
   file="/images/administration/access-control/build-runtime-env-setting.png"
   url="/images/administration/access-control/build-runtime-env-setting.png"
-  alt="Example: Rule for Build Runtime Environment
-  caption="Example: Rule for Build Runtime Environment
+  alt="Example: Rule for Build Runtime Environment"
+  caption="Example: Rule for Build Runtime Environment"
   max-width="60%"
   %}
 
