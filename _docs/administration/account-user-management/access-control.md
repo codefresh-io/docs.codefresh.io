@@ -150,8 +150,6 @@ Assign tags to Pipeline Runtimes, and use the tags to control which runtime envi
   * Set cloud builds
   * Adjust CPU and memory allocations or select resource size for optimized performance
 
-<br>
-
 For example, you can assign a tag to runtime environments used for production builds. And ensure that only the platform operations team can view and assign environments for pipelines, to protect production resources from unauthorized access.
 
 ##### How to
@@ -296,13 +294,13 @@ CRUD privileges define Create/Read/Update/Delete permissions available for the e
   {: .table .table-bordered .table-hover}
 | Entity          | Privilege                |  
 | --------------  | --------------                      | 
-| Cluster          |  {::nomarkdown}<ul><li><b>Create</b>: Granted to account administrators only.</li><li><b>Read</b>: View cluster integrations.</li><li><b>Update</b>: View and edit existing allowed cluster resources, including <a href="https://codefresh.io/docs/docs/ci-cd-guides/helm-best-practices/">installing, removing, and rollback Helm charts</a>.<br>Tags are managed from account settings, so this permission doesn’t apply to it currently.</li><li><b>Delete</b>: Granted to account administrators only.</li>/ul>{:/}            | 
+| Cluster          |  {::nomarkdown}<ul><li><b>Create</b>: Granted to account administrators only.</li><li><b>Read</b>: View cluster integrations.</li><li><b>Update</b>: View and edit existing allowed cluster resources, including <a href="https://codefresh.io/docs/docs/ci-cd-guides/helm-best-practices/">installing, removing, and rollback Helm charts</a>.<br>Tags are managed from account settings, so this permission doesn’t apply to it currently.</li><li><b>Delete</b>: Granted to account administrators only.</li></ul>{:/}            | 
 | Build Runtime Environments          |  Allow teams access to Runtime Environments in pipelines by tags assigned to the environments. <br>This permission requires permissions also at the level of the pipeline to allow teams to manage aspects of the runtime environments for specific pipelines such as assigning runtime environments, and adjusting CPU and Memory resources, and setting cloud builds.| 
-| Project          |  {::nomarkdown}<ul><li><b>Create</b>: Create projects, and add tags to the projects.</li><li><b>Read</b>: View projects.</li><<li><b>Update</b>: View and edit projects, including the tags assigned to them.</li><li><b>Delete</b>: Delete projects.</li></ul>{:/}| 
+| Project          |  {::nomarkdown}<ul><li><b>Create</b>: Create projects, and add tags to the projects.</li><li><b>Read</b>: View projects.</li><li><b>Update</b>: View and edit projects, including the tags assigned to them.</li><li><b>Delete</b>: Delete projects.</li></ul>{:/}| 
 | Pipeline          | There are three levels of permissions for pipelines:{::nomarkdown}<ul><li><b>Access to pipelines by tags</b><ul><li><b>Create</b>: Create new pipelines and add tags to the pipelines when creating them. This permission does not include view and edit (which includes tagging them) or delete. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines.</li><li><b>Read</b>: View allowed pipelines only.</li><li><b>Update</b>: View and edit allowed pipelines, including editing the tags assigned to them.<li><b>Delete</b>: Delete allowed pipelines only.</li><li><b>Run</b>: Run allowed pipelines only.</li><li><b>Approve</b>: Resume pipelines pending manual <a href="https://codefresh.io/docs/docs/pipelines/steps/approval">approval</a>.</li><li><b>Debug</b>: Use <a href="https://codefresh.io/docs/docs/pipelines/debugging-pipelines/">pipeline debugger</a>.</li></ul></li><li><b>Access to pipelines by projects and tags in projects</b><br> All or any of the above permissions for pipelines based on projects with/without/specified tags.</li><li><b>Access to Runtime Environments and resources in pipelines. Any permission assigned here must include also the Update permission.</b>:<ul><li><b>Manage resources</b>: Select the CPU-Memory combination best suited for the runtime environment.</li><li><b>Set cloud builds</b>: Select cloud builds.</li><li><b>Set runtime environment</b>: Select from Runtime Environments enabled for this pipeline based on tags assigned to Pipeline Runtimes.</li></ul></li></ul>{:/}| 
 | Chart          |  **Read**: View Helm charts| 
-| Git contexts          |  Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts. {::nomarkdown}<ul><li><b>Create</b>: Add integrations to Git providers.</li><li><b>Update</b>: View and edit Git provider integrations, including editing the tags assigned to them.</li><li><b>Delete</b>: Delete Git provider integrations.</li><li><b>Use</b>: <ul><li>Create triggers in pipelines for Git provider</li><li>Retrieve YAML definitions from a repository</li><li>Use a Git integration in pipelines, in the <code>git-clone</code> step for example, via Execution Context.</li></ul></li></ul>{:/}| 
-| Shared configs<br>Secrets<br>YAMLs          |  Shared configuration permissions relate to managing: <br>{::nomarkdown}<ul><li>Environment variables, unencrypted (<b>Shared Configuration</b>), and encrypted for sensitive data such as access tokens (<b>Shared Secret</b>).</li><li>Helm values or other generic information, unencrypted (<b>Shared YAML</b>), and encrypted (<b>Shared Secret YAML</b>).</li></ul><br>**Create**: Create unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<br><ul><li><b>Read</b>: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li><li><b>Update</b>: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li><li><b>Delete</b>: Delete unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li></ul>{:/} | 
+| Git contexts          |  Git contexts refer to the permissions to create and manage integrations with Git providers and use them in pipelines. Tags are used to control access to teams and execution contexts. {::nomarkdown}<ul><li><b>Create</b>: Add integrations to Git providers.</li><li><b>Update</b>: View and edit Git provider integrations, including editing the tags assigned to them.</li><li><b>Delete</b>: Delete Git provider integrations.</li><li><b>Use</b>: <ul><li>Create triggers in pipelines for Git provider</li><li>Retrieve YAML definitions from a repository</li><li>Use a Git integration in pipelines, in the <code class="highlighter-rouge">git-clone</code> step for example, via Execution Context.</li></ul></li></ul>{:/}| 
+| Shared configs<br>Secrets<br>YAMLs          |  Shared configuration permissions relate to managing: <br>{::nomarkdown}<ul><li>Environment variables, unencrypted (<b>Shared Configuration</b>), and encrypted for sensitive data such as access tokens (<b>Shared Secret</b>).</li><li>Helm values or other generic information, unencrypted (<b>Shared YAML</b>), and encrypted (<b>Shared Secret YAML</b>).</li></ul><li><b>Create</b>: Create unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.<li><b>Read</b>: View unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li><li><b>Update</b>: View and edit unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li><li><b>Delete</b>: Delete unencrypted or encrypted Shared Configuration, Shared Secret, Shared YAML, Shared Secret YAML.</li></ul>{:/} | 
 
 
 
@@ -339,7 +337,6 @@ See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configurati
 
 1. Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings), and make sure that **Auto-create projects...** is enabled.
 
-<br>
 
 **Step 2: Create the DevOps team**  
 Now we'll create the two teams, DevOps and Users. 
@@ -360,13 +357,11 @@ Now we'll create the two teams, DevOps and Users.
 {:start="3"}
 1. Create a new team, Users.
 
-<br>
 
 **Step 3: Create the projects**  
 We will need to create only one project, as the DevOps project has already been created with the `DevOps` tag. 
 * Create a project: `Sandbox` and assign tag `shared`. See [Create project for pipelines]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/#create-a-project-for-pipeline).
 
-<br>
 
 **Step 4: Define the project rules**   
 Finally, we'll define the rules for the `DevOps` and '`Sandbox` projects.
@@ -477,8 +472,8 @@ We want the DevOps team to be able to:
 
 
 
-**Step 1: Add tags to Pipeline Runtimes**
-1. Add the `devops` tag to one or more Pipeline Runtimes. See [Assign tags to Pipeline Runtimes](#assign-tags-to-pipeline-runtimes).
+**Step 1: Add tags to Pipeline Runtimes**  
+* Add the `devops` tag to one or more Pipeline Runtimes. See [Assign tags to Pipeline Runtimes](#assign-tags-to-pipeline-runtimes).
 
 
 **Step 2: Define the rule for Build Runtime Environments**    
@@ -527,7 +522,6 @@ We want the DevOps team to be able to:
 
 This example illustrates how to create rules for Build Runtime Environments, and allow users only to modify resources for the selected runtime environment for the pipeline.  
 Note that with this permission, users can view but not change the runtime environment. 
-
 
 <br>
 
