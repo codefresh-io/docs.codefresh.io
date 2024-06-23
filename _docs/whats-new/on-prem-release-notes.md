@@ -12,13 +12,29 @@ Welcome to the release notes for our on-premises releases.
 
 Welcome to our newest on-premises release!
 
-##### Installing v2.4 
+#### Installing v2.4 
 For detailed instructions on installing v2.4, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
-##### Upgrading to v2.4
+#### Upgrading to v2.4
 For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
 
-### General: More power to Global Search & Navigation
+#### General: New `cfapi-auth` role 
+We have introduced the `cfapi-auth` role in v2.4. Make sure it is enabled.
+
+```yaml
+cfapi-auth:
+  <<: *cf-api
+  enabled: true
+```
+For details, see [`cfapi-auth` role in Artifactory](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
+
+#### General: PROJECT_ONE as default for accounts
+From v2.4 and higher, the default `SYSTEM_TYPE` has been changed to `PROJECT_ONE`.    
+To retain the original Classic version, you will need to update `cfapi` environment variables. See [Default system type in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#default-system_type-for-acccounts){:target="\_blank"}.
+
+If you need a refresher on the new navigation, see our [documentation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/).
+
+#### General: More power to Global Search & Navigation
 
 We're excited to announce major enhancements powering our Global Search & Navigation: 
 
@@ -59,7 +75,7 @@ For details, see [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/ad
 
 
 
-### Pipelines: Explore build relationships with Build Tree
+#### Pipelines: Explore build relationships with Build Tree
 Introducing Build Tree for easy rendering of relationships between pipeline builds!
 Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
 
@@ -83,7 +99,7 @@ In addition to the effortless visualization, other key benefits include:
 For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
 
 
-### Pipelines: More Pull Request events support for GitHub
+#### Pipelines: More Pull Request events support for GitHub
 Our integration with GitHub events is now even stronger with the addition of more types of pull request (PR) event triggers.
 
 You can now trigger builds for the following PR events:
@@ -103,7 +119,7 @@ You can now trigger builds for the following PR events:
 
 For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
-### Gerrit topic variable mapping  
+#### Gerrit topic variable mapping  
 
 We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
 
@@ -113,7 +129,7 @@ With `CF_GERRIT_CHANGE_TOPIC` in Codefresh pipelines, based on the topic’s con
 
 For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
-### Pipelines: Automatic account switching for pipeline builds
+#### Pipelines: Automatic account switching for pipeline builds
 
 Another usability enhancement for a seamless experience when navigating between accounts.  
 
@@ -123,7 +139,7 @@ To support this enhancement, you need to enable the `autoBuildSwitchAccount` Fea
 
 
 
-### GitOps: GitOps Runtimes as Configuration Runtimes
+#### GitOps: GitOps Runtimes as Configuration Runtimes
 We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
 Configuration Runtimes handle platform-level resources that are runtime-agnostic, such as those for GitOps Products.
 
@@ -146,7 +162,7 @@ Key features to note:
 
 For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
 
-### GitOps: Rollout enhancements 
+#### GitOps: Rollout enhancements 
 
 * **Templated arguments in AnalysisTemplates**  
 Codefresh now supports templated arguments declared in AnalysisTemplates for metric configurations in AnalysisRuns. 
@@ -169,7 +185,7 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 
 
 
-### Usability enhancements
+#### Usability enhancements
 
 ##### GitOps: Breadcrumbs
 We have improved the implementation of breadcrumbs for a smoother navigation experience.
@@ -237,11 +253,6 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions manage
 
 
-
-
-
-
-
 ##### Updated Feature Flags in v2.4
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
 
@@ -259,7 +270,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
 * Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
 * `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
-* Some repositories not displayed in **Repository** list when creating trigger for BitBucket server.
+<!---* Some repositories not displayed in **Repository** list when creating trigger for BitBucket server. -->
 * Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
