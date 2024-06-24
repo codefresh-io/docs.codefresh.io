@@ -16,7 +16,9 @@ Codefresh provides several mechanisms to enforce access control for pipelines wi
 You can then create rules that combine roles, attributes, and CRUD (Create/Read/Update/Delete) privileges to create permissions. 
 
 * **Role-based access**  
-  [Role-based access](#role-based-access-for-users-and-administrators) restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
+  Role-based access restricts access based on the _who (the kind of user)_. Access is granted based on the user's job responsibilities or position within an organization. Codefresh administrators can access UI functionality that you would deny to other users. For example, only account administrators can create and modify integrations with Git providers and cloud services, while other users can create, run, and modify pipelines. 
+
+  See [Role-based access for users and administrators](#role-based-access-for-users-and-administrators).
 
 * **Attribute-based access control (ABAC)**    
   ABAC restricts access to entities based on attributes, allowing for a more flexible and secure form of access control. In Codefresh, these attributes are referred to as tags.  
@@ -110,7 +112,7 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 
  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Click **Configure** for Kubernetes/Git to see the list of cluster/Git provider integrations (Git contexts).
 1. Select the integration for which to add tags, and on the right click **Edit tags**. 
   The Tags page displays existing tags if any.  
@@ -126,7 +128,7 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
   max-width="60%"
     %}
 
-{:start="3"}
+{:start=4"}
 1. Click **Add** and type in the tag. 
 1. Continue to add tags and when finished, click **Save**. 
 
@@ -139,7 +141,7 @@ Assign tags to Pipeline Runtimes, and use the tags to control which runtime envi
 
 ##### Permission levels for runtime environments
 
-* Access control for teams 
+* Access control for teams  
   Control which teams have access to specific runtime environments for pipelines.
   By assigning tags to Pipeline Runtimes, you can define the specific runtime environments available to teams for pipelines. 
   For example, a development team working on a high-priority project can be given exclusive access to a high-performance runtime environment, ensuring they have the necessary resources.
@@ -181,7 +183,7 @@ Add tags to projects for filtering and defining permissions.
   If [**Auto-create projects for teams**]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams) is enabled in global pipeline settings for your account, then creating the team also creates a project and tag for the project, both with the same name as the team name.
 {{site.data.callout.end}}
 
-1. In the Codefresh UI, on the toolbar, from Pipelines in the sidebar, select [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, from the sidebar, select [**Projects**](https://g.codefresh.io/projects/){:target="\_blank"}. 
 1. Select the project for which to add tags, and then click the **Settings** icon on the right.
 1. In the **Project Tags** field, add as many tags as you need.
 1. When finished, click **Save**.  
@@ -202,7 +204,7 @@ Add tags to projects for filtering and defining permissions.
 
 Similar to other entities, you can also add tags to Codefresh pipelines. 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Pipelines in the sidebar, select [**Pipelines**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipelines**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select the row with the pipeline for which to add tags, and then from the context menu on the right, select **Edit Tags**.
 1. When finished, click **Save**.  
 
@@ -221,7 +223,7 @@ Similar to other entities, you can also add tags to Codefresh pipelines.
 ### Assign tags to Shared Configurations
 Shared configuration can be environment variables, Helm values, encrypted secrets for access tokens and YAMLs.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Configuration in the sidebar, select [**Shared Configuration**](https://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Shared Configuration**](https://g.codefresh.io/account-admin/account-conf/shared-config){:target="\_blank"}. 
 1. In the row with the configuration for which to add tags, click the tag icon on the right.  
 1. Type in the tag, press Enter, and continue to add the tags you need.
 1. When finished, click **Save**.  
