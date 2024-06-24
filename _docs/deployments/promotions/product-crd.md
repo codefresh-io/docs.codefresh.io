@@ -1,41 +1,5 @@
 
-Here's an example of the Promotion Template CRD. The table describes the fields in the Promotion Template CRD. 
-
-```yaml
-apiVersion: codefresh.io/v1beta1
-kind: PromotionTemplate
-metadata:
-  name: base-helm                     # any valid k8s name
-spec:
-  applicationSourceSelector:          # valid k8s LabelSelector
-    matchExpressions:                 # can be either matchExpressions or matchLabels 
-    - key: codefresh.io/product
-      operator: Exists
-  priority: 0                         # applied in ascending order; can be negative
-  versionSource:                      # versionSource or promotion
-    file: Chart.yaml
-    jsonPath: $appVersion
-  promotion:                         #  promotion or versionSource  
-    Chart.yaml:
-      jsonPaths:
-      - $.appVersion
-      - $.version
-      - $.dependencies
-    values.yaml:
-      jsonPaths:
-      - $..image
-    requirements.yaml:
-      jsonPaths:
-      - "$.dependencies"
-```
-
-
-
-
-
-
-
-
+Here's an example of the Product CRD. The table that follows describes the fields in the Product CRD. 
 
 
 ```yaml
