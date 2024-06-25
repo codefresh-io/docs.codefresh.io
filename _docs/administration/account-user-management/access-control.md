@@ -146,11 +146,7 @@ Assign tags to Pipeline Runtimes, and use the tags to control which runtime envi
   By assigning tags to Pipeline Runtimes, you can define the specific runtime environments available to teams for pipelines. 
   For example, a development team working on a high-priority project can be given exclusive access to a high-performance runtime environment, ensuring they have the necessary resources.
 
-* Granular access to runtime environments and runtime resources within pipelines  
-  Pipeline-level permissions allow you to set specific permissions for different aspects of the runtime environment, ensuring that teams can only modify what they are authorized to.
-  * Select the appropriate runtime environment from among those available for the pipeline or build run
-  * Set cloud builds and select the appropriate resource size
-  * Adjust CPU, memory, and minimum disk space allocations for the selected runtime environment 
+
 
 For example, you can assign a tag to runtime environments used for production builds. And ensure that only the platform operations team can assign environments for pipelines to protect production resources from unauthorized access.
 
@@ -204,6 +200,9 @@ Add tags to projects for filtering and defining permissions.
 
 Similar to other entities, you can also add tags to Codefresh pipelines. 
 
+In addition to the privileges to manage pipelines, tags allow you to select specific privileges for different aspects of the runtime environment, ensuring that teams can only modify what they are authorized to. See [CRUD privileges for entities and resources](#crud-privileges-for-entitiesresources).
+
+
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipelines**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select the row with the pipeline for which to add tags, and then from the context menu on the right, select **Edit Tags**.
 1. When finished, click **Save**.  
@@ -238,7 +237,7 @@ Define rules using the *who, what, where* pattern to control access to entities 
 
 For each rule, select:
 1. The team the rule applies to 
-1. The [CRUD (*Create/Delete/Read/Update*) privileges](#crud-privileges-for-entitiesresources) the team has to the entity/resource 
+1. The [CRUD privileges](#crud-privileges-for-entitiesresources) the team has to the entity/resource 
   * For almost all entities, the Create privilege requires a separate rule. 
   * The other privileges can be defined in the same rule.
 1. The tags that control access to the entity/resource:
