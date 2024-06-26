@@ -151,7 +151,7 @@ Assign tags to Pipeline Runtimes, and use the tags to control which runtime envi
 For example, you can assign a tag to runtime environments used for production builds. And ensure that only the platform operations team can assign environments for pipelines to protect production resources from unauthorized access.
 
 ##### How to
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/pipeline-runtimes){:target="\_blank"}. 
 1. Select the Runtime for which to add tags, and then from the context menu on the right, select **Edit Tags**.
 
    {% include image.html
@@ -168,7 +168,7 @@ For example, you can assign a tag to runtime environments used for production bu
 1. Repeat to add more tags.
 1. When finished, click **Save**. 
 
-For examples, see [Creating rules for runtime environments](#creating-rules-for-runtime-environments).
+For examples, see [Creating rules for runtime environments](#creating-rules-for-runtime-environments-and-resources).
 
 ### Assign tags to projects 
 
