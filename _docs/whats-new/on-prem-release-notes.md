@@ -242,7 +242,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 | `abacRuntimeEnvironments`    | When enabled, allows creating rules in **Permissions** which impacts options in <b>Pipeline > Settings > Build Runtime</b>: {::nomarkdown}<ul><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for pipelines based on tags. Restricted Runtime Environments are disabled in the Runtime Environments list for the pipeline/build run.</li><li><b>Pipeline</b> actions:<ul><li><b>Manage resources</b>: Select CPU, memory, and minimum disk space for the pipeline/build run.</li><li><b>Set runtime environment</b>: Select a Runtime Environment from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Set Cloud build and select the resource size for the pipeline/build run.</li></ul></li></ul> {:/}| FALSE  |
 | `autoBuildSwitchAccount`  | When enabled, and a user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article. | FALSE         |
-| `delightedSurvey`            | When enabled, displays Delighted CX surveys in the Codefresh UI. | FALSE|
+| `delightedSurvey`            | When enabled (the default), displays Delighted CX surveys in the Codefresh UI.<br>If there are security concerns because of outbound requests from clients, disable this Feature Flag.  | TRUE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.| FALSE  |
 | `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps.<br>See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
 | `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
@@ -275,6 +275,8 @@ The table below lists existing Feature Flags which have been updated by default 
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
 * Long loading time for Git repos when creating new pipelines and triggers.
+* For Bitbucket, reported statuses of two builds triggered for the same commit override each other.
+* For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
 * Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
 <!--- * 500 error for BitBucket webhooks including deleted branches. (Vasil to check)  -->
 * Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
