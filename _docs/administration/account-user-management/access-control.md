@@ -138,19 +138,11 @@ After integrating Kubernetes clusters/Git providers in Codefresh, you can add on
 ### Assign tags to Pipeline Runtimes
 Assign tags to Pipeline Runtimes, and use the tags to control which runtime environments are available to users within pipelines, and specific aspects of the runtime environments within pipelines.
 
-
-##### Permission levels for runtime environments
-
-* Access control for teams  
-  Control which teams have access to specific runtime environments for pipelines.
-  By assigning tags to Pipeline Runtimes, you can define the specific runtime environments available to teams for pipelines. 
-  For example, a development team working on a high-priority project can be given exclusive access to a high-performance runtime environment, ensuring they have the necessary resources.
+By assigning tags to Pipeline Runtimes, you can define the specific runtime environments available to teams for pipelines. 
+For example, you can assign a tag to runtime environments used for production builds. And ensure that only the platform operations team can assign environments for pipelines to protect production resources from unauthorized access. 
+Or ensure that a development team working on a high-priority project can assign a high-performance runtime environment ensuring they have the necessary resources.
 
 
-
-For example, you can assign a tag to runtime environments used for production builds. And ensure that only the platform operations team can assign environments for pipelines to protect production resources from unauthorized access.
-
-##### How to
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Runtimes**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select the Runtime for which to add tags, and then from the context menu on the right, select **Edit Tags**.
 
