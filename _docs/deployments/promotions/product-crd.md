@@ -55,7 +55,6 @@ spec:
 
 
 
-<table class="table table-bordered table-hover">
 
 {::nomarkdown}
 <table class="table table-bordered table-hover">
