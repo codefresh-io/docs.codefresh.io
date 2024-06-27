@@ -16,7 +16,7 @@ Welcome to our newest on-premises release!
 For detailed instructions on installing v2.4, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 #### Upgrading to v2.4
-For details, see [Upgrade to 2.3.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
+For details, see [Upgrade to 2.4.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
 
 #### General: New `cfapi-auth` role 
 We have introduced the `cfapi-auth` role in v2.4. Make sure it is enabled.
@@ -62,7 +62,7 @@ caption="Global Search & Navigation: app-proxy logs"
 max-width="60%" 
 %}
 
-### General: Custom auto-sync intervals for SSO
+#### General: Custom auto-sync intervals for SSO
 
 Previously, integration with different SSO providers allowed automatic user and team synchronization with Codefresh at fixed hourly intervals.
 
@@ -274,7 +274,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
-* When defining triggers, Select Branch search does not display branch names including slashes. 
+* When defining triggers, search in Select Branch does not display branch names including slashes. 
 * Long loading time for Git repos when creating new pipelines and triggers.
 * For Bitbucket, reported statuses of two builds triggered for the same commit override each other.
 * For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
