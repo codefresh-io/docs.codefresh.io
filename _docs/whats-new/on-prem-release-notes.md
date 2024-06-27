@@ -274,11 +274,11 @@ The table below lists existing Feature Flags which have been updated by default 
 * Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
+* When defining triggers, Select Branch search does not display branch names including slashes. 
 * Long loading time for Git repos when creating new pipelines and triggers.
 * For Bitbucket, reported statuses of two builds triggered for the same commit override each other.
 * For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
 * Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
-<!--- * 500 error for BitBucket webhooks including deleted branches. (Vasil to check)  -->
 * Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
 * Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
 * Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
