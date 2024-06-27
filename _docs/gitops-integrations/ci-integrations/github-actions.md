@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
+          CF_IMAGE: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo "Image should be accessible to your local machine (after docker login) by:"
@@ -80,7 +80,7 @@ jobs:
           CF_GIT_BRANCH: 'main'
 
           # Image path to enrich 
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
+          CF_IMAGE: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
 
           # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
           # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
