@@ -371,7 +371,10 @@
           url: "/troubleshooting-gitops-apps"
 
 - title: Promotions
-  url: "/product-crd"
+  url: "/promotions"
+  pages:
+    - title: Product CRD
+      url: "/product-crd"
 
 
 - title: Pipelines
