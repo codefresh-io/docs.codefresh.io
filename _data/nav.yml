@@ -370,6 +370,10 @@
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
+- title: Promotions
+  url: "/product-crd"
+
+
 - title: Pipelines
   url: "/pipelines"
   pages:
