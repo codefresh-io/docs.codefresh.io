@@ -18,8 +18,8 @@ metadata:
   name: helm-guestbook #name of product
   annotation: codefresh.io/product: helm-guestbook  # annotation to be added to manifests of apps to connect to this product 
 spec:
-  promotionTemplateRef: gs-promotion-template
-  promotionTemplate:
+  promotionTemplateRef: gs-promotion-template  #predefined promotion template; optional if using inline template
+  promotionTemplate:  # custom inline promotion template; optional if using predefined promotion template
     versionSource:
       file: version.yaml  
       jsonPath: $.appVersionInline
@@ -38,7 +38,7 @@ spec:
       requirements.yaml:
         jsonPaths:
           - "$.dependencies"
-  promotionFlows:
+  promotionFlows:  # ochestration flow to promote product across environments; first flow that matches product is selected
     - name: to-prod
       gitTriggerSelectors:
         - key: commitMessage
