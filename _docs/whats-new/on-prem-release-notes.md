@@ -270,7 +270,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
 * Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
 * `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
-<!---* Some repositories not displayed in **Repository** list when creating trigger for BitBucket server. -->
+* Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server. 
 * Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
 * Builds for Gerrit in Codefresh triggered twice. 
 * Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
