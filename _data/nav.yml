@@ -375,6 +375,12 @@
   pages:
     - title: Product CRD
       url: "/product-crd"
+    - title: Promotion Template CRD
+      url: "/promotion-template-crd"
+    - title: Promotion Flow CRD
+      url: "/promotion-flow-crd"
+    - title: Promotion Flow CRD
+      url: "/promotion-policy-crd"
 
 
 - title: Pipelines
