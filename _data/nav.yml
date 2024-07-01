@@ -369,7 +369,13 @@
           url: "/install-argo-rollouts"
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
-
+    - title: GitOps Promotions
+      url: "/promotions"
+      sub-pages:
+        - title: Promotion changes for applications
+          url: "/promotion-template"
+        - title: Promotions API
+          url: "/promotions-api"
 - title: Pipelines
   url: "/pipelines"
   pages:
