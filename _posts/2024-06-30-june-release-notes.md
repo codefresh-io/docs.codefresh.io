@@ -1,5 +1,5 @@
 ---
-title: "Release Notes: May 2024"
+title: "Release Notes: June 2024"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
