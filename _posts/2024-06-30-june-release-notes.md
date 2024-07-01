@@ -81,5 +81,5 @@ In the Builds page, on selecting a buil, the breadcrumbs displays the project na
 
 
 ##### GitOps 
+* Argo Rollouts Reporter missing from destination cluster error even when Argo Rollouts is installed. 
 * Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
-
