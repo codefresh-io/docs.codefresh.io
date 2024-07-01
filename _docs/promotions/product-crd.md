@@ -52,9 +52,8 @@ spec:
             - "hotfix"
 ```
 
-<!--
 
-{::nomarkdown}
+
 <table class="table table-bordered table-hover">
   <tr>
     <th>Field</th>
@@ -111,7 +110,7 @@ spec:
 
 {:/}
 
--->
+
 
 
 
