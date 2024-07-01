@@ -119,7 +119,7 @@ You can now trigger builds for the following PR events:
 
 For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
 
-#### Gerrit topic variable mapping  
+#### Pipelines: Gerrit topic variable mapping  
 
 We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
 
