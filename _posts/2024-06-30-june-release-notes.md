@@ -6,7 +6,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 
 
-#### Gerrit topic variable mapping  
+#### Pipelines: Gerrit topic variable mapping  
 
 We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
 
