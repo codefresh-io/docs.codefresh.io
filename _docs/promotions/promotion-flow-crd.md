@@ -36,7 +36,7 @@ spec:
 {: .table .table-bordered .table-hover}
 | Field                | Description                                                     | Type   | Required/Default |
 |----------------------|---------------------------------------------------------------- |--------|------------------|
-| `triggerEnvironment` | The name of the initial environment that triggers the entire Promotion Flow.  | string | Required   |
-| `steps`              | A list of steps in the Promotion Flow. Each step defines an environment and its dependencies. <br>At least one environment and dependency must be defined. | array  | Required   |
+| `spec.triggerEnvironment` | The name of the initial environment that triggers the entire Promotion Flow.  | string | Required   |
+| `spec.steps`              | A list of steps in the Promotion Flow. Each step defines an environment and its dependencies. <br>At least one environment and dependency must be defined. | array  | Required   |
 |          |`steps[].environment`: The name of the specific environment for which to trigger the promotion.   | string | Required         |
 |          | `steps[].dependsOn`: One or more environments that must be successfully promoted before this step can be triggered.   | array  | Required |
