@@ -52,8 +52,8 @@ For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/inst
 
 #### Usability enhancements
 
-##### Project name for pipelines in Builds page
-Mouse over the Pipeline column for a build displays the Project name in addition to the name of the Pipeline.
+##### Project name in breadcrumbs in Builds page
+In the Builds page, on selecting a buil, the breadcrumbs displays the project name in the path.
 
 {% include
   image.html
@@ -72,13 +72,14 @@ Mouse over the Pipeline column for a build displays the Project name in addition
 
 
 ##### Pipelines 
-* Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
-* For Gerrit, username of build initiator not displayed.
-* Usability issues when selecting clone pipeline option from UI. 
+* `404: repo not found` error for pipelines using Helm charts.
+* Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server.  
+* Rule for Pipeline permissions by pipeline `tags` overrides rule for pipeline permissions by projects with `All tags`.
+* When defining triggers, Select Branch search does not display branch names including slashes. 
+
 
 
 
 ##### GitOps 
-* GitOps UI does not show logs for pods. 
-* Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
+* Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
 
