@@ -13,6 +13,8 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
+> Docker Daemon as only available on the **Hybrid Runtime** and **On-Prem** instances. Docker Daemon access is not supported on **SaaS Runtimes** for security Reasons.
+
 Testcontainers is a library, for Java, that allows you to run your tests interacting with Docker containers, by using the `docker-java` client library. More information on its official site: [testcontainers.org](https://www.testcontainers.org/).
 
 Besides the ability to run a Gradle/Maven process in your pipeline, to effectively use Testcontainers in Codefresh, you'll need to provide direct access to the Docker Daemon, so it can perform its internal operations (creating the containers, getting network information from them, executing commands in the running containers, among other common actions).
@@ -38,8 +40,6 @@ using_testcontainers:
 ```
 
 {% endraw %}
-
-> **Note** : the step above is being executed on a Hybrid RE (Runner RE), where access to the Docker Daemon is enabled by default. If you're using a SaaS RE (hosted by Codefresh), you can use a `composition` step. Look for the article mentioned above for more details on how to access the Docker Daemon in Codefresh.
 
 ### Dealing with Private Docker Images
 
@@ -143,7 +143,7 @@ using_testcontainers:
 
 Take into consideration that Service Containers also supports a reference to a `docker-compose.yml` file. If you can dynamically modify that file, adding the private images you'll need, then, in the `services.composition` field, you can just reference that `docker-compose.yml` file. That way you don't need to hardcode each of the images in the composition, for that step.
 
-> **Note** : this way of pre-pulling images using service-containers is only valid when using Hybrid REs, since the main step will automatically have access to the Docker Daemon. If you're running in a SaaS RE, then, you can use one of the other alternatives to access the Docker Daemon. For example, using a `composition` step you can define each of the composition-services to be an image to be pulled, and the `composition_candidates` could be the service that will run the Testcontainers tests, and the one with access to the Docker Daemon.
+> **Note** : this way of pre-pulling images using service-containers is only valid when using Hybrid REs, since the main step will automatically have access to the Docker Daemon.
 
 The benefit of this approach (" _pre-pulling the images_ "), over Option 1, is that you don't need to worry about authentication to the registry, Codefresh will automatically handle that, based on the registry integrations you have already added to Codefresh.
 
