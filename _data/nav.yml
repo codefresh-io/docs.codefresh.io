@@ -457,19 +457,6 @@
     - title: Pipeline definitions YAML
       url: "/what-is-the-codefresh-yaml"
 
-- title: Argo Workflows
-  url: "/workflows"
-  pages:
-    - title: Creating Argo Workflows
-      url: "/create-pipeline"
-    - title: Nested Argo Workflows
-      url: "/nested-workflows"
-    - title: Configure artifact repository
-      url: "/configure-artifact-repository"
-    - title: Selectors for concurrency synchronization
-      url: "/concurrency-limit"
-    - title: Sharing file systems
-      url: "/sharing-file-system"
 
 - title: Testing
   url: "/testing"
