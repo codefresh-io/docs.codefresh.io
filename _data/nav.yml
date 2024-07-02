@@ -379,7 +379,7 @@
       url: "/promotion-template-crd"
     - title: Promotion Flow CRD
       url: "/promotion-flow-crd"
-    - title: Promotion Flow CRD
+    - title: Promotion Policy CRD
       url: "/promotion-policy-crd"
 
 
