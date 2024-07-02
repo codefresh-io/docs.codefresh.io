@@ -192,20 +192,6 @@
     - title: Managing Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
-- title: Argo Workflows
-  icon: images/home-icons/pipeline.svg
-  url: ""
-  links:
-    - title: Creating Argo Workflows
-      localurl: /docs/workflows/create-pipeline
-    - title: Nested Argo Workflows
-      localurl: /docs/workflows/nested-workflows/
-    - title: Configure artifact repository
-      localurl: /docs/workflows/configure-artifact-repository/
-    - title: Selectors for concurrency synchronization
-      localurl: /docs/workflows/concurrency-limit/
-    - title: Sharing file systems
-      localurl: /docs/workflows/sharing-file-system/
 
 - title: Installation
   icon: images/home-icons/runtimes.svg
