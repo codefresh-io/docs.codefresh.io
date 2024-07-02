@@ -290,7 +290,7 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 
 
 **Runtime Name**  
-If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
+If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 38 lower-case characters and numbers.
 
 **Namespace**  
 The Namespace must conform to the naming conventions for Kubernetes objects.
