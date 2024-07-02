@@ -250,7 +250,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `promotionOrchestration` | _New feature currently in development for GitOps._<br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
 | `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
-| `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions manage
+| `serviceAccounts` | _Currently in development._ <br>When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management. | FALSE         |
 
 
 ##### Updated Feature Flags in v2.4
