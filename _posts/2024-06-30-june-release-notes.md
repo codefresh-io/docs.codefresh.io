@@ -75,9 +75,8 @@ For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/inst
 * When defining triggers, Select Branch search does not display branch names including slashes. 
 
 
-
-
 ##### GitOps 
+* Invalid Git user (personal access) token message displayed at frequent intervals.
 * Argo Rollouts Reporter missing from destination cluster error even when Argo Rollouts is installed. 
 * Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
 * In GitOps Apps dashboard, breadcrumbs for app of apps display child applications in the path.
