@@ -187,6 +187,20 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 
 #### Usability enhancements
 
+
+##### Pipelines: Project name in breadcrumbs in Builds page
+In the Builds page, on selecting a build, the breadcrumbs path displays also the project name.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  url="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  alt="Builds page: Project name in breadcrumbs"
+  caption="Builds page: Project name in breadcrumbs"
+  max-width="60%"
+%}
+
 ##### GitOps: Breadcrumbs
 We have improved the implementation of breadcrumbs for a smoother navigation experience.
 
