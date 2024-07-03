@@ -4,6 +4,16 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
+#### Pipelines: Build status reporting per trigger event
+We are excited to introduce a new feature: build status reporting per trigger event. This feature is currently supported for Bitbucket Cloud. 
+
+**How does it work?**  
+Statuses for builds with the same pipeline ID and triggered by different events are reported separately - per trigger ID and trigger event.
+For example, builds triggered by a commit event and by a pull request (PR) event for the same pipeline are reported individually.
+
+**Enhanced safety**  
+This feature enhances safety as it helps prevent PRs from being merged while a commit-triggered build for the same pipeline is still in progress.
+
 
 
 #### Pipelines: Gerrit topic variable mapping  
@@ -25,6 +35,7 @@ When accessing pipeline builds from an account different to the one you're logge
 <!--- To support this enhancement, you need to enable the `autoBuildSwitchAccount` Feature Flag.-->
 
 
+ 
 
 #### GitOps: GitOps Runtimes as Configuration Runtimes
 We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
@@ -50,20 +61,6 @@ Key features to note:
 For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
 
 
-#### Usability enhancements
-
-##### Project name in breadcrumbs in Builds page
-In the Builds page, on selecting a buil, the breadcrumbs displays the project name in the path.
-
-{% include
-  image.html
-  lightbox="true"
-  file="/images/whats-new/june24/project-name-in-builds.png"
-  url="/images/whats-new/june24/project-name-in-builds.png"
-  alt="Builds page: Project and Pipeline for a build"
-  caption="Builds page: Project and Pipeline for a build"
-  max-width="60%"
-%}
 
 
 
@@ -83,3 +80,4 @@ In the Builds page, on selecting a buil, the breadcrumbs displays the project na
 ##### GitOps 
 * Argo Rollouts Reporter missing from destination cluster error even when Argo Rollouts is installed. 
 * Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
+* In GitOps Apps dashboard, breadcrumbs for app of apps display child applications in the path.
