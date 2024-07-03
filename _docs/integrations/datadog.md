@@ -62,7 +62,7 @@ alt="Datadog configuration settings"
 ## Pipeline data from Codefresh in Datadog
 See pipeline data in Datadog's CI Visibility interface.  
 
-We have highlighted the main features in Datadog for Codefresh pipelines. For detailed descriptions and options, see [Datadog documentation on Exploring Pipelines](https://docs.datadoghq.com/continuous_integration/explore_pipelines/){:target="\_blank"}.  
+We have highlighted the main features in Datadog for Codefresh pipelines. For details, see the information in [Set up Tracing on Codefresh Pipelines](https://docs.datadoghq.com/continuous_integration/pipelines/codefresh/){:target="\_blank"}.  
 
 
 ### Pipelines page in Datadog 

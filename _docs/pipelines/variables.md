@@ -121,6 +121,7 @@ The table below describes the system variables.
 | {% raw %}`${{CF_PULL_REQUEST_LABELS}}`{% endraw %}      | For GitHub and GitLab, the labels assigned to the PRs.<br>For Gerrit, the `change hashtags`. |
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT}}`{% endraw %}      | The comment added to the PR.<br>For Gerrit, use this in place of `Change message`.  |
 | {% raw %}`${{CF_PULL_REQUEST_COMMENT_AUTHOR}}`{% endraw %}      | The user who added the comment to the PRt.<br>For Gerrit, use this in place of `Change author`.  |
+| {% raw %}`${{CF_GERRIT_CHANGE_TOPIC}}`{% endraw %}      | The topic associated with the Gerrit change.  |
 | {% raw %}`${{CF_COMMIT_AUTHOR}}`{% endraw %}      | The name of the user who authored the commit.        |
 | {% raw %}`${{CF_BUILD_INITIATOR}}`{% endraw %}      | The username of the user who initiated the build.<br> If the build is initiated by a Git webhook, as for example from a PR, this variable returns the webhook user.<br>If the build is restarted manually, the variable always returns the username of the person who restarted the build.  |
 | {% raw %}`${{CF_ACCOUNT}}`{% endraw %}         | The Codefresh account for this build. |

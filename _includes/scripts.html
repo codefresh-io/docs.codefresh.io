@@ -60,8 +60,13 @@
   );
 
   document.addEventListener("keydown", function (event) {
-    if (event.metaKey && event.key === "k") {
-      window.CommandBar.toggleHelpHub();
+    const isMac = navigator.userAgent.includes('Mac');
+    if ((event.key === "k") && ((isMac && event.metaKey) || (!isMac && event.ctrlKey))) {
+      event.preventDefault();
+      window.CommandBar.openHelpHub();
+      setTimeout(() => {
+        document.querySelector('input[data-testid=helphub-input]').focus()
+      }, 100);
     }
   });
 </script>
