@@ -8,7 +8,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 We are excited to introduce a new feature: build status reporting per trigger event. This feature is currently supported for Bitbucket Cloud. 
 
 **How does it work?**  
-Statuses for builds with the same pipeline ID and triggered by different events are reported separately - per trigger ID and trigger event.
+Statuses for builds with the same pipeline ID triggered by different events are reported separately, based on the trigger ID and trigger event.
 For example, builds triggered by a commit event and by a pull request (PR) event for the same pipeline are reported individually.
 
 **Enhanced safety**  
