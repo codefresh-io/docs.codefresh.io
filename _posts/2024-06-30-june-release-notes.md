@@ -4,7 +4,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-#### Pipelines: Build status reporting per trigger event
+### Pipelines: Build status reporting per trigger event
 We are excited to introduce a new feature: build status reporting per trigger event. This feature is currently supported for Bitbucket Cloud. 
 
 **How does it work?**  
@@ -16,7 +16,7 @@ This feature enhances safety as it helps prevent PRs from being merged while a c
 
 
 
-#### Pipelines: Gerrit topic variable mapping  
+### Pipelines: Gerrit topic variable mapping  
 
 We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
 
@@ -26,7 +26,7 @@ With `CF_GERRIT_CHANGE_TOPIC` in Codefresh pipelines, based on the topic’s con
 
 For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
-#### Pipelines: Automatic account switching for pipeline builds
+### Pipelines: Automatic account switching for pipeline builds
 
 Another usability enhancement for a seamless experience when navigating between accounts.  
 
@@ -37,7 +37,7 @@ When accessing pipeline builds from an account different to the one you're logge
 
  
 
-#### GitOps: GitOps Runtimes as Configuration Runtimes
+### GitOps: GitOps Runtimes as Configuration Runtimes
 We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
 Configuration Runtimes handle platform-level resources that are runtime-agnostic, such as those for GitOps Products.
 
