@@ -5,10 +5,11 @@ group: administration
 toc: true
 
 ---
-Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
-Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
+# Test do not merge!
+Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses.
+Codefresh provides a list of IP addresses to be configured on clusters to allow access to them.
 
-You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
+You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.
 In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
 
@@ -17,7 +18,7 @@ In addition, managed clusters registered to Hosted GitOps Runtimes must be confi
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
 {{site.data.callout.callout_warning}}
-**IMPORTANT**  
+**IMPORTANT**
 If you do use these IPs, we **strongly recommend** that you monitor this page on a regular basis.
 {{site.data.callout.end}}
 
@@ -52,14 +53,14 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 52.72.0.154
 - 52.73.76.60
 - 54.86.228.102
-- 54.160.88.80 
+- 54.160.88.80
 - 54.221.236.3
 - 54.235.42.99
 - 72.44.39.224
 
->**NOTE**    
+>**NOTE**
 We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
- 
+
 ## Codefresh IPs for Hosted GitOps Runtimes
 
 - 18.204.66.119
@@ -73,14 +74,14 @@ We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/adminis
 - 72.44.39.224
 
 ## API access to IPs for clusters
-Clusters must be configured with API access to the authorized Codefresh IPs.  
+Clusters must be configured with API access to the authorized Codefresh IPs.
 If you haven't configured your clusters with the required IPs, use the links below to complete the configuration for the clusters listed:
-* [AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}  
-* [EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}  
-* [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
+* [AKS (Azure Kubernetes Service)](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges){:target="\_blank"}
+* [EKS (Amazon Elastic Container Service)](https://aws.amazon.com/premiumsupport/knowledge-center/eks-lock-api-access-IP-addresses/){:target="\_blank"}
+* [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}
 
 ## Related articles
-[Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
-[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
-[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
+[Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
+[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)
+[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)
