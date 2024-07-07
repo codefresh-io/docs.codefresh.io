@@ -142,14 +142,24 @@ Set Community Argo CD to track resources using the default `label` method.  If b
 
 ## Install Hybrid GitOps Runtime via Helm
 
-After completing the configuration changes, follow our [step-by-step installation guide]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-first-gitops-runtime-in-account) to install the Hybrid GitOps Runtime via Helm.  
+After completing the configuration changes, you can install the Hybrid GitOps Runtime via Helm. 
 
+Most of the steps to install the GitOps Runtime are identical for both types of (clean and alongside Community Argo CD) installations.<br> 
+Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based.
 
-Most of the steps to install the GitOps Runtime are identical for both types (clean and alongside Community Argo CD) installations. 
-
-Installing alongside Community Argo CD requires additional flags in the installation command. These flags are required in the installation commands for all access modes, tunnel-, ingress-, and service-mesh-based.
+Before you begin installation, review [Additional installation flags for GitOps Runtime with Community Argo CD](#additional-installation-flags-for-gitops-runtime-with-community-argo-cd), and then follow our [step-by-step installation guide]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-first-gitops-runtime-in-account) to install the Hybrid GitOps Runtime via Helm.  
 
 ##### Additional installation flags for GitOps Runtime with Community Argo CD
+
+* `fullnameOverride` configuration for resource conflicts  
+  Installing the GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
+  Customizing `fullnameOverride` values for Argo CD (and Argo Rollouts if installed) in the GitOps Runtime's `values` file prevents these conflicts.
+
+
+* Resource tracking with `annotation`  
+  Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
+
+
 
 {% highlight yaml %}
 ...
@@ -163,11 +173,10 @@ where:
 * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
 * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when you have Argo Rollouts in your cluster to avoid conflicts.
 * `argo-cd.configs.cm.application.resourceTrackingMethod=annotation` is mandatory to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
-        
+
 
 ## Remove Rollouts controller deployment
-(NIMA: need to confirm again if it is correct to do this after all the install steps. Seem to remember that the reason I moved it to core install is because Ilia said. Francisco, can you confirm this?)
-If you have Argo Rollouts also installed with Community Argo CD,  _after_ confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
+If you have Argo Rollouts also installed with Community Argo CD, _after_ confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**    
@@ -177,9 +186,6 @@ If you have Argo Rollouts also installed with Community Argo CD,  _after_ confir
 1. Remove the duplicate Argo Rollouts controller:  
   `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
 1. Continue with [Step 8: (Optional) Create a Git Source](#step-8-optional-create-a-git-source).
-
-
-
 
 
 ## Migrate Community Argo CD Applications to Codefresh GitOps Runtime
@@ -195,14 +201,13 @@ The process to migrate an Argo CD Application is simple:
 1. Commit the application to the Git Source for viewing and management in Codefresh
 
 
-### Step 1: (Optiona) Add a Git Source to GitOps Runtime
+### Step 1: (Optional) Add a Git Source to GitOps Runtime
 
 If you have already added a Git Source as part of the Hybrid GitOps Runtime installation procedure, skip this step.  
 
 Otherwise, you can add a Git Source to the GitOps Runtime and commit your applications to it.
 A Git Source is a Git repository managed by Codefresh as an Argo CD Application.
 Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
-
 
 
 * Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
