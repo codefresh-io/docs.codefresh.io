@@ -504,8 +504,6 @@ max-width="70%"
 
 ## Visualize parent-child relationships for pipeline builds
 
->**NOTE**  
-This feature is currently in Beta.
 
 Select a build for a pipeline and visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
 
