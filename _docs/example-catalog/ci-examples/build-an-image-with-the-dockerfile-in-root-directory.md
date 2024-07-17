@@ -69,7 +69,7 @@ You can also change the Docker build context by editing the `working_directory` 
 ## Related articles
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#ci-examples)  
 [Build step in pipelines]({{site.baseurl}}/docs/pipelines/steps/build/)  
-[Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)  
+[Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location/)  
 [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)  
-[Build and push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image)  
-[Build an Image with build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)
+[Build and push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
+[Build an Image with build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments/)

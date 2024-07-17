@@ -159,8 +159,8 @@ Once you commit the manifest to the Git Source, it is synced with the Git repo. 
 
 
 ## Related articles
-[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

@@ -59,5 +59,5 @@ Now, every time you push a Helm chart to the selected Artifactory repository, ma
 ## Related articles
 [Helm Releases management]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
 [Custom Helm uploads]({{site.baseurl}}/docs/deployments/helm/custom-helm-uploads/)  
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

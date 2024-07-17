@@ -56,7 +56,7 @@ You can also compile traditional applications that are not Dockerized yet.
 - [Build an Image by specifying the Dockerfile location]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-specify-dockerfile-location)
 - [Build an Image from a different Git repository]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-from-a-different-git-repository)
 - [Build and Push an Image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image)
-- [Build an Image with build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments)
+- [Build an Image with build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments/)
 - [Share data between steps]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-between-builds)
 - [Upload or download from a Google Storage Bucket]({{site.baseurl}}/docs/example-catalog/ci-examples/uploading-or-downloading-from-gs/)
 - [Get Short SHA ID and use it in a CI process]({{site.baseurl}}/docs/example-catalog/ci-examples/get-short-sha-id-and-use-it-in-a-ci-process)

@@ -149,5 +149,5 @@ The following variables will be available for any Codefresh pipeline linked to a
 - `EVENT_PAYLOAD` - original DockerHub Webhook JSON payload.
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
