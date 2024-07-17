@@ -822,9 +822,9 @@ max-width="50%"
 
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
+[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
