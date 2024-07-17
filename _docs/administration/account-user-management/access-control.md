@@ -160,7 +160,7 @@ Or ensure that a development team working on a high-priority project can assign 
 1. Repeat to add more tags.
 1. When finished, click **Save**. 
 
-For examples, see [Creating rules for runtime environments](#creating-rules-for-runtime-environments).
+For examples, see [Creating rules for Pipeline Runtimes](#creating-rules-for-runtime-environments).
 
 ### Assign tags to projects 
 
@@ -240,7 +240,7 @@ For each rule, select:
 
 See [Define rules for entities/resources](#define-rules-for-entitiesresources). 
 
-Also review our examples in [Creating rules for pipelines by project tags](#creating-rules-for-pipelines-by-project-tags) and [Creating rules for runtime environments](#creating-rules-for-runtime-environments).
+Also review our examples in [Creating rules for pipelines by project tags](#creating-rules-for-pipelines-by-project-tags) and [Creating rules for Pipeline Runtimes](#creating-rules-for-pipeline-runtimes-and-runtime-environments).
 
 
 ### Define rules for entities/resources 
@@ -289,7 +289,7 @@ CRUD privileges define Create/Read/Update/Delete permissions available for the e
 | Entity          | Privilege                |  
 | --------------  | --------------                      | 
 | Cluster          |  {::nomarkdown}<ul><li><b>Create</b>: Granted to account administrators only.</li><li><b>Read</b>: View cluster integrations.</li><li><b>Update</b>: View and edit existing allowed cluster resources, including <a href="https://codefresh.io/docs/docs/ci-cd-guides/helm-best-practices/">installing, removing, and rollback Helm charts</a>.<br>Tags are managed from account settings, so this permission doesn’t apply to it currently.</li><li><b>Delete</b>: Granted to account administrators only.</li></ul>{:/}            | 
-| Build Runtime Environments          |  Allow teams to view Runtime Environments in pipelines by tags assigned to the Pipeline Runtimes. <br> See  <a href="https://codefresh.io/docs/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes">Assigning tags to Pipeline Runtimes</a>.| 
+| Pipeline Runtimes          |  Allow teams to view Runtime Environments in pipelines by tags assigned to the Pipeline Runtimes. <br> See  <a href="https://codefresh.io/docs/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes">Assigning tags to Pipeline Runtimes</a>.| 
 | Project          |  {::nomarkdown}<ul><li><b>Create</b>: Create projects, and add tags to the projects.</li><li><b>Read</b>: View projects.</li><li><b>Update</b>: View and edit projects, including the tags assigned to them.</li><li><b>Delete</b>: Delete projects.</li></ul>{:/}| 
 | Pipeline          | There are three levels of permissions for pipelines:{::nomarkdown}<ul><li><b>Access to pipelines by tags</b><ul><li><b>Create</b>: Create new pipelines and add tags to the pipelines when creating them. This permission does not include view and edit (which includes tagging them) or delete. This permission should also go hand in hand with additional permissions like read/edit untagged pipelines.</li><li><b>Read</b>: View allowed pipelines only.</li><li><b>Update</b>: View and edit allowed pipelines, including editing the tags assigned to them.<li><b>Delete</b>: Delete allowed pipelines only.</li><li><b>Run</b>: Run allowed pipelines only.</li><li><b>Approve</b>: Resume pipelines pending manual <a href="https://codefresh.io/docs/docs/pipelines/steps/approval">approval</a>.</li><li><b>Debug</b>: Use <a href="https://codefresh.io/docs/docs/pipelines/debugging-pipelines/">pipeline debugger</a>.</li></ul></li><li><b>Access to pipelines by projects and tags in projects</b><br> All or any of the above permissions for pipelines based on projects with/without/specified tags.</li><li><b>Access to runtime environments and resources in pipelines</b>.<br> Any permission assigned here must include also the Update permission.<ul><li><b>Manage resources</b>: Select the CPU, memory, and minimum disk space combination best suited for the runtime environment.</li><li><b>Set cloud builds</b>: Select cloud builds and adjust the resource size for the build.</li><li><b>Set runtime environment</b>: Assign a runtime environment to the pipeline from those available based on tags assigned to Pipeline Runtimes. <br>This permission requires also the Build Runtime Environments permission.</li></ul></li></ul>{:/}| 
 | Chart          |  **Read**: View Helm charts| 
@@ -448,13 +448,13 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
   max-width="70%"
   %}
 
-### Creating rules for runtime environments and resources
+### Creating rules for Pipeline Runtimes and runtime environments
 
-Create rules for runtime environments and how to use the environment and m resources in pipelines. 
+Create rules for runtime environments and how to use the environment and resources in pipelines. 
 
-#### Example 1: Create rule to define access to runtime environments
+#### Example 1: Create rule to define access to Pipelin Runtimes
 
-This example illustrates how to create rules for Build Runtime Environments to restrict access by teams, and grant the same team all privileges to manage runtime environments within pipelines. 
+This example illustrates how to create rules for Pipeline Runtimes to restrict access by teams, and grant the same team all privileges to manage runtime environments within pipelines. 
 
 **Scenario**:  
 We want the DevOps team to be able to:
@@ -471,9 +471,9 @@ We want the DevOps team to be able to:
 * Add the `devops` tag to one or more Pipeline Runtimes. See [Assign tags to Pipeline Runtimes](#assign-tags-to-pipeline-runtimes).
 
 
-**Step 2: Define the rule for Build Runtime Environments**    
+**Step 2: Define the rule for Pipeline Runtimes**    
 
-* Create a Build Runtime Environments rule for the `DevOps` team with _any of these_ tags:`devops`.
+* Create a Pipeline Runtimes rule for the `DevOps` team with _any of these_ tags:`devops`.
 
  {% include image.html
   lightbox="true"
