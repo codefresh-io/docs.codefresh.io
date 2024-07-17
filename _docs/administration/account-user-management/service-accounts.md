@@ -10,7 +10,19 @@ toc: true
 
 A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Unlike user accounts, service accounts are not tied to a specific individual. Instead, they are used to manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
-Coderfesh supports creating service accounts and assigning them to teams. In addition, each service account can hold any number of API keys 
+Coderfesh supports creating service accounts and assigning them to teams. See [Create service accounts](#create-service-accounts).  
+Each service account can hold multiple API keys, making it easy to manage access for different purposes. See [Generate API keys for service accounts](#generate-api-keys-for-service-accounts).
+
+## Key features of service accounts
+
+* Team assignment
+  Service accounts are assigned to teams instead of individual users, removing any tie-in with a specific user and complying with RBAC (Role-Based Access Control) for CI pipelines.
+
+* Multiple API keys  
+  A single service account can have multiple API keys, each defined with specific scopes, providing fine-grained access control.
+
+* Non-login accounts
+  Service accounts cannot be used to log in to Codefresh, and are also not included in the collaborator count.
 
 Create a shared account not connected to a specific user in the orgnaization
 The shared service user account is not connected to 
@@ -24,35 +36,14 @@ The other potential solution to this use case is the ability to create account-l
 Service accounts are a special type of account that is intended to represent a non-human entity such as an application, API, or other service. These entities operate within the security context provided by the service account.
 
 
-## Features of service accounts
-
-Team assignment
-Service accounts are assigned to teams instead of individual users. This feature removes the tie-in with any specific user.
-It also complies with the RBAC access control for CI pipelines. 
-
-
-
-Multiple API keys 
-The same service account can have more than one API key. Every key can be defined with specific scopes. 
-
-
-Non logins
-Service accounts cannot be used to log in to Codefresh. 
-They are also not included in the Collaborator 
-Not included in count of collaborators
 
 
 
 ## Create service accounts
-Create service accounts in Codefresh to manage processes, integrations, at the account level. 
+Create service accounts in Codefresh to manage processes, integrations, at the account level.  
+Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)).  
+Note that service account creation is not supported via CLI and Terraform.
 
-Service accounts and teams
-It is essential to assign teams to service accounts. Otherwise, RBAC access is disabled for these teams and for their users.  
-See [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control).
-
-
-
-Service account creation is not supported via CLI and Terraform.
 
 ##### Before you begin
 * [Create teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#create-a-team-in-codefresh)
@@ -94,6 +85,12 @@ After generating API keys, you can modify scopes, or delete the API key.
 ## View service accounts
 The Service Accounts page shows the list of service accounts defined for the account. 
 
+
+{{site.data.callout.callout_tip}}
+You can also view service accounts assigned to teams in **Users > Teams > Service Accounts**.
+{{site.data.callout.end}}
+
+
 SCREENSHOT
 
 
@@ -104,26 +101,10 @@ SCREENSHOT
 | **API Keys**            | The number of API keys assigned to the service account. <br>Selecting a service account displays the API keys generated for that account. Modify selected scopes by clicking Edit, or delete the API key. |
 | **Teams**               | The names of the team(s) the service account is assigned to. <br>??? see ??? |
 | **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). NIMA: give me examples of one or two use cases when you would disable a service account |
-| **Actions**               | The options available to manage the service account: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
-
-## Manage service accounts
+| **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
 
-Edit service account settings
-
-
-
-
-All service accounts for the account are listed in Account Settings. 
-You can also view service accounts assigned to teams in Users > Teams > Service Accounts. ??
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Service Accounts**.
-
-
-Enable/disable service sccounts
-
-Assign service accounts to teams
-
-Enable/disable admin roles for service accounts
+## Related articles
+[Access control for CI pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
 
 
