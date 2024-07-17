@@ -18,9 +18,6 @@ spec:
     product:
       names:
       - p1
-      tags:
-      - t1
-      - t2
     targetEnvironment:
       names:
       - staging
@@ -45,7 +42,7 @@ spec:
 | `spec.selector`   | The product or target environment to which to apply the Promotion Policy.  |   object        | Optional  |
 | `spec.selector.product` | The product to which to apply or match this Promotion Policy by either `names` or `tags`. Required when `.selector.product.targetEnvironment` is not defined.   |   object   | Optional |
 | `spec.selector.product.names` | The name of a single product or a list of multiple products to which to apply the Promotion Policy. Required if `spec.selector.product.tags` are not used to match the Promotion Policy to the product. For example, `billing` or `- billing  - guestbook-helm, - demo-trioapp`.  |    array | Optional |
-| `spec.selector.product.tags`  | The tag or a list of tags associated with a single or multiple products to which to match the Promotion Policy. Required if `spec.selector.product.names` are not used to match the Promotion Policy to the product. For example, `???`.  |   array | Optional |
+<!--- | `spec.selector.product.tags`  | The tag or a list of tags associated with a single or multiple products to which to match the Promotion Policy. Required if `spec.selector.product.names` are not used to match the Promotion Policy to the product. For example, `???`.  |   array | Optional | -->
 | `spec.selector.targetEnvironment`  | The target environments to which to apply the Promotion Policy based on the `name`, `type`, or `tag`. <!--- is this correct? If multiple criteria are provided, all criteria must be matched.--><br>Required when `.selector.product.product` is not defined. | object   | Optional |
 | `spec.selector.targetEnvironment.name` | The name of the target environment, or the list of target environments to which to apply the Promotion Policy. <!--- to verify: If at least one name in the list does not exist, the target environment is not defined -->.<br>Required when `.targetEnvironment.type` or `.targetEnvironment.tags` are not defined. |  array | Optional  |
 | `spec.selector.targetEnvironment.type` | The type of target environments to which to apply the Promotion Policy. Can be one of these: `PROD`for production environments, or `NON_PROD` for any other environment such as `dev`, `qa`. <br>Required when `.targetEnvironment.name` or `.targetEnvironment.tags` are not defined.  |  array | Optional  |
