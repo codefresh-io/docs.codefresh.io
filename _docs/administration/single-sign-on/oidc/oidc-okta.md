@@ -210,5 +210,5 @@ After initial SSO setup, you can activate automatic syncing of teams for the int
  
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  
 

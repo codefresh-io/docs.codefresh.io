@@ -125,4 +125,4 @@ steps:
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Using a managed Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Promoting Helm environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)
+[Promoting Helm environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)
