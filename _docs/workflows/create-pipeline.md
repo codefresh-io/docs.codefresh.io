@@ -1,12 +1,13 @@
 ---
-title: "Creating Argo Workflows"
+title: "Creating Delivery Pipelines"
 description: ""
 group: workflows
 toc: true
 ---
 
 {{site.data.callout.callout_warning}}
-The Argo Workflows (Delivery Pipelines) feature is no longer actively maintained.
+Delivery Pipelines (powered by Argo Workflows) is not being actively maintained.  
+Please reach out to [support@codefresh.io](mailto:support@codefresh.io) with any questions.
 {{site.data.callout.end}}
 
 
