@@ -714,7 +714,7 @@ Codefresh warns you of the implication of deleting the selected application in t
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
 
 

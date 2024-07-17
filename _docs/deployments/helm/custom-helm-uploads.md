@@ -34,7 +34,7 @@ See [Helm package docs](https://helm.sh/docs/helm/helm_package/){:target="_blank
 
 
 >**NOTE**    
-To use `cf_export`and make the variable available to other steps in the pipeline, see [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables). 
+To use `cf_export`and make the variable available to other steps in the pipeline, see [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/). 
 
 
 ## Example 1: Push the chart to GCS based Helm Repository
