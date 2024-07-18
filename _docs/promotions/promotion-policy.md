@@ -1,6 +1,6 @@
 ---
-title: "Environment readiness validation for promotions"
-description: "Run validations through Promotion Policies to assess environment readiness before ochestrating promotion"
+title: "Configure Promotion Policies"
+description: "Run validations through Promotion Policies to assess environment readiness before orchestrating promotion"
 group: promotions
 toc: true
 ---
@@ -30,15 +30,11 @@ The logic for applying Promotion Policy settings is based on predefined prioriti
 [Promotion Policy logic](#promotion-policy-logic) details different scenarios and examples describing the logic. 
 
 
-##### Match Promotion Settings  
-You also have the option to select a Product or Environment and view which Promotion Policy settings will be applied. 
-This makes it easy to identify and optimize settings, including the priority.
 
 
 
 
-
-## Features of Promotion Policies
+## Key features of Promotion Policies
 
 * **Automated validation**   
   Validations defined in the Promotion Policy are enforced automatically, minimizing the risk of errors, and ensuring consistency and reliability in deployments.
@@ -48,14 +44,14 @@ This makes it easy to identify and optimize settings, including the priority.
   or with broader coverage for a specific Product across all environments, or by specific types of Environments. 
 
 * **On-demand evaluation**
-Select any Product-Environment pair to see which Promotion Policy is applied to the combination. defresh does not find a Promotion Policy, you can create one. 
+Select any Product-Environment pair to visualize which Promotion Policy is applied to the combination. defresh does not find a Promotion Policy, you can create one. 
 If there are Promotion Policy, YEither optimize the Policy or redefine its priority in the Policy list.
 
 * **Priority-driven enforcement**
 In cases where multiple Promotion Policies match Products, Environments, or a combination of both, Codefresh applies Promotion Policies in order of priority, ensuring seamless enforcement.
 
 * **Versatile promotion actions**
-Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates both types of actions .
+Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates both types of actions.
 
 
 
@@ -71,12 +67,12 @@ Upon manually promoting the Product from the trigger Environment to the destinat
 OR
 Upon updating the Git repository with the application manifest.
 
-
+TBD
 
 
 ## Promotion Policy settings & targets
 
-A Promotion Policy comprise the Policy's settings and the Policy's targets. 
+A Promotion Policy comprises the Policy's settings and the Policy's targets. 
 The table below describes the settings and targets you can define for a Promotion Policy.
 
 
@@ -86,22 +82,21 @@ The table below describes the settings and targets you can define for a Promotio
 | --------------         | --------------           |  
 |**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. |
 |**Policy Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>Optional. The Promotion Workflow to run before the Promotion Action. </li>.<li><b>Action</b>Required. The Promotion Action to update the target application's source repository.<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval.</li><li><b>No Action</b>: Run the selected Pre- and Post- Promotion Workflows without performing a commit or opening a pull request.<br>Selecting this option requires a Pre- or a Post-Action Workflow to be selected that includes an action to promote the target application.<br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}|
-|**Products** |Single or multiple Products to which to apply the Promotion Policy. At least one Product is <ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}|
-|**Environments** |Single or multiple Environments to which to apply the Promotion Policy.<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
+|**Products** |Single or multiple Products to which to apply the Promotion Policy. At least one Product is required if target Environments are not defined. {::nomarkdown}<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}|
+|**Environments** |Single or multiple Environments to which to apply the Promotion Policy. At least one Environment is required if target Products are not defined.{::nomarkdown}<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
 
 
 
 
 
 ## Create a Promotion Policy
+Create a Promotion Policy to validate an environment's readiness before promoting and deploying changes to a Product.  
 
 ##### Before you begin
 
-* Create Promotion Workflows
+* Create [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-policy/)
 
 ##### How to
-Create a Promotion Policy to validate an environment's readiness before promoting and deploying changes to a Product.  
-
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Promotions in the sidebar, select [Promotion Policies](https://g.codefresh.io/2.0/?????){:target="\_blank"}.
 1. Do one of the following:
@@ -113,11 +108,15 @@ Create a Promotion Policy to validate an environment's readiness before promotin
 1. Define how and which **Products** to select for this Promotion Policy.
 1. Define how and which **Environments** to select for this Promotion Policy.
 1. Commit the changes.
+  The Promotion Policy is added to the Promotion List.
 
+## Promotion Policy list
 
-* The Promotion Policy is added to the Promotion List. (NIMA: is the newest policy displayed first by default??)
-* If there are multiple Promotion Policies that match the same Product or Environments, the order in which the Policies are listed determines which Promotion Policy is applied. 
-The priority is in descending order. 
+Here's an example of the Promotion Policy page.
+SCREENSHOT
+
+* (NIMA: is the newest policy displayed first by default??)
+* If there are multiple Promotion Policies that match the same Product or Environments, the Priority determines how Promotion Policy settings are is applied. 
 * The Evaluate Promotion Policy feature allows you to select any Product and Environment pair and identify the Promotion Policy associated with it. 
 
 
@@ -126,10 +125,10 @@ The priority is in descending order.
 
 
 
-## Promotion Policy logic
+## Promotion Policy implementation logic
 
 Each Promotion Policy can define some or all settings, and target one or more Products or Environments. 
-When a Promotion Policy is run to validate readiness for an environment, the settings are merged from all the matched policies based on their priority. 
+When a Promotion Policy is run to validate readiness for an environment, settings are merged from all the matched policies based on their priority. 
 Higher priority policies take precedence.
 
 ### Promotion Policies in Trigger Environments
@@ -140,7 +139,7 @@ TBD
 ### Example Promotion Policies
 
 Let's consider a few different Promotion Polices. As you can see in the table below, each Policy has a name, priority, validation settings, and target attributes.
-Note that not all settings are defined or configured for all policies. But all policies have a pre-defined Priority, and one or both tagret attributes.
+Note that not all settings are defined or configured for all policies. But all policies have a pre-defined Priority, and one or both target attributes.
 
 {: .table .table-bordered .table-hover}
 | Promotion Policy       |             |  
@@ -152,7 +151,7 @@ Note that not all settings are defined or configured for all policies. But all p
 | pp-prod     |100       | send-slack-alert  | pr       |none                      |none   | ENV_TYPE=prod  |
 
 
-| pp-demo-product (priority 300): Pre-action - notify, Action - commit, Post-action - validate-deployment (selector: PRODUCT=demo)
+(NIMA: will convert this into a diagram)
 
 
 ### Scenario 1: Applying Promotion Policies with identical target attributes 
@@ -168,20 +167,18 @@ When more than one Policy matches the promotion requirement, the same Product in
 * **Promotion Policy settings**:
   * Pre-Action Workflow: Configured for `pp-demo` as `send-slack-alert`
   * Action: Configured for `pp-demo` as `commit`
-  * Post-Action:  
+  * Post-Action Workflow:  
     Not configured for `pp-demo`
-    The Promotion Policy with the next highest priority that defines a Post-Action is `pp-notify`, as `send-slack-success-fail`.
-**Summary**:
+    The Promotion Policy with the next highest priority that defines a Post-Action is `pp-notify`, as `send-slack-success-fail`
+
+##### Summary
 The promotion policy `pp-demo` has the highest priority (20), so its Pre-Action (`send-slack-alert`) and Action (`commit`) are applied.  
-The Post-Action comes from `pp-notify`, the Policy with the next highest priority that defines a post-action.
+The Post-Action comes from `pp-notify`, the Policy with the next highest priority that defines a Post-Action.
 
-
-Same Selector Scenario: The highest priority policy's pre-action and action are applied, while the post-action comes from the next highest priority policy with a defined post-action.
-Different Selector Scenario: Actions are selected based on the environment type or product, with higher priority policies taking precedence for overlapping selectors.
 
 ### Scenario 2: Applying Promotion Policies with different target attributes
 
-This scenario reviews how Promotion Policy settings are applied when two Policies have different target attributes that match the requirements.
+This scenario reviews how Promotion Policy settings are applied when two Policies have different target attributes that match the requirements. 
 
 **Goal**: Promote `demo` product to all non-production environments
 **Matched Promotion Policies**: 
@@ -195,85 +192,17 @@ When there are no specific attributes,  the Priority determines how Policy setti
   * Action: Configured for `pp-demo` as `commit`
   * Post-Action:  
     Not configured for `pp-demo`
-    The Promotion Policy with the next highest priority that defines a Post-Action is `pp-notify`, as `send-slack-success-fail`.
-**Summary**:
+    The Promotion Policy with the next highest priority that defines a Post-Action is `pp-notify`, as `send-slack-success-fail`
+
+##### Summary
 The promotion policy `pp-demo` has the highest priority (20), so its Pre-Action (`send-slack-alert`) and Action (`commit`) are applied.  
-The Post-Action comes from `pp-notify`, the Policy with the next highest priority that defines a post-action.
+The Post-Action comes from `pp-notify`, the Policy with the next highest priority that defines a Post-Action.
 
 
-
-
-Requirement: Promote product `demo` .
-Promotion Policies that apply: pp-pre-prod which has the target environment defined by type as , and pp-demo which has demo as the target product 
-How does it work?
-When there are no specific selectors and more than one Policy matches  the same Product in this case, the Priority determines which Policy is  factor.
-* Promotion Policy pp-demo has the highest priority
-* Pre-Action Workflow and Post-Action Workflows are applied from : send-slack-alert and commit
-* Post-Action: Applied from pp-notify which is the Promotion Policy with the next highest priority that defines a Post-Action.
-
-
-
-
-with the Same Selector
-Scenario: Applying the Highest Priority Promotion Policy
-Selectors: No specific selector; policies applied based on priority.
-
-Promotion Policies:
-
-pp-demo (priority 1): Pre-action - send-slack-alert-1, Action - commit
-pp-notify (priority 100): Pre-action - send-slack-alert-2, Post-action - send-slack-alert
-pp-pre-notify (priority 200): Pre-action - send-slack-alert-3
-Result:
-
-Pre-action: send-slack-alert-1 (highest priority from pp-demo)
-Action: commit (from pp-demo)
-Post-action: send-slack-alert (from pp-notify)
-
-
-Scenarios with Different Selectors
-Scenario: Applying Policies Based on Environment Type and Product
-Selectors:
-
-ENV_TYPE=non-prod
-ENV_TYPE=prod
-PRODUCT=demo
-Promotion Policies:
-
-pp-pre-prod (priority 0): Action - commit (selector: ENV_TYPE=non-prod)
-pp-prod (priority 0): Pre-action - pr (selector: ENV_TYPE=prod)
-pp-demo-product (priority 300): Pre-action - notify, Action - commit, Post-action - validate-deployment (selector: PRODUCT=demo)
-Example: Promoting demo to non-prod
-Matched Policies:
-
-pp-pre-prod: Matches ENV_TYPE=non-prod
-pp-demo-product: Matches PRODUCT=demo
-Result:
-
-Pre-action: notify (from pp-demo-product)
-Action: commit (from pp-pre-prod)
-Post-action: validate-deployment (from pp-demo-product)
-Explanation: For promoting demo to non-prod, both pp-pre-prod and pp-demo-product match. The pre-action and post-action come from pp-demo-product due to its higher priority (300), while the action comes from pp-pre-prod as it matches the environment type.
-
-Example: Promoting demo to prod
-Matched Policies:
-
-pp-prod: Matches ENV_TYPE=prod
-pp-demo-product: Matches PRODUCT=demo
-Result:
-
-Pre-action: notify (from pp-demo-product)
-Action: pr (from pp-prod)
-Post-action: validate-deployment (from pp-demo-product)
-Explanation: For promoting demo to prod, both pp-prod and pp-demo-product match. The pre-action and post-action come from pp-demo-product due to its higher priority (300), while the action comes from pp-prod as it matches the environment type.
-
-Summary
-Same Selector Scenario: The highest priority policy's pre-action and action are applied, while the post-action comes from the next highest priority policy with a defined post-action.
-Different Selector Scenario: Actions are selected based on the environment type or product, with higher priority policies taking precedence for overlapping selectors.
-These scenarios help users understand how promotion policies are selected and applied based on configured selectors and priorities in Codefresh.
 
 
 ## Define priority for Promotion Policies
-Define which Promotion Policy is applied to the Product/Environment when there is more than one Promotion Policy that matches the same Product or Environment combination. 
+Define the priority for a Promotion Policy which determines when and how it is applied to the Product/Environment when there is more than one Promotion Policy that matches the same Product or Environment combination. 
 
 ##### Before you begin
 * If required, first [Match Promotion Policy to Products and Environments](#match-promotion-policy-to-products-and-environments)
@@ -312,3 +241,4 @@ Deleting a Promotion Policy removes it from all the Products and Environments it
 
 ## Visualizing Promotion Workflows in Releases
 
+TBD
