@@ -266,10 +266,10 @@
   url: ""
   links:
     - title: Common Issues
-      localurl: /docs/kb/common-issues
+      localurl: /docs/kb/common-issues/
     - title: How Tos
-      localurl: /docs/kb/how-to
+      localurl: /docs/kb/how-to/
     - title: Troubleshooting
-      localurl: /docs/kb/troubleshooting
+      localurl: /docs/kb/troubleshooting/
     - title: Support Ticket Examples
-      localurl: /docs/kb/support-ticket-examples
+      localurl: /docs/kb/support-ticket-examples/
