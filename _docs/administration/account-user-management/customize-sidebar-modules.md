@@ -1,13 +1,11 @@
 ---
-title: "Customize navigation "
+title: "Personalize your Codefresh menu"
 description: ""
 group: administration
 sub_group: account-user-management
 toc: true
 ---
 
-
-## Personalize your Codefresh menu 
 
 Take control of your account's menu items. By default, all modules and menu items are enabled, but you can easily customize what appears.
 
@@ -23,7 +21,7 @@ Simply use the toggle method: switch to ON to display an item and OFF to hide it
    lightbox="true" 
    file="/images/administration/sidebar-modules/default-menu-list.png" 
    url="/images/administration/sidebar-modules/default-menu-list.png" 
-   alt="Default state of Codefresh menu" 
+   alt="Default Codefresh menu" 
    caption="Default state of Codefresh menu"
    max-width="80%" 
    %}
