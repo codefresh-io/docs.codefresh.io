@@ -254,8 +254,8 @@ Monitor the application.
 
 
 ## Related articles
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  

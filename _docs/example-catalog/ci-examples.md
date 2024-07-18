@@ -74,15 +74,15 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Run integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/) 
 - [Populate a database with existing data]({{site.baseurl}}/docs/example-catalog/ci-examples/populate-a-database-with-existing-data) 
 - [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
-- [Launch Composition]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition) 
-- [Launch Composition and define Service Environment variables using a file]({{site.baseurl}}/docs/example-catalog/ci-examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file) 
+- [Launch Composition]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition/) 
+- [Launch Composition and define Service Environment variables using a file]({{site.baseurl}}/docs/example-catalog/ci-examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file/) 
 - [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/fan-in-fan-out) 
 
 ### Code coverage examples
 
-- [Run coverage reports with Codecov]({{site.baseurl}}/docs/example-catalog/ci-examples/codecov-testing) 
-- [Run coverage reports with Coveralls]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing) 
-- [Run coverage reports with Codacy]({{site.baseurl}}/docs/example-catalog/ci-examples/codacy-testing) 
+- [Run coverage reports with Codecov]({{site.baseurl}}/docs/example-catalog/ci-examples/codecov-testing/) 
+- [Run coverage reports with Coveralls]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing/) 
+- [Run coverage reports with Codacy]({{site.baseurl}}/docs/example-catalog/ci-examples/codacy-testing/) 
 
 ### Secrets examples
 
@@ -90,11 +90,11 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 - [Vault secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)
 - [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)
-- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets)
+- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets/)
 
 ### Notification examples
 
-- [Send notification to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack)
-- [Send notification to Jira]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira)
+- [Send notification to Slack]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-slack/)
+- [Send notification to Jira]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/)
 
 

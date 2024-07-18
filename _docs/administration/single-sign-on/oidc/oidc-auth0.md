@@ -10,7 +10,7 @@ toc: true
 ---
 
 Set up SSO for Auth0 using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/).  
 
 Set up OIDC SSO for Auth0 in Codefresh by:
 1. Creating an Auth0 application in Auth0
