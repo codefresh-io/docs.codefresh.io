@@ -236,7 +236,7 @@ Review **What to do next** for tips on how to proceed.
   * [Projects and pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
   * Pipeline integrations for [Git providers]({{site.baseurl}}/docs/integrations/git-providers/), [Docker registries]({{site.baseurl}}/docs/integrations/docker-registries/) and more
   * [GitOps]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) integrations for image enrichment
-  * [GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)
+  * [GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)
 
 See our quick starts for [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/).
 

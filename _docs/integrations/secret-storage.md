@@ -130,7 +130,7 @@ max-width="80%"
 
 ### Set up runtime secret store with Codefresh CLI
 
-To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/installation/behind-the-firewall)), run:
+To create a secret store context for **Runtime-Kubernetes** environments ([behind the firewall]({{site.baseurl}}/docs/installation/behind-the-firewall/)), run:
 
 ```
 codefresh create context secret-store kubernetes-runtime "$NAME_IN_CODEFRESH"  --runtime "$RUNTIME_NAME" --resource-type "$TYPE" --resource-name ”$NAME”

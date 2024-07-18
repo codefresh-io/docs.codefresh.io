@@ -12,7 +12,7 @@ toc: true
 Codefresh has built-in integration for Helm that provides a unique view into your production Kubernetes cluster.  
 In Helm Releases, you can see the current status of your cluster, including the currently deployed releases, their previous revisions including change tracking, and even roll back to a previous release.
 
-Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) as well as [a promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
+Codefresh also offers [an environment view for Helm releases]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) as well as [a promotion dashboard]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/).
 
 
 ## View Helm releases and release information
@@ -264,4 +264,4 @@ If you do override any of these actions, the following [environment variables]({
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
 [Using a managed Helm repository]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Promoting Helm Environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Promoting Helm Environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  

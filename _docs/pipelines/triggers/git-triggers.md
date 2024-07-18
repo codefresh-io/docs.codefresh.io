@@ -545,7 +545,7 @@ It has only a single step which uses conditionals that check the name of the bra
 The build step calls the second pipeline. The end result is that pipeline B runs only when the Pull Request is opened the first time. Any further commits on the pull request branch will not trigger pipeline B (pipeline A will still run but the conditionals will fail).
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Cron triggers]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Using multi-git triggers]({{site.baseurl}}/docs/kb/articles/multi-git-triggers/)

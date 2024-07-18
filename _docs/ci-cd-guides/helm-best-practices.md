@@ -366,5 +366,5 @@ While this workflow is very flexible, it adds complexity on the number of Helm c
 ## Related articles
 [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
-[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
-[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
+[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  

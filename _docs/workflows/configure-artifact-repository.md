@@ -180,4 +180,4 @@ As the final step in configuring the artifact repository, for the `argo-server` 
 1. Select the `argo-server-<#>` pod or pods and delete them.
 
 ## Related articles
-[Creating Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline)  
+[Creating Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline/)  
