@@ -140,4 +140,4 @@ Generate an API key from the Codefresh UI:
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm integration]({{site.baseurl}}/docs/integrations/helm/)  
-[Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
+[Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
