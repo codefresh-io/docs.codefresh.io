@@ -24,19 +24,6 @@ Each service account can hold multiple API keys, making it easy to manage access
 * Non-login accounts
   Service accounts cannot be used to log in to Codefresh, and are also not included in the collaborator count.
 
-Create a shared account not connected to a specific user in the orgnaization
-The shared service user account is not connected to 
-Create account-level API keys 
-
-
-IRythm requested a feature for the ability to set account level api keys and/or service account-type users in Codefresh. One way to address this is the ability to create a shared service account user that's not tied to any specific person within their IDP, with a password that can be put into their internal system. CF's existing username/password auth method is not intended for SAAS use.
-
-The other potential solution to this use case is the ability to create account-level API keys accessible by all admins, so that the CF API key being used for any integrations will not be affected by any specific user being disabled.
-
-Service accounts are a special type of account that is intended to represent a non-human entity such as an application, API, or other service. These entities operate within the security context provided by the service account.
-
-
-
 
 
 ## Create service accounts
@@ -46,7 +33,7 @@ Note that service account creation is not supported via CLI and Terraform.
 
 
 ##### Before you begin
-* [Create teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#create-a-team-in-codefresh)
+* Make sure you have one or more [teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#create-a-team-in-codefresh)
 
 ##### How to
 
@@ -66,7 +53,11 @@ SCREENSHOT
 Generate API keys for a service account after creating it. The procedure is similar to generating API keys for individual users.
 There is no limit to the number of API keys you can generate for a single service account.
 
-After generating API keys, you can modify scopes, or delete the API key.
+After generating API keys, you can modify the scopes defined for the key, or delete the API key.
+
+{{site.data.callout.callout_tip}}
+The **API Key** scopes are relevant only to service accounts and define the permissions to manage the API keys assigned to those accounts.
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Service Accounts**.
 1. Select the service account for which to generate API keys.
@@ -105,6 +96,6 @@ SCREENSHOT
 
 
 ## Related articles
-[Access control for CI pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
 
 
