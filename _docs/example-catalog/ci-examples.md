@@ -32,7 +32,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [Php App]({{site.baseurl}}/docs/example-catalog/ci-examples/php)
 - [Python Django App]({{site.baseurl}}/docs/example-catalog/ci-examples/django/)
 - [Ruby On Rails App]({{site.baseurl}}/docs/example-catalog/ci-examples/ruby)
-- [C]({{site.baseurl}}/docs/example-catalog/ci-examples/c-make/) or [C++]({{site.baseurl}}/docs/example-catalog/ci-examples/cpp-cmake)
+- [C]({{site.baseurl}}/docs/example-catalog/ci-examples/c-make/) or [C++]({{site.baseurl}}/docs/example-catalog/ci-examples/cpp-cmake/)
 - [Rust]({{site.baseurl}}/docs/example-catalog/ci-examples/rust/) 
 - [C# .NET core]({{site.baseurl}}/docs/example-catalog/ci-examples/dotnet/)
 - [Scala App]({{site.baseurl}}/docs/example-catalog/ci-examples/scala-hello-world/)
