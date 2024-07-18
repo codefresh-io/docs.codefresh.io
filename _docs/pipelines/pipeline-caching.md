@@ -184,7 +184,7 @@ You can take advantage of this mechanism by [not mixing deployment docker images
 
 ## Traditional build caching
 
-If you have read the [introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps. This volume is not only used for data exchange between steps of the same pipeline, but is also stored/fetched for each subsequent build as well.
+If you have read the [introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps. This volume is not only used for data exchange between steps of the same pipeline, but is also stored/fetched for each subsequent build as well.
 
 {% include image.html 
 lightbox="true" 

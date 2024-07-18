@@ -72,11 +72,11 @@ Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/)
 - [Run integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/) 
 - [Run integration tests with PostgreSQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/) 
 - [Run integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/) 
-- [Populate a database with existing data]({{site.baseurl}}/docs/example-catalog/ci-examples/populate-a-database-with-existing-data) 
-- [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps)
+- [Populate a database with existing data]({{site.baseurl}}/docs/example-catalog/ci-examples/populate-a-database-with-existing-data/) 
+- [Shared volumes of service from composition step for other yml steps]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-of-service-from-composition-step-for-other-yml-steps/)
 - [Launch Composition]({{site.baseurl}}/docs/example-catalog/ci-examples/launch-composition/) 
 - [Launch Composition and define Service Environment variables using a file]({{site.baseurl}}/docs/example-catalog/ci-examples/launching-a-composition-and-defining-a-service-environment-variables-using-a-file/) 
-- [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/fan-in-fan-out) 
+- [Run multiple kinds of unit tests using fan-in-fan-out parallel pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/fan-in-fan-out/) 
 
 ### Code coverage examples
 

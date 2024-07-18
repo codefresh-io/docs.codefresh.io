@@ -44,6 +44,6 @@ run_pipeline:
 
 [Running other steps]({{site.baseurl}}/docs/pipelines/post-step-operations/#running-other-steps)
 
-[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps)
+[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
 
 [Codefresh Run Pipeline](https://codefresh-io.github.io/cli/pipelines/run-pipeline/)

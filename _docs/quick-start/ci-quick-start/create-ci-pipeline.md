@@ -578,7 +578,7 @@ You have now completed the final task in the CI pipeline quick start.
 Continue with:  
 [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)  
 OR  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm)
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)
 
 
 ## Read more on pipelines & Docker registries
