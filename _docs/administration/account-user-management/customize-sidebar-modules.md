@@ -26,8 +26,7 @@ Simply use the toggle method: switch to ON to display an item and OFF to hide it
    max-width="80%" 
    %}
 
-
-{:start="3}
+{:start="3"}
 1. Toggle to OFF items you want to hide.
 
 {% include 
