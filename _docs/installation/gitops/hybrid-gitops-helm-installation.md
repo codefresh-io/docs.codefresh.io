@@ -250,7 +250,7 @@ The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
-* Bitbucket Server: `<server-url>/rest/api/1.0`
+* Bitbucket Server: `<server-url>`
 
 
 <br>
