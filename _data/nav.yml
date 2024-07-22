@@ -368,6 +368,12 @@
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
+- title: Promotions
+  url: "/promotions"
+  pages:
+    - title: Promotion Policies
+      url: "/promotion-policy"
+
 - title: Pipelines
   url: "/pipelines"
   pages:
