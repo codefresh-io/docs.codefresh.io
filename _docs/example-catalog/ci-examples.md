@@ -29,7 +29,7 @@ Codefresh is agnostic as far as programming languages are concerned. All major p
 - [Go Web App]({{site.baseurl}}/docs/example-catalog/ci-examples/golang-hello-world/) or [Go CLI]({{site.baseurl}}/docs/example-catalog/ci-examples/goreleaser) 
 - [Spring Java app with Maven]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) or [Gradle]({{site.baseurl}}/docs/example-catalog/ci-examples/gradle/). Also how to [upload JAR to Nexus/Artifactory]({{site.baseurl}}/docs/example-catalog/ci-examples/publish-jar/) 
 - Node [Express.js App]({{site.baseurl}}/docs/example-catalog/ci-examples/lets-chat/) or [React.js App]({{site.baseurl}}/docs/example-catalog/ci-examples/react/)
-- [Php App]({{site.baseurl}}/docs/example-catalog/ci-examples/php)
+- [Php App]({{site.baseurl}}/docs/example-catalog/ci-examples/php/)
 - [Python Django App]({{site.baseurl}}/docs/example-catalog/ci-examples/django/)
 - [Ruby On Rails App]({{site.baseurl}}/docs/example-catalog/ci-examples/ruby)
 - [C]({{site.baseurl}}/docs/example-catalog/ci-examples/c-make/) or [C++]({{site.baseurl}}/docs/example-catalog/ci-examples/cpp-cmake/)
@@ -66,7 +66,7 @@ You can also compile traditional applications that are not Dockerized yet.
 
 Codefresh has support for both [unit]({{site.baseurl}}/docs/testing/unit-tests/) and [integration]({{site.baseurl}}/docs/testing/integration-tests/) tests, as well as [test reporting]({{site.baseurl}}/docs/testing/test-reports/).
 
-- [Run unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests) 
+- [Run unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/) 
 - [Run integration tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/) 
 - [Run integration tests with MongoDB]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mongo/) 
 - [Run integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/) 

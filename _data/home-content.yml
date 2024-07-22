@@ -255,9 +255,9 @@
   url: ""
   links:
     - title: Windows Containers Support
-      localurl: /docs/incubation/windows
+      localurl: /docs/incubation/windows/
     - title: Mac OSX and iOS builds
-      localurl: /docs/incubation/osx-ios-builds
+      localurl: /docs/incubation/osx-ios-builds/
     - title: ARM architecture Support
       localurl: /docs/incubation/arm-support
 
