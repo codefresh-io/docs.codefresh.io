@@ -80,7 +80,7 @@ The table below describes the settings and targets you can define for a Promotio
 | Item                     | Description            |  
 | --------------         | --------------           |  
 |**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. |
-|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>Optional. The Promotion Workflow to run before the Promotion Action. </li>.<li><b>Action</b>Required. The Promotion Action to update the target application's source repository.<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the nex stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. <br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).|
+|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>: Optional. The Promotion Workflow to run before the Promotion Action. </li><li><b>Action</b>Required. The Promotion Action to update the target application's source repository.<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the nex stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. <br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).|
 |**Products** |Single or multiple Products to which to apply the Promotion Policy. If target Environments are not defined, at least one Product is required. {::nomarkdown}<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}|
 |**Environments** |Single or multiple Environments to which to apply the Promotion Policy. If target Products are not defined, at least one Environment is required.{::nomarkdown}<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
 |**Priority** |The priority assigned to the Promotion Policy. The priority determines how and which Promotion Settings are applied when two or Polices match the target attributes. The priority is a positive or negative integer and defined in ascending order.<br>To understand the  implementation logic behind Promotion Settings, see [Promotion Policy implementation logic](#promotion-policy-implementation-logic).|
@@ -88,14 +88,14 @@ The table below describes the settings and targets you can define for a Promotio
 
 ## Best practices for Promotion Policies
 
-TBD
-When to set by environment, by product 
+TBD  
+Examples showing when to set by environment, by product and others
 
 ## Promotion Policy implementation logic
 
-Each Promotion Policy can define some or all promotion settings, and target one or more Products or Environments. 
-When a Promotion Policy is run to validate readiness for an environment, promotion settings are merged from all the matched policies based on their priority. 
-Always, Policies with higher priority take precedence over those with lower .
+Each Promotion Policy can define some or all promotion settings, and one or more Products or Environments as targets. 
+When a Promotion Policy is to be run to validate readiness for an environment, promotion settings are merged from all matched policies based on their priority. 
+Always, policies with higher priority take precedence over those with lower priority.
 
 ### Promotion Policies in Trigger Environments
 TBD
@@ -111,10 +111,10 @@ Note that not all settings are defined or configured for all policies. But all p
 | Promotion Policy       |             |  
 | Name       |Priority   |Pre-Action Workflow |  Action | Post-Action Workflow | Products  | Environments |
 | -----------| ----------| ------------------ | ---------------------| ----------| -------------|
-| pp-demo     | 20        |send-slack-alert    | commit   |-                    | demo  | none  |
-| pp-notify   | 300       |send-slack-alert-1  | ??       |send-slack-success-fail  | demo  | none  |
-| pp-pre-prod |200       |                   | commit   | validate-deployment                    | none   | ENV_TYPE=non-prod |
-| pp-prod     |100       | send-slack-alert  | pr       |none                      |none   | ENV_TYPE=prod  |
+| pp-demo     | 20        |send-slack-alert    | commit   |-                    | demo  | -  |
+| pp-notify   | 300       |send-slack-alert-1  | ??       |send-slack-success-fail  | demo  | -  |
+| pp-pre-prod |200       |                   | commit   | validate-deployment                    | -   | ENV_TYPE=non-prod |
+| pp-prod     |100       | send-slack-alert  | pr       |-                      |-   | ENV_TYPE=prod  |
 
 
 (NIMA: will convert this into a diagram)
@@ -123,8 +123,8 @@ Note that not all settings are defined or configured for all policies. But all p
 ### Scenario 1: Applying Promotion Policies with identical target attributes 
 This scenario reviews how Promotion Policy settings are applied when at least two Policies match the same target attributes.
 
-**Goal**: Promote `demo` product
-**Matched Promotion Policies**: 
+**Goal**: Promote `demo` product  
+**Matched Promotion Policies**:  
   * `pp-demo` with the target Product attribute, `demo`
   * `pp-notify` also with target Product attribute, `demo`
 **Apply Promotion Policy**: 
@@ -146,8 +146,8 @@ The Post-Action comes from `pp-notify`, the Policy with the next highest priorit
 
 This scenario reviews how Promotion Policy settings are applied when two Policies have different target attributes that match the requirements. 
 
-**Goal**: Promote `demo` product to all non-production environments
-**Matched Promotion Policies**: 
+**Goal**: Promote `demo` product to all non-production environments  
+**Matched Promotion Policies**:  
   * `pp-pre-prod` matches target Environment, `ENV_TYPE=non-prod`
   * `pp-demo` matches target Product, `demo`
 **Apply Promotion Policy**: 
@@ -218,7 +218,7 @@ SCREENSHOT
 
 
 
-### Understand results from evaluation Promotion Policies
+### Understand results from Promotion Policy evaluation
 When you evaluate Promotion Policies, in addition to identifying Products and Environments that do not match any existing Policies, you can also identify misconfigured Policies. 
 
 Misconfigured Policies include: 
@@ -234,12 +234,12 @@ Unable to apply any Promotion Policy for the selected Product-Environment pair.<
 Merged Promotion Settings from the matched Promotion Policies are missing the Promotion Action.<br>
 Define an Action for one of the matched Promotion Policies and try again.
 
-**Reason**
+**Reason**  
 Promotion Action has not been configured in any of the Policies that match the selected Product-Environment pair.
 Promotion Policy cannot be applied to the pair. 
 
 
-**Corrective action**
+**Corrective action**  
 Promotion Policies must be configured with at least one Action: Commit, Pull request, or No Action. 
 
 
@@ -254,7 +254,7 @@ When No Action is configured as a Promotion Setting:
 * Pre-Action Workflow must be configured 
 * Pre-Action Workflow must include a step that initiates or executes the corresponding Promotion Action
 
-**Corrective action**
+**Corrective action**  
 
 
 ## Edit/delete Promotion Policies
