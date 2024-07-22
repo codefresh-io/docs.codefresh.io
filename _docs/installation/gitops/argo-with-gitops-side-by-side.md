@@ -145,21 +145,22 @@ Set Community Argo CD to track resources using the `label` method.  If both Argo
 After completing the configuration changes, you can install the Hybrid GitOps Runtime via Helm. 
 
 Most of the steps to install the GitOps Runtime are identical for both types of (clean and alongside Community Argo CD) installations.<br> 
-Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based.
-
-Before you begin installation, review [Additional installation flags for GitOps Runtime with Community Argo CD](#additional-installation-flags-for-gitops-runtime-with-community-argo-cd), and then follow our [step-by-step installation guide]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-first-gitops-runtime-in-account) to install the Hybrid GitOps Runtime via Helm.  
-
-##### Additional installation flags for GitOps Runtime with Community Argo CD
+Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based:
 
 * `fullnameOverride` configuration for resource conflicts  
-  Installing the GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
+  Conflicts can occur when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
   Customizing `fullnameOverride` values for Argo CD (and Argo Rollouts if installed) in the GitOps Runtime's `values` file prevents these conflicts.
 
 
 * Resource tracking with `annotation`  
-  Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
+  Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation+label` prevents such conflicts. 
+
+Before you begin installation, review [Additional installation flags for GitOps Runtime with Community Argo CD](#additional-installation-flags-for-hybrid-gitops-runtime-with-community-argo-cd), and then follow our [step-by-step installation guide]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-first-gitops-runtime-in-account) to install the Hybrid GitOps Runtime via Helm.  
 
 
+##### Additional installation flags for Hybrid GitOps Runtime with Community Argo CD
+
+These are the flags to add to the install command when installing alongside Community Argo CD:
 
 {% highlight yaml %}
 ...
@@ -205,14 +206,14 @@ The process to migrate an Argo CD Application is simple:
 
 If you have already added a Git Source as part of the Hybrid GitOps Runtime installation procedure, skip this step.  
 
-Otherwise, you can add a Git Source to the GitOps Runtime and commit your applications to it.
+Otherwise, add a Git Source to the GitOps Runtime to which you can commit your applications.
 A Git Source is a Git repository managed by Codefresh as an Argo CD Application.
 Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
 * Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
 
-### Step 2: Modify Argo CD Applications
+### Step 2: Modify Argo CD applications
 
 Modify the Argo CD Application's manifest to remove `finalizers` if any, and also remove the Application from the `argocd` `namespace` it is assigned to by default.
 
@@ -259,7 +260,7 @@ spec:
 
 ### Step 3: Commit Argo CD application to Git Source
 As the final step in migrating your Argo CD Application to a GitOps Runtime, manually commit the updated application manifest to the Git Source you created.
-Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you would any GitOps resource in Codefresh. 
+Once you commit the manifest to the Git Source, it is synced with the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you would any GitOps-controlled resource in Codefresh. 
 
 1. Go to the Git repo where you created the Git Source.
 1. Add and commit the Argo CD Application manifest to the Git Source.
