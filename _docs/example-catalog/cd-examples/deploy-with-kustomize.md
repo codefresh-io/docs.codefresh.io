@@ -245,7 +245,7 @@ max-width="100%"
 
 ## Related articles
 [CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/#cd-examples)  
-[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes)  
+[Deployment options for Kubernetes]({{site.baseurl}}/docs/deployments/kubernetes/deployment-options-to-kubernetes/)  
 [Running custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/)  
 [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/)  
 

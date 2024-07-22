@@ -164,5 +164,5 @@ synchronization:
      semaphore: argo/ConfigMap/semaphore-config/workflow?repository=denis-codefresh/argo-workflows&branch=feature
 ```
 ## Related articles
-[Creating workflows]({{site.baseurl}}/docs/workflows/create-pipeline)  
+[Creating workflows]({{site.baseurl}}/docs/workflows/create-pipeline/)  
 

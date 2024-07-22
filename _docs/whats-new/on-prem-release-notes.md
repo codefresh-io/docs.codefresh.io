@@ -187,6 +187,22 @@ For details, see [Manage rollouts for Argo CD application deployments]({{site.ba
 
 #### Usability enhancements
 
+
+
+##### Pipelines: Project name in breadcrumbs in Builds page
+In the Builds page, on selecting a build, the breadcrumbs path displays also the project name.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  url="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  alt="Builds page: Project name in breadcrumbs"
+  caption="Builds page: Project name in breadcrumbs"
+  max-width="60%"
+%}
+
+
 ##### GitOps: Breadcrumbs
 We have improved the implementation of breadcrumbs for a smoother navigation experience.
 
@@ -250,7 +266,8 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `promotionOrchestration` | _New feature currently in development for GitOps._<br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
 | `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
-| `serviceAccounts` | When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions manage
+| `serviceAccounts` | _Currently in development._ <br>When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management. | FALSE         |
+
 
 
 ##### Updated Feature Flags in v2.4
@@ -1186,7 +1203,7 @@ With GitOps, Git repositories are the source-control systems that declaratively 
 
 Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to Codefresh.
 
-For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install).
+For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
 
 <br>
 

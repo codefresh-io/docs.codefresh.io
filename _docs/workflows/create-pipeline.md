@@ -1,9 +1,16 @@
 ---
-title: "Creating Argo Workflows"
+title: "Creating Delivery Pipelines"
 description: ""
 group: workflows
 toc: true
 ---
+
+{{site.data.callout.callout_warning}}
+Delivery Pipelines (powered by Argo Workflows) is not being actively maintained.  
+Please reach out to [support@codefresh.io](mailto:support@codefresh.io) with any questions.
+{{site.data.callout.end}}
+
+
 
 Delivery Pipelines are where all the CI magic happens in Codefresh. Delivery Pipelines connect Argo Workflows and Argo Events with our unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, running unit and acceptance tests, or any customized flows you need in your enterprise. 
 

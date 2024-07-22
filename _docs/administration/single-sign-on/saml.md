@@ -71,10 +71,10 @@ Here's what you need to do to configure SSO via SAML in Codefresh:
 1. Configure SSO settings for the IdP in Codefresh:  
   This generally includes defining settings both in Codefresh and in the IdP.  
   Codefresh supports SAML SSO for the following:
-  * [JumpCloud]({{site.baseurl}}/docs/single-sign-on/saml/saml-jumpcloud)
-  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta)
-  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin)
-  * [PingID]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid)
+  * [JumpCloud]({{site.baseurl}}/docs/single-sign-on/saml/saml-jumpcloud/)
+  * [Okta]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-okta/)
+  * [OneLogin]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin/)
+  * [PingID]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-pingid/)
 
       * Assertion URL  
         The Assertion URL which is the Service Provider SSO endpoint, also referred to as the Callback URL or Client ID, is generated _after_ you create the integration in Codefresh.

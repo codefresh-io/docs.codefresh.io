@@ -711,7 +711,7 @@ Visualize ongoing and completed rollouts by deployments in **Updated Services**.
 Clicking the image name displays the image in the **Images** dashboard. 
 
 >**NOTE**  
-To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts).  
+To view and manage a rollout, you must have an Argo `rollout` resource defined for your application, and [install Argo Rollouts in the cluster]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/).  
 
 For detailed information on Argo Rollouts, see [Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/){:target="\_blank"}.
 
@@ -822,12 +822,12 @@ max-width="50%"
 
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
+[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
+[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 
 
