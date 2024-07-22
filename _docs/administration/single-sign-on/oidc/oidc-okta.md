@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 Set up SSO for Okta using OIDC.  
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/).  
 
 
 Set up OIDC SSO for Okta in Codefresh by:

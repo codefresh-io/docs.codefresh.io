@@ -301,7 +301,7 @@ step_name:
 | `secretAccessKey`      | Your AWS secret access key.   | Optional <br>**Ignored when provider is** `docker`  |
 | `region`               | The region where the ECR registry is accessible.   | Optional <br>**Ignored when provider is** `docker`  |
 | `fail_fast`            | If a step fails, and the process is halted. The default value is `true`. |Default |
-| `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps. | Optional |
+| `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). | Optional |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
                                        
 ### Exported resources

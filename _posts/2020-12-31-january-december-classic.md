@@ -16,7 +16,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Time based filters in build view - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view)
 
 ## November 2020
-- Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry)
+- Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry/)
 - Getting Code Coverage Reports with Codecov - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/codecov-testing/)
 - Integrating SonarQube Analysis into your Pipelines - [documentation]({{site.baseurl}}/docs/testing/sonarqube-integration/)
 - GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
@@ -36,7 +36,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - DockerHub rate limit issue - [documentation]({{site.baseurl}}/docs/kb/articles/dockerhub-rate-limit/)
 
 ## August 2020
-- Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/pipelines/hooks)
+- Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/pipelines/hooks/)
 - Pipeline templates - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates)
 - Pipeline definition restrictions - [documentation]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions)
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#policies)
@@ -119,7 +119,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Amazon ECS/Fargate deployment example - [documentation]({{site.baseurl}}/docs/integrations/amazon-web-services/)
 
 ## January 2020
-- New deployment environment dashboard - [documentation]({{site.baseurl}}/docs/pipelines/deployment-environments)
+- New deployment environment dashboard - [documentation]({{site.baseurl}}/docs/pipelines/deployment-environments/)
 - Support for Azure Storage in test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
 - Promoting Docker images - [documentation]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#promoting-docker-images)
 - Using Dockerhub personal access tokens - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/)

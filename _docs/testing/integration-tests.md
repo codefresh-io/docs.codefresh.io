@@ -449,4 +449,4 @@ max-width="70%"
 [Run integration tests with MySQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-mysql/)  
 [Run integration tests with PostgreSQL]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-postgres/)  
 [Run integration tests with Redis]({{site.baseurl}}/docs/example-catalog/ci-examples/integration-tests-with-redis/)  
-[Run unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests)
+[Run unit tests]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/)

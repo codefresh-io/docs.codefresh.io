@@ -739,6 +739,9 @@ global:
 
 
 
+You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) the application you migrated as any other Argo CD application in Codefresh.
+
+
 
 ## Minimum system requirements
 
