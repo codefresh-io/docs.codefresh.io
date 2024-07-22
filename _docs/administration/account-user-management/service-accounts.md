@@ -21,7 +21,7 @@ Each service account can hold multiple API keys, making it easy to manage access
 * **Multiple API keys**  
   A single service account can have multiple API keys, each defined with specific scopes, providing fine-grained access control.
 
-* **Non-login accounts**
+* **Non-login accounts**  
   Service accounts cannot be used to log in to Codefresh, and are also not included in the collaborator count.
 
 
@@ -47,7 +47,7 @@ Note that service account creation is not supported via CLI and Terraform.
 SCREENSHOT  
 
 {:start="4"}
-1. Continue with [Generating API keys](#generate-api-keys-for-service-accounts).
+1. Continue with [Generate API keys for service accounts](#generate-api-keys-for-service-accounts).
 
 
 
@@ -92,10 +92,10 @@ SCREENSHOT
 {: .table .table-bordered .table-hover}
 | Service Account Setting  | Description   |
 | ------------------------| ---------------- |
-| **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role. See ?? |
+| **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role. NIMA: what is the added value of admin role? |
 | **API Keys**            | The number of API keys assigned to the service account. <br>Selecting a service account displays the API keys generated for that account. Modify selected scopes by clicking Edit, or delete the API key. |
 | **Teams**               | The names of the teams the service account is assigned to. <!--- <br>??? see ???--> |
-| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). NIMA: give me examples of one or two use cases when you would disable a service account |
+| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). NIMA: give me examples of one or two use cases when you would want to disable a service account |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
 
