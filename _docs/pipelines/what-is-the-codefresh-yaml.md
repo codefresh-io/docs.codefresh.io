@@ -93,7 +93,7 @@ You can add variables in the YAML file to chain and reference steps and referenc
 
 For more information on creating your own step, see the [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/).
 
-You can also see the [complete YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api) or [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} .
+You can also see the [complete YAML specification]({{site.baseurl}}/docs/integrations/codefresh-api/#full-pipeline-specification) supported for pipelines. Note however that several fields are only accessible by using the [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/) or [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} .
 
 ## YAML validation
 
