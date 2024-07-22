@@ -134,7 +134,7 @@ If the chart's minor appversion is lower than the version used by Codefresh, you
 
 
 ### Step 4: Set Community Argo CD resource tracking to `label` 
-Set Community Argo CD to track resources using the default `label` method.  If both Argo CD instances use the same tracking method, it can result in conflicts when tracking applications with the same name, or when tracking the same resource. 
+Set Community Argo CD to track resources using the `label` method.  If both Argo CD instances use the same tracking method, it can result in conflicts when tracking applications with the same name, or when tracking the same resource. 
 
 * In the Argo CD namespace, make sure `argocd-cm.application.resourceTrackingMethod` is either not defined, in which case it defaults to `label`, or if defined, is set to `label`.
 
@@ -165,14 +165,14 @@ Before you begin installation, review [Additional installation flags for GitOps 
 ...
   --set argo-cd.fullnameOverride=codefresh-argo-cd \
   --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
+  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \
 ...
 {% endhighlight %}
 
 where:
 * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
 * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when you have Argo Rollouts in your cluster to avoid conflicts.
-* `argo-cd.configs.cm.application.resourceTrackingMethod=annotation` is mandatory to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
+* `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label` is mandatory to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
 
 
 ## Remove Rollouts controller deployment
