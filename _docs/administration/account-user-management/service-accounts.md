@@ -80,13 +80,6 @@ max-width="60%"
 The Service Accounts page shows the list of service accounts defined for the account. 
 
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-You can also view service accounts assigned to teams in **Users > Teams > Service Accounts**.
-{{site.data.callout.end}}
-
-
-
 {% include image.html 
 lightbox="true" 
 file="/images/administration/service-accounts/service-account-list.png" 
@@ -103,7 +96,7 @@ max-width="60%"
 | **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role. NIMA: what is the added value of admin role? |
 | **API Keys**            | The number of API keys assigned to the service account. <br>Selecting a service account displays the API keys generated for that account. Modify selected scopes by clicking Edit, or delete the API key. |
 | **Teams**               | The names of the teams the service account is assigned to.  |
-| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). NIMA: give me examples of one or two use cases when you would want to disable a service account |
+| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply renable when needed. |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
 
