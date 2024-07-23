@@ -59,7 +59,7 @@ Here is an example of the Feature Management page in Admin Management for the or
   max-width="60%"
     %}
 
-The table describes the features you can open for Codefresh accounts, in alphabetical order. 
+The table describes in alphabetical order, the features you can open for Codefresh accounts. 
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 

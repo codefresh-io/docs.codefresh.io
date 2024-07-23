@@ -59,12 +59,12 @@ With the integration in place, you can reference it by name in any Codefresh pip
 
 `codefresh.yml`
 ```yaml
-  codecov-report:
-	stage: "prepare"
-	title: Codecov report
-	type: codecov-reporter:2.1.0
-	arguments:
-  	codecov_integration: my-codecov-integration
+codecov-report:
+  stage: "prepare"
+  title: Codecov report
+  type: codecov-reporter:2.1.0
+  arguments:
+  codecov_integration: my-codecov-integration
 ```	  
 
 For more details see our [Codecov example](https://codefresh.io/docs/docs/example-catalog/ci-examples/codecov-testing/).
