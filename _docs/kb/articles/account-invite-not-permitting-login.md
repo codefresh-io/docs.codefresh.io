@@ -24,4 +24,4 @@ The account is not correctly linked.
 2. Log out of any previous sessions with the relevant identity provider and if need be, try a different browser or a private/incognito window.
 3. If you are able to log in but don't see the inviting account, your user may be under multiple accounts. If this is the case, you can switch between available accounts via the user menu drop-down in the upper right-hand corner.
 
-_Notes_ In the event that this issue persists, please [contact our supportteam](https://support.codefresh.io/hc/en-us/requests/new) with as many details as you have.
+_Notes_ In the event that this issue persists, please [contact our support team](https://support.codefresh.io/hc/en-us/requests/new) with as many details as you have.

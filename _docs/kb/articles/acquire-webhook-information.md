@@ -11,8 +11,6 @@ categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-
-
 This article describes how to get webhook information for a Git trigger through the Codefresh CLI or API.  
 Currently, you cannot get webhook information through the user interface.
 
@@ -25,4 +23,5 @@ Currently, you cannot get webhook information through the user interface.
   Look at the `endpoint` and `secret` fields.
 
 ## Related articles
+
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
