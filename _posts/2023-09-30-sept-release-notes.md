@@ -30,7 +30,7 @@ Key benefits:
   Once the OIDC provider configuration is completed, obtaining the ID token is seamless.  
   Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token without additional configuration or parameters on your part.
 
-For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/).
 
 ### Pipelines: Enhanced RBAC with AND logic for tags
 

@@ -367,7 +367,7 @@ You can click the **Install** button to manually deploy manually the chart. Code
 You now know how to deploy a Helm release from Codefresh, view the release, and store the Helm chart in a repository.
 
 Continue with:
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 
 
 ## Read more on deployments with Helm 

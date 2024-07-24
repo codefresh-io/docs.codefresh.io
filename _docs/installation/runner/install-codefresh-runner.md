@@ -6,7 +6,7 @@ redirect_from:
   - /docs/administration/codefresh-runner/
   - /docs/enterprise/codefresh-runner/
   - /docs/administration/codefresh-hybrid/
-  - /docs/installation/codefresh-runner
+  - /docs/installation/codefresh-runner/
 toc: true
 ---
 
