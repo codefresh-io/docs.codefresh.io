@@ -89,7 +89,7 @@ file="/images/administration/service-accounts/service-account-list.png"
 url="/images/administration/service-accounts/service-account-list.png"
 alt="Service account list"
 caption="Service account list"
-max-width="60%"
+max-width="90%"
 %}
 
 
