@@ -183,8 +183,8 @@ Manage individual applications without navigating away from the Products dashboa
 ### Assigning applications to Products
 Codefresh offers two methods to assign applications to a Product:
 
-* Manual assignment from the Products dashboard 
-  A once-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
+* Manual assignment from the Products dashboard  
+  A one-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
   Recommended for testing and not as the preferred method.
 
 * Declarative assignment through annotations  
