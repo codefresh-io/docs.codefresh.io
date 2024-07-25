@@ -452,7 +452,7 @@ We need to define a Create rule each for teams DevOps and Marvel, and then diffe
 
 Create rules for runtime environments and how to use the environment and resources in pipelines. 
 
-#### Example 1: Create rule to define access to Pipelin Runtimes
+#### Example 1: Create rule to define access to Pipeline Runtimes
 
 This example illustrates how to create rules for Pipeline Runtimes to restrict access by teams, and grant the same team all privileges to manage runtime environments within pipelines. 
 
