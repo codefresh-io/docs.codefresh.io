@@ -20,12 +20,12 @@ Codefresh not only allows you to define different pipelines on a single project 
 The following types of triggers are currently supported in pipelines:
 
 * [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)
-* [Docker Hub triggers]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers)
-* [Azure Registry triggers]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers)
-* [Quay triggers]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers)
-* [Helm triggers]({{site.baseurl}}/docs/pipelines/triggers/helm-triggers)
-* [Artifactory triggers]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers)
-* [Cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers)
+* [Docker Hub triggers]({{site.baseurl}}/docs/pipelines/triggers/dockerhub-triggers/)
+* [Azure Registry triggers]({{site.baseurl}}/docs/pipelines/triggers/azure-triggers/)
+* [Quay triggers]({{site.baseurl}}/docs/pipelines/triggers/quay-triggers/)
+* [Helm triggers]({{site.baseurl}}/docs/pipelines/triggers/helm-triggers/)
+* [Artifactory triggers]({{site.baseurl}}/docs/pipelines/triggers/jfrog-triggers/)
+* [Cron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)
 * [API/CLI trigger]({{site.baseurl}}/docs/integrations/codefresh-api/)
 
 As an example, this project contains four pipelines:

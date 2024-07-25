@@ -191,8 +191,8 @@ max-width="70%"
 %}
 
 ## Related articles
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
 [LDAP Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/ldap/)  
 
 

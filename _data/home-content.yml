@@ -255,9 +255,9 @@
   url: ""
   links:
     - title: Windows Containers Support
-      localurl: /docs/incubation/windows
+      localurl: /docs/incubation/windows/
     - title: Mac OSX and iOS builds
-      localurl: /docs/incubation/osx-ios-builds
+      localurl: /docs/incubation/osx-ios-builds/
     - title: ARM architecture Support
       localurl: /docs/incubation/arm-support
 
@@ -266,10 +266,10 @@
   url: ""
   links:
     - title: Common Issues
-      localurl: /docs/kb/common-issues
+      localurl: /docs/kb/common-issues/
     - title: How Tos
-      localurl: /docs/kb/how-to
+      localurl: /docs/kb/how-to/
     - title: Troubleshooting
-      localurl: /docs/kb/troubleshooting
+      localurl: /docs/kb/troubleshooting/
     - title: Support Ticket Examples
-      localurl: /docs/kb/support-ticket-examples
+      localurl: /docs/kb/support-ticket-examples/

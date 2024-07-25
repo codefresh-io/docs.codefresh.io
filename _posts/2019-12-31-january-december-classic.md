@@ -25,7 +25,7 @@ description: "Changelog for Pipelines 2019 (Classic)"
 - Calling child pipelines - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/call-child-pipelines/)
 
 ## September 2019
-- Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests)
+- Unit testing guide - [documentation]({{site.baseurl}}/docs/testing/unit-tests/)
 - Unit test example - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/run-unit-tests/)
 - Integration testing guide - [documentation]({{site.baseurl}}/docs/testing/integration-tests/)
 - Integration test example - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/run-integration-tests/)

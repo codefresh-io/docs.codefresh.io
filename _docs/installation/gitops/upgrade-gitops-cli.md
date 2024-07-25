@@ -83,5 +83,5 @@ You can upgrade to a specific version if you so require, or download the latest 
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
 
 ## Related articles
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  

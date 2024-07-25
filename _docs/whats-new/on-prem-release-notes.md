@@ -941,7 +941,7 @@ Key benefits:
   Once the OIDC provider configuration is completed, obtaining the ID token is seamless.
   Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
 
-For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/).
 
 <br><br>
 
@@ -1203,7 +1203,7 @@ With GitOps, Git repositories are the source-control systems that declaratively 
 
 Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to Codefresh.
 
-For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install).
+For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
 
 <br>
 

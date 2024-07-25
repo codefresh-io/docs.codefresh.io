@@ -256,8 +256,8 @@ The following variables are available to any Codefresh pipeline linked to a Cron
 - `EVENT_TIMESTAMP`: Event timestamp in RFC 3339 format
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
-[Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers)  
-[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
+[Cron trigger specifications]({{site.baseurl}}/docs/integrations/codefresh-api/#cron-triggers/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 

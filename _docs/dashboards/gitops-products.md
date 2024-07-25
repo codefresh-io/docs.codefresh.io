@@ -183,8 +183,8 @@ Manage individual applications without navigating away from the Products dashboa
 ### Assigning applications to Products
 Codefresh offers two methods to assign applications to a Product:
 
-* Manual assignment from the Products dashboard 
-  A once-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
+* Manual assignment from the Products dashboard  
+  A one-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
   Recommended for testing and not as the preferred method.
 
 * Declarative assignment through annotations  
@@ -590,6 +590,6 @@ Either create an Environment or add the cluster-namespace defined for the applic
 ## Related articles
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)   
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)

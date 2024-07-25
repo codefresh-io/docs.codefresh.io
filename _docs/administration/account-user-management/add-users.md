@@ -11,7 +11,7 @@ redirect_from:
 toc: true
 ---
 
-Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.  For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration).
+Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.  For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
 
 
 
@@ -117,7 +117,7 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Troubleshoot add users
 
-* [Account invitation not permitting login]({{site.baseurl}}/docs/kb/articles/account-invite-not-permitting-login){:target="\_blank"}
+* [Account invitation not permitting login]({{site.baseurl}}/docs/kb/articles/account-invite-not-permitting-login/){:target="\_blank"}
 <!--this is already mentioned as inline refs; add other topics-->
 
 ## Related articles
