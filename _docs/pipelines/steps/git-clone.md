@@ -515,6 +515,6 @@ For more details, see the [behind the firewall page]({{site.baseurl}}/docs/insta
 
 ## Related articles
 
-- [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)
-- [YAML steps]({{site.baseurl}}/docs/pipelines/steps/)
-- [Custom Git Commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  
+[Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
+[YAML steps]({{site.baseurl}}/docs/pipelines/steps/)  
+[Custom Git Commands]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout-custom/)  
