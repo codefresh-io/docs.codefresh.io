@@ -1,5 +1,5 @@
 ---
-title: "Create service accounts"
+title: "Managing service accounts"
 description: "Manage access and permissions with service accounts"
 group: administration
 sub_group: account-user-management
