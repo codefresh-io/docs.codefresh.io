@@ -8,7 +8,10 @@ toc: true
 
 ## Service accounts overview
 
-A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Unlike user accounts, service accounts are not tied to a specific individual. Instead, they are used to manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
+>**NOTE**  
+This feature is currently in Beta.
+
+A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Service accounts can manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
 Coderfesh supports creating service accounts and assigning them to teams with RBAC (Role-Based Access Control) compliance for CI pipelines. See [Create service accounts](#create-service-accounts).  
 Each service account can hold multiple API keys, making it easy to manage access for different purposes. See [Generate API keys for service accounts](#generate-api-keys-for-service-accounts).
@@ -96,7 +99,7 @@ max-width="60%"
 | **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role. NIMA: what is the added value of admin role? |
 | **API Keys**            | The number of API keys assigned to the service account. <br>Selecting a service account displays the API keys generated for that account. Modify selected scopes by clicking Edit, or delete the API key. |
 | **Teams**               | The names of the teams the service account is assigned to.  |
-| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply renable when needed. |
+| **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply reenable when needed. |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
 
