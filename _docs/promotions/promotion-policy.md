@@ -14,7 +14,7 @@ and other relevant factors specific to the target environment.
 
 ##### Promotion Policies for readiness validation
 Codefresh empowers you to create and automate environment readiness validations through Promotion Policies. 
-A Promotion Policy combines promotion settings that define workflows to validate environment readiness, and targets that define the products or environments for which to implement the Policies.
+A Promotion Policy combines promotion settings defining workflows to validate environment readiness, and targets defining the products or environments for which to implement the Policies.
 
 The Policies can be tailored for any combination of Products and Environments, giving you the utmost felexibily with the .  
 
@@ -22,7 +22,7 @@ You can create dedicated Promotion Policies, or define them as part of a Promoti
 
 DIAGRAM
 
-Review the [settings](#promotion-policy-settings) you can configure for a Promotion Policy and how to [create a Promotion Policy](#create-a-promotion-policy). 
+Review the [settings](#promotion-policy-settings) you can configure for a Promotion Policy and then how to [create a Promotion Policy](#create-a-promotion-policy). 
 
 ##### Promotion Policy implementation
 More than one Promotion Policy can match the same target Product or Environment. 
@@ -93,13 +93,9 @@ Examples showing when to set by environment, by product and others
 
 ## Promotion Policy implementation logic
 
-Each Promotion Policy can define some or all promotion settings, and one or more Products or Environments as targets. 
+Each Promotion Policy can define a few or all promotion settings, and one or more Products or Environments as targets. 
 When a Promotion Policy is to be run to validate readiness for an environment, promotion settings are merged from all matched policies based on their priority. 
-Always, policies with higher priority take precedence over those with lower priority.
-
-### Promotion Policies in Trigger Environments
-TBD
-
+Policies with higher priority always take precedence over those with lower priority.
 
 
 ### Example Promotion Policies
@@ -118,6 +114,14 @@ Note that not all settings are defined or configured for all policies. But all p
 
 
 (NIMA: will convert this into a diagram)
+
+
+### Promotion Policies in Trigger Environments
+TBD
+
+
+
+
 
 
 ### Scenario 1: Applying Promotion Policies with identical target attributes 
@@ -187,7 +191,7 @@ Create a Promotion Policy to validate an environment's readiness before promotin
 
 ## Promotion Policy list
 
-Here's an example of the Promotion Policy page which displays all Promotion Policies in the account. This is also the location from which you can create new and manage existing policies.
+Here's an example of the Promotion Policy page which displays all Promotion Policies in the account. This is also the location from which you can create  and manage existing policies.
 SCREENSHOT
 
 * (NIMA: is the newest policy displayed first by default??)
@@ -197,10 +201,16 @@ SCREENSHOT
 
 ## Evaluate Promotion Settings for Products and Environments 
 Select a specific Product-Environment pair and preview the Promotion Settings that will be applied for it.  
-Evaluate Promotion Policies to identify Product-Environment pairs that don't match any existing Promotion Policies, identify possible conflicts with Promotion Flows, and also optimize existing Policies.
 
-If there are multiple Policies with either identical or different target attributes that match the Product-Environment selected, Codefresh merges Promotion Settings from all matched polices based on the priority of each Policy and the implementation logic. 
+Evaluate Promotion Policies to identify:
+* Product-Environment pairs that don't match any existing Promotion Policies
+* Missing Promotion Settings
+* Possible conflicts with Promotion Flows
+* How to optimize existing Policies
 
+If there are multiple Policies with either identical or different target attributes that match the Product-Environment selected, Codefresh merges Promotion Settings from all matched polices based on the priority of each Policy and the [implementation logic](#promotion-policy-implementation-logic). 
+
+##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Promotions in the sidebar, select **Promotion Policies**.
 1. In the Promotion Policies page, click **Evaluate Promotion Policy**.
@@ -231,8 +241,7 @@ Misconfigured Policies include:
 
 **Message**  
 Unable to apply any Promotion Policy for the selected Product-Environment pair.<br>
-Merged Promotion Settings from the matched Promotion Policies are missing the Promotion Action.<br>
-Define an Action for one of the matched Promotion Policies and try again.
+SCREENSHOT OF MESSAGE
 
 **Reason**  
 Promotion Action has not been configured in any of the Policies that match the selected Product-Environment pair.
@@ -248,6 +257,7 @@ Promotion Policies must be configured with at least one Action: Commit, Pull req
 Promotion Flow will fail for the selected Product-Environment pair.<br>
 Merged Promotion Settings from the matched Promotion Policies define No Action as the Promotion Action, but the Pre-Action Workflow does not include a step that initiates a corresponding promotion action.<br>
 Update the Pre-Action Workflow as required.
+
 
 **Reason**  
 When No Action is configured as a Promotion Setting:
@@ -265,6 +275,6 @@ When editing Promotion Policy settings, you cannot change the name.
 
 Deleting a Promotion Policy removes it from all the Products and Environments it is assigned to. 
 
-## Visualizing Promotion Workflows in Releases
+## Visualize Promotion Workflows in Releases
 
 TBD
