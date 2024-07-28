@@ -80,7 +80,7 @@ Monitor promotion orchestration for an on-going release, or analyze that of a co
 1. To view the complete history of code changes, click **Release Notes**.   
 
 
-### Header 
+### Header in Product Releases
 The header summarizes the change that triggered the promotion, the overall status of the release, and the number of failed, successful, running, and pending environments.
 
 The commit details are always for the trigger environment that initiated the promotion.
@@ -143,7 +143,7 @@ Errors can be categorized into:
     Clicking on the error takes you to the Current State tab in the GitOps Apps dashboard.
 
 * **Git errors**
-  * Prefixed with .
+  * Prefixed with {::nomarkdown}<img src="../../../images/icons/product-release-git-error.png?display=inline-block">{:/}.
   * Typically commit failures related to Git operations.
 
 
@@ -160,7 +160,7 @@ Access the release notes to see a detailed history of all changes that led to th
 These changes include code changes, commits, and associated issues or fixes.
 Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
 
-
+SCREENSHOT
 
 
 
@@ -196,7 +196,7 @@ The overall deployment status of an environment is determined by the cumulative 
 The table describes the possible deoloyment statuses for environments.
 
 {: .table .table-bordered .table-hover}
-| Release Status     | Description           |
+| Environment Status     | Description           |
 |------------        |---------------------------------------|
 | **Successful**     | One or both the Pre- and Post-Action Workflows in the environment completed successfully.  |
 | **Running**        | At least one step in a Pre- or Post-Action Worfklow in the environment is currently in progress.  |
@@ -213,7 +213,7 @@ The table describes the possible deoloyment statuses for environments.
 The table describes the possible statuses for Promotion Workflow steps.
 
 {: .table .table-bordered .table-hover}
-| Release Status     | Description           |
+| Workflow-step Status     | Description           |
 |------------        |---------------------------------------|
 | **Success**        | The step completed execution without errors in all the Pre- and Post-Action Workflows that included it.  |
 | **Running**        | The step is currently in progress in at least one of the Pre- and Post-Action Workflows.  |
