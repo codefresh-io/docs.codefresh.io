@@ -7,33 +7,40 @@ toc: true
 
 ## About tracking product deployments
 
-When a promotion flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production. A release refers to the new version of software deployed to an environment after ensuring that the code has passed all necessary stages of testing and validation. 
+When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production. 
+In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final production-ready environment. 
 
-Releases for products
+The Releases feature in Codefresh is designed for tracking deployments of a product across multiple environments. 
 
-In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final production-ready environment.  
+SCREENSHOT
 
-Our Releases feature provides a comprehensive view of the deployment lifecycle, with views and functionalities to track, manage, and analyze the progress of deployments across different environments. 
-
-
-
-Designed with DevOps engineers in mind, this feature p
+See [View Releases for Products](#view-releases-for-products).
+<!--- A release refers to the new version of software deployed to an environment after ensuring that the code has passed all necessary stages of testing and validation. -->
 
 ##### Releases & Products
 A Release is added for a Product when the Product is promoted from the trigger environment according to the Promotion Flow selected for the Product. 
-The Releases tab with the details of the release is displayed on drill down into a productd. 
+On drill down into a Product, the Releases tab displays the list of ongoing and completed releases for that product, with the option of getting detailed insights on a specific release.
 
 ##### Releases & developers
-
-As an application developer or a DevOps engineer, Releases provide you not only with the  
-Visualize the product's deployment lifecycle
-I integrated list of changes from that led to the deployment. Whether you need to see where an ongoing deployment is at, troubleshoot issues preventing deployment to production, or address customer-reported issues, the Releases feature offers a holistic view of the deployment lifecycle.
+As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues, or understand the changes involved in a release.
 
 
-There are two aspects of tracking deployments  for a product through releases:
+There are two key aspects of tracking deployments for a product through releases:
+* **Promotion Flow**  
+  This aspect provides a graphical representation of the defined Promotion Flow for the release, showing the progression through different environments.  
+  See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).
 
-Graphical representation of the promotion flow as it 
-Integrated collated list of all the changes from the different 
+* **Release notes**  
+  This aspect collates an integrated list of changes from various sources, providing a comprehensive view of what has led to the deployment.  
+  See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
+
+
+Whether you are a product manager or an application developer, with Releases, you can:
+* Visualize the product's deployment lifecycle
+* Access an integrated list of changes that led to the deployment
+* See the current status of ongoing deployments
+* Troubleshoot issues preventing deployment to production
+* Address customer-reported issues with detailed insights into the deployment lifecycle
 
 
 ## View Releases for products
@@ -47,7 +54,7 @@ The Releases page displays on-going and completed releases for the product.
 
 SCREENSHOT
 
-The table describes important insights to note in the Releases page.
+The table describes important insights in the Releases page.
 
 |Item      | Description*           |
 |-------------|---------------------|
@@ -61,10 +68,11 @@ The table describes important insights to note in the Releases page.
 
 ## Monitor promotion orchestration for releases
 
-Monitor promotion orchestration for an on-going release across the different environments defined for it in the Promotion Flow.   
-View how the different environments are interconnected to understand the dependencies
-Monitor executions of workflow steps in each environment and get alerted to failed steps in workflows
- 
+Monitor promotion orchestration for an on-going release, or analyze that of a completed release, across the different environments defined for it in the Promotion Flow.   
+* View how different environments are interconnected within the Promotion Flow to understand the dependencies and flow of deployment.
+* Monitor executions of workflow steps in each environment and get alerted to failed steps in workflows. Early detection of failures allows for quick intervention, reducing the risk of prolonged issues and ensuring the deployment process remains on track.
+
+##### How to
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the product and then click the **Releases** tab.
@@ -75,15 +83,17 @@ Monitor executions of workflow steps in each environment and get alerted to fail
 ### Header 
 The header summarizes the change that triggered the promotion, the overall status of the release, and the number of failed, successful, running, and pending environments.
 
-The commit details are always for the trigger environment that initiated the promotion 
+The commit details are always for the trigger environment that initiated the promotion.
+
+SCREENSHOT
 
 ### Environments in Product Releases
 
 Graphical view of the different environments defined in the Promotion Flow.
 
 You can: 
-Understand the interconnections between the environments, whether linear or parallel.
-Visualize the dependencies between environments to see how changes propagate through the deployment process
+* Understand the interconnections between the environments, whether linear or parallel.
+* Visualize the dependencies between environments to see how changes propagate through the deployment process
 
 Each environment is color-coded to indicate the overall status of the promotion for that environment.
 
@@ -144,13 +154,6 @@ arising from insufficient permissions to execute workflow steps or access necess
 
 
 
-
-
-
-
-
-
-
 ## Analyze change history in Release Notes 
 
 Access the release notes to see a detailed history of all changes that led to the deployed release and artifacts created for it.
@@ -169,7 +172,6 @@ In top-down order:
 * Overall release status 
 * Environment deployment status
 * Workflow step status
-
 
 
 
