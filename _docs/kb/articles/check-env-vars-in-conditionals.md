@@ -17,50 +17,50 @@ The condition determines how variable values are substituted within the pipeline
 
 The following condition:
 
-  {% raw %}
+{% raw %}
 
-    ```yaml
-      'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
-    ```
-  {% endraw %}
+```yaml
+  'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
+```
+
+{% endraw %}
 
 evaluates to `true` if `CF_RELEASE_TAG` does not exist, and `false` if it does exist.
 
 ## How to
 
-##### Check if variable exists for the current build 
+##### Check if variable exists for the current build
 
 Use the following syntax:
 
-   {% raw %}
+{% raw %}
 
-    ```yaml
-    when:
-      condition:
-        all:
-          whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
-    ```
+```yaml
+when:
+  condition:
+    all:
+      whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
+```
 
-    {% endraw %}
+{% endraw %}
 
 ##### Check if variable has a specific value
 
 Use the following syntax:
 
-   {% raw %}
+{% raw %}
 
-    ```yaml
-    when:
-      condition:
-        all:
-          whenVarValue: '"${{MyVar}}" == "myValue"'
-    ```
+```yaml
+when:
+  condition:
+    all:
+      whenVarValue: '"${{MyVar}}" == "myValue"'
+```
 
-    {% endraw %}
+{% endraw %}
 
 Combine multiple checks as required.
 
-
-
 ## Related articles
+
 [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  
