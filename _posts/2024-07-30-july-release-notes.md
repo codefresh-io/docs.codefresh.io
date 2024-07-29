@@ -44,7 +44,7 @@ max-width="60%"
 
 For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes) and [Creating rules for Pipeline Runtimes and runtime environments]({{site.baseurl}}/docs/administration/account-user-management/access-control/#creating-rules-for-pipeline-runtimes-and-runtime-environments).
 
-### GitOps: External links for Kubernetes app & ingress resources
+### GitOps: External links for Kubernetes app & ingress resources (probably not in this release)
 The Current State tab in our GitOps Apps dashboard is the central location to view and manage all the resources in your applications. We are always looking to enhance productivity and here's the 
 newest functionality: external Links for application and ingress resources! 
 
@@ -110,7 +110,7 @@ For details, see [Working with applications in Environments]({{site.baseurl}}/do
 
 
 
-### Docs: Brand-new search mechanism and experience
+### Docs: Brand-new search mechanism and experience (probably not in this release)
 We’re excited to introduce the revamped search mechanism for our doc site!
 
 Wherever you are in Codefresh, open search from the toolbar, either from Global Search & Navigation by typing help or by clicking the Help icon.
@@ -154,7 +154,7 @@ Try our new search and don’t forget to send us your feedback!
 
 ### Usability enhancements
 
-#### General: Seamless redirection to shared links 
+#### General: Seamless redirection for shared links 
 We implemented a small but significant improvement to your Codefresh experience. 
 
 Now, when you try to access a shared link while not logged into the platform, you will be automatically redirected to the URL you entered after logging in, instead of being taken to the default Home dashboard view.
@@ -182,7 +182,7 @@ In the Builds page, on selecting a build, the breadcrumbs path displays also the
 
 ##### General
 * Download Audit downloads empty CSV file. 
-* Invite text in Welcome screen displays `undefined` instead of the organization name. (Victor - 22824)
+* Invite text in Welcome screen displays `undefined` instead of the organization name. 
 
 ##### Pipelines 
 * Builds with `codefresh-run` step fails with error `Failed to write template value file Arguments to filesystem`. (Noam 24734 )
