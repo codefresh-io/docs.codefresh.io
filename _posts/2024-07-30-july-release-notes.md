@@ -4,7 +4,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-### Pipelines: RABC for Pipeline Runtimes
+### Pipelines: RBAC for Pipeline Runtimes
 We have further strengthened security for pipelines with RBAC permissions for Pipeline Runtimes.  
 RBAC for Pipeline Runtimes enhances the permissions system with granular access control not just for Pipeline Runtimes, but also for runtime environments and resources within pipelines.  
 
@@ -154,11 +154,11 @@ Try our new search and don’t forget to send us your feedback!
 
 ### Usability enhancements
 
-#### General: Access to deep links without login
+#### General: Seamless redirection to shared links 
 We implemented a small but significant improvement to your Codefresh experience. 
 
-Now shared deep links work even when you are not logged into the platform. 
-After login, you'll be redirected to the URL you originally entered, not just the main dashboard, ensuring a smoother, more efficient workflow.
+Now, when you try to access a shared link while not logged into the platform, you will be automatically redirected to the URL you entered after logging in, instead of being taken to the default Home dashboard view.
+
 
 #### Pipelines: Project name in breadcrumbs in Builds page
 In the Builds page, on selecting a build, the breadcrumbs path displays also the project name.
@@ -180,16 +180,20 @@ In the Builds page, on selecting a build, the breadcrumbs path displays also the
 
 ## Bug fixes
 
+##### General
+* Download Audit downloads empty CSV file. 
+* Invite text in Welcome screen displays `undefined` instead of the organization name. (Victor - 22824)
 
 ##### Pipelines 
-* `404: repo not found` error for pipelines using Helm charts.
-* Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server.  
-* Rule for Pipeline permissions by pipeline `tags` overrides rule for pipeline permissions by projects with `All tags`.
-* When defining triggers, Select Branch search does not display branch names including slashes. 
+* Builds with `codefresh-run` step fails with error `Failed to write template value file Arguments to filesystem`. (Noam 24734 )
+builds fails - build runtime settings are not configured (Kim - 24191)
+* `build` step does not work with cross-account ECR. (Kim - 19269)
 
 
 ##### GitOps 
-* Invalid Git user (personal access) token message displayed at frequent intervals.
-* Argo Rollouts Reporter missing from destination cluster error even when Argo Rollouts is installed. 
-* Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
-* In GitOps Apps dashboard, breadcrumbs for app of apps display child applications in the path.
+* Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
+* Issue with secrets store integration (Zhenya 24332)
+* Application sync fails with `Failed to checkout FETCH_HEAD... exit status 128`. (Pasha 24304)
+* Current Release not displayed for multi-sourced apps. 
+* Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
+* Unresponsive **Close** button in Rollout drawer. 
