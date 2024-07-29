@@ -192,7 +192,7 @@ builds fails - build runtime settings are not configured (Kim - 24191)
 
 ##### GitOps 
 * Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
-* Issue with secrets store integration (Zhenya 24332)
+* Secret store integrations broken after upgrade to Helm version 6.3.37. (Zhenya 24332)
 * Application sync fails with `Failed to checkout FETCH_HEAD... exit status 128`. (Pasha 24304)
 * Current Release not displayed for multi-sourced apps. 
 * Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
