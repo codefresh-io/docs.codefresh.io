@@ -181,7 +181,7 @@ Manage individual applications without navigating away from the Products dashboa
 
 
 ### Assigning applications to Products
-Codefresh offers two methods to assign applications to a Product:
+There are two methods of assigning applications to a Product:
 
 * Manual assignment from the Products dashboard  
   A one-click action, this method is for quick assignment from the UI. Unlike other UI actions, manual assignment does not require a commit action.
@@ -192,15 +192,15 @@ Codefresh offers two methods to assign applications to a Product:
   Recommended method which is fully GitOps-compatible.
 
 #### Manually assign applications to Products
-Manually assign an application to a Product directly from the Products dashboard. 
+Manually assign an application to a Product directly from the Product dashboard. 
 
 This is one of two methods for assigning applications to Products. The other method involves adding annotations to the application's manifest, as described in [Use annotations to connect applications to Products](#use-annotations-to-connect-applications-to-products).
 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. If needed, search for the application, or use the Application and Environment filters.
 1. Do one of the following:
-  * Click the name of the Product for which to assign applications, and then click **Manage Applications**.
+  * Click the name of the Product for which to assign applications, and then click **Manage Apps** on the right.
   * Mouse over the row with the Product to which to assign the application, and click {::nomarkdown}<img src="../../../images/icons/settings.png?display=inline-block">{:/}.
 
 {% include 
@@ -243,15 +243,15 @@ This is one of two methods for assigning applications to Products. The other met
 
 
 #### Use annotations to connect applications to Products
-Connect an application to a Product declaratively by adding the default or custom annotation to the application's manifest.
+Connect an application to a Product declaratively by adding the default annotation to the application's manifest.
 The annotation is defined as part of the Product's settings.
 
 This is one of two methods for assigning applications to Products. The other method is to manually assign them from the Products dashboard, as described in [Manually assigning applications to Prodcuts](#manually-assign-applications-to-products).
 
 1. Copy the Product's annotation:
-  1. In the Codefresh UI, from Ops in the sidebar, select **Products**.
-  1. Mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-  1. In the Edit Product form, copy the annotation to add to the application's manifest and close the form.
+  1. In the Codefresh UI, from the sidebar, select **Products**.
+  1. Click the Product for which to add applications, and then click **Settings**.
+  1. In the General section, below Connect Applications , copy the annotation to add to the application's manifest.
 
 {% include 
 	image.html 
@@ -265,7 +265,7 @@ This is one of two methods for assigning applications to Products. The other met
 
 {:start="2"}
 1. Add the annotation to the application's manifest:
-  1. From Ops in the sidebar, select **GitOps Apps**.
+  1. From the sidebar, select **GitOps Apps**.
   1. Select the application to which to add the annotation.
   1. Click the **Configuration** tab and switch to **YAML** format.
   1. Add the annotation as in the example below.
@@ -283,7 +283,7 @@ This is one of two methods for assigning applications to Products. The other met
   {:start="7"}
   1. Commit to save the changes.
 
-If you return to the GitOps Products dashboard and expand the Product, you'll now see the application as part of the Product.
+If you return to the GitOps Products dashboard and expand the Product, you'll now see that the application is part of the Product.
 
 {% include 
 	image.html 
@@ -300,11 +300,11 @@ Depending on how you assigned the application to the Product, unassign it either
 
 
 #### Unassign application from the GitOps Product dashboard
-Unassign an application manually assigned to a Product directly from the GitOps Products dashboard. 
+Unassign an application manually assigned to a Product directly from the GitOps Product dashboard. 
 
 A disabled icon indicates that the application is connected through an annotation. 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Mouse over the row with the Product from which to unassign the application, and click **Manage Apps**.
 1. In the card with the application to unassign, click {::nomarkdown}<img src="../../../images/icons/unassign-app.png?display=inline-block">{:/}.  
   You can see that the Unassign icon is dsiabled for the `guestbook-app-prod`.
@@ -334,11 +334,133 @@ A disabled icon indicates that the application is connected through an annotatio
 %}
 
 #### Unassign application by removing annotation
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the Product with the application to unassign.
 1. In the card with the application to unassign, click the application name, and then click **Go to Full View**.
 1. Click the **Configuration** tab and switch to YAML view.
 1. Remove the annotation from the application's manifest.
+
+### Version and promotable properties for products
+
+Promotion settings allow you to automate and customize the deployment of changes between different environments. By defining precise promotion criteria, you can ensure that only the necessary changes are promoted, enhancing both accuracy and efficiency.
+
+Benefits of configuring Promotion Settings
+
+* Precision through automation  
+  Provides an automated mechanism to precisely define which changes to promote for the application, avoiding the need to manually review and approve or reject diffs. This functionality is invaluable when promoting multiple applications with many microservices or files. 
+
+
+* Enforce Environment-specific requirements  
+  Different environments distinct constraints and requirements. Promotion settings enable you to specify which changes are valid for each environment, ensuring compliance with environment-specific needs.  
+  While artifact versions and image tags typically warrant promotion for example, other changes may need to be excluded based on the target environment.  
+
+
+### Functions
+
+Promotion Settings serve two primary functions for the applications in the being promoted:
+1. Defining the source for the product's or application's  release version (NIMA: need to confirm)
+1. Defining the changes to promote across multiple files in the application 
+
+
+### Concetps
+**Promotion Settings & Promotion Templates**
+
+Promotion settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) named Promotion Template within the defined configuration runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
+
+**Version**
+The version attribute specifies where Codefresh should look for version information, using a combination of file path and JSON path expressions. The file path is relative to the repository URL and the specified path in the application's configuration manifest. Accurate version source configuration ensures that the correct version information is used during promotion.
+
+
+The `.versionSource.file` attribute in the Promotion Template CRD is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the application's configuration manifest. This is where Codefresh looks for the file from which to retrieve version information.
+
+Promotable Properties
+Promotable properties define the specific files and attributes within those files that should be promoted between environments. These properties allow for precise control over what changes are included in a promotion. By defining promotable properties, you can ensure that only the necessary changes are applied, adhering to environment-specific requirements and avoiding unwanted modifications.
+
+
+JSON path expressions
+Specifies the JSON path expression pointing to the location of the element containing the application version within the specified file. For example, $..appVersion indicates that the version should be extracted from the appVersion field in the specified file.The file context is the  to the spec.source.repoURL attribute defined in the application's Source settings.
+The path is the 
+
+Version does notappear om te If the version does not appear in the UI, after defining the `.versionSource` attributes inthe Promptop Template CRD, it could be because Codefresh could not find the values in the repoURL and path.
+
+Double-chck that the Source settings for the application correspond to the `.versionSource` attributes inthe Promptop Template CRD
+
+
+Configuration Location
+Promotion Templates should be stored in a Git repository synced with your cluster via a Git Source. This approach integrates seamlessly with the GitOps Apps dashboard in Codefresh.
+
+
+
+
+
+
+
+
+### How to configure promotion changes?
+Promotion changes are configured declaratively through the Promotion Template, a Kubernetes CRD (Custom Resource Definition), defining the application, the version, the files, and attributes within the files, to be promoted. 
+
+The Promotion Template serves two primary functions for the application being promoted:
+1. Defines the changes to promote across multiple files in the application per Environment
+1. Defines the source for the application's release version
+
+### Where are Promotion Settings stored? Promotion Template?
+Codefresh supplies a default Promotion Template for Helm applications in the Shared Configuration Repository of your Runtime.
+
+The simplest and most effective location for your Promotion Template is the Git repository synced to the cluster through a Git Source.  Syncing your Promotion Templates with a Git Source ensures that you can monitor them in the GitOps Apps dashboard in Codefresh.
+
+TBD 
+
+### How does the Promotion Template work?
+
+The criteria you define in the Promotion Template CRD determines the changes which are promoted in applications across Environments:
+
+ADD HERE A FLOW DIAGRAM?
+
+1. Selects the applications to promote  
+  Applications are selected for promotion via Kubernetes labels, defined through a key-value/operator pair. This allows flexibility in defining the application identifier as loosely or tightly as needed. 
+ 
+    Examples:
+    Select applications based on Environment, Product, or any other relevant criteria.
+    Utilize operators like Exists, In, or NotIn for precise application targeting.
+  
+
+    EXAMPLES
+
+1. If required, applies the priority  
+  When multiple Promotion Templates match the same application, the priority assigned to the Promotion Template comes into play to determines the changes that are promoted.  
+  In such cases, the priority, in ascending order, determines the precedence of Promotion Templates that defines which changes are promoted in the application. 
+  
+    Codefresh generates a composite Promotion Template by merging the specifications from all relevant Promotion Templates: 
+      * The Template with the highest priority serves as the _base_ template, with its specifications taking precedence over conflicting specifications from other templates. 
+      * Specifications from other templates not present in the base Template are added to it.  
+        In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have lower-priority.
+
+{:start="3"}
+1. Applies the changes to promote
+  As the final step, the Promotion Template applies the changes defined within it to the application, either at the file level or to attributes in the file. 
+
+
+
+EXAMPLES OF TWO TEMPLATES WITH COMPOSITE TEMPLATE 
+
+### Configure Promotion Settings
+
+
+
+
+1. From the list of Promotion Templates, select a predefined Promotion Template, or select **Inline** and create a new Promotion Template for this product.  
+  If you select a predefined Template, the Version and Promotable Properties are populated with the settings already defined.
+
+1. Define the source settings for the application version:
+  1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
+  1. **Path**: The JSON path to the attribute with the value. 
+  1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
+
+1. Define the settings for the Promotable Properties:
+  1. **File**: The name of the file with the attributes to promote. For example, `values.yaml`. 
+  1. **Paths**: The JSON path or paths to one or more attributes within the file to promote. For example, `$.buslog.image.tag` , `$.ctrlr.image.tag` and `$.flask-ui.image.tag`.
+  1. To add more files and paths, click **Add** and define the **File** and **Paths**.
+  1. To preview the properties that will be promoted for an application connected to the product, click **Preview Configuration** and then select an application. 
 
 
 
@@ -357,7 +479,7 @@ Edit settings for an existing Product or delete the Product from the Products da
 * **Delete**: Delete a Product from the Products dashboard. Deleting a Product unassigns all the applications manually assigned to it in the Products dashboard. If the application is connected through an annotation, the annotation is not deleted.
 
 ##### How to
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. From the Products dashboard, select the Product to edit or delete.
 1. From the context menu on the right, select the required option.
 
@@ -390,7 +512,7 @@ You can:
 
 
 ##### How to
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Expand the Product with the applications you want to view/compare. 
 1. Click the version number of the application.
 
@@ -487,31 +609,33 @@ Connect commits to the application repo to tickets in your issue-tracking tool o
 ### View deployment (Timeline) history for applications
 Review the deployments for a specific application in the Products dashboard. 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
-1. In the Environment column with the application you require, click the application name to view deployment history.
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. In the Environment column with the product you require, click the context menu and then select **Application info > Timeline** to view deployment history.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-environments/app-timeline-view.png" 
 	url="/images/gitops-environments/app-timeline-view.png" 
-	alt="View deployment history for application from Environments dashboard" 
-	caption="View deployment history for application from Environments dashboard"
+	alt="View deployment history for application from Products dashboard" 
+	caption="View deployment history for application from Products dashboard"
   max-width="60%" 
 %}
-1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top of the deployment view.
+1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top.
 
 
 ### Manage applications in Products
 Manage applications grouped within a Product through each application's context menu, that includes manual sync, refresh, and other options.
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the Product with the application for which to take action.
 1. Click the context menu to the right of the application, and select the option:
+
   * [Quick View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#view-deployment-configuration-info-for-selected-argo-cd-application): View deployment, definition, and event information for the selected application in the same location.
+  * [Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view): Analyze out of sync applications. This option is disabled when applications are synced.
   * [Synchronize]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application): Manually synchronize the application to expedite Git-to-cluster sync. 
+  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh).
   * [Edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions): Update General or Advanced configuration settings for the application.
-  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh). 
   * [Delete]({{site.baseurl}}/docs/deployments/gitops/manage-application/#delete-argo-cd-applications): Delete the application from Codefresh.
 
 {% include 
