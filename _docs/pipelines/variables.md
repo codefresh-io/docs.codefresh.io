@@ -285,26 +285,26 @@ Add custom variables in bulk by pasting them into the text editor or by importin
 * Import from file  
   Importing from a file is useful when you have a file containing the predefined variables.
 
-### Priority for user-defined variable overrides
+### Order of precedence for user-defined variables
 
 In Codefresh, becuase you can add user-defined variables to different entities, variable definitions are available at levels.
 
-If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable.  
-Variables at levels with higher priority override those at levels with lower priority.  
+If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable. Variables at levels with higher priority override those at levels with lower priority.
+
 For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
 
 Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest.
 
 1. Steps
    * `export` command  
-     Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}), or in any **subsequent** step using [cf_export](#exporting-variables-with-cf_export) commands.
+     Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}, or in any **subsequent** step using [cf_export](#exporting-variables-with-cf_export) commands.
    * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field.
   
     > **NOTE**  
     > Step-level variables with `export` take precedence over freestyle-step variables with `environment`.
-1. Builds  
-   Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
-1. Pipelines
+1. Builds
+   * Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
+1. Pipeline
 1. [Shared-configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
 1. Projects
 
