@@ -11,11 +11,11 @@ RBAC for Pipeline Runtimes enhances the permissions system with granular access 
 
 
 ##### Key benefits
-* Granular control over runtimes
+* Granular control over runtimes  
   Precisely manage access to runtime environments. For example, restrict access to production environments to safeguard production resources, or grant exclusive access to high-performance runtime environments for high-priority projects, ensuring they have the necessary resources.
-* Optimized resource management for runtimes
+* Optimized resource management for runtimes  
   Optimize performance without admin intervention by allowing teams to adjust CPU and memory settings for pipeline builds.
-* Optimized cloud builds
+* Optimized cloud builds  
   Optimize performance for cloud builds by enabling teams to set cloud builds and select the appropriate resource sizes for the build.
 
 ##### How does it work?
@@ -202,7 +202,6 @@ builds fails - build runtime settings are not configured (Kim - 24191)
 ##### GitOps 
 * Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
 * Secret store integrations broken after upgrade to Helm version 6.3.37. (Zhenya 24332)
-* Application sync fails with `Failed to checkout FETCH_HEAD... exit status 128`. (Pasha 24304)
 * Current Release not displayed for multi-sourced apps. 
 * Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
 * Unresponsive **Close** button in Rollout drawer. 
