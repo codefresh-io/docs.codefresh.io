@@ -44,6 +44,15 @@ max-width="60%"
 
 For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes) and [Creating rules for Pipeline Runtimes and runtime environments]({{site.baseurl}}/docs/administration/account-user-management/access-control/#creating-rules-for-pipeline-runtimes-and-runtime-environments).
 
+### GitOps: Runtime upgrade
+
+The Open Source ArgoCD project published a high-severity security vulnerability. We recommend upgrading your GitOps Runtime to version 0.9.0, which includes a fix for this issue, along with other small fixes and features.
+
+This CVE affects webhook processing and is relevant only to customers who have configured webhooks.
+
+To upgrade to the latest release, follow the on-screen instructions to run `helm upgrade`.
+
+
 ### GitOps: External links for Kubernetes app & ingress resources (probably not in this release)
 The Current State tab in our GitOps Apps dashboard is the central location to view and manage all the resources in your applications. We are always looking to enhance productivity and here's the 
 newest functionality: external Links for application and ingress resources! 
@@ -92,7 +101,7 @@ caption="Context menu for applications in Environments and Products"
 max-width="60%"
 %}
 
-Here’s a round-up of what’s new:  
+Here’s a round-up of the changes:  
 * **Application Info**  
   A new menu groups handy links for direct access to useful application info.
 * **Quick View**  
