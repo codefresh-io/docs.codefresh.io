@@ -201,7 +201,7 @@ builds fails - build runtime settings are not configured (Kim - 24191)
 
 ##### GitOps 
 * Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
-* Secret store integrations broken after upgrade to Helm version 6.3.37. (Zhenya 24332)
+* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
 * Current Release not displayed for multi-sourced apps. 
 * Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
 * Unresponsive **Close** button in Rollout drawer. 
