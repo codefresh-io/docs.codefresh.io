@@ -46,50 +46,18 @@ For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/admini
 
 ### GitOps: Runtime upgrade
 
-The Open Source ArgoCD project published a high-severity security vulnerability. We recommend upgrading your GitOps Runtime to version 0.9.0, which includes a fix for this issue, along with other small fixes and features.
+The Open Source ArgoCD project published a high-severity security vulnerability. We recommend upgrading your GitOps Runtime to version 0.9.0, which includes a fix for this issue, along with other fixes and features.
 
 This CVE affects webhook processing and is relevant only to customers who have configured webhooks.
 
 To upgrade to the latest release, follow the on-screen instructions to run `helm upgrade`.
 
 
-### GitOps: External links for Kubernetes app & ingress resources (probably not in this release)
-The Current State tab in our GitOps Apps dashboard is the central location to view and manage all the resources in your applications. We are always looking to enhance productivity and here's the 
-newest functionality: external Links for application and ingress resources! 
-
-##### External links to app resources
-External links are user-defined URLs in Argo CD that can point to any external resource such as monitoring pages or documentation. These links, added through annotations in resources, are automatically rendered in Codefresh.    
-Now you can add external links to your resources in _directly in Codefresh_. Once added, a clickable link icon is displayed next to the resource in the Tree view for easy and smooth navigation. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
-url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
-alt="External link for resource in Current State Tree view"
-caption="External link for resource in Current State Tree view"
-max-width="60%"
-%}
-
-##### External links for ingress resources
-We also support automatic links for ingress resources! Access links to ingress resources are also automatically generated and rendered in the Current State's Tree view for visibility and easier management.
-
-{% include
-image.html
-lightbox="true"
-file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
-url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
-alt="Ingress resource links in Current State Tree view"
-caption="Ingress resource links in Current State Tree view"
-max-width="60%"
-%}
-
-For details, see ????
 
 
 ### GitOps: Application menu enhancements in Environments & Products
 
-We’ve restructured and redesigned the context menu for applications in the Environments and Products dashboards for streamlined navigation and quicker access to the information you need!
+We’ve restructured and redesigned the context menu for applications in the Environments and Products dashboards for easier navigation and quicker access to the information you need!
 
 {% include
 image.html
@@ -118,49 +86,6 @@ Other actions remain unchanged.
 For details, see [Working with applications in Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#working-with-applications-in-environments) and [Working with applications in Products]({{site.baseurl}}/docs/dashboards/gitops-products/#working-with-applications-in-products).
 
 
-
-### Docs: Brand-new search mechanism and experience (probably not in this release)
-We’re excited to introduce the revamped search mechanism for our doc site!
-
-Wherever you are in Codefresh, open search from the toolbar, either from Global Search & Navigation by typing help or by clicking the Help icon.
-You’ll get a curated list of articles that are context-sensitive to your location in the UI to kick-start your search.
-
-To provide even more relevant results, we have also integrated AI with the free-text search.  
-Additionally, we have integrated our collection of blog posts from our experts for an enriched information experience. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/whats-new/july24/rel-notes-july-24-search-context-sensitive.png"
-url="/images/whats-new/july24/rel-notes-july-24-search-context-sensitive.png"
-alt="Curated location-specific search results"
-caption="Curated location-specific search results"
-max-width="60%"
-%}
-
-Here are more reasons to try the new search:
-* **Preview**
-  Check out search results and preview articles before diving in. Just click an article in the list to display it in the Preview panel.
-* **View Article**  
-  Click View Article on the toolbar of the Preview panel to go straight to the article on the doc site.
-* **Share Links**
-  Share useful articles easily with the deep link option, also on the Preview toolbar.
-* **Additional Resources**
-  Access handy pages, including our collection of blogs, quickly with permalinks at the bottom of the search results.
-
-{% include
-image.html
-lightbox="true"
-file="/images/whats-new/july24/rel-notes-july-24-search-preview.png"
-url="/images/whats-new/july24/rel-notes-july-24-search-preview.png"
-alt="Preview pane in search results"
-caption="Preview pane in search results"
-max-width="60%"
-%}
-
-Try our new search and don’t forget to send us your feedback!
-
-
 ### Usability enhancements
 
 #### General: Seamless redirection for shared links 
@@ -183,10 +108,6 @@ In the Builds page, on selecting a build, the breadcrumbs path displays also the
 %}
 
 
-
-
-
-
 ## Bug fixes
 
 ##### General
@@ -195,8 +116,8 @@ In the Builds page, on selecting a build, the breadcrumbs path displays also the
 
 ##### Pipelines 
 * Builds with `codefresh-run` step fails with error `Failed to write template value file Arguments to filesystem`. (Noam 24734 )
-builds fails - build runtime settings are not configured (Kim - 24191)
-* `build` step does not work with cross-account ECR. (Kim - 19269)
+* `Failed - build runtime settings not configured` error for Hybrid Runner.
+* `build` step does not support images from different account for Amazon ECR (Elastic Container Registry).
 
 
 ##### GitOps 
