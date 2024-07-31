@@ -115,7 +115,7 @@ In the Builds page, on selecting a build, the breadcrumbs path displays also the
 * Invite text in Welcome screen displays `undefined` instead of the organization name. 
 
 ##### Pipelines 
-* Builds with `codefresh-run` step fails with error `Failed to write template value file Arguments to filesystem`. (Noam 24734 )
+* `Failed to write template value file Arguments to filesystem` error for builds with `codefresh-run` step.
 * `Failed - build runtime settings not configured` error for Hybrid Runner.
 * `build` step does not support images from different account for Amazon ECR (Elastic Container Registry).
 
