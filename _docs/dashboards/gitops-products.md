@@ -197,7 +197,7 @@ Manually assign an application to a Product directly from the Products dashboard
 This is one of two methods for assigning applications to Products. The other method involves adding annotations to the application's manifest, as described in [Use annotations to connect applications to Products](#use-annotations-to-connect-applications-to-products).
 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. If needed, search for the application, or use the Application and Environment filters.
 1. Do one of the following:
   * Click the name of the Product for which to assign applications, and then click **Manage Applications**.
@@ -249,7 +249,7 @@ The annotation is defined as part of the Product's settings.
 This is one of two methods for assigning applications to Products. The other method is to manually assign them from the Products dashboard, as described in [Manually assigning applications to Prodcuts](#manually-assign-applications-to-products).
 
 1. Copy the Product's annotation:
-  1. In the Codefresh UI, from Ops in the sidebar, select **Products**.
+  1. In the Codefresh UI, from the sidebar, select **Products**.
   1. Mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
   1. In the Edit Product form, copy the annotation to add to the application's manifest and close the form.
 
@@ -265,7 +265,7 @@ This is one of two methods for assigning applications to Products. The other met
 
 {:start="2"}
 1. Add the annotation to the application's manifest:
-  1. From Ops in the sidebar, select **GitOps Apps**.
+  1. From the sidebar, select **GitOps Apps**.
   1. Select the application to which to add the annotation.
   1. Click the **Configuration** tab and switch to **YAML** format.
   1. Add the annotation as in the example below.
@@ -304,7 +304,7 @@ Unassign an application manually assigned to a Product directly from the GitOps 
 
 A disabled icon indicates that the application is connected through an annotation. 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Mouse over the row with the Product from which to unassign the application, and click **Manage Apps**.
 1. In the card with the application to unassign, click {::nomarkdown}<img src="../../../images/icons/unassign-app.png?display=inline-block">{:/}.  
   You can see that the Unassign icon is dsiabled for the `guestbook-app-prod`.
@@ -357,7 +357,7 @@ Edit settings for an existing Product or delete the Product from the Products da
 * **Delete**: Delete a Product from the Products dashboard. Deleting a Product unassigns all the applications manually assigned to it in the Products dashboard. If the application is connected through an annotation, the annotation is not deleted.
 
 ##### How to
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. From the Products dashboard, select the Product to edit or delete.
 1. From the context menu on the right, select the required option.
 
@@ -390,7 +390,7 @@ You can:
 
 
 ##### How to
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Expand the Product with the applications you want to view/compare. 
 1. Click the version number of the application.
 
@@ -487,8 +487,8 @@ Connect commits to the application repo to tickets in your issue-tracking tool o
 ### View deployment (Timeline) history for applications
 Review the deployments for a specific application in the Products dashboard. 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
-1. In the Environment column with the application you require, click the application name to view deployment history.
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. In the Environment column with the product you require, click the context menu and then select **Application info > Timeline** to view deployment history.
 
 {% include 
 	image.html 
@@ -499,19 +499,21 @@ Review the deployments for a specific application in the Products dashboard.
 	caption="View deployment history for application from Environments dashboard"
   max-width="60%" 
 %}
-1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top of the deployment view.
+1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top.
 
 
 ### Manage applications in Products
 Manage applications grouped within a Product through each application's context menu, that includes manual sync, refresh, and other options.
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Products**.
+1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the Product with the application for which to take action.
 1. Click the context menu to the right of the application, and select the option:
+
   * [Quick View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#view-deployment-configuration-info-for-selected-argo-cd-application): View deployment, definition, and event information for the selected application in the same location.
+  * [Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view): Analyze out of sync applications. This option is disabled when applications are synced.
   * [Synchronize]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application): Manually synchronize the application to expedite Git-to-cluster sync. 
+  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh).
   * [Edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions): Update General or Advanced configuration settings for the application.
-  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh). 
   * [Delete]({{site.baseurl}}/docs/deployments/gitops/manage-application/#delete-argo-cd-applications): Delete the application from Codefresh.
 
 {% include 
