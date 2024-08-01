@@ -400,7 +400,7 @@ Double-check that the Source settings for the application correspond to the Vers
 |------------------------------|----------------------------|---------------------------|--------------------------               |
 | Default version attribute    | `$.appVersion`             | {% raw %}appVersion: "1.2.3" {% endraw %}  | Commonly used in Helm charts or deployment manifests for explicit version management. |
 | Semantic versioning          | `$.version`                | ```yaml version: "2.3.4" ```            | Indicates backward-compatible changes, new features, and bug fixes.   |
-| Image tag                    | `$.image.tag`              | ```yaml image: repository: "myrepo/app" tag: "1.0.0" ```  | Used in containerized environments to manage versions tied to Docker images.  |
+| Image tag                    | `$.image.tag`              | ```yaml<br>image:<br>  repository: "myrepo/app"<br>  tag: "1.0.0"<br>```  | Used in containerized environments to manage versions tied to Docker images.  |
 | Git commit SHA               | `$.git.commitSha`          | ```yaml git: commitSha: "abc123def456" ```    | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines.       |
 | Build number                 | `$.build.number`           | ```yaml build: number: "20230801-001" ```     | Automatically generated during builds, often including timestamps or incremental identifiers.   |
 | Release version              | `$.release.version`        | ```yaml release: version: "v4.5.6" ```       | Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
