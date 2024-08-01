@@ -1,9 +1,9 @@
 ---
-title: "Personalize your Codefresh menu"
-description: ""
+title: "Personalize Codefresh menu"
+description: "Customize modules and menu options for accounts"
 group: administration
 sub_group: account-user-management
-toc: true
+toc: false
 ---
 
 
