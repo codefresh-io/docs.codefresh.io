@@ -426,9 +426,10 @@ Using the above syntax, you
 
 #### Examples of Promotable Properties 
 
-| Promotable Properties      | Source manifest   |  Preview |
-| -------------                | ---------------| -----------|
-| {::nomarkdown}<img src="../../../images/icons/promotion-success.png?display=inline-block">{:/}                           | ---------------| -----------|
+
+ | Source manifest   |  Resolves to |
+| -------------      | ---------------| -----------|
+| {::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-source-version.png?display=inline-block">{:/} |{::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-version-preview.png?display=inline-block">{:/}|
 
 
 Configuration Location
