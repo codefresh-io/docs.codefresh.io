@@ -250,8 +250,13 @@ This is one of two methods for assigning applications to Products. The other met
 
 1. Copy the Product's annotation:
   1. In the Codefresh UI, from the sidebar, select **Products**.
+
   1. Click the Product for which to add applications, and then click **Settings**.
   1. In the General section, below Connect Applications , copy the annotation to add to the application's manifest.
+
+  1. Mouse over the row with the Product name, and then select **Edit** {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
+  1. In the Edit Product form, copy the annotation to add to the application's manifest and close the form.
+
 
 {% include 
 	image.html 
