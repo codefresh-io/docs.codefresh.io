@@ -382,13 +382,16 @@ Double-check that the Source settings for the application correspond to the Vers
 
 #### Examples of version attributes
 
-| Version attribute | Example YAML configuration     | JSON Path expression  | Real-world use case     |
+| Version attribute | Example  configuration     | JSON Path expression  | Possible use case     |
 |---------------------|--------------------------    |-----------------------|-------------------------------------------------|
-| Default version attribute | appVersion: "1.2.3" | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
-| Semantic versioning      | version: "2.3.4"     | `$.version`          | Indicates backward-compatible changes, new features, and bug fixes. |
-| Image tag                | image:<br>
-                                  repository: "myrepo/app"
-                                  tag: "1
+| Default version attribute | {% highlight yaml %}{% raw %}appVersion: "1.2.3"{% endraw %}{% endhighlight %} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
+| Semantic versioning      | {% highlight yaml %}{% raw %}version: "2.3.4" {% endraw %}{% endhighlight %}    | `$.version`          | Indicates backward-compatible changes, new features, and bug fixes. |
+| Image tag                | {% highlight yaml %}{% raw %}image:<br>repository:&nbsp;&nbsp;"myrepo/app"<br>&nbsp;&nbsp;&nbsp;&nbsp;tag: "1"{% endraw %}{% endhighlight %}| Used in containerized environments to manage versions tied to Docker images. |
+| Git commit SHA           | {% highlight yaml %}{% raw %}git:<br>&nbsp;&nbsp;commitSha:&nbsp;&nbsp;&nbsp;&nbsp;"abc123def456"{% endraw %}{% endhighlight %}| `$.git.commitSha` | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines. |
+| Build number             |{% highlight yaml %}{% raw %}build:<br>&nbsp;&nbsp;number:<br>&nbsp;&nbsp;&nbsp;&nbsp;"20230801-001" {% endraw %}{% endhighlight %}  | `$.build.number`  | Automatically generated during builds, often including timestamps or incremental identifiers.  
+| Release version          | {% highlight yaml %}{% raw %}release:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"v4.5.6" {% endraw %}{% endhighlight %} | `$.release.version`  |Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
+| Deployment version           |{% highlight yaml %}{% raw %}deployment:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"3.2.1" | `$.deployment.version` | Manages versioning per deployment unit in environments with multiple components or microservices.             |
+| Custom metadata version      | {% highlight yaml %}{% raw %}metadata:<br>&nbsp;&nbsp;name:&nbsp;&nbsp;&nbsp;&nbsp;"my-application"<br>&nbsp;&nbsp;version:<br>&nbsp;&nbsp;&nbsp;&nbsp;"5.4.3"| `$.metadata.version` | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
 
 
 
@@ -396,14 +399,7 @@ Double-check that the Source settings for the application correspond to the Vers
 
 
 
-| Version attribute            | JSON path expression       | Example configuration      | Possible use case                      |
-|------------------------------|----------------------------|---------------------------|--------------------------               |
-| Default version attribute    | `$.appVersion`             | {% raw %}appVersion: "1.2.3" {% endraw %}  | Commonly used in Helm charts or deployment manifests for explicit version management. |
-| Semantic versioning          | `$.version`                | ```yaml version: "2.3.4" ```            | Indicates backward-compatible changes, new features, and bug fixes.   |
-| Image tag                    | `$.image.tag`              | ```yaml<br>image:<br>  repository: "myrepo/app"<br>  tag: "1.0.0"<br>```  | Used in containerized environments to manage versions tied to Docker images.  |
-| Git commit SHA               | `$.git.commitSha`          | ```yaml git: commitSha: "abc123def456" ```    | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines.       |
-| Build number                 | `$.build.number`           | ```yaml build: number: "20230801-001" ```     | Automatically generated during builds, often including timestamps or incremental identifiers.   |
-| Release version              | `$.release.version`        | ```yaml release: version: "v4.5.6" ```       | Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
+
 | Deployment version           | `$.deployment.version`     | ```yaml deployment: version: "3.2.1" ```      | Manages versioning per deployment unit in environments with multiple components or microservices.             |
 | Custom metadata version      | `$.metadata.version`       | ```yaml metadata: name: "my-application" version: "5.4.3" ```       | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
 
