@@ -340,9 +340,13 @@ A disabled icon indicates that the application is connected through an annotatio
 1. Click the **Configuration** tab and switch to YAML view.
 1. Remove the annotation from the application's manifest.
 
-### Version and promotable properties for products
+### Configuring version and promotable properties for Products
 
-Promotion settings allow you to automate and customize the deployment of changes between different environments. By defining precise promotion criteria, you can ensure that only the necessary changes are promoted, enhancing both accuracy and efficiency.
+Through Promotion Settings for Products, you can automate and customize the changes to promote between different environments. By defining precise promotion criteria, you can ensure that only the necessary changes are promoted, enhancing both accuracy and efficiency.
+
+Promotion Settings serve two primary functions for the applications in the being promoted:
+1. Defining the source for the application's release version 
+1. Defining the changes to promote across multiple files in the application 
 
 Benefits of configuring Promotion Settings
 
@@ -350,40 +354,81 @@ Benefits of configuring Promotion Settings
   Provides an automated mechanism to precisely define which changes to promote for the application, avoiding the need to manually review and approve or reject diffs. This functionality is invaluable when promoting multiple applications with many microservices or files. 
 
 
-* Enforce Environment-specific requirements  
-  Different environments distinct constraints and requirements. Promotion settings enable you to specify which changes are valid for each environment, ensuring compliance with environment-specific needs.  
+* Enforce environment-specific requirements  
+  Different environments have distinct constraints and requirements. Promotion Settings enable you to specify which changes are valid for each environment, ensuring compliance with environment-specific needs.  
   While artifact versions and image tags typically warrant promotion for example, other changes may need to be excluded based on the target environment.  
 
 
-### Functions
 
-Promotion Settings serve two primary functions for the applications in the being promoted:
-1. Defining the source for the product's or application's  release version (NIMA: need to confirm)
-1. Defining the changes to promote across multiple files in the application 
+###  Promotion Settings & Promotion Templates
 
+Promotion Settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) named Promotion Template within the defined configuration runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
 
-### Concetps
-**Promotion Settings & Promotion Templates**
+### Version for promoted applications
+The Version attribute specifies where Codefresh should look for version information for the applications in the Product, defined  
+using a JSON path expression.  
 
-Promotion settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) named Promotion Template within the defined configuration runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
+The Version attribute in the Promotion Settings/Template is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the application's configuration manifest. This is where Codefresh looks for the file from which to retrieve version information.
 
-**Version**
-The version attribute specifies where Codefresh should look for version information, using a combination of file path and JSON path expressions. The file path is relative to the repository URL and the specified path in the application's configuration manifest. Accurate version source configuration ensures that the correct version information is used during promotion.
+For example, `$.appVersion` indicates that the version should be extracted from the `appVersion` field in the specified file, `chart.yaml`.  
 
 
-The `.versionSource.file` attribute in the Promotion Template CRD is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the application's configuration manifest. This is where Codefresh looks for the file from which to retrieve version information.
-
-Promotable Properties
-Promotable properties define the specific files and attributes within those files that should be promoted between environments. These properties allow for precise control over what changes are included in a promotion. By defining promotable properties, you can ensure that only the necessary changes are applied, adhering to environment-specific requirements and avoiding unwanted modifications.
+If the version is either not displayed in the dashboards, or what's displayed is incorrect, it could be because Codefresh could not find the values in the repoURL and path.
+Double-check that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
 
 
-JSON path expressions
-Specifies the JSON path expression pointing to the location of the element containing the application version within the specified file. For example, $..appVersion indicates that the version should be extracted from the appVersion field in the specified file.The file context is the  to the spec.source.repoURL attribute defined in the application's Source settings.
-The path is the 
+### Promotable properties 
+Promotable properties define the specific files and the attributes within those files to be promoted between environments.  
+Defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
 
-Version does notappear om te If the version does not appear in the UI, after defining the `.versionSource` attributes inthe Promptop Template CRD, it could be because Codefresh could not find the values in the repoURL and path.
+Like the Version attribute, promotable properties are defined through JSON path expressions. Unlike the Version attribute, you can define multiple JSON path expressions to different files and multiple attributes in the same file. 
 
-Double-chck that the Source settings for the application correspond to the `.versionSource` attributes inthe Promptop Template CRD
+
+### JSON path expressions for files and attributes
+Application versions and promotable properties are defined through JSON path expressions. These path expressions point to the location of the attribute or property within the specified file, and are used to navigate and extract values from the file.
+
+JSON syntax and validations are available 
+
+Here is a short summary of JSON syntax and rules. 
+* **`$.`**   
+  JSON path expressions begin with the `$` symbol, which represents the root of the YAML document.
+
+* **`..`**   
+  Extract from all levels of the matching object.  
+  Use `..` (double dot operator) to navigate and extract from any level within the YAML document.
+
+* **`.*`**  
+  Extract all properties.  
+  Use `.*` to retrieve all properties of the matching object.
+
+This is an extract from a sample values.yaml file.
+
+```yaml
+global: 
+	codefresh:
+		url: g.codefresh.io
+		tls:
+			create: false
+argo-cd: 
+	tls:
+		create: true
+		caCert: 'some-argo-cert'
+```
+Using the above syntax, you
+`$.global.codefresh.*` extracts all attributes that match the `codefresh` object in the file, which resolves to `url: g.codefresh.io` and 
+`tls.create.false`.
+
+`$..tls` extracts values from all levels with `tls`, which resolves to:
+`create: false` (from `codefresh.tls` object)
+`create: true` and `caCert: some-argo-cert` (both from `argo-cd.tls` object)
+
+
+
+#### Examples of Promotable Properties 
+
+| Promotable Properties      | Source manifest   |  Preview |
+| -------------                | ---------------| -----------|
+| {::nomarkdown}<img src="../../../images/icons/promotion-success.png?display=inline-block">{:/}                           | ---------------| -----------|
 
 
 Configuration Location
@@ -396,12 +441,7 @@ Promotion Templates should be stored in a Git repository synced with your cluste
 
 
 
-### How to configure promotion changes?
-Promotion changes are configured declaratively through the Promotion Template, a Kubernetes CRD (Custom Resource Definition), defining the application, the version, the files, and attributes within the files, to be promoted. 
 
-The Promotion Template serves two primary functions for the application being promoted:
-1. Defines the changes to promote across multiple files in the application per Environment
-1. Defines the source for the application's release version
 
 ### Where are Promotion Settings stored? Promotion Template?
 Codefresh supplies a default Promotion Template for Helm applications in the Shared Configuration Repository of your Runtime.
