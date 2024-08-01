@@ -429,7 +429,11 @@ Using the above syntax, you
 
  | Source manifest   |  Resolves to |
 | -------------      | ---------------| -----------|
-| {::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-source-version.png?display=inline-block">{:/} |{::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-version-preview.png?display=inline-block">{:/}|
+| {::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-source-version.png?display=inline-block">{:/} |{::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-version-preview.png?display=inline-block width=50%">{:/}|
+| {::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-source-chart.png?display=inline-block">{:/} |{::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-chart-preview.png?display=inline-block width=50%">{:/}|
+| {::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-source-values.png?display=inline-block">{:/} |{::nomarkdown}<img src="../../../images/gitops-products/settings/promote-properties-values-preview.png?display=inline-block width=50%">{:/}|
+
+
 
 
 Configuration Location
