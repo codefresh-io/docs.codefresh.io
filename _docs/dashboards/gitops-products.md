@@ -390,18 +390,11 @@ Double-check that the Source settings for the application correspond to the Vers
 | Git commit SHA           | {% highlight yaml %}{% raw %}git:<br>&nbsp;&nbsp;commitSha:&nbsp;&nbsp;&nbsp;&nbsp;"abc123def456"{% endraw %}{% endhighlight %}| `$.git.commitSha` | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines. |
 | Build number             |{% highlight yaml %}{% raw %}build:<br>&nbsp;&nbsp;number:<br>&nbsp;&nbsp;&nbsp;&nbsp;"20230801-001" {% endraw %}{% endhighlight %}  | `$.build.number`  | Automatically generated during builds, often including timestamps or incremental identifiers.  
 | Release version          | {% highlight yaml %}{% raw %}release:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"v4.5.6" {% endraw %}{% endhighlight %} | `$.release.version`  |Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
-| Deployment version           |{% highlight yaml %}{% raw %}deployment:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"3.2.1" | `$.deployment.version` | Manages versioning per deployment unit in environments with multiple components or microservices.             |
-| Custom metadata version      | {% highlight yaml %}{% raw %}metadata:<br>&nbsp;&nbsp;name:&nbsp;&nbsp;&nbsp;&nbsp;"my-application"<br>&nbsp;&nbsp;version:<br>&nbsp;&nbsp;&nbsp;&nbsp;"5.4.3"| `$.metadata.version` | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
+| Deployment version           |{% highlight yaml %}{% raw %}deployment:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"3.2.1"{% endraw %}{% endhighlight %}  | `$.deployment.version` | Manages versioning per deployment unit in environments with multiple components or microservices.             |
+| Custom metadata version      | {% highlight yaml %}{% raw %}metadata:<br>&nbsp;&nbsp;name:&nbsp;&nbsp;&nbsp;&nbsp;"my-application"<br>&nbsp;&nbsp;version:<br>&nbsp;&nbsp;&nbsp;&nbsp;"5.4.3"{% endraw %}{% endhighlight %} | `$.metadata.version` | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
 
 
 
-
-
-
-
-
-| Deployment version           | `$.deployment.version`     | ```yaml deployment: version: "3.2.1" ```      | Manages versioning per deployment unit in environments with multiple components or microservices.             |
-| Custom metadata version      | `$.metadata.version`       | ```yaml metadata: name: "my-application" version: "5.4.3" ```       | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
 
 
 ##### Semantic versioning 
