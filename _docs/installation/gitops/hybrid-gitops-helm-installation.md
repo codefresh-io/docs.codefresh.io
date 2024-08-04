@@ -41,7 +41,7 @@ There are two options for Hybrid GitOps Runtime installation via Helm, each cate
 
 ##### First-time GitOps Runtime installation
 If this is your first time installing a GitOps Runtime in your Codefresh account on a clean cluster, follow these steps:
-  * [Complete prerequisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete pre-requisites.
+  * [Complete prerequisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete prerequisites.
   * [System requirements](#minimum-system-requirements): Check the minimum system requirements to ensure smooth installation.
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
@@ -142,7 +142,7 @@ The table below lists the settings validated in the `values` file.
 |**Account permissions**  |If the user has admin permissions for the account in which they are installing the runtime. |
 | **Runtime name**        |If defined, and is unique to the account. |
 |**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if `accountId` is defined, and matches the account of the `userToken` defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if `runtime.ingressUrl` is defined.</li></ul>{:/} |
-|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a `secretKeyRef`, similar to `userToken`.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/}
+|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a `secretKeyRef`, similar to `userToken`.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |
 
 ### Validation failures
 If there is a validation failure, Codefresh terminates the installation with the error message: `Job has reached the specified backoff limit`.  
@@ -171,7 +171,7 @@ installer: skipValidation: true
 {% endhighlight %}
 
 
-##### How to: Manually validate values.yaml
+### Manually validate values.yaml
 To manually validate the values file, run:
 `cf helm validate --values <values_file> --namespace <namespace> --version <version>`  
 where:  
