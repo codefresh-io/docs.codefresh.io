@@ -367,7 +367,7 @@ Benefits of configuring Promotion Settings
 
 ###  Promotion Settings & Promotion Templates
 
-Promotion Settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) named Promotion Template within the defined configuration runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
+Promotion Settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
 
 ### Version for promoted applications
 The Version attribute specifies where Codefresh should look for version information for the applications in the Product, defined  
@@ -384,9 +384,9 @@ Double-check that the Source settings for the application correspond to the Vers
 
 | Version attribute | Example  configuration     | JSON Path expression  | Possible use case     |
 |---------------------|--------------------------    |-----------------------|-------------------------------------------------|
-| Default version attribute | {% highlight yaml %}{% raw %}appVersion: "1.2.3"{% endraw %}{% endhighlight %} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
+| Default version attribute | {::nomarkdow}{% highlight yaml %}{% raw %}appVersion: "1.2.3"{% endraw %}{% endhighlight %}{:/} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
 | Semantic versioning      | {% highlight yaml %}{% raw %}version: "2.3.4" {% endraw %}{% endhighlight %}    | `$.version`          | Indicates backward-compatible changes, new features, and bug fixes. |
-| Image tag                | {% highlight yaml %}{% raw %}image:<br>repository:&nbsp;&nbsp;"myrepo/app"<br>&nbsp;&nbsp;&nbsp;&nbsp;tag: "1"{% endraw %}{% endhighlight %}| Used in containerized environments to manage versions tied to Docker images. |
+| Image tag                | {% highlight yaml %}{% raw %}image:<br>repository:&nbsp;&nbsp;"myrepo/app"<br>&nbsp;&nbsp;&nbsp;&nbsp;tag: "1"{% endraw %}{% endhighlight %}| `$.image.tag` |Used in containerized environments to manage versions tied to Docker images. |
 | Git commit SHA           | {% highlight yaml %}{% raw %}git:<br>&nbsp;&nbsp;commitSha:&nbsp;&nbsp;&nbsp;&nbsp;"abc123def456"{% endraw %}{% endhighlight %}| `$.git.commitSha` | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines. |
 | Build number             |{% highlight yaml %}{% raw %}build:<br>&nbsp;&nbsp;number:<br>&nbsp;&nbsp;&nbsp;&nbsp;"20230801-001" {% endraw %}{% endhighlight %}  | `$.build.number`  | Automatically generated during builds, often including timestamps or incremental identifiers.  
 | Release version          | {% highlight yaml %}{% raw %}release:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"v4.5.6" {% endraw %}{% endhighlight %} | `$.release.version`  |Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
