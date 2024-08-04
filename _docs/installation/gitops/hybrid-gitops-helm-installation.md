@@ -129,39 +129,41 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ```
 
 ## Validating `values.yaml`
-Before initiating the installation Codefresh, automatically validates the `values.yaml` file to verify that the supplied values are correct.
-Any validation error terminates the installation.
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+A validation error will automatically terminate the installation.
+
 You can disable automated validation and manually run the validation if desired.
 
 ### Validated settings
 The table below lists the settings validated in the `values` file.
 
 {: .table .table-bordered .table-hover}
-|**Setting**              |**Validation**            |
+|**Setting**              |**Validation**            | 
+| --------------         | --------------           |  
 |**userToken**            |If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace.|
 |**Account permissions**  |If the user has admin permissions for the account in which they are installing the runtime. |
 | **Runtime name**        |If defined, and is unique to the account. |
-|**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if `accountId` is defined, and matches the account of the `userToken` defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if `runtime.ingressUrl` is defined.</li></ul>{:/} |
-|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a `secretKeyRef`, similar to `userToken`.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |
+|**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if <code class="highlighter-rouge">accountId</code> is defined, and matches the account of the <code class="highlighter-rouge">userToken</code> defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if <code class="highlighter-rouge">runtime.ingressUrl</code> is defined.</li></ul>{:/} |
+|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a <code class="highlighter-rouge">secretKeyRef</code>, similar to <code class="highlighter-rouge">userToken</code>.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |
 
 ### Validation failures
-If there is a validation failure, Codefresh terminates the installation with the error message: `Job has reached the specified backoff limit`.  
+If there is a validation failure, Codefresh terminates the installation with the error message:  
+`Job has reached the specified backoff limit`  
 
-To get more detailed and meaningful information on the reason for the validation failure, run:
+To get more detailed and meaningful information on the reason for the validation failure, run:  
 `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
 where:  
 * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime.
 
 ### Disable automated validation
 You may want to disable automated validation for specific scenarios, such as to address false-negatives.
-
-Either add the flag to the Helm install command or adding the relevant section to the values file.
+Do so by either adding the flag to the Helm install command or adding the relevant section to the values file.
 
 
 ##### In install command 
 `--set installer.skipValidation=true` 
 
-##### In values file**  
+##### In values file 
 {% highlight yaml %}
 {% raw %} 
 ...
@@ -172,12 +174,12 @@ installer: skipValidation: true
 
 
 ### Manually validate values.yaml
-To manually validate the values file, run:
+To manually validate the values file, run:  
 `cf helm validate --values <values_file> --namespace <namespace> --version <version>`  
 where:  
-* <values_file> is the name of the values.yaml used by the Helm installation.
-* <namespace> is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects.
-* <version> is the version of the runtime to install.
+* `<values_file>` is the name of the values.yaml used by the Helm installation.
+* `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects.
+* `<version>` is the version of the runtime to install.
 
 
 ## Install first GitOps Runtime in account
