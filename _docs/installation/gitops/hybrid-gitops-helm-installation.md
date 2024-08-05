@@ -195,7 +195,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
 * Verify that you complete all the prerequisites:  
   * [Clean Hybrid GitOps Runtime installation](#preparing-for-hybrid-gitops-runtime-installation)  
-  * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
+  * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
