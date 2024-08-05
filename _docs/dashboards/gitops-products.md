@@ -383,8 +383,8 @@ Double-check that the Source settings for the application correspond to the Vers
 #### Examples of version attributes
 
 | Version attribute | Example  configuration     | JSON Path expression  | Possible use case     |
-|---------------------|--------------------------    |-----------------------|-------------------------------------------------|
-| Default version attribute | {::nomarkdow}{% highlight yaml %}{% raw %}appVersion: "1.2.3"{% endraw %}{% endhighlight %}{:/} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
+|--------------------|--------------------------    |-----------------------|-------------------------------------------------|
+| Default version attribute | {::nomarkdown}<pre>appVersion: "1.2.3"</pre>{:/} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
 | Semantic versioning      | {% highlight yaml %}{% raw %}version: "2.3.4" {% endraw %}{% endhighlight %}    | `$.version`          | Indicates backward-compatible changes, new features, and bug fixes. |
 | Image tag                | {% highlight yaml %}{% raw %}image:<br>repository:&nbsp;&nbsp;"myrepo/app"<br>&nbsp;&nbsp;&nbsp;&nbsp;tag: "1"{% endraw %}{% endhighlight %}| `$.image.tag` |Used in containerized environments to manage versions tied to Docker images. |
 | Git commit SHA           | {% highlight yaml %}{% raw %}git:<br>&nbsp;&nbsp;commitSha:&nbsp;&nbsp;&nbsp;&nbsp;"abc123def456"{% endraw %}{% endhighlight %}| `$.git.commitSha` | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines. |
@@ -459,8 +459,10 @@ release:
 JSON path expression: `$.release.version`
 
 ### Promotable properties 
-Promotable properties define the specific files and the attributes within those files to be promoted between environments.  
+Promotable Properties in Promotion Settings define the specific files, and the attributes within those files, to be promoted between environments.  
 Defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
+
+When no promotable properties are configured, all changes are promoted between all environments.
 
 Like the Version attribute, promotable properties are defined through JSON path expressions. Unlike the Version attribute, you can define multiple JSON path expressions to different files and multiple attributes in the same file. 
 
@@ -470,7 +472,7 @@ Application versions and promotable properties are defined through JSON path exp
 
 JSON syntax and validations are available 
 
-Here is a short summary of JSON syntax and rules. 
+Here's a short summary of JSON syntax and rules. 
 * **`$.`**   
   JSON path expressions begin with the `$` symbol, which represents the root of the YAML document.
 
@@ -571,7 +573,7 @@ Configuration Location
 Promotion Templates should be stored in a Git repository synced with your cluster via a Git Source. This approach integrates seamlessly with the GitOps Apps dashboard in Codefresh.
 
 
-
+### Configure Promotion Flows for product
 
 
 
@@ -819,8 +821,8 @@ Manage applications grouped within a Product through each application's context 
 	lightbox="true" 
 	file="/images/gitops-products/app-context-menu-in-product.png" 
 	url="/images/gitops-products/app-context-menu-in-product.png" 
-	alt="Context menu with actions for Argo CD applications within Products" 
-	caption="Context menu with actions for Argo CD applications within Products"
+	alt="Context menu with actions to manage applications within Products" 
+	caption="Context menu with actions to manage applications within Products"
   max-width="60%" 
 %}
 
