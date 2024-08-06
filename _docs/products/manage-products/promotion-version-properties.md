@@ -61,6 +61,78 @@ Double check that the Source settings for the application correspond to the Vers
 
 -->
 
+{::nomarkdown}
+<table>
+  <thead>
+    <tr>
+      <th>Version attribute</th>
+      <th>Example configuration</th>
+      <th>JSON Path expression</th>
+      <th>Possible use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Default version attribute</td>
+      <td><pre><code>appVersion: "1.2.3"</code></pre></td>
+      <td><code>$.appVersion</code></td>
+      <td>Commonly used in Helm charts or deployment manifests for explicit version management.</td>
+    </tr>
+    <tr>
+      <td>Semantic versioning</td>
+      <td><pre><code>version: "2.3.4"</code></pre></td>
+      <td><code>$.version</code></td>
+      <td>Indicates backward-compatible changes, new features, and bug fixes.</td>
+    </tr>
+    <tr>
+      <td>Image tag</td>
+      <td><pre><code>image:
+  repository: "myrepo/app"
+  tag: "1"</code></pre></td>
+      <td><code>$.image.tag</code></td>
+      <td>Used in containerized environments to manage versions tied to Docker images.</td>
+    </tr>
+    <tr>
+      <td>Git commit SHA</td>
+      <td><pre><code>git:
+  commitSha: "abc123def456"</code></pre></td>
+      <td><code>$.git.commitSha</code></td>
+      <td>Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines.</td>
+    </tr>
+    <tr>
+      <td>Build number</td>
+      <td><pre><code>build:
+  number: "20230801-001"</code></pre></td>
+      <td><code>$.build.number</code></td>
+      <td>Automatically generated during builds, often including timestamps or incremental identifiers.</td>
+    </tr>
+    <tr>
+      <td>Release version</td>
+      <td><pre><code>release:
+  version: "v4.5.6"</code></pre></td>
+      <td><code>$.release.version</code></td>
+      <td>Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).</td>
+    </tr>
+    <tr>
+      <td>Deployment version</td>
+      <td><pre><code>deployment:
+  version: "3.2.1"</code></pre></td>
+      <td><code>$.deployment.version</code></td>
+      <td>Manages versioning per deployment unit in environments with multiple components or microservices.</td>
+    </tr>
+    <tr>
+      <td>Custom metadata version</td>
+      <td><pre><code>metadata:
+  name: "my-application"
+  version: "5.4.3"</code></pre></td>
+      <td><code>$.metadata.version</code></td>
+      <td>Uses custom metadata fields for additional versioning information specific to the organization or project.</td>
+    </tr>
+  </tbody>
+</table>
+
+{:/}
+
 
 #### Default version attribute  
 
