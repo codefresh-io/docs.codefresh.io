@@ -1,6 +1,61 @@
+---
+title: "Configure Product Settings"
+description: "Configure metadata, promotion settings, and flows for product"
+group: products
+toc: true
+---
+
+After creating a product, configure metadata, promotion settings, and flows for the Product and the applications connected to it through Product Settings. 
+
+This article describes 
+* [Assign applications](#copy-product-annotation-to-connect-applications)  
+
+[Define Promotion Flows](#define-promotion-flows)
+[Define Promotion Settings]()
+
+For deta
 
 
-## Connect applications through Product annotations
+Form & YAML modes
+As with most entities, you have the option to configure Product Settings in Form or YAML modes, and switch between them seamlessly during configuration.
+If you are more comfortable with YAML, see our Product CRD w
+
+
+No matter what mode you use to configure, Product Settings are saved in the Product CRD. In ?????
+The Product CRD stores all product settings, except applications manually assigned to the product. These are stored locally.
+
+You can configure new and update existing settings whenever needed and in
+
+
+
+Annotations and labels are metadata attached to products, helping in organizing and managing resources more effectively.
+
+The product annotation is added automatially when you create the product. Copy the annotation and paste in the manifests of the applications you want to connect to thpto connect applications for adding non-identifying metadata and labels for filtering and selecting resources.
+
+Assign applications
+Codefresh simplifies application assignment by providing the option to manually assign applications, right from the Product Settings in addition to the othe locations in the UI.
+
+
+
+Promotion Flows
+Configure Promotion Flows to automate and orchestrate promotion through different stages of deployment. Configure these flows  and control the promotion of applications from one environment to another.
+
+Promotion Settings
+Fine-tune your promotion process by configuring wic properties  related to application promotion.
+
+By utilizing these configuration options, you can optimize your CI/CD processes and maintain a well-organized, efficient workflow in Codefresh.
+
+
+
+
+
+
+## Open Product settigs
+
+
+## Connect applications
+
+### Connect applications with Product annotations
 
 1. Click the **General** tab, and below Connect Applications copy the annotation to add to the application's manifest.
 
@@ -8,13 +63,19 @@
   1. Click **Product Dashboard**. 
   1. From the context menu of the application (in any Environment), select **Application Info > Go to application**.
   1. Click the **Configuration** tab, and switch to **YAML** mode.
-  1. Paste in `metadata.annotations.`
+  1. Paste in `metadata.annotations`.
 
-## Connect applications manually
+
+
+### Connect applications manually
 1. Click the **Manage Applications** tab.
+  The list of **Unassigned apps** are displayed on the left
+1. If needed, filter unassigned applications by **Environment**, or in the search field type a part of the application name.
+1. To assign an application, click {::nomarkdown}<img src="../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/}.  
+1. To confirm the assignment, click **Save**. 
+  If you have defined an Environment for the application, Codefresh adds it to the Environment defined for it.
 
-
-## Configure labels for applications
+## Configure labels
 
 ## Define Promotion Flows
 
