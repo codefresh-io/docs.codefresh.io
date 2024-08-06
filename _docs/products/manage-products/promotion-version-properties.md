@@ -1,6 +1,6 @@
 ---
-title: "Configuring promotion settings"
-description: "Configure version and properties to promote in products"
+title: "Configuring app version and promotable properties"
+description: "Configure version and properties to promote for applications in Promotion Settings"
 group: products
 toc: true
 ---
@@ -9,19 +9,22 @@ toc: true
 
 Through Promotion Settings for Products, you can automate and customize the changes to promote between different environments. By defining precise promotion criteria, you can ensure that only the necessary changes are promoted, enhancing both accuracy and efficiency.
 
-Promotion Settings serve two primary functions for the applications being promoted.  
-1. Defining the source for the [application's release version](#version-for-promoted-applications)
-1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
-
 ##### Benefits of configuring Promotion Settings
 
 * Precision through automation  
   Provides an automated mechanism to precisely define which changes to promote for the application, avoiding the need to manually review and approve or reject diffs. This functionality is invaluable when promoting multiple applications with many microservices or files. 
 
-
 * Enforce environment-specific requirements  
   Different environments have distinct constraints and requirements. Promotion Settings enable you to specify which changes are valid for each environment, ensuring compliance with environment-specific needs.  
-  While artifact versions and image tags typically warrant promotion for example, other changes may need to be excluded based on the target environment.  
+  While artifact versions and image tags typically warrant promotion for example, other changes may need to be excluded based on the target environment. 
+
+##### Primary functions
+Promotion Settings serve two primary functions for the applications being promoted:  
+1. Defining the source for the [application's release version](#version-for-promoted-applications)
+1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
+
+
+For reference and how to information on the different settings, see [Configure Product Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/).
 
 
 
@@ -29,40 +32,30 @@ Promotion Settings serve two primary functions for the applications being promot
 
 Promotion Settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
 
-To configure directly in YAML, refer to our ???? Promotion Template CRD for the syntax requirements and descriptions.
+If you are more comfortable configuring directly in YAML, refer to our ???? Promotion Template CRD for the syntax requirements and descriptions.
 
-## Version for promoted applications
-The Version attribute specifies the location for version information for the applications in the Product, defined  
-using a JSON path expression.  
+## Versions for promoted applications
+The Version attribute specifies the location for version information for the applications in the Product. The application version is displayed in the  Environments, Products, and GitOps Apps dashboards.   
 
-The Version attribute in the Promotion Settings/Template is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the application's configuration manifest. Codefresh retrieves version information from this file.  
 
+The Version attribute n the Promotion Settings/Template is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
 
 For example:
-`$.appVersion` and `chart.yaml` configured for Version indicates that the version should be extracted from the `appVersion` field in the specified file, `chart.yaml`.
+`$.appVersion` and `chart.yaml` configured for Version indicates that the version is extracted from the `appVersion` field in the specified file, `chart.yaml`.
 Codefresh goes to the application manifest configuration to get the repo URL and the path to the  
 
-If the version is not displayed in the dashboards, or what's displayed is incorrect, it could be because Codefresh could not find the values in the `repoURL` and `path`.
-Double check that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
+If the version is either not displayed in the dashboards, or if the incorrect version is displayed, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
 
 ### Examples of version attributes
 
-<!---
-| Version attribute | Example  configuration     | JSON Path expression  | Possible use case     |
-|--------------------|--------------------------    |-----------------------|------------------------------------|
-| Default version attribute | {::nomarkdown}<pre> {YAML: <br><p>appVersion: "1.2.3"</p></pre>{:/} | `$.appVersion`        | Commonly used in Helm charts or deployment manifests for explicit version management.  |
-| Semantic versioning      | {% highlight yaml %}{% raw %}version: "2.3.4" {% endraw %}{% endhighlight %}    | `$.version`          | Indicates backward-compatible changes, new features, and bug fixes. |
-| Image tag                | {% highlight yaml %}{% raw %}image:<br>repository:&nbsp;&nbsp;"myrepo/app"<br>&nbsp;&nbsp;&nbsp;&nbsp;tag: "1"{% endraw %}{% endhighlight %}| `$.image.tag` |Used in containerized environments to manage versions tied to Docker images. |
-| Git commit SHA           | {% highlight yaml %}{% raw %}git:<br>&nbsp;&nbsp;commitSha:&nbsp;&nbsp;&nbsp;&nbsp;"abc123def456"{% endraw %}{% endhighlight %}| `$.git.commitSha` | Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines. |
-| Build number             |{% highlight yaml %}{% raw %}build:<br>&nbsp;&nbsp;number:<br>&nbsp;&nbsp;&nbsp;&nbsp;"20230801-001" {% endraw %}{% endhighlight %}  | `$.build.number`  | Automatically generated during builds, often including timestamps or incremental identifiers.  
-| Release version          | {% highlight yaml %}{% raw %}release:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"v4.5.6" {% endraw %}{% endhighlight %} | `$.release.version`  |Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).  |
-| Deployment version           |{% highlight yaml %}{% raw %}deployment:<br>&nbsp;&nbsp;version:&nbsp;&nbsp;&nbsp;&nbsp;"3.2.1"{% endraw %}{% endhighlight %}  | `$.deployment.version` | Manages versioning per deployment unit in environments with multiple components or microservices.             |
-| Custom metadata version      | {% highlight yaml %}{% raw %}metadata:<br>&nbsp;&nbsp;name:&nbsp;&nbsp;&nbsp;&nbsp;"my-application"<br>&nbsp;&nbsp;version:<br>&nbsp;&nbsp;&nbsp;&nbsp;"5.4.3"{% endraw %}{% endhighlight %} | `$.metadata.version` | Uses custom metadata fields for additional versioning information specific to the organization or project.    |
-
--->
-
 {::nomarkdown}
 <table>
+  <colgroup>
+    <col style="width: 10%;">
+    <col style="width: 30%;">
+    <col style="width: 10%;">
+    <col style="width: 40%;">
+  </colgroup>
   <thead>
     <tr>
       <th>Version attribute</th>
@@ -75,58 +68,58 @@ Double check that the Source settings for the application correspond to the Vers
     <tr>
       <td>Default version attribute</td>
       <td><pre><code>appVersion: "1.2.3"</code></pre></td>
-      <td><code>$.appVersion</code></td>
+      <td><code class="highlighter-rouge">$.appVersion</code></td>
       <td>Commonly used in Helm charts or deployment manifests for explicit version management.</td>
     </tr>
     <tr>
       <td>Semantic versioning</td>
       <td><pre><code>version: "2.3.4"</code></pre></td>
-      <td><code>$.version</code></td>
-      <td>Indicates backward-compatible changes, new features, and bug fixes.</td>
+      <td><code class="highlighter-rouge">$.version</code></td>
+      <td>Indicate backward-compatible changes, new features, and bug fixes.</td>
     </tr>
     <tr>
       <td>Image tag</td>
       <td><pre><code>image:
   repository: "myrepo/app"
   tag: "1"</code></pre></td>
-      <td><code>$.image.tag</code></td>
-      <td>Used in containerized environments to manage versions tied to Docker images.</td>
+      <td><code class="highlighter-rouge">$.image.tag</code></td>
+      <td>In containerized environments to manage versions tied to Docker images.</td>
     </tr>
     <tr>
       <td>Git commit SHA</td>
       <td><pre><code>git:
   commitSha: "abc123def456"</code></pre></td>
-      <td><code>$.git.commitSha</code></td>
-      <td>Tracks versions using specific Git commit SHAs, useful in CI/CD pipelines.</td>
+      <td><<code class="highlighter-rouge">$.git.commitSha</code></td>
+      <td>Track versions using specific Git commit SHAs, useful in CI/CD pipelines.</td>
     </tr>
     <tr>
       <td>Build number</td>
       <td><pre><code>build:
   number: "20230801-001"</code></pre></td>
-      <td><code>$.build.number</code></td>
-      <td>Automatically generated during builds, often including timestamps or incremental identifiers.</td>
+      <td><code class="highlighter-rouge">$.build.number</code></td>
+      <td>Include timestamps or incremental identifiers automatically generated during builds.</td>
     </tr>
     <tr>
       <td>Release version</td>
       <td><pre><code>release:
   version: "v4.5.6"</code></pre></td>
-      <td><code>$.release.version</code></td>
-      <td>Differentiates between stages of software maturity and deployment readiness (e.g., alpha, beta, production).</td>
+      <td><code class="highlighter-rouge">$.release.version</code></td>
+      <td>Differentiate between stages of software maturity and deployment readiness (e.g., alpha, beta, production).</td>
     </tr>
     <tr>
       <td>Deployment version</td>
       <td><pre><code>deployment:
   version: "3.2.1"</code></pre></td>
-      <td><code>$.deployment.version</code></td>
-      <td>Manages versioning per deployment unit in environments with multiple components or microservices.</td>
+      <td><code class="highlighter-rouge">$.deployment.version</code></td>
+      <td>Manage versioning per deployment unit in environments with multiple components or microservices.</td>
     </tr>
     <tr>
       <td>Custom metadata version</td>
       <td><pre><code>metadata:
   name: "my-application"
   version: "5.4.3"</code></pre></td>
-      <td><code>$.metadata.version</code></td>
-      <td>Uses custom metadata fields for additional versioning information specific to the organization or project.</td>
+      <td><<code class="highlighter-rouge">$.metadata.version</code></td>
+      <td>Use custom metadata fields for additional versioning information specific to the organization or project.</td>
     </tr>
   </tbody>
 </table>
@@ -134,7 +127,7 @@ Double check that the Source settings for the application correspond to the Vers
 {:/}
 
 
-#### Default version attribute  
+<!--- #### Default version attribute  
 
 ##### Possible use case
 In Helm charts or deployment manifests for explicit version management.
@@ -226,24 +219,25 @@ release:
 ##### JSON path expression
 `$.release.version`
 
+-->
 
+## Promotable Properties 
 
-## Promotable properties 
 Promotable Properties define the specific files or the attributes within files, to be promoted between environments.  
-Defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
+Though optional, defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
 
-When no promotable properties are configured, all changes are promoted between all environments.
+{{site.data.callout.callout_tip}}
+**TIP**  
+When no Promotable Properties are configured, all changes are promoted between all environments.
+{{site.data.callout.end}}
 
-Like the Version attribute, Promotable Properties are defined through JSON path expressions. Unlike the Version attribute, you can define multiple JSON path expressions to different files and multiple attributes in the same file. 
+Similar to the Version attribute, Promotable Properties are defined through [JSON path expressions](#json-path-expressions-for-files-and-attributes). Unlike the Version attribute, for Promotable Properties you can define multiple JSON path expressions to different files, and multiple attributes in the same file. 
 
 ### Examples of Promotable Properties 
 
-
-#### Promotable Properties configured
-
 Here's an example of the Promotable Properties configured for the applications of a Product.
 
-You can see that there are properties to be promoted from three different files, with the values.yaml file having more than one promotable property.
+You can see that properties are configured to be promoted from three different files, with `values.yaml` configured with more than one property.
 
 {% include 
 	image.html 
@@ -255,10 +249,10 @@ You can see that there are properties to be promoted from three different files,
   max-width="60%" 
 %}
 
-The examples that follow show how the JSON path expressions are resolved in the different yamls. 
-The yaml manifests are on the left and the preview for the trio-prod application shows the resolved value  
+The examples that follow show how the JSON path expressions are resolved in the different YAMLs. 
+The YAML manifests are displayed on the left, and the previews for the `trio-prod` application shows the resolved values. 
 
-#### `version.yaml' promotable property resolution & preview
+#### `version.yaml' promoted property resolution & preview
 
 {% include 
 	image.html 
@@ -270,7 +264,7 @@ The yaml manifests are on the left and the preview for the trio-prod application
   max-width="60%" 
 %}
 
-#### `chart.yaml' promotable property resolution & preview
+#### `chart.yaml' promoted property resolution & preview
 
 {% include 
 	image.html 
@@ -282,7 +276,7 @@ The yaml manifests are on the left and the preview for the trio-prod application
   max-width="60%" 
 %}
 
-#### `values.yaml' promotable property resolution & preview
+#### `values.yaml' promoted property resolution & preview
 
 {% include 
 	image.html 
@@ -298,22 +292,23 @@ The yaml manifests are on the left and the preview for the trio-prod application
 
 
 ## JSON path expressions for files and attributes
-Application versions and properties to be promoted are defined through JSON path expressions. These path expressions point to the specified file and the location of the property within the file, and are used to navigate and extract values from the file.
+Application versions and properties to be promoted are defined through JSON path expressions used to navigate and extract values from the file. Each JSON expression points to the specified file and the location of the property within the file. 
 
-NIMA: add links to JSON syntax and validations are available 
 
-### JSON syntax & rule summary
-Here's a short summary of JSON syntax and rules. 
-* **`$.`**   
-  JSON path expressions begin with the `$` symbol, which represents the root of the YAML document.
+### JSON path expression syntax & rules 
+The table provides a brief summary of JSON syntax and rules.
 
-* **`..`**   
-  Extract from all levels of the matching object.  
-  Use `..` (double dot operator) to navigate and extract from any level within the YAML document.
+For detailed information, see [JSON syntax](https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html){target="\_blank"}.
 
-* **`.*`**  
-  Extract all properties.  
-  Use `.*` to retrieve all properties of the matching object.
+{: .table .table-bordered .table-hover}
+| JSON syntax       | Description              | 
+| --------------    | --------------           |
+|**`$.`**           | JSON path expressions begin with the `$` symbol, which represents the root of the YAML file.|
+|**`..`**             | Extract from all levels of the matching object. Use `..` (double dot operator) to navigate and extract from any level within the YAML file.|
+|**`.*`**           | Extract all properties. Use `.*` to retrieve all properties of the matching object.|
+
+
+  
 
 This is an extract from a sample values.yaml file.
 
@@ -332,7 +327,7 @@ argo-cd:
 Using the above syntax:  
 
 * `$.global.codefresh.*` extracts all attributes that match the `codefresh` object in the file, which resolves to:  
-   `url: g.codefresh.io` and `tls.create.false`.
+   `url: g.codefresh.io` and `tls.create.false`
 
 * `$..tls` extracts values from all levels with `tls`, which resolves to:  
   `create: false` (from `codefresh.tls` object)

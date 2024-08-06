@@ -5,19 +5,20 @@ group: products
 toc: true
 ---
 
-After creating a product, configure metadata, promotion settings, and flows for the Product and the applications connected to it through Product Settings. 
+After creating a product, configure metadata, Promotion Settings, and Promotion Flows for the Product and the applications connected to it through Product Settings. 
 
-This article describes 
+This article describes how to configure the different Product Settings:
+
 * [Assign applications](#copy-product-annotation-to-connect-applications)  
 
 [Define Promotion Flows](#define-promotion-flows)
 [Define Promotion Settings]()
 
-For deta
+For conceptual information on the 
 
 
-Form & YAML modes
-As with most entities, you have the option to configure Product Settings in Form or YAML modes, and switch between them seamlessly during configuration.
+##### Form & YAML modes
+As with most entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
 If you are more comfortable with YAML, see our Product CRD w
 
 
@@ -38,7 +39,7 @@ Codefresh simplifies application assignment by providing the option to manually 
 
 
 Promotion Flows
-Configure Promotion Flows to automate and orchestrate promotion through different stages of deployment. Configure these flows  and control the promotion of applications from one environment to another.
+
 
 Promotion Settings
 Fine-tune your promotion process by configuring wic properties  related to application promotion.
@@ -50,24 +51,28 @@ By utilizing these configuration options, you can optimize your CI/CD processes 
 
 
 
-## Open Product settigs
+## Open Product Settings
 
 
-## Connect applications
 
-### Connect applications with Product annotations
+## Connect applications with Product annotations
 
 1. Click the **General** tab, and below Connect Applications copy the annotation to add to the application's manifest.
 
 1. Paste the annotation in the application's manifest:
   1. Click **Product Dashboard**. 
-  1. From the context menu of the application (in any Environment), select **Application Info > Go to application**.
+  1. From the context menu of the application, select **Application Info > Go to application**.
   1. Click the **Configuration** tab, and switch to **YAML** mode.
-  1. Paste in `metadata.annotations`.
+  1. Paste below `metadata.annotations`.
 
 
 
-### Connect applications manually
+## Connect applications manually
+
+##### Before you begin
+* Open [Product Settings](#open-product-settings)
+
+##### How to
 1. Click the **Manage Applications** tab.
   The list of **Unassigned apps** are displayed on the left
 1. If needed, filter unassigned applications by **Environment**, or in the search field type a part of the application name.
@@ -77,8 +82,19 @@ By utilizing these configuration options, you can optimize your CI/CD processes 
 
 ## Configure labels
 
-## Define Promotion Flows
+## Configure Promotion Flows
+Automate and orchestrate promotions across different environments for the Product by:
+* Selecting one or more predefined Promotion Flows
+* Customizing the conditions that should trigger each Promotion Flow
+* Defining the priority when multiple Flows are configured 
 
+
+##### Before you begin
+* Review [Configuring Promotion Settings]({{site.baseurl}}/docs/products/manage-products/promotion-version-properties/)
+
+
+##### How to
+1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **Promotion Flows** tab.
 1. To add a Promotion Flow for the product, click **Add**.
 1. From the list of Promotion Flows, select a predefined Flow for the product. 
@@ -89,16 +105,21 @@ By utilizing these configuration options, you can optimize your CI/CD processes 
      `NotIn`: Checks if the commit message or Git revision <i>does not include</i> the specified value or any value within a set of values.
   1. **Values**: Single or multiple values used to match or exclude Promotion Flows based on the Property and Operator configured. 
   1. To add more trigger conditions, click **Add** and repeat _steps 4.1 through 4.3_.
+
+SCREENSHOT
+
+{:start="5"}
 1. To confirm, click **Add**.
 1. If there is more than one Promotion Flow, click ?? and drag to define the priority and order.  
+SCREENSHOT
 
 ## Define Promotion Settings
 
 1. Click the **Promotion Settings** tab.
-1. From the list of Promotion Templates, select a predefined Promotion Template, or select **Inline** and create a new Promotion Template for this product.  
+1. From the list of Promotion Templates, select a predefined Promotion Template, or select **Inline** and create a new Promotion Template for this product. If   
   If you select a predefined Template, the Version and Promotable Properties are populated with the settings already defined.
 
-1. Define the source settings for the application version:
+1. Define the source settings for the application **Version**:
   1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
   1. **Path**: The JSON path to the attribute with the value. 
   1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
