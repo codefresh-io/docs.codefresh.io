@@ -30,7 +30,7 @@ There are two ways to use a Codefresh variable in your pipelines:
    This format, specific to Codefresh, can be used in in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
 
 {{site.data.callout.callout_tip}}
-**TIP**
+**TIP**  
 If you are unsure about which format to use, feel free to use the Codefresh-specific format with the {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %} everywhere.  
 This is the Codefresh specific format and should function in all sections of `codefresh.yml`.
 {{site.data.callout.end}}
@@ -91,7 +91,7 @@ develop-ba1cd68
 feature-vb145dh
 ```
 
-> **NOTE**
+> **NOTE**  
 > This syntax is specific to Codefresh, and is **only** available within the Codefresh YAML file itself.  
 > To write scripts or programs that use Codefresh variables, you need to make them aware of the environment variable form.
 
@@ -271,7 +271,7 @@ You can add empty variables to:
 * Pipelines
 * Build triggers
 
-> **NOTE**
+> **NOTE**  
 > Encryption is not supported for empty variables.
 
 ### Import user-defined variables in bulk
@@ -372,9 +372,8 @@ When adding variables, manually or through import, you can add/include empty var
 Apart from empty variables, you can also encrypt sensitive variables for reasons of security.
 
 1. To manually add variables, click **Add Variable**.
-
-* To add the variable with its default value, enter the key-value pair.  
-* To add an empty variable without a default value, simply type the key.
+    * To add the variable with its default value, enter the key-value pair.  
+    * To add an empty variable without a default value, simply type the key.
 
 {% include
 image.html
@@ -387,18 +386,13 @@ max-width="60%"
 %}
 
 {:start="2"}
-
-1. (Applies only to projects and pipelines) To import by copy and paste, click **Import from Text**.
-
-* Copy the set of variables to add.
-* Paste into the text editor.
-* Click **Import**
-
+1. (Applies only to projects and pipelines) To import by copy and paste, click **Import from Text**:
+  * Copy the set of variables to add.
+  * Paste into the text editor.
+  * Click **Import**
 {:start="3"}
-
-1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**.
-
-* Browse to the file to import, and then click **Import**.
+1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**:
+  * Browse to the file to import, and then click **Import**.
 
 <!-- markdownlint-disable MD033 -->
 
@@ -421,13 +415,13 @@ There are two ways to add variables to the shared file:
 
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
-> **NOTE**
+> **NOTE**  
 > Variables exported through `cf_export` override those at the pipeline-level.
 
 You can either:
 
 * Explicitly state a VAR=VAL pair  
-* State the name of an existing *exported* environment variable (like EXISTING_VAR).
+* State the name of an existing *exported* environment variable, for example, `EXISTING_VAR`
 
 {% raw %}
 
@@ -456,7 +450,8 @@ steps:
 
 {% endraw %}
 
-By default, `cf_export` variables works only with *subsequent* steps - the steps that follow the step in which the variable is defined. To export a variable both in the current step, and to all the remaining steps, do the following:
+By default, `cf_export` variables work only on *subsequent* steps, meaning the steps that follow the step in which the variable is defined.  
+To export a variable both to the current step and to all the remaining steps, do the following:
 
 ```shell
 export MY_VAR='example' # Makes MY_VAR available in this step only
@@ -574,7 +569,7 @@ Create a link to the parent-build using `cf_export` and `CF_OUTPUT_URL`.
 
 Add the following step at the beginning of the pipeline.
 
-> **NOTE**
+> **NOTE**  
 > The name of the variable exported by `cf_export` must have the format `<name|key_of_step>_CF_OUTPUT_URL`. It's value is the URL of the parent build to link to.
 
 {% raw %}

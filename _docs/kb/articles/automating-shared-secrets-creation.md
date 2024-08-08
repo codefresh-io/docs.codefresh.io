@@ -39,8 +39,8 @@ echo "$CMD"
 
 ## How to use the script
 
-1. Prepare the list of your secrets.
-  Start by preparing a file containing your secrets.
+1. Prepare the list of your secrets.  
+  Start by preparing a file containing your secrets.  
   Each line in the file should contain one secret in the format KEY=VALUE.
 
 2. Set execution permissions.  
@@ -58,5 +58,5 @@ echo "$CMD"
 ## Related articles
 
 [Secrets in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)  
-[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
-[Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/)
+[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+[Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/)  
