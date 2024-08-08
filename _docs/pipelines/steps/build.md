@@ -89,7 +89,7 @@ step_name:
 | `image_name` | The name of the image that is built.                                                                 | Required                  |
 | `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.                                                          | Optional                  |
 | `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
-| `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tag</span> (see above). <br> This is an array, and should conform to the following syntax: <br><span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</span><br><br>OR<br><span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</span>{:/} |Optional|
+| `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <code class="highlighter-rouge">tag</code> (see above). <br> This is an array, and should conform to the following syntax: <br><code class="highlighter-rouge">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</code><br><br>OR<br><code class="highlighter-rouge">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</code>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
 | `registry`   | The name of the registry to which to push the built image. You can define any registry that is integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
 | `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. <br> NOTE: When using `buildx` to build and push multi-platform images, `registry_contexts` cannot be assigned a different registry from the same domain as the target registry defined for `registry`, as Docker does not support being logged in to multiple Docker registries that share the same domain at the same time.  | Optional                  |
@@ -469,7 +469,7 @@ steps:
     buildkit: true
 ```
 
-`Buildkit` is also automatically enabled if you use any of its features such as the `progress` property:
+<!---- `Buildkit` is also automatically enabled if you use any of its features  such as the `progress` property: -->
 
 `codefresh.yml`
 
@@ -478,12 +478,11 @@ version: '1.0'
 steps:
   BuildMyImage:
     title: Building My Docker image
-    image_name: my-app-image
-    type: build
-    progress: tty
+    image_name: my-app-image      
 ```
 
-Possible values for `progress` are `tty` and `plain`.
+<!--- commenting out as not supported currently. When supported add this line to the code snippet above and remove comments: type: build
+    progress: ttyPossible values for `progress` are `tty` and `plain`.  -->
 
 For secrets, you can either mention them in a single line:
 
@@ -580,7 +579,7 @@ steps:
 
 {% endraw %}
 
-You can combine all options (`ssh`, `progress`, `secrets`) in a single build step if desired.
+You can combine all options (`ssh`, <!--- `progress`,--> `secrets`) in a single build step if desired.
 
 ## Related articles
 
