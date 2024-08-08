@@ -395,7 +395,7 @@ max-width="60%"
   * Browse to the file to import, and then click **Import**.
 
 <!-- markdownlint-disable MD033 -->
-
+{:start="4"}
 1. Click **Save**.
 1. To encrypt the variables (not supported for empty variables), click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block alt="lock icon"> <b>Encrypt</b>{:/}, and confirm.
 
