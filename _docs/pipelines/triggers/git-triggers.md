@@ -156,6 +156,7 @@ For a description of the events and their payload, see [Bitbucket Server documen
 * Pull request comment deleted
 * Pull request comment created
 * Pull request comment updated
+* Pull request push commit
 
 #### GitLab trigger events
 
