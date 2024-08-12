@@ -1,4 +1,8 @@
-
+---
+title: "FullStory in Codefresh docs"
+description: ""
+toc: false
+---
 
 
 ## Full Story - Data collection and tracking User Behavior 
