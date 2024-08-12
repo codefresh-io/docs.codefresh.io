@@ -383,4 +383,4 @@ You can see the source code in our [example section]({{site.baseurl}}/docs/examp
 ## Related articles  
 [Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/)  
 [Using managed Helm repositories]({{site.baseurl}}/docs/deployments/helm/managed-helm-repository/)  
-[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)
+[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)

@@ -9,7 +9,7 @@ redirect_from:
 toc: true
 ---
 Set up SSO for Okta using OIDC.  
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/).  
 
 
 Set up OIDC SSO for Okta in Codefresh by:
@@ -210,5 +210,5 @@ After initial SSO setup, you can activate automatic syncing of teams for the int
  
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  
 

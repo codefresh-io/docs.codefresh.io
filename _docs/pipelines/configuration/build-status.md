@@ -149,6 +149,6 @@ Your visitors can also click on each individual pipeline step and see the logs f
 If you are using Codefresh to manage a public project, you should also use the capability to [trigger builds from external forks]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
 
 ## Related articles
-[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  

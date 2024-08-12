@@ -17,21 +17,17 @@ If you have projects in your organization based on the .NET Framework or are in 
 
 Once approved, you will get access to a new runtime environment on a dedicated Windows Server version 1709 VM. This means that you will be able to run both Windows and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings).
 
-
 > Note: For .NET Core projects you can use a standard Linux based Codefresh account. See [our example]({{site.baseurl}}/docs/example-catalog/ci-examples/dotnet/).
-Codefresh Windows pipelines support the following Codefresh steps:
-**Clone**, **Build**, **Push**, **Composition**, **Deploy** and **Freestyle**.
-Please refer to our [steps documentation]({{site.baseurl}}/docs/pipelines/steps/) to learn more about each of them.
-
+> Codefresh Windows pipelines support the following Codefresh steps:
+> **Clone**, **Build**, **Push**, **Composition**, **Deploy** and **Freestyle**.
+> Please refer to our [steps documentation]({{site.baseurl}}/docs/pipelines/steps/) to learn more about each of them.
 
 ## Example
 
 In this example we'll perform the following steps:
-    
+
 - Clone our git repository and build a .NET Framework image.
-    
 - Run our dotnet unit tests and according to the results annotate the image accordingly.
-    
 - Push to Dockerhub if our tests have passed.
 
 ```yaml
@@ -74,10 +70,27 @@ steps:
     tag: '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'
     registry: dockerhub
 
-``` 
+```
+
+## Windows docker image compatibility
+
+You can receive the following error in your Windows pipeline:
+
+`The container operating system does not match the host operating system.`
+
+Windows docker images are only compatible with the corresponding release version of the host OS. You are not able to use a newer release version of a Windows container on an older release of Windows.
+
+Please ensure that the image version used corresponds to the the node Windows release. For example:
+
+`FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019` is version 1809.
+
+`FROM mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-1909` is version 1909.
+
+Please reach out to the support team if you're unsure which Windows release you're using.
 
 ## Related articles
-[Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+
+[Introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
-[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) 
+[Codefresh YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Installation options]({{site.baseurl}}/docs/installation/installation-options/)

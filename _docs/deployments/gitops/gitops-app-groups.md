@@ -155,7 +155,7 @@ At any time, add or remove an application from the Group or Groups it belongs to
 
 ## Related articles
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard)  
-[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

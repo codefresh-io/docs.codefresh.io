@@ -59,14 +59,14 @@ Here is an example of the Feature Management page in Admin Management for the or
   max-width="60%"
     %}
 
-The table describes the features you can open for Codefresh accounts, in alphabetical order. 
+The table describes in alphabetical order, the features you can open for Codefresh accounts. 
 
 {: .table .table-bordered .table-hover}
 | Feature                     | Description            |  Default | 
 | --------------              | --------------         | ------- | 
 | `appDiffView`  |When enabled, and the application is out of sync, displays the differences for each resource in the application in either Compact or Split view modes.<br>See [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view) | TRUE         |
 | `abacAndRule`       | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND". <br>See [Configuring rules for access control in pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/#rules-for-access-control).| TRUE  |
-|`abacRuntimeEnvironments`    |  When enabled, allows creating rules in **Permissions** which impacts options in <b>Pipeline > Settings > Build Runtime</b>: {::nomarkdown}<ul><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for pipelines based on tags. Restricted Runtime Environments are disabled in the Runtime Environments list for the pipeline/build run.</li><li><b>Pipeline</b> actions:<ul><li><b>Manage resources</b>: Select CPU, memory, and minimum disk space for the pipeline/build run.</li><li><b>Set runtime environment</b>: Select a Runtime Environment from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Set Cloud build and select the resource size for the pipeline/build run.</li></ul></li></ul> {:/}| FALSE  | | FALSE  |
+|`abacRuntimeEnvironments`    |  When enabled, allows creating rules in **Permissions** which impacts options in <b>Pipeline > Settings > Build Runtime</b>: {::nomarkdown}<ul><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for pipelines based on tags. Restricted Runtime Environments are disabled in the Runtime Environments list for the pipeline/build run.</li><li><b>Pipeline</b> actions:<ul><li><b>Manage resources</b>: Select CPU, memory, and minimum disk space for the pipeline/build run.</li><li><b>Set runtime environment</b>: Select a Runtime Environment from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Set Cloud build and select the resource size for the pipeline/build run.</li></ul></li></ul> {:/}| FALSE  |  FALSE  |
 |`abacHermesTriggers`       | When enabled, restricts access to the legacy version of Cron triggers for users without permissions to edit pipelines.| FALSE  |
 |`abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
 |`abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |

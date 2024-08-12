@@ -112,14 +112,14 @@ Install a chart from a Helm repository to your cluster.
 
 1. Click **Install**. You can observe the newly installed release in Helm Releases.
 
-You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion).
+You can also install Helm releases from [any Helm environment board]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/).
 
 
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm integrations]({{site.baseurl}}/docs/integrations/helm/)  
-[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
-[Promoting Hlem environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
+[Promoting Hlem environments]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  
 [Helm best practices]({{site.baseurl}}/docs/ci-cd-guides/helm-best-practices/)  
 
 

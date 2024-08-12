@@ -536,6 +536,8 @@
           url: "/create-codefresh-account"
         - title: Adding users and teams
           url: "/add-users"
+        - title: Managing service accounts
+          url: "/service-accounts"
         - title: Configuring access control for pipelines
           url: "/access-control"
         - title: Configuring access control for GitOps

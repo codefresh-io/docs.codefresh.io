@@ -57,8 +57,12 @@ Remember that as an admin you can view all hidden items in the sidebar by toggli
    max-width="80%" 
    %}
 
+
 {:start="5"}
 1. Save changes.
+
+
+
 
 
 

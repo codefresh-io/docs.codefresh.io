@@ -69,6 +69,6 @@ az acr repository list --name <registry_name> --output table
 
 
 ## Related articles
-[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)   
 [Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  
