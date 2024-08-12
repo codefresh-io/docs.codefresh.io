@@ -14,7 +14,7 @@ Simply use the toggle method: switch to ON to display an item and OFF to hide it
 {{site.data.callout.callout_tip}}
 **TIP**  
 Remember that as an admin you can view all hidden items in the sidebar by toggling the **Show in sidebar option...** to ON.
-
+{{site.data.callout.end}}
 
 
 ##### Where and how
