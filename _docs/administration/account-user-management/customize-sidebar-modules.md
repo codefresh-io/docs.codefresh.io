@@ -37,8 +37,8 @@ Remember that as an admin you can view all hidden items in the sidebar by toggli
 {% include 
    image.html 
    lightbox="true" 
-   file="/images/administration/sidebar-modules/default-menu-list.png" 
-   url="/images/administration/sidebar-modules/default-menu-list.png" 
+   file="/images/administration/sidebar-modules/module-disabled.png" 
+   url="/images/administration/sidebar-modules/module-disabled.png" 
    alt="Example of main module toggled OFF" 
    caption="Example of main module toggled OFF" 
    max-width="80%" 
