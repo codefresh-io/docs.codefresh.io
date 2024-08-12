@@ -5,12 +5,12 @@
 >**NOTE**  
 This feature is currently in Beta.
 
-Explore the power of Products for Argo CD applications in Codefresh GitOps. 
+Explore the power of Products for Argo CD applications and deployments in Codefresh GitOps. 
 
 Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
 
 In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
-By grouping applications, Products enhance Environments, allowing complete visibility for efficient management across Environments.
+By grouping applications, Products enhance Environments, allowing complete visibility for efficient deployment across Environments.
 
 {% include 
 	image.html 
@@ -47,14 +47,19 @@ The diagram illustrates how Argo CD applications connected to a Product are grou
   Managing complex Argo CD applications across multiple Environments can be challenging.  
   By grouping similar Argo CD applications into a unit, Products allow you to also efficiently manage them cohesively.
 
-* **Bridging applications and Environments**  
-  Products act as a bridge between applications and their respective Environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+* **Bridging applications and environments**  
+  Products act as a bridge between applications and their respective environments. By linking applications to Products, you can easily track their deployment across different environments, providing clarity and control over your deployment pipelines.
+
+* **Deployment visibility**
+  Deploying a product generates a release that provides a comprehensive view of the entire deployment process. This includes visualization of Promotion Workflows across all environments, and detailed insights into issue tracking, Git activity, and other actions that led to the deployment, giving developers and stakeholders a clear understanding of the process.
 
 * **Effortless creation**  
   As with Environments, creating a Product is equally straightforward. You can create Products from the UI, or declaratively through annotations in your application manifests.
 
 * **Real-time insights with integrated views**  
   The Products dashboard offers three distinct views - Pods, Git, and Features. These views provide real-time insights into the changes in the application repo, deployment details, code changes, and feature tracking. Whether you're a developer tracking the latest commits or a project manager monitoring feature releases, these integrated views offer valuable insights tailored to your role.
+
+
 
 
 ##### How do you view applications by Product?  
@@ -67,4 +72,19 @@ In two simple steps:
   Bring your applications into the picture. Link applications to the Products you've created to create the associations you need. 
 
 Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).  
-You can then [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).
+
+
+##### How do you deploy a Product?
+
+By configuring promotion settings for the product and its applications:
+
+Promotion Flows
+Define the steps and criteria for promoting applications in the product through different stages of deployment. Select and customize the conditions to trigger specific Promotion Flows, automating and controlling when and how applications are promoted.
+
+Promotion Settings
+ and specifying the precise attributes to be promoted within applications. This ensures that the right versions and components are consistently advanced through your deployment stages.
+
+By utilizing these configuration options, you can optimize your CI/CD processes and maintain a 
+
+
+Read all about how to [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).

@@ -457,6 +457,23 @@
     - title: Pipeline definitions YAML
       url: "/what-is-the-codefresh-yaml"
 
+- title: Products
+  url: "/products"
+  pages:
+    - title: About Products
+      url: "/about-products"
+    - title: Create Products
+      url: "/create-product"
+    - title: Configure Product Settings
+      url: "/configure-product-settings"
+    - title: Assign applications
+      url: "/assign-applications"      
+    - title: Product application version and promoted properties
+      url: "/promotion-version-properties"
+    - title: Product promotions
+      url: "/promotion-flow-triggers"
+
+
 
 - title: Testing
   url: "/testing"

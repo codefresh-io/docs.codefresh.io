@@ -24,13 +24,13 @@ Promotion Settings serve two primary functions for the applications being promot
 1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
 
 
-For reference and how to information on the different settings, see [Configure Product Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/).
+For how to instructions on configuring Promotion Settings, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
 
 
 
 ##  Promotion Settings & Promotion Templates
 
-Promotion Settings can be configured in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining promotion criteria across environments.
+As with other GitOps entities, you can configure Promotion Settings in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
 
 If you are more comfortable configuring directly in YAML, refer to our ???? Promotion Template CRD for the syntax requirements and descriptions.
 
@@ -38,15 +38,19 @@ If you are more comfortable configuring directly in YAML, refer to our ???? Prom
 The Version attribute specifies the location for version information for the applications in the Product. The application version is displayed in the  Environments, Products, and GitOps Apps dashboards.   
 
 
-The Version attribute n the Promotion Settings/Template is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
+The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
+
+DIAGRAM 
 
 For example:
 `$.appVersion` and `chart.yaml` configured for Version indicates that the version is extracted from the `appVersion` field in the specified file, `chart.yaml`.
-Codefresh goes to the application manifest configuration to get the repo URL and the path to the  
+Codefresh retrieves the repo URL and the path to the file from the application manifest.
 
-If the version is either not displayed in the dashboards, or if the incorrect version is displayed, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
+If the version is either not displayed in the dashboards, or if the version displayed is incorrect, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
 
 ### Examples of version attributes
+
+You can extract version information from different attributes, ensuring it aligns with your deployment and business requirements.
 
 {::nomarkdown}
 <table>
@@ -221,9 +225,9 @@ release:
 
 -->
 
-## Promotable Properties 
+## Promotable Properties for applications
 
-Promotable Properties define the specific files or the attributes within files, to be promoted between environments.  
+Promotable Properties define the specific files or the attributes within files, to be promoted between environments for applications in the product.  
 Though optional, defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
 
 {{site.data.callout.callout_tip}}
@@ -292,7 +296,7 @@ The YAML manifests are displayed on the left, and the previews for the `trio-pro
 
 
 ## JSON path expressions for files and attributes
-Application versions and properties to be promoted are defined through JSON path expressions used to navigate and extract values from the file. Each JSON expression points to the specified file and the location of the property within the file. 
+Application versions and properties to be promoted are defined through JSON path expressions used to navigate and extract values from files. Each JSON expression points to the specified file and the location of the property within the file. 
 
 
 ### JSON path expression syntax & rules 
@@ -334,80 +338,8 @@ Using the above syntax:
   `create: true` and `caCert: some-argo-cert` (both from `argo-cd.tls` object)
 
 
-
-
-
-
-
-
-
-Configuration Location
-Promotion Templates should be stored in a Git repository synced with your cluster via a Git Source. This approach integrates seamlessly with the GitOps Apps dashboard in Codefresh.
-
-
-### Configure Promotion Flows for product
-
-
-
-
-
-
-
-### Where are Promotion Settings stored? Promotion Template?
-Codefresh supplies a default Promotion Template for Helm applications in the Shared Configuration Repository of your Runtime.
-
-The simplest and most effective location for your Promotion Template is the Git repository synced to the cluster through a Git Source.  Syncing your Promotion Templates with a Git Source ensures that you can monitor them in the GitOps Apps dashboard in Codefresh.
-
-TBD 
-
-### How does the Promotion Template work?
-
-The criteria you define in the Promotion Template CRD determines the changes which are promoted in applications across Environments:
-
-ADD HERE A FLOW DIAGRAM?
-
-1. Selects the applications to promote  
-  Applications are selected for promotion via Kubernetes labels, defined through a key-value/operator pair. This allows flexibility in defining the application identifier as loosely or tightly as needed. 
- 
-    Examples:
-    Select applications based on Environment, Product, or any other relevant criteria.
-    Utilize operators like Exists, In, or NotIn for precise application targeting.
-  
-
-    EXAMPLES
-
-1. If required, applies the priority  
-  When multiple Promotion Templates match the same application, the priority assigned to the Promotion Template comes into play to determines the changes that are promoted.  
-  In such cases, the priority, in ascending order, determines the precedence of Promotion Templates that defines which changes are promoted in the application. 
-  
-    Codefresh generates a composite Promotion Template by merging the specifications from all relevant Promotion Templates: 
-      * The Template with the highest priority serves as the _base_ template, with its specifications taking precedence over conflicting specifications from other templates. 
-      * Specifications from other templates not present in the base Template are added to it.  
-        In case of conflicts, specifications from higher-priority templates _always_ take precedence over those that have lower-priority.
-
-{:start="3"}
-1. Applies the changes to promote
-  As the final step, the Promotion Template applies the changes defined within it to the application, either at the file level or to attributes in the file. 
-
-
-
-EXAMPLES OF TWO TEMPLATES WITH COMPOSITE TEMPLATE 
-
-### Configure Promotion Settings
-
-
-
-
-1. From the list of Promotion Templates, select a predefined Promotion Template, or select **Inline** and create a new Promotion Template for this product.  
-  If you select a predefined Template, the Version and Promotable Properties are populated with the settings already defined.
-
-1. Define the source settings for the application version:
-  1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
-  1. **Path**: The JSON path to the attribute with the value. 
-  1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
-
-1. Define the settings for the Promotable Properties:
-  1. **File**: The name of the file with the attributes to promote. For example, `values.yaml`. 
-  1. **Paths**: The JSON path or paths to one or more attributes within the file to promote. For example, `$.buslog.image.tag` , `$.ctrlr.image.tag` and `$.flask-ui.image.tag`.
-  1. To add more files and paths, click **Add** and define the **File** and **Paths**.
-  1. To preview the properties that will be promoted for an application connected to the product, click **Preview Configuration** and then select an application. 
+## Related articles
+[Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
+[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/manage-products/promotion-flow-triggers/)   
+[Tracking deployments for products]({{site.baseurl}}/docs/products/product-releases/)  
+[Creating products]({{site.baseurl}}/docs/products/create-product/)   
