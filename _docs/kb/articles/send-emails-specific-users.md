@@ -77,6 +77,6 @@ on_failure:
 
 [1] <https://codefresh.io/docs/docs/pipelines/hooks/#running-stepsplugins-in-hooks>
 
-[2] <https://codefresh.io/steps/step/smtp>
+[2] <https://codefresh.io/steps/step/smtp/>
 
 [3] <https://codefresh.io/docs/docs/pipelines/configuration/shared-configuration/>

@@ -192,20 +192,6 @@
     - title: Managing Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
-- title: Argo Workflows
-  icon: images/home-icons/pipeline.svg
-  url: ""
-  links:
-    - title: Creating Argo Workflows
-      localurl: /docs/workflows/create-pipeline
-    - title: Nested Argo Workflows
-      localurl: /docs/workflows/nested-workflows/
-    - title: Configure artifact repository
-      localurl: /docs/workflows/configure-artifact-repository/
-    - title: Selectors for concurrency synchronization
-      localurl: /docs/workflows/concurrency-limit/
-    - title: Sharing file systems
-      localurl: /docs/workflows/sharing-file-system/
 
 - title: Installation
   icon: images/home-icons/runtimes.svg
@@ -269,9 +255,9 @@
   url: ""
   links:
     - title: Windows Containers Support
-      localurl: /docs/incubation/windows
+      localurl: /docs/incubation/windows/
     - title: Mac OSX and iOS builds
-      localurl: /docs/incubation/osx-ios-builds
+      localurl: /docs/incubation/osx-ios-builds/
     - title: ARM architecture Support
       localurl: /docs/incubation/arm-support
 
@@ -280,10 +266,10 @@
   url: ""
   links:
     - title: Common Issues
-      localurl: /docs/kb/common-issues
+      localurl: /docs/kb/common-issues/
     - title: How Tos
-      localurl: /docs/kb/how-to
+      localurl: /docs/kb/how-to/
     - title: Troubleshooting
-      localurl: /docs/kb/troubleshooting
+      localurl: /docs/kb/troubleshooting/
     - title: Support Ticket Examples
-      localurl: /docs/kb/support-ticket-examples
+      localurl: /docs/kb/support-ticket-examples/

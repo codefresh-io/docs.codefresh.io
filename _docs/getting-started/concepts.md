@@ -71,14 +71,14 @@ The Runner is the hybrid installation option for pipelines in your Codefresh acc
 
 Codefresh Runner gives you: 
 * Access to secure services (such as Git repositories or databases) that are behind the firewall and normally not accessible to the public cloud.
-* The ability to use special resources in your Codefresh pipeline that are unique to your application, GPU nodes or other special hardware only present in your data center.
+* The ability to use special resources in your Codefresh pipeline that are unique to your application or other special hardware only present in your data center.
 * Complete control over the build environment in addition to resources for pipelines.
 
 Every Runner installation creates a runtime environment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/)  
 
 ## Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.
@@ -92,7 +92,7 @@ A single Runtime can connect to and manage multiple remote clusters.
 See:  
 [GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
 
 
 ## Triggers

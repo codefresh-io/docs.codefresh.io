@@ -30,7 +30,7 @@ description: "Changelog and Release Notes for Pipelines (Classic)"
 - Using Bitnami Sealed Secrets with GitOps - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/gitops-secrets/)
 - App proxy is now available for Bitbucket server - [documentation]({{site.baseurl}}/docs/administration/codefresh-runner/#optional-installation-of-the-app-proxy)
 - Public Marketplace Registry - [documentation]({{site.baseurl}}/docs/administration/pipeline-settings/#advanced-pipeline-options)
-- Google Artifact Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/google-artifact-registry)
+- Google Artifact Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/google-artifact-registry/)
 - Pipeline Execution Context - [documentation]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/)
 - Fallback Registry for Docker Integrations - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/#fallback-registry)
 

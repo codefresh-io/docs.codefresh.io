@@ -6,6 +6,318 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.4
+
+### Features & enhancements
+
+Welcome to our newest on-premises release!
+
+#### Installing v2.4 
+For detailed instructions on installing v2.4, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+#### Upgrading to v2.4
+For details, see [Upgrade to 2.4.0 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
+
+#### General: New `cfapi-auth` role 
+We have introduced the `cfapi-auth` role in v2.4. Make sure it is enabled.
+
+```yaml
+cfapi-auth:
+  <<: *cf-api
+  enabled: true
+```
+For details, see [`cfapi-auth` role in Artifactory](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-4-0){:target="\_blank"}.
+
+#### General: PROJECT_ONE as default for accounts
+From v2.4 and higher, the default `SYSTEM_TYPE` has been changed to `PROJECT_ONE`.    
+To retain the original Classic version, you will need to update `cfapi` environment variables. See [Default system type in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#default-system_type-for-acccounts){:target="\_blank"}.
+
+If you need a refresher on the new navigation, see our [documentation]({{site.baseurl}}/docs/new-codefresh/menu-navigation/).
+
+#### General: More power to Global Search & Navigation
+
+We're excited to announce major enhancements powering our Global Search & Navigation: 
+
+* **Actions through Search**  
+  Execute actions using search or keyboard shortcuts:
+  * Run a pipeline: Search to navigate to a specific pipeline, and then use the `R` and `N` shortcut keys to trigger that pipeline.
+  * Refresh an application: Search for the application you need, and then use the `R` and `F` shortcut keys to instantly refresh the application.
+  * Sync an application: Within an application, use the `S` and `Y` shortcut keys to open the sync dialog.
+
+* **Quick navigation**  
+  * **Integrated link to `app-proxy` logs**  
+    We've introduced App-proxy logs as a new navigation item. You can now type `App-proxy logs` to access a list of GitOps Runtimes. From there, simply select a Runtime to view its app-proxy logs in the online terminal. 
+  * **GitOps Runtimes for admins**  
+    Type `GitOps Runtimes` and click to go directly to the GitOps Runtimes page. 
+  * **GitOps Permissions for admins**  
+    Type `GitOps Permissions` and click to go directly to the Permissions page.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-app-proxy-logs.png" 
+alt="Global Search & Navigation: app-proxy logs" 
+caption="Global Search & Navigation: app-proxy logs" 
+max-width="60%" 
+%}
+
+#### General: Custom auto-sync intervals for SSO
+
+Previously, integration with different SSO providers allowed automatic user and team synchronization with Codefresh at fixed hourly intervals.
+
+With our latest update, you can now customize the auto-sync intervals to better suit your organization’s needs.  
+The new options allow you to set the sync frequency in minutes or hours. Alternatively, you can enable auto-sync without defining a specific interval, and Codefresh will automatically perform the sync every 12 hours. 
+
+This flexibility ensures more timely updates and improved efficiency in user and team management.
+
+For details, see [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
+
+
+
+#### Pipelines: Explore build relationships with Build Tree
+Introducing Build Tree for easy rendering of relationships between pipeline builds!
+Seamlessly visualize complex parent-child-sibling relationships within the context of your selected build, simplifying pipeline monitoring and management.
+
+ {% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+url="/images/whats-new/apr24/rel-notes-apr24-build-tree-view.png" 
+alt="Pipeline builds: Build Tree view" 
+caption="Pipeline builds: Build Tree view" 
+max-width="60%" 
+%}
+
+
+In addition to the effortless visualization, other key benefits include:
+* The selected build as an anchor reference point to linked builds, indicated by the **Current** tag assigned to it.
+* Updated status for every build, with failed steps listed for quick alerting.
+* Quick access to essential actions without navigating away from the Build Tree, through the build’s context menu.
+* Single-click access to the individual build view for detailed insights.
+
+For details, see [Visualize build relationships for pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#visualize-build-relationships-for-pipeline).
+
+
+#### Pipelines: More Pull Request events support for GitHub
+Our integration with GitHub events is now even stronger with the addition of more types of pull request (PR) event triggers.
+
+You can now trigger builds for the following PR events:
+* Pull request review approved
+* Pull request review changes requested
+* Pull request review commented
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  url="/images/whats-new/apr24/rel-notes-apr24-github-pr-events.png"
+  alt="New pull request events for GitHub in Codefresh"
+  caption="New pull request events for GitHub in Codefresh"
+  max-width="60%"
+%}
+
+For details, see [Git triggers for pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/).
+
+#### Pipelines: Gerrit topic variable mapping  
+
+We have introduced a new system variable: `CF_GERRIT_CHANGE_TOPIC`. This variable maps directly to Gerrit’s `topic` variable, which groups related changes together in Gerrit, for better organization and management.
+
+With `CF_GERRIT_CHANGE_TOPIC` in Codefresh pipelines, based on the topic’s context, you can:
+* Dynamically manage and execute steps .
+* Conditionally trigger specific actions or entire pipelines.
+
+For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
+
+#### Pipelines: Automatic account switching for pipeline builds
+
+Another usability enhancement for a seamless experience when navigating between accounts.  
+
+When accessing pipeline builds from an account different to the one you're logged into, Codefresh automatically switches you to the correct account. This means no more prompts and having to manually select the account.
+
+To support this enhancement, you need to enable the `autoBuildSwitchAccount` Feature Flag.
+
+
+
+#### GitOps: GitOps Runtimes as Configuration Runtimes
+We added new functionality for GitOps Runtimes. Starting with Runtime v0.1.49, you can now designate a Hosted or any Hybrid GitOps Runtime as a Configuration Runtime.
+Configuration Runtimes handle platform-level resources that are runtime-agnostic, such as those for GitOps Products.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-june-24-set-as-config-runtime.png"
+  url="/images/whats-new/june24/rel-notes-june-24-set-as-config-runtime.png"
+  alt="Set GitOps Runtime as Configuration Runtime"
+  caption="Set GitOps Runtime as Configuration Runtime"
+  max-width="60%"
+%}
+
+
+Key features to note:
+* Redundancy  
+  Designate single or multiple GitOps Runtimes as Configuration Runtimes. Codefresh ensures that resources are not duplicated even when there are multiple Configuration Runtimes.
+* Ease of use  
+  Set and unset a Configuration Runtime with just a click in the UI or a quick edit in your `values.yaml` file.
+
+For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
+
+#### GitOps: Rollout enhancements 
+
+* **Templated arguments in AnalysisTemplates**  
+Codefresh now supports templated arguments declared in AnalysisTemplates for metric configurations in AnalysisRuns. 
+
+* **Rollout Player**  
+To make Rollouts easier to manage, we added the Abort and Retry buttons to the Rollout Player. These options were previously available for the Rollout resource only in the Current State tab.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+url="/images/whats-new/may24/rel-notes-may24-rollout-player.png" 
+alt="Abort & Retry in Rollout Player" 
+caption="Abort & Retry in Rollout Player" 
+max-width="50%" 
+%}
+
+For details, see [Manage rollouts for Argo CD application deployments]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manage-rollouts-for-argo-cd-application-deployments).
+
+
+
+
+#### Usability enhancements
+
+
+
+##### Pipelines: Project name in breadcrumbs in Builds page
+In the Builds page, on selecting a build, the breadcrumbs path displays also the project name.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  url="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  alt="Builds page: Project name in breadcrumbs"
+  caption="Builds page: Project name in breadcrumbs"
+  max-width="60%"
+%}
+
+
+##### GitOps: Breadcrumbs
+We have improved the implementation of breadcrumbs for a smoother navigation experience.
+
+**Entity names in lowercase**  
+Within the breadcrumbs path, entity names are now consistently displayed in lowercase.
+
+**Sibling display and navigation**    
+The end of the path now shows all sibling items if available.  
+Clicking the dropdown displays all siblings, and clicking an item navigates directly to it.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+url="/images/whats-new/may24/rel-notes-may24-breadcrumbs-siblings.png" 
+alt="Viewing and navigating to siblings in breadcrumbs" 
+caption="Viewing and navigating to siblings in breadcrumbs" 
+max-width="40%" 
+%}
+
+**Clean selection for copy**  
+Clicking any item in the breadcrumb path now selects only that specific item, not the entire path, and also copies that item.  
+
+
+
+##### GitOps: Shared Configuration Repo in Organization Information
+As a usability enhancement, we have made it easier to locate the Shared Configuration Repository used by GitOps Runtimes. 
+
+You can now find the link to your Shared Configuration Repository directly in the Organization Information page.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
+url="/images/whats-new/may24/rel-notes-may24-shared-config-repo-org-page.png" 
+alt="Link to Shared Configuration Repository in Organization Information" 
+caption="Link to Shared Configuration Repository in Organization Information" 
+max-width="50%" 
+%}
+
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+##### New Feature Flags in v2.4
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.4.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `abacUIEnforcement`        | When enabled, for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
+| `abacV2UIEnforcement`        | When enabled, for GitOps, prevents the user from selecting options and performing actions which are not permitted.| FALSE  |
+| `abacRuntimeEnvironments`    | When enabled, allows creating rules in **Permissions** which impacts options in <b>Pipeline > Settings > Build Runtime</b>: {::nomarkdown}<ul><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for pipelines based on tags. Restricted Runtime Environments are disabled in the Runtime Environments list for the pipeline/build run.</li><li><b>Pipeline</b> actions:<ul><li><b>Manage resources</b>: Select CPU, memory, and minimum disk space for the pipeline/build run.</li><li><b>Set runtime environment</b>: Select a Runtime Environment from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Set Cloud build and select the resource size for the pipeline/build run.</li></ul></li></ul> {:/}| FALSE  |
+| `autoBuildSwitchAccount`  | When enabled, and a user accesses a build from a different account, automatically switches to the corresponding account instead of the user having to do so manually.<br>See [Pipelines: Automatic account switching for pipeline builds](#pipelines-automatic-account-switching-for-pipeline-builds) in this article. | FALSE         |
+| `delightedSurvey`            | When enabled (the default), displays Delighted CX surveys in the Codefresh UI.<br>If there are security concerns because of outbound requests from clients, disable this Feature Flag.  | TRUE|
+| `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.<br>**NOTE**: When enabled for air-gapped environments, client attempts to communicate with a Fullstory service may result in network errors.| FALSE  |
+| `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps.<br>See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
+| `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
+| `productCRD`  | _New feature currently in development for GitOps._<br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
+| `promotionOrchestration` | _New feature currently in development for GitOps._<br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
+| `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
+| `rolloutPlayerLiveState` | When enabled (the default), updates Rollout events directly from AppProxy for faster response times. | TRUE         |
+| `serviceAccounts` | _Currently in development._ <br>When enabled, allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management. | FALSE         |
+
+
+
+##### Updated Feature Flags in v2.4
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `buildsTreeView`  | _This feature is now available for on-premises environments._ <br>When enabled (the default), shows a visualization of the parent and child builds of pipelines.<br>See [Explore build relationships with Build Tree](#pipelines-explore-build-relationships-with-build-tree) in this article. | _TRUE_         |
+
+### Bug fixes
+
+
+##### Pipelines
+* “Unknown error” failure on cloning a pipeline that includes a trigger. 
+* "Codefresh is unable to reach your Kubernetes cluster, please check if there is a connection issue” error when selecting **Account settings > Pipeline integrations > Kubernetes**.
+* Debug mode fails to execute or hangs with engine version 1.169.1 and higher.
+* Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
+* `error URL using bad/illegal format or missing URL` for `git-commit` steps when password includes special characters.
+* Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server. 
+* Azure repos with **YAML from repository settings** throws `TimeoutError: Connection to server has timed out` error during trigger creation when listing repositories.
+* Builds for Gerrit in Codefresh triggered twice. 
+* Metrics tab for pipeline build displays CPU utilization incorrectly as 100% instead of the actual usage. 
+* When defining triggers, search in Select Branch does not display branch names including slashes. 
+* Long loading time for Git repos when creating new pipelines and triggers.
+* For Bitbucket, reported statuses of two builds triggered for the same commit override each other.
+* For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
+* Constant restarts pf `pipeline-manager` pods during marketplace step executions for v2.2 and higher.
+* Queue-time metric reported to Datadog from Codefresh includes the duration of pending-approval steps. 
+* Build failure for pipeline including mixture of regular and `buildx` parallel build steps.
+* Changing LOGGER_LEVEL variable does not impact verbosity of engine logs. 
+* For Gerrit, username of build initiator not displayed.
+* Usability issues when selecting clone pipeline option from UI. 
+* Upgrade to on-premises v2.3.2 causes out-of-disk issue for RabbitM because of dangling queues with no consumers. 
+
+
+##### GitOps
+<!--- * GitOps UI does not show logs for pods. Victor Plakyda to check -->
+* New Argo CD application deployed in Codefresh remains as Out of Sync in **GitOps Apps > Current State**.
+* Delay for new Argo CD applications to appear in Codefresh GitOps Apps dashboard. 
+* Deleting a managed cluster from a GitOps Runtime results in an empty list of clusters for the same Runtime. 
+* GitOps Apps dashboard > Applications tab displays `Unknown` status for Argo CD applications. 
+* Truncated Kubernetes **Label** names in the GitOps Apps dashboard when selecting **More filters**.  
+* Results for Analysis metrics not displayed in Rollout when using arguments from AnalysisTemplates. 
+* Multi-container pods display `a container name must be specified for pod....` message without option to select a specific container.
+
+
+
+
+
 ## On-premises version 2.3
 
 ### Features & enhancements
@@ -308,7 +620,6 @@ The table below lists existing Feature Flags which have been updated by default 
 * Replaced misleading warning message "The security token included in the request is invalid" for successful builds. 
 * Cloning a pipeline in UI fails with “Unknown error” when triggered from UI. 
 * `build-manager` microservice causing increased number of MongoDB connections.
-
 
 ##### GitOps 
 * Renaming an ApplicationSet or GitSource removes all application's resources and then adds them again.  
@@ -630,7 +941,7 @@ Key benefits:
   Once the OIDC provider configuration is completed, obtaining the ID token is seamless.
   Our dedicated Marketplace step, the `obtain-oidc-id-token` step, when added to the pipeline, gets the ID token, without additional configuration or parameters on your part.
 
-For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines).
+For details, see [OpenID Connect for Codefresh pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/).
 
 <br><br>
 
@@ -892,7 +1203,7 @@ With GitOps, Git repositories are the source-control systems that declaratively 
 
 Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to Codefresh.
 
-For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install).
+For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
 
 <br>
 

@@ -1,9 +1,16 @@
 ---
-title: "Creating Argo Workflows"
+title: "Creating Delivery Pipelines"
 description: ""
 group: workflows
 toc: true
 ---
+
+{{site.data.callout.callout_warning}}
+Delivery Pipelines (powered by Argo Workflows) is not being actively maintained.  
+Please reach out to [support@codefresh.io](mailto:support@codefresh.io) with any questions.
+{{site.data.callout.end}}
+
+
 
 Delivery Pipelines are where all the CI magic happens in Codefresh. Delivery Pipelines connect Argo Workflows and Argo Events with our unique functionality to implement and optimize CI/CD flows, such as checking out code, building and testing artifacts, running unit and acceptance tests, or any customized flows you need in your enterprise. 
 
@@ -289,6 +296,6 @@ Follow the step-by-step instructions to guide you through Delivery Pipeline wiza
 Codefresh commits the pipeline to the Git repository, and then syncs it to the cluster. Wait a few seconds for the sync to complete, and verify that the pipeline is displayed in the [Delivery Pipelines](https://g.codefresh.io/2.0/pipelines){:target="\_blank"} page.
 
 ## Related articles
-[Selectors for concurrency synchronization]({{site.baseurl}}/docs/workflows/concurrency-limit)  
-[Nested workflows]({{site.baseurl}}/docs/workflows/nested-workflows)  
+[Selectors for concurrency synchronization]({{site.baseurl}}/docs/workflows/concurrency-limit/)  
+[Nested workflows]({{site.baseurl}}/docs/workflows/nested-workflows/)  
 [Configure artifact repository]({{site.baseurl}}/docs/workflows/configure-artifact-repository/)  
