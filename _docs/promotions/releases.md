@@ -29,11 +29,11 @@ As an application developer or a DevOps engineer, you often lack visibility into
 
 There are two key aspects of tracking deployments for a product through releases:
 * **Promotion Flow**  
-  This aspect provides a graphical representation of the defined Promotion Flow for the release, showing the progression through different environments.  
+  Tracking the Promotion Flow for the release provides a graphical representation of how the release is orchestrated, showing the progression through different environments.  
   See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).
 
 * **Release notes**  
-  This aspect collates an integrated list of changes from various sources, providing a comprehensive view of what has led to the deployment.  
+  Tracking through release notes provides an integrated list of changes from various sources and tools, providing a comprehensive view of what led to the deployment.  
   See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
 
 
@@ -125,14 +125,16 @@ See [Workflow and workflow-step status](#workflow-and-workflow-step-status).
 * Other Environments: Can run both Pre- and Post-Action workflows as defined by the Promotion Policies applied to the environments.
 
 #### Versioning in Environments
-When the Post-Action Workflow in the trigger environment and the Pre-Action Workflows in other environments complete successfully, the promotion mechanism commits the changes and advances the version number.  
-Even if there is a failure in the Post-Action Workflow within an environment, the version of the product in that environment reflects the version in the preceding environment in the promotion flow.
+When the Post-Action Workflow in the trigger environment, or the Pre-Action Workflow and Promotion Action in any other environment, completes successfully, the promotion mechanism commits the changes and advances the version number for the applications within the product. This occurs even if the Post-Action Workflow in a specific environment fails to complete.
 
-Understanding this versioning is crucial for tracking the progression of releases and troubleshooting issues.
+Because of this automatic version update, it's essential to incorporate a revert or rollback mechanism in the Post-Action Workflow to allow for easy reversion of changes if needed.
+
+TBD
+
 
 #### Errors for Workflow steps
 Workflows fail when at least one step in the workflow does not complete successful execution. 
-Identifying and resolving these failures in real-time  critical to maintaining smooth deployment processes.
+Identifying and resolving these failures in real-time are critical to maintaining smooth deployment processes.
 
 Errors can be categorized into:
 
@@ -144,8 +146,8 @@ Errors can be categorized into:
 * **Application errors**
   * Prefixed with {::nomarkdown}<img src="../../../images/icons/product-release-app-error.png?display=inline-block">{:/}.
   * Occurs when the health status of an application connected to the product is Degraded, indicating that one of its resources is not healthy.
-    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).  
-    Clicking on the error takes you to the Current State tab in the GitOps Apps dashboard.
+    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).   
+    Clicking on the error takes you to the Current State tab in the GitOps Apps dashboard. 
 
 * **Git errors**
   * Prefixed with {::nomarkdown}<img src="../../../images/icons/product-release-git-error.png?display=inline-block">{:/}.
@@ -163,8 +165,10 @@ arising from insufficient permissions to execute workflow steps or access necess
 
 Access the release notes to see a detailed history of all changes that led to the deployed release and artifacts created for it.
 
-These changes are collated from different tools, and include code changes, commits, and associated issues or fixes.
+These changes are collated from different tools and sources, and include code changes, commits, and associated issues or fixes.
 Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
+
+NIMA: Add here use case of how to use release notes to troubleshoot/trace issue.
 
 SCREENSHOT
 
@@ -196,6 +200,7 @@ The table describes the possible statuses of a Release.
 | **Terminated**     | The Pre- or Post-Action Workflow currently being run in an environment was terminated preventing deployment to the other environments defined in the Promotion Flow. |
 | **Failed**         | Deployment to at least one environment failed and the Release failed. The Pre- or Post-Action Workflow with the failed step is flagged in the environment and in the header. Clicking it opens a panel with a link to the logs for that step. |
 
+(NIMA: where should I add the info terminate - to release or workflow or both?)
 
 ### Environment (deployment) status
 The overall deployment status of an environment is determined by the cumulative statuses of the Pre- and Post-Action Promotion Workflows run within that environment.
@@ -227,7 +232,7 @@ The table describes the possible statuses for Promotion Workflow steps.
 | **Pending**        | The step is pending execution in at least one of the Pre- and Post-Action Workflows. |
 | **Failed**         | At least one step in a Pre- or Post-Action Workflow failed to execute. (NIMA: what could be the reasons?) |
 | **Error**          | At least one step in a Pre- or Post-Action Workflow has a syntax error. (NIMA: example|
-| **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. (NIMA: example of reasons|
+| **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. (NIMA: example of reasons)|
 
 
 
