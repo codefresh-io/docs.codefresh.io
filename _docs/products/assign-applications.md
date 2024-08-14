@@ -1,26 +1,31 @@
 ---
-title: "Assigning applications to products"
-description: "Manually or declaratively connect applications to products "
+title: "Assigning applications to Products"
+description: "Manually or declaratively connect applications to Products"
 group: products
 toc: true
 ---
 
 After creating products, the next step is to assign applications to it.
-Assigning applications groups them as a single cohesive entity, enabling efficient maintenamce and easier deployments.
+Assigning applications to products groups these applications into a single cohesive entity, enabling efficient maintenance and easier deployments.
 
 There are two methods of assigning applications to a Product:
 
 * Manual assignment  
   A one-click action for quick assignment within Product Settings.  
   Unlike other UI actions, manual assignment does not require a commit action. Applications assigned to a product are not stored in the product's resource definition.  
-  Recommended for testing purposes and not as the preferred method.
+  Recommended for testing purposes and not as the preferred method.  
+  For how-to instructions, see [Connect applications to products with annotations]({{site.baseurl}}/docs/products/configure-product-settings/#connect-applications-to-product-with-annotations).
+
 
 * Declarative assignment 
   Defines an annotation with the Product name in the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you.  
   The annotation is committed and saved in Git as part of the application definition.   
-  Fully GitOps-compatible, this is the preferred method.
+  Fully GitOps-compatible, this is the preferred method.  
+  For how-to instructions, see [Manually assign unassigned applications]({{site.baseurl}}/docs/products/configure-product-settings/#manually-assign-unassigned-applications).
 
-## Manually assign applications to Products
+You can always unassign an application from a product, from [Product Settings](#unassign-application-from-product-settings) for manually assigned applications, and by [removing the annotation](#unassign-application-by-removing-annotation) for declaratively assigned applications.
+
+<!---- ## Manually assign applications to Products
 
 Manually assign an application through the Product's settings.
 
@@ -111,7 +116,7 @@ This is one of two methods for assigning applications to Products. The other met
 If you return to the GitOps Products dashboard and expand the Product, you'll now see that the application is part of the Product.
 
 
-
+-->
 
 
 ## Unassign application from Product Settings

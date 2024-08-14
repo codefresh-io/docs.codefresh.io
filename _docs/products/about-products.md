@@ -1,4 +1,9 @@
-
+---
+title: "About Products"
+description: "Create Products to group and deploy applications"
+group: products
+toc: true
+---
 
 
 
@@ -76,10 +81,10 @@ Codefresh seamlessly identifies and organizes the applications in the correct [E
 
 ##### How do you deploy a Product?
 
-By configuring promotion settings for the product and its applications:
+By configuring the promotion flows and settings for the product and its applications:
 
-Promotion Flows
-Define the steps and criteria for promoting applications in the product through different stages of deployment. Select and customize the conditions to trigger specific Promotion Flows, automating and controlling when and how applications are promoted.
+Configure Promotion Flows
+Define the steps and criteria for promoting applications in the product through different stages of deployment. Select and customize the conditions to trigger specific flows, automating and controlling when and how applications are promoted.
 
 Promotion Settings
  and specifying the precise attributes to be promoted within applications. This ensures that the right versions and components are consistently advanced through your deployment stages.
@@ -87,4 +92,4 @@ Promotion Settings
 By utilizing these configuration options, you can optimize your CI/CD processes and maintain a 
 
 
-Read all about how to [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).
+Read more about how to [work with Products](#working-with-products), and with [applications in Products](#working-with-applications-in-products).

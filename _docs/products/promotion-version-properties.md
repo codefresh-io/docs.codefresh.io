@@ -1,6 +1,6 @@
 ---
 title: "Configuring app version and promotable properties"
-description: "Configure version and properties to promote for applications in Promotion Settings"
+description: "Configure application version and properties to promote in Promotion Settings"
 group: products
 toc: true
 ---
@@ -9,12 +9,14 @@ toc: true
 
 Through Promotion Settings for Products, you can automate and customize the changes to promote between different environments. By defining precise promotion criteria, you can ensure that only the necessary changes are promoted, enhancing both accuracy and efficiency.
 
+SCREENSHOT
+
 ##### Benefits of configuring Promotion Settings
 
-* Precision through automation  
+* **Precision through automation**  
   Provides an automated mechanism to precisely define which changes to promote for the application, avoiding the need to manually review and approve or reject diffs. This functionality is invaluable when promoting multiple applications with many microservices or files. 
 
-* Enforce environment-specific requirements  
+* **Enforce environment-specific requirements**  
   Different environments have distinct constraints and requirements. Promotion Settings enable you to specify which changes are valid for each environment, ensuring compliance with environment-specific needs.  
   While artifact versions and image tags typically warrant promotion for example, other changes may need to be excluded based on the target environment. 
 
@@ -24,18 +26,22 @@ Promotion Settings serve two primary functions for the applications being promot
 1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
 
 
-For how to instructions on configuring Promotion Settings, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
+For how-to instructions on configuring Promotion Settings, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
 
 
 
 ##  Promotion Settings & Promotion Templates
 
-As with other GitOps entities, you can configure Promotion Settings in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
+As with other GitOps entities, you can configure Promotion Settings in either Form or YAML modes.  
+Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
+
 
 If you are more comfortable configuring directly in YAML, refer to our ???? Promotion Template CRD for the syntax requirements and descriptions.
 
 ## Versions for promoted applications
 The Version attribute specifies the location for version information for the applications in the Product. The application version is displayed in the  Environments, Products, and GitOps Apps dashboards.   
+
+SCREENSHOT
 
 
 The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
@@ -46,7 +52,7 @@ For example:
 `$.appVersion` and `chart.yaml` configured for Version indicates that the version is extracted from the `appVersion` field in the specified file, `chart.yaml`.
 Codefresh retrieves the repo URL and the path to the file from the application manifest.
 
-If the version is either not displayed in the dashboards, or if the version displayed is incorrect, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
+If the version is either not displayed in the dashboards, or if the incorrect version is displayed, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
 
 ### Examples of version attributes
 
@@ -57,8 +63,8 @@ You can extract version information from different attributes, ensuring it align
   <colgroup>
     <col style="width: 10%;">
     <col style="width: 30%;">
-    <col style="width: 10%;">
-    <col style="width: 40%;">
+    <col style="width: 15%;">
+    <col style="width: 35%;">
   </colgroup>
   <thead>
     <tr>
@@ -230,6 +236,8 @@ release:
 Promotable Properties define the specific files or the attributes within files, to be promoted between environments for applications in the product.  
 Though optional, defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
 
+SCREENSHOT
+
 {{site.data.callout.callout_tip}}
 **TIP**  
 When no Promotable Properties are configured, all changes are promoted between all environments.
@@ -256,6 +264,8 @@ You can see that properties are configured to be promoted from three different f
 The examples that follow show how the JSON path expressions are resolved in the different YAMLs. 
 The YAML manifests are displayed on the left, and the previews for the `trio-prod` application shows the resolved values. 
 
+<br>
+
 #### `version.yaml' promoted property resolution & preview
 
 {% include 
@@ -268,6 +278,8 @@ The YAML manifests are displayed on the left, and the previews for the `trio-pro
   max-width="60%" 
 %}
 
+<br>
+
 #### `chart.yaml' promoted property resolution & preview
 
 {% include 
@@ -279,6 +291,8 @@ The YAML manifests are displayed on the left, and the previews for the `trio-pro
 	caption="`version.yaml`: Example of manifest (left) and preview (right) with resolved JSON path expression"
   max-width="60%" 
 %}
+
+<br>
 
 #### `values.yaml' promoted property resolution & preview
 
@@ -299,10 +313,8 @@ The YAML manifests are displayed on the left, and the previews for the `trio-pro
 Application versions and properties to be promoted are defined through JSON path expressions used to navigate and extract values from files. Each JSON expression points to the specified file and the location of the property within the file. 
 
 
-### JSON path expression syntax & rules 
 The table provides a brief summary of JSON syntax and rules.
-
-For detailed information, see [JSON syntax](https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html){target="\_blank"}.
+For detailed information, see [JSON syntax](https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html){:target="\_blank"}.
 
 {: .table .table-bordered .table-hover}
 | JSON syntax       | Description              | 
@@ -318,14 +330,14 @@ This is an extract from a sample values.yaml file.
 
 ```yaml
 global: 
-	codefresh:
-		url: g.codefresh.io
-		tls:
-			create: false
+  codefresh:
+    url: g.codefresh.io
+    tls:
+      create: false
 argo-cd: 
-	tls:
-		create: true
-		caCert: 'some-argo-cert'
+  tls:
+    create: true
+    caCert: 'some-argo-cert'
 ```
 
 Using the above syntax:  

@@ -468,9 +468,9 @@
       url: "/configure-product-settings"
     - title: Assign applications
       url: "/assign-applications"      
-    - title: Product application version and promoted properties
+    - title: Configuring app version and promoted properties
       url: "/promotion-version-properties"
-    - title: Product promotions
+    - title: Configuring promotion flows
       url: "/promotion-flow-triggers"
 
 

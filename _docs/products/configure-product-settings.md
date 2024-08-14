@@ -9,9 +9,12 @@ After creating a product, configure metadata, Promotion Settings, and Promotion 
 
 This article describes how to configure the different Product Settings:
 
-* [Configure metadata)  
-  Declaratively connect an application to a product with the predefined and automatically generated product annotation. See [Connect applications to product with annotations]((#connect-applications-to-product-with-annotations).  
-  Add labels for the product by which to application. See [Configure labels](????)
+* [Declaratively connect applications](#connect-applications-to-product-with-annotations)    
+  Declaratively connect an application to a product with the predefined and automatically generated product annotation. 
+  
+
+*  [Configure labels](#configure-labels)  
+  Add labels for the product by which to application. 
 
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Click names of unassigned applications to automatically assign them to environments. 
@@ -49,7 +52,7 @@ Applications manually assigned to the product are saved locally and not as part 
 
 
 ## Connect applications to product with annotations
-Connect applications to products declaratively by copying the Product annotation to the application's manifest. ??If the Product doesn’t exist, Codefresh automatically creates it for you. 
+Connect applications to products declaratively by copying the Product annotation to the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you. (NIMA: is this correct)
 
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 
@@ -59,17 +62,21 @@ This is the preferred, declarative method of assigning applications to Products.
 ##### How to
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab, and below Connect Applications copy the annotation to add to the application's manifest.
+
 SCREENSHOT
 
+{:start="3"}
 1. Paste the annotation in the application's manifest:
-  1. Click **Product Dashboard**. 
-  1. From the context menu of the application, select **Application Info > Go to application**.
-  1. Click the **Configuration** tab, and switch to **YAML** mode.
-  1. Paste below `metadata.annotations`.
+    1. Click **Product Dashboard**. 
+    1. From the context menu of the application, select **Application Info > Go to application**.
+    1. Click the **Configuration** tab, and switch to **YAML** mode.
+    1. Paste below `metadata.annotations`.
 
 SCREENSHOT
 
 ## Configure labels
+TBD 
+
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
 1. Below **Labels**, click **Add** and define key-value pairs.
@@ -81,7 +88,7 @@ This quick assignment option does not require a commit action as applications as
 
 This method is recommended for testing purposes.
 
-#### Before you begin
+##### Before you begin
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
 
 ##### How to
@@ -130,10 +137,12 @@ Automate and orchestrate promotions across different environments for the Produc
 
 SCREENSHOT
 
-{:start="5"}
+{:start="6"}
 1. To confirm, click **Add**.
 1. If there is more than one Promotion Flow, click ?? and drag to define the priority and order.  
 SCREENSHOT
+
+{:start="8"}
 1. Click **Commit**.
 
 ## Configure Promotion Settings
@@ -150,22 +159,24 @@ Configure Promotion Settings to define:
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **Promotion Settings** tab.
 1. From the list of Promotion Templates, do one of the following:
-  * Select a predefined Promotion Template.  
-    The Version and Promotable Properties are populated with the settings already defined in the template.
-  * Select **Inline** and create a new Promotion Template for this product. Continue from _step 4_.
+    * Select a predefined Promotion Template.  
+      The Version and Promotable Properties are populated with the settings already defined in the template.
+    * Select **Inline** and create a new Promotion Template for this product. Continue from _step 4_.
 
+{:start="4"}
 1. Define the source settings for the application **Version**:
-  1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
-  1. **Path**: The JSON path to the attribute with the value. 
-  1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
+    1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
+    1. **Path**: The JSON path to the attribute with the value. 
+    1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
 
 SCREENSHOT??
 
+{:start="5"}
 1. Define the settings for the **Promotable Properties**:
-  1. **File**: The name of the file with the attributes to promote. For example, `values.yaml`. 
-  1. **Paths**: The JSON path or paths to one or more attributes within the file to promote. For example, `$.buslog.image.tag`, `$.ctrlr.image.tag`, and `$.flask-ui.image.tag`.
-  1. To add more files and paths, click **Add** and define the **File** and **Paths**.
-  1. To preview the properties that will be promoted for an application connected to the product, click **Preview Configuration** and then select an application. 
+    1. **File**: The name of the file with the attributes to promote. For example, `values.yaml`. 
+    1. **Paths**: The JSON path or paths to one or more attributes within the file to promote. For example, `$.buslog.image.tag`, `$.ctrlr.image.tag`, and `$.flask-ui.image.tag`.
+    1. To add more files and paths, click **Add** and define the **File** and **Paths**.
+    1. To preview the properties that will be promoted for an application connected to the product, click **Preview Configuration** and then select an application. 
 1. Click **Commit**.
 
 
