@@ -13,17 +13,17 @@ This article describes how to configure the different Product Settings:
   Declaratively connect an application to a product with the predefined and automatically generated product annotation. 
   
 
-*  [Configure labels](#configure-labels)  
+* [Labels for applications](#configure-labels)  
   Add labels for the product by which to application. 
 
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Click names of unassigned applications to automatically assign them to environments. 
 
 
-* [Configure Promotion Flows](#configure-promotion-flows)  
+* [Promotion Flows](#configure-promotion-flows)  
   Select one or more predefined Promotion Flows, and customize the trigger conditions for each of the Flows.
   
-* [Configure Promotion Settings](#configure-promotion-settings)  
+* [Promotion Settings](#configure-promotion-settings)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
 
 
@@ -56,7 +56,7 @@ Connect applications to products declaratively by copying the Product annotation
 
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 
-#### Before you begin
+##### Before you begin
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
 
 ##### How to
