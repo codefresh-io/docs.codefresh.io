@@ -8,21 +8,22 @@ toc: true
 ## About tracking product deployments
 
 When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production. 
-In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final production-ready environment. 
+
+In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change from the initial trigger environment to the final production-ready environment. 
 
 The Releases feature in Codefresh is designed for tracking deployments of a product across multiple environments. 
 
 SCREENSHOT
 
-See [View Releases for Products](#view-releases-for-products).
+
 <!--- A release refers to the new version of software deployed to an environment after ensuring that the code has passed all necessary stages of testing and validation. -->
 
 ##### Releases & Products
-A Release is added for a Product when the Product is promoted from the trigger environment according to the Promotion Flow selected for the Product. 
-On drill down into a Product, the Releases tab displays the list of ongoing and completed releases for that product, with the option of getting detailed insights on a specific release.
+A Release is added for a Product when a Promotion Flow is triggered, either automatically or manually for that product.
+On drill down into a Product, the Releases tab displays the list of ongoing and completed releases for the product, with the option of getting detailed insights on a specific release.
 
 ##### Releases & developers
-As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues, or understand the changes involved in a release.
+As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for deployments, or understand the changes involved in a release.
 
 
 There are two key aspects of tracking deployments for a product through releases:
@@ -45,7 +46,7 @@ Whether you are a product manager or an application developer, with Releases, yo
 
 ## View Releases for products
 
-The Releases tab for a product displays the releases for that product with promotions, whether successful or failed.
+The Releases tab for a product displays the releases for that product, whether successful or failed.
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the product and then click the **Releases** tab.
@@ -85,6 +86,8 @@ The header summarizes the change that triggered the promotion, the overall statu
 
 The commit details are always for the trigger environment that initiated the promotion.
 
+See also [Release status](#release-status).
+
 SCREENSHOT
 
 ### Environments in Product Releases
@@ -95,14 +98,14 @@ You can:
 * Understand the interconnections between the environments, whether linear or parallel.
 * Visualize the dependencies between environments to see how changes propagate through the deployment process
 
-Each environment is color-coded to indicate the overall status of the promotion for that environment.
+Each environment is color-coded to indicate the overall status of the promotion for that environment. See [Environment (deployment) status](#environment-deployment-status).
 
 
 SCREENSHOT
 
 #### Concurrent promotions within environments
 
-If there is an update that triggers a Pre- or Post-Action Workflow within an environment while the same Workflow is already in progress, the ongoing Workflow is automatically terminated and the  one is run instead.
+If there is an update that triggers a Pre- or Post-Action Workflow within an environment while the same Workflow is already in progress, the ongoing Workflow is automatically terminated and the latest Workflow is run instead.
 
 
 For example, if an update in the staging environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance is run. 
@@ -112,15 +115,16 @@ NIMA: how will it be shown in the releases tab?
 
 ### Promotion Workflows in Product Releases
 
-Each environment displays the steps for the Pre- and Post-Action Workflows defined for it. The workflows are designed to ensure that the deployment process is thoroughly validated and executed correctly.
+Each environment displays the steps for the Pre- and Post-Action Workflows defined for it. The workflows are designed to ensure that the deployment process is thoroughly validated and executed correctly.  
+See [Workflow and workflow-step status](#workflow-and-workflow-step-status).
 
 #### Pre- and Post-Action Workflows
 
-* Trigger Environment: Runs only Post-Action workflows.
+* Trigger Environment: Can run only Post-Action workflows.
 * Other Environments: Can run both Pre- and Post-Action workflows as defined by the Promotion Policies applied to the environments.
 
 #### Versioning in Environments
-When the Post-Action Workflow in the trigger environment and the Pre-Action Workflows in other environments complete successfully, the promotion mechanism commits the changes and advances the version number. 
+When the Post-Action Workflow in the trigger environment and the Pre-Action Workflows in other environments complete successfully, the promotion mechanism commits the changes and advances the version number.  
 Even if there is a failure in the Post-Action Workflow within an environment, the version of the product in that environment reflects the version in the preceding environment in the promotion flow.
 
 Understanding this versioning is crucial for tracking the progression of releases and troubleshooting issues.
@@ -157,7 +161,8 @@ arising from insufficient permissions to execute workflow steps or access necess
 ## Analyze change history in Release Notes 
 
 Access the release notes to see a detailed history of all changes that led to the deployed release and artifacts created for it.
-These changes include code changes, commits, and associated issues or fixes.
+
+These changes are collated from different tools, and include code changes, commits, and associated issues or fixes.
 Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
 
 SCREENSHOT
@@ -168,7 +173,8 @@ SCREENSHOT
 
 
 There are three levels of statuses for a product release.  
-In top-down order: 
+
+In top-down order, you have the: 
 * Overall release status 
 * Environment deployment status
 * Workflow step status
