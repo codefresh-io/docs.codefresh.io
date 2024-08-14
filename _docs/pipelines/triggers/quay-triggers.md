@@ -100,5 +100,5 @@ Finally click *Create Notification*.
 Now, every time you push a new Docker image to the selected Quay repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Quay Push trigger event.
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

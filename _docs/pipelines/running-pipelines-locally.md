@@ -62,7 +62,7 @@ codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local -b master -t 
 ### Keeping the pipeline volume in the local workstation
 
 If you are familiar with 
-[how Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines) you should know about the unique docker volume that is automatically shared between all pipeline steps.
+[how Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) you should know about the unique docker volume that is automatically shared between all pipeline steps.
 
 This volume (which also includes the project folder) makes data sharing between all steps very easy (e.g. with thing such as test reports or binary dependencies).
 

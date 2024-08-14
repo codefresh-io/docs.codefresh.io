@@ -16,7 +16,8 @@ You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as descri
 
 For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops). 
 
-This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
+
+This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts on a _clean cluster_. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
 
 For Hosted GitOps Runtimes, see [Hosted GitOps Runtime Setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/). 
 
@@ -30,25 +31,23 @@ There are two options for Hybrid GitOps Runtime installation via Helm, each cate
   The _clean cluster_ installation option is suitable for environments where you want to deploy the GitOps Runtime on a cluster without Argo CD.
   The installation cluster should be free of Argo Project components. GitOps Runtime installation on a clean cluster also installs Argo Project components as part of the installation process, 
 
-* **Cluster with existing Argo CD**  
+* **Cluster with Community Argo CD**  
   If you have a cluster with Argo CD already installed, you can extend it with Codefresh's GitOps capabilities.
-  This installation option for the GitOps Runtime requires additional configuration to prevent naming and tracking conflicts across resources both to the Community Argo CD instance and to the Argo CD instance deployed by Codefresh.
-
-Choose the installation option that best aligns with your specific requirements and current environment setup. 
-
-##### GitOps Runtime installation
+  This installation option for the GitOps Runtime requires additional configuration to prevent naming and tracking conflicts across resources common to both the Community Argo CD instance and to the Argo CD instance deployed by Codefresh. See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
 
 
-* **First-time GitOps Runtime installation**  
-  If this is your first time installing a GitOps Runtime in your Codefresh account, follow these steps:
+## GitOps Runtime installation
 
-  * [Complete prerequisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete pre-requisites.
+
+##### First-time GitOps Runtime installation
+If this is your first time installing a GitOps Runtime in your Codefresh account on a clean cluster, follow these steps:
+  * [Complete prerequisites](#preparing-for-hybrid-gitops-runtime-installation): Before starting the installation, complete prerequisites.
   * [System requirements](#minimum-system-requirements): Check the minimum system requirements to ensure smooth installation.
   * [Step-by-step installation](#install-first-gitops-runtime-in-account): Follow our step-by-step guide to install the Hybrid GitOps Runtime from the Codefresh UI.
 
 
 
-* **Additional GitOps Runtime installations**  
+##### Additional GitOps Runtime installations  
   If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
   When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
 
@@ -70,43 +69,37 @@ In the documentation, Hybrid GitOps Runtimes are also referred to as GitOps Runt
 
 ## Preparing for Hybrid GitOps Runtime installation
 
-
-Whether you are installing the GitOps Runtime on a cluster with or without Community Argo CD, you have to complete the prerequisites to ensure a smooth installation.
-
-
-| Prerequisite                                                            |  GitOps Runtime only    | GitOps Runtime with Community Argo CD | 
-|-------------------------------------                                   |:------------:   |:-------------:      |
-|[Argo Project components](#gitops-runtime-only-argo-project-components)        |    ✅            |     N/A                |
-|[SealedSecrets controller](#gitops-runtime-only-sealedsecrets-controller)        |    ✅            |     N/A                |
-|[Argo Project CRDs (Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-project-crds)  |     ✅            | ✅                  |
-|[Argo Rollout CRDs (Custom Resource Definitions)](#gitops-runtime-onlygitops-runtime-with-argo-cd-argo-rollout-crds)  |     ✅            | ✅                  |
-|[Align Argo CD chart's minor versions](#gitops-runtime-with-argo-cd-align-argo-cd-charts-minor-versions) |     N/A           | ✅        |
-|[Set Community Argo CD resource tracking to `label`](#gitops-with-argo-cd-set-community-argo-cd-resource-tracking-to-label) |     N/A   |        ✅     |
-
-### GitOps Runtime only: Argo Project components
-When installing only the GitOps Runtime on the cluster, the cluster should not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
+Complete the prerequisites to ensure a smooth installation of Hybrid GitOps Runtime on a clean cluster.
 
 
-### GitOps Runtime only: SealedSecrets controller
-When installing only the GitOps Runtime on the cluster, the cluster should not have SealedSecret controller components.
+### Argo Project components
+
+When installing the GitOps Runtime on a cluster without Argo CD, the cluster should not have any Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
 
 
-### GitOps Runtime only/GitOps Runtime with Argo CD: Argo Project CRDs
-If you already have Argo Project CRDs on your cluster, Codefresh recommends adopting the CRDs to switch ownership for them to the GitOps Runtime, or handling the CRDs outside the chart.  
-Allowing the GitOps Runtime to manage the CRDs also ensures that the CRDs are automatically upgraded whenever the Runtime is upgraded. 
+### SealedSecrets controller
+The cluster should not have SealedSecret controller components.
+
+
+### Switch ownership of Argo Project CRDs
+If you already have Argo Project CRDs on your cluster, Codefresh recommends doing one of the following:
+
+* Adopting the CRDs    
+  Adopting the CRDs switches ownership for them to the GitOps Runtime, ensures that the GitOps Runtime manages the CRDs, and that the CRDs are automatically upgraded whenever the Runtime is upgraded. 
+* Handling the CRDs outside the chart
 
 
 #### (Recommended) Adopt all Argo Project CRDs
 Adopting _all CRDs_ switches ownership to the Hybrid GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
  
-Run this script _before_ installation:
+* Run this script _before_ installation:
 ```
 curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
 ```
 
 #### Handle Argo Project CRDs outside of the chart
 
-Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
+* Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
   where:<br>
   `<argo-project>` is the Argo Project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
@@ -115,17 +108,17 @@ See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/ma
 
 
 
-### GitOps Runtime only/GitOps Runtime with Argo CD: Argo Rollout CRDs
-
-You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster.
-
-See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.
+### (Optional) Switch ownership of only Argo Rollout CRDs
 
 >**NOTE**  
 If you already adopted all Argo Project CRDs, you can skip this part.
 
+You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster.
 
-Run this script _before_ installation:
+
+
+
+* Run this script _before_ installation:
 ```
 #!/bin/sh
 RELEASE=<runtime-helm-release-name>
@@ -135,79 +128,77 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
 
+## Validating `values.yaml`
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+A validation error will automatically terminate the installation.
+
+You can disable automated validation and manually run the validation if desired.
+
+### Validated settings
+The table below lists the settings validated in the `values` file.
+
+{: .table .table-bordered .table-hover}
+|**Setting**              |**Validation**            | 
+| --------------         | --------------           |  
+|**userToken**            |If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace.|
+|**Account permissions**  |If the user has admin permissions for the account in which they are installing the runtime. |
+| **Runtime name**        |If defined, and is unique to the account. |
+|**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if <code class="highlighter-rouge">accountId</code> is defined, and matches the account of the <code class="highlighter-rouge">userToken</code> defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if <code class="highlighter-rouge">runtime.ingressUrl</code> is defined.</li></ul>{:/} |
+|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a <code class="highlighter-rouge">secretKeyRef</code>, similar to <code class="highlighter-rouge">userToken</code>.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |
+
+### Validation failures
+If there is a validation failure, Codefresh terminates the installation with the error message:  
+`Job has reached the specified backoff limit`  
+
+To get more detailed and meaningful information on the reason for the validation failure, run:  
+`kubectl logs jobs/validate-values -n ${NAMESPACE}`  
+where:  
+* `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime.
+
+### Disable automated validation
+You may want to disable automated validation for specific scenarios, such as to address false-negatives.
+Do so by either adding the flag to the Helm install command or adding the relevant section to the values file.
 
 
-### GitOps Runtime with Argo CD: Align Argo CD chart's minor versions 
-To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
+##### In install command 
+`--set installer.skipValidation=true` 
 
-If the chart's minor appversion is lower than the version used by Codefresh, you will need to upgrade to the required version. For higher minor appversions that are not available in Codefresh forks, please contact Codefresh Support for assistance.
-
-1. Get the Argo CD chart version used by Codefresh from the Dependencies either in ArtifactHub or from the GitOps Runtime's `Chart.yaml` in Git: 
-  * [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="\_blank"}: 
-  
-  {% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/helm/argo-cd-chart-version-artifacthub.png"
-   url="/images/runtime/helm/argo-cd-chart-version-artifacthub.png"
-  alt="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
-  caption="Getting the Codefresh chart version of Argo CD from Dependencies in ArtifactHub"
-  max-width="60%"
-%}
-
-  * [Chart.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/Chart.yaml){:target="\_blank"}:
-
-    {% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/helm/argo-cd-chart-version-git.png"
-   url="/images/runtime/helm/argo-cd-chart-version-git.png"
-  alt="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
-  caption="Getting the Codefresh chart version of Argo CD from Dependencies in Chart.yaml"
-  max-width="60%"
-%}
-
-{:start="2"}
-1. Go to `https://github.com/codefresh-io/argo-helm/blob/argo-cd-<dependency-chart-version>/charts/argo-cd/Chart.yaml`  
-  where:  
-  `<dependency-chart-version>` is the Codefresh Argo CD chart version you retrieved in step 1, for example, `5.38.1-1-cap-CR-18361`.
-1. Check the `appVersion` as in the example below.
-
-{% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/helm/helm-side-by-side-argocd-version.png"
- url="/images/runtime/helm/helm-side-by-side-argocd-version.png"
-  alt="Check versions"
-  caption="Check versions"
-  max-width="60%"
-%}
-
-{:start="4"}
-1. If your minor appversion differs from that used by Codefresh, do one of the following: 
-  * Lower version: Upgrade to the required minor appversion.
-  * Higher version: If not available in Codefresh forks, please contact Codefresh Support.
+##### In values file 
+{% highlight yaml %}
+{% raw %} 
+...
+installer: skipValidation: true
+... 
+{% endraw %}
+{% endhighlight %}
 
 
-
-### GitOps with Argo CD: Set Community Argo CD resource tracking to `label` 
-When you install GitOps on a cluster with an existing Community Argo CD installation, ensure that the Community Argo CD is set to track resources using the default `label` method.  If both Argo CD instances use the same tracking method, it can result in conflicts when tracking applications with the same name, or when tracking the same resource. 
-
-* In the Argo CD namespace, make sure `argocd-cm.application.resourceTrackingMethod` is either not defined, in which case it defaults to `label`, or if defined, is set to `label`.
+### Manually validate values.yaml
+To manually validate the values file, run:  
+`cf helm validate --values <values_file> --namespace <namespace> --version <version>`  
+where:  
+* `<values_file>` is the name of the values.yaml used by the Helm installation.
+* `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects.
+* `<version>` is the version of the runtime to install.
 
 
 ## Install first GitOps Runtime in account
 If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. See ???
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.
+
+
+
 
 ### Before you begin
 * Make sure you meet the [minimum requirements](#minimum-system-requirements) for installation
-* Verify that you complete all the [prerequisites](#preparing-for-hybrid-gitops-runtime-installation)
+* Verify that you complete all the prerequisites:  
+  * [Clean Hybrid GitOps Runtime installation](#preparing-for-hybrid-gitops-runtime-installation)  
+  * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    <!--- * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
+    * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
     * Server URLs for on-premises Git providers
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)
@@ -250,7 +241,7 @@ The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
-* Bitbucket Server: `<server-url>/rest/api/1.0`
+* Bitbucket Server: `<server-url>`
 
 
 <br>
@@ -290,7 +281,7 @@ Install the Hybrid GitOps Runtime through the Helm chart. The Codefresh `values.
 
 
 **Runtime Name**  
-If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 62 lower-case characters and numbers.
+If you define a custom name for the Hybrid GitOps Runtime, it must start with a lower-case character, and can include up to 38 lower-case characters and numbers.
 
 **Namespace**  
 The Namespace must conform to the naming conventions for Kubernetes objects.
@@ -300,16 +291,6 @@ You can define one of three different access modes:
 * Tunnel-based, the default mode, is automatically enabled when the other access modes are not defined in the installation command.
 * Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 * Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
-
-
-**GitOps with Argo CD and Argo Rollouts**
-* `fullnameOverride` configuration for resource conflicts  
-  Installing GitOps Runtime on the same cluster as Argo CD can cause conflicts when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
-  Customizing `fullnameOverride` values for Argo CD, and if installed, Argo Rollouts, in the GitOps Runtime's `values` file prevents these conflicts.
-
-* Resource tracking with `annotation`  
-  Installing GitOps Runtime on the same cluster as Argo CD require that each Argo CD instance uses different methods to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation` prevents such conflicts. 
-
 
 <br>
 
@@ -332,6 +313,12 @@ max-width="50%"
 1. Copy and run the command to install the runtime Helm chart:  
   The commands differ depending on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
   Unless otherwise indicated, values are automatically populated by Codefresh. If you're using a terminal, remember to copy the values from the UI beforehand.<br>
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**    
+  For installations alongside Community Argo CD, you must add three mandatory flags. See [Additional installation flags for GitOps Runtime with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side#additional-installation-flags-for-gitops-runtime-with-community-argo-cd). 
+{{site.data.callout.end}}
+
   
 
   **Tunnel-based install chart command:**<br>
@@ -343,9 +330,6 @@ helm upgrade --install <helm-release-name> \
   --set global.codefresh.userToken.token=<codefresh-api-key> \
   --set global.runtime.name=<runtime-name> \
   oci://quay.io/codefresh/gitops-runtime \
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
   --wait
 {% endhighlight %}
 
@@ -361,9 +345,6 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingress.enabled=true \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
   oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
@@ -379,9 +360,6 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingressUrl=<ingress-url> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation \
   oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
@@ -394,10 +372,6 @@ helm upgrade --install <helm-release-name> \
       * `<codefresh-api-key>` is the API key, either an existing one or a new API key you generated. When generated, it is automatically populated in the command.
       * `<runtime-name>` is the name of the GitOps Runtime, and is either `codefresh` which is the default, or the custom name you define.
       * `gitops-runtime` is the chart name defined by Codefresh, and cannot be changed.
-      * GitOps with Argo CD installation:
-        * `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory when _installing GitOps with Argo CD_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
-        * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when _installing GitOps with Argo CD_  and you have Argo Rollouts in your cluster to avoid conflicts.
-        * `argo-cd.configs.cm.application.resourceTrackingMethod=annotation` is mandatory _installing GitOps with Argo CD_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
       * Ingress-based Runtimes:  
         * `global.runtime.ingress.enabled=true` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and indicates that the runtime is ingress-based.
         * `<ingress-host>` is mandatory for _ingress-based Hybrid GitOps Runtimes_, and is the IP address or host name of the ingress controller component.
@@ -559,30 +533,17 @@ You cannot configure the Runtime as an Argo Application if you have not configur
    %}
 
 {:start="3"}  
-1. Continue with [Step 7: (Optional) GitOps with Argo CD: Remove Rollouts controller deployment](#step-7-optional-gitops-with-argo-cd-remove-rollouts-controller-deployment).
+1. Continue with [Step 7: (Optional) Create a Git Source](#step-7-optional-create-a-git-source).
 
 
-### Step 7: (Optional) GitOps with Community Argo CD: Remove Rollouts controller deployment
-For GitOps with Argo CD, if you have Argo Rollouts also installed, after confirming successful installation, remove the duplicate Argo Rollouts controller deployment to avoid having two controllers in the cluster. 
-
-{{site.data.callout.callout_warning}}
-**IMPORTANT**    
-  Make sure to remove only the `deployment` and not the CRDs. Removing the CRDs also removes Rollout objects resulting in downtime for workloads. 
-{{site.data.callout.end}}
-
-1. Remove the duplicate Argo Rollouts controller:  
-  `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
-1. Continue with [Step 8: (Optional) Create a Git Source](#step-8-optional-create-a-git-source).
-
-
-### Step 8: (Optional) Create a Git Source
+### Step 7: (Optional) Create a Git Source
 Create a Git Source for the Runtime. A Git Source is a Git repository managed by Codefresh as an Argo CD application.  
 You can always create Git Sources after installation whenever you need to in the Codefresh UI.
 
 1. Optional. Create a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source).
-1. Continue with [Step 9: (Optional) Configure ingress-controllers](#step-9-optional-configure-ingress-controllers).
+1. Continue with [Step 8: (Optional) Configure ingress-controllers](#step-8-optional-configure-ingress-controllers).
 
-### Step 9: (Optional) Configure ingress-controllers
+### Step 8: (Optional) Configure ingress-controllers
 Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
 
 * Complete configuring these ingress controllers:
@@ -594,13 +555,18 @@ That's it! You have successfully completed installing a Hybrid GitOps Runtime wi
 
 <br>
 
+### (Optional) Post-installation steps
+Depending on your configuration, or if you have installed alongside Community Argo CD, you may need to complete configuration. 
 
+##### Private registries/on-premises Git servers  
+If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 
+##### GitOps alongside Community Argo CD
+If you completed installation on a cluster with Community Argo CD, do the following:
+  * [Remove Rollouts controller deployment]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#remove-rollouts-controller-deployment)
+  * [Migrate Community Argo CD Applications to Codefresh GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#migrate-community-argo-cd-applications-to-codefresh-gitops-runtime)
 
-Depending on your configuration:  
-* If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
-* If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops-runtime) to Codefresh Argo CD applications.
-
+### What to do next
 You can now add [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
@@ -734,14 +700,22 @@ Configuring the Runtime an an Argo CD application to view the Runtime components
     `kubectl delete deployment <argo-rollouts-controller-name> -n <argo-rollouts-controller-namespace>`
   {{site.data.callout.end}}
 
+### (Optional) Post-install steps
+Depending on your configuration or if you have installed alongside Community Argo CD, you may need to complete configuration. 
 
-### What to do next   
+##### Private registries  
+If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
 
-Depending on your configuration:  
-* If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 
-* If you installed the GitOps Runtime on a cluster alongside Community Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops-runtime) to Codefresh Argo CD applications.
+##### GitOps alongside Community Argo CD
+If you completed installation on a cluster with Community Argo CD, do the following:
+  * [Remove Rollouts controller deployment]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#remove-rollouts-controller-deployment)
+  * [Migrate Community Argo CD Applications to Codefresh GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#migrate-community-argo-cd-applications-to-codefresh-gitops-runtime)
 
+
+
+### What to do next  
 You can now add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), [external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+
 
 
 ## Install GitOps Runtime via Terraform
@@ -784,7 +758,7 @@ Depending on your configuration:
 * If you installed the GitOps Runtime on a cluster with Argo CD, you can [migrate Community Argo CD Applications](#migrate-argo-cd-applications-to-codefresh-gitops-runtime) to GitOps applications.
 
 
-By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
 ## Optional GitOps Runtime configuration
@@ -819,123 +793,10 @@ global:
 {% endhighlight yaml %}
 
 
-## Migrate Argo CD Applications to Codefresh GitOps Runtime
-The final task depending on your requirements is to migrate your Argo CD Applications to a Codefresh GitOps Runtime.  
-
-Because this allows you to completely and seamlessly manage the applications in Codefresh as GitOps entities.
 
 
-The process to migrate an Argo CD Application is simple:
-1. Add a Git Source to the Runtime to which store application manifests
-1. Make the needed configuration changes in the Argo CD Application
-1. Commit the application to the Git Source for viewing and management in Codefresh
+You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) the application you migrated as any other Argo CD application in Codefresh.
 
-
-### Step 1: Add a Git Source to GitOps Runtime
-
-After installing the GitOps Runtime successfully, you can add a Git Source to the Runtime and commit your applications to it.
-A Git Source is a Git repository with an opinionated folder structure managed by Codefresh.
-Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
-
-
-
-* Add a [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/#create-a-git-source) to your GitOps Runtime.
-
-### Step 2: Modify Argo CD Application
-
-Modify the Argo CD Application's manifest to remove `finalizers`, if any, and also remove the Application from the `argocd` `namespace` it is assigned to by default.
-
-* Remove `metadata.namespace: argocd`.
-* Remove `metadata.finalizers`.
-
-Below is an example of a manifest for an Argo CD Application with `finalizers`.
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: my-sample-app
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  source:
-    path: guestbooks/apps
-    repoURL: https://github.com/codefresh-codefresh/argocd-example-apps
-    targetRevision: personal-eks
-  destination:
-    namespace: my-app
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false
-      allowEmpty: false
-    syncOptions:
-      - PrunePropagationPolicy=foreground
-      - Replace=false
-      - PruneLast=false
-      - Validate=true
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=false
-      - ServerSideApply=false
-      - RespectIgnoreDifferences=false
-```
-
-
-
-
-### Step 3: Commit Argo CD application to Git Source
-As the final step in migrating your Argo CD Application to a Codefresh GitOps Runtime, manually commit the updated Application manifest to the Git Source you created in Step 1.  
-
-Once you commit the manifest to the Git Source, it is synced to the Git repo. You can view it in the Codefresh UI, modify definitions, track it through our different dashboards, and in short, manage it as you  would any GitOps resource in Codefresh. 
-
-1. Go to the Git repo where you created the Git Source.
-1. Add and commit the Argo CD Application manifest to the Git Source.
-   Here's an example of the `my-sample-app` above committed to a Git Source without `metadata.namespace: argocd` and `metadata.finalizers`.
-
-  {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/migrate-app-sample-in-git-source.png" 
-      url="/images/runtime/helm/migrate-app-sample-in-git-source.png" 
-      alt="Argo CD Application committed to GitOps Git Source" 
-      caption="Argo CD Application committed to GitOps Git Source"
-      max-width="50%" 
-   %}
-
-{:start="3"}
-1. In the Codefresh UI, from the sidebar, below Ops, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-  The Applications Dashboard displays the new Git Source application.
-  
-  {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/migrate-app-apps-dashboard.png" 
-      url="/images/runtime/helm/migrate-app-apps-dashboard.png" 
-      alt="GitOps Apps dashboard with Git Source and migrated Application" 
-      caption="GitOps Apps dashboard with Git Source and migrated Application"
-      max-width="50%" 
-   %}
-
-{:start="4"}
-1. Click the application to drill down to the different tabs. The Configuration tab displays the application's settings which you can modify and update.
-  Here's an example of the Current State tab for `my-sample-app`.
-
-  {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/migrate-app-current-state.png" 
-      url="/images/runtime/helm/migrate-app-current-state.png" 
-      alt="Current State tab for migrated " 
-      caption="GitOps Apps dashboard with Git Source and GitOps Application"
-      max-width="50%" 
-   %}
-
-
-
-You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application) the application you migrated as any other Argo CD application in Codefresh.
 
 
 ## Minimum system requirements
@@ -943,7 +804,8 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |
 | --------------         | --------------           |
-|Kubernetes cluster      | Server version 1.21 to 1.27, _without_ Argo Project components. {::nomarkdown}<br><b>Tip</b>: To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
+|Kubernetes cluster      | Server version 1.23 or higher {::nomarkdown}<br><b>Tip</b>: To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>{:/}|
+|Helm| 3.8.0 or higher|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|

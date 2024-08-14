@@ -18,7 +18,7 @@ As a Codefresh user, you can manage several settings and resources through your 
 
 {{site.data.callout.callout_tip}}
 **TIP**    
-  To manage Git user personal access tokens for GitOps, see [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats).
+  To manage Git user personal access tokens for GitOps, see [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/).
 {{site.data.callout.end}}
 
 

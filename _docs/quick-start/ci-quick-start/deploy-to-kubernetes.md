@@ -242,9 +242,9 @@ max-width="50%"
 You now have a complete CI/CD pipeline in Codefresh that executes fully automated builds to Kubernetes.
 
 Continue with:  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm)
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)
 OR  
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 
 
 ## Read more on Kubernetes deployments & pipelines

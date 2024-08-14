@@ -278,7 +278,7 @@ The next step after creating the GitOps application is to deploy it.  To deploy 
 * `Rollout` resource defining the deployment strategy 
 * `Service` resource to expose the application to external traffic
 
-You will also need to [install Argo Rollouts]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts) on the cluster to which you are deploying the application. 
+You will also need to [install Argo Rollouts]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/) on the cluster to which you are deploying the application. 
 
 ### Create rollout.yaml
 
@@ -452,7 +452,7 @@ You can see the:
 ### Review and update application Configuration
 The Configuration tab displays the definitions for the application. Apart from the application name and runtime, you can change any setting, and commit the changes. 
 
-For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application).
+For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 ## Home and DORA Metrics dashboards
 

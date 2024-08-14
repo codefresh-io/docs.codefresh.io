@@ -33,8 +33,9 @@ In addition, the [Pipelines Dashboard]({{site.baseurl}}/docs/dashboards/home-das
 
 Concurrency limits control the number of simultaneous builds for Codefresh pipelines. Concurrency limits are set at both the account and specific pipeline levels. 
 
-**Balancing concurrency and performance**
-While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
+**Balancing concurrency and performance**  
+While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time.  
+To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 1000.
 
 
 
@@ -504,8 +505,6 @@ max-width="70%"
 
 ## Visualize parent-child relationships for pipeline builds
 
->**NOTE**  
-This feature is currently in Beta.
 
 Select a build for a pipeline and visualize all builds it is linked to at the different levels, including parent, sibling, and child builds in the Build Tree. The Build Tree view displays associated builds within the scope of the selected pipeline build.
 

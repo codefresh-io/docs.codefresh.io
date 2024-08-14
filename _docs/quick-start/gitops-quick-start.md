@@ -19,7 +19,7 @@ Based on your deployment model, start by provisioning the Hosted or Hybrid GitOp
 ### Hosted 
 Hosted GitOps Runtimes are hosted on a Codefresh cluster and managed by Codefresh. You need to provision your Hosted Runtime once for your account.  
 
-1. [Provision a Hosted GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted)  
+1. [Provision a Hosted GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/install-hosted/)  
   Provision the Hosted GitOps Runtime with a single click, and complete the setup for your hosted environment.  
 
 
@@ -27,9 +27,9 @@ Hosted GitOps Runtimes are hosted on a Codefresh cluster and managed by Codefres
 ### Hybrid
 Hybrid GitOps Runtimes are hosted on a customer cluster and managed by the customer. You can provision multiple Hybrid GitOps Runtimes in the same account.  
 
-1. [Prepare for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quick-start/verify-requirements)  
+1. [Prepare for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/quick-start/gitops-quick-start/verify-requirements/)  
   Verify your environment matches the requirements for installing a Hybrid GitOps Runtime.
-1. [Install the Hybrid GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime)  
+1. [Install the Hybrid GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)  
   Install the Hybrid GitOps Runtime through Helm.
 
 ## Create a Codefresh account
@@ -38,11 +38,16 @@ Hybrid GitOps Runtimes are hosted on a customer cluster and managed by the custo
 
 ## Deploy an application
 
-1. [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui)  
+1. [Create an application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/)  
   Create the `codefresh-guestbook` application in the Codefresh UI.
-1. [Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs)  
+1. [Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)  
   Create rollout and service resources, and commit these resources to deploy the `codefresh-guestbook` application.
-1. [Update the image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout)  
+1. [Update the image tag for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-rollout/)  
   Update the image for the `codefresh-guestbook` application to trigger a rollout.
 
 
+## Streamline deployments with Environments and Products
+1. [Create an Environment]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/#create-an-environment)  
+  Create a `dev` Environment and map clusters and namespaces.
+1. [Create and work with Products]({{site.baseurl}}/docs/quick-start/gitops-quick-start/gitops-products/#create--work-with-products)  
+  Add a Product `demo-trioapp`, assign interrelated Argo CD applications to it.

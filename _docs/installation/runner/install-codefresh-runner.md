@@ -6,7 +6,7 @@ redirect_from:
   - /docs/administration/codefresh-runner/
   - /docs/enterprise/codefresh-runner/
   - /docs/administration/codefresh-hybrid/
-  - /docs/installation/codefresh-runner
+  - /docs/installation/codefresh-runner/
 toc: true
 ---
 
@@ -37,7 +37,7 @@ After installing the Codefresh Runner, you can:
 {: .table .table-bordered .table-hover}
 | Item                     | Requirement            |
 | --------------         | --------------           |
-|Kubernetes cluster      | Server version 1.21 to 1.27. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
+|Kubernetes cluster      | Server version 1.21 or higher. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
 |Helm| 3.8.0 and higher|
 |Container runtime | Any compliant container runtime, as the runner is **not** dependent on any special dockershim features. {::nomarkdown}<br>Examples: <ul><li><a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq" target="blank">Docker</a></li><li><a href="https://containerd.io/" target="blank">containerd</a></li><li><a href="https://cri-o.io/" target="blank">cri-o</a></li></ul> {:/} |
 |CLI API token | [Required scopes]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)|
