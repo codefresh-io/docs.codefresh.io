@@ -598,8 +598,10 @@
       url: "/git-tokens"
     - title: Secrets for GitOps
       url: "/secrets"
-    - title: Verify authenticity of Codefresh artifacts
+    - title: Verify authenticity of Codefresh artifacts in GitOps
       url: "/codefresh-signed-artifacts"
+    - title: Verify authenticity of artifacts signed with Codefresh pipelines
+      url: "/pipelines-verify-cf-artifacts"      
 
 - title: What's new
   url: "/whats-new"

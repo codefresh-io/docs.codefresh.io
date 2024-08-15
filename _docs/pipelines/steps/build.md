@@ -429,21 +429,23 @@ Use this technique only as a last resort. It is better if the Dockerfile exists 
 
 ## Securing container images with Codefresh OIDC and keyless signing
 
-If you have set up integration with Codefresh as an official OIDC provider (see [OIDC in pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/)), you can securely sign artifacts created by build steps in pipelines with keyless signing. Anyone can then verify the authenticity of container images as created by Codefresh pipelines.
+If you have set up integration with Codefresh as an official OIDC provider (see [OIDC in pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/)), you can securely sign artifacts created by build steps in pipelines using keyless signing.  
+This ensures that any organization can verify the authenticity of container images created by Codefresh pipelines.
 
-You need to add two steps to your pipelines:
-1. `obtain-oidc-id-token` step
-1. `cosign-sign` as a freestyle step
+To enable keyless signing with Codefresh as OIDC provider, you need the following steps to your pipelines:
+1. `obtain-oidc-id-token`
+1. `cosign-sign` (as a freestyle step)
 
-To verify artifacts created and signed by Codefresh pipelines, see [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).
+For details on verifying artifacts signed by Codefresh pipelines, see [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).
 
-You can find detailed information including on keyless signing architecture and comparisons in our [blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"} on the same.
+For detailed information including on keyless signing, including its architecture, [read our blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"} on the same.
 
 ### Example pipeline with keyless signing for container image
 
-Here's a sample pipeline definition with the required steps. As you can see the first two steps are the familiar `clone` and `build` steps. 
-This pipeline includes:
-A new dedicated stage for signing the created container image comprising the `obtain-oidc-id-token` and `cosign-sign` steps described below the example.
+Below is an example pipeline that includes the necessary steps for keyless signing. The initial steps are the `clone` and `build` steps. 
+
+The pipeline then includes a dedicated stage for signing the container image, using the `obtain-oidc-id-token` and `cosign-sign` steps after the example. 
+
 
 ```yaml
 version: "1.0"
@@ -487,32 +489,32 @@ steps:
 ```
 
 ### `obtain-oidc-id-token` step
-The `obtain-oidc-id-token` step is a dedicated Marketplace step which obtains the ID token from the Codefresh OIDC provider to authenticate and authorize pipeline actions.
+The `obtain-oidc-id-token` step is a dedicated Marketplace step which retrieves an ID token from the Codefresh OIDC provider, enabling authentication and authorization for pipeline actions.
  
 
 The step:  
 1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
   
   >**NOTE**    
-  Codefresh injects these two variables into every pipeline build ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
+  Codefresh automatically injects these two variables into every pipeline build, ensuring they are available, regardless of the cloud provider's authentication mechanism, whether using OIDC ID tokens or static credentials.
 
 {:start="2"} 
-1. Sets the ID token in the `ID_TOKEN` environment variable.  
-  You will export this value variable in the `cosign-sign` freestyle step within the same pipeline.
+1. Stores the retrieved ID token in the `ID_TOKEN` environment variable.  
+  You will use this variable in the `cosign-sign` freestyle step within the same pipeline.
 
 <br>
 
 ##### Requesting new OIDC ID tokens during build  
-* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
+* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline through the `obtain-oidc-id-token` step, or by making an API call within a `freestyle` step.
 
-* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security by limiting requests for new OIDC tokens to the build’s lifecycle.
 
 
-### cosign-sign freestyle step
+### `cosign-sign` freestyle step
 The `cosign-sign` freestyle step does the following:
-* Executes cosign with the OIDC issuer set to `https://oidc.codefresh.io` 
-* Exports the environment variable `SIGSTORE_ID_TOKEN` with the the OIDC identity token
-* Authenticates to the Docker registry to which the signature is pushed
+* Executes Cosign with the OIDC issuer set to `https://oidc.codefresh.io` 
+* Exports the OIDC identity token environment variable `SIGSTORE_ID_TOKEN`
+* Authenticates to the Docker registry where the signature is pushed
 
 
 ## Automatic pushing
