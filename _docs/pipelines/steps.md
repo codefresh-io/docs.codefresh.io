@@ -369,7 +369,7 @@ You can set it to either `false` or `true`:
 The final part is the step implementation. Here you can define exactly the YAML that this step will insert in the pipeline. You can use any of the built-in steps in Codefresh, and even add multiple steps.
 
 >**NOTE**  
-Currently you cannot nest custom pipeline steps. We are aware of this limitation and are actively working on it, but at the time of writing you cannot use a typed step within another typed step.
+Currently you cannot nest custom pipeline steps. We are aware of this limitation, but at the time of writing you cannot use a typed step within another typed step.
 
 Once you are done with your step, use the Codefresh CLI to upload it to the marketplace. If you want the step to be available only to you and your team make sure that the property `isPublic` is false (and then it will not be shown in the marketplace).
 
