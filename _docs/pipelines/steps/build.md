@@ -87,7 +87,8 @@ step_name:
 | `working_directory`  | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. Note that the `working_directory` when defined changes only the Docker build context. It is unrelated to the `WORKDIR` in the Dockerile. | Default                   |
 | `dockerfile`    | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.          | Default                   |
 | `image_name` | The name of the image that is built.                                                                 | Required                  |
-| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.                                                          | Optional                  |
+| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.      | Optional                  |
+| `role_arn`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The Amazon Resource Name (ARN) of the IAM role to be assumed to push the built image to the ECR repository, in the format `arn:aws:iam::<cross-account-id>:role/<role-name>`, where:<br>`<account-id>` is the ID of the AWS account where the ECR repository is hosted. <br>`<role-name>` is the specified role with the required permissions within this account to access and manage the ECR repository.  | Required                  |
 | `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
 | `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <code class="highlighter-rouge">tag</code> (see above). <br> This is an array, and should conform to the following syntax: <br><code class="highlighter-rouge">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</code><br><br>OR<br><code class="highlighter-rouge">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</code>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
@@ -424,6 +425,95 @@ steps:
 {% endraw %}
 
 Use this technique only as a last resort. It is better if the Dockerfile exists as an actual file in source control.
+
+
+## Securing container images with Codefresh OIDC and keyless signing
+
+If you have set up integration with Codefresh as an official OIDC provider (see [OIDC in pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/)), you can securely sign artifacts created by build steps in pipelines with keyless signing. Anyone can then verify the authenticity of container images as created by Codefresh pipelines.
+
+You need to add two steps to your pipelines:
+1. `obtain-oidc-id-token` step
+1. `cosign-sign` as a freestyle step
+
+To verify artifacts created and signed by Codefresh pipelines, see [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).
+
+You can find detailed information including on keyless signing architecture and comparisons in our [blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"} on the same.
+
+### Example pipeline with keyless signing for container image
+
+Here's a sample pipeline definition with the required steps. As you can see the first two steps are the familiar `clone` and `build` steps. 
+This pipeline includes:
+A new dedicated stage for signing the created container image comprising the `obtain-oidc-id-token` and `cosign-sign` steps described below the example.
+
+```yaml
+version: "1.0"
+stages:
+  - "main-clone"
+  - "build"
+  - "cosign-sign"
+steps:
+  main-clone:
+      title: Cloning main repository...
+      stage: main-clone
+      type: git-clone
+      repo: 'codefresh-contrib/python-flask-sample-app'
+      revision: 'master'
+  build:
+    title: Building Docker Image
+    type: build
+    stage: build
+    image_name: ilmedcodefresh/python-flask-sample-app
+    working_directory: ./python-flask-sample-app
+    tag: 'cosign-keyless-demo'
+    dockerfile: Dockerfile 
+ 
+  obtain_id_token:
+    stage: "cosign-sign"
+    title: Obtain ID Token
+    type: obtain-oidc-id-token
+    arguments:
+      AUDIENCE: 'sigstore'
+  cosign-sign:
+    title: "keyless signing"
+    type: "freestyle
+    image: "alpine:latest"
+    working_directory: "/tmp"
+    stage: "cosign-sign"
+    commands:
+      - |
+        apk add --update cosign
+        export SIGSTORE_ID_TOKEN=$ID_TOKEN
+        cosign sign --oidc-issuer "https://oidc.codefresh.io" --yes=true --registry-username ${DOCKERHUB_USERNAME} --registry-password ${DOCKERHUB_PASSWORD} docker.io/ilmedcodefresh/python-flask-sample-app:cosign-demo
+```
+
+### `obtain-oidc-id-token` step
+The `obtain-oidc-id-token` step is a dedicated Marketplace step which obtains the ID token from the Codefresh OIDC provider to authenticate and authorize pipeline actions.
+ 
+
+The step:  
+1. Makes an API call to the Codefresh OIDC provider passing the `CF_OIDC_REQUEST_TOKEN` and the `CF_OIDC_REQUEST_URL` variables.    
+  
+  >**NOTE**    
+  Codefresh injects these two variables into every pipeline build ensuring their availability for use, regardless of the cloud provider's authentication mechanism, whether it's OIDC ID tokens or static credentials.
+
+{:start="2"} 
+1. Sets the ID token in the `ID_TOKEN` environment variable.  
+  You will export this value variable in the `cosign-sign` freestyle step within the same pipeline.
+
+<br>
+
+##### Requesting new OIDC ID tokens during build  
+* OIDC ID tokens expire after five minutes. If needed, you can request new OIDC ID tokens multiple times within the same pipeline, through the `obtain-oidc-id-token` step, or within a `freestyle` step with an API call.
+
+* The `CF_OIDC_REQUEST_TOKEN` variable with the request token remains valid for the duration of the pipeline build. This restriction maintains security as requests for new OIDC tokens are limited to the build’s lifecycle.
+
+
+### cosign-sign freestyle step
+The `cosign-sign` freestyle step does the following:
+* Executes cosign with the OIDC issuer set to `https://oidc.codefresh.io` 
+* Exports the environment variable `SIGSTORE_ID_TOKEN` with the the OIDC identity token
+* Authenticates to the Docker registry to which the signature is pushed
+
 
 ## Automatic pushing
 
