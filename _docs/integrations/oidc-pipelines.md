@@ -28,6 +28,11 @@ After setup, to use the ID token, on the Codefresh side, we have a dedicated Mar
 
 Review the [generic setup for OIDC](#oidc-setup-for-codefresh-pipelines), or follow the instructions in our example for [OIDC with AWS (Amazon Web Services)](#codefresh-oidc-for-aws). 
 
+##### Creating artifacts signed with Codefresh OIDC and keyless signing 
+Once you have set up Codefresh as an OIDC provider, you can sign container images created by Codefresh pipelines with the keyless signing method introduced by sigstore. See [Securing container images with OIDC and keyless signing]({{site.baseurl}}/docs/pipelines/steps/build/#securing-container-images-with-oidc-and-keyless-signing).
+
+Any organization can then verify artifacts created and signed by Codefresh pipelines. See [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).
+
 ## OIDC ID tokens, standard & custom claims
 
 The ID token is a JSON Web Token (JWT) which contains claims on the authentication and authorization of the user or resource.
