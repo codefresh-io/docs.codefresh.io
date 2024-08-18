@@ -458,6 +458,12 @@
       url: "/what-is-the-codefresh-yaml"
 
 
+- title: Promotions
+  url: "/promotions"
+  pages:
+    - title: Promotion Workflows
+      url: "/promotion-workflows"
+
 - title: Testing
   url: "/testing"
   pages:
