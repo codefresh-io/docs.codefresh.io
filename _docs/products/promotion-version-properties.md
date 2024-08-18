@@ -26,11 +26,18 @@ Promotion Settings serve two primary functions for the applications being promot
 1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
 
 
+{{site.data.callout.callout_important}}
+**IMPORTANT**  
+For automated retrieval of the application version and promotion of specific attributes from files across environments, _all applications within the same product must maintain an identical structure_.  
+Promotion across different environments requires consistent relative paths in each repository. For example, to promoyr proeprties from `config/settings.yaml` in environment `dev` to `testing`, `config/settings.yaml` must also exist in the `testing` environment. 
+{{site.data.callout.end}}
+
+
 For how-to instructions on configuring Promotion Settings, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
 
 
 
-##  Promotion Settings & Promotion Templates
+## Promotion Settings & Promotion Templates
 
 As with other GitOps entities, you can configure Promotion Settings in either Form or YAML modes.  
 Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
