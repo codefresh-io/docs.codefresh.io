@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-## About tracking product deployments
+
 
 When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production. 
 
@@ -70,7 +70,7 @@ The table describes important insights in the Releases page.
 
 ## Monitor promotion orchestration for releases
 
-Monitor promotion orchestration for an on-going release, or analyze that of a completed release, across the different environments defined for it in the Promotion Flow.   
+Monitor promotion orchestration for an on-going release, or analyze that of a completed release, across the different environments defined for it in the Promotion Flow:
 * View how different environments are interconnected within the Promotion Flow to understand the dependencies and flow of deployment.
 * Monitor executions of workflow steps in each environment and get alerted to failed steps in workflows. Early detection of failures allows for quick intervention, reducing the risk of prolonged issues and ensuring the deployment process remains on track.
 
