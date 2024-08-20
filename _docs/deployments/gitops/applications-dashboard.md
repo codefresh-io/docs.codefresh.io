@@ -494,22 +494,6 @@ caption="Current State: Delete an application resource"
 max-width="50%"
 %}
 
-### Delete application resources
-Delete specific resources in an application directly from the Codefresh UI. 
-
-1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
-1. From the Application dashboard, select the application with the resource to delete.
-1. From the context menu of the resource, select **Delete**.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-delete-resource.png"
-url="/images/applications/current-state-delete-resource.png"
-alt="Current State: Delete an application resource"
-caption="Current State: Delete an application resource"
-max-width="50%"
-%}
 
 ### Health status for application resources
 View and monitor health status of the selected application's resources in the Current State tab, in Tree or List views.  
