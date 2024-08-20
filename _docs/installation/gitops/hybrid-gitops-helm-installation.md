@@ -132,7 +132,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
 A validation error will automatically terminate the installation.
 
-You can disable automated validation and manually run the validation if desired.
+You can also disable automated validation globally for all installation settings or for only the ingress controller, and run validation manually. 
 
 ### Validated settings
 The table below lists the settings validated in the `values` file.
@@ -155,23 +155,39 @@ To get more detailed and meaningful information on the reason for the validation
 where:  
 * `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime.
 
-### Disable automated validation
+### Disable global installation validation
 You may want to disable automated validation for specific scenarios, such as to address false-negatives.
 Do so by either adding the flag to the Helm install command or adding the relevant section to the values file.
 
 
 ##### In install command 
-`--set installer.skipValidation=true` 
+`--set installer.skipValidation=false` 
 
 ##### In values file 
 {% highlight yaml %}
 {% raw %} 
 ...
-installer: skipValidation: true
+installer: skipValidation: false
 ... 
 {% endraw %}
 {% endhighlight %}
 
+### Disable ingress validation
+Ingress validation checks if the ingress URL exists and responds to web requests. 
+During a GitOps Runtime installation, the ingress might not be active yet, causing DNS errors despite correct configuration. Disabling ingress validation allows the installation to proceed, assuming the ingress will work once the Runtime is fully operational.
+
+Add this to the values file:
+
+{% highlight yaml %}
+{% raw %} 
+...
+global:
+  runtime:
+    ingress:
+      skipValidation: false
+... 
+{% endraw %}
+{% endhighlight %}
 
 ### Manually validate values.yaml
 To manually validate the values file, run:  
@@ -186,9 +202,6 @@ where:
 If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. See ???
-
-
-
 
 
 ### Before you begin
