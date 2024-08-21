@@ -479,8 +479,10 @@ max-width="50%"
 %}
 
 ### Access external links
-If your resources have annotations that define external links, the {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} is displayed below the context menu of the resource.  
-Clicking it shows the list of external links configured for the resource.  
+If your Kubernetes resources have annotations that define external links, the {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} is displayed below the context menu of the resource. Clicking the icon shows the list of external links configured for the resource.  
+
+>**NOTE**  
+This feature requires GitOps Runtime chart version 0.10.0.
 
 
 
@@ -506,10 +508,9 @@ caption="External links for ingress resource in Current State Tree view"
 max-width="50%"
 %}
 
->**NOTE**  
-This feature requires GitOps Runtime chart version 0.10.0.
 
-Use this annotation to add the external link in Argo CD or via it:
+
+Use this annotation to add the external link to a Kubernetes resource:
 ```yaml
 annotations:
   link.argocd.argoproj.io/external-link: http://my-grafana.example.com/pre-generated-link
