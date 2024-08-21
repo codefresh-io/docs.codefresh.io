@@ -5,6 +5,8 @@ group: promotions
 toc: true
 ---
 
+Codefresh gives you the option of defining Custom Resource Definitions (CRDs) for promotion entities in Form or YAML modes.  
+If you are more comfortable working with YAML, create the CRD using the example of the Promotion Template CRD and the table with the descriptions of the parameters.
 
 ## Promotion Template CRD
 
@@ -50,7 +52,10 @@ spec:<!
 | `spec.promotion.jsonPath`      | The JSON path expression pointing to the location of the attribute with the value to be promoted within the specified `filename`.<br>For example, `$.appVersion` indicates the value should be extracted from the field `appVersion` in `chart.yaml`.| string| Optional |
 
 
-
+## Related articles
+[Product CRD]({{site.baseurl}}/docs/promotions/product-crd/)  
+[Promotion Policy CRD]({{site.baseurl}}/docs/promotions/promotion-policy-crd/)  
+[Promotion Flow CRD]({{site.baseurl}}/docs/promotions/promotion-flow-crd/)  
 
 
 
