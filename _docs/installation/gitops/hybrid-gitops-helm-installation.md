@@ -161,13 +161,13 @@ Do so by either adding the flag to the Helm install command or adding the releva
 
 
 ##### In install command 
-`--set installer.skipValidation=false` 
+`--set installer.skipValidation=true` 
 
 ##### In values file 
 {% highlight yaml %}
 {% raw %} 
 ...
-installer: skipValidation: false
+installer: skipValidation: true
 ... 
 {% endraw %}
 {% endhighlight %}
@@ -176,7 +176,13 @@ installer: skipValidation: false
 Ingress validation checks if the ingress URL exists and responds to web requests. 
 During a GitOps Runtime installation, the ingress might not be active yet, causing DNS errors despite correct configuration. Disabling ingress validation allows the installation to proceed, assuming the ingress will work once the Runtime is fully operational.
 
-Add this to the values file:
+Similar to disabling installation validation globally, you disable the validation for ingress by either adding the flag to the Helm install command or adding the relevant section to the values file. 
+
+##### In install command
+
+`--set global.runtime.ingress.skipValidation=true`
+
+##### In values file 
 
 {% highlight yaml %}
 {% raw %} 
@@ -184,7 +190,7 @@ Add this to the values file:
 global:
   runtime:
     ingress:
-      skipValidation: false
+      skipValidation: true
 ... 
 {% endraw %}
 {% endhighlight %}
