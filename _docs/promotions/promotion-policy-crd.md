@@ -50,13 +50,13 @@ spec:
 | `spec.selector.targetEnvironment` | The target environments to which to apply the Promotion Policy based on the `name` or `type`. <!-- or `tag` --> <br>If more than one  criteria are provided, all criteria must be matched.        | object  | Optional          |
 | `spec.selector.targetEnvironment.name` | The name of the target environment, or the list of target environments to which to apply the Promotion Policy. <br>When empty, applies to all environments.  | array   | Optional |
 | `spec.selector.targetEnvironment.type` | The type of target environments to which to apply the Promotion Policy. Can be one of these: `PROD` for production environments, or `NON_PROD` for any other environment such as `dev`, `qa`.  | array   | Optional          |
-<!-- | `spec.selector.targetEnvironment.tags`  | The tag, or the list tags associated with a single or multiple target environments to which to apply the Promotion Policy. <br>Required when `.targetEnvironment.name` or `.targetEnvironment.type` are not defined. | array   | Optional          | -->
 | `spec.policy`                  | The Pre-Action Workflow, Action, and Post-Action Workflow to implement for the Promotion Policy through the `action`, `preAction`, and `postAction` attributes. <br>The Action attribute is required.<br>See [Promotion Policy implementation logic]({{site.baseurl}}/docs/promotions/promotion-policy/#promotion-policy-implementation-logic) for information on how promotion settings are used.  | object  | Optional          |
 | `spec.policy.action`           | The action that should trigger the promotion in the target environment for this Promotion Policy.<br>Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">commit</code>: Executes a commit operation on the target application.</li><li><code class="highlighter-rouge">pr</code>: Executes a commit and opens a pull request for the target application.<br>Useful when you need manual approval before commit.</li><li><code class="highlighter-rouge">none</code>: Does not execute any action on the target application. </li></ul>{:/}| enum   | Required          |
 | `spec.policy.preAction`        | The Promotion Workflow to execute _before_ `spec.policy.action`.                      | string  | Optional          |
 | `spec.policy.postAction`       | The Promotion Workflow to execute after `spec.policy.action`.                         | string  | Optional          |
 
-
+<!--- `spec.selector.product.tags`    The tag or a list of tags associated with a single or multiple products to which to match the Promotion Policy. Required if `spec.selector.product.names` are not used to match the Promotion Policy to the product. For example, `???`.    array    Optional      
+`spec.selector.targetEnvironment.tags`   The tag, or the list tags associated with a single or multiple target environments to which to apply the Promotion Policy. <br>Required when `.targetEnvironment.name` or `.targetEnvironment.type` are not defined.  array    Optional         -->    
 
 
 ## Related articles
