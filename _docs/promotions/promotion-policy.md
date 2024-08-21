@@ -16,7 +16,7 @@ and other relevant factors specific to the target environment.
 Codefresh empowers you to create and automate environment readiness validations through Promotion Policies. 
 A Promotion Policy combines promotion settings defining workflows to validate environment readiness, and targets defining the products or environments for which to implement the Policies.
 
-The Policies can be tailored for any combination of Products and Environments, giving you the utmost felexibily with the .  
+The Policies can be tailored for any combination of Products and Environments, or be generic to match all Products and Environments giving you the flexibility you need to implement the most complex to the most simple of policies.  
 
 You can create dedicated Promotion Policies, or define them as part of a Promotion Flow which orchestrates the promotion and deployment of the Product across all Environments.
 
@@ -62,7 +62,7 @@ See ???
 
 
 Promotion Policies are run:
-Upon manually promoting the Product from the trigger Environment to the destination Environment.
+Upon manually promoting the Product from the trigger environment to the destination environment.
 OR
 Upon updating the Git repository with the application manifest.
 
@@ -79,11 +79,11 @@ The table below describes the settings and targets you can define for a Promotio
 {: .table .table-bordered .table-hover}
 | Item                     | Description            |  
 | --------------         | --------------           |  
-|**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. |
-|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>: Optional. The Promotion Workflow to run before the Promotion Action. </li><li><b>Action</b>Required. The Promotion Action to update the target application's source repository.<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the nex stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. <br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).|
-|**Products** |Single or multiple Products to which to apply the Promotion Policy. If target Environments are not defined, at least one Product is required. {::nomarkdown}<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}|
-|**Environments** |Single or multiple Environments to which to apply the Promotion Policy. If target Products are not defined, at least one Environment is required.{::nomarkdown}<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><li><b>Tags</b>: Match Environments by the tag or tags defined. </li></ul>{:/}|
-|**Priority** |The priority assigned to the Promotion Policy. The priority determines how and which Promotion Settings are applied when two or Polices match the target attributes. The priority is a positive or negative integer and defined in ascending order.<br>To understand the  implementation logic behind Promotion Settings, see [Promotion Policy implementation logic](#promotion-policy-implementation-logic).|
+|**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster and must match Kubernetes naming conventions. |
+|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>: Optional. The Promotion Workflow to run before the Promotion Action. </li><li><b>Action</b>Required. The Promotion Action to update the target application's source repository:<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately without not requiring manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the nex stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<!--- <br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. --><br>This option is useful to run custom promotion policy mechanisms, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).|
+|**Products** |Single or multiple Products to which to apply the Promotion Policy. <br>Match Products by the name or names defined. <!--- {::nomarkdown}<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}-->|
+|**Environments** |Single or multiple Environments to which to apply the Promotion Policy. {::nomarkdown}<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><!--- <li><b>Tags</b>: Match Environments by the tag or tags defined. </li> --></ul>{:/}|
+|**Priority** |The priority assigned to the Promotion Policy. The priority determines how and which Promotion Settings are applied when two or Polices match the target attributes. The priority is a positive or negative integer and defined in ascending order.<br>To understand how Promotion Settings are implemented, see [Promotion Policy implementation logic](#promotion-policy-implementation-logic).|
 
 
 ## Best practices for Promotion Policies
@@ -93,7 +93,7 @@ Examples showing when to set by environment, by product and others
 
 ## Promotion Policy implementation logic
 
-Each Promotion Policy can define a few or all promotion settings, and one or more Products or Environments as targets. 
+Every Promotion Policy can define a few or all promotion settings, and one or more Products or Environments as targets. 
 When a Promotion Policy is to be run to validate readiness for an environment, promotion settings are merged from all matched policies based on their priority. 
 Policies with higher priority always take precedence over those with lower priority.
 
@@ -194,9 +194,8 @@ Create a Promotion Policy to validate an environment's readiness before promotin
 Here's an example of the Promotion Policy page which displays all Promotion Policies in the account. This is also the location from which you can create  and manage existing policies.
 SCREENSHOT
 
-* (NIMA: is the newest policy displayed first by default??)
-* If there are multiple Promotion Policies that match the same Product or Environments, the Priority determines how Promotion Policy settings are is applied. 
-* The **Evaluate Promotion Policy** functionality allows you to select any Product and Environment pair and visualize the Promotion Settings that will be applied from all the Promotion Policies that match the selected pair. See [Evaluate](#match-promotion-policies-to-products-and-environments)
+* If there are multiple Promotion Policies that match the same Product or Environments, the Priority determines how Promotion Policy settings are applied. 
+* The **Evaluate Promotion Policy** functionality allows you to select any Product and Environment pair and visualize the Promotion Settings that will be applied from all the Promotion Policies that match the selected pair. See [Evaluate Promotion Settings for Products and Environments ](#match-promotion-policies-to-products-and-environments).
 
 
 ## Evaluate Promotion Settings for Products and Environments 
@@ -217,7 +216,7 @@ If there are multiple Policies with either identical or different target attribu
 SCREENSHOT
 1. Select the Product and Environment for which to evaluate the Promotion Policy, and click **Preview Promotion**.
   The Result summarizes the Promotion Settings that will be applied for the selected pair from all matched Promotion Policies.
-  * If there are messages on misconfigured Policies, see 
+  * If there are messages on misconfigured Policies, see [Evaluate Promotion Settings for Products and Environments](#match-promotion-policies-to-products-and-environments).
   * On the right, select the Workflows if defined to view manifests.
 
 SCREENSHOT 
@@ -277,4 +276,9 @@ Deleting a Promotion Policy removes it from all the Products and Environments it
 
 ## Visualize Promotion Workflows in Releases
 
-TBD
+When a product is promoted manually or automatically, a release is created giving a graphical representation of the promotion flow across the environments defined for it.
+The visualization includes the Pre- and Post-Action Promotion Workflows within the environments, more specifically, the steps within the workflows.
+
+SCREENSHOT
+
+For more information, see [Promotion Workflows in Product Releases]({{site.baseurl}}/docs/promotions/releases/#promotion-workflows-in-product-releases).
