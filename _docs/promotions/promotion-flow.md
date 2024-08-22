@@ -61,7 +61,21 @@ Before creating Promotion Flows it is advisable to understand the role of these 
    * Target environments
      Any environment apart from the trigger environment are target environments in the promotion flow. A Promotion Flow requires at least one target environment.
      Target environments can linear or parallel.
-     
+
+* Product (optional)
+  Instead of manually applying Pre-Action, Post-Action, and Action for each environment, you can select a Product to apply the Promotion Policy defined for it to all environments defined, excluding the trigger environment. 
+
+  The promotion policy defined for the Product dictates the Pre-Action, Post-Action, and Action for each environment. You retain the flexibility to configure parts of the Promotion Policy not defined in the Product.
+  This allows you to customize specific steps or workflows as needed, while still leveraging the overall Product policy.
+
+* Applications
+
+
+* Promotion Settings
+
+
+* Promotion Policy
+
 
 * Promotion Workflows (optional)
   Promotion workflows, categorized as Pre-Action and Post-Action workflows, validate the environment's readiness for promotion:  
@@ -73,12 +87,97 @@ Before creating Promotion Flows it is advisable to understand the role of these 
 * Promotion Action (required)
   The Promotion Action is the action that activates and propagates the changes to the current environment, and can be Commit, Pull Request, or No Action. The Action is generally defined as part of the Promotion Policy. You can also select an action on-the-fly
 
-* Product (optional)
-  Instead of manually applying Pre-Action, Post-Action, and Action for each environment, you can select a Product to apply the Promotion Policy defined for it to all environments defined, excluding the trigger environment. 
 
-  The promotion policy defined for the Product dictates the Pre-Action, Post-Action, and Action for each environment. You retain the flexibility to configure parts of the Promotion Policy not defined in the Product.
-  This allows you to customize specific steps or workflows as needed, while still leveraging the overall Product policy.
+
+
+| **Entity**         | **How does i **              | **Where and When** | **By Whom** | **Learn more** |
+|----------------------|---------------------------|--------------------|-------------|
+| **Environments (required)**  | Environments are where your applicatios live and promotions happen. Typically environments reflect your software lifecyle and deployment lifecyle. Create environments. You need at least two: Trigger environment: The trigger environment is where a change initiates the promotion flow. The change in the trigger environment is a manual user commit or pull request action.   <br>Target environments: Any environment apart from the trigger environment are target environments in the promotion flow. A Promotion Flow requires at least one target environment.  | First step in promotion                  | Users with ABAC             |  
+| **Product (optional)**       | A Product is a specialized entity in Codefresh GitOps which groups related applications and treats them a single cohesdive entity. Why is this important for promotions? With product instead of promoting individual applocations you can promote the productand all applications within it  across different environments.            | Defining  a Porduct allows you to configure several settings connected to promotions in a single location.                    |  Users with ABAC         | Link??
+| **Applications**             | Applications are the smallest entity  around which promotions revolve.   |                    |             |
+| **Promotion Flows**             | Promotion flows orchestrate the promotion of a product through different environments according t   |                    |             |
+| **Promotion Settings**       | Promotion settings define exactly what gets promoted in the different applicatins and across what environments. if you have created a product, you can define promotion settings as part of the product's settings. You can also define it in the CRD.              |                    |             |
+| **Promotion Policy**         | Defines what is done in the next environment when there is a change that initiates promotion. It validates that th environment is ready for the promotion through promotion workflows and promotion action. The promotion action is the action through a commit or a PR or a predefined mechanism that propagates the changes defined  by promotion settings to the target environment.  Promotion workflows are what ensures that the target environment -  these can be verifying predefined criteria before the promotion changes are implemented, and verifing the environment's stability and functionality post-promotion action.               |                    |             |
+
+
+
+
+| **Component**           | **Role in Promotion Process**      | **Where and When**     | **Who Can Create**        | **Additional Resources** |
+|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|---------------------------|
+| **Environments (Required)**  | Environments are where your applications live and promotions happen. Typically, environments reflect your software lifecycle and deployment stages. You need at least two environments: <br> - **Trigger Environment**: Where a change starts the promotion flow, initiated by a manual commit or pull request. <br> - **Target Environments**: The environments where changes are promoted after the trigger environment. | First step in the promotion process | Users with ABAC permissions | [Link] |
+| **Product (Optional)**       | A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing them individually.  | Centralized promotion settings      | Users with ABAC permissions | [Link] |
+| **Applications**       | Applications are the core units around which promotions revolve. Each application can be promoted individually or as part of a Product.    | Part of each environment           | Users with ABAC permissions | [Link] |
+| **Promotion Flows**      | Promotion flows orchestrate the movement of changes through environments, ensuring a controlled and automated promotion process.                                                                                                                                | Defined in the Promotion Flow UI    | Users with ABAC permissions | [Link] |
+| **Promotion Settings**   | Promotion settings specify what gets promoted across environments. If using a Product, these settings can be defined within the Product’s configuration or in a YAML CRD.                                                                                       | Defined during product setup        | Users with ABAC permissions | [Link] |
+| **Promotion Policy**     | A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests. | Applied during the promotion process | Users with ABAC permissions | [Link] |
+
+The table describes the entities involved in the promotion process, starting with the core entities and those entities wh
+
+<table border="1" width="100%">
+  <tr>
+    <th width="20%">Entity</th>
+    <th width="50%">Role in promotions</th>
+    <th width="10%">Created by</th>
+    <th width="20%">Learn more</th>
+  </tr>
   
+  <tr>
+    <td colspan="4"><strong>Core entities</strong><br><em>These entities define the structure of your deployment.</em></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Environments (Required)</strong></td>
+    <td>Environments are where your applications live and promotions happen. Typically, environments reflect your software lifecycle and deployment stages. You need at least two environments:
+      <ul>
+        <li><strong>Trigger environment</strong>: Where a change starts the promotion flow, initiated by a manual commit or pull request.</li>
+        <li><strong>Target environments</strong>: The environments where changes are promoted after the trigger environment.</li>
+      </ul>
+    </td>
+    <td>Users with ABAC permissions</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Product (Optional)</strong></td>
+    <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing applications individually.</td>
+    <td>Users with ABAC permissions</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Applications</strong></td>
+    <td>Applications are the core units around which promotions revolve. Each application can be promoted individually or as part of a product.</td>
+    <td>Users with ABAC permissions</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+  
+  <tr>
+    <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities define how promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Promotion Flows</strong></td>
+    <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process.</td>
+    <td>Account administrators</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Promotion Settings</strong></td>
+    <td>Promotion settings specify what gets promoted across environments. If using a Product, these settings can be defined within the Product’s configuration or in a YAML CRD.</td>
+    <td>Users with ABAC permissions</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Promotion Policy</strong></td>
+    <td>A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests.</td>
+    <td>Account administrators</td>
+    <td><a href="#">Link</a></td>
+  </tr>
+</table>
+
+
 
 
 Inter-environment dependencies
