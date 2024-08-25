@@ -8,7 +8,8 @@ toc: true
 
 
 
-When a promotion is triggered for a Product in an Environment, it's essential to validate the environment's readiness before deploying changes and promoting the Product. Readiness validation ensures that the Product's applications and their dependencies meet the necessary requirements and standards for deployment in the target environment. 
+When a promotion is triggered for a product in an environment, it's essential to validate the environment's readiness before deploying changes and promoting the Product.  
+Readiness validation ensures that the product's applications and their dependencies meet the necessary requirements and standards for deployment in the target environment.
 These validations include various checks, such as code quality, unit or smoke tests, compatibility with dependencies, security compliance, 
 and other relevant factors specific to the target environment.
 
@@ -16,13 +17,13 @@ and other relevant factors specific to the target environment.
 Codefresh empowers you to create and automate environment readiness validations through Promotion Policies. 
 A Promotion Policy combines promotion settings defining workflows to validate environment readiness, and targets defining the products or environments for which to implement the Policies.
 
-The Policies can be tailored for any combination of Products and Environments, or be generic to match all Products and Environments giving you the flexibility you need to implement the most complex to the most simple of policies.  
+The Policies can be tailored for any combination of Products and Environments, or be generic to match all Products and Environments, giving you the flexibility you need to implement the most complex to the most simple of policies.  
 
 You can create dedicated Promotion Policies, or define them as part of a Promotion Flow which orchestrates the promotion and deployment of the Product across all Environments.
 
 DIAGRAM
 
-Review the [settings](#promotion-policy-settings) you can configure for a Promotion Policy and then how to [create a Promotion Policy](#create-a-promotion-policy). 
+Review the [settings](#promotion-policy-settings) you can configure for a Promotion Policy, and how to [create a Promotion Policy](#create-a-promotion-policy). 
 
 ##### Promotion Policy implementation
 More than one Promotion Policy can match the same target Product or Environment. 
@@ -36,21 +37,21 @@ The logic for applying Promotion Policy settings is based on predefined prioriti
 
 ## Key features of Promotion Policies
 
-* **Automated validation**   
+* **Automated validation**     
   Validations defined in the Promotion Policy are enforced automatically, minimizing the risk of errors, and ensuring consistency and reliability in deployments.
 
 * **Flexible configuration**  
   Promotion Policies are highly customizable to match your requirements. Define Policies per Product, per Environment, 
   or with broader coverage for a specific Product across all environments, or only by specific types of Environments. 
 
-* **Priority-driven enforcement**
+* **Priority-driven enforcement**  
 In cases where multiple Promotion Policies match Products, Environments, or a combination of both, Codefresh merges Promotion Settings from matching Policies in order of priority, ensuring seamless enforcement.
 
-* **On-demand evaluation**
+* **On-demand evaluation**  
 Visualize Promotion Settings applied to a Product-Environment pair with Evaluate Promotion Policy option. Not only does this option identify Product-Environment pairs which do match existing Promotion Policies, it also identifies misconfigured policies. 
 
-* **Versatile promotion actions**
-Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh accommodates both types of actions.
+* **Git-based and custom promotion actions**  
+Whether your promotion actions are Git-based or utilize custom repositories and mechanisms for compiling application repositories, Codefresh supports both types of actions.
 
 
 
@@ -58,7 +59,7 @@ See ???
 
 
 
-## Where does the Promotion Policy fit in the Promotion Flow?
+<!--- ## Where does the Promotion Policy fit in the Promotion Flow?
 
 
 Promotion Policies are run:
@@ -67,12 +68,22 @@ OR
 Upon updating the Git repository with the application manifest.
 
 TBD
-
+-->
 
 ## Promotion Policy settings & targets
 
 A Promotion Policy comprises the Policy's promotion settings and the Policy's targets. 
 The table below describes the settings and targets you can define for a Promotion Policy.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/promotions/promotion-policy-settings.png" 
+url="/images/promotions/promotion-policy-settings.png" 
+alt="Promotion Policy settings" 
+caption="Promotion Policy settings" 
+max-width="60%" 
+%}
 
 
 
@@ -213,14 +224,34 @@ If there are multiple Policies with either identical or different target attribu
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from Promotions in the sidebar, select **Promotion Policies**.
 1. In the Promotion Policies page, click **Evaluate Promotion Policy**.
-SCREENSHOT
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/promotions/evaluate-promotion-policy.png" 
+url="/images/promotions/evaluate-promotion-policy.png" 
+alt="Evaluate Promotion Policy" 
+caption="Evaluate Promotion Policy" 
+max-width="60%" 
+%}
+
+{:start="3"}
 1. Select the Product and Environment for which to evaluate the Promotion Policy, and click **Preview Promotion**.
   The Result summarizes the Promotion Settings that will be applied for the selected pair from all matched Promotion Policies.
   * If there are messages on misconfigured Policies, see [Evaluate Promotion Settings for Products and Environments](#match-promotion-policies-to-products-and-environments).
   * On the right, select the Workflows if defined to view manifests.
 
-SCREENSHOT 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/promotions/promotion-policy-evaluation-result.png" 
+url="/images/promotions/promotion-policy-evaluation-result.png" 
+alt="Previewing results for Promotion Policy evaluation" 
+caption="Previewing results for Promotion Policy evaluation" 
+max-width="60%" 
+%}
 
+{:start="4"}
 1. If required, update the Promotion Settings for one or more Promotion Policies.
 
 
@@ -248,23 +279,24 @@ Promotion Policy cannot be applied to the pair.
 
 
 **Corrective action**  
-Promotion Policies must be configured with at least one Action: Commit, Pull request, or No Action. 
+Promotion Policies must be configured with an Action: Commit, Pull request, or No Action. 
 
 
 #### Pre-Action Workflow does not include required step with promotion action
 **Message**  
 Promotion Flow will fail for the selected Product-Environment pair.<br>
-Merged Promotion Settings from the matched Promotion Policies define No Action as the Promotion Action, but the Pre-Action Workflow does not include a step that initiates a corresponding promotion action.<br>
-Update the Pre-Action Workflow as required.
+Merged Promotion Settings from the matched Promotion Policies define No Action as the Promotion Action, but either matched Promotion Policies do not include a Pre-Action Workflow or Pre-Action Workflows do not include a step to initiate a corresponding promotion action.<br>
+Configure or update a Pre-Action Workflow in one of the matched Promotion Policies as required.
 
 
 **Reason**  
-When No Action is configured as a Promotion Setting:
-* Pre-Action Workflow must be configured 
+When No Action is configured as a Promotion Setting, one of the matched Promotion Policies:
+* Must be configured with a Pre-Action Workflow
 * Pre-Action Workflow must include a step that initiates or executes the corresponding Promotion Action
 
 **Corrective action**  
-
+Configure one of the matched Promotion Policies with a Pre-Action Workflow.
+Make sure it includes a step to execute the Promotion Action that will promote the changes in the environment.
 
 ## Edit/delete Promotion Policies
 Manage Promotion Policies by updating settings for existing Promotion Policies, and deleting unused Policies.
@@ -276,9 +308,12 @@ Deleting a Promotion Policy removes it from all the Products and Environments it
 
 ## Visualize Promotion Workflows in Releases
 
-When a product is promoted manually or automatically, a release is created giving a graphical representation of the promotion flow across the environments defined for it.
+When a product is promoted manually or automatically, the promotion mechanism create a release for the product with a unique release ID. The release  provides a graphical representation of the promotion flow across the environments defined for it.
 The visualization includes the Pre- and Post-Action Promotion Workflows within the environments, more specifically, the steps within the workflows.
 
 SCREENSHOT
 
 For more information, see [Promotion Workflows in Product Releases]({{site.baseurl}}/docs/promotions/releases/#promotion-workflows-in-product-releases).
+
+## Related articles
+TBD
