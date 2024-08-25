@@ -29,6 +29,7 @@ Here are a few types of configuration definitions stored in the Shared Configura
 * [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
 * [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
 * [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
+* CRDs for promotion entities ???
 
 ## GitOps Runtimes & Shared Configuration Repos
 
@@ -46,7 +47,7 @@ Here are a few types of configuration definitions stored in the Shared Configura
 -->
 
 ## Shared Configuration Repo structure
-Below is a representation of the structure of the repository with the shared configuration. 
+Below is a representation of the structure of the repository with the shared configuration in the GitOps Runtime designated as the Configuration Runtime. 
 See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-repo){:target="\_blank"}.
 
 ```
@@ -55,15 +56,25 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 │   ├── all-runtimes-all-clusters │
 │   │   ├── cm-all.yaml           │
 │   │   └── subfolder             │
-│   │       └── manifest2.yaml    │
-│   ├── control-planes            │
 │   │   └── manifest3.yaml        │
+│   ├── promotion-workflows       │
+│   │   ├── from-ui.yaml          │
+│   │   └── .gitkeep              │
 │   ├── runtimes                  │
 │   │   ├── runtime1              │
 │   │   │   └── manifest4.yaml    │
 │   │   └── runtime2              │
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
+├── app-projects                  │
+├── configurations                │ # present in runtimes designated as Configuration Runtime
+│   ├── products                  │ #    stores product crds with all product settings except assigned applications
+│   │   └── loans.yaml            │
+│   ├── promotion-flows           │ #    stores promotion flow crds with orchestration settings 
+│   │   ├── base-flow.yaml        │
+│   │   └── simple.yaml           │
+│   └── promotion-policies        │ #    stores promotion policy crds for products/environments with promotion workflows & promotion action  
+│       └── some-policy.yaml      │
 └── runtimes                      │
     ├── runtime1                  │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
     │   ├── in-cluster.yaml      ─┤ #     manage `include` field determines which dirs/files to sync to cluster
@@ -75,11 +86,18 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtimes:
+The `resources` directory holds the resources shared by _all_ clusters managed by GitOps Runtimes:
 
   * `resources/all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`.
+  * `resources/promotion-workflows`: 
   * `resources/control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
     Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`.
+  * resources/configurations
+    * resources/configurations/products
+    * resources/configurations/promotion-policies
+    * resources/configurations/promotion-flows
+
+
   * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
     In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
 
@@ -140,7 +158,7 @@ Here's how to do this with the Shared Configuration Repo:
 
 {{site.data.callout.callout_tip}}
 **TIP**    
-You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
+You can then monitor these applications in the GitOps Apps dashboard, and drill down to each application in the GitOps Apps dashboard. 
 {{site.data.callout.end}}
 
 
