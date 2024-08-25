@@ -14,7 +14,7 @@ This article describes how to configure the different Product Settings:
   
 
 * [Labels for applications](#configure-labels)  
-  Add labels for the product by which to application. 
+  Add labels for the product. 
 
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Click names of unassigned applications to automatically assign them to environments. 
@@ -30,10 +30,8 @@ This article describes how to configure the different Product Settings:
 
 ##### Form & YAML modes
 As with most GitOps entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
-If you are more comfortable with YAML, see our Product CRD 
 
-
-No matter what mode you use to configure Product Settings, all except applications manually assigned to the product are saved in the Product CRD.  
+No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD in the Shared Configuration Repository in `<shared-config-repo>/resources/configuration/products/<product-name>.crd`.  
 Applications manually assigned to the product are saved locally and not as part of the product's definitions.
 
 
@@ -57,13 +55,21 @@ Connect applications to products declaratively by copying the Product annotation
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 
 ##### Before you begin
-* Review [Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
+* Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 
 ##### How to
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab, and below Connect Applications copy the annotation to add to the application's manifest.
 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/general-copy-annotation.png"
+ url="/images/gitops-products/settings/general-copy-annotation.png"
+ alt="Product Settings: General"
+ caption="Product Settings: General"
+    max-width="60%"
+%} 
 
 {:start="3"}
 1. Paste the annotation in the application's manifest:
@@ -79,7 +85,7 @@ TBD
 
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
-1. Below **Labels**, click **Add** and define key-value pairs.
+1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
 
 ## Manually assign unassigned applications
 Manually assign applications with a one-click action for quick assignment.  
@@ -89,16 +95,24 @@ This quick assignment option does not require a commit action as applications as
 This method is recommended for testing purposes.
 
 ##### Before you begin
-* Review [Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
+* Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 
 ##### How to
 
 
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click **Manage Applications**.
   The list of **Unassigned apps** is displayed on the left.
 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/manage-apps.png"
+ url="/images/gitops-products/settings/manage-apps.png"
+ alt="Product Settings: Manage Applications"
+ caption="Product Settings: Manage Applications"
+    max-width="60%"
+%} 
 
 {:start="3"}
 1. If needed, filter unassigned applications by **Environment**, or in the search field type a part of the application name.
@@ -119,11 +133,11 @@ Automate and orchestrate promotions across different environments for the Produc
 
 
 ##### Before you begin
-* Review [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/manage-products/promotion-flow-triggers/)   
+* Review [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 ##### How to
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click the **Promotion Flows** tab.
 1. To add a Promotion Flow for the product, click **Add**.
 1. From the list of Promotion Flows, select a predefined Flow for the product. 
@@ -135,12 +149,30 @@ Automate and orchestrate promotions across different environments for the Produc
   1. **Values**: Single or multiple values used to match or exclude Promotion Flows based on the Property and Operator configured. 
   1. To add more trigger conditions, click **Add** and repeat _steps 4.1 through 4.3_.
 
-SCREENSHOT
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotion-flow.png"
+ url="/images/gitops-products/settings/promotion-flow.png"
+ alt="Product Settings: Promotion Flows"
+ caption="Product Settings: Promotion Flows"
+ max-width="60%"
+%}
 
 {:start="6"}
 1. To confirm, click **Add**.
-1. If there is more than one Promotion Flow, click ?? and drag to define the priority and order.  
-SCREENSHOT
+1. If there is more than one Promotion Flow, click {::nomarkdown}<img src="../../../images/icons/move.png?display=inline-block">{:/} and drag to define the priority and order.  
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotion-flow-list.png"
+ url="/images/gitops-products/settings/promotion-flow-list.png"
+ alt="Product Settings: Promotion Flow list"
+ caption="Product Settings: Promotion Flow list"
+ max-width="60%"
+%}
 
 {:start="8"}
 1. Click **Commit**.
@@ -163,13 +195,10 @@ Configure Promotion Settings to define:
       The Version and Promotable Properties are populated with the settings already defined in the template.
     * Select **Inline** and create a new Promotion Template for this product. Continue from _step 4_.
 
-{:start="4"}
 1. Define the source settings for the application **Version**:
     1. **File**: The name of the file from which to retrieve the version. For example, `chart.yaml`. 
     1. **Path**: The JSON path to the attribute with the value. 
     1. To see the result for any application connected to the product, click **Preview Configuration** and then select an application to see its version. 
-
-SCREENSHOT??
 
 {:start="5"}
 1. Define the settings for the **Promotable Properties**:
@@ -177,10 +206,22 @@ SCREENSHOT??
     1. **Paths**: The JSON path or paths to one or more attributes within the file to promote. For example, `$.buslog.image.tag`, `$.ctrlr.image.tag`, and `$.flask-ui.image.tag`.
     1. To add more files and paths, click **Add** and define the **File** and **Paths**.
     1. To preview the properties that will be promoted for an application connected to the product, click **Preview Configuration** and then select an application. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotion-settings.png"
+ url="/images/gitops-products/settings/promotion-settings.png"
+ alt="Product Settings: Promotion Settings"
+ caption="Product Settings: Promotion Settings"
+ max-width="60%"
+%}
+
+{:start="6"}
 1. Click **Commit**.
 
 
 
 ## Related articles
-[Tracking deployments for products]({{site.baseurl}}/docs/products/product-releases/)  
+[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   

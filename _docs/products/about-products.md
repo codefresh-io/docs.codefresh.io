@@ -79,9 +79,9 @@ In two simple steps:
 Codefresh seamlessly identifies and organizes the applications in the correct [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).  
 
 
-##### How do you deploy a Product?
+##### How do you promote a Product?
 
-By configuring the promotion flows and settings for the product and its applications:
+By configuring the properties  to bepromotion flows and settings for the product and its applications:
 
 Configure Promotion Flows
 Define the steps and criteria for promoting applications in the product through different stages of deployment. Select and customize the conditions to trigger specific flows, automating and controlling when and how applications are promoted.

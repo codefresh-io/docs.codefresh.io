@@ -32,10 +32,13 @@ For how to instructions on configuring Promotion Flows, see [Configure Promotion
 
 ##  Promotion Flow CRD
 
-As with other GitOps entities, you can configure Promotion Flows in either Form or YAML modes. Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Flow within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
+As with other GitOps entities, you can configure Promotion Flow settins in either Form or YAML modes.  
 
-If you are more comfortable configuring directly in YAML, refer to our ???? Promotion Flow CRD for the syntax requirements and descriptions.
-The table blow describes the settings you can configure 
+Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-flows/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
+
+To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions.
+
 
 ## Examples of trigger conditions for Promotion Flows
 
@@ -121,9 +124,9 @@ The Rollback flow is triggered when the commit message contains `revert` or `rol
 
 
 ## Related articles
-[Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
+[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/manage-products/promotion-version-properties/)  
-[Tracking deployments for products]({{site.baseurl}}/docs/products/product-releases/)  
+[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   
 
 

@@ -164,7 +164,7 @@ Unassign an application manually assigned to a Product directly from its setting
 1. Commit to save the changes.
 
 ## Related articles
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/manage-products/promotion-flow-triggers/)   
+[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/manage-products/promotion-version-properties/)  
 [Tracking deployments for products]({{site.baseurl}}/docs/products/product-releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   

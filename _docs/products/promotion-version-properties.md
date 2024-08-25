@@ -40,15 +40,25 @@ For how-to instructions on configuring Promotion Settings, see [Configure Promot
 ## Promotion Settings & Promotion Templates
 
 As with other GitOps entities, you can configure Promotion Settings in either Form or YAML modes.  
-Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) entitled Promotion Template within the GitOps Runtime selected as the Configuration Runtime. This allows for a declarative and consistent approach to defining orchestration criteria across environments.
+
+Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
 
 
-If you are more comfortable configuring directly in YAML, refer to our ???? Promotion Template CRD for the syntax requirements and descriptions.
+To configure directly in YAML, refer to our [Promotion Template CRD](tbd) for the syntax requirements and descriptions.
 
 ## Versions for promoted applications
 The Version attribute specifies the location for version information for the applications in the Product. The application version is displayed in the  Environments, Products, and GitOps Apps dashboards.   
 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promote-version-settings.png"
+ url="/images/gitops-products/settings/promote-version-settings.png"
+ alt="Example of version settings for promotion"
+ caption="Example of version settings for promotion"
+    max-width="60%"
+%} 
 
 
 The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
@@ -56,8 +66,18 @@ The Version attribute is defined using a [JSON path expression](#json-path-expre
 DIAGRAM 
 
 For example:
-`$.appVersion` and `chart.yaml` configured for Version indicates that the version is extracted from the `appVersion` field in the specified file, `chart.yaml`.
-Codefresh retrieves the repo URL and the path to the file from the application manifest.
+`$.appVersion` and `chart.yaml` configured for Version indicates that the version is extracted from the `appVersion` field in the specified file, `chart.yaml`. Codefresh retrieves the repo URL and the path to the file from the application manifest. Clicking Preview Configuration and then selecting the appplication, displays the version which will be retrieved. 
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promote-properties-version-source-and-preview.png"
+ url="/images/gitops-products/settings/promote-properties-version-source-and-preview.png"
+ alt="Example of manifest (left) and preview (right) with resolved JSON path expression for version"
+ caption="Example of manifest (left) and preview (right) with resolved JSON path expression for version"
+    max-width="60%"
+%} 
+
 
 If the version is either not displayed in the dashboards, or if the incorrect version is displayed, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute in the Product's Promotion Settings.
 
@@ -106,7 +126,7 @@ You can extract version information from different attributes, ensuring it align
       <td>Git commit SHA</td>
       <td><pre><code>git:
   commitSha: "abc123def456"</code></pre></td>
-      <td><<code class="highlighter-rouge">$.git.commitSha</code></td>
+      <td><code class="highlighter-rouge">$.git.commitSha</code></td>
       <td>Track versions using specific Git commit SHAs, useful in CI/CD pipelines.</td>
     </tr>
     <tr>
@@ -243,7 +263,15 @@ release:
 Promotable Properties define the specific files or the attributes within files, to be promoted between environments for applications in the product.  
 Though optional, defining these properties allow for precise control over what changes are included in a promotion, adhering to environment-specific requirements and avoiding unwanted modifications.
 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotable-property-settings.png"
+ url="/images/gitops-products/settings/promotable-property-settings.png"
+ alt="Example of version settings configured and preview of version retrieved for application"
+ caption="Example of version settings configured and preview of version retrieved for application"
+    max-width="60%"
+%}
 
 {{site.data.callout.callout_tip}}
 **TIP**  
@@ -263,8 +291,8 @@ You can see that properties are configured to be promoted from three different f
 	lightbox="true" 
 	file="/images/gitops-products/settings/promotable-properties-configured.png" 
 	url="/images/gitops-products/settings/promotable-properties-configured.png" 
-	alt="Promotable Properties configured for product" 
-	caption="Promotable Properties configured for product"
+	alt="Example of properties configured for promotion" 
+	caption="Example of properties configured for promotion"
   max-width="60%" 
 %}
 
@@ -358,7 +386,7 @@ Using the above syntax:
 
 
 ## Related articles
-[Assigning applications to products]({{site.baseurl}}/docs/products/manage-products/assign-applications/)   
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/manage-products/promotion-flow-triggers/)   
-[Tracking deployments for products]({{site.baseurl}}/docs/products/product-releases/)  
+[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   

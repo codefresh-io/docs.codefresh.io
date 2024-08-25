@@ -52,3 +52,10 @@ Note that Products will not display any applications in these scenarios:
 {:start="4"}
 1. Click **Add**. 
    The Product is displayed in the Products dashboard. 
+
+
+## Related articles
+[Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
