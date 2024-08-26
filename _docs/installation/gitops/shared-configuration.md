@@ -86,7 +86,7 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by _all_ clusters managed by GitOps Runtimes.
+The `resources` directory contains the resources shared by _all_ clusters managed by GitOps Runtimes.
 
 {: .table .table-bordered .table-hover}
 | Shared Configuration Repo    | Description     | 
@@ -96,9 +96,9 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
 |`resources/control-planes` |  Optional. When defined, applies every resource manifest to each Runtime’s `in-cluster`. Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`. |
 | `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
 | `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
-|                             |`resources/configurations/products`: Contains CRDs of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the CRD. Product CRDs are available to users with the required ABAC permissions. | 
-|                             |`resources/configurations/promotion-policies`: Contains CRDs of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. | 
-|                             | `resources/configurations/promotion-flows`: Contains CRDs of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  |
+| `resources/configurations/products` |Contains CRDs of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the CRD. Product CRDs are available to users with the required ABAC permissions. <br>See [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/).| 
+|`resources/configurations/promotion-policies`| Contains CRDs of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. See TBD.| 
+| `resources/configurations/promotion-flows`|Contains CRDs of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  See TBD.|
 |`resources/runtimes/<runtime_name>`| Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. |
 
 
@@ -107,7 +107,7 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
 The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster. Every subdirectory always has an `in-cluster.yaml`, and optionally, application manifest YAMLs for other clusters. 
 The `runtimes/<runtime1>` subdirectory for example, includes the `in-cluster.yaml`, and a `remote-cluster.yaml` for the remote cluster also managed by the same Runtime.
 
-**Example application manifest for in-cluster.yaml**
+##### Example application manifest for in-cluster.yaml
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -165,6 +165,7 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 ## Related articles
 [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+
 
  
 
