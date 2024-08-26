@@ -207,6 +207,9 @@ Only GitOps Runtimes designated as Configuration Runtimes sync to this folder an
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, new functionality, and the latest versions of all components. 
 
+>**NOTE**  
+For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_block"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_block"}. 
+
 **Changelog for new versions**  
 Codefresh alerts you to newer versions of Runtimes, through `Update Available! Notification` in the List View's Version column. A new version of the GtiOps Runtime includes a link to the changelog, detailing the changes in that version.  
 See also [View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases).
