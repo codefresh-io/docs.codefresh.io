@@ -814,8 +814,10 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 
 For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
->Note:
->For upgrading, please follow the [ArgoCD Upgrade](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/) path. For recomended Kubernetes version, please refer to [ArgoCD Tested Versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions). 
+>**NOTE**  
+>To upgrade, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes/).  
+
+>For version information on Argo CD and compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_block"}, and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_block"}.
 
 ## Ingress controller configuration
 
