@@ -29,7 +29,12 @@ Here are a few types of configuration definitions stored in the Shared Configura
 * [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
 * [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
 * [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
-* CRDs for promotion entities ???
+* Manifests for promotion entities: NIMA: TBD
+  * Products
+  * Promotion Workflows
+  * Promotion Policies
+  * Promoton Flows
+
 
 ## GitOps Runtimes & Shared Configuration Repos
 
@@ -57,9 +62,8 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 │   │   ├── cm-all.yaml           │
 │   │   └── subfolder             │
 │   │   └── manifest3.yaml        │
-│   │   └── promotion-workflows   │ # stores promotion workflow crds available to all runtimes
-│   │       └──  from-ui.yaml     │
-│   │       └── .gitkeep          │
+│   │   └── promotion-workflows   │ # stores promotion workflow manifests available to all runtimes
+│   │       └──  smoke-tests.yaml │
 │   ├── runtimes                  │
 │   │   ├── runtime1              │
 │   │   │   └── manifest4.yaml    │
@@ -67,14 +71,15 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
 └── app-projects                  │
-└── configurations                │ # present in runtimes designated as Configuration Runtime
-│   ├── products                  │ #    stores product crds with all product settings except assigned applications
+└── configurations                │ # syncs to cluster by runtimes designated as Configuration Runtime
+│   ├── products                  │ #    stores product manifests with all product settings except assigned applications
 │   │   └── loans.yaml            │
-│   ├── promotion-flows           │ #    stores promotion flow crds with promotion orchestration settings 
+│   ├── promotion-flows           │ #    stores promotion flow manifests with promotion orchestration settings 
 │   │   ├── base-flow.yaml        │
-│   │   └── simple.yaml           │
-│   └── promotion-policies        │ #    stores promotion policy crds for products/environments with promotion workflows & promotion action  
-│       └── some-policy.yaml      │
+│   │   └── hot-fix.yaml          │
+│   └── promotion-policies        │ #    stores promotion policy manifests for products/environments with promotion workflows & promotion action  
+│       └── prod-pr.yaml          │
+│       └── loan-policy.yaml      │
 └── runtimes                      │
     ├── runtime1                  │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
     │   ├── in-cluster.yaml      ─┤ #     manage `include` field determines which dirs/files to sync to cluster
@@ -92,13 +97,13 @@ The `resources` directory contains the resources shared by _all_ clusters manage
 | Shared Configuration Repo    | Description     | 
 | ----------                   |  -------- | 
 | `resources/all-runtimes-all-clusters` | Contains resource manifests applied to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`. |
-|  | `resources/all-runtimes-all-clusters/promotion-workflows` | Stores Custom Resource Definitions (CRDs) of Promotion Workflows, available to all Runtimes in the account. |
+|`resources/all-runtimes-all-clusters/promotion-workflows` | Stores manifests of Promotion Workflows, available to all Runtimes in the account. |
 |`resources/control-planes` |  Optional. When defined, applies every resource manifest to each Runtime’s `in-cluster`. Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`. |
 | `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
 | `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
-| `resources/configurations/products` |Contains CRDs of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the CRD. Product CRDs are available to users with the required ABAC permissions. <br>See [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/).| 
-|`resources/configurations/promotion-policies`| Contains CRDs of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. See TBD.| 
-| `resources/configurations/promotion-flows`|Contains CRDs of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  See TBD.|
+| `resources/configurations/products` |Contains manifests of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the manifest. Product manifests are available to users with the required ABAC permissions. <br>See [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/).| 
+|`resources/configurations/promotion-policies`| Contains manifests of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. See TBD.| 
+| `resources/configurations/promotion-flows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  See TBD.|
 |`resources/runtimes/<runtime_name>`| Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. |
 
 
