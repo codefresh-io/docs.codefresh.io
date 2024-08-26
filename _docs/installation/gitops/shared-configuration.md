@@ -53,7 +53,7 @@ Here are a few types of configuration definitions stored in the Shared Configura
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration in the GitOps Runtime designated as the Configuration Runtime. 
-See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-repo){:target="\_blank"}.
+<!--- See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-repo){:target="\_blank"}.-->
 
 ```
 
