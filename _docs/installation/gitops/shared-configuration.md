@@ -57,20 +57,20 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 │   │   ├── cm-all.yaml           │
 │   │   └── subfolder             │
 │   │   └── manifest3.yaml        │
-│   ├── promotion-workflows       │
-│   │   ├── from-ui.yaml          │
-│   │   └── .gitkeep              │
+│   │   └── promotion-workflows   │ # stores promotion workflow crds available to all runtimes
+│   │       └──  from-ui.yaml     │
+│   │       └── .gitkeep          │
 │   ├── runtimes                  │
 │   │   ├── runtime1              │
 │   │   │   └── manifest4.yaml    │
 │   │   └── runtime2              │
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
-├── app-projects                  │
-├── configurations                │ # present in runtimes designated as Configuration Runtime
+└── app-projects                  │
+└── configurations                │ # present in runtimes designated as Configuration Runtime
 │   ├── products                  │ #    stores product crds with all product settings except assigned applications
 │   │   └── loans.yaml            │
-│   ├── promotion-flows           │ #    stores promotion flow crds with orchestration settings 
+│   ├── promotion-flows           │ #    stores promotion flow crds with promotion orchestration settings 
 │   │   ├── base-flow.yaml        │
 │   │   └── simple.yaml           │
 │   └── promotion-policies        │ #    stores promotion policy crds for products/environments with promotion workflows & promotion action  
@@ -86,20 +86,20 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by _all_ clusters managed by GitOps Runtimes:
+The `resources` directory holds the resources shared by _all_ clusters managed by GitOps Runtimes.
 
-  * `resources/all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`.
-  * `resources/promotion-workflows`: 
-  * `resources/control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
-    Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`.
-  * resources/configurations
-    * resources/configurations/products
-    * resources/configurations/promotion-policies
-    * resources/configurations/promotion-flows
-
-
-  * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
-    In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
+{: .table .table-bordered .table-hover}
+| Shared Configuration Repo    | Description     | 
+| ----------                   |  -------- | 
+| `resources/all-runtimes-all-clusters` | Contains resource manifests applied to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`. |
+|  | `resources/all-runtimes-all-clusters/promotion-workflows` | Stores Custom Resource Definitions (CRDs) of Promotion Workflows, available to all Runtimes in the account. |
+|`resources/control-planes` |  Optional. When defined, applies every resource manifest to each Runtime’s `in-cluster`. Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`. |
+| `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
+| `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
+|                             |`resources/configurations/products`: Contains CRDs of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the CRD. Product CRDs are available to users with the required ABAC permissions. | 
+|                             |`resources/configurations/promotion-policies`: Contains CRDs of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. | 
+|                             | `resources/configurations/promotion-flows`: Contains CRDs of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  |
+|`resources/runtimes/<runtime_name>`| Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. |
 
 
 
