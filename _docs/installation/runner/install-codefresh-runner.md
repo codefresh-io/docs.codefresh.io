@@ -160,7 +160,7 @@ Override the default Runtime Environment for a specific pipeline through the pip
 ## Codefresh Runner configuration
 After you install the Codefresh Runner, there are several options for configuring the Runner. For detailed information, see [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} in ArtifactHub.
 
-##### Volume configuration options 
+##### Runner volume configuration options 
 * [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
 * [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
 * [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}
@@ -168,16 +168,16 @@ After you install the Codefresh Runner, there are several options for configurin
 * [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}
 * [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}
 
-##### Custom environment variables
+##### Runner custom environment variables
 * [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
 
-##### Rootless DinD
+##### Runner rootless DinD
 * [Docker daemon in rootless mode](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#rootless-dind){:target="\_blank"}
 
-##### ARM builds
+##### Runner ARM builds
 * [Run native ARM builds](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#arm){:target="\_blank"}
 
-##### Installation
+##### Runner installation
 * [Install Runner on OpenShift](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#openshift){:target="\_blank"}
 * [Agentless install mode for on-premises](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#on-premise){:target="\_blank"}
 
