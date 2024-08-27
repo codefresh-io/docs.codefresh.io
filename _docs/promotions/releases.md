@@ -8,16 +8,24 @@ toc: true
 
 
 
-When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production. 
+When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production or to the desired target environment. 
 
-In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change from the initial trigger environment to the final production-ready environment. 
+In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final target environment. 
 
 The Releases feature in Codefresh is designed for tracking deployments of a product across multiple environments. 
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/releases-list.png" 
+url="/images/gitops-promotions/releases/releases-list.png"
+alt="Release list for a product" 
+caption="Release list for a product"
+max-width="60%"
+%}
 
 
-<!--- A release refers to the new version of software deployed to an environment after ensuring that the code has passed all necessary stages of testing and validation. -->
+<!--- NIMA: add an xref to the three different ways promotions can be triggered -->
 
 ##### Releases & Products
 A Release is added for a Product when a Promotion Flow is triggered, either automatically or manually for that product.
@@ -25,6 +33,14 @@ On drill down into a Product, the Releases tab displays the list of ongoing and 
 
 ##### Releases & developers
 As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for deployments, or understand the changes involved in a release.
+
+##### Use cases
+Whether you are a product manager or an application developer, with Releases, you can:
+* Visualize the product's deployment lifecycle
+* Access an integrated list of changes that led to the deployment
+* See the current status of ongoing deployments
+* Troubleshoot issues preventing deployment to production
+* Address customer-reported issues through detailed insights into the deployment lifecycle
 
 
 There are two key aspects of tracking deployments for a product through releases:
@@ -37,12 +53,7 @@ There are two key aspects of tracking deployments for a product through releases
   See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
 
 
-Whether you are a product manager or an application developer, with Releases, you can:
-* Visualize the product's deployment lifecycle
-* Access an integrated list of changes that led to the deployment
-* See the current status of ongoing deployments
-* Troubleshoot issues preventing deployment to production
-* Address customer-reported issues with detailed insights into the deployment lifecycle
+
 
 
 ## View Releases for products
@@ -54,7 +65,15 @@ The Releases tab for a product displays the releases for that product, whether s
 
 The Releases page displays on-going and completed releases for the product.
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/releases-list.png" 
+url="/images/gitops-promotions/releases/releases-list.png"
+alt="Release list for a product" 
+caption="Release list for a product"
+max-width="60%"
+%}
 
 The table describes important insights in the Releases page.
 
@@ -81,6 +100,15 @@ Monitor promotion orchestration for an on-going release, or analyze that of a co
 1. Click a Release ID to view the promotion orchestration.
 1. To view the complete history of code changes, click **Release Notes**.   
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/release-visualization.png" 
+url="/images/gitops-promotions/releases/release-visualization.png"
+alt="Promotion visualization for a release" 
+caption="Promotion visualization for a release"
+max-width="60%"
+%}
 
 ### Header in Product Releases
 The header summarizes the change that triggered the promotion, the overall status of the release, and the number of failed, successful, running, and pending environments.
@@ -89,7 +117,7 @@ The commit details are always for the trigger environment that initiated the pro
 
 See also [Release status](#release-status).
 
-SCREENSHOT
+
 
 ### Environments in Product Releases
 
@@ -99,17 +127,15 @@ You can:
 * Understand the interconnections between the environments, whether linear or parallel.
 * Visualize the dependencies between environments to see how changes propagate through the deployment process
 
-Each environment is color-coded to indicate the overall status of the promotion for that environment. See [Environment (deployment) status](#environment-deployment-status).
+Each environment is color-coded to indicate the overall status of the promotion for that environment. See also [Environment (deployment) status](#environment-deployment-status).
 
-
-SCREENSHOT
 
 #### Concurrent promotions within environments
 
 If there is an update that triggers a Pre- or Post-Action Workflow within an environment while the same Workflow is already in progress, the ongoing Workflow is automatically terminated and the latest Workflow is run instead.
 
 
-For example, if an update in the staging environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance is run. 
+For example, if an update in the `staging` environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance continues to run. 
 
 
 NIMA: how will it be shown in the releases tab?
@@ -127,9 +153,9 @@ See [Workflow and workflow-step status](#workflow-and-workflow-step-status).
 #### Versioning in Environments
 When the Post-Action Workflow in the trigger environment, or the Pre-Action Workflow and Promotion Action in any other environment, completes successfully, the promotion mechanism commits the changes and advances the version number for the applications within the product. This occurs even if the Post-Action Workflow in a specific environment fails to complete.
 
-Because of this automatic version update, it's essential to incorporate a revert or rollback mechanism in the Post-Action Workflow to allow for easy reversion of changes if needed.
+Because of this automatic version update, it's essential to incorporate a revert or rollback mechanism in the Post-Action Workflow to easily revert changes if needed.
 
-TBD
+<!--- TBD  -->
 
 
 #### Errors for Workflow steps
@@ -155,7 +181,6 @@ Errors can be categorized into:
 
 
 
-
 Other types of errors that result in failed workflows can include network or connectivity errors, or errors
 arising from insufficient permissions to execute workflow steps or access necessary resources.
 
@@ -168,9 +193,17 @@ Access the release notes to see a detailed history of all changes that led to th
 These changes are collated from different tools and sources, and include code changes, commits, and associated issues or fixes.
 Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
 
-NIMA: Add here use case of how to use release notes to troubleshoot/trace issue.
+NIMA: Add here use case of how to use release notes to troubleshoot/trace issue?
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/release-notes.png" 
+url="/images/gitops-promotions/releases/release-notes.png"
+alt="Release notes with change history for release" 
+caption="Release notes with change history for release"
+max-width="60%"
+%}
 
 
 
@@ -188,39 +221,40 @@ In top-down order, you have the:
 
 ### Release status
 The release status is displayed on the right on drilldown into a release ID.  
-It is determined from the statuses of all of the environments defined in the Promotion Flow that orchestrates the deployment of the product.
+It is determined from the statuses of all the environments defined in the Promotion Flow that orchestrates the deployment of the product.
 
 The table describes the possible statuses of a Release.
 
 {: .table .table-bordered .table-hover}
 | Release Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | The Pre- and Post-Action Workflows in all the environments completed successfully and the changes were successfully deployed .  |
-| **Progressing**    | Deployment is currently on-going for at least one environment.  |
-| **Terminated**     | The Pre- or Post-Action Workflow currently being run in an environment was terminated preventing deployment to the other environments defined in the Promotion Flow. |
-| **Failed**         | Deployment to at least one environment failed and the Release failed. The Pre- or Post-Action Workflow with the failed step is flagged in the environment and in the header. Clicking it opens a panel with a link to the logs for that step. |
+| **Successful**     | Promotions were completed successfully in all the environments and the changes were successfully deployed .  |
+| **Progressing**    | Promotion is currently on-going for at least one environment.  |
+| **Suspended**      | Promotion in an environment is pending completion. This could be because of a condition in one of its workflows or because a pull request is waiting for approval.  |
+| **Terminated**     | Promotion currently being run in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. |
+| **Failed**         | Promotion failed in at least one environment causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures are flagged in the environment under Issues. Clicking on Issues opens a panel displaying the reason for the error, with links to the resource causing the issue, or to the logs and manifests of the resource.|
 
-(NIMA: where should I add the info terminate - to release or workflow or both?)
+
 
 ### Environment (deployment) status
-The overall deployment status of an environment is determined by the cumulative statuses of the Pre- and Post-Action Promotion Workflows run within that environment.
+The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows and the Promotion Action.
 
-The table describes the possible deoloyment statuses for environments.
+The table describes the possible deployment statuses for environments.
 
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | One or both the Pre- and Post-Action Workflows in the environment completed successfully.  |
-| **Running**        | At least one step in a Pre- or Post-Action Worfklow in the environment is currently in progress.  |
-| **Pending**        | One or both the Pre- and Post-Action Workflows are pending execution. This status occurs when the Promotion Workflows in the previous environment failed to complete successfully. |
-| **Failed**         | At least one step in a Pre- or Post-Action Workflow failed to execute, has a syntax error, or was manually terminated. |
+| **Successful**     | All Workflows in the environment completed successfully and the Promotion Action was successful.  |
+| **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
+| **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
+| **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
 
 
 ### Workflow and workflow-step status
 
 * The status of a Workflow is determined by the status of all its steps.
 
-* The status of a step in the Pre- or Post-Action Workflow is its aggregated status across all the Workflows including and running that step within the environment. Step status is aggregated because a Product typically includes multiple applications, and therefore executes multiple Promotion Workflows in parallel through the Promotion Policies. 
+* The status of a step in the Pre- or Post-Action Workflow is its aggregated status across all the Workflows including and running that step within the environment. Step status is aggregated because a product typically includes multiple applications, and therefore executes multiple Promotion Workflows in parallel through the Promotion Policies. 
 
 The table describes the possible statuses for Promotion Workflow steps.
 
@@ -237,11 +271,44 @@ The table describes the possible statuses for Promotion Workflow steps.
 
 
 
-## Restart a failed release
-???
+## Retry a failed release
+Retry a failed release to restart the process from the exact point of failure.  Restarting from the point of failure rather than from scratch saves time and resources, enabling a quicker recovery and minimizing downtime.  
+
+For example, you may want to retry a release if the deployment failed due to an application being out of sync or in a degraded state, and the issue has since been resolved.  
+Another scenario where a retry is useful is when a workflow step encountered a temporary network issue that has now been corrected. By retrying the release, you can continue the deployment without redoing steps that were already successful.
+
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. Select the product and then click the **Releases** tab.
+1. Click the Release ID for a failed release, and then click **Retry**.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/retry-failed-release.png" 
+url="/images/gitops-promotions/releases/retry-failed-release.png"
+alt="Retry failed release" 
+caption="Retry failed release"
+max-width="60%"
+%}
+
+   The release resumes execution from the point of failure, in this case, retries the Post-Action Workflow step, and the status of the release changes to Running.  Note that the release ID does not change. 
+
+<!--
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/result-retry-failed-release.png" 
+url="/images/gitops-promotions/releases/result-retry-failed-release.png"
+alt="Retried failed release" 
+caption="Retried failed release"
+max-width="60%"
+%}
+
+-->
 
 
-
+## Related articles
+TBD
 
  
 
