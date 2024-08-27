@@ -52,7 +52,7 @@ After installing the Codefresh Runner, you can:
 To install the latest version of Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime) on ArtifactHub.
 
 
-### Migrating existing installations 
+## Migrating existing installations 
 You need to migrate existing CLI- and Helm-based installations of the Codefresh Runner to the new Helm installation.
 * CLI installations  
   * Uninstall the existing Runner installation
@@ -158,10 +158,28 @@ Override the default Runtime Environment for a specific pipeline through the pip
 
 
 ## Codefresh Runner configuration
-After you install the Codefresh Runner, review the [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} section on ArtifactHub for all configuration options.
+After you install the Codefresh Runner, there are several options for configuring the Runner. For detailed information, see [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} in ArtifactHub.
 
-Configuration options include EBS backend volume, custom global environment variables, volume mounts, volume reuse policies, and more.
+##### Volume configuration options 
+* [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
+* [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
+* [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}
+* [EBS backend](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/#runner-components-and-resources){:target="\_blank"}
+* [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}
+* [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}
 
+##### Custom environment variables
+* [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
+
+##### Rootless DinD
+* [Docker daemon in rootless mode](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#rootless-dind){:target="\_blank"}
+
+##### ARM builds
+* [Run native ARM builds](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#arm){:target="\_blank"}
+
+##### Installation
+* [Install Runner on OpenShift](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#openshift){:target="\_blank"}
+* [Agentless install mode for on-premises](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#on-premise){:target="\_blank"}
 
 ## Runtime Environment specifications
 
