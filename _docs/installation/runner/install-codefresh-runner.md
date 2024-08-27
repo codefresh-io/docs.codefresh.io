@@ -164,7 +164,7 @@ After you install the Codefresh Runner, there are several options for configurin
 * [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
 * [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
 * [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}
-* [EBS backend](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/#runner-components-and-resources){:target="\_blank"}
+* [EBS backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
 * [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}
 * [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}
 
