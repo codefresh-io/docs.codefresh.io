@@ -96,7 +96,7 @@ See the documentation for [codefresh_abac_rules](https://registry.terraform.io/p
 {: .table .table-bordered .table-hover}
 | Promotion Flows            | Description            |
 |----------------------------|-----------------------| 
-|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a promotion from within a Promotion Flow. See???Trigger a promotion????|
+|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a promotion from within a Promotion Flow. See[TBD]Trigger a promotion????|
 |**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label ???.  |
 
 
