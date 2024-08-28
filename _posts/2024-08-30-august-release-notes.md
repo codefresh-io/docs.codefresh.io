@@ -51,12 +51,15 @@ Try our new search and don’t forget to send us your feedback!
 
 We’ve made a change to how pull request titles are handled by environment variables in pipelines.
 
-The environment variables ${{CF_COMMIT_MESSAGE}} and ${{CF_COMMIT_MESSAGE_ESCAPED}} now return the commit message instead of the pull request title.
+The environment variables `${{CF_COMMIT_MESSAGE}}` and `${{CF_COMMIT_MESSAGE_ESCAPED}}` now return the commit message instead of the pull request title.
+
 To get the pull request title, use the new environment variables:
-${{CF_PULL_REQUEST_TITLE}}
-${{CF_PULL_REQUEST_TITLE_ESCAPED}}
-To use the new variables for pull request titles, update your pipelines accordingly.  As they are already supported by the system, you can begin using them immediately.The change will take effect one week after this message is released.
-See System variables.
+* `${{CF_PULL_REQUEST_TITLE}}`
+* `${{CF_PULL_REQUEST_TITLE_ESCAPED}}`
+
+To use the new variables for pull request titles, update your pipelines accordingly.  As they are already supported by the system, you can begin using them immediately.
+
+For details, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
 
 ### GitOps: External links for Kubernetes app & ingress resources 
@@ -109,18 +112,19 @@ For details, see ????
 ## Bug fixes
 
 ##### General
-* Download Audit downloads empty CSV file. 
+* Payment processing error. ??? 
 * Invite text in Welcome screen displays `undefined` instead of the organization name. 
 
 ##### Pipelines 
-* Builds with `codefresh-run` step fails with error `Failed to write template value file Arguments to filesystem`. (Noam 24734 )
-builds fails - build runtime settings are not configured (Kim - 24191)
+* Expired certificates causes builds to remain in Pending status. (CR-24967 Mikhail)
+* Pipeline with two triggers starts two builds on commits to the file instead of one build
+* Pull request triggers for Bitbucket server creates wrong webhooks. (Olek - CR-23299)
+
 * `build` step does not work with cross-account ECR. (Kim - 19269)
 
 
 ##### GitOps 
-* Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
-* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
-* Current Release not displayed for multi-sourced apps. 
-* Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
-* Unresponsive **Close** button in Rollout drawer. 
+* `fullnameOverride` when set in Argo CD Helm chart results in failure to reach service. (CR-cr-25000 Ilya)
+* Audit log does not show changes made to GitOps permissions. (Vadim - CR-21667)Failure to reach service when  is set 
+* Manual Rollout actions not available in audit log.
+* `Permissions denied` error for users even with needed GitOps permissions. Andrii CR-21363
