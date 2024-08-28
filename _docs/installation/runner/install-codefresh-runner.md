@@ -160,24 +160,31 @@ Override the default Runtime Environment for a specific pipeline through the pip
 ## Codefresh Runner configuration
 After you install the Codefresh Runner, there are several options for configuring the Runner. For detailed information, see [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} in ArtifactHub.
 
-##### Runner volume configuration options 
-* [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
-* [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
-* [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}
+### Runner volume configuration options 
+* **Custom volume mounts**
+  Add custom volumes and volume mounts to the runtime environment for all pipeline steps to have access to the same set of external files.  
+  See [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}.
+* [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}  
+  Configure the value of `reuseVolumeSelector` in the runtime environment to define volume reuse behavior.
+* [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}  
+  Manage disk space and prevent out-of-sapce errors for Codefresh pipelines.
 * [EBS backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
+  Assign permissions to `dind-volume-provisioner` to create/attach/detach/delete/get EBS volumes.
 * [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}
+  Assign permissions to `dind-volume-provisioner` to create/delete/get Azure disks.
 * [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}
+  Assign `ComputeEngine.StorageAdmin` permissions to `dind-volume-provisioner`
 
-##### Runner custom environment variables
+### Runner custom environment variables
 * [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
 
-##### Runner rootless DinD
+### Runner rootless DinD
 * [Docker daemon in rootless mode](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#rootless-dind){:target="\_blank"}
 
-##### Runner ARM builds
+### Runner ARM builds
 * [Run native ARM builds](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#arm){:target="\_blank"}
 
-##### Runner installation
+### Runner on OpenShift
 * [Install Runner on OpenShift](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#openshift){:target="\_blank"}
 * [Agentless install mode for on-premises](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#on-premise){:target="\_blank"}
 
