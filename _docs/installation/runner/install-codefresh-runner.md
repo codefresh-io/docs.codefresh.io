@@ -26,10 +26,9 @@ The [CLI-based installation and configuration](#cli-based-codefresh-runner-insta
   Using spot instances can cause failures in Codefresh pipeline builds as they can be taken down without notice.<br>If you require 100% availability, we do not recommend using spot instances.
 
 After installing the Codefresh Runner, you can:
-* View the Runner Agent and its Runtime Environments
-* View Runner components and resources
-* Configure different aspects of the Runner
-
+* [View Runner components and resources](#runner-components-and-resources)
+* [View the Runner Agent and its Runtime Environments](#runner-agents-and-runtime-environments)
+* [Configure different aspects of the Runner](#runner-configuration)
 
 ## System requirements
 
@@ -106,7 +105,7 @@ The Runner uses the following pods:
 
 All CNI providers/plugins are compatible with the runner components.
 
-## Codefresh Runner Agents and Runtime Environments
+## Runner Agents and Runtime Environments
 
 View Codefresh Runners installed for your account and their status. The Codefresh Runners tab in Pipeline Runtimes displays the list of Agents for the account. Every Agent is attached to one or more Runtime Environments. The API token is the one provided during Runner installation.  
 
@@ -157,29 +156,54 @@ Override the default Runtime Environment for a specific pipeline through the pip
 
 
 
-## Codefresh Runner configuration
-After you install the Codefresh Runner, there are several options for configuring the Runner. For detailed information, see [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} in ArtifactHub.
+## Runner configuration
+After you install the Codefresh Runner, use the configuration options to customize the installation for your organization.  
+For detailed information, see [Configuration](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#configuration){:target="\_blank"} in ArtifactHub.
 
-##### Runner volume configuration options 
-* [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}
-* [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}
-* [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}
-* [EBS backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}
-* [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}
-* [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}
+### Runner volume configuration options 
+* **Custom volume mounts**  
+  Add custom volumes and volume mounts to the runtime environment for all pipeline steps to have access to the same set of external files.  
+  See [Custom volume mounts](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts){:target="\_blank"}.
+* **Volume reuse**    
+  Configure the value of `reuseVolumeSelector` in the runtime environment to define volume reuse behavior.  
+  See [Volume reuse policy](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-reuse-policy){:target="\_blank"}. 
 
-##### Runner custom environment variables
-* [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}
+* **Volume cleaners**  
+  Manage disk space and prevent out-of-sapce errors for Codefresh pipelines.  
+  See [Volume cleaners](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners){:target="\_blank"}.  
 
-##### Runner rootless DinD
-* [Docker daemon in rootless mode](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#rootless-dind){:target="\_blank"}
+* **EBS volume configuration**  
+  Assign permissions to `dind-volume-provisioner` to create/attach/detach/delete/get EBS volumes.  
+  See   [EBS backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#ebs-backend-volume-configuration){:target="\_blank"}.
 
-##### Runner ARM builds
-* [Run native ARM builds](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#arm){:target="\_blank"}
+* **Azure Disks volume configuration**    
+  Assign permissions to `dind-volume-provisioner` to create/delete/get Azure disks.  
+  See [Azure Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#azure-disks-backend-volume-configuration){:target="\_blank"}.
 
-##### Runner installation
-* [Install Runner on OpenShift](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#openshift){:target="\_blank"}
-* [Agentless install mode for on-premises](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#on-premise){:target="\_blank"}
+* **GCE Disks volume configuration**  
+  Assign `ComputeEngine.StorageAdmin` permissions to `dind-volume-provisioner`.  
+  See   [GCE Disks backend](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#gce-disks-backend-volume-configuration-in-gke){:target="\_blank"}.
+
+
+### Runner custom environment variables
+Add custom environment variables to the Runtime Environment that all pipeline steps can access.  
+See [Custom global environment variables](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables){:target="\_blank"}.
+
+### Runner rootless DinD
+To run the docker daemon as non-root user in `rootless` mode, configure the `dind` image tag.  
+See [Docker daemon in rootless mode](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#rootless-dind){:target="\_blank"}.
+
+### Runner ARM builds
+Run native ARM64v8 builds with `nodeSelector` or `tolerations` for `dind` pods.  
+See [Run native ARM builds](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#arm){:target="\_blank"}.
+
+### Runner on OpenShift
+Install Runner on OpenShift by configuring `values.yaml`.  
+See [Install Runner on OpenShift](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#openshift){:target="\_blank"}.
+
+### Runner in Agentless mode
+For on-premises installations, install Runner in `agentless` mode.  
+See [Agentless install mode for on-premises](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#on-premise){:target="\_blank"}.
 
 ## Runtime Environment specifications
 
