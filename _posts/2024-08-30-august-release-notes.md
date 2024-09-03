@@ -100,11 +100,11 @@ Try our new search and don’t forget to send us your feedback!
 
 We’ve made a change to how pull request titles are handled by environment variables in pipelines.
 
-The environment variables `${{CF_COMMIT_MESSAGE}}` and `${{CF_COMMIT_MESSAGE_ESCAPED}}` now return the commit message instead of the pull request title.
+The environment variables {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %} and {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %} now return the commit message instead of the pull request title.
 
 To get the pull request title, use the new environment variables:
-* `${{CF_PULL_REQUEST_TITLE}}`
-* `${{CF_PULL_REQUEST_TITLE_ESCAPED}}`
+* {% raw %}`${{CF_PULL_REQUEST_TITLE}}`{% endraw %}
+* {% raw %}`${{CF_PULL_REQUEST_TITLE_ESCAPED}}`{% endraw %}
 
 To use the new variables for pull request titles, update your pipelines accordingly.  As they are already supported by the system, you can begin using them immediately.
 
