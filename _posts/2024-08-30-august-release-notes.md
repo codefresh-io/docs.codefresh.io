@@ -4,7 +4,56 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-### General: Customizable menus
+### General: Personalized menus
+
+We have introduced a powerful feature that gives admins even more control over the Codefresh platform: customizable menus!  
+
+Take control of your account's menu items and personalize the interface to create a more user-friendly and productive environment.
+Simplify navigation by hiding unnecessary menu items and decluttering the sidebar, ensuring that users can quickly the pages they need.  
+
+
+We've added a new page to Settings entitled **Modules**. Admins can decide exactly which menu items are displayed in the sidebar for all users in the account. 
+
+##### How it works
+We have three main modules for the plaform:
+* Continuous Delivery (CD) with GitOps 
+* Continuous Integration (CI) with Pipelines 
+* Continuous Delivery (CD) with Pipelines 
+
+By default, all modules, submodules, and menu items are enabled. 
+
+Using the toggle method, you can easily customize what's visible: switch to ON to display an item and OFF to hide it. 
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/administration/sidebar-modules/module-disabled.png" 
+   url="/images/administration/sidebar-modules/module-disabled.png" 
+   alt="Example of main module toggled OFF" 
+   caption="Example of main module toggled OFF" 
+   max-width="80%" 
+   %}
+
+
+For even more precise control, you can toggle individual pages on or off.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/administration/sidebar-modules/customized-menu-list.png" 
+   url="/images/administration/sidebar-modules/customized-menu-list.png" 
+   alt="Example of customized sidebar with pipeline menu items" 
+   caption="Example of customized sidebar with pipeline menu items"
+   max-width="80%" 
+   %}
+
+Admins can always view all hidden items in the sidebar by toggling the **Show in sidebar option...** to ON.
+
+Start streamlining your team's experience today!
+
+
+
+
 
 ### General: Brand-new search mechanism and experience 
 We’re excited to introduce the revamped search mechanism for our doc site!
@@ -111,20 +160,18 @@ For details, see ????
 
 ## Bug fixes
 
-##### General
-* Payment processing error. ??? 
+##### General 
 * Invite text in Welcome screen displays `undefined` instead of the organization name. 
 
 ##### Pipelines 
-* Expired certificates causes builds to remain in Pending status. (CR-24967 Mikhail)
-* Pipeline with two triggers starts two builds on commits to the file instead of one build
-* Pull request triggers for Bitbucket server creates wrong webhooks. (Olek - CR-23299)
-
-* `build` step does not work with cross-account ECR. (Kim - 19269)
+* Expired certificates causes builds to remain in Pending status.
+* Pipeline with two triggers starts two builds on commits to the same file/folder instead of one build.
+* Pull request push commit trigger for Bitbucket server not supported. 
+* `build` step does not work with cross-account ECR. 
 
 
 ##### GitOps 
-* `fullnameOverride` when set in Argo CD Helm chart results in failure to reach service. (CR-cr-25000 Ilya)
-* Audit log does not show changes made to GitOps permissions. (Vadim - CR-21667)Failure to reach service when  is set 
+<!--- * `fullnameOverride` when set in Argo CD Helm chart results in failure to reach service. (CR-cr-25000 Ilya)-->
+* Audit log does not show changes made to GitOps permissions. 
 * Manual Rollout actions not available in audit log.
-* `Permissions denied` error for users even with needed GitOps permissions. Andrii CR-21363
+* GitOps permissions do not function correctly when attributes are applied.
