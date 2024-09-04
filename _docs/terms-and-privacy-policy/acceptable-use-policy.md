@@ -1,16 +1,11 @@
 ---
-title: "Acceptable Use Policy"
+title: "Codefresh Acceptable Use Policy"
 description: ""
 group: terms-and-privacy-policy
 toc: true
 ---
 
 
-
-
-
-
-## Codefresh Acceptable Use Policy
 
 We’re committed to providing a secure, reliable, and productive environment for all of our customers and users. Our goal is to ensure that all users have a positive experience while maintaining the integrity, security, and efficiency of our products and services.
 

@@ -18,8 +18,8 @@ If you would like to see our legacy terms of service up to 30 September 2024, cl
 lightbox="true" 
 file="/images/licenses/customer-agreement-parts.png" 
 url="/images/licenses/customer-agreement-parts.png"
-alt=""
-caption=""
+alt="My caption"
+caption="My caption"
 max-width="100%" 
 %}
 
@@ -49,6 +49,7 @@ If you need a signed copy of the Customer Agreement for your records, please cli
 ##### I want to talk pricing!
 Take a look at our [Licensing & Purchasing FAQ](https://octopus.com/pricing/faq){:target="\_blank"}!
 
+
 ##### We can’t accept your agreement. Can you use ours?
 We understand that some customers have their own preferred set of agreements, and we appreciate that you’ve taken the time to consider how we work together. However, to ensure a consistent and smooth experience for all of our customers, we do need to rely on our standard Customer Agreement documents.
 
@@ -59,7 +60,7 @@ Using our agreement also allows us to be efficient in managing our relationships
 If you have any specific concerns or questions about the terms, we’re more than happy to discuss them with you and see how we can address them within our agreement. Thank you for your understanding and for helping us maintain a seamless process.
 
 
-###### We still need to make some changes. Can’t you make an exception for us? 
+##### We still need to make some changes. Can’t you make an exception for us? 
 
 We understand that sometimes it’s not your choice. For example, you may be operating in a highly regulated industry, and we appreciate there are sometimes prudential or regulatory requirements that you may need to comply with. 
 

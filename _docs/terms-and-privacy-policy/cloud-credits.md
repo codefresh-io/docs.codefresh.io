@@ -16,7 +16,7 @@ You may purchase Cloud Credits, which allows users to use Codefresh Cloud in a s
 
 <div align=center>
 
-<table width=100%; max-width=100%; border=1  style='border-collapse:collapse; border:none margin-bottom: 20px;'>
+<table width=100%; max-width=100%; border=1  style='border-collapse:collapse; margin-bottom: 20px;'>
  <tr>
   <th style='background-color:#3f7d84; color:#ffffff; padding:.6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84'>Machine Size</th>
   <th style='background-color:#3f7d84; color:#ffffff; padding: .6rem; font-size: .875rem; vertical-align: top; border: 1px solid #3d7c84;'>CPU</th>
@@ -56,4 +56,4 @@ You may purchase Cloud Credits, which allows users to use Codefresh Cloud in a s
 </table>
 </div>
 
-
+{:/}
