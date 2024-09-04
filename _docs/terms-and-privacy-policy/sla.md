@@ -74,7 +74,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 | Normal        | Errors that cause previously-working non-critical features to malfunction. |
 | Low | General questions, How-Tos, best practices questions, and feature requests.|
 
-[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/codefresh-sla-definitions/)
+[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/support-triage-definitions/)
 
 **3.3. Support Channels**. 
 
