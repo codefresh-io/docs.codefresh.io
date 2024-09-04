@@ -648,7 +648,11 @@
       url: "/terms-of-service"
     - title: Privacy Policy
       url: "/privacy-policy"
+    - title: Acceptable Use Policy
+      url: "/acceptable-use-policy"      
     - title: Service Commitment
       url: "/sla"
-    - title: Codefresh SLA Definitions
-      url: "/codefresh-sla-definitions"
+    - title: Cloud Credits
+      url: "/cloud-credits"
+    - title: Support Triage Definitions
+      url: "/support-triage-definitions"

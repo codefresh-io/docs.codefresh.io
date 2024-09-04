@@ -12,7 +12,7 @@ If you would like to see our legacy terms of service up to 30 September 2024, cl
 
 
 
-Our complete Customer Agreement with you has four parts:
+
 
 {% include image.html 
 lightbox="true" 
@@ -30,7 +30,7 @@ You can download our current Customer Agreement here:
 {::nomarkdown}
 <div align=left>
 
-<table width=100%; max-width=100%; border=none>
+<table width=100%; max-width=100%; border=0pxß>
  <tr>
   <td style='padding: .6rem; font-size: .875rem; vertical-align: top;'>Complete Customer Agreement</td>
   <td style='padding: .6rem; font-size: .875rem; vertical-align: top;'>General Terms<br>Product Terms<br>Data Processing Agreement</td>
@@ -58,6 +58,7 @@ Using our agreement also allows us to be efficient in managing our relationships
 
 If you have any specific concerns or questions about the terms, we’re more than happy to discuss them with you and see how we can address them within our agreement. Thank you for your understanding and for helping us maintain a seamless process.
 
+
 ###### We still need to make some changes. Can’t you make an exception for us? 
 
 We understand that sometimes it’s not your choice. For example, you may be operating in a highly regulated industry, and we appreciate there are sometimes prudential or regulatory requirements that you may need to comply with. 
@@ -77,7 +78,7 @@ It’s also important to note that while we are open to negotiation, this doesn�
 
 Additionally, third-party template agreements often include terms that aren’t applicable to our software and services. These might create inconsistencies or even conflicts with the way we operate, which is why we prefer to use our own agreements whenever possible.
 
-We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to sales@octopus.com<!---  TBD--> if you have any specific questions or concerns, and we’ll do our best to address them.
+We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to [sales@octopus.com](mailto:sales@octopus.com)<!---  TBD--> if you have any specific questions or concerns, and we’ll do our best to address them.
 
 
 ##### Can you please accept our vendor supply chain policy / code of conduct / etc.?
