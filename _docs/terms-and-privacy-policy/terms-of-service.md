@@ -77,7 +77,7 @@ It’s also important to note that while we are open to negotiation, this doesn�
 
 Additionally, third-party template agreements often include terms that aren’t applicable to our software and services. These might create inconsistencies or even conflicts with the way we operate, which is why we prefer to use our own agreements whenever possible.
 
-We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to [sales@octopus.com](mailto:sales@octopus.com)<!---  TBD--> if you have any specific questions or concerns, and we’ll do our best to address them.
+We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to sales@octopus.com<!---  TBD--> if you have any specific questions or concerns, and we’ll do our best to address them.
 
 
 ##### Can you please accept our vendor supply chain policy / code of conduct / etc.?
