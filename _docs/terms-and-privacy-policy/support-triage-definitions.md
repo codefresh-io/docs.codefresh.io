@@ -1,7 +1,9 @@
 ---
-title: Codefresh SLA Definitions
+title: Support Triage Definitions
 description: 
 group: terms-and-privacy-policy
+redirect_from:
+  - /docs/codefresh-sla-definitions/
 toc: true
 ---
 
