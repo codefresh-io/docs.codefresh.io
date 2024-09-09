@@ -504,7 +504,7 @@ If you don't provide a `REPORT_TYPE`, Codefresh uses a default icon.
 
 ## Uploading large test reports
 
-By default, the maximum size for a test report is 1000MB. Override the default max limit through the `MAX_UPLOAD_SIZE_MB` environment variable, as in the following example.
+By default, the maximum size for a test report is 1000MB. Override the default size through the `MAX_UPLOAD_SIZE_MB` environment variable.
 
 Example:
 
