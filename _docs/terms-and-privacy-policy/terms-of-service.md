@@ -25,7 +25,7 @@ max-width="100%"
 
 
 
-You can download our current Customer Agreement here: 
+You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement]({{site.baseurl}}/docs/terms-and-privacy-policy/octopus_deploy_customer_agreement__complete__1_october_2024.pdf)
 
 {::nomarkdown}
 <div align=left>
@@ -42,7 +42,7 @@ You can download our current Customer Agreement here:
 
 
 
-If you need a signed copy of the Customer Agreement for your records, please click here <!--- -->.
+If you require a signed copy of the Customer Agreement for your records, please contact [sales@octopus.com](mailto:sales@octopus.com).
 
 ## Customer Agreement FAQs
 
