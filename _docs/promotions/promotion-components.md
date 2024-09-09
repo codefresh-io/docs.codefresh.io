@@ -2,10 +2,39 @@
 
 
 
+Promotion flows are not tied to any specific product or technology stack, making them versatile tools for managing deployments across various platforms. They can be applied to:
+Consistency: Automates repetitive tasks, ensuring uniformity across deployments.
+Efficiency: Reduces manual effort and accelerates the deployment process.
+Control: Allows precise control over the conditions under which changes are promoted.
+Visibility: Provides clear insights into the progress and status of changes across environments.
+Contribution to Deployments
+Promotion flows streamline the process of moving code changes through different stages, such as testing, staging, and production. By defining specific criteria for promotion, they help maintain the integrity of the software and reduce the likelihood of introducing bugs into production.
+
+## Flow Builder vs. YAML
+You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD). You can switch seamlessly between both when creating Promotion Flows.
+
+
+## Sequential vs. parallel promotions
+
+Promotion Flows can be designed to run sequentially or in parallel to suit the unique requirements of any deployment process.
+
+Sequential flows
+Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
+This is the more common and traditional kind of Promotion Flow where you start the flow from the development environment as the trigger environment, and then promote to the testing, staging, and finally to the production environments.
+
+Parallel flows
+In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments to create promotions after multiple environments are healthy. 
 
 
 
-The table describes the entities involved in the promotion process, starting with the core entities, followed by the dedicated promotion-specific entities
+
+## Promotion building blocks
+
+A promotion sequence comprises several building blocks, optional and required, each serving a specific role in the promotion and deployment process.
+Before creating promotion flows or sequences it is advisable to understand the role of these building blocks.
+
+
+The table describes the entities involved in the promotion process, starting with the core entities and those entities wh
 
 <table border="1" width="100%">
   <tr>
@@ -24,7 +53,7 @@ The table describes the entities involved in the promotion process, starting wit
     <td>Environments are where your applications live and promotions happen. Typically, environments reflect your software lifecycle and deployment stages. You need at least two environments:
       <ul>
         <li><strong>Trigger environment</strong>: Where a change starts the promotion flow, initiated by a manual commit or pull request.</li>
-        <li><strong>Target environments</strong>: The environments to which changes are promoted from the trigger environment.</li>
+        <li><strong>Target environments</strong>: The environments where changes are promoted after the trigger environment.</li>
       </ul>
     </td>
     <td>Users with ABAC permissions</td>
@@ -33,7 +62,7 @@ The table describes the entities involved in the promotion process, starting wit
   
   <tr>
     <td><strong>Product (Optional)</strong></td>
-    <td>By grouping related applications, products simplify promotions by allowing you to promote the entire product and all its applications across different environments.</td>
+    <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing applications individually.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="#">Link</a></td>
   </tr>
@@ -46,34 +75,49 @@ The table describes the entities involved in the promotion process, starting wit
   </tr>
   
   <tr>
-    <td colspan="4"><strong>Promotion entities </strong><br><em>These dedicated entities are the building blocks of promotions, defining how promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
+    <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities define how promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
   </tr>
   
   <tr>
     <td><strong>Promotion Flows</strong></td>
-    <td>Promotion Flows orchestrate the movement of applications in products through environments, ensuring a controlled and automated promotion process.</td>
+    <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process.</td>
     <td>Account administrators</td>
     <td><a href="#">Link</a></td>
   </tr>
   
   <tr>
     <td><strong>Promotion Settings</strong></td>
-    <td>Promotion Settings specify what gets promoted across environments. If using a product, these settings can be defined within the product’s configuration or in a YAML CRD.</td>
+    <td>Promotion settings specify what gets promoted across environments. If using a Product, these settings can be defined within the Product’s configuration or in a YAML CRD.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="#">Link</a></td>
   </tr>
   
   <tr>
     <td><strong>Promotion Policy</strong></td>
-    <td>Promotion Policies outline the actions taken when changes are promoted for products or by environments. The Promotion Policy ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests.</td>
+    <td>A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests.</td>
     <td>Account administrators</td>
     <td><a href="#">Link</a></td>
   </tr>
 </table>
 
+
+
+
+Inter-environment dependencies
+  In both sequential and parallel flows, adding a new environment automatically establishes a dependency on the previous environment. This ensures that changes are promoted in a controlled manner.
+
+  For parallel flows, you can add multiple environments as simultaneous dependencies on new environments. This means that the changes from the previous environment are first promoted concurrently to each of the dependent environments, and only when successfully deployed across all environments are they promoted to the next environment in the flow.
+
+
+
+
+
+
+
 ## Promotion entites and GitOps Runtimes
 
-All promotion entities are stored as CRDs in the Shared Configuration Repository of the GitOps Runtime designated as the Configuration Runtime. If you have more than one Configuration Runtime, Codefresh automatically consolidates the settings into a single set of promotion CRDs.
+All promotion entities are stored as manifests in the Shared Configuration Repository of the GitOps Runtime designated as the Configuration Runtime.  
+If you have more than one Configuration Runtime, Codefresh automatically consolidates the settings into a single set of promotion manifests.
 
 {: .table .table-bordered .table-hover}
 | Entity             | Location              | Toekn
@@ -90,67 +134,7 @@ All promotion entities are stored as CRDs in the Shared Configuration Repository
 
 UI form YAML
 
-## Create a promotion sequence 
-The guide provides the steps required to create a promotion sequence. Follow the steps in the order in which they are listed. Each step is followed by a brief description of its purpose and objective in the promotion sequence. For detailed information, click the step title.
 
-
-### Prerequisites
-1. Configuration Runtime 
-   At least one GitOps Runtime must be designated as the Cofiguration Runtime to store the settings of the different promotion entities.  
-   If no GitOps Runtime has been designated as such, Codefresh assigns one of the existing Runtimes.
- 
-1. Admin permissions  
-  Only account admins can create promotion entities such as Promotion Policies and Promotion Flows.
-
-1. User permissions
-  Users need the required ABAC permissions to create Promotion Workflows and configure product settings.
-
-### How to
-1. Create environments
-  Environments define the starting and the end points of promotions.  
-  For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
-  
-1. Create applications
-  Applications represent the components or services to promote and deploy. They are the smallest unit of deployment within a promotion sequence. 
-  Create a Argo CD application in Form or YAML mode. 
-
-1. Create products
-  Products connect related applications and group them as a single entity. Being able to apply promotion settings at the level of the product, across multiple applications simplifies promotion flows and management.  
-
-  Create a product and connect related applications to it, either manually or declaratively. 
-
-
-1. Create workflows
-  Promotion Workflows consist of steps to validate and verify readiness of target environments in the promotion sequence.
-  Create Promotion Workflows tailored to different environments, and integrate them into Promotion Policies to enforce checks before and after promotions.
-
-1. Configure properties to be promoted
-  Promotion Templates define which files and attributes within those files to promote across the applications in the product.  
-  Instead of doing a manual diff and deciding which changes to promote, or promoting entire applications, configure the precise changes to promote, ensuring consistency and reducing errors.
-
-1. Create validations for environments
-  Promotion Policies define the rules that validate the target environments before and after changes are promoted, along with the action that promotes the changes. These Policies ensure that promotions do not break or destabilize environments.  
-  Create a Promotion Policy by product or type of environment, specifying the promotion action (mandatory), and any Promotion Workflows to run before and after the promotion action (optional).
-
-1. Create flows for promotions
-  Promotion Flows orchestrate the sequence of actions that move changes through the deifned environments.  
-  Create a Promotion Flow to integrate environments, products and applications, promotion workflows, and policies, ensuring that changes are promoted in a controlled and predictable manner.
-  
-
-1. Configure promotion settings for product
-  After setting up the core entities and building blocks, configure settings for your product.  
-  These settings can include the attributes to be promoted across the product's applications (Promotion Templates), the promotion flows valid for the product and flow-specific trigger conditions (Promotion Flows).
-
-1. Trigger promotion flow  
-  Implement the changes to initiate the promotion sequence.  
-  The change, made to an application in the trigger environment, starts the process of moving changes from the trigger environment through the defined sequence of environments, following the defined Promotion Policies and Settings.  
-  
-  If the flow is not triggered automatically through the trigger conditions, or trigger a Flow manually by clicking the Trigger button, or by dragging and dropping a single application with the changes to a different environment.
-
-
-1. Track deployment for product
-  Monitor the deployment progress for the product as it moves through the promotion sequence.  
-  Use the Releases feature to track and ensure successful deployments across environments.
 
 
 

@@ -1,297 +1,262 @@
 ---
-title: "Promotion orchestration"
-description: "Create flows to orchestrate promotion for products across environments"
-group: deployments
+title: "Creating Promotion Flows"
+description: "Create Promotion Flows to orchestrate promotion for products across environments"
+group: promotions
 toc: true
 ---
 
 
 A Promotion Flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
 
-Benefits of Promotion Flows
-Simplicity 
-
-Automated deployment
+Our Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
+As with other entities, you can toggle between YAML and chart modes while in the Flow Builder.
 
 
-Promotion logic
+Before creating promotion flows, review [our notes on Promotion Flows](#notes-on-promotion-flows) which highlights key factors to be aware of in promotion flow behavior. 
 
 
 
 
-
-4. Applying Promotion Flows
-Promotion flows are not tied to any specific product or technology stack, making them versatile tools for managing deployments across various platforms. They can be applied to:
-Consistency: Automates repetitive tasks, ensuring uniformity across deployments.
-Efficiency: Reduces manual effort and accelerates the deployment process.
-Control: Allows precise control over the conditions under which changes are promoted.
-Visibility: Provides clear insights into the progress and status of changes across environments.
-Contribution to Deployments
-Promotion flows streamline the process of moving code changes through different stages, such as testing, staging, and production. By defining specific criteria for promotion, they help maintain the integrity of the software and reduce the likelihood of introducing bugs into production.
-
-## Flow Builder vs. YAML
-You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD). You can switch seamlessly between both when creating Promotion Flows.Similar to most entities, and all promotion-entities, 
-
-
-## Sequential vs. parallel flows
-
-Promotion flows can be designed to run sequentially or in parallel to suit the unique requirements of any deployment process.
-
-Sequential flows
-Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
-This is the more common and traditional flow where you start the flow from the dev environment as the trigger environment, and then promote to testing, staging, and finally production.
-
-Parallel flows
-In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments to create promotions after multiple environments are healthy. 
-
-
-
-
-## Promotion Flow building blocks
-
-A Promotion Flow comprises several building blocks, optional and required, each serving a specific role in the deployment process.
-Before creating Promotion Flows it is advisable to understand the role of these building blocks.
-
-* Environments (required)
-  
-  * Trigger environment
-    The trigger environment is where a change initiates the promotion flow. The change in the trigger environment is a manual user commit or pull request action, and not an automated promotion action as in the other environments defined in the Promotion Flow.  
-    To automate specific actions after the change, you can configure a trigger workflow (akin to a Post-Action Workflow).
-   
-   * Target environments
-     Any environment apart from the trigger environment are target environments in the promotion flow. A Promotion Flow requires at least one target environment.
-     Target environments can linear or parallel.
-
-* Product (optional)
-  Instead of manually applying Pre-Action, Post-Action, and Action for each environment, you can select a Product to apply the Promotion Policy defined for it to all environments defined, excluding the trigger environment. 
-
-  The promotion policy defined for the Product dictates the Pre-Action, Post-Action, and Action for each environment. You retain the flexibility to configure parts of the Promotion Policy not defined in the Product.
-  This allows you to customize specific steps or workflows as needed, while still leveraging the overall Product policy.
-
-* Applications
-
-
-* Promotion Settings
-
-
-* Promotion Policy
-
-
-* Promotion Workflows (optional)
-  Promotion workflows, categorized as Pre-Action and Post-Action workflows, validate the environment's readiness for promotion:  
-  * Pre-Action Workflow: Executes before changes are committed to ensure the target environment meets predefined criteria.
-  * Post-Action Workflow: Executes after changes are committed to verify the environment's stability and functionality post-deployment.
-  While optional, we highly recommend adding these workflows to environments to enhance deployment reliability and consistency.  
-  You can select from available Promotion Workflows or create a new Pre- or Post-Action Workflow as needed. 
-
-* Promotion Action (required)
-  The Promotion Action is the action that activates and propagates the changes to the current environment, and can be Commit, Pull Request, or No Action. The Action is generally defined as part of the Promotion Policy. You can also select an action on-the-fly
-
-
-
-
-| **Entity**         | **How does i **              | **Where and When** | **By Whom** | **Learn more** |
-|----------------------|---------------------------|--------------------|-------------|
-| **Environments (required)**  | Environments are where your applicatios live and promotions happen. Typically environments reflect your software lifecyle and deployment lifecyle. Create environments. You need at least two: Trigger environment: The trigger environment is where a change initiates the promotion flow. The change in the trigger environment is a manual user commit or pull request action.   <br>Target environments: Any environment apart from the trigger environment are target environments in the promotion flow. A Promotion Flow requires at least one target environment.  | First step in promotion                  | Users with ABAC             |  
-| **Product (optional)**       | A Product is a specialized entity in Codefresh GitOps which groups related applications and treats them a single cohesdive entity. Why is this important for promotions? With product instead of promoting individual applocations you can promote the productand all applications within it  across different environments.            | Defining  a Porduct allows you to configure several settings connected to promotions in a single location.                    |  Users with ABAC         | Link??
-| **Applications**             | Applications are the smallest entity  around which promotions revolve.   |                    |             |
-| **Promotion Flows**             | Promotion flows orchestrate the promotion of a product through different environments according t   |                    |             |
-| **Promotion Settings**       | Promotion settings define exactly what gets promoted in the different applicatins and across what environments. if you have created a product, you can define promotion settings as part of the product's settings. You can also define it in the CRD.              |                    |             |
-| **Promotion Policy**         | Defines what is done in the next environment when there is a change that initiates promotion. It validates that th environment is ready for the promotion through promotion workflows and promotion action. The promotion action is the action through a commit or a PR or a predefined mechanism that propagates the changes defined  by promotion settings to the target environment.  Promotion workflows are what ensures that the target environment -  these can be verifying predefined criteria before the promotion changes are implemented, and verifing the environment's stability and functionality post-promotion action.               |                    |             |
-
-
-
-
-| **Component**           | **Role in Promotion Process**      | **Where and When**     | **Who Can Create**        | **Additional Resources** |
-|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------------------|---------------------------|
-| **Environments (Required)**  | Environments are where your applications live and promotions happen. Typically, environments reflect your software lifecycle and deployment stages. You need at least two environments: <br> - **Trigger Environment**: Where a change starts the promotion flow, initiated by a manual commit or pull request. <br> - **Target Environments**: The environments where changes are promoted after the trigger environment. | First step in the promotion process | Users with ABAC permissions | [Link] |
-| **Product (Optional)**       | A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing them individually.  | Centralized promotion settings      | Users with ABAC permissions | [Link] |
-| **Applications**       | Applications are the core units around which promotions revolve. Each application can be promoted individually or as part of a Product.    | Part of each environment           | Users with ABAC permissions | [Link] |
-| **Promotion Flows**      | Promotion flows orchestrate the movement of changes through environments, ensuring a controlled and automated promotion process.                                                                                                                                | Defined in the Promotion Flow UI    | Users with ABAC permissions | [Link] |
-| **Promotion Settings**   | Promotion settings specify what gets promoted across environments. If using a Product, these settings can be defined within the Product’s configuration or in a YAML CRD.                                                                                       | Defined during product setup        | Users with ABAC permissions | [Link] |
-| **Promotion Policy**     | A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests. | Applied during the promotion process | Users with ABAC permissions | [Link] |
-
-The table describes the entities involved in the promotion process, starting with the core entities and those entities wh
-
-<table border="1" width="100%">
-  <tr>
-    <th width="20%">Entity</th>
-    <th width="50%">Role in promotions</th>
-    <th width="10%">Created by</th>
-    <th width="20%">Learn more</th>
-  </tr>
-  
-  <tr>
-    <td colspan="4"><strong>Core entities</strong><br><em>These entities define the structure of your deployment.</em></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Environments (Required)</strong></td>
-    <td>Environments are where your applications live and promotions happen. Typically, environments reflect your software lifecycle and deployment stages. You need at least two environments:
-      <ul>
-        <li><strong>Trigger environment</strong>: Where a change starts the promotion flow, initiated by a manual commit or pull request.</li>
-        <li><strong>Target environments</strong>: The environments where changes are promoted after the trigger environment.</li>
-      </ul>
-    </td>
-    <td>Users with ABAC permissions</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Product (Optional)</strong></td>
-    <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing applications individually.</td>
-    <td>Users with ABAC permissions</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Applications</strong></td>
-    <td>Applications are the core units around which promotions revolve. Each application can be promoted individually or as part of a product.</td>
-    <td>Users with ABAC permissions</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-  
-  <tr>
-    <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities define how promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Promotion Flows</strong></td>
-    <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process.</td>
-    <td>Account administrators</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Promotion Settings</strong></td>
-    <td>Promotion settings specify what gets promoted across environments. If using a Product, these settings can be defined within the Product’s configuration or in a YAML CRD.</td>
-    <td>Users with ABAC permissions</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-  
-  <tr>
-    <td><strong>Promotion Policy</strong></td>
-    <td>A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests.</td>
-    <td>Account administrators</td>
-    <td><a href="#">Link</a></td>
-  </tr>
-</table>
-
-
-
-
-Inter-environment dependencies
-  In both sequential and parallel flows, adding a new environment automatically establishes a dependency on the previous environment. This ensures that changes are promoted in a controlled manner.
-
-  For parallel flows, you can add multiple environments as simultaneous dependencies on new environments. This means that the changes from the previous environment are first promoted concurrently to each of the dependent environments, and only when successfully deployed across all environments are they promoted to the next environment in the flow. 
-
-
-
-
-
-## Create Promotion Flow with Flow Builder
-Visually design and create the flow by selecting environments, promotion workflows, setting trigger conditions, and defining dependencies through the Flow Builder. If needed add new environments and promotion workflows on-the-fly when doing so. 
-
-### Before you begin
-* Review 
-* 
-
-### Step 1: Add a Promotion Flow
-Add the Promotion Flow to 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
-1. Click **Add Promotion Flow**.
-
-### Step 2: Select Trigger Environment
-Evry Promotion Flow starts from a Trigger Environment where the change is first made.  
-You can either select a predefined environment or create a new environment and then return to the Promotion Flow and select the environment.
-
-
-1. Click ?? to see the list of available environments.
-1. Do one of the following:
-1. To add an existing environment, select it and click **Add**. Continue from step ??
-1. To create a new environment, click **Add New Environment**. 
-  * You are taken to the Environments page and the Create Environment form is displayed. See ???? 
-  * A notification alerts you that are unsaved changes to the Promotion Flow.  
-    This notification remains as long as you are unsaved changes and you are in different UI.
-1. To return to the Promotion Flow and continue, click **Go to Promotion Flow**.
-  You ccan now pick up from where you left off. 
  
 
 
 
-### Step 3: Select environment to promote to
-Add the environment to promote to from the trigger environment. Again, you can select a predefined environment or create a new environment and then return to the Promotion Flow and select the environment.
+## Notes on Promotion Flows 
+Here are a few key factors to be aware of when creating Promotion Flows. 
+
+### Trigger and target environments 
+You can create and assign environments for the Promotion Flow, starting with the Trigger Environment, where the change initiates the flow, and the other target environments required for promotion. You need at least one target environment for promotions. 
+
+* Adding environments  
+  When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved, allowing to return to the flow later.
+
+* Removing environments
+  You can remove an environment from the Promotion Flow, and decide how to reconnect next environments to previous environments.  
+
+  Reconnecting environments is only relevant when there is one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
+
+
+### Inline versus automated Promotion Policy settings
+
+For each environment, you can explicitly set the Promotion Policy, including the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
+
+##### Inline Promotion Policy settings
+The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, this _inline_ selection overides any automated Promotion Policy settings that match the product/environment when the flow is triggered.
+
+##### Automated Promotion Policy settings
+If no inline settings are defined, the system applies automated Promotion Policy settings based on predefined priorities. See TBD
+
+### Previewing Promotion Policies by Product
+Instead of waiting for the Promotion Flow to be triggered, you can preview Promotion Policy settings for any product to ensure that the environment and product have the desired policies.  
+Previewing Policies by product confirms if the automated Policies that will be applied for the product are the correct ones for it. Preview is also useful to identify  environments and products without matching Policies or Policies that are missing required settings such as the Promotion Action.  
+Note that only those settings without inline values are populated by the preview.
+
+## Create a Promotion Flow 
+Visually design and create the flow by selecting environments, Promotion Actions and Workflows, and defining dependencies through the Flow Builder. If needed create new environments and promotion workflows on-the-fly when doing so. 
+
+### Before you begin
+* Review [Create a promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
+
+
+### Step 1: Add a Promotion Flow
+Open the Flow Builder to add a Promotion Flow.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
+1. Click **Add Promotion Flow**.
+
+SCREENSHOT
+
+{:start="3"}
+1. Continue with [Step 2: Select Trigger Environment](#step-2-select-trigger-environment).
+
+
+
+### Step 2: Select Trigger Environment
+Every Promotion Flow starts from a Trigger Environment where the change is made that triggers the flow.  
+Select a predefined environment, or create a new environment and then return to the Promotion Flow and select the new environment.
+
+
+1. Click ?? in **Select Trigger Environment** to see the list of available environments.
+
+SCREENSHOT
+
+{:start="2"}
+1. Do one of the following:
+    * To add an existing environment, select it and click **Add**. Continue from step ??
+    * To create a new environment, click **Add New Environment**. 
+        * You are taken to the Environments page and the Create Environment form is displayed. See ???? 
+        * A notification alerts you that there are unsaved changes to the Promotion Flow.  
+          This notification remains as long as you have unsaved changes in the Promotion Flow.
+1. If needed, to return to the Promotion Flow and continue, click **Go to Promotion Flow**.
+  You can now pick up from where you left off. 
+1. Continue with [Step 3: (Optional) Add Trigger Workflow to Trigger Environment](#step-3-optional-add-post-action-workflow-to-trigger-environment).
+
+
+### Step 3: (Optional) Add Trigger Workflow to Trigger Environment
+If required, add a Trigger Workflow to validate the readiness of the trigger environment after the change and commit action.
+TBD purpose of doing it
+
+1. Click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}.
+
+SCREENSHOT
+
+{:start="2"}
+1. Do one of the following: 
+    * To review the manifest of an inline Trigger Workflow, click ??? and then select the required workflow. Continue from _step 2_.
+    * To apply a Trigger Workflow from automated Promotion Policy settings, click **Automated Promotion Policy**.  Continue from _step 2_.
+    * To add a new Promotion Workflow, click **Add New Workflow**. 
+        * You are taken to the Add Promotion Workflow page where you can define the settings. See TBD???? 
+        * A notification alerts you that there are unsaved changes to the Promotion Flow.  
+          This notification remains as long as you have unsaved changes in the Promotion Flow.
+1. If needed, to return to the Promotion Flow and continue, click **Go to Promotion Flow**.
+1. Continue with [Step 4: Add target environment to promote to](#step-4-add-target-environment-to-promote-to).
+
+
+### Step 4: Add target environment to promote to
+Add the environment to promote to from the trigger environment. You can add as many target environments as you need.  
+Again, you can select a predefined environment or create a new environment and then return to the Promotion Flow and select the new environment.
 
 
 
 1. Mouse over the right of the current environment and click ??.
-1. To add an existing environment, select it and click **Add**. Continue from step ??
+
+SCREENSHOT
+
+{:start="2"}
+1. To add an existing environment, select it and click **Add**. Continue from _step 3_.
 1. To create a new environment, click **Add New Environment**. 
-  * You are taken to the Environments page and the Create Environment form is displayed. See ???? 
+  * You are taken to the Create Environment page where you can define the settings. See TBD???? 
   * A notification alerts you that are unsaved changes to the Promotion Flow.  
-    This notification remains as long as you have unsaved changes and you are in different UI.
-1. To return to the Promotion Flow and continue, click **Go to Promotion Flow**.
-  You can now pick up from where you left off. 
-1. To 
+    This notification remains as long as you have unsaved changes in the Promotion Flow.
+1. To return to the Promotion Flow and continue, click **Go to Promotion Flow**. 
+1. To add more target environments, repeat _step 1_ through _step 3_.
+1. Continue with [Step 5: (Optional) Add dependencies to target environment](#step-5-optional-add-dependencies-to-target-environment).
 
-### Step 4: (Optional) Select a Product to apply Promotion Policy
-Select a product to automatically apply its Promotion Policy to all environments defined, excluding the trigger environment.  
-This is an alternative to manually applying Pre-Action, Post-Action, and Action for each environment (described in Steps 5 and 6). 
+### Step 5: (Optional) Add dependencies to target environment
+Promote changes from the previous environment concurrently to multiple environments by adding dependencies to the current target environment. When there are dependent environments, changes are promoted to the next environment in the flow only after they are successfully deployed across all dependent environments. 
 
-Promotion Policy ???
+1. Mouse over the target environment.
+1. From the **Depends on** list, select the environment and click **Update Dependency**.
+  The environment is added below the existing environment, and a link is added between it and the next environment to indicate a dependency.  
 
-1. From the list of Products, select the product with the Promotion Policy to apply.
-  The Pre-Action, Post-Action, and Action defined for the Policy are assigned to all the environments.
-  Mouse over the Pre-Action, Post-Action, and Action icons to see the Workflows and the Promotion Action assigned.
+  SCREENSHOT
 
-  If the Policy does not match an environment, it will not apply any of the Policy components.
-  
-1. If any component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
+{:start="3"}
+1. Repeat _step 2_ as needed to add other environments as dependencies.
+1. Continue with [Step 6: Select Promotion Action for target environment](#step-6-select-promotion-action-for-target-environment).
+
+### Step 6: Select Promotion Action for target environment       
+
+Select the Promotion Action to use for the target environment, either manually from the inline settings, or through automated Promotion Policies. 
+An inline Promotion Action when selected overrides the Promotion Actions in automated Promotion Policies that may match the product and the environment. If the system identifies that no inline Action is selected, and none of the matched Promotion Policies have an Action, it pops up an error message.   
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you define the Promotion Action through automated Promotion Policies, you can preview the Promotion Action that will be applied for a Product.  
+See [Step 8: (Optional) Preview automated Promotion Policy settings by product](#step-8-optional-preview-automated-promotion-policy-settings-by-product).
+{{site.data.callout.end}}
 
 
-### Step 5: Select Promotion Action        
-        
-        The  See ???? 
-        A notification alerts you that are unsaved changes to the Promotion Flow. 
+1. Mouse over the left of the target environment and click ??.
 
-        Inline not defined = Undefined   
+SCREENSHOT
 
-### Step 6: (Optional) Add Pre- and Post-Action Workflows
-1. Mouse over the connector on the left between the two environments.
-1. To add a Pre-Action Workflow, click the top ??? icon.
-1. To add a Post-Action Workflow, click the lower ??? icon.
-1. To add an existing Pre- or Post-Action Workflow, select it and click **Add**. Continue from step ??
-1. To add a new Workflow, click **Add New Workflow**. 
-  * You are taken to the Promotion Workflows page and the Add Promotion Workflows form is displayed. See ???? 
-  * A notification alerts you that are unsaved changes to the Promotion Flow.  
-    This notification remains as long as you have unsaved changes and you are in different locations in the UI.
+{:start="2"}
+1. To define an inline Promotion Action, select one from the list.
+1. To define an Action from automated Promotion Policies, click **Automated Promotion Policies**. 
+1. Continue with [Step 7: (Optional) Add Pre- and Post-Action Workflows for target environment](#step-7-optional-add-pre--and-post-action-workflows-for-target-environment).
+
+
+
+
+### Step 7: (Optional) Add Pre- and Post-Action Workflows for target environment
+Add Pre- or Post-Action Workflows to the target environment.  
+Either manually select an inline Workflow for the Promotion Flow, or leave it to the Automated Promotion Policy to apply and execute the appropriate Workflow.
+
+1. Mouse over the left of the target environment.
+1. Do one of the following:
+  * To add a Pre-Action Workflow, click the top ??? icon.
+  * To add a Post-Action Workflow, click the lower ??? icon.
+
+SCREENSHOT
+
+{:start="3"}
+1. Define the Pre-/Post-Action Workflow:
+  * To add an inline Workflow, select it and click **Add**. Continue from step ??
+  * To add a new Workflow, click **Add New Workflow**. 
+      * You are taken to the Add Promotion Workflow page where you can define the settings. See ???? 
+      * A notification alerts you that are unsaved changes to the Promotion Flow.  
+        This notification remains as long as you have unsaved changes in the Flow.
+  * To apply an automated Promotion Policy, click Automated Promotion Policy. 
 1. To return to the Promotion Flow and continue, click **Go to Promotion Flow**.
   You can now pick up from where you left off.         
-        
+1. Continue with [Step 8: (Optional) Preview automated Promotion Policy settings by product](#step-8-optional-preview-automated-promotion-policy-settings-by-product).    
 
 
 
 
-### Step 7: Add additional environments
 
-1. Mouse over the right of the current environment and click ??.
-1. To add environments for parallel Flows creating dependencies on the next environment:
-  1. Mouse over the current environment.
-  1. From the **Depends on** list, select the environment and click **Update dependency**.
-    The environment is added below the existing environment, and a link is added between it and the next environment to indicate a dependency.  
-1. Repeat step 1 and step 2 as needed.
 
-### Step 8: Save changes and commit flow
+
+
+
+
+### Step 8: (Optional) Preview automated Promotion Policy settings by product
+Select a product to preview settings that will be applied from automated Promotion Policies for all target environments without inline settings. 
+
+When there are no inline settings selected or defined for an environment's Promition Polocy, the system applies settings from all predefined or automated Promotion Policies that match the product and the environment according to priority.
+
+Preview by product within a Promotion Flow shows you if there is a Promotion Policy that matches the product, and which settings will be applied.
+
+
+
+>**NOTE**
+This action is only a preview and does not impact the Promotion Flow.
+
+
+1. From the list of Products, select the product for which to evaluate or apply Promotion Policy settings.
+  The Promotion Action, Pre- and Post-Action Workflows that match are applied from the predefined or automated promotion policies and displayed for each environment. Mouse over the Pre-Action, Post-Action, and Action icons to see the Workflows and the Promotion Action assigned.
+
+SCREENSHOT
+  
+1. If you get an error component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
+
+
+### Step 9: Save changes and commit flow
+As the final action in creating a Promotion Flow, save the settings and commit the changes.
+TBD where are teh changes saved?
+
 1. Click **Save Promotion Flow** to commit changes.
 
 
 
+## Removing environments from Promotion Flows
+Remove one or more environments from a Promotion Flow. TBD why would you want to remove an environment? What happens if the env is defined as part of the promotion policies?
+ 
+Removing an environment requires you to reconnect environments that are linked to the one being removed. 
 
+Reconnecting environments is only relevant when there is one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
 
-## Manually trigger a Promotion Flow
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
+1. Select the Promotion Flow with the environment you want to remove.
+1. Mouse over the environment node and then click {::nomarkdown}<img src="../../../../images/icons/delete-red.png" display=inline-block>{:/}.
+  If the environment is linked to another one, you are prompted to select the reconnect behavior.  
 
+SCREENSHOT
 
+1. Do one of the following:
+    * If you have environments in the flow linked to the environment you are removing, from the **Reconnect next environments to** list, select a preceding environment to reconnect to.  
+      For example, consider a promotion flow with `dev`, `qa`, `staging`, and `prod` environments in that order. When removing the `qa` environment which is linked to `staging`, you need to reconnect `staging` to the preceding environment, `dev` in our example.
 
+    SCREENSHOT
+        
+    * To remove all connected environments, select **Remove all connected environments**.
+      This action removes all environments linked to and succeeding `qa`, which are `staging` and `prod` in our example. 
+    
+     SCREENSHOT
 
 ## Troubleshooting Promotion Flow creation
+TBD
 
+## Related articles
+[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
+[Promotions overview]({{site.baseurl}}/docs/promotions/promotion-components/)  
