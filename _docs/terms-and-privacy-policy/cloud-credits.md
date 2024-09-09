@@ -8,11 +8,7 @@ toc: true
 
 
 
-You may purchase Cloud Credits, which allows users to use Codefresh Cloud in a specific capacity (each such unit, a "**Cloud Credit**"). Cloud Credits are available during the order term and expire upon termination. Cloud Credits are redeemable for cash and are not refundable as cash under any circumstances. Cloud Credits are not transferable and may only be applied to your account. Cloud Credits usage will be calculated based on the infrastructure size you use, as set out in the applicable order, and as detailed in the below chart:
-
-
-
-<p style='margin-left:0in;text-indent:0in'><b>2.2.&nbsp;&nbsp;&nbsp;&nbsp;</b><b>Cloud Credits</b>. Licensee may purchase Cloud Credits, which allow Users to use the Service on Codefresh Cloud in a specific capacity (each such unit, a “<b>Cloud Credit</b>”). Cloud Credits are available during the Term and expire upon termination. Cloud Credits are not redeemable for cash and are not refundable as cash under any circumstances. Cloud Credits are not transferable and may only be applied to Licensee’s account. Cloud Credits usage will be calculated based on the infrastructure size Licensee uses, as set out in the applicable Order, and as detailed in the below chart:</p>
+You may purchase Cloud Credits, which allows users to use Codefresh Cloud in a specific capacity (each such unit, a "<b>Cloud Credit</b>"). Cloud Credits are available during the order term and expire upon termination. Cloud Credits are redeemable for cash and are not refundable as cash under any circumstances. Cloud Credits are not transferable and may only be applied to your account. Cloud Credits usage will be calculated based on the infrastructure size you use, as set out in the applicable order, and as detailed in the below chart:
 
 <div align=center>
 

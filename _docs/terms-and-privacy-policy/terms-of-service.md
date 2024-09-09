@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 >Codefresh was acquired by Octopus Deploy in March 2024. Starting 1 October 2024, you can buy Codefresh through Octopus Deploy's umbrella Customer Agreement.  
-If you would like to see our legacy terms of service up to 30 September 2024, click [here]({{site.baseurl}}/docs/terms-and-privacy-policy/legacy_codefresh_terms_of_service_12_may_2022.pdf). 
+If you would like to see our legacy terms of service up to 30 September 2024, click [here]({{site.baseurl}}/docs/terms-and-privacy-policy/legacy-cf-terms-of-service/). 
 
 
 
