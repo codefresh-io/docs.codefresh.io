@@ -9,7 +9,7 @@ toc: true
 
 We’re committed to providing a secure, reliable, and productive environment for all of our customers and users. Our goal is to ensure that all users have a positive experience while maintaining the integrity, security, and efficiency of our products and services.
 
-This policy is designed to protect the interests of all our customers and users by promoting responsible use and prohibiting activities that may impact on our products or services (including Octopus Server, Octopus Cloud, product support, our website, and any other of our products or services), other customers or users, or the broader community. 
+This policy is designed to protect the interests of all our customers and users by promoting responsible use and prohibiting activities that may impact on our products or services (including including Octopus Server, Octopus Cloud, Codefresh, product support, our website, and any other of our products or services), other customers or users, or the broader community. 
 
 We do not allow any of the following activities when using our products or services.
 

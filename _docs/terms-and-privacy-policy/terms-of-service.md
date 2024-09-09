@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 >Codefresh was acquired by Octopus Deploy in March 2024. Starting 1 October 2024, you can buy Codefresh through Octopus Deploy's umbrella Customer Agreement.  
-If you would like to see our legacy terms of service up to 30 September 2024, click here.<!--- -->. 
+If you would like to see our legacy terms of service up to 30 September 2024, click [here]({{site.baseurl}}/docs/terms-and-privacy-policy/legacy_codefresh_terms_of_service_12_may_2022.pdf). 
 
 
 
@@ -18,8 +18,8 @@ If you would like to see our legacy terms of service up to 30 September 2024, cl
 lightbox="true" 
 file="/images/licenses/customer-agreement-parts.png" 
 url="/images/licenses/customer-agreement-parts.png"
-alt="My caption"
-caption="My caption"
+alt=""
+caption=""
 max-width="100%" 
 %}
 
@@ -79,7 +79,7 @@ It’s also important to note that while we are open to negotiation, this doesn�
 
 Additionally, third-party template agreements often include terms that aren’t applicable to our software and services. These might create inconsistencies or even conflicts with the way we operate, which is why we prefer to use our own agreements whenever possible.
 
-We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to [sales@octopus.com](mailto:sales@octopus.com)<!---  TBD--> if you have any specific questions or concerns, and we’ll do our best to address them.
+We’re here to work with you to find a solution that meets your needs while also protecting both parties and ensuring a smooth working relationship. Please feel free to reach out to [sales@octopus.com](mailto:sales@octopus.com) if you have any specific questions or concerns, and we’ll do our best to address them.
 
 
 ##### Can you please accept our vendor supply chain policy / code of conduct / etc.?
