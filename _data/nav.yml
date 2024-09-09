@@ -647,7 +647,7 @@
     - title: Terms of Service
       url: "/terms-of-service"
     - title: Octopus Deploy Customer Agreement
-      url: "/octopus_deploy_customer_agreement__complete__1_october_2024"
+      url: "/octopus-deploy-customer-agreement"
     - title: Privacy Policy
       url: "/privacy-policy"
     - title: Acceptable Use Policy
@@ -659,4 +659,4 @@
     - title: Support Triage Definitions
       url: "/support-triage-definitions"
     - title: Legacy Codefresh Terms of Service
-      url: "/legacy_codefresh_terms_of_service_12_may_2022"
+      url: "/legacy_codefresh_terms_of_service_12_may_2022.pdf"

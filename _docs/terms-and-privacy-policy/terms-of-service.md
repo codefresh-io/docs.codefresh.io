@@ -25,7 +25,7 @@ max-width="100%"
 
 
 
-You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement]({{site.baseurl}}/docs/terms-and-privacy-policy/octopus_deploy_customer_agreement__complete__1_october_2024.pdf)
+You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
 
 {::nomarkdown}
 <div align=left>
