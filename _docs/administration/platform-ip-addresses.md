@@ -12,7 +12,7 @@ You can register multiple external clusters to the Codefresh Runner and GitOps R
 In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
 
 
-## Codefresh platform IPs (updated May 2024)
+## Codefresh IPs (updated September 2024)
 
 All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 
@@ -21,56 +21,74 @@ All the IPs are NAT gateways, and need to enable specific IPs instead of ranges.
 If you do use these IPs, we **strongly recommend** that you monitor this page on a regular basis.
 {{site.data.callout.end}}
 
+## Platform IPs
 
-
-- 107.20.62.112
 - 107.21.238.215
-- 107.22.208.170
-- 107.22.212.247
 - 18.209.185.91
+- 23.20.5.235
+
+>**NOTE**  
+The following IPs will be used in the 
+
+- 107.22.212.247
+- 23.21.197.195
+- 34.238.37.0
+- 54.221.236.3
+- 54.235.42.99
+- 54.86.228.102
+
+## Pipeline Runtime IPs
+
+### Basic tier
 - 18.215.207.215
 - 18.233.130.31
-- 18.210.174.176
-- 23.20.5.235
-- 23.21.197.195
-- 3.85.182.203
-- 3.211.224.172
+- 34.235.30.144
+- 44.205.132.73
+- 54.160.88.80
+
+### Enterprise tier
+
 - 3.232.154.67
-- 3.228.62.77
 - 34.192.31.53
 - 34.193.111.98
-- 34.195.17.245
-- 34.196.33.69
-- 34.198.38.4
-- 34.200.163.76
-- 34.235.30.144
-- 34.238.37.0
-- 44.205.132.73
 - 44.212.192.83
 - 52.6.148.44
 - 52.73.90.9
+- 3.228.62.77
+- 34.195.17.245
+- 34.196.33.69
+- 34.198.38.4
 - 52.72.0.154
 - 52.73.76.60
-- 54.86.228.102
-- 54.160.88.80 
-- 54.221.236.3
-- 54.235.42.99
+
+
+### Disaster Recovery (DR)
+
+- 3.74.180.3
+- 18.197.46.161
+- 3.68.123.116
+
+
+ 
+## Hosted GitOps 
+
+### Runtime IPs
+
 - 72.44.39.224
+- 3.85.182.203
+- 3.211.224.172
+- 52.5.116.137
+- 34.200.130.17
+- 3.212.173.12
+
+### Disaster Recovery (DR)
+- 3.75.252.115
+- 3.65.186.48
+- 3.123.55.242
+
 
 >**NOTE**    
 We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
- 
-## Codefresh IPs for Hosted GitOps Runtimes
-
-- 18.204.66.119
-- 18.210.81.87
-- 18.213.23.1
-- 52.5.116.137
-- 3.212.173.12
-- 3.85.182.203
-- 3.211.224.172
-- 34.200.130.17
-- 72.44.39.224
 
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
