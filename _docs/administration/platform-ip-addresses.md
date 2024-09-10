@@ -28,7 +28,7 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 23.20.5.235
 
 >**NOTE**  
-The following IPs will be used in the 
+The following IPs will be operational after production cluster upgrade. We strongly recommend adding them to your allowed list.
 
 - 107.22.212.247
 - 23.21.197.195
@@ -72,7 +72,7 @@ The following IPs will be used in the
  
 ## Hosted GitOps 
 
-### Runtime IPs
+### Hosted Runtime IPs
 
 - 72.44.39.224
 - 3.85.182.203
