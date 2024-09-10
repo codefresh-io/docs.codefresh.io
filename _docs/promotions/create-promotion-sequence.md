@@ -62,7 +62,7 @@ This step-by-step guide lists the steps required to create a promotion sequence.
 
 1. [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/) 
   Implement the changes to initiate the promotion sequence.  
-  The change, made to an application in the trigger environment, starts the process of moving changes from the trigger environment through the defined sequence of environments, following the defined Promotion Policies and Settings.  
+  The change made to an application in the trigger environment starts the process of moving changes through the defined sequence of environments, following the defined Promotion Policies and Settings.  
   TBD
 
 
