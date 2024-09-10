@@ -26,16 +26,15 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 107.21.238.215
 - 18.209.185.91
 - 23.20.5.235
-
->**NOTE**  
-The following IPs will be operational after production cluster upgrade. We strongly recommend adding them to your allowed list.
-
 - 107.22.212.247
 - 23.21.197.195
 - 34.238.37.0
 - 54.221.236.3
 - 54.235.42.99
 - 54.86.228.102
+- 3.74.180.3
+- 18.197.46.161
+- 3.68.123.116
 
 ## Pipeline Runtime IPs
 
@@ -61,15 +60,18 @@ The following IPs will be operational after production cluster upgrade. We stron
 - 52.72.0.154
 - 52.73.76.60
 
+- 54.235.42.99
+- 54.86.228.102
 
 ### Disaster Recovery (DR)
+
+>**NOTE**  
+The DR IPs apply to all tiers.
 
 - 3.74.180.3
 - 18.197.46.161
 - 3.68.123.116
 
-
- 
 ## Hosted GitOps 
 
 ### Hosted Runtime IPs
