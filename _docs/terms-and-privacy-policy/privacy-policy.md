@@ -26,12 +26,10 @@ Please also read CodeFresh&#39;s Term of Service at: [https://codefresh.io/docs/
   * 1.5. **Aggregate and Analytical Data.** In the effort to produce insights regarding use of the Solution, we often conduct research on user demographics and behavior based on the PII and other information provided to us. This research may be compiled and analyzed on an aggregate basis, and we may share this aggregate data with its affiliates, agents and business partners. This aggregate information does not identify you personally. We may use such aggregate information for any purpose and also disclose aggregated user statistics in order to describe our services to current and prospective business partners, and to other third parties for other lawful purposes.  
 
 ##### Full Story - Data collection and tracking User Behavior 
-
 Our documentation website uses [FullStory](https://www.fullstory.com/), a third-party tool, to collect data on how users interact with our content.  
 FullStory helps us better understand how our users navigate and engage with our website, allowing us to improve our documentation and overall user experience.
 
-**What kind of data do we collect with FullStory?**
-
+**What kind of data do we collect with FullStory?**  
 When you visit our documentation website, FullStory may collect the following types of data:
 
 - **Interaction data**  
@@ -47,29 +45,27 @@ When you visit our documentation website, FullStory may collect the following ty
   General demographic information like your location (country or city level) and language preference, which helps us tailor content more effectively.  
   Please note that demographic information is limited to generalized, location-based information.
 
-**Why do we collect the data?**
-
+**Why do we collect the data?**  
 We use the data collected by FullStory for the following purposes:
-
-* **Improve user experience**  
+* **Improve user experience**   
   We analyze user behavior to identify areas where documentation is missing, and where it can be improved, ensuring that it is clear, helpful, and easy to navigate.
 
-* **Monitor website performance**  
+* **Monitor website performance**   
   By understanding how users interact with our site, we can optimize its performance and address any issues that may affect usability.
   
 * **Maintain relevant content**  
   We use the insights to refine the content on our site, making sure it meets the needs of our users.
 
-**Data privacy and security**
 
+**Data privacy and security**  
 We take the privacy of our users seriously.  
 FullStory does not collect any sensitive personal information (such as passwords, payment details, or personal identification numbers).  
 All data collected is anonymized and aggregated, ensuring that individual users cannot be personally identified.
 
 You can learn more about how FullStory handles data by reviewing their [privacy policy](https://www.fullstory.com/legal/privacy-policy).
 
-**Opting Out**
 
+**Opting Out**  
 If you do not wish to have your data collected by FullStory, you can opt out by enabling the "Do Not Track" setting in your web browser.  
 For more information, see this [article](https://www.cookieyes.com/knowledge-base/cookies-101/what-is-do-not-track/){:target="\_blank"}. 
 
