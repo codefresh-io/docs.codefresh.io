@@ -336,6 +336,59 @@ The table below lists existing Feature Flags which have been updated by default 
 | `accountInfoCopyButton`  | When enabled (the default), adds the account ID to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.   | _TRUE_         |
 | `serviceAccounts` | When enabled (the default), allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management. | _TRUE_         |
 
+
+### Bug fixes
+
+#### July 
+
+
+##### Pipelines 
+
+
+
+
+##### GitOps 
+
+* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
+
+
+#### Augutsr
+
+
+
+##### Pipelines 
+
+
+* Pull request push commit trigger for Bitbucket server not supported. 
+* `build` step does not work with cross-account ECR. 
+
+
+
+
+
+
+
+#### Verified
+
+##### General
+* Download Audit downloads empty CSV file. 
+* Invite text in Welcome screen displays `undefined` instead of the organization name. 
+
+##### Pipelines
+* `Failed to write template value file Arguments to filesystem` error for builds with `codefresh-run` step.
+* Trigger for Azure DevOps creates builds for files ignored in modified files - Verify with Vadim 
+* `Failed - build runtime settings not configured` error for Hybrid Runner.
+* `build` step does not support images from different account for Amazon ECR (Elastic Container Registry).
+
+##### GitOps
+* Audit log does not show changes made to GitOps permissions.
+* Manual Rollout actions not available in audit log.
+* GitOps permissions do not function correctly when attributes are applied.
+* Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
+* Current Release not displayed for multi-sourced apps. 
+* Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
+* Unresponsive **Close** button in Rollout drawer. 
+
 ## On-premises version 2.4
 
 ### Features & enhancements
