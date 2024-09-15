@@ -32,14 +32,17 @@ You can download our current Customer Agreement here: [Octopus Deploy Customer A
 
 {::nomarkdown}
 
-<table cellpadding="10" cellspacing="0" style="width:100%; text-align: center;">
+<table cellpadding="10" cellspacing="0" style="width:100%; text-align: center; border="none";>
   <tr>
-    <td width=20%><img src="../../../../images/icons/legal-scales-icon-terms-of-service.png"  display=block align=center><br>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
-    <td width=5%><strong>+</strong></td>
+    <td width=20%> 
+      <div style="text-align: center;">
+        <img src="../images/icons/legal-scales-icon-terms-of-service.png" style="display: block;">
+      </div><br>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
+    <td width=5% valign="middle"><strong>+</strong></td>
     <td width=20%><img src="../../../../images/icons/legal-cd-icon-terms-of-service.png"  display=block align=center><br><strong>Product Terms</strong><br>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.</td>
-    <td width=5%><strong>+</strong></td>
+    <td width=5%><strong valign="middle>+</strong></td>
     <td width=20%><img src="../../../../images/icons/legal-id-icon-terms-of-service.png"  display=block align=center><br><strong>Data Processing Agreement</strong><br>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.</td>
-    <td width=5%><strong>+</strong></td>
+    <td width=5%><strong valign="middle">+</strong></td>
     <td width=20%><img src="../../../../images/icons/legal-order-form-icon-terms-of-service.png"  display=block align=center><br><strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.</td>
   </tr>
 </table>
