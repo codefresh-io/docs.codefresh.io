@@ -34,10 +34,10 @@ You can download our current Customer Agreement here: [Octopus Deploy Customer A
 
 <table cellpadding="10" cellspacing="0" style="width:100%; text-align: center;">
   <tr>
-    <td>⚖️ <br><strong>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
-    <td>💿 <br><strong>Product Terms</strong><br>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.</td>
-    <td>🪪 <br><strong>Data Processing Agreement</strong><br>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.</td>
-    <td>📜 <br><strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.</td>
+    <td><img src="../../../../images/icons/legal-scales-icon-terms-of-service.png"  display=block align=center><br>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
+    <td><img src="../../../../images/icons/legal-cd-icon-terms-of-service.png"  display=block align=center><br><strong>Product Terms</strong><br>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.</td>
+    <td><img src="../../../../images/icons/legal-id-icon-terms-of-service.png"  display=block align=center><br><strong>Data Processing Agreement</strong><br>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.</td>
+    <td><img src="../../../../images/icons/legal-order-form-icon-terms-of-service.png"  display=block align=center><br><strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.</td>
   </tr>
 </table>
 
