@@ -24,52 +24,23 @@ max-width="100%"
 %}
 
 
-<table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="text-align: left; width: 10%;">Icon</th>
-      <th style="text-align: left;">Part</th>
-      <th style="text-align: left;">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>⚖️</td>
-      <td>General Terms</td>
-      <td>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
-    </tr>
-    <tr>
-      <td>💿</td>
-      <td>Product Terms</td>
-      <td>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.</td>
-    </tr>
-    <tr>
-      <td>🪪</td>
-      <td>Data Processing Agreement</td>
-      <td>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.</td>
-    </tr>
-    <tr>
-      <td>📜</td>
-      <td>Order Form</td>
-      <td>The order form contains the details of what you are buying, the duration, and the pricing.</td>
-    </tr>
-  </tbody>
-</table>
+
 
 
 
 You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
 
 {::nomarkdown}
-<div align=left>
 
-<table width=100%; max-width=100%; border=0pxß>
- <tr>
-  <td style='padding: .6rem; font-size: .875rem; vertical-align: top;'>Complete Customer Agreement</td>
-  <td style='padding: .6rem; font-size: .875rem; vertical-align: top;'>General Terms<br>Product Terms<br>Data Processing Agreement</td>
- </tr>
+<table cellpadding="10" cellspacing="0" style="width:100%; text-align: center;">
+  <tr>
+    <td>⚖️ <br><strong>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.</td>
+    <td>💿 <br><strong>Product Terms</strong><br>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.</td>
+    <td>🪪 <br><strong>Data Processing Agreement</strong><br>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.</td>
+    <td>📜 <br><strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.</td>
+  </tr>
 </table>
-</div>
+
 
 {:/}
 
