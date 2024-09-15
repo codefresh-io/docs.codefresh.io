@@ -389,7 +389,7 @@
         - title: Public logs and status badges
           url: "/build-status"
     - title: Pipeline specifications
-          url: "/specifications"      
+      url: "/specifications"      
     - title: Steps in pipelines
       url: "/steps"
       sub-pages:
