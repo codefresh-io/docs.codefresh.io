@@ -339,7 +339,18 @@ The table below lists existing Feature Flags which have been updated by default 
 
 ### Bug fixes
 
-#### July 
+#### September 10
+Current state -> [List view] tree view breaks after 5-10 seconds [CR-25104] Victor List View in Cuurent State does not persist 
+Codefresh validate command requires pipeline: write [CR-25072]Yarik: Permission and moissing scope error when running `codefresh validate yaml` command. P2 
+OnPrem: argo-platform-analytics-reporter is failing due to a special character [CR-25131] Yarik P1 Command failure for argo-platform-analytics-reporter
+Step member variables don't work between different parallel blocks. [CR-22554] - Screen shot Vasil 
+fail_fast and other props of type Boolean does not support variables. [CR-4837] - Screen shot: `fail-fast`as variable not supported Vasil P2
+[p1 - labelbox] 2 clusters are in Unknown state and don't show applications deployed to them in filtered list in GitOps app dashboard [CR-25142] Yarik P2 Applications not displaye din GitOps Apps dashboard shows whne filter bu cluster
+[tpt] unable to sync Azure SSO - config not found [CR-25105] Vadim SaaS P1
+Git clone step failing for Gerrit CR25307 Eti P0 
+
+
+
 
 
 ##### Pipelines 
@@ -349,7 +360,7 @@ The table below lists existing Feature Flags which have been updated by default 
 
 ##### GitOps 
 
-* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
+
 
 
 #### Augutsr
@@ -375,6 +386,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * Invite text in Welcome screen displays `undefined` instead of the organization name. 
 
 ##### Pipelines
+* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
 * `Failed to write template value file Arguments to filesystem` error for builds with `codefresh-run` step.
 * Trigger for Azure DevOps creates builds for files ignored in modified files - Verify with Vadim 
 * `Failed - build runtime settings not configured` error for Hybrid Runner.
