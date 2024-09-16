@@ -646,8 +646,6 @@
   pages:
     - title: Terms of Service
       url: "/terms-of-service"
-    - title: Octopus Deploy Customer Agreement
-      url: "/octopus-deploy-customer-agreement"
     - title: Privacy Policy
       url: "/privacy-policy"
     - title: Acceptable Use Policy
