@@ -6,18 +6,18 @@ toc: true
 ---
 
 
-Organizations deploying container images created by Codefresh pipelines using Codefresh as the OIDC provider and keyless signing can verify both the signature and the identity of the signer.
+Organizations deploying container images created by Codefresh pipelines using Codefresh as the OIDC provider for keyless or key-based signing can verify both the signature and the identity of the signer.
 
-For instructions on setting up keyless signing for container images created by Codefresh pipelines, see [Securing container images with OIDC and keyless signing]({{site.baseurl}}/docs/pipelines/steps/build/#securing-container-images-with-oidc-and-keyless-signing).
+For more information, see [Signing container images with Sigstore]({{site.baseurl}}/docs/pipelines/steps/build/#signing-container-images-with-sigstore).
 
-For detailed information including on keyless signing, including its architecture, [read our blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"} on the same.
+For detailed information on keyless signing, including its architecture, [read our blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"} on the same.
 
 
-## Verify authenticity of Codefresh pipeline-created artifacts
+## Verify authenticity of container images with keyless signing
 
-Verify the authenticity of all artifacts created by Codefresh pipelines using the `cosign` command:
+Verify the authenticity of all container images created by Codefresh pipelines using the `cosign` command:
 
-`cosign verify --certificate-oidc-issuer "https://oidc.codefresh.io" --certificate-identity/--certificate-identity-regexp "<certificate identity>" <image tag>`
+`cosign verify --certificate-oidc-issuer "https://oidc.codefresh.io" --certificate-identity/--certificate-identity-regexp "<certificate-identity>" <image-tag>`
  
 
 where:  
@@ -25,7 +25,7 @@ where:
 * `<certificate-identity>`is the identity of the certificate, specified using one of the following flags:
     *  `--certificate-identity` for the full identity of the certificate.
     * `--certificate-identity-regexp` for specifying a regular expression to match various parts of the identity.
-* `<imagetag>` is the name of the container image to verify.
+* `<image-tag>` is the name of the container image to verify.
 
 If the certificate identity doesn’t match the expected identity, `cosign` exits with an error:
 
@@ -51,7 +51,7 @@ caption="Successful cosign certificate identity validation"
 max-width="60%"
 %}
 
-## Examples of identity verification commands
+### Examples of identity verification commands
 
 
 ##### Full identity verification
@@ -68,6 +68,14 @@ Using a regex, this command verifies identities for images created for a specifi
 
   `cosign verify --certificate-oidc-issuer "https://oidc.codefresh.io" --certificate-identity-regexp "https://g.codefresh.io/ilia-codefresh/.*" ilmedcodefresh/python-flask-sample-app:cosign-keyless-demo`
 
+
+## Verify authenticity of container images with key-based signing
+
+`cosign verify --key <public-key-file-path> <image-tag>`  
+
+where:  
+* `<public-key-file-path>` is the file path to the public key used to verify the signed container image.
+* `<image-tag>` is the name of the container image to verify.
 
 ## Related articles
 [OIDC in pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/)   
