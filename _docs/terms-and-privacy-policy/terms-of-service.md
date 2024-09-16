@@ -49,7 +49,7 @@ Our complete Customer Agreement with you has four parts:
       </div>
       <strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.
     </td>
-
+</table>
 {:/}
 
 You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
