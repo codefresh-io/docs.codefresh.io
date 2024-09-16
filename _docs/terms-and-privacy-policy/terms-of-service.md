@@ -10,25 +10,7 @@ toc: true
 >Codefresh was acquired by Octopus Deploy in March 2024. Starting 1 October 2024, you can buy Codefresh through Octopus Deploy's umbrella Customer Agreement.  
 If you would like to see our legacy terms of service up to 30 September 2024, click [here]({{site.baseurl}}/docs/terms-and-privacy-policy/legacy-cf-terms-of-service/). 
 
-
-
-
-
-{% include image.html 
-lightbox="true" 
-file="/images/licenses/customer-agreement-parts.png" 
-url="/images/licenses/customer-agreement-parts.png"
-alt=""
-caption=""
-max-width="100%" 
-%}
-
-
-
-
-
-
-You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
+Our complete Customer Agreement with you has four parts:
 
 {::nomarkdown}
 
@@ -70,6 +52,7 @@ You can download our current Customer Agreement here: [Octopus Deploy Customer A
 
 {:/}
 
+You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
 
 
 If you require a signed copy of the Customer Agreement for your records, please contact [sales@octopus.com](mailto:sales@octopus.com).
