@@ -14,15 +14,15 @@ Our complete Customer Agreement with you has four parts:
 
 {::nomarkdown}
 
-<table cellpadding="0" cellspacing="0" style="width:100%; text-align: center; border-collapse: collapse; border: none;">
+<table cellpadding="0" cellspacing="0" style="width:100%; text-align: center; border-spacing: 0; border-collapse: collapse; border: none;">
   <tr>
-    <td width="20%" style="vertical-align: middle; text-align: center;"> 
+    <td width="20%" style="vertical-align: top; text-align: center;"> 
       <div style="text-align: center;">
         <img src="../../../../../images/icons/legal-scales-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.
     </td>
-    <td width="5%" style="vertical-align: middle; text-align: center;">
+    <td width="5%" style="vertical-align: top; text-align: center;">
       <strong>+</strong>
     </td>
     <td width="20%" style="vertical-align: middle; text-align: center;">
@@ -34,7 +34,7 @@ Our complete Customer Agreement with you has four parts:
     <td width="5%" style="vertical-align: middle; text-align: center;">
       <strong>+</strong>
     </td>
-    <td width="20%" style="vertical-align: middle; text-align: center;">
+    <td width="20%" style="vertical-align: top; text-align: center;">
       <div style="text-align: center;">
         <img src="../../../../../images/icons/legal-id-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
@@ -43,8 +43,8 @@ Our complete Customer Agreement with you has four parts:
     <td width="5%" style="vertical-align: middle; text-align: center;">
       <strong>+</strong>
     </td>
-    <td width="20%" style="vertical-align: middle; text-align: center;">
-      <div style="text-align: center;">
+    <td width="20%" style="vertical-align: top; text-align: center;">
+      <div style="text-align: top;">
         <img src="../../../../../images/icons/legal-order-form-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.
