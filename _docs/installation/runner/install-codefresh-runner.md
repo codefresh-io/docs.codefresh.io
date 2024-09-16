@@ -39,7 +39,7 @@ After installing the Codefresh Runner, you can:
 |Kubernetes cluster      | Server version 1.21 or higher. {::nomarkdown}<br><b>Tip</b>:  To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>.{:/}|
 |Helm| 3.8.0 and higher|
 |Container runtime | Any compliant container runtime, as the runner is **not** dependent on any special dockershim features. {::nomarkdown}<br>Examples: <ul><li><a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq" target="blank">Docker</a></li><li><a href="https://containerd.io/" target="blank">containerd</a></li><li><a href="https://cri-o.io/" target="blank">cri-o</a></li></ul> {:/} |
-|CLI API token | [Required scopes]({{site.baseurl}}/docs/integrations/codefresh-api/#authentication-instructions)|
+|Codefresh API Token |{::nomarkdown} <ul><li><a href="https://codefresh.io/docs/docs/integrations/codefresh-api/#authentication-instructions">Required scopes</a>: <code class="highlighter-rouge">Runner-Installation(read+write)</code>, <code class="highlighter-rouge">Agent(read+write)</code>, <code class="highlighter-rouge">Agents(read+write)</code></li><li>Token needs to be from an Account Admin.</li><li>When using service accounts, select the **Assign Admin role to service account** option.<br>See <a href="https://codefresh.io/docs/docs/administration/account-user-management/service-accounts/">Managing service accounts</a>.</li></ul> {:/}|
 
 
 
