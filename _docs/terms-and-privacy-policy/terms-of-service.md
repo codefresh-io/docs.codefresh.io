@@ -14,7 +14,7 @@ Our complete Customer Agreement with you has four parts:
 
 {::nomarkdown}
 
-<table class="legal" cellpadding="0" cellspacing="0" style="width:100%; text-align: center; border-spacing: 0; border-collapse: collapse; border: none;">
+<table style="width:100%; text-align: center;" class="borderless-table">
   <tr>
     <td width="20%" style="vertical-align: top; text-align: center;"> 
       <div style="text-align: center;">
