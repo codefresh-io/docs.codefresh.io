@@ -89,11 +89,11 @@
   // Links
   @include content-links();
 
-.legal {
-  .bd-content-inner>table>tbody>tr>td {
-    border: none;
+  .legal {
+    .bd-content-inner > table > tbody > tr > td {
+      border: none;
+    }
   }
-}
 
   // Tables
   > table {
