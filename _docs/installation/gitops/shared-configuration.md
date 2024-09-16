@@ -12,7 +12,7 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
-Only Codefresh account administrators should have access to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
+Only C_odefresh account administrators should have access_ to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
 While it is useful to understand its structure, we recommend using it for reference only, and NOT for making commits or manual changes. 
 {{site.data.callout.end}}
 
@@ -44,6 +44,20 @@ Here are a few types of configuration definitions stored in the Shared Configura
   Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 -->
+
+## Location of the Shared Configuration Repo
+
+You can see the URL of the Shared Configuration Repo for your Runtime in the **Organization Information** page. 
+
+   {% include
+	image.html
+	lightbox="true"
+	file="/images/runtime/shared-isc-repo/shared-isc-location.png"
+	url="/images/runtime/shared-isc-repo/shared-isc-location.png"
+	alt="Shared Configuration Repo URL"
+	caption="Shared Configuration Repo URL"
+  max-width="60%"
+%}
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration. 
@@ -125,6 +139,26 @@ In addition to the application manifests for GitOps Runtimes in the Shared Confi
 
 This Git Source application creates an application manifest with the `<cluster-name>` for every cluster managed by the GitOps Runtime. The `include` field in the `<cluster-name>` application manifest determines which subdirectories in the `resources` directory are synced to the target cluster.
 
+##  Shared Configuration Repo as Runtime application
+You can view and monitor all resources in the Shared Configuration Repo as any other Argo CD application in the GitOps Apps dashboard's Current State tab.
+
+Select the **Runtime ISC Application** option from the Runtime's context menu. 
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/runtime/shared-isc-repo/isc-runtime-app-context-menu.png" 
+	url="/images/runtime/shared-isc-repo/isc-runtime-app-context-menu.png" 
+	alt="ISC (Shared Runtime Configuration repo) as Application" 
+	caption="ISC (Shared Runtime Configuration repo) as Application"
+  max-width="70%" 
+  %}
+
+
+## Reset the Shared Configuration Repo 
+
+In specific conditions, you can reset the Shared Configuration Repo for your GitOps Runtime, as described in [Reset Shared Configuration Repo for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
+
 
 ## Use case: Integration resources for Runtimes
 When creating a new GitOps Integration resource, such as a container registry integration for example in the Codefresh UI, you can define the GitOps Runtimes to which to apply that resource. The `app-proxy` saves the resource in the correct location in the Shared Configuration Repo, and updates the relevant Argo CD Applications to include it. 
@@ -142,6 +176,8 @@ Here's how to do this with the Shared Configuration Repo:
 **TIP**    
 You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
 {{site.data.callout.end}}
+
+
 
 
 ## Related articles
