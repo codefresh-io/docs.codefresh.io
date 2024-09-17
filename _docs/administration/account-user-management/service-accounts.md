@@ -8,8 +8,6 @@ toc: true
 
 ## Service accounts overview
 
->**NOTE**  
-This feature is currently in Beta.
 
 A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Service accounts can manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
