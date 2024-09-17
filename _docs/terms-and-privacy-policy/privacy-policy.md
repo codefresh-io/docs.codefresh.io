@@ -18,12 +18,59 @@ We recognize that privacy is important. This Privacy Policy applies to all of th
 
 Please also read CodeFresh&#39;s Term of Service at: [https://codefresh.io/docs/docs/terms-and-privacy-policy/terms-of-service/](https://codefresh.io/docs/docs/terms-and-privacy-policy/terms-of-service/), which describes the terms under which you use our Solution.
 
-**1. Information We Collect and How We Use It**. In order to provide, operate and improve our Solution and provide services in connection therewith, we may collect and process PII, including the following types of information:
-  1.1 **Information You Provide. ** When you subscribe to use the Solution we ask you to provide PII, including: full name, email address and phone number. Payment card information is submitted to a third party payment services provider, subject to its terms of use and privacy policy.
-  1.2. **Third Parties.** We sometimes supplement the information that you provide with information that is received from third parties. If you log-in to the Solution from and/or interact with any online platform (e.g. Google log-in) we may receive information from the respective platforms.
-  1.3. **User Communications.** When you send emails or other communications to the Company, we may retain those communications in order to process your inquiries, respond to your requests and improve our Solution. We may send you newsletters and promotional communications, you may opt-out of this service at any time by visiting the [Email Unsubscribe](http://hs.codefresh.io/hs/manage-preferences/unsubscribe-simple?via_redirect=true) page.
-  1.4. **User Information.** We collect and store content that you create, submit, upload or store in the process of using the Solution. When you use the Solution, we may automatically receive and record information from your browser, including without limitation information and statistics about your online/offline status, your  IP address, geolocation data (including country and city), device identifiers, internet service provider, connection speed, type of browser, your regional and language settings and software and hardware attributes. Our systems may automatically record and store technical information regarding the method and nature of your use of the Solution. An IP address is a numeric code that identifies your browser on a network, or in this case, the Internet. Your IP address is also used to gather broad demographic information. The Company uses all of the PII that we collect to understand the usage trends and preferences of our users.
-  1.5. **Aggregate and Analytical Data.** In the effort to produce insights regarding use of the Solution, we often conduct research on user demographics and behavior based on the PII and other information provided to us. This research may be compiled and analyzed on an aggregate basis, and we may share this aggregate data with its affiliates, agents and business partners. This aggregate information does not identify you personally. We may use such aggregate information for any purpose and also disclose aggregated user statistics in order to describe our services to current and prospective business partners, and to other third parties for other lawful purposes.
+**1. Information We Collect and How We Use It**. In order to provide, operate and improve our Solution and provide services in connection therewith, we may collect and process PII, including the following types of information:  
+  **1.1 Information You Provide.** When you subscribe to use the Solution we ask you to provide PII, including: full name, email address and phone number. Payment card information is submitted to a third party payment services provider, subject to its terms of use and privacy policy.
+  **1.2. Third Parties.** We sometimes supplement the information that you provide with information that is received from third parties. If you log-in to the Solution from and/or interact with any online platform (e.g. Google log-in) we may receive information from the respective platforms.  
+  **1.3. User Communications.** When you send emails or other communications to the Company, we may retain those communications in order to process your inquiries, respond to your requests and improve our Solution. We may send you newsletters and promotional communications, you may opt-out of this service at any time by visiting the [Email Unsubscribe](http://hs.codefresh.io/hs/manage-preferences/unsubscribe-simple?via_redirect=true) page.  
+  **1.4. User Information.** We collect and store content that you create, submit, upload or store in the process of using the Solution. When you use the Solution, we may automatically receive and record information from your browser, including without limitation information and statistics about your online/offline status, your  IP address, geolocation data (including country and city), device identifiers, internet service provider, connection speed, type of browser, your regional and language settings and software and hardware attributes. Our systems may automatically record and store technical information regarding the method and nature of your use of the Solution. An IP address is a numeric code that identifies your browser on a network, or in this case, the Internet. Your IP address is also used to gather broad demographic information. The Company uses all of the PII that we collect to understand the usage trends and preferences of our users.  
+  **1.5. Aggregate and Analytical Data.** In the effort to produce insights regarding use of the Solution, we often conduct research on user demographics and behavior based on the PII and other information provided to us. This research may be compiled and analyzed on an aggregate basis, and we may share this aggregate data with its affiliates, agents and business partners. This aggregate information does not identify you personally. We may use such aggregate information for any purpose and also disclose aggregated user statistics in order to describe our services to current and prospective business partners, and to other third parties for other lawful purposes.  
+
+
+##### Full Story - Data collection and tracking User Behavior 
+Our documentation website uses [FullStory](https://www.fullstory.com/), a third-party tool, to collect data on how users interact with our content.  
+FullStory helps us better understand how our users navigate and engage with our website, allowing us to improve our documentation and overall user experience.
+
+**What kind of data do we collect with FullStory?**  
+When you visit our documentation website, FullStory may collect the following types of data:
+
+- **Interaction data**  
+  Includes clicks, scrolls, mouse movements, and keystrokes (except for sensitive data such as passwords or payment information). This data helps us analyze how users interact with various elements of our website.
+
+- **Session data**  
+   Record of your browsing session on our site, including the pages you visit, the time spent on each page, and the sequence of actions taken.
+
+- **Technical data**   
+  Information about the device you are using, including your browser type, operating system, screen resolution, and IP address (anonymized).
+
+- **Demographic data**  
+  General demographic information like your location (country or city level) and language preference, which helps us tailor content more effectively.  
+  Please note that demographic information is limited to generalized, location-based information.
+
+**Why do we collect the data?**  
+We use the data collected by FullStory for the following purposes:
+* **Improve user experience**   
+  We analyze user behavior to identify areas where documentation is missing, and where it can be improved, ensuring that it is clear, helpful, and easy to navigate.
+
+* **Monitor website performance**   
+  By understanding how users interact with our site, we can optimize its performance and address any issues that may affect usability.
+  
+* **Maintain relevant content**  
+  We use the insights to refine the content on our site, making sure it meets the needs of our users.
+
+
+**Data privacy and security**  
+We take the privacy of our users seriously.  
+FullStory does not collect any sensitive personal information (such as passwords, payment details, or personal identification numbers).  
+All data collected is anonymized and aggregated, ensuring that individual users cannot be personally identified.
+
+You can learn more about how FullStory handles data by reviewing their [privacy policy](https://www.fullstory.com/legal/privacy-policy).
+
+
+**Opting Out**  
+If you do not wish to have your data collected by FullStory, you can opt out by enabling the "Do Not Track" setting in your web browser.  
+For more information, see this [article](https://www.cookieyes.com/knowledge-base/cookies-101/what-is-do-not-track/){:target="\_blank"}. 
+
+Additionally, you can visit FullStory's [opt-out page](https://www.fullstory.com/optout) to prevent data collection.
   
 **2. Cookies.** In order to collect the data described herein we may use temporary cookies that remain on your browser for a limited period of time. We may also use persistent cookies that remain on your browser until the Company&#39;s Solution are removed, in order to manage and maintain the Solution and record your use of the Solution. Cookies by themselves cannot be used to discover the identity of the user. A cookie is a small piece of information which is sent to and stored on your browser. Cookies do not damage your browser. Most browsers may allow you to block cookies but you may not be able to use some features on the Solution if you block them. You may set most browsers to notify you if you receive a cookie (this enables you to decide if you want to accept it or not). We may also use web beacons via the Solution to collect information. Web beacons or &quot;gifs&quot;, are electronic images that may be used in our Solution or in our emails. We use Web beacons to deliver cookies, count visits and to tell if an email has been opened and acted upon.
 

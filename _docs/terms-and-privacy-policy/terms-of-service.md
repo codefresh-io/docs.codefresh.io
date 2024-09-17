@@ -18,7 +18,7 @@ Our complete Customer Agreement with you has four parts:
   <tr>
     <td width="20%" style="vertical-align: top; text-align: center;"> 
       <div style="text-align: center;">
-        <img src="../../../images/icons/legal-scales-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
+        <img src="../../../../images/icons/legal-scales-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.
     </td>
@@ -27,7 +27,7 @@ Our complete Customer Agreement with you has four parts:
     </td>
     <td width="20%" style="vertical-align: middle; text-align: center;">
       <div style="text-align: center;">
-        <img src="../../../images/icons/legal-cd-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
+        <img src="../../../../images/icons/legal-cd-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>Product Terms</strong><br>The Product Terms cover any additional terms specific to the software or services you are buying: Octopus Server, Octopus Cloud, Codefresh, etc.
     </td>
@@ -36,7 +36,7 @@ Our complete Customer Agreement with you has four parts:
     </td>
     <td width="20%" style="vertical-align: top; text-align: center;">
       <div style="text-align: center;">
-        <img src="../../../images/icons/legal-id-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
+        <img src="../../../../images/icons/legal-id-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>Data Processing Agreement</strong><br>The Data Processing Agreement addresses the requirements of the GDPR and other privacy laws about how we deal with personal data.
     </td>
@@ -45,7 +45,7 @@ Our complete Customer Agreement with you has four parts:
     </td>
     <td width="20%" style="vertical-align: top; text-align: center;">
       <div style="text-align: top;">
-        <img src="../../../images/icons/legal-order-form-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
+        <img src="../../../../images/icons/legal-order-form-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>Order Form</strong><br>The order form contains the details of what you are buying, the duration, and the pricing.
     </td>
@@ -55,7 +55,7 @@ Our complete Customer Agreement with you has four parts:
 You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}
 
 
-If you require a signed copy of the Customer Agreement for your records, please contact [sales@octopus.com](mailto:sales@octopus.com).
+If you require a signed copy of the Customer Agreement for your records, please contact [sales@codefresh.io](mailto:sales@codefresh.io).
 
 ## Customer Agreement FAQs
 
