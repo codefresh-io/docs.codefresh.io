@@ -12,8 +12,8 @@ A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configura
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
-Only C_odefresh account administrators should have access_ to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
-While it is useful to understand its structure, we recommend using it for reference only, and NOT for making commits or manual changes. 
+Only _Codefresh account administrators should have access_ to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
+While it is useful to understand its structure, we recommend using it for reference only, and _NOT_ for making commits or manual changes. 
 {{site.data.callout.end}}
 
 * **Centralized Runtime configuration management**  
@@ -157,7 +157,8 @@ Select the **Runtime ISC Application** option from the Runtime's context menu.
 
 ## Reset the Shared Configuration Repo 
 
-In specific conditions, you can reset the Shared Configuration Repo for your GitOps Runtime, as described in [Reset Shared Configuration Repo for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
+Currently, Codefresh supports a single Shared Configuration Repo per account. You may need to reset the Shared Configuration Repo in specific scenarios, such as a missing or incorrect URL.  
+For more information, see [Reset Shared Configuration Repo for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).
 
 
 ## Use case: Integration resources for Runtimes
