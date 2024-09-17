@@ -55,7 +55,46 @@ toc: true
 
 ## .spec
 
-### .spec fields
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.scopes`           | ??? | string    | `????'` |
+| `spec.scopeSnapshot`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.permitRestartFromFailedSteps` | Determines if users can restart a failed pipeline from the failed step, instead of from the beginning of the pipeline.<br>When set to `true`, users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
+| `spec.build_version`    | ???  | string    | Optional |
+| `spec.triggers`    | The list of Git triggers defined for the pipeline. For details, see [`spec.triggers](#spectriggers). | array    | ??? |
+| `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers](#speccrontriggers). | array    | `????'` |
+| `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments](#specruntimeenvironment).  | object    | Optional?? |
+| `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipelines build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li> {:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
+| `spec.packId`    | ??? | string    | `????'` |
+| `spec.requiredAvailableStorage`    | ???The minimum disk space for the pipeline’s build volume. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. Otherwise, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI?)  | string    | Optional |
+| `spec.contexts`    | ?? The The ID of the pipeline.  | string    | `????'` |
+| `spec.clustersInfo`    | Determines if all (`injectAll`) or specific  (`clusters`) Kubernetes cluster contexts are available for the pipeline build.<br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
+| `spec.clustersInfo.injectAll`     | When set as `true` (NIMA is this the default?), injects all clusters integrated with Codefresh into the pipeline build.   | boolean    | Optional |
+| `spec.clustersInfo.clusters`     | Applicable only when `injectAll`is set to `false`.<br>One or more comma-separated names of clusters to inject during the pipeline build. For example, `aws`, `eks-prod`. | array      | Optional |
+| `spec.variablesSchema`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.variables`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.specTemplate`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.steps`    | The steps to be executed by the pipeline, as a list of key-values pairs.<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
+| `spec.services`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.hooks`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.stages`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.mode`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.fail_fast`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.strict_fail_fast`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.success_criteria`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.options`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.concurrency`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.triggerConcurrency`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.branchConcurrency`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.priority`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.terminationPolicy`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.externalResources`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.debug`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.serviceAccount`    | The ID of the pipeline.  | string    | `????'` |
+
+
+
 
 
 ### spec.triggers
