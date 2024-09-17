@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-This step-by-step guide lists the steps required to create a promotion sequence. Follow the steps in the order in which they are listed. Each step is followed by a brief description of its purpose and objective in the promotion sequence. For detailed information, click the step title.
+This guide lists the steps required to create a promotion sequence. Follow the steps in the order in which they are listed. Each step is followed by a brief description of its purpose and objective in the promotion sequence. For detailed information, click the step title.
 
 
 ## Prerequisites

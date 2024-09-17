@@ -8,6 +8,9 @@ toc: true
 
 A Promotion Flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
 
+
+Promotion Flows streamline the process of moving code changes through different stages, such as testing, staging, and production. They automate repetitive tasks, reducing manual efforts, ensuring uniformity across deployments.  
+By defining specific criteria for promotion, they help maintain the integrity of the software and reduce the likelihood of introducing bugs into production.
 Our Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
 As with other entities, you can toggle between YAML and chart modes while in the Flow Builder.
 
@@ -17,12 +20,29 @@ Before creating promotion flows, review [our notes on Promotion Flows](#notes-on
 
 
 
- 
+## Flow Builder vs. YAML
+You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD). You can switch seamlessly between both when creating Promotion Flows.
+The Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
 
 
+## Sequential vs. parallel promotions
+
+Promotion Flows can be designed to run sequentially or in parallel to suit the unique requirements of any deployment process.
+
+Sequential flows
+Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
+This is the more common and traditional kind of Promotion Flow where you start the flow from the development environment as the trigger environment, and then promote to the testing, staging, and finally to the production environments.
+
+Parallel flows
+In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments to create promotions after multiple environments are healthy. 
 
 ## Notes on Promotion Flows 
-Here are a few key factors to be aware of when creating Promotion Flows. 
+Here are a few key factors to be aware of when creating Promotion Flows.  
+
+
+
+
+
 
 ### Trigger and target environments 
 You can create and assign environments for the Promotion Flow, starting with the Trigger Environment, where the change initiates the flow, and the other target environments required for promotion. You need at least one target environment for promotions. 
@@ -35,18 +55,19 @@ You can create and assign environments for the Promotion Flow, starting with the
 
   Reconnecting environments is only relevant when there is one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
 
+### ## Dependencies
 
-### Inline versus automated Promotion Policy settings
+### Inline versus global Promotion Policy settings
 
 For each environment, you can explicitly set the Promotion Policy, including the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
 
 ##### Inline Promotion Policy settings
 The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, this _inline_ selection overides any automated Promotion Policy settings that match the product/environment when the flow is triggered.
 
-##### Automated Promotion Policy settings
+##### Global Promotion Policy settings
 If no inline settings are defined, the system applies automated Promotion Policy settings based on predefined priorities. See TBD
 
-### Previewing Promotion Policies by Product
+## Previewing Promotion Policies by Product
 Instead of waiting for the Promotion Flow to be triggered, you can preview Promotion Policy settings for any product to ensure that the environment and product have the desired policies.  
 Previewing Policies by product confirms if the automated Policies that will be applied for the product are the correct ones for it. Preview is also useful to identify  environments and products without matching Policies or Policies that are missing required settings such as the Promotion Action.  
 Note that only those settings without inline values are populated by the preview.
@@ -102,7 +123,7 @@ SCREENSHOT
 {:start="2"}
 1. Do one of the following: 
     * To review the manifest of an inline Trigger Workflow, click ??? and then select the required workflow. Continue from _step 2_.
-    * To apply a Trigger Workflow from automated Promotion Policy settings, click **Automated Promotion Policy**.  Continue from _step 2_.
+    * To apply a Trigger Workflow from global Promotion Policy settings, click **Automated Promotion Policy**.  Continue from _step 2_.
     * To add a new Promotion Workflow, click **Add New Workflow**. 
         * You are taken to the Add Promotion Workflow page where you can define the settings. See TBD???? 
         * A notification alerts you that there are unsaved changes to the Promotion Flow.  
@@ -232,9 +253,9 @@ TBD where are teh changes saved?
 ## Removing environments from Promotion Flows
 Remove one or more environments from a Promotion Flow. TBD why would you want to remove an environment? What happens if the env is defined as part of the promotion policies?
  
-Removing an environment requires you to reconnect environments that are linked to the one being removed. 
+Removing an environment requires you to reconnect environments linked to the one being removed to prevent orhpans. 
 
-Reconnecting environments is only relevant when there is one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
+Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
 1. Select the Promotion Flow with the environment you want to remove.
