@@ -18,7 +18,7 @@ Our complete Customer Agreement with you has four parts:
   <tr>
     <td width="20%" style="vertical-align: top; text-align: center;"> 
       <div style="text-align: center;">
-        <img src="../../../../images/icons/legal-scales-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
+        <img src="../../../images/icons/legal-scales-icon-terms-of-service.png" style="display: block; margin: 0 auto;">
       </div>
       <strong>General Terms</strong><br>The General Terms cover all of the common terms that you would expect in any agreement - ordering, confidentiality, notices, etc.
     </td>
