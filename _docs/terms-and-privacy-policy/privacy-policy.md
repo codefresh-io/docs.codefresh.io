@@ -71,6 +71,7 @@ If you do not wish to have your data collected by FullStory, you can opt out by 
 For more information, see this [article](https://www.cookieyes.com/knowledge-base/cookies-101/what-is-do-not-track/){:target="\_blank"}. 
 
 Additionally, you can visit FullStory's [opt-out page](https://www.fullstory.com/optout) to prevent data collection.
+
   
 **2. Cookies.** In order to collect the data described herein we may use temporary cookies that remain on your browser for a limited period of time. We may also use persistent cookies that remain on your browser until the Company&#39;s Solution are removed, in order to manage and maintain the Solution and record your use of the Solution. Cookies by themselves cannot be used to discover the identity of the user. A cookie is a small piece of information which is sent to and stored on your browser. Cookies do not damage your browser. Most browsers may allow you to block cookies but you may not be able to use some features on the Solution if you block them. You may set most browsers to notify you if you receive a cookie (this enables you to decide if you want to accept it or not). We may also use web beacons via the Solution to collect information. Web beacons or &quot;gifs&quot;, are electronic images that may be used in our Solution or in our emails. We use Web beacons to deliver cookies, count visits and to tell if an email has been opened and acted upon.
 

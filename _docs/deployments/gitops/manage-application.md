@@ -705,6 +705,25 @@ Codefresh warns you of the implication of deleting the selected application in t
 1. To confirm, click **Commit & Delete**.
 
 
+## Add external links to application resources
+Add external links to application resources through annotations to view and access them directly from the Current State's Tree view.    
+External links include links to dashboards such as monitoring dashboards, documentation, or any other external resource you think is relevant to the resource.  
+
+See Argo CD's documentation on [Adding external URL](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/){:target="\_blank"}.
+
+
+1. From the sidebar, select GitOps Apps, and then select the application for which to add external links.
+1. Add the following annotation:
+
+```yaml
+...
+metadata:
+  annotations:
+    link.argocd.argoproj.io/external-link: <external-link. # http://my-grafana.example.com/pre-generated-link
+...
+```
+1. Click the icon is displayed next to the resource in the Tree view to access the external link.
+
 
 
 
