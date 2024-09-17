@@ -78,7 +78,7 @@ There are two parts to creating a Cron trigger in the UI:
     * Variables to populate for the build.
     * Caching, volume reuse and notification behavior to override for the build. 
 
-## How to: Create a Cron trigger in UI
+## Create a Cron trigger in UI
 
 ##### Before you begin  
 
@@ -100,7 +100,7 @@ file="/images/pipeline/triggers/add-trigger-dialog.png"
 url="/images/pipeline/triggers/add-trigger-dialog.png"
 caption="Select trigger type to add"
 alt="Select trigger type to add"
-max-width="60%"
+max-width="50%"
 %}
 
 {:start="5"}
@@ -115,11 +115,10 @@ file="/images/pipeline/triggers/cron/cron-timer-tab.png"
 url="/images/pipeline/triggers/cron/cron-timer-tab.png"
 caption="Cron trigger: Cron Interval settings"
 alt="Cron trigger: Cron Interval settings"
-max-width="60%"
+max-width="50%"
 %}
 
 {:start="6"}
-
 1. Click **Settings**.
 1. Define the Git trigger simulation options:
     1. From the **Simulate Trigger From** drop-down list, select the type of Git trigger to simulate.  
@@ -137,7 +136,7 @@ alt="Cron trigger: Cron trigger: Additional settings for Git event, variables, a
 max-width="60%"
 %}
 
-{:start="7"}
+{:start="10"}
 1. To confirm click **Done**.
     * If you defined only the Timer settings, the build is triggered according to the Cron expression.
     * If you defined both the Timer and additional Settings, the build is triggered according to the Cron expression, and depending on the settings, the pipeline is populated with the information from the Git repo, additional variables, and notifications when configured.
