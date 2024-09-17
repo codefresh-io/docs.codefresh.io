@@ -27,3 +27,9 @@
 .helpbub-toggler--small {
   max-width: 275px;
 }
+
+/* stylelint-disable selector-max-id */
+#helphub-modal {
+  inset: 0;
+  margin: auto;
+}

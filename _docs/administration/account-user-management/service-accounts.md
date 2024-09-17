@@ -8,7 +8,6 @@ toc: true
 
 ## Service accounts overview
 
-
 A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Service accounts can manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
 Coderfesh supports creating service accounts and assigning them to teams with RBAC (Role-Based Access Control) compliance for CI pipelines. See [Create service accounts](#create-service-accounts).  

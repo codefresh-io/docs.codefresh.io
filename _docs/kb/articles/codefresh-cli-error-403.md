@@ -8,7 +8,7 @@ kb: true
 ht: false
 common: false
 categories: [CLI]
-support-reviewed: 2023-04-18 LG
+support-reviewed: 2024-07-24 LG
 ---
 
 ## Overview
@@ -17,7 +17,9 @@ When running the CLI to use Codefresh, it returns error 403: Permission Denied.
 
 ## Details
 
-The API key does not have the correct access permissions, or your user doesnot have access. If the user does have correct access permissions, you may need to refresh the API key.
+The API key does not have the correct access permissions, or your user does not have access. If the user does have correct access permissions, you may need to refresh the API key.
+
+If thishappen within a build, builds are ran with the user context of the user who started it. So if any Codefresh CLI commands within a build fails with a 403 error, that means the user who started the build does not have the permissions to run this command.
 
 ### Updating API Key
 
@@ -31,8 +33,6 @@ The API key does not have the correct access permissions, or your user doesnot h
 >
 >If you have multiple contexts, specify this in your command above. `codefreshcauth create-context [name] --api-key <KEY>`
 
-Contact one of your administrators if your user lacks access.
+### Update Permissions
 
-## Related Items
-
-[Codefresh CLI](https://codefresh-io.github.io/cli/)
+Contact one of your administrators if your user lacks access. As an account admin, make modifications to the user's team assignment and/or your account's permissions rules to grant the user access on relevant objects and actions.

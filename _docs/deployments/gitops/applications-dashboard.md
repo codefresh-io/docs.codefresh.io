@@ -318,7 +318,8 @@ The icon for a resource node identifies the type of Kubernetes resource it repre
 What can you do with application resources?
 * View application resources in [List or Tree views](#view-modes-for-application-resources)
 * [Filter resources](#filters-for-application-resources) to focus on what's important
-* Delete resources
+* [Access external links](#access-external-links) if defined
+* [Delete resources](#delete-application-resources)
 * Monitor resources:
   * [Health status](#health-status-for-application-resources)
   * [Sync status](#sync-status-for-application-resources)
@@ -477,6 +478,46 @@ caption="Current State filtered by IgnoreExtraneous resources"
 max-width="50%"
 %}
 
+### Access external links
+If your Kubernetes resources have annotations that define external links, the {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} is displayed below the context menu of the resource. Clicking the icon shows the list of external links configured for the resource.  
+
+>**NOTE**  
+This feature requires GitOps Runtime chart version 0.10.0.
+
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-resource-external-link.png"
+url="/images/applications/current-state-resource-external-link.png"
+alt="External links for deployment resource in Current State Tree view"
+caption="External links for deployment resource in Current State Tree view"
+max-width="50%"
+%}
+
+Ingress resources automatically display external links. Clicking {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} displays the links configured. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-ingress-links.png"
+url="/images/applications/current-state-ingress-links.png"
+alt="External links for ingress resource in Current State Tree view"
+caption="External links for ingress resource in Current State Tree view"
+max-width="50%"
+%}
+
+
+
+Use this annotation to add the external link to a Kubernetes resource:
+```yaml
+annotations:
+  link.argocd.argoproj.io/external-link: http://my-grafana.example.com/pre-generated-link
+```
+
+For more details on this feature, see [Argo CD's documentation on Adding external URLs](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/){:target="\_blank"}.
+
 ### Delete application resources
 Delete specific resources in an application directly from the Codefresh UI. 
 
@@ -494,22 +535,6 @@ caption="Current State: Delete an application resource"
 max-width="50%"
 %}
 
-### Delete application resources
-Delete specific resources in an application directly from the Codefresh UI. 
-
-1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
-1. From the Application dashboard, select the application with the resource to delete.
-1. From the context menu of the resource, select **Delete**.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-delete-resource.png"
-url="/images/applications/current-state-delete-resource.png"
-alt="Current State: Delete an application resource"
-caption="Current State: Delete an application resource"
-max-width="50%"
-%}
 
 ### Health status for application resources
 View and monitor health status of the selected application's resources in the Current State tab, in Tree or List views.  

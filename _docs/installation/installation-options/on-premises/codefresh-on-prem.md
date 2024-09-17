@@ -18,7 +18,7 @@ After you install Codefresh on-premises, review the platform configuration optio
 * [Additional configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#additional-configuration){:target="\_blank"}
 
 This article describes configuration options available in the Codefresh UI: 
-* [Disable user and team management](#disable-user-and-team-management-via-codefresh-ui)
+* [Disable user and team management](#disable-user-and-team-management)
 * [Selectively enable SSO provider for account](#selectively-enable-sso-provider-for-account)
 
 

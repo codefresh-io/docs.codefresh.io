@@ -502,6 +502,27 @@ The icons shown are specified by the `REPORT_TYPE` variable. The following optio
 
 If you don't provide a `REPORT_TYPE`, Codefresh uses a default icon.
 
+## Uploading large test reports
+
+By default, the maximum size for a test report is 1000MB. Override the default size through the `MAX_UPLOAD_SIZE_MB` environment variable.
+
+Example:
+
+{% highlight yaml %}
+{% raw %}
+unit_test_reporting_step:
+title: Upload Mocha test reports
+image: codefresh/cf-docker-test-reporting
+working_directory: /codefresh/volume/demochat/
+environment:
+- REPORT_DIR=mochawesome-report
+- REPORT_INDEX_FILE=mochawesome.html
+- CLEAR_TEST_REPORT=true
+- BUCKET_NAME=my-bucket-name
+- CF_STORAGE_INTEGRATION=google
+- MAX_UPLOAD_SIZE_MB=3000
+{% endraw %}
+{% endhighlight %}
 
 ## Getting results from tests that fail
 

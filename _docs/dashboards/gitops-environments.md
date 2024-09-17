@@ -72,7 +72,7 @@ Define the configuration of the Environment through a unique name, it's intended
 Review [Key aspects when creating Environments](#key-aspects-when-creating-environments).
 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**, and then click **Add Environment**.
+1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
     1. **Name**: A unique name for your GitOps Environment, which is meaningful in the context of your development and deployment cycle. 
     1. **Kind**: The purpose of this GitOps Environment, and can be either **Production** where the live versions of the applications are deployed,  or **Non-production** where development, testing, staging versions are deployed.
@@ -131,7 +131,7 @@ Change the order of the Environments displayed in the Environments dashboard to 
 
 For example, if you have two non-production and one production Environment for your e-commerce application, you can order them to display first the non-production and then the production Environments to reflect the corresponding stages.
 
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. Mouse over the column with the Environment to move.
 1. Click {::nomarkdown}<img src="../../../images/icons/move-environments.png?display=inline-block">{:/} and drag the column to the required location.
 
@@ -150,7 +150,7 @@ Update the Environment's configuration settings when required. You can change al
 
 You may need to edit an Environment when you add new infrastructure and deploy applications. In this case, you can add the new cluster and namespace or only the namespace to the Environment's definition.  
 
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. Mouse over the column with the Environment to edit, and click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
 1. Edit the settings as required. 
 
@@ -179,7 +179,7 @@ In the Environments dashboard, you get both visibility into applications running
 ### Filter applications in Environments by health status
 Quickly filter applications within an Environment by health status. For health status descriptions, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).
 
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. For any Environment, click the Health status or statuses by which to filter.  
   The Environment displays those applications that match the selected status. 
 
@@ -201,7 +201,7 @@ Alternatively, track a set of applications deployed to multiple Environments of 
 Here too, see which applications are running on each Environment, the most recent commit to the application, and the user who made the commit. 
 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
 1. Switch to **Detailed** view.
 
 {% include 
@@ -231,7 +231,7 @@ View the dependencies included with each application, and compare versions of th
 
 
 ##### How to
-1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. In the Codefresh UI, from the sidebar, select **Environments**.
 1. Click the version number of the application.
 
 {% include 
@@ -276,7 +276,7 @@ View the dependencies included with each application, and compare versions of th
 ### View deployment (Timeline) history for applications
 Review the deployments for a specific application in the Environments dashboard. 
 
-1. In the Codefresh UI, from the Ops in the sidebar, select Environments.
+1. In the Codefresh UI, from the sidebar, select Environments.
 1. In the Environment column with the application you require, click the application name to view deployment history.
 
 {% include 
@@ -284,8 +284,8 @@ Review the deployments for a specific application in the Environments dashboard.
 	lightbox="true" 
 	file="/images/gitops-environments/app-timeline-view.png" 
 	url="/images/gitops-environments/app-timeline-view.png" 
-	alt="View deployment history for application from Environments dashboard" 
-	caption="View deployment history for application from Environments dashboard"
+	alt="View deployment history for application in Environments dashboard" 
+	caption="View deployment history for application in Environments dashboard"
   max-width="60%" 
 %}
 
@@ -295,12 +295,13 @@ Review the deployments for a specific application in the Environments dashboard.
 ### Manage applications from within Environments
 Manage applications from within Environments through each application's context menu, including manual sync, refresh, and other options.
 
-1. In the Codefresh UI, from the Ops in the sidebar, select **Environments**.
+1. In the Codefresh UI, from the sidebar, select **Environments**.
 1. In the Environment with the application for which to take action, click the context menu to the right of the application, and select the option:
   * [Quick View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#view-deployment-configuration-info-for-selected-argo-cd-application): View deployment, definition, and event information for the selected application in the same location.
+  * [Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view): Analyze out of sync applications. This option is disabled when applications are synced.
   * [Synchronize]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application): Manually synchronize the application to expedite Git-to-cluster sync. 
+  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh).
   * [Edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions): Update General or Advanced configuration settings for the application.
-  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh). 
   * [Delete]({{site.baseurl}}/docs/deployments/gitops/manage-application/#delete-argo-cd-applications): Delete the application from Codefresh.
 
 {% include 
