@@ -105,7 +105,7 @@ Authenticate to Amazon ECR registries with credentials from the service account 
 This allows pipelines to seamlessly authenticate to Amazon ECR via service account credentials, enhancing security and simplifying access management.
 
 There are two requirements:
-1. Set the option to authenticate via service accounts at the account level for pipelines. Only Codefresh accounts can do this. See [Advanced options for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#advanced-options-for-pipelines).
+1. Set the option to authenticate via service accounts at the account level for pipelines. See [Advanced options for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#advanced-options-for-pipelines).
 1. Configure Amazon ECR integration to use service account credentials. See [Amazon ECR Container Registry pipeline integration]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/).
 
 
