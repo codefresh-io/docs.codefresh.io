@@ -31,22 +31,22 @@ toc: true
 | --------------  | ---------------------------- |-----------| -------------------------|
 | `metadata.id`        | The ID of the pipeline.  | string    | Optional |
 | `metadata.name`      | The full path to the pipeline, including the name of the project to which the pipeline belongs, in the format `project_name/pipeline_name`. |  string | Required |
-| `metadata.shortName`      | The name of the pipeline ???. |  string | Optional  |
-| `metadata.revision`      | The ???. |  integer | Optional  |
+| `metadata.shortName`      | The name of the pipeline without the `project_name/` |  string | Optional  |
+| `metadata.revision`      | An auto updated value for each update of the pipeline. Default is `0` |  integer | Optional  |
 | `metadata.isPublic`     | Determines if public logs are enabled or disabled for the pipeline. By default, public logs are disabled.<br>When set to `true`, clicking the build badge allows all users with access to the pipeline to also view the build logs, even if they are not logged into Codefresh. See [Public build logs]({{site.baseurl}}//docs/pipelines/configuration/build-status/#public-build-logs).| boolean  | Optional |
 | `metadata.description`   | A meaningful description of the pipeline. (NIMA: is there a a max limit) | string | Optional |
 | `metadata.labels`        | The parent object for `metadata.labelKeys` defining the `tags` assigned to the pipeline. ????    | object |  Optional |
-| `metadata.labelKeys`    | The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline | string |  Optional |
-| `metadata.created_at`    | The date and time at which the pipeline was created in the format ????/   | date |  Optional |
-| `metadata.updated_at`    | The date and time at which the pipeline YAML was updated, in the format ????/   | date |  Optional |
-| `metadata.accountId`    | The ID of the account to which the pipeline belongs.  ????/   | obejctId |  Optional |
-| `metadata.originalYamlString` | ?????the full contents of the pipeline editor. Only kept for archival purposes | string  | Optional |
+| `metadata.labelKeys`    | The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
+| `metadata.created_at`    | The date and time at which the pipeline was created in the format ????/  (2024-09-18T16:43:16.751+00:00 which is ISO 8601 format) | date |  Optional |
+| `metadata.updated_at`    | The date and time at which the pipeline was updated, in the format ????/ (2024-09-18T16:43:16.751+00:00 which is ISO 8601 format)  | date |  Optional |
+| `metadata.accountId`    | The ID of the account to which the pipeline belongs. (ex: `65c5386d7b71f25b3bbb8006`)  | obejctId |  Optional |
+| `metadata.originalYamlString` | The full contents of the pipeline editor (In-line yaml). ????  | string  | Optional |
 | `metadata.projectId`        | The ID of the project to which the pipeline belongs.  | obejctId  | Optional |
 | `metadata.project`        | The name of the project to which the pipeline belongs.  | string  | Optional |
 | `metadata.template`       | ????Determines if the pipeline is available as a template when creating a new pipeline. <br>When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
 | `metadata.template.isTemplate` | When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
-| `metadata.template.generatedFrom` |????? When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
-| `metadata.executionContextId`  |  ???The ID of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>If there are no execution contexts created for the pipeline, the default execution context is used. (NIMA: is this the CF provided one? what are the implications - that it allows all API calls or minimal ones?).<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
+| `metadata.template.generatedFrom` | The ID of the template pipeline where the pipeline was created from. ???? | objectId | Optional |
+| `metadata.executionContextId`  |  The name of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>If there are no execution contexts created for the pipeline, the default execution context is used. (NIMA: is this the CF provided one? what are the implications - that it allows all API calls or minimal ones?).<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
 
 ## .spec
 
@@ -54,10 +54,10 @@ toc: true
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `spec.scopes`           | ??? | string    | Optional |
-| `spec.scopeSnapshot`    | The ID of the pipeline.  | string    | Optional |
+| `spec.scopes`           | Custom API Scopes that the Pipeline will use. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
+| `spec.scopeSnapshot`    | The ID of the scope snapshot.  | string    | Optional |
 | `spec.permitRestartFromFailedSteps` | Determines if users can restart a failed pipeline from the failed step, instead of from the beginning of the pipeline.<br>When set to `true`, users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
-| `spec.build_version`    | ???  | string    | Optional |
+| `spec.build_version`    | ??? `v1` or `v2` | string    | Optional |
 | `spec.triggers`    | The list of Git triggers defined for the pipeline. For details, see [`spec.triggers](#spectriggers). | array    | Optional |
 | `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers](#speccrontriggers). | array    | Optional |
 | `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments](#specruntimeenvironment).  | object    | Optional |
