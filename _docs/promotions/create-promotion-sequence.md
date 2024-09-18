@@ -1,6 +1,6 @@
 ---
 title: "Promotion sequences"
-description: "Step-by-step guide to creating promotions"
+description: "Step-by-step guide to creating, triggering, and monitoring promotions"
 group: promotions
 toc: true
 ---
@@ -28,7 +28,7 @@ This guide lists the steps required to create a promotion sequence. Follow the s
   
 1. [Create applications]({{site.baseurl}}//docs/deployments/gitops/create-application/#create-an-argo-cd-application)
   Applications represent the components or services to promote and deploy. They are the smallest unit of deployment within a promotion sequence. 
-  Create a Argo CD application in Form or YAML mode. 
+  Create an Argo CD application in Form or YAML mode. 
 
 1. [Create products]({{site.baseurl}}/docs/products/create-product/)
   Products connect related applications and group them as a single entity.  
@@ -39,14 +39,14 @@ This guide lists the steps required to create a promotion sequence. Follow the s
 
 1. [Create workflows]({{site.baseurl}}/docs/promotions/promotion-workflows/)
   Before promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence.   
-  Promotion Workflows allow you to create steps and testing different environments, and enforce checks before and after promoting changes.
+  Promotion Workflows allow you to create steps for testing different environments, and enforce checks before and after promoting changes.
 
-1. [Configure properties to be promoted]
+<!--- 1. [Configure properties to be promoted]
   Instead of doing a manual diff and deciding which changes to promote, or promoting entire applications, configure the precise changes to promote, ensuring consistency and reducing errors.  
-  Promotion Templates define which files and attributes within those files to promote across the applications in the product.  
+  Promotion Templates define which files and attributes within those files to promote across the applications in the product.  -->
 
 
-1. [Create promotion policies for environments]({{site.baseurl}}/docs/promotions/promotion-policy/) 
+1. [Create policies for environment validation]({{site.baseurl}}/docs/promotions/promotion-policy/) 
   Define the conditions to validate that the target environments are ready for promotion: workflows to run before and after changes are promoted, along with the action that promotes the changes. Enforcing these conditions ensure that promotions do not break or destabilize environments.
     
   Promotion Policies define the products or type of environments with the promotion action (mandatory), and any Promotion Workflows to run before and after the promotion action (optional).
@@ -57,13 +57,12 @@ This guide lists the steps required to create a promotion sequence. Follow the s
   
 
 1. Configure [promotion settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings) and [flows]({{site.baseurl}}/products/configure-product-settings/#configure-promotion-flows) for product
-  After setting up the core entities and building blocks, configure settings for your product.  
-  These settings can include the attributes to be promoted across the product's applications (Product Promotion Templates), the promotion flows valid for the product and flow-specific trigger conditions (Promotion Flows).
+  After setting up the core  and promotion-specific entities, configure additional promotion-specific settings for your product.  
+  These settings include the attributes to be promoted across the product's applications (Product Promotion Templates), the promotion flows valid for the product and flow-specific trigger conditions (Promotion Flows).
 
 1. [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/) 
-  Implement the changes to initiate the promotion sequence.  
-  The change made to an application in the trigger environment starts the process of moving changes through the defined sequence of environments, following the defined Promotion Policies and Settings.  
-  TBD
+  Implement the changes to initiate the promotion.  
+  The change made to an application in the trigger environment starts the process of moving these changes through the defined sequence of environments, either automatically or manually.
 
 
 1. [Track deployments for products]({{site.baseurl}}/docs/promotions/releases/)
@@ -72,4 +71,6 @@ This guide lists the steps required to create a promotion sequence. Follow the s
 
 
 ## Related articles
-
+[About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
+[Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
+[Trigger promotions]({{site.baseurl}}docs/promotions/trigger-promotions/)

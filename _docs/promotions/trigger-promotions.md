@@ -1,6 +1,6 @@
 ---
 title: "Trigger promotions"
-description: "Orchestrate promotions automatically or manually trigger promotions"
+description: "Orchestrate promotions automatically through flows or manually trigger promotions"
 group: promotions
 toc: true
 ---
@@ -8,6 +8,14 @@ toc: true
  When you trigger a promotion
 
 ## Automatically trigger promotions
+Promotions are triggered automatically when a change in the application triggers a Promotion Flow that matches the product and environment where the changes are made.
+
+
+##### Before you begin
+* Create at least one [Promotion Flow]([About promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)
+
+##### How to
+1. ????
 
 
 ## Manually trigger a Promotion Flow
@@ -65,6 +73,7 @@ SCREENSHOT
 A release is created for the Product and the Release tab displays the ongoing deployment.
 
 SCREENSHOT
+
 ## Manually promote applications through Promotion Policies or Flows
 
 Manually promote an application in a product to a target environment either through a predefined Promotion Flow or by creating a custom Promotion Policy for the application.
@@ -115,3 +124,8 @@ SCREENSHOT
 A release is created for the Product and the Release tab displays the ongoing deployment.
 
 SCREENSHOT
+
+## Related articles  
+[Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
+[Creating Promotion Flows]({{site.baseurl}}docs/promotions/promotion-flow/)  

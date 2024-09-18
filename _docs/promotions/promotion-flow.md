@@ -11,8 +11,6 @@ A Promotion Flow is a structured sequence of actions that automates the promotio
 
 Promotion Flows streamline the process of moving code changes through different stages, such as testing, staging, and production. They automate repetitive tasks, reducing manual efforts, ensuring uniformity across deployments.  
 By defining specific criteria for promotion, they help maintain the integrity of the software and reduce the likelihood of introducing bugs into production.
-Our Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
-As with other entities, you can toggle between YAML and chart modes while in the Flow Builder.
 
 
 Before creating promotion flows, review [our notes on Promotion Flows](#notes-on-promotion-flows) which highlights key factors to be aware of in promotion flow behavior. 
@@ -29,19 +27,15 @@ The Flow Builder visually guides you through creating any type of Promotion Flow
 
 Promotion Flows can be designed to run sequentially or in parallel to suit the unique requirements of any deployment process.
 
-Sequential flows
-Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
-This is the more common and traditional kind of Promotion Flow where you start the flow from the development environment as the trigger environment, and then promote to the testing, staging, and finally to the production environments.
+* **Sequential promotions**  
+  Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
+  This is the more common and traditional kind of Promotion Flow, where you start the flow from the development environment as the trigger environment, and then promote to the other target environments in succession.  
 
-Parallel flows
-In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments to create promotions after multiple environments are healthy. 
+* **Parallel promotions**  
+  In a parallel prompotion flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments and creates promotions _after_ multiple environments are healthy. 
 
 ## Notes on Promotion Flows 
-Here are a few key factors to be aware of when creating Promotion Flows.  
-
-
-
-
+Here are a few additional factors to be aware of when creating Promotion Flows.  
 
 
 ### Trigger and target environments 
@@ -51,26 +45,26 @@ You can create and assign environments for the Promotion Flow, starting with the
   When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved, allowing to return to the flow later.
 
 * Removing environments
-  You can remove an environment from the Promotion Flow, and decide how to reconnect next environments to previous environments.  
+  You can remove an environment from the Promotion Flow, and decide how to reconnect next environments if any, to previous environments.  
 
-  Reconnecting environments is only relevant when there is one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
+  Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
 
-### ## Dependencies
+### Dependencies
 
 ### Inline versus global Promotion Policy settings
 
 For each environment, you can explicitly set the Promotion Policy, including the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
 
 ##### Inline Promotion Policy settings
-The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, this _inline_ selection overides any automated Promotion Policy settings that match the product/environment when the flow is triggered.
+The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, this _inline_ selection overrides any global Promotion Policy settings that match the product/environment when the flow is triggered.
 
 ##### Global Promotion Policy settings
-If no inline settings are defined, the system applies automated Promotion Policy settings based on predefined priorities. See TBD
+If no inline settings are defined, the system applies global Promotion Policy settings based on predefined priorities. See TBD
 
 ## Previewing Promotion Policies by Product
-Instead of waiting for the Promotion Flow to be triggered, you can preview Promotion Policy settings for any product to ensure that the environment and product have the desired policies.  
-Previewing Policies by product confirms if the automated Policies that will be applied for the product are the correct ones for it. Preview is also useful to identify  environments and products without matching Policies or Policies that are missing required settings such as the Promotion Action.  
-Note that only those settings without inline values are populated by the preview.
+Instead of waiting for the Promotion Flow to be triggered, you can evaluate Promotion Policy settings for any product. Policy evaluation by product is useful to identify that the environment and product have the desired policies, no matching Policies, or Policies missing required settings such as the Promotion Action.  
+
+Note that when you evaluate by product, only those settings without inline values are populated.
 
 ## Create a Promotion Flow 
 Visually design and create the flow by selecting environments, Promotion Actions and Workflows, and defining dependencies through the Flow Builder. If needed create new environments and promotion workflows on-the-fly when doing so. 
@@ -210,36 +204,27 @@ SCREENSHOT
   * To apply an automated Promotion Policy, click Automated Promotion Policy. 
 1. To return to the Promotion Flow and continue, click **Go to Promotion Flow**.
   You can now pick up from where you left off.         
-1. Continue with [Step 8: (Optional) Preview automated Promotion Policy settings by product](#step-8-optional-preview-automated-promotion-policy-settings-by-product).    
+1. Continue with [Step 8: (Optional) Evaluate global Promotion Policy settings by product](#step-8-optional-evaluate-global-promotion-policy-settings-by-product).    
 
 
 
+### Step 8: (Optional) Evaluate global Promotion Policy settings by product
+Select a product to evaluate the settings that will be applied from global Promotion Policies for all target environments without inline settings. 
+Global Promotion Policy settings are applied from all Policies that match the product and the environment, according to priority.
 
-
-
-
-
-
-
-### Step 8: (Optional) Preview automated Promotion Policy settings by product
-Select a product to preview settings that will be applied from automated Promotion Policies for all target environments without inline settings. 
-
-When there are no inline settings selected or defined for an environment's Promition Polocy, the system applies settings from all predefined or automated Promotion Policies that match the product and the environment according to priority.
-
-Preview by product within a Promotion Flow shows you if there is a Promotion Policy that matches the product, and which settings will be applied.
 
 
 
 >**NOTE**
-This action is only a preview and does not impact the Promotion Flow.
+This action is only a preview and does not impact the Promotion Flow when triggered.
 
 
 1. From the list of Products, select the product for which to evaluate or apply Promotion Policy settings.
-  The Promotion Action, Pre- and Post-Action Workflows that match are applied from the predefined or automated promotion policies and displayed for each environment. Mouse over the Pre-Action, Post-Action, and Action icons to see the Workflows and the Promotion Action assigned.
+  The Promotion Action, Pre- and Post-Action Workflows that match are applied from the global Promotion Policies and displayed for each environment. Mouse over the Pre-Action, Post-Action, and Action icons to see the Workflows and the Promotion Action assigned.
 
 SCREENSHOT
   
-1. If you get an error component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
+1. If you get an error that the component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
 
 
 ### Step 9: Save changes and commit flow
@@ -251,7 +236,7 @@ TBD where are teh changes saved?
 
 
 ## Removing environments from Promotion Flows
-Remove one or more environments from a Promotion Flow. TBD why would you want to remove an environment? What happens if the env is defined as part of the promotion policies?
+Remove one or more environments from a Promotion Flow. <!--- TBD why would you want to remove an environment? What happens if the env is defined as part of the promotion policies?  -->
  
 Removing an environment requires you to reconnect environments linked to the one being removed to prevent orhpans. 
 
@@ -279,5 +264,6 @@ SCREENSHOT
 TBD
 
 ## Related articles
-[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
-[Promotions overview]({{site.baseurl}}/docs/promotions/promotion-components/)  
+[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
+[Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
