@@ -212,8 +212,7 @@ This CVE affects webhook processing and is relevant only to customers who have c
 
 To upgrade to the latest release, follow the on-screen instructions to run `helm upgrade`.
 
-#### GitOps: Manage Runtime resources as Argo CD applications
-TBD
+
 
 
 #### GitOps: External links for Kubernetes app & ingress resources 
