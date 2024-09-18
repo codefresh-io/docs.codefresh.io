@@ -1,12 +1,12 @@
 ---
 title: "Octopus Deploy pipeline integration"
-description: "How to use Codefresh with Octopus Deploy to build, push, and create releases"
+description: "How to use Codefresh with Octopus Deploy to create, deploy and promote releases"
 group: integrations
 toc: true
 ---
 
 # Integrating with Octopus Deploy
-Codefresh pipelines allow you to customize steps to create, deploy and promote releases to your Octopus Deploy [environments](https://octopus.com/docs/infrastructure/environments/). The steps do this by running the [Octopus CLI](https://octopus.com/docs/octopus-rest-api/octopus-cli) inside a docker container.
+Codefresh pipelines allow you to customize steps to create, deploy and promote releases to your Octopus Deploy [environments](https://octopus.com/docs/infrastructure/environments/).
 
 Codefresh has several custom pipeline steps available for Octopus Deploy: 
 
@@ -21,7 +21,7 @@ Codefresh has several custom pipeline steps available for Octopus Deploy:
 
 ## Octopus Deploy step configuration
 
-When creating a Codefresh Octopus Deploy pipeline, the details of an Octopus instance are required to run all Octopus Codefresh steps. The following can be added as pipeline variables within Codefresh:
+When creating a Octopus Deploy pipeline, the details of an Octopus instance are required to run all Octopus steps. The following can be added as pipeline variables within Codefresh:
 
 | Variable name       | Description|
 | ------------- | ------- |
@@ -29,11 +29,11 @@ When creating a Codefresh Octopus Deploy pipeline, the details of an Octopus ins
 | `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication |
 | `OCTOPUS_SPACE` | The Space to run steps on |
 
-This also requires an existing Octopus Deploy instance with a project and environment already created.
+Running these steps requires an existing Octopus Deploy instance with an existing project, environment and deployment process.
 
 # Example Pipeline build
 
-The following example demonstrates a Codefresh Pipeline build of an application sourced from GitHub and deployed via Octopus Deploy.
+The following example demonstrates a Codefresh pipeline build of an application sourced from GitHub and deployed via Octopus Deploy.
 
 To build and deploy this application, you'll need the following steps:
 
@@ -123,7 +123,7 @@ steps:
 ## Package artifacts
 
 Create zip packages of your deployment artifacts by using the **octopusdeploy-create-package** step. Specify the files to include in each package, the location of those files and the details of the artifact to create.
-This step returns a json object with property "Path".
+This step returns a json object with property `Path`.
 
 ## Push packages to Octopus Server
 
@@ -132,28 +132,28 @@ Once the artifacts are packaged, use the **octopusdeploy-push-package** step to 
 ## Create a release
 
 To create a release, use the **octopusdeploy-create-release** step. Provide the details for your Octopus instance, and the project you would like to create a release for. Optional arguments help to customize the creation of the release. You can specify version control details, select packages and provide release notes.
-This step returns a json object with properties "Channel" and "Version" for the release that was created.
+This step returns a json object with properties `Channel` and `Version` for the release that was created.
 
 ## Deploy a release
 
 To deploy a release, use the **octopusdeploy-deploy-release** step. Provide details for your Octopus instance, and the project and release you want to deploy. Additionally, you can provide optional arguments to specify guided failure mode and variables.
-This step returns a json array of created deployments, with properties "DeploymentId" and "ServerTaskId".
+This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
 
 ## Deploy a tenanted release
 
 To deploy a tenanted release, use the **octopusdeploy-deploy-release-tenanted** step. Provide the details for your Octopus instance, and the tenants you want to deploy to. You will need to provide either tenants or tenant tags. To deploy an untenanted release, use the **octopusdeploy-deploy-release** step.
-Optional arguments help to customize the deployment of the release. You can specify prompted variable values, tenants, tenant tags, and guided failure mode. This step returns a json array of created deployments, with properties "DeploymentId" and "ServerTaskId".
+Optional arguments help to customize the deployment of the release. You can specify prompted variable values, tenants, tenant tags, and guided failure mode. This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
 
 ## Run a runbook
 
 To run a runbook, use the **octopusdeploy-run-runbook** step. Provide the name of the runbook that you want to run, as well as the project and environment name(s). Optional arguments include variables to use within the runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
-This returns a json array of created runbook runs, with properties "RunbookRunId" and "ServerTaskId".
+This returns a json array of created runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
 
 ## Push build information
 
 To push build information for a project, use the **octopusdeploy-push-build-information** step. Provide a list of packages that need build information, a build information json file and a version number. 
 
-By default, the step will fail if build information already exists, but this can be configured using the `OVERWRITE_MODE` option ('fail', 'overwrite', or 'ignore').
+By default, the step will fail if build information already exists, but this can be configured using the `OVERWRITE_MODE` option (`fail`, `overwrite`, or `ignore`).
 Sample build information json file:
 
 ```json
