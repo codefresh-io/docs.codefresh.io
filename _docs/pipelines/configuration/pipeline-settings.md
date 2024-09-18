@@ -9,7 +9,8 @@ toc: true
 ---
 
 
-As a Codefresh account administrator, you can define global settings for pipelines which are inherited by all new pipelines created in the account. Users can still override specific settings for individual pipelines.
+As a Codefresh account administrator, you can define global settings for pipelines which are inherited by all new pipelines created in the account.  
+Users can still override specific settings for individual pipelines.
 
 ## Account-level pipeline settings
 
