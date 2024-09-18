@@ -593,68 +593,11 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
   The file is downloaded as `<component-name>.log`.
 
 ## Reset Shared Configuration Repository for GitOps Runtimes
-Reset the Shared Configuration Repository if needed for your GitOps Runtime. 
+When you install the first Hybrid or Hosted GitOps Runtime for your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
 
-Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validate it when you install the first Hybrid or Hosted GitOps Runtime for your account. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
-
-As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes:
-
-* **Incorrect/missing URL**  
-  Mandatory when Codefresh notifies you through the UI that the Shared Configuration Repo URL is either incorrect or missing.
-
-    * Incorrect URL<br>
-      The Shared Config Repo details provided during installation in Account Setup are incorrect. Codefresh could not connect to the Shared Repo with the details provided.
-    * Undefined URL<br>
-      You installed the GitOps Runtime through a script or an automated mechanism without providing the URL to the Shared Configuration Repository.
+As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes. See [Reset Shared Configuration Repo]({{site.baseurl}}/docs/installation/shared-configuration/#reset-shared-configuration-repo).
 
 
-    {% include
- image.html
- lightbox="true"
- file="/images/runtime/shared-config-repo-missing.png"
- url="/images/runtime/shared-config-repo-missing.png"
- alt="Notification for missing/incorrect Shared Configuration Repository"
- caption="Notification for missing/incorrect Shared Configuration Repository"
-  max-width="100%"
-%}
-
-* **No active Runtimes**  
-  If Codefresh has already validated the existing Shared Configuration Repository, meaning that at least one GitOps Runtime successfully connected to it, you _cannot change_ the Shared Configuration Repo URL.
-  To do so, you must contact Codefresh Support.
-
-  Otherwise, you can reset the Shared Config Repo URL only _after uninstalling all the GitOps Runtimes in your account_. This option is useful when moving from a temporary account, for example, a POV account, to your organization's official account to reset the URL.
-
-<!--- ### Reset Shared Config Repo via UI
-You can reset the Shared Config Repo via the Codefresh UI when you see the notification that the URL is either incorrect or missing.
-
-**Before you begin**
-
-Verify that you have [authorized access to the Codefresh app's organizations]({{site.baseurl}}/docs/administration/account-user-management/hosted-authorize-orgs/)
-
-
-1. Click **Update**.
-1. In **Add Shared Configuration Repo**, enter your Git username and the URL at which to create the repo.
-1. From the list of **Git Organizations**, select the Git organization for the Codefresh application.
-
-### Reset Shared Config Repo via CLI
-You can reset the Shared Configuration Repo via the CLI when:
-* You receive the notification that the URL is incorrect or missing
-* There are no active GitOps Runtimes in your account.
-   To reset the URL for an account with existing GitOps Runtimes, you must [uninstall](#uninstall-gitops-runtimes) all the Runtimes.
-
--->
-
-**Before you begin**
-* Make sure you have no active GitOps Runtimes in your account
-
-**How to**
-
-
-1. Run `cf config update-gitops-settings --shared-config-repo <shared_repo_url>`  
-  where:  
-  `<shared_repo_url>` is the new URL for the Shared Configuration Repository.
-1. When prompted, select the Git provider.
-1. Confirm to create the Shared Configuration Repo.
 
 ## (Hybrid GitOps) Configure Deep Links to applications & resources
 
