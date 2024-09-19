@@ -53,14 +53,14 @@ where:
 * `<repo_url>.git` is required and is the repository URL. This is the standard URL format which references the root of the default branch in the repository.  
   Example: `https://github.com/codefresh-io/our-isc.git`  
 
-* <path> is optional, and points to a specific path within the repository.  
-  Use <path> if you want your configuration files within a subdirectory.  
+* `<path>` is optional, and points to a specific path within the repository. Use `<path>` if you want your configuration files within a subdirectory.  
   Example: `https://github.com/codefresh-io/our-isc.git/some/path`
 
 * `<branch>` is optional, and references a specific branch in the repository.  
   Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
-Combining both a path and a branch allows more granular control. Example: `https://github.com/codefresh-io/our-isc.git/some/path?ref=isc-branch`.
+Combining both a path and a branch allows more granular control.  
+Example: `https://github.com/codefresh-io/our-isc.git/some/path?ref=isc-branch`.
 
 
 
