@@ -37,9 +37,9 @@ toc: true
 | `metadata.description`   | A meaningful description of the pipeline. (NIMA: is there a a max limit) | string | Optional |
 | `metadata.labels`        | The parent object for `metadata.labelKeys` defining the `tags` assigned to the pipeline. ????    | object |  Optional |
 | `metadata.labelKeys`    | The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
-| `metadata.created_at`    | The date and time at which the pipeline was created in the format ????/  (2024-09-18T16:43:16.751+00:00 which is ISO 8601 format) | date |  Optional |
-| `metadata.updated_at`    | The date and time at which the pipeline was updated, in the format ????/ (2024-09-18T16:43:16.751+00:00 which is ISO 8601 format)  | date |  Optional |
-| `metadata.accountId`    | The ID of the account to which the pipeline belongs. (ex: `65c5386d7b71f25b3bbb8006`)  | obejctId |  Optional |
+| `metadata.created_at`    | The date and time at which the pipeline was created, in ISO 8601 format.<br>For example, `2024-09-18T16:43:16.751+00:00`.| date |  Optional |
+| `metadata.updated_at`    | The date and time at which the pipeline was last updated, in ISO 8601 format.<br>For example, `2024-10-18T16:43:16.751+00:00.| date |  Optional |
+| `metadata.accountId`    | The ID of the account to which the pipeline belongs.<br>For example, `65c5386d7b71f25b3bbb8006`.| obejectId |  Optional |
 | `metadata.originalYamlString` | The full contents of the pipeline editor (In-line yaml). ????  | string  | Optional |
 | `metadata.projectId`        | The ID of the project to which the pipeline belongs.  | obejctId  | Optional |
 | `metadata.project`        | The name of the project to which the pipeline belongs.  | string  | Optional |
@@ -62,32 +62,32 @@ toc: true
 | `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers](#speccrontriggers). | array    | Optional |
 | `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments](#specruntimeenvironment).  | object    | Optional |
 | `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipelines build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li> {:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
-| `spec.packId`    | SAAS Only (`5cd1746617313f468d669013` for Small, `5cd1746717313f468d669014` for Medium, `5cd1746817313f468d669015` for Large, `5cd1746817313f468d669017` for XL, `5cd1746817313f468d669018` for XXL, `5cd1746817313f468d669020` for 4XL) | string    | Required for SAAS<br />Optional for Hybrid |
+| `spec.packId`    | Applicable to SaaS environments. Optional for hybrid environments.<br>The package identifer based on the resource size: (NIMA: is it the number they need to specify or the size as in the UI?) (`5cd1746617313f468d669013` for Small, `5cd1746717313f468d669014` for Medium, `5cd1746817313f468d669015` for Large, `5cd1746817313f468d669017` for XL, `5cd1746817313f468d669018` for XXL, `5cd1746817313f468d669020` for 4XL) | string    | Required for SaaS |
 | `spec.requiredAvailableStorage`    | ???The minimum disk space for the pipeline’s build volume. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. Otherwise, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI?)  | string    | Optional |
 | `spec.contexts`    | A list of strings representing the names of that [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) to be added to the pipeline  | Array of strings    | Optional |
 | `spec.clustersInfo`    | Determines if all (`injectAll`) or specific  (`clusters`) Kubernetes cluster contexts are available for the pipeline build.<br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
 | `spec.clustersInfo.injectAll`     | When set as `true` (NIMA is this the default?), injects all clusters integrated with Codefresh into the pipeline build.   | boolean    | Optional |
 | `spec.clustersInfo.clusters`     | Applicable only when `injectAll`is set to `false`.<br>One or more comma-separated names of clusters to inject during the pipeline build. For example, `aws`, `eks-prod`. | array      | Optional |
-| `spec.variablesSchema`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.variables`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.specTemplate`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.steps`    | The steps to be executed by the pipeline, as a list of key-values pairs.<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
-| `spec.services`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.hooks`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.stages`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.mode`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.fail_fast`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.strict_fail_fast`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.success_criteria`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.options`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.concurrency`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.triggerConcurrency`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.branchConcurrency`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.priority`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.terminationPolicy`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.externalResources`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.debug`    | The ID of the pipeline.  | string    | `????'` |
-| `spec.serviceAccount`    | The ID of the pipeline.  | string    | `????'` |
+| `spec.variablesSchema`    | ???  | string    | `????'` |
+| `spec.variables`    | The variables defined in the pipeline. See [spec.variables](#specvariables). | array    | Optional |
+| `spec.specTemplate`    | ???? . See [spec.specTemplate](#specspectemplate). | object    | Optional |
+| `spec.steps`    | The steps to be executed by the pipeline, as a list of key-values pairs.(NIMA: need to add more info)<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
+| `spec.services`    | ??? | object    | Optional |
+| `spec.hooks`    | ?? | object    | Optional |
+| `spec.stages`    | The stages into which to group the pipeline's steps. In the pipeline's build view, each stage is displayed as a separate column.<br>Stages are only for visualization and do not affect pipeline execution.<br>See [Grouping steps into stages]({{site.baseurl}}/docs/pipelines/stages/).   | array    | Optional |
+| `spec.mode`    | The execution mode for the pipeline, and can be one of the following:{::nomarkdown}<ul><li><code class=highlighter-rouge>sequential</code>: The default, executes the steps in the order in which they are listed.</li><li><code class=highlighter-rouge>parallel</code>: Evaluates all step conditions at the same time and executes those steps that meet the requirements in parallel. Parallel execution mode allows you to order steps in ways not possible with sequential mode.</li>{:/}See [Advanced workflows for pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/). | string    | Optional |
+| `spec.fail_fast`    | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Failed to execute</code>.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">spec.strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/} | boolean    | Optional |
+| `spec.strict_fail_fast`    | Specifies how to report the Build status when `fail_fast` is set to `false`.<br>**NOTE**:<br>Requires Runner chart v6.3.9 or higher.<br><br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).  | ???    | Optional |
+| `spec.success_criteria`    | ?????  | string    | `????'` |
+| `spec.options`    | Advanced options controlling pipeline execution behavior.(NIMA: what happens when not defined? takes the default for each option?)<br>See [spec.options](#specoptions).  | optionsSchema???    | Optional |
+| `spec.concurrency`    | The maximum number of builds that can run simultaneously for the pipeline, and can range from `0` (the default), to `14`, or `unlimited`.<br>A concurrency of `0` freezes execution of the pipeline, switching it to maintenance mode.<br>. Useful when your pipeline has only one trigger.  | integer    | Optional |
+| `spec.triggerConcurrency`    | The maximum number of concurrent builds than can run _per trigger defined for the pipeline_.<br>Can range from `1` (the default), to `15`, or `unlimited`.<br>Useful when your pipeline has multiple triggers. | integer    | Optional |
+| `spec.branchConcurrency`    |  The maximum number of concurrent builds than can run _per branch defined for the pipeline_.<br>Can range from `1` (the default), to `15`, or `unlimited`.<br>Useful when your pipeline builds different branches. | integer    | Optional |
+| `spec.priority`    | ???  | string    | `????'` |
+| `spec.terminationPolicy`    | Determines how and when the pipeline build should terminate. See [spec.terminationPolicy](#specterminationpolicy)  | ???    | ?? |
+| `spec.externalResources`    | The external files, such as scripts or other resources available to the pipeline.<br>When defined, they are automatically retrieved and available when the pipeline starts execution.<br>See [spec.externalResources](#specexternalresources).  | array    | Optional |
+| `spec.debug`    | ????  | string    | Optional?? |
+| `spec.serviceAccount`    | ???The service account to use for authentication in ECR integrations for this pipeline.  | string    | Optional |
 
 ### spec.triggers
 
@@ -106,5 +106,12 @@ toc: true
 ### spec.variables
 
 ### spec.specTemplate
+
+### spec.options
+
+### spec.terminationPolicy
+
+### spec.externalResources
+See [External resources]({{site.baseurl}}/docs/pipelines/pipelines/#external-resources).
 
 ### spec.debug.steps
