@@ -81,27 +81,29 @@ The table describes the core and promotion-specific entities.
 
 
 
-## Promotion entites and GitOps Runtimes
+## Promotion entities and GitOps Runtimes
 
-All promotion entities are stored as manifests in the Shared Configuration Repository of the GitOps Runtime designated as the Configuration Runtime.  
+All promotion entities are stored as manifests in the Shared Configuration Repository of the GitOps Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 If you have more than one Configuration Runtime, Codefresh automatically consolidates the settings into a single set of promotion manifests.
 
 {: .table .table-bordered .table-hover}
-| Entity             | Location              | Toekn
-| --------------    | --------------           |
-| Environments      |- | |
-| Product           |user-isc/resources/configuration/products | |
-| Applications      |Git Source associated with Runtime | |
-| Promotion Workflows      |isc/resources/all-runtimes-all-clusters/promotion-workflows |should be covered by ABAC, and commit done via Runtime Token.reason for having to be stored in the ISC is that is needs to be in all clusters and run |
-| Promotion Template      |isc/configuration/promotion-templates| |
-| Promotion Policy      |isc/configuration/promotion-policies| |
-| Promotion Flow      |isc/configuration/promotion-flows| |
+| Entity             | Location              | Token
+| --------------    | --------------           |---------|
+| Environments           |N/A | None  |
+| Product                |`isc/resources/configuration/products` | Git user token |
+| Applications           |Git Source associated with Runtime | Git user token |
+| Promotion Flow         |`isc/configuration/promotion-flows`| Git user token |
+| Promotion Policy       |`isc/configuration/promotion-policies`| Git user token |
+| Promotion Workflows    |`isc/resources/all-runtimes-all-clusters/promotion-workflows` |Git user token |
+| Promotion Template     |`isc/configuration/promotion-templates`| N/A |
+
 
 
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
-[Trigger promotions]({{site.baseurl}}docs/promotions/trigger-promotions/)
+[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
+[Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
 
 
 

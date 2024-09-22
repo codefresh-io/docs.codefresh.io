@@ -51,6 +51,8 @@ You can create and assign environments for the Promotion Flow, starting with the
 
 ### Dependencies
 
+TBD
+
 ### Inline versus global Promotion Policy settings
 
 For each environment, you can explicitly set the Promotion Policy, including the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
@@ -223,7 +225,8 @@ This action is only a preview and does not impact the Promotion Flow when trigge
   The Promotion Action, Pre- and Post-Action Workflows that match are applied from the global Promotion Policies and displayed for each environment. Mouse over the Pre-Action, Post-Action, and Action icons to see the Workflows and the Promotion Action assigned.
 
 SCREENSHOT
-  
+
+{:start="2"}  
 1. If you get an error that the component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
 
 
@@ -265,5 +268,6 @@ TBD
 
 ## Related articles
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
+[Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  

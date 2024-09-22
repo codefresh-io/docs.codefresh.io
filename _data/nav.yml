@@ -383,11 +383,11 @@
       - title: Promotion Flows
         url: "/promotion-flow"     
       - title: Promotion Policies
-        url: "/promotion-flow"  
+        url: "/promotion-policy"  
     - title: Trigger promotions
       url: "/trigger-promotions"   
     - title: Monitor promotions for products
-      url: "/trigger-promotions"         
+      url: "/product-releases"         
 
 
 - title: Pipelines
