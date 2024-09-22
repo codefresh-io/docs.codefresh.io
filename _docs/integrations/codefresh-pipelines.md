@@ -1,49 +1,40 @@
 ---
 title: "Octopus Deploy pipeline integration"
-description: "How to use Codefresh with Octopus Deploy to create, deploy and promote releases"
+description: "How to use Codefresh with Octopus Deploy to create, deploy, and promote releases"
 group: integrations
 toc: true
 ---
 
-# Integrating with Octopus Deploy
-Codefresh pipelines allow you to customize steps to create, deploy and promote releases to your Octopus Deploy [environments](https://octopus.com/docs/infrastructure/environments/).
 
-Codefresh has several custom pipeline steps available for Octopus Deploy: 
+Octopus Deploy is a sophisticated, best-of-breed continuous delivery (CD) platform for modern software teams. Octopus offers powerful release orchestration, deployment automation, and runbook automation, while handling the scale, complexity and governance expectations of even the largest organizations with the most complex deployment challenges. [Read more](https://octopus.com/docs){:target="\_blank"}. 
 
-- [Create a package](https://codefresh.io/steps/step/octopusdeploy-create-package)
-- [Push a package](https://codefresh.io/steps/step/octopusdeploy-push-package)
-- [Create a release](https://codefresh.io/steps/step/octopusdeploy-create-release)
-- [Deploy a release](https://codefresh.io/steps/step/octopusdeploy-deploy-release)
-- [Deploy a tenanted release](https://codefresh.io/steps/step/octopusdeploy%2Fdeploy-release-tenanted)
-- [Run a runbook](https://codefresh.io/steps/step/octopusdeploy-run-runbook)
-- [Push build information](https://codefresh.io/steps/step/octopusdeploy-push-build-information)
+Integrating Octopus Deploy with Codefresh allows you to create, deploy, and promote releases to your Octopus Deploy [environments](https://octopus.com/docs/infrastructure/environments/) through Codefresh pipelines.
+
+For Octopus Deploy and Codefresh integration, you need:
+* An Octopus Deploy instance, including spaces, environments, and projects 
+* An API token from your Octopus Deploy account
+* Custom Octopus Deploy steps 
+
+Our [example pipeline](#example-codefresh-pipeline-with-octopus-deploy-steps) illustrates how to use custom Octopus Deploy steps.  
+
+See [Octopus Deploy instance information in Codefresh pipelines](#octopus-deploy-instance-information-in-codefresh-pipelines) and [Octopus Deploy steps in Codefresh pipelines](#octopus-deploy-steps-in-codefresh-pipelines). 
+
+You can also find these steps in the [Codefresh Marketplace](https://codefresh.io/steps/){:target="\_blank"}.
 
 
-## Octopus Deploy step configuration
+## Example Codefresh pipeline with Octopus Deploy steps 
 
-When creating a Octopus Deploy pipeline, the details of an Octopus instance are required to run all Octopus steps. The following can be added as pipeline variables within Codefresh:
+The following is an example of a Codefresh pipeline that builds an application sourced from GitHub, and deploys it via Octopus Deploy.
 
-| Variable name       | Description|
-| ------------- | ------- |
-| `OCTOPUS_URL` | The Octopus Server URL you wish to run your steps on |
-| `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication |
-| `OCTOPUS_SPACE` | The Space to run steps on |
+The pipeline includes the following steps:To build and deploy this application, you'll need the following steps:
 
-Running these steps requires an existing Octopus Deploy instance with an existing project, environment and deployment process.
-
-# Example Pipeline build
-
-The following example demonstrates a Codefresh pipeline build of an application sourced from GitHub and deployed via Octopus Deploy.
-
-To build and deploy this application, you'll need the following steps:
-
-- Clone the source code
+- Clone the source code ()
 - Create a package
 - Push package to Octopus Deploy instance
-- Create a release for an existing project (get started with the basics of [setting up a project](https://octopus.com/docs/projects/setting-up-projects))
-- Deploy
+- Create a release for an existing project 
+- Deploy the release
 
-Below is an example Codefresh Pipeline workflow which includes these steps:
+
 
 <details>
   <summary>Click here to view the entire example build YAML</summary>
@@ -118,43 +109,92 @@ steps:
 ```
 </details>
 
-# Octopus Deploy steps
 
-## Package artifacts
 
-Create zip packages of your deployment artifacts by using the **octopusdeploy-create-package** step. Specify the files to include in each package, the location of those files and the details of the artifact to create.
-This step returns a json object with property `Path`.
 
-## Push packages to Octopus Server
+## Octopus Deploy instance information in Codefresh pipelines
+To run Octopus Deploy steps in a Codefresh pipeline, you need the details of an existing Octopus instance, with a project, a predefined environment, and deployment process. 
+The table describes the instance fields you need to define.
 
-Once the artifacts are packaged, use the **octopusdeploy-push-package** step to push the packages to the Octopus Server built-in repository. This step has no output.
+| Octopus instance variable       | Description|
+| ------------- | ------- |
+| `OCTOPUS_URL`     | The Octopus Server URL on which to run your Octopus Deploy steps. See |
+| `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication. Use an existing key or create a new API key. See [Creating an API Key](https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key#HowtocreateanAPIkey-CreatinganAPIkey){:target="\_blank"}. |
+| `OCTOPUS_SPACE`   | The Space in which to run steps. See [Spaces](https://octopus.com/docs/administration/spaces){:target="\_blank"}.|
+|`PROJECT`           | The Octopus Deploy project to which to deploy the release. See [setting up a project](https://octopus.com/docs/projects/setting-up-projects){:target="\_blank"}.|
 
-## Create a release
 
-To create a release, use the **octopusdeploy-create-release** step. Provide the details for your Octopus instance, and the project you would like to create a release for. Optional arguments help to customize the creation of the release. You can specify version control details, select packages and provide release notes.
-This step returns a json object with properties `Channel` and `Version` for the release that was created.
 
-## Deploy a release
+## Octopus Deploy steps in Codefresh pipelines 
 
-To deploy a release, use the **octopusdeploy-deploy-release** step. Provide details for your Octopus instance, and the project and release you want to deploy. Additionally, you can provide optional arguments to specify guided failure mode and variables.
-This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
+These are the custom Octopus Deploy steps included in the example Codefresh pipeline to create and deploy releases with Octopus Deploy.
+More steps that you can include are described in [Optional Octopus Deploy steps in Codefresh pipelines](#optional-octopus-deploy-steps-in-codefresh-pipelines).
 
-## Deploy a tenanted release
 
-To deploy a tenanted release, use the **octopusdeploy-deploy-release-tenanted** step. Provide the details for your Octopus instance, and the tenants you want to deploy to. You will need to provide either tenants or tenant tags. To deploy an untenanted release, use the **octopusdeploy-deploy-release** step.
-Optional arguments help to customize the deployment of the release. You can specify prompted variable values, tenants, tenant tags, and guided failure mode. This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
+### Create package artifacts
 
-## Run a runbook
+Use the `octopusdeploy-create-package` step to create zip packages of your deployment artifacts. Specify the files to include in each package, the location of those files and the details of the artifact to create.
+This step returns a json object with property `Path`.push packaged artifacts to the Octopus Server's built-in repository. 
 
-To run a runbook, use the **octopusdeploy-run-runbook** step. Provide the name of the runbook that you want to run, as well as the project and environment name(s). Optional arguments include variables to use within the runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
-This returns a json array of created runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
+{: .table .table-bordered .table-hover}
+| Octopus Deploy Step |  Input parameters | Output parameters
+| ----------          |  ---------------------| ---------------------|  
+`octopusdeploy-create-package` | `ID`: The ID of the package to create.<br>`VERSION`: The version of the package in the format, `version-${{CF_BUILD_ID}}`, for example, `"1.0.0-${{CF_BUILD_ID}}"`.<br>`BASE_PATH`: The folder in which to create the package artifacts. Set to `"/codefresh/volume"`.<br>`OUT_FOLDER`: The folder in which to   "/codefresh/volume"| JSON object with property `Path`|
 
-## Push build information
 
-To push build information for a project, use the **octopusdeploy-push-build-information** step. Provide a list of packages that need build information, a build information json file and a version number. 
 
-By default, the step will fail if build information already exists, but this can be configured using the `OVERWRITE_MODE` option (`fail`, `overwrite`, or `ignore`).
-Sample build information json file:
+### Push packages to Octopus Server
+
+Use the `octopusdeploy-push-package` step to push packaged artifacts to the Octopus Server's built-in repository. 
+
+{: .table .table-bordered .table-hover}
+| Octopus Deploy Step |  Input parameters | Output parameters
+| ----------          |  ---------------------| ---------------------|  
+`octopusdeploy-push-package` |  `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to add to the step as variables. <br>`PACKAGES`: The package or list of packages to push to the built-in repository. For example, `"/codefresh/volume/Hello.1.0.0-${{CF_BUILD_ID}}.zip"`.<br>`OVERWRITE_MODE`: Set to `overwrite` to replace existing packages with the same names with the package or packages in `PACKAGES`. |
+
+### Create a release
+
+Use the `octopusdeploy-create-release` step to create a release for a project.  
+
+{: .table .table-bordered .table-hover}
+| Octopus Deploy Step |  Input parameters | Output parameters
+| ----------          |  ---------------------| ---------------------|  
+|`octopusdeploy-create-release`  | `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to pass to the step as variables. <br>`PROJECT`: The project for which to create the release. For example, `"Demo Project"`.<br>`RELEASE_NUMBER`: Optional. The version of the release, which is concatenated from the release version and the {{CF_BUILD_ID}} variable. <br>`PACKAGES`: Optional. The name of the package or list of packages to include in the release. The format is `"<release-name>:<release-version>-${{CF_BUILD_ID}}"`. For example, | JSON object with the `Channel` and `Version` for the release. |
+
+### Deploy a release
+
+Use the `octopusdeploy-deploy-release` step to deploy a release. If needed, provide optional parameters to specify guided failure mode and variables.  
+For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-release).
+
+{: .table .table-bordered .table-hover}
+| Octopus Deploy Step |  Input parameters | Output parameters
+| ----------          |  ---------------------| ---------------------|  
+|`octopusdeploy-deploy-release`  | `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to pass to the step as variables. <br>`PROJECT`: The project for which to deploy the release. For example, `"Demo Project"`.<br>`RELEASE_NUMBER`: Required. The version of the release to deploy, concatenated from the release version and the `${{CF_BUILD_ID}}` variable. <br>`ENVIRONMENTS`: Required. The name of the predefined environment or list of environments to which to deploy the release. For example, `"Development"`.  | JSON array of deployments created, each with `DeploymentId` and `ServerTaskId`. |
+
+## Optional Octopus Deploy steps in Codefresh pipelines 
+
+### Deploy a tenanted release
+
+To deploy a tenanted release, use the `octopusdeploy-deploy-release-tenanted` step. Define the tenants to deploy to using either tenants or tenant tags.  
+For an untenanted release, see [Deploy a release](#deploy-a-release).
+
+Customize the deployment of the tenanted release with prompted variable values, tenants, tenant tags, and guided failure mode. This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
+
+### Run a runbook
+
+To run a runbook, use the `octopusdeploy-run-runbook` step.  
+
+The step requires the name of the runbook to run, the project and environment name(s). Optional arguments include variables to use within the runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
+
+The step returns a JSON array of created runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
+
+### Push build information
+
+To push build information for a project, use the `octopusdeploy-push-build-information` step. Provide a list of packages that need build information, a build information json file and a version number. 
+
+By default, if build information already exists the step will fail. You can change the default behavior by changing `OVERWRITE_MODE` from `fail` to `overwrite` or `ignore`.
+
+Sample build information JSON file: 
 
 ```json
 {
@@ -176,3 +216,33 @@ Sample build information json file:
 ```
 
 This step has no output.
+
+## Related articles
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
+[Marketplace: Octopus Deploy Create package](https://codefresh.io/steps/step/octopusdeploy-create-package){:target="\_blank"}  
+[Marketplace: Octopus Deploy Push package](https://codefresh.io/steps/step/octopusdeploy-push-package){:target="\_blank"}  
+[Marketplace: Octopus Deploy Create release](https://codefresh.io/steps/step/octopusdeploy-create-release){:target="\_blank"}  
+[Marketplace: Octopus Deploy Deploy release](https://codefresh.io/steps/step/octopusdeploy-deploy-release){:target="\_blank"}  
+[Marketplace: Octopus Deploy Deploy tenanted release](https://codefresh.io/steps/step/octopusdeploy%2Fdeploy-release-tenanted){:target="\_blank"}  
+[Marketplace: Octopus Deploy Run a runbook](https://codefresh.io/steps/step/octopusdeploy-run-runbook){:target="\_blank"}  
+[Marketplace: Octopus Deploy Push build information](https://codefresh.io/steps/step/octopusdeploy-push-build-information){:target="\_blank"}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
