@@ -385,7 +385,9 @@
       - title: Promotion Policies
         url: "/promotion-flow"  
     - title: Trigger promotions
-      url: "/trigger-promotions"    
+      url: "/trigger-promotions"   
+    - title: Monitor promotions for products
+      url: "/trigger-promotions"         
 
 
 - title: Pipelines
