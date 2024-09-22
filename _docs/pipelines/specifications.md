@@ -91,25 +91,135 @@ toc: true
 
 ### spec.triggers
 
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.triggers.type`     | Always set to `git`.         | string   | Required |
+| `spec.triggers.id`       | ????                         | ???   | Optional |
+| `spec.triggers.createdFromRepositoryMigration`       | Determines if the trigger was automatically created when migrating repositories. Deprecated???                         | boolean   | Optional |
+| `spec.triggers.name`       | The user-defined name of the Git trigger. Can have a minimum of one and maximum of 200 characters, including these special characters `/`, `^`, `\`, `S`, `*`, `$`, and without spaces. Regex expressions are also supported. | string | Required|
+| `spec.triggers.description`       | A meaningful of the Git trigger. Can have a minimum of one and maximum of 150 characters. | string | Optional|
+| `spec.triggers.commitStatusTitle` | The title of the commit message when the Git trigger is activated. ????Can have a minimum of one and maximum of 200 characters. | string | Optional???|
+| `spec.triggers.contexts`       | The variable sets imported from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/). |array | Optional |
+| `spec.triggers.verified`       | ?? |boolean | Optional |
+| `spec.triggers.status`       | ?? |string | Optional |
+| `spec.triggers.repo`       | The Git repo to track for this trigger, in the format `<git_repo_owner>/<git_repo_name>`.  |string | Optional |
+| `spec.triggers.provider`  | The name of the Git provider as defined in the Git integrations set up for pipelines. See [Git provider pipeline integrations]({{site.baseurl}}/docs/integrations/git-providers/| string |Optional  |
+| `spec.triggers.disabled`   |  Determines if the Git trigger is enabled for activation or always disabled.<br> When set to `true`, the trigger is always disabled and never activated. (NIMA: assum default is False; why or when would you set it to true?) | boolean | Optional |
+| `spec.triggers.skipCommentAuthorAssociationValidation`   |  ???| boolean | Optional |
+| `spec.triggers.events`       |  The possible list of Git events that can be configured to activate the trigger depending on the Git provider. See [spec.triggers.events](#spectriggersevents). | array | Required |
+| `spec.triggers.commentRegex`       | Defines if to activate the trigger only if the pull request (PR) comment matches a specific pattern defined by a regular expression (regex). ??? NIMA: see what the special characters mean int he schema | string | Optional |
+| `spec.triggers.branchRegex `       |  Defines if to activate the trigger only if the regex expression/string matches the branch name as defined by `branchRegexInput`. ???| string | Optional|
+| `spec.triggers.branchRegexInput`  |  Defines the type of content used in `branchRegex`, and can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">regex</code>: Match branch names based on specific patterns.<br>For example, `feature/.*` would match any branch that starts with `feature/`. </li><li><code class="highlighter-rouge">multiselect</code>: Match one or more of the predefined list of branch names.</li><li><code class="highlighter-rouge">multiselect-exclude</code>: Does <i>not match</i> any of the predefined branch names in the list. </li></ul>{:/}  | string | Optional  | 
+| `spec.triggers.pullRequestTargetBranchRegex`       |  ???  | string | Optional |
+| `spec.triggers.pullRequestAllowForkEvents`       |  Determines if the Git trigger is also valid for Git forks.<br>When set to `true`, the default???, the trigger is also activated for Git repos forked from `spec.triggers.repo`.   | boolean | Optional |
+| `modifiedFilesGlob`       |  Defines if to activate the trigger when the changed files match glob expression. Glob expressions can have maximum of 65500/65536 characters, including `' '`| string | Optional  |
+| `spec.triggers.gerritCIStatusLabels`       |  ?????| array | Optional  |
+| `spec.triggers.context`       | The name of the Git integration to use????. NIMA what happens when not specified? | string | Optional |
+| `spec.triggers.concurrency`   | The maximum number of concurrent builds for this trigger, and can range from `1` (the default), to `15`, or unlimited). Define the trigger concurrency when your pipeline has multiple triggers. | string | Optional |
+| `spec.triggers.priority`   | ??? Default 0, min -100, max 100 | integer | Optional |
+| `spec.triggers.terminationPolicy`   | ??? | integer | Optional |
+
+
+
+
+Build Termination: Options that determine when a build from the pipeline should terminate:
+Once a build is created terminate previous builds from the same branch
+Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
+Once a build is created, terminate all other running builds
+Once a build is terminated, terminate all child builds initiated from it
+
+
 ### spec.triggers.events
 
 ### spec.cronTriggers
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.cronTriggers.type`     | Always set to `cron`.         | string   | Required |
+| `spec.cronTriggers.id`       | ????                         | ???   | Optional |
+| `spec.cronTriggers.event`    |  Leave empty. Automatically generated by Codefresh for internal use. | string | Optional |
+| `spec.cronTriggers.name`       | The user-defined name of the Cron trigger. Can have a minimum of one and maximum of 200 characters. ???? including these special characters `/`, `^`, `\`, `S`, `*`, `$`, and without spaces. Regex expressions are also supported. | string | Required|
+| `spec.cronTriggers.message`       | The free-text message to be sent as an additional event payload every time the Cron trigger is activated. For example, `Successful ingress tests`.| string | Required|
+| `spec.cronTriggers.expression` | The Cron expression that defines the time and frequency of the Cron trigger.<br>For example, `0 3 * * 1-5`  triggers the pipeline at _3:00 AM every weekday (Monday to Friday)_.  | string | Required|
+| `spec.cronTriggers.verified`       | ?? |boolean | Optional |
+| `spec.cronTriggers.disabled `     | Determines if the Cron trigger is enabled for activation. <br>By default, set to `false` meaning that it is always enabled. <br>To disable the trigger, set to `true`. | boolean | Optional |
+| `spec.cronTriggers.status`       | ?? |string | Optional |
+| `spec.cronTriggers.lastExecutionDate`       | T???? |date | Optional |
+| `spec.cronTriggers.gitTriggerId`  |The ID of the Git trigger to simulate for the pipeline, retrieved from the pipeline for which it is defined.<br>To simulate a Git trigger, the pipeline must have at least one Git trigger defined for it.<br>See [Git triggers](#git-triggers) in this article.| string |Optional  |
+| `spec.cronTriggers.branch`   |  Valid only when a Git trigger is simulated.<br> The branch of the repo retrieved from the Git trigger defined in `spec.cronTriggers.gitTriggerId`.  | string | Optional |
+
+
+
+
+
+
+
 
 ### spec.runtimeEnvironment
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.runtimeEnvironment.name`     | The name of the runtime environment to use for the pipeline.  NIMA: does this override the account-level setting? Or must it one of those REs allowed for the pipeline? Should I add it's also based on permissions? |string   | Required |
+| `spec.runtimeEnvironment.memory`     | The memory threshold for the pipeline. memory share using Kubernetes notation  NIMA: does this override the account-level setting? Must it one of those in the UI? |string   | Optional |
+| `spec.runtimeEnvironment.cpu`     | The number of CPUs to use for the pipeline. CPU share using Kubernetes notation ??? NIMA: does this override the account-level setting? Or must it one of those in the UI?|string   | Optional |
+| `spec.runtimeEnvironment.dindStorage`     | storage size using Kubernetes notation |string   | Optional |
 
 ### spec.lowMemoryWarningThreshold
+part of param description
 
 ### spec.requiredAvailableStorage
+???
 
 ### spec.clustersInfo
+in parameter description; need to decide if to move here with more details
 
 ### spec.variables
 
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.variables.key`     | The name of the variabl. |string   | Required |
+| `spec.variables.value`       | ????| string | Raw value |
+| `spec.variables.encrypted`       | Determines if to encrypt the stored value of the variable. When set to `false`, the default, variable values are not encrypted.<br>To encrypt, set to `true`. | boolean | Optional |
+
 ### spec.specTemplate
+
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.specTemplate.location`     | ??? |string   | Required |
+| `spec.specTemplate.context`       | ????| string |  |
+| `spec.specTemplate.url`       | ?????| string | Optional |
+| `spec.specTemplate.repo`       | ?????| string | Optional |
+| `spec.specTemplate.path`       | ?????| string | Optional |
+| `spec.specTemplate.revision`       | ?????| string | Optional |
 
 ### spec.options
 
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.options.noCache`     | When set to `false`, the default, use the last build's cache. <br>To ignore the last build's cache, set to `true`. Selecting this option may slow down your build.<br>See [Last build cache]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |boolean   | Optional |
+| `spec.options.noCfCache`     | When set to `false`, the default, uses Docker engine cache for build. <br> To ignore Docker engine cache for build, set to `true`. <br>See [Docker engine cache]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |boolean   | Optional |
+| `spec.options.resetVolume`     | When set to `false`, the default, does not reset the pipeline volume. <br>To reset the pipeline volume, set to `true`. This is useful for troubleshooting a build that hangs on the first step. <br>See [Hangs on restoring data from pre-existing image]({{site.baseurl}}/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/). |boolean   | Optional |
+| `spec.options.enableNotifications`     | When set to `false`, the default, only sends status updates to your Git provider. <br>To send email and Slack notifications, in addition to status updates, set to `true`. <br>See [Slack notifications]({{site.baseurl}}//docs/integrations/notifications/slack-integration/). |boolean   | Optional |
+| `spec.options.keepPVCsForPendingApproval`     | Determines if PVC volumes are retained  when the pipeline is waiting for approval. ????? |boolean   | Optional |
+| `spec.options.pendingApprovalConcurrencyApplied`     | Determines if the pipeline build that is pending approval is counted against the number of concurrent builds defined for the pipeline. By default, left empty. NIMA: what happns then? <br>See [Define concurrency limits]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits) |boolean   | Optional |
+
+
 ### spec.terminationPolicy
+
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.terminationPolicy.type`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.event`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.ignoreBranch`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.ignoreTrigger`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.branchName`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.key`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.value`     |??? |boolean   | Optional |
 
 ### spec.externalResources
 
