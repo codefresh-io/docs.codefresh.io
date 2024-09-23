@@ -229,6 +229,8 @@
       url: "/microsoft-azure"
     - title: Google Cloud
       url: "/google-cloud"
+    - title: Octopus Deploy
+      url: "/codefresh-pipelines"      
     - title: Docker registries
       url: "/docker-registries"
       sub-pages:
