@@ -26,18 +26,15 @@ You can also find these steps in the [Codefresh Marketplace](https://codefresh.i
 
 The following is an example of a Codefresh pipeline that builds an application sourced from GitHub, and deploys it via Octopus Deploy.
 
-The pipeline includes the following steps:To build and deploy this application, you'll need the following steps:
+The pipeline includes the following steps:
 
-- Clone the source code ()
+- Clone the source code (built-in `git-clone` step)
 - Create a package
 - Push package to Octopus Deploy instance
 - Create a release for an existing project 
 - Deploy the release
 
 
-
-<details>
-  <summary>Click here to view the entire example build YAML</summary>
 
 ```yaml
 version: "1.0"
@@ -107,7 +104,7 @@ steps:
       ENVIRONMENTS:
         - "Development"
 ```
-</details>
+
 
 
 
