@@ -28,7 +28,7 @@ The following is an example of a Codefresh pipeline that builds an application s
 
 The pipeline includes the following steps:
 
-- Clone the source code (built-in `git-clone` step)
+- Clone the source code 
 - Create a package
 - Push package to Octopus Deploy instance
 - Create a release for an existing project 
@@ -136,7 +136,7 @@ This step returns a json object with property `Path`.push packaged artifacts to 
 {: .table .table-bordered .table-hover}
 | Octopus Deploy Step |  Input parameters | Output parameters
 | ----------          |  ---------------------| ---------------------|  
-`octopusdeploy-create-package` | `ID`: The ID of the package to create.<br>`VERSION`: The version of the package in the format, `version-${{CF_BUILD_ID}}`, for example, `"1.0.0-${{CF_BUILD_ID}}"`.<br>`BASE_PATH`: The folder in which to create the package artifacts. Set to `"/codefresh/volume"`.<br>`OUT_FOLDER`: The folder in which to   "/codefresh/volume"| JSON object with property `Path`|
+`octopusdeploy-create-package` | {::nomarkdown}<ul><li><code class="highlighter-rouge">ID</code>: The ID of the package to create.</li><li><code class="highlighter-rouge">VERSION</code>: The version of the package in the format, <code class="highlighter-rouge">"version-${{CF_BUILD_ID}}</code>, for example, <code class="highlighter-rouge">"1.0.0-${{CF_BUILD_ID}}"</code>.</li><li><code class="highlighter-rouge">BASE_PATH</code>: The folder in which to create the package artifacts. Set to <code class="highlighter-rouge">"/codefresh/volume"</code>.<li><code class="highlighter-rouge">OUT_FOLDER</code>: The folder in which to save the artifacts, set to  <code class="highlighter-rouge">"/codefresh/volume"</code></li></ul>{:/}| JSON object with property `Path`|
 
 
 
@@ -147,7 +147,7 @@ Use the `octopusdeploy-push-package` step to push packaged artifacts to the Octo
 {: .table .table-bordered .table-hover}
 | Octopus Deploy Step |  Input parameters | Output parameters
 | ----------          |  ---------------------| ---------------------|  
-`octopusdeploy-push-package` |  `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to add to the step as variables. <br>`PACKAGES`: The package or list of packages to push to the built-in repository. For example, `"/codefresh/volume/Hello.1.0.0-${{CF_BUILD_ID}}.zip"`.<br>`OVERWRITE_MODE`: Set to `overwrite` to replace existing packages with the same names with the package or packages in `PACKAGES`. |
+`octopusdeploy-push-package` | {::nomarkdown}<ul><li><code class="highlighter-rouge">OCTOPUS_URL</code>, <code class="highlighter-rouge">OCTOPUS_API_KEY</code>, and <code class="highlighter-rouge">OCTOPUS_SPACE</code>: The Octopus instance details to add to the step as variables.</li><li><code class="highlighter-rouge">PACKAGES</code>: The package or list of packages to push to the built-in repository. For example, <code class="highlighter-rouge">"/codefresh/volume/Hello.1.0.0-${{CF_BUILD_ID}}.zip"</code>.</li><li><code class="highlighter-rouge">OVERWRITE_MODE</code>: Set to <code class="highlighter-rouge">overwrite</code> to replace existing packages with the same names with the package or packages in <code class="highlighter-rouge">PACKAGES</code>.</li></ul>{:/}| N/A |
 
 ### Create a release
 
@@ -156,7 +156,7 @@ Use the `octopusdeploy-create-release` step to create a release for a project.
 {: .table .table-bordered .table-hover}
 | Octopus Deploy Step |  Input parameters | Output parameters
 | ----------          |  ---------------------| ---------------------|  
-|`octopusdeploy-create-release`  | `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to pass to the step as variables. <br>`PROJECT`: The project for which to create the release. For example, `"Demo Project"`.<br>`RELEASE_NUMBER`: Optional. The version of the release, which is concatenated from the release version and the {{CF_BUILD_ID}} variable. <br>`PACKAGES`: Optional. The name of the package or list of packages to include in the release. The format is `"<release-name>:<release-version>-${{CF_BUILD_ID}}"`. For example, | JSON object with the `Channel` and `Version` for the release. |
+|`octopusdeploy-create-release`  | {::nomarkdown}<ul><li><code class="highlighter-rouge">OCTOPUS_URL</code>, <code class="highlighter-rouge">OCTOPUS_API_KEY</code>, and <code class="highlighter-rouge">OCTOPUS_SPACE</code>: The Octopus instance details to add to the step as variables.</li><li><code class="highlighter-rouge">PROJECT</code>: The project for which to create the release. For example, <code class="highlighter-rouge">"Demo Project"</code>.</li><li><code class="highlighter-rouge">RELEASE_NUMBER</code>: Optional. The version of the release, which is concatenated from the release version and the <code class="highlighter-rouge">{CF_BUILD_ID}}</code> variable. </li><li><code class="highlighter-rouge">PACKAGES</code>: Optional. The name of the package or list of packages to include in the release. The format is <code class="highlighter-rouge">"<release-name>:<release-version>-${{CF_BUILD_ID}}"</code>. </li></ul>{:/} | JSON object with the `Channel` and `Version` for the release. |
 
 ### Deploy a release
 
@@ -166,7 +166,7 @@ For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-relea
 {: .table .table-bordered .table-hover}
 | Octopus Deploy Step |  Input parameters | Output parameters
 | ----------          |  ---------------------| ---------------------|  
-|`octopusdeploy-deploy-release`  | `OCTOPUS_URL`, `OCTOPUS_API_KEY`, and `OCTOPUS_SPACE`: The Octopus instance details to pass to the step as variables. <br>`PROJECT`: The project for which to deploy the release. For example, `"Demo Project"`.<br>`RELEASE_NUMBER`: Required. The version of the release to deploy, concatenated from the release version and the `${{CF_BUILD_ID}}` variable. <br>`ENVIRONMENTS`: Required. The name of the predefined environment or list of environments to which to deploy the release. For example, `"Development"`.  | JSON array of deployments created, each with `DeploymentId` and `ServerTaskId`. |
+|`octopusdeploy-deploy-release`  |{::nomarkdown}<ul><li><code class="highlighter-rouge">OCTOPUS_URL</code>, <code class="highlighter-rouge">OCTOPUS_API_KEY</code>, and <code class="highlighter-rouge">OCTOPUS_SPACE</code>: The Octopus instance details to add to the step as variables.</li><li><code class="highlighter-rouge">PROJECT</code>: The project for which to deploy the release. For example, <code class="highlighter-rouge">"Demo Project"</code>.</li>li><code class="highlighter-rouge">RELEASE_NUMBER</code>: Optional. The version of the release, which is concatenated from the release version and the <code class="highlighter-rouge">{CF_BUILD_ID}}</code> variable. </li><li><code class="highlighter-rouge">ENVIRONMENTS</code>: Required. The name of the predefined environment or list of environments to which to deploy the release. For example, <code class="highlighter-rouge">"Development"</code>. </li></ul> {:/} | JSON array of deployments created, each with `DeploymentId` and `ServerTaskId`. |
 
 ## Optional Octopus Deploy steps in Codefresh pipelines 
 
