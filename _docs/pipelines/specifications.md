@@ -118,19 +118,26 @@ toc: true
 | `spec.triggers.context`       | The name of the Git integration to use????. NIMA what happens when not specified? | string | Optional |
 | `spec.triggers.concurrency`   | The maximum number of concurrent builds for this trigger, and can range from `1` (the default), to `15`, or unlimited). Define the trigger concurrency when your pipeline has multiple triggers. | string | Optional |
 | `spec.triggers.priority`   | ??? Default 0, min -100, max 100 | integer | Optional |
-| `spec.triggers.terminationPolicy`   | ??? | integer | Optional |
+| `spec.triggers.terminationPolicy`   | The options that determine when to terminate the build from the pipeline. See [spec.terminationPolicy](#specterminationpolicy). | integer | Optional |
 
 
 
 
-Build Termination: Options that determine when a build from the pipeline should terminate:
-Once a build is created terminate previous builds from the same branch
-Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
-Once a build is created, terminate all other running builds
-Once a build is terminated, terminate all child builds initiated from it
+
 
 
 ### spec.triggers.events
+
+Trigger events depend on and are specific to every Git provider.
+
+See trigger events for:
+* [GitHub]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#github-trigger-events)
+* [Azure DevOps]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#azure-devops-trigger-events)
+* [BitBucket Cloud]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#bitbucket-cloud-trigger-events)
+* [BitBucket Server]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#bitbucket-server-trigger-events)
+* [GitLab]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#gitlab-trigger-events)
+* [Gerrit]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#gerrit-trigger-events)
+
 
 ### spec.cronTriggers
 {: .table .table-bordered .table-hover}
@@ -221,8 +228,33 @@ in parameter description; need to decide if to move here with more details
 | `spec.terminationPolicy.key`     |??? |boolean   | Optional |
 | `spec.terminationPolicy.value`     |??? |boolean   | Optional |
 
+
+
+Build Termination: 
+Once a build is created terminate previous builds from the same branch
+Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
+Once a build is created, terminate all other running builds
+Once a build is terminated, terminate all child builds initiated from it
+
 ### spec.externalResources
 
 See [External resources]({{site.baseurl}}/docs/pipelines/pipelines/#external-resources).
+
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.externalResources.id`     |??? |boolean   | Optional |
+| `spec.externalResources.type`     | ????Only `git` is supported. |string   | Optional |
+| `spec.externalResources.source`     | The source folder or the file path in the Git repo from which to copy/retrieve the external resource. (NIMA: is there a format to use)  | string   | Required |
+| `spec.externalResources.context`     | The name of the Git provider to use for the external resource. |string   | Optional |
+| `spec.externalResources.destination`     |The target folder or the file path to which to copy the external resource. (NIMA: is there a format to use) |string   | Required |
+| `spec.externalResources.isFolder`     |??? |Defines if the external resource (source or destination??) is stored in a folder or a file. <br>If stored in a folder, set to `true`.<br>If the resource is a single file, set to `false`. (what is the default??)    | Optional |
+| `spec.externalResources.repo`     | The Git repository name for the trigger, in the format `git_repo_owner/git_repo_name`. ?? | string   | Optional |
+| `spec.externalResources.revision`     | The name of the branch or git hash to check out.?? | string   | Optional |
+
+
+
+
+
 
 ### spec.debug.steps
