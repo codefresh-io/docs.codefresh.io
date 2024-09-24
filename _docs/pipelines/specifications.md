@@ -1,9 +1,26 @@
 ---
-title: "Pipeline specifications"
-description: "Complete schema for pipelines"
+title: "Pipeline YAML configuration"
+description: "Understand how to configure the pipeline through YAML file"
 group: pipelines
 toc: true
 ---
+Pipeline settings can be configured in different ways, with different scopes and levels of customization:
+
+* **Account-level settings**  
+  Defined by the Codefresh account administrator in the UI, these settings apply globally across all pipelines within the account. Pipelines inherit these settings by default unless overridden at the pipeline level.
+
+* **Pipeline-specific settings**  
+  Configurable within the UI for individual pipelines. Some settings are inherited from the account-level configuration, while others are unique to each pipeline. Users with the appropriate permissions can override account-level settings and define pipeline-specific settings.
+
+* **YAML-based settings**  
+  Defined declaratively using YAML syntax. You can define settings inline through the inline YAML editor (default), or by referencing YAML configuration files stored in a public repository or a Git repository.
+
+
+## Inline YAML/codefresh.yml 
+includes several default definitions such as steps. 
+Review Pipeline definitions YAML to get an idea on what you   
+
+
 
 
 
@@ -13,7 +30,7 @@ toc: true
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `.version`      | The version of the pipeline schema and is always set to  `'1.0'`.  | string    | Required |
+| `.version`      | The version of the pipeline schema and is always set to `'1.0'`.  | string    | Required |
 
 ## .kind
 
@@ -29,24 +46,24 @@ toc: true
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `metadata.id`        | The ID of the pipeline.  | string    | Optional |
-| `metadata.name`      | The full path to the pipeline, including the name of the project to which the pipeline belongs, in the format `project_name/pipeline_name`. |  string | Required |
-| `metadata.shortName`      | The name of the pipeline without the `project_name/` |  string | Optional  |
-| `metadata.revision`      | An auto updated value for each update of the pipeline. Default is `0` |  integer | Optional  |
+| `metadata.id`        | The ID of the pipeline. (NIMA: where do you get the pipeline ID?) | string    | Optional |
+| `metadata.name`      | The full path to the pipeline, including the name of the project to which the pipeline belongs, in the format `<project_name>/<pipeline_name>`.  For example, `marvel/smoke-tests` | string | Required |
+| `metadata.shortName`      | The name of the pipeline without the `<project_name>`. For example, `smoke-tests`. |  string | Optional  |
+| `metadata.revision`      | Automatically updated for each update of the pipeline. Default is `0` |  integer | Optional  |
 | `metadata.isPublic`     | Determines if public logs are enabled or disabled for the pipeline. By default, public logs are disabled.<br>When set to `true`, clicking the build badge allows all users with access to the pipeline to also view the build logs, even if they are not logged into Codefresh. See [Public build logs]({{site.baseurl}}//docs/pipelines/configuration/build-status/#public-build-logs).| boolean  | Optional |
 | `metadata.description`   | A meaningful description of the pipeline. (NIMA: is there a a max limit) | string | Optional |
 | `metadata.labels`        | The parent object for `metadata.labelKeys` defining the `tags` assigned to the pipeline. ????    | object |  Optional |
-| `metadata.labelKeys`    | The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
+| `metadata.labelKeys`    | Ask Dev if its the same as tags The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
 | `metadata.created_at`    | The date and time at which the pipeline was created, in ISO 8601 format.<br>For example, `2024-09-18T16:43:16.751+00:00`.| date |  Optional |
-| `metadata.updated_at`    | The date and time at which the pipeline was last updated, in ISO 8601 format.<br>For example, `2024-10-18T16:43:16.751+00:00.| date |  Optional |
-| `metadata.accountId`    | The ID of the account to which the pipeline belongs.<br>For example, `65c5386d7b71f25b3bbb8006`.| obejectId |  Optional |
-| `metadata.originalYamlString` | The full contents of the pipeline editor (In-line yaml). ????  | string  | Optional |
+| `metadata.updated_at`    | The date and time at which the pipeline was last updated, in ISO 8601 format.<br>For example, `2024-10-18T16:43:16.751+00:00`.| date |  Optional |
+| `metadata.accountId`    | The ID of the account to which the pipeline belongs.<br>For example, `65c5386d7b71f25b3bbb8006`. (NIMA: where do you get the account ID?)| objectId |  Optional |
+| `metadata.originalYamlString` | The full content of the `Inline YAML` pipeline editor, either with only the default settings or with user-defined settings.  | string  | Optional |
 | `metadata.projectId`        | The ID of the project to which the pipeline belongs.  | obejctId  | Optional |
 | `metadata.project`        | The name of the project to which the pipeline belongs.  | string  | Optional |
-| `metadata.template`       | ????Determines if the pipeline is available as a template when creating a new pipeline. <br>When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
+| `metadata.template`       | Determines if the pipeline is designated as and available as a template when creating a new pipeline. |  |  |
 | `metadata.template.isTemplate` | When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
-| `metadata.template.generatedFrom` | The ID of the template pipeline where the pipeline was created from. ???? | objectId | Optional |
-| `metadata.executionContextId`  |  The name of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>If there are no execution contexts created for the pipeline, the default execution context is used. (NIMA: is this the CF provided one? what are the implications - that it allows all API calls or minimal ones?).<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
+| `metadata.template.generatedFrom` | The ID of the template pipeline from which the pipeline is created.  | objectId | Optional |
+| `metadata.executionContextId`  |  The name of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
 
 ## .spec
 
@@ -55,36 +72,34 @@ toc: true
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
 | `spec.scopes`           | Custom API Scopes that the Pipeline will use. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
-| `spec.scopeSnapshot`    | The ID of the scope snapshot.  | string    | Optional |
-| `spec.permitRestartFromFailedSteps` | Determines if users can restart a failed pipeline from the failed step, instead of from the beginning of the pipeline.<br>When set to `true`, users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
+| `spec.scopeSnapshot`    | The ID of the scope snapshot. ???? | string    | Optional |
+| `spec.permitRestartFromFailedSteps` | Determines if users can restart the pipeline from the failed step, instead of from the beginning of the pipeline. <br>Leave empty to use the default setting which is to inherit the account-level setting. (NIMA: to verify)<br>When set to `true`,  users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
 | `spec.build_version`    | ??? `v1` or `v2` | string    | Optional |
 | `spec.triggers`    | The list of Git triggers defined for the pipeline. For details, see [`spec.triggers](#spectriggers). | array    | Optional |
 | `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers](#speccrontriggers). | array    | Optional |
 | `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments](#specruntimeenvironment).  | object    | Optional |
 | `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipelines build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li> {:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
-| `spec.packId`    | Applicable to SaaS environments. Optional for hybrid environments.<br>The package identifer based on the resource size: (NIMA: is it the number they need to specify or the size as in the UI?) (`5cd1746617313f468d669013` for Small, `5cd1746717313f468d669014` for Medium, `5cd1746817313f468d669015` for Large, `5cd1746817313f468d669017` for XL, `5cd1746817313f468d669018` for XXL, `5cd1746817313f468d669020` for 4XL) | string    | Required for SaaS |
-| `spec.requiredAvailableStorage`    | ???The minimum disk space for the pipeline’s build volume. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. Otherwise, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI?)  | string    | Optional |
-| `spec.contexts`    | A list of strings representing the names of that [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) to be added to the pipeline  | Array of strings    | Optional |
-| `spec.clustersInfo`    | Determines if all (`injectAll`) or specific  (`clusters`) Kubernetes cluster contexts are available for the pipeline build.<br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
-| `spec.clustersInfo.injectAll`     | When set as `true` (NIMA is this the default?), injects all clusters integrated with Codefresh into the pipeline build.   | boolean    | Optional |
-| `spec.clustersInfo.clusters`     | Applicable only when `injectAll`is set to `false`.<br>One or more comma-separated names of clusters to inject during the pipeline build. For example, `aws`, `eks-prod`. | array      | Optional |
+| `spec.packId`    | Required for SaaS environments. Optional for hybrid environments.<br>The package identifer based on the resource size. Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">5cd1746617313f468d669013</code>: Small</li><li><code class="highlighter-rouge">5cd1746717313f468d669014</code>: Medium</li><li><code class="highlighter-rouge">5cd1746817313f468d669015</code>: Large</li><li><code class="highlighter-rouge">5cd1746817313f468d669017</code>: Extra large</li><li><code class="highlighter-rouge">5cd1746817313f468d669018</code>: XXL</li> <li><code class="highlighter-rouge">5cd1746817313f468d669020</code>: 4XL | string</li></ul>{:/} | Required (for SaaS) |
+| `spec.requiredAvailableStorage`    | ???The minimum disk space for the pipeline’s build volume in `Gi`. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>When empty, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI? from 1Gi to 8 gi??)  | string    | Optional |
+| `spec.contexts`    | ???A list of strings representing the names of the [shared configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) to be added to the pipeline  | Array   | Optional |
+| `spec.clustersInfo`    | Determines if all or specific Kubernetes clusters are available for the pipeline build based on the account-level setting. (NIMA: how can the user know what the account level setting is? Do they have to go manually to the Settings to see if there are restrictions? <br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
 | `spec.variablesSchema`    | ??? (NIMA: I THINK THIS CAN BE REMOVED)  | string    | `????'` |
 | `spec.variables`    | The variables defined in the pipeline. See [spec.variables](#specvariables). | array    | Optional |
 | `spec.specTemplate`    | ???? . See [spec.specTemplate](#specspectemplate). | object    | Optional |
-| `spec.steps`    | (**NIMA: THIS IS AUTOGENERATED**) The steps to be executed by the pipeline, as a list of key-values pairs.(NIMA: need to add more info )<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
+| `spec.steps`    | The steps to be executed by the pipeline, as a list of key-values pairs.(NIMA: need to add more info )<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
 | `spec.services`    | ??? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
 | `spec.hooks`    | ?? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
-| `spec.stages`    | (**NIMA: THIS IS AUTOGENERATED**) The stages into which to group the pipeline's steps. In the pipeline's build view, each stage is displayed as a separate column.<br>Stages are only for visualization and do not affect pipeline execution.<br>See [Grouping steps into stages]({{site.baseurl}}/docs/pipelines/stages/).   | array    | Optional |
-| `spec.mode`    | (**NIMA: THIS IS AUTOGENERATED**) The execution mode for the pipeline, and can be one of the following:{::nomarkdown}<ul><li><code class=highlighter-rouge>sequential</code>: The default, executes the steps in the order in which they are listed.</li><li><code class=highlighter-rouge>parallel</code>: Evaluates all step conditions at the same time and executes those steps that meet the requirements in parallel. Parallel execution mode allows you to order steps in ways not possible with sequential mode.</li>{:/}See [Advanced workflows for pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/). | string    | Optional |
-| `spec.fail_fast`    | (**NIMA: THIS IS AUTOGENERATED**) Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Failed to execute</code>.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">spec.strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/} | boolean    | Optional |
-| `spec.strict_fail_fast`    | (**NIMA: THIS IS AUTOGENERATED**) Specifies how to report the Build status when `fail_fast` is set to `false`.<br>**NOTE**:<br>Requires Runner chart v6.3.9 or higher.<br><br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).  | ???    | Optional |
-| `spec.success_criteria`    | ????? (**NIMA: NOT SURE WHAT THIS IS - MAYBE AUTOGENERATED**)  | string    | `????'` |
-| `spec.options`    | Advanced options controlling pipeline execution behavior.(NIMA: what happens when not defined? takes the default for each option? (**NIMA: WILL TAKE THE DEFAULTS FOR EACH OPTION WHEN NOT DEFINED**))<br>See [spec.options](#specoptions).  | optionsSchema???    | Optional |
+| `spec.stages`    | The stages into which to group the pipeline's steps. <br>When defined, each stage is displayed as a separate column in the pipeline's build view.<br>Stages are only for visualization and do not affect pipeline execution.<br>See [Grouping steps into stages]({{site.baseurl}}/docs/pipelines/stages/).   | array    | Optional |
+| `spec.mode`    | The execution mode for the pipeline. Leave empty to use the default. <br>Can be one of the following:{::nomarkdown}<ul><li><code class=highlighter-rouge>sequential</code>: The default, executes the steps in the order in which they are listed.</li><li><code class=highlighter-rouge>parallel</code>: Evaluates all step conditions at the same time and executes those steps that meet the requirements in parallel. Parallel execution mode allows you to order steps in ways not possible with sequential mode.</li>{:/}See [Advanced workflows for pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/). | string    | Optional |
+| `spec.fail_fast`    | Determines pipeline execution behavior in case of step failure. Leave empty to use the default. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Failed to execute</code>.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">spec.strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/} | boolean    | Optional |
+| `spec.strict_fail_fast`    | Specifies how to report the Build status when `fail_fast` is set to `false`.<br>**NOTE**:<br>Requires Runner chart v6.3.9 or higher.<br><br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).  | ???    | Optional |
+| `spec.success_criteria`    | ?????  | string    | `????'` |
+| `spec.options`    | Advanced options controlling pipeline execution behavior. Leave empty to use the default settings.<br>See [spec.options](#specoptions).  | optionsSchema   | Optional |
 | `spec.concurrency`    | The maximum number of builds that can run simultaneously for the pipeline, and can range from `0` (the default), to `14`, or `unlimited`.<br>A concurrency of `0` freezes execution of the pipeline, switching it to maintenance mode.<br>. Useful when your pipeline has only one trigger.  | integer    | Optional |
 | `spec.triggerConcurrency`    | The maximum number of concurrent builds than can run _per trigger defined for the pipeline_.<br>Can range from `1` (the default), to `15`, or `unlimited`.<br>Useful when your pipeline has multiple triggers. | integer    | Optional |
 | `spec.branchConcurrency`    |  The maximum number of concurrent builds than can run _per branch defined for the pipeline_.<br>Can range from `1` (the default), to `15`, or `unlimited`.<br>Useful when your pipeline builds different branches. | integer    | Optional |
 | `spec.priority`    | ???  | string    | `????'` |
-| `spec.terminationPolicy`    | Determines how and when the pipeline build should terminate. See [spec.terminationPolicy](#specterminationpolicy)  | ???    | ?? |
+| `spec.terminationPolicy`    | Determines how and when the pipeline builds should terminate. See [spec.terminationPolicy](#specterminationpolicy)  | terminationSchema    | Optional |
 | `spec.externalResources`    | The external files, such as scripts or other resources available to the pipeline.<br>When defined, they are automatically retrieved and available when the pipeline starts execution.<br>See [spec.externalResources](#specexternalresources).  | array    | Optional |
 | `spec.debug`    | ???? (**NIMA: THIS IS AUTOGENERATED WHEN USERS START USING DEBUG IN THE UI - CAN BE DEFINED HERE IF USERS WANTS**)  | string    | Optional?? |
 | `spec.serviceAccount`    | ???The service account to use for authentication in ECR integrations for this pipeline.  | string    | Optional |
@@ -131,6 +146,54 @@ toc: true
 Trigger events depend on and are specific to every Git provider.
 
 See trigger events for:
+
+{: .table .table-bordered .table-hover}
+|Git provider | Field           | Description                 | Type      | Required/Optional |
+|-------------| --------------  | |-----------| -------------------------|
+|GitHub | `spec.triggers.events.push`     |          | string   | Required |
+|       | `spec.triggers.events.push.heads`     |          | string   | Required |
+|       | `spec.triggers.events.push.tags`     |          | string   | Required |
+|       | `spec.triggers.events.push.newBranch`     |          | string   | Required |
+|       | `spec.triggers.events.push.deleteBranch`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.opened`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.closed`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.reopened`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.edited`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.assigned`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.unassigned`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.review_requested`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.review_request_removed`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.reviewRequested`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.reviewRequestRemoved`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.submitted.approved`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.submitted.commented`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.submitted.changes_requested`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.pushCommit`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.labeled`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.unlabeled`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.synchronize`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.commentAdded`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.commentAddedUnrestricted`     |          | string   | Required |
+|AzureDevOps| `spec.triggers.events.pullrequest.reviewersUpdate`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.statusUpdate`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.reviewerVote`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.created`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.merged`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.unmerged-closed`     |          | string   | Required |
+|       | `spec.triggers.events.pullrequest.updated`     |          | string   | Required |
+|       | `spec.triggers.events.release.unpublished`     |          | string   | Required |
+|       | `spec.triggers.events.release.created`     |          | string   | Required |
+|       | `spec.triggers.events.release.edited`     |          | string   | Required |
+|       | `spec.triggers.events.release.deleted`     |          | string   | Required |
+|       | `spec.triggers.events.release.prereleased`     |          | string   | Required |
+|       | `spec.triggers.events.release.released`     |          | string   | Required |
+|Bitbucket| `spec.triggers.events.pullrequest.created`     |          | string   | Required |
+
+
+
+
+
 * [GitHub]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#github-trigger-events)
 * [Azure DevOps]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#azure-devops-trigger-events)
 * [BitBucket Cloud]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#bitbucket-cloud-trigger-events)
@@ -140,6 +203,7 @@ See trigger events for:
 
 
 ### spec.cronTriggers
+
 {: .table .table-bordered .table-hover}
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
@@ -172,14 +236,13 @@ See trigger events for:
 | `spec.runtimeEnvironment.cpu`     | The number of CPUs to use for the pipeline. CPU share using Kubernetes notation ??? NIMA: does this override the account-level setting? Or must it one of those in the UI?|string   | Optional |
 | `spec.runtimeEnvironment.dindStorage`     | storage size using Kubernetes notation |string   | Optional |
 
-### spec.lowMemoryWarningThreshold
-part of param description
 
-### spec.requiredAvailableStorage
-???
 
 ### spec.clustersInfo
-in parameter description; need to decide if to move here with more details
+
+| `spec.clustersInfo.injectAll`     | When set as `true` (NIMA is this the default?), injects all clusters integrated with Codefresh into the pipeline build.   | boolean    | Optional |
+| `spec.clustersInfo.clusters`     | Applicable only when `injectAll`is set to `false`.<br>One or more comma-separated names of clusters to inject during the pipeline build. For example, `aws`, `eks-prod`. | array      | Optional |
+
 
 ### spec.variables
 
@@ -193,14 +256,14 @@ in parameter description; need to decide if to move here with more details
 ### spec.specTemplate
 
 {: .table .table-bordered .table-hover}
-| Field           | Description                 | Type      | Required/Optional |
-| --------------  | ---------------------------- |-----------| -------------------------|
-| `spec.specTemplate.location`     | ??? |string   | Required |
-| `spec.specTemplate.context`       | ????| string |  |
-| `spec.specTemplate.url`       | ?????| string | Optional |
-| `spec.specTemplate.repo`       | ?????| string | Optional |
-| `spec.specTemplate.path`       | ?????| string | Optional |
-| `spec.specTemplate.revision`       | ?????| string | Optional |
+| Field                         | Description                 | Type      | Required/Optional |
+| --------------                | ---------------------------- |-----------| -------------------------|
+| `spec.specTemplate.location`  | The location of the source YAML. Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">YAML_LOCATION.URL</code>: The default, the URL of the YAML with the pipeline definitions.</li><li><code class="highlighter-rouge">YAML_LOCATION.GIT</code>: The Git repository with the YAML of the pipeline definitions.</li>| string   | Required |
+| `spec.specTemplate.context`   | ???? | string  |   
+| `spec.specTemplate.url`       | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.URL`.<br>The URL of the YAML file. | string  | Required |
+| `spec.specTemplate.repo`      | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br> The Git repository where the pipeline definition YAML is stored, as regex, or in the format, `repoOwner/repoName`. | string  | Required |
+| `spec.specTemplate.path`      | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br>The directory within the repository with the  YAML file.  | string  | Required |
+| `spec.specTemplate.revision`  | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br>The version of the YAML file to retrieve, based on the Git reference such as the branch, tag, or commit hash.| string  | Optional |
 
 ### spec.options
 
@@ -209,7 +272,7 @@ in parameter description; need to decide if to move here with more details
 | --------------  | ---------------------------- |-----------| -------------------------|
 | `spec.options.noCache`     | When set to `false`, the default, use the last build's cache. <br>To ignore the last build's cache, set to `true`. Selecting this option may slow down your build.<br>See [Last build cache]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |boolean   | Optional |
 | `spec.options.noCfCache`     | When set to `false`, the default, uses Docker engine cache for build. <br> To ignore Docker engine cache for build, set to `true`. <br>See [Docker engine cache]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |boolean   | Optional |
-| `spec.options.resetVolume`     | When set to `false`, the default, does not reset the pipeline volume. <br>To reset the pipeline volume, set to `true`. This is useful for troubleshooting a build that hangs on the first step. <br>See [Hangs on restoring data from pre-existing image]({{site.baseurl}}/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/). |boolean   | Optional |
+| `spec.options.resetVolume`     | When set to `false`, the default, _does not reset_ the pipeline volume. <br>To reset the pipeline volume, set to `true`. This is useful for troubleshooting a build that hangs on the first step. <br>See [Hangs on restoring data from pre-existing image]({{site.baseurl}}/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/). |boolean   | Optional |
 | `spec.options.enableNotifications`     | When set to `false`, the default, only sends status updates to your Git provider. <br>To send email and Slack notifications, in addition to status updates, set to `true`. <br>See [Slack notifications]({{site.baseurl}}//docs/integrations/notifications/slack-integration/). |boolean   | Optional |
 | `spec.options.keepPVCsForPendingApproval`     | Determines if PVC volumes are retained  when the pipeline is waiting for approval. ????? |boolean   | Optional |
 | `spec.options.pendingApprovalConcurrencyApplied`     | Determines if the pipeline build that is pending approval is counted against the number of concurrent builds defined for the pipeline. By default, left empty. NIMA: what happns then? <br>See [Define concurrency limits]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits) |boolean   | Optional |
@@ -220,20 +283,14 @@ in parameter description; need to decide if to move here with more details
 {: .table .table-bordered .table-hover}
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `spec.terminationPolicy.type`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.event`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.ignoreBranch`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.ignoreTrigger`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.branchName`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.key`     |??? |boolean   | Optional |
-| `spec.terminationPolicy.value`     |??? |boolean   | Optional |
+| `spec.terminationPolicy.type`   |Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">branch</code>: Terminate builds based on <code class="highlighter-rouge">spec.terminationPolicy.ignoreBranch</code>, <code class="highlighter-rouge">spec.terminationPolicy.ignoreTrigger</code>, and <code class="highlighter-rouge">spec.terminationPolicy.branchName</code> options.</li><li><code class="highlighter-rouge">annotation</code>: Terminate builds based on <code class="highlighter-rouge">spec.terminationPolicy.key</code> and <code class="highlighter-rouge">spec.terminationPolicy.value</code> options.</li></ul>{:/}  |string   | Optional |
+| `spec.terminationPolicy.event`  |Determines how builds for the same pipeline are terminated. Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">onCreate</code>: Terminates other builds from the same pipeline when a build is created based on the `type`.</li><li><code class="highlighter-rouge">onTerminate</code>: Terminates child builds initiated from the same pipeline when the parent build is terminated.</li></ul>{:/} | string   | Optional |
+| `spec.terminationPolicy.ignoreBranch` | Applicable only when `spec.terminationPolicy.type` is set to `branch`.<br>When set to `false`, the default, once the build is created, terminates previous builds from the same branch.<br>To allow previous builds from the same branch to continue running, set to `true`.  |boolean   | Optional |
+| `spec.terminationPolicy.ignoreTrigger` | Applicable only when `spec.terminationPolicy.type` is set to `branch`.<br>When set to `false`, the default, once the build is created, terminates all other builds that are running.<br>To allow all running builds to continue, set to `true`.  |boolean   | Optional |
+| `spec.terminationPolicy.branchName`     | Applicable only when `spec.terminationPolicy.type` is set to `branch`.<br>Once the build is created, terminates previous builds from the specific branch that matches the name defined (NIMA: can it be a regex?) .   | string   | Optional |
+| `spec.terminationPolicy.key`     | ????Applicable only when `spec.terminationPolicy.type` is set to `annotation`.<br> Terminates all builds that match the annotation defined. ??? | string   | Required |
+| `spec.terminationPolicy.value`     | ??? Applicable only when `spec.terminationPolicy.type` is set to `annotation`.<br> |boolean   | Optional |
 
-
-
-Build Termination: 
-Once a build is created terminate previous builds from the same branch
-Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
-Once a build is created, terminate all other running builds
 Once a build is terminated, terminate all child builds initiated from it
 
 ### spec.externalResources
