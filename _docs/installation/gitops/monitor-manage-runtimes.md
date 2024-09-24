@@ -102,7 +102,7 @@ Here is a description of the information in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Designating Configuration Runtimes 
-Designate any GitOps Runtime, including the Hosted GitOps Runtime, as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality related to Products in GitOps<!---, and Promotions such as Promotion Policies, Promotion Templates, and Promotion Flows-->. 
+Designate any GitOps Runtime, including the Hosted GitOps Runtime, as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality related to Products in GitOps, and Promotions such as Promotion Policies, Promotion Templates, and Promotion Flows. 
   
 ##### Single vs multiple Configuration Runtimes  
 You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources among the designated Configuration Runtimes if there are multiple such Runtimes. 
