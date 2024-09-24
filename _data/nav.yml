@@ -370,6 +370,28 @@
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
+- title: Promotions
+  url: "/promotions"
+  pages:
+    - title: About promotions
+      url: "/promotions-overview"
+    - title: Promotion building blocks
+      url: "/promotion-components"
+    - title: Promotion sequences
+      url: "/create-promotion-sequence"
+    - title: Configuration
+      url: "/configuration"
+      sub-pages: 
+      - title: Promotion Flows
+        url: "/promotion-flow"     
+      - title: Promotion Policies
+        url: "/promotion-policy"  
+    - title: Trigger promotions
+      url: "/trigger-promotions"   
+    - title: Monitor promotions for products
+      url: "/product-releases"         
+
+
 - title: Pipelines
   url: "/pipelines"
   pages:
