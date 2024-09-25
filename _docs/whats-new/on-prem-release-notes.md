@@ -156,8 +156,7 @@ RBAC for Pipeline Runtimes enhances the permissions system with granular access 
   Precisely manage access to runtime environments. For example, restrict access to production environments to safeguard production resources, or grant exclusive access to high-performance runtime environments for high-priority projects, ensuring they have the necessary resources.
 * Optimized resource management for runtimes  
   Optimize performance without admin intervention by allowing teams to adjust CPU and memory settings for pipeline builds.
-* Optimized cloud builds  
-  Optimize performance for cloud builds by enabling teams to set cloud builds and select the appropriate resource sizes for the build.
+
 
 ##### How does it work?
 Similar to other entities, you implement RBAC for Pipeline Runtimes, runtime builds, and resources, through tags and rules. After adding tags to Pipeline Runtimes, you can define rules for the Pipeline Runtimes, and for runtime environments and resources within pipelines. 
