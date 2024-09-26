@@ -79,30 +79,29 @@ Here’s how it works:
 fail_fast: $VAR
 ```
 
-### GitOps: Argo CD v2.12 
+<!--- ### GitOps: Argo CD v2.12 
 ???
-
+-->
 
 ## Bug fixes
 
-##### General 
-* `Config not found` error when syncing Azure SSO. https://codefresh-io.atlassian.net/browse/CR-25105 Vadim
+##### General
+
 
 ##### Pipelines 
-*  For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
-"`Error: Failed to run Pipeline` https://codefresh-io.atlassian.net/browse/CR-25092 Andrii
-* Permission and missing scope error when running `codefresh validate yaml` command. https://codefresh-io.atlassian.net/browse/CR-25072
-<!--- customer-specific `ESOCKETTIMEDOUT`on updating pipelines via CLI with `codefresh replace pipeline -f` command. https://codefresh-io.atlassian.net/browse/CR-22148 Kim -->
+* For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
+* `Error: Failed to run Pipeline` for Azure DevOps SSO (Single Sign-On) provider.
+* Permission and missing scope error when running `codefresh validate yaml` command. 
  DIND pods remain active even after build completes execution.https://codefresh-io.atlassian.net/browse/CR-24352 Zhenya
-In terminaated builds, conditions with "`workflow.result`" incorrectly evaluated. https://codefresh-io.atlassian.net/browse/CR-23960 Scott
+* Conditions with `workflow.result`” incorrectly evaluated in terminated builds.
 * Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server. 
-* `CF_COMMIT_MESSAGE` and `CF_COMMIT_MESSAGE_ESCAPED` variables show text in Pull Request titles instead of commit messages. https://codefresh-io.atlassian.net/browse/CR-7657 
+* `CF_COMMIT_MESSAGE` and `CF_COMMIT_MESSAGE_ESCAPED` variables show text in Pull Request titles instead of commit messages. 
 * Variables not supported as values for Boolean properties in pipelines.  
 
 
 
 
 ##### GitOps 
-* Unable to connect to a git provider using hosted runtime.
-* Command failure for argo-platform-analytics-reporter.
+* Unable to connect to a Git provider using the Hosted GitOps Runtime.
+* Command failure for `argo-platform-analytics-reporter`.
 * GitOps permissions do not function correctly when attributes are applied.
