@@ -86,17 +86,23 @@ fail_fast: $VAR
 ## Bug fixes
 
 ##### General 
-* Invite text in Welcome screen displays `undefined` instead of the organization name. 
+* `Config not found` error when syncing Azure SSO. https://codefresh-io.atlassian.net/browse/CR-25105 Vadim
 
 ##### Pipelines 
-* Expired certificates causes builds to remain in Pending status.
-* Pipeline with two triggers starts two builds on commits to the same file/folder instead of one build.
-* Pull request push commit trigger for Bitbucket server not supported. 
-* `build` step does not work with cross-account ECR. 
+*  For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
+"`Error: Failed to run Pipeline` https://codefresh-io.atlassian.net/browse/CR-25092 Andrii
+* Permission and missing scope error when running `codefresh validate yaml` command. https://codefresh-io.atlassian.net/browse/CR-25072
+<!--- customer-specific `ESOCKETTIMEDOUT`on updating pipelines via CLI with `codefresh replace pipeline -f` command. https://codefresh-io.atlassian.net/browse/CR-22148 Kim -->
+ DIND pods remain active even after build completes execution.https://codefresh-io.atlassian.net/browse/CR-24352 Zhenya
+In terminaated builds, conditions with "`workflow.result`" incorrectly evaluated. https://codefresh-io.atlassian.net/browse/CR-23960 Scott
+* Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server. 
+* `CF_COMMIT_MESSAGE` and `CF_COMMIT_MESSAGE_ESCAPED` variables show text in Pull Request titles instead of commit messages. https://codefresh-io.atlassian.net/browse/CR-7657 
+* Variables not supported as values for Boolean properties in pipelines.  
+
+
 
 
 ##### GitOps 
-<!--- * `fullnameOverride` when set in Argo CD Helm chart results in failure to reach service. (CR-cr-25000 Ilya)-->
-* Audit log does not show changes made to GitOps permissions. 
-* Manual Rollout actions not available in audit log.
+* Unable to connect to a git provider using hosted runtime.
+* Command failure for argo-platform-analytics-reporter.
 * GitOps permissions do not function correctly when attributes are applied.
