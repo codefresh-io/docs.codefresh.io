@@ -30,9 +30,10 @@ Currently, you do not need to select specific scopes for the API key.
 
 
 
-## Get list of pipelines 
+##  Get list of pipelines /pipelinesDropdown
 
-Gets the list of 
+Gets the list of pipelines - max number? what are the default settings?
+by pipeline name or ID.
 
 
 ### Headers
@@ -51,45 +52,240 @@ For a description of the fields, see [Request parameters](#request-parameters).
 
 ### Request example
 
-The request is formatted in curl.
+The request is an HTTP GET request.
 
 ```
-curl -X POST https://codefresh-hosted-gitops-runtime.com/api/promotions/commit \
-    --header "content-type: application/json" \
-    --header "Authorization: 214ffb**************" \
-    --data 
-{
-    \"srcAppId\": {
-        \"runtime\": \"codefresh\",
-        \"namespace\": \"orders-qa\",
-        \"name\": \"orders-qa-us-east\"
-    },
-    \"destAppId\": {
-        \"runtime\": \"codefresh\",
-        \"namespace\": \"orders-prod\",
-        \"name\": \"orders-prod-us-east\"
-    },
-        \"message\": \"Update image tag and bump version\"
-}"
+GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown
 ```
 ### Response example
 
 #### Success
 Here's an example of the response for a successful request.
-It includes the:
-* Commit SHA
-* Commit message
-* Name and email of the user who authored the commit
 
+For each pipeline, the following data is returned.
+* `id`: The ID of the pipeline, generated when the pipeline was created. 
+* `pipelineName`: The full name of the pipeline, including the project name, in the format `"<project-name>/<pipeline-name>"`.
+* `shortName`: The name of the pipeline, without the project name. 
+* `isDeleted`: Indicates if the pipeline has been deleted from the account (`true`), or not (`false`).
+
+```json
+{
+    "data": [
+        {
+            "id": "61a893f69ff69e2cf086f12d",
+            "pipelineName": "NimaCFProject/BasicPipeline",
+            "shortName": "basicpipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "632afb121899584bf3ec14f8",
+            "pipelineName": "default/NimaCronLink",
+            "shortName": "nimacronlink",
+            "isDeleted": false
+        },
+        {
+            "id": "6372180f39b06e632745555d",
+            "pipelineName": "test",
+            "shortName": "test",
+            "isDeleted": false
+        },
+        {
+            "id": "639ede86ec4d257410904ba7",
+            "pipelineName": "NimaCFProject/StepTest",
+            "shortName": "steptest",
+            "isDeleted": false
+        },
+        {
+            "id": "63b58656e8dad136b2a74927",
+            "pipelineName": "my-first-project/My Pipeline",
+            "shortName": "my pipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "641fe3c0ba826b3e53d3bbbd",
+            "pipelineName": "TestTags",
+            "shortName": "testtags",
+            "isDeleted": false
+        },
+        {
+            "id": "641fe485ba826b8fe8d3bbbe",
+            "pipelineName": "MyPipelines",
+            "shortName": "mypipelines",
+            "isDeleted": false
+        },
+        {
+            "id": "6423edc4dbc27269e2693bb6",
+            "pipelineName": "NimaCFProject/Restart",
+            "shortName": "restart",
+            "isDeleted": false
+        },
+        {
+            "id": "642578967afcb3664998231a",
+            "pipelineName": "AnnotatePipeline",
+            "shortName": "annotatepipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "64cb4160795de76fcd8b5b29",
+            "pipelineName": "MyPipelines template",
+            "shortName": "mypipelines template",
+            "isDeleted": false
+        },
+        {
+            "id": "64cb42f2993fc4da530b8756",
+            "pipelineName": "mu",
+            "shortName": "mu",
+            "isDeleted": false
+        },
+
+        {
+            "id": "66f246ff58c8309825491a5a",
+            "pipelineName": "Marvel/smoke-tests",
+            "shortName": "smoke-tests",
+            "isDeleted": false
+        }
+    ]
+    },
+
+    "timeDimensions": {}
 ```
-{"COMMIT_SHA":"ff46cab5a4c94fc2db215b2bd2102da05c5314ba","COMMIT_MESSAGE":"bumped version","COMMIT_AUTHOR":"codefresh-user <codefresh.user@codefresh.io>"}
-```
+
 #### Failure
-Here's an example of the response for a failed request when there were no changes to promote between the source and the destination applications.
+Here's an example of the 
 
 ```
 {"statusCode":400,"message":"no changes found between source and destination applications","error":"Bad Request"}
 ```
+
+##  Get list of pipeline by name 
+
+Get the list of pipelines that correspond to the name passed as the query parameter.
+You can either pass the complete name of the pipeline or a partial name. In which case, returns all pipelines including those characters.
+by pipeline name or ID.
+
+
+### Headers
+The API authorization token must be included in the header of the API request. See [Authorization](#authorization).
+
+```
+content-type: application/json
+Authorization: <TOKEN>
+```
+
+### Request body 
+
+For a description of the fields, see [Request parameters](#request-parameters).
+
+
+
+### Request example
+
+The request is an HTTP GET request.
+
+```
+GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown/?filters={"name":["<pipeline-name>"]}
+```
+### Response example
+
+#### Success
+Here's an example of the response for a successful request.
+
+For each pipeline, the following data is returned.
+* `id`: The ID of the pipeline, generated when the pipeline was created. 
+* `pipelineName`: The full name of the pipeline, including the project name, in the format `"<project-name>/<pipeline-name>"`.
+* `shortName`: The name of the pipeline, without the project name. 
+* `isDeleted`: Indicates if the pipeline has been deleted from the account (`true`), or not (`false`).
+
+```json
+{
+    "data": [
+        {
+            "id": "61a893f69ff69e2cf086f12d",
+            "pipelineName": "NimaCFProject/BasicPipeline",
+            "shortName": "basicpipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "632afb121899584bf3ec14f8",
+            "pipelineName": "default/NimaCronLink",
+            "shortName": "nimacronlink",
+            "isDeleted": false
+        },
+        {
+            "id": "6372180f39b06e632745555d",
+            "pipelineName": "test",
+            "shortName": "test",
+            "isDeleted": false
+        },
+        {
+            "id": "639ede86ec4d257410904ba7",
+            "pipelineName": "NimaCFProject/StepTest",
+            "shortName": "steptest",
+            "isDeleted": false
+        },
+        {
+            "id": "63b58656e8dad136b2a74927",
+            "pipelineName": "my-first-project/My Pipeline",
+            "shortName": "my pipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "641fe3c0ba826b3e53d3bbbd",
+            "pipelineName": "TestTags",
+            "shortName": "testtags",
+            "isDeleted": false
+        },
+        {
+            "id": "641fe485ba826b8fe8d3bbbe",
+            "pipelineName": "MyPipelines",
+            "shortName": "mypipelines",
+            "isDeleted": false
+        },
+        {
+            "id": "6423edc4dbc27269e2693bb6",
+            "pipelineName": "NimaCFProject/Restart",
+            "shortName": "restart",
+            "isDeleted": false
+        },
+        {
+            "id": "642578967afcb3664998231a",
+            "pipelineName": "AnnotatePipeline",
+            "shortName": "annotatepipeline",
+            "isDeleted": false
+        },
+        {
+            "id": "64cb4160795de76fcd8b5b29",
+            "pipelineName": "MyPipelines template",
+            "shortName": "mypipelines template",
+            "isDeleted": false
+        },
+        {
+            "id": "64cb42f2993fc4da530b8756",
+            "pipelineName": "mu",
+            "shortName": "mu",
+            "isDeleted": false
+        },
+
+        {
+            "id": "66f246ff58c8309825491a5a",
+            "pipelineName": "Marvel/smoke-tests",
+            "shortName": "smoke-tests",
+            "isDeleted": false
+        }
+    ]
+    },
+
+    "timeDimensions": {}
+```
+
+#### Failure
+Here's an example of the 
+
+```
+{"statusCode":400,"message":"no changes found between source and destination applications","error":"Bad Request"}
+```
+
+
 
 
 ## POST    `/promotions/pullRequest`
