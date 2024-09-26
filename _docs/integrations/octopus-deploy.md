@@ -115,7 +115,7 @@ The table describes the instance fields you need to define.
 
 | Octopus instance variable       | Description|
 | ------------- | ------- |
-| `OCTOPUS_URL`     | The Octopus Server URL on which to run your Octopus Deploy steps. See |
+| `OCTOPUS_URL`     | The Octopus Server URL on which to run your Octopus Deploy steps. See [Getting started with Octopus](https://octopus.com/docs/getting-started){:target="\_blank"} for an overview of deploy concepts.  |
 | `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication. Use an existing key or create a new API key. See [Creating an API Key](https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key#HowtocreateanAPIkey-CreatinganAPIkey){:target="\_blank"}. |
 | `OCTOPUS_SPACE`   | The Space in which to run steps. See [Spaces](https://octopus.com/docs/administration/spaces){:target="\_blank"}.|
 |`PROJECT`           | The Octopus Deploy project to which to deploy the release. See [setting up a project](https://octopus.com/docs/projects/setting-up-projects){:target="\_blank"}.|
@@ -131,7 +131,7 @@ More steps that you can include are described in [Optional Octopus Deploy steps 
 ### Create package artifacts
 
 Use the `octopusdeploy-create-package` step to create zip packages of your deployment artifacts. Specify the files to include in each package, the location of those files and the details of the artifact to create.
-This step returns a json object with property `Path`.push packaged artifacts to the Octopus Server's built-in repository. 
+This step returns a JSON object with property `Path`.
 
 {: .table .table-bordered .table-hover}
 | Octopus Deploy Step |  Input parameters | Output parameters
