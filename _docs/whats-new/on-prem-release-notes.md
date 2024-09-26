@@ -107,24 +107,9 @@ We’re excited to introduce the revamped search mechanism for our doc site!
 Wherever you are in Codefresh and open search from the toolbar, either from Global Search & Navigation by typing `help` or by clicking the Help icon, 
 you’ll get a curated list of articles that are context-sensitive to your location in the UI to kick-start your search.
 
-**AI for percise answers**  
-For even more relevant results, we have also integrated AI with the free-text search. Ask questions and receive precise answers to find exactly what you need.
-
-
-
-{% include
-image.html
-lightbox="true"
-file="/images/whats-new/july24/rel-notes-july-24-search-context-sensitive.png"
-url="/images/whats-new/july24/rel-notes-july-24-search-context-sensitive.png"
-alt="Curated location-specific search results"
-caption="Curated location-specific search results"
-max-width="60%"
-%}
-
 Additionally, for an enriched information experience, check out our collection of blog posts from our experts. 
 
-Here are more reasons to try the new search:
+Here are **more reasons** to try the new search:
 * **Preview**  
   Check out search results and preview articles before diving in. Just click an article in the list to display it in the Preview panel.
 * **View Article**    
