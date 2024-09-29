@@ -43,9 +43,6 @@ For details, see [Signing container images with Sigstore]({{site.baseurl}}/docs/
 
 
 
-
-
-
 ### Pipelines: Enhancements for step-member variables & Boolean properties 
 We just rolled out two key updates to give you more control and flexibility in your pipelines.
  
@@ -79,20 +76,29 @@ Here’s how it works:
 fail_fast: $VAR
 ```
 
-<!--- ### GitOps: Argo CD v2.12 
-???
--->
+### GitOps: Argo CD v2.12 
+
+We have upgraded the Argo CD version in our platform to v2.12. For detailed information, see the [official docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.11-2.12/){:target="\_blank"}.
+
+##### GitOps Runtime version
+You need the GitOps Runtime v0.12.0 that includes the latest version of the Helm chart, v7.x.x, from Argo CD. 
+
+##### Breaking change for cluster credentials value type
+Version 7.x.x of the chart includes the breaking change in the _value type for cluster credentials_.  
+Previously, the `clusterCredentials` value type was `list`. In the latest version the type has been changed to `map (object)`.
+
+>**NOTE**
+GitOps Runtimes do not use these values directly. Runtimes with the default configuration are _not affected_.
+
 
 ## Bug fixes
 
-##### General
 
 
 ##### Pipelines 
 * For Bitbucket, build fails as `CF_PULL_REQUEST_ACTION` variable is not populated with correct value. 
 * `Error: Failed to run Pipeline` for Azure DevOps SSO (Single Sign-On) provider.
 * Permission and missing scope error when running `codefresh validate yaml` command. 
- DIND pods remain active even after build completes execution.https://codefresh-io.atlassian.net/browse/CR-24352 Zhenya
 * Conditions with `workflow.result`” incorrectly evaluated in terminated builds.
 * Some repositories not displayed in **Repository** list when creating trigger for Bitbucket server. 
 * `CF_COMMIT_MESSAGE` and `CF_COMMIT_MESSAGE_ESCAPED` variables show text in Pull Request titles instead of commit messages. 
