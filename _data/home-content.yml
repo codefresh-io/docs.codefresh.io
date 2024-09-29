@@ -43,6 +43,8 @@
       localurl: /docs/integrations/microsoft-azure/
     - title: Google Cloud
       localurl: /docs/integrations/google-cloud/
+    - title: Octopus Deploy
+      localurl: /docs/integrations/octopus-deploy/      
     - title: Docker Registries
       localurl: /docs/integrations/docker-registries/
     - title: Secret Storage
