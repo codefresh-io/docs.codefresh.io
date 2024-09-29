@@ -4,24 +4,41 @@ description: "Understand how to configure the pipeline through YAML file"
 group: pipelines
 toc: true
 ---
-Pipeline settings can be configured in different ways, with different scopes and levels of customization:
+Pipeline settings can be configured in different ways, with different levels of customization:
 
 * **Account-level settings**  
-  Defined by the Codefresh account administrator in the UI, these settings apply globally across all pipelines within the account. Pipelines inherit these settings by default unless overridden at the pipeline level.
+  Defined by the Codefresh account administrator in the UI, these settings apply globally to all pipelines within the account. Pipelines inherit these settings by default unless overridden at the pipeline level.  
+  See [Account-level settings for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/).
 
 * **Pipeline-specific settings**  
-  Configurable within the UI for individual pipelines. Some settings are inherited from the account-level configuration, while others are unique to each pipeline. Users with the appropriate permissions can override account-level settings and define pipeline-specific settings.
+  Configurable within the UI for individual pipelines. Some settings are inherited from the account-level configuration, while others are unique to each pipeline. Users with the appropriate permissions can override account-level settings and define pipeline-specific settings.  
+  See [Pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings/).
 
 * **YAML-based settings**  
-  Defined declaratively using YAML syntax. You can define settings inline through the inline YAML editor (default), or by referencing YAML configuration files stored in a public repository or a Git repository.
+  Defined declaratively using YAML syntax. You can define settings inline through the inline YAML editor (default), or by referencing YAML configuration files stored in a public repository or a Git repository.  
+  See the rest of this article for details.
+
+Each level has a different [priority](#priority-for-pipeline-settings) when the same setting is defined at more than one level.
+
+## codefresh.yml pipeline definitions
+This YAML is displayed in the Pipelines > Workflow tab when you create a pipeline as the Inline YAML, and includes several default definitions such as steps. 
+
+[Pipeline definitions YAML]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) walks you through the syntax in `codefresh.yml`, with examples, validation, execution flow, and other key information for defining Codefresh pipelines using YAML.
 
 
-## Inline YAML/codefresh.yml 
-includes several default definitions such as steps. 
-Review Pipeline definitions YAML to get an idea on what you   
+## Priority for pipeline settings
 
+Pipeline settings can be defined at different levels, and not all settings are available at every level.  
+It's important to understand the order of priority when settings overlap.
 
+The priority (override behavior) is as follows, from highest to lowest:
 
+1. YAML file definitions  
+  Regardless of whether the YAML file is inline, in a repository, or public, YAML definitions take the highest priority, overriding both pipeline-specific and account-level settings.
+1. Pipeline-specific settings
+  If no YAML definitions exist, the settings for the individual pipeline take precedence over the corresponding account-level settings, unless they are explicitly set to inherit from the account-level.
+1. Account-level settings
+  Account-level settings apply only when the corresponding settings are not defined either in a YAML file or at the pipeline level. 
 
 
 ## .version
@@ -30,7 +47,7 @@ Review Pipeline definitions YAML to get an idea on what you
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `.version`      | The version of the pipeline schema and is always set to `'1.0'`.  | string    | Required |
+| `.version`      | The version of the pipeline schema, always set to `'1.0'`.  | string    | Required |
 
 ## .kind
 
@@ -46,21 +63,21 @@ Review Pipeline definitions YAML to get an idea on what you
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `metadata.id`        | The ID of the pipeline. (NIMA: where do you get the pipeline ID?) | string    | Optional |
+| `metadata.id`        | The ID of the pipeline. The ID is generated when the pipeline is created. (NIMA: where do you get the pipeline ID?) | string    | Optional |
 | `metadata.name`      | The full path to the pipeline, including the name of the project to which the pipeline belongs, in the format `<project_name>/<pipeline_name>`.  For example, `marvel/smoke-tests` | string | Required |
 | `metadata.shortName`      | The name of the pipeline without the `<project_name>`. For example, `smoke-tests`. |  string | Optional  |
 | `metadata.revision`      | Automatically updated for each update of the pipeline. Default is `0` |  integer | Optional  |
 | `metadata.isPublic`     | Determines if public logs are enabled or disabled for the pipeline. By default, public logs are disabled.<br>When set to `true`, clicking the build badge allows all users with access to the pipeline to also view the build logs, even if they are not logged into Codefresh. See [Public build logs]({{site.baseurl}}//docs/pipelines/configuration/build-status/#public-build-logs).| boolean  | Optional |
 | `metadata.description`   | A meaningful description of the pipeline. (NIMA: is there a a max limit) | string | Optional |
 | `metadata.labels`        | The parent object for `metadata.labelKeys` defining the `tags` assigned to the pipeline. ????    | object |  Optional |
-| `metadata.labelKeys`    | Ask Dev if its the same as tags The tags ????/  is this the same as `tags`? A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
+| `metadata.labelKeys`    | The tag or tags to assign to the pipeline. The tags are used to define [RBAC rules]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline (NIMA: Im not seeing this in the DB when adding tags.) | string |  Optional |
 | `metadata.created_at`    | The date and time at which the pipeline was created, in ISO 8601 format.<br>For example, `2024-09-18T16:43:16.751+00:00`.| date |  Optional |
-| `metadata.updated_at`    | The date and time at which the pipeline was last updated, in ISO 8601 format.<br>For example, `2024-10-18T16:43:16.751+00:00`.| date |  Optional |
+| `metadata.updated_at`    | The date and time at which the pipeline was last updated, in ISO 8601 format.<br>For example, `2024-10-18T10:43:16.751+00:00`.| date |  Optional |
 | `metadata.accountId`    | The ID of the account to which the pipeline belongs.<br>For example, `65c5386d7b71f25b3bbb8006`. (NIMA: where do you get the account ID?)| objectId |  Optional |
 | `metadata.originalYamlString` | The full content of the `Inline YAML` pipeline editor, either with only the default settings or with user-defined settings.  | string  | Optional |
 | `metadata.projectId`        | The ID of the project to which the pipeline belongs.  | obejctId  | Optional |
 | `metadata.project`        | The name of the project to which the pipeline belongs.  | string  | Optional |
-| `metadata.template`       | Determines if the pipeline is designated as and available as a template when creating a new pipeline. |  |  |
+| `metadata.template`       | Determines if the pipeline is designated and available as a template when creating a new pipeline. |  |  |
 | `metadata.template.isTemplate` | When set to `true`, the pipeline name is displayed in the Pipeline Template list. | boolean | Optional |
 | `metadata.template.generatedFrom` | The ID of the template pipeline from which the pipeline is created.  | objectId | Optional |
 | `metadata.executionContextId`  |  The name of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
@@ -71,21 +88,21 @@ Review Pipeline definitions YAML to get an idea on what you
 
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `spec.scopes`           | Custom API Scopes that the Pipeline will use. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
+| `spec.scopes`           | ??? Need to verify what this isThe custom API scopes controlling access to the pipeline. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
 | `spec.scopeSnapshot`    | The ID of the scope snapshot. ???? | string    | Optional |
-| `spec.permitRestartFromFailedSteps` | Determines if users can restart the pipeline from the failed step, instead of from the beginning of the pipeline. <br>Leave empty to use the default setting which is to inherit the account-level setting. (NIMA: to verify)<br>When set to `true`,  users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
+| `spec.permitRestartFromFailedSteps` | Determines if users can restart the pipeline from the failed step, instead of from the beginning of the pipeline. <br>Leave empty to inherit the account-level setting. (NIMA: to verify)<br>When set to `true`,  users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
 | `spec.build_version`    | ??? `v1` or `v2` | string    | Optional |
 | `spec.triggers`    | The list of Git triggers defined for the pipeline. For details, see [`spec.triggers](#spectriggers). | array    | Optional |
 | `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers](#speccrontriggers). | array    | Optional |
 | `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments](#specruntimeenvironment).  | object    | Optional |
-| `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipelines build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li> {:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
+| `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipeline's build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li> {:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
 | `spec.packId`    | Required for SaaS environments. Optional for hybrid environments.<br>The package identifer based on the resource size. Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">5cd1746617313f468d669013</code>: Small</li><li><code class="highlighter-rouge">5cd1746717313f468d669014</code>: Medium</li><li><code class="highlighter-rouge">5cd1746817313f468d669015</code>: Large</li><li><code class="highlighter-rouge">5cd1746817313f468d669017</code>: Extra large</li><li><code class="highlighter-rouge">5cd1746817313f468d669018</code>: XXL</li> <li><code class="highlighter-rouge">5cd1746817313f468d669020</code>: 4XL | string</li></ul>{:/} | Required (for SaaS) |
-| `spec.requiredAvailableStorage`    | ???The minimum disk space for the pipeline’s build volume in `Gi`. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>When empty, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI? from 1Gi to 8 gi??)  | string    | Optional |
-| `spec.contexts`    | ???A list of strings representing the names of the [shared configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) to be added to the pipeline  | Array   | Optional |
-| `spec.clustersInfo`    | Determines if all or specific Kubernetes clusters are available for the pipeline build based on the account-level setting. (NIMA: how can the user know what the account level setting is? Do they have to go manually to the Settings to see if there are restrictions? <br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
+| `spec.requiredAvailableStorage`    | The minimum disk space for the pipeline’s build volume in `Gi` (NIMA: verify units). <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>When empty, only the space not allocated for caching is available for the build volume. <br><br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI? from 1Gi to 8 gi??)  | string    | Optional |
+| `spec.contexts`    | (NIMA: is shared config different from shared secrets?)Single or multiple comma-separated shared configuration contexts to be added to the pipeline. <br>See [Shared configuration contexts]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).   | array   | Optional |
+| `spec.clustersInfo`    | Determines if all or specific Kubernetes clusters are available for the pipeline build. Leave empty to inherit the account-level setting. (NIMA: how can the user know what the account level setting is? Do they have to go manually to the Settings to see if there are restrictions? <br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
 | `spec.variablesSchema`    | ??? (NIMA: I THINK THIS CAN BE REMOVED)  | string    | `????'` |
 | `spec.variables`    | The variables defined in the pipeline. See [spec.variables](#specvariables). | array    | Optional |
-| `spec.specTemplate`    | ???? . See [spec.specTemplate](#specspectemplate). | object    | Optional |
+| `spec.specTemplate`    | (NIMA: what is ) . See [spec.specTemplate](#specspectemplate). | object    | Optional |
 | `spec.steps`    | The steps to be executed by the pipeline, as a list of key-values pairs.(NIMA: need to add more info )<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
 | `spec.services`    | ??? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
 | `spec.hooks`    | ?? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
@@ -101,8 +118,8 @@ Review Pipeline definitions YAML to get an idea on what you
 | `spec.priority`    | ???  | string    | `????'` |
 | `spec.terminationPolicy`    | Determines how and when the pipeline builds should terminate. See [spec.terminationPolicy](#specterminationpolicy)  | terminationSchema    | Optional |
 | `spec.externalResources`    | The external files, such as scripts or other resources available to the pipeline.<br>When defined, they are automatically retrieved and available when the pipeline starts execution.<br>See [spec.externalResources](#specexternalresources).  | array    | Optional |
-| `spec.debug`    | ???? (**NIMA: THIS IS AUTOGENERATED WHEN USERS START USING DEBUG IN THE UI - CAN BE DEFINED HERE IF USERS WANTS**)  | string    | Optional?? |
-| `spec.serviceAccount`    | ???The service account to use for authentication in ECR integrations for this pipeline.  | string    | Optional |
+| `spec.debug`    | (NIMA: to ask Ziv what the fields mean))  | string    | Optional?? |
+| `spec.serviceAccount`    | (NIMA: to verify )The service account to use for authentication in ECR integrations for this pipeline.  | string    | Optional |
 
 ### spec.triggers
 
