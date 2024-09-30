@@ -595,7 +595,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
 ## Reset Shared Configuration Repository for GitOps Runtimes
 When you install the first Hybrid or Hosted GitOps Runtime for your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
 
-As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes. See [Reset Shared Configuration Repo]({{site.baseurl}}/docs/installation/shared-configuration/#reset-shared-configuration-repo).
+As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes. See [Reset Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/#reset-shared-configuration-repo).
 
 
 
