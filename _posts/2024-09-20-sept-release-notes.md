@@ -87,7 +87,6 @@ You need GitOps Runtime v0.12.0 which includes the latest version of the Helm ch
 Version 7.x.x of the chart includes the breaking change in the _value type for cluster credentials_.  
 Previously, the `clusterCredentials` value type was `list`. In the latest version, the type has been changed to `map (object)`.
 
->**NOTE**
 As GitOps Runtimes do not use these values directly, runtimes with the default configuration are _not affected_.
 
 
