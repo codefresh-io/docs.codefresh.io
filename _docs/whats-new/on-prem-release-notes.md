@@ -32,7 +32,7 @@ Service accounts make administration simpler. They provide automated processes, 
    url="/images/whats-new/sep24/rel-notes-sep24-add-service-account.png" 
    alt="Create service account" 
    caption="Create service account" 
-   max-width="80%" 
+   max-width="60%" 
    %}
 
 ##### Key features of service accounts in Codefresh
@@ -85,7 +85,7 @@ Using the toggle method, you can easily customize what's visible: switch to ON t
    url="/images/administration/sidebar-modules/module-disabled.png" 
    alt="Example of main module toggled OFF" 
    caption="Example of main module toggled OFF" 
-   max-width="80%" 
+   max-width="60%" 
    %}
 
 
@@ -221,7 +221,7 @@ file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
 url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
 alt="External link for resource in Current State Tree view"
 caption="External link for resource in Current State Tree view"
-max-width="60%"
+max-width="50%"
 %}
 
 ##### External links for ingress resources
@@ -234,7 +234,7 @@ file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
 url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
 alt="Ingress resource links in Current State Tree view"
 caption="Ingress resource links in Current State Tree view"
-max-width="60%"
+max-width="50%"
 %}
 
 For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#access-external-links).
