@@ -81,14 +81,14 @@ fail_fast: $VAR
 We have upgraded the Argo CD version in our platform to v2.12. For detailed information, see the [official docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.11-2.12/){:target="\_blank"}.
 
 ##### GitOps Runtime version
-You need the GitOps Runtime v0.12.0 that includes the latest version of the Helm chart, v7.x.x, from Argo CD. 
+You need GitOps Runtime v0.12.0 which includes the latest version of the Helm chart from Argo CD, v7.x.x. 
 
 ##### Breaking change for cluster credentials value type
 Version 7.x.x of the chart includes the breaking change in the _value type for cluster credentials_.  
-Previously, the `clusterCredentials` value type was `list`. In the latest version the type has been changed to `map (object)`.
+Previously, the `clusterCredentials` value type was `list`. In the latest version, the type has been changed to `map (object)`.
 
 >**NOTE**
-GitOps Runtimes do not use these values directly. Runtimes with the default configuration are _not affected_.
+As GitOps Runtimes do not use these values directly, runtimes with the default configuration are _not affected_.
 
 
 ## Bug fixes
