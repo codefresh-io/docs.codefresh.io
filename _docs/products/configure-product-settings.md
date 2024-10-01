@@ -31,7 +31,7 @@ This article describes how to configure the different Product Settings:
 ##### Form & YAML modes
 As with most GitOps entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
 
-No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD in the Shared Configuration Repository in `<shared-config-repo>/resources/configuration/products/<product-name>.crd`.  
+No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved in the product resource CRD in the Shared Configuration Repository in `<shared-config-repo>/resources/configuration/products/<product-name>.crd`.  
 Applications manually assigned to the product are saved locally and not as part of the product's definitions.
 
 
@@ -58,7 +58,7 @@ This is the preferred, declarative method of assigning applications to Products.
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 
 ##### How to
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click the **General** tab, and below Connect Applications copy the annotation to add to the application's manifest.
 
 {% include
@@ -79,6 +79,21 @@ This is the preferred, declarative method of assigning applications to Products.
     1. Paste below `metadata.annotations`.
 
 SCREENSHOT
+
+### Unassign applications by removing annotations
+
+To unassign an application assigned declaratively to the product, remove the annotation from the application's manifest.
+
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. Click the product from which to unassign the application, and then click the **Product Dashboard** tab.
+1. From the context menu of the application, select **Application Info > Go to application**.
+1. Click the **Configuration** tab, and switch to **YAML** mode.
+1. Below `metadata.annotations`, remove the product annotation.
+1. Commit to save the changes.
+
+
+
+
 
 ## Configure labels
 TBD 
@@ -122,7 +137,40 @@ This method is recommended for testing purposes.
 
 SCREENSHOT
 
+### Unassign manually-assigned applications
+Unassign an application manually assigned to a product directly from its settings. 
 
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. Do one of the following:
+    * Mouse over the row with the Product from which to unassign the application, and click {::nomarkdown}<img src="../../../images/icons/settings.png?display=inline-block">{:/}.
+    * Click the Product from which to unassign applications.
+    The **General** section in the Settings tab is displayed.
+1. In the environment with the application to unassign, click {::nomarkdown}<img src="../../../images/icons/unassign-app.png?display=inline-block">{:/}.  
+  You can see that the Unassign icon is disabled for the `guestbook-app-prod` indicating that it is connected through an annotation.
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/unassign-app-from-product.png" 
+	url="/images/gitops-products/unassign-app-from-product.png" 
+	alt="Unassign application from Product" 
+	caption="Unassign application from Product"
+  max-width="60%" 
+%}
+
+{:start="4"}
+1. To confirm, click **Save**.
+  The application reappears in the list of Unassigned apps. 
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/unassigned-app-example.png" 
+	url="/images/gitops-products/unassigned-app-example.png" 
+	alt="Unassigned application in list" 
+	caption="Unassigned application in list"
+  max-width="60%" 
+%}
 
 
 ## Configure Promotion Flows
@@ -219,6 +267,8 @@ Configure Promotion Settings to define:
 
 {:start="6"}
 1. Click **Commit**.
+
+
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Configuring promotion flows and triggers"
-description: "Configure flows and triggers to orchestrate product promotions through Promotion Flows"
+description: "Select Promotion Flows and configure triggers to orchestrate product promotions"
 group: products
 toc: true
 ---
@@ -11,7 +11,7 @@ Through Promotion Flows for Products, you can automate and control the promotion
 You can select multiple Promotion Flows for a product, and customize the conditions for triggering each of the selected flows to automate and control how applications are promoted.
 
 
-##### Benefits of configuring Promotion Flows
+##### Benefits of custom promotion flows & triggers for products
 
 
 * Multiple flows
@@ -27,17 +27,14 @@ You can select multiple Promotion Flows for a product, and customize the conditi
 * Prioritization
   Order the Promotion Flows in the list to define the priority you need.
 
+
+##### Where can you configure Promotion Flows and triggers? 
+In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the prodcut, and then configure custom conditions to trigger the flows.  
+See also [Promotion Flow CRD](#promotion-flow-crd).
+
+SCREENSHOT
+
 For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-flows).
-
-
-##  Promotion Flow CRD
-
-As with other GitOps entities, you can configure Promotion Flow settins in either Form or YAML modes.  
-
-Once configured and committed, these settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-flows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
-
-To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions.
 
 
 ## Examples of trigger conditions for Promotion Flows
@@ -59,7 +56,7 @@ The Hotfix flow is designed for urgent fixes that need to be deployed quickly, t
 | **Operator**          | `In`            |
 | **Values**           | `hotfix` `patch`  |
 
-The Hotfix flow is triggered when the `commit message` contains either `hotfix` or `patch`. This ensures that only critical changes labeled as hotfixes or patches trigger the flow.
+The Hotfix flow triggers when the `commit message` contains either `hotfix` or `patch`, ensuring that only critical changes labeled trigger the flow.
 
 
 ### Feature branch Promotion Flow
@@ -74,10 +71,10 @@ The Feature branch flow is designed for promoting new features from development 
 | **Operator**          | `In`          |
 | **Values**           | `feature/*`   |
 
-The Feature branch flow is triggered when the Git revision matches a feature branch pattern (`feature/*`). This ensures that only feature branches are promoted to the testing environment. 
+The Feature branch flow triggers when the Git revision matches a feature branch pattern, such as `feature/*`. This ensures that only feature branches are promoted to the testing environment. 
 
 ### Multi-region Promotion Flow
-The Multi-region flow is designed to first deploy to multiple regions, servinv as staging environments for example, for validation before the final deployment to production.
+The Multi-region flow is designed to first deploy to several regional environments for validation before final deployment to production.
 
 
  **Trigger condition** | **Setting** |
@@ -87,12 +84,12 @@ The Multi-region flow is designed to first deploy to multiple regions, servinv a
 | **Values**           | `staging-*`   |
 
 
-The Multi-region flow is triggered when the Git revision matches a staging branch pattern, for example, `staging-west`, `staging-east`.  
-After successfully deploying in these regions, the flow can then proceed to deploy in the production environment.
+The Multi-region flow triggers when the Git revision matches a regional branch, for example, `staging-west` or `staging-east`.  
+After successful validation, the flow can proceed to deploy to production.
 
 
 ### Production-exclusion Promotion Flow
-The Production-exclusion flow is designed to ensure that certain changes, such as experimental features or work-in-progress branches, are not deployed to the production environment.
+The Production-exclusion flow is designed to prevent promotion of specific changes, such as experimental features or work-in-progress branches, into the production environment.
 
 
 
@@ -103,11 +100,11 @@ The Production-exclusion flow is designed to ensure that certain changes, such a
 | **Values**           | `wip` `do-not-deploy` `experimental`  |
 
 
-The Production-exclusion flow is triggered _only_ when the commit message does not contain `wip`, `experimental`, or `do-not-deploy`. This ensures that changes labeled with these terms are excluded from being promoted to production, preventing unfinished or unstable features from being deployed. 
+The Production-exclusion flow triggers _only_ when the commit message does not contain terms like `wip`, `experimental`, or `do-not-deploy`, ensuring that unfinished or unstable features are excluded from being deployed to production. 
 
 ### Rollback Promotion Flow
 
-The Rollback flow is designed to rollback changes when an issue is detected in production.
+The Rollback flow is designed to revert changes when issue are detected in production.
 
 
 
@@ -118,9 +115,16 @@ The Rollback flow is designed to rollback changes when an issue is detected in p
 | **Values**           | `revert` `rollback`  |
 
 
-The Rollback flow is triggered when the commit message contains `revert` or `rollback`, ensuring that the flow is only triggered for rollback operations.
+The Rollback flow triggers when the commit message contains terms like `revert` or `rollback`, ensuring that the flow is triggered only for rollback operations.
 
+##  Promotion Flow CRD
 
+As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
+
+Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-flows/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
+
+To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions.
 
 
 ## Related articles

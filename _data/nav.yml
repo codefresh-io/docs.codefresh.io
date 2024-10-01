@@ -466,7 +466,7 @@
       url: "/create-product"
     - title: Configure Product Settings
       url: "/configure-product-settings"
-    - title: Assign applications
+    - title: Assigning applications
       url: "/assign-applications"      
     - title: Configuring app version and promoted properties
       url: "/promotion-version-properties"
