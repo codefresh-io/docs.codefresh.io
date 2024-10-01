@@ -8,7 +8,14 @@ Welcome to the release notes for our on-premises releases.
 
 ## On-premises version 2.5
 
-### New features & enhancements
+### Features & enhancements
+
+#### Installing v2.5 
+For detailed instructions on installing v2.5, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+#### Upgrading to v2.5
+For details, see [Upgrade to 2.5 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-5-0){:target="\_blank"}.
+
 
 #### General: Service Accounts for centralized administration
 
@@ -331,7 +338,7 @@ The table below lists existing Feature Flags which have been updated by default 
 * `Failed to write template value file Arguments to filesystem` error for builds with `codefresh-run` step.
 * Permission and missing scope error when running `codefresh validate yaml` command.
 * Step-member variables not supported between different parallel blocks.
-* Trigger for Azure DevOps creates builds for files ignored in modified files - Verify with Vadim 
+* Trigger for Azure DevOps creates builds for files ignored in modified files. 
 * `Failed - build runtime settings not configured` error for Hybrid Runner.
 * `build` step does not support images from different account for Amazon ECR (Elastic Container Registry).
 
