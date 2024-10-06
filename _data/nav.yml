@@ -579,6 +579,12 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
+- title: API
+  url: "/api-examples"
+  pages:
+    - title: Analytics API
+      url: "/analytics-api-examples"
+
 - title: Reference
   url: "/reference"
   pages:
@@ -586,6 +592,7 @@
       url: "/git-tokens"
     - title: Secrets
       url: "/secrets"
+
 
 - title: What's new
   url: "/whats-new"
