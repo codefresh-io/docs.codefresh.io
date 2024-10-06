@@ -162,7 +162,7 @@ max-width="30%"
     Codefresh validates both access to and administrator privileges for the selected accounts.  
     See [CLI/UI-based team/group sync for Okta](#cliui-based-teamgroup-sync-for-okta) for team/group sync options with Okta.
 1. Optional. To automatically sync teams or groups in Okta to Codefresh via the UI, including additional Codefresh accounts selected if any, select **Auto-group sync**.  
-  This action syncs groups every 12 hours. 
+  This action syncs groups every 12 hours. You can define a different sync interval in **Sync interval**.
     >**NOTE**  
     Though you can assign an Okta application to both groups and individual users, Codefresh _only syncs users who are part of teams_.<br>   
     New users in Okta, _not_ assigned to a team, are **NOT** synced with Codefresh. You should first assign the user to a team for the sync to work.
