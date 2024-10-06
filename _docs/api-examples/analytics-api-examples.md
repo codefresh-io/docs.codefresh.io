@@ -8,7 +8,8 @@ toc: true
 The Analytics API is a REST API that allows programmatic access to pipeline performance metrics, enabling you to generate custom reports and insights.  
 It leverages HTTP GET requests and returns data in JSON format, for seamless integration with your existing tools and systems.
 
-The API enables you to extract data on pipelines and pipeline builds at different levels.
+The API enables you to extract KPI data on pipelines and pipeline builds at different levels.
+
 Whether you're automating the collection of metrics for external dashboards or conducting in-depth analysis on pipeline efficiency, 
 the API offers granular access to performance data. 
 This ensures you can optimize pipeline configurations, identify bottlenecks, and drive continuous improvement within your workflows.
@@ -163,6 +164,8 @@ Here's an example of the
 ## Get average build duration
 Retrieves the average execution duration of pipeline builds.  
 The average (mean) duration is calculated by dividing the total execution time by the number of builds, providing an overall measure of pipeline performance.
+
+You can filter pipeline builds by either a project, specific pipeline, status, or by the favorites tag.
 
 ### Endpoint
 `GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?granularity=month`
