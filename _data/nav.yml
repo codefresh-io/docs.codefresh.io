@@ -238,7 +238,7 @@
           url: "/docker-hub"
         - title: Azure Docker Registry
           url: "/azure-docker-registry"
-        - title: Amazon EC2 Container Registry
+        - title: Amazon ECR Container Registry
           url: "/amazon-ec2-container-registry"
         - title: Google Container Registry
           url: "/google-container-registry"
