@@ -1,5 +1,5 @@
 ---
-title: "How To: Ensure Clean Up Commands Always Run If a Pipeline Is Manually Stopped"
+title: "How To: Always run clean-up commands after pipeline execution"
 description: 
 group: kb
 sub-group: articles
@@ -11,13 +11,21 @@ categories: [Pipelines]
 support-reviewed: 2023-05-04 LG
 ---
 
-## Overview
 
-Sometimes you might want to run code at the end of every pipeline (eg to clean up resources) regardless of success, failure, or the pipeline is manually stopped.
 
-## Details
+This article describes how to insert a parallel step within a sequential pipeline to run specific commands at the end of pipeline execution. A common use case for this approach is automating resource cleanup tasks. 
 
-When working with a sequential (default) pipeline, you will find that manually stopping a pipeline halts the entire pipeline - including any pipeline hooks set to run on_success or on_failure [1]. However, if you switch the entire pipeline work in parallel [2], you can use the below step as a template to ensure that your clean up code will always run:
+The parallel step always runs at the end of the pipeline, regardless of its build status, or if the pipeline was manually terminated. 
+
+
+
+## How to
+
+In a sequential pipeline, which is the default execution mode for pipelines, manually terminating the pipeline also terminates the execution of subsequent steps, including any pipeline hooks set to run on success or failure.  
+
+You can circumvent this behavior by inserting a parallel step within the pipeline.
+
+* Add the step below as a template to ensure code clean-up will always run:
 
 ```yaml
 cleaner_always_executed:
@@ -32,8 +40,6 @@ cleaner_always_executed:
           buildSuccess: workflow.result == 'success'
 ```
 
-## Related Items
-
-[1] <https://codefresh.io/docs/docs/pipelines/hooks/>
-
-[2] <https://codefresh.io/docs/docs/pipelines/advanced-workflows/#parallel-pipeline-mode>
+## Related articles
+[Hooks in pipelines]({{site.baseurl}}/docs/pipelines/hooks/)  
+[Parallel pipeline execution]({{site.baseurl}}/docs/pipelines/advanced-workflows/#parallel-pipeline-execution)  

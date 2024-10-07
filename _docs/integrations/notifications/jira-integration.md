@@ -1,5 +1,5 @@
 ---
-title: "Jira notification integrations for piplines"
+title: "Jira notification integrations for pipelines"
 description: ""
 group: integrations
 sub_group: notifications
@@ -7,9 +7,13 @@ redirect_from:
  - /docs/integrations/notifications/jira-integration/
 toc: true
 ---
-Codefresh integrates with Jira in several ways:
-* Through the [Jira integration]({{site.baseurl}}/docs/integrations/jira/) for the highest visibility into your GitOps deployments
-* Through a [custom step](#use-jira-in-your-codefresh-pipeline) from our step marketplace so that you can connect your pipelines with Jira
+
+Codefresh integrates with Jira in several ways, both to pull information from Jira to Codefresh for enriched images, and to push information from Codefresh to Jira for notifications.  
+This article describes how set up the integration with Jira to push information from Codefresh to Jira.  
+For information on how to set up integration with Jira for CI pipelines, see [Jira pipeline integration]({{site.baseurl}}/docs/integrations/jira/).
+
+For Jira notifications, you can integrate:
+* Through a [custom step](#use-jira-in-your-codefresh-pipeline) from our step Marketplace so that you can connect your pipelines with Jira
 * Alternatively, through using your own [jira-cli](#using-your-own-jira-cli)
 
 
@@ -29,7 +33,7 @@ It can be used to:
 * Add a description to your issue
 * And more
 
-More information is provided [Send notification to Jira example]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
+For more information, see [Send notification to Jira example]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/).
 
 ## Using your own jira-cli
 
@@ -43,5 +47,6 @@ RUN apk add -U gcc musl-dev linux-headers openssl-dev libffi-dev && pip install 
 And then running the Dockerfile.
 
 ## Related articles
+[Example for sending notifications to Jira]({{site.baseurl}}/docs/example-catalog/ci-examples/sending-the-notification-to-jira/)  
 [CI/CD pipeline examples]({{site.baseurl}}/docs/example-catalog/examples/)  
 [Create pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

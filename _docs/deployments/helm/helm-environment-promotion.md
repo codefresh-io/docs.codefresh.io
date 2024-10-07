@@ -8,7 +8,7 @@ redirect_from:
   - /docs/new-helm/helm-environment-promotion/
 toc: true
 ---
-Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management) dashboard that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
+Apart from the [Helm Releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/) dashboard that shows your Kubernetes clusters at the application level, Codefresh also comes with a special environment board that allows you to track one or more applications as they move within your infrastructure (example, Dev, QA, Prod). 
 
 The environment board can function both as an overview of the whole lifecycle of the application, as well as a tool to shift-left/right Helm releases between environments.
 
@@ -199,7 +199,8 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 
 Note that the variable `CF_HELM_CHART_JSON_GZIP` is both compressed and base64 encoded. To get the raw value you need a command like `echo $CF_HELM_CHART_JSON_GZIP | base64 -d | gunzip`
 
->Overriding the default pipeline can only be done by [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators).
+>**NOTE**  
+Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators) can override the default pipeline.
 
 Once you click the *update* button, a new build will run that will perform the deployment.
 
@@ -288,5 +289,5 @@ The filters are especially helpful in Helm boards with large numbers of environm
 ## Related articles
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 [Helm charts and repositories]({{site.baseurl}}/docs/deployments/helm/helm-charts-and-repositories/#add-helm-repository)  
-[Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
+[Managing Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
 [Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/)  

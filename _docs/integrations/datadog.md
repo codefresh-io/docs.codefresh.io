@@ -13,7 +13,8 @@ For Datadog and Codefresh integration, you need:
 * An API token from your Datadog account
 * To define the settings in Codefresh
 
-> Note: Please reach out to Support if you’re interested in enabling Datadog for your account.
+>**NOTE**  
+If you’re interested in enabling Datadog for your account, please reach out to Support.
 
 ## Get API token from Datadog account
 If you already have a Datadog account, you can copy the API key if you have one, or generate a new API key. 
@@ -61,7 +62,7 @@ alt="Datadog configuration settings"
 ## Pipeline data from Codefresh in Datadog
 See pipeline data in Datadog's CI Visibility interface.  
 
-We have highlighted the main features in Datadog for Codefresh pipelines. For detailed descriptions and options, see [Datadog documentation on Exploring Pipelines](https://docs.datadoghq.com/continuous_integration/explore_pipelines/){:target="\_blank"}.  
+We have highlighted the main features in Datadog for Codefresh pipelines. For details, see the information in [Set up Tracing on Codefresh Pipelines](https://docs.datadoghq.com/continuous_integration/pipelines/codefresh/){:target="\_blank"}.  
 
 
 ### Pipelines page in Datadog 

@@ -157,7 +157,10 @@ The steps are the following:
 
 Notice that in this pipeline there is no Helm repository involved.
 
-> We recommend this workflow only while you are learning Helm. Storing your Helm charts in a Helm repository is a better practice as described in the next section.
+{{site.data.callout.callout_tip}}
+**TIP**  
+We recommend this workflow only while you are learning Helm. Storing your Helm charts in a Helm repository is a better practice as described in the next section.
+{{site.data.callout.end}}
 
 ### Package/push and then deploy
 
@@ -363,5 +366,5 @@ While this workflow is very flexible, it adds complexity on the number of Helm c
 ## Related articles
 [Helm quick start guide]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  
 [Using Helm in a Codefresh pipeline]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
-[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management)  
-[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion)  
+[Helm Dashboard]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/)  
+[Helm Promotion boards]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/)  

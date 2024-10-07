@@ -20,7 +20,8 @@ The process involves two parts:
 1. Creating a trigger in Codefresh. This will result in a special Codefresh webhook URL
 1. Activating the [webhook plugin](https://github.com/jfrog/artifactory-user-plugins/tree/master/webhook){:target="\_blank"} in Artifactory and setting it up to call the Codefresh URL
 
-> Make sure that you have admin access to your Artifactory instance in order to setup its webhook plugin.
+>**NOTE**  
+Make sure that you have admin access to your Artifactory instance in order to setup its webhook plugin.
 
 ### Create a new Artifactory trigger
 
@@ -98,5 +99,5 @@ Here is an example for Codefresh.
 Now, every time you push/tag a Docker image to the selected Artifactory repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Artifactory Push trigger event.
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

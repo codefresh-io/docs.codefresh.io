@@ -11,18 +11,15 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article describes how to run `npm install` from a directory other than the root.
 
-You want to run npm install from a directory that is not the root directory.
 
-## Details
 
-### Option 1: Set the working directory
+## Option 1: Set the working directory
+In your step, change the `working_directory` setting from:
+{% raw %}`${{clone_step}}`{% endraw %} to {% raw %}`${{clone_step}}/subdir`{% endraw %}.
 
-In your step, change the `working_directory` setting from {% raw %}`${{clone_step}}`{% endraw %} to {% raw %}`${{clone_step}}/subdir`{% endraw %}.
-
-### Option 2: Change directory in step
-
+## Option 2: Change directory in step
 In your step, add a command to change the directory:
 
 ```yaml
@@ -31,10 +28,8 @@ commands:
   - npm install
 ```
 
->**_Note_**
->
->This logic can be applied for anything you need to use subdirectories for.
+>**NOTE**  
+Apply this logic whenever you need to use subdirectories.
 
-## Related Items
-
+## Related articles
 [Working Directories]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories)

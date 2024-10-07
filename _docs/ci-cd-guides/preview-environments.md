@@ -199,7 +199,7 @@ steps:
     stage: "deploy"
   deploy:
     title: Deploying Helm Chart
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./unlimited-test-environments-manifests
     arguments:
@@ -298,7 +298,7 @@ version: "1.0"
 steps:
   delete_app:
     title: Delete app
-    type: helm
+    type: helm:1.1.12
     arguments:
       action: auth
       helm_version: 3.2.4

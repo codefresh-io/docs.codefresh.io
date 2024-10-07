@@ -15,7 +15,7 @@ Codefresh supports two types of applications:
 * Containerized applications packaged as Docker images or 
 * Argo CD applications 
 
-**Containerized applications**  
+##### Containerized applications  
 Containerized applications are compiled, packaged, and deployed through Codefresh pipelines. Codefresh has native support for Docker artifacts, and also supports non-Dockerized applications that don’t use a Dockerfile for the actual build.
 
 Deploy an application directly to Kubernetes through the Codefresh UI, or use Helm as a package manager to deploy to Kubernetes, again from Codefresh. 
@@ -30,17 +30,17 @@ Quick starts for [Kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/d
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
 
 
-**Argo CD applications**  
+##### Argo CD applications 
 Argo CD applications conform to Argo CD's application definition CRD (Custom Resource Definition). Argo CD supports several types of Kubernetes manifests, including Jsonnet, Kustomize applications, Helm charts, and YAML/json files, and supports webhook notifications from Git. 
 
 Create Argo CD applications that are fully GitOps-compliant in Codefresh. Identify and fix errors before commit with our built-in validations. The application manifest is generated, committed to Git, and synced to your cluster.   
-See:
-[Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) GitOps applications  
+
+See [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) Argo CD applications  
 
 
 Just as with Dockerized applications, you get full visibility into the applications and their deployment through the global Analytics, DORA metrics, and the Application dashboards. The Applications dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
-See:
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
+
+See [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
 
 
 ## Pipeline
@@ -71,14 +71,14 @@ The Runner is the hybrid installation option for pipelines in your Codefresh acc
 
 Codefresh Runner gives you: 
 * Access to secure services (such as Git repositories or databases) that are behind the firewall and normally not accessible to the public cloud.
-* The ability to use special resources in your Codefresh pipeline that are unique to your application, GPU nodes or other special hardware only present in your data center.
+* The ability to use special resources in your Codefresh pipeline that are unique to your application or other special hardware only present in your data center.
 * Complete control over the build environment in addition to resources for pipelines.
 
 Every Runner installation creates a runtime environment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/)  
 
 ## Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.
@@ -90,9 +90,9 @@ A single Runtime can connect to and manage multiple remote clusters.
 
 
 See:  
-[GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)
+[GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
 
 
 ## Triggers
@@ -106,8 +106,7 @@ For Argo Workflows in Codefresh, triggers are managed by Argo Events. You can de
 
 To enable Argo Workflows in Codefresh, contact support.
 
-See:  
-[Trigger conditions for events]({{site.baseurl}}/docs/workflows/create-pipeline/#configure-trigger-conditions-for-events)
+See [Trigger conditions for events]({{site.baseurl}}/docs/workflows/create-pipeline/#configure-trigger-conditions-for-events)
 
 
 

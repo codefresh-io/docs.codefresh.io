@@ -11,9 +11,8 @@ toc: true
 ---
 This project uses `Java, Spring Boot, Kafka, Zookeeper` to show you how to integrate these services in the composition.
 
-{{site.data.callout.callout_info}}
-##### Example 
-
+{{site.data.callout.callout_tip}}
+**TIP**  
 Just head over to the example [__repository__](https://github.com/codefreshdemo/example-springboot-kafka){:target="_blank"} in GitHub and follow the instructions there.
 {{site.data.callout.end}}
 

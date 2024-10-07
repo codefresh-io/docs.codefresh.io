@@ -39,13 +39,13 @@ Complete these steps to view enriched image information in the Images dashboard 
  
 1. (Mandatory) Connect to Docker registries  
   Connect Docker registries to Codefresh to store Docker images.  
-  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries).
+  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 1. (Mandatory) Report image information to Codefresh  
   This is the equivalent to pushing the image in Codefresh pipelines.  
   Use the [report-image-info](https://github.com/codefresh-io/argo-hub/blob/main/workflows/codefresh-csdp/versions/0.0.6/docs/report-image-info.md){:target="\_blank"} DAG template to report image information to Codefresh. 
   
-      > **NOTE**:  
+      > **NOTE**  
       If you are using an external platform or tool for your CI pipelines such as GitHub Actions or Jenkins, or even Codefresh pipelines, we have a new template that combines image reporting and enrichment. See [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations) for details.
 
 {:start="3"}

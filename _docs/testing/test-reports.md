@@ -39,9 +39,9 @@ There are two modes for processing test reports in Codefresh, built-in and custo
 
 1. **Built-in test reporting** based on the [Allure framework](https://qameta.io/allure-report/){:target="\_blank"}  
   Allure is an open-source test framework that can produce HTML reports, as in the example below.  
-  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.   
-  
-  Allure supports popular testing frameworks such as:
+  For more details, see the [official Allure documentation](https://docs.qameta.io/allure/){:target="\_blank"}.  
+  <br>
+  Allure supports popular testing frameworks such as:  
   * Java/JUnit/TestNG/Cucumber
   * Python/pytest
   * JavaScript/Jasmine/Mocha
@@ -285,8 +285,10 @@ By default, Allure creates a folder named `allure-results` containing all the te
 
 To pass the reports to the next step, you need to place them anywhere in the [Codefresh volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) that is automatically shared between all Codefresh steps.
 
->**TIP**:  
+{{site.data.callout.callout_tip}}
+**TIP**  
   You can also leave the test results in the project folder that was checked out from Git, as this folder is already inside the shared Codefresh volume.
+{{site.data.callout.end}}
 
 Therefore, once you create the reports with your testing framework, make sure to copy them to `{% raw %}${{CF_VOLUME_PATH}}{% endraw %}` which is the [Codefresh variable]({{site.baseurl}}/docs/pipelines/variables/) that points to the shared volume.  
 
@@ -447,7 +449,7 @@ Here is an example:
 {% endraw %}
 {% endhighlight %}
 
->**NOTE**:
+>**NOTE**  
  In the **Built-in test (Allure) reporting mode**, Codefresh automatically clears the test results. There is no need to manually define the `CLEAR_TEST_REPORT` variable.
 
 ## Creating multiple reports
@@ -500,6 +502,27 @@ The icons shown are specified by the `REPORT_TYPE` variable. The following optio
 
 If you don't provide a `REPORT_TYPE`, Codefresh uses a default icon.
 
+## Uploading large test reports
+
+By default, the maximum size for a test report is 1000MB. Override the default size through the `MAX_UPLOAD_SIZE_MB` environment variable.
+
+Example:
+
+{% highlight yaml %}
+{% raw %}
+unit_test_reporting_step:
+title: Upload Mocha test reports
+image: codefresh/cf-docker-test-reporting
+working_directory: /codefresh/volume/demochat/
+environment:
+- REPORT_DIR=mochawesome-report
+- REPORT_INDEX_FILE=mochawesome.html
+- CLEAR_TEST_REPORT=true
+- BUCKET_NAME=my-bucket-name
+- CF_STORAGE_INTEGRATION=google
+- MAX_UPLOAD_SIZE_MB=3000
+{% endraw %}
+{% endhighlight %}
 
 ## Getting results from tests that fail
 

@@ -49,8 +49,13 @@ Every issue tracking integration displays the following information:
 
 ### Edit/delete issue-tracking integrations for GitOps in Codefresh
 If you have existing integrations, you can change the credentials, or delete an integration.
->Deleting an integration deletes the integration resource from the shared configuration Git repo, its secrets, the CI workflows that 
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+Deleting an integration deletes the integration resource from the Shared Configuration Repository, its secrets, and the CI workflows that 
 use it. 
+{{site.data.callout.end}}
+
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
 1. Filter by **Issue Tracking**, and select the specific integration.

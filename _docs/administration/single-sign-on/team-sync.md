@@ -69,8 +69,8 @@ This is the general workflow for automated team-sync in Codefresh:
 Manually synchronize users and teams provisioned in your SSO provider account, on-demand, through the Codefresh CLI with the [`synchronize teams`](https://codefresh-io.github.io/cli/teams/synchronize-teams/){:target="\_blank"} command.
 
 
->**NOTE**:  
- >Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
+>**NOTE**    
+Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 As an example, you can sync your Azure teams with the CLI: 
 
@@ -97,8 +97,8 @@ max-width="40%"
 
 As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 
 
->**NOTE**:  
- >Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
+>**NOTE**    
+Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 A pipeline makes it possible to run team-sync periodically as a job. You can use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
 You can create a Git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
@@ -191,8 +191,8 @@ max-width="70%"
 %}
 
 ## Related articles
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)  
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
 [LDAP Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/ldap/)  
 
 

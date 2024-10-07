@@ -8,14 +8,16 @@ redirect_from:
   - /docs/docker-registries/external-docker-registries/docker-hub/
 toc: true
 ---
+
 Configure Docker Hub as a Docker registry for CI pipelines to push images to it.
 
-1.Select [**Docker Hub** as the registry provider]({{site.baseurl}}/docs/integrations/docker-registries/#general-configuration).
+1. Select [**Docker Hub** as the registry provider]({{site.baseurl}}/docs/integrations/docker-registries/#general-configuration).
 1. Define the following:  
   * Registry Name: A unique name for this configuration.
   * Username: Docker Hub username.
   * Password: Docker Hub [personal account token](https://docs.docker.com/docker-hub/access-tokens/){:target="\_blank"}, or Dockerhub account password (not recommended).
-    >If you have enabled [two-factor-authentication in Docker Hub](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}, then in the Password field, paste a Docker personal access token (instead of your Docker Hub master password). Otherwise, Codefresh will not be able to push your image.  
+    >**NOTE**  
+      If you have enabled [two-factor-authentication in Docker Hub](https://docs.docker.com/docker-hub/2fa/){:target="\_blank"}, then in the Password field, paste a Docker personal access token (instead of your Docker Hub master password). Otherwise, Codefresh will not be able to push your image.  
       If you don't have 2FA enabled in Dockerhub, then you can also use your Dockerhub account password. But in all cases we suggest you create a personal access token for Codefresh (personal access tokens are more secure as you can revoke them on demand and see when they were last used).
 
 {% include image.html 
@@ -28,9 +30,13 @@ Configure Docker Hub as a Docker registry for CI pipelines to push images to it.
 %}
 
 
->Docker.io only allows you to push images that are tagged with your username. If you have a choice, create
-a Docker Hub account with the same username that you have in Codefresh. If not, you need to change the Docker image
+{{site.data.callout.callout_tip}}
+**TIP**  
+Docker.io only allows you to push images that are tagged with your username.<br>If you have a choice, create
+a Docker Hub account with the same username that you have in Codefresh.<br>If not, you need to change the Docker image
 created to match your username in every [push step]({{site.baseurl}}/docs/pipelines/steps/push/#examples).
+{{site.data.callout.end}}
+
 
 
 ## Adding more Docker Hub integrations
@@ -112,7 +118,7 @@ The two Dockerhub accounts are `kkapelon` and `kostiscodefresh`, and Codefresh a
 
 
 ## Related articles
-[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Push step in pipelines]({{site.baseurl}}/docs/pipelines/steps/push/)  
 [Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  

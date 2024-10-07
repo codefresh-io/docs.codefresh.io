@@ -7,7 +7,11 @@ toc: true
 
 When you use Codefresh for continuous integration (CI), one of the most basic tasks is compiling and packaging applications. Though Codefresh has native support for Docker artifacts, it still works great with traditional (non-Dockerized) applications that don't use a Dockerfile for the actual build.
 
->If your application is deployed as a Docker image, see [building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) instead.
+{{site.data.callout.callout_tip}}
+**TIP**  
+If your application is deployed as a Docker image, see [building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/) instead.
+{{site.data.callout.end}}
+
 
 ## Using supporting Docker images in CI/CD environment
 
@@ -35,7 +39,7 @@ All [pipeline steps]({{site.baseurl}}/docs/pipelines/steps/) in Codefresh are in
 
 ## Choosing programming tools as Docker images
 
-In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/ci-examples) to package your application, a [Maven image]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/example-catalog/ci-examples/python/) image for Python applications, and so on.  
+In practice, this means that if you have a Node application, you need to use a [Node image]({{site.baseurl}}/docs/example-catalog/ci-examples/) to package your application, a [Maven image]({{site.baseurl}}/docs/example-catalog/ci-examples/spring-boot-2/) if you are working with Java, a [Python]({{site.baseurl}}/docs/example-catalog/ci-examples/python/) image for Python applications, and so on.  
 
 You launch the image using the Codefresh freestyle step. Here is an example for Node:
 
@@ -214,7 +218,8 @@ steps:
       - npm install  
 {% endhighlight %}
 
-> These versions are per pipeline. So each team can use the versions they need for their projects without affecting the other teams.
+>**NOTE**  
+ These versions are per pipeline. So each team can use the versions they need for their projects without affecting the other teams.
 
 So one team in your company might use Terraform 0.10 in their pipelines:
 

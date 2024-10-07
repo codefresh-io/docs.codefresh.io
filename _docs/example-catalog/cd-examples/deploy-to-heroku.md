@@ -88,7 +88,7 @@ steps:
   deploy_to_heroku:
     title: "Deploying to Heroku..."
     stage: "deploy"
-    type: "heroku-deployer"
+    type: "heroku-deployer:1.0.2"
     arguments:
       APP_NAME: $APP_NAME
       EMAIL: $EMAIL

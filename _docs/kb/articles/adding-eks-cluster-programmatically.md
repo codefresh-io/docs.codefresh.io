@@ -1,5 +1,5 @@
 ---
-title: "How To: Adding a new AWS EKS cluster to Codefresh programmatically"
+title: "How To: Add a new AWS EKS cluster to Codefresh programmatically"
 description: 
 group: kb
 sub-group: articles
@@ -11,14 +11,14 @@ categories: [Pipelines, API]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
 
-As part of your pipeline, you create a new cluster and want to add it to Codefresh
 
-## Details
+This article describes how to add a new cluster created in a pipeline to Codefresh programmatically.
 
-1. Note the name of the cluster in a variable, such as `$K8S_NAME`.
-2. After the cluster is created, run the following API call, replacing all with your values or variables:
+## How to
+
+1. Create a variable for the cluster name, such as `$K8S_NAME`.
+2. After the cluster is created, run the following API call, replacing all placeholders with your values or variables:
 
 {% raw %}
 
@@ -45,9 +45,9 @@ add_new_cluster:
 
 {% endraw %}
 
->_**Note**:_ A more detailed [EKS workflow can be foundhere](https://github.com/codefresh-io/eks-installer).
+{{site.data.callout.callout_tip}}
+See the detailed [EKS workflow](https://github.com/codefresh-io/eks-installer).
+{{site.data.callout.end}}
 
-## Related Items
-
-* [EKS Installer](https://github.com/codefresh-io/eks-installer)
-* [API documentation - clusters](https://g.codefresh.io/api/#tag/Clusters)
+## Related articles
+[API documentation - clusters](https://g.codefresh.io/api/#tag/Clusters)  

@@ -40,8 +40,10 @@ max-width="80%"
 * The Docker registry you connected to your Codefresh account in the CI pipeline quick start 
 * Either our sample application or your own application that has a Dockerfile. 
 
->For the quick start, you **don't** need a Kubernetes deployment file. Codefresh creates one for you through the UI. 
-
+{{site.data.callout.callout_tip}}
+**TIP**  
+For the quick start, you **don't** need a Kubernetes deployment file. Codefresh creates one for you through the UI. 
+{{site.data.callout.end}}
 
 
 ## Manually deploy Docker image to Kubernetes
@@ -57,7 +59,8 @@ Deploy the Docker image to your Kubernetes cluster without writing any configura
 <!--- add screenshot -->
 
 
->Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed.  
+>**NOTE**  
+  Do not use `latest` for your deployments. This doesn't help you to understand which version is deployed.  
   Use either branch names or even better git hashes so that you know exactly what is deployed on your Kubernetes cluster.  
 
 
@@ -128,7 +131,8 @@ Set up a pipeline in Codefresh so that any commits in GitHub automatically redep
 To do this, we will add a new [deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/) at the end of the pipeline. Deploy steps allow you to deploy Kubernetes applications in a declarative manner. 
 
 
->Remember that the application itself is already running successfully in the Kubernetes cluster after the manual deployment. 
+>**NOTE**  
+  Remember that the application itself is already running successfully in the Kubernetes cluster after the manual deployment. 
 
 1. In the Codefresh UI, expand Pipelines in the sidebar, and select **Pipelines**.
 1. From the pipeline list, select the pipeline you created. 
@@ -238,9 +242,9 @@ max-width="50%"
 You now have a complete CI/CD pipeline in Codefresh that executes fully automated builds to Kubernetes.
 
 Continue with:  
-[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm)
+[Helm deployment to Kubernetes quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)
 OR  
-[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments)
+[On-demand environment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 
 
 ## Read more on Kubernetes deployments & pipelines
