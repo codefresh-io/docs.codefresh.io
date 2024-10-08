@@ -47,7 +47,8 @@ Filtering by name returns pipelines whose names match or contain the specified t
 
 ### Endpoint
 
-`GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown`
+`GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown&filters={"name":[array<string>]}`
+
 
 
 
@@ -55,8 +56,9 @@ Filtering by name returns pipelines whose names match or contain the specified t
 
 
 {: .table .table-bordered .table-hover}
-| Setting    | Description     | Data Type | Required/Optional
-| `name` | The name of the pipeline or a part of the name by which to filter the pipelines. For example, filtering by `name`=`e-to-e` retrieves all pipelines that include `e-to-e` in their names.  | [array<string>] | Optional |
+| Parameter    | Description     | Data Type | Required/Optional |
+| ------------ | --------------  | ------    | ------------------|
+| `filters`| `name`: The name of the pipeline or a part of the name by which to filter the pipelines.<br>For example, filtering by `name`=`e-to-e` retrieves all pipelines that include `e-to-e` in their names.  | [array<string>] | Optional |
 
 
 ### Request examples
@@ -162,27 +164,28 @@ Here's an example of the
 ```
 
 ## Get average build duration
-Retrieves the average execution duration of pipeline builds.  
+Retrieves the average execution duration of pipeline builds for the specified time frame.  
 The average (mean) duration is calculated by dividing the total execution time by the number of builds, providing an overall measure of pipeline performance.
 
-You can filter pipeline builds by either a project, specific pipeline, status, or by the favorites tag.
+You can filter build data by either a project, a specific pipeline, status, or by the favorites tag.
 
 ### Endpoint
-`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?granularity=month`
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=granularity=<granularity>?filters={"filter-type":[array<string>]}`
 
 
 
 ### Query parameters
+
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | Data Type | Required/Optional|
+| -----------|-----------------|-----------|------------------|
 | `dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05dateRange=2024-09-01`. | <!--- `dateRange` | The custom or fixed time frame for which to generate the report. {::nomarkdown}<ul><li><b>Custom</b>: Requires the start and end dates in <code class="highlighter-rouge">yyyy-mm-dd</code> (ISO 8601) formats, separated by <code class="highlighter-rouge">&</code>. For example, <code class="highlighter-rouge">dateRange=2024-09-05dateRange=2024-09-01</code>.</li><li><b>Today</b>: <code class="highlighter-rouge">today</code></li><li><b>Last 7 days</b>: The previous seven days starting from today in encoded format. For example, <code class="highlighter-rouge">last%207%20days%20</code>.</li><li><b>Last 30 days</b>: The previous 30 days starting from today in encoded format. For example, <code class="highlighter-rouge">last%2030%20days%20</code>.</li></ul>{:/} | --> string | Required |
 | `granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>0 days to 6 months</b>: No granularity.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.</li></ul>{:/} | string | Optional |
-| `projectId` | The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
-| `granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>Up to 6 months</b>: No granularity.</li><li><b>1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.<br>When omitted, the default granularity of ???? is used.</li></ul>{:/} | string | Optional |
-| `projectId` | The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipeline builds, omit this filter and use `pipelineId` instead.  | array | Optional |
-| `pipelineId` | The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
-| `status` | The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
-| `isFavorites` | Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
+| `filters` | The filters by which to narrow the scope of the build data. Can be any of the following: 
+|  | `projectId`: The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
+|  | `pipelineId`: The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
+|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
+|  |  `isFavorites`: Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
 
 
 ### Request examples
@@ -282,10 +285,11 @@ This metric helps you assess the overall performance without being skewed by out
 | Setting    | Description     | Data Type | Required/Optional|
 |`dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05dateRange=2024-09-01`. | string | Required |
 |`granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>Up to 6 months</b>: No granularity.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.<br>When omitted, the default granularity of ???? is used.</li></ul>{:/} | string | Optional |
-|`projectId` | The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipeline builds, omit this filter and use `pipelineId` instead.  | array | Optional |
-|`pipelineId` | The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
-|`status` | The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
-|`isFavorites` | Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
+| `filters` | The filters by which to narrow the scope of the build data. Can be any of the following: 
+|  | `projectId`: The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
+|  | `pipelineId`: The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
+|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
+|  |  `isFavorites`: Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
 
 
 ### Request examples
@@ -344,7 +348,7 @@ at the pipeline, trigger, and branch levels.
 Here's an example of the 
 
 ```
-{"statusCode":400,"message":"no changes found between source and destination applications","error":"Bad Request"}
+
 ```
 
 
@@ -368,11 +372,11 @@ This metric is useful for identifying performance issues that affect the slowest
 | Setting    | Description     | Data Type | Required/Optional|
 |`dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05dateRange=2024-09-01`. | string | Required |
 |`granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>Up to 6 months</b>: No granularity.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.<br>When omitted, the default granularity of ???? is used.</li></ul>{:/} | string | Optional |
-|`projectId` | The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipeline builds, omit this filter and use `pipelineId` instead.  | array | Optional |
-|`pipelineId` | The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
-|`status` | The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
-|`isFavorites` | Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
-
+| `filters` | The filters by which to narrow the scope of the build data. Can be any of the following: 
+|  | `projectId`: The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
+|  | `pipelineId`: The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
+|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
+|  |  `isFavorites`: Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
 
 ### Request examples
 
