@@ -85,10 +85,9 @@ The priority (override behavior) is as follows, from highest to lowest:
 ## .spec
 
 {: .table .table-bordered .table-hover}
-
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
-| `spec.scopes`           | ??? Need to verify what this isThe custom API scopes controlling access to the pipeline. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
+| `spec.scopes`           | ??? Need to verify what this is.The custom API scopes controlling access to the pipeline. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
 | `spec.scopeSnapshot`    | The ID of the scope snapshot. ???? | string    | Optional |
 | `spec.permitRestartFromFailedSteps` | Determines if users can restart the pipeline from the failed step, instead of from the beginning of the pipeline. <br>Leave empty to inherit the account-level setting. (NIMA: to verify)<br>When set to `true`,  users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
 | `spec.build_version`    | ??? `v1` or `v2` | string    | Optional |
@@ -120,6 +119,42 @@ The priority (override behavior) is as follows, from highest to lowest:
 | `spec.externalResources`    | The external files, such as scripts or other resources available to the pipeline.<br>When defined, they are automatically retrieved and available when the pipeline starts execution.<br>See [spec.externalResources](#specexternalresources).  | array    | Optional |
 | `spec.debug`    | (NIMA: to ask Ziv what the fields mean))  | string    | Optional?? |
 | `spec.serviceAccount`    | (NIMA: to verify )The service account to use for authentication in ECR integrations for this pipeline.  | string    | Optional |
+
+
+
+
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
+| `spec.scopes`           | ??? Need to verify what this is. The custom API scopes controlling access to the pipeline. Configuring custom scopes will override the account-level defaults for this pipeline. ???? | array of strings    | Optional |
+| `spec.scopeSnapshot`    | The ID of the scope snapshot. ???? | string    | Optional |
+| `spec.permitRestartFromFailedSteps` | Determines if users can restart the pipeline from the failed step, instead of from the beginning of the pipeline. <br>Leave empty to inherit the account-level setting. (NIMA: to verify)<br>When set to `true`, users can restart the pipeline from the failed step. <br>See [Restarting a failed pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).| boolean    | Optional |
+| `spec.build_version`    | ??? `v1` or `v2` | string    | Optional |
+| `spec.triggers`    | The list of Git triggers defined for the pipeline. For details, see [`spec.triggers`](#spectriggers). | array    | Optional |
+| `spec.cronTriggers`    | The list of Cron or timer-based triggers defined for the pipeline. For details, see [`spec.cronTriggers`](#speccrontriggers). | array    | Optional |
+| `spec.runtimeEnvironment`    | The runtime environment selected for the pipeline and its configuration settings such as memory and CPU. For details, see [`spec.runtimeEnvironments`](#specruntimeenvironment).  | object    | Optional |
+| `spec.lowMemoryWarningThreshold`    | The memory-usage threshold for the pipeline's build exceeding which to display banner alerts. Useful to get timely warnings and prevent build failures. <br>Can be one of the following:{::nomarkdown}<ul><li><b>WARNING</b>: Displays a banner when memory usage exceeds 70% of the available memory. </li><li><b>CRITICAL</b>: Displays a banner when memory usage exceeds 90% of the available memory. </li><li><b>REACHED_LIMIT</b>: Displays a banner when memory usage exceeds 100% of the available memory. Setting this threshold means that the pipeline build has already failed when the banner is displayed.</li></ul>{:/}See also [Set memory usage threshold for pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-memory-usage-threshold-for-pipeline-build).| string    | Optional|
+| `spec.packId`    | Required for SaaS environments. Optional for hybrid environments.<br>The package identifier based on the resource size. Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">5cd1746617313f468d669013</code>: Small</li><li><code class="highlighter-rouge">5cd1746717313f468d669014</code>: Medium</li><li><code class="highlighter-rouge">5cd1746817313f468d669015</code>: Large</li><li><code class="highlighter-rouge">5cd1746817313f468d669017</code>: Extra large</li><li><code class="highlighter-rouge">5cd1746817313f468d669018</code>: XXL</li><li><code class="highlighter-rouge">5cd1746817313f468d669020</code>: 4XL</li></ul>{:/} | string | Required (for SaaS) |
+| `spec.requiredAvailableStorage`    | The minimum disk space for the pipeline’s build volume in `Gi` (NIMA: verify units). <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>When empty, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build). (NIMA: is there a default min and max? is it the same as the UI? from 1Gi to 8 Gi??)  | string    | Optional |
+| `spec.contexts`    | (NIMA: is shared config different from shared secrets?) Single or multiple comma-separated shared configuration contexts to be added to the pipeline. <br>See [Shared configuration contexts]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).   | array   | Optional |
+| `spec.clustersInfo`    | Determines if all or specific Kubernetes clusters are available for the pipeline build. Leave empty to inherit the account-level setting. (NIMA: how can the user know what the account-level setting is? Do they have to go manually to the Settings to see if there are restrictions?) <br>See [Select Kubernetes cluster contexts]({{site.baseurl}}/docs/pipelines/pipelines/#select-kubernetes-cluster-contexts).  | object  | Optional |
+| `spec.variablesSchema`    | ??? (NIMA: I THINK THIS CAN BE REMOVED)  | string    | `????` |
+| `spec.variables`    | The variables defined in the pipeline. See [spec.variables](#specvariables). | array    | Optional |
+| `spec.specTemplate`    | ??? See [spec.specTemplate](#specspectemplate). | object    | Optional |
+| `spec.steps`    | The steps to be executed by the pipeline, as a list of key-value pairs. (NIMA: need to add more info)<br>See [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/). | object    | Required |
+| `spec.services`    | ??? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
+| `spec.hooks`    | ??? (**NIMA: THIS IS AUTOGENERATED**) | object    | Optional |
+| `spec.stages`    | The stages into which to group the pipeline's steps. <br>When defined, each stage is displayed as a separate column in the pipeline's build view.<br>Stages are only for visualization and do not affect pipeline execution.<br>See [Grouping steps into stages]({{site.baseurl}}/docs/pipelines/stages/).   | array    | Optional |
+| `spec.mode`    | The execution mode for the pipeline. Leave empty to use the default. <br>Can be one of the following:{::nomarkdown}<ul><li><code class=highlighter-rouge>sequential</code>: The default, executes the steps in the order in which they are listed.</li><li><code class=highlighter-rouge>parallel</code>: Evaluates all step conditions at the same time and executes those steps that meet the requirements in parallel. Parallel execution mode allows you to order steps in ways not possible with sequential mode.</li></ul>{:/}See [Advanced workflows for pipelines]({{site.baseurl}}/docs/pipelines/advanced-workflows/). | string    | Optional |
+| `spec.fail_fast`    | Determines pipeline execution behavior in case of step failure. Leave empty to use the default. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Failed to execute</code>.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">spec.strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/} | boolean    | Optional |
+| `spec.strict_fail_fast`    | Specifies how to report the Build status when `fail_fast` is set to `false`.<br>**NOTE**:<br>Requires Runner chart v6.3.9 or higher.<br><br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the  <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the  <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at
+
+
+
+
+
+
+
 
 ### spec.triggers
 
@@ -245,6 +280,7 @@ See trigger events for:
 
 
 ### spec.runtimeEnvironment
+
 {: .table .table-bordered .table-hover}
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
@@ -257,6 +293,9 @@ See trigger events for:
 
 ### spec.clustersInfo
 
+{: .table .table-bordered .table-hover}
+| Field           | Description                 | Type      | Required/Optional |
+| --------------  | ---------------------------- |-----------| -------------------------|
 | `spec.clustersInfo.injectAll`     | When set as `true` (NIMA is this the default?), injects all clusters integrated with Codefresh into the pipeline build.   | boolean    | Optional |
 | `spec.clustersInfo.clusters`     | Applicable only when `injectAll`is set to `false`.<br>One or more comma-separated names of clusters to inject during the pipeline build. For example, `aws`, `eks-prod`. | array      | Optional |
 
@@ -270,6 +309,7 @@ See trigger events for:
 | `spec.variables.value`       | ????| string | Raw value |
 | `spec.variables.encrypted`       | Determines if to encrypt the stored value of the variable. When set to `false`, the default, variable values are not encrypted.<br>To encrypt, set to `true`. | boolean | Optional |
 
+
 ### spec.specTemplate
 
 {: .table .table-bordered .table-hover}
@@ -281,6 +321,7 @@ See trigger events for:
 | `spec.specTemplate.repo`      | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br> The Git repository where the pipeline definition YAML is stored, as regex, or in the format, `repoOwner/repoName`. | string  | Required |
 | `spec.specTemplate.path`      | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br>The directory within the repository with the  YAML file.  | string  | Required |
 | `spec.specTemplate.revision`  | Applicable only when `spec.specTemplate.location` is set to `YAML_LOCATION.GIT`.<br>The version of the YAML file to retrieve, based on the Git reference such as the branch, tag, or commit hash.| string  | Optional |
+
 
 ### spec.options
 
