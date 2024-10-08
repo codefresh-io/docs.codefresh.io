@@ -8,7 +8,7 @@ kb: false
 ht: true
 common: false
 categories: [Pipelines, CLI]
-support-reviewed: 2023-04-18 LG
+support-reviewed: 2024-09-26 LG
 ---
 
 ## Overview
@@ -19,7 +19,7 @@ Below outlines a way you can capture variables from child pipelines in the paren
 
 The solution here is to use annotations [1] to capture the variables from child pipelines. Annotations are in plain text and should be considered non-confidential.
 
-### Child Pipelin
+### Child Pipeline
 
 Below is a step you can add at the end of the child pipeline to "export" the variables for the parent pipeline to access.
 

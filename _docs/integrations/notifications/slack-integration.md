@@ -35,7 +35,7 @@ Enable notifications for builds based on their status:
 %}
 
 
-For detailed information, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
+<!--- For detailed information, see [Policy settings for pipelines]({{site.baseurl}}/docs/pipelines/pipelines/#policies).-->
 
 
 
@@ -69,16 +69,15 @@ When you have Slack integration enabled:
 
 1. All pipelines launched automatically by [triggers]({{site.baseurl}}/docs/pipelines/triggers/), send Slack notifications
 1. All pipelines executed manually, do **NOT** send Slack notifications.
-
-You can override this behavior by toggling the checkbox **Report notification on pipeline execution** under **Advanced Settings**
-either in a Git trigger dialog or the Run settings of a pipeline.
+  You can override the default behavior for notifications through the **Report notification on pipeline execution** option for pipelines. This is available under **Advanced Settings** for Git and Cron triggers, or the Run settings of a pipeline.
+  When selected, sends email notifications for pipelines which are executed manually.
 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/slack/report-notifications.png" 
 url="/images/integrations/slack/report-notifications.png" 
-alt="Manual Slack override" 
-caption="Manual Slack override" 
+alt="Select to send notifications for manually executed builds" 
+caption="Select to send notifications for manually executed builds" 
 max-width="40%" 
 %}
 
@@ -93,5 +92,7 @@ If you wish for more fine-grained control over Slack notifications, then take a 
 
 ## Related articles
 [Git triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
+[Cron triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/)  
+[Email notifications for pipelines]({{site.baseurl}}/docs/integrations/notifications/email-integration/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  

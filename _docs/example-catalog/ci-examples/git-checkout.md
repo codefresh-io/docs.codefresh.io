@@ -107,7 +107,7 @@ max-width="50%"
 This is the recommended way of creating re-usable pipelines in Codefresh.
 
 ## Cloning a repository with Codefresh Runner
-If you have the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) installed, you need to use
+If you have the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) installed, you need to use
 the fully qualified path of the Git repository:
 
 `codefresh.yml`

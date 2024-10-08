@@ -96,7 +96,7 @@ Now that you have verified your token, we can connect the registry to Codefresh.
   * **Registry name**: A unique name for this configuration.
   * **Username**: Your GitHub username.
   * **Password**: Your GitHub personal token.
-  * **Domain**: `ghcr.io`.
+  * **Domain**: `ghcr.io`. 
   * Expand **Advanced Options** and define the [**Repository Prefix**]({{site.baseurl}}/docs/integrations/docker-registries/#using-an-optional-repository-prefix) as your GitHub username.
 
 {% include image.html 
@@ -180,7 +180,7 @@ You can now treat this registry like any other Codefresh registry.
 
 
 ## Related articles
-[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  
 [Building and pushing an image]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/)  

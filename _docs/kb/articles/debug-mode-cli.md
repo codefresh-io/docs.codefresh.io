@@ -11,41 +11,42 @@ categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article describes how to enable debug mode when using the Codefresh CLI for pipeline management.  
+Enabling the `debug` mode provides detailed output helping you to understand the reasons for potential issues.  
 
-When you're running commands using Codefresh CLI you may face some issues related to:
+Debig mode is useful when facing issues related to:
+* Authentication
+* Network access, such as connectivity to the Codefresh platform
+* Delays or errors during command execution, as when running a pipeline locally
 
-* Authentication problems
-* Network-related issues (e.g.: trying to reach Codefresh platform)
-* Delays or errors executing a command (e.g.: running a pipeline locally)
+>**NOTE**  
+Make sure you have the [latest version of the CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"}.
 
-By enabling the `debug` mode when using the Codefresh CLI, you will get more verbose output, which will help you to understand where and when a potential issue is happening.
+## How to
 
-## Details
-
-1. Enable the `debug` mode for the Codefresh CLI: to do so, you need to initialize the `DEBUG` environment variable as follows:
+1. Initialize the `DEBUG` environment variable:
 
     ```shell
     DEBUG=codefresh*
     ```
 
-2. Run the Codefresh CLI command you would like to debug. For example:
+1. Run the Codefresh CLI command you want to debug.  
+  For example:
 
     ```shell
     codefresh run my-project/my-pipeline --local
     ```
 
-    (or any other Codefresh CLI command)
-
-3. You will get an output similar to this:
+1. Analyze the output to identify issues.
+   Below is an example of CLI command output in debug mode.
 
     ![Codefresh CLI debug output]({{site.baseurl}}/images/troubleshooting/cli-debug-mode.png)
 
->**_Note:_**
->
->If after reviewing the output provided by the debug mode you're still unable to fix the issue, please include that output in a ticket. That way the Support Team will be able to help you.
+{{site.data.callout.callout_tip}}
+**TIP**  
+If after analyzing the debug output you're unable to resolve the issue, please submit a ticket to Codefresh Support, including the output details. 
+{{site.data.callout.end}}
 
-## Related Items
+## Related articles
+[Codefresh CLI documentation](https://codefresh-io.github.io/cli/)
 
-* [Codefresh CLI documentation](https://codefresh-io.github.io/cli/)
-* [Codefresh CLI Installation and upgrade process](https://codefresh-io.github.io/cli/installation/) (it's important to keep your Codefresh CLI up to date)

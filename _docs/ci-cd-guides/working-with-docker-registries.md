@@ -31,7 +31,7 @@ To see all images from [all connected registries]({{site.baseurl}}/docs/integrat
 * To view image metadata, click on the image. For details, see [Docker image metadata]({{site.baseurl}}/docs/pipelines/docker-image-metadata/).
 
 
-**Filters for Docker images**  
+##### Filters for Docker images  
 The top left of the Images page has several filters that allow you to search for a specific subset of Docker images.  
 Filters include:  
 * Tagged/untagged images
@@ -53,7 +53,7 @@ Multiple filters work in an `AND` manner.
 %}
 
 
-**Actions for Docker images**  
+##### Actions for Docker images  
 On the right are the actions available foreach Docker image.  
 You can:  
 * Launch a Docker image as a [test environment]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
@@ -351,7 +351,8 @@ However, there are several times where you have multiple registries that have th
 
 This means that when you reference an image by domain name, as in a freestyle step for example, Codefresh might not know which Docker registry account to use for the pull action.
 
-> This is not a Codefresh limitation, but a Docker one. Even with vanilla Docker you cannot log in to multiple registries at the same time if they share the same domain.
+>**NOTE**  
+This is not a Codefresh limitation, but a Docker one. Even with vanilla Docker you cannot log in to multiple registries at the same time if they share the same domain.
 
 To solve this problem, Codefresh automatically detects connected registries that have the same domain and allow you to designate the primary one. The primary registry is used for image resolution when pulling Docker images.
 
@@ -375,7 +376,8 @@ You can use the `registry_context` property in [build]({{site.baseurl}}/docs/pip
 
 The `registry_context` property takes as value the name of an external connected registry. Build and composition steps accept an array of values as `registry_contexts`. In all cases, by using this optional property you instruct Codefresh to use a specific registry for pulling images.
 
-> The optional `registry_context` and `registry_contexts` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
+>**NOTE**  
+The optional `registry_context` and `registry_contexts` properties only affect the **pulling** of Docker images. The registry used for *pushing* images is still declared explicitly in build and push pipeline steps.
 
 The syntax for the freestyle step is the following:
 

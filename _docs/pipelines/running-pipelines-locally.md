@@ -22,7 +22,10 @@ docker run hello-world
 
 You should get a short welcome message.
 
->At the time of writing local builds can only run on Linux and Mac workstations. We are working to remove this limitation and allow developers with Windows machines to also run Codefresh pipelines locally.
+{{site.data.callout.callout_tip}}
+**TIP**   
+  At the time of writing local builds can only run on Linux and Mac workstations. We are working to remove this limitation and allow developers with Windows machines to also run Codefresh pipelines locally.
+{{site.data.callout.end}}
 
 Then install the [open-source Codefresh CLI](https://codefresh-io.github.io/cli/installation/){:target="\_blank"} and [set up authentication](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"} with your Codefresh account.
 
@@ -59,7 +62,7 @@ codefresh run francisco-codefresh/jan_19/my-basic-pipeline --local -b master -t 
 ### Keeping the pipeline volume in the local workstation
 
 If you are familiar with 
-[how Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines) you should know about the unique docker volume that is automatically shared between all pipeline steps.
+[how Codefresh pipelines work]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) you should know about the unique docker volume that is automatically shared between all pipeline steps.
 
 This volume (which also includes the project folder) makes data sharing between all steps very easy (e.g. with thing such as test reports or binary dependencies).
 

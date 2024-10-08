@@ -196,7 +196,7 @@ steps:
       - KUBERNETES_NAMESPACE=blue-green 
   wait_for_new_color:
     fail_fast: false
-    type: pending-approval
+    type: pending-approval:1.0.2
     title: Is the new color ok?
     stage: deploy  
   promote_color:
@@ -591,7 +591,7 @@ steps:
       - KUBERNETES_NAMESPACE=canary 
   check_canary_10:
     fail_fast: false
-    type: pending-approval
+    type: pending-approval:1.0.2
     title: Is canary ok?
     stage: 'canary 10%'  
   promote_canary_33:
@@ -630,7 +630,7 @@ steps:
         - denied   
   check_canary_33:
     fail_fast: false
-    type: pending-approval
+    type: pending-approval:1.0.2
     title: Is canary ok?
     stage: 'canary 33%'  
   promote_canary_full:

@@ -26,6 +26,12 @@ alt="Getting a Token from Codecov"
 
 ## Set up Codecov integration in Codefresh
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**     
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
+
+<br>
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
 1. Select **Codecov** and then click **Configure**.
@@ -53,12 +59,12 @@ With the integration in place, you can reference it by name in any Codefresh pip
 
 `codefresh.yml`
 ```yaml
-  codecov-report:
-	stage: "prepare"
-	title: Codecov report
-	type: codecov-reporter
-	arguments:
-  	codecov_integration: my-codecov-integration
+codecov-report:
+  stage: "prepare"
+  title: Codecov report
+  type: codecov-reporter:2.1.0
+  arguments:
+    codecov_integration: my-codecov-integration
 ```	  
 
 For more details see our [Codecov example](https://codefresh.io/docs/docs/example-catalog/ci-examples/codecov-testing/).

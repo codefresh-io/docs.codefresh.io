@@ -10,10 +10,9 @@ redirect_from:
 toc: true
 ---
 
-{{site.data.callout.callout_info}}
-
+>**NOTE**  
 If you use only the default Docker registry of your account this step is optional as all successful Codefresh pipelines automatically push the Docker image they create in the default Docker registry. No further configuration is needed to achieve this behavior.
-{{site.data.callout.end}}
+
 
 Push a built image to a remote Docker registry with one or more tags. Supports standard Docker registries and ECR.
 
@@ -32,6 +31,7 @@ step_name:
   image_name: codefresh/app
   registry: my-registry
   fail_fast: false
+  strict_fail_fast: true
   when:
     branch:
       only: 
@@ -65,14 +65,67 @@ step_name:
 | `image_name`                               | The tagged image name that will be used The default value will be the same image name as of the candidate.                                                                      | Default                   |
 | `registry`                                 | The registry logical name of one of the inserted registries from the integration view. <br>The default value will be your default registry [if you have more than one]({{site.baseurl}}/docs/integrations/docker-registries/).                                     | Default                   |
 | `registry_context`                                 | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)                            | Optional                  |
-| `fail_fast`                                | If a step fails, and the process is halted. The default value is `true`.                                                                                                        | Default                   |
+|`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
+| `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
+| `strict_fail_fast`   |Specifies how to report the Build status when `fail_fast` is set to `false`.<br>**NOTE**:<br>Requires Runner chart upgrade to v6.3.9 or higher.<br><br>You can set the Build status reporting behavior at the root-level or at the step-level for the pipeline.{::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of failed when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> and <code class="highlighter-rouge">strict_fail_fast=true</code> fails to execute.</li></ul></li><li><code class="highlighter-rouge">false</code>:<ul><li>When set at the <i>root-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li><li>When set at the <i>step-level</i>, returns a Build status of successful when any step in the pipeline with <code class="highlighter-rouge">fail_fast=false</code> fails to execute.</li></ul></li></ul>{:/}<br>**NOTES**:<br>`strict_fail_fast` does not impact the Build status reported for parallel steps with `fail_fast` enabled. Even if a child step fails, the parallel step itself is considered successful. See also [Handling error conditions in a pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/#handling-error-conditions-in-a-pipeline).| Optional                  |
 | `when`                                     | Define a set of conditions which need to be satisfied in order to execute this step.<br>You can find more information in the [Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/) article.          | Optional                  |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).                                                                               | Optional                  |
 | `retry`   | Define retry behavior as described in [Retrying a step]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#retrying-a-step).                                                                               | Optional                  |
 
+## Add a timeout to terminate step execution
+To prevent steps from running beyond a specific duration if so required, you can add the `timeout` flag to the step.  
+When defined: 
+* The `timeout` is activated at the beginning of the step, before the step pulls images.
+* When the step's execution duration exceeds the duration defined for the `timeout`, the step is automatically terminated. 
+
+>**NOTE**  
+To define timeouts for parallel steps, see [Adding timeouts for parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/#add-timeouts-for-parallel-steps).
+
+Here's an example of the `timeout` field in the step:
+
+  `YAML`
+{% highlight yaml %}
+step_name:
+  type: push
+  title: Step Title
+  description: Free text description
+  candidate: {% raw %}${{build_step_name}}{% endraw %}
+  tag: latest
+  image_name: codefresh/app
+  registry: my-registry
+  timeout: 45m
+  fail_fast: false
+  when:
+    branch:
+      only: 
+        - /FB-/i
+  on_success:
+    ...
+  on_fail:
+    ...
+  on_finish:
+    ...
+  retry:
+    ... 
+
+{% endhighlight %}
+
+**Timeout info in logs**  
+Timeout information is displayed in the logs, as in the example below. 
+
+{% include image.html
+lightbox="true"
+file="/images/steps/timeout-messages-in-logs.png"
+url="/images/steps/timeout-messages-in-logs.png"
+caption="Step termination due to timeout in logs"
+alt="Step termination due to timeout in logs"
+max-width="60%"
+%}
+
 ## Examples
 
-Push an image to a registry connected with the [integration name]({{site.baseurl}}/docs/integrations/docker-registries/) of  `myazureregistry`.
+### Push an image to a registry connected with the integration 
+Push an image to a registry connected with the integration [integration name]({{site.baseurl}}/docs/integrations/docker-registries/) of  `myazureregistry`.
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -98,6 +151,7 @@ steps:
 {% endraw %}
 {% endhighlight %}
 
+### Push an image as the name of the branch in the external registry
 Push an image as the name of the branch in the external registry and also use a different image than the default. The same image will also by pushed as `latest` in the internal Codefresh registry (with the default name of `my-app-image`).
 
 `codefresh.yml`
@@ -127,7 +181,7 @@ steps:
 {% endhighlight %}
 
 
-Push an image with multiple tags.
+### Push an image with multiple tags
 
 `codefresh.yml`
 {% highlight yaml %} 
@@ -202,7 +256,8 @@ steps:
 
 This option enables you to push your images without pre-saving the credentials in Codefresh's registry integration view.
 
->Note that this method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
+>**NOTE**  
+  This method of pushing images is offered as a workaround. The suggested way is to use the [central Codefresh integration for registries]({{site.baseurl}}/docs/integrations/docker-registries/) as explained in the previous section.
 
   `YAML`
 {% highlight yaml %}
@@ -246,10 +301,10 @@ step_name:
 | `secretAccessKey`      | Your AWS secret access key.   | Optional <br>**Ignored when provider is** `docker`  |
 | `region`               | The region where the ECR registry is accessible.   | Optional <br>**Ignored when provider is** `docker`  |
 | `fail_fast`            | If a step fails, and the process is halted. The default value is `true`. |Default |
-| `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps. | Optional |
+| `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). | Optional |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
                                        
-**Exported resources:**
+### Exported resources
 - Image ID.
 
 ## Related articles

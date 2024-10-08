@@ -8,7 +8,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh can work with any C/C++ application very easily as both `gcc` and `g++` are already offered in Dockerhub. There is also another example available with [C++ and cmake]({{site.baseurl}}/docs/example-catalog/ci-examples/cpp-cmake).
+Codefresh can work with any C/C++ application very easily as both `gcc` and `g++` are already offered in Dockerhub. There is also another example available with [C++ and cmake]({{site.baseurl}}/docs/example-catalog/ci-examples/cpp-cmake/).
 
 ## The example C project
 

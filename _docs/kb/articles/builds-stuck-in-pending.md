@@ -34,6 +34,4 @@ One or a number of builds are stuck in pending state.
 * If it is stuck in pending, or otherwise cannot be restarted, please reach out to our support team with details.
 * If the build is on a hybrid runner runtime environment, check for general issues (such as resource availability) on your runner cluster.
 
-## Related Items
 
-[Builds are not starting on Hybrid/Venona/Runner]({{site.baseurl}}/docs/kb/articles/builds-not-starting-on-hybrid-runtime/)

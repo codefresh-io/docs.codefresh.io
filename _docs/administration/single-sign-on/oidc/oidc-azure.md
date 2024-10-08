@@ -8,7 +8,7 @@ toc: true
 ---
 
 Set up SSO for Azure using OIDC.
-For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc).  
+For a general overview on OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/).  
 
 Set up OIDC SSO for Azure in Codefresh by:
 1. Registering the Codefresh application in Azure
@@ -86,7 +86,8 @@ max-width="70%"
 1. Next add **Delegated permissions** on the right
    * Add `User > Read.All`
 
-> The `User.Read (Delegated)` permission is added by default.
+    >**NOTE**  
+    The `User.Read (Delegated)` permission is added by default.
 
 {% include image.html
 lightbox="true"
@@ -130,7 +131,10 @@ caption="Description for client secret"
 max-width="70%"
 %}
 
-> Tip: Make a note of the expiry date in your calendar to renew the key before the expiry date and prevent service interruptions.
+  {{site.data.callout.callout_tip}}
+  **TIP**    
+  Make a note of the expiry date in your calendar to renew the key before the expiry date and prevent service interruptions.
+  {{site.data.callout.end}}
 
 {:start="3"}
 1. Click **Add**.  
@@ -194,13 +198,14 @@ caption="Example of Codefresh-generated Client Name for Azure"
 max-width="50%"
 %}
 
-
+{:start="6"}
 1. Continue with [Step 5: Configure redirect URIs in Azure](#step-5-configure-redirect-uris-in-azure).
 
 
 ## Step 5: Configure redirect URIs in Azure
 
 As the final step, add the Codefresh callback URL to the allowed reply URLs for the created application in Azure.
+
 
 **Before you begin**  
 * Make sure you have the Client Name for the Azure SSO configuration from Codefresh 
@@ -262,4 +267,4 @@ You have now completed the SSO setup for Azure using OIDC.
 
 ## Related articles
 [Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync)  
+[Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  

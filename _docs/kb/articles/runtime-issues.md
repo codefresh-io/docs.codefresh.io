@@ -11,7 +11,6 @@ categories: [Runtimes]
 support-reviewed: 2023-04-18 LG
 ---
 
-
 ## Pre-installation checks or runtime collision check failed
 
 ### Possible cause
@@ -20,9 +19,37 @@ support-reviewed: 2023-04-18 LG
 
 ### Possible actions
 
-  1. Uninstall the Codefresh runtime.
-  1. Remove the Argo Project components from your cluster.
-  1. Reinstall the Codefresh runtime.
+You can either: 
+* Install Codefresh GitOps Runtime alongside Community Argo CD   
+
+_OR_ 
+
+1. Uninstall the Codefresh GitOps Runtime.
+1. Remove the Argo Project components from your cluster.
+1. Reinstall the Codefresh GitOps Runtime.
+
+## `Job has reached the specified backoff limit` error during Helm installation
+
+### Possible cause
+Validation errors in your `values.yaml` file.  
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+
+### Possible actions
+1. Get more detailed information on the reason for the validation failure by running:  
+   `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
+   where:  
+   `{NAMESPACE}` is the namespace of the Hybrid GitOps Runtime. 
+1. Fix the errors. The table below describes the settings that are validated in the `values` file.
+
+
+| Setting              | Validation                                                                                                 |
+|----------------------|------------------------------------------------------------------------------------------------------------|
+| `userToken`            | If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace. |
+| **Account permissions**  | If the user has admin permissions for the account in which they are installing the runtime.                 |
+| **Runtime name**         | If defined, and is unique to the account.                                                                   |
+| **Access mode**          | {::nomarkdown}<ul><li>For tunnel-based, the default, if `accountId` is defined, and matches the account of the `userToken` defined in the file.</li><li>For ingress-based, if the `hosts` array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if `runtime.ingressUrl` is defined.</li></ul>{:/} |
+| `gitCredentials`       | When defined, includes a Git password either explicitly, or as a `secretKeyRef`, similar to `userToken`. The password or token has the required permissions in the Git provider. |
+
 
 ## Pre-installation error: please upgrade to the latest cli version: `v<number>`  
 
@@ -46,7 +73,7 @@ Run the appropriate command to upgrade to the latest version:
 
 ### Possible cause
 
-The Git token provided for runtime installation is not valid.
+The Git runtime token provided for installation is not valid.
 
 ### Possible actions
 

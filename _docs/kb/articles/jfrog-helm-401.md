@@ -29,7 +29,7 @@ Add `credentials_in_arguments: true` as an Argument in the Helm step, for exampl
 ```yaml
 step-name:  
     title: "Pushing Helm Chart to HELM REPO"  
-    type: "helm"  
+    type: "helm:1.1.12"  
     arguments:  
       helm_version: "3.0.1"  
       action: "push"  

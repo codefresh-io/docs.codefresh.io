@@ -22,7 +22,10 @@ Use a container image with a [freestyle step]({{site.baseurl}}/docs/pipelines/st
 {:start="1"}
 1. Get the {% raw %}```${{SLACK_WEB_URL}}```{% endraw %} and put it in the Environment Variables or use [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/).
 
- > To integrate with Slack, see [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks){:target="_blank"}.
+ {{site.data.callout.callout_tip}}
+**TIP** 
+To integrate with Slack, see [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks){:target="_blank"}.
+{{site.data.callout.end}}
 
 {:start="2"}
 2. Add the following step to your `codefresh.yml`:

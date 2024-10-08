@@ -11,40 +11,56 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article outlines how to execute a specific step conditionally based on the presence or absence of a variable in Codefresh pipelines, enabling branching logic within a single pipeline.
 
-You are trying to run a specific step only if a variable is set. You are trying to have branching logic in one pipeline.
+The condition determines how variable values are substituted within the pipeline's build when these variables are not defined in the pipeline configuration. In such instances, Codefresh maintains the variable name string unchanged, without replacing it with a value.
 
-## Details
+The following condition:
 
-1. Using the following syntax, you can check whether a variable exists for the current build:
+{% raw %}
 
-   {% raw %}
+```yaml
+  'includes("${{CF_RELEASE_TAG}}", "{{CF_RELEASE_TAG}}") == true'
+```
 
-    ```yaml
-    when:
-      condition:
-        all:
-          whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
-    ```
+{% endraw %}
 
-    {% endraw %}
+evaluates to `true` if `CF_RELEASE_TAG` does not exist, and `false` if it does exist.
 
-2. The following syntax can be used to check for a specific value:
+## How to
 
-   {% raw %}
+##### Check if variable exists for the current build
 
-    ```yaml
-    when:
-      condition:
-        all:
-          whenVarValue: '"${{MyVar}}" == "myValue"'
-    ```
+Use the following syntax:
 
-    {% endraw %}
+{% raw %}
 
-3. If desired, you can combine multiple checks.
+```yaml
+when:
+  condition:
+    all:
+      whenVarIsMissing: 'includes("${{MyVar}}", "{{MyVar}}") == true'
+```
 
-## Related Items
+{% endraw %}
 
-[Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)
+##### Check if variable has a specific value
+
+Use the following syntax:
+
+{% raw %}
+
+```yaml
+when:
+  condition:
+    all:
+      whenVarValue: '"${{MyVar}}" == "myValue"'
+```
+
+{% endraw %}
+
+Combine multiple checks as required.
+
+## Related articles
+
+[Conditional execution of steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/)  

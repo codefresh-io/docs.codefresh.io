@@ -45,12 +45,18 @@
           url: "/create-app-specs"
         - title: Update the image tag for application
           url: "/create-rollout"
+        - title: Work with Environments & Products
+          url: "/gitops-products"
 
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
     - title: Home dashboard
       url: "/home-dashboard"
+    - title: GitOps Environments
+      url: "/gitops-environments"
+    - title: GitOps Products
+      url: "/gitops-products"
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images
@@ -100,15 +106,15 @@
           url: "/non-git-checkout"
         - title: Use Git Hash in CI
           url: "/get-short-sha-id-and-use-it-in-a-ci-process"
-        - title: Build an Image with the Dockerfile in root directory
+        - title: Build an image with Dockerfile in root directory
           url: "/build-an-image-with-the-dockerfile-in-root-directory"
-        - title: Build an Images specifying Dockerfile Location
+        - title: Build an image specifying Dockerfile Location
           url: "/build-an-image-specify-dockerfile-location"
-        - title: Build an Image from a different Git repository
+        - title: Build an image from a different Git repository
           url: "/build-an-image-from-a-different-git-repository"
-        - title: Build and push an Image
+        - title: Build and push an image
           url: "/build-and-push-an-image"
-        - title: Build an Image with build arguments
+        - title: Build an image with build arguments
           url: "/build-an-image-with-build-arguments"
         - title: Create a Docker image for PHP
           url: "/php"
@@ -154,7 +160,7 @@
           url: "/import-data-to-mongodb"
         - title: NodeJS + Angular2 + MongoDB
           url: "/nodejs-angular2-mongodb"
-        - title: Vault secrets pipelines
+        - title: Vault secrets in pipelines
           url: "/vault-secrets-in-the-pipeline"
         - title: Decrypt with Mozilla SOPS
           url: "/decryption-with-mozilla-sops"
@@ -213,6 +219,8 @@
       url: "/codefresh-hosted-gitops"
     - title: Git Providers
       url: "/git-providers"
+    - title: OpenID Connect
+      url: "/oidc-pipelines"      
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Web Services
@@ -221,6 +229,8 @@
       url: "/microsoft-azure"
     - title: Google Cloud
       url: "/google-cloud"
+    - title: Octopus Deploy
+      url: "/octopus-deploy"      
     - title: Docker registries
       url: "/docker-registries"
       sub-pages:
@@ -264,13 +274,15 @@
       url: "/codecov-integration"
     - title: Google Cloud builder
       url: "/gcloud-builder"
-    - title: Google Marketplace Installation
+    - title: Google Marketplace
       url: "/google-marketplace"
     - title: GitHub Actions
       url: "/github-actions"
     - title: Notifications
       url: "/notifications"
       sub-pages:
+        - title: Email
+          url: "/email-integration"
         - title: Slack
           url: "/slack-integration"
         - title: Jira
@@ -347,15 +359,17 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating GitOps applications
+        - title: Creating Argo CD applications
           url: "/create-application"
-        - title: Monitoring GitOps applications
+        - title: Monitoring Argo CD applications
           url: "/applications-dashboard"
-        - title: Managing GitOps applications
+        - title: Application Groups for Argo CD applications
+          url: "/gitops-app-groups"
+        - title: Managing Argo CD applications
           url: "/manage-application"
         - title: Progressive delivery with GitOps
           url: "/install-argo-rollouts"
-        - title: Troubleshooting GitOps applications
+        - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
 - title: Pipelines
@@ -368,7 +382,7 @@
     - title: Configuration for pipelines
       url: "/configuration"
       sub-pages:
-        - title: Global pipeline settings
+        - title: Account-level pipeline settings
           url: "/pipeline-settings"
         - title: Shared configuration
           url: "/shared-configuration"
@@ -394,7 +408,7 @@
         - title: Deploy
           url: "/deploy"
         - title: Approval
-          url: "/approval"
+          url: "/approval"   
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
@@ -410,7 +424,7 @@
           url: "/helm-triggers"
         - title: Artifactory triggers
           url: "/jfrog-triggers"
-        - title: Timer (Cron) triggers
+        - title: Cron (timer) triggers
           url: "/cron-triggers"
     - title: Variables in pipelines
       url: "/variables"
@@ -426,6 +440,8 @@
       url: "/stages"
     - title: Caching in pipelines
       url: "/pipeline-caching"
+    - title: Manually running pipeline builds
+      url: "/run-pipeline"
     - title: Debugging pipelines
       url: "/debugging-pipelines"
     - title: Monitoring pipelines
@@ -443,19 +459,6 @@
     - title: Pipeline definitions YAML
       url: "/what-is-the-codefresh-yaml"
 
-- title: Argo Workflows
-  url: "/workflows"
-  pages:
-    - title: Creating workflows
-      url: "/create-pipeline"
-    - title: Nested workflows
-      url: "/nested-workflows"
-    - title: Configure artifact repository
-      url: "/configure-artifact-repository"
-    - title: Selectors for concurrency synchronization
-      url: "/concurrency-limit"
-    - title: Sharing file systems
-      url: "/sharing-file-system"
 
 - title: Testing
   url: "/testing"
@@ -478,44 +481,53 @@
 - title: Installation
   url: "/installation"
   pages:
-    - title: Options
+    - title: Platform deployment
       url: "/installation-options"
-    - title: Architecture
-      url: "/runtime-architecture"
-    - title: Runner installation behind firewalls
-      url: "/behind-the-firewall"
-    - title: Runner
-      url: "/codefresh-runner"
-    - title: On-premises
-      url:
       sub-pages:
-        - title: Platform installation & configuration
-          url: "/codefresh-on-prem"
-        - title: Platform upgrade
-          url: "/codefresh-on-prem-upgrade"
-        - title: Feature management
-          url: "/on-prem-feature-management"
-    - title: GitOps
-      url:
+        - title: On-premises deployment
+          url: "/on-premises"
+          sub-pages:
+            - title: Installation & configuration
+              url: "/codefresh-on-prem"
+            - title: Upgrade
+              url: "/codefresh-on-prem-upgrade"
+            - title: Account and user setup
+              url: "/on-prem-configuration"            
+            - title: Feature management
+              url: "/on-prem-feature-management"
+    - title: Runner for pipelines
+      url: "/runner"
       sub-pages:
+        - title: Runner architecture
+          url: "/runner-architecture"
+        - title: Runner installation for pipelines
+          url: "/install-codefresh-runner"
+        - title: Runner installation behind firewalls
+          url: "/behind-the-firewall"
+    - title: GitOps Runtimes
+      url: "/gitops"
+      sub-pages:
+        - title: GitOps Runtime architecture
+          url: "/runtime-architecture"
         - title: Hosted GitOps Runtime
           url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops-helm-installation"
+          url: "/hybrid-gitops-helm-installation" 
+        - title: Hybrid GitOps Runtime alongside Community Argo CD
+          url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
-        - title: Managing & monitoring GitOps Runtimes
-          url: "/monitor-manage-runtimes"
+        - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
+          url: "/migrate-cli-runtimes-helm"  
         - title: Shared Configuration Repository
           url: "/shared-configuration"
-        - title: Add external clusters to GitOps Runtimes
+        - title: Monitoring & managing GitOps Runtimes
+          url: "/monitor-manage-runtimes"
+        - title: Managing external clusters in GitOps Runtimes
           url: "/managed-cluster"
-        - title: Add Git Sources to GitOps Runtimes
+        - title: Managing Git Sources in GitOps Runtimes
           url: "/git-sources"
-        - title: Download/upgrade GitOps CLI
-          url: "/upgrade-gitops-cli"
-    - title: CLI
-      url: "/cli"
+
 
 - title: Administration
   url: "/administration"
@@ -526,6 +538,8 @@
           url: "/create-codefresh-account"
         - title: Adding users and teams
           url: "/add-users"
+        - title: Managing service accounts
+          url: "/service-accounts"
         - title: Configuring access control for pipelines
           url: "/access-control"
         - title: Configuring access control for GitOps
@@ -579,6 +593,7 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
+
 - title: API
   url: "/api-examples"
   pages:
@@ -587,11 +602,17 @@
 
 - title: Reference
   url: "/reference"
+- title: Security
+  url: "/security"
   pages:
-    - title: Git tokens
+    - title: Git tokens for GitOps
       url: "/git-tokens"
-    - title: Secrets
+    - title: Secrets for GitOps
       url: "/secrets"
+    - title: Verify authenticity of Codefresh artifacts in GitOps
+      url: "/codefresh-signed-artifacts"
+    - title: Verify authenticity of artifacts signed with Codefresh pipelines
+      url: "/pipelines-verify-cf-artifacts"      
 
 
 - title: What's new
@@ -641,7 +662,13 @@
       url: "/terms-of-service"
     - title: Privacy Policy
       url: "/privacy-policy"
+    - title: Acceptable Use Policy
+      url: "/acceptable-use-policy"      
     - title: Service Commitment
       url: "/sla"
-    - title: Codefresh SLA Definitions
-      url: "/codefresh-sla-definitions"
+    - title: Cloud Credits
+      url: "/cloud-credits"
+    - title: Support Triage Definitions
+      url: "/support-triage-definitions"
+    - title: Legacy Codefresh Terms of Service
+      url: "/legacy-cf-terms-of-service"

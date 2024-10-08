@@ -22,14 +22,14 @@ Codefresh can automatically launch environments (powered by Docker swarm) to [pr
 Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers, but of course it has great support for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/) and [Helm releases]({{site.baseurl}}/docs/deployments/helm/helm-releases-management/):
 
 - [Deploy to a VM with packer]({{site.baseurl}}/docs/example-catalog/cd-examples/packer-gcloud/) 
-- [Deploy to a VM with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp)
-- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp) 
-- [Use kubectl as part of freestyle step]({{site.baseurl}}/docs/example-catalog/cd-examples/use-kubectl-as-part-of-freestyle-step) 
-- [Deploy with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize)
-- [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm) 
-- [Deploy with Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform) 
-- [Deploy with Pulumi]({{site.baseurl}}/docs/example-catalog/cd-examples/pulumi) 
-- [Deploy to Nomad]({{site.baseurl}}/docs/example-catalog/cd-examples/nomad)
+- [Deploy to a VM with FTP]({{site.baseurl}}/docs/example-catalog/cd-examples/transferring-php-ftp/)
+- [Deploy to Tomcat using SCP]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-tomcat-via-scp/) 
+- [Use kubectl as part of freestyle step]({{site.baseurl}}/docs/example-catalog/cd-examples/use-kubectl-as-part-of-freestyle-step/) 
+- [Deploy with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/)
+- [Deploy with Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/) 
+- [Deploy with Terraform]({{site.baseurl}}/docs/example-catalog/cd-examples/terraform/) 
+- [Deploy with Pulumi]({{site.baseurl}}/docs/example-catalog/cd-examples/pulumi/) 
+- [Deploy to Nomad]({{site.baseurl}}/docs/example-catalog/cd-examples/nomad/)
 - [Deploy to Heroku]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-to-heroku/)
 - [Deploy to Docker swarm]({{site.baseurl}}/docs/example-catalog/cd-examples/docker-swarm/)
 - [Deploy to Elastic Beanstalk]({{site.baseurl}}/docs/example-catalog/cd-examples/elastic-beanstalk/)
@@ -39,4 +39,4 @@ Codefresh can deploy to any platform such as VMs, FTP/SSH/S3 sites, app servers,
 ### Secrets examples
 
 Codefresh can automatically export secret key-value pairs using the Vault plugin from the [Step Marketplace](https://codefresh.io/steps/step/vault){:target="\_blank"}.
-- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets)
+- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets/)

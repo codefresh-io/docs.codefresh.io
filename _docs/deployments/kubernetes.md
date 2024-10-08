@@ -15,7 +15,7 @@ Codefresh offers several options when it comes to Kubernetes deployments:
 1. Through the [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/) in a pipeline  
   Use this to also perform simple templating on Kubernetes manifests.
 1. Through a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) step with [Kustomize](https://kustomize.io){:target="\_blank"}.  
-  See [Deployment with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize).
+  See [Deployment with Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/).
 1. Using a freestyle step with your own `kubectl` commands  
   This deployment option gives you great flexibility, but assumes that you know how to work with `kubectl`. See [Custom kubectl commands]({{site.baseurl}}/docs/deployments/kubernetes/custom-kubectl-commands/).
 1. Using Helm as a package manager  

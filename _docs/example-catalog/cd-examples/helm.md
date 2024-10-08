@@ -80,7 +80,7 @@ steps:
       dockerfile: Dockerfile
   deploy:
     title: Deploying Helm Chart
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./helm-sample-app
     arguments:
@@ -179,7 +179,7 @@ steps:
       dockerfile: Dockerfile
   store:
     title: Storing Helm Chart
-    type: helm
+    type: helm:1.1.12
     stage: store
     working_directory: ./helm-sample-app
     arguments:
@@ -187,7 +187,7 @@ steps:
       chart_name: charts/helm-example
       kube_context: my-demo-k8s-cluster
   deploy:
-    type: helm
+    type: helm:1.1.12
     stage: deploy
     working_directory: ./helm-sample-app
     arguments:

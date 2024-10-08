@@ -7,27 +7,27 @@ description: "Changelog for Pipelines 2020 (Classic)"
 ## December 2020
 - Get Code Coverage Reports with Coveralls - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/coveralls-testing/)
 - Codefresh will now use the default branch (e.g. `main`) instead of assuming `master`. This applies to GitHub, GitLab, and Bitbucket - [documentation]({{site.baseurl}}/docs/pipelines/steps/git-clone/)
-- App-Proxy now supports GitLab - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation)
+- App-Proxy now supports GitLab - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#app-proxy-installation)
 - Helm promotion pipelines can be overridden in the GUI  - [documentation]({{site.baseurl}}/docs/deployments/helm/helm-environment-promotion/#creating-a-custom-helm-board)
-- Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#configure-internal-registry-mirror)
+- Internal Registry mirror for the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#configure-internal-registry-mirror)
 - Production and staging deployments guide - [documentation]({{site.baseurl}}/docs/ci-cd-guides/environment-deployments/)
 - Escaping YAML in pipelines - [documentation]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#escaping-strings)
 - GitOps dashboard now shows affected services for each release - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/#working-with-the-gitops-dashboard)
 - Time based filters in build view - [documentation]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#applying-filters-on-the-build-view)
 
 ## November 2020
-- Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry)
+- Pushing Images to the Digital Ocean Container Registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/digital-ocean-container-registry/)
 - Getting Code Coverage Reports with Codecov - [documentation]({{site.baseurl}}/docs/example-catalog/ci-examples/codecov-testing/)
 - Integrating SonarQube Analysis into your Pipelines - [documentation]({{site.baseurl}}/docs/testing/sonarqube-integration/)
 - GitOps deployments - [documentation]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/)
-- Global volume mounts in the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#custom-volume-mounts)
-- Global environment variables in the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#custom-global-environment-variables)
+- Global volume mounts in the Codefresh runner - [documentation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-volume-mounts)
+- Global environment variables in the Codefresh runner - [documentation](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#custom-global-environment-variables)
 
 ## October 2020
 - Using Google for SSO - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/sso-google/)
 - Setting-up Helm Triggers in your Codefresh pipeline with the Codefresh UI - [documentation]({{site.baseurl}}/docs/pipelines/triggers/helm-triggers/)
 - Using the GitHub Container registry as Docker registry - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/github-container-registry/)
-- Simplified Git operations with the App Proxy for the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#app-proxy-installation)
+- Simplified Git operations with the App Proxy for the Codefresh runner - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#app-proxy-installation)
 - Upgrade Codefresh on-prem - [documentation]({{site.baseurl}}/docs/installation/codefresh-on-prem-upgrade/)
 
 ## September 2020
@@ -36,7 +36,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - DockerHub rate limit issue - [documentation]({{site.baseurl}}/docs/kb/articles/dockerhub-rate-limit/)
 
 ## August 2020
-- Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/pipelines/hooks)
+- Pipeline/step hooks - [documentation]({{site.baseurl}}/docs/pipelines/hooks/)
 - Pipeline templates - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#using-pipeline-templates)
 - Pipeline definition restrictions - [documentation]({{site.baseurl}}/docs/administration/access-control/#pipeline-definition-restrictions)
 - Concurrency limits per branch - [documentation]({{site.baseurl}}/docs/pipelines/pipelines/#policies)
@@ -51,7 +51,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Check if a variable exists - [documentation]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/#execute-steps-according-to-the-presence-of-a-variable)
 
 ## June 2020
-- New Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- New Codefresh Runner installation - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
 - Using multiple Registry integrations with the same domain - [documentation]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain)
 - Multiple Dockerhub integrations - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/other-registries/)
 - Global Docker registry prefix/repository - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/#using-an-optional-repository-prefix)
@@ -63,7 +63,7 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/pipelines/variables/#masking-variables-in-logs)
 - Restrict Codefresh to specific namespace - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#restrict-codefresh-access-to-a-specific-namespace)
 - Deploy with Kustomize - [documentation]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/)
-- Installing the Codefresh Runner on a multi AZ GKE cluster - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- Installing the Codefresh Runner on a multi AZ GKE cluster - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
 - Masking encrypted variables in logs - [documentation]({{site.baseurl}}/docs/pipelines/variables/#masking-variables-in-logs)
 
 ## April 2020
@@ -93,9 +93,9 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - Both Helm 2 and Helm 3 clusters can be used at the same time
 - Installing the Codefresh runner behind proxy - [documentation]({{site.baseurl}}/docs/enterprise/codefresh-runner/#installing-behind-a-proxy)
 - Using Vault secrets in the Pipeline - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/vault-secrets-in-the-pipeline/)
-- Deploy to a VM using FTP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp)
-- Deploy to Tomcat using SCP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp)
-- Decryption with Mozilla SOPS - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops)
+- Deploy to a VM using FTP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/transferring-php-ftp/)
+- Deploy to Tomcat using SCP - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/deploy-to-tomcat-via-scp/)
+- Decryption with Mozilla SOPS - [documentation]({{site.baseurl}}/docs/yaml-examples/examples/decryption-with-mozilla-sops/)
 
 ## February 2020
 - Use GitHub Actions as Codefresh pipeline steps - [documentation]({{site.baseurl}}/docs/integrations/github-actions/)
@@ -115,13 +115,13 @@ description: "Changelog for Pipelines 2020 (Classic)"
 - New UX flow for the signup process
 - Updated OneLogin SSO support - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/saml/saml-onelogin/)
 - Published Codefresh Platform IPs - [documentation]({{site.baseurl}}/docs/integrations/kubernetes/#prerequisites)
-- Installing the Codefresh Runner in AWS - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/#installing-on-aws)
+- Installing the Codefresh Runner in AWS - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/#installing-on-aws)
 - Amazon ECS/Fargate deployment example - [documentation]({{site.baseurl}}/docs/integrations/amazon-web-services/)
 
 ## January 2020
-- New deployment environment dashboard - [documentation]({{site.baseurl}}/docs/pipelines/deployment-environments)
+- New deployment environment dashboard - [documentation]({{site.baseurl}}/docs/pipelines/deployment-environments/)
 - Support for Azure Storage in test reports - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-azure-storage)
 - Promoting Docker images - [documentation]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#promoting-docker-images)
 - Using Dockerhub personal access tokens - [documentation]({{site.baseurl}}/docs/integrations/docker-registries/docker-hub/)
 - Updated Azure SSO instructions - [documentation]({{site.baseurl}}/docs/administration/single-sign-on/oidc/oidc-azure/)
-- Codefresh Runner requirements - [documentation]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- Codefresh Runner requirements - [documentation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)

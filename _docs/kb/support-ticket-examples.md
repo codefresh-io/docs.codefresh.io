@@ -30,7 +30,9 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >A detailed description of this issue.
 >
->If the issue is related to the Pipeline Hybrid Runtime, please gather the [Support Package](https://github.com/codefresh-support/hybrid-runner-support) and attach it to the ticket.
+>If the issue is related to Hybrid Runtime, please gather the [Support Package](https://github.com/codefresh-support/hybrid-runner-support) and attach it to the ticket.
+>
+>Support may sometimes need to impersonate your user to understand the issue and troubleshoot. To enable impersonation for your user, please navigate to [User Settings](https://g.codefresh.io/user/settings). Under the Security section, select the check box for `Allow Codefresh support team to login as my user (all the operations made by the team will be audited)` and save the settings. Please let support know if you have enabled impersonation.
 >
 >### How to reproduce
 >

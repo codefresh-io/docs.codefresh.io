@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting GitOps applications"
+title: "Troubleshooting Argo CD applications"
 description: ""
 group: deployments
 sub_group: gitops
@@ -9,7 +9,7 @@ toc: true
 
 
 ## Current release version stuck in Progessing state
-In the GitOps Apps dashboard, when viewing the Timeline tab for the selected application, the Current Version is shown as **Progressing**, though the application status is Healthy and Synced.
+In the GitOps Apps dashboard, when viewing the Timeline tab for the selected Argo CD application, the Current Version is shown as **Progressing**, though the application status is Healthy and Synced.
 
 {% include 
 	image.html 
@@ -32,5 +32,4 @@ In Codefresh, this issue leads to a loop with the following behavior:
 
 
 ### Possible Actions
-
 To resolve this issue when using Istio with Argo Rollouts, configure the application following the best practices for [integration with GitOps](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#integrating-with-gitops){:target="\_blank"} in the Argo Rollouts documentation.

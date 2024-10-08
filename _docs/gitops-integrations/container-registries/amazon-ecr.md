@@ -19,7 +19,8 @@ You can set up the integration with Amazon ECR in one of two modes:
   Access keys consist of an access key ID and a secret access key, used to authenticate and authorize API requests to AWS services for a specific user.
   Unlike IAM roles, access keys are long-term credentials, without a default expiration date.
 
->Amazon ECR integration with IAM Role is supported only for Hybrid GitOps.
+>**NOTE**  
+  Amazon ECR integration with IAM Role is supported only for Hybrid GitOps.
   Access Key integration is supported for both Hosted and Hybrid GitOps. Access Key integration requires runtime version 0.1.27 or higher. 
 
 
@@ -28,30 +29,44 @@ For detailed information, see [How Amazon Elastic Container Registry Works with 
 
 ## Prerequisites
 
+### Permissions for IAM Role and Access Key integrations
+
+The IAM Role/Access Key user must have one of the following permissions:
+* `AmazonEC2ContainerRegistryReadOnly` for read-only access to Amazon EC2 Container Registry repositories.
+* `AmazonEC2ContainerRegistryFullAccess` for administrative access to Amazon ECR resources.
+* `AmazonEC2ContainerRegistryPowerUser` for full access to Amazon EC2 Container Registry repositories, without permissions to delete repositories or make changes to policies.
+
+If any of these permissions are not granted, images cannot be successfully reported from ECR.
+
 
 ### IAM Role integration
-Before you configure settings in Codefresh to integrate Amazon ECR:  
-* [Create an IAM (Identity and Access Management) role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}  
 
-Define the role in trusted relationships with `Effect: Allow` and  `Action: sts:AssumeRole` on the EKS cluster.  
+##### IAM Role for ECR integration  
+Amazon ECR integration in Codefresh requires an Identity and Access Management (IAM) Role with permissions to the ECR registry.
+For details, see [Create the ECR integration IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"}.
+
+##### Other IAM roles  
+Once you have an ECR integration IAM Role, you can use a different IAM role if that Role can assume the ECR integration IAM Role.  
+To use an IAM Role assigned to the Service Account used by app-proxy for example, the Role must be explicitly configured with a trust relationship to assume the ECR integration IAM Role - even if the other IAM Role is the ECR integration IAM Role.
+
 For example:  
 ```yaml
 {
   "Effect": "Allow",
     "Principal": {
-        "AWS": "arn:aws:iam::XXXXX:role/eksctl-awscluster-ServiceRole-XXXXXX"
+      "AWS": "arn:aws:iam::XXXXX:role/eksctl-awscluster-ServiceRole-XXXXXX"  # IAM role for ECR integration
             },
-        "Action": "sts:AssumeRole",
-        "Condition": {}
+    "Action": "sts:AssumeRole",
+    "Condition": {}
 }
 ```
-
 
 ### Access Key integration
 You must generate an access key ID and the access secret for the IAM user, and download or copy them to a secure location.
 
 
->The steps that follow describe access key generation through the AWS Management Console. 
+>**NOTE**  
+  The steps that follow describe access key generation through the AWS Management Console. 
   We assume that you have created the IAM user for whom to generate the access key. See [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html){:target="\_blank"}.
 
 
@@ -76,7 +91,7 @@ The table describes the arguments required for GitOps integrations with Amazon E
 | ----------  |  -------- | 
 | **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share the integration resource. <br>The integration resource is created in the Git repository with the shared configuration, within <code class="highlighter-rouge">resources</code>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <code class="highlighter-rouge">resources/all-runtimes-all-clusters/</code></li><li>Selected runtimes: Created in <code class="highlighter-rouge">resources/runtimes/<runtime-name></code></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
-| **IAM Role settings**       | IAM Role integration is not supported for Hosted GitOps Runtimes.{::nomarkdown}<ul><li><b>IAM Role</b>: The name of the IAM role you defined with the specific permissions for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the container registry. Define the region nearest to you.</li></ul>{:/}|
+| **IAM Role settings**       | IAM Role integration is not supported for Hosted GitOps Runtimes.{::nomarkdown}<ul><li><b>IAM Role</b>: The name of the IAM role you defined for ECR integration with the specific permissions for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the container registry. Define the region nearest to you.</li></ul>{:/}|
 | **Access Key settings**       | Access Key integration is supported for both Hosted and Hybrid GitOps Runtimes.{::nomarkdown}<ul><li><b>Access Key ID</b>: The access key generated for the IAM user, and paired with the <b>Secret Access Key</b> for authentication to the ECR registry.</li><li><b>Secret Access Key</b>: The secret access key generated for and paired with the <b>Access Key</b> for authentication to the ECR registry.</li><li><b>Region</b>: The geographic region hosting the ECR registry. Define the region nearest to you.</li></ul>{:/}|
 | **Test connection**       | Click to verify that you can connect to the specified instance before you commit changes. |
    

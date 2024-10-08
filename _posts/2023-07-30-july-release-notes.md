@@ -47,8 +47,8 @@ Continuing to extend our support for Gerrit with our latest update. In place of 
 For details, see [System variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
 
 
-### Global Search & Navigation for GitOps applications
-As part of our commitment to constantly empower our users through Global Search & Navigation, here's our latest enhancement: Search GitOps Applications.  
+### Global Search & Navigation for Argo CD applications
+As part of our commitment to constantly empower our users through Global Search & Navigation, here's our latest enhancement: Search Argo CD Applications.  
 Easily find the application you need by name, or explore the Applications category to find what you need. 
 
  {% include 

@@ -1,5 +1,5 @@
 ---
-title: "How To: Clone or backup Pipelines or Projects"
+title: "How To: Clone or back up pipelines or projects"
 description: 
 group: kb
 sub-group: articles
@@ -11,23 +11,30 @@ categories: [Pipelines, CLI]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
 
-You would like to back up your Pipelines or Projects locally.
+This article describes how to back up your pipelines or projects locally.
 
-## Details
+## How to
 
-You will need to have the [Codefresh CLI installed](https://codefresh-io.github.io/cli/installation/). When installed, run the following command:
+##### Prerequisite  
+[Install the Codefresh CLI](https://codefresh-io.github.io/cli/installation/). 
+
+##### Commands
+
+**Back up the pipeline**
 
 {% raw %}
-
 ```shell
-codefresh get pip "pipeline_name" -o yaml >  pipeline_backup_file
+codefresh get pip "<pipeline_name>" -o yaml >  <pipeline_backup_file>  
 ```
-
 {% endraw %}
 
-If you would like to export protected variables, run the following:
+where:  
+* `"<pipeline_name>"` is the name of the pipeline to back up.
+* `<pipeline_backup_file>` is the name of the file to which to save the backed up pipeline.
+
+
+**Export protected variables**  
 
 {% raw %}
 
@@ -37,7 +44,8 @@ codefresh get pip "pipeline_name" --decrypt-variables -o yaml >  pipeline_backup
 
 {% endraw %}
 
-To recreate a pipeline from a backup file, run the following command:
+
+**Recreate a pipeline from a backup file**
 
 {% raw %}
 
@@ -47,6 +55,4 @@ codefresh replace -f pipeline_backup_file
 
 {% endraw %}
 
-## Related Items
 
-[Codefresh CLI](https://codefresh-io.github.io/cli/installation/)

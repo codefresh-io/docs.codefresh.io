@@ -105,7 +105,8 @@ If you are working on an open-source project and wish for greater visibility, yo
 
 Public logs are disabled by default and you need to explicitly enable them.
 
->This happens for security reasons. Make sure that the logs you are exposing to the Internet do not have any sensitive information. If you are unsure, you can still use the private badge that shows project status only as explained in the previous section.
+>**NOTE**  
+This happens for security reasons. Make sure that the logs you are exposing to the Internet do not have any sensitive information. If you are unsure, you can still use the private badge that shows project status only as explained in the previous section.
 
 To enable the public logs, toggle the respective switch in the pipeline settings:
 
@@ -148,6 +149,6 @@ Your visitors can also click on each individual pipeline step and see the logs f
 If you are using Codefresh to manage a public project, you should also use the capability to [trigger builds from external forks]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#support-for-building-pull-requests-from-forks).
 
 ## Related articles
-[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines)  
+[Introduction to Codefresh pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  

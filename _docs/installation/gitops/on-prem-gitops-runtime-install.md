@@ -7,14 +7,16 @@ toc: true
 
 Install the GitOps Runtime in your on-premises environments with Helm to create and manage Argo CD applications and deployments.
 
->**NOTE**:  
-Tunnel-based access mode is not supported for GitOps on-premises installations.
-
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
+Tunnel-based access mode is _not supported_ for GitOps on-premises installations.
+{{site.data.callout.end}}
 
 ## Install GitOps Runtime on-premises
 
 
-* Run: 
+1. Run: 
+
 {% highlight yaml %}
 helm upgrade --install cf-gitops-runtime \
   --create-namespace \
@@ -177,4 +179,3 @@ Depending on the ingress controller used, you may need post-installation configu
 
 ## Related articles
 [Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[On-premises platform architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  

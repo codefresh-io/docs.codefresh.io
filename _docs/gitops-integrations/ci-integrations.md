@@ -15,7 +15,8 @@ See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-int
 ## Codefresh image reporting and enrichment action
 To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
->You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-gitops).
+>**NOTE**  
+You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-gitops).
 
 
 Use the action as follows:
@@ -39,7 +40,8 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
   [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
   [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
     
-  >For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
+  >**NOTE**  
+  For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
 
 {:start="4"}
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  

@@ -28,7 +28,7 @@ hooks:
 on_elected:
   steps:
     SendEmail:
-      type: smtp
+      type: smtp:1.0.2
       arguments:
         TO: 'group_email@company.com'
         FROM: no-reply@company.com
@@ -43,7 +43,7 @@ on_elected:
 on_success:
   steps:
     SendEmail:
-      type: smtp
+      type: smtp:1.0.2
       arguments:
         TO: 'group_email@company.com'
         FROM: no-reply@company.com
@@ -58,7 +58,7 @@ on_success:
 on_failure:
   steps:
     SendEmail:
-      type: smtp
+      type: smtp:1.0.2
       arguments:
         TO: 'group_email@company.com'
         FROM: no-reply@company.com
@@ -77,6 +77,6 @@ on_failure:
 
 [1] <https://codefresh.io/docs/docs/pipelines/hooks/#running-stepsplugins-in-hooks>
 
-[2] <https://codefresh.io/steps/step/smtp>
+[2] <https://codefresh.io/steps/step/smtp/>
 
 [3] <https://codefresh.io/docs/docs/pipelines/configuration/shared-configuration/>

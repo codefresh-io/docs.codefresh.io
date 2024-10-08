@@ -14,7 +14,7 @@ To configure an artifact repository, do the following:
 * Update the `serviceAccountName` to match the storage bucket 
 * Recreate `argo-server` pod or pods to get the permissions 
 
-### Step 1: Create ConfigMap for artifact repository 
+## Step 1: Create ConfigMap for artifact repository 
 Create a `ConfigMap` with the specs to connect to the storage bucket configured as the artifact repository, and enable pipeline logging to the same.  
 The settings apply to all workflows by default, unless overridden by a specific `Workflow Template` or `Workflow` resource.
 
@@ -41,7 +41,7 @@ data:
       useSDKCreds: true
 ```
 
-### Step 2: Define RBAC permissions for artifact repository
+## Step 2: Define RBAC permissions for artifact repository
 Grant the workflow controller sufficient permissions for S3 bucket operations.
 
 1. Go to the same Codefresh runtime installation repository:  
@@ -130,7 +130,7 @@ subjects:
 ```
   
 
-### Step 3: Update `serviceAccountName` for artifact repository
+## Step 3: Update `serviceAccountName` for artifact repository
 Define the correct Service Account that with the roles and permissions for workflows to access the artifact repository.  
 {:start="1"}
 1. Go to the same Codefresh runtime installation repository:  
@@ -172,7 +172,7 @@ patchesStrategicMerge:
           serviceAccountName: <service-account-name> # must be identical to the service account name in rbac.yaml       
 ```
 
-### Step 4: Recreate `argo-server` pods to get the permissions
+## Step 4: Recreate `argo-server` pods to get the permissions
 As the final step in configuring the artifact repository, for the `argo-server` pod or pods to have the permissions needed to access the S3 bucket, manually delete `argo-server` pods to recreate them.
 
 1. Wait for the configuration changes to take effect on the cluster.
@@ -180,4 +180,4 @@ As the final step in configuring the artifact repository, for the `argo-server` 
 1. Select the `argo-server-<#>` pod or pods and delete them.
 
 ## Related articles
-[Creating workflows]({{site.baseurl}}/docs/workflows/create-pipeline)  
+[Creating Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline/)  

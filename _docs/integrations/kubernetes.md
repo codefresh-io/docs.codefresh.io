@@ -19,13 +19,18 @@ Codefresh has native support for Kubernetes in the following areas:
 - [Viewing the environment dashboard](/#viewing-the-environment-dashboard)
 - [Deploying to a cluster with the GUI](#ad-hoc-deployments-with-the-codefresh-ui)
 - [Deploying to a cluster with a pipeline](#automated-deployments-with-codefresh-pipelines)
-- [Running pipelines on a cluster]({{site.baseurl}}/docs/installation/codefresh-runner/)
+- [Running pipelines on a cluster]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)
 
 
 
 
 Codefresh offers its own Kubernetes dashboard that allows you to inspect the services and namespaces
 in your cluster. To activate this dashboard, you need to connect your cluster to your Codefresh account first.
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+The name assigned to the integration must be unique within the account. Using the same name for other integrations or Shared Configuration contexts within pipelines will result in conflicts.<br>For troubleshooting, see [Error: context already exists]({{site.baseurl}}/docs/kb/articles/error-context-already-exists/).
+{{site.data.callout.end}}
 
 ## Connect a Kubernetes cluster
 
@@ -67,8 +72,9 @@ For GKE cluster versions >=1.19 basic authentication is deprecated. You can add 
 To add an Azure cluster, select *Azure AKS* from the drop-down menu instead of *Azure AKS SP*. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
 in order to access your cluster. Accept them and Codefresh will connect to Azure to get the cluster information.
 
->If you experience difficulties at this point try logging into Azure first in your browser *before* clicking
-the authenticate button. Also make sure that you are using an organizational/company Azure account and not a personal one. We are currently working with Microsoft to improve this integration.
+>**NOTE**  
+If you experience difficulties at this point try logging into Azure first in your browser *before* clicking
+the authenticate button.<br> Also make sure that you are using an organizational/company Azure account and not a personal one. We are currently working with Microsoft to improve this integration.
 
 If everything is ready you will see a dialog that allows you to select your Azure subscription and the 
 cluster name that you wish to use.
@@ -84,7 +90,10 @@ max-width="60%"
 
 Codefresh will query the cluster and show its nodes. You are now ready to [deploy to Azure kubernetes]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/).
 
->If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications){:target="\_blank"} and remove "Codefresh" from the list.
+{{site.data.callout.callout_tip}}
+**TIP**  
+If you wish for any reason to revoke the granted access from the Azure side, visit [https://account.activedirectory.windowsazure.com/r#/applications](https://account.activedirectory.windowsazure.com/r#/applications){:target="\_blank"} and remove "Codefresh" from the list.
+{{site.data.callout.end}}
 
 #### Adding an AKS cluster with a service principal
 
@@ -229,7 +238,8 @@ cloud provider for this purpose.
 If you are evaluating Codefresh and want to connect your cluster as fast as possible with no issues
 follow these steps:
 
->Note that this method is only suggested for non-production clusters, and quick demos. See the next section for the proper way to use Codefresh in production environments.
+>**NOTE**  
+This method is only suggested for non-production clusters, and quick demos. See the next section for the proper way to use Codefresh in production environments.
 
 First make sure that you are giving commands to the appropriate cluster if you have more than one:
 
@@ -728,7 +738,9 @@ Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/c
 
 ## Using a cluster for running CI/CD pipelines
 
-Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) to run pipelines in your cluster.
+
+Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner//) to run pipelines in your cluster.
+
 
 
 
