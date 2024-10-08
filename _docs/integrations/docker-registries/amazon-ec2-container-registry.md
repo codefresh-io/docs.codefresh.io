@@ -158,9 +158,10 @@ Before creating a public ECR integration in Codefresh, get the AWS username and 
 There are two ways to push images:
 
 1. (Recommended) Automatically through the YAML [push step]({{site.baseurl}}/docs/pipelines/steps/push/).  
-1. Manually by promoting the image  (described below)
+  For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).
+1. Manually promoting the image (described below)
 
-For more details on how to push a Docker image in a pipeline see the [build and push example]({{site.baseurl}}/docs/example-catalog/ci-examples/build-and-push-an-image/).
+
 
 ### Manually promoting an image
 
