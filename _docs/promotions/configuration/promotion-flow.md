@@ -39,7 +39,9 @@ Here are a few additional factors to be aware of when creating Promotion Flows.
 
 
 ### Trigger and target environments 
-You can create and assign environments for the Promotion Flow, starting with the Trigger Environment, where the change initiates the flow, and the other target environments required for promotion. You need at least one target environment for promotions. 
+You can create and assign environments for the Promotion Flow, starting with the Trigger Environment, where the change to the application initiates the flow, and the other target environments required for promotion. You need at least one target environment for promotions. 
+
+The Trigger 
 
 * Adding environments  
   When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved, allowing to return to the flow later.
@@ -83,23 +85,69 @@ Open the Flow Builder to add a Promotion Flow.
 SCREENSHOT
 
 {:start="3"}
-1. Continue with [Step 2: Select Trigger Environment](#step-2-select-trigger-environment).
+1. In **Select Trigger Environment**, click ??? to see the list of available environments:
+    * Select an existing environment, select it and click **Add**. 
+    * To create a new environment, click **Add New Environment**. 
+
+SCREENSHOT
+
+{:start="4"}
+1. Optional. To add a Trigger Workflow and validate the readiness of the trigger environment after the change and commit action, click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}.
+    * To review the manifest of an inline Trigger Workflow, click ??? and then select the required workflow. 
+    * To apply a Trigger Workflow from global Promotion Policy settings, click **Automated Promotion Policy**.  
+    * To add a new Promotion Workflow as the trigger workflow, click **Add New Workflow**. 
+
+SCREENSHOT
+
+{:start="5"}
+1. To add a target environment to promote to, either sequentially or in parallel, mouse over the right of the environment and click ??.  
+  To add parallel environments, click ?? on the right of the previous environment. For example, to add `qa` and `staging` as parallel environments to `dev`, you would click ?? on the `dev` environment.
+
+SCREENSHOT
+
+{:start="6"}
+1. To add a dependency between two environments, from the **Depends on** list in the target environment, select the environment and click **Update Dependency**.
+  The environment is added with a link is between it and the next environment to indicate a dependency.  
+
+  SCREENSHOT
 
 
+{:start="7"}
+1. To select the Promotion Action for the target environment, do the following:
+    1. Mouse over the left of the target environment and click ??.
+    1. Select an inline action from the list, or to automatically select an action from the global promotion policies, click **Account-level promotion policies**. 
+
+  SCREENSHOT
+
+{:start="8"}
+1. To add a Pre- or Post-Action Promotion for the target environment, mouse over the left of the target environment and click ??.
+    * To add an inline Workflow, select it and click **Add**. Continue from step ??
+    * To add a new Workflow, click **Add New Workflow**. 
+    * To apply an automated Promotion Policy, click Account-level Promotion Policy. 
+
+  SCREENSHOT
+
+{:start="8"}
+
+1. To commit changes, click **Save Promotion Flow**.
+
+
+
+
+
+<!--- 
 
 ### Step 2: Select Trigger Environment
 Every Promotion Flow starts from a Trigger Environment where the change is made that triggers the flow.  
 Select a predefined environment, or create a new environment and then return to the Promotion Flow and select the new environment.
 
-
-1. Click ?? in **Select Trigger Environment** to see the list of available environments.
+.
 
 SCREENSHOT
 
 {:start="2"}
 1. Do one of the following:
-    * To add an existing environment, select it and click **Add**. Continue from step ??
-    * To create a new environment, click **Add New Environment**. 
+    * 
         * You are taken to the Environments page and the Create Environment form is displayed. See ???? 
         * A notification alerts you that there are unsaved changes to the Promotion Flow.  
           This notification remains as long as you have unsaved changes in the Promotion Flow.
@@ -208,9 +256,9 @@ SCREENSHOT
   You can now pick up from where you left off.         
 1. Continue with [Step 8: (Optional) Evaluate global Promotion Policy settings by product](#step-8-optional-evaluate-global-promotion-policy-settings-by-product).    
 
+-->
 
-
-### Step 8: (Optional) Evaluate global Promotion Policy settings by product
+## Evaluate global Promotion Policy settings by product
 Select a product to evaluate the settings that will be applied from global Promotion Policies for all target environments without inline settings. 
 Global Promotion Policy settings are applied from all Policies that match the product and the environment, according to priority.
 
@@ -230,11 +278,7 @@ SCREENSHOT
 1. If you get an error that the component is not defined for the Policy, click the corresponding icon and assign a Workflow or an Action.
 
 
-### Step 9: Save changes and commit flow
-As the final action in creating a Promotion Flow, save the settings and commit the changes.
-TBD where are teh changes saved?
 
-1. Click **Save Promotion Flow** to commit changes.
 
 
 

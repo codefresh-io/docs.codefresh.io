@@ -33,38 +33,38 @@ The table describes the core and promotion-specific entities.
         <li><strong>Target environments</strong>: The environments where changes are promoted after the trigger environment.</li>
       </ul>
     </td>
-    <td>Users with ABAC permissions</td>
+    <td>Users</td>
     <td><a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/">Environments</a></td>
   </tr>
   
   <tr>
-    <td><strong>Product (Optional)</strong></td>
-    <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote the entire Product and all its applications across different environments, rather than managing applications individually.</td>
-    <td>Users with ABAC permissions</td>
+    <td><strong>Product (Required)</strong></td>
+    <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote applications within the product across different environments, rather than promotion each application manually.</td>
+    <td>Users</td>
     <td><a href="https://codefresh.io/docs/docs/products/about-products/">Products</a></td>
   </tr>
   
   <tr>
     <td><strong>Applications</strong></td>
-    <td>Applications are the core units around which promotions revolve. Each application can be promoted individually or as part of a product.</td>
+    <td>Applications are the core units around which promotions revolve. Each Argo CD application  can be promoted individually or as part of a product.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/deployments/gitops/create-application/">Creating applications</a></td>
   </tr>
   
   <tr>
-    <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities define how promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
+    <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities are specific to promotions and define promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
   </tr>
   
   <tr>
     <td><strong>Promotion Flows</strong></td>
-    <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process.</td>
+    <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process for applications within the same product.</td>
     <td>Account administrators</td>
     <td><a href="https://codefresh.io/docs.docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
   
   <tr>
     <td><strong>Promotion Settings</strong></td>
-    <td>Promotion settings specify what gets promoted across environments. With products, these settings can be defined within the Product’s configuration or in a YAML CRD.</td>
+    <td>Promotion settings specify what gets promoted across environments. With products, these settings can be defined within the product’s configuration, either inline exclusive to the product, or a reusable promotion template.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/products/configure-product-settings/">Promotion settings for products</a></td>
   </tr>
@@ -83,7 +83,7 @@ The table describes the core and promotion-specific entities.
 
 ## Promotion entities and GitOps Runtimes
 
-All promotion entities are stored as manifests in the Shared Configuration Repository of the GitOps Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+Most of the core and promotion-specific entities are stored as Custom Resource Definitions (CRDs) in the Shared Configuration Repository of the GitOps Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes). 
 If you have more than one Configuration Runtime, Codefresh automatically consolidates the settings into a single set of promotion manifests.
 
 {: .table .table-bordered .table-hover}
