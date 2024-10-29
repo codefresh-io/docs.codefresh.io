@@ -9,7 +9,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 We have improved the usability and monitoring of GitOps Runtimes by converting them into applications. Now, you can view GitOps Runtimes and their resources directly in the Current State tab of the GitOps Apps dashboard, with access to all familiar dashboard functionality for intuitive monitoring and streamlined management.
 
 ##### What does this mean?
-In the Runtime's context menu in List View, you'll find links to these Runtime applications:
+In the Runtime's context menu (List View), you'll find links to these Runtime applications:
 * Hosted & Hybrid GitOps Runtimes configured as Argo CD applications
 * Hybrid GitOps Runtimes:
     * Runtime Shared Configuration Repo (ISC) resources 
