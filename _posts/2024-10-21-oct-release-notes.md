@@ -54,4 +54,4 @@ Clicking a link takes you to **GitOps Apps > Current State** tab for the applica
 
 
 ##### GitOps 
-* 
+* TBD
