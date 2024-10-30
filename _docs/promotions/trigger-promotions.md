@@ -1,27 +1,135 @@
 ---
-title: "Trigger promotions"
-description: "Orchestrate promotions automatically through flows or manually trigger promotions"
+title: "Triggering promotions"
+description: "Explore ways to trigger promotions manually based on deployment requirements"
 group: promotions
 toc: true
 ---
 
- When you trigger a promotion
+Promotions are a key component of the continuous delivery (CD) process, enabling teams to control how software moves through various environments based on automated triggers or manual inputs. 
 
-## Automatically trigger promotions
-Promotions are triggered automatically when a change in the application triggers a Promotion Flow that matches the product and environment where the changes are made.
+Codefresh GitOps supports automated promotion sceanrios tailored to various deployment models through Promotion Flows, triggered on predefined criteria, such as specific commit messages or changes in Git branches, allowing seamless and consistent updates across environments. See [Creating Promotion Flows](#{{site.baseurl}}/docs/promotions/configuration/promotion-flow/).  
+
+Recognizing that some scenarios require on-demand control, Codefresh also provides manual promotion triggers to handle specific needs. Whether deploying a hotfix to production, promoting an entire product release, or testing code changes in a targeted environment, manual promotion options offer flexibility to meet these demands.
+
+Manual promotion triggers provide different levels of control, accessible from distinct areas of the platform, enabling:
+
+* **Single-environment promotion**
+  Useful for quick promotion to a specific environment through the drag-and-drop option, or the promote option for more control on promotion behavior for traget the environment
+* **Multi-environment promotion**  
+  Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flow flow, and the option to trigger a promotion for any product directly from within a Promotion Flow.
+
+The [quick reference for manual promotion triggers](#manual-promotion-triggers-quick-reference) provides details on the different options, where you can find them, and potential use cases for each. How-to details are in the sections that follow the quick reference.
+
+
+
+
+## Manual promotion triggers: quick reference
+
+The table below lists the different methods to manually trigger promotions.
+
+>**NOTE**  
+Each method is available only if your account administrator has assigned permissions for the same. 
+
+| Manual trigger type | Method       | Available in  | Control & flexibility | Potential use case|
+|----------------- |-------------    |------------------|--------------------|------------------------|
+|Single environment| Drag-and-drop   | Environment dashboard | Enforces global Policy settings if defined or allows you to select Policy behavior, including Promotion Action and Promotion Workflows. | Test changes in selected environment with desired promotion method.|
+|                 |Promote product  | Product dashboard<br>Environments dashboard | Identical to drag-and-drop  | Identical to drag-and-drop             |
+| Multiple environments | Promote product | Product dashboard<br>Environments dashboard |Automated promotion across multiple environments according to predefined flow.  | Promote changes for product across all environments without further commits.|
+|                |Trigger | Promotion Flow  | Select product to promote with Promotion Flow  | Test newly designed Promotion Flow |
+
+
+
+## Manually trigger promotions through drag-n-drop
+Drag-and-drop the product to the target environment to promote changes, and customize the Promotion Settings to control promotion behavior for the environment.    
+This method is useful to test changes within a specific environment. For example, QA teams wanting to test changes in staging or other internal environments.  
+
 
 
 ##### Before you begin
-* Create at least one [Promotion Flow]([About promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)
+* Verify that you have permission to trigger promotions in the Environments dashboard
 
 ##### How to
-1. ????
+1. From the sidebar in the Codefresh UI, select **Environments**, and then select the environment with the product to promote. 
+1. Drag the product to the desired target environment.
+  On the left, the Promotion Settings are either populated from global Policy settings that match the product, or left empty for you to define.  
+  On the right, you can see the Compact diff view, displaying the files with the changes and the changes to be promoted.
+
+SCREENSHOT
 
 
-## Manually trigger a Promotion Flow
+{:start="3"}
+1. Review the files with the changes.
+1. Add information on the commit or PR.
+1. Click **Promote**.
 
-TBD prereqs for manual trigger.
+A release is created for the Product and the Release tab displays the ongoing deployment.
 
+SCREENSHOT
+
+## Manually promote products to specific environments
+
+Manually trigger promotion for a product to a specific target environment, and customize the Promotion Settings to control promotion behavior for the environment.  
+This method is useful to test changes within a specific environment. For example, QA teams wanting to test changes in staging or other internal environments.  
+
+
+##### Before you begin
+* Make sure you have permissions to promote in the Product or Environment dashboards
+
+##### How to
+1. From the sidebar in the Codefresh UI, do one of the following:
+    * To promote from the Product dashboard, select **Products**, and then select the product with the application to promote. 
+    * To promote from the Environments dashboard, select **Environments**. 
+1. Click the context menu of the product to promote and select **Promote**.
+
+SCREENSHOT
+
+1. Select the target environment to promote to and click **Next**.
+1. In the Commit Changes page, if needed, define the Promotion Settings:
+    * Select the Promotion Action as **Commit** (automated) or **Pull Request** (may require manual approval based on organization policies). 
+    * Optional. Select the **Pre-Action Workflow** to run before, and the **Post-Action Workflow** to run after, the Promotion Action.
+1. Review the files with the changes to be promoted. 
+1. Click **Promote**.
+A release is created for the Product and the Release tab displays the ongoing deployment.
+
+SCREENSHOT
+
+
+
+## Manually promote products to multiple environments by Promotion Flow
+Manually trigger promotion for a product across all environments as configured in a predefined Promotion Flow.  
+This method is useful for example to promote changes for product across all environments without further commits. 
+
+##### Before you begin
+* Make sure you have permissions to promote in the Product or Environment dashboards
+* Verify that the selected product has applications in all the environments defined in the Promotion Flow
+
+##### How to
+1. From the sidebar in the Codefresh UI, do one of the following:
+    * To promote from the Product dashboard, select **Products**, and then select the product with the application to promote. 
+    * To promote from the Environments dashboard, select **Environments**. 
+1. Click the context menu of the product to promote and select **Promote**.
+
+SCREENSHOT
+1. Select **Trigger Promotion Flow**, and click **Next**.
+1. In the Trigger Promotion Flow page, verify that there are no validation errors, and then click **Trigger**.
+
+SCREENSHOT
+
+A release is created for the Product and the Release tab displays the ongoing deployment.
+
+SCREENSHOT
+
+
+## Manually promote products from within Promotion Flows
+
+Manually trigger promotion for a product from within a Promotion Flow.
+
+This method is useful to test newly designed Promotion Flows, and also verify how Promotion Flows work for different products and optimize them accordingly.
+
+##### Before you begin
+* Make sure you have permissions to trigger Promotion Flows 
+
+##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
 1. Select the Promotion Flow to trigger manually.
@@ -40,90 +148,13 @@ SCREENSHOT
 
 {:start="6"}
 1. Click **Trigger**.
-  A release is created for the product, the Releases tab is displayed.
+
+A release is created for the product, the Releases tab is displayed.
 
 SCREENSHOT
 
 
-## Manually promote applications through drag-n-drop
-Drag-and-drop an application from the trigger environment to the target environment to promote changes.
 
-This is one method to manually promote applications. To manually promote applications through Promotion Policies or Promotion Flows, see [Manually promote applications by Promotion Policies or Flows](#manually-promote-applications-through-promotion-policies-or-flows).
-
-##### Before you begin
-* ???
-
-
-##### How to
-1. From the sidebar in the Codefresh UI, do one of the following to drag-n-drop an application:
-    * Select **Products**, and then select the product with the application to promote. 
-    * Select **Environments**, and then select the trigger environment with the product. 
-1. Drag the application/product from the trigger environment to the desired target environment.
-
-SCREENSHOT
-
-{:start="3"}
-1. Select the Promotion Actions as **Commit** (automated) or **Pull Request** (may require manual approval based on organization policies). 
-1. Optional. Select the **Pre-Action Workflow** to run before the Promotion Action.
-1. Optional. Select the **Post-Action Workflow** to run after the Promotion Action.
-1. Review the files with the changes that are to be promoted. By default, the changes are displayed in the compact diff view.
-1. Add information on the Promotion Action describing the reason and changes for it.
-1. Click **Promote**.
-
-A release is created for the Product and the Release tab displays the ongoing deployment.
-
-SCREENSHOT
-
-## Manually promote applications through Promotion Policies or Flows
-
-Manually promote an application in a product to a target environment either through a predefined Promotion Flow or by creating a custom Promotion Policy for the application.
-
-##### Before you begin
-* Make sure you have permissions:
-  * To trigger Promotion Flows from Products
-  * To promote to environments
-
-##### How to
-1. From the sidebar in the Codefresh UI, do one of the following:
-    * To promote an application from a product, select **Products**, and then select the product with the application to promote. 
-    * To promote an application from an environment, select **Environments**. 
-1. Click the context menu of the application in the trigger environment, and select **Promote**.
-
-SCREENSHOT
-
-{:start="4"}
-1. Do one of the following:
-  * To promote through a preconfigured Promotion Policy or by defining a custom one, select **Select target environment**.  
-    Continue from _step 5_.
-  * To promote through a predefined Promotion Flow for the application's product, select **Trigger Promotion Flow**. Continue from _step 8_.
-
-SCREENSHOT
-
-{:start="5"}
-1. To promote by Promotion Policies, do the following:
-    1. From the list of environments, select the environment to promote to, and click **Next**.
-    1. If needed, define the Policy settings:
-        * Select the Promotion Actions as **Commit** (automated) or **Pull Request** (may require manual approval based on organization policies). 
-        * Optional. Select the **Pre-Action Workflow** to run before the Promotion Action.
-        * Optional. Select the **Post-Action Workflow** to run after the Promotion Action.
-        product with the application and the target environment does not match configured Promotion Policy settings, define the settings, as describe d.
-    1. Review the files with the changes that are to be promoted. 
-    1. Add information on the Promotion Action describing the reason and changes for it.
-    1. Click **Promote**.
-
-    SCREENSHOT
-
-{:start="8"}
-1. To promote through a Promotion Flow, do the following:
-    1. Click **Next**.
-    1. Select the Promotion Flow to use for promotion. 
-    1. In the Trigger Promotion Flow page, verify that there are no validation errors, and then click **Trigger**.
-
-SCREENSHOT
-
-A release is created for the Product and the Release tab displays the ongoing deployment.
-
-SCREENSHOT
 
 ## Related articles  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  

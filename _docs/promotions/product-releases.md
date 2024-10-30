@@ -8,7 +8,7 @@ toc: true
 
 
 
-When a Promotion Flow is triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production or to the desired target environment. 
+When promotions are triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production or to the desired target environment. 
 
 In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final target environment. 
 
@@ -28,11 +28,11 @@ max-width="60%"
 <!--- NIMA: add an xref to the three different ways promotions can be triggered -->
 
 ##### Releases & Products
-A Release is added for a Product when a Promotion Flow is triggered, either automatically or manually for that product.
-On drill down into a Product, the Releases tab displays the list of ongoing and completed releases for the product, with the option of getting detailed insights on a specific release.
+A release is created for a product when a promotion is triggered, either automatically or manually.
+On drill down into a product, the Releases tab displays the list of ongoing and completed releases, with the option of getting detailed insights on each release.
 
 ##### Releases & developers
-As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for deployments, or understand the changes involved in a release.
+As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for failed deployments, or understand the changes involved in a release.
 
 ##### Use cases
 Whether you are a product manager or an application developer, with Releases, you can:
@@ -42,10 +42,10 @@ Whether you are a product manager or an application developer, with Releases, yo
 * Troubleshoot issues preventing deployment to production
 * Address customer-reported issues through detailed insights into the deployment lifecycle
 
-
+##### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:
 * **Promotion Flow**  
-  Tracking the Promotion Flow for the release provides a graphical representation of how the release is orchestrated, showing the progression through different environments.  
+  Tracking the release through the graphical representation, shows the progression of the release through each phase of the promotion lifecycle through different environments.  
   See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).
 
 * **Release notes**  
@@ -79,9 +79,10 @@ The table describes important insights in the Releases page.
 
 |Item      | Description*           |
 |-------------|---------------------|
-| **Release ID**   | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
-| **Promotion Flow** | The flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see ??? |
-| **Environments**   | The environments defined in the Promotion Flow for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li> <li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Status logic for releases](#status-logic-for-releases).|
+| **Release ID**     | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
+| **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
+| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered promotions. See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/). |
+| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li> <li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Status logic for releases](#status-logic-for-releases).|
 
 
 

@@ -13,7 +13,7 @@ Promotions in CD are typically structured with a combination of policies, workfl
 
 
 
-##### GitOps promotions, the Codefresh advantage
+##### GitOps promotions: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation,  with Git as the single source of truth.   
 
 Here’s what makes Codefresh's GitOps promotions unique:
