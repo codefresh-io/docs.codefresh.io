@@ -4,14 +4,12 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-### Pipelines: Enhancements for images 
-
-#####  Expanded support for `buildx qemu` images
+### Pipelines:  Expanded support for `buildx qemu` images
 For Docker `build` steps, you can specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
 Previously, with `buildx qemu`, we only supported the default image.
 
 
-##### Multi-architecture images
+<!--- ##### Multi-architecture images
 Image reporting is now available for multi-architecture images.  
 On drilldown into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
 
@@ -27,6 +25,7 @@ Mult-arch images are supported from GitOps Runtime v0.1.62 (chart:0.13.4) and hi
    caption="Multi-arch image in Images dashboard" 
    max-width="80%" 
    %}
+-->
 
 ### Pipelines: Consume step outputs in plugins
 
