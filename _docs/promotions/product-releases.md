@@ -138,7 +138,7 @@ Each environment is color-coded to indicate the overall status of the promotion 
   By displaying only the current set of environments per release, you get a clear, focused view of the product’s deployment landscape.
 
 * Historical data for environments
-  Individual releases retain information on environments targeted during promotion, even if those environments have since been removed or renamed, to ensure traceability if needed.
+  Individual releases retain information on environments targeted during promotion, even if those environments have since been removed or renamed, ensuring traceability.
 
 
 
@@ -201,10 +201,10 @@ arising from insufficient permissions to execute workflow steps or access necess
 
 Access the release notes to see a detailed history of all changes that led to the deployed release and artifacts created for it.
 
-These changes are collated from different tools and sources, and include code changes, commits, and associated issues or fixes.
-Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
+These changes are collated from various tools and sources, including code changes, commits, and linked issues or fixes, with information pulled from image-based annotations.
+<!--- Use the historical data to troubleshoot issues, understand the context of the deployment, and improve future releases.
 
-NIMA: Add here use case of how to use release notes to troubleshoot/trace issue?
+NIMA: Add here use case of how to use release notes to troubleshoot/trace issue?  -->
 
 {% include 
 image.html 
