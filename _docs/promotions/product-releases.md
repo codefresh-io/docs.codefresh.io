@@ -81,8 +81,8 @@ The table describes important insights in the Releases page.
 |-------------|---------------------|
 | **Release ID**     | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
-| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered promotions. See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/). |
-| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li> <li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Status logic for releases](#status-logic-for-releases).|
+| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, including two environments. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
+| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspended-pending-pr.png?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Status logic for releases](#status-logic-for-releases).|
 
 
 
@@ -90,7 +90,7 @@ The table describes important insights in the Releases page.
 
 ## Monitor promotion orchestration for releases
 
-Monitor promotion orchestration for an on-going release, or analyze that of a completed release, across the different environments defined for it in the Promotion Flow:
+Monitor promotion orchestration for an on-going release, or analyze that of a completed release, for multi-environment promotion flows or single-environment promotions:
 * View how different environments are interconnected within the Promotion Flow to understand the dependencies and flow of deployment.
 * Monitor executions of workflow steps in each environment and get alerted to failed steps in workflows. Early detection of failures allows for quick intervention, reducing the risk of prolonged issues and ensuring the deployment process remains on track.
 
@@ -130,16 +130,26 @@ You can:
 
 Each environment is color-coded to indicate the overall status of the promotion for that environment. See also [Environment (deployment) status](#environment-deployment-status).
 
+#### Environment history in product releases
+
+* Active environments per release
+  Each release for a product displays only the active environments defined in the associated Promotion Flow or target environment at the time of release. Historical data for environments that were deleted, removed, or renamed in previous releases is not retained in the current view.
+
+  By displaying only the current set of environments per release, you get a clear, focused view of the product’s deployment landscape.
+
+* Historical data for environments
+  Individual releases retain information on environments targeted during promotion, even if those environments have since been removed or renamed, to ensure traceability if needed.
+
+
 
 #### Concurrent promotions within environments
 
 If there is an update that triggers a Pre- or Post-Action Workflow within an environment while the same Workflow is already in progress, the ongoing Workflow is automatically terminated and the latest Workflow is run instead.
 
-
 For example, if an update in the `staging` environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance continues to run. 
 
 
-NIMA: how will it be shown in the releases tab?
+<!--- NIMA: how will it be shown in the releases tab? -->
 
 ### Promotion Workflows in Product Releases
 
@@ -222,7 +232,8 @@ In top-down order, you have the:
 
 ### Release status
 The release status is displayed on the right on drilldown into a release ID.  
-It is determined from the statuses of all the environments defined in the Promotion Flow that orchestrates the deployment of the product.
+It is determined from the statuses of all the environments included in the promotion flow that orchestrates the deployment of the product.
+For single-environment promotions triggered manually, there are two environments.
 
 The table describes the possible statuses of a Release.
 
@@ -238,14 +249,20 @@ The table describes the possible statuses of a Release.
 
 
 ### Environment (deployment) status
-The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows and the Promotion Action.
+The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows, the Promotion Action, and the application status.
+
+##### Environment status evaluation
+The Successful status for an environment is  in this order:
+1. Pre-Action Workflow
+1. Promotion Action
+1. Application
 
 The table describes the possible deployment statuses for environments.
 
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | All Workflows in the environment completed successfully and the Promotion Action was successful.  |
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
 | **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |

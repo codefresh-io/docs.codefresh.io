@@ -99,7 +99,7 @@ Previewing Policy settings does not impact the Promotion Flow when triggered.
 
 
 ## Create a Promotion Flow 
-Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, s create new environments and promotion workflows on-the-fly when doing so. 
+Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, create new environments and promotion workflows on-the-fly when doing so. 
 
 ##### Before you begin
 * Review [Create a promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
