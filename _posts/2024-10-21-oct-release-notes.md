@@ -4,16 +4,16 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-### Pipelines:  Expanded support for `buildx qemu` images
+### Pipelines: Expanded support for `buildx qemu` images
 For Docker `build` steps, you can specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
-Previously, with `buildx qemu`, we only supported the default image.
+Previously, `buildx qemu` supported only the default image.
 
 
 <!--- ##### Multi-architecture images
 Image reporting is now available for multi-architecture images.  
 On drilldown into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
 
-Mult-arch images are supported from GitOps Runtime v0.1.62 (chart:0.13.4) and higher.
+
 
 
 {% include 
@@ -25,11 +25,13 @@ Mult-arch images are supported from GitOps Runtime v0.1.62 (chart:0.13.4) and hi
    caption="Multi-arch image in Images dashboard" 
    max-width="80%" 
    %}
+
 -->
+### Pipelines: Output parameters in `arguments` attribute
 
-### Pipelines: Consume step outputs in plugins
+Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
 
-Plugins in pipelines can now consume outputs directly from previous steps, streamlining data transfer and expanding integration capabilities across your pipeline stages.
+Now plugins can consume outputs from `commands` as all as the `arguments` attributes.
 
 ```yaml
 ...
@@ -40,6 +42,7 @@ Plugins in pipelines can now consume outputs directly from previous steps, strea
       output_variable: '${{steps.output_variable.output.EXPORTED}}'
 ...
 ```
+
 ### GitOps: Enhanced visibility and control for Runtimes
 
 We have improved the usability and monitoring of GitOps Runtimes by converting them into applications. Now, you can view GitOps Runtimes and their resources directly in the Current State tab of the GitOps Apps dashboard, with access to all familiar dashboard functionality for intuitive monitoring and streamlined management.
@@ -74,6 +77,7 @@ Clicking a link takes you to **GitOps Apps > Current State** tab for the applica
    max-width="80%" 
    %}
 
+<!---
 ### GitOps: Display full name for applications
 
 Here's a usability enhancement that's sure to resonate: display full name of applications in the Current State tab of the GitOps Apps dashboard.
@@ -89,7 +93,7 @@ If you have naming conventions that result in long application names, easily tog
    caption="Show Full Name toggle in Current State tab" 
    max-width="80%" 
    %}
-
+-->
 
 ## Bug fixes
 
