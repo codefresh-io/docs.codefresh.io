@@ -22,6 +22,7 @@ Before creating promotion flows, review [notes on Promotion Flows](#notes-on-pro
 You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD). You can switch seamlessly between both when creating Promotion Flows.
 
 The Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
+<!-- For a description of the CRD definition, see TBD  -->
 
 
 ## Sequential vs. parallel promotions
@@ -33,7 +34,8 @@ Promotion Flows can be modeled to run sequentially or in parallel to suit the un
   This is the more common and traditional kind of Promotion Flow, where you start the flow from the development environment as the trigger environment, and then promote to the other target environments in succession.  
 
 * **Parallel promotions**  
-  In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments and creates promotions only _after_ multiple environments are healthy. 
+  In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments and creates promotions only _after_ the multiple environments in the group are healthy. 
+  This design is ideal when environments serve distinct purposes or when they can be updated independently without risk to other environments, such as promoting changes to multiple regional clusters that do not have cross-dependencies.
 
 
  
@@ -44,15 +46,6 @@ Here are a few additional factors to be aware of when creating Promotion Flows.
 ### Trigger and target environments 
 You can create and assign environments for the Promotion Flow, starting with the Trigger Environment, where the change to the application initiates the flow, and the other target environments required for promotion. You need at least one target environment for promotions. 
 
-##### Applications in Trigger Environment
-It is recommended to have a single application for a product in the Trigger Environment. If the product has multiple applications with changes, changes are promoted only for a single application. The other applications are ignored. <!--- NIMA: which app is selected? the one with the most recent change? -->
-
-##### Trigger Environment validation
-If required, add a Promotion Workflow, as a Post-Action trigger workflow to specifically validate the readiness of the trigger environment after the change and commit action.
-
-##### Applications in target environments
-* A promotion will fail if the product does not contain an application in each environment defined in the Promotion Flow. 
-* A target environment can contain multiple applications, for example, representing different tenants or regions. When promoting to this environment, each application will be updated with changes from the corresponding application in the source environment.
 
 ##### Adding environments  
 When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved. A notification alerts you that there are unsaved changes to the Promotion Flow. This notification remains as long as you have unsaved changes in the Promotion Flow. allowing to return to the flow later.
@@ -62,20 +55,87 @@ You can remove an environment from the Promotion Flow, and decide how to reconne
 
 Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
 
-### Dependencies in Promotion Flows
+### Applications in environments
 
+##### Applications in Trigger Environment
+It is recommended to have a single application for a product in the Trigger Environment. If the product has multiple applications with changes, changes are promoted only for a single application. <!--- NIMA: which app is selected? the one with the most recent change? 
+
+##### Applications per defined environment
+The product must include an application in each environment defined in the Promotion Flow. Otherwise the promotion will fail.
+
+##### Multiple applications in a target environment
+If a target environment, such as staging or production, contains multiple applications for the same product—segmented by region, tenant, or other requirements for example, each application in that environment is updated with changes from the source environment. 
+
+While this behavior may seem intuitive, it’s important to understand that each set of Promotion Policy settings that govern the environment's promotion settings, _also applies individually to each application_.
+
+For example, if there are three applications with Pre-Action Workflows, the Pre-Action Workflow will execute three times—once per application.
+Execution of steps within the Pre-Action Workflow that create a resource or perform an action are also multiplied accordingly.  
+Consider a step within the Pre-Action Workflow which creates a JIRA ticket upon initiating promotion. The step will run thrice, creating three separate JIRA tickets.
+
+##### Deleting/adding files in applications
+
+Adding or deleting files from applications in target environments does not impact the success of the Promotion Flow. The promotion mechanism simply retains the added/deleted files as they are in the target environments.
+
+
+
+### Dependencies between environments
+
+##### What is a dependency?
 A dependency in a Promotion Flow is a direct relationship between two or more environments, where one environment’s promotion depends on the successful promotion of changes in another environment. Changes cannot be promoted to the dependent environment until the preceding one is successfully promoted.
 
-By default, environment 
+By default, when you create a promotion flow, a dependency is automatically established between the trigger environment and its immediate target environment in a sequential flow. Add dependencies between environments when the success of one environment is essential for the promotion to the next. 
+
+The arrows between the environments in the example below indicate the dependencies between environments. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/example-sequential-flow.png" 
+url="/images/gitops-promotions/promotion-flow/example-sequential-flow.png"
+alt="Simple sequential flow with dependencies between each environment" 
+caption="Simple sequential flow with dependencies between each environment"
+max-width="60%"
+%}
 
 
 
-##### Regional promotion model
-In a global setup, promoting changes to primary regions can be a prerequisite before those changes are promoted to additional regions.
-Internal and External Dependencies: You might set up an internal environment (for employee access) that must be updated and stable before changes are promoted to customer-facing environments.
+##### Examples of multiple dependencies between environments
 
-##### Dependencies in parallel flows
-Dependencies in promotion flows arIn parallel flow designs, promotions to multiple environments occur concurrently. Unlike dependent flows, parallel flows assume that each target environment can be updated independently of the others. This design is ideal when environments serve distinct purposes or when they can be updated independently without risk to other environments, such as promoting changes to multiple regional clusters that do not have cross-dependencies.
+Multi-region setup
+In a multi-region setup, you may want to promote changes to a primary region before promoting them to additional regions, or vice-versa.
+
+Internal environments
+In setups with internal environments, you may want to promote to the final environment only after when mulitple internal environments be essential to update and verify the stability of the internal environment before proceeding with promotion to customer environments.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/multi-region-dependency.png" 
+url="/images/gitops-promotions/promotion-flow/multi-region-dependency.png"
+alt="Multiple dependencies between two target environments" 
+caption="Multiple dependencies between two target environments"
+max-width="60%"
+%}
+
+
+##### Differentiating dependencies from parallel environments
+In flows with parallel target environments, promotions to the parallel environments occur simultaneously. Unlike dependencies, each parallel target environment is updated independently of the others. 
+
+In the example below, the 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/parallel-vs-dependency.png" 
+url="/images/gitops-promotions/promotion-flow/parallel-vs-dependency.png"
+alt="Multiple dependencies between two target environments" 
+caption="Multiple dependencies between two target environments"
+max-width="60%"
+%}
+
+
+
 
 ### Inline versus global Promotion Policy settings
 
@@ -108,55 +168,100 @@ Visually design and create the flow by selecting environments, Promotion Actions
 ##### How to
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
 1. Click **Add Promotion Flow**.
-
-SCREENSHOT
-
-{:start="3"}
-1. In **Select Trigger Environment**, click ??? to see the list of available environments:
+1. In **Select Trigger Environment**, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} to see the list of available environments:
     * Select an existing environment, select it and click **Add**. 
     * To create a new environment, click **Add New Environment**. 
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-trigger-env.png" 
+url="/images/gitops-promotions/promotion-flow/add-trigger-env.png"
+alt="Add Trigger Environment" 
+caption="Add Trigger Environment"
+max-width="60%"
+%}
 
 {:start="4"}
-1. Optional. To add a Trigger Workflow and validate the readiness of the trigger environment after the change and commit action, click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}.
-    * To review the manifest of an inline Trigger Workflow, click ??? and then select the required workflow. 
-    * To apply a Trigger Workflow from global Promotion Policy settings, click **Automated Promotion Policy**.  
+1. Optional. To add a trigger workflow to validate the trigger environment after the change and commit action, mouse over the left of the environment node, and click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}, and select a Workflow.
+    * To apply a trigger workflow from global Promotion Policy settings, click **Account-level Promotion Policy**.  
     * To add a new Promotion Workflow as the trigger workflow, click **Add New Workflow**. 
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-trigger-workflow.png" 
+url="/images/gitops-promotions/promotion-flow/add-trigger-workflow.png"
+alt="Add Trigger Workflow" 
+caption="Add Trigger Workflow"
+max-width="60%"
+%}
 
 {:start="5"}
-1. To add a target environment to promote to, either sequentially or in parallel, mouse over the right of the environment and click ??.  
-  To add parallel environments, click ?? on the right of the previous environment. For example, to add `qa` and `staging` as parallel environments to `dev`, you would click ?? on the `dev` environment.
+1. To add a target environment to promote to, either sequentially or in parallel, mouse over the right of the environment to add to, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} and then select the environment or environments.
+  The example below shows two environments, `qa` and `staging` as parallel environments to `dev`.
+  <!--- To add parallel environments, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} on the right of the previous environment. For example, to add `qa` and `staging` as parallel environments to `dev`, you would click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} on the `dev` environment.  -->
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-target-environments.png" 
+url="/images/gitops-promotions/promotion-flow/add-target-environments.png"
+alt="Add target environments" 
+caption="Add target environments"
+max-width="60%"
+%}
 
 {:start="6"}
-1. To add a dependency between two environments, from the **Depends on** list in the target environment, select the environment and click **Update Dependency**.
-  The environment is added with a link is between it and the next environment to indicate a dependency.  
+1. To add a dependency between environments, from the **Depends on** list in the target environment, select the environment and click **Update Dependency**.
+  The environment(s) are added, with the arrows indicating the links between the environments. 
+  The Depends on counter shows the total number of dependencies.
 
-  SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-dependencies.png" 
+url="/images/gitops-promotions/promotion-flow/add-dependencies.png"
+alt="Add dependencies to environment" 
+caption="Add dependencies to environment"
+max-width="60%"
+%}
 
 
 {:start="7"}
 1. To select the Promotion Action for the target environment, do the following:
-    1. Mouse over the left of the target environment and click ??.
+    1. Mouse over the left of the target environment and click {::nomarkdown}<img src="../../../../images/icons/promotion-action.png" display=inline-block>{:/}.
     1. Select an inline action from the list, or to automatically select an action from the global promotion policies, click **Account-level promotion policies**. 
 
-  SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-promotion-action.png" 
+url="/images/gitops-promotions/promotion-flow/add-promotion-action.png"
+alt="Add Promotion Action" 
+caption="Add Promotion Action"
+max-width="60%"
+%}
 
 {:start="8"}
-1. To add a Pre- or Post-Action Promotion for the target environment, mouse over the left of the target environment and click ??.
-    * To add an inline Workflow, select it and click **Add**. Continue from step ??
+1. To add a Pre- or Post-Action Promotion for the target environment, mouse over the left of the target environment and click the respective icons.
+    * To add an inline Workflow, select it and click **Add**. 
     * To add a new Workflow, click **Add New Workflow**. 
-    * To apply an automated Promotion Policy, click Account-level Promotion Policy. 
+    * To apply an automated Promotion Policy, click **Account-level Promotion Policy**. 
 
-  SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/promotion-flow/add-pre-post-action-workflow.png" 
+url="/images/gitops-promotions/promotion-flow/add-pre-post-action-workflow.png"
+alt="Add Pre-/Post-Action Workflows" 
+caption="Add Pre-/Post-Action Workflows"
+max-width="60%"
+%}
 
 {:start="8"}
-
 1. To commit changes, click **Save Promotion Flow**.
+  The Promotion Flow is added to the list of Promotion Flows.
 
 
 
