@@ -31,7 +31,7 @@ On drilldown into the image from the Images dashboard, the OS/Arch column displa
 
 Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
 
-Now plugins can consume outputs from `commands` as all as the `arguments` attributes.
+Now, plugins can consume outputs from both the `arguments` and `commands` attributes.
 
 ```yaml
 ...
@@ -42,6 +42,7 @@ Now plugins can consume outputs from `commands` as all as the `arguments` attrib
       output_variable: '${{steps.output_variable.output.EXPORTED}}'
 ...
 ```
+
 
 ### GitOps: Enhanced visibility and control for Runtimes
 
