@@ -6,15 +6,16 @@ toc: true
 ---
 
 
-A Promotion Flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
+A promotion flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
 
+We have a specialized Promotion Flow entity in Codefresh, dedicated to creating and managing multi-environment promotions! 
+Promotion Flows in Codefresh GitOps, backed by the power of Argo CD, streamlines the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
-Promotion Flows streamline the process of moving code changes through different stages, such as testing, staging, and production. They automate repetitive tasks, reducing manual efforts, ensuring uniformity across deployments.  
-By defining specific criteria for promotion, they help maintain the integrity of the software and reduce the likelihood of introducing bugs into production.
+Set up completely automated promotion flows with just a few clicks and at the same govern how promotions should happen in different environments. 
 
+SCREENSHOT
 
-Before creating promotion flows, review [notes on Promotion Flows](#notes-on-promotion-flows) which highlights key factors to be aware of in promotion flow behavior. 
-
+Review [key insights](#promotion-flow-behavior-key-insights) to understand promotion flow behavior before creating your first Promotion Flow. 
 
 
 
@@ -27,20 +28,21 @@ The Flow Builder visually guides you through creating any type of Promotion Flow
 
 ## Sequential vs. parallel promotions
 
-Promotion Flows can be modeled to run sequentially or in parallel to suit the unique requirements of any deployment process.
+Model your Promotion Flows to suit the unique requirements of any deployment process with sequential or parallel promotions.
 
 * **Sequential promotions**  
   Sequential flows are linear, where changes are promoted from the previous to the next environment in the order in which they are defined.
-  This is the more common and traditional kind of Promotion Flow, where you start the flow from the development environment as the trigger environment, and then promote to the other target environments in succession.  
+  This is the more common and traditional kind of Promotion Flow, where you start the flow from a trigger environment, usually the development environment, and then promote to the other target environments in succession.  
 
 * **Parallel promotions**  
-  In a parallel flow, changes are promoted across multiple environments simultaneously. This promotion logic groups environments and creates promotions only _after_ the multiple environments in the group are healthy. 
-  This design is ideal when environments serve distinct purposes or when they can be updated independently without risk to other environments, such as promoting changes to multiple regional clusters that do not have cross-dependencies.
+  In a parallel flow, changes are promoted across multiple environments simultaneously.   This design is ideal when environments serve distinct purposes or when they can be updated independently without risk to other environments, such as promoting changes to multiple regional clusters that do not have cross-dependencies.
+  Parallel promotions are useful in multi-region setups, where you may want to promote changes to several regions before the final production environment. 
+
 
 
  
-## Notes on Promotion Flows 
-Here are a few additional factors to be aware of when creating Promotion Flows.  
+## Promotion Flow behavior: Key insights
+Here are a few useful factors to be aware of when creating Promotion Flows.  
 
 
 ### Trigger and target environments 
@@ -48,12 +50,14 @@ You can create and assign environments for the Promotion Flow, starting with the
 
 
 ##### Adding environments  
-When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved. A notification alerts you that there are unsaved changes to the Promotion Flow. This notification remains as long as you have unsaved changes in the Promotion Flow. allowing to return to the flow later.
+When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved. A notification alerts you that there are unsaved changes to the Promotion Flow. This notification remains as long as you have unsaved changes in the Promotion Flow. 
 
 ##### Removing environments
 You can remove an environment from the Promotion Flow, and decide how to reconnect next environments if any, to previous environments.  
 
-Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect.
+Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect. 
+
+See [Removing environments](#removing-environments-from-promotion-flows).
 
 ### Applications in environments
 
@@ -64,7 +68,7 @@ It is recommended to have a single application for a product in the Trigger Envi
 The product must include an application in each environment defined in the Promotion Flow. Otherwise the promotion will fail.
 
 ##### Multiple applications in a target environment
-If a target environment, such as staging or production, contains multiple applications for the same product—segmented by region, tenant, or other requirements for example, each application in that environment is updated with changes from the source environment. 
+If a target environment, such as staging or production, contains multiple applications for the same product, segmented by region, tenant, or other criteria for example, each application in that environment is updated with changes from the source environment. 
 
 While this behavior may seem intuitive, it’s important to understand that each set of Promotion Policy settings that govern the environment's promotion settings, _also applies individually to each application_.
 
@@ -80,7 +84,6 @@ Adding or deleting files from applications in target environments does not impac
 
 ### Dependencies between environments
 
-##### What is a dependency?
 A dependency in a Promotion Flow is a direct relationship between two or more environments, where one environment’s promotion depends on the successful promotion of changes in another environment. Changes cannot be promoted to the dependent environment until the preceding one is successfully promoted.
 
 By default, when you create a promotion flow, a dependency is automatically established between the trigger environment and its immediate target environment in a sequential flow. Add dependencies between environments when the success of one environment is essential for the promotion to the next. 
@@ -97,16 +100,7 @@ caption="Simple sequential flow with dependencies between each environment"
 max-width="60%"
 %}
 
-
-
-##### Examples of multiple dependencies between environments
-
-Multi-region setup
-In a multi-region setup, you may want to promote changes to a primary region before promoting them to additional regions, or vice-versa.
-
-Internal environments
-In setups with internal environments, you may want to promote to the final environment only after when mulitple internal environments be essential to update and verify the stability of the internal environment before proceeding with promotion to customer environments.
-
+Here's an example of a Promotion Flow with multiple dependencies between taregt environments.
 
 {% include 
 image.html 
@@ -122,15 +116,15 @@ max-width="60%"
 ##### Differentiating dependencies from parallel environments
 In flows with parallel target environments, promotions to the parallel environments occur simultaneously. Unlike dependencies, each parallel target environment is updated independently of the others. 
 
-In the example below, the 
+In the example below, changes are promoted to `production` as soon as promotion for `staging` has completed successfully, without waiting for `prod-asia` and `prod-us`.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/promotion-flow/parallel-vs-dependency.png" 
 url="/images/gitops-promotions/promotion-flow/parallel-vs-dependency.png"
-alt="Multiple dependencies between two target environments" 
-caption="Multiple dependencies between two target environments"
+alt="Dependencies vs. parallel promotions in target environments" 
+caption="Dependencies vs. parallel promotions in target environments"
 max-width="60%"
 %}
 
@@ -139,13 +133,13 @@ max-width="60%"
 
 ### Inline versus global Promotion Policy settings
 
-For each environment, you can explicitly set the Promotion Policy that defines how to validate environment readiness through the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
+For each environment, you can explicitly set the Promotion Policy that defines governs environment promotion behavior through the Promotion Action (required), and the optional Pre- and Post-Action Workflows.
 
 ##### Inline Promotion Policy settings
-The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, this _inline_ selection overrides any global Promotion Policy settings that match the product/environment when the flow is triggered.
+The Flow Builder displays available settings for the Promotion Policy. If you manually select these settings, the _inline_ selections override any global Promotion Policy settings that match the product/environment when the flow is triggered.
 
 ##### Global Promotion Policy settings
-If no inline settings are defined, the system applies global Promotion Policy settings based on predefined priorities. See TBD
+If no inline settings are defined, the system applies global Promotion Policy settings based on predefined priorities. <!-- See TBD -->
 
 ##### Promotion Workflows
 Both Pre- and Post-Action Workflows are optional in a Promotion Flow. 
@@ -414,7 +408,7 @@ SCREENSHOT
 
 
 
-## Removing environments from Promotion Flows
+## Remove environments from Promotion Flows
 Remove one or more environments from a Promotion Flow. <!--- TBD why would you want to remove an environment? What happens if the env is defined as part of the promotion policies?  -->
  
 Removing an environment requires you to reconnect environments linked to the one being removed to prevent orhpans. 

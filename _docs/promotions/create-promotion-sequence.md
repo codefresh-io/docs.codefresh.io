@@ -6,9 +6,9 @@ toc: true
 ---
 
 
-This guide lists the steps required to create a promotion sequence. Each step is followed by a brief description of its purpose and objective in the promotion sequence. For detailed information, click the step title.  
+This high-level guide outlines the essential steps for creating a promotion sequence. Each step includes a brief overview of its purpose and role within the sequence. For detailed instructions, click on the step title.
 
-Follow the steps in the order in which they are listed. 
+Complete each step in the order presented.
 
 
 ## Prerequisites
@@ -21,7 +21,7 @@ Follow the steps in the order in which they are listed.
   Only account admins can create promotion entities such as Promotion Policies and Promotion Flows.
 
 1. [User permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
-  Users need the required ABAC permissions to create Promotion Workflows and configure product settings.
+  Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
 ## How to: Step-by-step
 1. [Create environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments)  
@@ -41,20 +41,16 @@ Follow the steps in the order in which they are listed.
 
 
 1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/promotion-workflows/)  
-  As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, implement smoke tests to verify basic functionality or database validation checks to ensure data integrity.
+  As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, create workflows that run smoke tests to verify basic functionality or database validation checks to ensure data integrity.
 
-  Create Promotion Workflows to test different environments and enforce checks before and after promoting changes. 
+  Create Promotion Workflows (Argo Workflows) to implement any type of tests, validations, and custom requirements. 
 
-1. [Create policies for environment validation]({{site.baseurl}}/docs/promotions/promotion-policy/)    
-  Define the conditions to validate that the target environments are ready for promotion: workflows to run before and after changes are promoted, along with the action that promotes the changes. Enforcing these conditions ensure that promotions do not break or destabilize environments.  
-  Promotion Policies define the products or type of environments with the promotion action (mandatory), and any Promotion Workflows to run before and after the promotion action (optional).
+1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/promotion-policy/)    
+ Govern promotion behavior for environments by setting rules, checks, and validations that environments must meet before and after changes are promoted.
 
-
-Optionally, define patterns to validate changes within the target environment by establishing conditions that enforce specific promotion workflows. This ensures that the target environments are prepared for promotion. Use Promotion Policies as advanced actions to combine Promotion Workflows with the promotion action, defining these patterns by products or types of environments. This includes the mandatory promotion action and any optional Promotion Workflows that should execute before and after the promotion action. For instance, a policy could dictate that a comprehensive set of regression tests must run in staging environments before deploying to production, thereby enhancing stability and reliability during the promotion process.
+  Promotion Policies allow you to define these rules by combining Promotion Workflows and the promotion action based on environment type, product, or other criteria. When a promotion is triggered for an environment, the policy mechanism merges settings from all relevant global policies according to priority, providing automated governance for consistent and reliable promotion behavior.
 
 
-  Define patterns to validate the changes within the target environment. Establish conditions that enforce specific promotion workflows, ensuring that the target environments are prepared for promotion.  
-  Use Promotion Policies to define patterns by products or types of environments, including the mandatory promotion action and any optional Promotion Workflows that should execute before and after the promotion action. Enforcing these conditions helps maintain stability and reliability during the promotion process.
 
 1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
   Orchestrate the sequence of actions to move and deploy changes through the required environments, from the trigger environment to the final target environment.  
@@ -66,7 +62,7 @@ Optionally, define patterns to validate changes within the target environment by
 
 1. [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
   Implement the changes to initiate the promotion.  
-  The change made to an application in the trigger environment starts the process of moving these changes through the defined sequence of environments, either automatically or manually.
+  The change made to an application in the trigger environment starts the process of promoting these changes through the defined sequence of environments, either automatically or manually.
 
 
 1. [Track releases for products]({{site.baseurl}}/docs/promotions/releases/)  

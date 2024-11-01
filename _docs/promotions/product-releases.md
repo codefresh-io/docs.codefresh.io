@@ -12,7 +12,7 @@ When promotions are triggered for a product, the flow orchestrates deployment ac
 
 In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final target environment. 
 
-The Releases feature in Codefresh is designed for tracking deployments of a product across multiple environments. 
+Visually track deployments of a product across multiple environments with Releases. 
 
 {% include 
 image.html 
@@ -24,17 +24,6 @@ caption="Release list for a product"
 max-width="60%"
 %}
 
-
-<!--- NIMA: add an xref to the three different ways promotions can be triggered -->
-
-##### Releases & Products
-A release is created for a product when a promotion is triggered, either automatically or manually.
-On drill down into a product, the Releases tab displays the list of ongoing and completed releases, with the option of getting detailed insights on each release.
-
-##### Releases & developers
-As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for failed deployments, or understand the changes involved in a release.
-
-##### Use cases
 Whether you are a product manager or an application developer, with Releases, you can:
 * Visualize the product's deployment lifecycle
 * Access an integrated list of changes that led to the deployment
@@ -42,12 +31,27 @@ Whether you are a product manager or an application developer, with Releases, yo
 * Troubleshoot issues preventing deployment to production
 * Address customer-reported issues through detailed insights into the deployment lifecycle
 
+<!--- NIMA: add an xref to the three different ways promotions can be triggered -->
+
+##### Releases for products
+A release is created for a product when a promotion is triggered, either automatically or manually.
+On drill down into a product, the Releases tab displays the list of ongoing and completed releases, with the option of getting detailed insights on each release.
+
+##### Releases for developers
+As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for failed deployments, or understand the changes involved in a release.
+
+
 ##### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:
-* **Promotion Flow**  
-  Tracking the release through the graphical representation, shows the progression of the release through each phase of the promotion lifecycle through different environments.  
-  See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).
-
+* **Release promotion flow**  
+  Tracking the release visually, shows the progression of the release through each phase of the promotion lifecycle through different environments.  
+  See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).  
+  
+  For information on the different aspects of a release, see:
+  [Release summary](#release-summary)  
+  [Environments in product releases](#environments-in-product-releases)  
+  [Promotion Workflows in product releases](#promotion-workflows-in-product-releases)
+  
 * **Release notes**  
   Tracking through release notes provides an integrated list of changes from various sources and tools, providing a comprehensive view of what led to the deployment.  
   See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
@@ -90,7 +94,7 @@ The table describes important insights in the Releases page.
 
 ## Monitor promotion orchestration for releases
 
-Monitor promotion orchestration for an on-going release, or analyze that of a completed release, for multi-environment promotion flows or single-environment promotions:
+Visually monitor promotion orchestration for an on-going release, or analyze that of a completed release, for multi-environment promotion flows or single-environment promotions:
 * View how different environments are interconnected within the Promotion Flow to understand the dependencies and flow of deployment.
 * Monitor executions of workflow steps in each environment and get alerted to failed steps in workflows. Early detection of failures allows for quick intervention, reducing the risk of prolonged issues and ensuring the deployment process remains on track.
 
@@ -111,38 +115,72 @@ caption="Promotion visualization for a release"
 max-width="60%"
 %}
 
-### Header in Product Releases
-The header summarizes the change that triggered the promotion, the overall status of the release, and the number of failed, successful, running, and pending environments.
+
+
+## Release summary
+
+### Header
+The header in the Releases page summarizes the change that triggered the promotion, the overall status of the release, and the count of failed, successful, running, and pending environments.
 
 The commit details are always for the trigger environment that initiated the promotion.
 
-See also [Release status](#release-status).
+### Release status
+The release status is displayed on the right when you drill down into a release ID.  
+It is determined from the statuses of all the environments included in the promotion flow that orchestrates the deployment of the product.
+For single-environment promotions triggered manually, there are two environments.
+
+The table describes the possible statuses of a Release.
+
+{: .table .table-bordered .table-hover}
+| Release Status     | Description           |
+|------------        |---------------------------------------|
+| **Successful**     | Promotions were completed successfully in all the environments and the changes were successfully deployed .  |
+| **Progressing**    | Promotion is currently ongoing for at least one environment.  |
+| **Suspended**      | Promotion in an environment is pending completion. This could be because of a condition in one of its workflows or because a pull request is waiting for approval.  |
+| **Terminated**     | Promotion currently being run in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. |
+| **Failed**         | Promotion failed in at least one environment causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures are flagged in the environment under Issues. Clicking on Issues opens a panel displaying the reason for the error, with links to the resource causing the issue, or to the logs and manifests of the resource.|
 
 
 
-### Environments in Product Releases
+## Environments in product releases
 
-Graphical view of the different environments defined in the Promotion Flow.
-
-You can: 
-* Understand the interconnections between the environments, whether linear or parallel.
+The graphical view of the different environments defined in the Promotion Flo allows you to:
+* Understand the interconnections between the environments, whether sequential or parallel.
 * Visualize the dependencies between environments to see how changes propagate through the deployment process
 
-Each environment is color-coded to indicate the overall status of the promotion for that environment. See also [Environment (deployment) status](#environment-deployment-status).
+Each environment is color-coded to indicate the overall status of the promotion for that environment. 
 
-#### Environment history in product releases
+### Environment (deployment) status
+The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows, the Promotion Action, and the application status.
+
+
+The success status for an environment is evaluated in this order:
+1. Pre-Action Workflow
+1. Promotion Action
+1. Application sync and health
+1. Post-Action Workflow
+
+The table describes the possible deployment statuses for environments.
+
+{: .table .table-bordered .table-hover}
+| Environment Status     | Description           |
+|------------        |---------------------------------------|
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
+| **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
+| **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
+| **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
+
+### Environment history in product releases
 
 * Active environments per release
-  Each release for a product displays only the active environments defined in the associated Promotion Flow or target environment at the time of release. Historical data for environments that were deleted, removed, or renamed in previous releases is not retained in the current view.
-
+  The current view of a release displays only the active environments defined in the associated Promotion Flow at the time of release. Historical data for environments that were deleted, removed, or renamed in previous releases is not retained in the current view.  
   By displaying only the current set of environments per release, you get a clear, focused view of the product’s deployment landscape.
 
 * Historical data for environments
-  Individual releases retain information on environments targeted during promotion, even if those environments have since been removed or renamed, ensuring traceability.
+  Individual release views retain information on environments targeted during promotion, even if those environments have since been removed or renamed, ensuring traceability.
 
 
-
-#### Concurrent promotions within environments
+### Concurrent workflow executions within environments
 
 If there is an update that triggers a Pre- or Post-Action Workflow within an environment while the same Workflow is already in progress, the ongoing Workflow is automatically terminated and the latest Workflow is run instead.
 
@@ -151,18 +189,35 @@ For example, if an update in the `staging` environment triggers the `echo-pre-ac
 
 <!--- NIMA: how will it be shown in the releases tab? -->
 
-### Promotion Workflows in Product Releases
+## Promotion Workflows in product releases
 
 Each environment displays the steps for the Pre- and Post-Action Workflows defined for it. The workflows are designed to ensure that the deployment process is thoroughly validated and executed correctly.  
-See [Workflow and workflow-step status](#workflow-and-workflow-step-status).
 
-#### Pre- and Post-Action Workflows
+### Workflow and workflow-step statuses
+
+* The status of a Workflow is determined by the status of all its steps.
+
+* The status of a step in the Pre- or Post-Action Workflow is its aggregated status across all the Workflows including and running that step within the environment. Step status is aggregated because a product typically includes multiple applications, and therefore executes multiple Promotion Workflows in parallel through the Promotion Policies. 
+
+The table describes the possible statuses for Promotion Workflow steps.
+
+{: .table .table-bordered .table-hover}
+| Workflow-step Status     | Description           |
+|------------        |---------------------------------------|
+| **Success**        | The step completed execution without errors in all the Pre- and Post-Action Workflows that included it.  |
+| **Running**        | The step is currently in progress in at least one of the Pre- and Post-Action Workflows.  |
+| **Pending**        | The step is pending execution in at least one of the Pre- and Post-Action Workflows. |
+| **Failed**         | At least one step in a Pre- or Post-Action Workflow failed to execute. <!--- what could be the reasons?--> |
+| **Error**          | At least one step in a Pre- or Post-Action Workflow has a syntax error. <!--- example -->|
+| **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. <!--- example of reasons -->|
+
+### Pre- and Post-Action Workflows
 
 * Trigger Environment: Can run only Post-Action workflows.
 * Other Environments: Can run both Pre- and Post-Action workflows as defined by the Promotion Policies applied to the environments.
 
 #### Versioning in Environments
-When the Post-Action Workflow in the trigger environment, or the Pre-Action Workflow and Promotion Action in any other environment, completes successfully, the promotion mechanism commits the changes and advances the version number for the applications within the product. This occurs even if the Post-Action Workflow in a specific environment fails to complete.
+When the Post-Action Workflow in the trigger environment, or the Pre-Action Workflow and Promotion Action in target environments, completes successfully, the promotion mechanism commits the changes and advances the version number for the applications within the product in those environments. Version numbers are updated even if the Post-Action Workflow in a specific environment fails to complete.
 
 Because of this automatic version update, it's essential to incorporate a revert or rollback mechanism in the Post-Action Workflow to easily revert changes if needed.
 
@@ -218,73 +273,18 @@ max-width="60%"
 
 
 
-## Status logic for Releases
-
-
-There are three levels of statuses for a product release.  
-
-In top-down order, you have the: 
-* Overall release status 
-* Environment deployment status
-* Workflow step status
 
 
 
-### Release status
-The release status is displayed on the right on drilldown into a release ID.  
-It is determined from the statuses of all the environments included in the promotion flow that orchestrates the deployment of the product.
-For single-environment promotions triggered manually, there are two environments.
-
-The table describes the possible statuses of a Release.
-
-{: .table .table-bordered .table-hover}
-| Release Status     | Description           |
-|------------        |---------------------------------------|
-| **Successful**     | Promotions were completed successfully in all the environments and the changes were successfully deployed .  |
-| **Progressing**    | Promotion is currently on-going for at least one environment.  |
-| **Suspended**      | Promotion in an environment is pending completion. This could be because of a condition in one of its workflows or because a pull request is waiting for approval.  |
-| **Terminated**     | Promotion currently being run in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. |
-| **Failed**         | Promotion failed in at least one environment causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures are flagged in the environment under Issues. Clicking on Issues opens a panel displaying the reason for the error, with links to the resource causing the issue, or to the logs and manifests of the resource.|
 
 
 
-### Environment (deployment) status
-The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows, the Promotion Action, and the application status.
-
-##### Environment status evaluation
-The Successful status for an environment is  in this order:
-1. Pre-Action Workflow
-1. Promotion Action
-1. Application
-
-The table describes the possible deployment statuses for environments.
-
-{: .table .table-bordered .table-hover}
-| Environment Status     | Description           |
-|------------        |---------------------------------------|
-| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
-| **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
-| **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
-| **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
 
 
-### Workflow and workflow-step status
 
-* The status of a Workflow is determined by the status of all its steps.
 
-* The status of a step in the Pre- or Post-Action Workflow is its aggregated status across all the Workflows including and running that step within the environment. Step status is aggregated because a product typically includes multiple applications, and therefore executes multiple Promotion Workflows in parallel through the Promotion Policies. 
 
-The table describes the possible statuses for Promotion Workflow steps.
 
-{: .table .table-bordered .table-hover}
-| Workflow-step Status     | Description           |
-|------------        |---------------------------------------|
-| **Success**        | The step completed execution without errors in all the Pre- and Post-Action Workflows that included it.  |
-| **Running**        | The step is currently in progress in at least one of the Pre- and Post-Action Workflows.  |
-| **Pending**        | The step is pending execution in at least one of the Pre- and Post-Action Workflows. |
-| **Failed**         | At least one step in a Pre- or Post-Action Workflow failed to execute. (NIMA: what could be the reasons?) |
-| **Error**          | At least one step in a Pre- or Post-Action Workflow has a syntax error. (NIMA: example|
-| **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. (NIMA: example of reasons)|
 
 
 
@@ -326,7 +326,9 @@ max-width="60%"
 
 
 ## Related articles
-TBD
+[Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
+[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
+[Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  
 

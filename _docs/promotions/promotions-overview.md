@@ -9,8 +9,6 @@ Continuous Delivery (CD) is an essential practice in the Software Development Li
 CD bridges the gap between development and operations, empowering teams to deliver changes to production with speed and confidence by automating testing, validation, and deployment tasks. CD enables rapid response to customer needs and frequent, low-risk releases, ultimately resulting in a more responsive and efficient development process.
 
 A key component of CD is promotion—the process of advancing an application version from one environment to the next,from staging to production for example, based on specific criteria or approvals. Promotion sequences help ensure that only validated, stable versions of applications make it to production, minimizing risk in every release.
-Promotions in CD are typically structured with a combination of policies, workflows, and approval gates:
-
 
 
 ##### GitOps promotions: The Codefresh advantage
@@ -37,7 +35,7 @@ Here’s what makes Codefresh's GitOps promotions unique:
 Codefresh's GitOps promotions include specialized entities that streamline and automate the promotion process. These entities provide you with the flexibility and control to model your delivery lifecycles with all the required checks built-in, and no custom scripting required. You get a predictable path to production that you can duplicate across projects, giving you ultimate control over your workflows.
 * **Promotion Templates**: Define which application properties to promote.
 * **Promotion Policies**: Define validation and readiness requirements for environments.
-* **Promotion Flows**: Define automated promotion sequences, simple or complex, reducing manual steps and accuracy and efficiency.
+* **Promotion Flows**: Define automated promotion sequences, simple or complex, reducing manual steps for accuracy and efficiency.
 
 
 
