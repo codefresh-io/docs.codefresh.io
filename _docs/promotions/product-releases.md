@@ -266,14 +266,15 @@ The table describes the possible statuses for Promotion Workflow steps.
 | **Error**          | At least one step in a Pre- or Post-Action Workflow has a syntax error. <!--- example -->|
 | **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. <!--- example of reasons -->|
 
+
 {% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/releases/workflow-steps.png" 
-url=/images/gitops-promotions/releases/workflow-steps.png"
-alt="Example of a workflow with a failed step" 
-caption="Example of a workflow with a failed step"
-max-width="60%"
+  image.html 
+  lightbox="true" 
+  file="/images/gitops-promotions/releases/workflow-steps.png" 
+  url="/images/gitops-promotions/releases/workflow-steps.png"
+  alt="Example of a workflow with a failed step" 
+  caption="Example of a workflow with a failed step"
+  max-width="60%"
 %}
 
 ### Versioning in Environments
@@ -342,11 +343,11 @@ Release termination may be necessary if issues are detected in an environment or
   The release is set to status terminated. All downstream environments are set to Pending.  
   If you return to the Releases list for the product, mouse over the Release ID displays the reason why the release failed, and the specific displays this status {::nomarkdown}{<img src="../../../images/icons/promotion-terminated.png?display=inline-block">{:/}.
 
-  {% include 
+{% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/releases/release-terminated.png" 
-url=/images/gitops-promotions/releases/release-terminated.png"
+url="/images/gitops-promotions/releases/release-terminated.png"
 alt="Example of a manually terminated release" 
 caption="Example of a manually terminated release"
 max-width="60%"
@@ -373,7 +374,7 @@ caption="Retry failed release"
 max-width="60%"
 %}
 
-   The release resumes execution from the point of failure, in this case, retries the Post-Action Workflow step, and the status of the release changes to Running.  Note that the release ID does not change. 
+   The release resumes execution from the point of failure, in this case, retries the Post-Action Workflow step, and the status of the release changes to Running.  Note that there is no change to the Release ID. 
 
 <!--
 {% include 

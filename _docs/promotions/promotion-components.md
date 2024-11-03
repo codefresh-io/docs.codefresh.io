@@ -36,21 +36,27 @@ The table describes the core and promotion-specific entities.
     <td>Users</td>
     <td><a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/">Environments</a></td>
   </tr>
-  
+  <tr>
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/environments.png" style="max-width=50%">
+  </tr>
   <tr>
     <td><strong>Product (Required)</strong></td>
     <td>A Product in Codefresh GitOps groups related applications into a single entity. This simplifies promotions by allowing you to promote applications within the product across different environments, rather than promotion each application manually.</td>
     <td>Users</td>
     <td><a href="https://codefresh.io/docs/docs/products/about-products/">Products</a></td>
   </tr>
-  
   <tr>
-    <td><strong>Applications</strong></td>
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/products.png" style="max-width=50%">
+  </tr>  
+  <tr>
+    <td><strong>Applications (Required)</strong></td>
     <td>Applications are the core units around which promotions revolve. Each Argo CD application  can be promoted individually or as part of a product.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/deployments/gitops/create-application/">Creating applications</a></td>
   </tr>
-  
+  <tr>
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/applications.png" style="max-width=50%">
+  </tr>  
   <tr>
     <td colspan="4"><strong>Promotion Building Blocks</strong><br><em>These entities are specific to promotions and define promotions are orchestrated, what gets promoted, and under what conditions.</em></td>
   </tr>
@@ -62,20 +68,26 @@ The table describes the core and promotion-specific entities.
     <td><a href="https://codefresh.io/docs.docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
   <tr>
-    <td colspan="5"><img src="../../../images/gitops-promotions/components/promotion-flow.png" style="max-width=60%">
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/promotion-flow.png" style="max-width=50%">
+  </tr>
   <tr>
     <td><strong>Promotion Settings</strong></td>
     <td>Promotion settings specify what gets promoted across environments. With products, these settings can be defined within the product’s configuration, either inline exclusive to the product, or a reusable promotion template.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/products/configure-product-settings/">Promotion settings for products</a></td>
   </tr>
-  
+  <tr>
+    ???
+  </tr>
   <tr>
     <td><strong>Promotion Policy</strong></td>
     <td>A Promotion Policy outlines the actions taken when changes are promoted. It ensures that the target environment is ready for promotion, with workflows to validate the environment both before and after the promotion action, like commits or pull requests.</td>
     <td>Account administrators</td>
     <td><a href="https://codefresh.io/docs/docs/promotions/promotion-policy/">Promotion Policies</a></td>
   </tr>
+  <tr>
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/promotion-policy.png" style="max-width=50%">
+  <tr>
 </table>
 
 
