@@ -61,7 +61,8 @@ The table describes the core and promotion-specific entities.
     <td>Account administrators</td>
     <td><a href="https://codefresh.io/docs.docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
-  
+  <tr>
+    <td colspan="5"><img src="../../../images/gitops-promotions/components/promotion-flow.png" style="max-width=60%">
   <tr>
     <td><strong>Promotion Settings</strong></td>
     <td>Promotion settings specify what gets promoted across environments. With products, these settings can be defined within the product’s configuration, either inline exclusive to the product, or a reusable promotion template.</td>

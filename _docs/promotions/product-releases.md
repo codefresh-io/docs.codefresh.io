@@ -174,8 +174,8 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/releases/environments.png" 
 url="/images/gitops-promotions/releases/environments.png"
-alt="Example environments for product releases" 
-caption="Example environments for product releases"
+alt="Example of environments for product release" 
+caption="Example of environments for product release"
 max-width="60%"
 %}
 
@@ -201,11 +201,12 @@ The table describes the possible deployment statuses for environments.
 
 Here's an example of an environment with a failed status because of a Degraded application.
 
+
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/releases/env-app-degraded.png" 
-url=/images/gitops-promotions/releases/env-app-degraded.png"
+url="/images/gitops-promotions/releases/env-app-degraded.png"
 alt="Example of failed release: Degraded application" 
 caption="Example of failed release: Degraded application"
 max-width="60%"
@@ -236,13 +237,14 @@ For example, if an update in the `staging` environment triggers the `echo-pre-ac
 
 Each environment displays the steps for the Pre- and Post-Action Workflows defined for it. The workflows are designed to ensure that the deployment process is thoroughly validated and executed correctly.  
 
+
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/releases/workflows.png" 
-url=/images/gitops-promotions/releases/workflows.png"
-alt="Example workflows for product releases" 
-caption="Example workflows for product releases"
+url="/images/gitops-promotions/releases/workflows.png"
+alt="Example of workflows for product release" 
+caption="Example of workflows for product release"
 max-width="60%"
 %}
 
