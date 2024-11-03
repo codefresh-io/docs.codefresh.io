@@ -122,7 +122,18 @@ max-width="60%"
 ### Header
 The header in the Releases page summarizes the change that triggered the promotion, the overall status of the release, and the count of failed, successful, running, and pending environments.
 
+>**NOTE:**  
 The commit details are always for the trigger environment that initiated the promotion.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/header.png" 
+url="/images/gitops-promotions/releases/header.png"
+alt="Example header for product releases" 
+caption="Example header for product releases"
+max-width="60%"
+%}
 
 ### Release status
 The release status is displayed on the right when you drill down into a release ID.  
@@ -140,7 +151,15 @@ The table describes the possible statuses of a Release.
 | **Terminated**     | Promotion currently being run in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. |
 | **Failed**         | Promotion failed in at least one environment causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures are flagged in the environment under Issues. Clicking on Issues opens a panel displaying the reason for the error, with links to the resource causing the issue, or to the logs and manifests of the resource.|
 
-
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/release-terminated.png" 
+url="/images/gitops-promotions/releases/release-terminated.png"
+alt="Example of release with Terminated status" 
+caption="Example of release with Terminated status"
+max-width="60%"
+%}
 
 ## Environments in product releases
 
@@ -149,6 +168,16 @@ The graphical view of the different environments defined in the Promotion Flo al
 * Visualize the dependencies between environments to see how changes propagate through the deployment process
 
 Each environment is color-coded to indicate the overall status of the promotion for that environment. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/environments.png" 
+url="/images/gitops-promotions/releases/environments.png"
+alt="Example environments for product releases" 
+caption="Example environments for product releases"
+max-width="60%"
+%}
 
 ### Environment (deployment) status
 The overall deployment status of an environment is determined by the cumulative statuses of its Promotion (Pre- and Post-Action) Workflows, the Promotion Action, and the application status.
@@ -170,6 +199,19 @@ The table describes the possible deployment statuses for environments.
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
 
+Here's an example of an environment with a failed status because of a Degraded application.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/env-app-degraded.png" 
+url=/images/gitops-promotions/releases/env-app-degraded.png"
+alt="Example of failed release: Degraded application" 
+caption="Example of failed release: Degraded application"
+max-width="60%"
+%}
+
+
 ### Environment history in product releases
 
 * Active environments per release
@@ -187,11 +229,22 @@ If there is an update that triggers a Pre- or Post-Action Workflow within an env
 For example, if an update in the `staging` environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance continues to run. 
 
 
+
 <!--- NIMA: how will it be shown in the releases tab? -->
 
 ## Promotion Workflows in product releases
 
 Each environment displays the steps for the Pre- and Post-Action Workflows defined for it. The workflows are designed to ensure that the deployment process is thoroughly validated and executed correctly.  
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/workflows.png" 
+url=/images/gitops-promotions/releases/workflows.png"
+alt="Example workflows for product releases" 
+caption="Example workflows for product releases"
+max-width="60%"
+%}
 
 ### Workflow and workflow-step statuses
 
@@ -211,20 +264,25 @@ The table describes the possible statuses for Promotion Workflow steps.
 | **Error**          | At least one step in a Pre- or Post-Action Workflow has a syntax error. <!--- example -->|
 | **Terminated**     | At least one step in a Pre- or Post-Action Workflow was manually terminated. <!--- example of reasons -->|
 
-### Pre- and Post-Action Workflows
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/workflow-steps.png" 
+url=/images/gitops-promotions/releases/workflow-steps.png"
+alt="Example of a workflow with a failed step" 
+caption="Example of a workflow with a failed step"
+max-width="60%"
+%}
 
-* Trigger Environment: Can run only Post-Action workflows.
-* Other Environments: Can run both Pre- and Post-Action workflows as defined by the Promotion Policies applied to the environments.
-
-#### Versioning in Environments
+### Versioning in Environments
 When the Post-Action Workflow in the trigger environment, or the Pre-Action Workflow and Promotion Action in target environments, completes successfully, the promotion mechanism commits the changes and advances the version number for the applications within the product in those environments. Version numbers are updated even if the Post-Action Workflow in a specific environment fails to complete.
 
 Because of this automatic version update, it's essential to incorporate a revert or rollback mechanism in the Post-Action Workflow to easily revert changes if needed.
 
-<!--- TBD  -->
+<!--- TBD ask if this is correct and dependent promotion is to be documented -->
 
 
-#### Errors for Workflow steps
+### Errors for Workflow steps
 Workflows fail when at least one step in the workflow does not complete successful execution. 
 Identifying and resolving these failures in real-time are critical to maintaining smooth deployment processes.
 
@@ -271,22 +329,26 @@ caption="Release notes with change history for release"
 max-width="60%"
 %}
 
+## Terminate a release
+Manually terminate a release to stop the promotion process. Terminating a release stops all downstream promotions, preventing further propagation across environments.
 
+Release termination may be necessary if issues are detected in an environment or application, or if a version is identified as problematic. Stopping downstream promotions in these cases prevents propagating unwanted changes, and enables the rollback of in-flight versions.
 
+1. In the Codefresh UI, from the sidebar, select **Products**.
+1. Select the product and then click the **Releases** tab.
+1. Click the Release ID for the ongoing release to terminate, and then click **Terminate**.
+  The release is set to status terminated. All downstream environments are set to Pending.  
+  If you return to the Releases list for the product, mouse over the Release ID displays the reason why the release failed, and the specific displays this status {::nomarkdown}{<img src="../../../images/icons/promotion-terminated.png?display=inline-block">{:/}.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  {% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/releases/release-terminated.png" 
+url=/images/gitops-promotions/releases/release-terminated.png"
+alt="Example of a manually terminated release" 
+caption="Example of a manually terminated release"
+max-width="60%"
+%}
 
 
 ## Retry a failed release
@@ -335,4 +397,4 @@ max-width="60%"
 
 
 
-
+  
