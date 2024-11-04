@@ -13,10 +13,12 @@ Recognizing that some scenarios require on-demand control, Codefresh also provid
 
 Manual promotion triggers provide different levels of control, accessible from distinct areas of the platform, enabling:
 
-* **Single-environment promotion**
+* **Single-environment promotion**  
   Useful for quick promotion to a specific environment through the drag-and-drop option, or the promote option for more control on promotion behavior for traget the environment
 * **Multi-environment promotion**  
   Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flow flow, and the option to trigger a promotion for any product directly from within a Promotion Flow.
+
+SCREENSHOT OF TRIGGER MOSAIC
 
 The [quick reference for manual promotion triggers](#manual-promotion-triggers-quick-reference) provides details on the different options, where you can find them, and potential use cases for each. How-to details are in the sections that follow the quick reference.
 
@@ -32,10 +34,10 @@ Each method is available only if your account administrator has assigned permiss
 
 | Manual trigger type | Method       | Available in  | Control & flexibility | Potential use case|
 |----------------- |-------------    |------------------|--------------------|------------------------|
-|Single environment| Drag-and-drop   | Environment dashboard | Enforces global Policy settings if defined or allows you to select Policy behavior, including Promotion Action and Promotion Workflows. | Test changes in selected environment with desired promotion method.|
-|                 |Promote product  | Product dashboard<br>Environments dashboard | Identical to drag-and-drop  | Identical to drag-and-drop             |
-| Multiple environments | Promote product | Product dashboard<br>Environments dashboard |Automated promotion across multiple environments according to predefined flow.  | Promote changes for product across all environments without further commits.|
-|                |Trigger | Promotion Flow  | Select product to promote with Promotion Flow  | Test newly designed Promotion Flow |
+|**Single environment**| **Drag-and-drop**   | Environment dashboard | Enforces global Policy settings if defined or allows you to select Policy behavior, including Promotion Action and Promotion Workflows. | Test changes in selected environment with desired promotion method.|
+|                 |**Promote product**  | Product dashboard<br>Environments dashboard | Identical to drag-and-drop  | Identical to drag-and-drop             |
+| **Multiple environment**s | **Promote product** | Product dashboard<br>Environments dashboard |Automated promotion across multiple environments according to predefined flow.  | Promote changes for product across all environments without further commits.|
+|                |**Trigger** | Promotion Flow  | Select product to promote with Promotion Flow  | Test newly designed Promotion Flow |
 
 
 
@@ -54,8 +56,15 @@ This method is useful to test changes within a specific environment. For example
   On the left, the Promotion Settings are either populated from global Policy settings that match the product, or left empty for you to define.  
   On the right, you can see the Compact diff view, displaying the files with the changes and the changes to be promoted.
 
-SCREENSHOT
-
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/triggers/drag-n-drop.png" 
+url="/images/gitops-promotions/triggers/drag-n-drop.png" 
+alt="Promote app through drag-and-drop" 
+caption="Promote app through drag-and-drop" 
+max-width="60%" 
+%}
 
 {:start="3"}
 1. Review the files with the changes.
@@ -64,7 +73,7 @@ SCREENSHOT
 
 A release is created for the Product and the Release tab displays the ongoing deployment.
 
-SCREENSHOT
+
 
 ## Manually promote products to specific environments
 
@@ -81,8 +90,17 @@ This method is useful to test changes within a specific environment. For example
     * To promote from the Environments dashboard, select **Environments**. 
 1. Click the context menu of the product to promote and select **Promote**.
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/triggers/promote-app-context-menu.png" 
+url="/images/gitops-promotions/triggers/promote-app-context-menu.png" 
+alt="Promote option in context menu" 
+caption="Promote option in context menu" 
+max-width="60%" 
+%}
 
+{:start="3"}
 1. Select the target environment to promote to and click **Next**.
 1. In the Commit Changes page, if needed, define the Promotion Settings:
     * Select the Promotion Action as **Commit** (automated) or **Pull Request** (may require manual approval based on organization policies). 
@@ -91,7 +109,7 @@ SCREENSHOT
 1. Click **Promote**.
 A release is created for the Product and the Release tab displays the ongoing deployment.
 
-SCREENSHOT
+
 
 
 
@@ -108,21 +126,27 @@ This method is useful for example to promote changes for product across all envi
     * To promote from the Product dashboard, select **Products**, and then select the product with the application to promote. 
     * To promote from the Environments dashboard, select **Environments**. 
 1. Click the context menu of the product to promote and select **Promote**.
-
-SCREENSHOT
 1. Select **Trigger Promotion Flow**, and click **Next**.
-1. In the Trigger Promotion Flow page, verify that there are no validation errors, and then click **Trigger**.
+1. In the Trigger Promotion Flow page, select the Promotion Flow and then click **Trigger**.
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/triggers/trigger-by-flow-select-flow.png" 
+url="/images/gitops-promotions/triggers/trigger-by-flow-select-flow.png" 
+alt="Select Promotion Flow to promote to multiple environments" 
+caption="Select Promotion Flow to promote to multiple environments" 
+max-width="60%" 
+%}
 
 A release is created for the Product and the Release tab displays the ongoing deployment.
 
-SCREENSHOT
 
 
-## Manually promote products from within Promotion Flows
 
-Manually trigger promotion for a product from within a Promotion Flow.
+## Manually trigger Promotion Flows
+
+Manually trigger a predefined or a new Promotion Flow to promote a product.
 
 This method is useful to test newly designed Promotion Flows, and also verify how Promotion Flows work for different products and optimize them accordingly.
 
@@ -134,24 +158,37 @@ This method is useful to test newly designed Promotion Flows, and also verify ho
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Promotion Flows**. 
 1. Select the Promotion Flow to trigger manually.
 1. On the toolbar, click **Trigger**.
-
-
-{:start="4"}
 1. From the list of products, select the product for which to trigger the Promotion Flow, and click **Next**.
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/triggers/trigger-promo-flow-select-product.png" 
+url="/images/gitops-promotions/triggers/trigger-promo-flow-select-product.png" 
+alt="Select product for which to trigger Promotion Flow" 
+caption="Select product for which to trigger Promotion Flow" 
+max-width="60%" 
+%}
 
 {:start="5"}
-1. Select the application or applications to promote for the product. 
+1. Select the application to promote for the product across the environments defined in the Promotion Flow. 
 
-SCREENSHOT
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/triggers/trigger-promo-flow-select-product.png" 
+url="/images/gitops-promotions/triggers/trigger-promo-flow-select-product.png" 
+alt="Select application to promote through Promotion Flow" 
+caption="Select application to promote through Promotion Flow" 
+max-width="60%" 
+%}
 
 {:start="6"}
 1. Click **Trigger**.
+  A notification is displayed that the promotion is triggered and a release is created.  
 
-A release is created for the product, the Releases tab is displayed.
 
-SCREENSHOT
+<!--- SCREENSHOT-->
 
 
 
