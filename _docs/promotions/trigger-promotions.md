@@ -18,7 +18,7 @@ Manual promotion triggers provide different levels of control, accessible from d
 * **Multi-environment promotion**  
   Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flow flow, and the option to trigger a promotion for any product directly from within a Promotion Flow.
 
-SCREENSHOT OF TRIGGER MOSAIC
+<!--- SCREENSHOT OF TRIGGER MOSAIC-->
 
 The [quick reference for manual promotion triggers](#manual-promotion-triggers-quick-reference) provides details on the different options, where you can find them, and potential use cases for each. How-to details are in the sections that follow the quick reference.
 
@@ -34,7 +34,7 @@ Each method is available only if your account administrator has assigned permiss
 
 | Manual trigger type | Method       | Available in  | Control & flexibility | Potential use case|
 |----------------- |-------------    |------------------|--------------------|------------------------|
-|**Single environment**| **Drag-and-drop**   | Environment dashboard | Enforces global Policy settings if defined or allows you to select Policy behavior, including Promotion Action and Promotion Workflows. | Test changes in selected environment with desired promotion method.|
+|**Single environment**| **Drag-and-drop**   | Environment dashboard | Enforces global Policy settings if defined or allows you to set Policy behavior, including Promotion Action and Promotion Workflows. | Test changes in selected environment with desired promotion method.|
 |                 |**Promote product**  | Product dashboard<br>Environments dashboard | Identical to drag-and-drop  | Identical to drag-and-drop             |
 | **Multiple environment**s | **Promote product** | Product dashboard<br>Environments dashboard |Automated promotion across multiple environments according to predefined flow.  | Promote changes for product across all environments without further commits.|
 |                |**Trigger** | Promotion Flow  | Select product to promote with Promotion Flow  | Test newly designed Promotion Flow |
