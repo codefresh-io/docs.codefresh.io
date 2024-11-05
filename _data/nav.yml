@@ -386,7 +386,7 @@
         url: "/promotion-policy"  
     - title: Trigger promotions
       url: "/trigger-promotions"   
-    - title: Monitor promotions for products
+    - title: Tracking releases for products
       url: "/product-releases"         
 
 

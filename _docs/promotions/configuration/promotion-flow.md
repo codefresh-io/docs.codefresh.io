@@ -100,7 +100,7 @@ caption="Simple sequential flow with dependencies between each environment"
 max-width="60%"
 %}
 
-Here's an example of a Promotion Flow with multiple dependencies between taregt environments.
+Here's an example of a Promotion Flow with multiple dependencies between target environments.
 
 {% include 
 image.html 

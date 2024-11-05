@@ -1,5 +1,5 @@
 ---
-title: "Tracking product promotions"
+title: "Tracking product releases"
 description: "Monitor promotion orchestration for a product through Releases"
 group: promotions
 toc: true
@@ -17,10 +17,10 @@ Visually track deployments of a product across multiple environments with Releas
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/releases/releases-list.png" 
-url="/images/gitops-promotions/releases/releases-list.png"
-alt="Release list for a product" 
-caption="Release list for a product"
+file="/images/gitops-promotions/releases/release-view.png" 
+url="/images/gitops-promotions/releases/release-view.png"
+alt="Example of a product release view" 
+caption="Example of a product release view"
 max-width="60%"
 %}
 
@@ -31,7 +31,7 @@ Whether you are a product manager or an application developer, with Releases, yo
 * Troubleshoot issues preventing deployment to production
 * Address customer-reported issues through detailed insights into the deployment lifecycle
 
-<!--- NIMA: add an xref to the three different ways promotions can be triggered -->
+
 
 ##### Releases for products
 A release is created for a product when a promotion is triggered, either automatically or manually.
@@ -41,10 +41,14 @@ On drill down into a product, the Releases tab displays the list of ongoing and 
 As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for failed deployments, or understand the changes involved in a release.
 
 
+
+
 ##### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:
 * **Release promotion flow**  
   Tracking the release visually, shows the progression of the release through each phase of the promotion lifecycle through different environments.  
+  This is the place where you can view issues that arise. Instead of having to switch between different interfaces, or even tools to troubleshoot errors, the Releases page funnnels all erros  Codefresh funnels everything into one screen on the Releases page. Developers have everything they need at their fingertips, saving time so you can get updates into the hands of your customers sooner.
+
   See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).  
   
   For information on the different aspects of a release, see:
@@ -55,9 +59,6 @@ There are two key aspects of tracking deployments for a product through releases
 * **Release notes**  
   Tracking through release notes provides an integrated list of changes from various sources and tools, providing a comprehensive view of what led to the deployment.  
   See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
-
-
-
 
 
 ## View Releases for products
@@ -85,9 +86,8 @@ The table describes important insights in the Releases page.
 |-------------|---------------------|
 | **Release ID**     | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
-| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, including two environments. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
-| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspended-pending-pr.png?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Status logic for releases](#status-logic-for-releases).|
-
+| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
+| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspending-pending-pr?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
 
 
 
