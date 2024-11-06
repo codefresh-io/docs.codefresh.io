@@ -9,24 +9,7 @@ For Docker `build` steps, you can specify a `buildx qemu` image from any contain
 Previously, `buildx qemu` supported only the default image.
 
 
-<!--- ##### Multi-architecture images
-Image reporting is now available for multi-architecture images.  
-On drilldown into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
 
-
-
-
-{% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/oct24/rel-notes-oct-24-multi-arch-image.png" 
-   url="/images/whats-new/oct24/rel-notes-oct-24-multi-arch-image.png" 
-   alt="Multi-arch image in Images dashboard" 
-   caption="Multi-arch image in Images dashboard" 
-   max-width="80%" 
-   %}
-
--->
 ### Pipelines: Output parameters in `arguments` attribute
 
 Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
