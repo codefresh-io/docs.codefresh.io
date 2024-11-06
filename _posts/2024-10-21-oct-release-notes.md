@@ -10,6 +10,7 @@ Previously, `buildx qemu` supported only the default image.
 
 
 
+
 ### Pipelines: Output parameters in `arguments` attribute
 
 Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
@@ -22,7 +23,7 @@ Now, plugins can consume outputs from both the `arguments` and `commands` attrib
     title: consume var in plugin step
     type: codefresh/consume-variable
     arguments:
-      output_variable: '${{steps.output_variable.output.EXPORTED}}'
+      output_variable: ${{steps.<step_name>.output.<var_name>}}
 ...
 ```
 

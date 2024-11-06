@@ -26,8 +26,8 @@ You can:
 The Audit Log is divided into actions audited (All Audit), and tiggers and webhooks processed by Codefresh (Triggers).
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. On the sidebar, from Access & Collaboration, select [**Audit**](https://g.codefresh.io/account-admin/audit/audit-all){:target="\_blank"}.  
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select [**Audit**](https://g.codefresh.io/account-admin/audit/audit-all){:target="\_blank"}.  
 1. To focus on a specific time frame, select the date range from the toolbar.  
   The All Audit tab includes all Codefresh events in your account, sorted by the most recent events.  
   Each event shows the following details:  
