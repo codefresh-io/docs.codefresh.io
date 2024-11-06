@@ -14,7 +14,7 @@ A key component of CD is promotion—the process of advancing an application ver
 
 
 ##### GitOps promotions: The Codefresh advantage
-Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation,  with Git as the single source of truth.   
+Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   
 
 Here’s what makes Codefresh's GitOps promotions unique:
 
