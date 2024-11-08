@@ -8,8 +8,7 @@ toc: true
 If you are new to promotions in GitOps, you may find it useful to review the entities involved in the promotion process, and their roles.  
 There are the core entities that define the structure of your development deployment lifecyles, and promotion-specific entities, which are advanced entities each dedicated to a different aspect of the promotion process. 
 
-##### Core entities
-Core entities define 
+For the promotion sequence flow, see [Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/). If 
 
 ## Promotion building blocks
 
@@ -28,7 +27,7 @@ The table describes the core and promotion-specific entities.
   </tr>
 
   <tr>
-    <td colspan="4"><strong>Core entities</strong><br><em>These entities define the structure of your deployment.<br>Core entities support standard and traditional promotion flows, allowing you to trigger promotions that cover typical deployment scenarios for most organizations. You can initiate manual promotions between two environments using [drag-and-drop and other options]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference).</em></td>
+    <td colspan="4"><strong>Core entities</strong><br><em>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. See <a href="https://codefresh.io/docs/docs/deployments/gitops/create-application/"> You can initiate manual promotions between two environments using [drag-and-drop and other options]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference).</em></td>
   </tr>
       <td><strong>Applications (Required)</strong></td>
     <td>Applications are the core units around which promotions revolve. Each Argo CD application  can be promoted individually or as part of a product.</td>
@@ -134,7 +133,7 @@ If you have more than one Configuration Runtime, Codefresh automatically consoli
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
-[Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
 
 

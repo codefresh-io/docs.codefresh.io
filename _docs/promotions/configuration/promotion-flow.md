@@ -8,10 +8,10 @@ toc: true
 
 A promotion flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
 
-We have a specialized Promotion Flow entity in Codefresh, dedicated to creating and managing multi-environment promotions! 
+We have a specialized Promotion Flow entity in Codefresh, dedicated to creating and managing multi-environment promotions.
 Promotion Flows in Codefresh GitOps, backed by the power of Argo CD, streamlines the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
-Set up completely automated promotion flows with just a few clicks and at the same govern how promotions should happen in different environments. 
+Set up completely automated promotion flows with just a few clicks and at the same time govern how promotions should happen in different environments. 
 
 SCREENSHOT
 
