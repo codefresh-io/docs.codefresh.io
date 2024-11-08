@@ -17,26 +17,27 @@ These core deployment entities are required for all promotions. Products enable 
 With these entities, you can quickly promote changes using a drag-and-drop method between two environments and choose the target environment for promotion.
 
 ##### Promotion Flows
-After setting up the basics, use the Promotion Flow entity to orchestrate promotion sequences for multiple environments. Promotion Flows support more complex, multi-environment deployment strategies.
+After setting up the basics, orchestrate promotion across multiple environments. 
+Use our Promotion Flow entity to create complex, multi-environment deployment strategies.
 
 ##### Promotion Workflows
 Adding Promotion Workflows introduces validations and checks that ensure each environment in the sequence meets your standards.
 
 
-Here are the promotion scenarios that take you through the different scenarios:
+Here are the different promotion scenarios:
 
 [Drag-and-drop promotions](#drag-and-drop-promotion)  
 [Multi-environment sequential promotion](#multi-environment-sequential-promotion)  
 [Policy-driven multi-environment promotion](#policy-driven-multi-environment-promotion)  
-[Parallel multi-environment promotion](#parallel-multi-environment-promotion)  
-[Promotion with environment dependencies](#promotion-with-environment-dependencies)
+[Multi-environment promotion with paralllel environments](#parallel-multi-environment-promotion)  
+[Multi-environment promotion with dependencies](#promotion-with-environment-dependencies)
 
 
 
 
 ## Drag-and-drop promotion
 
-In this basic scenario, we'll show you how to promote products in the Environments dashboard using drag-and-drop functionality. 
+In this basic scenario, we'll see how to promote products in the Environments dashboard using drag-and-drop functionality. 
 This quick, visual method allows you to move applications across two environments in a few simple steps.
 
 ##### Context
@@ -134,8 +135,8 @@ max-width="60%"
 
 ## Multi-environment sequential promotion
 Drag-and-drop is useful for on-demand promotion to a single environment, but a sequential promotion flow is better for managing changes across multiple environments.  
-In this scenario, we’ll set up a Promotion Flow to move changes in the `cf-101` product through three environments: `dev`, `qa`, and `production`. 
-We'll also trigger the promotion to orchestrate changes through each environment.
+In this scenario, we’ll see how to set up a Promotion Flow to move changes in the `cf-101` product through three environments: `dev`, `qa`, and `production`. 
+We'll also trigger the promotion and monitor how the changes are orchestrated through each environment.
 
 
 >**NOTE**  
@@ -144,7 +145,7 @@ For successful promotion, each environment must have an application for the prod
 
 ##### Adding Promotion Flow
 
-* Click **Settings**, and from the sidebar select **Promotion Flows** and then click **Add Promotion Flow**.
+We'll go to **Settings**, from the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
 
 ##### Trigger Environment
 The Trigger Environment is the starting point for the promotion. 
@@ -164,7 +165,7 @@ max-width="60%"
 %}
 
 
-The Promotion Flow has its first environment. 
+The Promotion Flow has `dev` as its first environment. 
 
 {% include 
 image.html 
@@ -177,12 +178,12 @@ max-width="60%"
 %}
 
 ##### Selecting target environments
-Next, we'll select the target environments in the sequence: `qa` and `production`.
+Next, we'll select the target environments in the promotion sequence: `qa` and `production`.
 
 
 * Hover over the right of the `dev` environment node, and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
-* Select the target environment from the list.
-* Repeat to add each target environment. 
+* From the list, we'll select `qa` as the first target environment to add to the flow.
+* Repeat to add `production` as the final target environment in the flow. 
 
  
 {% include 
@@ -212,7 +213,8 @@ max-width="60%"
 ##### Saving Promotion Flow
 The final step is to save the Promotion Flow by clicking **Save Promotion Flow** on the top-right.
 
-Add a name and optional description, and click **Save**. The flow's YAML file lists the environment sequence.
+The **Name** is required. The flow's YAML file lists the environment sequence.
+
 
 {% include 
 image.html 
@@ -224,7 +226,7 @@ caption="Required target environments in Promotion Flow"
 max-width="60%"
 %}
 
-The new flow, `three-env-promotion`, is added to the Promotion Flows page.
+Clicking **Save** adds the new flow, `three-env-promotion` to the Promotion Flows page.
 
 {% include 
 image.html 
@@ -237,9 +239,10 @@ max-width="60%"
 %}
 
 ##### Triggering Promotion Flow
-After creating the flow, trigger it to promote changes from the trigger environment to the defined target environments.
+After creating the flow, we'll trigger it to promote changes from the trigger environment to the defined target environments.
 
-First select the flow to trigger from the list of Promotion Flows, and then click **Trigger** to initiate the promotion.
+* **Selecting the flow**
+  From the list of Promotion Flows, we'll select `three-env-promotion`, and then click **Trigger** to initiate the promotion.
 
 {% include 
 image.html 
@@ -251,7 +254,8 @@ caption="Trigger selected Promotion Flow"
 max-width="60%"
 %}
 
-Select the product for which to trigger the flow and click **Next**.
+* **Selecting the product**  
+  We'll select `cf-101` as the product and continue by clicking  **Next**.
 
 {% include 
 image.html 
@@ -263,7 +267,8 @@ caption="Select product to promote"
 max-width="60%"
 %}
 
-Select the application with the changes to promote and click **Trigger**.
+* **Selecting the application**  
+  The application with the changes, `cf-101-dev`, is automatically selected, so we'll click **Trigger** to initiate the promotion.
 <!--- do we auto-select the app with the changes? -->
 
 {% include 
@@ -278,8 +283,8 @@ max-width="60%"
 
 
 ##### Monitoring release 
-The promotion mechanism creates a release for the product. 
-Changes are orchestrated sequentially through the environments, following the order defined in the Promotion Flow.
+A release is automatically created for `cf-101` with a new Release ID.  
+In the release view, you can see that changes are orchestrated sequentially through the environments, following the order defined in the `three-env-promotion` Promotion Flow.
 
 
 
@@ -294,13 +299,14 @@ max-width="60%"
 %}
 
 ## Policy-driven multi-environment promotion
-In this scenario, we’ll configure policies for a multi-environment Promotion Flow to manage promotion conditions, ensuring that each environment’s specific requirements are met before changes are promoted.
+Now that we have reviewed multi-environment promotion, let's configure policies to manage promotion conditions, ensuring that each environment’s specific requirements are met before changes are promoted.
 
 ##### What are Promotion Policies?
-Promotion Policies define the criteria for promoting changes through each environment. They can include automated tests, scans, quality checks, approvals, notifications, and more.  
-You can define these checks or tests through Promotion Workflows, modeled on Argo Workflows.
+Promotion Policies define the criteria for promoting changes through each environment. They govern promotion behavior through include automated tests, scans, quality checks, approvals, notifications, and more.  
+You can define promotion criteria through Promotion Workflows, modeled on Argo Workflows.
 
-To create Promotion Workflows, select **Promotion Workflows** from the sidebar.
+* Create Promotion Workflows in Codefresh by selecting **Promotion Workflows** from the sidebar.
+
 
 
 
@@ -313,9 +319,9 @@ Promotion Policies support three optional settings:
 * **Promotion Action**: The action that promotes the changes, which defaults to Commit if not set.
 * **Post-Action Workflow**: The workflow to run after the Promotion Action.
 
-Open the Promotion Flow, and select the Pre- and Post-Action Workflows, and the Promotion Action settings for each target environments to manage promotion behavior.
+We'll define the policy settings for the `three-env-promotion` Promotion Flow to manage promotion behavior for the `qa` and `production` target environments.
 
-
+Assigning settings is as simple as clicking the respective controls and selecting the workflows/action from the list. 
 
 {% include 
 image.html 
@@ -327,12 +333,25 @@ caption="Policy settings for target environments"
 max-width="60%"
 %}
 
+For both `qa` and `production`, we'll select the same workflows and the same promotion action.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png" 
+url="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png"
+alt="Policy settings for target environments" 
+caption="Policy settings for target environments"
+max-width="60%"
+%}
+
 
 
 
 ##### Triggering policy-driven Promotion Flow
-Trigger the Promotion Flow and monitor the release in the Release page.
-In contrast to the previous release, the current release view shows the `qa` and `productions` environments with the Pre- and Post-Actions defined for each environment. 
+We'll save the changes to the `three-env-promotion` flow, trigger it, and monitor the release view.
+
+In contrast to the previous release, the current release view shows the `qa` and `production` environments with the Pre- and Post-Action Workflows defined for each environment. 
 
 {% include 
 image.html 
@@ -346,9 +365,9 @@ max-width="60%"
 
 ## Multi-environment promotion with parallel environments
 
-In this scenario, we'll create a more complex promotion flow, with additional environments and parallel promotions. 
+In this scenario, we'll build on the `three-env-promotion` flow to create a promotion flow with additional environments and parallel promotions, and save it as a new flow.
 
-Consider a multi-region deployment model, where you have designated primary regions for deployment and you want promotions to pass successfully for all these regions and the production environment in parallel.
+Consider a multi-region deployment model, where you have designated primary regions for deployment, and you want promotions to pass successfully for all these regions and the production environment in parallel.
 
 ##### Context
 In the Product dashboard, the `cf-101` product has applications in several production environments. 
@@ -366,8 +385,7 @@ max-width="60%"
 
 ##### Adding environments to Promotion Flow
 
-Add environments to the Promotion Flow before the final target environment.
-We'll add two additional production environments to `qa`. 
+We'll add two additional production environments to `qa`: `prod-asia` and `prod-us`. 
 
 {% include 
 image.html 
@@ -379,9 +397,23 @@ caption="Adding parallel environments in Promotion Flow"
 max-width="60%"
 %}
 
-Save this as a new Promotion Flow if needed. 
+Here's the promotion flow with the parallel environments:
 
-When you trigger this flow and monitor the Release view, you'll see that it is structured accordingly.
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-created.png" 
+url="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-created.png"
+alt="Promotion Flow with parallel environments" 
+caption="Promotion Flow with parallel environments"
+max-width="60%"
+%}
+
+
+We'll save this as `parallel-env-promotion`. 
+
+Triggering this flow displays the parallel promotion structure in the Release view.  
+Promotions occur simultaneously for each environment, and the release is considered successful once all environments are promoted successfully.
 
 {% include 
 image.html 
@@ -395,16 +427,17 @@ max-width="60%"
 
 
 ## Promotion with environment dependencies
-In this final scenario, we’ll examine how to create dependencies between environments in a Promotion Flow. 
+In this final scenario, we’ll see how to create dependencies between environments in a Promotion Flow. 
 
-Be default, every environment in a flow is dependent on the one preceding it.  
+Be default, every environment in a flow (except the trigger environment), is dependent on the one preceding it.  
 Critical environments may rely on the stability or success of another before they can be promoted to. By defining additional dependencies for an environment, you can ensure that the changes are promoted only when all dependent environments meet all criteria.
 
-In our example, we want to add a `staging` environment, and then add a dependency on `staging` for `production`.
+In our example, we'll go back to our `three-env-promotion` flow, add a parallel `staging` environment, and then add a dependency on `staging` for `production`.
 What this means that changes are promoted to `production` only after both `qa` and `staging` are successfully promoted.  
 
+In the example, we have added the `staging` environment.  
 
-Update the dependency for your `production` environment:
+Now we'll update the dependency on the `production` environment, by selecting `staging`, in addition to `qa`:
 
 {% include 
 image.html 
@@ -416,7 +449,7 @@ caption="Update dependencies for environment"
 max-width="60%"
 %}
 
-Here's the Promotion Flow with the updated depenencu
+Here's the `three-env-promotion` Promotion Flow with the updated dependency.
 
 {% include 
 image.html 
@@ -427,6 +460,8 @@ alt="Promotion Flow with updated dependencies"
 caption="Promotion Flow with updated dependencies"
 max-width="60%"
 %}
+
+Now that you've seen how promotions work in Codefresh, explore the links in Related Articles to learn more about key entities, advanced configurations, and additional use cases.
 
 ## Related articles
 [Promotion components]({{site.baseurl}}/docs/promotions/promotion-components/)
