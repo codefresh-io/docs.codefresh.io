@@ -24,12 +24,12 @@ Use our Promotion Flow entity to create complex, multi-environment deployment st
 Adding Promotion Workflows introduces validations and checks that ensure each environment in the sequence meets your standards.
 
 
-Here are the different promotion scenarios:
+Here are the different promotion scenarios you can explore:
 
 [Drag-and-drop promotions](#drag-and-drop-promotion)  
 [Multi-environment sequential promotion](#multi-environment-sequential-promotion)  
 [Policy-driven multi-environment promotion](#policy-driven-multi-environment-promotion)  
-[Multi-environment promotion with paralllel environments](#parallel-multi-environment-promotion)  
+[Multi-environment promotion with parallel environments](#parallel-multi-environment-promotion)  
 [Multi-environment promotion with dependencies](#promotion-with-environment-dependencies)
 
 
@@ -100,10 +100,10 @@ Review the files and properties that will be updated as part of this promotion a
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-action.png" 
-url="/images/gitops-promotions/tutorials/dnd-action.png"
-alt="Drag and drop `cf-101` to promote" 
-caption="Drag and drop `cf-101` to promote"
+file="/images/gitops-promotions/tutorials/dnd-commit.png" 
+url="/images/gitops-promotions/tutorials/dnd-commit.png"
+alt="Commit changes for `cf-101`" 
+caption="Commit changes for `cf-101`"
 max-width="60%"
 %}
 
@@ -181,9 +181,9 @@ max-width="60%"
 Next, we'll select the target environments in the promotion sequence: `qa` and `production`.
 
 
-* Hover over the right of the `dev` environment node, and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
+* Mouse over the right of the `dev` environment node, displays the add icon: {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
 * From the list, we'll select `qa` as the first target environment to add to the flow.
-* Repeat to add `production` as the final target environment in the flow. 
+* We'll repeat the actions on the `qa` environment to add `production` as the final target environment in the flow. 
 
  
 {% include 
@@ -219,10 +219,10 @@ The **Name** is required. The flow's YAML file lists the environment sequence.
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png"
-alt="Required target environments in Promotion Flow" 
-caption="Required target environments in Promotion Flow"
+file="/images/gitops-promotions/tutorials/seq-promo-flow-save-flow.png" 
+url="/images/gitops-promotions/tutorials/seq-promo-flow-save-flow.png"
+alt="Save Promotion Flow" 
+caption="Save Promotion Flow"
 max-width="60%"
 %}
 
@@ -231,17 +231,17 @@ Clicking **Save** adds the new flow, `three-env-promotion` to the Promotion Flow
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png"
-alt="Promotion Flow page" 
-caption="Promotion Flow page"
+file="/images/gitops-promotions/tutorials/seq-promo-flow-flow-list.png" 
+url="/images/gitops-promotions/tutorials/seq-promo-flow-flow-list.png"
+alt="Promotion Flow page with new flow" 
+caption="Promotion Flow page with new flow"
 max-width="60%"
 %}
 
 ##### Triggering Promotion Flow
 After creating the flow, we'll trigger it to promote changes from the trigger environment to the defined target environments.
 
-* **Selecting the flow**
+* **Selecting the flow**  
   From the list of Promotion Flows, we'll select `three-env-promotion`, and then click **Trigger** to initiate the promotion.
 
 {% include 
@@ -340,8 +340,8 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png" 
 url="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png"
-alt="Policy settings for target environments" 
-caption="Policy settings for target environments"
+alt="Target environment with policy settings" 
+caption="Target environment with policy settings"
 max-width="60%"
 %}
 
@@ -420,22 +420,21 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-release.png" 
 url="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-release.png"
-alt="Release view of parallel environments" 
-caption="Release view of parallel environments"
+alt="Release view of Promotion Flow with parallel environments" 
+caption="Release view of Promotion Flow with parallel environments"
 max-width="60%"
 %}
 
 
-## Promotion with environment dependencies
-In this final scenario, we’ll see how to create dependencies between environments in a Promotion Flow. 
+## Multi-environment promotion with dependencies
 
-Be default, every environment in a flow (except the trigger environment), is dependent on the one preceding it.  
-Critical environments may rely on the stability or success of another before they can be promoted to. By defining additional dependencies for an environment, you can ensure that the changes are promoted only when all dependent environments meet all criteria.
+In this final scenario, we’ll explore how to create dependencies between environments in a Promotion Flow.
 
-In our example, we'll go back to our `three-env-promotion` flow, add a parallel `staging` environment, and then add a dependency on `staging` for `production`.
-What this means that changes are promoted to `production` only after both `qa` and `staging` are successfully promoted.  
+By default, each environment in a promotion flow (except the trigger environment) is dependent on the one preceding it. However, critical environments may rely on the success or stability of multiple environments before they are promoted to. By defining additional dependencies, you can ensure that changes are promoted only when all required environments meet the specified criteria.
 
-In the example, we have added the `staging` environment.  
+In this example, we’ll return to the `three-env-promotion` flow, add a parallel `staging` environment, and set a dependency on `staging` for `production`. This setup means changes are promoted to `production` only after both `qa` and `staging` have been successfully promoted.
+
+In the example, we have already added the `staging` environment.  
 
 Now we'll update the dependency on the `production` environment, by selecting `staging`, in addition to `qa`:
 
@@ -464,7 +463,7 @@ max-width="60%"
 Now that you've seen how promotions work in Codefresh, explore the links in Related Articles to learn more about key entities, advanced configurations, and additional use cases.
 
 ## Related articles
-[Promotion components]({{site.baseurl}}/docs/promotions/promotion-components/)
+[Promotion components]({{site.baseurl}}/docs/promotions/promotion-components/)  
 [Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion Flow]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Promotion Policy]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
