@@ -377,6 +377,8 @@
       url: "/promotion-components"
     - title: Promotion sequences
       url: "/create-promotion-sequence"
+    - title: Promotion scenarios
+      url: "/promotion-scenario-examples"    
     - title: Configuration
       url: "/configuration"
       sub-pages: 
