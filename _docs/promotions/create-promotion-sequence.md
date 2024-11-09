@@ -39,7 +39,7 @@ The sections that follow describe the steps you'll need to configure for your sp
 ### Prerequisites
 1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)  
    The Configuration Runtime is a GitOps Runtime that stores the manifests of the promotion entities.  
-   Designate at least one GitOps Runtime as the Cofiguration Runtime.  
+   Designate at least one GitOps Runtime as the Configuration Runtime.  
    If no GitOps Runtime has been designated as such, Codefresh assigns one of the existing Runtimes.
  
 1. Admin permissions  
@@ -94,6 +94,7 @@ The sections that follow describe the steps you'll need to configure for your sp
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
+[Exploring promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenario-examples/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
 
