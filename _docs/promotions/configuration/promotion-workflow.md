@@ -367,6 +367,6 @@ max-width="60%"
 [Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Configure Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
-[Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
