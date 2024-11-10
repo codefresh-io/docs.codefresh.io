@@ -408,7 +408,7 @@
         url: "/drag-and-drop"    
       - title: Multi-environment sequential promotion
         url: "/multi-env-sequential-flow"  
-      - title: Policy driven multi-environment promotion
+      - title: Multi-environment promotion with conditions
         url: "/policy-multi-env-promotion"  
       - title: Multi-environment promotion with parallel environments
         url: "/parallel-multi-env-promotion"  
