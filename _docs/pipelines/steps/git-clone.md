@@ -354,7 +354,7 @@ steps:
     title: Reading GitHub token
     image: codefresh/cli
     commands:
-      - cf_export GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -r .spec.data.auth.password)
+      - cf_export --mask GITHUB_TOKEN=$(codefresh get context github --decrypt -o yaml | yq -r .spec.data.auth.password)
   main_clone:
     title: Checking out code
     image: alpine/git:latest

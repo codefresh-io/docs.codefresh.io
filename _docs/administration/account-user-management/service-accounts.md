@@ -8,9 +8,6 @@ toc: true
 
 ## Service accounts overview
 
->**NOTE**  
-This feature is currently in Beta.
-
 A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Service accounts can manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
 Coderfesh supports creating service accounts and assigning them to teams with RBAC (Role-Based Access Control) compliance for CI pipelines. See [Create service accounts](#create-service-accounts).  
@@ -89,21 +86,31 @@ file="/images/administration/service-accounts/service-account-list.png"
 url="/images/administration/service-accounts/service-account-list.png"
 alt="Service account list"
 caption="Service account list"
-max-width="60%"
+max-width="90%"
 %}
 
 
 {: .table .table-bordered .table-hover}
 | Service Account Setting  | Description   |
 | ------------------------| ---------------- |
-| **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role. NIMA: what is the added value of admin role? |
+| **Name**                | The name of the service account. <br>The **Admin** label to the right of the name indicates that the service account has been assigned an admin role.  |
 | **API Keys**            | The number of API keys assigned to the service account. <br>Selecting a service account displays the API keys generated for that account. Modify selected scopes by clicking Edit, or delete the API key. |
 | **Teams**               | The names of the teams the service account is assigned to.  |
 | **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply reenable when needed. |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
+## Authenticating to Amazon ECR with service account
+
+Authenticate to Amazon ECR registries with credentials from the service account instead of the Access Key ID and Secret Access Key.  
+This allows pipelines to seamlessly authenticate to Amazon ECR via service account credentials, enhancing security and simplifying access management.
+
+There are two requirements:
+1. Set the option to authenticate via service accounts at the account level for pipelines. See [Advanced options for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#advanced-options-for-pipelines).
+1. Configure Amazon ECR integration to use service account credentials. See [Amazon ECR Container Registry pipeline integration]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/).
+
 
 ## Related articles
-[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+
 
 

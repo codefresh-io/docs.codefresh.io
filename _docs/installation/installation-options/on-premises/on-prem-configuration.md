@@ -85,12 +85,12 @@ For a description of all settings available for a Codefresh account, see [Quick 
 1. In **Create New Account**, enter the account name and click **Create**.  
   The new account is displayed in the list of Accounts.
 1. Click the **System Type** column, and do the following:
-  1. Select the System Type for the account:
-      * **Classic**: Codefresh pipelines only.
-      * **GitOps**: GitOps applications integrated with ArgoCD.
-      * **Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. 
-      * **GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.
-  1. Click **Save**.
+    1. Select the System Type for the account:
+        * **Classic**: Codefresh pipelines only.
+        * **GitOps**: GitOps applications integrated with ArgoCD.
+        * **Project One**: The New Codefresh Experience with Classic Pipelines and GitOps as a single module with a unified sidebar menu and shared administration and configuration. 
+        * **GitOps + Classic**: Available as two different modules, with one of them active at any one time. You can toggle between the modules.
+    1. Click **Save**.
 
 {:start="6"}
 1. Set the number of **Runtime Environments** for this account.

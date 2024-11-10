@@ -150,10 +150,25 @@ max-width="80%"
 %}
 
 
-Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes, and the other to store the Runtime's application settings as a Git Source:
+Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes in the account, and the other to store the Runtime's application settings as a Git Source:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
   Read about [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+
+  When you define the repository URL, you can also add the path, reference a branch, or both:
+
+  `<repo_url>.git[/<path>][?ref=<branch>]`
+
+   where:
+    * `<repo_url>.git` is required and is the repository URL. This is the standard URL format which references the root of the default branch in the repository. The `.git` suffix is recommended. 
+      Example: `https://github.com/codefresh-io/our-isc.git`  
+
+    * `<path>` is optional, and points to a specific path within the repository.  
+      Use `<path>` if you want your configuration files within a subdirectory.  
+      Example: `https://github.com/codefresh-io/our-isc.git/some/path`
+
+    * `<branch>` is optional, and references a specific branch in the repository.  
+      Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
 
 * Git Source application repo  
