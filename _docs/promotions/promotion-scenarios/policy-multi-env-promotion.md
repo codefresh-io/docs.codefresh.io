@@ -71,7 +71,7 @@ max-width="60%"
 %}
 
 ## Related articles
-[Explore promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenarios/)
+[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)
 
  
  

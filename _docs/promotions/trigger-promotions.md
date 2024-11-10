@@ -194,6 +194,6 @@ max-width="60%"
 
 
 ## Related articles  
-[Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
 [Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  

@@ -1,6 +1,6 @@
 ---
-title: "Exploring promotion scenarios"
-description: "Review basic & advanced promotion scenarios"
+title: "Promotion tutorials"
+description: "Explore basic & advanced promotion scenarios"
 group: promotions
 toc: true
 ---
@@ -24,7 +24,7 @@ Use our Promotion Flow entity to create complex, multi-environment deployment st
 Adding Promotion Workflows introduces validations and checks that ensure each environment in the sequence meets your standards.
 
 
-Explore these promotion scenarios to get up and running:
+Explore these promotion tutorials to get up and running:
 * [Drag-and-drop promotions]({{site.baseurl}}/docs/promotions/promotion-scenarios/drag-and-drop/)  
 * [Multi-environment sequential promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/multi-env-sequential-flow/)  
 * [Policy-driven multi-environment promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/policy-multi-env-promotion/)  
@@ -37,7 +37,7 @@ Explore these promotion scenarios to get up and running:
 
 <!--- ## Related articles add inline to the different topics as needed
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion Flow]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Promotion Policy]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
 [Promotion Workflow]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
