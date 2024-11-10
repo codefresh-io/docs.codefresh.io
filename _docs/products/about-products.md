@@ -6,14 +6,11 @@ toc: true
 ---
 
 
-
->**NOTE**  
-This feature is currently in Beta.
-
 Explore the power of Products for Argo CD applications and deployments in Codefresh GitOps. 
 
 Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
-In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
+
+In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies.  
 By grouping applications, Products enhance Environments, allowing complete visibility for efficient deployment across them.
 
 {% include 
@@ -26,11 +23,12 @@ By grouping applications, Products enhance Environments, allowing complete visib
   max-width="70%" 
 %}
 
+Explore the [Product dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 Read more on the first dashboard for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
 
->**NOTE**  
-In the documentation, both Product (capitalized) and product (lowercase) refer to the same entity in Codefresh GitOps. They are used interchangeably for readability and consistency across the text.
+<!--- >>**NOTE**  
+In the documentation, both Product (capitalized) and product (lowercase) refer to the same entity in Codefresh GitOps. They are used interchangeably for readability and consistency across the text.  -->
 
 ## What is a Product in Codefresh GitOps?
 In Codefresh GitOps, a Product is a custom entity that allows you to group interconnected Argo CD applications, providing a cohesive view of the applications as they progress through the development and deployment lifecycle.  
@@ -78,7 +76,8 @@ Begin by [Creating a Product]({{site.baseurl}}/docs/products/create-product/).
 
 
 ##### View
-Once you create a product, you can see it in the Products page. Select the Product to drill down into the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/). The Product Dashboard offers a clear view of its applications in their respective environments, with additional information on the application. 
+Once you create a product, you can see it in the Products page.  
+Select the Product to drill down into the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/). The Product Dashboard offers a clear view of its applications in their respective environments, with additional information on the application. 
 
 {% include 
 	image.html 
@@ -93,15 +92,15 @@ Once you create a product, you can see it in the Products page. Select the Produ
 
 ##### Configure
 
-Once you create a Product, everything else you need to define for the Product, including its applications and promotion definitions are available in the Product Settings tab.
+Once you create a product, everything else you need to define for the product, including its applications and promotion definitions are available in the Product Settings tab.
 
-  * [Assigning applications to the Product]({{site.baseurl}}/docs/products/assign-applications/)  
+  * [Assign applications to the Product]({{site.baseurl}}/docs/products/assign-applications/)  
     Bring your applications into the picture by linking them to the product. 
 
-  * [Configuring promotion settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+  * [Configure promotion settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
     Fine-tune the promotion process by configuring the version source and specifying the attributes that should be promoted within applications in the product. This ensures that the correct versions and components are consistently promoted through each stage of deployment.
 
-  * [Configuring promotion flows and triggers]({{site.baseurl}}/docs/products/promotion-flow-triggers/)
+  * [Configure promotion flows and triggers]({{site.baseurl}}/docs/products/promotion-flow-triggers/)  
     Select specific Promotion Flows that match the Product, and customize the conditions that trigger each of these flows, automating and controlling when and how applications in the product are promoted.
 
 {% include 
@@ -115,7 +114,7 @@ Once you create a Product, everything else you need to define for the Product, i
 %}
 
 ##### Monitor  
-[Monitor and track]({{site.baseurl}}/docs/promotions/releases) the Product's ongoing and historical promotions and deployments in the Releases tab.
+[Monitor and track]({{site.baseurl}}/docs/promotions/releases) the product's ongoing and historical deployments in the Releases tab.
 
 {% include 
 	image.html 
