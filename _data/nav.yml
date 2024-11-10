@@ -399,9 +399,9 @@
       url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
-    - title: Promotion sequence
+    - title: Promotions end-to-end guide
       url: "/create-promotion-sequence"
-    - title: Promotion scenarios
+    - title: Promotion tutorials
       url: "/promotion-scenarios"  
       sub-pages: 
       - title: Drag-and-drop

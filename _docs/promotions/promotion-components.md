@@ -8,7 +8,7 @@ toc: true
 If you are new to promotions in GitOps, you may find it useful to review the entities involved in the promotion process, and their roles.  
 There are the core entities that define the structure of your development deployment lifecyles, and promotion-specific entities, which are advanced entities each dedicated to a different aspect of the promotion process. 
 
-For a complete end-to-end continuous delivery with Codefresh GitOps promotions, see [Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/). 
+For a complete end-to-end continuous delivery with Codefresh GitOps promotions, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/). 
 
 ## Promotion building blocks
 
@@ -133,7 +133,7 @@ In code samples and internal references, it is represented as `isc`.
 
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
-[Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
