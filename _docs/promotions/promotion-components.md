@@ -27,6 +27,7 @@ The table describes the core and promotion-specific entities.
   </tr>
 
   <tr>
+
     <td colspan="4"><strong>Core entities</strong><br>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. You can initiate manual promotions between two environments using drag-and-drop and other options. See <a href="https://codefresh.io/docs/docs/promotions/promotion-scenarios/">Exploring promotion scenarios</a>.</td>
   </tr>
       <td><strong>Applications (Required)</strong></td>
