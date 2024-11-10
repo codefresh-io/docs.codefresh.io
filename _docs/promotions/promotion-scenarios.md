@@ -1,6 +1,6 @@
 ---
 title: "Exploring promotion scenarios"
-description: "Review promotion scenarios"
+description: "Review basic & advanced promotion scenarios"
 group: promotions
 toc: true
 ---
