@@ -1,5 +1,5 @@
 ---
-title: "Promotion sequences"
+title: "Promotion sequence"
 description: "Step-by-step guide to creating, triggering, and monitoring promotions"
 group: promotions
 toc: true
@@ -8,7 +8,7 @@ toc: true
 
 This article covers the end-to-end flow of creating a promotion sequence, from initial setup to execution and monitoring. 
 
-A successful promotion sequence relies on [several key components](#{{site.baseurl}}/docs/promotions/promotion-components/) that govern and orchestrate the promotion flow across environments. 
+A successful promotion sequence relies on [several key components]({{site.baseurl}}/docs/promotions/promotion-components/) that govern and orchestrate the promotion flow across environments. 
 
 
 <!--- This guide covers the end-to-end flow of creating a promotion sequence, from initial setup to execution. Promotion sequences in Codefresh provide a structured way to move changes through different environments, integrating checks and policies to ensure stability, compliance, and predictable deployments.
@@ -53,7 +53,7 @@ The sections that follow describe the steps you'll need to configure for your sp
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
   
-1. [Create applications]({{site.baseurl}}//docs/deployments/gitops/create-application/#create-an-argo-cd-application)  
+1. [Create applications]({{site.baseurl}}/docs/deployments/gitops/create-application/#create-an-argo-cd-application)  
   Applications represent the components or services to be promoted and deployed, and are the smallest unit of deployment within a promotion sequence. To promote across an application across environments, you need an application for each target environment.  
   Create Argo CD applications in our user interface. For seamless promotions, group related applications within a product to manage them collectively.
 
@@ -63,15 +63,15 @@ The sections that follow describe the steps you'll need to configure for your sp
   Create a product and connect related applications to it, either manually or declaratively. 
 
 
-1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/promotion-workflows/)  
+1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
   As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, create workflows that run smoke tests to verify basic functionality or database validation checks to ensure data integrity.
   Create Promotion Workflows (Argo Workflows) to implement any type of tests, validations, and custom requirements. 
 
-1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/promotion-policy/)    
+1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)    
   Govern promotion behavior for environments by setting rules, checks, and validations that environments must meet before and after changes are promoted.
   Promotion Policies allow you to define these rules by combining Promotion Workflows and the promotion action based on environment type, product, or other criteria. When a promotion is triggered for an environment, the policy mechanism merges settings from all relevant global policies according to priority, providing automated governance for consistent and reliable promotion behavior.
 
-1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
+1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
   Orchestrate the sequence of actions to move and deploy changes through the required environments, from the trigger environment to the final target environment.  
   Promotion Flows ensure that changes are promoted in a controlled and predictable manner by integrating environments, products and applications, promotion workflows, and policies.
   
@@ -96,5 +96,5 @@ The sections that follow describe the steps you'll need to configure for your sp
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
 [Exploring promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenario-examples/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
-[Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
