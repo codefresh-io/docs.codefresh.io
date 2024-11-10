@@ -393,7 +393,7 @@ max-width="60%"
 ## Related articles
 [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
-[Explore promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenario-examples/)  
+[Explore promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
 [Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  
