@@ -29,8 +29,8 @@ Here are the different promotion scenarios you can explore:
 [Drag-and-drop promotions](#drag-and-drop-promotion)  
 [Multi-environment sequential promotion](#multi-environment-sequential-promotion)  
 [Policy-driven multi-environment promotion](#policy-driven-multi-environment-promotion)  
-[Multi-environment promotion with parallel environments](#parallel-multi-environment-promotion)  
-[Multi-environment promotion with dependencies](#promotion-with-environment-dependencies)
+[Multi-environment promotion with parallel environments](#multi-environment-promotion-with-parallel-environments)  
+[Multi-environment promotion with dependencies](#multi-environment-promotion-with-dependencies)
 
 
 
@@ -467,5 +467,6 @@ Now that you've seen how promotions work in Codefresh, explore the links in Rela
 [Promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion Flow]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Promotion Policy]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
+[Promotion Workflow]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
