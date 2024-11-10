@@ -38,15 +38,15 @@ See also [Promotion Settings & Promotion Templates](#promotion-settings--promoti
 {% include
  image.html
  lightbox="true"
- file="/iimages/gitops-products/promotion-settings-configure.png"
- url="/images/gitops-products/promotion-settings-configure.png"
+ file="/images/gitops-products/settings/promotion-settings.png"
+ url="/images/gitops-products/settings/promotion-settings.png"
  alt="Configure version and properties to promote in Product Settings"
  caption="Configure version and properties to promote in Product Settings"
     max-width="50%"
 %} 
 
 
-For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
+For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
 
 
 
