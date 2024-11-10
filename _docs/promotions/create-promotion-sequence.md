@@ -94,7 +94,7 @@ The sections that follow describe the steps you'll need to configure for your sp
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Exploring promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenario-examples/)  
+[Exploring promotion scenarios]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
