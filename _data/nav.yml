@@ -386,6 +386,8 @@
         url: "/promotion-flow"     
       - title: Promotion Policies
         url: "/promotion-policy"  
+      - title: Promotion Workflows
+        url: "/promotion-policy"  
     - title: Trigger promotions
       url: "/trigger-promotions"   
     - title: Tracking releases for products
