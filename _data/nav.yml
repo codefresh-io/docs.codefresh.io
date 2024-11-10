@@ -395,12 +395,25 @@
   pages:
     - title: About promotions
       url: "/promotions-overview"
+    - title: Getting started
+      url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
-    - title: Promotion sequences
+    - title: Promotion sequence
       url: "/create-promotion-sequence"
     - title: Promotion scenarios
-      url: "/promotion-scenario-examples"    
+      url: "/promotion-scenarios"  
+      sub-pages: 
+      - title: Drag-and-drop
+        url: "/drag-and-drop"    
+      - title: Multi-environment sequential promotion
+        url: "/multi-env-sequential-flow"  
+      - title: Policy driven multi-environment promotion
+        url: "/policy-multi-env-promotion"  
+      - title: Multi-environment promotion with parallel environments
+        url: "/parallel-multi-env-promotion"  
+      - title: Multi-environment promotion with dependencies
+        url: "/dependency-multi-env-promotion"  
     - title: Configuration
       url: "/configuration"
       sub-pages: 
