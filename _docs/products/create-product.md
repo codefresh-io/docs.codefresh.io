@@ -7,7 +7,7 @@ toc: true
 
 
 
-Create a product with a unique name to view it in the  connect related Argo CD applications to it.
+Create a product with a unique name and connect related Argo CD applications to it.
 
 
 
@@ -21,7 +21,7 @@ Note that products will not display any applications in these scenarios:
   If you have not created environments in Codefresh, the Product Dashboard will not display any applications, even if you have assigned applications to products. 
 
 * Unmapped cluster-namespace  
-  Even if evironments are defined, applications are not displayed within products if the corresponding clusters or namespaces are not mapped to any existing environment. 
+  Even if environments are defined, applications are not displayed within products if the corresponding clusters or namespaces are not mapped to any existing environment. 
 
 
 ## Create Products
@@ -57,4 +57,4 @@ Note that products will not display any applications in these scenarios:
 [Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  

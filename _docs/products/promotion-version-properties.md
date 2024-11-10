@@ -35,7 +35,16 @@ Promotion across different environments requires consistent relative paths in ea
 In Product > Settings > Promotion Settings, you can configure the changes to promote between the product's applications in the different environments.  
 See also [Promotion Settings & Promotion Templates](#promotion-settings--promotion-templates).
 
-SCREENSHOT
+{% include
+ image.html
+ lightbox="true"
+ file="/iimages/gitops-products/promotion-settings-configure.png"
+ url="/images/gitops-products/promotion-settings-configure.png"
+ alt="Configure version and properties to promote in Product Settings"
+ caption="Configure version and properties to promote in Product Settings"
+    max-width="50%"
+%} 
+
 
 For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
 
@@ -272,7 +281,7 @@ Although optional, defining these properties allow for precise control over whic
 When no Promotable Properties are defined, all changes are automatically promoted between all environments.
 {{site.data.callout.end}}
 
-Similar to how you define the Version attribute, Promotable Properties are also defined through [JSON path expressions](#json-path-expressions-for-files-and-attributes). Unlike the Version attribute, you can define multiple JSON path expressions to different files, or multiple attributes within a single file. 
+Similar to how you define the Version attribute, Promotable Properties are also defined through [JSON path expressions](#json-path-expressions-for-files-and-properties). Unlike the Version attribute, you can define multiple JSON path expressions to different files, or multiple attributes within a single file. 
 
 ### Examples of properties for promotion
 
@@ -407,10 +416,10 @@ As with other GitOps entities, you can configure Promotion Settings for the prod
 When you define an Inline template, configure and commit the settings, they are saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-To configure directly in YAML, refer to our [Promotion Template CRD](tbd) for the syntax requirements and descriptions.
+<!--- To configure directly in YAML, refer to our [Promotion Template CRD](tbd) for the syntax requirements and descriptions.  -->
 
 ## Related articles
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking deployments for products]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   
