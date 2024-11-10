@@ -205,7 +205,7 @@ Create a Promotion Policy to validate an environment's readiness before promotin
 
 ##### Before you begin
 
-* Create [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflows/)
+* Create [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)
 * Review [Policy settings](#promotion-policy-settings--targets)
 
 ##### How to
@@ -356,7 +356,7 @@ For more information, see [Promotion Workflows in Product Releases]({{site.baseu
 
 ## Related articles
 [Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
-[Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflows/)  
+[Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product promotions]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
