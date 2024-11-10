@@ -6,8 +6,7 @@ toc: true
 ---
 
 
->**NOTE**  
-This feature is currently in Beta.
+
 
 Explore the power of products for Argo CD applications in Codefresh GitOps. 
 

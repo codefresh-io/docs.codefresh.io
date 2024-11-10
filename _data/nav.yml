@@ -370,6 +370,23 @@
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
+- title: Products
+  url: "/products"
+  pages:
+    - title: About Products
+      url: "/about-products"
+    - title: Create products
+      url: "/create-product"
+    - title: Configure Product Settings
+      url: "/configure-product-settings"
+    - title: Assigning applications
+      url: "/assign-applications"      
+    - title: Configuring app version and promoted properties
+      url: "/promotion-version-properties"
+    - title: Configuring promotion flows
+      url: "/promotion-flow-triggers"
+
+
 - title: Pipelines
   url: "/pipelines"
   pages:
@@ -457,21 +474,7 @@
     - title: Pipeline definitions YAML
       url: "/what-is-the-codefresh-yaml"
 
-- title: Products
-  url: "/products"
-  pages:
-    - title: About Products
-      url: "/about-products"
-    - title: Create Products
-      url: "/create-product"
-    - title: Configure Product Settings
-      url: "/configure-product-settings"
-    - title: Assigning applications
-      url: "/assign-applications"      
-    - title: Configuring app version and promoted properties
-      url: "/promotion-version-properties"
-    - title: Configuring promotion flows
-      url: "/promotion-flow-triggers"
+
 
 
 
