@@ -43,7 +43,7 @@ See also [Promotion Flow CRD]({{site.basurl}}/docs/promotions/configuration/yaml
 %}
 
 
-For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}/docs/products/configure-product-settings.md/#configure-promotion-flows).
+For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-flows).
 
 
 ## Examples of trigger conditions for Promotion Flows
