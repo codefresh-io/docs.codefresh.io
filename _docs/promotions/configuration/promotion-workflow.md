@@ -57,6 +57,8 @@ The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configura
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
 
+
+
 ## Create Promotion Workflows
 
 Create a Promotion Workflow from scratch, use the base Promotion Workflow Template, or use one of the predefined Promotion Workflows in Codefresh.
