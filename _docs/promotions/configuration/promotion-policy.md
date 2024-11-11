@@ -45,7 +45,7 @@ Once configured and committed, Promotion Policy settings are saved as a CRD (Cus
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-policies/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-For the YAML specifications, see [Promotion Policy YAML]({{site.baseurl}}/_docs/promotions/configuration/yaml/promotion-policy-crd/).
+For the YAML specifications, see [Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-policy-crd/).
 
 
 

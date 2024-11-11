@@ -46,7 +46,7 @@ See also [Promotion Settings & Promotion Templates](#promotion-settings--promoti
 %} 
 
 
-For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/manage-products/configure-product-settings/#configure-promotion-settings).
+For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings).
 
 
 

@@ -82,6 +82,6 @@ spec:
 |`spec.promotionFlows.gitTriggerSelectors.values`  |Single or list of comma-separated values used to match or exclude Promotion Flows based on criteria defined by `gitTriggerSelectors.operator`. The values can be strings, numbers, or other data types depending on the context.|array |Required |
 
 ## Related articles
-[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/promotion-policy-crd/) 
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/promotion-template-crd/)  
-[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/promotion-flow-crd/)  
+[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-policy-crd/) 
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/)  
+[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/)  

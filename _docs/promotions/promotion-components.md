@@ -12,7 +12,7 @@ For a complete end-to-end continuous delivery with Codefresh GitOps promotions, 
 
 ## Building blocks
 
-A promotion sequence comprises several building blocks, optional and required, each serving a specific role in the promotion and deployment process.
+A promotion comprises several building blocks, optional and required, each serving a specific role in the promotion and deployment process.
 The table describes the core and promotion-specific entities.
 
 
@@ -73,7 +73,7 @@ The table describes the core and promotion-specific entities.
     <td><strong>Promotion Flows</strong></td>
     <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process for applications within the same product.</td>
     <td>Account administrators</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/configuration/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
   <tr>
     <td></td>

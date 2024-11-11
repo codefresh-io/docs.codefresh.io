@@ -194,7 +194,7 @@ max-width="60%"
 Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, create new environments and promotion workflows on-the-fly when doing so. 
 
 ##### Before you begin
-* Review [Create a promotion sequence]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
+* Review [Promotion: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
 
 
 ##### How to
