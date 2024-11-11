@@ -70,3 +70,4 @@ Codefresh's GitOps promotions include specialized entities that streamline and a
 * For a step-by-step guide on implementing promotions, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/).
 * For practical examples of setting up promotions, see [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/).
 
+

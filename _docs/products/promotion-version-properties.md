@@ -21,8 +21,8 @@ Automating and customizing which changes are selected for promotion between envi
 
 ##### Primary aspects when promoting applications
 When defining which changes to promote, there are two primary aspects to focus on:
-1. Defining the source for the [application's release version](#version-for-promoted-applications)
-1. Defining the [changes to promote](#promotable-properties) across multiple files in the applications 
+1. Defining the source for the [application's release version](#configuring-versions-for-promoted-applications)
+1. Defining the [changes to promote](#configuring-properties-for-promotion-across-applications) across multiple files in the applications 
 
 
 {{site.data.callout.callout_warning}}
