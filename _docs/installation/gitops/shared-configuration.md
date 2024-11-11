@@ -82,9 +82,10 @@ Below is a representation of the structure of the repository with the shared con
 │   │   ├── base-flow.yaml        │
 │   │   └── hot-fix.yaml          │
 │   └── promotion-policies        │ #    stores promotion policy manifests for products/environments with promotion workflows & promotion action  
-│       └── prod-pr.yaml          │
-│       └── loan-policy.yaml      │
-│   └── promotion-templates        │ #    stores promotion policy manifests for products/environments with promotion workflows & promotion action  
+│   │   ├── base-flow.yaml        │
+│   │   └── prod-pr.yaml          │
+│   │   └── loan-policy.yaml      │
+│   └── promotion-templates        │ #    stores promotion template manifests for products with source info for version & properties to promote
 │       └── demo-template.yaml          │
 └── runtimes                      │
     ├── runtime1                  │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
@@ -108,11 +109,9 @@ The `resources` directory contains the resources shared by _all_ clusters manage
 | `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
 | `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
 | `resources/configurations/products` |Contains manifests of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the manifest. Product manifests are available to users with the required ABAC permissions. <br>See [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/).| 
-|`resources/configurations/promotion-policies`| Contains manifests of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments. <!--- See TBD.-->| 
-| `resources/configurations/promotion-flows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  <!--- See TBD.-->|
-|`resources/configurations/promotion-templates`| Contains manifests of promotion templates defining the source of the version, and the promotable properties. <!--- See TBD.-->| 
-| `resources/configurations/promotion-flows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  <!--- See TBD.-->|
-<!--- | `resources//promotion-workflows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.  <!--- See TBD.|-->
+| `resources/configurations/promotion-flows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.<br>See [Promotion Flow configuration]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/) and [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).|
+|`resources/configurations/promotion-policies`| Contains manifests of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments.<br>See [Promotion Policy configuration]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/) and [Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/).| 
+|`resources/configurations/promotion-templates`| Contains manifests of promotion templates defining the sources for the release version and the properties to be promoted. <br>See [Promotion Template configuration]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/).| 
 |`resources/runtimes/<runtime_name>`| Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. |
 
 
