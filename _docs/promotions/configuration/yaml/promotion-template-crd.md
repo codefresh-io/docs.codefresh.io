@@ -44,6 +44,7 @@ spec:<!
 
 {: .table .table-bordered .table-hover}
 | Field            | Description                        | Type  |  Required/Optional|
+|-------           |-------------                       |------|-------------------|
 | `metadata.name`  | The name of the Promotion Template, which can correspond to the name of the Product, or any other meaningful identifier.| string | Required
 | `spec.applicationSourceSelector`  | The label used to match the application to which to apply the Promotion Template. Application selectors conform to Kubernetes _label selectors_, defined as `matchLabels` with `key-value` pairs, `matchExpressions` with `key-operator-value` arrays, or a combination of both. The values identify all the Promotion Template manifests that match the specific application or applications within the target environment.| - | Required|
 | `spec.applicationSourceSelector.matchLabels`         | One or more `key-value` pairs, where each pair is equivalent to a condition in `matchExpressions`. If there are multiple `key-value` pairs, the AND operator is used. <br>For example:{::nomarkdown}<ul><li><code class="highlighter-rouge">codefresh.io/environment: production</code> applies the Promotion Template to all applications within the Production Environment.</li><li><code class="highlighter-rouge">codefresh.io/product: loans</code> applies the Promotion Template only to applications belonging to the Loans product.</li></ul>{:/}| object  | Optional |

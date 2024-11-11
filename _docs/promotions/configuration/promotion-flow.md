@@ -25,18 +25,19 @@ max-width="60%"
 
 Review [key insights](#promotion-flow-behavior-key-insights) to understand promotion flow behavior before creating your first Promotion Flow. 
 
-## Promotion Flow YAML
+
+
+
+
+
+## Flow Builder vs. YAML
+You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD).  
+The Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
+
 Once configured and committed, Promotion Flow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-flows`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-For the YAML specifications, see [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).
-
-## Flow Builder vs. YAML
-You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD). You can switch seamlessly between both when creating Promotion Flows.
-
-The Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
-<!-- For a description of the CRD definition, see TBD  -->
 
 
 ## Sequential vs. parallel promotions
