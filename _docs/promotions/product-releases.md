@@ -87,7 +87,7 @@ The table describes important insights in the Releases page.
 | **Release ID**     | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
 | **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
-| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspending-pending-pr?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
+| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspending-pending-pr.png?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
 
 
 
@@ -194,7 +194,7 @@ The table describes the possible deployment statuses for environments.
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}   |
 | **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
@@ -393,7 +393,7 @@ max-width="60%"
 ## Related articles
 [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
-[Promotion sequences]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  
 

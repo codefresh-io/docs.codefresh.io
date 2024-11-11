@@ -29,8 +29,8 @@ You can select multiple Promotion Flows for a product, and customize the conditi
 
 
 ##### Where can you configure Promotion Flows and triggers? 
-In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the prodcut, and then configure custom conditions to trigger the flows.  
-See also [Promotion Flow CRD](#promotion-flow-crd).
+In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the product, and then configure custom conditions to trigger the flows.  
+See also [Promotion Flow CRD]({{site.basurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).
 
 {% include 
 	image.html 
@@ -43,7 +43,7 @@ See also [Promotion Flow CRD](#promotion-flow-crd).
 %}
 
 
-For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}docs/products/manage-products/configure-product-settings/#configure-promotion-flows).
+For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}/docs/products/configure-product-settings.md/#configure-promotion-flows).
 
 
 ## Examples of trigger conditions for Promotion Flows
@@ -138,7 +138,7 @@ To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the sy
 
 ## Related articles
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/manage-products/promotion-version-properties/)  
+[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   
 

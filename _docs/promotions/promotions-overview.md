@@ -51,6 +51,9 @@ caption="Environments, products, releases"
 max-width="60%"
 %}
 
+>**NOTE**  
+Runtime version 0.13.4 or higher is required to support promotions. Ensure your runtime is updated to at least this version to access promotion features.
+
 ##### GitOps promotion entities
 Codefresh's GitOps promotions include specialized entities that streamline and automate the promotion process. These entities provide you with the flexibility and control to model your delivery lifecycles with all the required checks built-in, and no custom scripting required. You get a predictable path to production that you can duplicate across projects, giving you ultimate control over your processes.
 * **Promotion Templates**: Define which application properties to promote.
@@ -64,6 +67,7 @@ Codefresh's GitOps promotions include specialized entities that streamline and a
 ##### Getting started with promotions in GitOps
 
 * To get started, explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) and understand the entities involved.  
-* For a step-by-step guide on implementing continuous delivery, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/).
-* For practical examples of setting up and managing promotions, see [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/).
+* For a step-by-step guide on implementing promotions, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/).
+* For practical examples of setting up promotions, see [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/).
+
 

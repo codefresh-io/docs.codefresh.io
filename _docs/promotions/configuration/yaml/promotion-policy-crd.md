@@ -63,9 +63,9 @@ spec:
 
 
 ## Related articles
-[Product CRD]({{site.baseurl}}/docs/promotions/product-crd/)  
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/promotion-template-crd/)  
-[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/promotion-flow-crd/)  
+[Product YAML]({{site.baseurl}}/docs/romotions/configuration/yaml/product-crd/)  
+[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/)  
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/)  
 
 
 

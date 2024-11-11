@@ -22,7 +22,7 @@ There are two methods of assigning applications to a product:
   Recommended for testing purposes and not as the preferred method.  
   For how-to instructions, see [Manually assign unassigned applications]({{site.baseurl}}/docs/products/configure-product-settings/#manually-assign-unassigned-applications).
 
-You can always unassign an application from a product, for declaratively assigned applications by removing the annotation, and for manually assigned applications, by removing them through [Product Settings](products/configure-product-settings/#unassign-manually-assigned-applications).
+You can always unassign an application from a product, for declaratively assigned applications by removing the annotation, and for manually assigned applications, by removing them through [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/#unassign-manually-assigned-applications).
 
 
 ## Related articles
