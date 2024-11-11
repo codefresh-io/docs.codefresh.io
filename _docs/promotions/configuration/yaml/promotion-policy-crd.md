@@ -8,7 +8,7 @@ toc: true
 
 Codefresh provides two options for defining manifests for promotion entities: Form mode and YAML mode.
 
-If you prefer working with YAML, create the manifest using the example Promotion Policy YAML below, along with the table of field descriptions.
+If you prefer working with YAML, create the manifest using the example Promotion Policy YAML below, and the table with field descriptions.
 
 Once configured and committed, the settings are saved as a Custom Resource Definition (CRD) within the Shared Configuration Repository in the GitOps Runtime specified as the Configuration Runtime.
 
@@ -56,7 +56,7 @@ spec:
 | `spec.properties.policy`                  | The Pre-Action Workflow, Action, and Post-Action Workflow to implement for the Promotion Policy through the `action`, `preAction`, and `postAction` attributes. <br>The Action attribute is required.<br>See [Promotion Policy implementation logic]({{site.baseurl}}/docs/promotions/promotion-policy/#promotion-policy-implementation-logic) for information on how promotion settings are used.  | object  | Optional          |
 | `spec.policy.action`           | The action that should trigger the promotion in the target environment for this Promotion Policy.<br>Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">commit</code>: Executes a commit operation on the target application.</li><li><code class="highlighter-rouge">pr</code>: Executes a commit and opens a pull request for the target application.<br>Useful when you need manual approval before commit.</li><li><code class="highlighter-rouge">none</code>: Does not execute any action on the target application. </li></ul>{:/}| enum   | Required          |
 | `spec.policy.preAction`        | The name of the Promotion Workflow to execute _before_ `spec.policy.action`.                      | string  | Optional          |
-| `spec.policy.postAction`       | The name of the Promotion Workflow to execute after `spec.policy.action`.                         | string  | Optional          |
+| `spec.policy.postAction`       | The name of the Promotion Workflow to execute _after_ `spec.policy.action`.                         | string  | Optional          |
 
 <!--- `spec.selector.product.tags`    The tag or a list of tags associated with a single or multiple products to which to match the Promotion Policy. Required if `spec.selector.product.names` are not used to match the Promotion Policy to the product. For example, `???`.    array    Optional      
 `spec.selector.targetEnvironment.tags`   The tag, or the list tags associated with a single or multiple target environments to which to apply the Promotion Policy. <br>Required when `.targetEnvironment.name` or `.targetEnvironment.type` are not defined.  array    Optional         -->    

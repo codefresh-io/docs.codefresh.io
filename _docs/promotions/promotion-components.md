@@ -10,7 +10,7 @@ There are the core entities that define the structure of your development deploy
 
 For a complete end-to-end continuous delivery with Codefresh GitOps promotions, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/). 
 
-## Promotion building blocks
+## Building blocks
 
 A promotion sequence comprises several building blocks, optional and required, each serving a specific role in the promotion and deployment process.
 The table describes the core and promotion-specific entities.

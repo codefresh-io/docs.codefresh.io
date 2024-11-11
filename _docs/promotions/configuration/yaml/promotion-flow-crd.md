@@ -8,7 +8,7 @@ toc: true
 
 Codefresh provides two options for defining manifests for promotion entities: Form mode and YAML mode.
 
-If you prefer working with YAML, create the manifest using the example Promotion Flow YAML below, along with the table of field descriptions.
+If you prefer working with YAML, create the manifest using the example Promotion Flow YAML below, and the table with field descriptions.
 
 Once configured and committed, the settings are saved as a Custom Resource Definition (CRD) within the Shared Configuration Repository in the GitOps Runtime specified as the Configuration Runtime.
 
