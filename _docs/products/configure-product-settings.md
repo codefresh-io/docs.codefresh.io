@@ -231,7 +231,7 @@ Configure Promotion Settings to define:
 
 
 ##### Before you begin
-* Review [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/manage-products/promotion-version-properties/)  
+* Review [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 
 
 ##### How to
