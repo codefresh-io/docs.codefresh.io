@@ -10,7 +10,7 @@ There are the core entities that define the structure of your development deploy
 
 For a complete end-to-end continuous delivery with Codefresh GitOps promotions, see [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/). 
 
-## Promotion building blocks
+## Building blocks
 
 A promotion sequence comprises several building blocks, optional and required, each serving a specific role in the promotion and deployment process.
 The table describes the core and promotion-specific entities.
@@ -19,7 +19,7 @@ The table describes the core and promotion-specific entities.
 
 {::nomarkdown}
 <table border="1" width="100%">
-  <tr>
+  <tr style="background-color: #3f7d84; color: white;">
     <th width="20%">Entity</th>
     <th width="50%">Role in promotions</th>
     <th width="10%">Created by</th>
@@ -27,8 +27,7 @@ The table describes the core and promotion-specific entities.
   </tr>
 
   <tr>
-
-    <td colspan="4"><strong>Core entities</strong><br>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. You can initiate manual promotions between two environments using drag-and-drop and other options. See <a href="https://codefresh.io/docs/docs/promotions/promotion-scenarios/">Exploring promotion scenarios</a>.</td>
+    <td colspan="4"><strong>Core entities</strong><br>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. You can initiate manual promotions between two environments using drag-and-drop and other options. See <a href="https://codefresh.io/docs/docs/promotions/promotion-scenarios/">Promotion tutorials</a>.</td>
   </tr>
       <td><strong>Applications (Required)</strong></td>
     <td>Applications are the core units around which promotions revolve. Each Argo CD application  can be promoted individually or as part of a product.</td>

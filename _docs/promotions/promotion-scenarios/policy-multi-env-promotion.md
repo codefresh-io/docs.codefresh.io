@@ -1,5 +1,5 @@
 ---
-title: "Policy-driven multi-environment promotion"
+title: "Multi-environment promotion with conditions"
 description: "Promote product apps between multiple environments with promotion conditions"
 group: promotions
 toc: true

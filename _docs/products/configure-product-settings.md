@@ -28,15 +28,15 @@ This article describes how to configure the different Product Settings:
 
 
 
-##### Form & YAML modes
+## Form & YAML modes
 As with most GitOps entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
 
-No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved in the product resource CRD in the Shared Configuration Repository in `<shared-config-repo>/resources/configuration/products/<product-name>.crd`.  
-Applications manually assigned to the product are saved locally and not as part of the product's definitions.
+No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/products/<product-name>.crd`.  
 
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-
-
+For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/) and [Promotion Template YAML({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/).
 
 
 
