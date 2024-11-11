@@ -149,7 +149,7 @@ The `resources` directory contains the resources shared by _all_ clusters manage
 | Shared Configuration Repo    | Description     | 
 | ----------                   |  -------- | 
 | `resources/all-runtimes-all-clusters` | Contains resource manifests applied to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`. |
-|`resources/all-runtimes-all-clusters/promotion-workflows` | Stores manifests of Promotion Workflows, available to all Runtimes in the account.<br>See [Promotion Workflows]({{site.baseurl}}/docs/configuration/promotion-workflow). |
+|`resources/all-runtimes-all-clusters/promotion-workflows` | Stores manifests of Promotion Workflows, available to all Runtimes in the account.<br>See [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow). |
 |`resources/control-planes` |  Optional. When defined, applies every resource manifest to each Runtime’s `in-cluster`. Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`. |
 | `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
 | `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
