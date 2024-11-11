@@ -19,7 +19,7 @@ The table describes the core and promotion-specific entities.
 
 {::nomarkdown}
 <table border="1" width="100%">
-  <tr style="background-color: #3f7d84;">
+  <tr style="background-color: #3f7d84; color: white;">
     <th width="20%">Entity</th>
     <th width="50%">Role in promotions</th>
     <th width="10%">Created by</th>
