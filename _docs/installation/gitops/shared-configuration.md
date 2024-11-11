@@ -27,7 +27,27 @@ While it is useful to understand its structure, we recommend using it for refere
 * **Runtime-specific configuration**  
    With the Shared Configuration Repository, you can create subdirectories for different GitOps Runtimes, and place configuration manifests that are only applied to specific GitOps Runtimes. You have fine-grained control over the configuration of individual Runtimes without affecting others.
 
-See [Shared Configuration Repo structure](#shared-configuration-repo-structure)
+
+>**NOTE**  
+In the documentation, we use Shared Configuration Repository or Shared Config Repo for clarity.
+In code samples and internal references, it is represented as `isc`.
+
+## Examples of configuration definitions in Shared Repo
+
+Here are a few types of configuration definitions stored in the Shared Configuration Repository: 
+* In-cluster and [managed clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
+* [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
+* [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
+* [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
+* Manifests for promotion entities: 
+  * [Products]({{site.baseurl}}/docs/products/configure-product-settings/)
+  * [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow)
+  * [Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)
+  * [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/) 
+  * [Promotion Templates]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings)
+
+See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
+
 
 ## GitOps Runtimes & Shared Configuration Repos
 
@@ -80,17 +100,9 @@ You can see the URL of the Shared Configuration Repo for your Runtime in the **O
   max-width="60%"
 %}
 
-## Examples of configuration definitions in Shared Repo
-
-Here are a few types of configuration definitions stored in the Shared Configuration Repository: 
-* In-cluster and [managed clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
-* [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-* [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
-* [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
 
 ## Shared Configuration Repo structure
-Below is a representation of the structure of the repository with the shared configuration. 
-See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-repo){:target="\_blank"}.
+Below is a representation of the structure of the repository with the shared configuration in the GitOps Runtime designated as the Configuration Runtime. 
 
 ```
 
@@ -98,15 +110,28 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 │   ├── all-runtimes-all-clusters │
 │   │   ├── cm-all.yaml           │
 │   │   └── subfolder             │
-│   │       └── manifest2.yaml    │
-│   ├── control-planes            │
 │   │   └── manifest3.yaml        │
+│   │   └── promotion-workflows   │ # stores promotion workflow manifests available to all runtimes
+│   │       └──  smoke-tests.yaml │
 │   ├── runtimes                  │
 │   │   ├── runtime1              │
 │   │   │   └── manifest4.yaml    │
 │   │   └── runtime2              │
 │   │       └── manifest5.yaml    │
 │   └── manifest6.yaml            │
+└── app-projects                  │
+└── configurations                │ # syncs to cluster by runtimes designated as Configuration Runtime
+│   ├── products                  │ #    stores product manifests with all product settings except assigned applications
+│   │   └── loans.yaml            │
+│   ├── promotion-flows           │ #    stores promotion flow manifests with promotion orchestration settings 
+│   │   ├── base-flow.yaml        │
+│   │   └── hot-fix.yaml          │
+│   └── promotion-policies        │ #    stores promotion policy manifests for products/environments with promotion workflows & promotion action  
+│   │   ├── base-flow.yaml        │
+│   │   └── prod-pr.yaml          │
+│   │   └── loan-policy.yaml      │
+│   └── promotion-templates        │ #    stores promotion template manifests for products with source info for version & properties to promote
+│       └── demo-template.yaml          │
 └── runtimes                      │
     ├── runtime1                  │ # referenced by "production-isc" argo-cd application, applied to the cluster by "cap-app-proxy"
     │   ├── in-cluster.yaml      ─┤ #     manage `include` field determines which dirs/files to sync to cluster
@@ -118,13 +143,21 @@ See a [sample repo](https://github.com/codefresh-contrib/example-shared-config-r
 
 ### `resources` directory 
 
-The `resources` directory holds the resources shared by _all_ clusters managed by the GitOps Runtimes:
+The `resources` directory contains the resources shared by _all_ clusters managed by GitOps Runtimes.
 
-  * `resources/all-runtimes-all-clusters`: Every resource manifest in this subdirectory is applied to all the GitOps Runtimes in the account, and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`.
-  * `resources/control-planes`: Optional. When defined, every resource manifest in this subdirectory is applied to each Runtime’s `in-cluster`.  
-    Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`.
-  * `resources/runtimes/<runtime_name>`: Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. 
-    In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. 
+{: .table .table-bordered .table-hover}
+| Shared Configuration Repo    | Description     | 
+| ----------                   |  -------- | 
+| `resources/all-runtimes-all-clusters` | Contains resource manifests applied to all the GitOps Runtimes in the account and to all the clusters managed by those Runtimes. In the above example, `manifest2.yaml` is applied to both `runtime1` and `runtime2`. |
+|`resources/all-runtimes-all-clusters/promotion-workflows` | Stores manifests of Promotion Workflows, available to all Runtimes in the account.<br>See [Promotion Workflows]({{site.baseurl}}/docs/configuration/promotion-workflow). |
+|`resources/control-planes` |  Optional. When defined, applies every resource manifest to each Runtime’s `in-cluster`. Config map resources for example, when committed to this subdirectory, are deployed to each Runtime’s `in-cluster`. |
+| `resources/app-projects` | Contains application project resources which control deployment destinations for applications. | 
+| `resources/configurations` | Contains platform-level resources which are Runtime-agnostic, essential for functionality related to product and promotion entities in GitOps. | 
+| `resources/configurations/products` |Contains manifests of product entities. All settings including source location for application version, promotable properties, promotion flows with trigger conditions if defined are saved. Note that applications assigned to products are not saved in the manifest. Product manifests are available to users with the required ABAC permissions. <br>See [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/) and [Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/).| 
+| `resources/configurations/promotion-flows`| Contains manifests of promotion flows with the trigger and target environments, and custom promotion policy settings, if any.<br>See [Promotion Flow configuration]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/) and [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).|
+|`resources/configurations/promotion-policies`| Contains manifests of promotion policies with the Pre- and Post-Action Workflows if defined, the Promotion Action, and target products and environments.<br>See [Promotion Policy configuration]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/) and [Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/).| 
+|`resources/configurations/promotion-templates`| Contains manifests of promotion templates defining the sources for the release version and the properties to be promoted. <br>See [Promotion Template configuration]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/).| 
+|`resources/runtimes/<runtime_name>`| Optional. Runtime-specific subdirectory. Every resource manifest in a runtime-specific subdirectory is applied to only the GitOps Runtime defined by `<runtime_name>`. In the above example, `manifest4.yaml` is applied only to `runtime1`, and `manifest5.yaml` is applied only to `runtime2`. |
 
 
 
@@ -132,7 +165,7 @@ The `resources` directory holds the resources shared by _all_ clusters managed b
 The `runtimes` directory includes subdirectories specific to each GitOps Runtime installed in the cluster. Every subdirectory always has an `in-cluster.yaml`, and optionally, application manifest YAMLs for other clusters. 
 The `runtimes/<runtime1>` subdirectory for example, includes the `in-cluster.yaml`, and a `remote-cluster.yaml` for the remote cluster also managed by the same Runtime.
 
-**Example application manifest for in-cluster.yaml**
+##### Example application manifest for in-cluster.yaml
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -264,7 +297,7 @@ Here's how to do this with the Shared Configuration Repo:
 
 {{site.data.callout.callout_tip}}
 **TIP**    
-You can then monitor these applications in the GitOps Overview Dashboard, and drill down to each application in the GitOps Apps dashboard. 
+You can then monitor these applications in the GitOps Apps dashboard, and drill down to each application in the GitOps Apps dashboard. 
 {{site.data.callout.end}}
 
 
@@ -273,6 +306,7 @@ You can then monitor these applications in the GitOps Overview Dashboard, and dr
 ## Related articles
 [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+
 
  
 
