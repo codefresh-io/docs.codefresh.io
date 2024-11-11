@@ -22,7 +22,7 @@ Codefresh allows you to run a specific step before each pipeline as well as afte
 
 ### Running a step at the end of the pipeline
 
-You can easily run a step at the end of pipeline, that will execute even if one of the steps have failed (and thus the pipeline is stopped in middle):
+You can easily run a step at the end of the pipeline, which will be executed, even if one of the steps have failed and pipeline execution is stopped:
 
 `codefresh.yml`
 {% highlight yaml %}
@@ -562,7 +562,7 @@ steps:
 {% endhighlight %}
 
 
-### Not specifying the Docker image**  
+### Not specifying the Docker image
 If you do not want to specify the Docker image you can simply omit it. Codefresh will use the `alpine` image in that case to run the hook:
 
 

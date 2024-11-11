@@ -9,7 +9,8 @@ toc: true
 ---
 
 
-As a Codefresh account administrator, you can define [global settings for pipelines] which are inherited by all new pipelines created in the account. Users can still override specific settings for individual pipelines.
+As a Codefresh account administrator, you can define global settings for pipelines which are inherited by all new pipelines created in the account.  
+Users can still override specific settings for individual pipelines.
 
 ## Account-level pipeline settings
 
@@ -26,7 +27,7 @@ As a Codefresh account administrator, you can define [global settings for pipeli
 | |[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
 | |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
 | |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if `pending-approval` steps require manual action. |
-|Other|[Advanced options for pipelines](#advanced-options-for-pipelines)| Configure options for build approval and pipeline volumes. |
+|Advanced options|[Advanced options for pipelines](#advanced-options-for-pipelines) | Configure the default behavior for volumes, concurrent builds, and authentication for Amazon ECR integrations, and more. |
 |Argo Workflows |[Enable pipelines with Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline/) | Create pipelines based on Argo Workflows. |
 
 
@@ -239,7 +240,7 @@ This behavior is simply a convenience feature for legacy pipelines.
 Users can still use a [`push` step]({{site.baseurl}}/docs/pipelines/steps/push/) to always push an image to a registry regardless of what was chosen in the `build` step.
 {{site.data.callout.end}}
 
-## Default behavior for `pending-approval` step
+## Default behavior for `pending-approval` step 
 Configure if manual confirmation is required after clicking the Approve or Reject buttons for [pending-approval steps]({{site.baseurl}}/docs/pipelines/steps/approval/). When required, a confirmation prompt is displayed on clicking Approve or Reject.  
 * **None**: No manual intervention required on clicking either Approve or Reject. 
 * **All**: Require manual intervention for both Approve and Reject.
@@ -249,28 +250,28 @@ Configure if manual confirmation is required after clicking the Approve or Rejec
 
 ## Advanced options for pipelines
 
-Configure the default settings that define the advanced behavior for pipelines.
+Configure the default settings that define advanced behavior for pipelines.
 
 
-* Manage shared volumes for builds pending approval  
+* **Manage shared volumes for builds pending approval**  
   Define if to [retain or discard]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) the volume when a pipeline build is pending approval.
   
   >**NOTE**  
     This option _affects pipeline resources and/or billing in the case of SaaS pricing_.  
     It will also affect users of existing pipelines that depend on this behavior.  
-    Once you either enable or disable this option for an account, we recomend leaving it unchanged.
+    Once you either enable or disable this option for an account, we recommend leaving it unchanged.
 
-* Concurrency policy for build pending approval  
-  Determines whether pipelines pending approval are [included or excluded from the concurrency count]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).
+* **Concurrency policy for builds pending approval**  
+  Determines whether pipeline builds pending approval are [included or excluded from the concurrency count]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).
 
-* Service Account for Amazon ECR authentication  
-  Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) for Amazon ECR integration.
+* **Service account credentials for Amazon ECR authentication**  
+  Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) to optionally use for authentication in Amazon ECR integrations.
 
-* Public Marketplace Registry  
+* **Public Marketplace Registry**  
   Set the default registry from which to pull images for all _Public Marketplace Steps_.  
-  You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration setup in Codefresh.
+  You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration that has been set up in Codefresh.
   
-  Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration, all Public Marketplace Step images are pulled from `quay.io` instead of from Docker Hub.
+  Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration as the Public Marketplace Registry, all Public Marketplace Step images are pulled from `quay.io` instead of from Docker Hub.
   
   > **NOTE**  
     The selected registry affects only custom or typed steps.<br>  

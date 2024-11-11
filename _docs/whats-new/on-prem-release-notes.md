@@ -6,6 +6,352 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.5
+
+### Features & enhancements
+
+#### Installing v2.5 
+For detailed instructions on installing v2.5, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+#### Upgrading to v2.5
+For details, see [Upgrade to 2.5 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-5-0){:target="\_blank"}.
+
+
+#### General: Service Accounts for centralized administration
+
+We're excited to announce the launch of service accounts in Codefresh.
+
+##### Why service accounts?
+
+Service accounts make administration simpler. They provide automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/sep24/rel-notes-sep24-add-service-account.png" 
+   url="/images/whats-new/sep24/rel-notes-sep24-add-service-account.png" 
+   alt="Create service account" 
+   caption="Create service account" 
+   max-width="60%" 
+   %}
+
+##### Key features of service accounts in Codefresh
+
+* **Toggle status**  
+  Easily turn service accounts on or off with a toggle. Deactivate service accounts when not in use or invalidate their API keys without removing the account. Reactivate them when needed.
+
+* **RBAC compliance**  
+  Assign service accounts to teams to ensure role-based access control (RBAC) compliance for your pipelines.
+
+* **Multiple API keys for granular access**  
+  Manage access effortlessly by allowing each service account to hold multiple API keys, each with specific scopes and purposes.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/sep24/rel-notes-sep24-service-account-list.png" 
+   url="/images/whats-new/sep24/rel-notes-sep24-service-account-list.png" 
+   alt="Service account list" 
+   caption="Service account list" 
+   max-width="80%" 
+   %}
+
+For details, see [Managing service accounts]({{site.baseurl}}/docs/administration/account-user-management/service-accounts/)
+
+#### General: Personalized menus
+
+We have introduced a powerful feature that gives admins even more control over the Codefresh platform: customizable menus!  
+
+Take control of your account's menu items and personalize the interface to create a more user-friendly and productive environment.
+Simplify navigation by hiding unnecessary menu items and decluttering the sidebar, ensuring that users can quickly the pages they need.  
+
+
+We've added a new page to Settings entitled **Modules**. Admins can decide exactly which menu items are displayed in the sidebar for all users in the account. 
+
+##### How it works
+We have three main modules for the plaform:
+* Continuous Delivery (CD) with GitOps 
+* Continuous Integration (CI) with Pipelines 
+* Continuous Delivery (CD) with Pipelines 
+
+By default, all modules, submodules, and menu items are enabled. 
+
+Using the toggle method, you can easily customize what's visible: switch to ON to display an item and OFF to hide it. 
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/administration/sidebar-modules/module-disabled.png" 
+   url="/images/administration/sidebar-modules/module-disabled.png" 
+   alt="Example of main module toggled OFF" 
+   caption="Example of main module toggled OFF" 
+   max-width="60%" 
+   %}
+
+
+For even more precise control, you can toggle individual pages on or off.
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/administration/sidebar-modules/customized-menu-list.png" 
+   url="/images/administration/sidebar-modules/customized-menu-list.png" 
+   alt="Example of customized sidebar with pipeline menu items" 
+   caption="Example of customized sidebar with pipeline menu items"
+   max-width="80%" 
+   %}
+
+Admins can always view all hidden items in the sidebar by toggling the **Show in sidebar option...** to ON.
+
+Start streamlining your team's experience today!
+
+
+
+#### General: Brand-new search mechanism and experience 
+We’re excited to introduce the revamped search mechanism for our doc site!
+
+**Context-aware**  
+Wherever you are in Codefresh and open search from the toolbar, either from Global Search & Navigation by typing `help` or by clicking the Help icon, 
+you’ll get a curated list of articles that are context-sensitive to your location in the UI to kick-start your search.
+
+Additionally, for an enriched information experience, check out our collection of blog posts from our experts. 
+
+Here are **more reasons** to try the new search:
+* **Preview**  
+  Check out search results and preview articles before diving in. Just click an article in the list to display it in the Preview panel.
+* **View Article**    
+  Click View Article on the toolbar of the Preview panel to go straight to the article on the doc site.
+* **Share Links**  
+  Share useful articles easily with the deep link option, also on the Preview toolbar.
+* **Additional Resources**  
+  Access handy pages, including our collection of blogs, quickly with permalinks at the bottom of the search results.
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-search-preview.png"
+url="/images/whats-new/july24/rel-notes-july-24-search-preview.png"
+alt="Preview pane in search results"
+caption="Preview pane in search results"
+max-width="60%"
+%}
+
+Try our new search and don’t forget to send us your feedback!
+
+#### Pipelines: RBAC for Pipeline Runtimes
+We have further strengthened security for pipelines with RBAC permissions for Pipeline Runtimes.  
+RBAC for Pipeline Runtimes enhances the permissions system with granular access control not just for Pipeline Runtimes, but also for runtime environments and resources within pipelines.  
+
+
+##### Key benefits
+* Granular control over runtimes  
+  Precisely manage access to runtime environments. For example, restrict access to production environments to safeguard production resources, or grant exclusive access to high-performance runtime environments for high-priority projects, ensuring they have the necessary resources.
+* Optimized resource management for runtimes  
+  Optimize performance without admin intervention by allowing teams to adjust CPU and memory settings for pipeline builds.
+
+
+##### How does it work?
+Similar to other entities, you implement RBAC for Pipeline Runtimes, runtime builds, and resources, through tags and rules. After adding tags to Pipeline Runtimes, you can define rules for the Pipeline Runtimes, and for runtime environments and resources within pipelines. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-pipeline-runtimes-add-tags.png"
+url="/images/whats-new/july24/rel-notes-july-24-pipeline-runtimes-add-tags.png"
+alt="Tags for Pipeline Runtimes"
+caption="Tags for Pipeline Runtimes"
+max-width="60%"
+%}
+
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-runtime-env-permissions.png"
+url="/images/whats-new/july24/rel-notes-july-24-runtime-env-permissions.png"
+alt="Rules for runtime environments and resources in pipelines"
+caption="Rules for runtime environments and resources in pipelines"
+max-width="60%"
+%}
+
+For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes) and [Creating rules for Pipeline Runtimes and runtime environments]({{site.baseurl}}/docs/administration/account-user-management/access-control/#creating-rules-for-pipeline-runtimes-and-runtime-environments).
+
+
+#### Pipelines: Dedicated environment variables for pull request titles
+
+We’ve made a change to how pull request titles are handled by environment variables in pipelines.
+
+The environment variables {% raw %}`${{CF_COMMIT_MESSAGE}}`{% endraw %} and {% raw %}`${{CF_COMMIT_MESSAGE_ESCAPED}}`{% endraw %} now return the commit message instead of the pull request title.
+
+To get the pull request title, use the new environment variables:
+* {% raw %}`${{CF_PULL_REQUEST_TITLE}}`{% endraw %}
+* {% raw %}`${{CF_PULL_REQUEST_TITLE_ESCAPED}}`{% endraw %}
+
+To use the new variables for pull request titles, update your pipelines accordingly.  As they are already supported by the system, you can begin using them immediately.
+
+For details, see [System variables]({{site.baseurl}}/docs/pipelines/variables/#system-variables).
+
+
+
+
+
+#### GitOps: Runtime upgrade
+
+The Open Source ArgoCD project published a high-severity security vulnerability. We recommend upgrading your GitOps Runtime to version 0.9.0, which includes a fix for this issue, along with other fixes and features.
+
+This CVE affects webhook processing and is relevant only to customers who have configured webhooks.
+
+To upgrade to the latest release, follow the on-screen instructions to run `helm upgrade`.
+
+
+
+
+#### GitOps: External links for Kubernetes app & ingress resources 
+The Current State tab in our GitOps Apps dashboard is the central location to view and manage all the resources in your applications. We are always looking to enhance productivity, and here are the newest features we support: external Links for application and ingress resources! 
+
+##### External links to app resources
+External links are user-defined URLs for Kubernetes resources in Argo CD that can point to any external resource such as monitoring pages or documentation. These links, added through annotations in resources, are also rendered in Codefresh, for smooth and easy navigation.    
+
+A Kubernetes resource with external links shows a clickable link icon below the resource's context menu, from which you can navigate to the   next to the resource in the Tree view for easy and smooth navigation. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
+url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
+alt="External link for resource in Current State Tree view"
+caption="External link for resource in Current State Tree view"
+max-width="50%"
+%}
+
+##### External links for ingress resources
+We also support automatic links for ingress resources! Access links to ingress resources are also automatically generated and rendered in the Current State's Tree view for visibility and easier management.
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
+url="/images/whats-new/july24/rel-notes-july-24-resource-ext-link.png"
+alt="Ingress resource links in Current State Tree view"
+caption="Ingress resource links in Current State Tree view"
+max-width="50%"
+%}
+
+For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#access-external-links).
+
+#### GitOps: Application menu enhancements in Environment & Product dashboards
+
+We’ve restructured and redesigned the context menu for applications in the Environments and Products dashboards for easier navigation and quicker access to the information you need!
+
+{% include
+image.html
+lightbox="true"
+file="/images/whats-new/july24/rel-notes-july-24-app-menu.png"
+url="/images/whats-new/july24/rel-notes-july-24-app-menu.png"
+alt="Context menu for applications in Environments and Products"
+caption="Context menu for applications in Environments and Products"
+max-width="60%"
+%}
+
+Here’s a round-up of the changes:  
+* **Application Info**  
+  A new menu groups handy links for direct access to useful application info.
+* **Quick View**  
+  Now conveniently available in the Application Info menu.
+* **Go to application**
+  This new option takes you straight to the Current State tab in the GitOps Apps dashboard for the application.
+* **Timeline**  
+  Directly opens the deployment history for the application for easy access. No need to click the application name.
+* **Diff View**  
+  Enabled when an app is out-of-sync, providing direct access to our visual Diff View editor to identify discrepancies between desired and live states.
+
+Other actions remain unchanged. 
+
+For details, see [Working with applications in Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#working-with-applications-in-environments) and [Working with applications in Products]({{site.baseurl}}/docs/dashboards/gitops-products/#working-with-applications-in-products).
+
+
+#### Usability enhancements
+
+##### General: Seamless redirection for shared links 
+We implemented a small but significant improvement to your Codefresh experience. 
+
+Now, when you try to access a shared link while not logged into the platform, you will be automatically redirected to the URL you entered after logging in, instead of being taken to the default Home dashboard view.
+
+
+##### Pipelines: Project name in breadcrumbs in Builds page
+In the Builds page, on selecting a build, the breadcrumbs path displays also the project name.
+
+{% include
+  image.html
+  lightbox="true"
+  file="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  url="/images/whats-new/june24/rel-notes-jun24-project-name-in-builds.png"
+  alt="Builds page: Project name in breadcrumbs"
+  caption="Builds page: Project name in breadcrumbs"
+  max-width="60%"
+%}
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+##### New Feature Flags in v2.5
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.5.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `analyticsCommittersListTable` | When enabled, displays the Committers per month table in **Usage > Active Seats**.| FALSE  |
+| `batchRefsResolvmentApiGraphql`    | When enabled, improves performance in GitOps. | FALSE         |
+| `hideHelmChartsMenuItem`            | When enabled, hides the **Helm Charts** menu item for Pipelines in the sidebar.  | FALSE|
+| `hideHelmReleasesMenuItem`                   | When enabled, hides the **Helm Releases** menu item for Pipelines in the sidebar.| FALSE  |
+| `hideKubernetesServicesMenuItem`     | When enabled, hides the **Kubernetes Services** menu item for Pipelines in the sidebar.  | FALSE         |
+| `hideHelmBoardsMenuItem` | When enabled, hides the **Helm Boards** menu item for Pipelines in the sidebar. | TRUE         |
+| `limitAmountOfApplicationTreeWithErrorsRequests`  | When enabled, improves performance in GitOps. | FALSE         |
+| `sharedLibTopBar` |When enabled (the default), displays the shared top menu bar common to Pipelines and GitOps.  | FALSE    |
+| `sharedLibSideMenu`     | When enabled (the default), displays the shared menu common to Pipelines and GitOps. | TRUE         |
+
+
+
+
+##### Updated Feature Flags in v2.5
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+|`abacRuntimeEnvironments`    | When enabled (the default), allows creating rules in **Permissions** which impacts options in <b>Pipeline > Settings > Build Runtime</b>: {::nomarkdown}<ul><li><b>Build Runtime Environment</b>: When enabled, allows restricting Runtime Environments available for pipelines based on tags. Restricted Runtime Environments are disabled in the Runtime Environments list for the pipeline/build run.</li><li><b>Pipeline</b> actions:<ul><li><b>Manage resources</b>: Select CPU, memory, and minimum disk space for the pipeline/build run.</li><li><b>Set runtime environment</b>: Select a Runtime Environment from those available in the Runtime Environments list for the pipeline/build run.</li><li><b>Set cloud builds</b>: Set Cloud build and select the resource size for the pipeline/build run.</li></ul></li></ul> {:/}| _TRUE_   |
+|`abacUIEnforcement`        |  When enabled (the default), for Pipelines, prevents the user from selecting options and performing actions which are not permitted.| _TRUE_  |
+|`abacV2UIEnforcement`        | When enabled (the default), for GitOps, prevents the user from selecting options and performing actions which are not permitted.| _TRUE_  |
+| `accountInfoCopyButton`  | When enabled (the default), adds the account ID to the URL. When sharing the URL with the account information, recipients can seamlessly switch accounts.   | _TRUE_         |
+| `serviceAccounts` | When enabled (the default), allows Codefresh administrators to create shared Service Accounts not associated with specific users for centralized access and permissions management. | _TRUE_         |
+
+
+### Bug fixes
+
+##### General
+* Download Audit downloads empty CSV file. 
+* Invite text in Welcome screen displays `undefined` instead of the organization name. 
+
+##### Pipelines
+* Secrets store integration breaks after upgrading `dind` to version 26.1.4-1.28.7.
+* `Failed to write template value file Arguments to filesystem` error for builds with `codefresh-run` step.
+* Permission and missing scope error when running `codefresh validate yaml` command.
+* Step-member variables not supported between different parallel blocks.
+* Trigger for Azure DevOps creates builds for files ignored in modified files. 
+* `Failed - build runtime settings not configured` error for Hybrid Runner.
+* `build` step does not support images from different account for Amazon ECR (Elastic Container Registry).
+
+##### GitOps
+* Audit log does not show changes made to GitOps permissions.
+* Command failure for `argo-platform-analytics-reporter`.
+* Manual Rollout actions not available in audit log.
+* GitOps permissions do not function correctly when attributes are applied.
+* Annotations added during a build run or via CLI not displayed in the Summary tab of the Images dashboard. 
+* Current Release not displayed for multi-sourced apps. 
+* Sync statuses for applications within ApplicationSets not correctly displayed in Codefresh UI. 
+* Unresponsive **Close** button in Rollout drawer. 
+
 ## On-premises version 2.4
 
 ### Features & enhancements
