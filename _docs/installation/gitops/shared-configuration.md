@@ -41,12 +41,12 @@ Here are a few types of configuration definitions stored in the Shared Configura
 * [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
 * Manifests for promotion entities: 
   * [Products]({{site.baseurl}}/docs/products/configure-product-settings/)
-  * [Promotion Workflows]({{site.baseurl}}/docs/configuration/promotion-workflow)
+  * [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow)
   * [Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)
   * [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/) 
   * [Promotion Templates]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings)
 
-See [Shared Configuration Repo structure](#shared-configuration-repo-structure)
+See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
 
 
 ## GitOps Runtimes & Shared Configuration Repos
@@ -100,13 +100,6 @@ You can see the URL of the Shared Configuration Repo for your Runtime in the **O
   max-width="60%"
 %}
 
-## Examples of configuration definitions in Shared Repo
-
-Here are a few types of configuration definitions stored in the Shared Configuration Repository: 
-* In-cluster and [managed clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
-* [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-* [Integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) between Codefresh and third-parties for GitOps
-* [OAuth2]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/) authentication applications
 
 ## Shared Configuration Repo structure
 Below is a representation of the structure of the repository with the shared configuration in the GitOps Runtime designated as the Configuration Runtime. 
