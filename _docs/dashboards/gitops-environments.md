@@ -5,8 +5,7 @@ group: dashboards
 toc: true
 ---
 
->**NOTE**  
-This feature is currently in Beta.
+
 
 The **Environments** dashboard introduces a new dimension to the developer and deployment experience with Argo CD applications in Codefresh.
 

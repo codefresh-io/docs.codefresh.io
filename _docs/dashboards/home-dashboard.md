@@ -13,14 +13,14 @@ The Home Dashboard includes three different dashboards:
 * **GitOps Dashboard**  
   Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
 
-* **Argo Workflows Dashboard**  
+<!--- * **Argo Workflows Dashboard**  
   Displays aggregated metrics on Argo Workflows and Delivery Pipelines to identify trends.
  
  {{site.data.callout.callout_tip}}
   **TIP**  
   The Argo Workflows dashboard is displayed only when pipelines with Argo Workflows are enabled for the account. 
   Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.  
-{{site.data.callout.end}}
+{{site.data.callout.end}}  -->
 
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
@@ -141,6 +141,7 @@ Displays up to five of the most active applications and their current deployment
 |**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> To see the breakdown by health status, mouse over the chart. <br> The number at the end of the bar is the total number of deployments for the application, and the percentage indicates the overall decrease or increase compared to the reference period. {:/}  |
 
 
+<!---
 ## Argo Workflows Dashboard
 Displays aggregated chart views for the selected date range, and insights into active Delivery Pipelines triggered from Workflows. An active Delivery Pipeline is one with at least one active or completed Argo Workflow. 
 
@@ -229,7 +230,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   The number of users whose commits to the repository or repositories triggered the Delivery Pipelines.  
   User count is aggregated per user, so multiple commits from the same user are counted as a single commit.
 
-
+-->
 
 ## Pipelines Dashboard
 

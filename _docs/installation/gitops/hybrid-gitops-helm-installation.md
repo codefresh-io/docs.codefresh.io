@@ -253,10 +253,25 @@ As a one-time action, define the Shared Configuration Repository and the Git pro
 
 The Git provider you select for the first GitOps Runtime in your account is used for all the other Runtimes installed in the same account.
 
-**Shared Configuration Repository**  
+#### Shared Configuration Repository
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository with configuration manifests shared between all the Hybrid GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
-**Git provider**  
+You can specify only the repository URL, or add the path, reference a branch, or both:
+
+`<repo_url>.git[/<path>][?ref=<branch>]`
+
+where:
+* `<repo_url>.git` is required and is the repository URL. This is the standard URL format which references the root of the default branch in the repository. The `.git` suffix is recommended. 
+  Example: `https://github.com/codefresh-io/our-isc.git`  
+
+* `<path>` is optional, and points to a specific path within the repository.  
+  Use `<path>` if you want your configuration files within a subdirectory.  
+  Example: `https://github.com/codefresh-io/our-isc.git/some/path`
+
+* `<branch>` is optional, and references a specific branch in the repository.  
+  Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
+
+#### Git providers 
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
@@ -833,6 +848,10 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 
 For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
 
+## Upgrade Runtimes 
+For upgrade instructions, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes/).  
+
+For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_block"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_block"}. 
 
 ## Ingress controller configuration
 
