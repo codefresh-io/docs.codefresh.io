@@ -25,6 +25,8 @@ When defining which changes to promote, there are two primary aspects to focus o
 1. Defining the [changes to promote](#configuring-properties-for-promotion-across-applications) across multiple files in the applications 
 
 
+
+
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
 For automated retrieval of the application version and promotion of specific attributes from files across environments, _all applications within the same product must maintain an identical structure_.  
@@ -53,7 +55,11 @@ For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/doc
 
 
 ## Configuring versions for promoted applications
-The Version attribute specifies the location from which to retrieve version information for the applications in the product. This application version is displayed in the Environments, Product, and GitOps Apps dashboards.   
+The Version attribute specifies the location from which to retrieve version information for the applications in the product. 
+
+>**NOTE**  
+The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
+Product versions are not displayed for other application types, even if configured.  
 
 {% include
  image.html
@@ -82,7 +88,8 @@ The diagram illustrates how the version attributes configured for the product ar
 
 
 
-If the version is not displayed in the dashboards, or if the version displayed is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+If the version is not displayed in the dashboards, it could be because your application is not a Helm application.  
+For Helm appplications, if the version displayed is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
 
 ### Examples of version attributes
 
