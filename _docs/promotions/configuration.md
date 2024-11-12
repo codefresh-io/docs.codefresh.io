@@ -11,4 +11,4 @@ Configure the specialized promotion entities:
 * [Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/) (only account admins)
 * [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)
 
-If you are more comfortable with YAML, see our [YAML specfication examples]({{site.baseurl}}/docs/promotions/configuration/yaml/) for the same.
+If you are more comfortable with YAML, see our [YAML specification examples]({{site.baseurl}}/docs/promotions/configuration/yaml/) for the same.
