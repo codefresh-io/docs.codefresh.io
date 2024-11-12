@@ -134,7 +134,7 @@ This method is recommended for testing purposes.
 1. To confirm the assignment, click **Save**. 
   If you have defined an Environment for the application, Codefresh automatically adds the application to the Environment defined for it.
 
-SCREENSHOT
+<!--- SCREENSHOT -->
 
 ### Unassign manually-assigned applications
 Unassign an application manually assigned to a product directly from its settings. 
