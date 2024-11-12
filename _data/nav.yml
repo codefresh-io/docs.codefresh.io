@@ -423,6 +423,8 @@
         url: "/promotion-policy"  
       - title: Promotion Workflows
         url: "/promotion-workflow"  
+      - title: Product Settings for promotions
+        url: "/product-promotion-props"          
       - title: YAML specs
         url: "/yaml"
         sub-pages:
