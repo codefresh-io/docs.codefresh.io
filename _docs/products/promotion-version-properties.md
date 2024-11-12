@@ -59,7 +59,7 @@ The Version attribute specifies the location from which to retrieve version info
 
 >**NOTE**  
 The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
-Product versions are not displayed for other application types, even if configured.  
+For other application types, product versions are not displayed even if configured.  
 
 {% include
  image.html
