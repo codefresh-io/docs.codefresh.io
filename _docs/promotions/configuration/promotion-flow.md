@@ -291,7 +291,7 @@ caption="Add Pre-/Post-Action Workflows"
 max-width="60%"
 %}
 
-{:start="8"}
+{:start="9"}
 1. To commit changes, click **Save Promotion Flow**.
   The Promotion Flow is added to the list of Promotion Flows.
 
