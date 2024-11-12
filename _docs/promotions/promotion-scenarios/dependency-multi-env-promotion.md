@@ -14,6 +14,7 @@ In this example, we’ll return to the `three-env-promotion` flow, add a paralle
 
 In the example, we have already added the `staging` environment.  
 
+
 Now we'll update the dependency on the `production` environment, by selecting `staging`, in addition to `qa`:
 
 {% include 
@@ -25,6 +26,8 @@ alt="Update dependencies for environment"
 caption="Update dependencies for environment"
 max-width="60%"
 %}
+
+
 
 Here's the `three-env-promotion` Promotion Flow with the updated dependency.
 
@@ -38,7 +41,17 @@ caption="Promotion Flow with updated dependencies"
 max-width="60%"
 %}
 
+Here's the YAML view of the same flow with the updated dependency.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/tutorials/promo-flow-dependency-yaml-view.png" 
+url="/images/gitops-promotions/tutorials/promo-flow-dependency-yaml-view.png"
+alt="YAML view of Promotion Flow with updated dependencies" 
+caption="YAML view of Promotion Flow with updated dependencies"
+max-width="60%"
+%}
 
 ## Related articles
 [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)

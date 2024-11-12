@@ -38,7 +38,7 @@ caption="Adding parallel environments in Promotion Flow"
 max-width="60%"
 %}
 
-Here's the promotion flow with the parallel environments:
+Here's the Promotion Flow with the parallel environments:
 
 {% include 
 image.html 
@@ -47,6 +47,18 @@ file="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-created.png"
 url="/images/gitops-promotions/tutorials/promo-flow-parallel-envs-created.png"
 alt="Promotion Flow with parallel environments" 
 caption="Promotion Flow with parallel environments"
+max-width="60%"
+%}
+
+Here's the YAML view of the Promotion Flow with the parallel environments.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/tutorials/promo-flow-parallel-yaml-view.png" 
+url="/images/gitops-promotions/tutorials/promo-flow-parallel-yaml-view.png"
+alt="YAML view of Promotion Flow with parallel environments" 
+caption="YAML view of Promotion Flow with parallel environments"
 max-width="60%"
 %}
 
