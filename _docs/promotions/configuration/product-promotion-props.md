@@ -7,11 +7,9 @@ toc: true
 
 
 
-Before you start configuring the more advanced promotion entities, some product settings are crucial to promotions, regardless of the method you use or intend to use.
+Before or after configuring specialized promotion entities such as Promotion Flows, Policies, and Workflows, note that there are product-specific settings crucial to effective, reliable promotions, regardless of the method you use or intend to use.
 
-If you have creataed products, there are several settings you can confiugre for the productto key configuration aspects significant to successful promotion. 
-
-Before or after configuring specialized promotion entities such as Promotion Flows, Policies, and Workflows, note that specific product settings are crucial to effective, reliable promotions—regardless of your chosen promotion method. 
+If you've created products, make sure you have configured the following settings for a consistent promotion experience.
 
 ## Defining source for product versions and properties
 
