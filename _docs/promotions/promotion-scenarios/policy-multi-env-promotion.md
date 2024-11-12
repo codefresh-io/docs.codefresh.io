@@ -47,12 +47,22 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png" 
 url="/images/gitops-promotions/tutorials/seq-flow-populated-policy.png"
-alt="Target environment with policy settings" 
-caption="Target environment with policy settings"
+alt="Target environments with policy settings" 
+caption="Target environments with policy settings"
 max-width="60%"
 %}
 
+Here's the YAML view of the promotion flow with the workflows and promotion actions.
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/tutorials/seq--policy-flow-yaml-view.png" 
+url="/images/gitops-promotions/tutorials/seq--policy-flow-yaml-view.png"
+alt="YAML view of policy settings" 
+caption="YAML view of policy settings"
+max-width="60%"
+%}
 
 
 ##### Triggering policy-driven Promotion Flow
