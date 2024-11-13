@@ -125,7 +125,7 @@ In code samples and internal references, it is represented as `isc`.
 | Applications           |Git Source associated with Runtime | Git user token |
 | Promotion Flow         |`isc/configuration/promotion-flows`| Git user token |
 | Promotion Policy       |`isc/configuration/promotion-policies`| Git user token |
-| Promotion Workflows    |`isc/resources/all-runtimes-all-clusters/promotion-workflows` |Git user token |
+| Promotion Workflows    |`isc/resources/control-planes/promotion-workflows` |Git user token |
 | Promotion Template     |`isc/configuration/promotion-templates`| N/A |
 
 
