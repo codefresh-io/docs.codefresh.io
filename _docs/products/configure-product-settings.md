@@ -99,7 +99,8 @@ To unassign an application assigned declaratively to the product, remove the ann
 
 Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities. 
 
-For example, add a `critical-release` label, and then create a rule for all products with this label 
+
+
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
 1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
