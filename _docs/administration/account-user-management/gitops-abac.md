@@ -16,14 +16,14 @@ Rules define the *who*, *what*, and *where* to control access through the follow
   Teams control the _who_ part of the rule. See [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/). 
 
 * **Actions**  
-  Actions control the _what_ part of the rule. You need to select at least one action per entity. 
+  Actions control the _what_ part of the rule. You need to select at least one action per entity. Available actions differ based on the selected entity.
 
 * **Attributes**  
   Attributes control the _where_ part of the rule. They include standard Kubernetes (clusters, namespaces, and labels), and Codefresh-specific attributes(Runtimes and Git Sources). The attributes which are available depend on the selected entity.<br>
   Adding attributes, either individually or in combination, allow more fine-grained access control to enforce the _where_ policies for teams and actions. <br>Single attributes are useful to grant or deny access based on a specific property. Combinations of attributes help enforce more complex access control. 
 
 
-## Creating a rule for GitOps ABAC in Codefresh UI
+## Creating a rule for GitOps entities via Codefresh UI
 For each rule, you must select or define the:
 * Entity for which to create the rule
 * Team or teams the rule applies to, with at least one team being mandatory 
@@ -51,8 +51,8 @@ For each rule, you must select or define the:
    lightbox="true" 
    file="/images/administration/access-control/gitops/gitops-add-rule.png" 
    url="/images/administration/access-control/gitops/gitops-add-rule.png" 
-   alt="Add rule for applications" 
-   caption="Add rule for applications"
+   alt="Add rule for application entities" 
+   caption="Add rule for application entities"
    max-width="50%" 
   %}
 
@@ -64,46 +64,21 @@ See the documentation for [codefresh_abac_rules](https://registry.terraform.io/p
 
 
 
-## Entity-based actions & attributes 
-Actions and attributes available differ for the
-### Applications: Actions & Attributes
 
+## Applications
+
+### Applications: Actions & Attributes
 
 {: .table .table-bordered .table-hover}
 | Applications              | Description            | 
 |----------------------------|-----------------------| 
-|**Actions**                 | {::nomarkdown}><ul><li><b>Refresh</b>: Allow users to manually regular refresh or hard refresh. The Refresh action is automatically disabled on selecting the Sync action which takes precedence. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Refresh/Hard Refresh applications</a>.</li><li><b>Sync</b>: Allow users to manually sync an application on-demand, and define the options for manual sync.<br>Selecting Sync automatically disables the Refresh action as Sync takes precedence over it. <br> See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manually-synchronize-an-application">Manually synchronize an application</a>.</li><li><b>Terminate Sync</b>: Allow users to manually stop an ongoing sync for an application. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#terminate-on-going-application-sync">Terminate on-going application sync</a></li><li><b>Perform application rollback</b>: Allow users to rollback the current release of an application to a previous deployment version or release in Codefresh. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#rollback-argo-cd-applications">Rollback Argo CD applications</a>.</li><li><b>View pod logs</b>: Allow users to view logs for pod resources of an application in the Current State tab. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#logs-for-application-resources">Logs for application resources</a>.</li><li><b>Pause rollout</b> and <b>Resume rollout</b>: Allow users to pause an ongoing rollout and resume a paused rollout either directly from the Timeline tab of the application, or through the controls in the Rollout Player. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#pauseresume-ongoing-rollouts">Pause/resume ongoing rollouts</a> and <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Promote full rollout</b>: Allow users to use the Promote Full button in the Rollout Player to skip the remaining steps in the rollout and promote to deployment. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Skip current step in rollout</b>: Allow users to use the Skip Step button in the Rollout Player to skip executing the current step in the rollout. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><b>Delete resource</b>: Allow users to delete an application resource from the Current State tab. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#delete-an-application">Delete an application</a>.</li></ul>{:/}  | 
+|**Actions**                 | {::nomarkdown}<ul><li><b>Refresh</b>: Allow users to manually regular refresh or hard refresh. The Refresh action is automatically disabled on selecting the Sync action which takes precedence. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Refresh/Hard Refresh applications</a>.</li><li><b>Sync</b>: Allow users to manually sync an application on-demand, and define the options for manual sync.<br>Selecting Sync automatically disables the Refresh action as Sync takes precedence over it. <br> See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manually-synchronize-an-application">Manually synchronize an application</a>.</li><li><b>Terminate Sync</b>: Allow users to manually stop an ongoing sync for an application. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#terminate-on-going-application-sync">Terminate on-going application sync</a></li><li><b>Perform application rollback</b>: Allow users to rollback the current release of an application to a previous deployment version or release in Codefresh. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#rollback-argo-cd-applications">Rollback Argo CD applications</a>.</li><li><b>View pod logs</b>: Allow users to view logs for pod resources of an application in the Current State tab. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#logs-for-application-resources">Logs for application resources</a>.</li><li><b>Pause rollout</b> and <b>Resume rollout</b>: Allow users to pause an ongoing rollout and resume a paused rollout either directly from the Timeline tab of the application, or through the controls in the Rollout Player. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#pauseresume-ongoing-rollouts">Pause/resume ongoing rollouts</a> and <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Promote full rollout</b>: Allow users to use the Promote Full button in the Rollout Player to skip the remaining steps in the rollout and promote to deployment. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Skip current step in rollout</b>: Allow users to use the Skip Step button in the Rollout Player to skip executing the current step in the rollout. <br>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Abort rollout</b>: Allow users to use the Abort button in the Rollout Player to terminate the current  rollout. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Retry rollout</b>: Allow users to use the Retry button in the Rollout Player to restart an aborted rollout from the beginning. Available only when a rollout was aborted. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#manage-an-ongoing-rollout-with-the-rollout-player">Managing an ongoing rollout with the Rollout Player</a>.</li><li><b>Delete resource</b>: Allow users to delete an application resource from the Current State tab. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#delete-an-application">Delete an application</a>.</li></ul>{:/}  | 
 |**Attributes** |Allow access to application entities on a cluster or within a namespace through a single attribute or a combination of attributes.<br>You can also add multiple instances of the same attribute with different values. {::nomarkdown} <ul><li><b>Cluster</b>: Allow access to all application entities in the cluster, regardless of the namespace, Runtime, and Git Sources of specific applications.</li><li><b>Namespace</b>: Allow access to application entities only within the namespace. If users have multiple accounts on different clusters with the same namespace, they can access applications in all those namespaces.</li><li><b>Runtime</b>: Allow access to application entities associated with the defined Runtime.</li><li><b>Git Source</b>: Allow access to application entities only in the defined Git Source. A Git Source is always associated with a Runtime.</li><li><b>Label</b>: Allow access only to application entities that share the same label. For example, add multiple Label attributes with different values to sync application entities.</li></ul>{:/} |
 
-## Environments: Actions & attributes
+### Examples of rules for application entities
 
-{: .table .table-bordered .table-hover}
-| Environments              | Description            | 
-|----------------------------|-----------------------| 
-| **Actions**  |**Promote to this environment**: {::nomarkdown}<ul><li>Allow users to manually trigger a promotion from within a Promotion Flow. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Trigger a promotion????</a>.</li><li>Allow users to manually promote an application to the desired environment through a Promotion Flow. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Promote an application????</a>.</li><li>Allow users to drag-and-drop application from one environment to another and trigger promotion. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Trigger a promotion????</a>.</li></ul>{:/} |
-|**Attributes** |{::nomarkdown} <ul><li><b>Environment_Name</b>: Allow users to promote to all environments that match the name or names. For example, allows users in team `Dev` to promote to `dev` and `staging` environments only.</li><li><b>Environment_Kind</b>: Allow users to promote to only the specified type of environment, either `production` or `non-production`. </li></ul>{:/} |
-
-## Products: Actions & attributes
-
-{: .table .table-bordered .table-hover}
-| Products              | Description            |
-|----------------------------|-----------------------| 
-|**Actions**             |{::nomarkdown}<ul><li><b>Trigger promotion</b>: Allow users to manually trigger a promotion from within a Promotion Flow. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Trigger a promotion????</a>.</li><li><b>Retry failed release</b>: Allow users to restart a failed release from the point of failure. See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-applications">Retry failed releases???</a>.</li></ul>{:/} |
-|**Attributes** |{::nomarkdown} <ul><li><b>Label</b>: Allow users to trigger promotions or to retry failed releases only for products that match the specified labels. For example, allow users in team `Dev` to promote products with the label ???. See <a href="  ">Configuring labels in Product Settings</a> </li><li><b>Product_Name</b>: Allow users to trigger promotions or to retry failed releases only for products that match the specified names. For example, allow users in team `Dev` to promote products with the label ???. </li></ul>{:/} |
-
-## Promotion Flows: Actions & attributes
-
-{: .table .table-bordered .table-hover}
-| Promotion Flows            | Description            |
-|----------------------------|-----------------------| 
-|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a promotion from within a Promotion Flow. See[TBD]Trigger a promotion????|
-|**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label ???.  |
-
-
-## Examples of rules for application entities
-
-### Rule: Cluster-based access to all actions
-This rule grants the DevOps team permission to perform all actions for application entities on the production cluster, regardless of namespaces, Runtimes, Git Sources and labels.
+#### Rule: Cluster-based access to all actions
+This rule grants the DevOps team permission to perform all actions for application entities on the production cluster, regardless of namespaces, Runtimes, Git Sources, and labels.
 
 **Rule elements**
 * Team: `DevOps`
@@ -112,7 +87,7 @@ This rule grants the DevOps team permission to perform all actions for applicati
 
 
 
-### Rule: Cluster- and namespace-based access to all actions
+#### Rule: Cluster- and namespace-based access to all actions
 This rule grants two different teams permissions to perform all actions for application entities deployed on a specific cluster but within a specific namespace.
 
 **Rule elements**
@@ -123,7 +98,7 @@ This rule grants two different teams permissions to perform all actions for appl
   * `Namespace: product-sandbox`
 
 
-### Rule: Namespace- and label-based access to specific actions 
+#### Rule: Namespace- and label-based access to specific actions 
 This rule grants the Support team permission to manually sync application entities or manually terminate on-going syncs for application entities deployed in a specific namespace, but only for those entities that share the same label. 
 
 **Rule elements**  
@@ -132,6 +107,114 @@ This rule grants the Support team permission to manually sync application entiti
 * Attributes: 
   * `Namespace: poc`
   * `Label: customer=AcmePoc`
+
+## Environments
+
+### Environments: Actions & attributes
+
+{: .table .table-bordered .table-hover}
+| Environments              | Description            | 
+|----------------------------|-----------------------| 
+| **Actions**  |**Promote to this environment**: Allows the following actions: {::nomarkdown}<ul><li>Manually trigger a Promotion Flow. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-promote-products-to-multiple-environments-by-promotion-flow">Manually trigger a Promotion Flow</a>.</li><li>Use the Promote option in the Product or Environments dashboard to manually promote an application to the desired environment through the desired Promotion Flow. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-promote-products-to-specific-environments">Manually promote to specific environments</a>.</li><li>Drag-and-drop an application from one environment to another and trigger promotion. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-trigger-promotions-through-drag-n-drop">Manually trigger promotions through drag-n-drop</a>.</li></ul>{:/} |
+|**Attributes** |{::nomarkdown} <ul><li><b>Environment_Name</b>: Allow users to promote to all environments that match the name or names. For example, allows users in team `Dev` to promote to `dev` and `staging` environments only.</li><li><b>Environment_Kind</b>: Allow users to promote to only the specified type of environment, either `production` or `non-production`. </li></ul>{:/} |
+
+### Examples of rules for environment entities
+
+#### Rule: Restrict manual promotions by environment type
+This rule restricts manual promotion privileges in production environments minimizing the risk of unauthorized promotions in sensitive environments.
+
+**Rule elements**  
+* Team: `DevOps`
+* Attributes: 
+  * `ENVIRONMENT_KIND: Production`
+
+#### Rule: Restrict manual promotions to specific environments
+This rule restricts manual promotion privileges to specific environments, for example, testing environments, for controlled testing. 
+
+**Rule elements**  
+* Team: `Qa`, `DevOps`
+* Attributes: 
+  * `ENVIRONMENT_NAME`: `staging`, `integration`
+
+
+#### Rule: Restrict manual promotions to specific pre-prod environments
+This rule grants broader manual promotion privileges to specific non-production environments. 
+
+**Rule elements**  
+* Team: `Dev`, `Qa`, 
+* Attributes: 
+  * `ENVIRONMENT_KIND`: `Non-production`  
+  * `ENVIRONMENT_NAME`: `dev`, `testing`, `pre-prod`
+
+
+
+
+
+
+## Products
+
+### Products: Actions & attributes
+
+{: .table .table-bordered .table-hover}
+| Products              | Description            |
+|----------------------------|-----------------------| 
+|**Actions**             |{::nomarkdown}<ul><li><b>Trigger promotion</b>: Allow users to manually trigger a Promotion Flow. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-promote-products-to-multiple-environments-by-promotion-flow">Manually trigger a Promotion Flow</a>.</li><li><b>Retry failed release</b>: Allow users to restart a failed release from the point of failure. See <a href="https://codefresh.io/docs/docs/promotions/product-releases/#retry-a-failed-release">Retry a failed release</a>.</li></ul>{:/} |
+|**Attributes** |{::nomarkdown} <ul><li><b>Label</b>: Allow users to trigger promotions or to retry failed releases only for products that match the specified labels. For example, allow users in team `Dev` to promote products with the label ???. See <a href="  ">Configuring labels in Product Settings</a> </li><li><b>Product_Name</b>: Allow users to trigger promotions or to retry failed releases only for products that match the specified names. For example, allow users in team `Dev` to promote products with the label ???. </li></ul>{:/} |
+
+
+### Examples of rules for product entities
+
+#### Rule: Trigger promotions and retry releases for products by labels
+This rule grants manual promotion and retry release privileges for all products with the specified label to all teams. For example, test and try product deployment to non-customer-facing environments.
+
+**Rule elements**  
+* Team: `Dev`, `Qa`, `Product`, `Apollo` 
+* Actions: `Trigger promotion`, `Retry release`
+* Attributes: 
+  * `LABEL`: `internal-use-only`  
+
+#### Rule: Trigger promotions  specific products
+This rule grants manual promotion and retry release privileges for all products with the specified label to all teams. For example, test and try product deployment to non-customer-facing environments.
+
+**Rule elements**  
+* Team: `Dev`, `Qa`, `Product`, `Apollo` 
+* Actions: `Trigger promotion`, `Retry release`
+* Attributes: 
+  * `LABEL`: `internal-use-only`  
+experimental
+Marks a product as experimental or in development, helping teams identify releases in early stages that may require additional testing.
+
+high-priority
+Flags high-priority products, useful for prioritizing resources and monitoring deployment closely for critical updates.
+
+deprecated
+Indicates products that are being phased out, signaling teams to avoid further development or deployment and plan for migration.
+
+beta
+Labels the product for beta release, clarifying that it’s in a limited release phase and available to specific users for feedback.
+
+internal-use-only
+
+
+hotfix
+Identifies releases as urgent fixes, helping teams fast-track promotions and deployments for critical issue resolution.
+
+seasonal-release
+Denotes products intended for a specific event or season, aiding in timing their promotion and monitoring.
+
+
+## Promotion Flows
+
+### Promotion Flows: Actions & attributes
+
+{: .table .table-bordered .table-hover}
+| Promotion Flows            | Description            |
+|----------------------------|-----------------------| 
+|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a promotion from within a Promotion Flow. See[TBD]Trigger a promotion????|
+|**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label ???.  |
+
+
+
 
 
 ## Related articles
