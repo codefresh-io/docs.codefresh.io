@@ -13,7 +13,7 @@ This article describes how to configure the different Product Settings:
   Declaratively connect an application to a product with the predefined and automatically generated product annotation. 
   
 
-* [Labels for applications](#configure-labels)  
+* [Labels](#configure-labels)  
   Add labels for the product. 
 
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
@@ -97,6 +97,9 @@ To unassign an application assigned declaratively to the product, remove the ann
 
 ## Configure labels
 
+Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases.
+
+For example, add a `critical-release` label, and then create a rule for all products with this label 
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
 1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
