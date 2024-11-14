@@ -55,8 +55,7 @@ For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/doc
 ## Configuring versions for promoted applications
 The Version attribute specifies the location from which to retrieve version information for the applications in the product. 
 
->**NOTE**  
-
+>**NOTE**
 The Environments, Product, and GitOps Apps dashboards display the product version only for _Helm application types_.
 For other application types, product versions are not displayed even when configured.
 
