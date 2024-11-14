@@ -116,7 +116,7 @@ The table describes the instance fields you need to define.
 | Octopus instance variable       | Description|
 | ------------- | ------- |
 | `OCTOPUS_URL`     | The Octopus Server URL on which to run your Octopus Deploy steps. See [Getting started with Octopus](https://octopus.com/docs/getting-started){:target="\_blank"} for an overview of deploy concepts.  |
-| `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication. Use an existing key or create a new API key. See [Creating an API Key](https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key#HowtocreateanAPIkey-CreatinganAPIkey){:target="\_blank"}. |
+| `OCTOPUS_API_KEY` | The Octopus Deploy API Key required for authentication. Use an existing key or create a new API key. See [Creating an API Key](https://octopus.com/docs/octopus-rest-api/how-to-create-an-api-key#HowtocreateanAPIkey-CreatinganAPIkey){:target="\_blank"}.<br> Alternatively, you can log in with [OIDC access tokens](#log-in-with-access-token). |
 | `OCTOPUS_SPACE`   | The Space in which to run steps. See [Spaces](https://octopus.com/docs/administration/spaces){:target="\_blank"}.|
 |`PROJECT`           | The Octopus Deploy project to which to deploy the release. See [Setting up a project](https://octopus.com/docs/projects/setting-up-projects){:target="\_blank"}.|
 
@@ -170,16 +170,16 @@ For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-relea
 
 ## Optional Octopus Deploy steps in Codefresh pipelines 
 
-### Access-token login
+### Log in with access token
 
 To use an Octopus access token for login, instead of the Octopus API key, use the `octopusdeploy-login` step. Using short-lived access tokens results in enhanced security.  
 
 The step receives an ID token as input and performs a token exchange with the Octopus server to provide an Octopus access token as a response.
 
 ##### Usage requirements
-
 * Codefresh `obtain_id_token` step  
-  Must be run _before_ the `octopusdeploy-login` step. `octopusdeploy-login` uses the `ID_TOKEN` environment variable set by `obtain_id_token`.
+  Must be run _before_ the `octopusdeploy-login` step.  
+  `octopusdeploy-login` uses the `ID_TOKEN` from the `obtain_id_token` step.
 
 ```yaml
 login:
@@ -191,7 +191,7 @@ login:
 
 ```
 * OIDC for Octopus server  
-  The Octopus server must be configured to allow OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers).
+  The Octopus server must be configured to allow OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers){:target="\_blank"}.
 
 Here's an example of the `octopusdeploy-login` step, with the `obtain-oidc-id-token` step, and the `octopusdeploy-run-runbook` step. You can see that `run-runbook` defines the `OCTOPUS_ACCESS_TOKEN` argument for login instead of the `OCTOPUS_API_KEY`.
 
@@ -272,6 +272,7 @@ This step has no output.
 ## Related articles
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
 [Variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/)  
+[Marketplace: Octopus Deploy Log in](https://codefresh.io/steps/step/octopusdeploy-login){:target="\_blank"}  
 [Marketplace: Octopus Deploy Create package](https://codefresh.io/steps/step/octopusdeploy-create-package){:target="\_blank"}  
 [Marketplace: Octopus Deploy Push package](https://codefresh.io/steps/step/octopusdeploy-push-package){:target="\_blank"}  
 [Marketplace: Octopus Deploy Create release](https://codefresh.io/steps/step/octopusdeploy-create-release){:target="\_blank"}  
