@@ -170,7 +170,7 @@ For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-relea
 
 ## Optional Octopus Deploy steps in Codefresh pipelines 
 
-### Access token login
+### Access-token login
 
 To use an Octopus access token for login, instead of the Octopus API key, use the `octopusdeploy-login` step. Using short-lived access tokens results in enhanced security.  
 
@@ -179,7 +179,7 @@ The step receives an ID token as input and performs a token exchange with the Oc
 ##### Usage requirements
 
 * Codefresh `obtain_id_token` step  
-  Must be run after the Codefresh `obtain_id_token` step, as it uses the `ID_TOKEN` environment variable set by `obtain_id_token`:
+  Must be run _before_ the `octopusdeploy-login` step. `octopusdeploy-login` uses the `ID_TOKEN` environment variable set by `obtain_id_token`.
 
 ```yaml
 login:
@@ -193,7 +193,7 @@ login:
 * OIDC for Octopus server  
   The Octopus server must be configured to allow OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers).
 
-Here's an example of the `octopusdeploy-login` step, with the `obtain-oidc-id-token` step, and the `octopusdeploy-run-runbook` step with the `OCTOPUS_ACCESS_TOKEN` argument.
+Here's an example of the `octopusdeploy-login` step, with the `obtain-oidc-id-token` step, and the `octopusdeploy-run-runbook` step. You can see that `run-runbook` defines the `OCTOPUS_ACCESS_TOKEN` argument for login instead of the `OCTOPUS_API_KEY`.
 
 ```yaml
 obtain_id_token:
@@ -236,24 +236,9 @@ To run a Runbook, use the `octopusdeploy-run-runbook` step.
 
 The step requires the name of the Runbook to run, the project and environment name(s). Optional arguments include variables to use within the Runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
 
-You can use either the `OCTOPUS_API_KEY` or the `OCTOPUS_ACCESS_TOKEN` for authentication. To use `OCTOPUS_ACCESS_TOKEN`, see [Access token login](#access-token-login). 
 
 The step returns a JSON array of created Runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
 
-Here's an example of `run-runbook` with the API key:
-
-```yaml
-run-runbook:
-  type: octopusdeploy-run-runbook
-  arguments:
-    OCTOPUS_API_KEY: ${{OCTOPUS_API_KEY}}
-    OCTOPUS_URL: '${{OCTOPUS_URL}}'
-    OCTOPUS_SPACE: Spaces 1
-    PROJECT: Project Name
-    NAME: Runbook Name
-    ENVIRONMENTS:
-      - Development
-```
 
 ### Push build information
 
