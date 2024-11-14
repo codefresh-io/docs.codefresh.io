@@ -44,17 +44,17 @@ A Promotion Workflow can be executed before or after the Promotion Action as a P
 ##### Pre-commit run option 
 Inline validations when creating or editing Promotion Workflows are supplemented by the Run option. 
 
-Instead of committing the manifest and detecting errors or failures when the Workflow is activated, the Run option runs the specific Promotion Workflow in the cluster, verifying actions and steps in the workflow, such as sending notifications, running pre-action validations or post-action test.
+Instead of committing the manifest and detecting errors or failures when the Workflow is activated, the Run option runs the specific Promotion Workflow in the cluster, verifying actions and steps in the workflow, such as sesding notifications, running pre-action validations or post-action test.
 See [Validate Promotion Workflow parameters](#validate-promotion-workflow-parameters).
 
 ##### Pre- & Post-Action Workflow arguments
 Codefresh passes parameters to the Pre-Action and Post-Action Workflows. These arguments allow you to customize Post-Action Workflow execution based on the specific details of the commit.  
 See [Arguments for Pre-Action and Post-Action Workflows](#arguments-for-pre-action-and-post-action-workflows).
 
-## Promotion Workflow CRDs
+<!--- ## Promotion Workflow YAMLs
 Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   --> 
 
 
 
