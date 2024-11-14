@@ -170,6 +170,59 @@ For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-relea
 
 ## Optional Octopus Deploy steps in Codefresh pipelines 
 
+### Access token login
+
+To use an Octopus access token for login, instead of the Octopus API key, use the `octopusdeploy-login` step. Using short-lived access tokens results in enhanced security.  
+
+The step receives an ID token as input and performs a token exchange with the Octopus server to provide an Octopus access token as a response.
+
+##### Usage requirements
+
+* Codefresh `obtain_id_token` step  
+  Must be run after the Codefresh `obtain_id_token` step, as it uses the `ID_TOKEN` environment variable set by `obtain_id_token`:
+
+```yaml
+login:
+  type: octopusdeploy-login
+  arguments:
+    ID_TOKEN: '${{ID_TOKEN}}'
+    OCTOPUS_URL: '${{OCTOPUS_URL}}'
+    OCTOPUS_SERVICE_ACCOUNT_ID: '${{OCTOPUS_SERVICE_ACCOUNT_ID}}'
+
+```
+* OIDC for Octopus server  
+  The Octopus server must be configured to allow OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers).
+
+Here's an example of the `octopusdeploy-login` step, with the `obtain-oidc-id-token` step, and the `octopusdeploy-run-runbook` step with the `OCTOPUS_ACCESS_TOKEN` argument.
+
+```yaml
+obtain_id_token:
+  title: Obtain ID Token
+  type: obtain-oidc-id-token
+  stage: "Login"
+
+login:
+  type: octopusdeploy-login
+  title: Login
+  stage: "login"
+  arguments:
+    ID_TOKEN: '${{ID_TOKEN}}'
+    OCTOPUS_URL: "https://example.octopustest.app/"
+    OCTOPUS_SERVICE_ACCOUNT_ID: <<YOUR_AUDIENCE_VALUE>>
+
+run-runbook:
+  type: octopusdeploy-run-runbook
+  arguments:
+    OCTOPUS_ACCESS_TOKEN: '${{OCTOPUS_ACCESS_TOKEN}}'
+    OCTOPUS_URL: '${{OCTOPUS_URL}}'
+    OCTOPUS_SPACE: Spaces 1
+    PROJECT: Project Name
+    NAME: Runbook Name
+    ENVIRONMENTS:
+      - Development
+```
+
+
 ### Deploy a tenanted release
 
 To deploy a tenanted release, use the `octopusdeploy-deploy-release-tenanted` step. Define the tenants to deploy to using either tenants or tenant tags.  
@@ -177,13 +230,30 @@ For an untenanted release, see [Deploy a release](#deploy-a-release).
 
 Customize the deployment of the tenanted release with prompted variable values, tenants, tenant tags, and guided failure mode. This step returns a json array of created deployments, with properties `DeploymentId` and `ServerTaskId`.
 
-### Run a runbook
+### Run a Runbook
 
-To run a runbook, use the `octopusdeploy-run-runbook` step.  
+To run a Runbook, use the `octopusdeploy-run-runbook` step.  
 
-The step requires the name of the runbook to run, the project and environment name(s). Optional arguments include variables to use within the runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
+The step requires the name of the Runbook to run, the project and environment name(s). Optional arguments include variables to use within the Runbook, the option to run for specific tenants or tenant tags, as well as the option to use guided failure mode.
 
-The step returns a JSON array of created runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
+You can use either the `OCTOPUS_API_KEY` or the `OCTOPUS_ACCESS_TOKEN` for authentication. To use `OCTOPUS_ACCESS_TOKEN`, see [Access token login](#access-token-login). 
+
+The step returns a JSON array of created Runbook runs, with properties `RunbookRunId` and `ServerTaskId`.
+
+Here's an example of `run-runbook` with the API key:
+
+```yaml
+run-runbook:
+  type: octopusdeploy-run-runbook
+  arguments:
+    OCTOPUS_API_KEY: ${{OCTOPUS_API_KEY}}
+    OCTOPUS_URL: '${{OCTOPUS_URL}}'
+    OCTOPUS_SPACE: Spaces 1
+    PROJECT: Project Name
+    NAME: Runbook Name
+    ENVIRONMENTS:
+      - Development
+```
 
 ### Push build information
 
