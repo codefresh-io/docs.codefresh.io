@@ -14,11 +14,11 @@ In structure and behavior, a Promotion Workflow is essentially an Argo Workflow,
 See [Key features of Promotion Workflows](#key-features-of-promotion-workflows) and [Create Promotion Workflows](#create-promotion-workflows).
 
 After creating Promotion Workflows, there are two aspects to working with them:
-1. Managing Promotion Workflows  
+* **Managing Promotion Workflows**  
   Managing Promotion Workflows involves controlling the configuration of the manifest, creating new Promotion Workflows by copying existing ones, and removing workflows that are no longer needed or relevant.  
   See [Managing Promotion Workflows](#managing-promotion-workflows).
 
-1. Managing Workflow execution instances  
+* **Managing Workflow execution instances**  
   Workflow execution instances represent specific occurrences when a Promotion Workflow is triggered either as part of a Promotion Policy, or run for validation. These instances provide detailed insights into the performance and execution of the specific instance of the Workflow.
   See [Managing Workflow instances](#managing-workflow-instances). 
 
@@ -51,10 +51,10 @@ See [Validate Promotion Workflow parameters](#validate-promotion-workflow-parame
 Codefresh passes parameters to the Pre-Action and Post-Action Workflows. These arguments allow you to customize Post-Action Workflow execution based on the specific details of the commit.  
 See [Arguments for Pre-Action and Post-Action Workflows](#arguments-for-pre-action-and-post-action-workflows).
 
-## Promotion Workflow CRDs
+## Promotion Workflow YAMLs
 Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
 
 
@@ -65,13 +65,14 @@ Create a Promotion Workflow from scratch, use the base Promotion Workflow Templa
 
 Whichever method you use to create your Promotion Workflow, make sure you include the annotation in the manifest to classify and use it as a Promotion Workflow.
 
-{:start="1"}
-1. In the Codefresh UI, from Promotions in the sidebar, select [Promotion Workflows](https://g.codefresh.io/2.0/?????){:target="\_blank"}.
+ 
+1. In the Codefresh UI, from Promotions in the sidebar, select **Promotion Workflows**.
 1. Click **Add Promotion Workflow**.
 1. Define the following:
     1. **Name**: The name of the Promotion Workflow.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. 
     1. **Description** : The intended use of the Promotion Workflow.<br>The description is added as an annotation to the YAML file. It is also displayed in the Promotion Workflows list in the UI. 
     1. **Resource Filename**: The name of the YAML resource file with the configuration settings for the Promotion Workflow, by default, identical to the Name of the Promotion Workflow. You can change as needed.  
+
 {:start="4"}
 1. Click **Add**.
 1. Select **Blank Skeleton File** and click **Next**.
