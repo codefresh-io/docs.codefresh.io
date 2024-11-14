@@ -53,9 +53,9 @@ For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/doc
 ## Configuring versions for promoted applications
 The Version attribute specifies the location from which to retrieve version information for the applications in the product. 
 
->**NOTE**  
+>**NOTE**    
 The Environments, Product, and GitOps Apps dashboards display the product version only for _Helm application types_.
-For other application types, product versions are not displayed even when configured.
+Product versions are not displayed for other application types even when configured.
 
 {% include
  image.html
@@ -300,12 +300,10 @@ For detailed information, see [JSON syntax](https://support.smartbear.com/alerts
 JSON path expressions begin with the `$` symbol, which represents the root of the YAML file.
 
 **`$..`**
-Extracts from all levels of the matching object.  
-Use `..` (double dot operator) to navigate and extract from any level within the YAML file.
+Extracts from all levels of the matching object. Use `..` (double dot operator) to navigate and extract from any level within the YAML file.
 
 **`.*`**  
-Extracts all properties.  
-Use `.*` to retrieve all properties of the matching object.|
+Extracts all properties. Use `.*` to retrieve all properties of the matching object.
 
 
 This is an extract from a sample values.yaml file.

@@ -65,13 +65,14 @@ Create a Promotion Workflow from scratch, use the base Promotion Workflow Templa
 
 Whichever method you use to create your Promotion Workflow, make sure you include the annotation in the manifest to classify and use it as a Promotion Workflow.
 
-{:start="1"}
-1. In the Codefresh UI, from Promotions in the sidebar, select [Promotion Workflows](https://g.codefresh.io/2.0/?????){:target="\_blank"}.
+ 
+1. In the Codefresh UI, from Promotions in the sidebar, select **Promotion Workflows**.
 1. Click **Add Promotion Workflow**.
 1. Define the following:
     1. **Name**: The name of the Promotion Workflow.<br>The name must be unique in the cluster, and must match Kubernetes naming conventions. 
     1. **Description** : The intended use of the Promotion Workflow.<br>The description is added as an annotation to the YAML file. It is also displayed in the Promotion Workflows list in the UI. 
     1. **Resource Filename**: The name of the YAML resource file with the configuration settings for the Promotion Workflow, by default, identical to the Name of the Promotion Workflow. You can change as needed.  
+
 {:start="4"}
 1. Click **Add**.
 1. Select **Blank Skeleton File** and click **Next**.

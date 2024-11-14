@@ -125,10 +125,10 @@ When a Promotion Flow is triggered, either automatically or on-demand, Policy se
 
 There are two options:  
 
-* **Define inline policy settings**  
+* **Inline policy settings**  
   Manually select policy settings for an environment. These _inline_ selections override any global Promotion Policy settings that match the product/environment when the flow is triggered.
 
-* **Global Promotion Policy settings**
+* **Global Promotion Policy settings**  
   Explicitly select Global Policy Settings. The promotion mechanism then applies global Promotion Policy settings based on predefined priorities. <!-- See TBD -->
 
 {% include 
