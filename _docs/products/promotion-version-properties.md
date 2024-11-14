@@ -89,7 +89,7 @@ The diagram illustrates how the version attributes configured for the product ar
 
 
 * If the version is not displayed in the dashboards, it could be because your application is not a Helm application.
-* For Helm applications, if the version is either not displayed, or is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+* For Helm applications, if the version is either not displayed or is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
 
 
 ### Examples of version attributes
