@@ -172,14 +172,14 @@ For a tenanted release, see [Deploy a tenanted release](#deploy-a-tenanted-relea
 
 ### Log in with access token
 
-To use an Octopus access token for login, instead of the Octopus API key, use the `octopusdeploy-login` step. Using short-lived access tokens results in enhanced security.  
+To authenticate with Octopus using an access token instead of an API key, use the `octopusdeploy-login` step. This approach enhances security by leveraging short-lived access tokens.
 
-The step receives an ID token as input and performs a token exchange with the Octopus server to provide an Octopus access token as a response.
+The step accepts an ID token as input, performing a token exchange with the Octopus server to generate an Octopus access token.
+
 
 ##### Usage requirements
 * Codefresh `obtain_id_token` step  
-  Must be run _before_ the `octopusdeploy-login` step.  
-  `octopusdeploy-login` uses the `ID_TOKEN` from the `obtain_id_token` step.
+  The `obtain_id_token` step must run _before_ the `octopusdeploy-login` step to generate the `ID_TOKEN` required by `octopusdeploy-login`.
 
 ```yaml
 login:
@@ -190,10 +190,12 @@ login:
     OCTOPUS_SERVICE_ACCOUNT_ID: '${{OCTOPUS_SERVICE_ACCOUNT_ID}}'
 
 ```
-* OIDC for Octopus server  
-  The Octopus server must be configured to allow OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers){:target="\_blank"}.
+* OIDC configuration for Octopus server  
+  The Octopus server must be configured to support OIDC authentication, as described in [Using OpenID Connect in Octopus with other issuers](https://octopus.com/docs/octopus-rest-api/openid-connect/other-issuers){:target="\_blank"}.
 
-Here's an example of the `octopusdeploy-login` step, with the `obtain-oidc-id-token` step, and the `octopusdeploy-run-runbook` step. You can see that `run-runbook` defines the `OCTOPUS_ACCESS_TOKEN` argument for login instead of the `OCTOPUS_API_KEY`.
+##### Example
+Here's an example of a pipeline with the `octopusdeploy-login` step, the `obtain-oidc-id-token` and the `octopusdeploy-run-runbook` steps.  
+Here, `run-runbook` is configured to authenticate with the `OCTOPUS_ACCESS_TOKEN` instead of the `OCTOPUS_API_KEY`.
 
 ```yaml
 obtain_id_token:
