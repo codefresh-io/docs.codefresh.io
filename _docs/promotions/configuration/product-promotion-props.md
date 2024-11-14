@@ -11,9 +11,9 @@ Before or after configuring specialized promotion entities such as Promotion Flo
 
 If you've created products, make sure you have configured the following settings for a consistent promotion experience.
 
-## Defining source for product versions and properties
+## Defining sources for product versions and properties
 
-##### Product version for promotion
+### Product version for promotion
 The product version specifies the source of the version you want to promote. By defining the source for retrieving the version, you gain control over what is promoted at each stage.
 
 **Why is it important?**
@@ -24,7 +24,18 @@ This minimizes potential issues due to version discrepancies, maintains applicat
 The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
 For other application types, product versions are not displayed even if configured.  
 
-##### Product properties for promotion
+>**NOTE**  
+The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
+For other application types, product versions are not displayed even if configured.  
+
+##### JSON path expression to version source
+The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
+
+##### Examples of attributes as version source
+
+
+
+### Product properties for promotion
 Product properties allow you to specify the files and precise attributes—such as tags, version numbers, or other application attributes—that should be promoted across environments.
 
 **Why is it important?**
