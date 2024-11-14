@@ -14,11 +14,11 @@ In structure and behavior, a Promotion Workflow is essentially an Argo Workflow,
 See [Key features of Promotion Workflows](#key-features-of-promotion-workflows) and [Create Promotion Workflows](#create-promotion-workflows).
 
 After creating Promotion Workflows, there are two aspects to working with them:
-1. Managing Promotion Workflows  
+* **Managing Promotion Workflows**  
   Managing Promotion Workflows involves controlling the configuration of the manifest, creating new Promotion Workflows by copying existing ones, and removing workflows that are no longer needed or relevant.  
   See [Managing Promotion Workflows](#managing-promotion-workflows).
 
-1. Managing Workflow execution instances  
+* **Managing Workflow execution instances**  
   Workflow execution instances represent specific occurrences when a Promotion Workflow is triggered either as part of a Promotion Policy, or run for validation. These instances provide detailed insights into the performance and execution of the specific instance of the Workflow.
   See [Managing Workflow instances](#managing-workflow-instances). 
 
