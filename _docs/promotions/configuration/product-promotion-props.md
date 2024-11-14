@@ -20,6 +20,10 @@ The product version specifies the source of the version you want to promote. By 
 Setting a source for the version ensures that each promotion action consistently targets the correct version of your product's applications.  
 This minimizes potential issues due to version discrepancies, maintains application integrity, and provides a traceable version history. 
 
+>**NOTE**  
+The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
+For other application types, product versions are not displayed even if configured.  
+
 ##### Product properties for promotion
 Product properties allow you to specify the files and precise attributes—such as tags, version numbers, or other application attributes—that should be promoted across environments.
 

@@ -25,6 +25,8 @@ When defining which changes to promote, there are two primary aspects to focus o
 1. Defining the [changes to promote](#configuring-properties-for-promotion-across-applications) across multiple files in the applications 
 
 
+
+
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
 For automated retrieval of the application version and promotion of specific attributes from files across environments, _all applications within the same product must maintain an identical structure_.  
@@ -52,10 +54,11 @@ For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/doc
 
 ## Configuring versions for promoted applications
 The Version attribute specifies the location from which to retrieve version information for the applications in the product. 
-
->**NOTE**    
+ 
+>**NOTE**
 The Environments, Product, and GitOps Apps dashboards display the product version only for _Helm application types_.
-Product versions are not displayed for other application types even when configured.
+For other application types, product versions are not displayed even when configured.
+
 
 {% include
  image.html
@@ -84,8 +87,10 @@ The diagram illustrates how the version attributes configured for the product ar
 
 **Version not displayed in dashboards**  
 
+
 * If the version is not displayed in the dashboards, it could be because your application is not a Helm application.
-* For Helm applications, if the version displayed is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+* For Helm applications, if the version is either not displayed, or is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+
 
 ### Examples of version attributes
 
