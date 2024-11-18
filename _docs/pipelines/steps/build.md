@@ -76,6 +76,8 @@ step_name:
 
 ## Fields
 
+The default behavior of the `build` step is defined a
+
 <!-- markdownlint-disable MD033 -->
 
 {: .table .table-bordered .table-hover}
@@ -87,13 +89,14 @@ step_name:
 | `working_directory`  | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. Note that the `working_directory` when defined changes only the Docker build context. It is unrelated to the `WORKDIR` in the Dockerile. | Default                   |
 | `dockerfile`    | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.          | Default                   |
 | `image_name` | The name of the image that is built.                                                                 | Required                  |
-| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.                                                          | Optional                  |
+| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.      | Optional                  |
+| `role_arn`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The Amazon Resource Name (ARN) of the IAM role to be assumed to push the built image to the ECR repository, in the format `arn:aws:iam::<cross-account-id>:role/<role-name>`, where:<br>`<account-id>` is the ID of the AWS account where the ECR repository is hosted. <br>`<role-name>` is the specified role with the required permissions within this account to access and manage the ECR repository.  | Required                  |
 | `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
 | `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <code class="highlighter-rouge">tag</code> (see above). <br> This is an array, and should conform to the following syntax: <br><code class="highlighter-rouge">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</code><br><br>OR<br><code class="highlighter-rouge">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</code>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
 | `registry`   | The name of the registry to which to push the built image. You can define any registry that is integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
 | `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. <br> NOTE: When using `buildx` to build and push multi-platform images, `registry_contexts` cannot be assigned a different registry from the same domain as the target registry defined for `registry`, as Docker does not support being logged in to multiple Docker registries that share the same domain at the same time.  | Optional                  |
-|`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.  <br><br>NOTE: Because of [Docker's limitation on loading multi-platform images](https://github.com/docker/buildx/issues/59){:target="\_blank"} to the local Docker instance, unless the built image is pushed as part of the `build` step, you cannot reference the same image in subsequent steps using the {% raw %}`${{build_step_name}}`{% endraw %} variable. | Optional                   |
+|`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.<br>This setting overrides the default behavior set at the account leve. See [Default behavior for buld steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#default-behavior-for-build-steps). <br><br>NOTE: Because of [Docker's limitation on loading multi-platform images](https://github.com/docker/buildx/issues/59){:target="\_blank"} to the local Docker instance, unless the built image is pushed as part of the `build` step, you cannot reference the same image in subsequent steps using the {% raw %}`${{build_step_name}}`{% endraw %} variable. | Optional                   |
 |`tag_policy`     | The case-transformation policy for the tag name. <br>`original`pushes the tag name as is, without changing it. <br>`lowercase`, the default, automatically converts the tag name to lowercase. <br><br>Tags in mixed case are pushed as `image_name:<tagname>` when set to the default value.    | Default                   |
 | `no_cache`      | Defines if to enable or disable Docker engine cache for the build.  When set to `false`, the default, enables Docker engine cache. To disable, set to `true`. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/).        | Optional                  |
 | `no_cf_cache`   | Defines if to enable or disable Codefresh build optimization for the build. When set to `false`, the default, enables Codefresh build optimization. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |                                                                          |
@@ -425,6 +428,151 @@ steps:
 
 Use this technique only as a last resort. It is better if the Dockerfile exists as an actual file in source control.
 
+
+
+## Signing container images with Sigstore
+
+Signing container images created and distributed by pipelines and verifying their authenticity is essential for maintaining software security.  
+Sigstore, a trusted authority for signing container images, offers two methods to secure images: **key-based signing**, the traditional method, and **keyless signing**, a new method using the OpenID Connect (OIDC) protocol.
+
+* **Key-based signing**  
+  Key-based signing relies on private-public key pairs to authenticate and verify container images. It comes with inherent security and maintenance challenges in managing the key pairs. 
+
+* **Keyless signing**  
+  Keyless signing is now the _default_ method due to significant advantages:
+    * No long-term key management: No need to generate, store, or rotate private keys. 
+    * Improved security: Reduces the risk of key theft or misuse, by eliminating the need for long-term private keys.
+    * Simplified automation: Ideal for CI/CD pipelines, as OIDC tokens are automatically retrieved and used for signing, with no manual intervention.
+
+Codefresh supports both both key-based and keyless signing to secure container images generated by pipelines.
+
+##### How Codefresh handles container image signing
+Codefresh removes the complexity of setting up and managing both key-based and keyless signing by integrating the necessary components directly into the pipeline's `build` step. This automation enables you to sign container images with minimal configuration, simplifying the entire signing process.
+
+See [Keyless signing for container images](#keyless-signing-for-container-images) and [Key-based signing for container images](#key-based-signing-for-container-images).
+
+
+
+
+### Keyless signing for container images
+
+Keyless signing in Codefresh utilizes the Codefresh OIDC provider during the artifact signing process. This integration simplifies authentication and ensures the integrity of the signing process by embedding claims within the signature. For detailed information on how to integrate Codefresh as an OIDC provider, see [OIDC for pipelines]({{site.baseurl}}/docs/integrations/oidc-pipelines/). 
+
+
+#### Benefits of Codefresh OIDC Provider for keyless signing
+
+
+* **Secure authentication**  
+  Codefresh acting as the OIDC provider for keyless signing eliminates the need for long-term private keys. By using the OIDC protocol, Codefresh securely authenticates the pipeline at runtime, ensuring that only authorized pipelines can sign the artifacts.
+
+* **Claims identifying pipeline and build**  
+  The Codefresh OIDC provider generates claims that uniquely identify both the pipeline and the build in the token issued for signing. These claims are automatically embedded in the OIDC token and passed to the signing process, ensuring that each container image's signature is tied to a specific build in a specific pipeline.
+
+* **Robust verification process using claims**  
+  The claims provided by the Codefresh OIDC provider are used in the signature for a robust verification process. When verifying signed container images, external systems can use the embedded claims to confirm the origin and authenticity of the artifact, ensuring that the image was signed by a trusted pipeline and build. 
+
+
+
+#### Keyless signing: components and roles
+
+The table below outlines the key components involved in keyless signing and their roles.  
+
+
+For detailed information, including keyless-signing architecture, [read our blog](https://codefresh.io/blog/securing-containers-oidc/){:target="\_blank"}.
+
+{: .table .table-bordered .table-hover}
+| Component         | Description                                   | Responsible party |
+| ------------------------------------------                          | ---------------------------------------------- | 
+| **OIDC provider**          | The organization creating the container images must act an OIDC provider. <br> Codefresh is an official OIDC provider, setting up an integration with Codefresh provides added benefits for keyless signing. See [Benefits of Codefresh OIDC Provider for keyless signing](#benefits-of-codefresh-oidc-provider-for-keyless-signing).    | Customer|
+| **ID token**  | An ID token is created for the OIDC provider to authenticate and authorize pipeline actions. <br>Codefresh automatically retrieves the ID token through the `obtain-oidc-id-token` step, with no manual action required.       | Codefresh|
+| **ID token verification**  | A certificate authority verifies the ID token against the OIDC provider, and issues a short-lived cryptographic certificate based on the ID token.        | [Fulcio](https://docs.sigstore.dev/certificate_authority/overview/){:target="\_blank"}|
+| **Image signing** | Codefresh integrates with Cosign to sign the container image. <br>Simply add the `cosign: sign: true` attribute to your pipeline's `build` step.  | [Cosign](https://docs.sigstore.dev/signing/quickstart/){:target="\_blank"}|
+| **Authenticity verification**  | The certificate (public key) along with the signature/digest is stored in an append-only transparency log. Any external organization can verify the authenticity of the signed container image.<br>For details on image verification, see [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).        | [Rekor](https://docs.sigstore.dev/logging/overview/){:target="\_blank"}|
+
+#### Adding keyless signing to your pipeline
+
+To enable keyless signing, add the following attribute to your pipeline's `build` step:
+
+
+```yaml
+cosign: 
+  sign: true
+```
+Codefresh retrieves the OIDC token, invokes Cosign, and securely signs the container image without the need for additional setup.
+
+Here's an example of a `build` step with this attribute:
+
+```yaml
+scenario_multiplatform_keyless_sign:
+  type: "build"
+  stage: "multiplatform-keyless"
+  image_name: ${{PUBLIC_IMAGE_NAME}}
+  tag: "${{CF_BRANCH_TAG_NORMALIZED}}-scenario_multiplatform_keyless_sign"
+  ...
+  cosign:
+    sign: true
+  ...
+```
+
+### Key-based signing for container images
+
+Key-based signing uses a private key to sign container images. There are two options for key-based signing:
+* Signing without a password: The private key is used directly to sign the image.
+* Signing with a password/passphrase: The private key is first unlocked using a passphrase for additional security.
+ 
+
+##### Adding key-based signing to your pipeline
+
+To enable key-based signing, add the following to your pipeline's `build` step:
+
+
+```yaml
+cosign: 
+  sign: true
+  options: 
+    key: "${{CF_VOLUME_PATH}}/${{CF_BUILD_ID}}-with-pass.key"
+    key-pass: "test-password"  # only for password-based signing 
+```
+where:
+* `cosign: sign: true` indicates that the Cosign will sign the container image generated by the pipeline.
+* `options.key` is path to the private key used for signing.
+* `options.key-pass` is required only for password-based signing, and is the password or passphrase for unlocking the private key.
+
+>**NOTE**  
+`options` can include any Cosign-supported command. 
+
+
+##### Example: Key-based signing with empty password
+
+```yaml
+# key-based signing with empty password
+
+scenario_simple_key_nopass_sign:
+  type: "build"
+  ...
+    cosign:
+      sign: true
+      options:
+        key: "${{CF_VOLUME_PATH}}/${{CF_BUILD_ID}}.key"
+  ...
+```
+
+##### Example: Key-based signing with non-empty password
+
+```yaml            
+# key-based signing with non-empty password
+scenario_simple_key_pass_sign:
+  type: "build"
+  ...
+    cosign:
+      sign: true
+      options:
+        key: "${{CF_VOLUME_PATH}}/${{CF_BUILD_ID}}-with-pass.key"
+        key-pass: "test-password"
+  ...
+```
+
+
 ## Automatic pushing
 
 All images built successfully with the build step are automatically pushed to the default Docker registry defined for your account. This behavior is completely automatic and happens without any extra configuration on your part. To disable this, add the `disable_push` property set to `true` to your build step. Remember that if you are using `buildx`, you cannot set the `disable_push` property to `true`.
@@ -582,6 +730,6 @@ steps:
 You can combine all options (`ssh`, <!--- `progress`,--> `secrets`) in a single build step if desired.
 
 ## Related articles
-
+[Default behavior for build steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#default-behavior-for-build-steps)  
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  
 [Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)
