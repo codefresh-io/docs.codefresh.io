@@ -156,7 +156,7 @@ For each pipeline, the response includes the following data:
     "timeDimensions": {}
 ```
 
-### Failure
+### 
 Here's an example of the 
 
 ```
@@ -167,10 +167,10 @@ Here's an example of the
 Retrieves the average execution duration of pipeline builds for the specified time frame.  
 The average (mean) duration is calculated by dividing the total execution time by the number of builds, providing an overall measure of pipeline performance.
 
-You can filter build data by either a project, a specific pipeline, status, or by the favorites tag.
+You can filter build data either by a project, a specific pipeline, status, or by the favorites tag.
 
 ### Endpoint
-`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=granularity=<granularity>?filters={"filter-type":[array<string>]}`
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=<yyyy-mm-dd>&dateRange=<yyyy-mm-dd>?granularity=<granularity>?filters={"filter-type":[array<string>]}`
 
 
 
@@ -179,38 +179,56 @@ You can filter build data by either a project, a specific pipeline, status, or b
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | Data Type | Required/Optional|
 | -----------|-----------------|-----------|------------------|
-| `dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05dateRange=2024-09-01`. <!--- `dateRange` | The custom or fixed time frame for which to generate the report. {::nomarkdown}<ul><li><b>Custom</b>: Requires the start and end dates in <code class="highlighter-rouge">yyyy-mm-dd</code> (ISO 8601) formats, separated by <code class="highlighter-rouge">&</code>. For example, <code class="highlighter-rouge">dateRange=2024-09-05dateRange=2024-09-01</code>.</li><li><b>Today</b>: <code class="highlighter-rouge">today</code></li><li><b>Last 7 days</b>: The previous seven days starting from today in encoded format. For example, <code class="highlighter-rouge">last%207%20days%20</code>.</li><li><b>Last 30 days</b>: The previous 30 days starting from today in encoded format. For example, <code class="highlighter-rouge">last%2030%20days%20</code>.</li></ul>{:/} -->|  string | Required |
-| `granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>0 days to 6 months</b>: No granularity.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.</li></ul>{:/} | string | Optional |
+| `dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05&dateRange=2024-09-01`. <!--- `dateRange` | The custom or fixed time frame for which to generate the report. {::nomarkdown}<ul><li><b>Custom</b>: Requires the start and end dates in <code class="highlighter-rouge">yyyy-mm-dd</code> (ISO 8601) formats, separated by <code class="highlighter-rouge">&</code>. For example, <code class="highlighter-rouge">dateRange=2024-09-05dateRange=2024-09-01</code>.</li><li><b>Today</b>: <code class="highlighter-rouge">today</code></li><li><b>Last 7 days</b>: The previous seven days starting from today in encoded format. For example, <code class="highlighter-rouge">last%207%20days%20</code>.</li><li><b>Last 30 days</b>: The previous 30 days starting from today in encoded format. For example, <code class="highlighter-rouge">last%2030%20days%20</code>.</li></ul>{:/} -->|  string | Required |
+| `granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>0 days to 6 months</b>: No granularity. This means that data is aggregated for the entire time frame. </li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> <!--- or <code class="highlighter-rouge">month</code>-->.</li></ul>{:/} | string | Optional |
 | `filters` | The filters by which to narrow the scope of the build data. Can be any of the following: 
 |  | `projectId`: The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
 |  | `pipelineId`: The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
-|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
-|  |  `isFavorites`: Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
+|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">success</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">terminated</code>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
+|  |  `isFavorites`: Include only projecs or pipelines that have been starred as favorites. By default (`false`), returns all pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: Not the default. Returns only projects or pipelines tagged as favorites.</li><li><code class="highlighter-rouge">false</code>: The default, returns all pipelines.</li> </ul>{:/} Remember to define value without quotes.| boolean | Optional |
 
 
 ### Request examples
 
-##### With date range
+##### With date range and no granularity and filters
 
-`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-09-01&dateRange=2024-09-05`
+Retrieves the average build duration for all builds within the specified date range. Because granularity is not specified, the build data is aggregated for the date range.
 
-<!--- ##### With fixed date range
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-09-01&dateRange=2024-09-30`
 
-`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=last%2030%20days`
--->
 
-#### With date range filtered by project ID
+
+
+##### With date range filtered by project ID
+Retrieves the average build duration for all pipeline builds associated with the specified project ID within the date range.
+
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-09-01&dateRange=2024-09-3301&filters={"projectId":["argo"]}`
 
 
 
 #### With date range filtered by pipeline ID
 
+Retrieves the average build duration for all builds associated with the specified pipeline ID within the date range.
+
 
 ##### With date range filtered by build status
 
-GET `https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-09-01:2024-09-05&filters={"pipelineId":["648821e8bb1ff22b3e31f64c"]}`
+Retrieves the average build duration for pipeline builds with a status of success within the specified date range.
+
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-09-01:2024-09-05&&filters={"status":["success"]}`
+
+
 
 ##### With date range and all filters
+
+Retrieves the daily average build duration for builds with:
+* `status`=`success`
+* Belonging to project with `projectId` ??
+* With  pipeline ID pipeline-456
+* Tagged as favorites
+The data is grouped by daily granularity.
+
+`GET https://g.codefresh.io/api/analytics/reports/buildAvgDuration?dateRange=2024-01-01&dateRange=2024-01-31&granularity=day&filters={"status":["success"],"projectId":["project-123"],"pipelineId":["pipeline-456"],"favorite":["true"]}`
 
 
 ### Response 
@@ -283,12 +301,12 @@ This metric helps you assess the overall performance without being skewed by out
 ### Query parameters
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | Data Type | Required/Optional|
-|`dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05dateRange=2024-09-01`. | string | Required |
-|`granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>Up to 6 months</b>: No granularity.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.<br>When omitted, the default granularity of ???? is used.</li></ul>{:/} | string | Optional |
+|`dateRange` | The time frame for which to generate the report, from a minimum of one day to a maximum of six months. The start and end dates must be in `yyyy-mm-dd` (ISO 8601) formats. For example, `dateRange=2024-09-05&dateRange=2024-10-30`. | string | Required |
+|`granularity` | The level of detail or resolution at which to present the data in the report. The `granularity` levels depend on the `dateRange` defined. {::nomarkdown}<ul><li><b>Up to 6 months</b>: No granularity. This means that data is aggregated for the entire time frame.</li><li><b> 1 to 4 days</b>: <code class="highlighter-rouge">hour</code>.</li><li><b>1 day to 3 months</b>: <code class="highlighter-rouge">day</code></li><li><b>Up to 6 months</b>: <code class="highlighter-rouge">week</code> or <code class="highlighter-rouge">month</code>.</li></ul>{:/} | string | Optional |
 | `filters` | The filters by which to narrow the scope of the build data. Can be any of the following: 
 |  | `projectId`: The ID/IDs of the project(s) with the pipeline builds for which to include data. To include data for specific pipelines, omit this filter and use `pipelineId` instead.  | array | Optional |
 |  | `pipelineId`: The ID/IDs of the pipeline(s) for which to include data. To include data for all pipeline builds in a project, omit this filter, and use `projectId` instead.  | array | Optional |
-|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">succeeded</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: TPipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
+|  | `status`: The build statuses by which to filter pipelines. <br>Can be one of the following: {::nomarkdown}<ul><li><code class="highlighter-rouge">error</code>: Pipelines with builds that failed due to errors in the pipeline specifications or with failed steps.</li><li><code class="highlighter-rouge">success</code>: Pipelines with builds that completed successfully.</li><li><code class="highlighter-rouge">terminated</code>: Pipelines with builds terminated by the system according to the policy defined in the pipeline's settings. See <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#policies">Build termination in pipeline policies</a>.</li></ul>{:/}  | array | Optional |
 |  |  `isFavorites`: Include only project or pipelines that have been starred as favorites.  (NIMA: what is the default)| boolean | Optional |
 
 
@@ -455,4 +473,14 @@ The P90 represents the time within which 90% of pipeline executions are complete
 This metric is useful for identifying and addressing performance issues that affect a small minority of pipeline executions.
 
 
+## Error types
+
+The Analytics API can return the following error types. Each error includes an HTTP status code, error type, description, and examples of possible causes.
+
+| **HTTP Status Code** | **Error Type**    | **Description**    | **Examples**  |
+|-------------|---------------------------|---------------------|------------------------------------------------------------|
+| `400` | **BadRequestError**    | The request is invalid due to incorrect parameters or structure.   | - Invalid report name. <br> - Invalid combination of request parameters: "Passed structure is invalid - Time dimensions are not supported for target report: `{reportName}`". <br> - Invalid filter request parameter: "Filter by account ID is not allowed by user params." |
+| `403`  | **AuthError**        | The user is not authorized to perform the requested operation.  | - Permission denied.   |
+| `432`    | **ReportExecutionError**  | The requested report is still being processed; the request must be resent with the same parameters.  | - `Analytics report not finished yet - please try again.`                                                    |
+| `500`      | **InternalServerError**   | An internal error occurred, preventing the report from being generated.    | - `Could not get analytics report - the report doesn’t contain data.``  |
 
