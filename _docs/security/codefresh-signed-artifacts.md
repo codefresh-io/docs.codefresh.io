@@ -15,7 +15,7 @@ Find more information on [Sigstore](https://www.sigstore.dev/){:target="\_blank"
 
 Verify the authenticity of all artifacts that Codefresh provides with this command:
 
-`$ cosign verify --certificate-identity-regexp "https://github.com/codefresh-io/oci-sigstore/.*" --certificate-oidc-issuer "https://token.actions.githubusercontent.com" <IMAGE>`  
+`$ cosign verify --certificate-oidc-issuer https://oidc.codefresh.io --certificate-identity-regexp "https://g.codefresh.io/codefresh-inc/.+:5672d8deb6724b6e359adf62/.+" <IMAGE>`  
 
 where:  
 `<IMAGE>` is the name of the container image to verify.
@@ -47,7 +47,7 @@ Verify the authenticity of forked Argo Project images for Codefresh GitOps Runti
 ```
 
 ## Authenticity of third-party images in Codefresh
-To verify the authenticity of third-party images such as NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets that Codefresh uses, refer to the official documentation of each component.
+To verify the authenticity of third-party images that Codefresh uses such as NGINX, Bitnami charts for Redis, MongoDB, and Sealed Secrets, refer to the official documentation of each component.
 
 
 ## Related articles

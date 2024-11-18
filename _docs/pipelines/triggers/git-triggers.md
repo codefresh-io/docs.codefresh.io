@@ -152,6 +152,7 @@ For a description of the events and their payload, see [Bitbucket Server documen
 * Pull request declined
 * Pull request approved
 * Pull request approval
+* Pull request push commit 
 * Pull request needs work
 * Pull request comment deleted
 * Pull request comment created
