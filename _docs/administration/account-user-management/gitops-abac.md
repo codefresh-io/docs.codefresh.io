@@ -23,7 +23,7 @@ Rules define the *who*, *what*, and *where* to control access through the follow
   Adding attributes, either individually or in combination, allow more fine-grained access control to enforce the _where_ policies for teams and actions. <br>Single attributes are useful to grant or deny access based on a specific property. Combinations of attributes help enforce more complex access control. 
 
 
-## Creating a rule for GitOps entities via Codefresh UI
+## Create an access rule for GitOps entities via Codefresh UI
 For each rule, you must select or define the:
 * Entity for which to create the rule
 * Team or teams the rule applies to, with at least one team being mandatory 
@@ -58,7 +58,7 @@ For each rule, you must select or define the:
 
 The rule you added for the entity is displayed in the GitOps Permissions page. Edit or delete the rule by clicking the respective icons.
 
-## Creating a rule for GitOps ABAC programmatically via Terraform
+## Create an access rule for GitOps entities programmatically via Terraform
 You can also create rules enforcing ABAC for GitOps via Terraform. 
 See the documentation for [codefresh_abac_rules](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs/resources/abac_rules){:target="\_blank"}.
 
@@ -173,7 +173,7 @@ This rule grants manual promotion and retry release privileges for all products 
 * Attributes: 
   * `LABEL`: `internal-use-only`  
 
-#### Rule: Trigger promotions  specific products
+#### Rule: Trigger promotions by specific products
 This rule grants manual promotion and retry release privileges for all products with the specified label to all teams. For example, test and try product deployment to non-customer-facing environments.
 
 **Rule elements**  
@@ -181,39 +181,41 @@ This rule grants manual promotion and retry release privileges for all products 
 * Actions: `Trigger promotion`, `Retry release`
 * Attributes: 
   * `LABEL`: `internal-use-only`  
-experimental
-Marks a product as experimental or in development, helping teams identify releases in early stages that may require additional testing.
-
-high-priority
-Flags high-priority products, useful for prioritizing resources and monitoring deployment closely for critical updates.
-
-deprecated
-Indicates products that are being phased out, signaling teams to avoid further development or deployment and plan for migration.
-
-beta
-Labels the product for beta release, clarifying that it’s in a limited release phase and available to specific users for feedback.
-
-internal-use-only
 
 
-hotfix
-Identifies releases as urgent fixes, helping teams fast-track promotions and deployments for critical issue resolution.
+#### Rule: Trigger promotions by labels & specific products
+This rule grants manual promotion and retry release privileges for all products to fast-track promotions and deployments for critical issue resolution.
 
-seasonal-release
-Denotes products intended for a specific event or season, aiding in timing their promotion and monitoring.
+**Rule elements**  
+* Team: `DevOps` 
+* Actions: `Trigger promotion`, `Retry release`
+* Attributes: 
+  * `LABEL`: `hotfix`  
 
 
-## Promotion Flows
+#### Rule: Trigger promotions by specific products
+This rule grants manual promotion privileges to specific products that match a specific state in their development and deployment lifecycle, or any other requirement.
+
+**Rule elements**  
+* Team: `DevOps` 
+* Actions: `Trigger promotion`
+* Attributes: 
+  * `PRODUCT_NAME`: `promotions-beta`, `multi-region-deploy`
+
+
+
+
+<!--- ## Promotion Flows
 
 ### Promotion Flows: Actions & attributes
 
 {: .table .table-bordered .table-hover}
 | Promotion Flows            | Description            |
 |----------------------------|-----------------------| 
-|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a promotion from within a Promotion Flow. See[TBD]Trigger a promotion????|
+|**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a Promotion Flow. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-promote-products-to-multiple-environments-by-promotion-flow">Manually trigger a Promotion Flow</a>.</li>|
 |**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label ???.  |
 
-
+-->
 
 
 
