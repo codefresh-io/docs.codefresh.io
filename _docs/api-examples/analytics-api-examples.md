@@ -35,6 +35,23 @@ Currently, you do not need to select specific scopes for the API key.
     1. Copy the API key to a handy location.
 
 
+## Project and pipeline IDs
+Endpoints require either the Project ID or the pipeline ID.
+
+##### Get the project ID
+1. In the Codefresh UI, from the sidebar select **Projects**.
+1. Click the project with the ID to retrieve.
+1. From the URL, copy the value of the `projectId` query parameter.
+
+   {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/analytics-api/project-id-in-url.png" 
+	url="/images/analytics-api/project-id-in-url.png" 
+	alt="Project ID in URL" 
+	caption="Project ID in URL"
+  max-width="60%" 
+%}
 
 
 ##  Get all pipelines/pipelines by name
