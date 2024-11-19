@@ -56,7 +56,7 @@ Endpoints require either the Project ID or the pipeline ID.
 
 ##  Get all pipelines/pipelines by name
 
-Retrieves a list of all pipelines in your account, or filters pipelines based on a specific name or partial name.  
+Retrieves a list of all pipelines in your account, or the pipeline based on the specific name or partial name.  
 Filtering by name returns pipelines whose names match or contain the specified text string.
 
 
@@ -84,6 +84,8 @@ Filtering by name returns pipelines whose names match or contain the specified t
 
 `GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown`
 
+
+
 ##### For pipeline by name
 
 `GET https://g.codefresh.io/api/analytics/reports/pipelinesDropdown&filters={"name":[array<string>]}`
@@ -99,6 +101,106 @@ For each pipeline, the response includes the following data:
 * `isDeleted`: Indicates if the pipeline has been deleted from the account (`true`), or not (`false`).
 
 ```json
+{
+    "data": [
+        {
+            "id": "58c80a0cdda94a01008a13c3",
+            "pipelineName": "codefresh-io/cf-configurator/cf-configurator",
+            "shortName": "cf-configurator",
+            "isDeleted": true
+        },
+        {
+            "id": "590064e3e8fe09000168cf18",
+            "pipelineName": "codefresh-io/sandbox/gisql-sandbox",
+            "shortName": "gisql-sandbox",
+            "isDeleted": false
+        },
+        {
+            "id": "5933a6925845b90001a1b7e1",
+            "pipelineName": "codefresh-io/node-docker-reference/node-docker-reference",
+            "shortName": "node-docker-reference",
+            "isDeleted": true
+        },
+        {
+            "id": "5953a2e3fe091d0001e7afae",
+            "pipelineName": "codefresh-io/cf-kubernetes/onprem-installer",
+            "shortName": "onprem-installer",
+            "isDeleted": true
+        },
+        {
+            "id": "597481218b4910000111027e",
+            "pipelineName": "codefresh-io/event-exporter/event-exporter",
+            "shortName": "event-exporter",
+            "isDeleted": true
+        },
+        {
+            "id": "59942d56153cff0001c6b192",
+            "pipelineName": "codefresh-io/cf-kubernetes/build-k8-deployer",
+            "shortName": "build-k8-deployer",
+            "isDeleted": true
+        },
+        {
+            "id": "59aa85cd45a7e50001ac73d6",
+            "pipelineName": "codefresh-io/docker-compose-environment/docker-compose-environment",
+            "shortName": "docker-compose-environment",
+            "isDeleted": false
+        },
+        {
+            "id": "59c9f96f87fa780001d347ad",
+            "pipelineName": "codefresh-io/http-infra/http-infra",
+            "shortName": "http-infra",
+            "isDeleted": true
+        },
+        {
+            "id": "5a1c04b376712100015f897c",
+            "pipelineName": "codefresh-io/slack-message-sender/slack-message-sender",
+            "shortName": "slack-message-sender",
+            "isDeleted": false
+        },
+        {
+            "id": "5a82c2388c17c000010b9585",
+            "pipelineName": "codefresh-contrib/images/kube-helm",
+            "shortName": "kube-helm",
+            "isDeleted": true
+        },
+        {
+            "id": "5a8599eed02e80000136dd16",
+            "pipelineName": "codefresh-io/monitoring/helm-package-gcs",
+            "shortName": "helm-package-gcs",
+            "isDeleted": true
+        },
+        {
+            "id": "670771601a5fb84949f42760",
+            "pipelineName": "codefresh-io/planner/planner-publishing",
+            "shortName": "planner-publishing",
+            "isDeleted": true
+        },
+        {
+            "id": "67220f08aa307a26796fed65",
+            "pipelineName": "oidc-e2e/production-oidc-test",
+            "shortName": "production-oidc-test",
+            "isDeleted": false
+        },
+        {
+            "id": "6734d4dff91435f8ffb31e40",
+            "pipelineName": "UI E2E Latest/UI Performance",
+            "shortName": "ui performance",
+            "isDeleted": false
+        },
+        {
+            "id": "6739c84dda82e44a15cd429c",
+            "pipelineName": "codefresh-io/venona/venona-tester-ci",
+            "shortName": "venona-tester-ci",
+            "isDeleted": false
+        }
+    ],
+    "timeDimensions": {}
+}
+```
+
+
+
+
 {
     "data": [
         {
