@@ -737,8 +737,9 @@ You can combine all options (`ssh`, <!--- `progress`,--> `secrets`) in a single 
 You can add trusted QEMU images in the `build` step, in addition to the default image supported. 
 
 To enable additional trusted images, define them in your `values.yaml` file, in `runtime.engine.env.TRUSTED_QEMU_IMAGES`.  
-
-Each image must include the full image name. For images from non-Docker Hub repositories, the image name must also include the repository name. Image tags are optional.  
+* Each image must include the full image name. 
+* Images from non-Docker Hub repositories must also include the repository name in addition to the image name. 
+* Image tags are optional.  
 
 The example below defines two trusted QEMU images, the first from GitHub Container Registry, specifying the repository and image name, and the second from Docker Hub without the `docker.io` prefix.
 
