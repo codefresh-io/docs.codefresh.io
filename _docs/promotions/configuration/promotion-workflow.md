@@ -57,7 +57,266 @@ The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configura
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
 
+## Promotion Workflow examples
+Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process.
 
+Example 1: Pre-action Workflow with application sync check
+Example 2: Pre-action Workflow combining smoke test and Slack notification
+
+### Example 1: Pre-Action application sync check test
+This Pre-action Workflow performs a preliminary validation by echoing a sync message for the application being promoted.
+The workflow confirms that the argument `APP_NAME` is correctly passed to it.
+
+
+```yaml 
+# DO NOT REMOVE the following attributes:
+# annotations.codefresh.io/workflow-origin (identifies type of Workflow Template as Promotion Workflow)
+# annotations.version (identifies version of Promotion Workflow used)
+# annotations.description (identifies intended use of the Promotion Workflow)
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: pre-action
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+    description: 'promotion workflow template'
+spec:
+  serviceAccountName: promotion-template
+  arguments:
+    parameters:
+    - name: APP_NAME
+      description: The name of the application being promoted.
+  entrypoint: echo-pre-action
+  templates:
+  - name: echo-pre-action
+    script:
+      image: alpine
+      command:
+      - sh
+      source: |
+        echo "syncing {{ workflow.parameters.APP_NAME }}"
+```
+
+
+### Example 2: Pre-Action smoke test with Slack notification
+This Pre-action Workflow is more complex than the one above. The Workflow executes a smoke test and sends a Slack alert if the smoke test fails. The workflow identifies failures before changes are committed and promoted, and alerts stakeholders of the failures.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: smoke-test-pre-action
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+    description: 'Pre-action smoke test with Slack notification'
+spec:
+  serviceAccountName: promotion-template
+  arguments:
+    parameters:
+    - name: APP_NAME
+      description: The name of the application being promoted.
+  entrypoint: smoke
+  onExit: slack-alert
+  templates:
+  - name: smoke
+    inputs:
+      parameters:
+        - name: NB_TESTS
+          value: 100
+        - name: THRESHOLD
+          value: 30
+        - name: TEST_RATE
+          value: 50
+    script:
+      image: bash:5.2.26
+      command: ["/usr/local/bin/bash"]
+      source: |
+        num_tests={{inputs.parameters.NB_TESTS}}
+        error=0
+        success=0
+        test_rate={{inputs.parameters.TEST_RATE}}
+        suite_threshold={{inputs.parameters.THRESHOLD}}
+
+        # Generate random test results
+        for ((i=1; i<=$num_tests; i++)); do
+            rand_num=$((RANDOM % 100 + 1))
+            if  ((rand_num < test_rate ))
+            then
+              echo "Test $i: FAILED ($rand_num)"
+              ((error++))
+            else
+              echo "Test $i: PASSED ($rand_num)"
+              ((success++))
+            fi
+        done
+
+        success_rate=$((success * 100 / num_tests))
+        echo "Success Rate: $success_rate%"
+        if ((success_rate < suite_threshold))
+        then
+          echo "Test Suite: FAILED"
+          exit 1
+        else
+          echo "Test Suite: PASSED"
+          exit 0
+        fi
+
+  - name: slack-alert
+    dag:
+      tasks:
+      - name: send-message
+        templateRef:
+          name: argo-hub.slack.0.0.2
+          template: post-to-channel
+        when: "{{workflow.status}} != Succeeded"
+        arguments:
+          parameters:
+          - name: SLACK_CHANNEL
+            value: 'topic-codefresh-demo'
+          - name: SLACK_MESSAGE
+            value: 'Smoke test failed for {{ workflow.parameters.APP_NAME }}. Check logs at https://g.codefresh.io/2.0/workflows/{{ workflow.name }}'
+          - name: SLACK_TOKEN
+            value: slack-token
+          - name: LOG_LEVEL
+            value: "info"
+```
+
+### Example 3: Post-Action Jira ticket close
+
+This Post-Action Workflow closes the associated Jira ticket on successfully completing a deployment or promotion and logs a promotion summary.
+
+Main features:
+* **Workflow arguments**  
+  The following arguments are passed to the workflow:
+    * Application details: `APP_NAMESPACE`, `APP_NAME`
+    * Source repository details: `REPO_URL`, `BRANCH, PATH`
+    * Promotion metadata: `COMMIT_SHA`, `COMMIT_MESSAGE`, `COMMIT_AUTHOR`, `COMMIT_DATE`
+    * Jira ticket ID: `JIRA_ID`
+* **Close Jira ticket task**  
+  Uses the `close-jira task` to call a script that simulates closing the JIRA ticket by using the provided `JIRA_ID`.  
+  The task output will show: `Closing JIRA ticket: <JIRA_ID> followed by JIRA ticket <JIRA_ID> closed`.
+* **Log summary task**  
+  After closing the Jira ticket, the `log-summary` task logs and outputs all provided contextual information, including the promotion details from the arguments passed to the workflow. 
+
+
+```yaml
+
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: post-action-full-args
+  annotations:
+    version: 0.0.1
+    codefresh.io/workflow-origin: promotion
+    codefresh.io/promotion-stage: post-action
+    description: example of post-action workflow using all arguments
+spec:
+  serviceAccountName: post-action-sa
+  entrypoint: dag
+  arguments:
+    parameters:
+    - name: APP_NAMESPACE
+    - name: APP_NAME
+    - name: REPO_URL
+    - name: BRANCH
+    - name: PATH
+    - name: COMMIT_SHA
+    - name: COMMIT_MESSAGE
+    - name: COMMIT_AUTHOR
+    - name: COMMIT_DATE
+    - name: JIRA_ID
+  templates:
+    - name: dag
+      inputs:
+        parameters:
+        - name: APP_NAMESPACE
+        - name: APP_NAME
+        - name: REPO_URL
+        - name: BRANCH
+        - name: PATH
+        - name: COMMIT_SHA
+        - name: COMMIT_MESSAGE
+        - name: COMMIT_AUTHOR
+        - name: COMMIT_DATE
+        - name: JIRA_ID
+      dag:
+        tasks:
+        - name: close-jira
+          template: close-jira-task
+          arguments:
+            parameters:
+            - name: JIRA_ID
+              value: "{{ inputs.parameters.JIRA_ID }}"
+
+        - name: log-summary
+          depends: "close-jira"
+          template: log-summary-task
+          arguments:
+            parameters:
+            - name: APP_NAMESPACE
+              value: "{{ inputs.parameters.APP_NAMESPACE }}"
+            - name: APP_NAME
+              value: "{{ inputs.parameters.APP_NAME }}"
+            - name: REPO_URL
+              value: "{{ inputs.parameters.REPO_URL }}"
+            - name: BRANCH
+              value: "{{ inputs.parameters.BRANCH }}"
+            - name: PATH
+              value: "{{ inputs.parameters.PATH }}"
+            - name: COMMIT_SHA
+              value: "{{ inputs.parameters.COMMIT_SHA }}"
+            - name: COMMIT_MESSAGE
+              value: "{{ inputs.parameters.COMMIT_MESSAGE }}"
+            - name: COMMIT_AUTHOR
+              value: "{{ inputs.parameters.COMMIT_AUTHOR }}"
+            - name: COMMIT_DATE
+              value: "{{ inputs.parameters.COMMIT_DATE }}"
+
+    - name: close-jira-task
+      inputs:
+        parameters:
+        - name: JIRA_ID
+      script:
+        image: alpine:3.20
+        env:
+        - name: JIRA_ID
+          value: "{{ inputs.parameters.JIRA_ID }}"
+        command:
+        - sh
+        source: |
+          echo "Closing JIRA ticket: $JIRA_ID"
+          # Simulate API call to close JIRA ticket
+          sleep 2
+          echo "JIRA ticket $JIRA_ID closed."
+
+    - name: log-summary-task
+      inputs:
+        parameters:
+        - name: APP_NAMESPACE
+        - name: APP_NAME
+        - name: REPO_URL
+        - name: BRANCH
+        - name: PATH
+        - name: COMMIT_SHA
+        - name: COMMIT_MESSAGE
+        - name: COMMIT_AUTHOR
+        - name: COMMIT_DATE
+      script:
+        image: alpine:3.20
+        command:
+        - sh
+        source: |
+          echo "Promotion summary for application $APP_NAMESPACE/$APP_NAME:"
+          echo "Repo URL: $REPO_URL"
+          echo "Branch: $BRANCH"
+          echo "Path: $PATH"
+          echo "Commit: $COMMIT_SHA"
+          echo "Author: $COMMIT_AUTHOR"
+          echo "Message: $COMMIT_MESSAGE"
+          echo "Date: $COMMIT_DATE"
+```
 
 ## Create Promotion Workflows
 
@@ -100,28 +359,116 @@ max-width="60%"
 When the YAML file is synced to the cluster, it is displayed in the Promotion Workflows list.
 
 
-### Arguments for Pre-Action and Post-Action Workflows
+## Arguments for Pre-Action and Post-Action Workflows
 
 
 The table describes the parameters with default values passed to Pre- and Post-Action Workflows.  
 Some parameters are passed to both types of Promotion Workflows, while some parameters are specific only to Post-Action Workflows.  
 The same set of parameters are passed also for pull requests, after the pull request is merged.
 
-At the simplest levels, you can display the details from the parameters in notifications. In more advanced scenarios, you can customize the Workflow execution based on specific parameters.
+At the simplest levels, you can display the details from the parameters in notifications. In more advanced scenarios, you can customize the workflow execution based on specific parameters.
 
 {: .table .table-bordered .table-hover}
 | Parameters                     | Description            | Pre-Action Workflow | Post-Action Workflow | 
 | --------------                 | --------------           |  --------------   | --------------        |
-|`APP_NAME`      | The name of the specific application the Promotion Workflows and the Promotion Action pertain to. For example, `trioapp-staging`.| ✅   | ✅   | 
 |`APP_NAMESPACE` | The namespace where the application is deployed to. For example, `gitops`.  | ✅   | ✅   | 
+|`APP_NAME`      | The name of the specific application the Promotion Workflows and the Promotion Action pertain to. For example, `trioapp-staging`.| ✅   | ✅   | 
 | `REPO_URL`     | The Git repository with the application settings, as defined in the application's configuration. See [Source settings for applications]({{site.baseurl}}/docs/deployments/gitops/create-application/#sources).|  ✅   | ✅   | 
-| `PATH`         |  The relative path within the repository defined by `REPO_URL` to the directory or file containing the application's configuration. See [Source settings for applications]({{site.baseurl}}/docs/deployments/gitops/create-application/#sources). |  ✅   | ✅   | 
 | `BRANCH`       | The specific Git branch to which to promote changes. For example, `main`.   |✅   | ✅   | 
+| `PATH`         |  The relative path within the repository defined by `REPO_URL` to the directory or file containing the application's configuration. See [Source settings for applications]({{site.baseurl}}/docs/deployments/gitops/create-application/#sources). |  ✅   | ✅   | 
 |`RUNTIME`       |The name of the GitOps Runtime the application being promoted is associated with. |✅   | ✅   | 
 |`COMMIT_SHA`| The unique identifier (SHA) of the commit, generated by Git, including the precise set of changes addressed by the commit. Can be used as a trigger condition in Promotion Flows configured for a product.  |   |✅   | 
 |`COMMIT_AUTHOR`| The name of the user who made the commit. Useful for tracking changes and for notifications.| | ✅   |  
 |`COMMIT-MESSAGE` | The text in the commit message associated with the code change that triggered the promotion, providing context for the changes introduced by the commit. | |✅   | 
 |`COMMIT-DATE`  | The date and time when the commit was made. Useful to correlate the commit with other events and understand the timeline of changes.|  | ✅   | 
+
+
+The example Post-Action Workflow below illustrates how the workflow consumes the arguments passed dynamically through the promotion process.
+
+```yaml
+# DO NOT REMOVE the following attributes:
+# annotations.codefresh.io/workflow-origin (identifies type of Workflow Template as Promotion Workflow)
+# annotations.version (identifies version of Promotion Workflow used)
+# annotations.description (identifies intended use of the Promotion Workflow)
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: soak-test
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+    argo-hub/version: 0.0.2
+    argo-hub/description: >-
+      This Workflow Template is an example of a post-promotion workflow that
+      uses a script template to display application details, commit information,
+      and the Argo CD host, taking these parameters from the promotion flow
+      process.
+    argo-hub/categories: promotion example workflow
+    argo-hub/license: MIT
+    argo-hub/owner_name: Eti Zaguri
+    argo-hub/owner_email: eti.zaguri@codefresh.io
+    argo-hub/owner_avatar: https://avatars.githubusercontent.com/u/85868206
+    argo-hub/owner_url: https://github.com/eti-codefresh
+    argo-hub/icon_url: >-
+      https://cdn.jsdelivr.net/gh/codefresh-io/argo-hub@main/examples/post-promotion-starter/assets/icon.svg
+    argo-hub/icon_background: '#f4f4f4'
+spec:
+  arguments:
+    parameters:
+      - name: APP_NAMESPACE
+      - name: APP_NAME
+      - name: REPO_URL
+      - name: BRANCH
+      - name: PATH
+      - name: COMMIT_SHA
+        value: ''
+      - name: COMMIT_MESSAGE
+        value: ''
+      - name: COMMIT_AUTHOR
+        value: ''
+      - name: COMMIT_DATE
+        value: ''
+  serviceAccountName: argo-hub.post-promotion-starter.0.0.2
+  entrypoint: echo
+  templates:
+    - name: echo
+      metadata:
+        annotations:
+          argo-hub-template/description: >-
+            Echo the commit parameters and argo cd host from the promotion flow
+            process
+          argo-hub-template/icon_url: >-
+            https://cdn.jsdelivr.net/gh/codefresh-io/argo-hub@main/examples/post-promotion-starter/assets/icon.svg
+          argo-hub-template/icon_background: '#f4f4f4'
+      script:
+        image: alpine
+        command:
+          - sh
+        source: >
+          echo "syncing
+          {{workflow.parameters.APP_NAMESPACE}}/{{workflow.parameters.APP_NAME}}
+          from {{workflow.parameters.REPO_URL}} branch
+          {{workflow.parameters.BRANCH}} path {{workflow.parameters.PATH}}"
+
+          if [[ -n "{{workflow.parameters.COMMIT_SHA}}" ]]; then
+            echo "commit SHA: {{workflow.parameters.COMMIT_SHA}}"
+          fi
+
+
+          if [[ -n "{{workflow.parameters.COMMIT_AUTHOR}}" ]]; then
+            echo "commit author: {{workflow.parameters.COMMIT_AUTHOR}}"
+          fi
+
+
+          if [[ -n "{{workflow.parameters.COMMIT_MESSAGE}}" ]]; then
+            echo "commit message: {{workflow.parameters.COMMIT_MESSAGE}}"
+          fi
+
+
+          if [[ -n "{{workflow.parameters.COMMIT_DATE}}" ]]; then
+            echo "commit date: {{workflow.parameters.COMMIT_DATE}}"
+          fi
+```
 
 
 
