@@ -38,8 +38,8 @@ This annotation in the Promotion Workflow's manifest ensures that:
 See [Create Promotion Workflows](#create-promotion-workflows).
 
 ##### Pre- and Post-Action Workflows
-A Promotion Workflow can be executed before or after the Promotion Action as a Pre-Action or a Post-Action Workflow. The Promotion Action is the action that implements the changes to the environment, for example, commit.
-
+A Promotion Workflow can be executed before or after the Promotion Action as a Pre-Action or a Post-Action Workflow. The Promotion Action is the action that implements the changes to the environment, for example, commit.  
+See [Promotion Workflow YAMLs & examples](#promotion-workflow-yamls--examples).
 
 ##### Pre-commit run option 
 Inline validations when creating or editing Promotion Workflows are supplemented by the Run option. 
@@ -51,17 +51,16 @@ See [Validate Promotion Workflow parameters](#validate-promotion-workflow-parame
 Codefresh passes parameters to the Pre-Action and Post-Action Workflows. These arguments allow you to customize Post-Action Workflow execution based on the specific details of the commit.  
 See [Arguments for Pre-Action and Post-Action Workflows](#arguments-for-pre-action-and-post-action-workflows).
 
-## Promotion Workflow YAMLs
+## Promotion Workflow YAMLs & examples
 Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
 
-## Promotion Workflow examples
 Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process.
-
-Example 1: Pre-action Workflow with application sync check
-Example 2: Pre-action Workflow combining smoke test and Slack notification
+* [Example 1: Pre-Action Workflow with application sync check](#example-1-pre-action-application-sync-check-test)
+* [Example 2: Pre-action Workflow combining smoke test and Slack notification](#example-2-pre-action-smoke-test-with-slack-notification)
+* [Example 3: Post-Action Workflow to close Jira ticket](#example-3-post-action-jira-ticket-close)
 
 ### Example 1: Pre-Action application sync check test
 This Pre-action Workflow performs a preliminary validation by echoing a sync message for the application being promoted.
@@ -361,7 +360,6 @@ When the YAML file is synced to the cluster, it is displayed in the Promotion Wo
 
 ## Arguments for Pre-Action and Post-Action Workflows
 
-
 The table describes the parameters with default values passed to Pre- and Post-Action Workflows.  
 Some parameters are passed to both types of Promotion Workflows, while some parameters are specific only to Post-Action Workflows.  
 The same set of parameters are passed also for pull requests, after the pull request is merged.
@@ -403,15 +401,6 @@ metadata:
       uses a script template to display application details, commit information,
       and the Argo CD host, taking these parameters from the promotion flow
       process.
-    argo-hub/categories: promotion example workflow
-    argo-hub/license: MIT
-    argo-hub/owner_name: Eti Zaguri
-    argo-hub/owner_email: eti.zaguri@codefresh.io
-    argo-hub/owner_avatar: https://avatars.githubusercontent.com/u/85868206
-    argo-hub/owner_url: https://github.com/eti-codefresh
-    argo-hub/icon_url: >-
-      https://cdn.jsdelivr.net/gh/codefresh-io/argo-hub@main/examples/post-promotion-starter/assets/icon.svg
-    argo-hub/icon_background: '#f4f4f4'
 spec:
   arguments:
     parameters:
