@@ -699,7 +699,7 @@ max-width="60%"
 See [Promotion Workflows in product releases]({{site.baseurl}}/docs/promotions/product-releases/#promotion-workflows-in-product-releases)
 
 ## Promotion Workflows in Promotion Policies
-Workflows are assigned on creating Promotion Policies. A Promotion Policy governs the promotion behavior for each environment.
+Workflows are assigned within Promotion Policies. A Promotion Policy governs the promotion behavior for each environment.
 Accordingly, you can assign a Promotion Workflow to run for the environment before updating it with changes (Pre-Action Workflow), and after promoting the changes (Post-Action Workflow).
 
 {% include 
