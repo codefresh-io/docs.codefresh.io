@@ -207,7 +207,7 @@ where:
 ## Install first GitOps Runtime in account
 If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. See ???
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
 
 ### Before you begin
