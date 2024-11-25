@@ -734,13 +734,18 @@ steps:
 You can combine all options (`ssh`, <!--- `progress`,--> `secrets`) in a single build step if desired.
 
 ## Defining trusted QEMU images
-You can add trusted QEMU images in the `build` step, in addition to the default image supported. 
+The `build` step supports other QEMU images in addition to the default image.  
+To add these images, you must first define them as trusted images in your `values.yaml` file, in `runtime.engine.env.TRUSTED_QEMU_IMAGES`.  
 
-To enable additional trusted images, define them in your `values.yaml` file, in `runtime.engine.env.TRUSTED_QEMU_IMAGES`.  
 * Each image must include the full image name. 
 * Images from non-Docker Hub repositories must also include the repository name in addition to the image name. 
 * Image tags are optional.  
 
+>**NOTE**  
+This functionality is supported from Helm chart version **7.1.6**.  
+If the Runtime is already installed, don't forget to run `helm upgrade` to apply the changes to the deployed release. 
+
+##### Example
 The example below defines two trusted QEMU images, the first from GitHub Container Registry, specifying the repository and image name, and the second from Docker Hub without the `docker.io` prefix.
 
 ```yaml
