@@ -10,20 +10,22 @@ toc: true
 
 
 
-Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. The Runtime and user tokens are both Git access tokens, that Codefresh uses for different purposes. See [Git Runtime tokens versus Git user tokens in Codefresh](#git-runtime-tokens-versus-git-user-tokens-in-codefresh). 
-* The [Git Runtime token](#git-runtime-token-scopes) is mandatory for every GitOps Runtime. It must be provided during the Runtime installation, and can be a service/Robot account token.
+Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. The Runtime and user tokens are both Git access tokens which Codefresh uses for different purposes. See [Git Runtime tokens versus Git user tokens in Codefresh](#git-runtime-tokens-versus-git-user-tokens-in-codefresh). 
+* The [Git Runtime token](#git-runtime-token-scopes) is mandatory for every GitOps Runtime. It must be provided during the Runtime installation, and is typically associated with a service/robot account.
 * The [Git user token](#git-user-access-token-scopes) is an access token that is unique to every user in the Codefresh platform. It is required after installation for every Runtime which the user has access to. 
 
+>**IMPORTANT**  
+At all times, _both tokens are always securely stored on your cluster_ and never stored locally on our platform. 
 
 Users can also create and use Git tokens with custom scopes for both GitOps Runtimes and for Git repositories associated with the Runtimes that they need to access. See [Git user tokens with custom scopes](#git-user-tokens-with-custom-scopes).
 
 ## Git Runtime tokens versus Git user tokens in Codefresh
-The table below summarizes the main differences between the Git Runtime and user tokens in Codefresh.
+The table below summarizes the main differences between the Git Runtime token and Git user tokens in Codefresh.
 
 {: .table .table-bordered .table-hover}
 |                            | Git Runtime token                  | Git user token         |
 | -------------------------- | ---------------------          | ------------------ |
-| Usage                      | {::nomarkdown}<ul><li><i>During installation</i>, to create the Git repository and install the GitOps Runtime.</li><li><i>After installation</i>, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li> Argo Events to create web hooks in Git repositories.</li><li><code class="highlighter-rouge">cap-app-proxy</code> to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. <br>Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
+| Usage                      | {::nomarkdown}<ul><li><i>During installation</i>, to create the Shared Configuration Repository to store shared runtime settings and install the GitOps Runtime.</li><li><i>After installation</i>, used by:<ul><li>Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.</li><li>Used during promotion to perform commits, and pull requests for GitHub. <li> Argo Events to create web hooks in Git repositories.</li><li><code class="highlighter-rouge">cap-app-proxy</code> to clone the Shared Configuration Repository</li></ul> {:/} | Authenticate and authorize user actions in Codefresh UI and CLI to Git repositories for every provisioned GitOps Runtime. <br>Users can view and manage the Git user tokens assigned to the Runtimes in the [Git Personal Access Token](https://g.codefresh.io/2.0/user-settings){:target="\_blank"} page.  |
 | Created                    | Before Runtime installation; see [required scopes for Git Runtime tokens](#git-runtime-token-scopes).   | After Runtime installation; see [required scopes for Git user tokens](#git-user-access-token-scopes).
 | Managed by                    | Admin at account-level                    | User   |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
