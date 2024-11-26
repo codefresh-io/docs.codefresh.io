@@ -308,7 +308,7 @@ max-width="60%"
 
 * The header displays the name of the step, its status, the step-type, the date of the most recent update, and duration.  
 * The tabs displayed differ according to the step type:  
-  * The Summary, Manifest, Containers, Inputs, Outputs tabs are displayed for all almost all step types. (NIMA: what about Artifacts??)
+  * The Summary, Manifest, Containers, Inputs, Outputs tabs are displayed for all almost all step types. 
   * The Logs tab is displayed for Pod step types.
   * Event-step types display Manifest, Summary, and Payload.
     For Cron and Unknown event types, only the Event Sources are shown. 
