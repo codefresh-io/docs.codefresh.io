@@ -6,7 +6,8 @@ sub-group: gitops-quick-start
 toc: true
 ---
 
-You will now make a change in the `codefresh-guestbook` application manifest, and update the image tag. Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and triggers the new rollout. <!---The rollout runs the analysis template you defined (`background-analysis` in the quick start).--->
+You will now make a change in the `codefresh-guestbook` application manifest, and update the image tag.  
+Because we selected auto-sync in the application settings, Argo CD detects that the live state in the cluster is out of sync with the desired state in Git, and triggers the new rollout. <!---The rollout runs the analysis template you defined (`background-analysis` in the quick start).--->
 
 ### Before you begin
 

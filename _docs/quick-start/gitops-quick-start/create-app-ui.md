@@ -7,7 +7,7 @@ toc: true
 ---
 
 Let's start by creating a simple Argo CD application, `codefresh-guestbook`, in the Codefresh UI.  
-We'll create the application without resources and then define/add resources in the next step.  
+We'll create the application without resources, and then define/add resources in the next step.  
 
 
 For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
@@ -39,7 +39,7 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
 
 {:start="4"}
 1. Select **Next** to go to the Configuration tab.  
-  By default you are in Form mode. You can toggle between the Form and YAML modes as you define the application's configuration settings.
+  By default you are in Form mode. You can toggle between Form and YAML modes as you define the application's configuration settings.
 1. Define the **General** settings for the application: 
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.
   * **Revision**: The branch in Git with the resource files.

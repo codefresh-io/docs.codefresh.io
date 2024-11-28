@@ -207,7 +207,7 @@ where:
 ## Install first GitOps Runtime in account
 If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. See ???
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
 
 ### Before you begin
@@ -217,7 +217,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
   * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
+    * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions 
     * Server URLs for on-premises Git providers
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)

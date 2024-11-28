@@ -6,13 +6,12 @@ toc: true
 ---
 
 
-If you've been working with Codefresh GitOps, you're likely familiar with managing Argo CD applications in Codefresh. From creating applications to monitoring deployments and resources.  
+If you've been working with Codefresh GitOps, you're likely familiar with managing Argo CD applications in Codefresh. From creating them to monitoring application deployments and resources.  
 
-If you're new to Codefresh GitOps, start with our [quick start on Argo CD applications]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/) to familiarize yourself with Argo CD application in Codefresh. 
+If you're new to Codefresh GitOps, start with our [quick start on Argo CD applications]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-ui/) to familiarize yourself with Argo CD applications in Codefresh. 
 
-This quick start focuses on introducing you to the next-generation features for a new development and deployment experience Codefresh GitOps: Environments and Products! 
-
-For detailed information on all tasks and features, refer to the articles on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+This quick start focuses on introducing you to the next-generation features for a new development and deployment experience in Codefresh GitOps: Environments and Products!  
+For detailed information on all tasks and features, refer to the articles on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/products/about-products/).  
 
 We'll begin by exploring the key benefits of Environments and Products.  
 And then guide you through how to work with these both to streamline and empower your software development lifecycle.
