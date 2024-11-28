@@ -18,16 +18,6 @@ And then guide you through how to work with these both to streamline and empower
 
 ### Why would you want to create Environments? 
 
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
-	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
-	alt="Quick start: Representation of an Environment in Codefresh GitOps"
-	caption="Quick start: Representation of an Environment in Codefresh GitOps"
-  max-width="60%" 
-%} 
-
 Here are some key benefits of Environments:
 
 * **Mirror your SDLC**  
