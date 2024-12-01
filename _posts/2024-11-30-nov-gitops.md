@@ -7,7 +7,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 ### Pipelines: Octopus Deploy integration
 We're excited to announce the first set of official Codefresh steps for Octopus Deploy! 
-With steps you can streamline your pipeline and integrate your Codefresh builds with deployments in Octopus Deploy. 
+With these steps, you can streamline your pipeline and integrate your Codefresh builds with deployments in Octopus Deploy. 
 
 Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/steps){:target="\_blank"}:
 * Log in to Octopus Deploy
@@ -20,18 +20,8 @@ Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/st
 
 For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
 
-
-### Pipelines: Trusted QEMU images in build steps
-We have added a requirement to QEMU images in build steps. To add a QEMU image that is not default, you need to first add these images as trusted images. 
-You can then define any one of these images in the build step.
-
-To add one or more trusted images, simply update the `values.yaml` file with the full image name under `runtime.engine.env.TRUSTED_QEMU_IMAGES`.
-
-For details, see [Defining trusted QEMU images]({{site.baseurl}}/docs/pipelines/steps/build/#defining-trusted-qemu-images).
-
-
 <!--- 
-### Pipelines: Revamped variable 
+### Pipelines: Res variable 
 
 Variables in pipelines are one of the most pouplar and useful fetures we have for our pipelines.
 
@@ -48,7 +38,7 @@ Renabled Import from text to Add multiple variables to better indicate the purpo
 
 ### GitOps: Reporting for multi-architecture images
 Image reporting is now available for multi-architecture images.  
-On drilldown into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
+On drill down into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
 
 
 
@@ -89,8 +79,8 @@ If you have naming conventions that result in long application names, easily tog
 
 
 ##### Pipelines 
-* Values of secret variables displayed in engine pod logs.
-* Pipelines in debug mode are terminated after 15 minutes even when no active debug session was initiated. Andrii https://codefresh-io.atlassian.net/browse/CR-25331
+* Engine pod logs display values of secret variables.
+* Pipelines in debug mode terminated even when there is no active debug session.  
 * Container file system changes owner when cached using composition.
 
 ##### GitOps
