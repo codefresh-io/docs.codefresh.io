@@ -37,29 +37,26 @@ After creating Promotion Workflows, there are two ways to use them in the promot
 
 * Manual selection
   When triggering a promotion manually, you can select specific Pre- and Post-Action Workflows to run for the target environment. This approach is ideal for single-environment promotions or when you need granular control over the workflows for a specific change.  
-
-  Example: 
+  Example:  
   During a drag-and-drop promotion, you might choose a Pre-Action Workflow to run integration tests and a Post-Action Workflow to send Slack notifications for the target environment.
   
   See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/).
 
-* Controlled automation with policies
-  For scalable, automated usage, you can associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion configurations.
-  With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production and creating pull requests in production.
-   
+* Controlled automation with policies  
+  For scalable, automated usage, you can associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion patterns for environments.
+  With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production and creating pull requests in production.  
   Example:  
   Assign a validation workflow for all staging environments and a performance testing workflow for production environments. 
   
   See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/).
 
 
-
 ##### Arguments in Pre-Action and Post-Action Workflows
 Codefresh passes a set of arguments it retrieves during the promotion process to both Pre- and Post-Action Workflows. You can use these as dynamic data throughout the promotion lifecycle.  
 See [Arguments in Pre-Action and Post-Action Workflows](#arguments-for-pre-action-and-post-action-workflows).
 
-
-After creating Promotion Workflows, you can [Manage Promotion Workflows](#managing-promotion-workflows) and [workflow instances](#managing-workflow-instances). 
+##### Manage workflows and workflow instances
+After creating Promotion Workflows, you can [manage workflows](#managing-promotion-workflows) and [workflow instances](#managing-workflow-instances). 
 
 
 
@@ -335,11 +332,11 @@ outputs:
 
 ```
 
-### Custom globalName argument usage example
+### Custom `globalName` argument usage example
 
 This is an example of a Pre-Action Workflow that simulates creating a Jira ticket with the data retreived from the application manifest and outputs the ticket ID as a global parameter. The Post-Action Workflow simulates using the ID as an input parameter to close the ticket. 
 
-##### Pre-Action Workflow example with Jira ID as global parameters
+##### Pre-Action Workflow example with Jira ID as global parameter
 
 Main features:
 * **Workflow parameters**
@@ -613,9 +610,9 @@ An Argo Workflow or a Workflow Template is classified as a Promotion Workflow on
 
 This annotation in the Promotion Workflow's manifest ensures that:
 * The Promotion Workflow is displayed in the Promotion Workflows list and can be managed there
-* You can assign the Promotion Workflow to Promotion Policies
-* Select it when creating Promotion Flows  
-See [Create Promotion Workflows](#create-promotion-workflows).
+* You can assign the Promotion Workflows in Promotion Policies
+* Select Promotion Workflows within Promotion Flows  
+
 
 ## Create Promotion Workflows
 
@@ -663,7 +660,7 @@ When the YAML file is synced to the cluster, it is displayed in the Promotion Wo
 
 ## Promotion Workflow list
 
-All Argo Workflows which include `metadata.annotations: codefresh.io/workflow-origin: promotion` are displayed in the Promotion Workflows list.
+All Workflows which include `metadata.annotations: codefresh.io/workflow-origin: promotion` are displayed in the Promotion Workflows list.
 
 {% include 
 image.html 
@@ -857,7 +854,7 @@ max-width="60%"
 
 
 ## Product release view of promotion workflows
-When a promotion is triggered automatically or manually, a release is created for the product, and displayed in the Releases tab.  
+When a promotion is triggered automatically or manually, a release is created for the product and displayed in the Releases tab.  
 Clicking the Release ID displays the ongoing or completed view of the promotion orchestration across the environment.
 
 Each environment displays the Pre-Action or Post-Action workflows assigned to it, including its steps for on-going releases. The collective status of the workflows determines the promotion status of an environment.
@@ -872,7 +869,7 @@ caption="Example of workflows for product release"
 max-width="60%"
 %}
 
-See [Promotion Workflows in product releases]({{site.baseurl}}/docs/promotions/product-releases/#promotion-workflows-in-product-releases)
+See [Promotion Workflows in product releases]({{site.baseurl}}/docs/promotions/product-releases/#promotion-workflows-in-product-releases).
 
 
 
