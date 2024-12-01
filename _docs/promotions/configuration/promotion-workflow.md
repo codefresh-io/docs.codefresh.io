@@ -473,8 +473,7 @@ Main features:
   Uses the `close-jira task` to call a script that simulates closing the JIRA ticket by using the provided `JIRA_ID`.  
   The task output will show: `Closing JIRA ticket: <JIRA_ID> followed by JIRA ticket <JIRA_ID> closed`.
 * **Log summary task**  
-  After closing the Jira ticket, the `log-summary` task logs and outputs all provided contextual information, including the promotion details from the arguments passed to the workflow. 
-
+  After closing the Jira ticket, the `echo` task logs and outputs all provided contextual information, including the promotion details from the arguments passed to the workflow. 
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
