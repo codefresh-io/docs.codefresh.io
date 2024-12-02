@@ -4,6 +4,28 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
+### General: Annotate image by name via CLI
+Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
+
+
+You can easily find and copy the image name from the Images dashboard.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/nov24/image-name-images-dashboard.png" 
+   url="/images/whats-new/nov24/image-name-images-dashboard.png" 
+   alt=Copy image name in Images dashboard" 
+   caption="Copy image name in Images dashboard" 
+   max-width="60%" 
+   %}
+
+
+Here's an example of the CLI command:
+`codefresh annotate image docker.io/codefresh-io/cli:latest -l coverage=75% -l tests_passed=true`
+
+To use this feature, make sure to upgrade to the latest CLI version.
+
 
 ### Pipelines: Octopus Deploy integration
 We're excited to announce the first set of official Codefresh steps for Octopus Deploy! 
@@ -20,20 +42,7 @@ Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/st
 
 For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
 
-<!--- 
-### Pipelines: Res variable 
 
-Variables in pipelines are one of the most pouplar and useful fetures we have for our pipelines.
-
-We have redeigned the feature to make it more  the entire feature with a view to usbility and functionality
-
-
-All the options are now clearly visible and 
-
-Clicking Add immediatelyt opnes the bix
-Renabled Import from text to Add multiple variables to better indicate the purpose of the option
-
--->
 
 
 ### GitOps: Reporting for multi-architecture images
