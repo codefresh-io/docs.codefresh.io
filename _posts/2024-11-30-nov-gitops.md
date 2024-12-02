@@ -21,7 +21,7 @@ You can easily find and copy the image name from the Images dashboard.
    %}
 
 
-Here's an example of the CLI command:
+Here's an example of the CLI command:  
 `codefresh annotate image docker.io/codefresh-io/cli:latest -l coverage=75% -l tests_passed=true`
 
 To use this feature, make sure to upgrade to the latest CLI version.
