@@ -6,6 +6,136 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.6
+
+### Features & enhancements
+
+
+### General: Annotate image by name via CLI
+Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
+
+
+You can easily find and copy the image name from the Images dashboard.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/nov24/image-name-images-dashboard.png" 
+   url="/images/whats-new/nov24/image-name-images-dashboard.png" 
+   alt=Copy image name in Images dashboard" 
+   caption="Copy image name in Images dashboard" 
+   max-width="60%" 
+   %}
+
+
+Here's an example of the CLI command:
+`codefresh annotate image docker.io/codefresh-io/cli:latest -l coverage=75% -l tests_passed=true`
+
+To use this feature, make sure to upgrade to the latest CLI version.
+
+
+### Pipelines: Octopus Deploy integration
+We're excited to announce the first set of official Codefresh steps for Octopus Deploy! 
+With these steps, you can streamline your pipeline and integrate your Codefresh builds with deployments in Octopus Deploy. 
+
+Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/steps){:target="\_blank"}:
+* Log in to Octopus Deploy
+* Push packages to Octopus Deploy
+* Create releases in Octopus Deploy
+* Deploy a release in Octopus Deploy
+* Deploy a tenanted release in Octopus Deploy
+* Run a runbook in Octopus Deploy
+* Push build information to Octopus Deploy
+
+For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
+
+### Pipelines: Expanded support for `buildx qemu` images
+For Docker `build` steps, you can specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
+Previously, `buildx qemu` supported only the default image.
+
+
+
+
+### Pipelines: Output parameters in `arguments` attribute
+
+Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
+
+Now, plugins can consume outputs from both the `arguments` and `commands` attributes.
+
+```yaml
+{% raw %}
+...
+  plugin_consume:
+    title: consume var in plugin step
+    type: codefresh/consume-variable
+    arguments:
+      output_variable: ${{steps.<step_name>.output.<var_name>}}
+...
+{% endraw %}
+```
+
+
+### GitOps: Reporting for multi-architecture images
+Image reporting is now available for multi-architecture images.  
+On drill down into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
+
+
+
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/oct24/rel-notes-oct-24-multi-arch-image.png" 
+   url="/images/whats-new/oct24/rel-notes-oct-24-multi-arch-image.png" 
+   alt="Multi-arch image in Images dashboard" 
+   caption="Multi-arch image in Images dashboard" 
+   max-width="80%" 
+   %}
+
+
+
+
+
+
+### GitOps: Enhanced visibility and control for Runtimes
+
+We have improved the usability and monitoring of GitOps Runtimes by converting them into applications. Now, you can view GitOps Runtimes and their resources directly in the Current State tab of the GitOps Apps dashboard, with access to all familiar dashboard functionality for intuitive monitoring and streamlined management.
+
+##### What does this mean?
+In the Runtime's context menu (List View), you'll find links to these Runtime applications:
+* Hosted & Hybrid GitOps Runtimes configured as Argo CD applications
+* Hybrid GitOps Runtimes:
+    * Runtime Shared Configuration Repo (ISC) resources 
+    * Runtime resources in local (in-cluster) environment
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/oct24/rel-notes-oct-24-runtimes-as-apps.png" 
+   url="/images/whats-new/oct24/rel-notes-oct-24-runtimes-as-apps.png" 
+   alt="Links to Runtimes applications" 
+   caption="Links to Runtime applications" 
+   max-width="80%" 
+   %}
+
+Clicking a link takes you to **GitOps Apps > Current State** tab for the application.
+
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/oct24/rel-notes-oct-24-runtime-app-apps-dashboard.png" 
+   url="/images/whats-new/oct24/rel-notes-oct-24-runtime-app-apps-dashboard.png" 
+   alt="Example of Runtime application in GitOps Apps > Current State" 
+   caption="Example of Runtime application in GitOps Apps > Current State" 
+   max-width="80%" 
+   %}
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+### Bug fixes
+
 ## On-premises version 2.5
 
 ### Features & enhancements
