@@ -6,10 +6,14 @@ toc: true
 ---
 
 
-Now that we have reviewed multi-environment promotion in [Multi-environment sequential promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/multi-env-sequential-flow/), let's configure policies to manage promotion conditions, ensuring that each environment’s specific requirements are met before changes are promoted.
+Now that we have reviewed multi-environment promotion in [Multi-environment sequential promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/multi-env-sequential-flow/), let's configure conditions for promotion, ensuring that each environment’s specific requirements are met before changes are promoted.
 
-##### What are Promotion Policies?
-Promotion Policies define the criteria for promoting changes through each environment. They govern promotion behavior through include automated tests, scans, quality checks, approvals, notifications, and more.  
+
+## About Promotion Workflows and Promotion Policies
+
+Promotion Workflows 
+
+Promotion Policies define the criteria for promoting changes through each environment. They govern promotion behavior through automated tests, scans, quality checks, approvals, notifications, and more.  
 You can define promotion criteria through Promotion Workflows, modeled on Argo Workflows.
 
 * Create Promotion Workflows in Codefresh by selecting **Promotion Workflows** from the sidebar.

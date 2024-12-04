@@ -6,63 +6,58 @@ toc: true
 ---
 
 
-Drag-and-drop is useful for on-demand promotion to a single environment, but a sequential promotion flow is better for managing changes across multiple environments.  
-In this scenario, we’ll see how to set up a Promotion Flow to move changes in the `cf-101` product through three environments: `dev`, `qa`, and `production`. 
-We'll also trigger the promotion and monitor how the changes are orchestrated through each environment.
+Drag-and-drop is useful for on-demand promotion to a single environment, but a sequential promotion flow is better for managing changes across multiple environments. 
+
+In this quick start, we’ll see how to:
+Create a Promotion Flow to move changes in a product through multiple environments
+Trigger the Promotion Fow
+Monitor the promotion orchestration in Releases
 
 
->**NOTE**  
-You must be an account administrator to create Promotion Flows.  
-For successful promotion, each environment must have an application for the product in the Promotion Flow, with a consistent repo structure.
+We'll also trigger the .
 
-##### Adding Promotion Flow
+## Before you begin
+  
+Admin permissions
+To create Promotion Flows, uou must be an account administrator.
 
-We'll go to **Settings**, from the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
+* Applications in environments
+For successful promotion, each environment in the Promotion Flow must have an application for the product.
+* Repo structur for applications
+   with a consistent repo structure.
+* Trigger and target environments
+  The Trigger Environment is the starting point for the promotion. The target environments are the additional environments to which to ptomoe changes. 
 
-##### Trigger Environment
-The Trigger Environment is the starting point for the promotion. 
+## Create Promotion Flow
 
-When you add a Promotion Flow, you are promoted to select the **Trigger Environment**.  
-We'll select `dev` as our Trigger Environment.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
+1. From the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
+1. Select the **Trigger Environment**, `dev` for the quick start.
 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-env.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-env.png"
-alt="Selecting Trigger Environment" 
-caption="Selecting Trigger Environment"
+file="/images/quick-start/promotions/quick-start-seq-promo-trigger-env.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-trigger-env.png"
+alt="Select Trigger Environment" 
+caption="Select Trigger Environment"
 max-width="60%"
 %}
 
-
-The Promotion Flow has `dev` as its first environment. 
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-env-created.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-env-created.png"
-alt="Flow Builder with first environment" 
-caption="Flow Builder with first environment"
-max-width="60%"
-%}
-
-##### Selecting target environments
-Next, we'll select the target environments in the promotion sequence: `qa` and `production`.
-
-
-* Mouse over the right of the `dev` environment node, displays the add icon: {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
-* From the list, we'll select `qa` as the first target environment to add to the flow.
-* We'll repeat the actions on the `qa` environment to add `production` as the final target environment in the flow. 
+{:start="4"}
+1. Select the target environments in the promotion sequence: `qa` and `prod`.
+    1. Mouse over the right of the `dev` environment node, and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
+    1. From the list, select the first target environment to the flow. For the quick start, we'll select `qa` as the first target environment.
+    1. Repeat the actions to add the next target environment. 
+      For the quick start, we'll mouse over the `qa` environment and add `prod` as the final target environment in the flow. 
 
  
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-target-env.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-target-env.png"
+file="/images/quick-start/promotions/quick-start-seq-promo-target-env.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-target-env.png"
 alt="Add target environment" 
 caption="Add target environment"
 max-width="60%"
@@ -70,22 +65,18 @@ max-width="60%"
 
 
 
-Our Promotion Flow now has the three environments required: `dev`, `qa`, and `production`.
-
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png" 
 url="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png"
-alt="Required environments in Promotion Flow" 
-caption="Required environments in Promotion Flow"
+alt="Promotion Flow with required environments" 
+caption="Promotion Flow with required environments"
 max-width="60%"
 %}
 
-##### Saving Promotion Flow
-The final step is to save the Promotion Flow by clicking **Save Promotion Flow** on the top-right.
-
-The **Name** is required. The flow's YAML file lists the environment sequence.
+1. Click **Save Promotion Flow** on the top-right.
+  The **Name** is required. The flow's YAML file lists the environment sequence.
 
 
 {% include 
@@ -98,7 +89,7 @@ caption="Save Promotion Flow"
 max-width="60%"
 %}
 
-Clicking **Save** adds the new flow, `three-env-promotion` to the Promotion Flows page.
+1. Click **Save** to add the new flow to the Promotion Flows page.
 
 {% include 
 image.html 
@@ -110,11 +101,11 @@ caption="Promotion Flow page with new flow"
 max-width="60%"
 %}
 
-##### Triggering Promotion Flow
-After creating the flow, we'll trigger it to promote changes from the trigger environment to the defined target environments.
+## Trigger Promotion Flow
+After creating the flow, manually trigger it to promote changes from the trigger environment to the defined target environments.
+For the quick start, we'll trigger the `multi-env-sequential-promotion` Promotion Flow.
 
-* **Selecting the flow**  
-  From the list of Promotion Flows, we'll select `three-env-promotion`, and then click **Trigger** to initiate the promotion.
+1. From the list of Promotion Flows, select the Promotion Flow, `multi-env-sequential-promotion` and then click **Trigger** to initiate the promotion.
 
 {% include 
 image.html 
@@ -126,8 +117,7 @@ caption="Trigger selected Promotion Flow"
 max-width="60%"
 %}
 
-* **Selecting the product**  
-  We'll select `cf-101` as the product and continue by clicking  **Next**.
+1. Select the product for which to trigger the flow, `demo-trioapp` and continue by clicking  **Next**.
 
 {% include 
 image.html 
@@ -139,8 +129,8 @@ caption="Select product to promote"
 max-width="60%"
 %}
 
-* **Selecting the application**  
-  The application with the changes, `cf-101-dev`, is automatically selected, so we'll click **Trigger** to initiate the promotion.
+1. Select the application, in our case, the application with the changes, `cf-101-dev`, is automatically selected.
+1. Click **Trigger** to initiate the promotion.
 <!--- do we auto-select the app with the changes? -->
 
 {% include 
@@ -154,24 +144,38 @@ max-width="60%"
 %}
 
 
-##### Monitoring release 
-A release is automatically created for `cf-101` with a new Release ID.  
-In the release view, you can see that changes are orchestrated sequentially through the environments, following the order defined in the `three-env-promotion` Promotion Flow.
+## View and monitor release 
+The promotion mechanism automatically create a new release for `demo-trioapp`.  
+
+In the release view, you can see that changes are orchestrated sequentially through the environments, following the order defined in the Promotion Flow, `multi-env-sequential-promotion` for the quick start.
 
 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-release-view.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-release-view.png"
-alt="Release view for triggered promotion" 
-caption="Release view for triggered promotion"
+file="/images/quick-start/promotions/quick-start-seq-promo-release-view.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-release-view.png"
+alt="Release view for triggered Promotion Flow" 
+caption="Release view for triggered Promotion Flow"
 max-width="60%"
 %}
 
+##### Release record in releases list
 
-## Related articles
+In the Releases page, the Promotion Flow column displays the name of the Promotion Flow, compared to Manual which is displayed for drag-and-drop promotions.
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/quick-start/promotions/quick-start-seq-promo-release-list.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-release-list.png"
+alt="Release list with release record for triggered Promotion Flow" 
+caption="Release view for triggered Promotion Flow"
+max-width="60%"
+%}
+
+## What to do next
 [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)
 
  

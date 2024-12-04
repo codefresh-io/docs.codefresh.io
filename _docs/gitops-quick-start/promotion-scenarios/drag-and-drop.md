@@ -5,103 +5,102 @@ group: promotions
 toc: true
 ---
 
-In this basic scenario, we'll see how to promote products in the Environments dashboard using drag-and-drop functionality. 
-This quick, visual method allows you to move applications across two environments in a few simple steps.
+In this quick start, we'll see how to promote products using drag-and-drop functionality. 
+This quick, visual method allows you to move applications across two environments in a few simple steps, and is available in the Environments dashboard.
 
-##### Context
-In the Environments dashboard, we see the `cf-101` product, in the `dev` and `qa` environments. 
+
+
+## Identify release versions
+1. From the sidebar, select **Environments**.  
+  The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-prod-in-env.png" 
 url="/images/gitops-promotions/tutorials/dnd-prod-in-env.png"
-alt="`cf-101` product in Environments dashboard" 
-caption="`cf-101` product in Environments dashboard"
+alt="`demo-trioapp` product in Environments dashboard" 
+caption="`demo-trioapp` product in Environments dashboard"
 max-width="60%"
 %}
 
+1. Note the release versions for the product.
+   `demo-trioapp` has different versions in `dev` and `qa` environments.
 
-##### Linked applications
-Mouse over `cf-101` displays the linked applications in each environment, `cf-101-dev` and `cf-101-qa`.
+1. To view the linked applications in each environment, mouse over `demo-trioapp` in the respective environments.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png" 
 url="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png"
-alt="`cf-101-dev` and `cf-101-qa` applications" 
-caption="`cf-101-dev` and `cf-101-qa` applications"
+alt="`demo-trioapp-dev` and `demo-trioapp-qa` applications" 
+caption="`demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"
 %}
 
-##### Product versions
-`cf-101` has different versions in `dev` and `qa` environments.
 
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-prod-versions.png" 
-url="/images/gitops-promotions/tutorials/dnd-prod-versions.png"
-alt="`cf-101` versions in environments" 
-caption="``cf-101` versions in environments"
-max-width="60%"
-%}
 
-##### Promotion with drag-and-drop
-To promote, we'll drag `cf-101-dev` from `dev` and drop it into `cf-101` in the `qa` environment.
+## Promote application with drag-and-drop
+Promote the application by dragging and dropping it into the desired target environment.  
+For the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and drop it into `demo-trioapp` in the `qa` environment.
+
+1. Drag and drop  `demo-trioapp-dev` into  the `qa` environment.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-action.png" 
 url="/images/gitops-promotions/tutorials/dnd-action.png"
-alt="Drag and drop `cf-101` to promote" 
-caption="Drag and drop `cf-101` to promote"
+alt="Drag and drop `demo-trioapp-dev` to promote" 
+caption="Drag and drop `demo-trioapp-dev` to promote"
 max-width="60%"
 %}
 
-##### Commit changes page
-The Commit Changes page shows the action used for the promotion, the files, and the properties in the files that will be changed.
-Review the files and properties that will be updated as part of this promotion action.
+1. Commit the changes. 
+  The Commit Changes page shows the action used for the promotion, the files, and the properties in the files that will be changed.
+  Review the files and properties that will be updated as part of this promotion action.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-commit.png" 
 url="/images/gitops-promotions/tutorials/dnd-commit.png"
-alt="Commit changes for `cf-101`" 
-caption="Commit changes for `cf-101`"
+alt="Commit changes for `demo-trioapp`" 
+caption="Commit changes for `demo-trioapp`"
 max-width="60%"
 %}
 
-##### Release creation and completion
-After commit, a release is automatically created for `cf-101` with a new Release ID.  
-Clicking **View Release Details** takes you to the release view.
+## View release for product
+After commit, the promotion mechanism automatically creates a release for the product, `demo-trioapp` in our case.
+Here you can monitor how the promotion is orchestrated between the environments, `dev` to `qa`.
+
+1. Click **View Release Details** to go to the release view.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-inital-release.png" 
 url="/images/gitops-promotions/tutorials/dnd-inital-release.png"
-alt="Running release for `cf-101`" 
-caption="Running release for `cf-101`"
+alt="Running release for `demo-trioapp`" 
+caption="Running release for `demo-trioapp`"
 max-width="60%"
 %}
 
-Wait for the release to complete, and then return to the Releases page to view the Release ID updated with the current status.
+When the release completes execution, go to Product > Releases to see the information and status for the release.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-releases-page.png" 
 url="/images/gitops-promotions/tutorials/dnd-releases-page.png"
-alt="Releases list with new release for `cf-101`" 
-caption="Releases list with new release for `cf-101`"
+alt="Releases list with release entry for `demo-trioapp`" 
+caption="Releases list with release entry for `demo-trioapp`"
 max-width="60%"
 %}
 
-## Related articles
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)
+
+## What to do next
+[Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/multi-env-sequential-flow/)
 
  
