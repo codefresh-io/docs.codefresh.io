@@ -295,7 +295,7 @@ steps:
 
 {% endraw %}
 
-### Using `cache_from` and `cache_to` with `buildkit`
+### Using `cache_from` with `buildkit`
 
 `codefresh.yml`
 {% raw %}
@@ -312,6 +312,30 @@ steps:
     buildkit: true
     build_arguments:
     - BUILDKIT_INLINE_CACHE=1
+    cache_from:
+    - my-registry/my-app-image:${{CF_BRANCH}}
+    - my-registry/my-app-image:master
+```
+
+{% endraw %}
+
+### Using `cache_from` and `cache_to` with `buildx`
+
+`codefresh.yml`
+{% raw %}
+
+```yaml
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildx:
+      builder:
+        driver: docker-container
     cache_from:
     - type=registry,ref=my-registry/my-app-image:${{CF_BRANCH}}
     - type=registry,ref=my-registry/my-app-image:master
