@@ -50,10 +50,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
   cache_to:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -160,10 +160,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
   cache_to:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
