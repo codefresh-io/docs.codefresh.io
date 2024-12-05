@@ -6,7 +6,7 @@ toc: true
 ---
 
 In this quick start, we'll see how to promote products using drag-and-drop functionality. 
-This quick, visual method allows you to move applications across two environments in a few simple steps, and is available in the Environments dashboard.
+This quick, visual method allows you to manually move applications across two environments in a few simple steps, and is available in the Environments dashboard.
 
 
 
@@ -43,7 +43,7 @@ max-width="60%"
 
 ## Promote application with drag-and-drop
 Promote the application by dragging and dropping it into the desired target environment.  
-For the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and drop it into `demo-trioapp` in the `qa` environment.
+For the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and dropping it into `demo-trioapp` in the `qa` environment.
 
 1. Drag and drop  `demo-trioapp-dev` into  the `qa` environment.
 
@@ -87,7 +87,7 @@ caption="Running release for `demo-trioapp`"
 max-width="60%"
 %}
 
-When the release completes execution, go to Product > Releases to see the information and status for the release.
+When the release completes execution, go to **Product > Releases** to see the information and status for the release.
 
 {% include 
 image.html 

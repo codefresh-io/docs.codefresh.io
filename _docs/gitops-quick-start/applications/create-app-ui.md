@@ -5,23 +5,49 @@ group: gitops-quick-start
 toc: true
 ---
 
+At the core of what you create are applications—the fundamental building blocks of software delivery. 
+The ultimate goal is to deploy and maintain these applications efficiently, ensuring they run reliably in production.
+
+In Codefresh, applications are Argo CD applications that represent the Kubernetes resources deployed and managed through GitOps principles. 
+By associating applications with environments or products, Codefresh adds an organizational layer that simplifies tracking and managing deployments throughout the software delivery lifecycle.
+
+
 After creating environments, let's see how to create an Argo CD application in the Codefresh UI.  
 We'll create the application without resources, and then define/add resources in the next step.  
 
 
+## Key features of applications in Codefresh
+
+
+* **GitOps-driven management**
+  Codefresh leverages Argo CD to ensure applications always align with their Git repository definitions, allowing declarative management and version control.
+
+* **Flexible creation methods**
+  Create applications in Applications can be created manually in the Codefresh UI, imported from an existing Argo CD instance, or defined programmatically using YAML manifests.
+
+
+
+
+
+
+
 For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
-## Notes on applications
+
 
 ## Create your first application
+We'll create an application with only the required settings for this quick start.
+Use the Form editor or code directly in YAML. Switch between the two as you prefer. 
+
+##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"} dashboard.
 1. Click **Add Application** on the top-right.
 1. In the Add Application panel, add definitions for the application:
   * **Application name**: `demo-trioapp-dev` for the quick start.  
-    You can see the `-dev` suffix in the application name
+    We addeded the `-dev` to the application name to differentiate it from other applications we'll create.
   * **Runtime**: The runtime to associate with the application, `demo-runtime` for the quick start.  
   * **Name for YAML file**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.  
-    You can click the Edit icon and change the name, if needed.
+    You can click the Edit icon and change the name, if you want to.
 
   >**NOTE**  
   You cannot change the application definitions once you continue to the Configuration settings.
@@ -43,8 +69,8 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.
   * **Revision**: The branch in Git with the resource files.
   * **Path**: The folder in Git with the resource files.
-  * **Namespace**: For the quick start, we'll define a namespace for the application, entitled `demo-ta-dev`. 
-  * **Auto-create namespace**: If you defined a namespace, select to ensure that the namespace is created if it doesn't exist. 
+  * **Namespace**: For the quick start, we'll define a namespace for the application, entitled `demo-dev`. 
+  * **Auto-create namespace**: If you defined a namespace, select this to ensure that the namespace is created if it doesn't exist. 
   * **Sync Policy**: Change to **Automatic**, and select **Prune resources** to automatically remove unused resources.
 
  
@@ -53,8 +79,8 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
    lightbox="true" 
    file="/images/quick-start/gitops/cdops-add-app-configuration.png" 
    url="/images/quick-start/gitops/cdops-add-app-configuration.png" 
-   alt="Add Application Quick Start: General settings" 
-   caption="Add Application Quick Start: General settings"
+   alt="Create application quick start: General settings" 
+   caption="Create application Quick Start: General settings"
    max-width="70%" 
    %} 
 
@@ -70,8 +96,8 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
    lightbox="true" 
    file="/images/quick-start/gitops/cdops-add-app-commit.png" 
    url="/images/quick-start/gitops/cdops-add-app-commit.png" 
-   alt="Add Application Quick Start: Commit to Git" 
-   caption="Add Application Quick Start: Commit to Git"
+   alt="Create application quick start: Commit to Git Source" 
+   caption="Create application quick start: Commit to Git Source"
    max-width="70%" 
    %} 
 
@@ -79,16 +105,6 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
 1. Add a commit message and then select **Commit** at the bottom-right of the panel.  
   You are directed to the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard?sort=desc-lastUpdated){:target="\_blank"}.  
   You may have to wait for a few seconds until the application is synced to the cluster.
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/quick-start/gitops/apps-new-app-in-dashboard.png" 
-   url="/images/quick-start/gitops/apps-new-app-in-dashboard.png" 
-   alt="GitOps Apps dashboard with new application" 
-   caption="GitOps Apps dashboard with new application"
-   max-width="60%" 
-   %} 
 
 
 
@@ -105,34 +121,45 @@ Here's a view of the GitOps Apps dashboard with all the three applications conne
    lightbox="true" 
    file="/images/quick-start/gitops/cdops-add-app-dashboard.png" 
    url="images/quick-start/gitops/cdops-add-app-dashboard.png" 
-   alt=GitOps Apps dashboard with three new applications" 
-   caption="GitOps Apps dashboard three new applications"
-   max-width="70%" 
+   alt="Create application quick start: GitOps Apps dashboard with new applications" 
+   caption="Create application quick start: GitOps Apps dashboard with new applications"
+   max-width="60%" 
    %} 
 
 <!--- In the next task, you will create and commit resources for the `codefresh-guestbook` application and deploy the application. -->
 
-## View Environments dashboard
+## View changes in Environments dashboard
 
-Let's go back or return to the Environments dashboard to see how the new apps we created are displayed in it.
+Let's go back to the Environments dashboard to see how the new apps we created are displayed in it.
  
- From the sidebar, select Environments.
+* From the sidebar, select **Environments**.
 
   {% include 
    image.html 
    lightbox="true" 
    file="/images/quick-start/gitops/cdops-add-app-dashboard.png" 
-   url="images/quick-start/gitops/cdops-add-app-dashboard.png" 
-   alt=GitOps Apps dashboard with three new applications" 
-   caption="GitOps Apps dashboard three new applications"
+   url="/images/quick-start/gitops/cdops-add-app-dashboard.png" 
+   alt="Create application quick start: GitOps Apps dashboard with new applications" 
+   caption="Create application quick start: GitOps Apps dashboard with new applications"
+   max-width="60%" 
+   %} 
+
+The environments are still empty, with one difference: The Unassigned Apps counter shows one unassigned app for each environment.
+ 
+If you click on the up arrow next to Unassigned apps in any environment, it moves the application up to the top.  
+And if you click the icon next to the app name, the message informs you that the app is not associated with any product.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
+   url="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
+   alt="Create application quick start: Environment with app not linked to product" 
+   caption="Create application quick start: Environment with app not linked to product"
    max-width="70%" 
    %} 
 
- You can see that the environments are empty and each has one unassigned app.
- If you click on the up arrow, it moves the application up to the top.
- And if you click the icon next to the app name, if informs you that the app is not associated with any product.
-
- In the next task, we'll create a product and connect these applications to it. 
+And that is exactly what we'll do in the next quick start. We'll explore the concept of products in Codefresh GitOps, how they boost the power of your app, simplifying promotion and deployment. 
 
 ### What to do next
-[Create and commit resources for application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
+[Create products]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)
