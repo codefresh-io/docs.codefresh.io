@@ -104,7 +104,7 @@ lightbox="true"
 file="/images/gitops-promotions/tutorials/dnd-releases-page.png" 
 url="/images/gitops-promotions/tutorials/dnd-releases-page.png"
 alt="Promotions quick start: Releases list with release record for `demo-trioapp`" 
-caption=""Promotions quick start: Releases list with release record for `demo-trioapp`"
+caption="Promotions quick start: Releases list with release record for `demo-trioapp`"
 max-width="60%"
 %}
 
