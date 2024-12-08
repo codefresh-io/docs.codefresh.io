@@ -34,7 +34,7 @@
     - title: Create Codefresh account
       url: "/create-codefresh-account"
     - title: GitOps Runtime
-      url: ""
+      url: "/create-codefresh-account"
       sub-pages: 
       - title: Provision a Hosted GitOps Runtime
         url: "/install-hosted"
