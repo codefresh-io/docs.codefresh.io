@@ -156,6 +156,6 @@ And if you click the icon next to the app name, the message informs you that the
 
 ## What's next
 And that is exactly what we'll do in the next quick start.  
-You can explore the [concept of products in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/gitops-products/) and see how they boost the power of your applications, simplifying promotion and deployment. 
+You can explore the [concept of products in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/products/) and see how they boost the power of your applications, simplifying promotion and deployment. 
 
 [Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create.md)

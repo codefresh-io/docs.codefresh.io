@@ -37,11 +37,11 @@ To enable more advanced deployment strategies, promotions have additional unique
   Through Promotion Workflows, you can create and implement any type of tests to validate readiness, enforce compliance, mitigate risks, and confirm performance. By incorporating gates, Promotion Workflows provide structured, repeatable validation points throughout your promotion sequence, giving you confidence in every deployment.
 
 Explore these quick starts on promotions:
-* [Drag-and-drop promotions]({{site.baseurl}}/docs/promotions/promotion-scenarios/drag-and-drop/)  
-* [Multi-environment sequential promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/multi-env-sequential-flow/)  
-* [Multi-environment promotion with gates]({{site.baseurl}}/docs/promotions/promotion-scenarios/policy-multi-env-promotion/)  
-* [Multi-environment promotion with parallel environments]({{site.baseurl}}/docs/promotions/promotion-scenarios/parallel-multi-env-promotion/)  
-* [Multi-environment promotion with dependencies]({{site.baseurl}}/docs/promotions/promotion-scenarios/dependency-multi-env-promotion/)
+* [Drag-and-drop promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/)  
+* [Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/multi-env-sequential-flow/)  
+* [Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotions/policy-multi-env-promotion/)  
+* [Multi-environment promotion with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/promotions/parallel-multi-env-promotion/)  
+* [Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotions/dependency-multi-env-promotion/)
 
 
 

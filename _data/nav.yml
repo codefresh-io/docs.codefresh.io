@@ -45,7 +45,7 @@
     - title: Environments
       url: "/quick-start-gitops-environments"
     - title: Applications
-      url: "/quick-start-applications"
+      url: "/applications"
       sub-pages: 
         - title: Creating applications
           url: "/create-app-ui"
@@ -54,7 +54,7 @@
         - title: Update the image tag for application
           url: "/create-rollout"
     - title: Products
-      url: "/gitops-products"
+      url: "/products"
       sub-pages: 
         - title: Creating products
           url: "/quick-start-product-create"
@@ -63,7 +63,7 @@
         - title: Exploring the Product Dashboard
           url: "/quick-start-product-dashboard"
     - title: Promotions
-      url: "/quick-start-promotions"  
+      url: "/promotions"  
       sub-pages: 
       - title: Drag-and-drop promotion
         url: "/drag-and-drop"    
