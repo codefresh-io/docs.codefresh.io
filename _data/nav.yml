@@ -14,7 +14,7 @@
     - title: Global Search & Navigation
       url: "/command-bar"
 
-- title: CI/CD Quick starts
+- title: CI/CD quick starts
   url: "/ci-quick-start"
   pages:
     - title: Create Codefresh account
@@ -42,19 +42,39 @@
         url: "/verify-requirements"
       - title: Install a Hybrid GitOps Runtime
           url: "/runtime"
-    - title: Argo CD applications
-      url: "/??"
+    - title: Environments
+      url: "/quick-start-gitops-environments"
+    - title: Applications
+      url: "/quick-start-applications"
       sub-pages: 
-        - title: Create an application
+        - title: Creating applications
           url: "/create-app-ui"
         - title: Create and commit resources for application
           url: "/create-app-specs"
         - title: Update the image tag for application
           url: "/create-rollout"
-    - title: Environments
-      url: "/quick-start-gitops-environments"
     - title: Products
-      url: "/??"
+      url: "/gitops-products"
+      sub-pages: 
+        - title: Creating products
+          url: "/quick-start-product-create"
+        - title: Assigning applications to products
+          url: "/quick-start-product-assign-apps"
+        - title: Exploring the Product Dashboard
+          url: "/quick-start-product-dashboard"
+    - title: Promotions
+      url: "/quick-start-promotions"  
+      sub-pages: 
+      - title: Drag-and-drop promotion
+        url: "/drag-and-drop"    
+      - title: Multi-environment sequential promotion
+        url: "/multi-env-sequential-flow"  
+      - title: Multi-environment promotion with gates
+        url: "/policy-multi-env-promotion"  
+      - title: Multi-environment parallel promotion
+        url: "/parallel-multi-env-promotion"  
+      - title: Multi-environment promotion with dependencies
+        url: "/dependency-multi-env-promotion"  
 
 - title: Dashboards & insights
   url: "/dashboards"
@@ -410,18 +430,7 @@
     - title: Promotions end-to-end guide
       url: "/create-promotion-sequence"
     - title: Promotion tutorials
-      url: "/promotion-scenarios"  
-      sub-pages: 
-      - title: Drag-and-drop
-        url: "/drag-and-drop"    
-      - title: Multi-environment sequential promotion
-        url: "/multi-env-sequential-flow"  
-      - title: Multi-environment promotion with conditions
-        url: "/policy-multi-env-promotion"  
-      - title: Multi-environment promotion with parallel environments
-        url: "/parallel-multi-env-promotion"  
-      - title: Multi-environment promotion with dependencies
-        url: "/dependency-multi-env-promotion"  
+      url: "/promotion-scenarios"   
     - title: Configuration
       url: "/configuration"
       sub-pages: 
