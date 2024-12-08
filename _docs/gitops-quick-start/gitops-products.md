@@ -34,10 +34,10 @@ Here are a few reasons why you would want to create products to manage your appl
   Creating a product is as simple as creating an environment. You can do so directly from the UI, declaratively by annotating application manifests, or even when creating applications themselves.
 
 
-See our products:
-Creating products
-Assign applications to products
-Explore the product dashboard 
+Explore quick starts for products:
+[Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
+[Assigning applications to products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-assign-apps/)   
+[Exploring the Product Dashboard ]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)  
 
 
 
