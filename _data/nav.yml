@@ -34,14 +34,14 @@
     - title: Create Codefresh account
       url: "/create-codefresh-account"
     - title: GitOps Runtime
-      url: "/??"
+      url: ""
       sub-pages: 
       - title: Provision a Hosted GitOps Runtime
         url: "/install-hosted"
       - title: Prepare for Hybrid GitOps Runtime installation
         url: "/verify-requirements"
       - title: Install a Hybrid GitOps Runtime
-          url: "/runtime"
+        url: "/runtime"
     - title: Environments
       url: "/quick-start-gitops-environments"
     - title: Applications
