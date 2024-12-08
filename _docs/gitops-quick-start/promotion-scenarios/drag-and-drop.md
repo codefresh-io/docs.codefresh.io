@@ -5,14 +5,23 @@ group: promotions
 toc: true
 ---
 
-In this quick start, we'll see how to promote products using drag-and-drop functionality. 
-This quick, visual method allows you to manually move applications across two environments in a few simple steps, and is available in the Environments dashboard.
+In this first quick start on promotions, we'll see how to promote products using the intuitive drag-and-drop functionality in the Environments dashboard. 
+
+This quick, visual method allows you to manually move applications between two environments in just a few steps.
+
+Use this method when you want to:
+* Quickly test changes in a different environment
+* Manually promote a product version for validation or further deployment
+
+## Promote product applications through drag-and-drop
 
 
 
-## Identify release versions
 1. From the sidebar, select **Environments**.  
-  The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 
+    * The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 
+    * Note the release versions for the product in each environment.  
+      For example, the version in `dev` is different from those in `qa` and `prod`, indicating changes to the application that have not yet been deployed to all environments.
+
 
 {% include 
 image.html 
@@ -24,10 +33,8 @@ caption="`demo-trioapp` product in Environments dashboard"
 max-width="60%"
 %}
 
-1. Note the release versions for the product.
-   `demo-trioapp` has different versions in `dev` and `qa` environments.
-
-1. To view the linked applications in each environment, mouse over `demo-trioapp` in the respective environments.
+{:start="2"}
+1. To view the applications linked to the product, `demo-trioapp``,  in each environment, mouse over the product.
 
 {% include 
 image.html 
@@ -39,13 +46,9 @@ caption="`demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"
 %}
 
-
-
-## Promote application with drag-and-drop
-Promote the application by dragging and dropping it into the desired target environment.  
-For the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and dropping it into `demo-trioapp` in the `qa` environment.
-
-1. Drag and drop  `demo-trioapp-dev` into  the `qa` environment.
+{:start="3"}
+1. Drag and drop the application into the desired target environment.  
+  For example, for the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and dropping it into `demo-trioapp` in the `qa` environment.
 
 {% include 
 image.html 
@@ -57,9 +60,10 @@ caption="Drag and drop `demo-trioapp-dev` to promote"
 max-width="60%"
 %}
 
-1. Commit the changes. 
-  The Commit Changes page shows the action used for the promotion, the files, and the properties in the files that will be changed.
-  Review the files and properties that will be updated as part of this promotion action.
+{:start="4"}
+1. Click **Commit** to commit the changes. 
+  The Commit Changes page displays details about the promotion, including the action used, the files impacted, and the properties being updated.
+
 
 {% include 
 image.html 
@@ -71,19 +75,24 @@ caption="Commit changes for `demo-trioapp`"
 max-width="60%"
 %}
 
-## View release for product
-After commit, the promotion mechanism automatically creates a release for the product, `demo-trioapp` in our case.
-Here you can monitor how the promotion is orchestrated between the environments, `dev` to `qa`.
+{:start="5"}
+1. Review the changes carefully and click **Commit** once again. 
+1. Continue with [View release created for product](#view-release-created-for-product).
 
-1. Click **View Release Details** to go to the release view.
+
+## View release created for product
+After committing the changes, the promotion mechanism automatically creates a release for the product, `demo-trioapp` in our case.
+Here you can monitor how the promotion is orchestrated between the environments, `dev` and `qa`.
+
+* Click **View Release Details** to go to the release view and monitor the release as it progresses between the `dev` and `qa` environments.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-inital-release.png" 
 url="/images/gitops-promotions/tutorials/dnd-inital-release.png"
-alt="Running release for `demo-trioapp`" 
-caption="Running release for `demo-trioapp`"
+alt="Promotions quick start: On-going release for `demo-trioapp`" 
+caption="Promotions quick start: On-going release for `demo-trioapp`"
 max-width="60%"
 %}
 
@@ -94,13 +103,16 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-releases-page.png" 
 url="/images/gitops-promotions/tutorials/dnd-releases-page.png"
-alt="Releases list with release entry for `demo-trioapp`" 
-caption="Releases list with release entry for `demo-trioapp`"
+alt="Promotions quick start: Releases list with release record for `demo-trioapp`" 
+caption=""Promotions quick start: Releases list with release record for `demo-trioapp`"
 max-width="60%"
 %}
 
 
-## What to do next
+## What's next
+Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
+The next quick start demonstrates how to orchestrate a multi-environment promotion through a Promotion Flow, enabling you to automate and streamline deployments across more than two environments.
+
 [Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/multi-env-sequential-flow/)
 
  
