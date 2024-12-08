@@ -5,9 +5,12 @@ group: quick-start
 toc: true
 ---
 
+In the previous quick start, you created a product. 
+
 This quick start covers how to assign applications to products, to group and better manage related applications.
 
-Codefresh offers two methods for assigning applications to products:
+You can assign applications to products using any of two methods:
+
 * **Manual assignment from **Product > Settings****
   Assign applications to a product with a single click in the UI.  
   This method is quick and does not require a commit action, making it ideal for testing or trying out assignments. However, it’s not recommended as the primary approach for GitOps promotions.
@@ -35,13 +38,13 @@ Here we'll manually assign the application `demo-trioapp-dev` to the Product `de
 	lightbox="true" 
 	file="/images/quick-start/environments-products/products-unassigned-apps.png" 
 	url="/images/quick-start/environments-products/products-unassigned-apps.png" 
-	alt="Quick start: Product `demo-trioapps` with unassigned applications" 
-	caption="Quick start: Product `demo-trioapps` with unassigned applications"
+	alt="Products quick start: Product `demo-trioapps` with unassigned applications" 
+	caption="Products quick start: Product `demo-trioapps` with unassigned applications"
   max-width="60%" 
 %}
 
 {:start="4"}
-1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in this example.
+1. From the list of **Unassigned apps**, click {::nomarkdown}<img src="../../../../images/icons/runtime-topology-add-cluster.png?display=inline-block">{:/} next to the application to assign, `demo-trioapp-dev` in our example.
 
 
 {% include 
@@ -49,8 +52,8 @@ Here we'll manually assign the application `demo-trioapp-dev` to the Product `de
 	lightbox="true" 
 	file="/images/quick-start/environments-products/products-manually-assign-apps.png" 
 	url="/images/quick-start/environments-products/products-manually-assign-apps.png" 
-	alt="Quick start: Manually assign `demo-trioapp-dev` to Product" 
-	caption="Quick start: Manually assign `demo-trioapp-dev` to Product"
+	alt="Products quick start: Manually assign `demo-trioapp-dev` to Product" 
+	caption="Products quick start: Manually assign `demo-trioapp-dev` to Product"
   max-width="60%" 
 %}
 
@@ -62,7 +65,7 @@ Here we'll manually assign the application `demo-trioapp-dev` to the Product `de
 
 ## Add an annotation to connect application to product
 Here, we'll connect an application to a product declaratively by adding an annotation to the application's manifest.  
-The annotation is automatically created when you create the product, and is available in Product > Settings.
+The annotation is automatically created when you create the product, and is always displayed in Product > Settings.
 
 ##### Step-by-step
 1. In **Product > Settings**, click **General**.  
@@ -74,12 +77,12 @@ The annotation is automatically created when you create the product, and is avai
 	lightbox="true" 
 	file="/images/quick-start/environments-products/products-copy-annotation.png" 
 	url="/images/quick-start/environments-products/products-copy-annotation.png" 
-	alt="Quick start: Copy annotation from Product" 
-	caption="Quick start: Copy annotation from Product"
+	alt="Products quick start: Copy annotation for product" 
+	caption="Products quick start: Copy annotation for product"
   max-width="50%" 
 %}
 
-{:start="2"}
+{:start="3"}
 1. Add the annotation to the application's manifest:
     1. From the sidebar, select **GitOps Apps**.
     1. Select the application to which to add the annotation, such as `demo-trioapp-prod` for the quick start.
@@ -92,29 +95,29 @@ The annotation is automatically created when you create the product, and is avai
 	lightbox="true" 
 	file="/images/quick-start/environments-products/products-add-annotation-manifest.png" 
 	url="/images/quick-start/environments-products/products-add-annotation-manifest.png" 
-	alt="Quick start: Add annotation to `demo-trioapp-prod` manifest" 
-	caption="Quick start: Add annotation to `demo-trioapp-prod` manifest"
+	alt="Products quick start: Add annotation to `demo-trioapp-prod` manifest" 
+	caption="Products quick start: Add annotation to `demo-trioapp-prod` manifest"
   max-width="60%" 
 %}
 
-{:start="3"}
+{:start="4"}
 1. Return to the Product Dashboard for `demo-trioapp`.
-  Both applications are now displayed as part of the Product.
+  Both applications are now displayed as part of the product.
 
 {% include 
 	image.html 
 	lightbox="true"
 	file="/images/quick-start/environments-products/products-dashboard-apps.png" 
 	url="/images/quick-start/environments-products/products-dashboard-apps.png" 
-	alt="Quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to product" 
-	caption="Quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to product"
+	alt="Products quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to `demo-trioapp`" 
+	caption="Quick start: `demo-trioapp-dev` and `demo-trioapp-prod` assigned to `demo-trioapp`"
   max-width="60%" 
 %}
 
-## Next
+## Connect third application
 Connect the third application, `demo-trioapp-qa` to the product `demo-trioapp` using either method.
 
-Once you have created a product and connected its applications, proceed to explore the Product Dashboard, focussing on the key insights it offers for promotions and deployments.
+## What's next
+Once you have created a product and connected its applications, proceed to explore the **Product Dashboard**, focussing on the key insights it offers for promotions and deployments.
 
-## Continue with 
-Exploring the product dashboard 
+[Exploring the product dashboard]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/) 
