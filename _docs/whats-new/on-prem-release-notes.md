@@ -50,9 +50,23 @@ Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/st
 For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
 
 ### Pipelines: Expanded support for `buildx qemu` images
-For Docker `build` steps, you can specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
+For Docker `build` steps, you can now specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
 Previously, `buildx qemu` supported only the default image.
 
+
+You can now add custom trusted QEMU images to the build step, ensuring support for your preferred configurations. Simply update the `values.yaml` file with the full image name under `runtime.engine.env.TRUSTED_QEMU_IMAGES`.
+
+For example:
+
+```yaml
+Copy code
+runtime:
+  engine:
+    env:
+      TRUSTED_QEMU_IMAGES: "qemu-user-static,ghcr.io/example/qemu-image"
+```
+
+For details, see [Defining trusted QEMU images]({{site.baseurl}}/docs/pipelines/steps/build/#defining-trusted-qemu-images).
 
 
 
@@ -134,7 +148,71 @@ Clicking a link takes you to **GitOps Apps > Current State** tab for the applica
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
+##### New Feature Flags in v2.6
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.6.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `currentStateNodeExpand`  | When enabled, dynamically expands the nodes in the Current State's Tree view (in the GitOps Apps dashboard) to display the complete content. | FALSE         |
+| `gitopsOnboarding` | When enabled, enhances the user-experience onboarding.| FALSE  |
+| `gitopsGroupsPage` | When enabled,???.| TRUE  |
+| `gitopsEnvironments` | When enabled (the default), displays the Environments dashboard in GitOps, and enables users to manage environments and trigger drag-and-drop ???.| TRUE  |
+| `modulesConfigurationPage`     | When enabled (the default), enables administrators to customize the modules and menu items displayed in the sidebar. | TRUE         |
+| `multiSource`            | When enabled, supports multi-source applications in Codefresh, and displays the information in the **GitOps Apps > Current State** tab, and in the **Product > Releases** tab.   | FALSE|
+| `newVariablesConfiguration` | When enabled, displays the new revamped form to add and configure variables in projects, pipelines, and triggers. | TRUE         |
+| `newLogo`     | When enabled (the default), displays the new logo in the Codefresh platform. | TRUE         |
+| `productReleasesPage`     | When enabled (the default), displays the Releases page for products on triggering promotions. | TRUE         |
+| `promotionFlowsManagement`     | When enabled (the default), enables the administrator to add, edit, and delete Promotion Flows. | TRUE         |
+| `promotionPolicies`     | When enabled (the default), enables ????. | TRUE         |
+| `promotionCommitStatuses`    | When enabled, ???? | FALSE         |
+| `systemFonts`     | When enabled (the default), uses system fonts instead of custom fonts in the UI. | TRUE         |
+| `useSeparatePlanner` |When enabled, Use the planner from a separate repository https://github.com/codefresh-io/plannerConnect your Github account  instead of the embedded  | FALSE    |
+| `yamlTreeJsonPathBuilder`     | When enabled, displays the YAML file in tree mode, allowing users to easily select an attribute and automatically generate a JSON path. Available in **Product > Settings > Promotion Settings**.   | TRUE         |
+
+
+
+##### Updated Feature Flags in v2.6
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+|`productCRD`    | When enabled (the default), allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.| _TRUE_   |
+|`promotionOrchestration`        |  When enabled (the default), supports promotion orchestration for products including product's releases API and promotion flow API.| _TRUE_  |
+|`promotionFlow`        | When enabled (the default), allows you to drag an application in the GitOps Product dashboard from its current environment to a different environment and trigger a promotion flow.| _TRUE_  |
+|`promotionWorkflows` | When enabled (the default), allows you to create and run Promotion Workflows when a promotion is triggered. | _TRUE_         |  
+
+
 ### Bug fixes
+
+October
+##### General
+* Active user gets logged out from account due to inactivity even when session is active.
+
+
+##### Pipelines 
+* Docker `build` steps fail to run when setting `buildx qemu` image to any image that is not the default.
+* DIND pod not created when `runtime.dind.env` values are defined. 
+* Clicking **Save** does not save new variable in Shared Configuration or triggers.
+* Trigger settings not refreshed for selected pipeline when switching between pipelines in Workflows > Triggers.
+
+
+
+##### GitOps 
+* `failed to retrieve application version, app name: <"app_name>": unknown key appVersion` error when application versioning is not configured.
+* Application validations use destination cluster instead of application cluster.
+
+November
+
+General
+Active user gets logged out from account due to inactivity even when session is active.
+Pipelines
+Engine pod logs display values of secret variables.
+Pipelines in debug mode terminated even when there is no active debug session.
+Container file system changes owner when cached using composition.
+GitOps
+Multi-arch images not reported in Images dashboard.
 
 ## On-premises version 2.5
 
