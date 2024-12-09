@@ -18,7 +18,7 @@ We also have several articles at our [learning center](https://codefresh.io/lear
 See also [Annotation attribute for Promotion Workflows](#annotation-attribute-for-promotion-workflows).
 
 
-##### Promotion Workflows in the promotion process
+##### Pre-Action and Post-Action Workflows 
 
 Promotion Workflows though optional in the promotion process, play a critical role in ensuring that the promoted changes to target environments meet the necessary standards for quality and performance. 
 
@@ -32,10 +32,10 @@ Our GitOps promotion process allows you to run Promotion Workflows at different 
 See [Promotion Workflow examples](#promotion-workflow-examples).
 
 
-##### Using workflows in the promotion process
+##### Using Promotion Workflows in the promotion process
 After creating Promotion Workflows, there are two ways to use them in the promotion process depending on the level of control and scalability you need:
 
-* Manual selection
+* Manual selection  
   When triggering a promotion manually, you can select specific Pre- and Post-Action Workflows to run for the target environment. This approach is ideal for single-environment promotions or when you need granular control over the workflows for a specific change.  
   Example:  
   During a drag-and-drop promotion, you might choose a Pre-Action Workflow to run integration tests and a Post-Action Workflow to send Slack notifications for the target environment.
@@ -336,7 +336,7 @@ outputs:
 
 This is an example of a Pre-Action Workflow that simulates creating a Jira ticket with the data retreived from the application manifest and outputs the ticket ID as a global parameter. The Post-Action Workflow simulates using the ID as an input parameter to close the ticket. 
 
-##### Pre-Action Workflow example with Jira ID as global parameter
+#### Pre-Action Workflow example with Jira ID as global parameter
 
 Main features:
 * **Workflow parameters**
@@ -460,7 +460,7 @@ spec:
         echo "JIRA-ticket-id-${RANDOM_HASH}" > /tmp/JIRA_ID
 ```
 
-##### Post-Action Workflow with Jira ID 
+#### Post-Action Workflow with Jira ID 
 
 Main features:
 * **Workflow parameters**  
@@ -852,7 +852,7 @@ max-width="60%"
 -->
 
 
-## Product release view of promotion workflows
+## Promotion Workflows in product release views
 When a promotion is triggered automatically or manually, a release is created for the product and displayed in the Releases tab.  
 Clicking the Release ID displays the ongoing or completed view of the promotion orchestration across the environment.
 
