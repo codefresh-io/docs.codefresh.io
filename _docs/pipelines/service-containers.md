@@ -22,6 +22,7 @@ Codefresh includes a handy mechanism (based on Docker compose) that can help you
 {% raw %}
 version: "1.0"
 services:
+  version: '3.0'
   name: my_database
   composition:
     my-redis-db-host:
@@ -71,6 +72,7 @@ Like Docker compose it is possible to launch multiple services this way. For exa
 {% raw %}
 version: "1.0"
 services:
+  version: '3.0'
   name: my_extra_services
   composition:
     my-redis-db-host:
@@ -146,6 +148,7 @@ Notice that unlike compositions, the services defined in the root of the pipelin
 {% raw %}
 version: "1.0"
 services:
+  version: '3.0'
   name: my_database
   composition:
     my-redis-db-host:
@@ -238,6 +241,7 @@ steps:
     commands:
       - 'echo start testing my app'
     services:
+      version: '3.0'
       composition:
         my_mongo_Service:
           image: 'mongo:latest'
@@ -322,6 +326,7 @@ steps:
       - 'echo Backend is up. Starting tests'
       - npm run integration-test
     services:
+      version: '3.0'
       composition:
         my_backend_app:
           image: '${{build_image}}'
@@ -368,6 +373,7 @@ steps:
       # Backend is certainly up at this point.
       - npm run integration-test
     services:
+      version: '3.0'
       composition:
         my_backend_app:
           image: '${{build_image}}'
@@ -418,6 +424,7 @@ steps:
       - rails db:migrate
       - rails test
     services:
+      version: '3.0'
       composition:
         my_postgresql_db:
           image: postgres:latest
@@ -464,6 +471,7 @@ steps:
       # PostgreSQL is certainly up at this point and has the correct data
       - rails test
     services:
+      version: '3.0'
       composition:
         my_postgresql_db:
           image: postgres:latest
@@ -524,6 +532,7 @@ steps:
       - 'curl http://localhost:80'
       - echo finished
     services:
+      version: '3.0'
       shared_host_network: true
       composition:
         my_redis_service:
@@ -540,6 +549,7 @@ You can also do the same thing with top level services:
 {% raw %}
 version: '1.0'
 services:
+  version: '3.0'
   name: my_database
   shared_host_network: true
   composition:
