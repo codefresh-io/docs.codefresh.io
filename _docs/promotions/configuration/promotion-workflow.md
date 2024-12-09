@@ -9,6 +9,17 @@ toc: true
 Workflows are automated processes designed to orchestrate tasks, checks, and actions in a defined sequence to achieve a specific outcome. 
 In the context of GitOps promotions, Promotion Workflows automate tests and tasks before and after changes are promoted in environments. 
 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/workflows/workflow-overview-image.png" 
+url="/images/gitops-promotions/workflows/workflow-overview-image.png"
+alt="Promotion Workflows" 
+caption="Promotion Workflows"
+max-width="60%"
+%}
+
+
 ##### Promotion Workflows and Argo Workflows
 Promotion Workflows are Argo Workflows that include a specific annotation identifying them for promotion use. You can harness the full capabilities of Argo Workflows and integrate them seamlessly into the GitOps promotion process. 
 
