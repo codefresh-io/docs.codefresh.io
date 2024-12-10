@@ -10,8 +10,29 @@ Welcome to the release notes for our on-premises releases.
 
 ### Features & enhancements
 
+#### Installing v2.6 
+For detailed instructions on installing v2.5, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
-### General: Annotate image by name via CLI
+#### Upgrading to v2.5
+For details, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-6-0){:target="\_blank"}.
+
+#### Enable auto-index creation in MongoDB
+From v2.6, the `cfapi` service can automatically create indexes in MongoDB.
+
+This feature is disabled by default. To enable it, set the `MONGOOSE_AUTO_INDEX` environment variable to `true` as shown below 
+
+```yaml
+cfapi:
+  container:
+    env:
+      MONGOOSE_AUTO_INDEX: "true"
+```
+The list of indexes are in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
+
+**Important**: We recommend enabling this feature during a maintenance window, as creating indexes can temporarily degrade database performance.
+
+
+#### General: Annotate image by name via CLI
 Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
 
 
@@ -34,7 +55,7 @@ Here's an example of the CLI command:
 To use this feature, make sure to upgrade to the latest CLI version.
 
 
-### Pipelines: Octopus Deploy integration
+#### Pipelines: Octopus Deploy integration
 We're excited to announce the first set of official Codefresh steps for Octopus Deploy! 
 With these steps, you can streamline your pipeline and integrate your Codefresh builds with deployments in Octopus Deploy. 
 
@@ -49,7 +70,7 @@ Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/st
 
 For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
 
-### Pipelines: Expanded support for `buildx qemu` images
+#### Pipelines: Expanded support for `buildx qemu` images
 For Docker `build` steps, you can now specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
 Previously, `buildx qemu` supported only the default image.
 
@@ -68,9 +89,34 @@ runtime:
 
 For details, see [Defining trusted QEMU images]({{site.baseurl}}/docs/pipelines/steps/build/#defining-trusted-qemu-images).
 
+#### Pipelines: Export build cache to external destinations
+We've enhanced the `build` step by introducing the `cache_to` parameter. The parameter allows you to export build caches to one or more external destinations, improving portability and enabling faster builds. Combined with the `cache_from` parameter, it provides a powerful mechanism for leveraging cached layers across pipelines and environments.
 
 
-### Pipelines: Output parameters in `arguments` attribute
+Here's an example with both `cache_from` and `cache_to` with `buildx`.
+
+```yaml
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildx:
+      builder:
+        driver: docker-container
+    cache_from:
+    - type=registry,ref=my-registry/my-app-image:${{CF_BRANCH}}
+    - type=registry,ref=my-registry/my-app-image:master
+    cache_to:
+    - type=registry,mode=max,oci-mediatypes=true,image-manifest=true,compression=zstd,ref=my-registry/my-app-image:${{CF_BRANCH}}
+```
+
+For details, see [Fields in build step]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
+
+#### Pipelines: Output parameters in `arguments` attribute
 
 Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
 
@@ -89,7 +135,7 @@ Now, plugins can consume outputs from both the `arguments` and `commands` attrib
 ```
 
 
-### GitOps: Reporting for multi-architecture images
+#### GitOps: Reporting for multi-architecture images
 Image reporting is now available for multi-architecture images.  
 On drill down into the image from the Images dashboard, the OS/Arch column displays digests for each OS architecture.
 
@@ -106,12 +152,25 @@ On drill down into the image from the Images dashboard, the OS/Arch column displ
    max-width="80%" 
    %}
 
+#### GitOps: Display full name for applications
+We have improved usability of the Current State tab in the GitOps Apps dashboard by displaying the full name of all resources in Tree view.
+
+If you have naming conventions that result in long names, easily toggle between displaying the full/truncated resource name with a handy button in the Current State toolbar.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/oct24/rel-notes-oct-24-show-full-app-name.png" 
+   url="/images/whats-new/oct24/rel-notes-oct-24-show-full-app-name.png" 
+   alt="Show Full Name toggle in Current State tab" 
+   caption="Show Full Name toggle in Current State tab" 
+   max-width="80%" 
+   %}
 
 
 
 
-
-### GitOps: Enhanced visibility and control for Runtimes
+#### GitOps: Enhanced visibility and control for Runtimes
 
 We have improved the usability and monitoring of GitOps Runtimes by converting them into applications. Now, you can view GitOps Runtimes and their resources directly in the Current State tab of the GitOps Apps dashboard, with access to all familiar dashboard functionality for intuitive monitoring and streamlined management.
 
@@ -156,18 +215,17 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | -----------        | --------------| ------------- |
 | `currentStateNodeExpand`  | When enabled, dynamically expands the nodes in the Current State's Tree view (in the GitOps Apps dashboard) to display the complete content. | FALSE         |
 | `gitopsOnboarding` | When enabled, enhances the user-experience onboarding.| FALSE  |
-| `gitopsGroupsPage` | When enabled,???.| TRUE  |
-| `gitopsEnvironments` | When enabled (the default), displays the Environments dashboard in GitOps, and enables users to manage environments and trigger drag-and-drop ???.| TRUE  |
+| `gitopsGroupsPage` | When enabled, on selecting **GitOps Apps** from the sidebar, opens the **Groups** tab instead of the Applications tab.| TRUE  |
+| `gitopsEnvironments` | When enabled (the default), displays the Environments dashboard option in the sidebar, and enables users to manage environments.| TRUE  |
 | `modulesConfigurationPage`     | When enabled (the default), enables administrators to customize the modules and menu items displayed in the sidebar. | TRUE         |
 | `multiSource`            | When enabled, supports multi-source applications in Codefresh, and displays the information in the **GitOps Apps > Current State** tab, and in the **Product > Releases** tab.   | FALSE|
 | `newVariablesConfiguration` | When enabled, displays the new revamped form to add and configure variables in projects, pipelines, and triggers. | TRUE         |
 | `newLogo`     | When enabled (the default), displays the new logo in the Codefresh platform. | TRUE         |
-| `productReleasesPage`     | When enabled (the default), displays the Releases page for products on triggering promotions. | TRUE         |
 | `promotionFlowsManagement`     | When enabled (the default), enables the administrator to add, edit, and delete Promotion Flows. | TRUE         |
-| `promotionPolicies`     | When enabled (the default), enables ????. | TRUE         |
+| `promotionPolicies`     | When enabled (the default), displays Promotion Policies in the sidebar.  | TRUE         |
 | `promotionCommitStatuses`    | When enabled, ???? | FALSE         |
 | `systemFonts`     | When enabled (the default), uses system fonts instead of custom fonts in the UI. | TRUE         |
-| `useSeparatePlanner` |When enabled, Use the planner from a separate repository https://github.com/codefresh-io/plannerConnect your Github account  instead of the embedded  | FALSE    |
+| `useSeparatePlanner` |When enabled, uses the new version of the Planner for pipelines.  | FALSE    |
 | `yamlTreeJsonPathBuilder`     | When enabled, displays the YAML file in tree mode, allowing users to easily select an attribute and automatically generate a JSON path. Available in **Product > Settings > Promotion Settings**.   | TRUE         |
 
 
@@ -186,33 +244,27 @@ The table below lists existing Feature Flags which have been updated by default 
 
 ### Bug fixes
 
-October
+
 ##### General
 * Active user gets logged out from account due to inactivity even when session is active.
 
 
 ##### Pipelines 
 * Docker `build` steps fail to run when setting `buildx qemu` image to any image that is not the default.
+* Engine pod logs display values of secret variables.
 * DIND pod not created when `runtime.dind.env` values are defined. 
 * Clicking **Save** does not save new variable in Shared Configuration or triggers.
-* Trigger settings not refreshed for selected pipeline when switching between pipelines in Workflows > Triggers.
+* Trigger settings not refreshed for selected pipeline when switching between pipelines in **Workflows > Triggers**.
+* Pipelines in debug mode terminated even when there is no active debug session.
+* Docker Compose files using Version 3 not supported for service containers in pipelines.
 
 
 
 ##### GitOps 
 * `failed to retrieve application version, app name: <"app_name>": unknown key appVersion` error when application versioning is not configured.
 * Application validations use destination cluster instead of application cluster.
+* Multi-arch images not reported in Images dashboard.
 
-November
-
-General
-Active user gets logged out from account due to inactivity even when session is active.
-Pipelines
-Engine pod logs display values of secret variables.
-Pipelines in debug mode terminated even when there is no active debug session.
-Container file system changes owner when cached using composition.
-GitOps
-Multi-arch images not reported in Images dashboard.
 
 ## On-premises version 2.5
 
