@@ -110,6 +110,7 @@
       &.active,
       &:hover {
         color: $bd-topaz-main;
+        text-wrap: nowrap;
 
         &::after {
           height: 2px;
