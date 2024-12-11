@@ -224,7 +224,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `newLogo`     | When enabled (the default), displays the new logo in the Codefresh platform. | TRUE         |
 | `promotionFlowsManagement`     | When enabled (the default), enables the administrator to add, edit, and delete Promotion Flows. | TRUE         |
 | `promotionPolicies`     | When enabled (the default), displays Promotion Policies in the sidebar.  | TRUE         |
-| `promotionCommitStatuses`    | When enabled, ???? | FALSE         |
+| `promotionCommitStatuses`    | When enabled, the promotion mechanism reports the statuses of Git commits to Git providers. | FALSE         |
 | `systemFonts`     | When enabled (the default), uses system fonts instead of custom fonts in the UI. | TRUE         |
 | `useSeparatePlanner` |When enabled, uses the new version of the Planner for pipelines.  | FALSE    |
 | `yamlTreeJsonPathBuilder`     | When enabled, displays the YAML file in tree mode, allowing users to easily select an attribute and automatically generate a JSON path. Available in **Product > Settings > Promotion Settings**.   | TRUE         |
