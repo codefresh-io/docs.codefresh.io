@@ -214,11 +214,11 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
 | `currentStateNodeExpand`  | When enabled, dynamically expands the nodes in the Current State's Tree view (in the GitOps Apps dashboard) to display the complete content. | FALSE         |
-| `gitopsOnboarding` | When enabled, enhances the user-experience onboarding.| FALSE  |
+| `gitopsOnboarding` | When enabled, enhances the onboarding user-experience.| FALSE  |
 | `gitopsGroupsPage` | When enabled, on selecting **GitOps Apps** from the sidebar, opens the **Groups** tab instead of the Applications tab.| TRUE  |
 | `gitopsEnvironments` | When enabled (the default), displays the Environments dashboard option in the sidebar, and enables users to manage environments.| TRUE  |
 | `modulesConfigurationPage`     | When enabled (the default), enables administrators to customize the modules and menu items displayed in the sidebar. | TRUE         |
-| `multiSource`            | When enabled, supports multi-source applications in Codefresh, and displays the information in the **GitOps Apps > Current State** tab, and in the **Product > Releases** tab.   | FALSE|
+| `multiSource`            | When enabled, supports displaying information for multi-source applications in the **GitOps Apps > Current State** tab, and in the **Product > Releases** tab.   | FALSE|
 | `newVariablesConfiguration` | When enabled, displays the new revamped form to add and configure variables in projects, pipelines, and triggers. | TRUE         |
 | `newLogo`     | When enabled (the default), displays the new logo in the Codefresh platform. | TRUE         |
 | `promotionFlowsManagement`     | When enabled (the default), enables the administrator to add, edit, and delete Promotion Flows. | TRUE         |
