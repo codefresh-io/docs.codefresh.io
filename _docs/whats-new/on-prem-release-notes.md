@@ -241,7 +241,7 @@ The table below lists existing Feature Flags which have been updated by default 
 |`promotionOrchestration`        |  When enabled (the default), supports promotion orchestration for products including product's releases API and promotion flow API.| _TRUE_  |
 |`promotionFlow`        | When enabled (the default), allows you to drag an application in the GitOps Product dashboard from its current environment to a different environment and trigger a promotion flow.| _TRUE_  |
 |`promotionWorkflows` | When enabled (the default), allows you to create and run Promotion Workflows when a promotion is triggered. | _TRUE_         |  
-
+|`useRepoAndBranchesNextPagination`   | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown displays repositories and branches in paginated format, with the Next button for navigating between pages.  | _TRUE_         |
 
 ### Bug fixes
 
