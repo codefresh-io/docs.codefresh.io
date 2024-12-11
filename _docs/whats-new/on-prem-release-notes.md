@@ -38,12 +38,13 @@ Now using the CLI, you can annotate your images also by their names, instead of 
 
 You can easily find and copy the image name from the Images dashboard.
 
+
 {% include 
    image.html 
    lightbox="true" 
    file="/images/whats-new/nov24/image-name-images-dashboard.png" 
    url="/images/whats-new/nov24/image-name-images-dashboard.png" 
-   alt=Copy image name in Images dashboard" 
+   alt="Copy image name in Images dashboard" 
    caption="Copy image name in Images dashboard" 
    max-width="60%" 
    %}
