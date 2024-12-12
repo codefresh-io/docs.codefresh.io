@@ -268,9 +268,13 @@ On the left, you can see the YAML manifests, on the right, the previews show how
 ## JSON path expressions for files and properties
 Application versions and properties to be promoted are defined through JSON path expressions. Each JSON expression points to the specified file and the location of the property within the file. 
 
->**NOTE**  
+**NOTE**  
 Our promotions are optimized for YAML-based configuration files.  
 For non-YAML file types, JSONPath expressions may not evaluate as expected. In these cases, you have the option to promote the entire file using **`*`** as a wildcard.
+
+
+
+
 
 <!--- Instead of having to navigate to GitHub, copy the file name, and then the paths in the file, we have made it easy to both select the file and configure JSON paths to its properties:
 * File selector with auto-complete
@@ -295,6 +299,19 @@ For non-YAML file types, JSONPath expressions may not evaluate as expected. In t
 %} 
 
 <!--- You can always add JSON path expressions directly if that's what you prefer. -->
+
+### Dashes in JSON keys
+Dashes in JSON keys are _not supported_ in path expressions using dot notation due to a limitation in the third-party library.  
+
+**Workaround**: 
+Use square bracket notation to specify the path, as shown below, making sure you use double quotes within the brackets.  
+For example:
+
+```json
+$["rollout-Canary"]["image"]["tag"]
+
+```
+
 
 ### JSON syntax for YAML files
 Here's a brief summary of JSON syntax and rules.
