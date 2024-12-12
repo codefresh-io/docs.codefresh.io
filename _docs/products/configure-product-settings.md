@@ -97,9 +97,7 @@ To unassign an application assigned declaratively to the product, remove the ann
 
 ## Configure labels
 
-Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities. 
-
-
+Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities by teams. 
 
 1. If needed, open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
@@ -278,3 +276,4 @@ Configure Promotion Settings to define:
 ## Related articles
 [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Access control for GitOps products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  

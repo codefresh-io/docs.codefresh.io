@@ -50,8 +50,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
+  cache_to:
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -81,19 +83,20 @@ The default behavior of the `build` step is defined a
 <!-- markdownlint-disable MD033 -->
 
 {: .table .table-bordered .table-hover}
-| Field       | Description                                                                                         | Required/Optional/Default |
-| ----------- | ---------------------------------------------------------                                           | ------------------------- |
-| `title`     | The free-text display name of the step.                                                             | Optional                  |
-| `description` | A basic, free-text description of the step.                                                       | Optional                  |
-| `stage`     | Parent group of this step. For more information, see [Stages in pipelines]({{site.baseurl}}/docs/pipelines/stages/).             | Optional                  |
+| Field       | Description         | Required/Optional/Default |
+| ----------- | ---------------------  | ------------------------- |
+| `title`     | The free-text display name of the step.                 | Optional                  |
+| `description` | A basic, free-text description of the step.           | Optional                  |
+| `stage`     | Parent group of this step. For more information, see [Stages in pipelines]({{site.baseurl}}/docs/pipelines/stages/).  | Optional  |
 | `working_directory`  | The directory in which the build command is executed. It can be an explicit path in the container's file system, or a variable that references another step. <br>The default is {% raw %} `${{main_clone}}` {% endraw %}. Note that the `working_directory` when defined changes only the Docker build context. It is unrelated to the `WORKDIR` in the Dockerile. | Default                   |
-| `dockerfile`    | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.          | Default                   |
-| `image_name` | The name of the image that is built.                                                                 | Required                  |
-| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.      | Optional                  |
-| `role_arn`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The Amazon Resource Name (ARN) of the IAM role to be assumed to push the built image to the ECR repository, in the format `arn:aws:iam::<cross-account-id>:role/<role-name>`, where:<br>`<account-id>` is the ID of the AWS account where the ECR repository is hosted. <br>`<role-name>` is the specified role with the required permissions within this account to access and manage the ECR repository.  | Required                  |
+| `dockerfile`    | The path to the `Dockerfile` from which the image is built. The default is `Dockerfile`.   | Default       |
+| `image_name` | The name of the image that is built.     | Required                  |
+| `region`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The names of the regions for which to perform cross-region replication. The names of the source region and the destination region name must be defined in separate steps.  | Optional   |
+| `role_arn`     | Relevant only for [Amazon ECR]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/) integrations using either service accounts or explicit credentials. <br>The Amazon Resource Name (ARN) of the IAM role to be assumed to push the built image to the ECR repository, in the format `arn:aws:iam::<cross-account-id>:role/<role-name>`, where:<br>`<account-id>` is the ID of the AWS account where the ECR repository is hosted. <br>`<role-name>` is the specified role with the required permissions within this account to access and manage the ECR repository.  | Required     |
 | `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
 | `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <code class="highlighter-rouge">tag</code> (see above). <br> This is an array, and should conform to the following syntax: <br><code class="highlighter-rouge">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</code><br><br>OR<br><code class="highlighter-rouge">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</code>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
+| `cache_to`   | The list of external destinations such as container registries to which to export the build cache using the `registry` type.  Every cache destination in the list is passed to the build command using the `--cache-to` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"} for more info.                     | Optional                   |
 | `registry`   | The name of the registry to which to push the built image. You can define any registry that is integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
 | `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. <br> NOTE: When using `buildx` to build and push multi-platform images, `registry_contexts` cannot be assigned a different registry from the same domain as the target registry defined for `registry`, as Docker does not support being logged in to multiple Docker registries that share the same domain at the same time.  | Optional                  |
 |`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.<br>This setting overrides the default behavior set at the account leve. See [Default behavior for buld steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#default-behavior-for-build-steps). <br><br>NOTE: Because of [Docker's limitation on loading multi-platform images](https://github.com/docker/buildx/issues/59){:target="\_blank"} to the local Docker instance, unless the built image is pushed as part of the `build` step, you cannot reference the same image in subsequent steps using the {% raw %}`${{build_step_name}}`{% endraw %} variable. | Optional                   |
@@ -113,7 +116,11 @@ The default behavior of the `build` step is defined a
 | `ssh`  | Available when using [Buildkit](#buildkit-support) for ssh keys. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#ssh){:target="\_blank"}| Optional   |
 | `secrets`  | Available when using [Buildkit](#buildkit-support) for secret mounting. See [more info](https://docs.docker.com/engine/reference/commandline/buildx_build/#secret){:target="\_blank"}| Optional   |
 | `platform`  | The [target platform or platforms](https://docs.docker.com/build/building/multi-platform/){:target="\_blank"} to which to push the image. For example, `linux/amd64`. To target multiple platforms, separate them with commas, as in `linux/amd64,linux/arm64`. <br>NOTE: To use this property, you must enable `buildx`. | Optional   |
-| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li>When set to <code class="highlighter-rouge">true</code>, caching is disabled.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can configure settings for <code class="highlighter-rouge">qemu</code> and <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The Docker image to use to install the <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries. Currently, Codefresh supports the <code class="highlighter-rouge">tonistiigi/binfmt</code> Docker image. <br>By default, installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image. </li><li><code class="highlighter-rouge">platforms</code>: The binaries of platform emulators to install with the Docker image defined for <code class="highlighter-rouge">image</code>. The default value is <code class="highlighter-rouge">all</code>.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code>  <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver_opts</code>: Additional driver-specific configuration options to customize the driver. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   |
+| `buildx`  |Build and push Docker images, including multi-platform images, with <a href="https://github.com/docker/buildx" target="_blank">Buildx</a>. Disabled by default. {::nomarkdown}<ul><li>To enable with default configuration, set to <code class="highlighter-rouge">true</code>. You do not have to add any other parameters.</li>When set to <code class="highlighter-rouge">true</code>, caching is disabled.</li><li>To enable with custom configuration, set to an object with custom configuration. With custom configuration, you can configure settings for <code class="highlighter-rouge">qemu</code> and <code class="highlighter-rouge">builder</code>.<ul><li><code class="highlighter-rouge">qemu</code><ul><li><code class="highlighter-rouge">image</code>: The image to use to install the <a href="https://github.com/qemu/qemu" target="_blank">QEMU</a> static binaries. If not specified, uses the <code class="highlighter-rouge">tonistiigi/binfmt</code> Docker image, and installs the binaries from the <code class="highlighter-rouge">tonistiigi/binfmt:latest</code> Docker image. {:/} <br>To use additional trusted QEMU images, see [Defining trusted QEMU images](#defining-trusted-qemu-images).{::nomarkdown}</li><li><code class="highlighter-rouge">platforms</code>: The binaries of platform emulators to install with the Docker image defined for <code class="highlighter-rouge">image</code>. The default value is <code class="highlighter-rouge">all</code>.</li></ul><li><code class="highlighter-rouge">builder</code>: <ul><li><code class="highlighter-rouge">driver</code>: The builder driver to use. By default, uses <code class="highlighter-rouge">docker-container</code>  <a href="https://docs.docker.com/build/building/drivers/docker-container" target="_blank">driver</a> to build multi-platform images and export cache using a <a href="https://github.com/moby/buildkitBuildKit" target="_blank">BuildKit</a> container.<li><code class="highlighter-rouge">driver_opts</code>: Additional driver-specific configuration options to customize the driver. For example, <code class="highlighter-rouge">image=moby/buildkit:master</code>.</li></ul></li></ul>{:/} | Optional   |
+
+
+
+
 
 <!-- markdownlint-enable MD033 -->
 
@@ -153,8 +160,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
+  cache_to:
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -306,6 +315,32 @@ steps:
     cache_from:
     - my-registry/my-app-image:${{CF_BRANCH}}
     - my-registry/my-app-image:master
+```
+
+{% endraw %}
+
+### Using `cache_from` and `cache_to` with `buildx`
+
+`codefresh.yml`
+{% raw %}
+
+```yaml
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildx:
+      builder:
+        driver: docker-container
+    cache_from:
+    - type=registry,ref=my-registry/my-app-image:${{CF_BRANCH}}
+    - type=registry,ref=my-registry/my-app-image:master
+    cache_to:
+    - type=registry,mode=max,oci-mediatypes=true,image-manifest=true,compression=zstd,ref=my-registry/my-app-image:${{CF_BRANCH}}
 ```
 
 {% endraw %}
@@ -728,6 +763,30 @@ steps:
 {% endraw %}
 
 You can combine all options (`ssh`, <!--- `progress`,--> `secrets`) in a single build step if desired.
+
+## Defining trusted QEMU images
+The `build` step supports other QEMU images in addition to the default image.  
+To add these images, you must first define them as trusted images in your `values.yaml` file, in `runtime.engine.env.TRUSTED_QEMU_IMAGES`.  
+
+* Each image must include the full image name. 
+* Images from non-Docker Hub repositories must also include the repository name in addition to the image name. 
+* Image tags are optional.  
+
+>**NOTE**  
+This functionality is supported from Helm chart version **7.1.6**.  
+If the Runtime is already installed, don't forget to run `helm upgrade` to apply the changes to the deployed release. 
+
+##### Example
+The example below defines two trusted QEMU images, the first from GitHub Container Registry, specifying the repository and image name, and the second from Docker Hub without the `docker.io` prefix.
+
+```yaml
+...
+runtime:
+  engine:
+    env:
+      TRUSTED_QEMU_IMAGES: "ghcr.io/example/qemu-image,qemu-user-static"
+...
+```
 
 ## Related articles
 [Default behavior for build steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#default-behavior-for-build-steps)  

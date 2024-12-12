@@ -65,6 +65,24 @@ If this is your first time installing a GitOps Runtime in your Codefresh account
 Terminology clarifications:  
 In the documentation, Hybrid GitOps Runtimes are also referred to as GitOps Runtimes.  
 
+## Git token usage 
+
+As a GitOps platform, Codefresh needs to create and access your Git repositories to both store runtime configuration settings for the account, and allow Argo CD to sync Kubernetes resources and templates from the different repositories to your cluster.  
+
+We use Git personal access tokens for this: one for Runtimes, and another for each user. 
+
+>**IMPORTANT**  
+At all times, _both tokens are always securely stored on your cluster_ and never stored locally on our platform. 
+
+* **Git Runtime token**  
+  The Git Runtime token is a Git access token required during the Runtime installation. It is typically associated with a service or robot account and managed by the account administrator.      
+  It is used to create a Git repository to store configuration settings shared across all Runtimes in the account, such as Helm charts and values files. It also enables Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.
+
+* **Git user token**  
+  The Git user token is also a Git access token, unique to each user in the account. It is created after Runtime installation and managed individually by each user. Enables users to manage Git repositories and authorize Git operations or actions directly from the UI or CLI.
+
+Read more on [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).
+
 
 
 ## Preparing for Hybrid GitOps Runtime installation
@@ -207,7 +225,7 @@ where:
 ## Install first GitOps Runtime in account
 If this is the first GitOps Runtime installation in your Codefresh account, install the Runtime from the Codefresh UI, following the step-by-step installation procedure.
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. See ???
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
 
 ### Before you begin
@@ -217,7 +235,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
   * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions -->
+    * [Git user token]({{site.baseurl}}/docs/reference/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions 
     * Server URLs for on-premises Git providers
 * For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration](#ambassador-ingress-configuration)

@@ -26,13 +26,13 @@ max-width="60%"
 
 Here’s what makes Codefresh's GitOps promotions unique:
 
-* **Declarative and version-controlled**
+* **Declarative and version-controlled**  
   Promotions are tracked in Git as code. Every promotion is tied to a Git commit, giving you full traceability and version control. This means teams can always see who approved or triggered a promotion and why.
 
 <!--- * **Automated Git sync**  
   With GitOps, the desired state of environments is automatically synced based on the Git repository, ensuring that any promotion aligns with the latest approved application version.  -->
 
-* **Context and visibility** 
+* **Context and visibility**  
   While Argo CD manages deployments as individual applications, Codefresh introduces **environments** and **products** for a more intuitive and cohesive view of complex systems, and CD management:
     * Environments represent different stages in development. Environments allow teams to easily track applications as they progress through the SDLC. 
       Read more on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/). 

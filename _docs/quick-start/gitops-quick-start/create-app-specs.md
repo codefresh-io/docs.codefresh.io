@@ -6,7 +6,9 @@ sub-group: gitops-quick-start
 toc: true
 ---
 
-Now that you have created `codefresh-guestbook` as an Argo CD application, you need to deploy it. Let's deploy the `codefresh-guestbook` application by creating and committing resources.  
+Now that you have created `codefresh-guestbook` as an Argo CD application, you need to deploy it.  
+Let's deploy the `codefresh-guestbook` application by creating and committing resources.  
+
 You will create and commit the following resources:  
 1. A folder in Git to save resources for the application 
 1. `Rollout` resource defining the deployment strategy 
@@ -27,7 +29,7 @@ Create a folder in the Git repo in which to save all the resources for the `code
 Create a rollout resource for the application you want to deploy.  
   
 
-To leverage Argo Rollouts' deployment capabilities, we are using the Argo's `rollout` resource instead of the native Kubernetes Deployment object.
+To leverage Argo Rollouts' deployment capabilities, we are using Argo's `rollout` resource instead of the native Kubernetes Deployment object.
 For detailed information on the fields you can define, see [Argo Rollout specification](https://argoproj.github.io/argo-rollouts/features/specification/){:target="\_blank"}. 
 
 
