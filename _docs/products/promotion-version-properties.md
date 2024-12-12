@@ -91,7 +91,7 @@ The diagram illustrates how the version attributes configured for the product ar
 * If the version is not displayed in the dashboards, it could be because your application is not a Helm application.
 * For Helm applications, if the version is either not displayed or is not correct, it could be because:
     * Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
-    * The JSON key includes a dash character which is not supported. See [Dashes in JSON keys](#dashes-in-json-keys].
+    * The JSON key includes a dash character which is not supported. See [Dashes in JSON keys](#dashes-in-json-keys).
 
 
 ### Examples of version attributes
