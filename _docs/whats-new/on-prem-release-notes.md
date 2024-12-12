@@ -11,10 +11,10 @@ Welcome to the release notes for our on-premises releases.
 ### Features & enhancements
 
 #### Installing v2.6 
-For detailed instructions on installing v2.6, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+For instructions on installing v2.6, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 #### Upgrading to v2.6
-For details, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-6-0){:target="\_blank"}.
+For details on upgrading to v2.6, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-6-0){:target="\_blank"}.
 
 #### Enable auto-index creation in MongoDB
 From v2.6, the `cfapi` service can automatically create indexes in MongoDB.
