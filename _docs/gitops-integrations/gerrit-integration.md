@@ -12,6 +12,7 @@ Codefresh supports integration with Gerrit, the open-source web-based code revie
 >**NOTE**   
 Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.   
 We support Gerrit version 3.6 (tested with 3.6.3) and 3.10 (tested with 3.10.1).
+>For your next Gerrit upgrade, we’ll make our best effort to support the new version, but cannot guarantee specific timelines.
 
 
 By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can select Gerrit as your Git provider.
