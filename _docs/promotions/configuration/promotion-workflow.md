@@ -64,7 +64,7 @@ After creating Promotion Workflows, there are two ways to use them in the promot
 
 ##### Arguments in Pre-Action and Post-Action Workflows
 Codefresh passes a set of arguments it retrieves during the promotion process to both Pre- and Post-Action Workflows. You can use these as dynamic data throughout the promotion lifecycle.  
-See [Arguments in Pre-Action and Post-Action Workflows](#arguments-for-pre-action-and-post-action-workflows).
+See [Parameters in Pre-Action and Post-Action Workflows](#parameters-in-pre-action-and-post-action-workflows).
 
 ##### Manage workflows and workflow instances
 After creating Promotion Workflows, you can [manage workflows](#managing-promotion-workflows) and [workflow instances](#managing-workflow-instances). 
