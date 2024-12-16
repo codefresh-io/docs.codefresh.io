@@ -399,7 +399,7 @@
       url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
-    - title: Promotions end-to-end guide
+    - title: Promotions Setup & configuration guidelines
       url: "/create-promotion-sequence"
     - title: Promotion tutorials
       url: "/promotion-scenarios"  
@@ -414,8 +414,8 @@
         url: "/parallel-multi-env-promotion"  
       - title: Multi-environment promotion with dependencies
         url: "/dependency-multi-env-promotion"  
-    - title: Configuration
-      url: "/configuration"
+    - title: Entities
+      url: "/entities"
       sub-pages: 
       - title: Promotion Flows
         url: "/promotion-flow"     
