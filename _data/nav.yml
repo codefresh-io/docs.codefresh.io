@@ -399,7 +399,7 @@
       url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
-    - title: Promotions Setup & configuration guidelines
+    - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
     - title: Promotion tutorials
       url: "/promotion-scenarios"  

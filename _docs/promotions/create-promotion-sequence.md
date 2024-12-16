@@ -1,15 +1,16 @@
 ---
-title: "Promotions: Setup & activation guidelines"
-description: "High-level guide to creating, triggering, and monitoring promotions"
+title: "Promotions: Setup & configuration guidelines"
+description: "High-level tasks for creating, triggering, and monitoring promotions"
 group: promotions
 toc: true
 ---
 
+This article outlines the tasks required to configure, activate, and monitor GitOps promotions in Codefresh.
 
-This article describes the tasks to create, trigger, and monitor GitOps promotions. 
+Promotions are a critical part of continuous delivery, enabling you to move changes through environments while meeting deployment and compliance requirements. A successful promotion sequence depends on key components that govern and orchestrate the promotion flow across environments. To review these components, see [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/).
 
-A successful promotion sequence relies on [several key components]({{site.baseurl}}/docs/promotions/promotion-components/) that govern and orchestrate the promotion flow across environments.  
-The sections that follow describe the tasks to configure promotions for your specific deployment and compliance needs.
+The sections in this article outline the tasks to set up and manage promotions tailored to your specific deployment requirements.
+
 
 <!--- For step-by-step walkthroughs, review and follow along with our quick starts. -->
 
