@@ -1,14 +1,17 @@
 ---
-title: "Promotions: End-to-end guide"
-description: "Step-by-step guide to creating, triggering, and monitoring promotions"
+title: "Promotions: Setup & configuration guidelines"
+description: "High-level tasks for creating, triggering, and monitoring promotions"
 group: promotions
 toc: true
 ---
 
+This article outlines the tasks required to configure, activate, and monitor GitOps promotions in Codefresh.
 
-This article covers the end-to-end flow of creating a promotion sequence, from initial setup to execution and monitoring. 
+Promotions are a critical part of continuous delivery, enabling you to move changes through environments while meeting deployment and compliance requirements. A successful promotion sequence depends on key components that govern and orchestrate the promotion flow across environments. To review these components, see [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/).
 
-A successful promotion sequence relies on [several key components]({{site.baseurl}}/docs/promotions/promotion-components/) that govern and orchestrate the promotion flow across environments. 
+
+
+<!--- For step-by-step walkthroughs, review and follow along with our quick starts. -->
 
 
 <!--- This guide covers the end-to-end flow of creating a promotion sequence, from initial setup to execution. Promotion sequences in Codefresh provide a structured way to move changes through different environments, integrating checks and policies to ensure stability, compliance, and predictable deployments.
@@ -34,7 +37,7 @@ enhance consistency, create reusable templates that apply across products.
 
 
 
-The sections that follow describe the steps you'll need to configure for your specific deployment and compliance needs.
+
 
 ### Prerequisites
 1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)  
@@ -48,7 +51,7 @@ The sections that follow describe the steps you'll need to configure for your sp
 1. [User permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
   Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
-### How to: Step-by-step
+### Tasks
 1. [Create environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments)  
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 

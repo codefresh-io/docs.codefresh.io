@@ -56,14 +56,14 @@
       localurl: /docs/promotions/getting-started/
     - title: Promotion building blocks
       localurl: /docs/promotions/promotion-components/
-    - title: Promotions end-to-end guide
+    - title: Promotion setup guidelines
       localurl: /docs/promotions/create-promotion-sequence/
     - title: Promotion tutorials
       localurl: /docs/promotions/promotion-scenarios/
     - title: Configuration
-      localurl: /docs/promotions/configuration
+      localurl: /docs/promotions/entities
     - title: YAML specs
-      localurl: /docs/promotions/configuration/yaml/
+      localurl: /docs/promotions/entities/yaml/
     - title: Trigger promotions
       localurl: /docs/promotions/trigger-promotions/ 
     - title: Tracking releases for products
