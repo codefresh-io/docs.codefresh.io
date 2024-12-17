@@ -31,6 +31,33 @@ The list of indexes are in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_na
 
 **Important**: We recommend enabling this feature during a maintenance window, as creating indexes can temporarily degrade database performance.
 
+#### New index for image-binaries
+We have introduced a new index for the `image-binaries` collection.  
+If you are upgrading to this version, you must create the index _before upgrading_ to prevent disruption and avoid performance issues.
+
+##### Create index 
+
+`accountId_1_imageName_1` (db: `codefresh`; collection: `image-binaries`)
+
+##### Index details
+
+```json
+{
+  "accountId": 1,
+  "imageName": 1
+}
+```
+
+##### Index properties
+
+```json
+{
+  "collation": {
+    "locale": "en_US",
+    "strength": 1
+  }
+}
+```
 
 #### General: Annotate image by name via CLI
 Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
