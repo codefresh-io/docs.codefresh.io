@@ -303,10 +303,10 @@ For non-YAML file types, JSONPath expressions may not evaluate as expected. In t
 <!--- You can always add JSON path expressions directly if that's what you prefer. -->
 
 ### Dashes in JSON keys
-Dashes in JSON keys are _not supported_ in path expressions using dot notation due to a limitation in the third-party library.  
+Dashes in JSON keys are currently _not supported_ in path expressions using dot notation.  
 
 **Workaround**: 
-Use square bracket notation to specify the path, as shown below, making sure you use double quotes within the brackets.  
+Use square bracket notation to specify the path, as shown below, and double quotes within the brackets to escape the dashes.  
 For example:
 
 ```json
