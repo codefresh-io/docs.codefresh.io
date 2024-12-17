@@ -7,9 +7,7 @@ toc: true
 ---
 
 Hybrid GitOps Runtimes are installed via Helm charts. 
-
-
-## New installation 
+ 
 If this is your first time installing GitOps in Codefresh, review and confirm that your deployment environment conforms to the minimum requirements for Hybrid GitOps installation. Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
 
  
