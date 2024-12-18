@@ -11,7 +11,7 @@ Welcome to the release notes for our on-premises releases.
 ### Features & enhancements
 
 #### Installing v2.6 
-For instructions on installing v2.6, visit [ArtifactHub](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}.
+For instructions on installing v2.6, visit [GitHub](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}.
 
 #### Upgrading to v2.6
 For details on upgrading to v2.6, see [Upgrade to 2.6](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh#to-260){:target="\_blank"}.
@@ -27,7 +27,7 @@ cfapi:
     env:
       MONGOOSE_AUTO_INDEX: "true"
 ```
-The list of indexes are in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
+In GitHub, the list of indexes are in [`codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh/files/indexes/2.6){:target="\_blank"}.
 
 **Important**: We recommend enabling this feature during a maintenance window, as creating indexes can temporarily degrade database performance.
 
