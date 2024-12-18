@@ -19,7 +19,7 @@ For details on upgrading to v2.6, see [Upgrade to 2.6](https://github.com/codefr
 #### Enable auto-index creation in MongoDB
 From v2.6, the `cfapi` service can automatically create indexes in MongoDB.
 
-This feature is disabled by default. To enable it, set the `MONGOOSE_AUTO_INDEX` environment variable to `true` as shown below 
+This feature is disabled by default. To enable it, set the `MONGOOSE_AUTO_INDEX` environment variable to `true` as shown below. 
 
 ```yaml
 cfapi:
