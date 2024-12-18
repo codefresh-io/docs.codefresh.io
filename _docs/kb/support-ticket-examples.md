@@ -56,13 +56,6 @@ In order to troubleshoot issues or bugs effectively, Codefresh Support requires 
 1. **Screenshots** or **videos** showing the behavior.
    - Please include the **full** browser window
 
-#### Security Concerns
-
-1. **Report from the security team/tool**, if any.
-1. Description of the potential data loss or **security vulnerability**.
-1. The **CVE and the specific image** it pertains to.
-1. **Logs or evidence** highlighting inconsistencies or failures.
-
 #### Functional Errors
 
 1. Exact **error messages** received.
@@ -91,6 +84,13 @@ In order to troubleshoot issues or bugs effectively, Codefresh Support requires 
 1. **Ebs-csi pods logs** in kube-system to check for any AWS errors (if volume issues and using the ebs-csi backed).
 
 > Alternatively, to collect the above data (3-6), you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package).
+
+#### Security Concerns
+
+1. **Report from the security team/tool**, if any.
+1. Description of the potential data loss or **security vulnerability**.
+1. The **CVE and the specific image** it pertains to.
+1. **Logs or evidence** highlighting inconsistencies or failures.
 
 ## Support Template: Feature requests
 
