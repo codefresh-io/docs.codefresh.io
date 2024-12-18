@@ -16,6 +16,9 @@ For instructions on installing v2.6, visit [GitHub](https://github.com/codefresh
 #### Upgrading to v2.6
 For details on upgrading to v2.6, see [Upgrade to 2.6](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh#to-260){:target="\_blank"}.
 
+
+<br>
+
 #### Enable auto-index creation in MongoDB
 From v2.6, the `cfapi` service can automatically create indexes in MongoDB.
 
@@ -27,9 +30,11 @@ cfapi:
     env:
       MONGOOSE_AUTO_INDEX: "true"
 ```
-In GitHub, the list of indexes are in [`codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json`](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh/files/indexes/2.6){:target="\_blank"}.
+In GitHub, the list of indexes are in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json`. Go to [GitHub](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh/files/indexes/2.6){:target="\_blank"}.
 
 **Important**: We recommend enabling this feature during a maintenance window, as creating indexes can temporarily degrade database performance.
+
+<br>
 
 #### New index for image-binaries
 We have introduced a new index for the `image-binaries` collection.  
@@ -59,6 +64,8 @@ If you are upgrading to this version, you must create the index _before upgradin
 }
 ```
 
+<br>
+
 #### General: Annotate image by name via CLI
 Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
 
@@ -82,6 +89,7 @@ Here's an example of the CLI command:
 
 To use this feature, make sure to upgrade to the latest CLI version.
 
+<br>
 
 #### Pipelines: Octopus Deploy integration
 We're excited to announce the first set of official Codefresh steps for Octopus Deploy! 
@@ -97,6 +105,8 @@ Explore these steps in the [Codefresh steps marketplace](https://codefresh.io/st
 * Push build information to Octopus Deploy
 
 For details, see [Octopus Deploy pipeline integration]({{site.baseurl}}/docs/integrations/octopus-deploy/).
+
+<br>
 
 #### Pipelines: Expanded support for `buildx qemu` images
 For Docker `build` steps, you can now specify a `buildx qemu` image from any container registry, allowing users to use self-hosted registries, including Artifactory.  
@@ -116,6 +126,8 @@ runtime:
 ```
 
 For details, see [Defining trusted QEMU images]({{site.baseurl}}/docs/pipelines/steps/build/#defining-trusted-qemu-images).
+
+<br>
 
 #### Pipelines: Export build cache to external destinations
 We've enhanced the `build` step by introducing the `cache_to` parameter. The parameter allows you to export build caches to one or more external destinations, improving portability and enabling faster builds. Combined with the `cache_from` parameter, it provides a powerful mechanism for leveraging cached layers across pipelines and environments.
@@ -144,6 +156,8 @@ steps:
 
 For details, see [Fields in build step]({{site.baseurl}}/docs/pipelines/steps/build/#fields).
 
+<br>
+
 #### Pipelines: Output parameters in `arguments` attribute
 
 Plugins in pipelines can now consume outputs directly from the `arguments` attributes within step definitions, optimizing pipeline functionality.
@@ -162,6 +176,7 @@ Now, plugins can consume outputs from both the `arguments` and `commands` attrib
 {% endraw %}
 ```
 
+<br>
 
 #### GitOps: Reporting for multi-architecture images
 Image reporting is now available for multi-architecture images.  
@@ -180,6 +195,8 @@ On drill down into the image from the Images dashboard, the OS/Arch column displ
    max-width="80%" 
    %}
 
+<br>
+
 #### GitOps: Display full name for applications
 We have improved usability of the Current State tab in the GitOps Apps dashboard by displaying the full name of all resources in Tree view.
 
@@ -196,7 +213,7 @@ If you have naming conventions that result in long names, easily toggle between 
    %}
 
 
-
+<br>
 
 #### GitOps: Enhanced visibility and control for Runtimes
 
@@ -235,6 +252,8 @@ Clicking a link takes you to **GitOps Apps > Current State** tab for the applica
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
+<br>
+
 ##### New Feature Flags in v2.6
 The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.6.
 
@@ -256,7 +275,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `useSeparatePlanner` |When enabled, uses the new version of the Planner for pipelines.  | FALSE    |
 | `yamlTreeJsonPathBuilder`     | When enabled, displays the YAML file in tree mode, allowing users to easily select an attribute and automatically generate a JSON path. Available in **Product > Settings > Promotion Settings**.   | TRUE         |
 
-
+<br>
 
 ##### Updated Feature Flags in v2.6
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
