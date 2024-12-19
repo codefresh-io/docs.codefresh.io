@@ -38,19 +38,19 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >### Impact
 >
->Describe the business impact of this issue. Is the issue affecting any projects that have a set deadline?
+>Describe the business impact of this issue. Does the issue affect any projects with set deadlines?
 
 ### Additional Information for Issues/Bugs
 
-To troubleshoot issues or bugs effectively, Codefresh Support requires detailed description of the issue which includes the following information:
+To troubleshoot issues or bugs effectively, Codefresh Support requires a detailed description of the issue which includes the following information:
 
 #### Functional errors
 
 1. Exact **error messages** received.
 1. Failed **build IDs** (1-3 examples).
 1. Does the issue persist after a **new run**, not just a restart?
-1. Were **any changes** recently made to the pipeline?
-1. **Last successful execution** and when the issue first occurred.
+1. Were **any changes** made recently to the pipeline?
+1. **Last successful execution**, and when the issue first occurred.
 1. Details on the **affected pipelines** (e.g., how many, names, etc.).
 1. Codefresh **runner version and setup** (e.g., SaaS, hybrid, or on-prem).
 1. **User impersonation**.
@@ -61,7 +61,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires detailed 
    - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"} to collect the required data *while the affected build is running and the error message is received*.
 1. **Helm values file** (to identify overrides such as images or other configurations).
 
-#### UI issues: Slowness and other issues
+#### UI: Slowness and other issues
 
 1. Codefresh **usernames** and **number** of affected users.
 1. **Link to UI** page being accessed.
@@ -71,7 +71,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires detailed 
 1. Do you use a **VPN/proxy** to access the page?
 1. **HAR file** (a log of network requests during the incident). [HAR File Guide](https://codefresh.io/docs/docs/kb/articles/data-needed-ui-issues/).
 1. **Screenshots** or **videos** showing the behavior.
-   - Please include the **full** browser window in the screenshot/video.
+   - Please make sure that the screenshot/video includes the **full** browser window.
 
 #### Scalability and resource management
 
