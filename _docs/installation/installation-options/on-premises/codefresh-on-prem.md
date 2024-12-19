@@ -10,12 +10,12 @@ redirect_from:
 toc: true
 ---
 
-To install the on-premises version of the Codefresh platform, review the [ReadMe](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}, available in ArtifactHub.  
+To install the on-premises version of the Codefresh platform, review the [ReadMe](https://github.com/codefresh-io/codefresh-onprem-helm/blob/release-2.6/codefresh/README.md){:target="\_blank"} on GitHub.  
 To turn on High Availability (HA), see [On-premises High-Availability configuration guidelines](#on-premises-high-availability-guidelines). 
 
-After you install Codefresh on-premises, review the platform configuration options described in ArtifactHub:
-* [Helm chart configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#helm-chart-configuration){:target="\_blank"}
-* [Additional configuration](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#additional-configuration){:target="\_blank"}
+After you install Codefresh on-premises, review the platform configuration options:
+* [Helm chart configuration](https://github.com/codefresh-io/codefresh-onprem-helm/blob/release-2.6/codefresh/README.md#chart-configuration){:target="\_blank"}
+* [Additional configuration](https://github.com/codefresh-io/codefresh-onprem-helm/blob/release-2.6/codefresh/README.md#additional-configuration){:target="\_blank"}
 
 This article describes configuration options available in the Codefresh UI: 
 * [Disable user and team management](#disable-user-and-team-management)
