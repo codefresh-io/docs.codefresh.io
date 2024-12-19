@@ -81,7 +81,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires detailed 
 1. **Events** from the namespace.
 1. **Runner** pod logs.
 1. **Volume-provisioner** pod logs.
-1. **Ebs-csi pod logs**: If there are volume issues and you're using `ebs-csi`, check Ebs-csi pods logs in the `kube-system` namespace.
+1. **Ebs-csi pod logs** in the `kube-system` namespace if there are volume issues and you're using `ebs-csi`.
 
 > Alternatively, to collect the data for 3 through 6, use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"}.
 
