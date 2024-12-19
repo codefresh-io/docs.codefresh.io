@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Exploring the Product Dashboard"
 description: "Gain insights into applications, versions, and deployment details"
-group: quick-start
+group: gitops-quick-start
 toc: true
 ---
 

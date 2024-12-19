@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Drag-and-drop promotion"
 description: "Promote product apps between two environments"
-group: promotions
+group: gitops-quick-start
 toc: true
 ---
 

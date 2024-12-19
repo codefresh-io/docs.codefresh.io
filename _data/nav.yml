@@ -34,12 +34,14 @@
     - title: Create Codefresh account
       url: "/create-codefresh-account"
     - title: GitOps Runtimes & Git Sources
-      url: "/"
+      url: "/qs-runtimes-overview"
       sub-pages: 
       - title: Preparing for Hybrid GitOps Runtime installation
         url: "/verify-requirements"
       - title: Installing a Hybrid GitOps Runtime
         url: "/runtime"
+      - title: Creating Git Sources
+        url: "/create-git-source"
     - title: Environments, Products, Applications
       url: "/products"
       sub-pages: 

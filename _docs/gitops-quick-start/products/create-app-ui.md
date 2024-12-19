@@ -1,6 +1,6 @@
 ---
 title: "Quick start: Creating applications"
-description: ""
+description: "Create Argo CD applications in Codefresh"
 group: gitops-quick-start
 toc: true
 ---

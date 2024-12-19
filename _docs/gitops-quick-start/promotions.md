@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Promotions in Codefresh GitOps"
 description: "Explore basic & advanced promotion scenarios"
-group: promotions
+group: gitops-quick-start
 toc: true
 ---
 
@@ -33,7 +33,7 @@ To enable more advanced deployment strategies, promotions have additional unique
   Use our Promotion Flow entity to create complex, multi-environment deployment strategies.
 
 * **Promotion Workflows**  
-  Introduce  gates in the promotion process through Promotion Workflows, another entity unique to promotions in GitOps.  
+  Introduce gates in the promotion process through Promotion Workflows, another entity unique to promotions in GitOps.  
   Through Promotion Workflows, you can create and implement any type of tests to validate readiness, enforce compliance, mitigate risks, and confirm performance. By incorporating gates, Promotion Workflows provide structured, repeatable validation points throughout your promotion sequence, giving you confidence in every deployment.
 
 Explore these quick starts on promotions:

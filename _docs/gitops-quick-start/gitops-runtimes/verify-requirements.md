@@ -1,8 +1,7 @@
 ---
 title: "Quick start: Preparing for Hybrid GitOps Runtime installation"
-description: ""
-group: getting-started
-sub-group: quick-start
+description: "Verify you're ready for Runtime installation"
+group: gitops-quick-start
 toc: true
 ---
 

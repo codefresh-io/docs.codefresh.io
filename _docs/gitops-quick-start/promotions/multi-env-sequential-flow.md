@@ -1,7 +1,7 @@
 ---
 title: "QUick start: Multi-environment sequential promotion"
 description: "Promote product apps between multiple environments sequentially"
-group: promotions
+group: gitops-quick-start
 toc: true
 ---
 

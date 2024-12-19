@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Creating Environments"
 description: "Explore how environments empower application promotion and deployment"
-group: quick-start
+group: gitops-quick-start
 toc: true
 ---
 
@@ -106,6 +106,5 @@ At this point, as we haven't created any applications, all environments are empt
 ## What's next
 You’re probably eager to dive into applications. Before we do that let's create another entity that simplifies and supercharges applications: Products.
 
-and that's exactly what we'll do next.
 
 [Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)

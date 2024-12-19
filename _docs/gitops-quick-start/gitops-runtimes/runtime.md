@@ -1,8 +1,7 @@
 ---
 title: "Quick start: Installing a Hybrid GitOps Runtime"
 description: "Install the Helm-based Hybrid GitOps Runtime"
-group: getting-started
-sub-group: quick-start
+group: gitops-quick-start
 toc: true
 ---
 

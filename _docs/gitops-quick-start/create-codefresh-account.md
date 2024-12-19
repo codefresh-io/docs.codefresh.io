@@ -1,7 +1,7 @@
 ---
 title: "Create Codefresh account"
 description: "Start working in Codefresh"
-group: quick-start
+group: gitops-quick-start
 redirect_from:
   - /docs/getting-started/create-a-codefresh-account/
   - /docs/

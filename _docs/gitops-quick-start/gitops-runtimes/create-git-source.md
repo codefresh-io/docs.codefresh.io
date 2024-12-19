@@ -1,6 +1,6 @@
 ---
 title: "Quick start: Creating a Git Source"
-description: "Create a Git Source to store application manifests"
+description: "Add a Git Source to Runtimes to store application manifests"
 group: gitops-quick-start
 toc: true
 ---

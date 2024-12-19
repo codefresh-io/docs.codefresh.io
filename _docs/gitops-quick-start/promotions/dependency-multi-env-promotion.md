@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Multi-environment promotion with dependencies"
 description: "Promote product apps between environments with dependencies"
-group: promotions
+group: gitops-quick-start
 toc: true
 ---
 
@@ -56,8 +56,7 @@ caption="YAML view of Promotion Flow with updated dependencies"
 max-width="60%"
 %}
 
-## Related articles
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)
+
 
  
  

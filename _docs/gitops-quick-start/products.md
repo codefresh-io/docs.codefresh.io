@@ -1,7 +1,7 @@
 ---
 title: "Quick start: Environments, products and applications in Codefresh GitOps"
 description: "Explore how to create and work with entities to promote and deploy applications"
-group: quick-start
+group: gitops-quick-start
 toc: true
 ---
 
