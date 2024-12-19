@@ -34,27 +34,15 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >### How to reproduce
 >
->A step-by-step guide on how to reproduce this issue.
+>A step-by-step guide on how to reproduce this issue. 
 >
 >### Impact
 >
->Describe the business impact of this issue.
+>Describe the business impact of this issue. Is the issue affecting any projects that have a set deadline?
 
 ### Additional Information for Issues/Bugs
 
 To troubleshoot issues or bugs effectively, Codefresh Support requires detailed description of the issue which includes the following information:
-
-#### UI issues: Slowness and other issues
-
-1. Codefresh **usernames** and **number** of affected users.
-1. **Link to UI** page being accessed.
-1. **Action** being performed.
-1. **Timestamp** of incident.
-1. Does the issue persist in **another browser** or in **incognito mode**?
-1. Do you use a **VPN/proxy** to access the page?
-1. **HAR file** (a log of network requests during the incident). [HAR File Guide](https://codefresh.io/docs/docs/kb/articles/data-needed-ui-issues/).
-1. **Screenshots** or **videos** showing the behavior.
-   - Please include the **full** browser window in the screenshot/video.
 
 #### Functional errors
 
@@ -73,6 +61,18 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires detailed 
    - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"} to collect the required data *while the affected build is running and the error message is received*.
 1. **Helm values file** (to identify overrides such as images or other configurations).
 
+#### UI issues: Slowness and other issues
+
+1. Codefresh **usernames** and **number** of affected users.
+1. **Link to UI** page being accessed.
+1. **Action** being performed.
+1. **Timestamp** of incident.
+1. Does the issue persist in **another browser** or in **incognito mode**?
+1. Do you use a **VPN/proxy** to access the page?
+1. **HAR file** (a log of network requests during the incident). [HAR File Guide](https://codefresh.io/docs/docs/kb/articles/data-needed-ui-issues/).
+1. **Screenshots** or **videos** showing the behavior.
+   - Please include the **full** browser window in the screenshot/video.
+
 #### Scalability and resource management
 
 1. Codefresh **runner version and setup** (e.g., SaaS, hybrid, or on-prem).
@@ -82,6 +82,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires detailed 
 1. **Runner** pod logs.
 1. **Volume-provisioner** pod logs.
 1. **Ebs-csi pod logs** in the `kube-system` namespace if there are volume issues and you're using `ebs-csi`.
+1. Overview of cluster **scale up/down events** for the relevant timeframe.
 
 > Alternatively, to collect the data for 3 through 6, use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"}.
 
