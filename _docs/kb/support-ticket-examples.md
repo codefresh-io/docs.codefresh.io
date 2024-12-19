@@ -30,7 +30,7 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >A detailed description of this issue.
 >
->Please see [Additional Information for Issues / Bugs](#additional-information-for-issues--bugs)
+>Please see [Additional Information for Issues/Bugs](#additional-information-for-issues-bugs)
 >
 >### How to reproduce
 >
