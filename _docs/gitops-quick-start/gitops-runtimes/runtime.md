@@ -52,7 +52,7 @@ max-width="60%"
 
 
 ## What's next
-Let's create a Git Source to which we'll link the applications we'll create later in the quick start. 
+Let's create a Git Source to which we'll link the applications we'll create later on in the quick start series. 
 
 Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
 

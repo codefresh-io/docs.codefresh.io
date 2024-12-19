@@ -151,27 +151,25 @@ Mouse over the product name in any environment to see the associated application
 
 ## View changes in Product Dashboard
 
-Let's return to the Environments dashboard to see how the new apps we created are displayed in it.
+Let's visit the Product Dashboard now that we have created applications and assigned them to the `demo-trioapp` product.
  
-* From the sidebar, select **Environments**.
+* From the sidebar, select **Products**, and then click the product, `demo-trioapp`.
+ 
+Here's an example of the Product Dashboard with the applications we created for the quick start.
 
 
-Each environment displays the product `demo-trioapp`.
-Mouse over the product name in any environment to see the associated application.
 
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
-   url="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
-   alt="Applications quick start: Environments with product and applications" 
-   caption="Applications quick start: Environments with product and applications"
-   max-width="70%" 
-   %} 
-
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/environments-products/product-dashboard-view.png" 
+	url="/images/quick-start/environments-products/product-dashboard-view.png" 
+	alt="Applications quick start: Product Dashboard with product's applications" 
+	caption="Applications quick start: Product Dashboard with product's applications"
+  max-width="60%" 
+%}
 
 ## What's next
-And that is exactly what we'll do in the next quick start.  
-You can explore the [concept of products in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/products/) and see how they boost the power of your applications, simplifying promotion and deployment. 
+It's useful to explore the Product Dashboard with the product and its applications. 
 
-[Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create.md)
+[Quick start: Exploring the Product Dashboard]({{site.baseurl}}/_docs/gitops-quick-start/products/quick-start-product-dashboard/)

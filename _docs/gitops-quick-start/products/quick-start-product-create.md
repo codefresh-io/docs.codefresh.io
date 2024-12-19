@@ -59,7 +59,7 @@ A product requires a unique name, and an annotation through which to connect the
 
 
 ## What's next
-After creating two of the three core entities for GitOps promotions, environments and products, we are ready to launch into applications.
+After creating two of the three core entities for GitOps promotions, environments and products, we are ready to dive into applications.
 
 [Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
 

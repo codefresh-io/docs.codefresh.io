@@ -1,5 +1,5 @@
 ---
-title: "Multi-environment parallel promotion"
+title: "Quick start: Multi-environment parallel promotion"
 description: "Promote product apps between environments in parallel"
 group: gitops-quick-start
 toc: true
@@ -106,7 +106,7 @@ max-width="60%"
 ## What's next
 The final quick start in this series will guide you through creating dependencies between environments to define the order for promotions.
 
-[Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/dependency-multi-env-promotion/)
+[QUick start: Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/dependency-multi-env-promotion/)
 
  
  

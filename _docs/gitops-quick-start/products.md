@@ -1,43 +1,24 @@
 ---
-title: "Quick start: Products in Codefresh GitOps"
-description: "Explore how products contribute to and boost application promotion and deployment"
+title: "Quick start: Environments, products and applications in Codefresh GitOps"
+description: "Explore how to create and work with entities to promote and deploy applications"
 group: quick-start
 toc: true
 ---
 
 
-Products not only bridge the gap between environments and applications but also amplify the capabilities of your applications by grouping and managing them as cohesive units.
+In GitOps-driven promotions with Codefresh, environments, products, and applications are the foundational entities that enable seamless deployment and lifecycle management.
 
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/apps-grouped-by-product.png" 
-	url="/images/gitops-products/apps-grouped-by-product.png" 
-	alt="Products quick start: Representation of a product in Codefresh GitOps" 
-	caption="Products quick start: Representation of a product in Codefresh GitOps"
-  max-width="60%" 
-%} 
+* **Environments** represent the various stages in your software delivery process, such as testing, staging, or production. Each environment serves a specific purpose, ensuring visibility into applications as they progress through development before reaching production.
 
-Here are a few reasons why you would want to create products to manage your applications.
+* **Products** bridge the gap between environments and applications. By grouping and managing applications as cohesive units, products simplify coordination, enhance organization, and amplify your ability to manage complex deployments.
 
+* **Applications** are the core building blocks of your software delivery process. They represent the deployable artifacts, services, or microservices that power your business. Managing applications effectively is essential for ensuring reliability and efficiency in production.
 
-
-* **Bridging applications and environments**  
-  Products create a vital link between applications and their environments. By grouping applications within a product, you gain visibility and control over their deployment paths, ensuring all components move through environments together.
-
-
-* **Unified application promotion and deployment**  
-  Managing individual Argo CD applications across multiple environments can become complex. Products simplify this by grouping related applications, enabling efficient, cohesive management and promotion.
-
-
-* **Effortless creation**  
-  Creating a product is as simple as creating an environment. You can do so directly from the UI, declaratively by annotating application manifests, or even when creating applications themselves.
-
-
-Explore quick starts for products:
+Explore these quick starts to get started with environments, products, and applications:
+[Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 [Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
-[Assigning applications to products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-assign-apps/)   
-[Exploring the Product Dashboard ]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)  
+[Creating applications]({{site.baseurl}}/_docs/gitops-quick-start/products/create-app-ui/)  
+[Exploring the Product Dashboard]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)  
 
 
 

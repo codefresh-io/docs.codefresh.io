@@ -1,5 +1,5 @@
 ---
-title: "Multi-environment sequential promotion"
+title: "QUick start: Multi-environment sequential promotion"
 description: "Promote product apps between multiple environments sequentially"
 group: promotions
 toc: true
@@ -193,7 +193,7 @@ max-width="60%"
 ## What's next
 To further enhance your promotion flow, the next quick start will guide you through adding gates and conditional promotions to each environment, allowing you to introduce more control and flexibility in your promotion processes.
 
-[Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/policy-multi-env-promotion/)
+[Quick start: Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/policy-multi-env-promotion/)
 
  
  

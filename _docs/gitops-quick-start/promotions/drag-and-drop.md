@@ -1,5 +1,5 @@
 ---
-title: "Drag-and-drop promotion"
+title: "Quick start: Drag-and-drop promotion"
 description: "Promote product apps between two environments"
 group: promotions
 toc: true
@@ -113,6 +113,6 @@ max-width="60%"
 Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
 The next quick start demonstrates how to orchestrate a multi-environment promotion through a Promotion Flow, enabling you to automate and streamline deployments across more than two environments.
 
-[Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/multi-env-sequential-flow/)
+[Quick start: Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/multi-env-sequential-flow/)
 
  

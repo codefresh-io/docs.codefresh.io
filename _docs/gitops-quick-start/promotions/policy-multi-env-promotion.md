@@ -1,5 +1,5 @@
 ---
-title: "Multi-environment promotion with gates"
+title: "Quick start: Multi-environment promotion with gates"
 description: "Promote product apps between multiple environments with promotion conditions"
 group: promotions
 toc: true
@@ -114,7 +114,7 @@ max-width="60%"
 ## What's next
 In the next quick start for promotions, we'll explore how to configure environments for parallel promotions, allowing changes to be promoted  simultaneously across multiple environments.
 
-[Promotion tutorials]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/parallel-multi-env-promotion/)
+[Quick start: Multi-environment parallel promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/parallel-multi-env-promotion/)
 
  
  
