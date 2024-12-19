@@ -30,7 +30,7 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >A detailed description of this issue.
 >
->Please see [Additional Information for Issues / Bugs](#additional-information-for-issues--bugs)
+>Please see [Additional Information for Issues/Bugs](#additional-information-for-issuesbugs)
 >
 >### How to reproduce
 >
@@ -40,52 +40,52 @@ Use the following template to create a support ticket for bugs/issues.
 >
 >Describe the business impact of this issue.
 
-### Additional Information for Issues / Bugs
+### Additional Information for Issues/Bugs
 
-In order to troubleshoot issues or bugs effectively, Codefresh Support requires the following information for a detailed description of the issue
+To troubleshoot issues or bugs effectively, Codefresh Support requires detailed description of the issue which includes the following information:
 
-#### UI Slowness and other UI Issues
+#### UI issues: Slowness and others
 
 1. Codefresh **usernames** and **number** of affected users.
 1. **Link to UI** page being accessed.
 1. **Action** being performed.
 1. **Timestamp** of incident.
-1. Does the issue persist in **another browser** or **incognito mode**?
+1. Does the issue persist in **another browser** or in **incognito mode**?
 1. Do you use a **VPN/proxy** to access the page?
 1. **HAR file** (a log of network requests during the incident). [HAR File Guide](https://codefresh.io/docs/docs/kb/articles/data-needed-ui-issues/).
 1. **Screenshots** or **videos** showing the behavior.
-   - Please include the **full** browser window
+   - Please include the **full** browser window in the screenshot/video.
 
-#### Functional Errors
+#### Functional errors
 
 1. Exact **error messages** received.
 1. Failed **build IDs** (1-3 examples).
 1. Does the issue persist after a **new run**, not just a restart?
-1. Were **any changes** recently introduced to the pipeline?
-1. **Last successful execution** and when the issue first started to occur.
+1. Were **any changes** recently made to the pipeline?
+1. **Last successful execution** and when the issue first occurred.
 1. Details on the **affected pipelines** (e.g., how many, names, etc.).
 1. Codefresh **runner version and setup** (e.g., SaaS, hybrid, or on-prem).
 1. **User impersonation**.
-   - Support may sometimes need to impersonate your user to understand the issue and troubleshoot. To enable impersonation for your user, please navigate to [User Settings](https://g.codefresh.io/user/settings). Under the Security section, select the check box for `Allow Codefresh support team to login as my user (all the operations made by the team will be audited)` and save the settings. Please let support know if you have enabled impersonation.
+   - Support may sometimes need to impersonate your user to understand and troubleshoot the issue. To enable impersonation for your user, please navigate to [User Settings](https://g.codefresh.io/user/settings){:target="\_blank"}. Under the Security section, select the checkbox for `Allow Codefresh support team to login as my user (all the operations made by the team will be audited)` and save the settings. Please let support know if you have enabled impersonation.
 1. **Engine and DIND logs** for the failed build:
-   - While the build is running, navigate to the cluster and locate the pods named `engine-[buildID]` and `dind-[buildID]`.
+   - While the build is running, navigate to the cluster, and locate the pods named `engine-[buildID]` and `dind-[buildID]`.
    - Save those logs to a file and attach them to the ticket.
-   - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package) to collect the required data *while the affected build is running and the error message is received*.
+   - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"} to collect the required data *while the affected build is running and the error message is received*.
 1. **Helm values file** (to identify overrides such as images or other configurations).
 
-#### Scalability and Resource Management
+#### Scalability and resource management
 
 1. Codefresh **runner version and setup** (e.g., SaaS, hybrid, or on-prem).
-1. **Helm values file** (to identify overrides such as images or other configurations).
-1. **Nodes** overview. Describe of the node.
+1. **Helm values file** to identify overrides such as images or other configurations.
+1. **Nodes** overview. Description of the node.
 1. **Events** from the namespace.
 1. **Runner** pod logs.
 1. **Volume-provisioner** pod logs.
-1. **Ebs-csi pods logs** in kube-system to check for any AWS errors (if volume issues and using the ebs-csi backed).
+1. **Ebs-csi pods logs**: In kube-system to check for any AWS errors, if there are volume issues and you're using the `ebs-csi` backend.
 
-> Alternatively, to collect the above data (3-6), you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package).
+> Alternatively, to collect the data from 3 through 6, use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"}.
 
-#### Security Concerns
+#### Security concerns
 
 1. **Report from the security team/tool**, if any.
 1. Description of the potential data loss or **security vulnerability**.
@@ -122,7 +122,7 @@ Use this template for general questions you have, not related to an issue or fea
 >
 >### Context
 >
->Add background information on your question. Add links or any details that will help in understanding the question above.
+>Add background information on your question. Add links or any details that will help us to understand the question above.
 
 ## Related articles
 
