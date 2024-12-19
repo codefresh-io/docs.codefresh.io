@@ -33,35 +33,24 @@
   pages:
     - title: Create Codefresh account
       url: "/create-codefresh-account"
-    - title: GitOps Runtime
-      url: "/create-codefresh-account"
+    - title: GitOps Runtimes & Git Sources
+      url: "/"
       sub-pages: 
-      - title: Provision a Hosted GitOps Runtime
-        url: "/install-hosted"
-      - title: Prepare for Hybrid GitOps Runtime installation
+      - title: Preparing for Hybrid GitOps Runtime installation
         url: "/verify-requirements"
-      - title: Install a Hybrid GitOps Runtime
+      - title: Installing a Hybrid GitOps Runtime
         url: "/runtime"
-    - title: Environments
-      url: "/quick-start-gitops-environments"
-    - title: Applications
-      url: "/applications"
-      sub-pages: 
-        - title: Creating applications
-          url: "/create-app-ui"
-        - title: Create and commit resources for application
-          url: "/create-app-specs"
-        - title: Update the image tag for application
-          url: "/create-rollout"
-    - title: Products
+    - title: Environments, Products, Applications
       url: "/products"
       sub-pages: 
-        - title: Creating products
-          url: "/quick-start-product-create"
-        - title: Assigning applications to products
-          url: "/quick-start-product-assign-apps"
-        - title: Exploring the Product Dashboard
-          url: "/quick-start-product-dashboard"
+      - title: Creating environments
+        url: "/quick-start-gitops-environments"
+      - title: Creating products
+        url: "/quick-start-product-create"
+      - title: Creating applications
+        url: "/create-app-ui"
+      - title: Exploring the Product Dashboard
+        url: "/quick-start-product-dashboard"
     - title: Promotions
       url: "/promotions"  
       sub-pages: 

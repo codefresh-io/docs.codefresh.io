@@ -1,5 +1,5 @@
 ---
-title: "Install Hybrid GitOps Runtime"
+title: "Quick start: Installing a Hybrid GitOps Runtime"
 description: "Install the Helm-based Hybrid GitOps Runtime"
 group: getting-started
 sub-group: quick-start
@@ -8,77 +8,8 @@ toc: true
 
 
 
-Get up and running with Codefresh by installing the Hybrid Runtime for GitOps via Helm.
-The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones, with descriptions of each.
- 
-## Quick start assumptions
+If you reviewed and verified that you meet the requirements for a GitOps Runtime, let's go ahead and install the Runtime.
 
-The quick start assumes that you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
-
-## Argo project components & CRDs
-Hybrid GitOps installation requires a cluster without Argo project components and CRDs (Custom Resource Definitions). 
-
-Argo project components include Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
-
-You can handle Argo project CRDs outside the chart, or as recommended, adopt the CRDs to be managed by the GitOps Runtime Helm release. 
-
-If you already have Argo project CRDs on your cluster, do one of the following:
-* Handle Argo projects CRDs outside of the chart (see [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"})  
-  Disable CRD installation under the relevant section for each of the Argo projects in the Helm chart:<br>
-  `--set <argo-project>.crds.install=false`<br>
-  where:<br>
-  `<argo-project>` is the argo project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
-
-* Adopt the CRDs<br>
-  Adopting the CRDs allows them to be managed by the `gitops-runtime helm release`. Doing so ensures when you upgrade the Hybrid GitOps Runtime, the CRDs are also automatically upgraded.
-
-  Run this script _before_ installation:
-
-```
-#!/bin/sh
-RELEASE=<helm-release-name>
-NAMESPACE=<target-namespace>
-kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
-kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
-kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
-```
-
-### Tunnel-based Runtime
-Hybrid GitOps Runtimes support tunnel-based, ingress-based, and service-mesh-based access modes.  
-For the quick start, we'll use the tunnel-based mode which is the default access mode that does not require an ingress controller.  
-For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
-
-### GitHub as Git provider  
-Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git providers and Git runtime tokens]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes).  
-
-Have your GitHub Runtime token with a valid expiration date and access permissions ready for Runtime installation:
-  * Expiration: Either the default of 30 days or any duration you consider logical.
-  * Access scopes: Set to `repo` and `admin-repo.hook`
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   url="/images/getting-started/quick-start/quick-start-git-event-permissions.png" 
-   alt="GitHub PAT permissions" 
-   caption="GitHub PAT permissions"
-   max-width="30%" 
-   %}  
-
-  If you need detailed information on GitHub tokens, see the [GitHub article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
-
-### Shared Configuration Repository
-When you select the Git provider, Codefresh prompts you to also select the Shared Configuration Repository for your account. The repo stores account-level configuration settings and manifests.
-Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
-Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
-
-## Install Hybrid GitOps Runtime
-
-##### Before you begin 
-* Make sure your cluster does not have [Argo project components & CRDs](#argo-project-components--crds)
-
-##### How to  
 
 1. In the Welcome page, select **+ Install Runtime**.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
@@ -118,9 +49,15 @@ max-width="60%"
   By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime, and view and monitor Runtime components. 
 
 
-You are now ready to create and deploy a GitOps application in Codefresh.
 
 
-## What to do next
-[Create resources for codefresh-guestbook application]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/)  
+## What's next
+Let's create a Git Source to which we'll link the applications we'll create later in the quick start. 
+
+Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
+
+[Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create.md)
+
+
+
 

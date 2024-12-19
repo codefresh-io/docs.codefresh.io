@@ -67,7 +67,7 @@ For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
     1. **Name**: A unique name for your environment, which is meaningful in the context of your development and deployment cycle. 
 	  For the quick start, we'll use `dev`.
     1. **Kind**: The purpose of the environment. Select **Non-production** where typically development, testing, and staging versions of applications are deployed.  
-	  The **Kind** property is used to also define rules for promotions and ABAC (Attribute Based Access Control) permissions .
+	  The **Kind** property is used to also define rules for promotions and ABAC (Attribute Based Access Control) permissions.
     1. **Tags**: Leave this empty for the quick start.
     1. **Clusters and Namespaces**: Single or multiple cluster, namespace, or cluster-namespace pairs to map to the environment.
         To include all namespaces in a cluster, leave the Namespace empty. 
@@ -104,6 +104,8 @@ At this point, as we haven't created any applications, all environments are empt
 %} 
 
 ## What's next
-You’re probably eager to dive into applications, and that's what we'll do next.
+You’re probably eager to dive into applications. Before we do that let's create another entity that simplifies and supercharges applications: Products.
 
-[Create applications]({{site.baseurl}}/docs/gitops-quick-start/applications/create-app-ui/)
+and that's exactly what we'll do next.
+
+[Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)
