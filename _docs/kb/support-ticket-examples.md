@@ -44,7 +44,7 @@ Use the following template to create a support ticket for bugs/issues.
 
 To troubleshoot issues or bugs effectively, Codefresh Support requires detailed description of the issue which includes the following information:
 
-#### UI issues: Slowness and others
+#### UI issues: Slowness and other issues
 
 1. Codefresh **usernames** and **number** of affected users.
 1. **Link to UI** page being accessed.
