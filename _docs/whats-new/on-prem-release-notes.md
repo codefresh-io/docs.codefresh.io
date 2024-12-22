@@ -18,7 +18,7 @@ For details, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages
 
 
 #### GitHub repo 
-We want to announce that the on-prem release is now available on a [public GitHub repository](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}, in addition to ArtifactHub, providing easier access and transparency for our users.
+We're excited to announce that the on-prem release is now available on a [public GitHub repository](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}, in addition to ArtifactHub, providing easier access and transparency for our users.
 
 
 <br>
