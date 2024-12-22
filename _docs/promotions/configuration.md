@@ -2,6 +2,8 @@
 title: "Configuration"
 description: "Configure promotion entities"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/yaml/
 toc: true
 ---
 
