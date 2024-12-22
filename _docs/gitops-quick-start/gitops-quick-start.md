@@ -1,37 +1,33 @@
 ---
 title: "GitOps quick starts"
 description: ""
-group: quick-start
+group: gitops-quick-start
 toc: true
-redirect_from:
-  - /docs/gitops-quick-start/
 ---
 
+Codefresh GitOps is all about streamlining application delivery through automation, consistency, and scalability. With Codefresh, you can go from zero to deployment-ready in just a few steps.  
+The GitOps quick start guides provide step-by-step walkthroughs for you to fully leverage Codefresh GitOps. Starting with account creation, the guides walk you through essential setup leading up to the ultimate goal: deploying and promoting applications seamlessly in your environments.
 
+##### Our quick start offering
 
+* [Creating an Account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
+  Get started by setting up your Codefresh account.
 
+* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/qs-runtimes-overview/)    
+  Learn how to install a GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
 
+* [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+  Define and manage environments, enabling structured application deployments across different stages.
 
-Codefresh GitOps is all about streamlining application delivery through automation, consistency, and scalability. With Codefresh, you can go from zero to deployment-ready in just a few steps.
+* [Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
+  Organize related applications under a single product, providing context and control for managing deployments.
 
-This series of quick start guides will walk you through every step of the process, right from setting up your Codefresh account to promoting applications.
+* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
+  Add applications to your product and configure their source repositories, manifests, and deployment paths.
 
-Here’s what you’ll accomplish step by step:
+* [Promoting products and applications]({{site.baseurl}}/_docs/gitops-quick-start/promotions/)   
+  Deploy, validate, and promote changes across environments through automated promotion flows.
 
-* **Create your account**  
-  Your gateway to Codefresh GitOps.
+##### From start to deployment
+The quick-start journey begins with creating your account and concludes with promotions for applications. Each quick start builds on the last, equipping you with the knowledge and tools to confidently promote and deploy applications in production environments.
 
-* **Install a Runtime**
-  The single pane of glass foundation for managing GitOps operations.
-
-* **Add environments**
-  Organize according to your SDLC for full visibility into where applications are deployed.
-
-* **Create an application**
-  Create the core component to promote and deploy.
-
-* **Create products**
-  Boost the power of your applications by grouping them within a product for efficient tracking and management.
-
-* **Promote products and their applications**  
-  Streamline delivery by advancing changes through multiple environments with a number of options to choose from

@@ -5,8 +5,7 @@ group: installation
 toc: true
 ---
 
->**NOTE**  
-This feature is currently in Beta.
+
 
 A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. 
 

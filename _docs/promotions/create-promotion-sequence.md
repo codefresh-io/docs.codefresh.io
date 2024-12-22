@@ -1,5 +1,5 @@
 ---
-title: "Promotions: End-to-end guide"
+title: "Promotions: Setup & configuration guidelines"
 description: "Step-by-step guide to creating, triggering, and monitoring promotions"
 group: promotions
 toc: true

@@ -49,7 +49,7 @@ Explore these quick starts on promotions:
 
 <!--- ## Related articles add inline to the different topics as needed
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion Flow]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Promotion Policy]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
 [Promotion Workflow]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  

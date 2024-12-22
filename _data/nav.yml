@@ -420,8 +420,6 @@
       url: "/promotion-components"
     - title: Promotions end-to-end guide
       url: "/create-promotion-sequence"
-    - title: Promotion tutorials
-      url: "/promotion-scenarios"   
     - title: Configuration
       url: "/configuration"
       sub-pages: 

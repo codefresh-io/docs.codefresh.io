@@ -56,8 +56,6 @@
       localurl: /docs/promotions/promotion-components/
     - title: Promotions end-to-end guide
       localurl: /docs/promotions/create-promotion-sequence/
-    - title: Promotion tutorials
-      localurl: /docs/promotions/promotion-scenarios/
     - title: Configuration
       localurl: /docs/promotions/configuration
     - title: YAML specs
