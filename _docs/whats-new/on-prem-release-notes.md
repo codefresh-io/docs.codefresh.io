@@ -17,6 +17,10 @@ For detailed instructions on installing v2.6, visit [ArtifactHub](https://artifa
 For details, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-6-0){:target="\_blank"}
 
 
+#### GitHub repo 
+We're excited to announce that the on-prem release is now available on a [public GitHub repository](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}, in addition to ArtifactHub, providing easier access and transparency for our users.
+
+
 <br>
 
 #### Enable auto-index creation in MongoDB
