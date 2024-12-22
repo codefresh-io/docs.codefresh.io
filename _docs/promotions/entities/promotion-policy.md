@@ -2,6 +2,8 @@
 title: "Configure Promotion Policies"
 description: "Create patterns to govern promotion behavior for environments"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/
 toc: true
 ---
 

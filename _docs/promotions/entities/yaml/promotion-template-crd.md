@@ -2,6 +2,8 @@
 title: "Promotion Template YAML"
 description: "YAML specifications for the Promotion Template defining version info and properties to promote"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/yaml
 toc: true
 ---
 

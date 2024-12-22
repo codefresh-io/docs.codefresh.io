@@ -2,6 +2,8 @@
 title: "Product YAML"
 description: "YAML specifications for the product defining its promotion and flow settings"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/yaml
 toc: true
 ---
 
