@@ -212,7 +212,8 @@ This rule grants manual promotion privileges to specific products that match a s
 
 
 
-<!--- ## Promotion Flows
+## Promotion Flows
+=======
 
 ### Promotion Flows: Actions & attributes
 
@@ -220,9 +221,9 @@ This rule grants manual promotion privileges to specific products that match a s
 | Promotion Flows            | Description            |
 |----------------------------|-----------------------| 
 |**Actions**  | **Trigger promotion flow**: Allow users to manually trigger a Promotion Flow. See <a href="https://codefresh.io/docs/docs/promotions/trigger-promotions/#manually-promote-products-to-multiple-environments-by-promotion-flow">Manually trigger a Promotion Flow</a>.</li>|
-|**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label ???.  |
+|**Attributes** | **Label**: Allow users to trigger promotions for Promotion Flows that match the specified label in the YAML manifest.  |
 
--->
+
 
 
 
