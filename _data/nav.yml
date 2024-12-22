@@ -414,7 +414,7 @@
         url: "/parallel-multi-env-promotion"  
       - title: Multi-environment promotion with dependencies
         url: "/dependency-multi-env-promotion"  
-    - title: Entities
+    - title: Entity configuration
       url: "/entities"
       sub-pages: 
       - title: Promotion Flows
