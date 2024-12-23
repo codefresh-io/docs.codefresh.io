@@ -19,12 +19,10 @@
   icon: images/home-icons/tutorial.svg
   url: ""
   links:
-    - title: Create Codefresh account
-      localurl: /docs/quick-start/create-codefresh-account/
     - title: CI/CD quick starts
-      localurl: /docs/ci-quick-start/
+      localurl: /docs/ci-quick-start/ci-quick-start/
     - title: GitOps quick starts
-      localurl: /docs/gitops-quick-start/
+      localurl: /docs/gitops-quick-start/gitops-quick-start/
 
 - title: Products
   icon: images/home-icons/product.svg
