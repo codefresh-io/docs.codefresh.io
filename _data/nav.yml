@@ -583,8 +583,6 @@
       sub-pages:
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
-        - title: Hosted GitOps Runtime
-          url: "/hosted-runtime"
         - title: Hybrid GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
         - title: Hybrid GitOps Runtime alongside Community Argo CD
