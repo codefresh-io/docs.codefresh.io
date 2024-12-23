@@ -10,7 +10,7 @@ redirect_from:
 Codefresh GitOps is all about streamlining application delivery through automation, consistency, and scalability. With Codefresh, you can go from zero to deployment-ready in just a few steps.  
 The GitOps quick start guides provide step-by-step walkthroughs for you to fully leverage Codefresh GitOps. Starting with account creation, the guides walk you through essential setup leading up to the ultimate goal: deploying and promoting applications seamlessly in your environments.
 
-##### Our quick start offering
+##### Our quick start walkthroughs
 
 * [Creating an Account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
   Get started by setting up your Codefresh account.
