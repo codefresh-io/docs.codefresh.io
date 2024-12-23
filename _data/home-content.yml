@@ -22,11 +22,9 @@
     - title: Create Codefresh account
       localurl: /docs/quick-start/create-codefresh-account/
     - title: CI/CD quick starts
-      localurl: /docs/quick-start/ci-quick-start/
+      localurl: /docs/ci-quick-start/
     - title: GitOps quick starts
       localurl: /docs/gitops-quick-start/
-    - title: Promotions
-      localurl: /docs/promotions/promotion-scenarios/  
 
 - title: Products
   icon: images/home-icons/product.svg
@@ -60,7 +58,7 @@
       localurl: /docs/promotions/create-promotion-sequence/
     - title: Promotion tutorials
       localurl: /docs/promotions/promotion-scenarios/
-    - title: Configuration
+    - title: Entity configuration
       localurl: /docs/promotions/entities
     - title: YAML specs
       localurl: /docs/promotions/entities/yaml/

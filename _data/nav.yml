@@ -418,10 +418,10 @@
       url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
-    - title: Promotions end-to-end guide
+    - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
-    - title: Configuration
-      url: "/configuration"
+    - title: Entity configuration
+      url: "/entities"
       sub-pages: 
       - title: Promotion Flows
         url: "/promotion-flow"     
