@@ -2,6 +2,8 @@
 title: "Promotion Policy YAML"
 description: "YAML specifications for the Promotion Policy defining promotion conditions to apply to the environment"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/yaml
 toc: true
 ---
 

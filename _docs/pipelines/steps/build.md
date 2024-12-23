@@ -50,8 +50,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
+  cache_to:
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -94,6 +96,7 @@ The default behavior of the `build` step is defined a
 | `tag`       | The single tag to assign to the built image. To assign multiple tags, use `tags` (see below). <br>The default tag is the name of the branch or revision that is built. | Default     |
 | `tags`      | Multiple tags to assign to the built image. {::nomarkdown} <br>To assign a single tag, use <code class="highlighter-rouge">tag</code> (see above). <br> This is an array, and should conform to the following syntax: <br><code class="highlighter-rouge">tags:<br>- tag1<br>- tag2<br>- {% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}<br>- tag4</code><br><br>OR<br><code class="highlighter-rouge">tags: [ 'tag1', 'tag2', '{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}'{% endraw %}, 'tag4' ]</code>{:/} |Optional|
 | `cache_from`   | The list of cache sources to use as Docker cache when building the image.  Every source in the list is passed to the build command using the `--cache-from` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-from){:target="\_blank"} for more info.                     | Optional                   |
+| `cache_to`   | The list of external destinations such as container registries to which to export the build cache using the `registry` type.  Every cache destination in the list is passed to the build command using the `--cache-to` flag. See [Docker documentation](https://docs.docker.com/engine/reference/commandline/buildx_build/#cache-to){:target="\_blank"} for more info.                     | Optional                   |
 | `registry`   | The name of the registry to which to push the built image. You can define any registry that is integrated with Codefresh. <br>When not defined, and you have multiple registry contexts, Codefresh uses the one set as the [default registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/).                     | Optional                   |
 | `registry_contexts`   | Advanced property for resolving Docker images when [working with multiple registries with the same domain]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/#working-with-multiple-registries-with-the-same-domain). When defined, pulls the image from the specified context. <br> NOTE: When using `buildx` to build and push multi-platform images, `registry_contexts` cannot be assigned a different registry from the same domain as the target registry defined for `registry`, as Docker does not support being logged in to multiple Docker registries that share the same domain at the same time.  | Optional                  |
 |`disable_push`   | Defines if to automatically push the built image to the registry or not. When set to `false`, the default, the image is automatically pushed to the registry.<br>This setting overrides the default behavior set at the account leve. See [Default behavior for buld steps]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#default-behavior-for-build-steps). <br><br>NOTE: Because of [Docker's limitation on loading multi-platform images](https://github.com/docker/buildx/issues/59){:target="\_blank"} to the local Docker instance, unless the built image is pushed as part of the `build` step, you cannot reference the same image in subsequent steps using the {% raw %}`${{build_step_name}}`{% endraw %} variable. | Optional                   |
@@ -157,8 +160,10 @@ step_name:
   build_arguments:
     - key=value
   cache_from:
-    - owner/image-name:${{CF_BRANCH}}
+    - owner/image-name:$CF_BRANCH
     - owner/image-name:main
+  cache_to:
+    - owner/image-name:$CF_BRANCH
   target: stage1
   no_cache: false
   no_cf_cache: false
@@ -310,6 +315,32 @@ steps:
     cache_from:
     - my-registry/my-app-image:${{CF_BRANCH}}
     - my-registry/my-app-image:master
+```
+
+{% endraw %}
+
+### Using `cache_from` and `cache_to` with `buildx`
+
+`codefresh.yml`
+{% raw %}
+
+```yaml
+version: '1.0'
+steps:
+  BuildMyImage:
+    title: Building My Docker image
+    type: build
+    image_name: my-app-image
+    dockerfile: my-custom.Dockerfile
+    tag: 1.0.1
+    buildx:
+      builder:
+        driver: docker-container
+    cache_from:
+    - type=registry,ref=my-registry/my-app-image:${{CF_BRANCH}}
+    - type=registry,ref=my-registry/my-app-image:master
+    cache_to:
+    - type=registry,mode=max,oci-mediatypes=true,image-manifest=true,compression=zstd,ref=my-registry/my-app-image:${{CF_BRANCH}}
 ```
 
 {% endraw %}

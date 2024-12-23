@@ -89,7 +89,9 @@ The diagram illustrates how the version attributes configured for the product ar
 
 
 * If the version is not displayed in the dashboards, it could be because your application is not a Helm application.
-* For Helm applications, if the version is either not displayed or is not correct, it could be because Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+* For Helm applications, if the version is either not displayed or is not correct, it could be because:
+    * Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
+    * The JSON key includes a dash character which is not supported. See [Dashes in JSON keys](#dashes-in-json-keys).
 
 
 ### Examples of version attributes
@@ -268,9 +270,13 @@ On the left, you can see the YAML manifests, on the right, the previews show how
 ## JSON path expressions for files and properties
 Application versions and properties to be promoted are defined through JSON path expressions. Each JSON expression points to the specified file and the location of the property within the file. 
 
->**NOTE**  
+**NOTE**  
 Our promotions are optimized for YAML-based configuration files.  
 For non-YAML file types, JSONPath expressions may not evaluate as expected. In these cases, you have the option to promote the entire file using **`*`** as a wildcard.
+
+
+
+
 
 <!--- Instead of having to navigate to GitHub, copy the file name, and then the paths in the file, we have made it easy to both select the file and configure JSON paths to its properties:
 * File selector with auto-complete
@@ -295,6 +301,19 @@ For non-YAML file types, JSONPath expressions may not evaluate as expected. In t
 %} 
 
 <!--- You can always add JSON path expressions directly if that's what you prefer. -->
+
+### Dashes in JSON keys
+Dashes in JSON keys are currently _not supported_ in path expressions using dot notation.  
+
+**Workaround**: 
+Use square bracket notation to specify the path, as shown below, and double quotes within the brackets to escape the dashes.  
+For example:
+
+```json
+$["rollout-Canary"]["image"]["tag"]
+
+```
+
 
 ### JSON syntax for YAML files
 Here's a brief summary of JSON syntax and rules.

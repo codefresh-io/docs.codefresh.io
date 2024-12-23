@@ -2,6 +2,8 @@
 title: "Promotion Flow YAML"
 description: "YAML specifications for defining the orchestration flow for product promotion"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/yaml
 toc: true
 ---
 
