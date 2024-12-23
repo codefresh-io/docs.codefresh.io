@@ -2,6 +2,8 @@
 title: "Configure product promotion settings & flows"
 description: "Configure key settings for the product to optimize promotion"
 group: promotions
+redirect-from: 
+ - /docs/promotions/configuration/
 toc: true
 ---
 
