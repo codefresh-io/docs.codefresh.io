@@ -3,6 +3,8 @@ title: "Quick start: Drag-and-drop promotion"
 description: "Promote product apps between two environments"
 group: gitops-quick-start
 toc: true
+redirect_from:
+ - /docs/promotions/promotion-scenarios/drag-and-drop/
 ---
 
 In this first quick start on promotions, we'll see how to promote products using the intuitive drag-and-drop functionality in the Environments dashboard. 

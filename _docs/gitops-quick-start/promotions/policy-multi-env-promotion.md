@@ -3,6 +3,8 @@ title: "Quick start: Multi-environment promotion with gates"
 description: "Promote product apps between multiple environments with promotion conditions"
 group: gitops-quick-start
 toc: true
+redirect_from:
+ - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
 ---
 
 

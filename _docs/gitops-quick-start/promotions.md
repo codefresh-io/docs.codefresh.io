@@ -3,6 +3,8 @@ title: "Quick start: Promotions in Codefresh GitOps"
 description: "Explore basic & advanced promotion scenarios"
 group: gitops-quick-start
 toc: true
+redirect_from:
+ - /docs/promotions/promotion-scenarios/
 ---
 
 
@@ -43,15 +45,3 @@ Explore these quick starts on promotions:
 * [Multi-environment promotion with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/promotions/parallel-multi-env-promotion/)  
 * [Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotions/dependency-multi-env-promotion/)
 
-
-
-
-
-<!--- ## Related articles add inline to the different topics as needed
-[Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
-[Promotion Flow]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
-[Promotion Policy]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
-[Promotion Workflow]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
-[Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
-[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  -->

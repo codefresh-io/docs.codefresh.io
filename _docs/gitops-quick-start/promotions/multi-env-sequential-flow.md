@@ -3,13 +3,14 @@ title: "QUick start: Multi-environment sequential promotion"
 description: "Promote product apps between multiple environments sequentially"
 group: gitops-quick-start
 toc: true
+redirect_from:
+ - /docs/promotions/promotion-scenarios/multi-env-sequential-flow/
 ---
 
 
 Drag-and-drop promotion covered in the previous quick start, is ideal for on-demand promotion to a single environment. Sequential promotion flows provide a structured way to manage changes across multiple environments, reducing deployment risks. 
 
 This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progression in the Releases view.
-
 
 
 ## Before you begin

@@ -3,6 +3,8 @@ title: "Quick start: Multi-environment parallel promotion"
 description: "Promote product apps between environments in parallel"
 group: gitops-quick-start
 toc: true
+redirect_from:
+ - /docs/promotions/promotion-scenarios/parallel-multi-env-promotion/
 ---
 
 
