@@ -4,7 +4,7 @@ description: "Promote product apps between environments with dependencies"
 group: gitops-quick-start
 toc: true
 redirect_from:
- - /docs/promotions/promotion-scenarios/dependency-multi-env-promotion/
+  - /docs/promotions/promotion-scenarios/dependency-multi-env-promotion/
 ---
 
 

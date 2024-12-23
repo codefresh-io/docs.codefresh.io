@@ -4,7 +4,7 @@ description: "Promote product apps between multiple environments sequentially"
 group: gitops-quick-start
 toc: true
 redirect_from:
- - /docs/promotions/promotion-scenarios/multi-env-sequential-flow/
+  - /docs/promotions/promotion-scenarios/multi-env-sequential-flow/
 ---
 
 

@@ -3,6 +3,8 @@ title: "Quick start: Preparing for Hybrid GitOps Runtime installation"
 description: "Verify you're ready for Runtime installation"
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - /docs/quick-start/gitops-quick-start/verify-requirements/
 ---
 
 

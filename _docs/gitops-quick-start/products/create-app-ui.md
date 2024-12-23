@@ -3,6 +3,8 @@ title: "Quick start: Creating applications"
 description: "Create Argo CD applications in Codefresh"
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - docs/quick-start/gitops-quick-start/create-app-ui/
 ---
 
 We've created two of the three core entities essential for GitOps promotions: Environments and products. In this quick start, we'll create applications—the fundamental building blocks of software delivery.  

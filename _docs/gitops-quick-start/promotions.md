@@ -4,7 +4,7 @@ description: "Explore basic & advanced promotion scenarios"
 group: gitops-quick-start
 toc: true
 redirect_from:
- - /docs/promotions/promotion-scenarios/
+  - /docs/promotions/promotion-scenarios/
 ---
 
 

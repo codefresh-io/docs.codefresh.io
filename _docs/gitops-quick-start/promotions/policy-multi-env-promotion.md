@@ -4,7 +4,7 @@ description: "Promote product apps between multiple environments with promotion 
 group: gitops-quick-start
 toc: true
 redirect_from:
- - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
+  - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
 ---
 
 

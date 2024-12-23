@@ -3,6 +3,8 @@ title: "GitOps quick starts"
 description: ""
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - /docs/quick-start/gitops-quick-start/
 ---
 
 Codefresh GitOps is all about streamlining application delivery through automation, consistency, and scalability. With Codefresh, you can go from zero to deployment-ready in just a few steps.  
