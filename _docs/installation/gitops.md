@@ -13,9 +13,9 @@ Codefresh GitOps offers native support for Argo CD, while serving as an active m
 Our GitOps Runtime solves these issues with unique benefits.
 
 
-GitOps Runtimes come in two options:
+<!--- GitOps Runtimes come in two options:
 * Hosted Runtimes with Argo CD installed within the Codefresh cluster (see [Hosted GitOps](#hosted-gitops))
-* Hybrid Runtimes with Argo CD installed within the customer's cluster (see [Hybrid GitOps](#hybrid-gitops))
+* Hybrid Runtimes with Argo CD installed within the customer's cluster (see [Hybrid GitOps](#hybrid-gitops)) -->
 
 Explore the [benefits](#benefits-of-gitops-runtimes) of GitOps Runtimes, and [compare their features/functionality](#hosted-vshybrid-gitops).
 
@@ -43,7 +43,7 @@ Explore the [benefits](#benefits-of-gitops-runtimes) of GitOps Runtimes, and [co
   Administrative functionality for user, permission, and audit management is centralized and Argo CD agnostic.
 
 
-## Hosted GitOps
+<!--- ## Hosted GitOps
 The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh cluster.
 
 Hosted GitOps Runtime is installed and provisioned in a Codefresh cluster, and managed by Codefresh.  
@@ -62,7 +62,7 @@ For the architecture, see [Hosted GitOps Runtime architecture]({{site.baseurl}}/
     max-width="80%"
 %} 
 
-  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
+  For more information on how to set up the hosted environment, including provisioning hosted runtimes, see [Set up Hosted GitOps]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  -->
 
 ## Hybrid GitOps
 The hybrid version of GitOps, has Argo CD installed in the customer's cluster.    
@@ -86,10 +86,15 @@ Hybrid GitOps Runtime installation includes a forked version of the Argo Project
   max-width="70%"
 %}
 
-  For more information on Hybrid GitOps, see [Hybrid GitOps Runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements) and [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
+  For more information on Hybrid GitOps Runtimes, see [Hybrid GitOps Runtime requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements) and [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
+
 
 
 ## Hosted vs.Hybrid GitOps 
+
+>**NOTE**  
+We have deprecated Hosted GitOps Runtimes which are no longer supported.  
+The comparison below is provided for historical reference only.
 
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
@@ -114,7 +119,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |Integrations             |                    | Supported                  | Supported  |
 |Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
-|                         |Applications        | Supported                 |Supported        |
+|                         |Applications        | Supported                 |Supported        |  
 
 
 ## Related articles
