@@ -22,7 +22,7 @@ Environments are tightly integrated with GitOps principles, ensuring that your i
   max-width="60%" 
 %} 
 
-For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)
+For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
 ## Why create environments? 
 

@@ -15,7 +15,7 @@ This quick start demonstrates creating a promotion flow with three environments 
 
 ## Before you begin
 
-For thi quicks start, ensure that you have:
+For this quick start, ensure that you have:
 
 * Three environments
   For multi-environment promotions, you need at least three environments.
@@ -39,6 +39,24 @@ You need to be an account administrator to create Promotion Flows.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
 1. From the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
+1. Enter the settings for the Promotion Flow:
+    * **Name**: The name for the flow. For this quick start, we'll use `multi-env-sequential-promotion`. 
+    * **Description**: (Optional) More information about the purpose of the Promotion Flow. 
+    * **Flow Timeout**: The maximum duration permitted for the Promotion Flow to complete execution after being triggered, before it is automatically terminated. If not specified, the default timeout is set to 1 day (24 hours). For the quick start, we'll set it to `5 minutes`. 
+    * **Version**: (Optional) The version of the Promotion Flow. This is manually defined and manually updated, and is useful to indicate changes in the same flow. For the quick start, we'll set it to `1.0`. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/quick-start/promotions/quick-start-seq-promo-settings.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-settings.png"
+alt="Promotions quick start: Define Promotion Flow settings" 
+caption="Promotions quick start: Define Promotion Flow settings"
+max-width="60%"
+%}
+
+{:start="4"}
+1. Click **>** to close the panel.
 1. Select the **Trigger Environment** as the starting point for the promotion. For the quick start, select `dev`.
 
 
@@ -75,8 +93,8 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-all-target-envs.png"
+file="/images/quick-start/promotions/quick-start-seq-promo-all-envs.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-all-envs.png"
 alt="Promotions quick start: Promotion Flow with required environments" 
 caption="Promotions quick start: Promotion Flow with required environments"
 max-width="60%"
@@ -84,15 +102,14 @@ max-width="60%"
 
 {:start="5"}
 1. Click **Save Promotion Flow** on the top-right.
-1. Enter a name **Name** for the flow. For this quick start, we'll use `multi-env-sequential-promotion`.  
-  The flow's YAML version lists the environment sequence.
+  The Name and Description are populated from the Settings. The flow's YAML version on the right lists the environment sequence.
 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-save-flow.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-save-flow.png"
+file="/images/quick-start/promotions/quick-start-seq-promo-save-flow.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-save-flow.png"
 alt="Promotions quick start: Save Promotion Flow" 
 caption="Promotions quick start: Save Promotion Flow"
 max-width="60%"
@@ -104,10 +121,10 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-flow-list.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-flow-list.png"
-alt="Promotion Flow page with new flow" 
-caption="Promotion Flow page with new flow"
+file="/images/quick-start/promotions/quick-start-seq-promo-flow-list.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-flow-list.png"
+alt="Promotions quick start: Promotion Flow list with new flow" 
+caption="Promotions quick start: Promotion Flow page with new flow"
 max-width="60%"
 %}
 
@@ -119,15 +136,15 @@ max-width="60%"
 Once the Promotion Flow is created, you can manually trigger it to promote changes from the Trigger Environment to the defined target environments.
 
 
-1. From the list of Promotion Flows, select  `multi-env-sequential-promotion` and then click **Trigger** to initiate the promotion.
+1. From the list of Promotion Flows, select `multi-env-sequential-promotion` and then click **Trigger** to initiate the promotion.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow.png"
-alt="Trigger selected Promotion Flow" 
-caption="Trigger selected Promotion Flow"
+file="/images/quick-start/promotions/quick-start-seq-promo-trigger.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-trigger.png"
+alt="Promotions quick start: Trigger selected Promotion Flow" 
+caption="Promotions quick start: Trigger selected Promotion Flow"
 max-width="60%"
 %}
 
@@ -137,27 +154,17 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow-select-product.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow-select-product.png"
-alt="Select product to promote" 
-caption="Select product to promote"
+file="/images/quick-start/promotions/quick-start-seq-promo-trigger-select-product.png" 
+url="/images/quick-start/promotions/quick-start-seq-promo-trigger-select-product.png"
+alt="Promotions quick start: Select product to promote" 
+caption="Promotions quick start: Select product to promote"
 max-width="60%"
 %}
 
 {:start="3"}
 1. Select the application, in our case, the application with the changes, `demo-trioapp-dev`, is automatically selected.
-1. To initiate the promotion, click **Trigger** .
+1. To initiate the promotion, click **Trigger**.
 <!--- do we auto-select the app with the changes? -->
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow-select-app.png" 
-url="/images/gitops-promotions/tutorials/seq-promo-flow-trigger-flow-select-app.png"
-alt="Promotions quick start: Select product's application to promote" 
-caption="Promotions quick start: Select product's application to promote"
-max-width="60%"
-%}
 
 
 ## View and monitor product release 
@@ -172,8 +179,8 @@ image.html
 lightbox="true" 
 file="/images/quick-start/promotions/quick-start-seq-promo-release-view.png" 
 url="/images/quick-start/promotions/quick-start-seq-promo-release-view.png"
-alt="Release view for triggered Promotion Flow" 
-caption="Release view for triggered Promotion Flow"
+alt="Promotions quick start: Release view for triggered Promotion Flow" 
+caption="Promotions quick start: Release view for triggered Promotion Flow"
 max-width="60%"
 %}
 
@@ -187,8 +194,8 @@ image.html
 lightbox="true" 
 file="/images/quick-start/promotions/quick-start-seq-promo-release-list.png" 
 url="/images/quick-start/promotions/quick-start-seq-promo-release-list.png"
-alt="Release list with release record for triggered Promotion Flow" 
-caption="Release view for triggered Promotion Flow"
+alt="Promotions quick start: Release list with release record for triggered Promotion Flow" 
+caption="Promotions quick start: Release list with release record for triggered Promotion Flow"
 max-width="60%"
 %}
 

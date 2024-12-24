@@ -54,6 +54,7 @@ url="/images/runtime/helm/helm-complete-install-widgets.png"
 alt="Runtime quick start: Steps to complete installation"
 caption="Runtime quick start: Steps to complete installation"
 max-width="60%"
+%}
 
 {:start="7"}
 1. Click **Add** to integrate the Runtime token for your Git provider account:
