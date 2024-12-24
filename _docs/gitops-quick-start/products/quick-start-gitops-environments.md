@@ -5,11 +5,12 @@ group: gitops-quick-start
 toc: true
 ---
 
+In the previous quick start, you [created a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) for the GitOps Runtime. In this quick start, we'll focus on creating ennvironments in preparation for promoting and deploying applications.
+
 Environments are essential for managing the lifecycle of your applications as they move from development to production. Whether it’s a testing environment, a staging area, or production itself, each environment serves a unique purpose in the software delivery process. 
 
-With **Codefresh GitOps promotions**, environments aren’t just configurations—they’re actionable entities. They give you an intuitive way to organize, track, and promote applications, ensuring consistency and clarity across your delivery lifecycle.
-
-In Codefresh, environments are tightly integrated with GitOps principles, ensuring that your infrastructure and applications are always in sync with declarative configurations stored in Git.
+With **Codefresh GitOps promotions**, environments aren’t just configurations—they’re actionable entities. They give you an intuitive way to organize, track, and promote applications, ensuring consistency and clarity across your delivery lifecycle.  
+Environments are tightly integrated with GitOps principles, ensuring that your infrastructure and applications are always in sync with declarative configurations stored in Git.
 
  {% include 
 	image.html 
@@ -20,9 +21,6 @@ In Codefresh, environments are tightly integrated with GitOps principles, ensuri
 	caption="Quick start: Representation of an Environment in Codefresh GitOps"
   max-width="60%" 
 %} 
-
-
-
 
 For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)
 
@@ -78,8 +76,8 @@ For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
 	lightbox="true" 
 	file="/images/quick-start/environments-products/environment-add.png" 
 	url="/images/quick-start/environments-products/environment-add.png" 
-	alt="Quick start: Create an Environment" 
-	caption="Quick start: Create an Environment"
+	alt="Environments quick start: Create an Environment" 
+	caption="Environments quick start: Create an Environment"
   max-width="60%" 
 %} 
 
@@ -98,8 +96,8 @@ At this point, as we haven't created any applications, all environments are empt
 	lightbox="true" 
 	file="/images/quick-start/environments-products/envs-no-apps.png" 
 	url="/images/quick-start/environments-products/envs-no-apps.png" 
-	alt="Quick start: Newly created environments without applications" 
-	caption="Quick start: Newly created environments without applications"
+	alt="Environments quick start: Newly created environments without applications" 
+	caption="Environments quick start: Newly created environments without applications"
   max-width="60%" 
 %} 
 

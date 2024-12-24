@@ -5,9 +5,9 @@ group: gitops-quick-start
 toc: true
 ---
 
-In the previous quick start, we created applications and assigned them to the product.  
+In the previous quick start, we [created applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/) and assigned them to the same product.  
 
-Let's explore the Product Dashboard to see how these come together. The dashboard offers a consolidated view of your product's applications in their environments, including release versions, dependencies, and integrated insights from Kubernetes, Git, and issue-tracking tools. 
+Let's explore the Product Dashboard to see how these come together. The dashboard offers a consolidated view of your product's applications in their environments, including the application release versions, dependencies, and integrated insights from Kubernetes, Git, and issue-tracking tools. 
 
 
 
@@ -19,7 +19,7 @@ Here's an example of the Product Dashboard with the applications we created for 
 	image.html 
 	lightbox="true" 
 	file="/images/quick-start/environments-products/product-dashboard-view.png" 
-	url="/iimages/quick-start/environments-products/product-dashboard-view.png" 
+	url="/images/quick-start/environments-products/product-dashboard-view.png" 
 	alt="Product Dashboard quick start: Explore Product Dashboard" 
 	caption="Product Dashboard quick start: Explore Product Dashboard"
   max-width="60%" 
@@ -128,7 +128,7 @@ For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are 
 For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## What's next?
-We'll dive into how to promote changes and deploy applications across environments, using the entities you've created and worked with—environments, products, and applications. Read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for an overview.
+We'll dive into how to promote changes and deploy applications across environments, using the entities you've created and worked with—environments, products, and applications. For an overview, read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for an overview.
 
 Let's move on to the first quick start on promotions to see this in action.
 

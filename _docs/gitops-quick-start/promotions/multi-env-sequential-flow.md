@@ -8,29 +8,30 @@ redirect_from:
 ---
 
 
-Drag-and-drop promotion covered in the previous quick start, is ideal for on-demand promotion to a single environment. Sequential promotion flows provide a structured way to manage changes across multiple environments, reducing deployment risks. 
+[Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/) covered in the previous quick start, is ideal for on-demand promotion to a single environment. Sequential promotion flows provide a structured way to manage changes across multiple environments, reducing deployment risks. 
 
 This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progression in the Releases view.
 
 
 ## Before you begin
 
-For this quicks start, ensure that you have:
+For thi quicks start, ensure that you have:
+
 * Three environments
   For multi-environment promotions, you need at least three environments.
-  Here we use  `dev`, `qa`, and `prod`.
+  Here we use `dev`, `qa`, and `prod`.
 
 * Applications in environments
   Each environment must have an application for the product, such as `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.  
 
 * Consistent repo structure for applications
-  Applications must have a consistent repo structure for resources.
+  The repo structure with the resources must be consistent across all the three applications. <!--- add a link to the repo? -->
 
 
 ## Create Promotion Flow for multi-environment promotions
 
-Codefresh simplifies creating multi-environment through Promotion Flows.  
-You can use the Flow Builder in either Chart or YAML modes, depending on your preference to create a Promotion Flow. 
+Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
+You can use the Flow Builder in either Chart or YAML modes depending on your preference, to create a Promotion Flow. 
 
 >**NOTE**  
 You need to be an account administrator to create Promotion Flows.

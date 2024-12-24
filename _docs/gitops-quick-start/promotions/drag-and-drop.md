@@ -15,9 +15,13 @@ Use this method when you want to:
 * Quickly test changes in a different environment
 * Manually promote a product version for validation or further deployment
 
+## Before you begin
+Create:
+* Environments
+* Products
+* Applications
+
 ## Promote product applications through drag-and-drop
-
-
 
 1. From the sidebar, select **Environments**.  
     * The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 
@@ -30,21 +34,21 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-prod-in-env.png" 
 url="/images/gitops-promotions/tutorials/dnd-prod-in-env.png"
-alt="`demo-trioapp` product in Environments dashboard" 
-caption="`demo-trioapp` product in Environments dashboard"
+alt="Promotions quick start: `demo-trioapp` product in Environments dashboard" 
+caption="Promotions quick start: `demo-trioapp` product in Environments dashboard"
 max-width="60%"
 %}
 
 {:start="2"}
-1. To view the applications linked to the product, `demo-trioapp``,  in each environment, mouse over the product.
+1. To view the applications linked to the product `demo-trioapp` in each environment, mouse over the product name in each of the environments.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png" 
 url="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png"
-alt="`demo-trioapp-dev` and `demo-trioapp-qa` applications" 
-caption="`demo-trioapp-dev` and `demo-trioapp-qa` applications"
+alt="Promotions quick start: `demo-trioapp-dev` and `demo-trioapp-qa` applications" 
+caption="Promotions quick start: demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"
 %}
 
@@ -57,8 +61,8 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-action.png" 
 url="/images/gitops-promotions/tutorials/dnd-action.png"
-alt="Drag and drop `demo-trioapp-dev` to promote" 
-caption="Drag and drop `demo-trioapp-dev` to promote"
+alt="Promotions quick start: Drag and drop `demo-trioapp-dev` to promote" 
+caption="Promotions quick start: Drag and drop `demo-trioapp-dev` to promote"
 max-width="60%"
 %}
 
@@ -72,8 +76,8 @@ image.html
 lightbox="true" 
 file="/images/gitops-promotions/tutorials/dnd-commit.png" 
 url="/images/gitops-promotions/tutorials/dnd-commit.png"
-alt="Commit changes for `demo-trioapp`" 
-caption="Commit changes for `demo-trioapp`"
+alt="Promotions quick start: Commit changes for `demo-trioapp`" 
+caption="Promotions quick start: Commit changes for `demo-trioapp`"
 max-width="60%"
 %}
 
@@ -84,7 +88,7 @@ max-width="60%"
 
 ## View release created for product
 After committing the changes, the promotion mechanism automatically creates a release for the product, `demo-trioapp` in our case.
-Here you can monitor how the promotion is orchestrated between the environments, `dev` and `qa`.
+Here you can monitor how the promotion is orchestrated between the environments `dev` and `qa`.
 
 * Click **View Release Details** to go to the release view and monitor the release as it progresses between the `dev` and `qa` environments.
 

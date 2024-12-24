@@ -7,12 +7,13 @@ redirect_from:
   - docs/quick-start/gitops-quick-start/create-app-ui/
 ---
 
-We've created two of the three core entities essential for GitOps promotions: Environments and products. In this quick start, we'll create applications—the fundamental building blocks of software delivery.  
+We've created two of the three core entities essential for GitOps promotions: [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/) and [products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/).  
+In this quick start, we'll create applications—the fundamental building blocks of software delivery.  
 The ultimate goal is to deploy and maintain these applications efficiently, ensuring they run reliably in production.
 
 In Codefresh, applications are Argo CD applications that represent the Kubernetes resources deployed and managed through GitOps principles. 
-* By linking applications to Git Sources, you have a centralized location from which to manage manifests. 
-* By associating applications with environments and products, you get an organizational layer that simplifies tracking and managing deployments throughout the software delivery lifecycle.
+* By linking applications to Git Sources, you have a centralized location from which to manage multiple manifests. 
+* By associating applications with products, you get an organizational layer that simplifies tracking and managing deployments throughout the software delivery lifecycle.
 
 For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
@@ -30,6 +31,7 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
 
 ## Create your first application
 We'll create an application with only the required settings for this quick start. We'll also connect the application to the product we created in the previous quick start. 
+
 Use the Form editor or code directly in YAML. Switch between the two as you prefer. 
 
 ##### Step-by-step
@@ -40,7 +42,7 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
     We added `-dev` to the application name to differentiate it from other applications we'll create.
   * **Runtime**: The runtime to associate with the application, `demo-runtime` for the quick start.  
   * **Name for YAML file**: The name of the application's configuration manifest, assigned on commit to Git. By default, the manifest is assigned the application name.  
-    You can click the Edit icon and change the name, if you want to.
+    You can click the Edit icon and change the name if you want to.
 
   >**NOTE**  
   You cannot change the application definitions once you continue to the Configuration settings.
@@ -64,7 +66,7 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
   * **Revision**: The branch in Git with the resource files.
   * **Path**: The folder in Git with the resource files.
   * **Namespace**: For the quick start, we'll define a namespace for the application, entitled `demo-dev`. 
-  * **Auto-create namespace**: If you defined a namespace, select this to ensure that the namespace is created if it doesn't exist. 
+  * **Auto-create namespace**: If you defined a namespace, select this option to ensure that the namespace is created if it doesn't exist. 
   * **Sync Policy**: Change to **Automatic** if needed, and select **Prune resources** to automatically remove unused resources.
 
  
@@ -84,7 +86,8 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
   The only setting to note here is that we are creating a Helm application.
 1. To commit all changes, select **Commit**.  
   The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
-1. Select the **Git Source** to which to commit.
+1. Select the **Git Source** to which to commit the application's manifest.  
+  For the quick start, we have one Git Source which we created earlier, the `demo-git-source`
 
 {% include 
    image.html 
@@ -99,7 +102,7 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
 {:start="9"} 
 1. Add a commit message and then click **Commit** at the bottom-right of the panel.  
   You are directed to the GitOps Apps dashboard.  
-  You may have to wait for a few seconds until the application is synced to the cluster.
+  You may have to wait for a few seconds until the application is synced to the cluster for it to be displayed in the dashboard.
 
 {% include 
    image.html 
@@ -112,13 +115,13 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
    %} 
 
 ## Create additional applications
-Follow the steps in [Create your first application](#create-your-first-application) to add more applications.  
+Follow the steps in [Create your first application](#create-your-first-application) to create more applications.  
 
-One of the requirements for GitOps promotions is to have an application in each of the environments you want to target in your promotion lifecyle. 
+One of the requirements for promotions in GitOps is to have an application in each of the environments you want to target in your promotion lifecyle. 
 For the quick start, since we created three environments, we'll add two more applications: `demo-trioapp-qa` and `demo-trioapp-prod`.
-Remember to select the Product for the applications.
+Remember to select the product for each of the applications.
 
-Here's a view of the GitOps Apps dashboard with all the three applications connected to the Git Source.
+Here's a view of the GitOps Apps dashboard with all the three applications connected to their Git Source.
 
   {% include 
    image.html 
@@ -157,7 +160,7 @@ Let's visit the Product Dashboard now that we have created applications and assi
  
 * From the sidebar, select **Products**, and then click the product, `demo-trioapp`.
  
-Here's an example of the Product Dashboard with the applications we created for the quick start.
+Here's an example of the Product Dashboard for `demo-trioapp` with the applications we created for the quick start.
 
 
 
@@ -172,6 +175,6 @@ Here's an example of the Product Dashboard with the applications we created for 
 %}
 
 ## What's next
-It's useful to explore the Product Dashboard with the product and its applications. 
+It's to explore the Product Dashboard with the product and its applications to see what insights you can obtain from it. 
 
 [Quick start: Exploring the Product Dashboard]({{site.baseurl}}/_docs/gitops-quick-start/products/quick-start-product-dashboard/)

@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-We created Environments, one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
+In the previous quick start, we [created environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/),  one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
 
 Products not only bridge the gap between environments and applications but also amplify the capabilities of your applications by grouping and managing them as cohesive units.
 
@@ -19,6 +19,8 @@ Products not only bridge the gap between environments and applications but also 
 	caption="Products quick start: Representation of a product in Codefresh GitOps"
   max-width="60%" 
 %} 
+
+For detailed information, see [Products]({{site.baseurl}}/docs/products/about-products/).
 
 ## Why create products?
 
@@ -37,8 +39,7 @@ Here are a few reasons why you would want to create products to manage your appl
 * **Effortless creation**  
   Creating a product is as simple as creating an environment. You can do so directly from the UI, declaratively by annotating application manifests, or even when creating applications themselves.
 
-* If you clicked **Create Product** from the Environments page in the previous quick start, you can continue with defining the settings for the new product. 
-* If not, follow the steps in this quick start and create your first product. 
+
 
 ## Create your first product
 A product requires a unique name, and an annotation through which to connect the different applications.
@@ -49,6 +50,9 @@ A product requires a unique name, and an annotation through which to connect the
 
 ##### Step-by-step
 
+1. Do one of the following:
+    * If you clicked **Create Product** from the Environments page in the previous quick start, continue from _step 3_. 
+    * If not, continue from _step 2_. 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Click **Add Product**.
 1. Define the following:

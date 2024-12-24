@@ -13,7 +13,7 @@ The Git Source connects to a Git repository within your organization, serving as
 
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. You can manage the Git Source itself as an Argo CD application.
 
-We'll first create a Git repository for the Git Source and then create t
+For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
 
 
 
@@ -40,8 +40,8 @@ You can automatically create the repo at the same time as the Git Source.
 	lightbox="true" 
 	file="/images/quick-start/runtimes/qs-runtime-create-gitsource.png" 
 	url="/images/quick-start/runtimes/qs-runtime-create-gitsource.png" 
-	alt="Create Git Source" 
-	caption="Create Git Source"
+	alt="Runtime quick start: Create Git Source" 
+	caption="Runtime quick start: Create Git Source"
     max-width="60%" 
 %}
 
@@ -56,14 +56,18 @@ Here's the example of the Git repo in GitHub for the Git Source.
 	lightbox="true" 
 	file="/images/quick-start/runtimes/qs-runtime-gitsource-repo.png" 
 	url="/images/quick-start/runtimes/qs-runtime-gitsource-repo.png" 
-	alt="Git repo for Git Source" 
-	caption="Git repo for Git Source"
+	alt="Runtime quick start: Git repo for Git Source" 
+	caption="Runtime quick start: Git repo for Git Source"
     max-width="60%" 
 %}
 
 ## What's next
-You are now all set to create applications. Before we dive into the world of applications, let's create an environment.
-Environments mimic your software development lifecycle and allow to track your applications.
+With a Git Source in place, you are now ready to create applications. Before diving into application creation, let’s focus on two key entities essential for promoting and deploying applications: Environments and Products.
+
+* Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
+* Products group related applications under a single entity, enabling better organization, visibility, and control when promoting changes and deploying applications.
+
+Let’s continue by creating environments.
 
 [Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
 
