@@ -14,15 +14,15 @@ The CLI-based installation for Hybrid GitOps is considered legacy. We will depre
 You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as described in [Migrating GitOps Runtimes from CLI to Helm]({{site.baseurl}}/docs/installation/gitops/migrate-cli-runtimes-helm/). 
 {{site.data.callout.end}}
 
-For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops). 
+<!--- For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes. For a comparison, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops). --> 
 
 
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts on a _clean cluster_. You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within your account must have a unique name.
 
-For Hosted GitOps Runtimes, see [Hosted GitOps Runtime Setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/). 
+<!--- For Hosted GitOps Runtimes, see [Hosted GitOps Runtime Setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/). --->
 
 ##### Number of Hybrid GitOps Runtimes
-Within the same account, you can install _one Hosted and one Hybrid GitOps Runtime on a cluster_.  
+Within the same account, you can install one Hybrid GitOps Runtime on a cluster.  
 For additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster, and must have a unique name.
 
 ##### Installation options for GitOps Runtimes 
@@ -864,7 +864,7 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 |Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 
-For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).
+<!--- For a comparison between Hosted and Hybrid GitOps Runtimes, see [Hosted vs. hybrid GitOps]({{site.baseurl}}/docs/installation/installation-options/#hosted-vshybrid-gitops).  -->
 
 ## Upgrade Runtimes 
 For upgrade instructions, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes/).  

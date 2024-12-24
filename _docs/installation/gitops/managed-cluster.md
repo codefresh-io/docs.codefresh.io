@@ -6,7 +6,7 @@ sub_group: gitops
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation//) or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to  those clusters without having to install Argo CD on the clusters in order to do so.
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation//) <!--- or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) -->GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
 
@@ -17,7 +17,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 
 ## Prerequisites
 
-* For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)
+<!--- * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  -->
 * Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens/)
 * [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Codefresh token in user settings

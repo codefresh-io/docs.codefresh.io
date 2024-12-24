@@ -8,10 +8,10 @@ toc: true
 ---
 
 
-A Codefresh account with a Hosted or a Hybrid GitOps runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
+A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
 ##### When is it created? 
-The Shared Configuration Repository (internally ISO/iso) is created on installing the first Hosted or Hybrid GitOps Runtime in the account. See [GitOps Runtimes & Shared Configuration Repos](#gitops-runtimes--shared-configuration-repos).
+The Shared Configuration Repository (internally ISO/iso) is created on installing the first Hybrid GitOps Runtime in the account. See [GitOps Runtimes & Shared Configuration Repos](#gitops-runtimes--shared-configuration-repos).
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
@@ -51,10 +51,10 @@ See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
 
 ## GitOps Runtimes & Shared Configuration Repos
 
-* Hosted GitOps Runtimes  
+<!--- * Hosted GitOps Runtimes  
   As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) in Hosted GitOps setup.  
 
-* Hybrid GitOps Runtimes  
+* Hybrid GitOps Runtimes -->  
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation: Set up Git provider]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-2-set-up-gitops-git-provider).  
 
 
@@ -304,7 +304,7 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 
 
 ## Related articles
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
+<!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  -->
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 
 
