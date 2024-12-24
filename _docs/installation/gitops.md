@@ -92,6 +92,10 @@ Hybrid GitOps Runtime installation includes a forked version of the Argo Project
 
 ## Hosted vs.Hybrid GitOps 
 
+>**NOTE**  
+We have deprecated Hosted GitOps Runtimes which are no longer supported.  
+The comparison below is provided for historical reference only.
+
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
@@ -115,7 +119,7 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |Integrations             |                    | Supported                  | Supported  |
 |Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
-|                         |Applications        | Supported                 |Supported        |  -->
+|                         |Applications        | Supported                 |Supported        |  
 
 
 ## Related articles
