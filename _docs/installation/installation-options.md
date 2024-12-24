@@ -49,7 +49,7 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 ### GitOps Runtime
 The GitOps Runtime required for the GitOps module is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-The GitOps Runtime is installed in either hosted mode within the Codefresh platform (Hosted GitOps), or in hybrid mode within the customer environment (Hybrid GitOps).  
+The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh platform (Hosted GitOps), or -->in hybrid mode within the customer environment (Hybrid GitOps).  
 Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/).
 
 ### Codefresh Runner

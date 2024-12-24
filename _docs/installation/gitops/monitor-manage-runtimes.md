@@ -10,7 +10,7 @@ toc: true
 ---
 
 
-The **Runtimes** page displays the provisioned GitOps Runtimes in your account, both Hybrid Runtimes, and the Hosted Runtime if you have one.
+The **Runtimes** page displays the provisioned GitOps Runtimes in your account<!---, both Hybrid Runtimes, and the Hosted Runtime if you have one -->.
 
 View Runtime components and information in [List or Topology view formats](/#gitops-runtime-views) to manage and monitor them.
 
@@ -25,10 +25,10 @@ View Runtime components and information in [List or Topology view formats](/#git
 %}
 
 
-{{site.data.callout.callout_tip}}
+<!--- {{site.data.callout.callout_tip}}
 **TIP**  
 Unless specified otherwise, all options are common to both types of GitOps Runtimes. If an option is valid only for Hybrid GitOps, it is indicated as such.
-{{site.data.callout.end}}
+{{site.data.callout.end}}  -->
 
 {{site.data.callout.callout_warning}}
 **WARNING**
@@ -66,9 +66,9 @@ Here is a description of the information in the List View.
 | List View Item|  Description   |
 | --------------          | ---------------- |
 |**Name**| The name of the provisioned GitOps Runtime.<br>Hybrid GitOps Runtimes installed with Helm show the status as either Online (green dot) or Offline (red dot).  |
-|**Type**| The type of GitOps Runtime provisioned, and can be either **Hosted** or **Helm**.<br>**Config Runtime** indicates that the Runtime has been designated to store platform resources. See [Designating Configuration Runtimes](#designating-configuration-runtimes) |
+|**Type**| The type of GitOps Runtime provisioned, and is **Helm**<!--- can be either **Hosted** or **Helm**-->.<br>**Config Runtime** indicates that the Runtime has been designated to store platform resources. See [Designating Configuration Runtimes](#designating-configuration-runtimes) |
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
-|**Modules**| The modules installed based on the type of provisioned Runtime. Hybrid GitOps (both Helm and CLI) Runtimes include CI and CD Ops modules. Hosted runtimes include CD Ops.   |
+|**Modules**| The modules installed based on the type of provisioned Runtime. Hybrid GitOps Runtimes include CI and CD Ops modules. <!--- Hosted runtimes include CD Ops.-->   |
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
 |**Version**| The version of the Runtime currently installed, and the version of the Helm chart in parentheses. <br><br>**Update Available!** indicates there are newer versions of the Runtime, Helm chart, or both. <br>To see all the commits and changes for the version, mouse over **Update Available!**, and select **View Complete Change Log**. <br> See:<br>[Upgrade GitOps Runtimes](#hybrid-gitops-upgrade-gitops-runtimes)<br>[View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases)<br>[Rollback GitOps Runtimes](#hybrid-gitops-rollback-gitops-runtimes) |
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
@@ -96,13 +96,13 @@ Here is a description of the information in the Topology view.
 {: .table .table-bordered .table-hover}
 | Topology View Item      | Description   |
 | ------------------------| ---------------- |
-|**Runtime**             | ![](../../../../images/icons/runtime-topology-name.png?display=inline-block) the provisioned Runtime. <br>Hybrid Runtimes display the name of the K8s API server endpoint with the cluster. <br>Hosted Runtimes display 'Codefresh hosted'.  |
+|**Runtime**             | ![](../../../../images/icons/runtime-topology-name.png?display=inline-block) the provisioned Runtime. <br>Hybrid Runtimes display the name of the K8s API server endpoint with the cluster. <!--- <br>Hosted Runtimes display 'Codefresh hosted'. --> |
 |**Cluster**              | The local, and managed clusters if any, for the Runtime. {::nomarkdown}<ul><li><img src="../../../../images/icons/runtime-topology-in-cluster.png" display=inline-block/> indicates the local cluster, always displayed as `in-cluster`. The in-cluster server URL is always set to `https://kubernetes.default.svc/`.</li><li><img src="../../../../images/icons/runtime-topology-managed-cluster.png" display=inline-block/> indicates a managed cluster.</li> <li> <img src="../../../../images/icons/runtime-topology-add-cluster.png" display=inline-block/> select to add a new managed cluster.</li></ul> {:/} To view cluster components, select the cluster. To add and work with managed clusters, see [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/). |
 |**Health/Sync status** |The health and sync status of the Runtime or cluster. {::nomarkdown}<ul><li><img src="../../../../images/icons/error.png" display="inline-block"> indicates health or sync errors in the Runtime, or a managed cluster if one was added to the runtime.</br> The runtime or cluster node is bordered in red and the name is colored red.</li> <li><img src="../../../../images/icons/cf-sync-status.png" display=inline-block/> indicates that the Runtime is being synced to the cluster on which it is provisioned.</li></ul> {:/} |
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Designating Configuration Runtimes 
-Designate any GitOps Runtime, including the Hosted GitOps Runtime, as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality related to Products in GitOps, and Promotions such as Promotion Policies, Promotion Templates, and Promotion Flows. 
+Designate any GitOps Runtime<!---, including the Hosted GitOps Runtime ,--> as a Configuration Runtime to manage platform-level resources which are Runtime-agnostic. These resources are crucial for functionality related to Products in GitOps, and Promotions such as Promotion Policies, Promotion Templates, and Promotion Flows. 
   
 ##### Single vs multiple Configuration Runtimes  
 You can designate a single Runtime or multiple Runtimes as Configuration Runtimes. You may want to designate more than one Configuration Runtime for redundancy. Codefresh makes sure that there are no duplicate resources among the designated Configuration Runtimes if there are multiple such Runtimes. 
@@ -593,7 +593,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
   The file is downloaded as `<component-name>.log`.
 
 ## Reset Shared Configuration Repository for GitOps Runtimes
-When you install the first Hybrid or Hosted GitOps Runtime for your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
+When you install the first Hybrid <!--- or Hosted--> GitOps Runtime for your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
 
 As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes. See [Reset Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/#reset-shared-configuration-repo).
 
