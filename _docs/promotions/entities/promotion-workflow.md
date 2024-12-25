@@ -28,7 +28,7 @@ Promotion Workflows are Argo Workflows that include a specific annotation identi
 If you are not familiar with Argo Workflows, refer to their official [documentation](https://argo-workflows.readthedocs.io/en/latest/){:target="\_blank"}.  
 We also have several articles at our [learning center](https://codefresh.io/learn/argo-workflows/){:target="\_blank"} on all aspects of Argo Workflows. 
 
-See also [Annotation attribute for Promotion Workflows](#annotation-attribute-for-promotion-workflows).
+See [Annotation attribute for Promotion Workflows](#annotation-attribute-for-promotion-workflows).
 
 
 ##### Pre-Action and Post-Action Workflows 
@@ -56,7 +56,7 @@ After creating Promotion Workflows, there are two ways to use them in the promot
   See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/).
 
 * Controlled automation with policies  
-  For scalable, automated usage, you can associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion patterns for environments.
+  For scalable, automated usage, you can associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion patterns for different environments.
   With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production and creating pull requests in production.  
   Example:  
   Assign a validation workflow for all staging environments and a performance testing workflow for production environments. 
@@ -71,238 +71,19 @@ See [Parameters in Pre-Action and Post-Action Workflows](#parameters-in-pre-acti
 ##### Manage workflows and workflow instances
 After creating Promotion Workflows, you can [manage workflows](#managing-promotion-workflows) and [workflow instances](#managing-workflow-instances). 
 
-
-
-## Promotion Workflow examples
-
-Below are examples of different types of workflows designed to address specific requirements at various stages of the GitOps promotion process.
-* Testing workflows: Running unit and smoke tests for example to validate and verify that the promoted change is functional in the target environment.
-* Notification workflows: Send updates or alerts to stakeholders via tools like Slack or email.
-* Performance testing workflows: For running benchmarks or load tests to validate performance post-promotion.
-* Validation workflows: Ensure compliance with security, quality, or policy standards before deployment.
-* Rollback workflows: Automatically revert changes if a promotion fails validation or post-action checks.
-
 ##### Workflow settings in Shared Repo
-Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+Once configured and committed, Promotion Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
+## Annotation attribute for Promotion Workflows
+An Argo Workflow or a Workflow Template is classified as a Promotion Workflow only when the following annotation is present in the workflow manifest:  
+`metadata.annotations: codefresh.io/workflow-origin: promotion`
 
-
-##### YAML examples 
-
-Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process.
-* [Example 1: Pre-Action Workflow with application sync check](#example-1-pre-action-application-sync-check-test)
-* [Example 2: Pre-action Workflow combining smoke test and Slack notification](#example-2-pre-action-smoke-test-with-slack-notification)
-* [Example 3: Post-Action Workflow to close Jira ticket](#example-3-post-action-jira-ticket-close)
-
-### Example 1: Pre-Action application sync check test
-This Pre-action Workflow performs a preliminary validation by echoing a sync message for the application being promoted.
-The workflow confirms that the argument `APP_NAME` is correctly passed to it and right application is being promoted.
-
-
-```yaml 
-# DO NOT REMOVE the following attributes:
-# annotations.codefresh.io/workflow-origin (identifies type of Workflow Template as Promotion Workflow)
-# annotations.version (identifies version of Promotion Workflow used)
-# annotations.description (identifies intended use of the Promotion Workflow)
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  name: pre-action
-  annotations:
-    codefresh.io/workflow-origin: promotion
-    version: 0.0.1
-    description: 'promotion workflow template'
-spec:
-  serviceAccountName: promotion-template
-  arguments:
-    parameters:
-    - name: APP_NAME
-      description: The name of the application being promoted.
-  entrypoint: echo-pre-action
-  templates:
-  - name: echo-pre-action
-    script:
-      image: alpine
-      command:
-      - sh
-      source: |
-        echo "syncing {{ workflow.parameters.APP_NAME }}"
-```
-
-
-### Example 2: Pre-Action smoke test with Slack notification
-A more complex Pre-Action Workflow, the workflow in this example executes a smoke test and sends a Slack alert if the smoke test fails. The workflow identifies failures before changes are committed and promoted, and alerts stakeholders of the failures.
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  name: smoke-test-pre-action
-  annotations:
-    codefresh.io/workflow-origin: promotion
-    version: 0.0.1
-    description: 'Pre-action smoke test with Slack notification'
-spec:
-  serviceAccountName: promotion-template
-  arguments:
-    parameters:
-    - name: APP_NAME
-      description: The name of the application being promoted.
-  entrypoint: smoke
-  onExit: slack-alert
-  templates:
-  - name: smoke
-    inputs:
-      parameters:
-        - name: NB_TESTS
-          value: 100
-        - name: THRESHOLD
-          value: 30
-        - name: TEST_RATE
-          value: 50
-    script:
-      image: bash:5.2.26
-      command: ["/usr/local/bin/bash"]
-      source: |
-        num_tests={{inputs.parameters.NB_TESTS}}
-        error=0
-        success=0
-        test_rate={{inputs.parameters.TEST_RATE}}
-        suite_threshold={{inputs.parameters.THRESHOLD}}
-
-        # Generate random test results
-        for ((i=1; i<=$num_tests; i++)); do
-            rand_num=$((RANDOM % 100 + 1))
-            if  ((rand_num < test_rate ))
-            then
-              echo "Test $i: FAILED ($rand_num)"
-              ((error++))
-            else
-              echo "Test $i: PASSED ($rand_num)"
-              ((success++))
-            fi
-        done
-
-        success_rate=$((success * 100 / num_tests))
-        echo "Success Rate: $success_rate%"
-        if ((success_rate < suite_threshold))
-        then
-          echo "Test Suite: FAILED"
-          exit 1
-        else
-          echo "Test Suite: PASSED"
-          exit 0
-        fi
-
-  - name: slack-alert
-    dag:
-      tasks:
-      - name: send-message
-        templateRef:
-          name: argo-hub.slack.0.0.2
-          template: post-to-channel
-        when: "{{workflow.status}} != Succeeded"
-        arguments:
-          parameters:
-          - name: SLACK_CHANNEL
-            value: 'topic-codefresh-demo'
-          - name: SLACK_MESSAGE
-            value: 'Smoke test failed for {{ workflow.parameters.APP_NAME }}. Check logs at https://g.codefresh.io/2.0/workflows/{{ workflow.name }}'
-          - name: SLACK_TOKEN
-            value: slack-token
-          - name: LOG_LEVEL
-            value: "info"
-```
-
-### Example 3: Post-Action soak test
-This example is of a Post-Action Promotion Workflow that uses a script template to display application details, commit information, and the Argo CD host, taking these parameters from the promotion flow process.
-
-```yaml
-# DO NOT REMOVE the following attributes:
-# annotations.codefresh.io/workflow-origin (identifies type of Workflow Template as Promotion Workflow)
-# annotations.version (identifies version of Promotion Workflow used)
-# annotations.description (identifies intended use of the Promotion Workflow)
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  name: soak-test
-  annotations:
-    codefresh.io/workflow-origin: promotion
-    version: 0.0.1
-    argo-hub/version: 0.0.2
-    argo-hub/description: >-
-      This Workflow Template is an example of a post-promotion workflow that
-      uses a script template to display application details, commit information,
-      and the Argo CD host, taking these parameters from the promotion flow
-      process.
-    argo-hub/categories: promotion example workflow
-    argo-hub/license: MIT
-    argo-hub/owner_name: Eti Zaguri
-    argo-hub/owner_email: eti.zaguri@codefresh.io
-    argo-hub/owner_avatar: https://avatars.githubusercontent.com/u/85868206
-    argo-hub/owner_url: https://github.com/eti-codefresh
-    argo-hub/icon_url: >-
-      https://cdn.jsdelivr.net/gh/codefresh-io/argo-hub@main/examples/post-promotion-starter/assets/icon.svg
-    argo-hub/icon_background: '#f4f4f4'
-spec:
-  arguments:
-    parameters:
-      - name: APP_NAMESPACE
-      - name: APP_NAME
-      - name: REPO_URL
-      - name: BRANCH
-      - name: PATH
-      - name: COMMIT_SHA
-        value: ''
-      - name: COMMIT_MESSAGE
-        value: ''
-      - name: COMMIT_AUTHOR
-        value: ''
-      - name: COMMIT_DATE
-        value: ''
-  serviceAccountName: argo-hub.post-promotion-starter.0.0.2
-  entrypoint: echo
-  templates:
-    - name: echo
-      metadata:
-        annotations:
-          argo-hub-template/description: >-
-            Echo the commit parameters and argo cd host from the promotion flow
-            process
-          argo-hub-template/icon_url: >-
-            https://cdn.jsdelivr.net/gh/codefresh-io/argo-hub@main/examples/post-promotion-starter/assets/icon.svg
-          argo-hub-template/icon_background: '#f4f4f4'
-      script:
-        image: alpine
-        command:
-          - sh
-        source: >
-          echo "syncing
-          {{workflow.parameters.APP_NAMESPACE}}/{{workflow.parameters.APP_NAME}}
-          from {{workflow.parameters.REPO_URL}} branch
-          {{workflow.parameters.BRANCH}} path {{workflow.parameters.PATH}}"
-
-          if [[ -n "{{workflow.parameters.COMMIT_SHA}}" ]]; then
-            echo "commit SHA: {{workflow.parameters.COMMIT_SHA}}"
-          fi
-
-
-          if [[ -n "{{workflow.parameters.COMMIT_AUTHOR}}" ]]; then
-            echo "commit author: {{workflow.parameters.COMMIT_AUTHOR}}"
-          fi
-
-
-          if [[ -n "{{workflow.parameters.COMMIT_MESSAGE}}" ]]; then
-            echo "commit message: {{workflow.parameters.COMMIT_MESSAGE}}"
-          fi
-
-
-          if [[ -n "{{workflow.parameters.COMMIT_DATE}}" ]]; then
-            echo "commit date: {{workflow.parameters.COMMIT_DATE}}"
-          fi
-```
+This annotation in the Promotion Workflow's manifest ensures that:
+* The Promotion Workflow is displayed in the Promotion Workflows list and can be managed there
+* You can assign the Promotion Workflows in Promotion Policies
+* Select Promotion Workflows within Promotion Flows  
 
 ## Parameters in Pre-Action and Post-Action Workflows
 Pre-Action and Post-Action Workflows can use default parameters retrieved from application manifest data, and user-defined custom parameters to adapt dynamically to specific environments and processes.
@@ -342,10 +123,214 @@ outputs:
     globalName: JIRA_ID
     valueFrom:
       path: /tmp/JIRA_ID
+```
+See 
 
+
+
+
+
+## Promotion Workflow examples
+
+Here are different types of workflows designed to address specific requirements at various stages of the GitOps promotion process.
+* Testing workflows: Running unit and smoke tests for example to validate and verify that the promoted change is functional in the target environment.
+* Notification workflows: Send updates or alerts to stakeholders via tools like Slack or email.
+* Performance testing workflows: For running benchmarks or load tests to validate performance post-promotion.
+* Validation workflows: Ensure compliance with security, quality, or policy standards before deployment.
+* Rollback workflows: Automatically revert changes if a promotion fails validation or post-action checks.
+
+##### YAML examples 
+
+Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process:
+* [Example 1: Pre-Action Workflow with application sync check](#example-1-pre-action-application-sync-check-test)
+* [Example 2: Post-Action Workflow to Slack notification with commit details](#example-2-pre-action-smoke-test-with-slack-notification)
+* [Example 3: Pre- and Post-Action Workflows with custom `globalName` argument usage](#example-3-pre--and-post-action-workflows-with-custom-globalname-argument-usage)
+
+
+### Example 1: Pre-Action application sync check test
+This Pre-action Workflow performs a preliminary validation by echoing a sync message for the application being promoted.
+The workflow confirms that the argument `APP_NAME` is correctly passed to it and right application is being promoted.
+
+* The workflow accepts parameters such as the application namespace (`APP_NAMESPACE`), application name (`APP_NAME`), repository URL (`REPO_URL`), branch (`BRANCH`), and path (`PATH`), automatically passed by Codefresh and uses them in the steps.
+* The `run-echo` step executes an `echo` command that outputs a message, including the provided parameters, confirming the syncing of the application from the repository.
+* The `send-message` step sends a message to a Slack channel using a webhook URL (`SLACK_HOOK_URL`). The message, which can be customized (`SLACK_TEXT`), notifies stakeholders which application (`APP_NAME`) is being promoted.
+
+```yaml 
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: pre-action
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+spec:
+  arguments:
+    parameters:
+      - name: APP_NAMESPACE
+      - name: APP_NAME
+      - name: REPO_URL
+      - name: BRANCH
+      - name: PATH
+  entrypoint: main-workflow
+  templates:
+    # Parent template to run both tasks
+    - name: main-workflow
+      steps:
+        - - name: run-echo
+            template: echo
+        - - name: run-send-message
+            template: send-message
+
+    # Echo template
+    - name: echo
+      script:
+        image: alpine
+        command:
+          - sh
+        source: >
+          echo "syncing
+          {{workflow.parameters.APP_NAMESPACE}}/{{workflow.parameters.APP_NAME}}
+          from {{workflow.parameters.REPO_URL}} branch
+          {{workflow.parameters.BRANCH}} path {{workflow.parameters.PATH}}"
+
+    # Send-message template
+    - name: send-message
+      retryStrategy:
+        limit: "10"
+        retryPolicy: "Always"
+        backoff:
+          duration: "5s"
+      inputs:
+        parameters:
+          - name: MODE
+            value: "simple"
+          - name: SLACK_HOOK_URL
+            value: <SLACK_HOOK_URL>
+          - name: SLACK_TEXT
+            value: Promoting {{workflow.parameters.APP_NAME}}.  
+      container:
+        name: main
+        imagePullPolicy: Always
+        image: quay.io/codefreshplugins/argo-hub-slack-send-message:0.0.2-main
+        command:
+          - node
+          - /usr/src/app/index.js
+        env:
+          - name: MODE
+            value: '{{ inputs.parameters.MODE }}'
+          - name: SLACK_HOOK_URL
+            value: '{{ inputs.parameters.SLACK_HOOK_URL }}'
+          - name: SLACK_TEXT
+            value: '{{ inputs.parameters.SLACK_TEXT }}'
 ```
 
-### Custom `globalName` argument usage example
+
+### Example 2: Post-Action application promotion 
+This example is of a Post-Action Promotion Workflow run after the Promotion Action is executed, using the information about the commit action to notify stakeholders.
+
+* The workflow accepts the same parameters passed in the Pre-Action Workflow such as application namespace (`APP_NAMESPACE`), application name (`APP_NAME`), repository URL (`REPO_URL`), branch (`BRANCH`), and path (`PATH`).  
+It also includes additional parameters taken from the optional commit details like `COMMIT_SHA`, `COMMIT_MESSAGE`, `COMMIT_AUTHOR`, and `COMMIT_DATE`.
+* The `run-echo` step logs a message about the application syncing, including the commit details if they are provided.
+* The `run-send-message` step sends a Slack notification if the promotion is successful.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: post-action
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+spec:
+  arguments:
+    parameters:
+      - name: APP_NAMESPACE
+      - name: APP_NAME
+      - name: REPO_URL
+      - name: BRANCH
+      - name: PATH
+      - name: COMMIT_SHA
+        value: ''
+      - name: COMMIT_MESSAGE
+        value: ''
+      - name: COMMIT_AUTHOR
+        value: ''
+      - name: COMMIT_DATE
+        value: ''
+  entrypoint: main-workflow
+  templates:
+    # Parent template to run both tasks
+    - name: main-workflow
+      steps:
+        - - name: run-echo
+            template: echo
+        - - name: run-send-message
+            template: send-message
+
+    # Echo template
+    - name: echo
+      script:
+        image: alpine
+        command:
+          - sh
+        source: >
+          echo "syncing
+          {{workflow.parameters.APP_NAMESPACE}}/{{workflow.parameters.APP_NAME}}
+          from {{workflow.parameters.REPO_URL}} branch
+          {{workflow.parameters.BRANCH}} path {{workflow.parameters.PATH}}"
+
+          if [[ -n "{{workflow.parameters.COMMIT_SHA}}" ]]; then
+            echo "commit SHA: {{workflow.parameters.COMMIT_SHA}}"
+          fi
+
+          if [[ -n "{{workflow.parameters.COMMIT_AUTHOR}}" ]]; then
+            echo "commit author: {{workflow.parameters.COMMIT_AUTHOR}}"
+          fi
+
+          if [[ -n "{{workflow.parameters.COMMIT_MESSAGE}}" ]]; then
+            echo "commit message: {{workflow.parameters.COMMIT_MESSAGE}}"
+          fi
+
+          if [[ -n "{{workflow.parameters.COMMIT_DATE}}" ]]; then
+            echo "commit date: {{workflow.parameters.COMMIT_DATE}}"
+          fi
+
+    # Send-message template
+    - name: send-message
+      retryStrategy:
+        limit: "10"
+        retryPolicy: "Always"
+        backoff:
+          duration: "5s"
+      inputs:
+        parameters:
+          - name: MODE
+            value: "simple"
+          - name: SLACK_HOOK_URL
+            value: <SLACK_HOOK_URL>
+          - name: SLACK_TEXT
+            value: Successfully promoted {{workflow.parameters.APP_NAME}}!  
+      container:
+        name: main
+        imagePullPolicy: Always
+        image: quay.io/codefreshplugins/argo-hub-slack-send-message:0.0.2-main
+        command:
+          - node
+          - /usr/src/app/index.js
+        env:
+          - name: MODE
+            value: '{{ inputs.parameters.MODE }}'
+          - name: SLACK_HOOK_URL
+            value: '{{ inputs.parameters.SLACK_HOOK_URL }}'
+          - name: SLACK_TEXT
+            value: '{{ inputs.parameters.SLACK_TEXT }}'
+```
+
+
+
+
+
+### Example 3: Pre- and Post-Action Workflows with custom `globalName` argument usage
 
 This is an example of a Pre-Action Workflow that simulates creating a Jira ticket with the data retreived from the application manifest and outputs the ticket ID as a global parameter. The Post-Action Workflow simulates using the ID as an input parameter to close the ticket. 
 
@@ -616,14 +601,7 @@ spec:
         echo "{\"POST_ACTION_RESULT\": "\Success\""}" > /tmp/result
 ```
 
-## Annotation attribute for Promotion Workflows
-An Argo Workflow or a Workflow Template is classified as a Promotion Workflow only when the following annotation is present in the workflow manifest:  
-`metadata.annotations: codefresh.io/workflow-origin: promotion`
 
-This annotation in the Promotion Workflow's manifest ensures that:
-* The Promotion Workflow is displayed in the Promotion Workflows list and can be managed there
-* You can assign the Promotion Workflows in Promotion Policies
-* Select Promotion Workflows within Promotion Flows  
 
 
 ## Create Promotion Workflows
