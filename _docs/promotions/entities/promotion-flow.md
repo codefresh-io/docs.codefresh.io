@@ -10,8 +10,8 @@ toc: true
 
 A promotion flow is a structured sequence of actions that automates the promotion of changes in products through various environments until deployment. It ensures that code changes are automatically, systematically, and consistently moved, from development to production environments, enhancing the reliability and efficiency of deployments.
 
-We have a specialized Promotion Flow entity in Codefresh, dedicated to creating and managing multi-environment promotions.
-Promotion Flows in Codefresh GitOps, backed by the power of Argo CD, streamlines the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
+The Promotion Flow entity, is a specialized entity dedicated to creating and managing multi-environment promotions.
+Promotion Flows in Codefresh GitOps, backed by the power of Argo CD, streamline the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
 Set up completely automated promotion flows with just a few clicks, and at the same time, govern how promotions should happen in different environments. 
 
@@ -33,7 +33,7 @@ Review [key insights](#promotion-flow-behavior-key-insights) to understand promo
 
 
 ## Flow Builder vs. YAML
-You can create Promotion Workflows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD).  
+You can create Promotion Flows through the Flow Builder, a graphical interface, or through a YAML Custom Resource Definition (CRD).  
 The Flow Builder visually guides you through creating any type of Promotion Flow. See [Create a Promotion Flow](#create-a-promotion-flow).
 
 Once configured and committed, Promotion Flow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
@@ -78,10 +78,10 @@ See [Remove environments from Promotion Flows](#remove-environments-from-promoti
 ### Applications in environments
 
 ##### Applications in Trigger Environment
-It is recommended to have a single application for a product in the Trigger Environment. If the product has multiple applications with changes, changes are promoted only for a single application. <!--- NIMA: which app is selected? the one with the most recent change? 
+It is recommended to have a single application for a product in the Trigger Environment. If the product has multiple applications with changes, changes are promoted only for a single application. <!--- NIMA: which app is selected? the one with the most recent change? --> 
 
 ##### Applications per defined environment
-The product must include an application in each environment defined in the Promotion Flow. Otherwise the promotion will fail.
+For a successful promotion, the product must include an application in each environment defined in the Promotion Flow. 
 
 ##### Multiple applications in a target environment
 If a target environment, such as staging or production, contains multiple applications for the same product, segmented for example by region, tenant, or other criteria, each application in that environment is updated with changes from the source environment. 
@@ -196,7 +196,8 @@ max-width="60%"
 Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, create new environments and promotion workflows on-the-fly when doing so. 
 
 ##### Before you begin
-* Review [Promotion: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
+* Review [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
+* Make sure you have a Runtime designated as the Configuration Runtime
 
 
 ##### How to
@@ -301,7 +302,7 @@ max-width="60%"
 
 
 ## Evaluate global Promotion Policy settings by product
-Select a product to evaluate the settings that will be applied from global Promotion Policies for all target environments without inline settings. 
+Select a product to evaluate the settings that will be applied from global Promotion Policies to all target environments without inline settings. 
 Global Promotion Policy settings are applied from all Policies that match the product and the environment, according to priority.
 
 {{site.data.callout.callout_tip}}
