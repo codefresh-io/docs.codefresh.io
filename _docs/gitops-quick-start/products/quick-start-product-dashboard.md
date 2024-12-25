@@ -31,9 +31,9 @@ For this quick start, we'll focus on two key features: release versions and inte
 
 ## Identifying release versions in product applications
 
-The release version displayed for each application signifies the specific version of the application that is currently deployed. This version is retrieved from the source file you defined during configuration.
+The release version displayed for each application signifies the specific version of the application that is currently deployed. <!---This version is retrieved from the source file you defined during configuration. --> For details, see [Configuring app version for promotions]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-versions-for-promoted-applications).
 
-**Why is this important?**
+**Why is this important?**  
 Knowing the release version at a glance helps you quickly identify which version of an application is deployed in each environment. This is crucial for ensuring consistency, troubleshooting, and managing deployments effectively.
 
 In the example below, `dev` has a different version of the application compared to `qa` and `prod`.  
@@ -49,14 +49,13 @@ In the example below, `dev` has a different version of the application compared 
   max-width="60%" 
 %}
 
-You can use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments.
-The next set of quick starts will guide you through promotions. 
+You can use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments, which is covered in the next set of quick starts. 
 
 Additionally, you can:
 
 * **View application dependencies and their versions**  
   This helps trace which versions of dependencies are included in a particular deployment.
-* **Compare dependency versions across environments**
+* **Compare dependency versions across environments**  
   For example, you can verify whether the version deployed in a staging environment matches the one in production, which is useful for identifying inconsistencies or issues in specific environments.
 
 
@@ -70,7 +69,7 @@ Additionally, you can:
 	url="/images/quick-start/environments-products/products-app-version-number.png" 
 	alt="Products quick start: Versions for application dependencies" 
 	caption="Products quick start: Versions for application dependencies"
-  max-width="60%" 
+  max-width="50%" 
 %}
 
 
@@ -128,7 +127,7 @@ For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are 
 For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## What's next?
-We'll dive into how to promote changes and deploy applications across environments, using the entities you've created and worked with—environments, products, and applications. For an overview, read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for an overview.
+We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications. For an overview, read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for an overview.
 
 Let's move on to the first quick start on promotions to see this in action.
 

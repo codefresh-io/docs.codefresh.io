@@ -21,10 +21,10 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
 ## Key features of applications in Codefresh
 
 
-* **GitOps-driven management**
+* **GitOps-driven management**  
   Codefresh leverages Argo CD to ensure applications always align with their Git repository definitions, allowing declarative management and version control.
 
-* **Flexible creation methods**
+* **Flexible creation methods**  
   Create applications in the Codefresh UI, imported from an existing Argo CD instance, defined programmatically using YAML, or in our intuitive Form modes.
 
 
@@ -61,7 +61,7 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
 1. Click **Next** to go to the Configuration tab. 
   By default you are in Form mode. You can toggle between Form and YAML modes as you define the application's configuration settings.
 1. Define the **General** settings for the application: 
-  * **Product**: From the list of products, select the product to which to connect this application, `demo-trioapp` for the quick start.
+  * **Product**: From the list of products, select the product to which to connect this application, `demo-trio-gitsource` for the quick start.
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.
   * **Revision**: The branch in Git with the resource files.
   * **Path**: The folder in Git with the resource files.
@@ -147,10 +147,10 @@ Mouse over the product name in any environment to see the associated application
   {% include 
    image.html 
    lightbox="true" 
-   file="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
-   url="/images/quick-start/environments-products/env-with-unassigned-apps.png" 
-   alt="Applications quick start: Environments with product and applications" 
-   caption="Applications quick start: Environments with product and applications"
+   file="/images/quick-start/environments-products/env-with-assigned-apps.png" 
+   url="/images/quick-start/environments-products/env-with-assigned-apps.png" 
+   alt="Applications quick start: Environments with products" 
+   caption="Applications quick start: Environments with products"
    max-width="70%" 
    %} 
 
@@ -175,6 +175,6 @@ Here's an example of the Product Dashboard for `demo-trioapp` with the applicati
 %}
 
 ## What's next
-It's to explore the Product Dashboard with the product and its applications to see what insights you can obtain from it. 
+Explore the Product Dashboard to uncover insights about your product and its applications.
 
-[Quick start: Exploring the Product Dashboard]({{site.baseurl}}/_docs/gitops-quick-start/products/quick-start-product-dashboard/)
+[Quick start: Exploring the Product Dashboard]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)

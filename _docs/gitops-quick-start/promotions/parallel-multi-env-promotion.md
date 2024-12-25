@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-In this quick start, we'll build on the `multi-env-sequential-promotion` flow by showing how to configure parallel promotions across multiple environments.
+In this quick start, we'll learn how to configure parallel promotions across multiple environments.
 
 Parallel promotions are ideal for scenarios like multi-region deployments, where updates must be promoted simultaneously to designated regions before proceeding to a production environment.
 
@@ -55,7 +55,7 @@ caption="Promotions quick start: Adding parallel environments in Promotion Flow"
 max-width="60%"
 %}
 
-{:start="3"}
+{:start="4"}
 1. Click **Save Promotion Flow**.
 
 
@@ -83,6 +83,8 @@ caption="Promotions quick start: YAML view of Promotion Flow with parallel envir
 max-width="60%"
 %}
 
+{:start="5"}
+1. Continue with [Trigger and view product release for parallel environment promotion](#trigger-and-view-product-release-for-parallel-environment-promotion).
 
 ## Trigger and view product release for parallel environment promotion
 
@@ -110,7 +112,7 @@ max-width="60%"
 ## What's next
 The final quick start in this series will guide you through creating dependencies between environments to define the order for promotions.
 
-[Quick start: Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/dependency-multi-env-promotion/)
+[Quick start: Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotions/dependency-multi-env-promotion/)
 
  
  

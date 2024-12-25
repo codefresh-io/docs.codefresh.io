@@ -16,10 +16,10 @@ Use this method when you want to:
 * Manually promote a product version for validation or further deployment
 
 ## Before you begin
-Create:
-* Environments
-* Products
-* Applications
+If you haven't done so already, create:
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
+* [Applications]({{site.baseurl}}/_docs/gitops-quick-start/products/create-app-ui/)  
 
 ## Promote product applications through drag-and-drop
 
@@ -32,8 +32,8 @@ Create:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-prod-in-env.png" 
-url="/images/gitops-promotions/tutorials/dnd-prod-in-env.png"
+file="/images/quick-start/promotions/quick-start-dnd-prod-in-env.png" 
+url="/images/quick-start/promotions/quick-start-dnd-prod-in-env.png"
 alt="Promotions quick start: `demo-trioapp` product in Environments dashboard" 
 caption="Promotions quick start: `demo-trioapp` product in Environments dashboard"
 max-width="60%"
@@ -45,8 +45,8 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png" 
-url="/images/gitops-promotions/tutorials/dnd-apps-in-prod.png"
+file="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png" 
+url="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png"
 alt="Promotions quick start: `demo-trioapp-dev` and `demo-trioapp-qa` applications" 
 caption="Promotions quick start: demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"
@@ -59,8 +59,8 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-action.png" 
-url="/images/gitops-promotions/tutorials/dnd-action.png"
+file="/images/quick-start/promotions/quick-start-dnd-action.png" 
+url="/images/quick-start/promotions/quick-start-dnd-action.png"
 alt="Promotions quick start: Drag and drop `demo-trioapp-dev` to promote" 
 caption="Promotions quick start: Drag and drop `demo-trioapp-dev` to promote"
 max-width="60%"
@@ -82,7 +82,7 @@ max-width="60%"
 %}
 
 {:start="5"}
-1. Review the changes carefully and click **Commit** once again. 
+1. Review the changes carefully and click **Promote**. 
 1. Continue with [View release created for product](#view-release-created-for-product).
 
 
@@ -95,8 +95,8 @@ Here you can monitor how the promotion is orchestrated between the environments 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-inital-release.png" 
-url="/images/gitops-promotions/tutorials/dnd-inital-release.png"
+file="/images/quick-start/promotions/quick-start-dnd-ongoing-release.png" 
+url="/images/quick-start/promotions/quick-start-dnd-ongoing-release.png"
 alt="Promotions quick start: On-going release for `demo-trioapp`" 
 caption="Promotions quick start: On-going release for `demo-trioapp`"
 max-width="60%"
@@ -107,8 +107,8 @@ When the release completes execution, go to **Product > Releases** to see the in
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-promotions/tutorials/dnd-releases-page.png" 
-url="/images/gitops-promotions/tutorials/dnd-releases-page.png"
+file="/images/quick-start/promotions/quick-start-dnd-releases-page.png" 
+url="/images/quick-start/promotions/quick-start-dnd-releases-page.png"
 alt="Promotions quick start: Releases list with release record for `demo-trioapp`" 
 caption="Promotions quick start: Releases list with release record for `demo-trioapp`"
 max-width="60%"
@@ -119,6 +119,6 @@ max-width="60%"
 Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
 The next quick start demonstrates how to orchestrate a multi-environment promotion through a Promotion Flow, enabling you to automate and streamline deployments across more than two environments.
 
-[Quick start: Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/multi-env-sequential-flow/)
+[Quick start: Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/multi-env-sequential-flow/)
 
  

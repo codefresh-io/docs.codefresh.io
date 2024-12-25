@@ -12,10 +12,10 @@ Now that we have covered [Multi-environment sequential promotion]({{site.baseurl
 
 Codefresh makes it easy to automate and enforce gates throughout your promotion processes using Promotion Workflows. 
 Promotion Workflows are essentially Argo Workflows customized for promoting changes through your environments.  
-For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/).
+For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).
 
 ## Promotion Workflows for promotion gates
-Promotion Workflows are designed to define the conditions under which changes are promoted to the next environment. They provide a way to automate testing, quality checks, validation, and any other requirements based on your deployment process, enabling gates that control the flow of changes between environments.
+Promotion Workflows are designed to define the conditions under which changes are promoted to the next environment. They provide a way to automate testing, quality checks, validation, and any other requirements based on your deployment process, establishing gates that control the flow of changes between environments.
 
 You can create workflows tailored to the specific tasks required during a promotion and categorize them based on the stage of the promotion process in which they are executed, as Pre- and Post-Action Workflows.
 
@@ -34,14 +34,14 @@ The Post-Action Workflow allows you to monitor and verify the effects of the pro
 
 ## Assign Pre- and Post-Action Workflows to environments in Promotion Flow
 
-To ensure each environment's specific requirements are met, you can assign workflows to govern promotion behavior through conditions. 
+To ensure each environment's specific requirements are met, assign workflows to govern promotion behavior. 
 
 In this quick start, we’ll define the Promotion Workflows to govern promotion behavior for the `qa` and `prod` environments.
 
 
 
 ### Before you begin
-* [Create Promotion Workflows]()
+* [Create Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/#create-promotion-workflows)
 
 ### Step-by-step
 
@@ -60,10 +60,6 @@ caption="Promotions quick start: Pre-Action Workflow to govern promotion behavio
 max-width="60%"
 %}
 
-{:start="3"}
-1. Repeat _step 2_ to select the Workflows and Action for the other target environments in the Promotion Flow.
-   For this quick start, we'll select the same workflows and the same promotion action for `prod`.
-
 {% include 
 image.html 
 lightbox="true" 
@@ -73,6 +69,12 @@ alt="Promotions quick start: Target environment configured with Promotion Workfl
 caption="Promotions quick start: Target environment configured with Promotion Workflows and Action"
 max-width="60%"
 %}
+
+{:start="4"}
+1. Repeat _step 3_ to select the Workflows and Actions for the other target environments in the Promotion Flow.
+   For this quick start, we'll select the same workflows and the same promotion action for `prod`.
+
+
 
   Here's the YAML view of the flow with the workflows and promotion actions.
 
@@ -86,8 +88,9 @@ caption="Promotions quick start: YAML view of Promotion Flow with Promotion Work
 max-width="60%"
 %}
 
-{:start="4"}
+{:start="5"}
 1. To save the changes, click **Save Promotion Flow**.
+1. Continue with [Trigger Promotion Flow and monitor product release](#trigger-promotion-flow-and-monitor-product-release).
 
 
 ## Trigger Promotion Flow and monitor product release

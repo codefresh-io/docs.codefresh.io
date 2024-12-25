@@ -21,6 +21,7 @@ For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs
 Create the Git Source for the Runtime installed earlier to reference the Git repo corresponding to the Git Source. 
 You can automatically create the repo at the same time as the Git Source.
 
+##### Step-by-step
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. In the List View, select the Runtime you installed earlier, and then click the **Git Sources** tab.  
@@ -46,10 +47,10 @@ You can automatically create the repo at the same time as the Git Source.
 %}
 
 
-{:start="4"}
-1. Click **+ Create Git Source**.
+{:start="5"}
+1. Click **+ Create**.
 
-Here's the example of the Git repo in GitHub for the Git Source. 
+Here's an example of the Git repository referenced in GitHub by the Git source.
 
   {% include 
 	image.html 
@@ -62,12 +63,12 @@ Here's the example of the Git repo in GitHub for the Git Source.
 %}
 
 ## What's next
-With a Git Source in place, you are now ready to create applications. Before diving into application creation, let’s focus on two key entities essential for promoting and deploying applications: Environments and Products.
+With a Git Source setup, you are now ready to create applications. Before diving into application creation, let’s focus on two key entities essential for promoting and deploying applications: Environments and Products.
 
 * Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
 * Products group related applications under a single entity, enabling better organization, visibility, and control when promoting changes and deploying applications.
 
 Let’s continue by creating environments.
 
-[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
+[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)
 

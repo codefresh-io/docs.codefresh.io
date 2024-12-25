@@ -18,7 +18,7 @@ For configuration details, refer to the Codefresh `values.yaml` file, which incl
 The quick start assumes you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
 
 ### Tunnel-based access mode
-Hybrid GitOps Runtimes support tunnel-based, ingress-based, and service-mesh-based access modes.    
+Hybrid GitOps Runtimes support tunnel-based and ingress-based access modes.    
 For the quick start, we'll use the default tunnel-based access mode, which does not require an ingress controller.  
 
 For details on access modes, see [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
@@ -26,8 +26,9 @@ For details on access modes, see [GitOps Runtime architecture]({{site.baseurl}}/
 ### GitHub as the Git provider  
 The Hybrid GitOps Runtime requires a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
 
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git providers and Git runtime tokens]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes).  
+The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs//docs/security/git-tokens/).  
 
+##### Git Runtime token
 Have your GitHub Runtime token ready with a valid expiration date and access permissions:
   * Expiration: Either the default of 30 days or any duration you consider logical.
   * Access scopes: Set to `repo` and `admin-repo.hook`
@@ -42,12 +43,18 @@ Have your GitHub Runtime token ready with a valid expiration date and access per
    max-width="30%" 
    %}  
 
+##### Git user token
+Have your GitHub user token ready with a valid expiration date and access permissions:
+{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}
+
+
 For detailed information on GitHub tokens, see the [GitHub article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ### Shared Configuration Repository
-When selecting the Git provider, you will be required to also define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests.
+As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests.
 
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
+
 Learn more on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 

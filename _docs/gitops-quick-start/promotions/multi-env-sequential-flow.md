@@ -1,5 +1,5 @@
 ---
-title: "QUick start: Multi-environment sequential promotion"
+title: "Quick start: Multi-environment sequential promotion"
 description: "Promote product apps between multiple environments sequentially"
 group: gitops-quick-start
 toc: true
@@ -8,30 +8,30 @@ redirect_from:
 ---
 
 
-[Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/) covered in the previous quick start, is ideal for on-demand promotion to a single environment. Sequential promotion flows provide a structured way to manage changes across multiple environments, reducing deployment risks. 
+[Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/), covered in the previous quick start, is ideal for on-demand promotions to a single environment. In contrast, sequential promotion flows offer a structured approach to managing changes across multiple environments, minimizing deployment risks.
 
-This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progression in the Releases view.
+This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progress in the Releases view.
 
 
 ## Before you begin
 
 For this quick start, ensure that you have:
 
-* Three environments
+* Three environments  
   For multi-environment promotions, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
 
-* Applications in environments
+* Applications in environments  
   Each environment must have an application for the product, such as `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.  
 
-* Consistent repo structure for applications
-  The repo structure with the resources must be consistent across all the three applications. <!--- add a link to the repo? -->
+* Consistent repo structure for applications  
+  The structure of the repos with the resources must be consistent across all the three applications. <!--- add a link to the repo? -->
 
 
 ## Create Promotion Flow for multi-environment promotions
 
 Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
-You can use the Flow Builder in either Chart or YAML modes depending on your preference, to create a Promotion Flow. 
+You can use the Flow Builder in either Chart or YAML modes depending on your preference to create a Promotion Flow. 
 
 >**NOTE**  
 You need to be an account administrator to create Promotion Flows.
@@ -42,7 +42,7 @@ You need to be an account administrator to create Promotion Flows.
 1. Enter the settings for the Promotion Flow:
     * **Name**: The name for the flow. For this quick start, we'll use `multi-env-sequential-promotion`. 
     * **Description**: (Optional) More information about the purpose of the Promotion Flow. 
-    * **Flow Timeout**: The maximum duration permitted for the Promotion Flow to complete execution after being triggered, before it is automatically terminated. If not specified, the default timeout is set to 1 day (24 hours). For the quick start, we'll set it to `5 minutes`. 
+    * **Flow Timeout**: The maximum duration allowed for the Promotion Flow to complete execution after being triggered, before it is automatically terminated. If not specified, the default timeout is 1 day (24 hours). For this quick start, we'll set it to `5 minutes`. 
     * **Version**: (Optional) The version of the Promotion Flow. This is manually defined and manually updated, and is useful to indicate changes in the same flow. For the quick start, we'll set it to `1.0`. 
 
 {% include 
@@ -70,7 +70,7 @@ caption="Promotions quick start: Select Trigger Environment"
 max-width="60%"
 %}
 
-{:start="4"}
+{:start="6"}
 1. Select the target environments in the promotion sequence to which to promote changes: `qa` and `prod`.
     1. Mouse over the right of the `dev` environment node and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
     1. From the list, select the first target environment in the flow, `qa` for this quick start.
@@ -133,7 +133,7 @@ max-width="60%"
 1. Continue with [Trigger Promotion Flow](#trigger-promotion-flow).
 
 ## Trigger Promotion Flow
-Once the Promotion Flow is created, you can manually trigger it to promote changes from the Trigger Environment to the defined target environments.
+Manually trigger the Promotion Flow to promote changes from the Trigger Environment to the defined target environments.
 
 
 1. From the list of Promotion Flows, select `multi-env-sequential-promotion` and then click **Trigger** to initiate the promotion.
@@ -158,7 +158,7 @@ file="/images/quick-start/promotions/quick-start-seq-promo-trigger-select-produc
 url="/images/quick-start/promotions/quick-start-seq-promo-trigger-select-product.png"
 alt="Promotions quick start: Select product to promote" 
 caption="Promotions quick start: Select product to promote"
-max-width="60%"
+max-width="50%"
 %}
 
 {:start="3"}
@@ -186,8 +186,8 @@ max-width="60%"
 
 ##### Release record in releases list
 
-In the Releases page, the Promotion Flow column displays the name of the flow (`multi-env-sequential-promotion` for example) for traceability.
-Drag-and-drop promotions display Manual in this column.
+In the Releases page, the Promotion Flow column displays the name of the flow (`multi-env-sequential-promotion` for example) for traceability. For drag-and-drop promotions, this column displays Manual.
+
 
 {% include 
 image.html 
@@ -200,9 +200,9 @@ max-width="60%"
 %}
 
 ## What's next
-To further enhance your promotion flow, the next quick start will guide you through adding gates and conditional promotions to each environment, allowing you to introduce more control and flexibility in your promotion processes.
+To further enhance your promotion flow, the next quick start will guide you through adding gates to each environment for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
 
-[Quick start: Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotion-scenarios/policy-multi-env-promotion/)
+[Quick start: Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotions/policy-multi-env-promotion/)
 
  
  

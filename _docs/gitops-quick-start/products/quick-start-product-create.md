@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-In the previous quick start, we [created environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/),  one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
+In the previous quick start we [created environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/),  one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
 
 Products not only bridge the gap between environments and applications but also amplify the capabilities of your applications by grouping and managing them as cohesive units.
 
@@ -45,19 +45,16 @@ Here are a few reasons why you would want to create products to manage your appl
 A product requires a unique name, and an annotation through which to connect the different applications.
 
 ##### Before you begin
-* Make sure you have at least [one environment]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
+* Make sure you have at least [one environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 
 
 ##### Step-by-step
 
-1. Do one of the following:
-    * If you clicked **Create Product** from the Environments page in the previous quick start, continue from _step 3_. 
-    * If not, continue from _step 2_. 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Click **Add Product**.
 1. Define the following:
     1. **Name**: A unique name for the Product, `demo-trioapp` for the quick start.
-    1. **Connect Applications**: The automatically created annotation associated with this product, used to connect the different applications to it. In our case, `codefresh.io/product: demo-trioapp`. 
+    1. **Connect Applications**: Displays the annotation associated with this product that is automatically created, and used to connect the different applications to it. In our case, `codefresh.io/product: demo-trioapp`. 
     1. **Tags**: Leave this empty for the quick start.
 
 
@@ -68,7 +65,7 @@ A product requires a unique name, and an annotation through which to connect the
 	url="/images/quick-start/environments-products/products-create.png" 
 	alt="Products quick start: Create product" 
 	caption="Products quick start: Create product"
-  max-width="60%" 
+  max-width="50%" 
 %}
 
 {:start="4"}
@@ -92,5 +89,5 @@ A product requires a unique name, and an annotation through which to connect the
 ## What's next
 After creating two of the three core entities for GitOps promotions, environments and products, we are ready to dive into applications.
 
-[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
+[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)
 

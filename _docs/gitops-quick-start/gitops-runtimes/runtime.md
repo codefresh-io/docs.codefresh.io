@@ -9,7 +9,7 @@ redirect_from:
 
 
 
-If you reviewed and verified that you meet the requirements for a GitOps Runtime, let's go ahead and install the Runtime.
+If you've reviewed and verified that you meet the requirements for a GitOps Runtime, let's go ahead and install the Runtime.
 
 ## Before you begin
 Verify you meet and have completed the [prerequisites]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
@@ -71,9 +71,9 @@ max-width="60%"
 
 ## What's next
 Let's create a Git Source to which we'll link the applications we'll create later in the quick start series.  
-Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
+Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/). 
 
-[Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)
+[Quick start: Creating a Git Source]({{site.baseurl}}/_docs/gitops-quick-start/gitops-runtimes/create-git-source/)
 
 
 

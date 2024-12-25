@@ -108,9 +108,10 @@ max-width="40%"
 %}
 
 
-## Related quick starts
-[CI/CD quick starts]({{site.baseurl}}/docs/quick-start/ci-quick-start/)  
-[GitOps quick starts]({{site.baseurl}}/docs/quick-start/gitops-quick-start/)  
+## What's next
+Verify that you are ready to install the GitOps Hybrid Runtime, the foundation for GitOps operations. 
+
+[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
 
 
 

@@ -31,6 +31,8 @@
 - title: GitOps quick starts
   url: "/gitops-quick-start"
   pages:
+    - title: About GitOps quick starts
+      url: "/gitops-quick-start"
     - title: Create Codefresh account
       url: "/create-codefresh-account"
     - title: GitOps Runtimes & Git Sources
