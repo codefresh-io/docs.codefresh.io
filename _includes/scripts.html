@@ -82,18 +82,21 @@
     return null;
   }
 
-  const isRedirectRequired =  true; //getCookie("argohubdoc");
+  const isRedirectRequired = true; //getCookie("argohubdoc");
   console.log("Cookie value:", isRedirectRequired);
 
   if (isRedirectRequired) {
     const currentPath = window.location.pathname;
-    const targetPath = "/docs/installation/gitops/shared-configuration/";
-    if (currentPath === targetPath) {
+    const docToRedirect = "/docs/installation/gitops/shared-configuration/";
+    if (currentPath.endsWith(docToRedirect)) {
+      const newPath = currentPath.replace(
+        docToRedirect,
+        "/argohub/installation/gitops/shared-configuration/"
+      );
       window.location.href =
         "/argohub/installation/gitops/shared-configuration/";
     }
   }
-
 
   document.addEventListener("keydown", function (event) {
     const isMac = navigator.userAgent.includes('Mac');
