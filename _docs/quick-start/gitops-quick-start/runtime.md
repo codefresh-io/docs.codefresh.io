@@ -7,9 +7,9 @@ toc: true
 ---
 
 
-{% if page.url contains '/docs/' %}
-# This part is for Enerprice  only!!! Hello Nima
-Some data about argohub
+{% if page.url contains '/argohub/' %}
+# This part is for ArgoHub  only!!!
+Some data about argohub - this will not shown in enterprise context.
 {% endif %}
 
 Get up and running with Codefresh by installing the Hybrid Runtime for GitOps via Helm.
