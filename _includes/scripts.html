@@ -59,6 +59,42 @@
     { canOpenEditor: false, products: ["help_hub"] }
   );
 
+
+  // // Set cookie in argo-platform client:
+
+  // function setCodefreshCookie() {
+  //   const cookieName = "argohubdoc";
+  //   const cookieValue = "1";
+  //   const domain = ".codefresh.io";
+  //   const expirationDays = 365;
+
+  //   const date = new Date();
+  //   date.setTime(date.getTime() + expirationDays * 24 * 60 * 60 * 1000);
+  //   const expires = "expires=" + date.toUTCString();
+
+  //   document.cookie = `${cookieName}=${cookieValue};${expires};domain=${domain};path=/;SameSite=Strict`;
+  // }
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    return null;
+  }
+
+  const isRedirectRequired = getCookie("argohubdoc");
+  console.log("Cookie value:", isRedirectRequired);
+
+  if (isRedirectRequired) {
+    const currentPath = window.location.pathname;
+    const targetPath = "/docs/installation/gitops/shared-configuration/";
+    if (currentPath === targetPath) {
+      window.location.href =
+        "/argohub/installation/gitops/shared-configuration/";
+    }
+  }
+
+
   document.addEventListener("keydown", function (event) {
     const isMac = navigator.userAgent.includes('Mac');
     if ((event.key === "k") && ((isMac && event.metaKey) || (!isMac && event.ctrlKey))) {

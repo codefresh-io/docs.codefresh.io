@@ -7,6 +7,10 @@ toc: true
 ---
 
 
+{% if page.url contains '/docs/' %}
+# This part is for Enerprice  only!!! Hello Nima
+Some data about argohub
+{% endif %}
 
 Get up and running with Codefresh by installing the Hybrid Runtime for GitOps via Helm.
 The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones, with descriptions of each.
@@ -71,7 +75,7 @@ Have your GitHub Runtime token with a valid expiration date and access permissio
 ### Shared Configuration Repository
 When you select the Git provider, Codefresh prompts you to also select the Shared Configuration Repository for your account. The repo stores account-level configuration settings and manifests.
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
-Read up on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+Read up on the [Shared Configuration Repository]({{site.baseurl}}/{{page.collection}}/installation/gitops/shared-configuration/).
 
 ## Install Hybrid GitOps Runtime
 
