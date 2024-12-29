@@ -132,7 +132,7 @@ In code samples and internal references, it is represented as `isc`.
 
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 

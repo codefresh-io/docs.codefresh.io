@@ -17,7 +17,7 @@ In this quick start, we'll update the `multi-env-sequential-promotion` Promotion
 
 
 
-## Add dependency
+## Add dependency to Promotion Flow
 Update the dependency on the `prod` environment, by selecting `staging` in addition to `qa`.
 
 1. From the list of Promotion Flows, open `multi-env-sequential-promotion`.
@@ -60,7 +60,39 @@ caption="Promotions quick start: YAML view of Promotion Flow with updated depend
 max-width="60%"
 %}
 
+## Trigger Promotion Flow and view release 
+Triggering a Promotion Flow with dependencies promotes changes to the target environment only after all dependent environments are successfully promoted.
 
-That concludes our set of quick-start walkthroughs for GitOps. 
+The release is considered successful only after all environments are promoted successfully.
+
+1. Open the `multi-env-sequential-promotion` Promotion Flow and click **Trigger**.
+1. Select the product, the application to promote, and then click **Trigger** once again. 
+1. Click **View Release Details**.
+
+The Release view displays the dependencies in the Promotion Flow, showing that promotion to `prod` is contingent on the successful promotion of both `qa` and `staging`. In this example, while `qa` has been promoted successfully, `staging` is still pending promotion, preventing `prod` from starting its promotion.
+
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/quick-start/promotions/quick-start-dependency-flow-release-view.png" 
+url="/images/quick-start/promotions/quick-start-dependency-flow-release-view.png"
+alt="Promotions quick start: Release view of Promotion Flow with dependencies" 
+caption="Promotions quick start: Release view of Promotion Flow with dependencies"
+max-width="60%"
+%}
+
+Congratulations! You've completed the final quick start in the Promotion series!
+
+By now, you’ve successfully created environments, your first product, added applications, and promoted them across environments. These foundational steps empower you to manage complex deployments confidently and effectively.
+
+## Related articles
+Now that you’ve mastered the basics, learn more on promotion settings for products and configuring promotion entities.
+[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Configuring promotion entities]({{site.baseurl}}/docs/promotions/entities/)  
+
+
+
  
  
