@@ -1,10 +1,10 @@
 ---
 title: "On-demand environment quick start"
 description: "Code collaboration with Codefresh"
-group: quick-start
-sub_group: ci-quick-start
+group: ci-quick-start
 redirect_from:
   - /docs/getting-started/on-demand-environments/
+  - /docs/quick-start/ci-quick-start/on-demand-environments/
 toc: true
 
 ---

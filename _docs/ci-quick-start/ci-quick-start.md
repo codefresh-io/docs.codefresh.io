@@ -1,7 +1,8 @@
 ---
 title: "CI/CD quick starts"
 description: ""
-group: quick-start
+group: ci-quick-start
+
 toc: true
 ---
 
