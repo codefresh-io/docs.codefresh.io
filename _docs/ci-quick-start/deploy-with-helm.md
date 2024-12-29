@@ -1,11 +1,11 @@
 ---
 title: "Helm deployment to Kubernetes quick start"
 description: "Use the Helm package manager to deploy to a Kubernetes cluster from the Codefresh UI"
-group: quick-start
-sub_group: ci-quick-start
+group: ci-quick-start
 redirect_from:
   - /docs/getting-started/helm-quick-start-guide/
   - /docs/new-helm/add-helm-repository/
+  - /docs/quick-start/ci-quick-start/deploy-with-helm/
 toc: true
 ---
 

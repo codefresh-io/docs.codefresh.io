@@ -1,12 +1,12 @@
 ---
 title: "Pipeline quick start"
 description: "Quick start to set up a continuous integration (CI) pipeline"
-group: quick-start
-sub_group: ci-quick-start
+group: ci-quick-start
 redirect_from:
   - /docs/getting-started/create-a-basic-pipeline/
   - /docs/getting-started-create-a-basic-pipeline/
   - /docs/build-your-image/
+  - /docs/quick-start/ci-quick-start/create-ci-pipeline/
 toc: true
 ---
 
