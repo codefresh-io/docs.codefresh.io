@@ -2,7 +2,6 @@
 title: "CI/CD quick starts"
 description: ""
 group: ci-quick-start
-
 toc: true
 ---
 
