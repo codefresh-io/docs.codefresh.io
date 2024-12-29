@@ -100,7 +100,7 @@ The difference between the previous release (without workflows), and this one (w
 
 1. Open the Promotion Flow, `multi-env-sequential-promotion` and click **Trigger**.
 1. Select the product, the application to promote, and then click **Trigger** once again. 
-1. Click **View Release Details**.
+1. Click **View Release Details**.  
   In the example below, the current release view shows the `qa` and `prod` environments with the Pre- and Post-Action Workflows defined for each environment. 
 
 {% include 

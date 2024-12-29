@@ -19,7 +19,7 @@ Use this method when you want to:
 If you haven't done so already, create:
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 * [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
-* [Applications]({{site.baseurl}}/_docs/gitops-quick-start/products/create-app-ui/)  
+* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
 
 ## Promote product applications through drag-and-drop
 
@@ -54,7 +54,7 @@ max-width="60%"
 
 {:start="3"}
 1. Drag and drop the application into the desired target environment.  
-  For example, for the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and dropping it into `demo-trioapp` in the `qa` environment.
+  For the quick start, we'll promote `demo-trioapp` by dragging `demo-trioapp-dev` from `dev` and dropping it into `demo-trioapp` in the `qa` environment.
 
 {% include 
 image.html 
@@ -67,7 +67,7 @@ max-width="60%"
 %}
 
 {:start="4"}
-1. Click **Commit** to commit the changes. 
+1. Click **Commit** to commit the changes.  
   The Commit Changes page displays details about the promotion, including the action used, the files impacted, and the properties being updated.
 
 

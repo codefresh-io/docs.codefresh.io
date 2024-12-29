@@ -36,7 +36,7 @@ max-width="60%"
 
 We'll enhance the Promotion Flow by adding multiple environments to execute promotions in parallel. 
 
-For this example, we’ll add `prod-asia` and `prod-us` as additional production environments to `qa`. 
+For this example, we’ll add `prod-asia` and `prod-eu` as additional production environments to `qa`. 
 
 1. Open the Promotion Flow you created, `multi-env-sequential-promotion` for the quick start.
 1. Open the Settings panel:

@@ -60,16 +60,18 @@ caption="Promotions quick start: YAML view of Promotion Flow with updated depend
 max-width="60%"
 %}
 
-## Trigger Promotion Flow and view release 
-Triggering a Promotion Flow with dependencies promotes changes to the target environment only after all dependent environments are successfully promoted.
+{:start="4"}
+1. Continue with [Trigger and view product release with dependencies](#trigger-and-view-product-release-with-dependencies).
 
-The release is considered successful only after all environments are promoted successfully.
+## Trigger and view product release with dependencies
+Triggering a Promotion Flow with dependencies promotes changes to the target environment only after all dependent environments are successfully promoted.
 
 1. Open the `multi-env-sequential-promotion` Promotion Flow and click **Trigger**.
 1. Select the product, the application to promote, and then click **Trigger** once again. 
 1. Click **View Release Details**.
 
-The Release view displays the dependencies in the Promotion Flow, showing that promotion to `prod` is contingent on the successful promotion of both `qa` and `staging`. In this example, while `qa` has been promoted successfully, `staging` is still pending promotion, preventing `prod` from starting its promotion.
+The Release view displays the dependencies in the Promotion Flow, showing that promotion to `prod` is contingent on the successful promotion of both `qa` and `staging`.  
+In this example, while `qa` has been promoted successfully, `staging` is still pending promotion, preventing `prod` from starting its promotion.
 
 
 {% include 
@@ -84,7 +86,7 @@ max-width="60%"
 
 Congratulations! You've completed the final quick start in the Promotion series!
 
-By now, you’ve successfully created environments, your first product, added applications, and promoted them across environments. These foundational steps empower you to manage complex deployments confidently and effectively.
+By now, you’ve successfully created environments, your first product, added applications, and promoted them across environments. These foundational steps empower you to manage complex promotions confidently and effectively.
 
 ## Related articles
 Now that you’ve mastered the basics, learn more on promotion settings for products and configuring promotion entities.

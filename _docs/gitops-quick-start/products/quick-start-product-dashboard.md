@@ -31,7 +31,7 @@ For this quick start, we'll focus on two key features: release versions and inte
 
 ## Identifying release versions in product applications
 
-The release version displayed for each application signifies the specific version of the application that is currently deployed. <!---This version is retrieved from the source file you defined during configuration. --> For details, see [Configuring app version for promotions]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-versions-for-promoted-applications).
+The release version displayed for each application signifies the specific version of the application that is currently deployed. <!---This version is retrieved from the source file you defined during configuration. --> For detailed information, see [Configuring app version for promotions]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-versions-for-promoted-applications).
 
 **Why is this important?**  
 Knowing the release version at a glance helps you quickly identify which version of an application is deployed in each environment. This is crucial for ensuring consistency, troubleshooting, and managing deployments effectively.
@@ -96,7 +96,6 @@ In this quick start, dependency versions are identical across all three applicat
 ## Integrated insights into product's applications 
 
 Products offer enriched insights into your applications, more than just standard Git commit or hash information.
-The Product Dashboard consolidates Kubernetes, version control, and issue-tracking data into one location, providing a holistic view of your product's state.
 
 When you select a product, the Product Dashboard displays three tabs on the right: **Pods**, **Git**, and **Features**. These tabs consolidate Kubernetes (Pods), version control (Git), and issue-tracking (Features) data into a single location. 
 
@@ -127,7 +126,8 @@ For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are 
 For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## What's next?
-We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications. For an overview, read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for an overview.
+We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications.  
+For an overview on promotions, read [Quick start: Promotions in Codefresh GitOps]({{site.baseurl}}/docs/gitops-quick-start/promotions/).
 
 Let's move on to the first quick start on promotions to see this in action.
 

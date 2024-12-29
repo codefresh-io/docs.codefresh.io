@@ -12,9 +12,9 @@ redirect_from:
 If you've reviewed and verified that you meet the requirements for a GitOps Runtime, let's go ahead and install the Runtime.
 
 ## Before you begin
-Verify you meet and have completed the [prerequisites]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
+Verify you have completed the [prerequisites]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
 
-## Step-by-step: Install the GitOps Runtime
+## Install the GitOps Runtime
 1. In the Welcome page, select **+ Install Runtime**.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. Click **Hybrid Runtimes**, and then click **Add**.
@@ -43,7 +43,7 @@ max-width="60%"
 {:start="5"}
 1. Wait for a few minutes, and then click **Close**.  
   You are taken to the List View for GitOps Runtimes, where the Sync Status column displays Complete Installation. 
-1. Click **Complete Installation**.
+1. In the Sync Status column, click **Complete Installation**.  
   Codefresh displays the steps to complete installing the GitOps Runtime. 
    
    {% include
@@ -73,7 +73,7 @@ max-width="60%"
 Let's create a Git Source to which we'll link the applications we'll create later in the quick start series.  
 Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/). 
 
-[Quick start: Creating a Git Source]({{site.baseurl}}/_docs/gitops-quick-start/gitops-runtimes/create-git-source/)
+[Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/)
 
 
 

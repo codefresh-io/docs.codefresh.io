@@ -87,7 +87,7 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
 1. To commit all changes, select **Commit**.  
   The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Select the **Git Source** to which to commit the application's manifest.  
-  For the quick start, we have one Git Source which we created earlier, the `demo-git-source`
+  For the quick start, we have one Git Source which we created earlier, the `demo-trio-gitsource`.
 
 {% include 
    image.html 
@@ -117,11 +117,11 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
 ## Create additional applications
 Follow the steps in [Create your first application](#create-your-first-application) to create more applications.  
 
-One of the requirements for promotions in GitOps is to have an application in each of the environments you want to target in your promotion lifecyle. 
+One of the requirements for promotions in GitOps is to have an application in each of the environments you want to target in your promotion lifecyle.  
 For the quick start, since we created three environments, we'll add two more applications: `demo-trioapp-qa` and `demo-trioapp-prod`.
 Remember to select the product for each of the applications.
 
-Here's a view of the GitOps Apps dashboard with all the three applications connected to their Git Source.
+Here's a view of the GitOps Apps dashboard with all the three applications linked to their Git Source.
 
   {% include 
    image.html 
@@ -156,7 +156,7 @@ Mouse over the product name in any environment to see the associated application
 
 ## View changes in Product Dashboard
 
-Let's visit the Product Dashboard now that we have created applications and assigned them to the `demo-trioapp` product.
+Let's also visit the Product Dashboard now that we have created applications and assigned them to the `demo-trioapp` product.
  
 * From the sidebar, select **Products**, and then click the product, `demo-trioapp`.
  

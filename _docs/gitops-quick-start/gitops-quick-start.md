@@ -15,7 +15,7 @@ The GitOps quick start guides provide step-by-step walkthroughs for you to fully
 * [Creating an Account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
   Get started by setting up your Codefresh account.
 
-* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/qs-runtimes-overview/)    
+* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/)    
   Learn how to install a GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
 
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
@@ -27,7 +27,7 @@ The GitOps quick start guides provide step-by-step walkthroughs for you to fully
 * [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths.
 
-* [Promoting products and applications]({{site.baseurl}}/_docs/gitops-quick-start/promotions/)   
+* [Promoting products and applications]({{site.baseurl}}/docs/gitops-quick-start/promotions/)   
   Deploy, validate, and promote changes across environments through automated promotion flows.
 
 ##### From start to deployment

@@ -1,5 +1,5 @@
 ---
-title: "Create Codefresh account"
+title: "Creating a Codefresh account"
 description: "Start working in Codefresh"
 group: gitops-quick-start
 redirect_from:
@@ -12,12 +12,10 @@ toc: true
 ---
 Once you have installed Codefresh, the next step is to create an account in Codefresh.
 
-This quick start guides you through creating an account in Codefresh:
-
-After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected.
-
+After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected.  
 The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
+## Supported IdPs
 Codefresh currently supports the following IdPs:
 * GitHub
 * Bitbucket
@@ -26,14 +24,14 @@ Codefresh currently supports the following IdPs:
 * Google 
 * LDAP
 
-If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/) with the details.
+If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
 
 
 >**NOTE**     
 For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
 If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
-
+## Create Codefresh account
 1. Select the identity provider (IdP) to use:  
     1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
     1. Select the IdP for sign-up.

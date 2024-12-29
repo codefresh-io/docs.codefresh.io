@@ -59,7 +59,6 @@ Common examples include `development`, `qa`, `staging`, and `production`, but yo
 
 For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
 
-##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
     1. **Name**: A unique name for your environment, which is meaningful in the context of your development and deployment cycle. 
@@ -78,7 +77,7 @@ For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
 	url="/images/quick-start/environments-products/environment-add.png" 
 	alt="Environments quick start: Create an Environment" 
 	caption="Environments quick start: Create an Environment"
-  max-width="60%" 
+  max-width="50%" 
 %} 
 
 {:start="3"}  

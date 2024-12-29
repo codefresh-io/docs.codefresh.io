@@ -21,7 +21,7 @@ For this quick start, ensure that you have:
   For multi-environment promotions, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
 
-* Applications in environments  
+* Application in each environment  
   Each environment must have an application for the product, such as `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.  
 
 * Consistent repo structure for applications  
@@ -74,7 +74,7 @@ max-width="60%"
 1. Select the target environments in the promotion sequence to which to promote changes: `qa` and `prod`.
     1. Mouse over the right of the `dev` environment node and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
     1. From the list, select the first target environment in the flow, `qa` for this quick start.
-    1. Repeat the action for the `qa` environment node to add the next target environment. 
+    1. Repeat the action on the `qa` environment node to add the next target environment. 
       For the quick start, we'll add `prod` as the final target environment in the flow. 
 
  
@@ -101,7 +101,7 @@ max-width="60%"
 %}
 
 {:start="5"}
-1. Click **Save Promotion Flow** on the top-right.
+1. Click **Save Promotion Flow** on the top-right.  
   The Name and Description are populated from the Settings. The flow's YAML version on the right lists the environment sequence.
 
 
@@ -162,15 +162,17 @@ max-width="50%"
 %}
 
 {:start="3"}
-1. Select the application, in our case, the application with the changes, `demo-trioapp-dev`, is automatically selected.
+1. Select the application with the changes to promote. In our case, the application `demo-trioapp-dev` is automatically selected.
 1. To initiate the promotion, click **Trigger**.
+1. Continue with [View and monitor product release](#view-and-monitor-product-release).
+
 <!--- do we auto-select the app with the changes? -->
 
 
 ## View and monitor product release 
 On triggering the flow, the promotion mechanism automatically creates a new release for the product (`demo-trioapp`), and orchestrates the changes sequentially through the environments defined in the Promotion Flow.
 
-In the release view, monitor the sequential progression of changes through `dev`, `qa`, and `prod` as per `multi-env-sequential-promotion` Promotion Flow.
+* Click **View Release Details** to go to the release view and monitor the sequential progression of changes through `dev`, `qa`, and `prod` as per the `multi-env-sequential-promotion` Promotion Flow.
 
 
 
@@ -186,7 +188,7 @@ max-width="60%"
 
 ##### Release record in releases list
 
-In the Releases page, the Promotion Flow column displays the name of the flow (`multi-env-sequential-promotion` for example) for traceability. For drag-and-drop promotions, this column displays Manual.
+In the Releases page, the Promotion Flow column displays the name of the flow (`multi-env-sequential-promotion` for example) for traceability. For drag-and-drop promotions in contrast, this column displays Manual.
 
 
 {% include 
