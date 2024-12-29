@@ -9,7 +9,7 @@ toc: true
 
 After creating products and environments, you can initiate promotions and track releases. 
 
-Enhance your promotion strategies with these advanced configuration options:
+Enhance your promotion strategies with these advanced configuration options for promotion entities:
 * Multi-environment promotion with [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/) (only account admins)
 * Conditional promotions with [Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/) (only account admins)
 * Automatic validations and gating with [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/)

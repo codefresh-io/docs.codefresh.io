@@ -394,7 +394,7 @@ max-width="60%"
 [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  
 

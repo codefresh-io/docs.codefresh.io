@@ -366,5 +366,5 @@ For more information, see [Promotion Workflows in Product Releases]({{site.baseu
 [Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
