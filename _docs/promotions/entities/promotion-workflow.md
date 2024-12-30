@@ -206,7 +206,7 @@ spec:
           - name: SLACK_HOOK_URL
             value: <SLACK_HOOK_URL>
           - name: SLACK_TEXT
-            value: Promoting {{workflow.parameters.APP_NAME}}.  
+            value: Promotion initiated for {{workflow.parameters.APP_NAME}}!  
       container:
         name: main
         imagePullPolicy: Always
