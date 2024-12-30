@@ -33,7 +33,7 @@ If you have naming conventions that result in long names for applications or res
 * Docker Compose files using Version 3 not supported for service containers in pipelines.
 
 ##### GitOps
-* New clusters not displayed in Runtimes > Managed Clusters tab. 
+* New clusters added to Runtime not displayed in **Runtimes > Managed Clusters** tab.
 * `failed to retrieve application version, app name: <"app_name>": unknown key appVersion` error when application versioning is not configured.
 * Application validations use destination cluster instead of application cluster.
 * `Application includes circular dependencies...` warning in GitOps Apps dashboard when application and applicationset names are identical.
