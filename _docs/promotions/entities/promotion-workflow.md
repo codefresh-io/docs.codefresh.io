@@ -26,7 +26,7 @@ max-width="60%"
 Promotion Workflows are Argo Workflows that include a specific annotation identifying them for promotion use. You can harness the full capabilities of Argo Workflows and integrate them seamlessly into the GitOps promotion process. 
 
 If you are not familiar with Argo Workflows, refer to their official [documentation](https://argo-workflows.readthedocs.io/en/latest/){:target="\_blank"}.  
-We also have several articles at our [learning center](https://codefresh.io/learn/argo-workflows/){:target="\_blank"} on all aspects of Argo Workflows. 
+We also have several articles on all aspects of Argo Workflows at our [learning center](https://codefresh.io/learn/argo-workflows/){:target="\_blank"}. 
 
 See [Annotation attribute for Promotion Workflows](#annotation-attribute-for-promotion-workflows).
 
