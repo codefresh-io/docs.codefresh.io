@@ -4,8 +4,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-Though this release includes just this one enhancement, we’re hard at work on several upcoming improvements to further enhance your experience. Watch out for more updates!
-
+We're excited to share this month's update, and want you to know we're hard at work on several new features and improvements to make your experience even better. Stay tuned for updates!
 
 ### GitOps: Display full name for applications
 
@@ -34,7 +33,7 @@ If you have naming conventions that result in long names for applications or res
 * Docker Compose files using Version 3 not supported for service containers in pipelines.
 
 ##### GitOps
-* New clusters not displayed in Runtimes > Managed Clusters tab. (https://codefresh-io.atlassian.net/browse/CR-26095 Noam)
+* New clusters not displayed in Runtimes > Managed Clusters tab. 
 * `failed to retrieve application version, app name: <"app_name>": unknown key appVersion` error when application versioning is not configured.
 * Application validations use destination cluster instead of application cluster.
 * `Application includes circular dependencies...` warning in GitOps Apps dashboard when application and applicationset names are identical.
