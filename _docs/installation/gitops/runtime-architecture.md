@@ -15,6 +15,7 @@ The Hybrid GitOps Runtime can be tunnel- or ingress-based:
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 
+
 The Runtime components are common to both installation modes:
   * [Application Proxy](#application-proxy)
   * [Argo Project](#argo-project)
@@ -72,8 +73,9 @@ Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is e
   max-width="100%"
 %}
 
+## Runtime components
 
-## Application Proxy
+### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
 For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 
@@ -89,7 +91,7 @@ The GitOps App-Proxy:
 
 
 
-## Argo Project 
+### Argo Project 
 
 The Argo Project includes:
 * Argo CD for declarative continuous deployment 
@@ -102,14 +104,14 @@ Codefresh users rely on our platform to deliver software reliably, and predictab
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
 Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
-## Event Reporters
+### Event Reporters
 Event Reporters monitor changes to resources deployed on the cluster and report the changes back to the Codefresh platform.
 
 Codefresh has two types of Event Reporters:
 * Resource Event Reporter
 * Application Event Reporter
 
-### Resource Event Reporter
+#### Resource Event Reporter
 The Resource Event Reporter monitors specific types of resources on the cluster and tracks changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
 
 The Resource Event Reporter monitors changes to these resource types:
@@ -118,7 +120,7 @@ The Resource Event Reporter monitors changes to these resource types:
 
 Resource Event Reporters leverage Argo Event components such as Event Sources to monitor changes to the live-state manifests, and Sensors to send the live-state manifests to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
 
-### Application Event Reporter
+#### Application Event Reporter
 The Application Event Reporter specializes in monitoring changes to Argo CD applications deployed on the cluster. 
 
 In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application, and the Git manifests for all the application's managed resources. 
@@ -155,7 +157,32 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 1. The Application Event Reporter reports the application-change events to the Codefresh platform.
 
-## Request Routing Service
+### Application Change Revision Controller 
+
+The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. It identifies and displays the exact revision associated with an application change that triggered a promotion or deployment.
+
+The ACR Controller is particularly useful for monorepo setups where multiple applications share a single repository, as it:
+
+* Pinpoints application-specific changes  
+  Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
+
+* Enables relevant notifications  
+  Ensures that notifications are scoped to the application that was actually modified, instead of sending them for all applications in the repository.
+
+To enable the ACR Controller and support associating sync operations with the specific change that triggered a promotion or deployment, you need to enable it in  `argo-cd` section in the Runtime's [`values.yaml` file]((https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}). 
+Additionally, application-scoped notifications require an annotation in the application's manifest.
+
+>**NOTE**  
+  The ACR Controller is supported from Runtime version 0.13.0 and higher.   
+  The Controller is not supported for multi-source applications.
+
+
+
+
+
+
+
+### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
@@ -165,7 +192,7 @@ It receives requests from the the Tunnel Client (tunnel-based) or the ingress co
   Older Runtime versions are not affected as the ingress controller continues to route incoming requests and there is full backward compatibility.
 {{site.data.callout.end}}
 
-## Tunnel Server
+### Tunnel Server
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
 The Codefresh Tunnel Server is installed in the Codefresh platform. It communicates with the enterprise cluster located behind a NAT or firewall.  
 
@@ -176,7 +203,7 @@ The Tunnel Server:
 
 
 
-## Tunnel Client
+### Tunnel Client
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
 
 Installed on the same cluster as the Hybrid GitOps Runtime, the Tunnel Client establishes the tunneling connection to the Tunnel Server via the WebSocket Secure (WSS) protocol.   
@@ -188,7 +215,7 @@ The Tunnel Client:
 
 
 
-## Customer environment
+### Customer environment
 The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
