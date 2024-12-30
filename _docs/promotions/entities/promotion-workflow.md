@@ -143,7 +143,7 @@ Here are different types of workflows designed to address specific requirements 
 
 Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process:
 * [Example 1: Pre-Action Workflow with application sync check](#example-1-pre-action-application-sync-check-test)
-* [Example 2: Post-Action Workflow to Slack notification with commit details](#example-2-pre-action-smoke-test-with-slack-notification)
+* [Example 2: Post-Action Workflow to send Slack notification with commit details](#example-2-pre-action-smoke-test-with-slack-notification)
 * [Example 3: Pre- and Post-Action Workflows with custom `globalName` argument usage](#example-3-pre--and-post-action-workflows-with-custom-globalname-argument-usage)
 
 
