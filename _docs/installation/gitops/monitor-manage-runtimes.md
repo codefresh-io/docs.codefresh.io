@@ -368,30 +368,18 @@ Changelogs for all versions, including historical versions, are available on Art
   max-width="50%"
 %}
 
-## Enabling precise sync detection for mono-repo apps
-sync ACR Controller for GitOps Runtimes
-The Application Change Revision (ACR) Controller is a Codefresh-specific enhancement for Argo CD. It detects and displays the precise revision associated with an application change that triggered a promotion or deployment. This enables targeted, application-scoped notifications and enhances observability by associating specific changes with deployments.
+## Enable precise sync detection for monorepo apps
+Enable the ACR Controller in GitOps Runtimes to support precise detection of sync operations that triggered deployments for applications in monorepo setups.
+
+When enabled, the ACR Controller identifies and tracks application-specific changes by analyzing the application’s source path, comparing revisions, and displaying the sync operation that triggered promotions or deployments.
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+  You can also [configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application#configure-application-scoped-sync-notifications) to reduce notification noise and improve notification accuracy.
+{{site.data.callout.end}}
 
 
-The Application Change Revision (ACR) Controller is particularly useful for monorepo setups where multiple applications share a single repository. In such cases, detecting the exact application impacted by a change is challenging due to the shared codebase.
-
-1. The ACR checks the application's source code path.
-
-1. For completed syncs: Compares the revision between the last sync result and the one before the most recent history item.
-For ongoing syncs: Compares the revision between the current operation and the last history item.
-1. Uses the rev-list command (likely from Git) to list revisions between the two identified point
-For each revision identified by rev-list, perform a diff-tree operation to evaluate the changes associated with that revision.
-Check that the changes identified in the diff-tree are specifically relevant to the application in question.
-
-
-
-
-
-
-
-
-
-* In the Runtime's `values.yaml` add the following in the `argo-cd` section:
+* In the Runtime's `values.yaml` add the following to the `argo-cd` section:
 
 ```yaml
 argo-cd:

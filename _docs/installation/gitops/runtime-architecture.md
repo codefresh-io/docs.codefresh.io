@@ -159,26 +159,25 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 ### Application Change Revision Controller 
 
-The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. It identifies and displays the exact revision associated with an application change that triggered a promotion or deployment.
+The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment. 
 
-The ACR Controller is particularly useful for monorepo setups where multiple applications share a single repository, as it:
+In monorepo environments where multiple applications share a single repository, the ACR Controller:
 
-* Pinpoints application-specific changes  
+* Pinpoints depoloyment-specific changes for applications  
   Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
 
 * Enables relevant notifications  
-  Ensures that notifications are scoped to the application that was actually modified, instead of sending them for all applications in the repository.
-
-To enable the ACR Controller and support associating sync operations with the specific change that triggered a promotion or deployment, you need to enable it in  `argo-cd` section in the Runtime's [`values.yaml` file]((https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}). 
-Additionally, application-scoped notifications require an annotation in the application's manifest.
+  Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
 
 >**NOTE**  
   The ACR Controller is supported from Runtime version 0.13.0 and higher.   
-  The Controller is not supported for multi-source applications.
+  It does not support multi-source applications.
 
+##### Configuration
 
+The ACR Controller must be explicitly enabled by adding it to the `argo-cd` section in the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-mono-repo-apps). 
 
-
+Application-scoped notifications require the `argocd.argoproj.io/manifest-generate-paths` annotation in the application's manifest. See [Configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-application-scoped-sync-notifications).
 
 
 

@@ -38,9 +38,9 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Configure sync-timeout for Argo CD applications](#configure-sync-timeout-for-argo-cd-applications)  
   Configure the sync-timeout through an annotation to be notified of long sync operations.
 
-* Configure sync notifications for Argo CD applications
+* [Configure application-scoped sync notifications](#configure-application-scoped-sync-notifications)  
+  Configure application-specific sync notifications by adding the `argocd.argoproj.io/manifest-generate-paths` annotation to your application's manifest.
   
-
 * [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
 
@@ -330,20 +330,20 @@ Instead of waiting indefinitely for syncs to complete and then navigating throug
 
 You can view more [details on the sync]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#warning-long-sync) or [terminate](#terminate-on-going-sync-for-argo-cd-applications) it.
 
-## Configure application-specific sync notifications for Argo CD applications
-Configure application-scoped sync notifications by adding the `argocd.argoproj.io/manifest-generate-paths` annotation to your application's manifest.
+## Configure application-scoped sync notifications
+Configure application-specific sync notifications by adding the `argocd.argoproj.io/manifest-generate-paths` annotation to your application's manifest.
 
-This is especially useful for monorepo setups, where multiple applications share a single repository. The annotation enables the ACR Controller to pinpoint the exact revision responsible for a change in a specific application that resulted in a promotion or deployment. This ensures that notifications are sent only for the impacted application, reducing noise and improving notification relevance.
+This configuration is especially useful for monorepo setups, where multiple applications share a single repository. The annotation allows the ACR Controller to pinpoint the exact revision responsible for a change in a specific application that triggered promotion or deployment, and send notifications _only for the impacted application_, reducing noise and improving notification relevance.
 
 >**NOTE**  
 Application-scoped sync notifications are not supported for multi-source applications.
 
 ##### Before you begin
 * Verify that your Runtime version is `0.13.0` or higher
-* [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enabling-precise-sync-detection-for-mono-repo-apps)for the Runtime`
+* Ensure that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-mono-repo-apps) for the Runtime
 
 ##### How to
-* Add the annotation `argocd.argoproj.io/manifest-generate-paths` and define the path to the application.
+1. Add the annotation `argocd.argoproj.io/manifest-generate-paths` to the application manifest and specify the relative path to the application.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -355,8 +355,9 @@ metadata:
     argocd.argoproj.io/manifest-generate-paths: <relative-path-to-app> 
 ```
 {:start="2"}
-1. Optional. To verify that the correct revision is identified, manually sync the application by clicking **Synchronize**.
-  If you see logs similar to the example below, the ACR Controller has identified the correct revision and patched the application CRD accordingly:
+1. Optional. To verify that the correct revision is detected:
+    * Manually sync the application by clicking **Synchronize**.
+    * Check the logs if similar to the example below:
 
 ```bash
 time="2024-10-15T18:35:54Z" level=info msg="Change revision for application helm-guestbook2 is 804146ff6b6de77329d73f732e7af61d5ba3fe66"
