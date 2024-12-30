@@ -30,7 +30,7 @@ You can select multiple Promotion Flows for a product, and customize the conditi
 
 ##### Where can you configure Promotion Flows and triggers? 
 In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the product, and then configure custom conditions to trigger the flows.  
-See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).
+See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-flow-crd/).
 
 
 {% include 
