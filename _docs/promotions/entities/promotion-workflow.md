@@ -37,30 +37,28 @@ Promotion Workflows though optional in the promotion process, play a critical ro
 
 Our GitOps promotion process allows you to run Promotion Workflows at different stages of the process:
 
-* _Before_ the changes are applied through Pre-Action Workflows
+* **_Before_ the changes are applied through Pre-Action Workflows**  
   Pre-Action Workflows validate the readiness of the environment for the changes. These workflows can include tasks such as smoke tests, security scans, or dependency checks.
-* _After_ the changes are applied through Post-Action Workflows
+* **_After_ the changes are applied through Post-Action Workflows**  
   Post-Action Workflows validate the success of the promotion after the changes are committed. Such workflows can run performance testing, data integrity checks, or notifying stakeholders about the update status.
 
 See [Promotion Workflow examples](#promotion-workflow-examples).
 
 
 ##### Using Promotion Workflows in the promotion process
-After creating Promotion Workflows, there are two ways to use them in the promotion process depending on the level of control and scalability you need:
+After creating Promotion Workflows, there are two ways to use them in the promotion process, depending on the level of control and scalability you need:
 
 * Manual selection  
   When triggering a promotion manually, you can select specific Pre- and Post-Action Workflows to run for the target environment. This approach is ideal for single-environment promotions or when you need granular control over the workflows for a specific change.  
   Example:  
-  During a drag-and-drop promotion, you might choose a Pre-Action Workflow to run integration tests and a Post-Action Workflow to send Slack notifications for the target environment.
-  
+  During a drag-and-drop promotion, you might choose a Pre-Action Workflow to run integration tests and a Post-Action Workflow to send Slack notifications for the target environment.  
   See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/).
 
 * Controlled automation with policies  
-  For scalable, automated usage, you can associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion patterns for different environments.
-  With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production and creating pull requests in production.  
-  Example:  
-  Assign a validation workflow for all staging environments and a performance testing workflow for production environments. 
-  
+  For scalable, automated usage, associate Promotion Workflows with Promotion Policies. Promotion Policies govern promotion behavior according to predefined criteria to create reusable promotion patterns for different environments.
+  With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production evironments and creating pull requests in production.  
+  Example: 
+  Assign a validation workflow for all staging environments and a performance testing workflow for production environments.  
   See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/).
 
 
@@ -77,13 +75,13 @@ The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configura
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
 ## Annotation attribute for Promotion Workflows
-An Argo Workflow or a Workflow Template is classified as a Promotion Workflow only when the following annotation is present in the workflow manifest:  
+An Argo Workflow or a Workflow Template is classified as a Promotion Workflow when the following annotation is present in the workflow manifest:  
 `metadata.annotations: codefresh.io/workflow-origin: promotion`
 
 This annotation in the Promotion Workflow's manifest ensures that:
 * The Promotion Workflow is displayed in the Promotion Workflows list and can be managed there
-* You can assign the Promotion Workflows in Promotion Policies
-* Select Promotion Workflows within Promotion Flows  
+* You can assign the Promotion Workflow to Promotion Policies
+* Select the Promotion Workflow within Promotion Flows  
 
 ## Parameters in Pre-Action and Post-Action Workflows
 Pre-Action and Post-Action Workflows can use default parameters retrieved from application manifest data, and user-defined custom parameters to adapt dynamically to specific environments and processes.
@@ -93,7 +91,7 @@ Pre-Action and Post-Action Workflows can use default parameters retrieved from a
 The table describes the default parameters and values passed to Pre- and Post-Action Workflows.   
 The same set of parameters are passed also for pull requests (GitHub only), after the pull request is merged.
 
-At the simplest levels, you can display the details from the parameters in notifications. In more advanced scenarios, you can customize the workflow execution based on specific parameters.
+At the simplest levels, you can display the values from the parameters in notifications. In more advanced scenarios, you can customize the workflow execution based on specific parameters and their values.
 
 {: .table .table-bordered .table-hover}
 | Parameters                     | Description            | Pre-Action Workflow | Post-Action Workflow | 
@@ -114,7 +112,7 @@ At the simplest levels, you can display the details from the parameters in notif
 In Pre-Action Workflows, you can define _custom parameters as global outputs_, making them available as input parameters in subsequent Post-Action Workflows. This feature provides a seamless way to pass data across workflows and create complex automation scenarios.
 
 In the Pre-Action Workflow, any parameter marked with a `globalName` in its `outputs` definition becomes a global parameter.  
-These parameters are then available for the Post-Action Workflow.
+These parameters are then available to the Post-Action Workflow.
 
 ```yaml
 outputs:
@@ -124,7 +122,7 @@ outputs:
     valueFrom:
       path: /tmp/JIRA_ID
 ```
-See 
+See this [example](#example-3-pre--and-post-action-workflows-with-custom-globalname-argument-usage) that uses the `globalName` argument. 
 
 
 
@@ -142,9 +140,9 @@ Here are some examples:
 
 ##### YAML examples 
 
-Here are some examples of Promotion Workflows with different objectives and run at different stages of the promotion process:
+Here are some examples of Promotion Workflows with different objectives, run at different stages of the promotion process:
 * [Example 1: Pre-Action Workflow with application sync check](#example-1-pre-action-application-sync-check-test)
-* [Example 2: Post-Action Workflow to send Slack notification with commit details](#example-2-pre-action-smoke-test-with-slack-notification)
+* [Example 2: Post-Action Workflow to send Slack notification with commit details](#example-2-post-action-workflow-to-send-slack-notification-with-commit-details)
 * [Example 3: Pre- and Post-Action Workflows with custom `globalName` argument usage](#example-3-pre--and-post-action-workflows-with-custom-globalname-argument-usage)
 
 
@@ -226,7 +224,7 @@ spec:
 ```
 
 
-### Example 2: Post-Action application promotion 
+### Example 2: Post-Action Workflow to send Slack notification with commit details 
 This example is of a Post-Action Promotion Workflow run after the Promotion Action is executed, using the information about the commit action to notify stakeholders.
 
 * The workflow accepts the same parameters passed in the Pre-Action Workflow such as application namespace (`APP_NAMESPACE`), application name (`APP_NAME`), repository URL (`REPO_URL`), branch (`BRANCH`), and path (`PATH`).  
@@ -661,9 +659,10 @@ caption="Promotion Workflow list"
 max-width="60%"
 %}
 
+The Promotion Workflows list is also the centralized location from which you can manage both Workflows and Workflow instances. See [Managing Promotion Workflows](#managing-promotion-workflows) and [Managing Workflow instances](#managing-workflow-instances).  
 The Description and Version information are retrieved from the manifest if these are specified there.
 
-The Promotion Workflows list is also the centralized location from which you can manage both Workflows and Workflow instances. See [Managing Promotion Workflows](#managing-promotion-workflows) and [Managing Workflow instances](#managing-workflow-instances).
+
 
 ## Managing Promotion Workflows
 After you create a Promotion Workflow, you can:
@@ -702,8 +701,9 @@ SCREENSHOTS OF DIFF VIEW AND MANIFEST WITH ERRORS -->
 
 
 When you create a Promotion Workflow or modify the manifest of an existing workflow, you can validate the new workflow or the changes made before committing them to Git.  
-The Run option supplements the automatic inline validations, allowing you to verify parameter and confirm that the workflow behaves as expected, or change parameter values to test behavior.  
-The option runs the specific Promotion Workflow in the cluster, verifying all actions and steps in the workflow, such as sending notifications, running pre-action validations or post-action test.
+
+The Run option supplements the automatic inline validations, allowing you to verify parameter values and confirm that the workflow behaves as expected, or change parameter values to test behavior.  
+The option runs the specific Promotion Workflow in the cluster, verifying all actions and steps in the workflow, such as sending notifications, running pre-action validations or post-action tests.
 
 1. In the Codefresh UI, from Promotions in the sidebar, select **Promotion Workflows**.
 1. Click the name of the Promotion Workflow to validate.
@@ -735,7 +735,6 @@ You can:
 * View instances of a Promotion Workflow
   In addition to the status which is prominently displayed on the right for each execution instance, you can filter by products, environments and applications to get to the instances of interest to you. 
 * Analyze the version of the manifest used for the instance with the configuration, parameters, artifacts (Workflow summary)
-
 * Take action on a completed or failed workflow (Workflow actions)
   * **Resubmit**: Rerun or re-execute the Workflow. Resubmitting a Workflow, creates a new instance of the Workflow.  You can resubmit both successful and failed workflows.
   * **Retry**: Rerun the workflow instance from the point of error. Unlike Resubmit, Retry does not create a new workflow instance.
@@ -843,28 +842,35 @@ max-width="60%"
 
 
 ## Promotion Workflows in product release views
-When a promotion is triggered automatically or manually, a release is created for the product and displayed in the Releases tab.  
-Clicking the Release ID displays the ongoing or completed view of the promotion orchestration across the environment.
 
-Each environment displays the Pre-Action or Post-Action workflows assigned to it, including its steps for on-going releases. The collective status of the workflows determines the promotion status of an environment.
+When a promotion is triggered—either automatically or manually—a release is automatically created for the product. This release tracks the orchestration and outcomes of the promotion across environments.
+
+##### Releases list
+Each release is and displayed in the Releases list (Product > Releases tab), identified by the Release Date, Release Initiator, and other details specific to the promotion that was triggered.
+Clicking the Release Date opens the detailed view of the promotion orchestration, showing the status of the workflows and their results across all targeted environments.
+
+##### Monitoring releases
+In the detailed release view, you can monitor the Pre-Action and Post-Action workflows assigned to each environment. For ongoing releases, this includes the specific steps of each workflow.
+
+The overall promotion status of an environment is determined by the collective status of its workflows. Successful execution of the workflows indicates a successful promotion, while failures in any workflow will reflect in the environment’s promotion status.
 
 {% include 
 image.html 
 lightbox="true" 
 file="/images/gitops-promotions/releases/workflows.png" 
 url="/images/gitops-promotions/releases/workflows.png"
-alt="Example of workflows for product release" 
-caption="Example of workflows for product release"
+alt="Example of workflows in a product release view" 
+caption="Example of workflows in a product release view"
 max-width="60%"
 %}
 
-See [Promotion Workflows in product releases]({{site.baseurl}}/docs/promotions/product-releases/#promotion-workflows-in-product-releases).
+See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/).
 
 
 
 ## Related articles
-[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Configure Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
+[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
