@@ -340,7 +340,7 @@ Application-scoped sync notifications are not supported for multi-source applica
 
 ##### Before you begin
 * Verify that your Runtime version is `0.13.0` or higher
-* Ensure that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-mono-repo-apps) for the Runtime
+* Ensure that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime
 
 ##### How to
 1. Add the annotation `argocd.argoproj.io/manifest-generate-paths` to the application manifest and specify the relative path to the application.

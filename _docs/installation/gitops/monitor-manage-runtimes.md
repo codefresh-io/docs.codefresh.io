@@ -371,7 +371,7 @@ Changelogs for all versions, including historical versions, are available on Art
 ## Enable precise sync detection for monorepo apps
 Enable the ACR Controller in GitOps Runtimes to support precise detection of sync operations that triggered deployments for applications in monorepo setups.
 
-When enabled, the ACR Controller identifies and tracks application-specific changes by analyzing the application’s source path, comparing revisions, and displaying the sync operation that triggered promotions or deployments.
+When enabled, the ACR Controller identifies and tracks application-specific changes by analyzing the application’s source path, comparing revisions, and identifying the specific sync operation that triggered the promotion or deployment.
 
 {{site.data.callout.callout_tip}}
 **TIP**  

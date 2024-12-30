@@ -11,7 +11,7 @@ See detailed views of GitOps Runtime architecture for the different installation
 <!--- * [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
 * Hybrid GitOps Runtime architecture: -->
 
-The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
+The Hybrid GitOps Runtime supports tunnel-based and ingress-based access modes:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 
@@ -19,6 +19,8 @@ The Hybrid GitOps Runtime can be tunnel- or ingress-based:
 The Runtime components are common to both installation modes:
   * [Application Proxy](#application-proxy)
   * [Argo Project](#argo-project)
+  * [Event Reporters](#event-reporters)
+  * [Application Change Revision Controller](#application-change-revision-controller)
   * [Request Routing Service](#request-routing-service)
   * [Tunnel Server](#tunnel-server)
   * [Tunnel Client](#tunnel-client)
@@ -159,15 +161,13 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 ### Application Change Revision Controller 
 
-The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment. 
+The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment in monorepo environments. 
 
 In monorepo environments where multiple applications share a single repository, the ACR Controller:
 
-* Pinpoints depoloyment-specific changes for applications  
-  Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
+* Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
 
-* Enables relevant notifications  
-  Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
+* Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
 
 >**NOTE**  
   The ACR Controller is supported from Runtime version 0.13.0 and higher.   
@@ -175,7 +175,7 @@ In monorepo environments where multiple applications share a single repository, 
 
 ##### Configuration
 
-The ACR Controller must be explicitly enabled by adding it to the `argo-cd` section in the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-mono-repo-apps). 
+The ACR Controller must be explicitly enabled in the `argo-cd` section in the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
 
 Application-scoped notifications require the `argocd.argoproj.io/manifest-generate-paths` annotation in the application's manifest. See [Configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-application-scoped-sync-notifications).
 
@@ -215,7 +215,7 @@ The Tunnel Client:
 
 
 ### Customer environment
-The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
+The customer environment communicates with the GitOps Runtime and Codefresh, and generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
   See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
