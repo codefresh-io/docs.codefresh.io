@@ -36,7 +36,7 @@ If you have naming conventions that result in long names for applications or res
 * New clusters added to Runtime not displayed in **Runtimes > Managed Clusters** tab.
 * `failed to retrieve application version, app name: <"app_name>": unknown key appVersion` error when application versioning is not configured.
 * Application validations use destination cluster instead of application cluster.
-* `Application includes circular dependencies...` warning in GitOps Apps dashboard when application and applicationset names are identical.
+* `Application includes circular dependencies...` warning in GitOps Apps dashboard when the names of applications and application sets are identical.
 
 
 
