@@ -36,7 +36,7 @@ The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configura
 
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/).
+For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/entities/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/).
 
 
 

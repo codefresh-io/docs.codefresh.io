@@ -30,7 +30,7 @@ You can select multiple Promotion Flows for a product, and customize the conditi
 
 ##### Where can you configure Promotion Flows and triggers? 
 In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the product, and then configure custom conditions to trigger the flows.  
-See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-flow-crd/).
+See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-flow-crd/).
 
 
 {% include 
@@ -131,7 +131,7 @@ The Rollback flow triggers when the commit message contains terms like `revert` 
 
 As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
 
-Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-flows/`.  
+Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
 
 To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions. -->
