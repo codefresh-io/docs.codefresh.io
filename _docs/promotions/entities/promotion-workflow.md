@@ -154,7 +154,9 @@ The workflow confirms that the argument `APP_NAME` is correctly passed to it and
 * The `run-echo` step executes an `echo` command that outputs a message, including the provided parameters, confirming the syncing of the application from the repository.
 * The `send-message` step sends a message to a Slack channel using a webhook URL (`SLACK_HOOK_URL`). The message, which can be customized (`SLACK_TEXT`), notifies stakeholders which application (`APP_NAME`) is being promoted.
 
-```yaml 
+{% highlight yaml %}
+{% raw %}
+
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -221,7 +223,9 @@ spec:
             value: '{{ inputs.parameters.SLACK_HOOK_URL }}'
           - name: SLACK_TEXT
             value: '{{ inputs.parameters.SLACK_TEXT }}'
-```
+
+{% endraw %}
+{% endhighlight yaml %}
 
 
 ### Example 2: Post-Action Workflow to send Slack notification with commit details 
@@ -232,7 +236,9 @@ It also includes additional parameters taken from the optional commit details li
 * The `run-echo` step logs a message about the application syncing, including the commit details if they are provided.
 * The `run-send-message` step sends a Slack notification if the promotion is successful.
 
-```yaml
+{% highlight yaml %}
+{% raw %}
+
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -323,7 +329,9 @@ spec:
             value: '{{ inputs.parameters.SLACK_HOOK_URL }}'
           - name: SLACK_TEXT
             value: '{{ inputs.parameters.SLACK_TEXT }}'
-```
+{% endraw %}
+{% endhighlight yaml %}
+
 
 
 
@@ -347,7 +355,9 @@ Main features:
   The `JIRA_ID` parameter is marked with a `globalName` to allow it to be passed to post-action workflows seamlessly. 
 
 
-```yaml
+{% highlight yaml %}
+{% raw %}
+
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -453,7 +463,9 @@ spec:
         sleep 5
         RANDOM_HASH=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13)
         echo "JIRA-ticket-id-${RANDOM_HASH}" > /tmp/JIRA_ID
-```
+
+{% endraw %}
+{% endhighlight yaml %}
 
 #### Post-Action Workflow with Jira ID 
 
