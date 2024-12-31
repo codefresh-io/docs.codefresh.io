@@ -881,8 +881,9 @@ See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/).
 
 
 ## Related articles
-[Configure Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)  
-[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
+
+[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
+[Configure Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
