@@ -482,7 +482,9 @@ Main features:
 * **Log summary task**  
   After closing the Jira ticket, the `echo` task logs and outputs all provided contextual information, including the promotion details from the arguments passed to the workflow. 
 
-```yaml
+{% highlight yaml %}
+{% raw %}
+
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -608,7 +610,9 @@ spec:
         echo "    {{ inputs.parameters.COMMIT_MESSAGE }}"
         echo ""
         echo "{\"POST_ACTION_RESULT\": "\Success\""}" > /tmp/result
-```
+
+{% endraw %}
+{% endhighlight yaml %}
 
 
 
