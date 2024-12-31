@@ -4,7 +4,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
-We're excited to share this month's update, and want you to know we're hard at work on several new features and improvements to make your experience even better. Stay tuned for updates!
+While sharing this month's update, we want you to know that we're hard at work on several new features and improvements to make your experience even better. Stay tuned!
 
 ### GitOps: Display full name for applications
 
