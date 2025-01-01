@@ -1,5 +1,5 @@
 ---
-title: "About products"
+title: "About Products"
 description: "Create products to group and deploy applications"
 group: products
 toc: true
@@ -19,12 +19,12 @@ file="/images/gitops-products/product-overview-pic.png"
 url="/images/gitops-products/product-overview-pic.png"
 alt="Products and Product Dashboard in GitOps" 
 caption="Products and Product Dashboard in GitOps"
-max-width="60%"
+max-width="70%"
 %}
 
 
 Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
-Read more on the first dashboard for environments and products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
+Read more about it in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
 
 <!--- >>**NOTE**  
@@ -42,7 +42,7 @@ file="/images/gitops-products/apps-grouped-by-product.png"
 url="/images/gitops-products/apps-grouped-by-product.png"
 alt="Argo CD applications grouped by products organized by environments" 
 caption="Argo CD applications grouped by products organized by environments"
-max-width="50%"
+max-width="60%"
 %}
 
 
@@ -73,16 +73,19 @@ After [creating products]({{site.baseurl}}/docs/products/create-product/), use i
 
 * **Basic settings for products**  
   * Annotations: Retrieve the annotation created automatically for the product to link applications.
-  * Applications: Assign applications to the product .
-  [Assign applications to the product]({{site.baseurl}}/docs/products/assign-applications/)
+  * Applications: Assign applications to the product.  
+
+  See [Assigning applications to the product]({{site.baseurl}}/docs/products/assign-applications/).
 
 * **Tailored promotion settings**  
   Customize promotion settings to meet product-specific needs:  
   * Specify the *version source for applications*, ensuring consistency across deployments.
   * Define the *attributes in applications* to determine what gets promoted.
-  * Select the *promotion flows that match the product and customize the conditions to trigger each of these flows* to automate promotions.
+  * Select the *promotion flows that match the product and customize the conditions to trigger each of these flows* to automate promotions.  
+  
+  See [Application version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/) and [Promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/).
 
-
+  
 {% include 
 image.html 
 lightbox="true" 
@@ -90,19 +93,19 @@ file="/images/gitops-products/promotion-settings-configure.png"
 url="/images/gitops-products/promotion-settings-configure.png"
 alt="Promotion settings for products" 
 caption="Promotion settings for products"
-max-width="50%"
+max-width="60%"
 %}
 
 
- See [Application version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/) and [Promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/).
-
-* **Manually promote products**
-  When needed, manually promote the product to a specific environment, or to multiple environment through Promotion Flows. 
+* **Manually promote products**  
+  When needed, manually promote the product to a specific environment, or to multiple environment through Promotion Flows.   
   See [Manually promote to specific environment]({{site.baseurl}}/docs/promotions/trigger-promotions#manually-promote-products-to-specific-environments) and [Manually promote to multiple environments by Promotion Flow]({{site.baseurl}}/docs/promotions/trigger-promotions#manually-promote-products-to-multiple-environments-by-promotion-flow).
 
 * **Track release activity**  
   Use the Releases tab to monitor ongoing and historical promotions.  
   Access detailed logs and insights, including Git activity and issue tracking, for complete visibility into the deployment process.  
+
+  See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
 
 {% include 
 image.html 
@@ -115,5 +118,5 @@ max-width="60%"
 %}
 
 
-  See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
+
 

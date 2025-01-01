@@ -5,9 +5,7 @@ group: promotions
 toc: true
 ---
 
-Continuous Delivery (CD) is an essential practice in the Software Development Lifecycle (SDLC) that automates the release process, ensuring consistent and reliable deployment of application updates across environments.   
-CD bridges the gap between development and operations, empowering teams to deliver changes to production with speed and confidence. This approach supports rapid responses to customer needs and enables frequent, low-risk releases, enhancing overall efficiency and responsiveness.
-
+Continuous Delivery (CD) is an essential practice in the Software Development Lifecycle (SDLC) that automates the release process, ensuring consistent and reliable deployment of application updates across environments. CD bridges the gap between development and operations, empowering teams to deliver changes to production with speed and confidence.
 
 A core element of CD is **promotion** - the process of advancing an application version through environments, such as from staging to production, based on predefined criteria or approvals. Promotion sequences ensure that only validated, stable versions of applications only validated, stable versions reach production, reducing risk with every release.
 
@@ -50,7 +48,7 @@ file="/images/gitops-promotions/overview/envs-prod-release.png"
 url="/images/gitops-promotions/overview/envs-prod-release.png"
 alt="Environments, products, releases" 
 caption="Environments, products, releases"
-max-width="60%"
+max-width="65%"
 %}
 
 >**NOTE**  
@@ -67,11 +65,11 @@ Codefresh  GitOps provides specialized functionality to streamline and automate 
   Create different types of workflows to run at different stages of the promotion process for validation, compliance, performance checks.  
   See [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).  
 
-* **Govern promotion behavior with policy-based gating**
+* **Govern promotion behavior with policy-based gating**  
   Define rules and constraints combining different workflows with Promotion Policies to ensure promotions adhere to specific requirements for products or environments.  
   See [Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/).
 
-* **Streamline complex promotion sequences**
+* **Streamline complex promotion sequences**  
   Automate multi-environment promotions reducing manual effort while improving accuracy and efficiency.  
   See [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/).
 
