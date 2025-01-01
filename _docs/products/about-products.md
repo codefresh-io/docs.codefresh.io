@@ -12,7 +12,6 @@ Managing diverse applications in dynamic environments often leads to fragmented 
 
 With products, you can enhance your environments in Codefresh GitOps, gaining a unified view of application management and deployment.
 
-
 {% include 
 	image.html 
 	lightbox="true" 
@@ -20,8 +19,10 @@ With products, you can enhance your environments in Codefresh GitOps, gaining a 
 	url="/images/gitops-products/product-overview-pic.png" 
 	alt="Products and the Product Dashboard in GitOps" 
 	caption="Products and the Product Dashboard in GitOps"
-  max-width=50%" 
+  max-width=60%" 
 %}
+
+
 
 Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
 Read more on the first dashboard for environments and products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
