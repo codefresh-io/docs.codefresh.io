@@ -86,10 +86,10 @@ After [creating products]({{site.baseurl}}/docs/products/create-product/), use i
 {% include 
 image.html 
 lightbox="true" 
-file="/images/gitops-products/promotion-settings-configure.png" 
+file="/images/gitops-products/promotion-settings-configure.png"
 url="/images/gitops-products/promotion-settings-configure.png"
-alt="Promotion settings for products" 
-caption="Argo CD applications grouped by products organized by environments"
+alt="TEST IF CHANGES ARE TAKEN" 
+caption="TEST IF CHANGES ARE TAKEN"
 max-width="50%"
 %}
 
