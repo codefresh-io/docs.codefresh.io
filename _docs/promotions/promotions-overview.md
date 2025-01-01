@@ -58,7 +58,7 @@ You need Runtime version 0.13.4 or higher to support GitOps promotions. Ensure y
 Codefresh  GitOps provides specialized functionality to streamline and automate the promotion process, ensuring consistency and control without the need for custom scripts. These features allow you to design predictable reusable delivery lifecycles across products and environments, with all the required validations, reducing operational overhead and manual errors.
 
 * **Predefine properties to promote**  
-  Specify which application properties to promote within products, maintaining precise control and avoiding the need to promote everything. 
+  Specify which application properties to promote within products, maintaining precise control and avoiding the need to promote everything.   
   See [Configuring app version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/). 
 
 * **Enforce environment-specific checks**  
