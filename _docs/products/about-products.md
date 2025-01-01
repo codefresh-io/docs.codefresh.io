@@ -37,14 +37,16 @@ Products group related Argo CD applications, offering a unified perspective as t
 For example, you can group multiple billing-related applications as a product, enabling streamlined management and deployment as a single entity.
 
 {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/apps-grouped-by-product.png" 
-	url="/images/gitops-products/apps-grouped-by-product.png" 
-	alt="Argo CD applications grouped by products organized by environments" 
-	caption="Argo CD applications grouped by products organized by environments"
-  max-width="70%" 
+image.html 
+lightbox="true" 
+file="/images/gitops-products/apps-grouped-by-product.png" 
+url="/images/gitops-products/apps-grouped-by-product.png"
+alt="Argo CD applications grouped by products organized by environments" 
+caption="Argo CD applications grouped by products organized by environments"
+max-width="50%"
 %}
+
+
 
 ## Benefits of products
 
