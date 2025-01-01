@@ -22,7 +22,7 @@ For details, see [Creating Argo CD applications]({{site.baseurl}}/docs/deploymen
 Explore these quick starts to get started with environments, products, and applications:  
 [Quick start: Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 [Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
-[Quick start: Creating applications]({{site.baseurl}}/_docs/gitops-quick-start/products/create-app-ui/)  
+[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
 [Quick start: Exploring the Product Dashboard]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)  
 
 

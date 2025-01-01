@@ -59,7 +59,7 @@ After creating Promotion Workflows, there are two ways to use them in the promot
   With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production evironments and creating pull requests in production.  
   Example: 
   Assign a validation workflow for all staging environments and a performance testing workflow for production environments.  
-  See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/).
+  See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/).
 
 
 ##### Arguments in Pre-Action and Post-Action Workflows
