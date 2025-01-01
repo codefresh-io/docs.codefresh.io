@@ -88,8 +88,8 @@ image.html
 lightbox="true" 
 file="/images/gitops-products/promotion-settings-configure.png"
 url="/images/gitops-products/promotion-settings-configure.png"
-alt="TEST IF CHANGES ARE TAKEN" 
-caption="TEST IF CHANGES ARE TAKEN"
+alt="Promotion settings for products" 
+caption="Promotion settings for products"
 max-width="50%"
 %}
 
