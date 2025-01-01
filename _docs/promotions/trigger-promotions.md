@@ -16,7 +16,7 @@ Manual promotion triggers provide different levels of control, accessible from d
 * **Single-environment promotion**  
   Useful for quick promotion to a specific environment through the drag-and-drop option, or the promote option for more control on promotion behavior for traget the environment
 * **Multi-environment promotion**  
-  Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flow flow, and the option to trigger a promotion for any product directly from within a Promotion Flow.
+  Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flows, and the option to trigger a promotion for any product directly from within a Promotion Flow.
 
 <!--- SCREENSHOT OF TRIGGER MOSAIC-->
 
