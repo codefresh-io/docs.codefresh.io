@@ -12,7 +12,15 @@ Managing diverse applications in dynamic environments often leads to fragmented 
 
 With products, you can enhance your environments in Codefresh GitOps, gaining a unified view of application management and deployment.
 
-
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-products/product-overview-pic.png" 
+url="/images/gitops-products/product-overview-pic.png"
+alt="Products and Product Dashboard in GitOps" 
+caption="Products and Product Dashboard in GitOps"
+max-width="60%"
+%}
 
 
 Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
@@ -73,16 +81,18 @@ After [creating products]({{site.baseurl}}/docs/products/create-product/), use i
   * Specify the *version source for applications*, ensuring consistency across deployments.
   * Define the *attributes in applications* to determine what gets promoted.
   * Select the *promotion flows that match the product and customize the conditions to trigger each of these flows* to automate promotions.
- 
+
+
 {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/promotion-settings-configure.png" 
-	url="/images/gitops-products/promotion-settings-configure.png" 
-	alt="Promotion settings for product" 
-	caption="Promotion settings for product"
-  max-width=60%" 
+image.html 
+lightbox="true" 
+file="/images/gitops-products/promotion-settings-configure.png" 
+url="/images/gitops-products/promotion-settings-configure.png"
+alt="Promotion settings for products" 
+caption="Argo CD applications grouped by products organized by environments"
+max-width="50%"
 %}
+
 
  See [Application version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/) and [Promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/).
 
@@ -94,16 +104,16 @@ After [creating products]({{site.baseurl}}/docs/products/create-product/), use i
   Use the Releases tab to monitor ongoing and historical promotions.  
   Access detailed logs and insights, including Git activity and issue tracking, for complete visibility into the deployment process.  
 
-
 {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/releases/product-releases-tab.png" 
-	url="/images/gitops-products/releases/product-releases-tab.png" 
-	alt="Product release activity in Releases tab" 
-	caption="Product release activity in Releases tab"
-  max-width=60%" 
+image.html 
+lightbox="true" 
+file="/images/gitops-products/releases/product-releases-tab.png" 
+url="/images/gitops-products/releases/product-releases-tab.png"
+alt="Monitoring product promotions in Releases tab" 
+caption="Monitoring product promotions in Releases tab"
+max-width="60%"
 %}
+
 
   See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
 
