@@ -1,9 +1,17 @@
 ---
 title: "Creating a Codefresh account"
 description: "Start working in Codefresh"
-group: gitops-quick-start
+group: ci-quick-start
+redirect_from:
+  - /docs/getting-started/create-a-codefresh-account/
+  - /docs/
+  - /docs/create-an-account/
+  - /docs/getting-started/
+  - /docs/getting-started/introduction/
 toc: true
 ---
+Begin your CI journey by setting up a Codefresh account.
+
 
 Begin your GitOps journey by setting up a Codefresh account.
 
@@ -88,8 +96,8 @@ max-width="50%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/quick-start/create-account/select-use-cases.png" 
-url="/images/quick-start/create-account/select-use-cases.png" 
+file="/images/quick-start/create-account/ci-select-use-cases.png" 
+url="/images/quick-start/create-account/ci-select-use-cases.png" 
 alt="Quick start account creation: Select use cases" 
 caption="Quick start account creation: Select use cases" 
 max-width="50%" 
@@ -97,11 +105,6 @@ max-width="50%"
 
 Congratulations! Your new Codefresh account is now ready and you are directed to the Welcome screen.
 
-
-## What's next
-Verify that you are ready to install the GitOps Hybrid Runtime, the foundation for GitOps operations. 
-
-[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
 
 
 

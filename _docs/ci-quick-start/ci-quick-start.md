@@ -21,7 +21,7 @@ Based on your deployment model, start by installing the [Codefresh Runner]({{sit
 
 
 ## Create a Codefresh account
-[Create an account in Codefresh]({{site.baseurl}}/docs/ci-quick-start/create-codefresh-account/) in which to create pipelines.
+[Create an account in Codefresh]({{site.baseurl}}/docs/ci-quick-start/ci-create-codefresh-account/) in which to create pipelines.
 
 ## Create and deploy Codefresh pipelines
 
