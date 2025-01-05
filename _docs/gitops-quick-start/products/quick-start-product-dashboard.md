@@ -5,7 +5,7 @@ group: gitops-quick-start
 toc: true
 ---
 
-In the previous quick start, we [created applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/) and assigned them to the same product.  
+In the previous quick start, we [created the demo-trioapp applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/) and assigned them to the `demo-trioapp` product.  
 
 Let's explore the Product Dashboard to see how these come together. The dashboard offers a consolidated view of your product's applications in their environments, including the application release versions, dependencies, and integrated insights from Kubernetes, Git, and issue-tracking tools. 
 
@@ -36,7 +36,7 @@ The release version displayed for each application signifies the specific versio
 **Why is this important?**  
 Knowing the release version at a glance helps you quickly identify which version of an application is deployed in each environment. This is crucial for ensuring consistency, troubleshooting, and managing deployments effectively.
 
-In the example below, `dev` has a different version of the application compared to `qa` and `prod`.  
+In the example below, the version of the `demo-trioapp` in the `dev` environment is different compared to those in `qa` and `prod` environments.  
 
 
 {% include 
@@ -49,7 +49,7 @@ In the example below, `dev` has a different version of the application compared 
   max-width="60%" 
 %}
 
-You can use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments, which is covered in the next set of quick starts. 
+Use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments, which is covered in the next set of quick starts. 
 
 Additionally, you can:
 

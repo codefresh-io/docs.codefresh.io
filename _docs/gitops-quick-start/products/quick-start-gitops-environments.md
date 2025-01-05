@@ -5,8 +5,19 @@ group: gitops-quick-start
 toc: true
 ---
 
-In the previous quick start, you [created a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) for the GitOps Runtime. In this quick start, we'll focus on creating ennvironments in preparation for promoting and deploying applications.
+In the previous quick start, you [created a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) for the GitOps Runtime.  
 
+## In this quick start - environments
+In this quick start, we'll create three different environments: `dev`, `qa`, and `prod`. These environments represent the typical stages in the software development lifecycle (SDLC): development, testing, and production, where your applications will eventually be made available to users.
+These environments represent typical stages in the software development lifecycle (SDLC), and are essential for managing and promoting applications effectively.
+
+We’ll:
+* Map these environments to a cluster, typically the one where you installed the GitOps Runtime. 
+* Use namespaces within the cluster to separate and isolate applications, which we'll create later, based on their stage. This separation enables independent testing, deployment, and promotion.
+
+
+
+## Environments in GitOps
 Environments are essential for managing the lifecycle of your applications as they move from development to production. Whether it’s a testing environment, a staging area, or production itself, each environment serves a unique purpose in the software delivery process. 
 
 In the context of **promotions with Codefresh GitOps**, environments aren’t just configurations—they’re actionable entities. They give you an intuitive way to organize, track, and promote applications, ensuring consistency and clarity across your delivery lifecycle.  
@@ -51,13 +62,13 @@ Here are just a few of the reasons you’ll want to use environments in Codefres
 %} 
  
 
-## Create an Environment
+## Create an environment
 Let's go ahead and create an environment. 
 
 Environments mirror the deployment lifecycle of your software, so create as many as you need to match your process.
 Common examples include `development`, `qa`, `staging`, and `production`, but you can customize environments to fit your needs. There's no cap on the number of environments you can create.  
 
-For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
+For this quick start, we'll create three environments, `dev`, `qa`, and `prod` to which we'll create and deploy three different applications for promotion and deployment.
 
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
@@ -68,7 +79,7 @@ For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
     1. **Tags**: Leave this empty for the quick start.
     1. **Clusters and Namespaces**: Single or multiple clusters, namespaces, or cluster-namespace pairs, to map to the environment.
         To include all namespaces in a cluster, leave the Namespace empty. 
-        For the quick start, we'll add the `in-cluster` and the `demo-dev` namespace.
+        For the quick start, we'll map the environment to the `in-cluster` which corresponds to the cluster where we installed the GitOps Runtime, and the `demo-dev` namespace. The namespace is associated with the `dev` environment, and the `demo` applications we'll add later on.
 
 {% include 
 	image.html 
@@ -84,7 +95,7 @@ For this quick start, we'll create three environments, `dev`, `qa`, and `prod`.
 1. Click **Add**.  
   The environment is displayed in the Environments dashboard. 
 1. Repeat _step 1_ through _step 3_ to create the two other environments: `qa` and `prod`.  
-  For the quick start, both environments are mapped to `in-cluster`, and to namespaces, `demo-qa` and `demo-prod` respectively.
+  For the quick start, we'll map these environments again to the `in-cluster`. And to the namespaces, `demo-qa` and `demo-prod` respectively, for the `demo` apps we'll create. 
 
 Here's an example of the Environments dashboard with the three environments.
 The environments are automatically populated with the applications in the clusters and namespaces mapped to them.  

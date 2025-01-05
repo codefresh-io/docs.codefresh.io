@@ -9,7 +9,7 @@ redirect_from:
 
 In this first quick start on promotions, we'll see how to promote products using the intuitive drag-and-drop functionality in the Environments dashboard. 
 
-This quick, visual method allows you to manually move applications between two environments in just a few steps.
+This quick, visual method allows you to manually move changes in applications between two environments in just a few steps.
 
 Use this method when you want to:
 * Quickly test changes in a different environment
