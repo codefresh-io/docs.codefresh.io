@@ -12,7 +12,7 @@ toc: true
 ---
 Once you have installed Codefresh, the next step is to create an account in Codefresh.
 
-After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. The Permissions window that is displayed differs according to the IdP selected.  
+After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
 ## Supported IdPs
@@ -32,78 +32,73 @@ For Git repositories, the login method is less important, as you can access Git 
 If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
 
 ## Create Codefresh account
-1. Select the identity provider (IdP) to use:  
-    1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
-    1. Select the IdP for sign-up.
+1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
+1. Select the IdP for sign-up.  
+
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/administration/create-account/select-identity-provider.png" 
-url="/images/administration/create-account/select-identity-provider.png"
-alt="Codefresh sign-up page" 
-caption="Codefresh sign-up page" 
-max-width="40%" 
+file="/images/quick-start/create-account/select-identity-provider.png" 
+url="/images/quick-start/create-account/select-identity-provider.png"
+alt="Quick start account creation: Codefresh sign-up page" 
+caption="Quick start account creation: Codefresh sign-up page" 
+max-width="50%" 
 %}
 
-{:start="2"}
-1. Accept the permissions request for the selected IdP:
+{:start="3"}
+1. If required, accept the permissions request for the selected IdP:
+  * For Google, enter the email to use.
   * For GitHub: To continue, click **Authorize codefresh-io**.
   * For Bitbucket: To continue, click **Grant access**.
   * For GitLab: To continue, click **Authorize**.
-
-    Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
-
-{:start="3"}
-1. Review the details for your new account, make the relevant changes, and click **NEXT**. 
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/administration/create-account/codefresh-signup.png" 
-url="/images/administration/create-account/codefresh-signup.png" 
-alt="Codefresh account details" 
-caption="Codefresh account details" 
-max-width="40%" 
-%}
+  Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
 
 {:start="4"}
-1. Enter a name for your account, and click **NEXT**.
+1. In the Verification screen, do the following:
+  1. Select the required country code, enter your phone number, and then click **Send**.
+  1. Enter the verification code you received, and click **Next**.
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/administration/create-account/codefresh-accountname.png" 
-url="/images/administration/create-account/codefresh-accountname.png" 
-alt="Codefresh account name" 
-caption="Codefresh account name" 
-max-width="40%" 
+file="/images/quick-start/create-account/verify-phone.png" 
+url="/images/quick-start/create-account/verify-phone.png" 
+alt="Quick start account creation: Verify phone number" 
+caption="Quick start account creation: Verify phone number" 
+max-width="50%" 
 %}
 
 {:start="5"}
-1. Finally, answer the questions to personalize your account and click **FINISH**.
+1. Fill in the fields with your organization's information, including your email, and click **Next**. 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/administration/create-account/codefresh-personalize.png" 
-url="/images/administration/create-account/codefresh-personalize.png" 
-alt="Codefresh personalize account" 
-caption="Codefresh personalize account" 
-max-width="40%" 
+file="/images/quick-start/create-account/organization-details.png" 
+url="/images/quick-start/create-account/organization-details.png" 
+alt="Quick start account creation: Enter organization information" 
+caption="Quick start account creation: Enter organization information" 
+max-width="50%" 
 %}
 
-Congratulations! Your new Codefresh account is now ready.
+{:start="6"}
+1. Enter a name for your account, and click **Next**.
+1. In the Organization type screen, select **Business use** and click **Next**.
+1. Select the use cases for your organization and account from among those displayed.  
+  In this case, you'll select **Continuous Delivery with GitOps** and then click **Finish**. 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/administration/create-account/codefresh-dashboard.png" 
-url="/images/administration/create-account/codefresh-dashboard.png" 
-alt="Codefresh dashboard" 
-caption="Codefresh dashboard" 
-max-width="40%" 
+file="/images/quick-start/create-account/select-use-cases.png" 
+url="/images/quick-start/create-account/select-use-cases.png" 
+alt="Quick start account creation: Select use cases" 
+caption="Quick start account creation: Select use cases" 
+max-width="50%" 
 %}
+
+Congratulations! Your new Codefresh account is now ready and you are directed to the Welcome screen.
 
 
 ## What's next
