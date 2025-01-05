@@ -1,7 +1,7 @@
 ---
 title: "Creating a Codefresh account"
 description: "Start working in Codefresh"
-group: gitops-quick-start
+group: ci-quick-start
 redirect_from:
   - /docs/getting-started/create-a-codefresh-account/
   - /docs/
@@ -10,8 +10,7 @@ redirect_from:
   - /docs/getting-started/introduction/
 toc: true
 ---
-
-Once you have installed Codefresh, the next step is to create an account in Codefresh.
+Begin your CI journey by setting up a Codefresh account.
 
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 The permissions requested by Codefresh are needed in order to build and deploy your projects.
@@ -87,20 +86,19 @@ max-width="50%"
 1. Enter a name for your account, and click **Next**.
 1. In the Organization type screen, select **Business use** and click **Next**.
 1. Select the use cases for your organization and account from among those displayed.  
-  In this case, you'll select **Continuous Delivery with GitOps** and then click **Finish**. 
+  In this case, you'll select **Continuous Integration with Pipelines** and **Continuous Delivery with Pipelines** and then click **Finish**. 
 
 {% include 
 image.html 
 lightbox="true" 
-file="/images/quick-start/create-account/select-use-cases.png" 
-url="/images/quick-start/create-account/select-use-cases.png" 
+file="/images/quick-start/create-account/ci-select-use-cases.png" 
+url="/images/quick-start/create-account/ci-select-use-cases.png" 
 alt="Quick start account creation: Select use cases" 
 caption="Quick start account creation: Select use cases" 
 max-width="50%" 
 %}
 
 Congratulations! Your new Codefresh account is now ready and you are directed to the Welcome screen.
-
 
 
 
