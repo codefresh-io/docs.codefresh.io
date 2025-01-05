@@ -56,8 +56,8 @@ max-width="50%"
 
 {:start="4"}
 1. In the Verification screen, do the following:
-  1. Select the required country code, enter your phone number, and then click **Send**.
-  1. Enter the verification code you received, and click **Next**.
+    1. Select the required country code, enter your phone number, and then click **Send**.
+    1. Enter the verification code you received, and click **Next**.
 
 {% include 
 image.html 
