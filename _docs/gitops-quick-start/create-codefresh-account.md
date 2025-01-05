@@ -10,7 +10,10 @@ redirect_from:
   - /docs/getting-started/introduction/
 toc: true
 ---
-Once you have installed Codefresh, the next step is to create an account in Codefresh.
+
+Begin your GitOps journey by setting up a Codefresh account.
+
+Creating an account provides access to the Codefresh platform, where you can install Runtimes, and create and manage GitOps entities.
 
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 The permissions requested by Codefresh are needed in order to build and deploy your projects.
