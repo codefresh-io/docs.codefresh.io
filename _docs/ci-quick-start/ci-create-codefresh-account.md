@@ -12,11 +12,6 @@ toc: true
 ---
 Begin your CI journey by setting up a Codefresh account.
 
-
-Begin your GitOps journey by setting up a Codefresh account.
-
-Creating an account provides access to the Codefresh platform, where you can install Runtimes, and create and manage GitOps entities.
-
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 The permissions requested by Codefresh are needed in order to build and deploy your projects.
 
@@ -91,7 +86,7 @@ max-width="50%"
 1. Enter a name for your account, and click **Next**.
 1. In the Organization type screen, select **Business use** and click **Next**.
 1. Select the use cases for your organization and account from among those displayed.  
-  In this case, you'll select **Continuous Delivery with GitOps** and then click **Finish**. 
+  In this case, you'll select **Continuous Integration with Pipelines** and **Continuous Delivery with Pipelines** and then click **Finish**. 
 
 {% include 
 image.html 
