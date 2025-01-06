@@ -7,6 +7,10 @@ redirect_from:
 toc: true
 ---
 
+
+
+
+{% if page.url contains '/enterprise/' %}
 Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
 
 Both deployment options provide seamless integration and support for Codefresh Pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.  
@@ -24,6 +28,13 @@ Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/i
   alt="sso-diagram.png"
   max-width="35%"
     %} 
+{% endif %}
+
+{% if page.url contains '/argohub/' %}
+Codefresh Argo hub is a lightweight cloud-based 
+Some data about argohub - this will not shown in enterprise context.
+{% endif %}
+
 
 
 

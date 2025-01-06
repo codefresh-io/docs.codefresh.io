@@ -6,20 +6,45 @@
     - title: Only for ArgoHub
       url: "/some-new-doc"
 
-- title: Quick starts
-  url: "/quick-start"
-  pages:
-    - title: GitOps quick starts
-      url: "/gitops-quick-start"
-      sub-pages:
-        - title: Install a Hybrid GitOps Runtime
-          url: "/runtime"
 
 - title: Installation
   url: "/installation"
   pages:
     - title: GitOps Runtimes
       url: "/gitops"
+    - title: Platform deployment
+      url: "/installation-options"
+
+- title: Quick starts
+  url: "/quick-start"
+  pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"
+    - title: CI/CD quick starts
+      url: "/ci-quick-start"
       sub-pages:
-        - title: Shared Configuration Repository
-          url: "/shared-configuration"
+        - title: Pipeline quick start
+          url: "/create-ci-pipeline"
+        - title: Kubernetes deployment quick start
+          url: "/deploy-to-kubernetes"
+        - title: Helm quick start
+          url: "/deploy-with-helm"
+        - title: On-demand environment quick start
+          url: "/on-demand-environments"
+    - title: GitOps quick starts
+      url: "/gitops-quick-start"
+      sub-pages:
+        - title: Provision a Hosted GitOps Runtime
+          url: "/install-hosted"
+        - title: Prepare for Hybrid GitOps Runtime installation
+          url: "/verify-requirements"
+        - title: Install a Hybrid GitOps Runtime
+          url: "/runtime"
+        - title: Create an application
+          url: "/create-app-ui"
+        - title: Create and commit resources for application
+          url: "/create-app-specs"
+        - title: Update the image tag for application
+          url: "/create-rollout"
+        - title: Work with Environments & Products
+          url: "/gitops-products"

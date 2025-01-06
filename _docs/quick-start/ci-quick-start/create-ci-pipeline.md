@@ -1,8 +1,11 @@
 ---
 title: "Pipeline quick start"
 description: "Quick start to set up a continuous integration (CI) pipeline"
+collections:
+  - /docs
+  - /argohub
 group: quick-start
-sub_group: ci-quick-start
+permalink: /docs/quick-start/ci-quick-start/create-ci-pipeline/
 redirect_from:
   - /docs/getting-started/create-a-basic-pipeline/
   - /docs/getting-started-create-a-basic-pipeline/
