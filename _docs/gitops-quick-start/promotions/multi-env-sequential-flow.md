@@ -10,8 +10,28 @@ redirect_from:
 
 [Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/), covered in the previous quick start, is ideal for on-demand promotions to a single environment. In contrast, sequential promotion flows offer a structured approach to managing changes across multiple environments, minimizing deployment risks.
 
-This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progress in the Releases view.
+This quick start demonstrates creating a Promotion Flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progress in the Releases view.
 
+## In this quick start - multi-environment sequential promotion
+
+We’ll:
+
+* Set up a promotion flow  
+  Learn to work with the Flow Builder to create a Promotion Flow that promotes changes across multiple environments.
+
+* Trigger the promotion  
+  Manually trigger the Promotion Flow from within the Flow Builder to orchestrate the promotion.
+
+* Monitor release 
+  Track the progress of the promotion in the `demo-trioapp` product's Releases tab.
+
+## Follow-along Git repo
+To follow along, we’ll use the following applications in the [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts.:
+* `trio-dev` for the `dev` environment
+* `trio-qa` for the `qa` environment
+* `trio-prod` for the `prod` environment
+
+ The structure of the repos with the resources must be consistent across all the three applications. See [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"} in the Git repo.
 
 ## Before you begin
 

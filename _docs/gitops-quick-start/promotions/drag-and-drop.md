@@ -15,6 +15,15 @@ Use this method when you want to:
 * Quickly test changes in a different environment
 * Manually promote a product version for validation or further deployment
 
+## In this quick start - drag-and-drop promotions
+In this quick start, we'll promote changes in  `demo-trioapp-dev` to `demo-trioapp-qa` across their respective environments.
+We are manually promoting the applications due to differences in the application versions between the two environments, ensuring that `demo-trioapp-qa` is updated with the latest changes from `demo-trioapp-dev`.
+
+## Follow-along Git repo
+The application version is defined in the  `appVersion` attribute of the `chart.yaml` file.  
+To view the current version of `demo-trioapp-dev`, see its [`chart.yaml`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
+
+
 ## Before you begin
 If you haven't done so already, create:
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
@@ -45,8 +54,8 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png" 
-url="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png"
+file="/images/quick-start/promotions/quick-start-dnd-apps-in-prod.png" 
+url="/images/quick-start/promotions/quick-start-dnd-apps-in-prod.png"
 alt="Promotions quick start: `demo-trioapp-dev` and `demo-trioapp-qa` applications" 
 caption="Promotions quick start: demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"

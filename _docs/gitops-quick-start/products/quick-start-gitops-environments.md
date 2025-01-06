@@ -12,8 +12,8 @@ In this quick start, we'll create three different environments: `dev`, `qa`, and
 These environments represent typical stages in the software development lifecycle (SDLC), and are essential for managing and promoting applications effectively.
 
 We’ll:
-* Map these environments to a cluster, typically the one where you installed the GitOps Runtime. 
-* Use namespaces within the cluster to separate and isolate applications, which we'll create later, based on their stage. This separation enables independent testing, deployment, and promotion.
+* Map these environments to a cluster, typically the one where the GitOps Runtime is installed. 
+* Define namespaces within the cluster to which to deploy the applications which we'll create later, based on their stage. This separation enables independent testing, deployment, and promotion.
 
 
 

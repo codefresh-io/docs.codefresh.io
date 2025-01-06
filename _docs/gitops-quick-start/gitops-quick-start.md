@@ -55,4 +55,4 @@ You can:
 * Fork the repository to customize and create your own applications and resources.
 
 
-This repository provides a practical way to understand and implement GitOps in your own environment.
+
