@@ -5,7 +5,7 @@ group: promotions
 toc: true
 ---
 
->**Moved**  
+>**Moved to GitOps Quick Starts**  
 
 We have moved Promotion Tutorials to the GitOps Quick Start section.
 

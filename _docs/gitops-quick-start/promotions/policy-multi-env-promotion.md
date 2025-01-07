@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-Now that we have covered [Multi-environment sequential promotion]({{site.baseurl}}/docs/promotions/promotion-scenarios/multi-env-sequential-flow/), let's move on to configuring conditions for promotions, ensuring that each environment’s specific requirements are met before changes are promoted.
+Now that we have covered [Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/multi-env-sequential-flow/), let's move on to configuring conditions for promotions, ensuring that each environment’s specific requirements are met before changes are promoted.
 
 Codefresh makes it easy to automate and enforce gates throughout your promotion processes using Promotion Workflows. 
 Promotion Workflows are essentially Argo Workflows customized for promoting changes through your environments.  
