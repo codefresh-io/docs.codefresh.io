@@ -17,20 +17,22 @@ Use this method when you want to:
 
 ## In this quick start - drag-and-drop promotions
 In this quick start, we'll promote changes in  `demo-trioapp-dev` to `demo-trioapp-qa` across their respective environments.
+
 We are manually promoting the applications due to differences in the application versions between the two environments, ensuring that `demo-trioapp-qa` is updated with the latest changes from `demo-trioapp-dev`.
 
 ## Follow-along Git repo
 The application version is defined in the  `appVersion` attribute of the `chart.yaml` file.  
-To view the current version of `demo-trioapp-dev`, see its [`chart.yaml`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
+To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
 
+## Promote product applications through drag-and-drop
 
-## Before you begin
+### Before you begin
 If you haven't done so already, create:
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 * [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
 * [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
 
-## Promote product applications through drag-and-drop
+### Step-by-step
 
 1. From the sidebar, select **Environments**.  
     * The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 

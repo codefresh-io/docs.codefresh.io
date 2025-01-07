@@ -14,21 +14,21 @@ Parallel promotions are ideal for scenarios like multi-region deployments, where
 
 ## In this quick start - parallel multi-environment promotions
 
-To implement this flow, you’ll need additional environments and applications, but their creation is not covered here.
+To implement this flow, you’ll need additional environments and applications.
 
-We’ll:
+In this quick start, we’ll:
 * Create two new environments  
   Create two additional environments, `prod-asia` and `prod-eu` as `production` environments.  
   For guidelines, see [Create an environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/#create-an-environment) in the Environments quick start.
 
-* Create new applications
-  Create two different applications `demo-trioapp-eu`, `demo-trioapp-asia`, aligned to `prod-asia` and `prod-eu`. 
+* Create new applications  
+  Create two different applications `demo-trioapp-eu`, `demo-trioapp-asia`, aligned to `prod-asia` and `prod-eu`.  
   For guidelines, see [Create an application]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/#create-your-first-application) in the Applications quick start.
 
 * Save as new Promotion Flow  
   Save the existing `multi-env-sequential-promotion` Promotion Flow as a new flow entitled `multi-env-parallel-promotion`.
   
-* Add as parallel environments   
+* Add parallel environments   
   Add `prod-asia` and `prod-eu` as parallel environments in the `multi-env-parallel-promotion` Promotion Flow.
  
 * Trigger the promotion  
@@ -51,11 +51,15 @@ You can copy the manifests and the resources for the new applications from the [
   * [`trioapp-prod-asia`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications/trioapp-prod-asia){:target="\_blank"}
   * [`trioapp-prod-eu`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications/trioapp-prod-eu){:target="\_blank"}
 
-## Before you begin
-* Ensure you have deployed to more than one production environment.  
+## Add parallel environments to Promotion Flow
+
+We'll enhance the Promotion Flow by adding multiple environments to execute promotions in parallel.  
+For this example, we’ll add `prod-asia` and `prod-eu` as additional production environments to `qa`. 
+
+### Before you begin
+* Ensure you have more than one production environment.  
   For example, the `demo-trioapp` product in this quick start is deployed to multiple production environments.
 * If necessary, add at least two applications to two different production environments before proceeding.
-
 
 
 {% include 
@@ -68,12 +72,7 @@ caption="Promotions quick start: Product with applications in multiple productio
 max-width="60%"
 %}
 
-
-## Add parallel environments to Promotion Flow
-
-We'll enhance the Promotion Flow by adding multiple environments to execute promotions in parallel.  
-For this example, we’ll add `prod-asia` and `prod-eu` as additional production environments to `qa`. 
-
+### Step-by-step
 1. Open the Promotion Flow you created, `multi-env-sequential-promotion` for the quick start.
 1. Open the Settings panel:
     * **Name**: Change the name to create a new Promotion Flow, `multi-env-parallel-promotion`.

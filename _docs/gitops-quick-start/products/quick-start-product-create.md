@@ -32,8 +32,6 @@ For detailed information, see [Products]({{site.baseurl}}/docs/products/about-pr
 
 Here are a few reasons why you would want to create products to manage your applications.
 
-
-
 * **Bridging applications and environments**  
   Products create a vital link between applications and their environments. By grouping applications within a product, you gain visibility and control over their deployment paths, ensuring all components move through environments together.
 

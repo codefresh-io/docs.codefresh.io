@@ -8,12 +8,12 @@ toc: true
 In the previous quick start, you [created a Git Source]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) for the GitOps Runtime.  
 
 ## In this quick start - environments
-In this quick start, we'll create three different environments: `dev`, `qa`, and `prod`. These environments represent the typical stages in the software development lifecycle (SDLC): development, testing, and production, where your applications will eventually be made available to users.
-These environments represent typical stages in the software development lifecycle (SDLC), and are essential for managing and promoting applications effectively.
+In this quick start, we'll create three different environments: `dev`, `qa`, and `prod`.  
+These environments represent the typical stages in the software development lifecycle (SDLC): development, testing, and production, where your applications will eventually be made available to users.
 
-We’ll:
-* Map these environments to a cluster, typically the one where the GitOps Runtime is installed. 
-* Define namespaces within the cluster to which to deploy the applications which we'll create later, based on their stage. This separation enables independent testing, deployment, and promotion.
+When creating the environments, we’ll:
+* Map them to a cluster, typically the one where the GitOps Runtime is installed. 
+* Define namespaces within the cluster to which to deploy the applications, which we'll create later, based on their stage. This separation enables independent testing, deployment, and promotion.
 
 
 
@@ -113,6 +113,5 @@ At this point, as we haven't created any applications, all environments are empt
 
 ## What's next
 You’re probably eager to dive into applications. Before we do that let's create another entity that simplifies and supercharges applications: Products.
-
 
 [Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)

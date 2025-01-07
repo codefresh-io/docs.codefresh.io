@@ -14,9 +14,9 @@ This quick start demonstrates creating a Promotion Flow with three environments 
 
 ## In this quick start - multi-environment sequential promotion
 
-We’ll:
+In this quick start, we’ll:
 
-* Set up a promotion flow  
+* Set up a Promotion Flow  
   Learn to work with the Flow Builder to create a Promotion Flow that promotes changes across multiple environments.
 
 * Trigger the promotion  
@@ -33,7 +33,14 @@ To follow along, we’ll use the following applications in the [public GitHub re
 
  The structure of the repos with the resources must be consistent across all the three applications. See [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"} in the Git repo.
 
-## Before you begin
+## Create Promotion Flow for multi-environment promotions
+Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
+You can use the Flow Builder in either Chart or YAML modes depending on your preference to create a Promotion Flow. 
+
+>**NOTE**  
+You need to be an account administrator to create Promotion Flows.
+
+### Before you begin
 
 For this quick start, ensure that you have:
 
@@ -48,15 +55,7 @@ For this quick start, ensure that you have:
   The structure of the repos with the resources must be consistent across all the three applications. <!--- add a link to the repo? -->
 
 
-## Create Promotion Flow for multi-environment promotions
-
-Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
-You can use the Flow Builder in either Chart or YAML modes depending on your preference to create a Promotion Flow. 
-
->**NOTE**  
-You need to be an account administrator to create Promotion Flows.
-
-
+### Step-by-step
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
 1. From the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
 1. Enter the settings for the Promotion Flow:
@@ -120,7 +119,7 @@ caption="Promotions quick start: Promotion Flow with required environments"
 max-width="60%"
 %}
 
-{:start="5"}
+{:start="7"}
 1. Click **Save Promotion Flow** on the top-right.  
   The Name and Description are populated from the Settings. The flow's YAML version on the right lists the environment sequence.
 
@@ -135,7 +134,7 @@ caption="Promotions quick start: Save Promotion Flow"
 max-width="60%"
 %}
 
-{:start="6"}
+{:start="8"}
 1. To add the new flow to the Promotion Flows list, click **Save**.
 
 {% include 
@@ -149,7 +148,7 @@ max-width="60%"
 %}
 
 
-{:start="7"}
+{:start="9"}
 1. Continue with [Trigger Promotion Flow](#trigger-promotion-flow).
 
 ## Trigger Promotion Flow

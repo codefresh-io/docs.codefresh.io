@@ -7,25 +7,37 @@ redirect_from:
   - docs/quick-start/gitops-quick-start/create-app-ui/
 ---
 
-We've created two of the three core entities essential for GitOps promotions: [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/) and [products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/).  
+In the previous quick starts, we created two of the three core entities essential for GitOps promotions: [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/) and [products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/).  
 
 Now we'll create applications, the fundamental building blocks of software delivery. The ultimate goal is to deploy and maintain these applications efficiently, ensuring they run reliably in production.
 
 ## In this quick start - applications
-In this quick start, we'll create three different applications: `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`. These applications will represent distinct stages in the software development lifecycle (SDLC): development, testing, and production.  
+In this quick start, we'll create three different Helm-based applications: `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`. These applications will represent distinct stages in the software development lifecycle (SDLC): development, testing, and production.  
 By creating these applications, we ensure that each stage has a dedicated version of the `demo-trioapp`, making it easier to manage and promote them across environments.
 
-You’ll:
+We'll:
 * Create each of the three applications.
 * Group them within the `demo-trioapp` product created in the previous quick start.
 * View the changes in the Environment and Product dashboards. 
 
 ### Follow along Git repo
-To follow along, you can access the public GitHub repository, where you’ll find the [manifests for the three applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="\_blank"}.  
+To follow along, you can access the public GitHub repository, where you’ll find the [configuration manifests for the three applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="\_blank"}.  
 These configuration files will help you replicate the setup and easily deploy the applications to their respective environments.
 
 
+### About the demo-application folder
+The [demo-application folder](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="_blank"} in the same repository contains preconfigured manifests for setting up and deploying applications. This folder simplifies the process of creating applications by providing ready-to-use files, reducing manual configuration efforts.
 
+Each subfolder corresponds to an environment-specific application, such as `trioapp-dev`, `trioapp-qa`, and `trioapp-prod`. These subfolders include:
+* `Chart.yaml`: Defines the application version using the `appVersion` attribute, and other dependencies.
+* `values.yaml`: Contains environment-specific configurations for the application.
+* `version.yaml`: Other Helm files: Provide a complete Helm chart structure for deploying the application.
+
+##### How to use the folder
+When creating applications in the quick start:
+1. Choose the folder matching your environment (e.g., trioapp-dev for the development environment).
+1. Use the files in the selected folder to create and deploy the application.
+1. For Helm-based deployments, ensure the Chart.yaml and values.yaml are correctly referenced.
 
 
 
@@ -38,7 +50,6 @@ For detailed information, see [Creating Argo CD applications]({{site.baseurl}}/d
 
 
 ## Key features of applications in Codefresh
-
 
 * **GitOps-driven management**  
   Codefresh leverages Argo CD to ensure applications always align with their Git repository definitions, allowing declarative management and version control.
@@ -140,13 +151,6 @@ Use the Form editor or code directly in YAML. Switch between the two as you pref
    %} 
 
 ## Create additional applications
-Follow the steps in Create your first application to create two more applications: demo-trioapp-qa and demo-trioapp-prod, representing the testing and production stages of your application lifecycle.
-
-
-
-
-
-
 Follow the steps in [Create your first application](#create-your-first-application) to create two more applications, `demo-trioapp-qa` and `demo-trioapp-prod`, representing the testing and production stages in our application lifecyle. 
 Remember to also select the `demo-trioapp` product for each application as you create them. 
 
@@ -173,7 +177,7 @@ Let's return to the Environments dashboard to see how the three apps we created 
 
 
 Each environment displays the product `demo-trioapp`.
-Mouse over the product name in each environment to see the associated application, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
+Mouse over the product name in each environment to see the associated applications, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
 
   {% include 
    image.html 
