@@ -60,7 +60,7 @@ Follow the steps to identify and fix the issue.
           `.app.status.operationState.operation.sync.changeRevision`, automatically added when ACR is enabled for the Runtime.
 1. Check if you switched the revision in the notification controller to `.app.status.operationState.operation.sync.changeRevision`. 
 1. Do one of the following:
-  * If one or more requirements are not configured/enabled in _Steps 1 and 2_, configure as needed.
+  * If one or more requirements are not configured in _Steps 1 and 2_, configure as needed.
   * If all requirements in n _Steps 1 and 2_ are verified, check the logs for the notification controller. Continue from the next step.
 1. In the notification controller logs, search for the `Revision for application %s is empty` message.  
   If present, it indicates that the controller couldn’t detect an actual change between the two revisions. 
