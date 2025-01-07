@@ -8,11 +8,15 @@ toc: true
 
 
 
-When promotions are triggered for a product, the flow orchestrates deployment across one or more environments until the new version is deployed to production or to the desired target environment. 
+Releases in Codefresh offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
 
-In the context of GitOps, a release is a comprehensive view of the progression of a product as it is promoted through different environments when a promotion flow is triggered. The release encompasses the collective state of all environments and workflows involved in deploying that change, from the initial trigger environment to the final target environment. 
+A release is automatically created whenever a promotion is triggered for a product—either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
 
-Visually track deployments of a product across multiple environments with Releases. 
+## Releases in GitOps
+In the context of GitOps, a release captures the progression of a product as it is promoted through environments. The release reflects the collective state of all environments and workflows involved in deploying a change, from the initial trigger to the final target environment, whether production or another specified target.
+
+Visually track deployments of your product across multiple environments using the Releases view.
+
 
 {% include 
 image.html 
@@ -24,41 +28,48 @@ caption="Example of a product release view"
 max-width="60%"
 %}
 
-Whether you are a product manager or an application developer, with Releases, you can:
-* Visualize the product's deployment lifecycle
-* Access an integrated list of changes that led to the deployment
-* See the current status of ongoing deployments
-* Troubleshoot issues preventing deployment to production
-* Address customer-reported issues through detailed insights into the deployment lifecycle
-
+### Why Releases matter
+Whether you are a product manager or an application developer, Releases offer:
+* Lifecycle visualization: Clearly track the deployment lifecycle of a product
+* Integrated change list: Access a unified list of changes leading to a deployment
+* Deployment status: Monitor ongoing deployments and quickly identify issues
+* Troubleshooting insights: Pinpoint and resolve errors preventing successful deployment
+* Customer issue resolution: Gain detailed insights into the deployment lifecycle to address reported issues
 
 
 ##### Releases for products
-A release is created for a product when a promotion is triggered, either automatically or manually.
-On drill down into a product, the Releases tab displays the list of ongoing and completed releases, with the option of getting detailed insights on each release.
+The Releases tab for each product displays a list of ongoing and completed releases. Drilling down into a specific release reveals detailed insights, such as environment states, workflows, and associated changes.
 
 ##### Releases for developers
-As an application developer or a DevOps engineer, you often lack visibility into the deployment process after pushing your code, only being alerted when issues arise. Our Releases feature changes this dynamic by offering full visibility at all times, whether you need to monitor an ongoing deployment, identify and resolve issues for failed deployments, or understand the changes involved in a release.
+Developers often lack visibility into what happens after code is pushed. The Releases feature bridges this gap by providing:
+* Full visibility into ongoing and completed deployments
+* Context for failed deployments, including error details and resolution steps
+* A detailed breakdown of changes associated with each release.
 
 
 
 
-##### Tracking deployments through releases
+### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:
-* **Release promotion flow**  
-  Tracking the release visually, shows the progression of the release through each phase of the promotion lifecycle through different environments.  
-  This is the place where you can view issues that arise. Instead of having to switch between different interfaces, or even tools to troubleshoot errors, the Releases page funnnels all erros  Codefresh funnels everything into one screen on the Releases page. Developers have everything they need at their fingertips, saving time so you can get updates into the hands of your customers sooner.
 
-  See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).  
+##### Release promotion flow 
+Track the release visually to monitor its progression through each phase of the promotion lifecycle across environments.  
+Specific Release views centralizes all information, allowing you to:  
+* Identify and resolve deployment issues without switching between tools
+* Access everything you need to troubleshoot errors in one place.
+
+See [Monitor promotion orchestration for releases](#monitor-promotion-orchestration-for-releases).  
+For information on the different aspects of a release, see:  
+* [Release summary](#release-summary)  
+* [Environments in product releases](#environments-in-product-releases)  
+* [Promotion Workflows in product releases](#promotion-workflows-in-product-releases)
   
-  For information on the different aspects of a release, see:
-  [Release summary](#release-summary)  
-  [Environments in product releases](#environments-in-product-releases)  
-  [Promotion Workflows in product releases](#promotion-workflows-in-product-releases)
-  
-* **Release notes**  
-  Tracking through release notes provides an integrated list of changes from various sources and tools, providing a comprehensive view of what led to the deployment.  
-  See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
+##### Release notes
+Release notes compile changes from various sources into a single view, enabling you to:
+* Analyze the history of changes leading to deployment
+* Gain a comprehensive understanding of each release's impact
+
+See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
 
 
 ## View Releases for products
@@ -84,10 +95,10 @@ The table describes important insights in the Releases page.
 
 |Item      | Description*           |
 |-------------|---------------------|
-| **Release ID**     | The Codefresh-assigned identifier uniquely identifying the release. Clicking the Release ID displays the ongoing or completed Promotion Flow for the release. |
+| **Date**     | The date the release was created. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
 | **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
-| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> or <img src="../../../images/icons/promotion-suspending-pending-pr.png?display=inline-block">: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
+| **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> <!--- or <img src="../../../images/icons/promotion-suspending-pending-pr?display=inline-block">-->: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated.</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
 
 
 
@@ -102,7 +113,7 @@ Visually monitor promotion orchestration for an on-going release, or analyze tha
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the product and then click the **Releases** tab.
-1. Click a Release ID to view the promotion orchestration.
+1. Click a Release record to view the promotion orchestration.
 1. To view the complete history of code changes, click **Release Notes**.   
 
 {% include 
@@ -136,7 +147,7 @@ max-width="60%"
 %}
 
 ### Release status
-The release status is displayed on the right when you drill down into a release ID.  
+The release status is displayed on the right when you drill down into a release.  
 It is determined from the statuses of all the environments included in the promotion flow that orchestrates the deployment of the product.
 For single-environment promotions triggered manually, there are two environments.
 
@@ -145,11 +156,12 @@ The table describes the possible statuses of a Release.
 {: .table .table-bordered .table-hover}
 | Release Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | Promotions were completed successfully in all the environments and the changes were successfully deployed .  |
-| **Progressing**    | Promotion is currently ongoing for at least one environment.  |
-| **Suspended**      | Promotion in an environment is pending completion. This could be because of a condition in one of its workflows or because a pull request is waiting for approval.  |
-| **Terminated**     | Promotion currently being run in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. |
-| **Failed**         | Promotion failed in at least one environment causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures are flagged in the environment under Issues. Clicking on Issues opens a panel displaying the reason for the error, with links to the resource causing the issue, or to the logs and manifests of the resource.|
+| **Succeeded**     | Promotions were successfully completed in all the environments, and the changes were also successfully deployed.  |
+| **Running**    | Promotion is currently in progress for at least one environment.  |
+| **Suspended**      | Promotion in an environment is paused, pending an action, such as pull request approval.  |
+| **Terminating**     | Promotion currently running in an environment was manually terminated, and the termination process is in currently in progress.|
+| **Terminated**     | Promotion currently running in an environment was terminated, preventing deployment to the other environments defined in the Promotion Flow. This could occur due to exceeding the timeout defined for the Promotion Flow, application issues, or manual termination of the release.|
+| **Failed**         | Promotion failed in at least one environment, causing the entire release to fail. This could be because:<br>-The Pre- or Post-Action Workflow, or Promotion Action failed. <br>-At least one application is out of sync or degraded.<br><br>Failures in the affected environment are flagged under Issues. Clicking Issues opens a panel with details about the error, including links to the problematic resource, or its logs and manifests.|
 
 {% include 
 image.html 
@@ -194,7 +206,7 @@ The table describes the possible deployment statuses for environments.
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}   |
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
 | **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
@@ -335,13 +347,18 @@ max-width="60%"
 ## Terminate a release
 Manually terminate a release to stop the promotion process. Terminating a release stops all downstream promotions, preventing further propagation across environments.
 
-Release termination may be necessary if issues are detected in an environment or application, or if a version is identified as problematic. Stopping downstream promotions in these cases prevents propagating unwanted changes, and enables the rollback of in-flight versions.
+Manual release termination may be necessary if issues are detected in an environment or application, or if a version is identified as problematic. Stopping downstream promotions in these cases prevents propagating unwanted changes, and enables the rollback of in-flight versions.
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+To automatically terminate a release by configuring timeouts for Promotion Flows, see [Flow timeouts]({{site.baseurl}}/docs/promotions/entities/promotion-flow/#flow-timeouts).
+{{site.data.callout.end}}
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the product and then click the **Releases** tab.
-1. Click the Release ID for the ongoing release to terminate, and then click **Terminate**.
+1. Click the Release  entry for the ongoing release to terminate, and then click **Terminate**.
   The release is set to status terminated. All downstream environments are set to Pending.  
-  If you return to the Releases list for the product, mouse over the Release ID displays the reason why the release failed, and the specific displays this status {::nomarkdown}{<img src="../../../images/icons/promotion-terminated.png?display=inline-block">{:/}.
+  If you return to the Releases list for the product, mouse ovre the Date displays the reason for the failure, and the Release view displays this status {::nomarkdown}<img src="../../../images/icons/promotion-terminated.png?display=inline-block">{:/}.
 
 {% include 
 image.html 
@@ -362,7 +379,7 @@ Another scenario where a retry is useful is when a workflow step encountered a t
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
 1. Select the product and then click the **Releases** tab.
-1. Click the Release ID for a failed release, and then click **Retry**.
+1. Click the record for the failed release, and then click **Retry**.
 
 {% include 
 image.html 
@@ -374,7 +391,7 @@ caption="Retry failed release"
 max-width="60%"
 %}
 
-   The release resumes execution from the point of failure, in this case, retries the Post-Action Workflow step, and the status of the release changes to Running.  Note that there is no change to the Release ID. 
+   The release resumes execution from the point of failure, in this case, retries the Post-Action Workflow step, and the status of the release changes to Running. 
 
 <!--
 {% include 
@@ -393,6 +410,7 @@ max-width="60%"
 ## Related articles
 [Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
+[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
 [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  
