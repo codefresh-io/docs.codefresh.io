@@ -364,7 +364,7 @@ metadata:
     * Manually sync the application by clicking **Synchronize**.
     * Check if the the logs are similar to the example below:
 
-```bash
+```
 time="2024-10-15T18:35:54Z" level=info msg="Change revision for application helm-guestbook2 is 804146ff6b6de77329d73f732e7af61d5ba3fe66"
 time="2024-10-15T18:35:54Z" level=info msg="Patch operation sync result for application helm-guestbook2"
 ```
