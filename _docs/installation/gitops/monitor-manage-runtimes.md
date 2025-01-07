@@ -373,11 +373,7 @@ Enable the ACR Controller in GitOps Runtimes to support precise detection of syn
 
 When enabled, the ACR Controller identifies and tracks application-specific changes by analyzing the application’s source path, comparing revisions, and identifying the specific sync operation that triggered the promotion or deployment.
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-  You can also [configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application#configure-application-scoped-sync-notifications) to reduce notification noise and improve notification accuracy.
-{{site.data.callout.end}}
-
+When the ACR Controller is enabled, `.app.status.operationState.operation.sync.changeRevision` is automatically added to the application manifests. Make sure to switch the current revision in the notification controller to the new `changeRevision`.
 
 * In the Runtime's `values.yaml` add the following to the `argo-cd` section:
 
@@ -386,6 +382,14 @@ argo-cd:
   acrController:
     enabled: true
 ```
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+  You can also [configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application#configure-application-scoped-sync-notifications) to reduce notification noise and improve notification accuracy.
+{{site.data.callout.end}}
+
+
+
 
 ## (Hybrid GitOps) Roll back GitOps Runtimes
 After upgrading a GitOps Runtime, roll back to the previous or a specific version of the Runtime.
