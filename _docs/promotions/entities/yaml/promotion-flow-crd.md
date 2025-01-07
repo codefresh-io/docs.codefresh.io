@@ -50,12 +50,12 @@ spec:
 |`spec.steps`               | The step in the Promotion Flow that defines the list of target environments and their dependencies. <br>At least one target environment and dependency must be defined. | array  | Required   |
 |`spec.steps.environment`   | The name of the specific target environment for which to trigger the promotion.   | string | Required         |
 |`spec.steps.environment.dependsOn`| One or more environments that must be successfully promoted before promotion can be triggered in the succeeding environments.   | array  | Required |
-|`spec.steps.policy`| The Pre-Action Workflow, Action, and Post-Action Workflow to implement for the Promotion Policy through the `action`, `preAction`, and `postAction` attributes. <br>The Action attribute is required.<br>An `policy` attribute defined here overrides global Policies that match the product/environment. See [Promotion Policy implementation logic]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/#promotion-policy-implementation-logic) for information on how they are applied.  | object  | Optional          |
+|`spec.steps.policy`| The Pre-Action Workflow, Action, and Post-Action Workflow to implement for the Promotion Policy through the `action`, `preAction`, and `postAction` attributes. <br>The Action attribute is required.<br>An `policy` attribute defined here overrides global Policies that match the product/environment. See [Promotion Policy implementation logic]({{site.baseurl}}/docs/promotions/entities/promotion-policy/#promotion-policy-implementation-logic) for information on how they are applied.  | object  | Optional          |
 | `spec.steps.policy.action`           | The action that should trigger the promotion in the target environment for this Promotion Policy.<br>Can be one of the following:{::nomarkdown}<ul><li><code class="highlighter-rouge">commit</code>: Executes a commit operation on the target application.</li><li><code class="highlighter-rouge">pr</code>: Executes a commit and opens a pull request for the target application.<br>Useful when you need manual approval before commit.</li><li><code class="highlighter-rouge">none</code>: Does not execute any action on the target application.<br>In this case, the Post-Action workflow must include a step that is equivalent </li></ul>{:/}| string   | Required          |
 | `spec.steps.policy.preAction`        | The name of the Promotion Workflow to execute _before_ `spec.steps.policy.action`.                      | string  | Optional          |
 | `spec.steps.policy.postAction`       | The name of the Promotion Workflow to execute _after_ `spec.steps.policy.action`.                         | string  | Optional          |  
 
 ## Related articles
-[Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/)  
-[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-policy-crd/)  
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/)  
+[Product YAML]({{site.baseurl}}/docs/promotions/entities/yaml/product-crd/)  
+[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-policy-crd/)  
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/)  

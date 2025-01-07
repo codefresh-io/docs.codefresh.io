@@ -61,9 +61,9 @@ spec:<!
 
 
 ## Related articles
-[Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/)  
-[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-policy-crd/)  
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/)   
+[Product YAML]({{site.baseurl}}/docs/promotions/entities/yaml/product-crd/)  
+[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-policy-crd/)  
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/)   
 
 
 

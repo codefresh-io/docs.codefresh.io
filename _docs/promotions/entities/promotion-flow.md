@@ -1,6 +1,6 @@
 ---
 title: "Configure Promotion Flows"
-description: "Orchestrate promotion for products across environment with Create Promotion Flows"
+description: "Orchestrate promotion for products across environment with Promotion Flows"
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/

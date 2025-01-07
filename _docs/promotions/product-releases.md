@@ -103,6 +103,7 @@ The table describes important insights in the Releases page.
 
 
 
+
 ## Monitor promotion orchestration for releases
 
 Visually monitor promotion orchestration for an on-going release, or analyze that of a completed release, for multi-environment promotion flows or single-environment promotions:
@@ -408,7 +409,7 @@ max-width="60%"
 
 
 ## Related articles
-[Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
+[Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Promotion quick starts]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
