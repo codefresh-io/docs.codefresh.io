@@ -1,5 +1,5 @@
 ---
-title: "Getting started"
+title: "Getting started with promotions"
 description: "Quick links for all things promotions"
 group: promotions
 toc: true
