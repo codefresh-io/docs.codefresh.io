@@ -152,8 +152,6 @@ If not configured, the Flow inherits the default timeout of 24 hours.
 
 Timeouts are useful in scenarios such as:
 * Manual approval delays: Terminates the flow if approval isn’t provided within the defined time frame for PR-driven flows for example.
-* Infrastructure failures: Stops the flow if required resources, such as clusters or servers, aren’t available.
-* Dependency resolution errors: Ends the flow when external services or dependencies fail to respond in time.
 * Long-running tests: Terminate flows running indefinitely due to misconfigured tests, preventing resource waste and pipeline delays. 
 
 ### Promotion Policy settings
