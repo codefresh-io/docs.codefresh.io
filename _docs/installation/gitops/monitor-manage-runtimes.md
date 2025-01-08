@@ -204,6 +204,50 @@ Only GitOps Runtimes designated as Configuration Runtimes sync to this folder an
 │   │   ├── in-cluster.yaml       ┤     
 ```
 -->
+
+
+## (Hybrid GitOps) Configure Runtime as Argo CD application
+
+Configure the Hybrid GitOps Runtime as an Argo CD Application.  This is usually done when installing the Runtime. 
+You can configure the Runtime when needed after installation.
+
+Configuring the Runtime as an Argo CD application, allows you to: 
+* View the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
+* View and its resources, services, and deployment history in the GitOps Apps dashboard through the **Runtime Application** option in the Runtime's context menu
+
+
+
+##### How to
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. Switch to the **List View**.
+1. Select the Hybrid GitOps Runtime to configure as an Argo CD application.
+1. In the Runtime Component tab, in **3: Configure runtime as an Argo Application**, click **Configure**.
+
+
+  {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/config-as-argo-app-post-install.png" 
+      url="/images/runtime/helm/config-as-argo-app-post-install.png" 
+      alt="Configuring GitOps Runtime as an Argo CD Application" 
+      caption="Configuring GitOps Runtime as an Argo CD Application"
+      max-width="60%" 
+   %}
+
+The Runtime's context menu now includes the **Runtime Application** option, which when selected takes you to the Current State tab in the GitOps Apps dashboard. 
+
+ {% include 
+      image.html 
+      lightbox="true" 
+      file="/images/runtime/helm/runtime-application-option-context-menu.png" 
+      url="/images/runtime/helm/runtime-application-option-context-menu.png" 
+      alt="Runtime Application option to view and monitor resources" 
+      caption="Runtime Application option to view and monitor resources"
+      max-width="60%" 
+   %}
+
 ## (Hybrid GitOps) Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, new functionality, and the latest versions of all components. 
@@ -217,10 +261,8 @@ See also [View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releas
 
 **Upgrade procedure**   
 The upgrade procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not:<br>
-* Argo CD GitOps Runtimes  
-  For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
-* Non-Argo CD GitOps Runtimes  
-  Run the upgrade command.
+* For Runtimes configured as Argo CD applications, you need to manually update the version in the Helm chart located in the Shared Configuration Repository.
+* For other Runtimes, run the upgrade command.
 
 {{site.data.callout.callout_tip}}
 **TIP**  
@@ -284,50 +326,6 @@ dependencies:
     1. Copy and run the upgrade command:  
         `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime`
     1. To exit the upgrade panel, click **Close**.
-
-
-## (Hybrid GitOps) Configure Runtime as Argo CD application
-
-Configure the Hybrid GitOps Runtime as an Argo CD Application.  
-This is usually done when installing the Runtime. If you haven 
-
-Configuring the Runtime as an Argo CD application, allows you to: 
-* View the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
-* View and its resources, services, and deployment history in the GitOps Apps dashboard through the **Runtime Application** option in the Runtime's context menu
-
-
-
-##### How to
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. Switch to the **List View**.
-1. Select the Hybrid GitOps Runtime to configure as an Argo CD application.
-1. In the Runtime Component tab, in **3: Configure runtime as an Argo Application**, click **Configure**.
-
-
-  {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/config-as-argo-app-post-install.png" 
-      url="/images/runtime/helm/config-as-argo-app-post-install.png" 
-      alt="Configuring GitOps Runtime as an Argo CD Application" 
-      caption="Configuring GitOps Runtime as an Argo CD Application"
-      max-width="60%" 
-   %}
-
-The Runtime's context menu now includes the **Runtime Application** option, which when selected takes you to the Current State tab in the GitOps Apps dashboard. 
-
- {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/runtime-application-option-context-menu.png" 
-      url="/images/runtime/helm/runtime-application-option-context-menu.png" 
-      alt="Runtime Application option to view and monitor resources" 
-      caption="Runtime Application option to view and monitor resources"
-      max-width="60%" 
-   %}
-
 
 ## (Hybrid GitOps) View changelogs for GitOps Runtimes
 Each version of a GitOps Runtime includes a changelog detailing the changes in that release. 
@@ -410,11 +408,10 @@ message: "Author: {{(call .repo.GetCommitMetadata .app.status.operationState.ope
 
 
 ## (Hybrid GitOps) Roll back GitOps Runtimes
-After upgrading a GitOps Runtime, roll back to the previous or a specific version of the Runtime.
-
+After upgrading a GitOps Runtime, roll back to the previous or a specific version of the Runtime.  
 The rollback procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not.
 
-##### Argo CD a[[GitOps Runtime   
+##### Roll back GitOps Runtimes configured as Argo CD applications
 Manually change the version in the Helm chart (`chart.yaml`) located in the Shared Configuration Repository.
 
 1. In your Shared Configuration Repository, go to:  
@@ -424,7 +421,7 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
 1. Commit the change, and push to your Git server.
 
-##### GitOps Runtimes  
+##### Roll back other GitOps Runtimes  
 Use Helm commands such as `rollback` or `upgrade`.
 
 If you need details, see the documentation on [Helm commands](https://helm.sh/docs/helm/helm_init/){:target="\_blank"}.
