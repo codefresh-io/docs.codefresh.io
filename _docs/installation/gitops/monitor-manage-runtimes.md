@@ -377,32 +377,46 @@ When enabled, the ACR Controller:
 To trigger and customize notifications for the identified revision, update the notification controller and configure the notification template accordingly.
 
 ##### How to
-1. If needed, upgrade your Runtime to version 0.13.0 or higher.  
-1. In the Runtime's `values.yaml`, enable the ACR controller by adding the following to the `argo-cd` section:
-```yaml
-argo-cd:
+
+{::nomarkdown}
+<ol>
+  <li>If needed, upgrade your Runtime to version 0.13.0 or higher.</li>
+  <li>In the Runtime's <code class="highlighter-rouge">values.yaml</code>, enable the ACR controller by adding the following to the <code class="highlighter-rouge">argo-cd</code> section:
+    <pre><code>argo-cd:
   acrController:
     enabled: true
-```
-{:start="3"}
-1. In the notification controller, switch the revision being used to `.app.status.operationState.operation.sync.changeRevision`.  
-  Here's an example with the new notification trigger:
-```yaml
-trigger.on-deployed: |
-  - description: Application is synced and healthy. Triggered once per commit.
-    when: app.status.health.status == 'Healthy' and app.status.operationState != nil and app.status.operationState.operation.sync.changeRevision != nil and app.status.operationState.phase in ['Succeeded']
+</code></pre>
+  </li>
+  <li>In the notification controller, switch the revision being used to <code class="highlighter-rouge">.app.status.operationState.operation.sync.changeRevision</code>.<br>
+    Here's an example with the new notification trigger:<br>
+   {% highlight yaml %}
+    {% raw %}
+    trigger.on-deployed: |
+      - description: Application is synced and healthy. Triggered once per commit.
+        when: app.status.health.status == 'Healthy' and app.status.operationState != nil and app.status.operationState.operation.sync.changeRevision != nil and app.status.operationState.phase in ['Succeeded']
     oncePer: app.status.operationState.operation.sync.changeRevision
-    send:
-    - app-deployed
-```
-{:start="4"}
-1. Configure the notification template to report the `changeRevision`, as in the example below.
+          send:
+          - app-deployed
+  {% endraw %}
+  {% endhighlight %}
+  </li>
+  <li>
+    Configure the notification template to report the <code class="highlighter-rouge">changeRevision</code>, as in the example below:
+    {% highlight yaml %}
+    {% raw %}
+    message: "Author: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Author}}, message: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Message}}"
+    {% endraw %}
+     {% endhighlight %}
+  </li>
+  <li>
+    If required to troubleshoot, see <a href="https://codefresh.io/docs/docs/deployments/gitops/troubleshooting-gitops-apps/#not-receiving-application-scoped-sync-notifications-with-acr-controller">Not receiving application-scoped sync notifications with ACR Controller</a>.
+  </li>
+</ol>
+{:/}
 
-```yaml
-message: "Author: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Author}}, message: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Message}}"
-```
-{:start="5"}
-1. If required to troubleshoot, see [Not receiving application-scoped sync notifications with ACR Controller]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/#not-receiving-application-scoped-sync-notifications-with-acr-controller).
+
+
+
 
 
 ## (Hybrid GitOps) Roll back GitOps Runtimes
