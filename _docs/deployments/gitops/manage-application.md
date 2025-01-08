@@ -38,6 +38,7 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Configure sync-timeout for Argo CD applications](#configure-sync-timeout-for-argo-cd-applications)  
   Configure the sync-timeout through an annotation to be notified of long sync operations.
 
+  
 * [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
 
@@ -326,6 +327,8 @@ Instead of waiting indefinitely for syncs to complete and then navigating throug
 
 
 You can view more [details on the sync]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#warning-long-sync) or [terminate](#terminate-on-going-sync-for-argo-cd-applications) it.
+
+
 
 ## Terminate on-going sync for Argo CD applications
 Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 
@@ -731,6 +734,7 @@ metadata:
 ## Related articles
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-appss)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
