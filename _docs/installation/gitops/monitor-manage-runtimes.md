@@ -409,7 +409,7 @@ To trigger and customize notifications for the identified revision, update the n
      {% endhighlight %}
   </li>
   <li>
-    If required to troubleshoot, see <a href="https://codefresh.io/docs/docs/deployments/gitops/troubleshooting-gitops-apps/#not-receiving-application-scoped-sync-notifications-with-acr-controller">Not receiving application-scoped sync notifications with ACR Controller</a>.
+    If you don't receive notifications, see <a href="https://codefresh.io/docs/docs/deployments/gitops/troubleshooting-gitops-apps/#not-receiving-application-scoped-sync-notifications-with-acr-controller">Not receiving application-scoped sync notifications with ACR Controller</a>.
   </li>
 </ol>
 {:/}
