@@ -410,7 +410,7 @@ max-width="60%"
 ## Related articles
 [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
+[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 
  

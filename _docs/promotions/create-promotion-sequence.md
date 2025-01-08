@@ -97,7 +97,7 @@ enhance consistency, create reusable templates that apply across products.
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
+[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
