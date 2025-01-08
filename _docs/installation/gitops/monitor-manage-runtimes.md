@@ -369,26 +369,44 @@ Changelogs for all versions, including historical versions, are available on Art
 %}
 
 ## Enable precise sync detection for monorepo apps
-Enable the ACR Controller in GitOps Runtimes to support precise detection of sync operations that triggered deployments for applications in monorepo setups.
+Enable the ACR Controller in GitOps Runtimes to precisely detect sync operations that triggered deployments for applications in monorepo setups and trigger notifications for these events.
 
-When enabled, the ACR Controller identifies and tracks application-specific changes by analyzing the application’s source path, comparing revisions, and identifying the specific sync operation that triggered the promotion or deployment.
+When enabled, the ACR Controller:
+* Identifies and tracks application-specific changes by analyzing the application’s source path.
+* Compares revisions to identify the specific sync operation that triggered the promotion or deployment.
+* Automatically adds the `.app.status.operationState.operation.sync.changeRevision` to application manifests. 
 
-When the ACR Controller is enabled, `.app.status.operationState.operation.sync.changeRevision` is automatically added to the application manifests. Make sure to switch the current revision in the notification controller to the new `changeRevision`.
+To trigger and customize notifications for the identified revision, update the notification controller and configure the notification template accordingly.
 
-* In the Runtime's `values.yaml` add the following to the `argo-cd` section:
+##### How to
+1. If needed, upgrade your Runtime to version 0.13.0 or higher.  
+1. In the Runtime's `values.yaml`, enable the ACR controller by adding the following to the `argo-cd` section:
 
 ```yaml
 argo-cd:
   acrController:
     enabled: true
 ```
+{:start="2"}
+1. In the notification controller, switch the revision being used to `.app.status.operationState.operation.sync.changeRevision`.  
+  Here's an example with the new notification trigger:
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-  You can also [configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application#configure-application-scoped-sync-notifications) to reduce notification noise and improve notification accuracy.
-{{site.data.callout.end}}
+```yaml
+trigger.on-deployed: |
+  - description: Application is synced and healthy. Triggered once per commit.
+    when: app.status.health.status == 'Healthy' and app.status.operationState != nil and app.status.operationState.operation.sync.changeRevision != nil and app.status.operationState.phase in ['Succeeded']
+    oncePer: app.status.operationState.operation.sync.changeRevision
+    send:
+    - app-deployed
+```
+{:start="3"}
+1. Configure the notification template to report the `changeRevision`, as in the example below.
 
-
+```yaml
+message: "Author: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Author}}, message: {{(call .repo.GetCommitMetadata .app.status.operationState.operation.sync.changeRevision).Message}}"
+```
+{:start="4"}
+1. If required to troubleshoot, see [Not receiving application-scoped sync notifications with ACR Controller]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/#not-receiving-application-scoped-sync-notifications-with-acr-controller).
 
 
 ## (Hybrid GitOps) Roll back GitOps Runtimes
@@ -396,7 +414,7 @@ After upgrading a GitOps Runtime, roll back to the previous or a specific versio
 
 The rollback procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not.
 
-##### Argo CD GitOps Runtimes  
+##### Argo CD a[[GitOps Runtime   
 Manually change the version in the Helm chart (`chart.yaml`) located in the Shared Configuration Repository.
 
 1. In your Shared Configuration Repository, go to:  
@@ -406,7 +424,7 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
 1. Commit the change, and push to your Git server.
 
-##### Non-Argo CD GitOps Runtimes  
+##### GitOps Runtimes  
 Use Helm commands such as `rollback` or `upgrade`.
 
 If you need details, see the documentation on [Helm commands](https://helm.sh/docs/helm/helm_init/){:target="\_blank"}.

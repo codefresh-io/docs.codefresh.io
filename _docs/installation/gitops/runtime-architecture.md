@@ -166,7 +166,6 @@ The Application Change Revision (ACR) Controller is a Codefresh-specific compone
 In monorepo environments where multiple applications share a single repository, the ACR Controller:
 
 * Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
-
 * Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
 
 >**NOTE**  
@@ -176,9 +175,6 @@ In monorepo environments where multiple applications share a single repository, 
 ##### Configuration
 
 The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
-
-Application-scoped notifications require the `argocd.argoproj.io/manifest-generate-paths` annotation in the application's manifest. See [Configure application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#configure-application-scoped-sync-notifications).
-
 
 
 ### Request Routing Service

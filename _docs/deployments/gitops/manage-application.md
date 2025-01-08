@@ -38,8 +38,6 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Configure sync-timeout for Argo CD applications](#configure-sync-timeout-for-argo-cd-applications)  
   Configure the sync-timeout through an annotation to be notified of long sync operations.
 
-* [Configure application-scoped sync notifications](#configure-application-scoped-sync-notifications)  
-  Configure application-specific sync notifications by adding the `argocd.argoproj.io/manifest-generate-paths` annotation to your application's manifest.
   
 * [Terminate sync for Argo CD applications](#terminate-on-going-sync-for-argo-cd-applications)  
   With a single-click, terminate on-going sync processes when needed.
@@ -330,45 +328,7 @@ Instead of waiting indefinitely for syncs to complete and then navigating throug
 
 You can view more [details on the sync]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#warning-long-sync) or [terminate](#terminate-on-going-sync-for-argo-cd-applications) it.
 
-## Configure application-scoped sync notifications
 
-Configure application-specific sync notifications by adding the `argocd.argoproj.io/manifest-generate-paths` annotation to your application's manifest.  
-This configuration is especially useful for monorepo setups, where multiple applications share a single repository. 
-
->**NOTE**  
-Application-scoped sync notifications are not supported for multi-source applications.
-
-The annotation allows the ACR Controller to:
-* Pinpoint the exact revision responsible for a change in a specific application that triggered promotion or deployment
-* Send notifications _only for the impacted application_, reducing noise and improving notification relevance
-
-##### Before you begin
-* Verify that your Runtime version is `0.13.0` or higher
-* Ensure that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime
-
-
-##### How to
-1. Add the annotation `argocd.argoproj.io/manifest-generate-paths` to the application manifest and specify the relative path to the application.
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: demo-trioapp-dev
-  annotations:
-    codefresh.io/product: demo-trioapp
-    argocd.argoproj.io/manifest-generate-paths: <relative-path-to-app> 
-```
-{:start="2"}
-1. Optional. To verify that the correct revision is detected:
-    * Manually sync the application by clicking **Synchronize**.
-    * Check if the the logs are similar to the example below:
-
-```
-time="2024-10-15T18:35:54Z" level=info msg="Change revision for application helm-guestbook2 is 804146ff6b6de77329d73f732e7af61d5ba3fe66"
-time="2024-10-15T18:35:54Z" level=info msg="Patch operation sync result for application helm-guestbook2"
-```
-See also [Troubleshooting application-scoped sync notifications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps#not-receiving-application-scoped-sync-notifications).
 
 ## Terminate on-going sync for Argo CD applications
 Manually terminate an on-going synchronization process for the application. You may need to terminate an on-going sync that remains indefinitely as Syncing, or because you have detected problems in the current deployment 

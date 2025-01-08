@@ -34,40 +34,45 @@ In Codefresh, this issue leads to a loop with the following behavior:
 ### Possible Actions
 To resolve this issue when using Istio with Argo Rollouts, configure the application following the best practices for [integration with GitOps](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#integrating-with-gitops){:target="\_blank"} in the Argo Rollouts documentation.
 
-## Not receiving application-scoped sync notifications
-You configured application-scoped sync notifications with the ACR Controller but are not receiving any notifications.
+## Not receiving application-scoped sync notifications with ACR Controller  
+You enabled the Application Change Revision (ACR) Controller and configured application-scoped sync notifications, but notifications are not receiving notifications.
 
-### Possible Cause
+### Possible Causes
 This issue can occur if any of the following are not configured:
 1. Incorrect Runtime version
-1. ACR controller not enabled for the Runtime
-1. The required annotation is not configured in the application manifest
-1. Notification controller not using  `.app.status.operationState.operation.sync.changeRevision`
+1. ACR controller is not enabled for the Runtime
+1. Missing required annotation in the application manifest
+1. Notification controller and template not using `.app.status.operationState.operation.sync.changeRevision`
 
 
 ### Possible Actions
-Rollback to the previous notification template or trigger.
+Either roll back to the previous notification template or trigger, or follow the steps listed below to identify and fix the issue.
 
-OR
+##### Runtime configuration
+1. Ensure that your Runtime version is `0.13.0` or higher.
+1. Confirm that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime.
 
-Follow the steps to identify and fix the issue.
+##### Application configuration
+1. Verify if the application manifest includes the following:  
+    `argocd.argoproj.io/manifest-generate-paths` annotation, set to the application's relative path.  
+    `.app.status.operationState.operation.sync.changeRevision`, automatically added when ACR is enabled for the Runtime.
+1. Ensure that the correct revision is detected:
+    * Manually sync the application in the GitOps Apps dashboard by clicking **Synchronize**.
+    * Review the logs for entries similar to the following:
+```
+time="2024-10-15T18:35:54Z" level=info msg="Change revision for application helm-guestbook2 is 804146ff6b6de77329d73f732e7af61d5ba3fe66"
+time="2024-10-15T18:35:54Z" level=info msg="Patch operation sync result for application helm-guestbook2"
+```
+##### Notification configuration
+1. Confirm that the revision field in the notification controller is set to `.app.status.operationState.operation.sync.changeRevision`. 
 
-1. Verify the following:
-    1. Your Runtime version is `0.13.0` or higher
-    1. [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime 
-    1. Check if the following are configured in the application's manifest:  
-          [`argocd.argoproj.io/manifest-generate-paths` annotation]({{site.baseurl}}/docs/deployments/gitops/manage-application#configure-application-scoped-sync-notifications), set to the application's relative path. 
-          `.app.status.operationState.operation.sync.changeRevision`, automatically added when ACR is enabled for the Runtime.
-1. Check if you switched the revision in the notification controller to `.app.status.operationState.operation.sync.changeRevision`. 
-1. Do one of the following:
-  * If one or more requirements are not configured in _Steps 1 and 2_, configure as needed.
-  * If all requirements in n _Steps 1 and 2_ are verified, check the logs for the notification controller. Continue from the next step.
-1. In the notification controller logs, search for the `Revision for application %s is empty` message.  
-  If present, it indicates that the controller couldn’t detect an actual change between the two revisions. 
-1. Look at the log entry `Calculate revision for application %s, current revision %s, previous revision %s` to confirm whether there were any relevant changes between the two revisions. 
-1. If there were changes:
+##### Check notification controller logs
+1. If all configurations are correct, review the notification controller logs for these messages:
+  * `Revision for application %s is empty`, indicating that the controller couldn’t detect an actual change between the two revisions. 
+  * `Calculate revision for application %s, current revision %s, previous revision %s` to confirm whether there were any relevant changes between the two revisions. 
+1. If relevant changes are detected:
   * Enable debug logs on the repository server.
   * Repeat the process.
-  * Send the logs to the Support team for further investigation.
+1. Send the logs collected to the Support team for further investigation.
 
 
