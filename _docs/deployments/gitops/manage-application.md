@@ -734,7 +734,7 @@ metadata:
 ## Related articles
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-[Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-appss)  
+[Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
