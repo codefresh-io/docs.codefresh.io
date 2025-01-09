@@ -9,8 +9,7 @@ toc: true
 
 For a general overview of OIDC, see [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/).  
 
-Set up OIDC SSO for Azure in Codefresh by:
-
+Set up OIDC SSO for Azure in Codefresh by:  
 1. Registering the Codefresh application in Azure
 1. Configuring permissions for the Codefresh application in Azure
 1. Creating the Client secret in Azure
@@ -19,18 +18,17 @@ Set up OIDC SSO for Azure in Codefresh by:
 
 ## Prerequisites
 
-Make sure that your user in Azure who creates the application is assigned either of these roles:
-
+Make sure that your user in Azure who creates the application is assigned either of these roles:  
 - **Application Administrator**  
 - **Global Administrator**  
 
-If the user who creates the Azure application is not assigned to either of these roles, you will cannot sync teams from Azure to Codefresh.
+If the user who creates the Azure application is not assigned to either of these roles, you cannot sync teams from Azure to Codefresh.
 
 ## Step 1: Register the Codefresh application in Azure
 
 To set up Microsoft Entra ID for SSO, first register a new application in Azure.
 
-1. Log in to the **Azure Portal**, and select **Microsoft Entra ID** from the sidebar.
+1. Log in to the **Azure Portal**, and from the sidebar, select **Microsoft Entra ID**.
 
 {% include image.html
 lightbox="true"
@@ -42,7 +40,6 @@ max-width="70%"
 %}
 
 {:start="2"}
-
 1. From the sidebar, select **App registrations**, and then click **+ New registration** on the top.
 1. Enter a name for the application, for example, `Codefresh`, and retain the default values for all other settings.
 
@@ -56,17 +53,16 @@ max-width="70%"
 %}
 
 {:start="4"}
-
 1. To apply your changes, click **Register**. The application is created and registered in Microsoft Entra ID.
 
 ## Step 2: Configure permissions for the application in Azure
 
 Once the application has been created and registered, configure the required permissions.
 
-1. Once inside the Application, from the sidebar, select **API permissions**
+1. Open the application, and from the sidebar, select **API permissions**
 1. Configure the following:
    - Click **+ Add a permission**.
-   - From **Request API Permissions**, select **Microsoft Graph** under **Microsoft APIs** tab.
+   - From **Request API Permissions**, in the **Microsoft APIs** tab, select **Microsoft Graph**.
 
 {% include image.html
 lightbox="true"
@@ -78,7 +74,6 @@ max-width="70%"
 %}
 
 {:start="3"}
-
 1. Click **Application permissions** on the left.
    - Add `Group > Read.All`
    - Add `User > Read.All`
@@ -98,7 +93,6 @@ max-width="70%"
 %}
 
 {:start="5"}
-
 1. Click **Add Permissions**.
 1. Click **Grant admin consent for Default Directory** on the bar.
 
