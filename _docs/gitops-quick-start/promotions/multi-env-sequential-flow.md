@@ -10,10 +10,37 @@ redirect_from:
 
 [Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/), covered in the previous quick start, is ideal for on-demand promotions to a single environment. In contrast, sequential promotion flows offer a structured approach to managing changes across multiple environments, minimizing deployment risks.
 
-This quick start demonstrates creating a promotion flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progress in the Releases view.
+This quick start demonstrates creating a Promotion Flow with three environments (`dev`, `qa`, `prod`), triggering the flow, and monitoring its progress in the Releases view.
 
+## In this quick start - multi-environment sequential promotion
 
-## Before you begin
+In this quick start, we’ll:
+
+* Set up a Promotion Flow  
+  Learn to work with the Flow Builder to create a Promotion Flow that promotes changes across multiple environments.
+
+* Trigger the promotion  
+  Manually trigger the Promotion Flow from within the Flow Builder to orchestrate the promotion.
+
+* Monitor release 
+  Track the progress of the promotion in the `demo-trioapp` product's Releases tab.
+
+## Follow-along Git repo
+To follow along, we’ll use the following applications in the [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts.:
+* `trio-dev` for the `dev` environment
+* `trio-qa` for the `qa` environment
+* `trio-prod` for the `prod` environment
+
+ The structure of the repos with the resources must be consistent across all the three applications. See [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"} in the Git repo.
+
+## Create Promotion Flow for multi-environment promotions
+Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
+You can use the Flow Builder in either Chart or YAML modes depending on your preference to create a Promotion Flow. 
+
+>**NOTE**  
+You need to be an account administrator to create Promotion Flows.
+
+### Before you begin
 
 For this quick start, ensure that you have:
 
@@ -28,15 +55,7 @@ For this quick start, ensure that you have:
   The structure of the repos with the resources must be consistent across all the three applications. <!--- add a link to the repo? -->
 
 
-## Create Promotion Flow for multi-environment promotions
-
-Codefresh simplifies creating multi-environment promotion sequences through Promotion Flows.  
-You can use the Flow Builder in either Chart or YAML modes depending on your preference to create a Promotion Flow. 
-
->**NOTE**  
-You need to be an account administrator to create Promotion Flows.
-
-
+### Step-by-step
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
 1. From the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
 1. Enter the settings for the Promotion Flow:
@@ -100,7 +119,7 @@ caption="Promotions quick start: Promotion Flow with required environments"
 max-width="60%"
 %}
 
-{:start="5"}
+{:start="7"}
 1. Click **Save Promotion Flow** on the top-right.  
   The Name and Description are populated from the Settings. The flow's YAML version on the right lists the environment sequence.
 
@@ -115,7 +134,7 @@ caption="Promotions quick start: Save Promotion Flow"
 max-width="60%"
 %}
 
-{:start="6"}
+{:start="8"}
 1. To add the new flow to the Promotion Flows list, click **Save**.
 
 {% include 
@@ -129,7 +148,7 @@ max-width="60%"
 %}
 
 
-{:start="7"}
+{:start="9"}
 1. Continue with [Trigger Promotion Flow](#trigger-promotion-flow).
 
 ## Trigger Promotion Flow

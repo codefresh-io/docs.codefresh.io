@@ -9,19 +9,30 @@ redirect_from:
 
 In this first quick start on promotions, we'll see how to promote products using the intuitive drag-and-drop functionality in the Environments dashboard. 
 
-This quick, visual method allows you to manually move applications between two environments in just a few steps.
+This quick, visual method allows you to manually move changes in applications between two environments in just a few steps.
 
 Use this method when you want to:
 * Quickly test changes in a different environment
 * Manually promote a product version for validation or further deployment
 
-## Before you begin
+## In this quick start - drag-and-drop promotions
+In this quick start, we'll promote changes in  `demo-trioapp-dev` to `demo-trioapp-qa` across their respective environments.
+
+We are manually promoting the applications due to differences in the application versions between the two environments, ensuring that `demo-trioapp-qa` is updated with the latest changes from `demo-trioapp-dev`.
+
+## Follow-along Git repo
+The application version is defined in the  `appVersion` attribute of the `chart.yaml` file.  
+To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
+
+## Promote product applications through drag-and-drop
+
+### Before you begin
 If you haven't done so already, create:
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 * [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
 * [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
 
-## Promote product applications through drag-and-drop
+### Step-by-step
 
 1. From the sidebar, select **Environments**.  
     * The `demo-trioapp` product is displayed in the `dev`, `qa`, and `prod` environments. 
@@ -45,8 +56,8 @@ max-width="60%"
 {% include 
 image.html 
 lightbox="true" 
-file="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png" 
-url="/images/quick-start/promotions/qucik-start-dnd-apps-in-prod.png"
+file="/images/quick-start/promotions/quick-start-dnd-apps-in-prod.png" 
+url="/images/quick-start/promotions/quick-start-dnd-apps-in-prod.png"
 alt="Promotions quick start: `demo-trioapp-dev` and `demo-trioapp-qa` applications" 
 caption="Promotions quick start: demo-trioapp-dev` and `demo-trioapp-qa` applications"
 max-width="60%"

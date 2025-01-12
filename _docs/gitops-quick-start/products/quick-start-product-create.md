@@ -8,6 +8,12 @@ toc: true
 
 In the previous quick start we [created environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/),  one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
 
+## In this quick start - products
+
+In this quick start, we'll create a product `demo-trioapp`, named for the three applications we'll create later, each representing a distinct stage in the development lifecycle. Grouping the applications into a single product will simplify their management and promotions across the environments `dev`, `qa`, and `prod`.
+
+## Products in GitOps
+
 Products not only bridge the gap between environments and applications but also amplify the capabilities of your applications by grouping and managing them as cohesive units.
 
 {% include 
@@ -22,11 +28,9 @@ Products not only bridge the gap between environments and applications but also 
 
 For detailed information, see [Products]({{site.baseurl}}/docs/products/about-products/).
 
-## Why create products?
+### Why create products?
 
 Here are a few reasons why you would want to create products to manage your applications.
-
-
 
 * **Bridging applications and environments**  
   Products create a vital link between applications and their environments. By grouping applications within a product, you gain visibility and control over their deployment paths, ensuring all components move through environments together.
@@ -43,6 +47,7 @@ Here are a few reasons why you would want to create products to manage your appl
 
 ## Create your first product
 A product requires a unique name, and an annotation through which to connect the different applications.
+The annotation is automatically created using the product name. For the purposes of this quick start, we'll name the product `demo-trioapp`.
 
 ##### Before you begin
 * Make sure you have at least [one environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
