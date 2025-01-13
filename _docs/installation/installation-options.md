@@ -26,7 +26,7 @@ Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/i
   alt="sso-diagram.png"
   max-width="35%"
     %} 
-{% endif %}
+
 
 {% if page.url contains '/argohub/' %}
 Codefresh Argo hub is a lightweight cloud-based 
