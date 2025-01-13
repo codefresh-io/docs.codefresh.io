@@ -1,6 +1,16 @@
+---
+title: "What's changed in GitOps Runtimes"
+description: "Review list of changes to articles and the reasons for change"
+group: gitops-runtimes
+toc: true
+---
 
+## GitOps Runtimes documentation changes
 
+The GitOps Runtime documentation has been restructured to enhance usability and make information easier to find. All documentation related to GitOps Runtimes is now consolidated in a dedicated **GitOps Runtime** bucket, instead of within the Installation bucket as in previous version. Additionally, several topics have been split into standalone articles to improve navigation and ensure focused, actionable content for users.
 
+## GitOps Runtimes: Documentation changes at a glance
+The table below outlines the updates to the GitOps Runtime documentation, including article relocations, newly introduced standalone topics, and other improvements.
 
 | **Old location**         | **New Location**    | **Affected Articles**          | **Description of changes**    |
 |--------------------------|--                   |--------------------------------|----------------------------------------------------|
