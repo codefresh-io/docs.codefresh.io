@@ -1,7 +1,9 @@
 ---
 title: "Runner architecture"
 description: "Codefresh Runner components"
-group: installation
+group: runner
+redirect_from:
+  - /docs/installation/runner/
 toc: true
 ---
 
@@ -68,6 +70,6 @@ Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api
 
 ## Related articles  
 [Runner installation for pipelines]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
-[GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/)
+
 
  

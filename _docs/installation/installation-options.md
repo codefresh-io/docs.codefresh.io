@@ -7,17 +7,21 @@ redirect_from:
 toc: true
 ---
 
+{% if page.url contains '/docs/' %}
+Codefresh Enterprise provides a comprehensive platform for continuous integration and continuous delivery with Codefresh pipelines, and continuous delivery for Arog CD applications with GitOps, through flexible deployment options: SaaS and on-premises.
 
-Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
-Need to change for ArgoHub
+* **SaaS platform deployment**
+  The SaaS option leverages the Codefresh Control Plane hosted in the cloud, enabling streamlined operations with minimal infrastructure overhead. Runtimes for GitOps and Runners for CI Pipelines are installed in your environment, ensuring data security and compliance.  
+  See [SaaS platform architecture](#codefresh-saas-platform-architecture).
 
-Both deployment options provide seamless integration and support for Codefresh Pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.  
-In addition to other components, the Codefresh Runner for pipelines and GitOps Runtimes for Argo CD applications are pivotal components of both deployments.
+* **On-premises platform deployment**  
+  The on-premises option ensures complete control over the infrastructure, hosting the platform components within your private network. It is ideal for organizations with strict compliance or security requirements.  
+  See [On-premises platform architecture](#codefresh-on-premises-platform-architecture).
 
-Read more on the platform architecture for [SaaS](#codefresh-saas-platform-architecture) and [on-premises](#codefresh-on-premises-platform-architecture) deployments.
-
-Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"}.
-
+Both deployments offer:
+* Seamless integration of CI and CD with Codefresh pipelines, and CD with GitOps for managing Argo CD applications.
+* Modular functionality where pipelines and GitOps can operate independently or together.
+* Robust compliance with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"} standards.
 
 {% include image.html
   lightbox="true"
@@ -27,21 +31,29 @@ Both deployment options are compliant with [SOC2 - Type2](https://us.aicpa.org/i
   max-width="35%"
     %} 
 
-
-{% if page.url contains '/argohub/' %}
-Codefresh Argo hub is a lightweight cloud-based 
-Some data about argohub - this will not shown in enterprise context.
 {% endif %}
 
+
+
+
+
+{% if page.url contains '/argohub/' %}
+Codefresh ArgoHub is a lightweight, SaaS-only platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
+
+Focused exclusively on GitOps, ArgoHub empowers organizations to work seamlessly with Argo CD while leveraging  capabilities.
+As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
+
+
+{% endif %}
 
 
 
 ## Codefresh SaaS platform architecture
 
 
-The diagram shows the high-level architecture for Codefresh SaaS deployment and its core components. 
+The diagram shows the high-level architecture of the Codefresh SaaS deployment version and its core components. 
 
-
+{% if page.url contains '/docs/' %}
 {% include
 image.html
 lightbox="true"
@@ -52,6 +64,7 @@ caption="Platform architecture: Codefresh SaaS deployments"
 max-width="100%"
 %}
 
+
 ### Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, the Control Plane does not communicate directly with the Codefresh Runtimes, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtimes and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
 
@@ -61,9 +74,11 @@ The GitOps Runtime required for the GitOps module is installed on a Kubernetes c
 The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh platform (Hosted GitOps), or -->in hybrid mode within the customer environment (Hybrid GitOps).  
 Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/).
 
+{% if page.url contains '/docs/' %}
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, is required for Codefresh pipelines, and enables running pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.  
 Read more about it in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/).
+{% endif %}
 
 ### Managed Clusters
 Managed clusters are external clusters added to provisioned GitOps Runtimes. You can deploy applications to the clusters without having to install Argo CD on the clusters in order to do so.
@@ -83,6 +98,7 @@ For in-depth analysis, the UI has several additional dashboards, each dedicated 
 For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.  
 For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
+{% if page.url contains '/docs/' %}
 ##### Codefresh CLI 
 The CLI for Codefresh Pipelines can:
 * Perform any UI operation
@@ -254,10 +270,10 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 
 
 
+
 ## Related articles
 [On-premises platform deployment]({{site.baseurl}}/docs/installation/on-premises/)  
 [Codfresh Runner architecture]({{site.baseurl}}/docs/installation/runner/runner-architecture/)  
 [GitOps Runtime architecture]({{site.baseurl}}/docs/gitops-runtime/runtime-architecture/)  
-
-
+{% endif %}
 

@@ -1,11 +1,12 @@
 ---
 title: "Codefresh Runner for pipelines"
 description: "Run Codefresh pipelines on your private Kubernetes cluster"
-group: installation
+group: runner
 redirect_from:
   - /docs/administration/codefresh-runner/
   - /docs/enterprise/codefresh-runner/
   - /docs/administration/codefresh-hybrid/
+  - /docs/installation/
 toc: true
 ---
 
@@ -61,6 +62,5 @@ The table lists the security implications of Hybrid Runner installation.
 
 
 ## Related articles
-[Codefresh GitOps for Argo CD applications]({{site.baseurl}}/docs/gitops-runtime/)  
 [Codefresh pricing](https://codefresh.io/pricing/){:target="\_blank"}  
 [Codefresh features](https://codefresh.io/features/){:target="\_blank"}  
