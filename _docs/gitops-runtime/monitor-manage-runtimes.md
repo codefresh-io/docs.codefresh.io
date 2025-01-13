@@ -1,11 +1,10 @@
 ---
 title: "Monitoring & managing GitOps Runtimes"
 description: "Optimize GitOps Runtimes"
-group: runtime
-sub_group: gitops
+group: gitops-runtime
+sub_group: 
 redirect_from:
-  - /monitor-manage-runtimes/
-  - /monitor-manage-runtimes
+  - /docs/installation/gitops/monitor-manage-runtimes/
 toc: true
 ---
 

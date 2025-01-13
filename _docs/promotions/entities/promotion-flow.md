@@ -38,7 +38,7 @@ The Flow Builder visually guides you through creating any type of Promotion Flow
 
 Once configured and committed, Promotion Flow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-flows`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
 
 

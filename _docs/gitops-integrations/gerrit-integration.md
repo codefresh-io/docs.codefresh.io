@@ -15,7 +15,7 @@ We support Gerrit version 3.6 (tested with 3.6.3) and 3.10 (tested with 3.10.1).
 >For your next Gerrit upgrade, we’ll make our best effort to support the new version, but cannot guarantee specific timelines.
 
 
-By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can select Gerrit as your Git provider.
+By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/gitops-runtime/hosted-runtime/), you can select Gerrit as your Git provider.
 
 You can then [create]({{site.baseurl}}/docs/deployments/gitops/create-application/) and manage GitOps applications in the Gerrit Git repo.
 
@@ -96,7 +96,7 @@ Once you have a user with the required permissions, you are all set to use Gerri
 
 ### Connect to Gerrit as Git provider
 During the setup of your Hosted GitOps Runtime, choose Gerrit as the Git provider and provide the required credentials.  
-See [Connect to Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
+See [Connect to Git provider]({{site.baseurl}}/docs/gitops-runtime/hosted-runtime/#step-2-connect-git-provider) for Hosted Runtime.
 
 
 ### Enrich image information
@@ -104,6 +104,6 @@ To enrich images with relevant information from Gerrit, incorporate Codefresh's 
 Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
   
 ## Related articles
-[Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Shared Configuration Repo]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/) 

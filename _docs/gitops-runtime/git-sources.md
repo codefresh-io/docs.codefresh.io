@@ -1,7 +1,9 @@
 ---
 title: "Managing Git Sources in GitOps Runtimes"
 description: "Add Standard/Restricted Git Sources to GitOps Runtimes"
-group: installation
+group: gitops-runtime
+redirect_from:
+  - /docs/installation/gitops/git-sources/
 toc: true
 ---
 
@@ -118,7 +120,7 @@ Let's look at how the Git Source interacts with other entities such as GitOps Ru
 
 Git Sources are always linked to GitOps Runtimes within Codefresh's GitOps ecosystem. Every GitOps Runtime can be associated with one or more Git Sources.
 
-Git Sources are housed in the account's Shared Configuration Repository, typically within `.resources/<runtime-name>/`. The [Shared Config repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a dedicated Git repository that stores configuration settings and manifests shared between Runtimes within the same account.
+Git Sources are housed in the account's Shared Configuration Repository, typically within `.resources/<runtime-name>/`. The [Shared Config repo]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/) is a dedicated Git repository that stores configuration settings and manifests shared between Runtimes within the same account.
 
 
    {% include 
@@ -495,7 +497,7 @@ spec:
 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)   
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/)   
+[Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/)  
 
 

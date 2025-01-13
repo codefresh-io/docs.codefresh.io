@@ -23,4 +23,4 @@ Review on-premises:
 * [Feature management]({{site.baseurl}}/docs/installation/on-premises/on-prem-feature-management/)  
   Understand the impact of enabling different features, and control availability based on your unique requirements.  
 
-You can also install the [GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/) in your on-premises environment. 
+You can also install the [GitOps Runtime]({{site.baseurl}}/docs/gitops-runtime/on-prem-gitops-runtime-install/) in your on-premises environment. 

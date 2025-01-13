@@ -818,7 +818,7 @@ Key features to note:
 * Ease of use  
   Set and unset a Configuration Runtime with just a click in the UI or a quick edit in your `values.yaml` file.
 
-For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
+For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes).
 
 #### GitOps: Rollout enhancements 
 
@@ -1222,7 +1222,7 @@ As a reminder, here's where you can find the **View logs** option:
   max-width="70%" 
 %}
 
-For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
+For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
 
 
 #### GitOps: Argo Events upgrade
@@ -1861,7 +1861,7 @@ With GitOps, Git repositories are the source-control systems that declaratively 
 
 Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh leverages Argo components to have the entire desired state applied from Git to your Kubernetes cluster, and then reported back to Codefresh.
 
-For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/).
+For details, see [Codefresh for GitOps]({{site.baseurl}}/docs/getting-started/gitops-codefresh/) and [On-premises GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/on-prem-gitops-runtime-install/).
 
 <br>
 

@@ -61,6 +61,6 @@ The table lists the security implications of Hybrid Runner installation.
 
 
 ## Related articles
-[Codefresh GitOps for Argo CD applications]({{site.baseurl}}/docs/installation/gitops/)  
+[Codefresh GitOps for Argo CD applications]({{site.baseurl}}/docs/gitops-runtime/)  
 [Codefresh pricing](https://codefresh.io/pricing/){:target="\_blank"}  
 [Codefresh features](https://codefresh.io/features/){:target="\_blank"}  

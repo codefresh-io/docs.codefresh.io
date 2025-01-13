@@ -40,7 +40,7 @@ enhance consistency, create reusable templates that apply across products.
 
 
 ### Prerequisites
-1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)  
+1. [Configuration Runtime]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes)  
    The Configuration Runtime is a GitOps Runtime that stores the manifests of the promotion entities.  
    Designate at least one GitOps Runtime as the Configuration Runtime.  
    If no GitOps Runtime has been designated as such, Codefresh assigns one of the existing Runtimes.

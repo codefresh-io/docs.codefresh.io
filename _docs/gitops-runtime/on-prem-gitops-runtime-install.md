@@ -1,7 +1,7 @@
 ---
 title: "On-premises GitOps Runtime installation"
 description: "Install GitOps Runtime in on-premises environments using Helm"
-group: installation
+group: gitops-runtime
 toc: true
 ---
 
@@ -178,4 +178,4 @@ Depending on the ingress controller used, you may need post-installation configu
 
 
 ## Related articles
-[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/)  

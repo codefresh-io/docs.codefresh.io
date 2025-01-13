@@ -12,9 +12,12 @@ toc: true
 Some data about argohub - this will not shown in enterprise context.
 {% endif %}
 
+{% if page.url contains '/docs/' %}
 Get up and running with Codefresh by installing the Hybrid Runtime for GitOps via Helm.
 The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones, with descriptions of each.
- 
+{% endif %}
+
+
 ## Quick start assumptions
 
 The quick start assumes that you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
@@ -50,7 +53,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 ### Tunnel-based Runtime
 Hybrid GitOps Runtimes support tunnel-based, ingress-based, and service-mesh-based access modes.  
 For the quick start, we'll use the tunnel-based mode which is the default access mode that does not require an ingress controller.  
-For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
+For details on these access modes, review [GitOps Runtime architecture]({{site.baseurl}}/docs/gitops-runtime/me-architecture/).
 
 ### GitHub as Git provider  
 Hybrid GitOps Runtimes require a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
@@ -75,7 +78,7 @@ Have your GitHub Runtime token with a valid expiration date and access permissio
 ### Shared Configuration Repository
 When you select the Git provider, Codefresh prompts you to also select the Shared Configuration Repository for your account. The repo stores account-level configuration settings and manifests.
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
-Read up on the [Shared Configuration Repository]({{site.baseurl}}/{{page.collection}}/installation/gitops/shared-configuration/).
+Read up on the [Shared Configuration Repository]({{site.baseurl}}/{{page.collection}}/gitops-runtime/shared-configuration/).
 
 ## Install Hybrid GitOps Runtime
 

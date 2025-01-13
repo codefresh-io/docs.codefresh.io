@@ -9,13 +9,13 @@ toc: true
 If you have Hosted GitOps, set up your hosted Runtime environment:   
 
 1. Provision the Hosted GitOps Runtime with a single click.
-1. Authorize access through your OAuth token to the organization where Codefresh creates the Git runtime repo and the [Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+1. Authorize access through your OAuth token to the organization where Codefresh creates the Git runtime repo and the [Shared Configuration Repo]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/).
 1. Connect to an external K8s cluster with access to the internet, to which you can deploy applications.
   This is important as you cannot deploy to the in-cluster with the Hosted GitOps Runtime. 
 1. Install Argo Rollouts on the cluster.   
 
 Read our [blog on Hosted GitOps](https://codefresh.io/blog/codefresh-upends-continuous-delivery-with-hosted-gitops-platform-featuring-dora-dashboards-and-first-class-integrations-for-ci/).  
-For detailed information on each of the steps below, see [Set up a Hosted GitOps Runtime environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).  
+For detailed information on each of the steps below, see [Set up a Hosted GitOps Runtime environment]({{site.baseurl}}/docs/gitops-runtime/hosted-runtime/).  
 
 ## Before you begin
 

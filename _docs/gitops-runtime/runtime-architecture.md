@@ -1,7 +1,10 @@
 ---
 title: "GitOps Runtime architecture"
 description: "View components of GitOps Runtimes"
-group: installation
+group: gitops-runtime
+redirect_from:
+  - /docs/installation/gitops/hybrid-gitops/
+  - /docs/installation/gitops/runtime-architecture/
 toc: true
 ---
 
@@ -11,11 +14,11 @@ See detailed views of GitOps Runtime architecture for the different installation
 <!--- * [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
 * Hybrid GitOps Runtime architecture: -->
 
-The Hybrid GitOps Runtime can be tunnel- or ingress-based:  
+The Hybrid GitOps Runtime can have tunnel- or ingress-based access modes:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 
-The Runtime components are common to both installation modes:
+The Runtime components are common to both access modes:
   * [Application Proxy](#application-proxy)
   * [Argo Project](#argo-project)
   * [Request Routing Service](#request-routing-service)

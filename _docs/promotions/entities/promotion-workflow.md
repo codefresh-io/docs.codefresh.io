@@ -85,7 +85,7 @@ Below are examples of different types of workflows designed to address specific 
 ##### Workflow settings in Shared Repo
 Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
+See [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes).   
 
 
 
