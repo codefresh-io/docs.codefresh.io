@@ -30,7 +30,6 @@ Both deployments offer:
   alt="sso-diagram.png"
   max-width="35%"
     %} 
-
 {% endif %}
 
 
@@ -42,8 +41,6 @@ Codefresh ArgoHub is a lightweight, SaaS-only platform dedicated to GitOps for A
 
 Focused exclusively on GitOps, ArgoHub empowers organizations to work seamlessly with Argo CD while leveraging  capabilities.
 As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
-
-
 {% endif %}
 
 
@@ -54,6 +51,7 @@ As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure man
 The diagram shows the high-level architecture of the Codefresh SaaS deployment version and its core components. 
 
 {% if page.url contains '/docs/' %}
+
 {% include
 image.html
 lightbox="true"
@@ -63,7 +61,7 @@ alt="Platform architecture: Codefresh SaaS deployments"
 caption="Platform architecture: Codefresh SaaS deployments"
 max-width="100%"
 %}
-
+{% endif %}
 
 ### Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, the Control Plane does not communicate directly with the Codefresh Runtimes, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtimes and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
@@ -88,7 +86,7 @@ Managed clusters are external clusters added to provisioned GitOps Runtimes. You
 
 ### Codefresh Clients
 
-Codefresh Clients include the UI and the CLI.     
+fx   
 
 ##### Codefresh UI
 The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications. 
