@@ -238,7 +238,7 @@ Review **What to do next** for tips on how to proceed.
   * [GitOps]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) integrations for image enrichment
   * [GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)
 
-See our quick starts for [CI/CD]({{site.baseurl}}/docs/quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/quick-start/gitops-quick-start/).
+See our quick starts for [CI/CD]({{site.baseurl}}/docs/ci-quick-start/ci-quick-start/) and [GitOps]({{site.baseurl}}/docs/gitops-quick-start/gitops-quick-start/).
 
 
 ## Quick reference: Admin Management settings

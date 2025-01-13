@@ -12,7 +12,7 @@ toc: true
 
 When a promotion is triggered for a product in an environment, it's essential to govern promotion behavior for that environment, both before and after promoting changes.  
 These polices can include validations checks, such as code quality, unit or smoke tests, compatibility with dependencies, security compliance, 
-and other relevant factors specific to the target environment, performance checks, notifications, or any toher .
+and other relevant factors specific to the target environment, performance checks, notifications.
 
 ##### GitOps Promotion 
 Codefresh empowers you to create and automate promotion behavior for environments through Promotion Policies.  
@@ -47,7 +47,7 @@ Once configured and committed, Promotion Policy settings are saved as a CRD (Cus
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-policies/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-For the YAML specifications, see [Promotion Policy YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-policy-crd/).
+For the YAML specifications, see [Promotion Policy YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-policy-crd/).
 
 
 
@@ -105,7 +105,7 @@ max-width="60%"
 | Item                     | Description            |  
 | --------------         | --------------           |  
 |**Name**       | The name of the Promotion Policy.<br>The name must be unique in the cluster and must match Kubernetes naming conventions. |
-|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>: Optional. The Promotion Workflow to run before the Promotion Action. </li><li><b>Action</b>Optional. The Promotion Action to update the target application's source repository:<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately and do not require manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the next stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<!--- <br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. --><br>This option is useful to run custom promotion logic instead of Codefresh, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/).|
+|**Promotion Settings**       | The settings that comprise the Promotion Policy.<br>{::nomarkdown}  <ul><li><b>Pre-Action Workflow</b>: Optional. The Promotion Workflow to run before the Promotion Action. </li><li><b>Action</b>Optional. The Promotion Action to update the target application's source repository:<ul><li><b>Commit</b>: Perform a Git commit on the source repository. Commits are implemented immediately and do not require manual approval to move to the next stage of the Promotion Policy.</li><li><b>Pull Request</b>: Open a pull request (PR) on the change to the source repository. Depending on your PR policy, this option may require manual approval to move to the next stage.</li><li><b>No Action</b>: Run the selected Pre-Action Workflow, and the Post-Action Workflow if any, without performing a commit or opening a pull request on the application's source repository.<!--- <br>No Action requires a Pre-Action Workflow to be selected that includes a step to automatically execute the action to promote the target application. Otherwise, Promotion Flows will fail. --><br>This option is useful to run custom promotion logic instead of Codefresh, not involving updating the target application's source repository to promote the application.<br></li></ul>{:/}See [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).|
 |**Products** |Single or multiple Products to which to apply the Promotion Policy. <br>Match Products by the name or names defined. <!--- {::nomarkdown}<ul><li><b>Product</b>: Match Products by the name or names defined. </li><li><b>Tags</b>: Match Products by the tag or tags defined.</li></ul>{:/}-->|
 |**Environments** |Single or multiple Environments to which to apply the Promotion Policy. {::nomarkdown}<ul><li><b>Kind</b>: Match Environments by their type, either <b>Pre-production</b> or <b>Production</b>.</li><li><b> Environment</b>: Match Environments by the name or names defined.</li><!--- <li><b>Tags</b>: Match Environments by the tag or tags defined. </li> --></ul>{:/}|
 |**Priority** |The priority assigned to the Promotion Policy. The priority determines how and which Promotion Settings are applied when two or Polices match the target attributes. The priority is a positive or negative integer and defined in ascending order.<br>To understand how Promotion Settings are implemented, see [Promotion Policy implementation logic](#promotion-policy-implementation-logic).|
@@ -212,7 +212,7 @@ Create a Promotion Policy to validate an environment's readiness before promotin
 
 ##### Before you begin
 
-* Create [Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)
+* Create [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/)
 * Review [Policy settings](#promotion-policy-settings--targets)
 
 ##### How to
@@ -362,9 +362,9 @@ max-width="60%"
 For more information, see [Promotion Workflows in Product Releases]({{site.baseurl}}/docs/promotions/releases/#promotion-workflows-in-product-releases).
 
 ## Related articles
-[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
-[Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
+[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
+[Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  

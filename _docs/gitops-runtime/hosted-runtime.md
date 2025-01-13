@@ -316,7 +316,7 @@ You have completed setting up your Hosted GitOps Runtime. You are ready to creat
 ## (Optional) Create an Argo CD application
 Optional. Create an Argo CD application in Codefresh, deploy it to the cluster, and track deployment and performance in the Applications dashboard.  
 
-1. Follow our quick-start to create and deploy the `codefresh-guestbook` application. Start with [Create application resources]({{site.baseurl}}/docs/quick-start/gitops-quick-start/create-app-specs/).  
+1. Follow our [quick-start to create and deploy an application]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/).  
   OR    
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).   
 
