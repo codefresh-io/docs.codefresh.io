@@ -10,9 +10,9 @@ toc: true
 
 
 
-{% if page.url contains '/docs/' %}
+
 Codefresh supports SaaS (Software as a Service) and on-premises deployment options for its platform.
-{% endif %}
+
 
 Both deployment options provide seamless integration and support for Codefresh Pipelines for CI (continuous integration) and Codefresh GitOps for Argo CD applications, as standalone modules or co-existing side-by-side.  
 In addition to other components, the Codefresh Runner for pipelines and GitOps Runtimes for Argo CD applications are pivotal components of both deployments.
