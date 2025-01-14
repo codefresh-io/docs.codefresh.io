@@ -41,6 +41,14 @@ Codefresh ArgoHub is a lightweight, SaaS-only platform dedicated to GitOps for A
 
 Focused exclusively on GitOps, ArgoHub empowers organizations to work seamlessly with Argo CD while leveraging  capabilities.
 As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/soc2-type2-certified.png"
+  url="/images/installation/soc2-type2-certified.png"
+  alt="sso-diagram.png"
+  max-width="35%"
+    %} 
 {% endif %}
 
 
@@ -57,11 +65,25 @@ image.html
 lightbox="true"
 file="/images/runtime/architecture/arch-saas.png"
 url="/images/runtime/architecture/arch-saas.png"
-alt="Platform architecture: Codefresh SaaS deployments"
-caption="Platform architecture: Codefresh SaaS deployments"
+alt="Platform architecture: Codefresh SaaS deployment"
+caption="Platform architecture: Codefresh SaaS deployment"
 max-width="100%"
 %}
 {% endif %}
+
+{% if page.url contains '/argohub/' %}
+
+{% include
+image.html
+lightbox="true"
+file="/images/runtime/architecture/arch-saas-argohub.png"
+url="/images/runtime/architecture/arch-saas-argohub.png"
+alt="Platform architecture: Codefresh SaaS deployment"
+caption="Platform architecture: Codefresh SaaS deployment"
+max-width="100%"
+%}
+{% endif %}
+
 
 ### Control Plane
 The Codefresh Control Plane is the SaaS component in the platform. External to the enterprise firewall, the Control Plane does not communicate directly with the Codefresh Runtimes, Codefresh Clients, or the customer's organizational systems. The Codefresh Runtimes and the Codefresh Clients communicate with the Codefresh Control Plane to retrieve the required information.  
@@ -69,24 +91,33 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 ### GitOps Runtime
 The GitOps Runtime required for the GitOps module is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
-The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh platform (Hosted GitOps), or -->in hybrid mode within the customer environment (Hybrid GitOps).  
-Read more about it in [GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/).
+The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh platform (Hosted GitOps), or -->in hybrid mode within the customer environment.  
+Read more in [GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/).
+
 
 {% if page.url contains '/docs/' %}
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, is required for Codefresh pipelines, and enables running pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.  
-Read more about it in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/).
+Read more in [Codefresh Runner]({{site.baseurl}}/docs/runner/runner/).
 {% endif %}
 
 ### Managed Clusters
 Managed clusters are external clusters added to provisioned GitOps Runtimes. You can deploy applications to the clusters without having to install Argo CD on the clusters in order to do so.
+Read more in [Managed clusters in Runtimes]({{site.baseurl}}/docs/gitops-runtime/managed-cluster/).
 
-
-
-
+{% if page.url contains '/argohub/' %}
 ### Codefresh Clients
 
-fx   
+##### Codefresh UI
+The Codefresh UI provides an intuitive web interface to create, run, and manage Argo CD applications. 
+
+The global (Home) dashboard consolidates unified, enterprise-wide insights for Argo CD applications.  
+For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Argo CD application functionality and performance. For example, you have our unique Products and Environments dashboards to track and promote Argo CD applications.
+{% endif %}
+
+{% if page.url contains '/docs/' %}
+### Codefresh Clients
+ 
 
 ##### Codefresh UI
 The Codefresh UI provides an intuitive web interface to create, run, and manage CI pipelines and Argo CD applications. 
@@ -96,7 +127,7 @@ For in-depth analysis, the UI has several additional dashboards, each dedicated 
 For pipelines, you have Kubernetes and Helm dashboards to monitor releases and deployments.  
 For GitOps, you have our unique Products and Environments dashboards to track and manage Argo CD application deployments.
 
-{% if page.url contains '/docs/' %}
+
 ##### Codefresh CLI 
 The CLI for Codefresh Pipelines can:
 * Perform any UI operation

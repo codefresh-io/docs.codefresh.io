@@ -14,13 +14,16 @@ See detailed views of GitOps Runtime architecture for the different installation
 <!--- * [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
 * Hybrid GitOps Runtime architecture: -->
 
-The Hybrid GitOps Runtime can have tunnel- or ingress-based access modes:  
+The Hybrid GitOps Runtime supports tunnel-based and ingress-based access modes:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 
-The Runtime components are common to both access modes:
+
+The Runtime components are common to both installation modes:
   * [Application Proxy](#application-proxy)
   * [Argo Project](#argo-project)
+  * [Event Reporters](#event-reporters)
+  * [Application Change Revision Controller](#application-change-revision-controller)
   * [Request Routing Service](#request-routing-service)
   * [Tunnel Server](#tunnel-server)
   * [Tunnel Client](#tunnel-client)
@@ -75,8 +78,8 @@ Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is e
   max-width="100%"
 %}
 
-
-## Application Proxy
+## Runtime components
+### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
 For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 
@@ -92,7 +95,7 @@ The GitOps App-Proxy:
 
 
 
-## Argo Project 
+### Argo Project 
 
 The Argo Project includes:
 * Argo CD for declarative continuous deployment 
@@ -105,14 +108,14 @@ Codefresh users rely on our platform to deliver software reliably, and predictab
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
 Typically, new versions of Argo CD are available in the Codefresh Runtime within 30 days of their official release.
 
-## Event Reporters
+### Event Reporters
 Event Reporters monitor changes to resources deployed on the cluster and report the changes back to the Codefresh platform.
 
 Codefresh has two types of Event Reporters:
 * Resource Event Reporter
 * Application Event Reporter
 
-### Resource Event Reporter
+#### Resource Event Reporter
 The Resource Event Reporter monitors specific types of resources on the cluster and tracks changes in their live-states. It sends the live-state manifests with the changes to Codefresh without preprocessing.  
 
 The Resource Event Reporter monitors changes to these resource types:
@@ -121,7 +124,7 @@ The Resource Event Reporter monitors changes to these resource types:
 
 Resource Event Reporters leverage Argo Event components such as Event Sources to monitor changes to the live-state manifests, and Sensors to send the live-state manifests to Codefresh. For setup information on these Argo Event components, see Argo CD's documentation on [Event Source](https://argoproj.github.io/argo-events/concepts/event_source/){:target="\_blank"} and [Sensor](https://argoproj.github.io/argo-events/concepts/sensor/){:target="\_blank"}.
 
-### Application Event Reporter
+#### Application Event Reporter
 The Application Event Reporter specializes in monitoring changes to Argo CD applications deployed on the cluster. 
 
 In contrast to the Resource Event Reporter which utilizes Argo Events, the Application Event Reporter employs a proprietary implementation that includes an event queue to process application change-events and sharding for a robust and scalable setup. Another significant difference is that the Application Reporter retrieves both the live-state manifest of the application, and the Git manifests for all the application's managed resources. 
@@ -158,7 +161,24 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 1. The Application Event Reporter reports the application-change events to the Codefresh platform.
 
-## Request Routing Service
+### Application Change Revision Controller 
+
+The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment in monorepo environments. 
+
+In monorepo environments where multiple applications share a single repository, the ACR Controller:
+
+* Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
+* Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
+
+>**NOTE**  
+  The ACR Controller is supported from Runtime version 0.13.0 and higher.   
+  It does not support multi-source applications.
+
+##### Configuration
+
+The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
+
+### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
 It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
@@ -179,7 +199,7 @@ The Tunnel Server:
 
 
 
-## Tunnel Client
+### Tunnel Client
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
 
 Installed on the same cluster as the Hybrid GitOps Runtime, the Tunnel Client establishes the tunneling connection to the Tunnel Server via the WebSocket Secure (WSS) protocol.   
@@ -191,16 +211,16 @@ The Tunnel Client:
 
 
 
-## Customer environment
+### Customer environment
 The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned GitOps Runtimes for application deployment.  
   <!---  Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  -->
   Hybrid GitOps allow you to add external clusters after provisioning the Runtimes.  
-  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the ingress controller (ingress-based hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
@@ -209,5 +229,5 @@ The customer environment that communicates with the GitOps Runtime and Codefresh
 ## Related articles
 <!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)-->
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)   
+{% if page.url contains '/docs/' %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)  {% endif %}  
  

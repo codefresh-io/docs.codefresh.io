@@ -8,11 +8,9 @@
 
 
 
-- title: Installation
+- title: Platform Installation
   url: "/installation"
   pages:
-    - title: GitOps Runtimes
-      url: "/gitops"
     - title: Platform deployment
       url: "/installation-options"
 
