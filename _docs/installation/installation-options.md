@@ -10,7 +10,7 @@ toc: true
 {% if page.url contains '/docs/' %}
 Codefresh Enterprise provides a comprehensive platform for continuous integration and continuous delivery with Codefresh pipelines, and continuous delivery for Arog CD applications with GitOps, through flexible deployment options: SaaS and on-premises.
 
-* **SaaS platform deployment**
+* **SaaS platform deployment**  
   The SaaS option leverages the Codefresh Control Plane hosted in the cloud, enabling streamlined operations with minimal infrastructure overhead. Runtimes for GitOps and Runners for CI Pipelines are installed in your environment, ensuring data security and compliance.  
   See [SaaS platform architecture](#codefresh-saas-platform-architecture).
 

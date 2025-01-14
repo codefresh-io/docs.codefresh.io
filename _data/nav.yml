@@ -190,18 +190,17 @@
   pages:
     - title: Platform deployment
       url: "/installation-options"
+    - title: On-premises deployment
+      url: "/on-premises"
       sub-pages:
-        - title: On-premises deployment
-          url: "/on-premises"
-          sub-pages:
-            - title: Installation & configuration
-              url: "/codefresh-on-prem"
-            - title: Upgrade
-              url: "/codefresh-on-prem-upgrade"
-            - title: Account and user setup
-              url: "/on-prem-configuration"            
-            - title: Feature management
-              url: "/on-prem-feature-management"
+        - title: Installation & configuration
+          url: "/codefresh-on-prem"
+        - title: Upgrade
+          url: "/codefresh-on-prem-upgrade"
+        - title: Account and user setup
+          url: "/on-prem-configuration"            
+        - title: Feature management
+          url: "/on-prem-feature-management"
 
 - title: GitOps Runtimes
   url: "/gitops-runtime"
