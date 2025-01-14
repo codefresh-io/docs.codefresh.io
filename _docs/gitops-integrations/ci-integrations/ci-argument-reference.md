@@ -1,5 +1,5 @@
 ---
-title: "GitOps CI integrations argument reference"
+title: "GitOps CI integrations complete argument reference"
 description: "All the arguments supported for CI integrations with GitOps"
 group: gitops-integrations
 sub_group: ci-integrations
