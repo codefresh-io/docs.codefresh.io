@@ -68,6 +68,6 @@ Codefresh offers a [public API]({{site.baseurl}}/docs/integrations/codefresh-api
 
 ## Related articles  
 [Runner installation for pipelines]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
-[GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/)
+[GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/)
 
  

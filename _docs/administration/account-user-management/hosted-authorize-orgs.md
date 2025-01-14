@@ -29,4 +29,4 @@ max-width="70%"
 %}
 
 ## Related articles
-[Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider)
+[Connect Git provider]({{site.baseurl}}/docs/gitops-runtime/hosted-runtime/#2-connect-git-provider)
