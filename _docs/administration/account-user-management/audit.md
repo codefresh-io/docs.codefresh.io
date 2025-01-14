@@ -74,7 +74,7 @@ Both tabs have built-in paging and filtering.
 ### Filter audited events
 
 Filter audited events to focus on a specific entity or user.  
-If you need more than 150,000 audit logs, refine your filters to access the most relevant data.
+Filters are especially useful when the audit data you need exceeds the 150,000 log limit. Adjust filters to ensure that you can access the most relevant data.
 
 {% include image.html
 lightbox="true"
