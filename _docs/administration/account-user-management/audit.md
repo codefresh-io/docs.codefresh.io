@@ -23,7 +23,12 @@ You can:
 * Download the audit log file in CSV
 
 ## View audit logs
-The Audit Log is divided into actions audited (All Audit), and tiggers and webhooks processed by Codefresh (Triggers).
+The Audit Log is divided into actions audited (All Audits), and triggers and webhooks processed by Codefresh (Triggers).  
+
+{{site.data.callout.callout_tip}}
+The maximum record limit for audit logs is 150,000 entries.  
+If you need to retrieve more logs, refine your filters to ensure you can access the most relevant data efficiently.
+{{site.data.callout.end}}
 
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -67,7 +72,8 @@ Both tabs have built-in paging and filtering.
 
 ### Filter audited events
 
-Filter audited events to focus on a specific entity or user.
+Filter audited events to focus on a specific entity or user.  
+If you need more than 150,000 audit logs, refine your filters to access the most relevant data.
 
 {% include image.html
 lightbox="true"
