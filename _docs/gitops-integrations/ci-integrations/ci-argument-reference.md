@@ -1,12 +1,12 @@
 ---
-title: "GitOps CI integrations complete argument reference"
+title: "GitOps CI integrations argument reference"
 description: "All the arguments supported for CI integrations with GitOps"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
 ---
 
-## CI integrations: Argument reference
+## CI integrations: Complete argument reference
 The table describes _all_ the arguments required for CI integrations in general. The actual arguments required, differs according to the specific CI integration tool.
 
 {: .table .table-bordered .table-hover}

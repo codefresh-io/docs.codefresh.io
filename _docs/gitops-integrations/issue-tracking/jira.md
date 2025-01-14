@@ -56,7 +56,7 @@ To authenticate through a PAT, you need to:
 * Use `CF_JIRA_HOST_URL` with the URL of your Jira instance (instead of `CF_ISSUE_TRACKING_INTEGRATION` with the name of the Jira integration in Codefresh).
 
 Here's an example with the subset of JIRA-specific arguments you would use with PAT authentication:  
-`CF_JIRA_HOST_URL`: `"https://codefresh-io.atlassian.net"`
+`CF_JIRA_HOST_URL`: `"https://codefresh-io.atlassian.net"`  
 `CF_JIRA_SERVER_PAT`: `"***"`  
 `CF_JIRA_MESSAGE`: `"wip CR-1"`  
 `CF_JIRA_PROJECT_PREFIX`: `"CR"`
