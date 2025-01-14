@@ -26,6 +26,7 @@ You can:
 The Audit Log is divided into actions audited (All Audits), and triggers and webhooks processed by Codefresh (Triggers).  
 
 {{site.data.callout.callout_tip}}
+**TIP**  
 The maximum record limit for audit logs is 150,000 entries.  
 If you need to retrieve more logs, refine your filters to ensure you can access the most relevant data efficiently.
 {{site.data.callout.end}}
