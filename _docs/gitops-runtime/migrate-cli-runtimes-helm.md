@@ -1,9 +1,16 @@
 ---
 title: "Migrating GitOps Runtimes from CLI to Helm"
 description: "Migrate existing Hybrid GitOps Runtimes from CLI-based to Helm-based Runtimes"
-group: installation
+group: gitops-runtimes
+redirect_from:
+  - /docs/installation/gitops/migrate-cli-runtimes-helm/
 toc: true
 ---
+
+{{site.data.callout.callout_warning}}
+**Deprecated**  
+This article has been deprecated as we now support only Helm-based GitOps Runtimes.
+{{site.data.callout.end}}
 
 Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are deprecated.  
 If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve important data and install the new Helm GitOps Runtime.

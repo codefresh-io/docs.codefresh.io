@@ -1,11 +1,12 @@
 ---
 title: "Runner behind firewalls"
 description: "Learn how Hybrid Runner for pipelines works behind firewalls"
-group: installation
+group: runner
 redirect_from:
   - /docs/administration/behind-the-firewall/
   - /docs/enterprise/behind-the-firewall/
   - /docs/installation/behind-the-firewall/
+  - /docs/installation/runner/
 toc: true
 ---
 

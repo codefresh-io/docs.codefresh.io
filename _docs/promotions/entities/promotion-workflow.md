@@ -86,6 +86,10 @@ This annotation in the Promotion Workflow's manifest ensures that:
 ## Parameters in Pre-Action and Post-Action Workflows
 Pre-Action and Post-Action Workflows can use default parameters retrieved from application manifest data, and user-defined custom parameters to adapt dynamically to specific environments and processes.
 
+##### Workflow settings in Shared Repo
+Once configured and committed, Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#designating-configuration-runtimes).   
 ### Default parameters
 
 The table describes the default parameters and values passed to Pre- and Post-Action Workflows.   
