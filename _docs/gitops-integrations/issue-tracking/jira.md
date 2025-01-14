@@ -7,7 +7,7 @@ toc: true
 ---
 
 
-Codefresh has native integration for Atlassian Jira, to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
+Codefresh has native integration for Atlassian Jira to enrich images with information from Jira. Codefresh can monitor a feature all the way from the ticket creation phase, up to when it is implemented and deployed to an environment.  
 
 For information on adding a Jira GitOps integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
@@ -30,7 +30,7 @@ For information on adding a Jira GitOps integration in Codefresh, see [Issue-tra
 | **Integration name**       | A friendly name for the integration. This is the name you will reference in the third-party CI platform/tool. |
 | **All Runtimes/Selected Runtimes**   | {::nomarkdown} The runtimes in the account with which to share the integration resource. <br>The integration resource is created in the Git repository with the shared configuration, within <code class="highlighter-rouge">resources</code>. The exact location depends on whether the integration is shared with all or specific runtimes: <br><ul><li>All runtimes: Created in <code class="highlighter-rouge">resources/all-runtimes-all-clusters/</code></li><li>Selected runtimes: Created in <code class="highlighter-rouge">resources/runtimes/<runtime-name>/</code></li></ul> You can reference the Docker Hub integration in the CI tool. {:/}|
 |**Jira Host**| The URL of your Jira instance. For example, `https://<company>.atlassian.net`|
-|**API Token**| The Jira password/token you noted down when you created the Jira instance.|
+|**API Token**| The Jira password/token you noted down when you created the Jira instance.<br>To authenticate through a PAT (Personal Access Token) from your Git provider, see [Using PAT instead of API token for Jira authentication](#using-pat-instead-of-api-token-for-jira-authentication). |
 |**API Email**| The email for the API token.|
 
 
@@ -46,9 +46,26 @@ For information on adding a Jira GitOps integration in Codefresh, see [Issue-tra
  
 For information on adding a Jira integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
-## Using Jira integration in pipelines
+
+## Using PAT instead of API token for Jira authentication
+In addition to API tokens, Codefresh supports using a PAT (Personal Access Token) from your Git provider for authentication to Jira servers. PAT-based authentication provides an alternative method to access Jira integrations for image enrichment with issue tracking information.
+
+
+To authenticate through a PAT, you need to explicitly configure it through the `CF_JIRA_SERVER_PAT` argument in the `codefresh-report-image` step. 
+In addition, use the `CF_JIRA_HOST_URL` parameter and specify the URL of your Jira instance, instead of `CF_ISSUE_TRACKING_INTEGRATION` with the name of the Jira integration in Codefresh.
+
+Here's an example with the subset of JIRA-specific arguments you would use with PAT authentication:  
+`CF_JIRA_SERVER_PAT`: `"***"`  
+`CF_JIRA_MESSAGE`: `"wip CR-1"`  
+`CF_JIRA_PROJECT_PREFIX`: `"CR"`
+
+For detailed descriptions of arguments, see [CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
+
+## Using GitHub Action with Jira in CI pipelines
 For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  
 Codefresh uses the Secret Key stored in the runtime cluster to securely access Jira and retrieve the information. 
+
+
 
 ## Related articles
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  

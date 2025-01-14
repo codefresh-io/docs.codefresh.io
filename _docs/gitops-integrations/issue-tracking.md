@@ -41,7 +41,6 @@ The exact location depends on whether the integration is shared with all or spec
 ### View issue-tracking integrations for GitOps
 Selecting an issue tracking tool displays the existing integrations in Codefresh.  
 
-
 Every issue tracking integration displays the following information:
 * Name of the integration
 * Runtime or runtimes it is shared with
