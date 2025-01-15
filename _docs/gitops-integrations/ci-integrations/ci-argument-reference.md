@@ -45,3 +45,9 @@ The table describes _all_ the arguments required for CI integrations in general.
 |`CF_JIRA_PROJECT_PREFIX` |Relevant only when you need a Jira integration with either API or PAT authentication.<br> One or more project prefixes in Jira to identify the Jira ticket number to use.<br>**NOTE**: Multiple project prefixes require runtime version 0.1.30 or higher. <br>To specify more than one prefix, use a comma-separated list or a regex. {::nomarkdown}<ul><li>Comma-separated list: <code class="highlighter-rouge">DEV,PROD,SAAS</code></li><li>Regex: Regex must start with a front slash <code class="highlighter-rouge">/</code> and end with <code class="highlighter-rouge">/g</code>. <br>Example: <code class="highlighter-rouge">/[A-Z]{2,}-\d+/g</code>.</li></ul>{:/} | Required|
 | `CF_JIRA_MESSAGE`            | Relevant only when you need a Jira integration with either API or PAT authentication.<br> The Jira issue IDs matching the string to associate with the image.  | Required  |
 | `CF_JIRA_FAIL_ON_NOT_FOUND`            | Relevant only when you need a Jira integration with either API or PAT authentication.<br> The report image action when the `CF_JIRA_MESSAGE` is not found. When set to `true`, the report image action is failed.  | Required  |
+
+## Related articles
+[Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
+[Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
+[Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+

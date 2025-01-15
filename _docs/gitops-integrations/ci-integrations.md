@@ -41,7 +41,7 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
   [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
     
   >**NOTE**  
-  For the complete list of arguments you can use, see [CI integration for GitOps argument reference](#ci-integration-argument-reference) in this article.
+  For the complete list of arguments you can use, see [CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
 
 {:start="4"}
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
