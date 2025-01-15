@@ -325,6 +325,9 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"
+        - title: Complete argument reference
+          url: "/ci-argument-reference"
+
     - title: GitOps issue tracking integrations
       url: "/issue-tracking"
       sub-pages:
