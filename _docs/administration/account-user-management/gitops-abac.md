@@ -115,6 +115,16 @@ This rule grants the Support team permission to manually sync application entiti
   * `Namespace: poc`
   * `Label: customer=AcmePoc`
 
+#### Rule: Product-based access to application
+This rule grants the Quality team permission to all actions on application entities associated with a specific product within a specific namespace. 
+
+**Rule elements**  
+* Team: `quality`
+* Actions: All
+* Attributes: 
+  * `Namespace: poc`
+  * `Product: billing-new`
+
 ## Environments
 
 ### Environments: Actions & attributes
