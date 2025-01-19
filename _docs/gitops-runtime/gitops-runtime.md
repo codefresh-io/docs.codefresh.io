@@ -119,7 +119,7 @@ Hybrid GitOps Runtime installation includes a forked version of the Argo Project
 -->
 
 
-
+{% if page.url contains '/docs/' %}
 
 ## Hosted vs.Hybrid GitOps 
 
@@ -157,5 +157,5 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 [Codefresh pricing](https://codefresh.io/pricing/){:target="\_blank"}  
 [Codefresh features](https://codefresh.io/features/){:target="\_blank"}  
 
-
+{% endif %}
 

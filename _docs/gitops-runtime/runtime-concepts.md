@@ -5,22 +5,27 @@ group: gitops-runtimes
 toc: true
 ---
 
-<!--- add a branner - new topic consolidating concepts and components scattered in installation topics -->
+<!--- add a banner - new topic consolidating concepts and components scattered in installation topics -->
 
-The GitOps Runtime is the cornerstone of Codefresh’s GitOps solution, enabling seamless integration between your clusters, Git repositories, and deployment pipelines. 
+The GitOps Runtime is the cornerstone of Codefresh’s GitOps solution, enabling seamless integration between your clusters, Git repositories, and applications. 
 
-Beyond its core functionality, the Runtime introduces several key concepts and components that enhance flexibility, scalability, and control in managing GitOps processes. This article explores these concepts and components, including the secure usage of Git tokens and the role of the Shared configuration Repository needed during Runtime installation, and the roles of Git sources and external clusters in Runtimes. 
+Beyond its core functionality, the Runtime introduces several key concepts and components that enhance flexibility, scalability, and control in managing GitOps processes. This article explores these concepts and components, including the secure usage of Git tokens and the role of the Shared configuration Repository during Runtime installation, and the roles of Git sources and external clusters in Runtimes. 
 
+
+## Multiple Runtimes in account
+In the same account, you can install multiple GitOps Runtimes, provided each Runtime is installed on a different cluster. To ensure proper identification and management, every Runtime must have a unique name. 
+
+If you use the default name provided in the installation command for one Runtime, you must modify it when installing additional Runtimes. This naming requirement prevents conflicts and ensures seamless operation across your clusters.
 
 
 ## Git tokens in Runtimes 
 
-As a GitOps platform, Codefresh needs to create and access your Git repositories to both store runtime configuration settings for the account, and allow Argo CD to sync Kubernetes resources and templates from the different repositories to your cluster.  
+As a GitOps platform, Codefresh needs to create and access your Git repositories to both store Runtime configuration settings for the account, and allow Argo CD to sync Kubernetes resources and templates from the different repositories to your cluster.  
 
 We use Git personal access tokens for this: one for Runtimes, and another for each user. 
 
 >**IMPORTANT**  
-At all times, _both tokens are always securely stored on your cluster_ and never stored locally on our platform. 
+At all times, _both tokens are securely stored on your cluster_ and never stored locally on our platform. 
 
 * **Git Runtime token**  
   The Git Runtime token is a Git access token required during the Runtime installation. It is typically associated with a service or robot account and managed by the account administrator.      
@@ -34,22 +39,19 @@ Read more on [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)
 
 
 ## Shared Configuration Repository in Runtimes
-A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
+A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes in this repository without affecting other Runtimes. 
 
-The Shared Configuration Repository (internally `ISO`/`iso`) is created on installing the first Hybrid GitOps Runtime in the account.
-Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
-
-You can define the Shared Config Repo using only the repository URL, or add the path, reference a branch, or both:
+The Shared Configuration Repository (internally `ISO`/`iso`), is created on installing the first Hybrid GitOps Runtime in the account.
+You need to provide the URL to the Git repository to use as the Shared Configuration Repo. You can define the Shared Config Repo using only the repository URL, or add the path, reference a branch, or both.
+Codefresh identifies the Git provider from the URL provided, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 For information on the type of manifests and the structure, see [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/).
 
 ## Git Sources in Runtimes
 A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. 
-The Git Source connects to a Git repository within your organization, to easily manage the deployment and configuration of multiple Argo CD applications on clusters.
+The Git Source connects to a Git repository within your organization, and stores application manifests and other resources which are always synced to the cluster. Git Sources help to easily manage the deployment and configuration of multiple Argo CD applications on clusters. 
 
-You can add a Git Source as part of the Runtime installation, after installation whenever required. The same Runtime can have multiple Git Sources.
-
-The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
+You can add a Git Source as part of the Runtime installation, or after installation whenever required. The same Runtime can have multiple Git Sources. Codefresh manages the Git Source itself as an Argo CD application.
 
 For information on the different types of Git Sources, their settings and usage, see [Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/git-sources/).
 

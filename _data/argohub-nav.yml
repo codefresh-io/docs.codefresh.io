@@ -38,6 +38,8 @@
       url: "/managed-cluster"
     - title: Managing Git Sources in GitOps Runtimes
       url: "/git-sources"
+    - title: Download/upgrade GitOps CLI
+      url: "/upgrade-gitops-cli"      
 
 
 - title: Administration

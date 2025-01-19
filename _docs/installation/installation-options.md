@@ -37,10 +37,10 @@ Both deployments offer:
 
 
 {% if page.url contains '/argohub/' %}
-Codefresh ArgoHub is a lightweight, SaaS-only platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
+Codefresh Argohub is a lightweight, SaaS-only platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
 
-Focused exclusively on GitOps, ArgoHub empowers organizations to work seamlessly with Argo CD while leveraging  capabilities.
-As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
+Focused exclusively on GitOps, Argohub empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps.
+As a SaaS-only offering, Argohub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
 {% include image.html
   lightbox="true"
@@ -53,10 +53,10 @@ As a SaaS-only offering, ArgoHub eliminates the complexity of infrastructure man
 
 
 
-## Codefresh SaaS platform architecture
+## SaaS platform architecture
 
 
-The diagram shows the high-level architecture of the Codefresh SaaS deployment version and its core components. 
+The diagram shows the high-level architecture of the SaaS platform and its core components. 
 
 {% if page.url contains '/docs/' %}
 
@@ -90,7 +90,7 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 
 
 ### GitOps Runtime
-The GitOps Runtime required for the GitOps module is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
+The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
 The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh platform (Hosted GitOps), or -->in hybrid mode within the customer environment.  
 Read more in [GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/).
 
@@ -201,20 +201,12 @@ The Codefresh On-Premises platform uses an ingress controller to handle incoming
 
 The Pipelines API serves as the primary gateway for the Codefresh Pipelines module in the On-Premises platform. It handles a wide range of system functionalities, including authentication, authorization, audit logging, user management, and pipeline builds, among others. The Pipelines API utilizes a REST API interface with OpenAPI (Swagger v3) specifications.  
 
-
-
-
 #### Pipelines UI
 The Pipelines UI acts as a static file server that hosts and delivers all the user interface pages for Codefresh Pipelines. It provides visualization of pipelines, builds, third-party integrations and more.
-
-
-
 
 #### GitOps API
 The GitOps API serves as the primary gateway for the Codefresh GitOps module in the On-Premises platform. It interfaces between Codefresh GitOps, Git, and Argo CD, to sync 
 It utilizes a GraphQL interface to provide a user interface
-
-
 
 #### GitOps UI
 The GitOps UI provides a unified, enterprise-wide view of deployments, Runtimes, clusters, and applications in the same location.  

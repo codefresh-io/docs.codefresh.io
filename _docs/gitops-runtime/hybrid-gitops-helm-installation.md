@@ -19,7 +19,7 @@ You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as descri
 
 
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts on a _clean cluster_.  
-To install the GitOps Runtime an existing Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/gitops-runtime/argo-with-gitops-side-by-side/).
+To install the GitOps Runtime alongside an existing Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/gitops-runtime/argo-with-gitops-side-by-side/).
 
 You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each account must be on a different cluster. Every Runtime within the same account must have a unique name.
 
@@ -39,17 +39,13 @@ If this is your first time installing a GitOps Runtime in your Codefresh account
 ##### Additional GitOps Runtime installations  
 If you have already installed a GitOps Runtime in your account and want to install additional Runtimes on different clusters within the same account, you can continue with a [simplified installation](#install-additional-gitops-runtimes-in-account) from the Codefresh UI, or use [Terraform](/install-gitops-runtime-via-terraform).  
 
-When installing additional GitOps Runtimes, Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
+When installing additional GitOps Runtimes, the Git provider, Shared Configuration Repository, and the repository for the Helm chart, for example, are not required, as they have been already set up for your account.
 
 
-
- 
 {{site.data.callout.callout_warning}}
 **ArgoCD password WARNING**  
   Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
 {{site.data.callout.end}}
-
-
 
 
 Terminology clarifications:  
@@ -148,7 +144,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     * [Git user token]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions 
     * Server URLs for on-premises Git providers
-* For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
+* For ingress-based and service-mesh based Runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/#aws-alb-ingress-configuration)
   * [Istio ingress configuration]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/#istio-ingress-configuration)
@@ -251,8 +247,8 @@ The Namespace must conform to the naming conventions for Kubernetes objects.
 **Access modes**  
 You can define one of three different access modes:
 * Tunnel-based, the default mode, is automatically enabled when the other access modes are not defined in the installation command.
-* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
-* Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
+* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/).
+* Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/).
 
 <br>
 
@@ -543,14 +539,14 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 ### Step 1: Copy & run Helm install command
 
 **Shared Configuration Repository and Git provider**  
-The Shared Configuration Repository and Git provider are configured once per account, and not required for additional installations.
+The Shared Configuration Repository and Git provider are configured once per account, and not required for additional Runtime installations.
 
 
 **Access mode**  
-You can define the tunnel/ingress/service-mesh-based access mode for the additional GitOps Runtimes you install. The command in the How To below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
+You can define the tunnel-/ingress-/service-mesh-based access mode for the additional GitOps Runtimes you install. The command in the How To below is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in the step-by-step section, [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
 
 **Runtime name**  
-The name of the Runtime must be unique within the same account.
+The name of the Runtime must be unique within the same account. If u
 
 
 ##### How to
@@ -574,7 +570,7 @@ max-width="40%"
   * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, and is either `codefresh` which is the default, or any custom name that you define.
   * `<codefresh-account-id>` is mandatory only for _tunnel-based Hybrid GitOps Runtimes_ which is also the default access mode. Automatically populated by Codefresh in the command if other access modes are not explicitly defined.
   * `<codefresh-token>` is the API key, either an existing one or the new API key you generated. When generated, it is automatically populated in the command.
-  * `<runtime-name>` is the name of the Runtime, and must be unique in your account.
+  * `<runtime-name>` is the name of the Runtime, and must be unique in your account. If you have already used the default name `codefresh`, make sure you enter a different name that is unique in the account.
   * `<helm-repo-chart-name>` is the name of the repo in which to add the Helm chart, and is either `cf-gitops-runtime` which is the default, or any custom name you define.
   * `--wait` waits until all the pods are up and running for the deployment.
 
@@ -590,14 +586,14 @@ Complete Runtime installation by completing the required configuration:
 <br>
 
 **Git Runtime token**  
-You can use the same Git Runtime token you used for the first Runtime. 
+You can use the same Git Runtime token you used for the first Runtime in your account. 
 
 **Git user token**  
 The Git user token is a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 **Configure as Argo CD application**  
-Configuring the Runtime an an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
+Configuring the Runtime as an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
 
 
 <br><br>
