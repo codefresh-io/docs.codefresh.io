@@ -6,9 +6,9 @@ sub_group: account-user-management
 toc: true
 ---
 
-Codefresh integrates with the Git provider defined for your GitOps runtime account to sync repositories to your clusters, implementing Git-based operations when creating resources such as Delivery Pipelines, applications, and enriching images with valuable information.  
+Codefresh integrates with the Git provider defined for your account with the GitOps Runtime to sync repositories to your clusters, implementing Git-based operations when creating resources such as applications, and enriching images with valuable information.  
 
-As the account administrator, you can select the authentication method for a runtime account. Users in Codefresh will then authorize access to the Git providers through the defined mechanism.  
+As the account administrator, you can select the authentication method for the account with Runtime. Users in Codefresh will then authorize access to the Git providers through the defined mechanism.  
 
 {% include 
    image.html 
@@ -22,21 +22,23 @@ As the account administrator, you can select the authentication method for a run
 
 Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:  
 
-* OAuth2 with Codefresh OAuth Application or custom OAuth2 Application  
+* **OAuth2 with Codefresh OAuth Application or custom OAuth2 Application**  
   OAuth2 is the preferred authentication mechanism, supported for popular Git providers such as GitHub, GitHub Enterprise, GitLab Cloud and Server, and Bitbucket Cloud and Server.  
   You have the option to use the default predefined Codefresh OAuth Application, or a custom Oauth2 Application for Codefresh in your Git provider account.  
-  Hosted runtime accounts automatically use Codefresh's predefined OAuth Application.  
-  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-application-for-git-provider) in this article.
+  <!--- Hosted runtime accounts automatically use Codefresh's predefined OAuth Application.  -->
+  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. <br>
+  See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-application-for-git-provider) in this article.
 
-* Token-based authentication using PAT  
-  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access. See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
+* **Token-based authentication using PAT**  
+  With token-based authentication, users must generate personal access tokens from their Git providers with the required scopes and enter their personal access tokens when prompted to authorize access.<br>
+  See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
 
 
 
-## Authentication for Git providers and runtime accounts
+## Authentication for Git providers and Runtime accounts
 The [Git Authentication](https://g.codefresh.io/2.0/account-settings/authentication?providerName=github){:target="\_blank"} page displays the accounts by Git provider and the authentication method selected for the same.  
 
-Authentication accounts are organized by Runtimes. A runtime can have a single authentication account.   
+Authentication accounts are organized by Runtimes. A Runtime can have a single authentication account.   
 The Type column identifies the authentication for the provider account as either Codefresh, Custom, or PAT (personal access token). 
 
 {% include 
@@ -49,7 +51,41 @@ The Type column identifies the authentication for the provider account as either
    max-width="80%" 
    %}
  
-As the account administrator, you can change the authentication method for a Hybrid GitOps runtime at any time to either Codefresh, Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
+As the account administrator, you can change the authentication method for a GitOps runtime at any time to either Codefresh, Custom, or manual token entry. See [Select authentication mechanism for runtime](#select-authentication-mechanism-for-runtime).
+
+
+## Interaction between Argo CD secrets, Runtime secrets and Git PATs
+A smentioned before, Codefresg needs accrss to the Git repositories for reading configuration manifests, committing changes, and cratinga nd managing apploications. This sections describes how three
+
+### Argo CD secrets
+At the foundational layer, Argo CD OSS repository credentials are stored in the `argocd-repo-creds` secret. These credentials are used exclusively by Argo CD to read files from Git repositories. Argo CD does not support Git commits on behalf of users or individuals.  
+See [Argo CD user guide](https://github.com/argoproj/argo-cd/blob/master/docs/user-guide/private-repositories.md#github-app-credential){:target="\_blank"}.
+
+### GitOps Runtime token and secret
+The secret for the Git Runtime repository is created from the Git personal access token provided during Runtime installation. The credentials are stored in the `runtime-repo-creds-secret` secret, labeled with `argocd.argoproj.io/secret-type: repo-creds`. This label allows Argo CD to use these credentials for all Git read operations.  
+
+The used to:
+* Provide read access to Git repositories during Runtime operations
+* Commit and push changes to the Shared Configuration Repository both during and after Runtime installation for Git-based operations at the account-level.
+
+### User-specific Git personal access tokens
+
+User Git personal access tokens (PATs), are stored in the `git-default-<account-id>` secret, encrypted for security. Each user’s token is used for operations initiated by the user via the UI.
+
+The token is used to:
+* Perform Git commits and pushes on behalf of the user.
+* Validate the user’s access permissions to specific Git repositories and determine application visibility.
+
+### How secrets and tokens work together
+
+**Argo CD & Runtime integration**
+The `runtime-repo-creds-secret` with the `argocd.argoproj.io/secret-type: repo-creds` label generated by the Runtime allows seamless integration with Argo CD: 
+* Git read operations: Argo CD automatically uses the Runtime's credentials for all read operations.
+* Git write operations: The Runtime's app-proxy component uses these credentials for writing.
+
+**User tokens vs Runtime credentials**
+While Runtime credentials are tied to the Runtime’s operations, user tokens are employed for actions initiated by individual users. These tokens provide fine-grained access to repositories and commit changes in the user’s context.
+
 
 ## Create a custom OAuth2 Application for Git provider 
 Create a custom OAuth2 Application for Codefresh in your Git provider accounts with the correct scopes, and set up authentication for the same within Codefresh. Users in Codefresh can then authorize access to the Git provider using OAuth2, instead of a personal access token.  
@@ -79,7 +115,8 @@ Create and register an OAuth App under your organization to authorize Codefresh.
       * For **Authorization callback URL**, enter this value:  
        `<ingressHost>/app-proxy/api/git-auth/github/callback`  
        where:  
-       `<ingressHost>` is the IP address or URL of the ingress host in the runtime cluster.
+       `<ingressHost>` is the IP address or URL of the ingress host in the Runtime cluster as defined in your `values.yaml`. <br>For 
+       tunnel-based access modes, run `codefresh runtime list` to retrieve the correct ingress host.
       * Make sure **Enable Device Flow** is _not_ selected. 
       * Select **Register application**. 
        The client ID is automatically generated, and you are prompted to generate the client secret.
