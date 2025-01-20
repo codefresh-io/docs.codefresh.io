@@ -383,8 +383,8 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating Argo CD applications
-          url: "/create-application"
+        - title: About Argo CD applications in GitOps
+          url: "/about-apps"
         - title: Creating Argo CD applications
           url: "/create-application"
         - title: Monitoring Argo CD applications
