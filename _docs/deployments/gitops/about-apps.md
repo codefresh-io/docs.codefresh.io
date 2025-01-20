@@ -21,14 +21,13 @@ Codefresh GitOps builds on the foundation of Argo CD applications, adding unique
 
 With Codefresh, you can:
 Create full-featured, completely GitOps-compliant Argo CD applications in Form or YAML modes. The application manifest is generated, committed to Git, and synced to your cluster.
-Create Applications Easily: Define applications in Form or YAML modes, with built-in validations to catch errors before committing changes to Git.
-Maintain GitOps Compliance: Application manifests are auto-generated, committed to Git, and synchronized to your Kubernetes clusters, ensuring complete compliance with GitOps principles.
+View the different types applications and how they are structured wuth these applications and their resources Application manifests are auto-generated, committed to Git, and synchronized to your Kubernetes clusters, ensuring complete compliance with GitOps principles.
 
-See 
+See []
 
 ## Codefresh GitOps features for integrating applications
 
-### Environments and Argo CD applications
+##### Environments and Argo CD applications
 Environments represent stages in your software delivery process, such as testing, staging, or production.  
 
 {% include
@@ -45,9 +44,9 @@ By associating applications with environments, you gain:
 * Clear visibility into which applications are deployed in which environment
 * A structured progression for applications as they move through your development lifecycle
 
+See [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
-
-### Products and Argo CD applications
+##### Products and Argo CD applications
 Products group related applications, providing context for managing and deploying multiple applications as cohesive units. 
 
 {% include
@@ -64,9 +63,9 @@ This approach simplifies complex deployments by enabling you to:
 * Coordinate related applications across environments.
 * Manage promotions at the product level for a unified view of application performance and health. 
 
-For details, see [About Products].
+See [About Products]({{site.baseurl}}/docs/products/about-products/).
 
-### Promotions and Argo CD applications
+##### Promotions and Argo CD applications
 Promotions are a critical part of application delivery in Codefresh GitOps.  
 
 {% include
@@ -85,12 +84,12 @@ They streamline deployment processes by:
 * Governing promotions with policy-based gates, ensuring only approved changes move forward
 * Simplifying multi-environment promotions, reducing manual effort and operational risks
 
-
+See [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
 ## Dashboards for insights
 The Product and Environment dashboards provide enterprise-wide visibility into your applications in the context of their current deployment. 
 
-Other key dashboards include:
+Other key dashboards with critical insights into applications include the GitOps Apps and DORA dashboards.
 
 ##### GitOps Apps dashboard
 The go-to dashboard to view how your applications are structured, create individual applications, manage configuration settings, monitor resources, and historical deployments for applications.
@@ -105,27 +104,23 @@ caption="GitOps Apps dashboard"
 max-width="60%"
 %}
 
+
 ##### DORA dashboard
 Track metrics like lead time for changes and deployment frequency.
 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/app-dashboard-main-view.png"
-url="/images/applications/app-dashboard-main-view.png"
-alt="GitOps Apps dashboard"
-caption="GitOps Apps dashboard"
-max-width="60%"
+file="/images/reporting/dora-metrics.png"
+url="/images/reporting/dora-metrics.png"
+alt="DORA metrics dashboard"
+caption="DORA metrics dashboard"
+max-width="80%"
 %}
 
 
-## Getting started with applications
-To begin managing GitOps applications in Codefresh:
+<!--- ## Getting started with applications  -->
 
-Create an Application: Learn how to define your first Argo CD application.
-Set Up Environments: Organize your applications across environments.
-Group Applications into Products: Simplify management with cohesive product views.
-Configure Promotion Flows: Automate application delivery using predefined workflows and policies.
 
 
 
