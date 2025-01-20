@@ -31,7 +31,7 @@ The table below summarizes the main differences between the Git Runtime token an
 | Managed by                    | Admin at account-level                    | User   |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
 
-## Interaction between secrets and Git tokens
+## Interaction between Git tokens and secrets  
 Codefresh needs access to Git repositories for reading and writing to configuration and resource manifests. This section elaborates on how Git providers and repositories with Git tokens for authentication to . 
 
 
@@ -45,9 +45,10 @@ The secret:
 * Allows Argo CD to use the credentials to clone and pull data from the repositories it syncs from for read-only operations.
 * Allows the Runtime to both read and write to the same repositories, for all actions on behalf of the Runtime such as commits during promotions.
 
-### GitOps user-specific token and secret
+### GitOps user token and secret
 
-The Git user token, also a personal access token is used for operations initiated by the user via the UI. It is unique to each user. The Git user token is also converted to an encrypted secret, and stored in the `git-default-<account-id>` secret.
+The Git user token, also a personal access token, is used for operations initiated by the user via the UI, and is therefore unique to each user.  
+The Git user token is also converted to an encrypted secret, and stored in the `git-default-<account-id>` secret.
 
 The token is used to:
 * Perform Git commits and pushes on behalf of the user.
