@@ -385,6 +385,8 @@
       sub-pages:
         - title: Creating Argo CD applications
           url: "/create-application"
+        - title: Creating Argo CD applications
+          url: "/create-application"
         - title: Monitoring Argo CD applications
           url: "/applications-dashboard"
         - title: Application Groups for Argo CD applications
