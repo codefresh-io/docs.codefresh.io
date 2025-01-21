@@ -42,7 +42,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 **How to**
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster.
 1. Topology View: Select {::nomarkdown}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{:/}.
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.
@@ -96,8 +96,8 @@ helm install oci://quay.io/codefresh/charts/csdp-add-cluster -f values.yaml --ge
 ```
 
 >**NOTES**  
-1 - For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authenticate to the [Codefresh GitOps CLI]({{site.baseurl}}/docs/installation/cli/), and then run `cf runtime list` in your terminal.
-<br/>2 - The Helm Chart is installed by default in the `kube-system` namespace. To change the namespace, configure the `systemNamespace` value **in addition** to the  `--namespace` option so both, the Helm Release and the resources are installed in the desired namespace.
+1. For ingress-based GitOps Runtimes, to get the `ingressUrl` for your Runtime, first authenticate to the  GitOps CLI, and then run `cf runtime list` in your terminal.
+<br/>2.The Helm Chart is installed by default in the `kube-system` namespace. To change the namespace, configure the `systemNamespace` value **in addition** to the  `--namespace` option, so both the Helm Release and the resources are installed in the desired namespace.
 
 
 ### Add a managed cluster with Terraform
@@ -131,7 +131,7 @@ If Argo Rollouts has not been installed on the target cluster, the **Install Arg
 Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select **GitOps Runtimes**.
 1. Select **Topology View**.
 1. Select the target cluster, and then select **+ Install Argo Rollouts**.
 
@@ -168,7 +168,7 @@ Remove a cluster from the list managed by the GitOps Runtime in the Codefresh UI
 You can also remove it through the CLI.
 {{site.data.callout.end}}
 
-In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtimes in the sidebar, and select **GitOps Runtimes**.
 1. Select either the **Topology View** or the **List View** tabs.
 1. Do one of the following:
     * In the Topology View, select the cluster node from the Runtime it is registered to.

@@ -1,6 +1,6 @@
 ---
 title: "Quick start: Runtimes & Git Sources in Codefresh GitOps"
-description: "Install GitOps Runtime and create Git Sources"
+description: "Install Hybrid GitOps Runtime and create Git Sources"
 group: gitops-quick-start
 toc: true
 ---

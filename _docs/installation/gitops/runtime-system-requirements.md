@@ -22,13 +22,13 @@ This article outlines the Kubernetes cluster versions, minimum resource requirem
 
 
 ## Common prerequisites
+These prerequisites are are required for both clean-cluster installations and those alongside Community Argo CD.
 
 ### Switch ownership of Argo Project CRDs
 If you already have Argo Project CRDs on your cluster, Codefresh recommends doing one of the following:
 * Adopting the CRDs    
   Adopting the CRDs switches ownership for them to the GitOps Runtime, ensures that the GitOps Runtime manages the CRDs, and that the CRDs are automatically upgraded whenever the Runtime is upgraded. 
 * Handling the CRDs outside the chart
-
 
 #### (Recommended) Adopt all Argo Project CRDs
 Adopting _all CRDs_ switches ownership to the Hybrid GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
@@ -64,10 +64,14 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
-
+## Prerequisites: Clean-cluster installation 
+For Runtime installation on a clean cluster, the cluster should not have:
+* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
+* SealedSecret controller components.
 
 
 ## Prerequisites: Cluster with Community Argo CD installation 
+These prerequisites apply only for Runtime installation alongside Community Argo CD.
 
 ### Align Argo CD chart's minor versions 
 To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
@@ -132,10 +136,7 @@ Set Community Argo CD to track resources using the `label` method.  If both Argo
 * In the Argo CD namespace, make sure `argocd-cm.application.resourceTrackingMethod` is either not defined, in which case it defaults to `label`, or if defined, is set to `label`.
 
 
-## Prerequisites: Clean-cluster installation 
-The cluster should not have:
-* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
-* SealedSecret controller components.
+
 
 
 ## Related articles

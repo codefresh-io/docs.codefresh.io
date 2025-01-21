@@ -600,7 +600,7 @@
           url: "/runtime-architecture"
         - title: Runtime essentials
           url: "/runtime-concepts"
-        - title: System requirements
+        - title: System requirements & prerequisites
           url: "/runtime-system-requirements"    
         - title: Ingress configuration
           url: "/runtime-ingress-configuration"            
