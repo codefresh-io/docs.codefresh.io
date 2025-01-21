@@ -1,13 +1,10 @@
 ---
 title: "Shared Configuration Repository"
 description: "Share configuration settings across GitOps Runtimes"
-group: installation
-redirect_from:
-  - /docs/reference/shared-configuration/
 toc: true
 ---
 
-
+## Shared Configuration Repository
 A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
 ##### When is it created? 
@@ -305,8 +302,12 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 
 ## Related articles
 <!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  -->
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-
+[GitOps Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)  
+[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)   
+[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/managed-cluster/)  
 
  
 

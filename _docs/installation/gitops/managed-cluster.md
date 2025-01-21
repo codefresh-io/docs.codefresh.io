@@ -1,8 +1,6 @@
 ---
 title: "Managing external clusters in GitOps Runtimes"
-description: "Add multiple remote clusters to a GitOps Runtime"
-group: installation
-sub_group: gitops
+description: "Add multiple remote clusters to a GitOps Runtime and deploy applications"
 toc: true
 ---
 
@@ -18,7 +16,7 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 ## Prerequisites
 
 <!--- * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  -->
-* Valid Git personal access token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens/)
+* Valid Git user token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens/)
 * [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Codefresh token in user settings
 * The following permissions in the Managed Cluster:

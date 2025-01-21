@@ -1,11 +1,6 @@
 ---
 title: "Monitoring & managing GitOps Runtimes"
 description: "Optimize GitOps Runtimes"
-group: runtime
-sub_group: gitops
-redirect_from:
-  - /monitor-manage-runtimes/
-  - /monitor-manage-runtimes
 toc: true
 ---
 
@@ -70,10 +65,10 @@ Here is a description of the information in the List View.
 |**Cluster/Namespace**| The K8s API server endpoint, as well as the namespace with the cluster. |
 |**Modules**| The modules installed based on the type of provisioned Runtime. Hybrid GitOps Runtimes include CI and CD Ops modules. <!--- Hosted runtimes include CD Ops.-->   |
 |**Managed Cluster**| The number of managed clusters, if any, registered with the GitOps Runtime. To view list of managed clusters, click the runtime name, and then the **Managed Clusters** tab.  To work with managed clusters, see [Adding external clusters to runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).|
-|**Version**| The version of the Runtime currently installed, and the version of the Helm chart in parentheses. <br><br>**Update Available!** indicates there are newer versions of the Runtime, Helm chart, or both. <br>To see all the commits and changes for the version, mouse over **Update Available!**, and select **View Complete Change Log**. <br> See:<br>[Upgrade GitOps Runtimes](#hybrid-gitops-upgrade-gitops-runtimes)<br>[View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases)<br>[Rollback GitOps Runtimes](#hybrid-gitops-rollback-gitops-runtimes) |
+|**Version**| The version of the Runtime currently installed, and the version of the Helm chart in parentheses. <br><br>**Update Available!** indicates there are newer versions of the Runtime, Helm chart, or both. <br>To see all the commits and changes for the version, mouse over **Update Available!**, and select **View Complete Change Log**. <br> See:<br>[Upgrade GitOps Runtimes](#upgrade-gitops-runtimes)<br>[View changelogs for GitOps Runtimes](#changelog-for-all-runtime-releases)<br>[Rollback GitOps Runtimes](#rollback-gitops-runtimes) |
 |**Last Updated**| The most recent update information from the runtime to the Codefresh platform. Updates are sent to the platform typically every few minutes. Longer update intervals may indicate networking issues.|
 |**Sync Status**| The sync status of the GitOps Runtime. The sync status is displayed only when you have completed installation and configured the GitOps Runtime as an Argo Application. {::nomarkdown}<ul><li> <img src="../../../../images/icons/runtime-synced.png"  display=inline-block> <b>Synced</b></li> <li><img src="../../../../images/icons/runtime-syncing.png"  display=inline-block> <b>Syncing</b>.</li><li><img src="../../../../images/icons/runtime-out-of-sync.png"  display=inline-block> <b>Out-of-sync</b>.</li><li><b>N/A</b>: Codefresh could not get the sync status. This could be because the Runtime is not configured as an Argo application.</li><li><b>Complete Installation</b>: Git credentials are not configured for the Runtime. Click the three-dot context menu and select <b>Update Git Runtime Credentials</b>. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes">Update Git credentials for GitOps Runtimes</a>.</li>  </ul> {:/} |
-|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Set as Configuration Runtime</b>: Designate the selected Runtime to store platform resources which are runtime-agnostic. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes">Designating Configuration Runtimes</a>.</li><li><b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a>.</li><li><b>Download All Logs</b>:Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes">View/download logs for GitOps Runtimes</a>.</li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes">Update Git credentials for GitOps Runtimes</a>.</li><li><b>Runtimes as applications</b>: Options to view and monitor GitOps Runtimes as applications in the Current State tab of the GitOps Apps dashboard. For details on monitoring appplication resources, see <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#monitoring-resources-for-selected-argo-cd-application">Monitoring resources for Argo CD applications</a>.<ul><li><b>Runtime Application</b>: Available only when the GitOps Runtime is configured as an Argo CD application. For configuration steps, see <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-runtime-as-argo-cd-application">Configuring GitOps Runtime as an Argo CD application</a>.</li><li><b>Runtime ISC Application</b>: Available when a Hybrid GitOps Runtime is installed. Displays the resources of the Shared Configuration Repository (referred to internally as <code class="highlighter-rouge">ISC/isc</code>).</li><li><b>Runtime Resources Application</b>: Available when a Hybrid GitOps Runtime is installed. Displays the resources in the local cluster (in-cluster).</li></ul></li><li><b>Delete Runtime</b>: Available only when the Hybrid GitOps Runtime is Offline. <br>Delete the GitOps Runtime from the Codefresh platform, retaining it on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-delete-gitops-runtimes">Delete GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a>.</li> </ul> {:/}|
+|**Actions** | The possible actions to manage the selected runtime.{::nomarkdown}<ul><li> <b>Set as Configuration Runtime</b>: Designate the selected Runtime to store platform resources which are runtime-agnostic. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes">Designating Configuration Runtimes</a>.</li><li><b>Upgrade</b>: Upgrade to the latest version. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#upgrade-gitops-runtimes">Upgrade GitOps Runtimes</a>.</li><li><b>Download All Logs</b>:Download logs for the Runtime or for its components. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-gitops-runtimes">View/download logs for GitOps Runtimes</a>.</li><li><b>Update Git Runtime Credentials</b>: Update Git token for Runtime. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#update-git-credentials-for-gitops-runtimes">Update Git credentials for GitOps Runtimes</a>.</li><li><b>Runtimes as applications</b>: Options to view and monitor GitOps Runtimes as applications in the Current State tab of the GitOps Apps dashboard. For details on monitoring appplication resources, see <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#monitoring-resources-for-selected-argo-cd-application">Monitoring resources for Argo CD applications</a>.<ul><li><b>Runtime Application</b>: Available only when the GitOps Runtime is configured as an Argo CD application. For configuration steps, see <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-runtime-as-argo-cd-application">Configuring GitOps Runtime as an Argo CD application</a>.</li><li><b>Runtime ISC Application</b>: Available when a Hybrid GitOps Runtime is installed. Displays the resources of the Shared Configuration Repository (referred to internally as <code class="highlighter-rouge">ISC/isc</code>).</li><li><b>Runtime Resources Application</b>: Available when a Hybrid GitOps Runtime is installed. Displays the resources in the local cluster (in-cluster).</li></ul></li><li><b>Delete Runtime</b>: Available only when the Hybrid GitOps Runtime is Offline. <br>Delete the GitOps Runtime from the Codefresh platform, retaining it on the cluster. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#delete-gitops-runtimes">Delete GitOps Runtimes</a>. </li><li><b>Uninstall Runtime</b>: Uninstall the runtime from the cluster on which it is provisioned. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#uninstall-gitops-runtimes">Uninstall GitOps Runtimes</a>.</li> </ul> {:/}|
 
 
 
@@ -174,22 +169,6 @@ Only GitOps Runtimes designated as Configuration Runtimes sync to this folder an
 ```
 ├── resources <───────────────────┐
 │   ├── all-runtimes-all-clusters 
-│   ├── configurations            │ # new folder storing platform configuration
-│       ├── products              │
-│   ├── control-planes            │        
-│   ├── runtimes                  │
-│   │   ├── runtime1              │    
-│   │   └── runtime2              │    
-│   └── manifest6.yaml            │
-└── runtimes                      │
-│    ├── runtime1                 │ 
-│   │   ├── in-cluster.yaml       ┤     
-```
-
-<!---
-```
-├── resources <───────────────────┐
-│   ├── all-runtimes-all-clusters 
 │   ├── configurations            │ # new folder storing promotion configuration
 │       ├── promotion-flows       │ 
 │       └── promotion-templates   │
@@ -203,10 +182,10 @@ Only GitOps Runtimes designated as Configuration Runtimes sync to this folder an
 │    ├── runtime1                 │ 
 │   │   ├── in-cluster.yaml       ┤     
 ```
--->
 
 
-## (Hybrid GitOps) Configure Runtime as Argo CD application
+
+## Configure Runtime as Argo CD application
 
 Configure the Hybrid GitOps Runtime as an Argo CD Application.  This is usually done when installing the Runtime. 
 You can configure the Runtime when needed after installation.
@@ -248,7 +227,7 @@ The Runtime's context menu now includes the **Runtime Application** option, whic
       max-width="60%" 
    %}
 
-## (Hybrid GitOps) Upgrade GitOps Runtimes
+## Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, new functionality, and the latest versions of all components. 
 
@@ -327,7 +306,7 @@ dependencies:
         `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm upgrade ${RELEASE_NAME} -n codefresh-gitops-runtime`
     1. To exit the upgrade panel, click **Close**.
 
-## (Hybrid GitOps) View changelogs for GitOps Runtimes
+## View changelogs for GitOps Runtimes
 Each version of a GitOps Runtime includes a changelog detailing the changes in that release. 
 Changelogs are available in ArtifactHub and GitHub
 
@@ -419,7 +398,7 @@ To trigger and customize notifications for the identified revision, update the n
 
 
 
-## (Hybrid GitOps) Roll back GitOps Runtimes
+## Roll back GitOps Runtimes
 After upgrading a GitOps Runtime, roll back to the previous or a specific version of the Runtime.  
 The rollback procedure differs slightly depending on whether the GitOps Runtime has been configured as an Argo CD application or not.
 
@@ -649,7 +628,7 @@ As a Codefresh admin, you can reset the repo defined for your account if the URL
 
 
 
-## (Hybrid GitOps) Configure Deep Links to applications & resources
+## Configure Deep Links to applications & resources
 
 Deep Links is an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. Read all about it in [Argo CD Deep Links](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
 
@@ -696,7 +675,7 @@ For more details, read [Configuring Deep Links in Argo CD](https://argo-cd.readt
 
 
 
-## (Hybrid GitOps) Delete GitOps Runtimes
+## Delete GitOps Runtimes
 Delete Helm GitOps Runtimes which are offline from the Codefresh platform. The Runtime is _not removed from the cluster_.
 
 To remove the GitOps Runtime from the Codefresh platform and from the cluster, [uninstall the Runtime](#uninstall-gitops-runtimes).
@@ -865,7 +844,7 @@ status:
 ```
 -->
 
-## (Hybrid GitOps) Troubleshoot communication problems
+## Troubleshoot communication problems
 
 You have a communication problem if you see either of these notifications:
 _Unable to communicate with a `runtime_name`_

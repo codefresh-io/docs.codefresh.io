@@ -1,12 +1,13 @@
 ---
 title: "Hosted GitOps Runtime installation"
 description: "Set up your Hosted GitOps environment"
-group: installation
-sub_group: gitops
 toc: true
 ---
 
-
+{{site.data.callout.callout_warning}}
+**Deprecated**  
+This article has been deprecated as we do not support Hosted GitOps Runtimes.
+{{site.data.callout.end}}
 
  For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes.  
  Hosted GitOps Runtimes are fully managed and maintained by Codefresh. 

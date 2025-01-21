@@ -1,7 +1,6 @@
 ---
 title: "On-premises GitOps Runtime installation"
 description: "Install GitOps Runtime in on-premises environments using Helm"
-group: installation
 toc: true
 ---
 
