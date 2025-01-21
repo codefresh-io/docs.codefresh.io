@@ -524,7 +524,7 @@ For more information on generating SSH private keys, see the official documentat
 * [GitLab](https://docs.gitlab.com/ee/user/ssh.html){:target="\_blank"}
 * [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
-<!--- * [Gerrit](http://ec2-52-87-125-161.compute-1.amazonaws.com:8080/Documentation/user-upload.html#ssh){:target="\_blank"} -->
+* [Gerrit](https://gerrit-review.googlesource.com/Documentation/user-upload.html#ssh){:target="\_blank"}
 
 
 **Before you begin**
