@@ -8,11 +8,8 @@ toc: true
 
 
 The Group view for Argo CD applications is a simple and efficient way to focus on deployments of the specific apps you're interested in, amidst the potentially numerous apps within your enterprise.  
-A Codefresh feature, the Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
+The Group view consolidates deployment information for all applications within the group, eliminating the need to navigate to and switch between the different applications for information on them. 
 It gives the flexibility to tailor groupings according to the unique requirements of your organization and applications. The Group name is added as an annotation to the app manifest and works like any other tag in the application.
-
-
-Application Groups are an integral part of the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/), making it easy to navigate between views of application groups and individual applications. 
 
 
 {% include image.html 
@@ -32,7 +29,6 @@ You can also monitor and manage them in the GitOps Environments and Products das
 
 ## Working with Application Groups
 
-How do you work with an Application Group?
 
 ### Assign applications to Application Groups
 
@@ -85,7 +81,7 @@ spec:
 ### Navigate to the Group view
 After assigning applications to Groups, navigate to the Groups tab in the GitOps Apps dashboard. 
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select **GitOps Groups**.
 1. Click the **Groups** tab.
 
 {% include image.html 
@@ -147,7 +143,7 @@ max-width="60%"
 ## Update application assignments to Groups
 At any time, add or remove an application from the Group or Groups it belongs to. Changes to Application Groups do not affect the applications which are part of the Groups.
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select **GitOps Groups**.
 1. Select the application and then click the **Configuration** tab.
 1. From **Groups**, do one of the following:
   * To add the application to one or more groups, select the group or groups.
