@@ -600,7 +600,10 @@
           url: "/runtime-architecture"
         - title: Runtime essentials
           url: "/runtime-concepts"
-          
+        - title: System requirements
+          url: "/runtime-system-requirements"    
+        - title: Ingress configuration
+          url: "/runtime-ingress-configuration"            
         - title: Install GitOps Runtime
           url: "/hybrid-gitops-helm-installation" 
         - title: Install GitOps Runtime alongside Community Argo CD
