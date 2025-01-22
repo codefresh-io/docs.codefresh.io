@@ -1,7 +1,6 @@
 ---
 title: "What's changed in GitOps Runtimes"
 description: "Review list of changes to articles and the reasons for change"
-group: gitops-runtimes
 toc: true
 ---
 
@@ -11,7 +10,7 @@ The GitOps Runtime documentation has been restructured to enhance usability and 
 
 ## GitOps Runtimes: Documentation changes at a glance
 The table below outlines the updates to the GitOps Runtime documentation, including article relocations, newly introduced standalone topics, and other improvements.
-
+<!--
 | **Old location**         | **New Location**    | **Affected Articles**          | **Description of changes**    |
 |--------------------------|--                   |--------------------------------|----------------------------------------------------|
 | Installation > GitOps  | **GitOps Runtime** | n/a  | Moved from Installation bucket into dedicated GitOps Runtime bucket.  |
@@ -28,3 +27,14 @@ The table below outlines the updates to the GitOps Runtime documentation, includ
 |                                    |             |[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/)            | Moved from Installation > GitOps Runtimes to GitOps Runtimes. |
 |                                    |             |[Managing external clusters in Runtimes]({{site.baseurl}}/docs/gitops-runtime/managed-cluster/)            | Moved from Installation > GitOps Runtimes to GitOps Runtimes. |
 |                                    |             |[Managing Git Sources in Runtimes]({{site.baseurl}}/docs/gitops-runtime/git-sources/)            | Moved from Installation > GitOps Runtimes to GitOps Runtimes. |
+
+-->
+
+| **Location**         |  **Affected Articles**   | **Description of changes**    |
+|--------------------------|-----                 |----------------------------------------------------|
+| Installation > GitOps   |[About GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/gitops-runtime/gitops-runtime/)  | New overview topic for improved readability. |
+|                         |[Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)     | New article describing components and concepts used in Runtime installation. |
+|                         |[System requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)     | Split from Hybrid GitOps Runtime installation article to standalone topic entitled System requirements & Prerequisites for visibility. |
+|        |[Runtime prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)           | Split from Hybrid GitOps Runtime article to new standalone topic entitled System requirements & Prerequisites for visibility.          |
+|                         |[Ingress-controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/)     | Split from Hybrid GitOps Runtime article to standalone topic entitled Ingress controller coonfiguration          |
+|                      | [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)            | Includes only installation procedures and post-installation configuration options.  |
