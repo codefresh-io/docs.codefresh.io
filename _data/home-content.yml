@@ -56,8 +56,6 @@
       localurl: /docs/promotions/create-promotion-sequence/
     - title: Promotion tutorials
       localurl: /docs/promotions/promotion-scenarios/
-    - title: Entity configuration
-      localurl: /docs/promotions/entities
     - title: YAML specs
       localurl: /docs/promotions/entities/yaml/
     - title: Trigger promotions

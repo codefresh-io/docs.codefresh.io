@@ -12,7 +12,7 @@ Now that we have covered [Multi-environment sequential promotion]({{site.baseurl
 
 Codefresh makes it easy to automate and enforce gates throughout your promotion processes using Promotion Workflows. 
 Promotion Workflows are essentially Argo Workflows customized for promoting changes through your environments.  
-For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).
+For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).
 
 ## Promotion Workflows for promotion gates
 Promotion Workflows are designed to define the conditions under which changes are promoted to the next environment. They provide a way to automate testing, quality checks, validation, and any other requirements based on your deployment process, establishing gates that control the flow of changes between environments.
@@ -41,7 +41,7 @@ In this quick start, we’ll define the Promotion Workflows to govern promotion 
 
 
 ### Before you begin
-* [Create Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/#create-promotion-workflows)
+* [Create Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/#create-promotion-workflows)
 
 ### Step-by-step
 

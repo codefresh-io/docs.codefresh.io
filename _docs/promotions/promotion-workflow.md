@@ -3,6 +3,7 @@ title: "Configure Promotion Workflows"
 description: "Create, run, and manage Promotion Workflows"
 redirect-from: 
  - /docs/promotions/configuration/
+ - /docs/promotions/entities/
 group: promotions
 toc: true
 ---
@@ -59,7 +60,7 @@ After creating Promotion Workflows, there are two ways to use them in the promot
   With this approach, you can match workflows to environments or products, ensuring consistent behavior in multi-environment promotion flows. You can also combine workflows with specific promotion actions, such as committing changes in pre-production evironments and creating pull requests in production.  
   Example: 
   Assign a validation workflow for all staging environments and a performance testing workflow for production environments.  
-  See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/).
+  See [Configuring Promotion Policies]({{site.baseurl}}/docs/promotions/promotion-policy/).
 
 
 ##### Arguments in Pre-Action and Post-Action Workflows
@@ -887,8 +888,8 @@ See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/).
 
 ## Related articles
 
-[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
-[Configure Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/)  
+[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  
+[Configure Promotion Policies]({{site.baseurl}}/docs/promotions/promotion-policy/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  

@@ -63,15 +63,15 @@ Codefresh  GitOps provides specialized functionality to streamline and automate 
 
 * **Enforce environment-specific checks**  
   Create different types of workflows to run at different stages of the promotion process for validation, compliance, performance checks.  
-  See [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).  
+  See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).  
 
 * **Govern promotion behavior with policy-based gating**  
   Define rules and constraints combining different workflows with Promotion Policies to ensure promotions adhere to specific requirements for products or environments.  
-  See [Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/).
+  See [Promotion Policies]({{site.baseurl}}/docs/promotions/promotion-policy/).
 
 * **Streamline complex promotion sequences**  
   Automate multi-environment promotions reducing manual effort while improving accuracy and efficiency.  
-  See [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/).
+  See [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
 
 
 
