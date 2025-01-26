@@ -1,18 +1,13 @@
 ---
 title: "Monitoring Argo CD applications"
-description: ""
+description: "Deep dive to "
 group: deployments
 sub_group: gitops
 toc: true
 ---
 
-
-Monitor Argo CD applications individually or within groups in the GitOps Apps dashboard.
-
-This article focuses on monitoring individual Argo CD applications in the GitOps Apps dashboard. To monitor deployments of a group of applications in parallel, see [Application Group information]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
-
-**Monitor deployments, resources, and services of individual applications**  
-As a one-stop shop for Argo Rollouts and Argo CD, the GitApps dashboard and its Applications tab delivers on the challenge of keeping track of your applications and their deployments, whatever the frequency and scale, across all clusters in your enterprise. A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility of deployments. 
+Drill down into applications
+The GitOps Apps dashboard, a centralized hub for creating Argo CD applications in your enterprise, is also the dashboard for detailed insights into individual Argo CD applications, enabling you to monitor their deployments, resources, and services across all clusters in your enterprise.
 
 
 {% include
@@ -26,7 +21,16 @@ max-width="70%"
 %}
 
 
-Select the view format for applications in the GitOps Apps dashboard, as either [List or Card views](#select-view-mode-for-the-gitops-apps-dashboard). The default view displays all applications deployed within the last 30 days. Customize the scope through filters to display the [information](#gitops-apps-dashboard-application-information) you need.
+##### Viewing and filtering applications
+By default, the GitOps Apps dashboard displays all applications deployed in the last 30 days. You can customize the scope of displayed applications using filters to refine the information to meet your specific needs. 
+
+##### Drilling down into individual applications
+From the dashboard, select any application to access detailed information, including:
+Deployment history: Review past deployments and associated changes.
+Resource details: Explore the application's resources, including associated services and components.
+Service status: Monitor active services and troubleshoot issues as needed.
+
+
 
   
 Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
@@ -38,97 +42,11 @@ Identify applications with [health and sync errors](#identify-gitops-application
   * [Monitor services for selected Argo CD application](#monitoring-services-for-selected-argo-cd-application)
 
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-Codefresh adds a whole new dimension to monitoring Argo CD applications through two unique GitOps dashboards: [GitOps Environments](#gitops-environments--argo-cd-applications) and [GitOps Products](#gitops-products--argo-cd-applications). 
-{{site.data.callout.end}}
-
-  
-For information on creating and managing Argo CD applications, application resources, and Application Groups, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/).
-
-## GitOps Environments & Argo CD applications
-To track, optimize, and manage deployments at scale you need a way to visualize applications at every stage of their development and deployment lifecycle. Our custom Environment resource allows you to do just this without the need for complex configuration and maintenance overhead. 
-
-Create Environments by defining one or more pairs of clusters and namespaces for it. Codefresh collates the data on these Environments, populates them with the applications deployed to the target clusters and namespaces. Visualize the environments and their applications in the GitOps Environments dashboard to track promotions and view version and details on the most recent commits that caused the change.
-
-Here's a visualization of Argo CD applications in the GitOps Environments dashboard.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
-	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
-	alt="Argo CD applications organized in GitOps Environments" 
-	caption="Argo CD applications organized in GitOps Environments"
-  max-width="70%" 
-%}
-
-For detailed information on how to work with Argo CD applications and Environments in Codefresh, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
-
-## GitOps Products & Argo CD applications
-The Product is another custom resource from Codefresh, also enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. 
-
-Instead of having to switch between applications, or switch across multiple tools to track and manage different aspects of deployments, Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
-Codefresh seamlessly collates the Environments where each application in the Product is deployed, along with insights into commits, contributors, and features deployed across versions.
-
-Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/apps-grouped-by-product.png" 
-	url="/images/gitops-products/apps-grouped-by-product.png" 
-	alt="Argo CD applications grouped by Products and organized by Environments" 
-	caption="Argo CD applications grouped by Products and organized by Environments"
-  max-width="70%" 
-%}
-
-For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
-## Select view mode for the GitOps Apps dashboard 
-View deployed applications in either List (the default) or Card views. Both views are sorted by the most recent deployments. 
-
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-1. Select **List** or **Cards**.
-
-### Applications List view
-
-Here is an example of the GitOps Apps dashboard in List view mode. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-dashboard-main-view.png"
-url="/images/applications/app-dashboard-main-view.png"
-alt="GitOps Apps dashboard: List view"
-caption="GitOps Apps dashboard: List view"
-max-width="70%"
-%} 
-
-### Applications Card view
-Here is an example of the GitOps Apps dashboard in Card view mode. The Card view provides a scannable view of application data and the actions to manage applications. 
-
-  {% include
-image.html
-lightbox="true"
-file="/images/applications/app-dashboard-card-view.png"
-url="/images/applications/app-dashboard-card-view.png"
-alt="GitOps Apps dashboard: Card view"
-caption="GitOps Apps dashboard: Card view"
-max-width="60%"
-%}
 
 
-## GitOps Apps dashboard application information 
-Here's a description of the information and actions you can see for individual applications in the Applications tab of the GitOps Apps dashboard.
 
-{: .table .table-bordered .table-hover}
-| Item                     | Description            |  
-| --------------         | --------------           |  
-|**Application filters**       | Filter by a range of attributes to customize the information in the dashboard to bring you what you need. {::nomarkdown}  <ul><li>Application health<br>A snapshot that displays a breakdown of the deployed applications by their health status.<br>Click a status to filter by applications that match it.<br>Codefresh tracks Argo CD's set of health statuses. See <a href="https://codefresh.io/docs/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources">Health status</a> in this article, and Argo CD's official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health" target=”_blank”>Health sets</a>.</li><li>Application attributes<br>Attribute filters support multi-selection, and results are based on an OR relationship within the same filter with multiple options, and an AND relationship between filters.<br>Clicking <b>More Filters</b> gives you options to filter by Health status, Cluster names, Namespace, and Type. <br><ul><li>Application Type: Can be any of the following<ul><li>Applications: Standalone applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications" target=”_blank”>Applications</a>.</li><li>ApplicationSet: Applications created using the ApplicationSet Custom Resource (CR) template. An ApplicationSet can generate single or multiple applications. See the official documentation on <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/application-set" target=”_blank”>Generating Applications with ApplicationSet</a>.</li><li>Git Source: Applications created by Codefresh that includes other applications and CI resources. See <a href="https://codefresh.io/docs/docs/installation/gitops/git-sources/">Git Sources</a>.</li></ul></li></li><li>Labels:The K8s labels defined for the applications. The list displays labels of <i>all</i> the applications, even if you have applied filters.<br>To see the available labels, select <b>Add</b>, and then select the required label and one or more values. <br>To filter by the labels, select <b>Add</b> and then <b>Apply</b>.<br> See the official documentation on <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels" target=”_blank”>Labels and selectors</a>.</li></ul></ul>{:/}|
-|{::nomarkdown}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/}| Star applications as favorites and view only the starred applications.{::nomarkdown}<br>Select the <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star the application as a favorite.<br><br>To filter by favorite applications, on the filters bar, select <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">.<br>{:/} TIP: If you star applications as favorites in the GitOps Apps dashboard, you can filter by the same applications in the [DORA metrics dashboard]({{site.baseurl}}/docs/dashboards/dora-metrics/#metrics-for-favorite-applications).  |
-|**Application actions**| Options to monitor/manage applications through the application's context menu. {::nomarkdown}<ul><li>Quick view<br>A comprehensive read-only view of the deployment and definition information for the application.</li>{:/}See [Monitor deployments for selected Argo CD application](#monitoring-deployments-for-selected-argo-cd-application) in this article.{::nomarkdown}<li>Synchronize/Sync<br>Manually synchronize the application.</li>{:/}See [Manually sync applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application).{::nomarkdown}<li>Edit<br>Modify application definitions.</li>{:/}See [Edit application definitions]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions).{::nomarkdown}<li>Refresh and Hard Refresh: Always available in the application's toolbar. <ul><li>Refresh: Retrieve desired (Git) state, compare with the live (cluster) state, and refresh the application to sync with the desired state.</li><li>Hard Refresh: Refresh the application to sync with the Git state, while removing the cache.</li></ul>See <a href="https://codefresh.io/docs/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications/">Refresh/hard refresh GitOps applications</a>.{:/} |
 
 
 
@@ -183,22 +101,9 @@ The Codefresh default is Argo CD's default duration of 30 minutes for a sync ope
 1. To see more details such as the message and sync duration, switch to **Sync Info**.
 1. Drill down into the application to investigate the issue and make changes.
 
-## Monitoring status of Argo CD application in Application Header
-When you select an application from the Applications tab in the GitOps Apps dashboard, the Application Header, at the top of the page, displays the information you need on the current release, including health and sync statuses. 
+## Application header
 
-The Application Header is always displayed for the selected application, no matter what tab you navigate to. 
-
-Correlate details such as the sync revision in the Application Header with the release revision in the Current Release's deployment record in the Timeline tab.  
-
-
-##### Information and actions in the Application Header  
-* **App Health** displays health status of the current release.
-* **Current Sync** sync status of the current release with the sync revision. The sync revision should be identical to the release revision in the Current Release deployment record previous sync operation.
-* **Auto-sync** enabled/disabled indication.
-* **More** links for sync statuses for details on the date, tags, and message.
-* **Terminate Sync** option for active sync operations to stop the sync if needed.
-
-
+When you select an application in the GitOps Apps dashboard, the Application Header provides a summary of key details about the current release. It includes information such as the application’s health and sync status, ensuring you can monitor and manage deployments effectively.
 
 {% include
 image.html
@@ -210,18 +115,25 @@ caption="Application header for selected application"
 max-width="80%"
 %}
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-  You can also view the current health and sync status for the application as a resource in the Current State tab. 
-{{site.data.callout.end}}
+The Application Header remains visible at the top of the page, regardless of the tab you're navigating within the dashboard. This allows you to quickly access critical information without switching views.
 
-## Analyze out-of-sync applications with Diff View
+### Key insights in the Application Header
+Here are important details and actions in the Application Header:
+
+* **App Health**: The health status of the current release.
+* **Current Sync** and **Last Sync Result**: The sync status of the release, and result of the most recent sync operation including the SHA. The sync revision should match the release revision in the deployment record of the Current Release from the last sync operation in the Timeline tab.
+* **Product**: Product to which the application belongs, with the list of other applications in the same product categorized by environment.
+* **Auto-sync**: Indicates whether auto-sync is enabled or disabled. This information is useful application rollback. If auto-sync is `ON`, the default behavior for GitOps is to sync the cluster with the desired state in Git, and the Rollback button is disabled.
+
+
+
+### Analyze out-of-sync applications in Diff View
 Identify discrepancies between the desired and live states for out-of-sync applications using Diff View. The Diff View provides a visual representation of discrepancies to help troubleshoot issues more effectively.
 
 Available in the context menu when you select an application, the Diff View presents Inline and Split views, in either full or summary modes.
 
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
 1. Filter by **Status** for **Out of sync** applications, and select the application you need.
 1. From the context menu on the upper-right, select **Diff View**.  
   The default Diff View highlights the differences in Inline and Compact view modes.
@@ -239,7 +151,7 @@ max-width="50%"
 {:start="4"}
 1. For side-by-side comparison and a detailed view, switch to **Split** view, and clear **Compact diff**. 
 
-## View deployment and configuration summary for selected Argo CD application
+### View deployment and configuration summary for selected Argo CD application
 
 View deployment, definition, and event information for the selected application in a centralized location through the Quick View.  
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
@@ -296,12 +208,12 @@ The Quick View includes the following tabs:
 
 
 
-## Monitoring resources for selected Argo CD application
+## Monitoring application resources
 
 
-Monitor the resources deployed in the current version of the selected application in the Current State tab.  
-Selecting an application from the GitOps Apps dashboard takes you to the Current State tab, which as its title indicates, displays the   
-live state of the application's resources (Kubernetes objects) on the cluster, including health, sync state, manifests, and logs. 
+Monitor the live state of resources deployed in the current release of a selected application in the Current State tab.  
+When you select an application from the GitOps Apps dashboard, the Current State tab is displayed by default, showing a real-time view of the application’s resources.
+
 
 {% include
 image.html
@@ -313,7 +225,12 @@ caption="Monitor application resources in Current State tab"
 max-width="60%"
 %}
 
-The icon for a resource node identifies the type of Kubernetes resource it represents. For information on K8s resources, see [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
+This tab provides key insights into Kubernetes resources, including:
+* Health and sync status
+* Resource manifests
+* Logs and events
+
+The icon for each resource node identifies its Kubernetes resource type. Learn more on K8s resources  in [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
 What can you do with application resources?
 * View application resources in [List or Tree views](#view-modes-for-application-resources)
@@ -328,11 +245,12 @@ What can you do with application resources?
   * [Events](#events-for-application-resources)
 
 
-### View modes for application resources
+### Tree and list view modes for application resources
 
 The Current State tab supports Tree and List view formats. 
-* Tree view (default): A hierarchical, interactive visualization of the application and its resources. Useful for complex deployments with multiple clusters and large numbers of resources. See also [Working with resources in Tree view](#working-with-resources-in-tree-view).  
-Here is an example of the Current State in Tree view.
+
+* Tree view (default): A hierarchical, interactive visualization of resources, ideal for complex deployments.  
+  Example:
 
 
 {% include
@@ -344,45 +262,12 @@ alt="Tree view of application resources in Current State"
 caption="Tree view of application resources in Current State"
 max-width="50%"
 %}
-
-* List View: A list-based representation of application's resources, sorted by the Last Update. 
-  Here is an example of the Current State in List view.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/apps-current-state.png"
-url="/images/applications/apps-current-state.png"
-alt="List view of application resources in Current State"
-caption="List view of application resources in Current State"
-max-width="50%"
-%}
-
-
-
-
-#### Working with resources in Tree view
 The Tree view is designed to impart key information at a glance. Review the sections that follow for pointers to quickly get to what you need in the Tree view.  
 
-**Context menu**  
-Every resource has a context menu that opens on clicking the three dots on the right of the resource. The options available differ according to the type of resource.
 
-
-{{site.data.callout.callout_tip}}
-**TIP**   
-If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
-{{site.data.callout.end}}
-
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-resource-context-menu.png"
-url="/images/applications/current-state-resource-context-menu.png"
-alt="Current State Tree view: Example of context menu for resource"
-caption="Current State Tree view: Example of context menu for resource"
-max-width="50%"
-%}  
+##### Context menu 
+Each resource node has a context menu (three dots icon) with options specific to the resource type.  
+For example, resources with configured deep links display additional options for quick access. To configure deep links, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources). 
 
 {% include
 image.html
@@ -394,8 +279,8 @@ caption="Current State Tree view: Example of context menu with deep link"
 max-width="50%"
 %}
 
-**Resource info**  
-Mouse over a node to see a tooltip for that resource. For detailed information, select the resource.
+##### Tooltips for quick info  
+Mouse over a node to see a tooltip with basic info. 
 
 {% include
 image.html
@@ -407,28 +292,12 @@ caption="Current State Tree view: Resource tooltip"
 max-width="50%"
 %}
 
-**Search resources**  
-Quickly find a resource by typing the resource name in the search field. You can identify search results through the border which is different from the borders depicting health status. Press Enter to navigate to the next result. 
+##### Resource inventory 
+The Resource inventory in the bottom-left summarizes the aggregated count by resource type.  
+* The number of `out-of-sync` items for that resource type if any are numbered in red.  
+* Selecting any resource type filters the Current State by that resource type and sync status.
+  These filters are automatically applied to the default filter list for both Tree and List views. 
 
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-tree-search.png"
-url="/images/applications/current-state-tree-search.png"
-alt="Current State Tree view: Search resources"
-caption="Current State: Search resources"
-max-width="50%"
-%}
-
-
-
-**Resource inventory**   
-The Resource inventory in the Tree view (bottom-left), summarizes the aggregated count for each resource type in the application.  The number of `out-of-sync` items for that resource type if any are numbered in red.  
-
-Click-filters:  
-
-Selecting any resource type, filters the Current State by that resource type and sync status.
-These filters are automatically applied to the default filter list for both Tree and List views. 
 Here's an example of an application with out-of-sync resources, and the result on selecting an out-of-sync resource type.
 
 
@@ -442,98 +311,20 @@ caption="Current State Tree view: Resource inventory filtered by Secrets"
 max-width="50%"
 %}
 
-
-### Filters for application resources
-Filters are common to both Tree and List views, and when applied are retained when switching between views. 
-
-`IgnoreExtraneous` is a filter in [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options){:target="\_blank"} that allows you to hide specific resources from the Current State views. These resources are usually generated by a tool and their sync statuses have no impact on the sync status of the application. For example, `ConfigMap` and `pods`. The application remains in-sync even when such resources are syncing or out-of-sync.  
-
->**NOTE**  
-The `IgnoreExtraneous` filter applies only to the sync status. The health status of the resource directly affects the application's health status. If the resource is degraded, then the application is also degraded. 
-
-**For the `IgnoreExtraneous` filter to be effective:**  
-
-* Add `IgnoreExtraneous` as an annotation to the resource, as in the example below of the `ConfigMap` resource. 
+* List View: A simplified view of resources, sorted by the Last Update.  
+  Example:
 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/current-state-ignore-extraneous-annotation.png"
-url="/images/applications/current-state-ignore-extraneous-annotation.png"
-alt="Resource with IgnoreExtraneous annotation"
-caption="Resource with IgnoreExtraneous annotation"
-max-width="50%"
-%}
-
-* In the Current State tab, click the `IgnoreExtraneous` filter.  
- You can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-ignore-extraneous-on.png"
-url="/images/applications/current-state-ignore-extraneous-on.png"
-alt="Current State filtered by IgnoreExtraneous resources"
-caption="Current State filtered by IgnoreExtraneous resources"
-max-width="50%"
-%}
-
-### Access external links
-If your Kubernetes resources have annotations that define external links, the {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} is displayed below the context menu of the resource. Clicking the icon shows the list of external links configured for the resource.  
-
->**NOTE**  
-This feature requires GitOps Runtime chart version 0.10.0.
-
-
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-resource-external-link.png"
-url="/images/applications/current-state-resource-external-link.png"
-alt="External links for deployment resource in Current State Tree view"
-caption="External links for deployment resource in Current State Tree view"
-max-width="50%"
-%}
-
-Ingress resources automatically display external links. Clicking {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} displays the links configured. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-ingress-links.png"
-url="/images/applications/current-state-ingress-links.png"
-alt="External links for ingress resource in Current State Tree view"
-caption="External links for ingress resource in Current State Tree view"
+file="/images/applications/apps-current-state.png"
+url="/images/applications/apps-current-state.png"
+alt="List view of application resources in Current State"
+caption="List view of application resources in Current State"
 max-width="50%"
 %}
 
 
-
-Use this annotation to add the external link to a Kubernetes resource:
-```yaml
-annotations:
-  link.argocd.argoproj.io/external-link: http://my-grafana.example.com/pre-generated-link
-```
-
-For more details on this feature, see [Argo CD's documentation on Adding external URLs](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/){:target="\_blank"}.
-
-### Delete application resources
-Delete specific resources in an application directly from the Codefresh UI. 
-
-1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
-1. From the Application dashboard, select the application with the resource to delete.
-1. From the context menu of the resource, select **Delete**.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-delete-resource.png"
-url="/images/applications/current-state-delete-resource.png"
-alt="Current State: Delete an application resource"
-caption="Current State: Delete an application resource"
-max-width="50%"
-%}
 
 
 ### Health status for application resources
@@ -577,85 +368,155 @@ The table describes the possible sync states for an application resource in the 
   The application header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
   The Application Warnings/Errors panel surfaces sync errors on exceeding the maximum number of retries and when a sync operation extends beyond 30 minutes.
 
-### Manifests for application resources
 
-In either Tree or List views, double-click an application resource to see its manifests. The manifests are displayed in the Summary tab. 
->**NOTE**  
-Based on the selected resource type, you can also view logs, and events. Endpoints for example show only manifests, while pods show manifests, logs, and events.  
-<br>To view information for the application resource, select the application node in Tree View. See [Application information](#view-deployment-configuration-info-for-selected-gitops-application).
-
- 
+### Search application resources
+Quickly find a resource by typing the resource name in the search field. 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/current-state-resource-summary.png"
-url="/images/applications/current-state-resource-summary.png"
-alt="Current State Tree view: Resource tooltip"
-caption="Current State Tree view: Resource tooltip"
+file="/images/applications/current-state-tree-search.png"
+url="/images/applications/current-state-tree-search.png"
+alt="Current State Tree view: Search resources"
+caption="Current State: Search resources"
 max-width="50%"
 %}
 
-Here's what you can see and do in the Summary tab:
-{{site.data.callout.callout_tip}}
-**TIP**  
-Press Ctrl/Command F to search for strings in the manifest.
-{{site.data.callout.end}}
+### Filters for application resources
+Filters apply to both Tree and List views, and persist when switching between views. 
 
-* Desired and Live states of the resource manifest: 
-  * Managed resources, stored in Git repositories and using Git as the single source of truth, show both the Desired (Git) and the Live (cluster) states.    
-    If there are discrepancies between them, the Diff view is displayed, highlighting the differences in both versions for comparison.
-  * Resources that are not stored in Git but live in the cluster, show only the Live state.
-* Share resource details: Copy the URL and send to others in your organization to share the resource details for collaborative review and analysis. Pasting the URL in a browser opens to the same view of the resource.
-* Hide Managed Fields: In the Live state version of the manifest, you can hide managed-field information from the manifest. Managed-fields show information on which field manager manages the field, after Kubernetes introduced `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
+##### `IgnoreExtraneous` filter
+Use the `IgnoreExtraneous` filter to hide generated resources such as `ConfigMap` and `pods`, that do not affect the sync status of the application in the Current State view.
 
-
-
-### Logs for application resources
-In either Tree or List views, double-click an application resource to see its logs. Logs are available only for resource types such as pods.
-
+ The application remains in-sync even when such resources are syncing or out-of-sync.  
+[Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options){:target="\_blank"}
 >**NOTE**  
-A disabled Logs tab indicates that you have not been assigned the permission to view logs for pod resource types. Contact your administrator for help.
+The `IgnoreExtraneous` filter when applied only affects sync status.  
+Degraded resources impact the health status of the application.
+
+##### Add `IgnoreExtraneous` annotation
+
+* Add `IgnoreExtraneous` as an annotation to the resource, as in the example below of the `ConfigMap` resource. 
 
 {% include
 image.html
 lightbox="true"
-file="/images/applications/current-state-logs.png"
-url="/images/applications/current-state-logs.png"
-alt="Current State: Logs for resource"
-caption="Current State: Logs for resource"
+file="/images/applications/current-state-ignore-extraneous-annotation.png"
+url="/images/applications/current-state-ignore-extraneous-annotation.png"
+alt="Resource with IgnoreExtraneous annotation"
+caption="Resource with IgnoreExtraneous annotation"
+max-width="50%"
+%}
+
+* In the Current State tab, click the `IgnoreExtraneous` filter.  
+ You can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-ignore-extraneous-on.png"
+url="/images/applications/current-state-ignore-extraneous-on.png"
+alt="Current State filtered by IgnoreExtraneous resources"
+caption="Current State filtered by IgnoreExtraneous resources"
+max-width="50%"
+%
+
+
+
+### Delete application resources
+Delete specific resources in an application directly from the Codefresh UI. 
+
+1. In the Codefresh UI, from the sidebar, under OPS, select **GitOps Apps**.
+1. From the Application dashboard, select the application with the resource to delete.
+1. From the context menu of the resource, select **Delete**.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-delete-resource.png"
+url="/images/applications/current-state-delete-resource.png"
+alt="Current State: Delete an application resource"
+caption="Current State: Delete an application resource"
 max-width="50%"
 %}
 
 
-* Search: Free-text search for any string in the log, using the next and previous buttons to navigate between the results, or Enter for sequential navigation.
-* Wrap: Enable/disable line wrapping 
-* Download: Download the complete log into a text file for offline viewing and analysis.
 
 
 
-### Events for application resources
-In either Tree or List views, double-click an application resource to see events in the Events tab. 
+### Tree view: Access external links
+Resources with annotations for external links, display {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} below their context menu. Ingress resources automatically display external links. Clicking the icon lists available links.  
+For more details on this feature, see [Argo CD's documentation on Adding external URLs](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/){:target="\_blank"}.
+
 >**NOTE**  
-If your runtime is lower than the version required to view events, you are notified to upgrade to the required version.
+This feature requires GitOps Runtime chart version 0.10.0.
 
+##### Configure external links
+Use this annotation to add the external link to a Kubernetes resource:
+```yaml
+annotations:
+  link.argocd.argoproj.io/external-link: http://my-grafana.example.com/pre-generated-link
+```
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-resource-external-link.png"
+url="/images/applications/current-state-resource-external-link.png"
+alt="External links for deployment resource in Current State Tree view"
+caption="External links for deployment resource in Current State Tree view"
+max-width="50%"
+%}
+
+ Clicking {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} displays the links configured. 
+
+
+
+
+
+
+### Manifests, logs, and events for application resources
+
+Each application resource provides different types of information in three main tabs: Summary, Logs, and Events. The availability of these tabs depends on the resource type. For example, pods show manifests, logs, and events, while endpoints show only manifests.
+
+##### Summary tab
+
+The Summary tab displays the manifest of the selected resource, showing its Desired and Live states:
+* **Desired State**: The state defined in Git (single source of truth). Managed resources, stored in Git repositories and using Git as the single source of truth show both Desired (Git) and the Live (cluster) states.    
+* **Live State**: The state currently in the cluster displayed for all resources.
+* **Diff View**: Highlights discrepancies between Desired and Live states for managed resources.
+
+
+Key actions in the Summary tab:
+* **Search**: Use Ctrl/Command + F to find strings in the manifest.
+* **Share URL**: Copy a link to share resource details with collaborators. Pasting the URL in a browser opens to the same view of the resource.
+* **Hide Managed Fields**: Hide Kubernetes-managed fields in the Live state to simplify the view. Hiding managed fields removes field management metadata introduced by Kubernetes `Server Side Apply`. For more information, see [Field Management](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management){:target="\_blank"}.
+
+
+###### Logs tab
+Logs are available only for resource types such as pods. If the Logs tab is unavailable, it may indicate a permission issue, and you need to contact your administrator
+
+Key actions in the Logs tab:
+* **Search**: Perform free-text search with navigation options (Next/Previous).
+* **Wrap lines**: Enable or disable line wrapping for readability.
+* **Download**: Save logs to a text file for offline analysis.
+
+
+##### Events tab
 The Events tab displays both successful and failed events from Argo CD, starting with the most recent event. 
-Argo CD displays events as they occur for an application resource, and retains event information for a duration of 30 minutes. Historical events older than this duration are removed, and the Events tab can be empty if there are no ongoing events.
 
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-events-tab.png"
-url="/images/applications/current-state-events-tab.png"
-alt="Current State: Events for resource"
-caption="Current State: Events for resource"
-max-width="50%"
-%}
+Key features of the Events tab:
+* **Real-time updates**: Events are listed as they occur, starting with the most recent.
+* **Retention period**: Events are kept for 30 minutes. Older events are removed automatically.
+
+>**NOTE**  
+If your runtime version does not support event viewing, upgrade to the required version when prompted.
 
 
 
 
 
-## Monitoring deployments for selected Argo CD application  
+
+## Monitoring application deployments 
 
 Monitor ongoing and historical deployments for the selected application. 
 The Timeline tab displays all the deployments for the selected application, with the Current Release deployment record at the top, followed by the list of Previous Releases.  

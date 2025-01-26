@@ -8,28 +8,17 @@ toc: true
 
 
 
-Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
+## Argo CD applications in Codefresh
+Create and manage fully GitOps-compliant Argo CD applications from the GitOps Apps dashboard. 
+For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}. 
 
-Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
+Configuration settings for applications define the application’s structure, sources, destination, and operational behavior. 
+For ease of use, settings are organized into distinct categories including:
+* [Application definitions](#application-definitions): Basic metadata, such as the application name, GitOps Runtime, and the YAML manifest name. 
+* [General configuration settings](#application-general-configuration-settings): Product, Group, source, destination, and sync policies for the application.
+* [Advanced configuration settings](#application-advanced-configuration-settings): Tool-specific options, project grouping, and propagation policies for resource and application deletion.
 
-Creating an Argo CD application in Codefresh includes defining:  
-
-  * Application name and location
-  * General configuration settings
-  * Advanced configuration settings
-
-
-The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
-
-For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
-  
-Remember you need a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/) to be able to create and commit an Argo CD application.
- 
-Once created and synced to clusters, Argo CD applications are displayed in the GitOps Apps dashboard. Here, you can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) and [manage]({{site.baseurl}}/docs/deployments/gitops/manage-application/) individual Argo CD applications.
-
-After creating Argo CD applications in Codefresh, you can also monitor and manage them in the GitOps Environments and Products dashboards by creating Environment and Product resources. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
-
-
+For how-to instructions, see [Create applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 ## Application: Definitions
 Application definitions include the application name, the GitOps Runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -47,7 +36,7 @@ Application definitions include the application name, the GitOps Runtime, and th
 
 ## Application: General configuration settings
 
-General configuration settings define the group to which the application belongs, source, destination, and sync policies for the application. 
+General configuration settings define the product, group, to which the application belongs, source, destination, and sync policies for the application. 
 
 {% include 
    image.html 
@@ -59,25 +48,29 @@ General configuration settings define the group to which the application belongs
    max-width="70%" 
    %} 
 
+### Products
+Optional. The product to which to assign the application. Select an existing product, or create and add a new product.
+Products empower promotions for applications and make for streamlined management and deployments.  
+See [Products]({{site.baseurl}}/docs/products/about-products/).
+
 
 ### Groups
-Optional. The group or groups to which to add the application.  
-You can group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for Argo CD applications, Groups allow you to collate multiple applications and view their timelines.
+Optional. The group or groups to which to add the application. Select an existing group or groups, or create a new application group by typing a name and pressing Enter.
+Group applications based on criteria meaningful to your organization, such as environment, region, or any other relevant attribute. You can then view deployments for these applications in the same location in the Groups tab of the GitOps Apps dashboard. A new view for Argo CD applications, Groups allow you to collate multiple applications and view their timelines.  
+See [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-groups/).
 
-Select an existing group or groups, or create a new application group by typing a name and pressing Enter.
 
- 
 
 
 ### Source 
-The Git repository to be tracked for changes to the application's source code.  
-{::nomarkdown}<ul> <li><b>Repository URL</b>: The Git repo or the Helm package repo with the application source code, to be tracked for changes. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/installation/gitops/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
+The Git repository with the application resources.  
+{::nomarkdown}<ul> <li><b>Repository URL</b>: The URL of the Git repo or the Helm package repo with the application resources. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/gitops-runtime/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
 
 
 
 ### Destination
 The cluster and namespace to which to deploy the application.  
-{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li> </ul>{:/}
+{::nomarkdown}<ul><li><b>Cluster</b>: The cluster to which to deploy the application, defined as a <b>URL</b>, or as the user-defined display <b>NAME</b>.</li> <li><b>Namespace</b>: The namespace in the cluster to which to deploy the application.</li><li><b>Auto-create namespace</b>: When selected, automatically creates the namespace in the cluster if it doesn't exist.</li> </ul>{:/}
 
 
 ### Sync Settings
@@ -130,7 +123,7 @@ For more information, see Argo CD's documentation on [Projects](https://argo-cd.
 
 ### Propagation policy for application deletion
 Defines how resources are pruned, applying Kubernetes cascading deletion prune policies when you delete the application. 
-For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/){:target="_blank"}.<!---(https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)-->.
+For more information, see [Argo CD's app deletion](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/){:target="_blank"}.
 * **Foreground**
   The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. 
 * **Background**
@@ -162,24 +155,45 @@ The tool used to create the application's manifests.  Codefresh supports definin
   * **External Variables**: The variables to use in the application.  
 
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
+
+
+
+Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
+
+Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
+
+Creating an Argo CD application in Codefresh includes defining:  
+
+  * Application name and location
+  * General configuration settings
+  * Advanced configuration settings
+
+
+The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
+
+For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
+  
+ 
+
+
+
   
 
 
 
 ## Create an Argo CD application
-Create a new application from the GitOps Apps dashboard with the Add Application wizard. 
-Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. You can also edit the YAML manifest directly at all stages, after defining configuration settings, and before the final commit.
+Create a new application from the GitOps Apps dashboard. 
+Edit the manifest directly in YAML mode, or define the settings in the Form mode. Toggle between the modes as convenient. 
 
-**Before you begin**  
+##### Before you begin
 * Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-
 * Review:    
-  [General configuration](#application-general-configuration-settings)  
-  [Advanced configuration](#application-advanced-configuration-settings)  
+  [General configuration settings](#application-general-configuration-settings)  
+  [Advanced configuration settings](#application-advanced-configuration-settings)  
 
 
-**How to**  
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+##### How to
+1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
 1. On the top-right, select **Add Application**.
 1. In the Add Application panel, add definitions for the application:
   * Application name: Must be unique within the cluster.
@@ -248,15 +262,13 @@ Edit the manifest directly in YAML mode, or define the settings in the Form mode
 
 
 Your application is first committed to Git, and then synced to the cluster which may take a few moments.  
-Monitor the application.
-
 
 
 
 ## Related articles
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
-[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
-[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
