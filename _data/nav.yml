@@ -433,7 +433,7 @@
       url: "/promotion-policy"  
     - title: Promotion Workflows
       url: "/promotion-workflow"  
-    - title: Product Settings
+    - title: Customize product promotion settings
       url: "/product-promotion-props"          
     - title: Promotion entity YAMLs 
       url: "/yaml"

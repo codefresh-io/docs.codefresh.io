@@ -1,6 +1,6 @@
 ---
-title: "Configure product promotion settings & flows"
-description: "Configure key settings for the product to optimize promotion"
+title: "Customizing promotion settings for products"
+description: "Select promotion flows, triggers, and more to tailor promotion settings for product"
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/
