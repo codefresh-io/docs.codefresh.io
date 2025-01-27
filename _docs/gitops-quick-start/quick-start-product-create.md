@@ -6,15 +6,16 @@ toc: true
 ---
 
 
-In the previous quick start we [created environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/),  one of the three core entities essential for GitOps promotions. Now, it’s time to create another core entity: Products. 
+In the previous quick start we [created environments],  
 
-## In this quick start - products
+## Products quick start
 
-In this quick start, we'll create a product `demo-trioapp`, named for the three applications we'll create later, each representing a distinct stage in the development lifecycle. Grouping the applications into a single product will simplify their management and promotions across the environments `dev`, `qa`, and `prod`.
+In this quick start, we'll create a product, `demo-trioapp`, named for the three applications we'll create later. These applications will represent distinct stages in the development lifecycle.  
+Grouping the applications into a single product will simplify their management and promotions across the `dev`, `qa`, and `prod` environments we created in the previous quick start.
 
 ## Products in GitOps
 
-Products not only bridge the gap between environments and applications but also amplify the capabilities of your applications by grouping and managing them as cohesive units.
+Products are one of the three core entities essential for GitOps promotions, bridging the gap between environments and applications. They also amplify the capabilities of applications by grouping and managing them as cohesive units.
 
 {% include 
 	image.html 
@@ -28,35 +29,31 @@ Products not only bridge the gap between environments and applications but also 
 
 For detailed information, see [Products]({{site.baseurl}}/docs/products/about-products/).
 
-### Why create products?
+##### Why create products?
 
 Here are a few reasons why you would want to create products to manage your applications.
 
-* **Bridging applications and environments**  
-  Products create a vital link between applications and their environments. By grouping applications within a product, you gain visibility and control over their deployment paths, ensuring all components move through environments together.
+* **Bridging applications and environments**: By grouping related applications within a product, you ensure visibility and control over their deployment paths, keeping all components in sync as they move through environments together.
+
+* **Unified application promotion and deployment**: Managing multiple individual Argo CD applications across various environments can be complex. Products streamline this process by grouping related applications, enabling more efficient and cohesive management and promotion.
 
 
-* **Unified application promotion and deployment**  
-  Managing individual Argo CD applications across multiple environments can become complex. Products simplify this by grouping related applications, enabling efficient, cohesive management and promotion.
 
-
-* **Effortless creation**  
-  Creating a product is as simple as creating an environment. You can do so directly from the UI, declaratively by annotating application manifests, or even when creating applications themselves.
-
+## Requirements
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)
 
 
 ## Create your first product
+Creating a product is as simple as creating an environment. You can do so directly from the UI, declaratively by annotating application manifests, or even when creating applications themselves.
+
 A product requires a unique name, and an annotation through which to connect the different applications.
 The annotation is automatically created using the product name. For the purposes of this quick start, we'll name the product `demo-trioapp`.
-
-##### Before you begin
-* Make sure you have at least [one environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
 
 
 ##### Step-by-step
 
-1. In the Codefresh UI, from the sidebar, select **Products**.
-1. Click **Add Product**.
+1. In the Codefresh UI, from the sidebar, select **Products**, and click **Add Product**.
 1. Define the following:
     1. **Name**: A unique name for the Product, `demo-trioapp` for the quick start.
     1. **Connect Applications**: Displays the annotation associated with this product that is automatically created, and used to connect the different applications to it. In our case, `codefresh.io/product: demo-trioapp`. 
@@ -88,7 +85,6 @@ The annotation is automatically created using the product name. For the purposes
 	caption="Products quick start: Product with no applications"
   max-width="60%" 
 %}
-
 
 
 ## What's next

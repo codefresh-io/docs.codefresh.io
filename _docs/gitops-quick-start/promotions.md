@@ -43,9 +43,9 @@ The manifests and resources for the additional applications required for these p
 
 ## Quick start guides for promotions
 Explore these quick starts on promotions:
-* [Drag-and-drop promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/)  
-* [Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/multi-env-sequential-flow/)  
-* [Multi-environment promotion with gates]({{site.baseurl}}/docs/gitops-quick-start/promotions/policy-multi-env-promotion/)  
-* [Multi-environment promotion with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/promotions/parallel-multi-env-promotion/)  
-* [Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotions/dependency-multi-env-promotion/)
+* [Drag-and-drop promotions]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
+* [Multi-environment sequential promotion]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
+* [Multi-environment promotion with gates]({{site.baseurl}}/docs/git/docs/gitops-quick-start/policy-multi-env-promotion/)  
+* [Multi-environment promotion with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/)  
+* [Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
 

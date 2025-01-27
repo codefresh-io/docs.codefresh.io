@@ -120,10 +120,6 @@ Provides _direct insights from the application's source repository, including th
 Maps commits to tickets in your issue-tracking tool, offering traceability for deployed features or bug fixes. 
 
 
-### Requirement: Integrate CI platforms/tools
-For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are integrated. If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking tools like Jira.
-
-For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## What's next?
 We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications.  
@@ -131,5 +127,5 @@ For an overview on promotions, read [Quick start: Promotions in Codefresh GitOps
 
 Let's move on to the first quick start on promotions to see this in action.
 
-[Quick start: Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/)
+[Quick start: Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
 

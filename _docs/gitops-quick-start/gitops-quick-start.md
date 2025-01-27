@@ -7,40 +7,59 @@ redirect_from:
   - /docs/quick-start/gitops-quick-start/
 ---
 
-Codefresh GitOps simplifies application delivery with automation, consistency, and scalability. With these quick start guides, you can go from zero to deployment-ready in just a few steps. Each guide provides a structured walkthrough to help you fully leverage Codefresh GitOps for deploying and managing your applications.
+## GitOps quick starts: From start to deployment 
+Codefresh GitOps streamlines application delivery through automation, consistency, and scalability. These quick start guides are designed to help you get up and running quickly, providing step-by-step instructions to fully utilize Codefresh GitOps for managing and promoting your applications.
 
-The quick-start journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, culminating in promoting applications seamlessly across environments.  
-We’ve created a public repository on GitHub containing all the applications and resources used in these quick starts. You can follow along with the repo or fork it to create and manage your own applications.
+Each quick start is standalone, allowing you to dive into specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a progressive journey from setup to seamless application promotion across environments.
 
+The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, culminating in deploying and promoting applications effectively across multiple environments.
 
-
-
-## Quick starts: From start to deployment
- and concludes with promotions for applications. Each quick start builds on the last, equipping you with the knowledge and tools to confidently promote and deploy applications in production environments.
+We’ve provided a public GitHub repository containing all the applications and resources used in these guides. You can follow along directly or fork the repository to create and manage your own applications.
 
 
-### Essential setup
+
+## Essential setup
 
 * [Creating an Account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
   Get started by setting up your Codefresh account.
 
-* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/)    
+* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)    
   Install the GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
 
+* [Adding a Gt Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
+  Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
-### Creating GitOps entities for promotions
-* [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+## Creating GitOps entities for promotions
+* [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
-* [Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
+* [Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
   Organize related applications under a single product, for better context and control of deployments.
 
-* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
+* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths.
 
-### Promoting applications
-* [Promoting products and applications]({{site.baseurl}}/docs/gitops-quick-start/promotions/)   
-  Deploy, validate, and promote changes in applications across environments using automated promotion flows.
+<!--- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
+  Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
+
+## Promoting products and applications
+
+Validate and promote changes in applications across environments.
+Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with parallel execution and environment dependencies.
+
+* [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
+  Manually promote a product between two environments.
+* [Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
+  Automate promotions across multiple environments sequentially using a simple Promotion Flow.
+* [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/git/docs/gitops-quick-start/policy-multi-env-promotion/)  
+  Govern promotion behavior for environments using Promotion Workflows in a Promotion Flow.
+* [Advanced Promotion Flow with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/)  
+  Run simultaneous promotions to multiple environments using an advanced Promotion Flow.
+* [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
+  Run promotions with defined dependencies between environments using an advanced Promotion Flow.
+
+
+  
 
 ## Public Git repository
 
@@ -50,7 +69,7 @@ The repository is structured to help you follow along with the guides:
 * `argocd-app-manifests`: Manifests with the configuration definitions of all the Argo CD applications used in the quick starts.
 * `demo-applications`: Supporting files and resources required for these applications.
 
-You can:
+You can either:
 * Clone the repository to follow along with the examples.
 * Fork the repository to customize and create your own applications and resources.
 

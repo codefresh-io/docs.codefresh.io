@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Multi-environment parallel promotion"
+title: "Quick start: Advanced Promotion Flow: Parallel promotions across environments"
 description: "Promote product apps between environments in parallel"
 group: gitops-quick-start
 toc: true
@@ -8,34 +8,32 @@ redirect_from:
 ---
 
 
-In this quick start, we'll learn how to configure parallel promotions across multiple environments. Parallel environments allow parallel promotions across multiple environments. 
 
-Parallel promotions are ideal for scenarios like multi-region deployments, where updates must be promoted simultaneously to designated regions before proceeding to a production environment.
 
-## In this quick start - parallel multi-environment promotions
+## Advanced Promotion Flow: Parallel promotions across environments quick start
 
-To implement this flow, you’ll need additional environments and applications.
 
-In this quick start, we’ll:
-* Create two new environments  
-  Create two additional environments, `prod-asia` and `prod-eu` as `production` environments.  
-  For guidelines, see [Create an environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/#create-an-environment) in the Environments quick start.
 
-* Create new applications  
-  Create two different applications `demo-trioapp-eu`, `demo-trioapp-asia`, aligned to `prod-asia` and `prod-eu`.  
-  For guidelines, see [Create an application]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/#create-your-first-application) in the Applications quick start.
+Parallel environments allow promotions across multiple environments. Parallel promotions are ideal for scenarios like multi-region deployments, where updates must be promoted simultaneously to designated regions before proceeding to a production environment. 
 
-* Save as new Promotion Flow  
-  Save the existing `multi-env-sequential-promotion` Promotion Flow as a new flow entitled `multi-env-parallel-promotion`.
-  
-* Add parallel environments   
-  Add `prod-asia` and `prod-eu` as parallel environments in the `multi-env-parallel-promotion` Promotion Flow.
- 
-* Trigger the promotion  
-  Manually trigger the Promotion Flow from within the Flow Builder to orchestrate the promotion.
+This quick start describes how to configure parallel promotions in Promotion Flows.
 
-* Monitor release 
-  Track the progress of the promotion in the Releases tab for the `demo-trioapp` product.
+
+
+
+## Requirements
+
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
+* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+  Each environment must have an application for the product.
+  For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
+  The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
+  If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources. <!--- add a link to the repo? -->
+
+
 
 
 
@@ -54,12 +52,14 @@ You can copy the manifests and the resources for the new applications from the [
 ## Add parallel environments to Promotion Flow
 
 We'll enhance the Promotion Flow by adding multiple environments to execute promotions in parallel.  
-For this example, we’ll add `prod-asia` and `prod-eu` as additional production environments to `qa`. 
+
 
 ### Before you begin
-* Ensure you have more than one production environment.  
-  For example, the `demo-trioapp` product in this quick start is deployed to multiple production environments.
-* If necessary, add at least two applications to two different production environments before proceeding.
+* Ensure that you have: 
+    * More than one production environment  
+      For the quick start, we created `prod-asia` and `prod-eu` as additional production environments. 
+    * Applications in each of the new environments  
+      For the quick start, we created two different applications `demo-trioapp-eu`, `demo-trioapp-asia`, aligned to `prod-asia` and `prod-eu`.  
 
 
 {% include 
@@ -77,7 +77,7 @@ max-width="60%"
 1. Open the Settings panel:
     * **Name**: Change the name to create a new Promotion Flow, `multi-env-parallel-promotion`.
     * **Version**: Change the version to 1.00.
-1. Mouse over the right of the environment node before the final one in the flow and add the new environments.
+1. Mouse over the right of the environment node before the final one in the flow and add the new environments you created.
   For the quick start, we'll add `prod-eu` and `prod-asia` to `qa`.
 
   {% include 
@@ -123,10 +123,11 @@ max-width="60%"
 
 ## Trigger and view product release for parallel environment promotion
 
-Triggering a Promotion Flow with parallel environments promotes changes simultaneously across all defined parallel environments. 
-The release is considered successful only after all environments are promoted successfully.
+Trigger the new Promotion Flow with parallel environments to create a new release for the product. 
+Monitor the release to see changes promoted simultaneously across all defined parallel environments. 
 
-1. Open the `multi-env-parallel-promotion` Promotion Flow and click **Trigger**.
+
+1. Open the Promotion Flow with the parallel environments, `multi-env-parallel-promotion` for the quick start, and click **Trigger**.
 1. Select the product, the application to promote, and then click **Trigger** once again. 
 1. Click **View Release Details**.
 
@@ -145,9 +146,9 @@ max-width="60%"
 %}
 
 ## What's next
-The final quick start in this series will guide you through creating dependencies between environments to define the order for promotions.
+The final quick start on promotions will guide you through creating dependencies between environments to define the order for promotions.
 
-[Quick start: Multi-environment promotion with dependencies]({{site.baseurl}}/docs/gitops-quick-start/promotions/dependency-multi-env-promotion/)
+[Quick start: Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
 
  
  
