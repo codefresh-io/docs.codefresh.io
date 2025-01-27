@@ -418,7 +418,7 @@ url="/images/applications/current-state-ignore-extraneous-on.png"
 alt="Current State filtered by IgnoreExtraneous resources"
 caption="Current State filtered by IgnoreExtraneous resources"
 max-width="50%"
-%
+%}
 
 
 
