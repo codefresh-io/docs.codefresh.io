@@ -34,7 +34,7 @@ As with most GitOps entities, you have the option to configure Product Settings 
 No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/products/<product-name>.crd`.  
 
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#designating-configuration-runtimes).  
 
 For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/entities/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/).
 

@@ -58,7 +58,7 @@ Key features to note:
 * Ease of use  
   Set and unset a Configuration Runtime with just a click in the UI or a quick edit in your `values.yaml` file.
 
-For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
+For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#designating-configuration-runtimes).
 
 
 

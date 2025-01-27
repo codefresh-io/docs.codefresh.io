@@ -72,7 +72,7 @@ After creating Promotion Workflows, you can [manage workflows](#managing-promoti
 ##### Workflow settings in Shared Repo
 Once configured and committed, Promotion Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).   
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#designating-configuration-runtimes).   
 
 ## Annotation attribute for Promotion Workflows
 An Argo Workflow or a Workflow Template is classified as a Promotion Workflow when the following annotation is present in the workflow manifest:  
