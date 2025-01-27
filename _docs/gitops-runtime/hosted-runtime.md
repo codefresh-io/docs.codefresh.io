@@ -1,12 +1,16 @@
 ---
 title: "Hosted GitOps Runtime installation"
 description: "Set up your Hosted GitOps environment"
-group: installation
-sub_group: gitops
+group: gitops-runtime
+redirect_from:
+  - /docs/installation/gitops/hosted-runtime/
 toc: true
 ---
 
-
+{{site.data.callout.callout_warning}}
+**Deprecated**  
+This article has been deprecated as we do not support Hosted GitOps Runtimes.
+{{site.data.callout.end}}
 
  For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes.  
  Hosted GitOps Runtimes are fully managed and maintained by Codefresh. 
@@ -14,8 +18,8 @@ toc: true
 This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.
 
 
-For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
-For a comparison between the two types of Runtime installations, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops).
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-runtime/hybrid-gitops-helm-installation/).  
+For a comparison between the two types of Runtime installations, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/gitops-runtime/#hosted-vshybrid-gitops).
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**   
@@ -153,7 +157,7 @@ max-width="80%"
 Once you authorize access, Codefresh creates two Git repositories, one to store the configuration settings for GitOps Runtimes in the account, and the other to store the Runtime's application settings as a Git Source:
 * Shared Configuration Repository  
   The Shared Configuration Repository is a centralized Git repository that stores configuration settings for the Hosted GitOps Runtime. Additional Hybrid runtimes provisioned for the account can point to this repo to retrieve and reuse the configuration.  
-  Read about [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+  Read about [Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/).
 
   When you define the repository URL, you can also add the path, reference a branch, or both:
 
@@ -173,7 +177,7 @@ Once you authorize access, Codefresh creates two Git repositories, one to store 
 
 * Git Source application repo  
   Codefresh creates a Git Source application repo for every Hosted GitOps Runtime.  
-  Read about [Git sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+  Read about [Git sources]({{site.baseurl}}/docs/gitops-runtime/git-sources/).
 
 ##### Before you begin
 Make sure you have the credentials for the Git provider handy
@@ -255,7 +259,7 @@ max-width="80%"
 ## Step 3: Connect a Kubernetes cluster
 
 Connect a destination cluster to the Hosted GitOps Runtime and register it as a managed cluster. Deploy applications and configuration to the cluster.
-For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+For information on managed clusters and installing Argo Rollouts, see [Add and manage external clusters]({{site.baseurl}}/docs/gitops-runtime/managed-cluster/).
 
 
  {% include 
@@ -326,9 +330,9 @@ Optional. Integrate Codefresh with the third-party tools you use for CI to enric
 See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/git-sources/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
 

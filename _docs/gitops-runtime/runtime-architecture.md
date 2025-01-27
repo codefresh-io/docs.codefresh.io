@@ -1,7 +1,10 @@
 ---
 title: "GitOps Runtime architecture"
 description: "View components of GitOps Runtimes"
-group: installation
+group: gitops-runtime
+redirect_from:
+  - /docs/installation/gitops/hybrid-gitops/
+  - /docs/installation/gitops/runtime-architecture/
 toc: true
 ---
 
@@ -76,7 +79,6 @@ Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is e
 %}
 
 ## Runtime components
-
 ### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
@@ -174,8 +176,7 @@ In monorepo environments where multiple applications share a single repository, 
 
 ##### Configuration
 
-The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
-
+The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
 
 ### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
@@ -187,7 +188,7 @@ It receives requests from the the Tunnel Client (tunnel-based) or the ingress co
   Older Runtime versions are not affected as the ingress controller continues to route incoming requests and there is full backward compatibility.
 {{site.data.callout.end}}
 
-### Tunnel Server
+## Tunnel Server
 Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
 The Codefresh Tunnel Server is installed in the Codefresh platform. It communicates with the enterprise cluster located behind a NAT or firewall.  
 
@@ -211,15 +212,15 @@ The Tunnel Client:
 
 
 ### Customer environment
-The customer environment communicates with the GitOps Runtime and Codefresh, and generally includes:
+The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/gitops-runtime/runtime-ingress-configuration/).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned GitOps Runtimes for application deployment.  
   <!---  Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  -->
   Hybrid GitOps allow you to add external clusters after provisioning the Runtimes.  
-  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
+  See [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtime/managed-cluster/).
 * Organizational systems  
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the ingress controller (ingress-based hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
@@ -228,5 +229,5 @@ The customer environment communicates with the GitOps Runtime and Codefresh, and
 ## Related articles
 <!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)-->
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)   
+{% if page.url contains '/docs/' %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)  {% endif %}  
  

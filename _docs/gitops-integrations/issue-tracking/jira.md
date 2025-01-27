@@ -70,7 +70,7 @@ Codefresh uses the Secret Key stored in the runtime cluster to securely access J
 
 
 ## Related articles
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/)  
 [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/)  
 [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  

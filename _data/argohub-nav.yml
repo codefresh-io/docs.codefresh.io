@@ -1,0 +1,151 @@
+- title: ArgoHub Introduction
+  url: "/introduction"
+  pages:
+    - title: What is Codefresh?
+      url: "/intro-to-codefresh"
+    - title: Only for ArgoHub
+      url: "/some-new-doc"
+
+
+
+- title: Platform Installation
+  url: "/installation"
+  pages:
+    - title: Platform deployment
+      url: "/installation-options"
+
+- title: GitOps Runtimes
+  url: "/gitops-runtime"
+  pages:
+    - title: What's changed in GitOps Runtimes
+      url: "/gitops-runtimes-whats-changed"    
+    - title: About GitOps Runtimes
+      url: "/gitops-runtime"  
+    - title: GitOps Runtime architecture
+      url: "/runtime-architecture"
+    - title: Runtime essentials
+      url: "/runtime-concepts"
+    - title: System requirements & prerequisites
+      url: "/runtime-system-requirements"
+    - title: Ingress controller configuration
+      url: "/runtime-ingress-configuration"
+    - title: Install Hybrid GitOps Runtime
+      url: "/hybrid-gitops-helm-installation" 
+    - title: Install Hybrid GitOps Runtime alongside Community Argo CD
+      url: "/argo-with-gitops-side-by-side"        
+    - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
+      url: "/migrate-cli-runtimes-helm"  
+    - title: Monitoring & managing GitOps Runtimes
+      url: "/monitor-manage-runtimes"
+    - title: Shared Configuration Repository
+      url: "/shared-configuration"
+    - title: Managing external clusters in GitOps Runtimes
+      url: "/managed-cluster"
+    - title: Managing Git Sources in GitOps Runtimes
+      url: "/git-sources"
+
+
+- title: Quick starts
+  url: "/quick-start"
+  pages:
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"
+    - title: CI/CD quick starts
+      url: "/ci-quick-start"
+      sub-pages:
+        - title: Pipeline quick start
+          url: "/create-ci-pipeline"
+        - title: Kubernetes deployment quick start
+          url: "/deploy-to-kubernetes"
+        - title: Helm quick start
+          url: "/deploy-with-helm"
+        - title: On-demand environment quick start
+          url: "/on-demand-environments"
+    - title: GitOps quick starts
+      url: "/gitops-quick-start"
+      sub-pages:
+        - title: Provision a Hosted GitOps Runtime
+          url: "/install-hosted"
+        - title: Prepare for Hybrid GitOps Runtime installation
+          url: "/verify-requirements"
+        - title: Install a Hybrid GitOps Runtime
+          url: "/runtime"
+        - title: Create an application
+          url: "/create-app-ui"
+        - title: Create and commit resources for application
+          url: "/create-app-specs"
+        - title: Update the image tag for application
+          url: "/create-rollout"
+        - title: Work with Environments & Products
+          url: "/gitops-products"
+
+- title: Dashboards & insights
+  url: "/dashboards"
+  pages:
+    - title: Home dashboard
+      url: "/home-dashboard"
+    - title: GitOps Environments
+      url: "/gitops-environments"
+    - title: GitOps Products
+      url: "/gitops-products"
+    - title: DORA metrics
+      url: "/dora-metrics"
+    - title: Images
+      url: "/images"
+
+- title: Products
+  url: "/products"
+  pages:
+    - title: About Products
+      url: "/about-products"
+    - title: Create products
+      url: "/create-product"
+    - title: Configure Product Settings
+      url: "/configure-product-settings"
+    - title: Assigning applications
+      url: "/assign-applications"      
+    - title: Configuring app version and promoted properties
+      url: "/promotion-version-properties"
+    - title: Configuring promotion flows
+      url: "/promotion-flow-triggers"
+
+
+- title: Promotions
+  url: "/promotions"
+  pages:
+    - title: About promotions
+      url: "/promotions-overview"
+    - title: Getting started
+      url: "/getting-started"  
+    - title: Promotion tutorials
+      url: "/promotion-scenarios"
+    - title: Promotion building blocks
+      url: "/promotion-components"
+    - title: Promotion setup guidelines
+      url: "/create-promotion-sequence"
+    - title: Entity configuration
+      url: "/entities"
+      sub-pages: 
+      - title: Promotion Flows
+        url: "/promotion-flow"     
+      - title: Promotion Policies
+        url: "/promotion-policy"  
+      - title: Promotion Workflows
+        url: "/promotion-workflow"  
+      - title: Product Settings
+        url: "/product-promotion-props"          
+      - title: YAML specs
+        url: "/yaml"
+        sub-pages:
+        - title: Product YAML
+          url: "/product-crd"
+        - title: Promotion Template YAML
+          url: "/promotion-template-crd"
+        - title: Promotion Flow YAML
+          url: "/promotion-flow-crd"
+        - title: Promotion Policy YAML
+          url: "/promotion-policy-crd"
+    - title: Trigger promotions
+      url: "/trigger-promotions"   
+    - title: Tracking releases for products
+      url: "/product-releases"     

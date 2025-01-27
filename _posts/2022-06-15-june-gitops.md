@@ -13,7 +13,7 @@ After defining the repository in which to store configuration settings, you can 
 
 Older versions of hybrid runtimes without the shared repository must be upgraded to the latest version  to  leverage the  shared configuration, specifically for integrations with CI platforms and tools.  
 
-For details, see [Shared runtime configuration repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+For details, see [Shared runtime configuration repo]({{site.baseurl}}/docs/gitops-runtime/shared-configuration/).
 
 ### Logs for runtime components
 
@@ -44,7 +44,7 @@ Download logs for offline viewing and analysis, or view logs per component onlin
    max-width="60%"
   %}
 
-For details, see [View/download runtime logs]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes).
+For details, see [View/download runtime logs]({{site.baseurl}}/docs/gitops-runtime/monitor-manage-runtimes/#viewdownload-logs-to-troubleshoot-gitops-runtimes).
 
 ### OAuth2 authentication
 
