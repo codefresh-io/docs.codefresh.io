@@ -26,7 +26,7 @@ For details on access modes, see [GitOps Runtime architecture]({{site.baseurl}}/
 ### GitHub as the Git provider  
 The Hybrid GitOps Runtime requires a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
 
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
+The quick start uses GitHub as the Git provider and classic tokens. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
 
 ##### Git Runtime token
 Have your GitHub Runtime token ready with a valid expiration date and access permissions:
@@ -51,7 +51,7 @@ Have your GitHub user token ready with a valid expiration date and access permis
 For detailed information on GitHub tokens, see the [GitHub article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ### Shared Configuration Repository
-As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests, common to all Runtimes in the account.
+As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests common to all Runtimes in the account.
 
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
 

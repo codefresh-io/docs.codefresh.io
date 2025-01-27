@@ -5,22 +5,27 @@ group: gitops-quick-start
 toc: true
 ---
 
-In this quick start, we'll focus on creating a Git Source for the GitOps Runtime we installed in the previous quick start. 
+In this quick start, we'll focus on creating a Git Source for the GitOps Runtime you installed.
+
 
 ##### Why create a Git Source?
 A Git Source is a unique entity for use with GitOps Runtimes in Codefresh.  
-The Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
-
-The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. You can manage the Git Source itself as an Argo CD application.
+The Git Source connects to a Git repository within your organization. The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. You can manage the Git Source itself as an Argo CD application.
 
 For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
 
+## Requirements
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 
 
 ## Create a Git Source
-Create the Git Source for the Runtime installed earlier to reference the Git repo corresponding to the Git Source. 
-You can automatically create the repo at the same time as the Git Source.
+Create the Git Source for the Runtime installed to reference the Git repo corresponding to the Git Source.  
+If you don't have a repo, you can automatically create it at the same time as the Git Source.
 
+{{site.data.callout.callout_tip}}
+If you plan to use our public Git repository with the application manifests, ensure that you point the Git source to this [repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/argocd-app-manifests){target="\_blank"} during setup.
+
+##### How to
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. In the List View, select the Runtime you installed earlier, and then click the **Git Sources** tab.  
@@ -28,8 +33,10 @@ You can automatically create the repo at the same time as the Git Source.
     * **Git Source Name**: A name for the Git Source, `demo-trio-gitsource` for the quick start to tie in with set of applications we'll create later.
     * **Type**: Retain **Standard Git Source**.
     * **Source**: 
-      * Select **Create a new repository** to automatically create the repository in GitHub.
-      * **Repository**: Enter the full path to the repository, including the `.git` extension. For the quick start, we'll define `https://github.com/codefresh-sandbox/demo-git-source.git`.
+      * Select **Create a new repository** to automatically create the repository in GitHub if it doesn't exist.
+      * **Repository**: Enter the full path to the repository, including the `.git` extension.  
+	    To use our public repository, define `https://github.com/codefresh-sandbox/codefresh-quickstart-demo.git`.  
+		For the quick start, we'll define `https://github.com/codefresh-sandbox/demo-git-source.git`.
       * **Branch**: `main`.  
   Leave all other settings as is.
 
