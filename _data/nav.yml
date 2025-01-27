@@ -614,8 +614,10 @@
           url: "/migrate-cli-runtimes-helm"  
         - title: Shared Configuration Repository
           url: "/shared-configuration"
-        - title: Monitoring & managing GitOps Runtimes
-          url: "/monitor-manage-runtimes"
+        - title: Monitoring GitOps Runtimes
+          url: "/monitor-runtimes"
+        - title: Managing GitOps Runtimes
+          url: "/manage-runtimes"
         - title: Managing external clusters in GitOps Runtimes
           url: "/managed-cluster"
         - title: Managing Git Sources in GitOps Runtimes
