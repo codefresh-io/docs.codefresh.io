@@ -425,8 +425,6 @@
       url: "/promotions-overview"
     - title: Getting started
       url: "/getting-started"  
-    - title: Promotion tutorials
-      url: "/promotion-scenarios"
     - title: Promotion building blocks
       url: "/promotion-components"
     - title: Promotion setup guidelines

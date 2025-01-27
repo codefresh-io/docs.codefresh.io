@@ -10,7 +10,6 @@ Continuous Delivery (CD) is an essential practice in the Software Development Li
 A core element of CD is **promotion** - the process of advancing an application version through environments, such as from staging to production, based on predefined criteria or approvals. Promotion sequences ensure that only validated, stable versions of applications only validated, stable versions reach production, reducing risk with every release.
 
 
-
 ##### Promotions with GitOps: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   
 
@@ -27,7 +26,7 @@ max-width="60%"
 Here’s what makes Codefresh's GitOps promotions unique:
 
 * **Declarative and version-controlled**  
-  Promotions are tracked in Git as code. Every promotion is tied to a Git commit, giving you full traceability and version control. This means teams can always see who approved or triggered a promotion and why.
+  Promotions are tracked in GitOps as code. Every promotion is tied to a Git commit, giving you full traceability and version control. This means teams can always see who approved or triggered a promotion and why.
 
 <!--- * **Automated Git sync**  
   With GitOps, the desired state of environments is automatically synced based on the Git repository, ensuring that any promotion aligns with the latest approved application version.  -->
@@ -85,7 +84,7 @@ Review these articles to begin with GitOps promotions:
 
 * **Understand the components and entities**: Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) to learn about the key entities and how they fit together in the promotion process.
 * **Set up and configure promotions**: Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.
-* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for step-by-step guides to get started efficiently.
+* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start) for step-by-step guides to get started efficiently.
 
 
 
