@@ -28,7 +28,7 @@ The GitOps Runtime is the cornerstone of Codefresh’s GitOps capabilities, simp
 
 
 
-Explore these quick starts to prepare your setup, install a GitOps Runtime, and create a Git source, before you continue with application promotions and deployments.
+Explore these quick starts to prepare your environment for GitOps Runtime installation, install a GitOps Runtime, and create a Git source, before you continue with application promotions and deployments.
 
 [Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)  
 [Quick start: Installing a Hybrid GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/runtime/)  

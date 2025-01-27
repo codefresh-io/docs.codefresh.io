@@ -21,11 +21,11 @@ Based on your deployment model, start by installing the [Codefresh Runner]({{sit
 
 
 ## Create a Codefresh account
-[Create an account in Codefresh]({{site.baseurl}}/docs/ci-quick-start/create-codefresh-account/) in which to create pipelines.
+[Create an account in Codefresh]({{site.baseurl}}/docs/ci-quick-start/ci-create-codefresh-account/) in which to create pipelines.
 
 ## Create and deploy Codefresh pipelines
 
-1. [Create a  pipeline]({{site.baseurl}}/docs/ci-quick-start/create-ci-pipeline/)  
+1. [Create a pipeline]({{site.baseurl}}/docs/ci-quick-start/create-ci-pipeline/)  
   Create a Continuous Integration pipeline using an example application.
 1. [Deploy to Kubernetes]({{site.baseurl}}/docs/ci-quick-start/deploy-to-kubernetes/)  
   Deploy an application to a Kubernetes cluster from the Codefresh UI, and set up an automated pipeline to redeploy the application whenever there are changes in the source code.

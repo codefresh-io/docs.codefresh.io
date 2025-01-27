@@ -85,7 +85,7 @@ The table describes the arguments required to connect Codefresh pipelines to Cod
 Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
 {{site.data.callout.end}}
 
-For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).
+For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
 
 
 {: .table .table-bordered .table-hover}

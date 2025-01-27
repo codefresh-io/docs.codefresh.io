@@ -39,7 +39,7 @@ enhance consistency, create reusable templates that apply across products.
 
 
 
-### Prerequisites
+## Prerequisites
 1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)  
    The Configuration Runtime is a GitOps Runtime that stores the manifests of the promotion entities.  
    Designate at least one GitOps Runtime as the Configuration Runtime.  
@@ -51,7 +51,7 @@ enhance consistency, create reusable templates that apply across products.
 1. [User permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
   Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
-### Tasks
+## Tasks
 1. [Create environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments)  
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
@@ -97,7 +97,7 @@ enhance consistency, create reusable templates that apply across products.
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
+[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 

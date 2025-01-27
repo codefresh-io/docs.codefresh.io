@@ -18,7 +18,7 @@
   url: "/ci-quick-start"
   pages:
     - title: Create Codefresh account
-      url: "/create-codefresh-account"
+      url: "/ci-create-codefresh-account"
     - title: Pipeline quick start
       url: "/create-ci-pipeline"
     - title: Kubernetes deployment quick start
@@ -314,6 +314,9 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"
+        - title: Complete argument reference
+          url: "/ci-argument-reference"
+
     - title: GitOps issue tracking integrations
       url: "/issue-tracking"
       sub-pages:
