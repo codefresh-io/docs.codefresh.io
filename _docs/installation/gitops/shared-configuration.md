@@ -55,6 +55,7 @@ See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
   When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation: Set up Git provider]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-2-set-up-gitops-git-provider).  
 
 
+
 <!--- 
 >>**NOTE**  
   Currently, Codefresh supports a single Shared Configuration Repo per account.
@@ -305,7 +306,8 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 [GitOps Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)  
 [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)   
-[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/monitor-manage-runtimes/)  
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/git-sources/)  
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/managed-cluster/)  
 
