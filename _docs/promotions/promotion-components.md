@@ -109,7 +109,7 @@ The table describes the core and promotion-specific entities.
 
 ## Promotion entities and GitOps Runtimes
 
-Most of the core and promotion-specific entities are stored as Custom Resource Definitions (CRDs) in the Shared Configuration Repository of the GitOps Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#designating-configuration-runtimes). 
+Most of the core and promotion-specific entities are stored as Custom Resource Definitions (CRDs) in the Shared Configuration Repository of the GitOps Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/). 
 If you have more than one Configuration Runtime, Codefresh automatically consolidates the settings into a single set of promotion manifests.
 
 >**NOTE**  

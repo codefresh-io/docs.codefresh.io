@@ -4,6 +4,7 @@ description: "Orchestrate promotion for products across environment with Promoti
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/
+ - /docs/promotions/entities/
 toc: true
 ---
 A Promotion Flow is a sequence of automated actions that systematically move code changes through environments, from development to production. This structured approach enhances deployment reliability and efficiency, ensuring changes meet quality standards before reaching end users.
@@ -32,8 +33,7 @@ The Flow Builder visually guides you through creating any type of Promotion Flow
 
 Once configured and committed, Promotion Flow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-flows`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
-
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
 
 
 ## Types of Promotion Flows: Sequential, parallel, dependencies

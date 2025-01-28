@@ -46,14 +46,14 @@ The Shared Configuration Repository (internally `ISO`/`iso`), is created on inst
 You need to provide the URL to the Git repository to use as the Shared Configuration Repo. You can define the Shared Config Repo using only the repository URL, or add the path, reference a branch, or both.
 Codefresh identifies the Git provider from the URL provided, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
-For information on the structure and the type of manifests stored, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/#designating-configuration-runtimes).
+For information on the structure and the type of manifests stored, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 ## Configuration Runtimes
 A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products promotions in GitOps ensure smooth platform operations. You can designate a Configuration Runtime through the UI or the `values.yaml`. 
 
 When you designate a Configuration Runtime, Codefresh creates a folder entitled `configuration` within `resources` in the Shared Configuration Repository to store product and promotion configuration settings.
 
-For information on how to designate Configuration Runtimes, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#)
+For information on how to designate Configuration Runtimes, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
 
 ## Git Sources in Runtimes
 A Git Source is a unique entity created for use with GitOps Runtimes in Codefresh. 

@@ -37,10 +37,10 @@ Both deployments offer:
 
 
 {% if page.url contains '/argohub/' %}
-Codefresh Argohub is a lightweight, SaaS-only platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
+Codefresh GitOps Cloud is a lightweight, SaaS platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
 
-Focused exclusively on GitOps, Argohub empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps.
-As a SaaS-only offering, Argohub eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
+Focused exclusively on GitOps, GitOps Cloud empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps.
+As a SaaS offering, GitOps Cloud eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
 {% include image.html
   lightbox="true"
