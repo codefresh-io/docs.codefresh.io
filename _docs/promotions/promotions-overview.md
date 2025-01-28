@@ -85,7 +85,7 @@ Review these articles to begin with GitOps promotions:
 
 * **Understand the components and entities**: Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) to learn about the key entities and how they fit together in the promotion process.
 * **Set up and configure promotions**: Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.
-* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/) for step-by-step guides to get started efficiently.
+* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.
 
 
 
