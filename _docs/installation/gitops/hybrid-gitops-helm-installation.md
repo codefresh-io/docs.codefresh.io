@@ -494,9 +494,9 @@ You can always create Git Sources after installation whenever you need to in the
 Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
 
 * Complete configuring these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer](#create-an-alias-to-load-balancer-in-route53)
-  * [Istio: Configure cluster routing service](#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret](#patch-certificate-secret)
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#create-an-alias-to-load-balancer-in-route53)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
 
 That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. View the Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
 

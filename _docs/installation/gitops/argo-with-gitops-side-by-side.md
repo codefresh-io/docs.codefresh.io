@@ -15,7 +15,99 @@ If you have a cluster with a version of Community Argo CD already installed, you
 * **Gradual migration to GitOps applications**  
   After becoming familiar with Codefresh GitOps, make informed decisions when migrating your Argo CD Applications to Codefresh GitOps.  
 
-  For a smooth transition from Argo CD Applications to Codefresh, migrate them at your preferred pace. On successful migration, view, track, and manage all aspects of the applications in Codefresh.
+  For a smooth transition from Argo CD Applications to the same managed by Codefresh, migrate them at your preferred pace. After successful migration, view, track, and manage all aspects of the applications in Codefresh.
+
+## What you need to be aware of
+Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based:
+
+* `fullnameOverride` configuration for resource conflicts  
+  Conflicts can occur when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
+  Customizing `fullnameOverride` values for Argo CD (and Argo Rollouts if installed) in the GitOps Runtime's `values` file prevents these conflicts.
+
+
+* Resource tracking with `annotation`  
+  Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation+label` prevents such conflicts. 
+
+
+
+## `values.yaml` validation
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
+
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+A validation error will automatically terminate the installation.
+
+You can disable automated validation globally for all installation settings, or for only the ingress controller for example, and run validation manually. 
+
+### Validated settings
+The table below lists the settings validated in the `values` file.
+
+{: .table .table-bordered .table-hover}
+|**Setting**              |**Validation**            | 
+| --------------         | --------------           |  
+|**userToken**            |If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace.|
+|**Account permissions**  |If the user has admin permissions for the account in which they are installing the runtime. |
+| **Runtime name**        |If defined, and is unique to the account. |
+|**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if <code class="highlighter-rouge">accountId</code> is defined, and matches the account of the <code class="highlighter-rouge">userToken</code> defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if <code class="highlighter-rouge">runtime.ingressUrl</code> is defined.</li></ul>{:/} |
+|**gitCredentials**      |{::nomarkdown}<ul><li>When defined, if includes a Git password either explicitly, or as a <code class="highlighter-rouge">secretKeyRef</code>, similar to <code class="highlighter-rouge">userToken</code>.</li><li>The password or token has the required permissions in the Git provider.</li></ul>{:/} |
+
+### Validation failures
+If there is a validation failure, Codefresh terminates the installation with the error message:  
+`Job has reached the specified backoff limit`  
+
+To get more detailed and meaningful information on the reason for the validation failure, run:  
+`kubectl logs jobs/validate-values -n ${NAMESPACE}`  
+where:  
+* `{NAMESPACE}` must be replaced with the namespace of the Hybrid GitOps Runtime.
+
+### Disable global installation validation
+You may want to disable automated validation for specific scenarios, such as to address false-negatives.
+
+To do so, either add the `--set installer.skipValidation=true` flag to the Helm install command, or the `installer.skipValidation: true` the `values` file. 
+
+
+##### In install command 
+`--set installer.skipValidation=true` 
+
+##### In values file 
+{% highlight yaml %}
+{% raw %} 
+...
+installer: skipValidation: true
+... 
+{% endraw %}
+{% endhighlight %}
+
+### Disable ingress validation
+Ingress validation checks if the ingress URL exists and responds to web requests. 
+During a GitOps Runtime installation, the ingress might not be active yet, causing DNS errors despite correct configuration. Disabling ingress validation allows the installation to proceed, assuming the ingress will work once the Runtime is fully operational.
+
+Similar to disabling installation validation globally, you disable the validation for ingress by either adding the flag to the Helm install command, or by adding the line to the relevant section in the `values` file. 
+
+##### In install command
+
+`--set global.runtime.ingress.skipValidation=true`
+
+##### In values file 
+
+{% highlight yaml %}
+{% raw %} 
+...
+global:
+  runtime:
+    ingress:
+      skipValidation: true
+... 
+{% endraw %}
+{% endhighlight %}
+
+### Manually validate values.yaml
+To manually validate the values file, run:  
+`cf helm validate --values <values_file> --namespace <namespace> --version <version>`  
+where:  
+* `<values_file>` is the name of the `values.yaml` used by the Helm installation.
+* `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects.
+* `<version>` is the version of the runtime to install.
+
 
 
 ## Before you begin
@@ -132,7 +224,7 @@ The Namespace must conform to the naming conventions for Kubernetes objects.
 **Access modes**  
 You can define one of three different access modes:
 * Tunnel-based, the default mode, is automatically enabled when the other access modes are not defined in the installation command.
-* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
+* Ingress-based, uses an ingress controller, which, depending on the type of ingress controller, may need to be configured both before and after installation. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 * Service-mesh-based, which requires explicitly disabling the tunnel- and ingress-based modes in the installation command. The service mesh may also need to be configured before and after installation. See [Ingress controller configuration](#ingress-controller-configuration) in this article.
 
 <br>
@@ -172,9 +264,16 @@ helm upgrade --install <helm-release-name> \
   --set global.codefresh.accountId=<codefresh-account-id> \
   --set global.codefresh.userToken.token=<codefresh-api-key> \
   --set global.runtime.name=<runtime-name> \
+  --set argo-cd.fullnameOverride=codefresh-argo-cd \
+  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
+  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \  
   oci://quay.io/codefresh/gitops-runtime \
   --wait
 {% endhighlight %}
+
+
+
+
 
 <br>
 
@@ -188,6 +287,9 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingress.enabled=true \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \
+  --set argo-cd.fullnameOverride=codefresh-argo-cd \
+  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
+  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \  
   oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
@@ -203,6 +305,9 @@ helm upgrade --install <helm-release-name> \
   --set global.runtime.ingressUrl=<ingress-url> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
+  --set argo-cd.fullnameOverride=codefresh-argo-cd \
+  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
+  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \  
   oci://quay.io/codefresh/gitops-runtime \
   --wait  
 {% endhighlight %}
@@ -223,9 +328,10 @@ helm upgrade --install <helm-release-name> \
         * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that is the entry point to the cluster.
         * `global.runtime.ingress.enabled=false` disables the ingress-based access mode.
         * `tunnel-client.enabled=false` disables the tunnel-based access mode.
+      * `argo-cd.fullnameOverride=codefresh-argo-cd` is _mandatory_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
+      * `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is _mandatory_ when you have Argo Rollouts in your cluster to avoid conflicts.
+      * `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label` is _mandatory_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
       * `--wait` is optional, and when defined, waits until all the pods are up and running for the deployment.
-
-
 
 {:start="5"}
 1. Wait for a few minutes, and then click **Close**.
@@ -387,39 +493,14 @@ You can always create Git Sources after installation whenever you need to in the
 1. Continue with [Step 8: (Optional) Configure ingress-controllers](#step-8-optional-configure-ingress-controllers).
 
 ### Step 8: (Optional) Configure ingress-controllers
+Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
 
-After completing the configuration changes, you can install the Hybrid GitOps Runtime via Helm. 
-
-Most of the steps to install the GitOps Runtime are identical for both types of (clean and alongside Community Argo CD) installations.<br> 
-Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based:
-
-* `fullnameOverride` configuration for resource conflicts  
-  Conflicts can occur when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
-  Customizing `fullnameOverride` values for Argo CD (and Argo Rollouts if installed) in the GitOps Runtime's `values` file prevents these conflicts.
+* Complete configuring these ingress controllers:
+  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#create-an-alias-to-load-balancer-in-route53)
+  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
 
 
-* Resource tracking with `annotation`  
-  Installing the GitOps Runtime on the same cluster as Argo CD requires that each Argo CD instance uses a different method to track resources. Using the same tracking method can result in conflicts when both instances have applications with the same names or when tracking the same resource. Setting the GitOps Runtime's Argo CD resource tracking to `annotation+label` prevents such conflicts. 
-
-Before you begin installation, review [Additional installation flags for GitOps Runtime with Community Argo CD](#additional-installation-flags-for-hybrid-gitops-runtime-with-community-argo-cd), and then follow our [step-by-step installation guide]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-first-gitops-runtime-in-account) to install the Hybrid GitOps Runtime via Helm.  
-
-
-##### Additional installation flags for Hybrid GitOps Runtime with Community Argo CD
-
-These are the flags to add to the install command when installing alongside Community Argo CD:
-
-{% highlight yaml %}
-...
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \
-...
-{% endhighlight %}
-
-where:
-* `argo-cd.fullnameOverride=codefresh-argo-cd` is mandatory to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
-* `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is mandatory when you have Argo Rollouts in your cluster to avoid conflicts.
-* `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label` is mandatory to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
 
 
 ## Remove Rollouts controller deployment
@@ -442,7 +523,7 @@ Because this allows you to completely and seamlessly manage the applications in 
 
 
 The process to migrate an Argo CD Application is simple:
-1. Add a Git Source to the GitOps Runtime to which store application manifests
+1. Add a Git Source to the GitOps Runtime to which to store application manifests
 1. Make the needed configuration changes in the Argo CD Application
 1. Commit the application to the Git Source for viewing and management in Codefresh
 
