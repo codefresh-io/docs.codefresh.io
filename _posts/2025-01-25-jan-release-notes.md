@@ -28,14 +28,14 @@ When creating a Promotion Flow, you can define several settings, including the F
 * **Flow Timeout**: Ensures Promotion Flows don’t run indefinitely by setting a maximum duration for execution. If a Flow exceeds this duration, it is automatically terminated.  
   **Why is this useful?**  
    * Manual approval delays: In PR-driven flows, the timeout automatically terminates the Flow if required approvals aren’t provided within the defined time frame.  
-   * Misconfigured tests: It can prevent new Promotion Flows from running indefinitely due to errors in testing configurations. 
+   * Misconfigured tests: Prevents new Promotion Flows from running indefinitely due to errors in testing configurations. 
   The default timeout, if not explicitly set, is 1 day (24 hours).
 * **Version**: Allows you to indicate changes to the same Promotion Flow. 
 
 For details, see [Create a Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/#create-a-promotion-flow).
 
 ### GitOps: Product Releases enhancements
-We've made several improvements to the Product Releases page to enhance traceability and clarity.
+We've made several improvements to the Product Releases page enhancing traceability and clarity.
 
 {% include 
    image.html 
@@ -47,8 +47,8 @@ We've made several improvements to the Product Releases page to enhance traceabi
    max-width="60%" 
    %}
 
-* **Date**: The Release ID has been replaced with the date the release was initiated, making it easier to track when each release occurred. Failed releases now show a tooltip with a summary of the failure reason, improving troubleshooting.
-* **Initiator**: The name of the user who initiated the Promotion Flow and triggered the release is now displayed, helping with better traceability and accountability.
+* **Date**: The Release ID has been replaced with the date when the release was initiated, making it easier to track when each release occurred. Failed releases now show a tooltip with a summary of the reason for the failure, improving troubleshooting.
+* **Initiator**: The name of the user who initiated the Promotion Flow that triggered the release is now displayed, helping with better accountability.
 * **Version**: The version defined in the Promotion Flow settings is now also shown on the Product Releases page, providing more context and consistency for each release.
 
 For details, see [Tracking releases for products]({{site.baseurl}}/docs/promotions/product-releases/).
