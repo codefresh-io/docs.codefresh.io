@@ -25,11 +25,11 @@ When creating a Promotion Flow, you can define several settings, including the F
    max-width="60%" 
    %}
 
-* **Flow Timeout**: Ensures Promotion Flows don’t run indefinitely by setting a maximum duration for execution. If a Flow exceeds this duration, it is automatically terminated.
+* **Flow Timeout**: Ensures Promotion Flows don’t run indefinitely by setting a maximum duration for execution. If a Flow exceeds this duration, it is automatically terminated.  
   **Why is this useful?**  
    * Manual approval delays: In PR-driven flows, the timeout automatically terminates the Flow if required approvals aren’t provided within the defined time frame.  
-   * Misconfigured test: It can prevent new Promotion Flows from running indefinitely due to errors in testing configurations  
-  The default timeout is 1 day (24 hours) if not explicitly set.
+   * Misconfigured tests: It can prevent new Promotion Flows from running indefinitely due to errors in testing configurations. 
+  The default timeout, if not explicitly set, is 1 day (24 hours).
 * **Version**: Allows you to indicate changes to the same Promotion Flow. 
 
 For details, see [Create a Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/#create-a-promotion-flow).
