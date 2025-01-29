@@ -1,6 +1,7 @@
 ---
 title: "Pipelines Changelog: January to December 2020"
 description: "Changelog for Pipelines 2020 (Classic)"
+gitops: false
 ---
 
 

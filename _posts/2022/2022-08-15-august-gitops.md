@@ -1,6 +1,7 @@
 ---
 title: "GitOps Release Notes: August 2022"
 description: "Changelog and Release Notes for GitOps"
+gitops: true
 ---
 
 ## Features & enhancements

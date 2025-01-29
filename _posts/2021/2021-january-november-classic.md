@@ -1,6 +1,7 @@
 ---
 title: "Piplelines Changelog: January to November 2021"
 description: "Changelog and Release Notes for Pipelines (Classic)"
+gitops: false
 ---
 
 

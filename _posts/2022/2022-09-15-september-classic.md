@@ -1,6 +1,7 @@
 ---
 title: "Pipelines Changelog: September 2022"
 description: "Changelog and Release Notes for Pipelines"
+gitops: false
 ---
 
 ## Features and enhancements

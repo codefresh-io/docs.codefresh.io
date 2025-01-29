@@ -1,6 +1,7 @@
 ---
 title: "Pipelines Changelog: January 2022"
 description: "Changelog and Release Notes for Pipelines"
+gitops: false
 ---
 
 - Store test results using MinIO objects - [documentation]({{site.baseurl}}/docs/testing/test-reports/#connecting-minio-storage)
