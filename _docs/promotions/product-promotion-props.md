@@ -17,16 +17,7 @@ By automating these configurations, promotion settings by product reduce manual 
 ##### What promotion settings can you configure for the product?
 * Product version (for Helm-based applications)
 * Properties to promote
-* Promotion Flows for the product and their triggers
-
-
-
-## Product version for promotion
-The product version specifies the source of the version you want to promote. 
-
-
-##### Why is it important?
-Defining a source for the product version ensures that each promotion action consistently targets the correct version of your product's applications. This minimizes risks associated with version mismatches, maintains application integrity, and provides a traceable version history.
+* Promotion Flows and their triggers
 
 {% include 
 image.html 
@@ -39,15 +30,22 @@ max-width="60%"
 %}
 
 
+## Product version for promotion
+The product version specifies the source of the version you want to promote. 
+
+
+##### Why is it important?
+Defining a source for the product version ensures that each promotion action consistently targets the correct version of your product's applications. This minimizes risks associated with version mismatches, maintains application integrity, and provides a traceable version history.
+
+
 >**NOTE**  
-The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_.  
-For other application types, product versions are not displayed versions even when configured.
+The Environments, Product, and GitOps Apps dashboards display the product version _only for Helm application types_. For other application types, product versions are not displayed versions even when configured.
 
 ##### Version attribute
-The Version attribute is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest. It's defined as a JSON path expression.  
+The Version attribute, defined as a JSON path expression, is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.   
 Review [examples of version attributes]({{site.baseurl}}/docs/products/promotion-version-properties/#examples-of-version-attributes).
 
-For details, see [Configuring app version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties).
+For details, see [Configuring versions for promoted applications]({{site.baseurl}}/docs/docs/products/promotion-version-properties/).
 
 
 ## Product properties for promotion
@@ -58,10 +56,10 @@ Configuring properties combines precision with automation, ensuring that promoti
 Defining properties to be promoted for products simplifies cross-environment promotions, enforces deployment standards, and enables targeted updates.
 
 ##### Property attributes
-You can define multiple files, or attributes within a file at any level, through JSON path expressions, as promotable properties. 
+You can define multiple files, or attributes within a file at any level, through JSON path expressions, as properties for promotion. 
 Review [examples of promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/#examples-of-properties-for-promotion).
 
-For details, see [Configuring app version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties).
+For details, see [Configuring properties for promotion across applications]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-properties-for-promotion-across-applications).
 
 
 
