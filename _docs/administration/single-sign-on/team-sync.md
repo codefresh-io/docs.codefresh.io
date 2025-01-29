@@ -29,8 +29,8 @@ Codefresh validates if the user has access to the accounts specified, and during
 
 
 -->
-### Team-sync support in Codefresh for SSO providers
-The table lists the SSO providers supported in Codefresh and the team-sync option available for them.
+### Team-sync support for SSO providers
+The table lists the SSO providers supported and the team-sync option available for them.
 
 {: .table .table-bordered .table-hover}
 | Protocol   | SSO provider              | Team-sync    | |  
@@ -54,7 +54,8 @@ The table lists the SSO providers supported in Codefresh and the team-sync optio
 ### Automated team-sync in Codefresh UI
 
 The automated team-sync option is only available in the Codefresh UI.  
-This is the general workflow for automated team-sync in Codefresh:
+
+##### Flow for automated team-sync
 
 1. Codefresh syncs users and groups through the SSO API, and grants SSO permissions for each invited user during sync.
 1. You set up the SSO provider in Codefresh, and select one or both options for automated team-sync:
@@ -92,7 +93,7 @@ max-width="40%"
 %}
 
 
-
+{% if page.url contains '/docs/' %}
 ### Manual team-sync with Codefresh pipelines
 
 As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 
@@ -115,6 +116,8 @@ steps:
 
 To fully automate the pipeline, you can set a [Csron trigger]({{site.baseurl}}/docs/pipelines/triggers/cron-triggers/) for it. Depending on how you set up your Cron trigger, you can synchronize your teams every day/week/hour. 
 
+
+
 ### Sync GitHub organization teams to Codefresh
 
 As an admin, you may want to sync your GitHub Organization Teams with your Codefresh account. At the same time, you do not want to set up an SSO provider and have the users use any login provider they choose.
@@ -130,12 +133,15 @@ The Personal Access Token (PAT) from a user will sync ALL Organizations and ALL 
 
 Once the initial sync happens, you can set up a cron trigger pipeline to run the command on a schedule.
 
+{% endif %}
+
 ## Set a default SSO provider for account
 
 If you have multiple SSO providers, you can set one of them as the default provider for your account. 
-Setting a default provider assigns the selected SSO automatically to all new users in the account. The link in the email invitation takes them directly to the login page of that SSO provider.
+Setting a default provider assigns the selected SSO provider automatically to all new users in the account. The link in the email invitation takes them directly to the login page of that SSO provider.
 
-1. In the Codefresh UI, go to [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on).
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **Single Sign-On**.
 1. From the list, select the SSO account to set as default and click the **Edit** icon on the right.
 1. Scroll down and select **Set as default**. 
   The Single Sign-on page shows the SSO provider tagged as the default.
@@ -165,19 +171,19 @@ max-width="80%"
 
 ## Select SSO provider for individual users
 
-You can override the default SSO provider if set for your account, with a different SSO provider for specific users if so required.  
-* New users   
+You can override the default SSO provider if set for the account, with a different SSO provider for specific users if so required.  
+* **New users**   
   If you have an SSO provider selected as the default, that provider is automatically assigned to new users, added either manually or via team synchronization. 
   You can change the SSO provider later. 
 
-* Existing users  
+* **Existing users**  
   SSO login is not configured by default for existing users. You must _explicitly select_ the SSO provider for existing users.  
   If SSO login is already configured for an existing user, and you add a new identity provider, to change the SSO login to the new provider, you must _select_ the new provider for the user. 
 
 **How to**  
 
-1. In the Codefresh UI, on the toolbar, from your avatar dropdown, select **Account Settings**.
-1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.   
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **Users & Teams**.   
 1. For the user, select the SSO provider from the SSO list.
 
 {% include 
