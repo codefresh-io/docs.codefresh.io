@@ -32,9 +32,7 @@ When creating a Promotion Flow, you can define several settings, including the F
   The default timeout is 1 day (24 hours) if not explicitly set.
 * **Version**: Allows you to indicate changes to the same Promotion Flow. 
 
-You can collapse the settings panel, which keeps the settings out of the way as you work on building the flow.
-
-
+For details, see [Create a Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/#create-a-promotion-flow).
 
 ### GitOps: Product Releases enhancements
 We've made several improvements to the Product Releases page to enhance traceability and clarity.
@@ -53,7 +51,7 @@ We've made several improvements to the Product Releases page to enhance traceabi
 * **Initiator**: The name of the user who initiated the Promotion Flow and triggered the release is now displayed, helping with better traceability and accountability.
 * **Version**: The version defined in the Promotion Flow settings is now also shown on the Product Releases page, providing more context and consistency for each release.
 
-
+For details, see [Tracking releases for products]({{site.baseurl}}/docs/promotions/product-releases/).
 
 ## Bug fixes
 
