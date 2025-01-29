@@ -28,7 +28,6 @@ See [Account and user management]({{site.baseurl}}/docs/administration/account-u
 * **GitOps**  
   Set up access control mechanisms for GitOps entities and processes to ensure secure operations.
   See [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
-
 {% endif %}
 
 {% if page.url contains '/argohub/' %}
