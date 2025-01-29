@@ -63,15 +63,15 @@ Codefresh  GitOps provides specialized functionality to streamline and automate 
 
 * **Enforce environment-specific checks**  
   Create different types of workflows to run at different stages of the promotion process for validation, compliance, performance checks.  
-  See [Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).  
+  See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).  
 
 * **Govern promotion behavior with policy-based gating**  
   Define rules and constraints combining different workflows with Promotion Policies to ensure promotions adhere to specific requirements for products or environments.  
-  See [Promotion Policies]({{site.baseurl}}/docs/promotions/entities/promotion-policy/).
+  See [Promotion Policies]({{site.baseurl}}/docs/promotions/promotion-policy/).
 
 * **Streamline complex promotion sequences**  
   Automate multi-environment promotions reducing manual effort while improving accuracy and efficiency.  
-  See [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/).
+  See [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
 
 
 
@@ -85,7 +85,7 @@ Review these articles to begin with GitOps promotions:
 
 * **Understand the components and entities**: Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) to learn about the key entities and how they fit together in the promotion process.
 * **Set up and configure promotions**: Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.
-* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/) for step-by-step guides to get started efficiently.
+* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.
 
 
 

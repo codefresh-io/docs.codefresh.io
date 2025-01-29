@@ -73,7 +73,7 @@ The table describes the core and promotion-specific entities.
     <td><strong>Promotion Flows</strong></td>
     <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process for applications within the same product.</td>
     <td>Account administrators</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/entities/promotion-flow/">Creating Promotion Flows</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
   <tr>
     <td></td>
@@ -89,13 +89,13 @@ The table describes the core and promotion-specific entities.
     <td><strong>Promotion Workflows</strong></td>
     <td>A Promotion Workflow is an Argo Workflow which runs tests and validations that match the requirements of the promotion lifecycle. They can run smoke tests, rollback mechanisms, database validation checks, or performance tests.</td>
     <td>Users with ABAC permissions</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/entities/promotion-workflow/">Promotion Workflows</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-workflow/">Promotion Workflows</a></td>
   </tr>
   <tr>
     <td><strong>Promotion Policy</strong></td>
     <td>A Promotion Policy outlines the actions taken when changes are promoted. It combines workflows that test and validate the environment, with the promotion action, like commits or pull requests.</td>
     <td>Account administrators</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/entities/promotion-policy/">Promotion Policies</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-policy/">Promotion Policies</a></td>
   </tr>
   <tr>
     <td></td>

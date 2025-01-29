@@ -66,15 +66,15 @@ enhance consistency, create reusable templates that apply across products.
   Create a product and connect related applications to it, either manually or declaratively. 
 
 
-1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/)  
+1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/)  
   As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, create workflows that run smoke tests to verify basic functionality or database validation checks to ensure data integrity.
   Create Promotion Workflows (Argo Workflows) to implement any type of tests, validations, and custom requirements. 
 
-1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/entities/promotion-policy/)    
+1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/promotion-policy/)    
   Govern promotion behavior for environments by setting rules, checks, and validations that environments must meet before and after changes are promoted.
   Promotion Policies allow you to define these rules by combining Promotion Workflows and the promotion action based on environment type, product, or other criteria. When a promotion is triggered for an environment, the policy mechanism merges settings from all relevant global policies according to priority, providing automated governance for consistent and reliable promotion behavior.
 
-1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
+1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
   Orchestrate the sequence of actions to move and deploy changes through the required environments, from the trigger environment to the final target environment.  
   Promotion Flows ensure that changes are promoted in a controlled and predictable manner by integrating environments, products and applications, promotion workflows, and policies.
   
