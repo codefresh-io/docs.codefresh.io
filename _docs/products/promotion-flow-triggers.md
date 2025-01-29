@@ -132,7 +132,7 @@ The Rollback flow triggers when the commit message contains terms like `revert` 
 As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
 
 Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
 To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions. -->
 

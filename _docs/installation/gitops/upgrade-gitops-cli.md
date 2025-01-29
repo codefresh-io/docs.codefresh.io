@@ -1,13 +1,10 @@
 ---
 title: "Download/upgrade GitOps CLI"
 description: "Have the latest version of the GitOps CLI"
-group: installation
-sub_group: gitops
-redirect_from:
-  - /docs/installation/gitops/upgrade-gitops-cli/
 toc: true
 ---
 
+## GitOps CLI
 You need the Codefresh CLI to install and upgrade Hybrid GitOps Runtimes, and get access to all the newest features. 
 For the initial download, you need to generate an API key and create the API authentication context, which you do from the UI.  
 When newer versions are available, the CLI automatically notifies you through a banner that an upgrade is required. You can use the existing API credentials for the upgrade. 
