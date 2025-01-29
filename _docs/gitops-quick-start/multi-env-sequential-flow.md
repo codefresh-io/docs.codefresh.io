@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Simple Promotion Flow"
+title: "Quick start: Simple Promotion Flow with multiple environments"
 description: "Promote product apps between multiple environments sequentially"
 group: gitops-quick-start
 toc: true
@@ -12,7 +12,7 @@ redirect_from:
 
 
 
-## Simple Promotion Flow quick start
+## Simple Promotion Flow with multiple environments quick start
 [Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/) is ideal for on-demand promotions to a single environment.  
 
 In contrast, Promotion Flows offer a structured approach to promoting changes across multiple environments, minimizing deployment risks.

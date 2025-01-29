@@ -47,9 +47,9 @@
       url: "/quick-start-product-create"
     - title: Creating applications
       url: "/create-app-ui"
-    - title: Simple drag-and-drop promotion
+    - title: Simple promotion with drag-and-drop 
       url: "/drag-and-drop"    
-    - title: Simple Promotion Flow for multiple environments
+    - title: Simple Promotion Flow with multiple environments
       url: "/multi-env-sequential-flow"  
     - title: Advanced Promotion Flow with Promotion Workflows
       url: "/policy-multi-env-promotion"  

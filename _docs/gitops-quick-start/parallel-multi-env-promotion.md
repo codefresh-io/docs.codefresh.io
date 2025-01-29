@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Advanced Promotion Flow: Parallel promotions across environments"
+title: "Quick start: Advanced Promotion Flow with parallel environments"
 description: "Promote product apps between environments in parallel"
 group: gitops-quick-start
 toc: true
@@ -10,7 +10,7 @@ redirect_from:
 
 
 
-## Advanced Promotion Flow: Parallel promotions across environments quick start
+## Advanced Promotion Flow with parallel environments quick start
 
 
 
