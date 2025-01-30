@@ -11,7 +11,7 @@
   {%- assign current_page_url = site.baseurl | append: page.url -%}
 
   <ul id="bd-docs-nav-list" class="list-unstyled">
- {% if page.url contains '/argohub/' %}
+ {% if page.layout == "argohub" %}
   {%- for navItem in site.data.argohub-nav -%}
 
     {% if navItem.url %}

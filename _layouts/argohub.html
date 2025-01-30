@@ -6,6 +6,7 @@ layout: compress
 <html lang="en">
   <head>
     {% include header.html %}
+    <meta name="robots" content="noindex">
   </head>
   <body data-spy="scroll" data-target=".bd-toc" data-offset="100">
 
@@ -22,7 +23,7 @@ layout: compress
       </div>
     </a>
 
-    {% include docs-navbar.html %}
+    {% include argohub-docs-navbar.html %}
 
     {% if page.wide %}
     <div class="container-fluid docs-layout" data-layout-mode="{% if page.wide == true %}wide{% else %}boxed{% endif%}">

@@ -7,17 +7,19 @@ toc: true
 ---
 
 
-{% if page.url contains '/argohub/' %}
-# This part is for ArgoHub  only!!!
-Some data about argohub - this will not shown in enterprise context.
+{% if page.layout == "argohub" %}
+# This section is for ArgoHub
+ArgoHub Example.
 {% endif %}
 
 Get up and running with Codefresh by installing the Hybrid Runtime for GitOps via Helm.
 The Runtime is installed through a Helm chart. The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}. It contains all the arguments that can be configured, including optional ones, with descriptions of each.
  
+{% if page.layout != "argohub" %} 
 ## Quick start assumptions
 
 The quick start assumes that you are installing the first Hybrid GitOps Runtime in your Codefresh account. 
+{% endif %}
 
 ## Argo project components & CRDs
 Hybrid GitOps installation requires a cluster without Argo project components and CRDs (Custom Resource Definitions). 

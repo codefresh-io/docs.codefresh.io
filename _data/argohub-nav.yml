@@ -3,8 +3,6 @@
   pages:
     - title: What is Codefresh?
       url: "/intro-to-codefresh"
-    - title: Only for ArgoHub
-      url: "/some-new-doc"
 
 - title: Quick starts
   url: "/quick-start"

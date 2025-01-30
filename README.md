@@ -1,15 +1,17 @@
 # docs.codefresh.io
-[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/codefresh-inc/codefresh-io%2Fdocs.codefresh.io%2Flive-docs?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NTY3MmQ4ZGViNjcyNGI2ZTM1OWFkZjYy.AN2wExsAsq7FseTbVxxWls8muNx_bBUnQWQVS8IgDTI&type=cf-1)]( https://g.codefresh.io/pipelines/live-docs/builds?repoOwner=codefresh-io&repoName=docs.codefresh.io&serviceName=codefresh-io%2Fdocs.codefresh.io&filter=trigger:build~Build;branch:master;pipeline:5a941be91a89c60001c3fad4~live-docs)
+
+[![Codefresh build status](https://g.codefresh.io/api/badges/pipeline/codefresh-inc/codefresh-io%2Fdocs.codefresh.io%2Flive-docs?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NTY3MmQ4ZGViNjcyNGI2ZTM1OWFkZjYy.AN2wExsAsq7FseTbVxxWls8muNx_bBUnQWQVS8IgDTI&type=cf-1)](https://g.codefresh.io/pipelines/live-docs/builds?repoOwner=codefresh-io&repoName=docs.codefresh.io&serviceName=codefresh-io%2Fdocs.codefresh.io&filter=trigger:build~Build;branch:master;pipeline:5a941be91a89c60001c3fad4~live-docs)
 
 This site is built with Jekyll. Documentation content is written in Markdown format located in './docs'
 
 ## Deploying
+
 The site is automatically deployed when commits are merged/pushed in `master`, hosted at https://codefresh.io/docs/
 
 ### Preview documentation locally with Docker (Recommended)
 
-1. Install [docker-compose](https://docs.docker.com/compose/)
-2. Run `docker-compose up`
+1. Install [docker-desktop](https://www.docker.com/products/docker-desktop/)
+2. Run `docker compose up`
 3. Open `http://localhost:3131` in your browser, and voila!
 
 To compile scss files into css run the command `npm run css` or in the live mode `npm run watch-css`.
@@ -24,4 +26,58 @@ Node version `9.11.2`
 4. From the root directory, run `npm run docs-serve-dev` in the command line.
 5. Open `http://localhost:19002` in your browser, and voila.
 
+## Adding document to ArgoHub collection
 
+1. In the Enterprise collection, find the document for the ArgoHub collection.
+2. In the ArgoHub collection, create a folder structure for the required document.
+3. Create a symbolic link to the document inside the required folder in the ArgoHub collection.
+4. Create a record in `argohub.nav.yaml` that represents the new document.
+5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
+6. In the cookie redirect service map, add a redirect link between the Enterprise and ArgoHub collections.
+
+## Document Changes
+
+### Content Changes
+
+No actions required - the new content will be automatically reflected in both ArgoHub and Enterprise.
+
+### Path Changes
+
+#### If no changes to the ArgoHub structure are required:
+
+- Repeat step 3.
+- Repeat step 6.
+
+#### If changes to the ArgoHub structure are required:
+
+- Repeat steps 2 to 6.
+
+### Splitting a Document into Multiple Documents
+
+- Repeat steps 2 to 6.
+
+## ArgoHub Collection Notes:
+
+### Reusing Existing Documents:
+
+#### Conditions to Render Text for Specific Contexts:
+
+- By default, all document content appears the same in both Enterprise and ArgoHub contexts.
+- To include content for the ArgoHub collection only: `{% if page.layout == "argohub" %}`
+- To exclude content from the ArgoHub collection (will appear only in the Enterprise collection): `{% if page.layout != "argohub" %}`
+
+#### Document Links
+
+Document links will automatically adjust to the relevant context, eliminating the need for duplication. For example:
+`({{site.baseurl}}/{{page.collection}}/installation/gitops/shared-configuration/)`
+
+#### Document Images
+
+Image links do not require duplication or modification – they will work seamlessly in both contexts.
+
+### Search Engines and Internal Search:
+
+The ArgoHub home page and all pages within the ArgoHub collection are excluded from:
+
+- Commandbar HelpHub Search (managed via Commandbar Content Manager).
+- Search engines that support the `noindex` rule, such as Google.
