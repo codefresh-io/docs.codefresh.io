@@ -1,16 +1,15 @@
 ---
 title: "GitOps Codefresh pipeline integration"
-description: ""
+description: "Connect CI pipelines with GitOps for enriched image data"
 group: gitops-integrations
-sub_group: ci-integrations
 toc: true
 ---
 
 
- Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. If you have Hosted or Hybrid GitOps, you can connect your CI pipelines to Hosted GitOps for deployment with image enrichment and reporting.  
+If Codefresh Pipelines is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage Codefresh Pipelines for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata.
 
+ Connecting a Codefresh Pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
- Connecting your CI pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
   {% include 
    image.html 
@@ -82,10 +81,10 @@ The table describes the arguments required to connect Codefresh pipelines to Cod
 
 {{site.data.callout.callout_tip}}
 **TIP**  
-Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
+Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the Runtime context selected for the integration.
 {{site.data.callout.end}}
 
-For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
+For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 
 {: .table .table-bordered .table-hover}
@@ -126,10 +125,11 @@ For how-to instructions, see [Connect a third-party CI platform/tool to Codefres
 
 ## Templatization examples for CF arguments
 
-Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh integration pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
+Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh pipeline used for integration is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
 
+{% if page.url contains '/docs/' %}
 Codefresh pipelines have [system variables]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
-
+{% endif %}
 
 ### CF_IMAGE examples
 

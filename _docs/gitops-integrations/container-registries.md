@@ -1,13 +1,14 @@
 ---
 title: "GitOps container registry integrations"
-description: ""
+description: "Seamlessly integrate container registries with GitOps for image enrichment"
 group: gitops-integrations
 toc: true
 ---
 
-Codefresh can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more.  
+Codefresh supports integration with popular container registries, including Docker Hub, JFrog Artifactory, and others, enabling seamless management of container images in GitOps workflows.
 
-Adding a container registry integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh pipelines by the name of the registry integration, instead of explicit credentials. See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).  
+By adding a container registry integration in Codefresh, you can reference it by name in third-party CI tools like GitHub Actions or Codefresh Pipelines, rather than using explicit credentials. This simplifies your workflow and enhances security.  
+See [Image enrichment with integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).  
 
 You add a container registry integration in Codefresh by:
 * Defining the integration name 
@@ -16,30 +17,31 @@ You add a container registry integration in Codefresh by:
 * Testing the connection 
 * Committing the changes
 
-You can add more than one integration for the same registry. Once added, Codefresh displays the list of existing integrations with their sync status. You can edit or delete any registry integration. 
+You can add multiple integrations for the same registry, providing flexibility for your environment. Codefresh displays a list of existing integrations along with their sync status. You can easily edit or delete any registry integration as needed.
+
 
 <!--- To see all images from all your container registries integrated with Codefresh in the Codefresh UI, go to [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}. For documentation details, see [Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)--->
 
 
 ## Configure container registry integrations for GitOps in Codefresh
-Configure the settings for a GitOps container registry integration in Codefresh.
+Configure the settings for a container registry integration with GitOps in Codefresh.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
-1. Filter by **Container Registry**, select the container registry, and click **Configure**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
+1. Filter by **Container Registry**, select the container registry, and then click **Configure**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the container registry:  
-  [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/)   
-  [Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/)  
-  [GitHub Container Registry]({{site.baseurl}}/docs/gitops-integrations/container-registries/github-cr/)   
-  [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/)    
-  [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/)  
+    * [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/)   
+    * [Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/)  
+    * [GitHub Container Registry]({{site.baseurl}}/docs/gitops-integrations/container-registries/github-cr/)   
+    * [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/)    
+    * [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/)  
 1. To test the connection to the container registry before committing the changes, click **Test Connection**.
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
 ## Integration resource in shared configuration repo
 The integration resource for the container registry is created in the Git repository with the shared configuration, within `resources`.  
-The exact location depends on whether the integration is shared with all or specific runtimes:  
+The exact location depends on whether the integration is shared with all or specific Runtimes:  
 * All runtimes: Created in `resources/all-runtimes-all-clusters/`
 * Selected runtimes: Created in `resources/runtimes/<runtime-name>/`
 
@@ -90,6 +92,4 @@ use it.
 [CI GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/)  
 [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
-[Images]({{site.baseurl}}/docs/dashboards/images/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)    
  
