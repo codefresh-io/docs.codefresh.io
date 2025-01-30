@@ -1,0 +1,14 @@
+- title: ArgoHub Introduction
+  url: "/introduction"
+  pages:
+    - title: What is Codefresh?
+      url: "/intro-to-codefresh"
+
+- title: Installation
+  url: "/installation"
+  pages:
+    - title: GitOps Runtimes
+      url: "/gitops"
+      sub-pages:
+        - title: Shared Configuration Repository
+          url: "/shared-configuration"
