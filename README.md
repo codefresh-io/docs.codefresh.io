@@ -31,9 +31,9 @@ Node version `9.11.2`
 1. In the Enterprise collection, find the document for the ArgoHub collection.
 2. In the ArgoHub collection, create a folder structure for the required document.
 3. Create a symbolic link to the document inside the required folder in the ArgoHub collection.
-4. Create a record in `argohub.nav.yaml` that represents the new document.
+4. Create a record for the side menu `argohub-nav.yml` that represents the new document.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
-6. In the cookie redirect service map, add a redirect link between the Enterprise and ArgoHub collections.
+6. In the `argohub-redirect-mapping.js`, add a redirect link between the Enterprise and ArgoHub collections.
 
 ## Document Changes
 
@@ -43,12 +43,12 @@ No actions required - the new content will be automatically reflected in both Ar
 
 ### Path Changes
 
-#### If no changes to the ArgoHub structure are required:
+#### If no changes to the ArgoHub structure are required
 
 - Repeat step 3.
 - Repeat step 6.
 
-#### If changes to the ArgoHub structure are required:
+#### If changes to the ArgoHub structure are required
 
 - Repeat steps 2 to 6.
 
@@ -56,11 +56,11 @@ No actions required - the new content will be automatically reflected in both Ar
 
 - Repeat steps 2 to 6.
 
-## ArgoHub Collection Notes:
+## ArgoHub Collection Notes
 
-### Reusing Existing Documents:
+### Reusing Existing Documents
 
-#### Conditions to Render Text for Specific Contexts:
+#### Conditions to Render Text for Specific Contexts
 
 - By default, all document content appears the same in both Enterprise and ArgoHub contexts.
 - To include content for the ArgoHub collection only: `{% if page.layout == "argohub" %}`
@@ -75,9 +75,13 @@ Document links will automatically adjust to the relevant context, eliminating th
 
 Image links do not require duplication or modification – they will work seamlessly in both contexts.
 
-### Search Engines and Internal Search:
+### Search Engines and Internal Search
 
 The ArgoHub home page and all pages within the ArgoHub collection are excluded from:
 
 - Commandbar HelpHub Search (managed via Commandbar Content Manager).
 - Search engines that support the `noindex` rule, such as Google.
+
+### Auto Redirect from Enterprise to ArgoHub Collection
+
+When the GitOps client adds an ArgoHub system type cookie, the Documentation site will detect it and initiate an automatic redirect. If you open any page from the enterprise collection, the site will check for an equivalent document in the ArgoHub collection and redirect you there if one exists.
