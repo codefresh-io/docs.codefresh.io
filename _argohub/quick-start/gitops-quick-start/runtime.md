@@ -1,1 +1,0 @@
-../../../_docs/quick-start/gitops-quick-start/runtime.md

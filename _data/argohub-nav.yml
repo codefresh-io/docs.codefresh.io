@@ -4,15 +4,6 @@
     - title: What is Codefresh?
       url: "/intro-to-codefresh"
 
-- title: Quick starts
-  url: "/quick-start"
-  pages:
-    - title: GitOps quick starts
-      url: "/gitops-quick-start"
-      sub-pages:
-        - title: Install a Hybrid GitOps Runtime
-          url: "/runtime"
-
 - title: Installation
   url: "/installation"
   pages:
