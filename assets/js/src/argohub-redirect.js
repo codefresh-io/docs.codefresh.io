@@ -1,7 +1,7 @@
 import { redirectMap } from "./argohub-redirect-mapping.js";
 
 const ARGOHUB_DOC_COOKIE_NAME = "argohubdoc";
-const ARGOHUB_MAIN_PATH = "argohub";
+const ARGOHUB_MAIN_PATH = "/argohub/";
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -18,7 +18,9 @@ function getArgoHubRedirectURL(currentPath) {
   const newPath = redirectMap[currentPath];
   if (!newPath) return null;
 
-  const newURL = location.href.replace(currentPath, newPath);
+  const lastMatchRegex = new RegExp(`${currentPath}(?=[^${currentPath}]*$)`);
+  const newURL = location.href.replace(lastMatchRegex, newPath);
+
   return newURL;
 }
 
