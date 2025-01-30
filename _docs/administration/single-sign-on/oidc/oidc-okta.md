@@ -198,17 +198,17 @@ Syncing with Okta _only affects teams/groups_, and not individual users.
 
 After initial SSO setup, you can activate automatic syncing of teams for the integration account or for both the integration and additional accounts via the CLI and the UI.
 
-* CLI  
+* **CLI**  
   You can select multiple Codefresh accounts to sync through the **Additional accounts to sync** option in the UI, and then either create a Codefresh pipeline with the CLI command or run the CLI command when required.  
   The pipeline should run the CLI command `codefresh synchronize teams my-okta-client-name -t okta`.  
   See [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
-* UI  
+* **UI**  
   Select the Codefresh accounts to sync to through the **Additional accounts to sync** option in the UI, and turn on **Auto-group sync** in the SSO configuration settings. 
 
  
  
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  
 

@@ -230,18 +230,16 @@ max-width="60%"
 
 You have now completed SSO setup for Google via OIDC.
 
-
-
 ## Test SSO Connection
 
-Now test the SSO with a test user in a different browser or private/incognito browser to make sure the integration works as it should.
+Now test the SSO with a test user in a different browser or in a private/incognito tab to make sure the integration works as it should.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
+1. From the sidebar, select **Users & Teams**.   
 1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
 [Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  

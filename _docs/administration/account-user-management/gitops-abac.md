@@ -213,7 +213,6 @@ This rule grants manual promotion privileges to specific products that match a s
 
 
 ## Promotion Flows
-=======
 
 ### Promotion Flows: Actions & attributes
 
