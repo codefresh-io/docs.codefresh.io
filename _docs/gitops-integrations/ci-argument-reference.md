@@ -1,6 +1,6 @@
 ---
-title: "GitOps CI integrations argument reference"
-description: "All the arguments supported for CI integrations with GitOps"
+title: "GitOps integrations argument reference"
+description: "Complete reference for arguments supported for integrations with GitOps"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true

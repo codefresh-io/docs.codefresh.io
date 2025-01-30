@@ -84,7 +84,7 @@ The table describes the arguments required to connect Codefresh pipelines to Cod
 Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the Runtime context selected for the integration.
 {{site.data.callout.end}}
 
-For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
+For the complete argument reference, see [GitOps integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 
 {: .table .table-bordered .table-hover}
@@ -225,6 +225,7 @@ You can:
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file for the pipeline, and view the Codefresh report image step
 
+<!--
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/classic/classic-logs-tab.png" 
@@ -233,7 +234,7 @@ alt="Codefresh pipelines: Logs tab"
 caption="Codefresh pipelines: Logs tab"
 max-width="50%"
 %}
-
+-->
 ##### Build in Codefresh
 
 The Run column includes the link to the pipeline in Codefresh.  

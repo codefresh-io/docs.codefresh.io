@@ -219,6 +219,7 @@ You can:
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file in GitHub Actions, and view the Codefresh report image step
 
+<!--- 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/github-actions/github-actions-logs.png" 
@@ -228,6 +229,7 @@ caption="GitHub Action: Logs tab"
 max-width="50%"
 %}
 
+-->
 ##### Build YAML in GitHub Action
 
 The Run column includes the link to the build files for the actions.  

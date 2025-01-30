@@ -30,11 +30,11 @@ Configure the settings for a container registry integration with GitOps in Codef
 1. Filter by **Container Registry**, select the container registry, and then click **Configure**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the container registry:  
-    * [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/)   
-    * [Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/)  
-    * [GitHub Container Registry]({{site.baseurl}}/docs/gitops-integrations/container-registries/github-cr/)   
-    * [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/)    
-    * [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/)  
+    * [Amazon ECR]({{site.baseurl}}/docs/gitops-integrations/container-registries/amazon-ecr/#amazon-ecr-gitops-integration-settings-in-codefresh)   
+    * [Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh)  
+    * [GitHub Container Registry]({{site.baseurl}}/docs/gitops-integrations/container-registries/github-cr/#github-container-registry-ghcr-gitops-integration-settings-in-codefresh)   
+    * [JFrog Artifactory]({{site.baseurl}}/docs/gitops-integrations/container-registries/jfrog/#jfrog-artifactory-gitops-integration-settings-in-codefresh)    
+    * [Quay]({{site.baseurl}}/docs/gitops-integrations/container-registries/quay/#quay-gitops-integration-settings-in-codefresh)  
 1. To test the connection to the container registry before committing the changes, click **Test Connection**.
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.

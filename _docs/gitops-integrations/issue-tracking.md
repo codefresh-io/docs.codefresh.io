@@ -31,7 +31,7 @@ Configure the settings for an issue tracking integration for GitOps in Codefresh
 1. Jira integrations only: For a new Jira integration, from the **Add Integration** dropdown, select the type of integration, as either **Deployment reporting** or **Image enrichment**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the issue tracking tool:  
-  [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/)   
+  [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/#jira-gitops-integration-settings-in-codefresh)   
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 

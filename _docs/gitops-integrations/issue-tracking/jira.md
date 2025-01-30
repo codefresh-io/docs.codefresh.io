@@ -23,6 +23,8 @@ For general information on issue-tracking integrations, see [Issue-tracking GitO
 
 ## Jira-GitOps integration settings in Codefresh
 
+For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
+
 
 {: .table .table-bordered .table-hover}
 | Setting    | Description     | 
@@ -44,7 +46,6 @@ For general information on issue-tracking integrations, see [Issue-tracking GitO
   max-width="60%" 
 %}
  
-For information on adding a Jira integration in Codefresh, see [Issue-tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/).
 
 
 ## Using PAT instead of API token for Jira authentication
@@ -61,7 +62,6 @@ Here's an example with the subset of JIRA-specific arguments you would use with 
 `CF_JIRA_MESSAGE`: `"wip CR-1"`  
 `CF_JIRA_PROJECT_PREFIX`: `"CR"`
 
-For detailed descriptions of arguments, see [CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
 
 ## Using GitHub Action with Jira in CI pipelines
 For pipelines based on GitHub Actions, configure the Jira integration in Codefresh, and then connect your GitHub Action to Codefresh, referencing the Jira integration by name.  

@@ -37,9 +37,9 @@ Connecting the CI platform/tool to GitOps from the UI includes configuring the r
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
 1. Filter by **CI tools**, select the CI tool, and then click **Add**.
 1. Define the arguments for the CI tool:  
-    * [Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
-    * [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
-    * [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
+    * [Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#codefresh-pipeline-gitops-integration-settings)  
+    * [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/#github-action-gitops-integration-settings)  
+    * [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/#jenkins-gitops-integration-settings)  
     
   >**NOTE**  
   For the complete list of arguments you can use, see [GitOps integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
