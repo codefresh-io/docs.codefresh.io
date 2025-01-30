@@ -27,7 +27,7 @@ The table describes the core and promotion-specific entities.
   </tr>
 
   <tr>
-    <td colspan="4"><strong>Core entities</strong><br>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. You can initiate manual promotions between two environments using drag-and-drop and other options. See <a href="https://codefresh.io/docs/docs/promotions/promotion-scenarios/">Promotion tutorials</a>.</td>
+    <td colspan="4"><strong>Core entities</strong><br>These entities define the structure of your deployment.<br>Core entities support standard promotion flows, allowing you to trigger promotions that cover typical deployment scenarios. You can initiate manual promotions between two environments using drag-and-drop and other options. See <a href="https://codefresh.io/docs/docs/gitops-quick-start/promotions/">Promotion quick starts</a>.</td>
   </tr>
       <td><strong>Applications (Required)</strong></td>
     <td>Applications are the core units around which promotions revolve. Each Argo CD application  can be promoted individually or as part of a product.</td>
@@ -73,7 +73,7 @@ The table describes the core and promotion-specific entities.
     <td><strong>Promotion Flows</strong></td>
     <td>Promotion flows orchestrate the movement of applications through environments, ensuring a controlled and automated promotion process for applications within the same product.</td>
     <td>Account administrators</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/configuration/promotion-flow/">Creating Promotion Flows</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-flow/">Creating Promotion Flows</a></td>
   </tr>
   <tr>
     <td></td>
@@ -89,13 +89,13 @@ The table describes the core and promotion-specific entities.
     <td><strong>Promotion Workflows</strong></td>
     <td>A Promotion Workflow is an Argo Workflow which runs tests and validations that match the requirements of the promotion lifecycle. They can run smoke tests, rollback mechanisms, database validation checks, or performance tests.</td>
     <td>Users with ABAC permissions</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/configuration/promotion-workflow/">Promotion Workflows</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-workflow/">Promotion Workflows</a></td>
   </tr>
   <tr>
     <td><strong>Promotion Policy</strong></td>
     <td>A Promotion Policy outlines the actions taken when changes are promoted. It combines workflows that test and validate the environment, with the promotion action, like commits or pull requests.</td>
     <td>Account administrators</td>
-    <td><a href="https://codefresh.io/docs/docs/promotions/configuration/promotion-policy/">Promotion Policies</a></td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-policy/">Promotion Policies</a></td>
   </tr>
   <tr>
     <td></td>
@@ -132,7 +132,7 @@ In code samples and internal references, it is represented as `isc`.
 
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
-[Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
+[Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 

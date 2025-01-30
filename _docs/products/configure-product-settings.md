@@ -36,7 +36,7 @@ The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configura
 
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
 
-For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/configuration/yaml/promotion-template-crd/).
+For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/).
 
 
 
@@ -50,7 +50,7 @@ For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions
 
 
 ## Connect applications to product with annotations
-Connect applications to products declaratively by copying the Product annotation to the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you. (NIMA: is this correct)
+Connect applications to products declaratively by copying the Product annotation to the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you. 
 
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 

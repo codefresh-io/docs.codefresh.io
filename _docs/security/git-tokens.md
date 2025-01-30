@@ -1,6 +1,6 @@
 ---
 title: "Git tokens for GitOps"
-description: "Understand Git tokens and scopes required for GitOps"
+description: "Understand Git tokens and scopes required for Git authentication"
 group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
@@ -10,7 +10,8 @@ toc: true
 
 
 
-Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. The Runtime and user tokens are both Git access tokens which Codefresh uses for different purposes. See [Git Runtime tokens versus Git user tokens in Codefresh](#git-runtime-tokens-versus-git-user-tokens-in-codefresh). 
+
+Codefresh requires two types of Git tokens for authentication in GitOps, a Git Runtime token, and a Git user token. The Runtime and user tokens are both Git access tokens used for different purposes. See [Git Runtime tokens versus Git user tokens in Codefresh](#git-runtime-tokens-versus-git-user-tokens-in-codefresh) and [Interaction between Git tokens and secrets](#interaction-between-git-tokens-and-secrets). 
 * The [Git Runtime token](#git-runtime-token-scopes) is mandatory for every GitOps Runtime. It must be provided during the Runtime installation, and is typically associated with a service/robot account.
 * The [Git user token](#git-user-access-token-scopes) is an access token that is unique to every user in the Codefresh platform. It is required after installation for every Runtime which the user has access to. 
 
@@ -30,6 +31,31 @@ The table below summarizes the main differences between the Git Runtime token an
 | Managed by                    | Admin at account-level                    | User   |
 | Associated Account Type    | (Recommended) [Service account or robot account](#use-a-servicerobot-account-for-gitops-runtimes) | User account    |
 
+## Interaction between Git tokens and secrets  
+Codefresh needs access to Git repositories for reading and writing to configuration and resource manifests. This section elaborates on how Git providers and repositories with Git tokens for authentication to . 
+
+
+### GitOps Runtime token and secret
+The Git Runtime token is the personal access token provided during Runtime installation and is automatically converted to a secret. The secret for the Runtime repository is stored in the `runtime-repo-creds-secret` secret, labeled with `argocd.argoproj.io/secret-type: repo-creds`.  
+
+This label 
+The Runtime uses the same credentials 
+
+The secret:
+* Allows Argo CD to use the credentials to clone and pull data from the repositories it syncs from for read-only operations.
+* Allows the Runtime to both read and write to the same repositories, for all actions on behalf of the Runtime such as commits during promotions.
+
+### GitOps user token and secret
+
+The Git user token, also a personal access token, is used for operations initiated by the user via the UI, and is therefore unique to each user.  
+The Git user token is also converted to an encrypted secret, and stored in the `git-default-<account-id>` secret.
+
+The token is used to:
+* Perform Git commits and pushes on behalf of the user.
+* Validate the user’s access permissions to specific Git repositories and determine application visibility.
+
+
+
 
 ## Git Runtime token scopes
 The table below lists the scopes required for Git Runtime tokens for the different Git providers. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](#git-runtime-token-in-valuesyaml).
@@ -43,7 +69,7 @@ The table below lists the scopes required for Git Runtime tokens for the differe
 
 ### Git Runtime token in values.yaml
 
-You also have the option to directly add your Git Runtime token, or a reference to a secret that contains the Git Runtime token, to `values.yaml` (typically the latter).  
+You also have the option to directly add your Git Runtime token, or a reference to the secret that contains the Runtime secret, to `values.yaml` (typically the latter).  
 
 To skip token validation both during installation and upgrade in this scenario, add the `skipValidation` flag to `values.yaml`. 
 

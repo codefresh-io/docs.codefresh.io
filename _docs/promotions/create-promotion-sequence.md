@@ -39,7 +39,7 @@ enhance consistency, create reusable templates that apply across products.
 
 
 
-### Prerequisites
+## Prerequisites
 1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)  
    The Configuration Runtime is a GitOps Runtime that stores the manifests of the promotion entities.  
    Designate at least one GitOps Runtime as the Configuration Runtime.  
@@ -51,7 +51,7 @@ enhance consistency, create reusable templates that apply across products.
 1. [User permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
   Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
-### Tasks
+## Tasks
 1. [Create environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments)  
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
@@ -66,15 +66,15 @@ enhance consistency, create reusable templates that apply across products.
   Create a product and connect related applications to it, either manually or declaratively. 
 
 
-1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/configuration/promotion-workflow/)  
+1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/)  
   As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, create workflows that run smoke tests to verify basic functionality or database validation checks to ensure data integrity.
   Create Promotion Workflows (Argo Workflows) to implement any type of tests, validations, and custom requirements. 
 
-1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/configuration/promotion-policy/)    
+1. [Create policies to govern environment promotions]({{site.baseurl}}/docs/promotions/promotion-policy/)    
   Govern promotion behavior for environments by setting rules, checks, and validations that environments must meet before and after changes are promoted.
   Promotion Policies allow you to define these rules by combining Promotion Workflows and the promotion action based on environment type, product, or other criteria. When a promotion is triggered for an environment, the policy mechanism merges settings from all relevant global policies according to priority, providing automated governance for consistent and reliable promotion behavior.
 
-1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
+1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
   Orchestrate the sequence of actions to move and deploy changes through the required environments, from the trigger environment to the final target environment.  
   Promotion Flows ensure that changes are promoted in a controlled and predictable manner by integrating environments, products and applications, promotion workflows, and policies.
   
@@ -97,7 +97,7 @@ enhance consistency, create reusable templates that apply across products.
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/)  
+[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 

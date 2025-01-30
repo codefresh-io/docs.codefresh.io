@@ -7,7 +7,7 @@ toc: true
 
 Promotions are a key component of the continuous delivery (CD) process, enabling teams to control how software moves through various environments based on automated triggers or manual inputs. 
 
-Codefresh GitOps supports automated promotion sceanrios tailored to various deployment models through Promotion Flows, triggered on predefined criteria, such as specific commit messages or changes in Git branches, allowing seamless and consistent updates across environments. See [Creating Promotion Flows](#{{site.baseurl}}/docs/promotions/configuration/promotion-flow/).  
+Codefresh GitOps supports automated promotion sceanrios tailored to various deployment models through Promotion Flows, triggered on predefined criteria, such as specific commit messages or changes in Git branches, allowing seamless and consistent updates across environments. See [Creating Promotion Flows](#{{site.baseurl}}/docs/promotions/promotion-flow/).  
 
 Recognizing that some scenarios require on-demand control, Codefresh also provides manual promotion triggers to handle specific needs. Whether deploying a hotfix to production, promoting an entire product release, or testing code changes in a targeted environment, manual promotion options offer flexibility to meet these demands.
 
@@ -16,7 +16,7 @@ Manual promotion triggers provide different levels of control, accessible from d
 * **Single-environment promotion**  
   Useful for quick promotion to a specific environment through the drag-and-drop option, or the promote option for more control on promotion behavior for traget the environment
 * **Multi-environment promotion**  
-  Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flow flow, and the option to trigger a promotion for any product directly from within a Promotion Flow.
+  Designed for promotion across multiple environments through predefined flows, with the promote product via Promotion Flows, and the option to trigger a promotion for any product directly from within a Promotion Flow.
 
 <!--- SCREENSHOT OF TRIGGER MOSAIC-->
 
@@ -196,4 +196,4 @@ max-width="60%"
 ## Related articles  
 [Promotions: End-to-end guide]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/configuration/promotion-flow/)  
+[Configure Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  

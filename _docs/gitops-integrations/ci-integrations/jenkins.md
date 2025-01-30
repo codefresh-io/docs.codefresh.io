@@ -1,14 +1,15 @@
 ---
 title: "GitOps Jenkins integration"
-description: ""
+description: "Connect Jenkins pipelines with GitOps for enriched image data"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
 ---
 
- Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. Jenkins is one of the third-party CI platform/tools that you can connect to Codefresh for deployment with image enrichment and reporting.  
 
- Connecting a Jenkins pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
+If Jenkins is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage Jenkins for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata. 
+
+Connecting a Jenkins pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
   {% include 
    image.html 
@@ -112,6 +113,8 @@ pipeline {
 
 ## Jenkins-GitOps integration settings
 The table describes the arguments to connect Codefresh pipelines to Codefresh GitOps.  
+
+For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 {: .table .table-bordered .table-hover}
 | Argument    | Description     | Required/Optional/Default |

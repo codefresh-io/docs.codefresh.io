@@ -5,13 +5,13 @@ group: promotions
 toc: true
 ---
 
-Continuous Delivery (CD) is an essential practice in the Software Development Lifecycle (SDLC) that automates the release process, ensuring that application updates are and can be consistently and reliably deployed across various environments.   
-CD bridges the gap between development and operations, empowering teams to deliver changes to production with speed and confidence by automating testing, validation, and deployment tasks. CD enables rapid response to customer needs and frequent, low-risk releases, ultimately resulting in a more responsive and efficient development process.
+Continuous Delivery (CD) is an essential practice in the Software Development Lifecycle (SDLC) that automates the release process, ensuring consistent and reliable deployment of application updates across environments. CD bridges the gap between development and operations, empowering teams to deliver changes to production with speed and confidence.
 
-A key component of CD is promotion—the process of advancing an application version from one environment to the next, from staging to production for example, based on specific criteria or approvals. Promotion sequences help ensure that only validated, stable versions of applications make it to production, minimizing risk in every release.
+A core element of CD is **promotion** - the process of advancing an application version through environments, such as from staging to production, based on predefined criteria or approvals. Promotion sequences ensure that only validated, stable versions of applications only validated, stable versions reach production, reducing risk with every release.
 
 
-##### GitOps promotions: The Codefresh advantage
+
+##### Promotions with GitOps: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   
 
 {% include 
@@ -33,13 +33,13 @@ Here’s what makes Codefresh's GitOps promotions unique:
   With GitOps, the desired state of environments is automatically synced based on the Git repository, ensuring that any promotion aligns with the latest approved application version.  -->
 
 * **Context and visibility**  
-  While Argo CD manages deployments as individual applications, Codefresh introduces **environments** and **products** for a more intuitive and cohesive view of complex systems, and CD management:
-    * Environments represent different stages in development. Environments allow teams to easily track applications as they progress through the SDLC. 
-      Read more on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/). 
-    * Products group related applications. Products allow teams to manage promotions across applications within a specific product from one environment to another, for seamless coordination and control over applications.  
-      Read more on [Products]({{site.baseurl}}/docs/products/about-products/).
-    * Releases provide end-to-end visibility into the promotion and deployment journey for each product. Releases allow all stakeholders to easily to track the deployment process across environments and verify successful deployment.
-      Read more on [Releases]({{site.baseurl}}/docs/promotions/product-releases/).
+While Argo CD manages deployments at the application level, Codefresh enhances visibility and control by introducing **environments**, **products**, and **releases**. These entities provide a cohesive view of complex systems and streamline CD management:
+  * **Environments** represent stages in the development lifecyle, allowing teams to easily track applications as they move through the SDLC.  
+    Read more on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/). 
+  * **Products** group related applications, allowing teams to manage promotions across all applications within the product from one environment to another. This ensures seamless coordination and centralized control over application management.   
+    Read more on [Products]({{site.baseurl}}/docs/products/about-products/).
+  * **Releases** provide end-to-end visibility into the promotion and deployment journey for each product, allowing stakeholders to monitor the promotions across environments and verify successful deployments.  
+    Read more on [Releases]({{site.baseurl}}/docs/promotions/product-releases/).
 
 {% include 
 image.html 
@@ -48,26 +48,45 @@ file="/images/gitops-promotions/overview/envs-prod-release.png"
 url="/images/gitops-promotions/overview/envs-prod-release.png"
 alt="Environments, products, releases" 
 caption="Environments, products, releases"
-max-width="60%"
+max-width="65%"
 %}
 
 >**NOTE**  
-Runtime version 0.13.4 or higher is required to support promotions. Ensure your runtime is updated to at least this version to access promotion features.
+You need Runtime version 0.13.4 or higher to support GitOps promotions. Ensure your runtime is updated to at least this version to access  promotion features.
 
 ##### GitOps promotion entities
-Codefresh's GitOps promotions include specialized entities that streamline and automate the promotion process. These entities provide you with the flexibility and control to model your delivery lifecycles with all the required checks built-in, and no custom scripting required. You get a predictable path to production that you can duplicate across projects, giving you ultimate control over your processes.
-* **Promotion Templates**: Define which application properties to promote.
-* **Promotion Workflows**: Define steps to validate environments before and after promotion.
-* **Promotion Policies**: Define promotion requirements to promote environments.
-* **Promotion Flows**: Define automated promotion sequences, simple or complex, reducing manual steps for accuracy and efficiency.
+Codefresh  GitOps provides specialized functionality to streamline and automate the promotion process, ensuring consistency and control without the need for custom scripts. These features allow you to design predictable reusable delivery lifecycles across products and environments, with all the required validations, reducing operational overhead and manual errors.
+
+* **Predefine properties to promote**  
+  Specify which application properties to promote within products, maintaining precise control and avoiding the need to promote everything.   
+  See [Configuring app version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/). 
+
+* **Enforce environment-specific checks**  
+  Create different types of workflows to run at different stages of the promotion process for validation, compliance, performance checks.  
+  See [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).  
+
+* **Govern promotion behavior with policy-based gating**  
+  Define rules and constraints combining different workflows with Promotion Policies to ensure promotions adhere to specific requirements for products or environments.  
+  See [Promotion Policies]({{site.baseurl}}/docs/promotions/promotion-policy/).
+
+* **Streamline complex promotion sequences**  
+  Automate multi-environment promotions reducing manual effort while improving accuracy and efficiency.  
+  See [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
+
+
+
 
 <!--- screenshot of yaml examples to differentiate and not overcrowd -->
 
 
 ##### Getting started with promotions in GitOps
 
-* To get started, explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) and understand the entities involved.  
-* For a step-by-step guide on implementing promotions, see [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/).
-* For practical examples of setting up promotions, see [Promotion tutorials]({{site.baseurl}}/docs/promotions/promotion-scenarios/).
+Review these articles to begin with GitOps promotions:
+
+* **Understand the components and entities**: Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) to learn about the key entities and how they fit together in the promotion process.
+* **Set up and configure promotions**: Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.
+* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.
+
+
 
 

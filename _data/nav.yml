@@ -14,39 +14,60 @@
     - title: Global Search & Navigation
       url: "/command-bar"
 
-- title: Quick starts
-  url: "/quick-start"
+- title: CI/CD quick starts
+  url: "/ci-quick-start"
   pages:
     - title: Create Codefresh account
-      url: "/create-codefresh-account"
-    - title: CI/CD quick starts
-      url: "/ci-quick-start"
-      sub-pages:
-        - title: Pipeline quick start
-          url: "/create-ci-pipeline"
-        - title: Kubernetes deployment quick start
-          url: "/deploy-to-kubernetes"
-        - title: Helm quick start
-          url: "/deploy-with-helm"
-        - title: On-demand environment quick start
-          url: "/on-demand-environments"
-    - title: GitOps quick starts
+      url: "/ci-create-codefresh-account"
+    - title: Pipeline quick start
+      url: "/create-ci-pipeline"
+    - title: Kubernetes deployment quick start
+      url: "/deploy-to-kubernetes"
+    - title: Helm quick start
+      url: "/deploy-with-helm"
+    - title: On-demand environment quick start
+      url: "/on-demand-environments"
+
+- title: GitOps quick starts
+  url: "/gitops-quick-start"
+  pages:
+    - title: About GitOps quick starts
       url: "/gitops-quick-start"
-      sub-pages:
-        - title: Provision a Hosted GitOps Runtime
-          url: "/install-hosted"
-        - title: Prepare for Hybrid GitOps Runtime installation
-          url: "/verify-requirements"
-        - title: Install a Hybrid GitOps Runtime
-          url: "/runtime"
-        - title: Create an application
-          url: "/create-app-ui"
-        - title: Create and commit resources for application
-          url: "/create-app-specs"
-        - title: Update the image tag for application
-          url: "/create-rollout"
-        - title: Work with Environments & Products
-          url: "/gitops-products"
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"
+    - title: GitOps Runtimes & Git Sources
+      url: "/gitops-runtimes"
+      sub-pages: 
+      - title: Preparing for Hybrid GitOps Runtime installation
+        url: "/verify-requirements"
+      - title: Installing a Hybrid GitOps Runtime
+        url: "/runtime"
+      - title: Creating Git Sources
+        url: "/create-git-source"
+    - title: Environments, Products, Applications
+      url: "/products"
+      sub-pages: 
+      - title: Creating environments
+        url: "/quick-start-gitops-environments"
+      - title: Creating products
+        url: "/quick-start-product-create"
+      - title: Creating applications
+        url: "/create-app-ui"
+      - title: Exploring the Product Dashboard
+        url: "/quick-start-product-dashboard"
+    - title: Promotions
+      url: "/promotions"  
+      sub-pages: 
+      - title: Drag-and-drop promotion
+        url: "/drag-and-drop"    
+      - title: Multi-environment sequential promotion
+        url: "/multi-env-sequential-flow"  
+      - title: Multi-environment promotion with gates
+        url: "/policy-multi-env-promotion"  
+      - title: Multi-environment parallel promotion
+        url: "/parallel-multi-env-promotion"  
+      - title: Multi-environment promotion with dependencies
+        url: "/dependency-multi-env-promotion"  
 
 - title: Dashboards & insights
   url: "/dashboards"
@@ -295,6 +316,8 @@
   pages:
     - title: Image enrichment with GitOps integrations
       url: "/image-enrichment-overview"
+    - title: Complete argument reference
+      url: "/ci-argument-reference"
     - title: GitOps CI integrations
       url: "/ci-integrations"
       sub-pages:
@@ -401,33 +424,17 @@
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
-    - title: Promotion tutorials
-      url: "/promotion-scenarios"  
-      sub-pages: 
-      - title: Drag-and-drop
-        url: "/drag-and-drop"    
-      - title: Multi-environment sequential promotion
-        url: "/multi-env-sequential-flow"  
-      - title: Multi-environment promotion with conditions
-        url: "/policy-multi-env-promotion"  
-      - title: Multi-environment promotion with parallel environments
-        url: "/parallel-multi-env-promotion"  
-      - title: Multi-environment promotion with dependencies
-        url: "/dependency-multi-env-promotion"  
-    - title: Entity configuration
-      url: "/entities"
-      sub-pages: 
-      - title: Promotion Flows
-        url: "/promotion-flow"     
-      - title: Promotion Policies
-        url: "/promotion-policy"  
-      - title: Promotion Workflows
-        url: "/promotion-workflow"  
-      - title: Product Settings
-        url: "/product-promotion-props"          
-      - title: YAML specs
-        url: "/yaml"
-        sub-pages:
+    - title: Promotion Flows
+      url: "/promotion-flow"     
+    - title: Promotion Policies
+      url: "/promotion-policy"  
+    - title: Promotion Workflows
+      url: "/promotion-workflow"  
+    - title: Product promotion settings
+      url: "/product-promotion-props"          
+    - title: Promotion entity YAMLs 
+      url: "/yaml"
+      sub-pages:
         - title: Product YAML
           url: "/product-crd"
         - title: Promotion Template YAML

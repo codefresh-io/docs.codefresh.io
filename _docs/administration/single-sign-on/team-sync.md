@@ -84,8 +84,8 @@ where:
 {% include 
 image.html
 lightbox="true"
-file="/images/administration/sso/azure/client-name.png"
-url="/images/administration/sso/azure/client-name.png"
+file="/images/administration/sso/azure/09-client-name.png"
+url="/images/administration/sso/azure/09-client-name.png"
 alt="SSO Client Name"
 caption="SSO Client Name"
 max-width="40%"
