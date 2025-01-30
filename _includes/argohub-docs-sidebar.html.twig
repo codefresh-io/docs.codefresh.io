@@ -1,17 +1,8 @@
-{% comment %}
-<form class="bd-search d-flex align-items-center">
-  <input type="search" class="form-control doc-search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-    {%- include icons/menu.svg width="30" height="30" -%}
-  </button>
-</form>
-{% endcomment %}
-
 <nav class="collapse bd-links" id="bd-docs-nav">
   {%- assign current_page_url = site.baseurl | append: page.url -%}
 
   <ul id="bd-docs-nav-list" class="list-unstyled">
-  {%- for navItem in site.data.nav -%}
+  {%- for navItem in site.data.argohub-nav -%}
 
     {% if navItem.url %}
       {%- assign group_slug = navItem.url | slugify -%}
@@ -27,7 +18,7 @@
       {%- assign link_slug = link.title | slugify -%}
     {% endif %}
 
-    {% assign group_url = site.baseurl | append: '/docs/' | append: group_slug | append: '/' %}
+    {% assign group_url = site.baseurl | append: '/argohub/' | append: group_slug | append: '/' %}
 
     {%- assign active = nil -%}
 
@@ -47,7 +38,7 @@
       <ul class="nav bd-sidenav">
         {%- for doc in navItem.pages -%}
 
-          {% if doc.url contains '/docs/'%}
+          {% if doc.url contains '/argohub/'%}
             {% assign doc_disabled = true %}
           {% else %}
             {% assign doc_disabled = false %}
@@ -82,7 +73,7 @@
               <ul class="nav bd-sidenav">
                 {%- for sub_doc in doc.sub-pages -%}
 
-                  {% if sub_doc.url contains '/docs/'%}
+                  {% if sub_doc.url contains '/argohub/'%}
                     {% assign subdoc_disabled = true %}
                   {% else %}
                     {% assign subdoc_disabled = false %}
