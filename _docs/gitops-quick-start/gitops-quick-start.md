@@ -8,13 +8,13 @@ redirect_from:
 ---
 
 ## GitOps quick starts: From start to deployment 
-Codefresh GitOps streamlines application delivery through automation, consistency, and scalability. These quick start guides are designed to help you get up and running quickly, providing step-by-step instructions to fully utilize Codefresh GitOps for managing and promoting your applications.
+Codefresh GitOps streamlines software delivery through automation, consistency, and scalability. These quick start guides are designed to help you get up and running quickly, providing step-by-step instructions to fully utilize Codefresh GitOps for managing and promoting your applications.
 
 Each quick start is standalone, allowing you to dive into specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a progressive journey from setup to seamless application promotion across environments.
 
 The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, culminating in deploying and promoting applications effectively across multiple environments.
 
-We’ve provided a public GitHub repository containing all the applications and resources used in these guides. You can follow along directly or fork the repository to create and manage your own applications.
+We’ve provided an example GitHub repository containing all the applications and resources used in these guides. You can follow along directly or fork the repository to create and manage your own applications.
 
 
 
@@ -30,14 +30,16 @@ We’ve provided a public GitHub repository containing all the applications and 
   Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
+* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+  Create Argo CD applications and configure their source repositories, manifests, and deployment paths.
+
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
 * [Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
   Organize related applications under a single product, for better context and control of deployments.
 
-* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Add applications to your product and configure their source repositories, manifests, and deployment paths.
+
 
 <!--- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
@@ -61,9 +63,9 @@ Start with simple manual promotion, then automate with Promotion Flows—evolvin
 
   
 
-## Public Git repository
+## Example Git repository
 
-To support learning through these quick starts, we’ve created a [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts.
+To support learning through these quick starts, we’ve created an [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts.
 
 The repository is structured to help you follow along with the guides:
 * `argocd-app-manifests`: Manifests with the configuration definitions of all the Argo CD applications used in the quick starts.

@@ -20,7 +20,7 @@ For details, see [About Products]({{site.baseurl}}/docs/products/about-products/
 For details, see [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 ## Follow-along Git repository
-To make the quick starts as seamless as possible, we’ve created a [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="\_blank"} with all the applications and resources featured in the guides. 
+To make the quick starts as seamless as possible, we’ve created an [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="\_blank"} with all the applications and resources featured in the guides. 
 
 The repository is structured to help you follow along with the guides:
 * `argocd-app-manifests`: Folder with manifests all the Argo CD applications used in the quick starts.

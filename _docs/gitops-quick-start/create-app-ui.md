@@ -22,7 +22,7 @@ For detailed information, see [About Argo CD applications]({{site.baseurl}}/docs
 
 
 ## Follow-along Git repo
-To replicate the setup, use the public GitHub repository containing the [application configuration manifests](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="_blank"}. These manifests are preconfigured to help you deploy the applications easily to their respective environments.
+To replicate the setup, use the example GitHub repository containing the [application configuration manifests](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="_blank"}. These manifests are preconfigured to help you deploy the applications easily to their respective environments.
 
 ### Demo applications folder
 The [demo-applications folder](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="_blank"} in the same repository provides preconfigured Helm charts for creating the applications. Each subfolder corresponds to a specific application and includes:

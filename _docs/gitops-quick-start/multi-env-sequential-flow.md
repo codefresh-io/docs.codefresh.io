@@ -29,7 +29,7 @@ This quick start demonstrates creating a Promotion Flow with three environments:
   Track the progress of the promotion in the `demo-trioapp` product's Releases tab.
 
 ## Follow-along Git repo
-To follow along, you can use the following applications in the [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts:
+To follow along, you can use the following applications in the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts:
 * `trio-dev` for the `dev` environment
 * `trio-qa` for the `qa` environment
 * `trio-prod` for the `prod` environment

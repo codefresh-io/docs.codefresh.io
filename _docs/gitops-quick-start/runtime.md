@@ -15,20 +15,34 @@ If you've reviewed and verified that you meet the requirements for a GitOps Runt
 Verify you have completed the [prerequisites]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
 
 ## Install the GitOps Runtime
-1. In the Welcome page, select **+ Install Runtime**.
-1. From Runtimes in the sidebar, select **GitOps Runtimes**.
-1. Click **Hybrid Runtimes**, and then click **Add**.
-1. Install the Hybrid GitOps Runtime:
+1. On the Getting Started page, click **Install Runtime**.
+1. Install the Hybrid GitOps Runtime form:
     1. Click **Generate** to create a new API key.
     1. Retain the default values for the GitOps Runtime name and namespace, `codefresh`.
-    1. Copy the command in _Step 3_ and run it to install the Helm chart for the Hybrid GitOps Runtime:   
-        where:  
+    1. Copy the command displayed in _Step 3_ in the UI, making sure you add the flag for the Runtime Git token `--set global.runtime.gitCredentials.password.value` and its value:  
+
+  {% highlight yaml %}
+  helm upgrade --install <helm-release-name> \
+  --create-namespace \
+  --namespace <namespace> \
+  --set global.codefresh.accountId=<codefresh-account-id> \
+  --set global.codefresh.userToken.token=<codefresh-api-key> \
+  --set global.runtime.gitCredentials.password.value=<git-runtime-token> \
+  --set global.runtime.name=<runtime-name> \
+  oci://quay.io/codefresh/gitops-runtime \
+  --wait
+  {% endhighlight %}
+ 
+  &nbsp;&nbsp;&nbsp;&nbsp;where:  
+  *  
         * `cf-gitops-runtime` is the default name of the Helm release, which you can change if needed.  
         * `codefresh` is the default namespace in which to install the Hybrid GitOps runtime.
         * `<codefresh-account-id>` is mandatory for _tunnel-based Hybrid GitOps Runtimes_, and is automatically populated by Codefresh in the command. 
         * `<codefresh-token>` is the API key you generated, and is also automatically populated in the command.
+        * `<git-runtime-token>` is the token used for Runtime installation.
         * `codefresh` is the default name of the Runtime. 
         * `oci://quay.io/codefresh/gitops-runtime` is the name of the Helm chart, predefined by Codefresh, and cannot be changed.
+        * `--wait` is the duration the installation process waits for all pods to become ready before timing out. We recommend to set it to a period longer than 5 minutes which is the default if not set.
 
 {% include
 image.html
@@ -71,7 +85,6 @@ max-width="60%"
 
 ## What's next
 Let's create a Git Source to which we'll link the applications we'll create later in the quick start series.  
-Explore Git Sources and why we need them in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/). 
 
 [Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/)
 

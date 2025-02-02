@@ -15,7 +15,17 @@ However, critical environments may rely on the success or stability of multiple 
 
 This quick start shows how to create additional dependencies between environments in a Promotion Flow.
 
+## Requirements
 
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
+* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+  Each environment must have an application for the product.
+  For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
+  The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
+  If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources. <!--- add a link to the repo? -->
 
 
 
@@ -39,10 +49,10 @@ This quick start shows how to create additional dependencies between environment
 
 ## Follow-along Git repo
 
-You can copy the manifests and the resources for the new application from the [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
+You can copy the manifests and the resources for the new application from the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
 
 * Application manifest
-  * [`trio-satging`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests/trio-staging){:target="\_blank"}
+  * [`trio-staging`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests/trio-staging){:target="\_blank"}
 
 * Application resources
   * [`trioapp-staging`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications/trioapp-staging){:target="\_blank"}
@@ -53,14 +63,17 @@ You can copy the manifests and the resources for the new application from the [p
 Update the dependency on the `prod` environment, by selecting `staging` in addition to `qa`.
 
 ### Before you begin
-* Ensure that you have:
-  * A new non-production environment, for example, `staging` in the quick start
-  * Created and deployed an application to this environment, `demo-trioapp-staging` in the quick start
+* Ensure that you have: 
+    * A new environment as a parallel environment before the final environment node
+      For the quick start, we created `staging` as a parallel environment to `qa`. 
+    * Application in the new environment 
+      For the quick start, we created the `demo-trioapp-staging` application aligned to `staging`. 
+
 
 ### Step-by-step
 1. From the list of Promotion Flows, open the first Promotion Flow you created, for example, `multi-env-sequential-promotion`.
 1. If required, change the **Version** to 3.00.
-1. Add the new environment you created as a parallel environment to the one before the final environment node.
+1. Add the new environment as a parallel environment to the one before the final environment node.
   In the example, we added the `staging` environment as a parallel environment to `qa`.  
 1. Mouse over the final environment node in the Promotion Flow for which to add the dependency, `prod` for the quick start, and click **Depends on**.  
 1. Select the new environment you added, `staging` for the quick start, and then click **Update dependency**.
@@ -130,9 +143,9 @@ By now, you’ve successfully created environments, your first product, added ap
 These foundational steps empower you to manage complex promotions confidently and effectively.
 
 ## Related articles
-Now that you’ve mastered simple and advanced promotion, learn more on customizing promotion settings for products and configuring promotion entities.
-[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+Now that you’ve mastered simple and advanced promotion, you may want to learn more on customizing promotion settings for products. 
+* [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+* [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 

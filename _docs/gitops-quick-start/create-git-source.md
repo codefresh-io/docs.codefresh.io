@@ -69,12 +69,18 @@ Here's an example of the Git repository referenced in GitHub by the Git source.
 %}
 
 ## What's next
-With a Git Source set up, you are now ready to create applications. Before diving into application creation, let’s focus on two key entities essential for promoting and deploying applications: Environments and Products.
-
+With a Git Source set up, you are now ready to create applications. 
+<!--- Before diving into application creation, let’s focus on two key entities essential for promoting and deploying applications: Environments and Products.
 * Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
 * Products group related applications under a single entity, enabling better organization, visibility, and control when promoting changes and deploying applications.
+Let’s continue by creating environments. 
+[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/) -->
 
-Let’s continue by creating environments.
+Let’s continue by creating applications. 
 
-[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)
+[Quick start: Creating Applications]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)
+
+
+
+
 

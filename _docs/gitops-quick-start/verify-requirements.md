@@ -65,10 +65,28 @@ Verify that your deployment environment meets the minimum requirements for Hybri
 Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
 
 
-### Argo project components & CRDs
-Ensure that the target cluster does not include Argo project components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
+### Argo project components, CRDs & SealedSecrets controller
+Ensure that the cluster on which you'll install the Runtime does not include :
+* Argo project components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows
+* SealedSecrets controller  
 
-You can handle Argo project CRDs in two ways:
+To verify that the Runtime cluster does not have Argo Project components and CRDs, run this command:
+`kubectl get crd | grep -E 'argoproj\.io|sealedsecrets\.bitnami\.com' && printf "\nERROR: Cluster needs cleaning\nUninstall the projects listed above\n" || echo "Cluster is clean. It's safe to install the GitOps Runtime"`
+
+The example below displays Argo Project components detected in the cluster that should be removed, including deployments, services, and associated CRDs. Additionally, the `SealedSecrets controller, if present, must also be removed.
+
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/gitops/argo-projects-in-cluster-result.png" 
+	url="/images/quick-start/gitops/argo-projects-in-cluster-result.png" 
+	alt="Example of Argo Project components to be removed from Runtime cluster" 
+	caption="Example of Argo Project components to be removed from Runtime cluster"
+  max-width="60%" 
+%}
+
+<!--- You can handle Argo project CRDs in two ways:
 * Outside the Helm chart
 * Adopt the CRDs to be managed by the GitOps Runtime Helm release (recommended)
 
@@ -94,7 +112,7 @@ kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{prin
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
-
+-->
 
 ## What's next
 You are now ready to install the GitOps Runtime.

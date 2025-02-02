@@ -39,7 +39,7 @@ This quick start describes how to configure parallel promotions in Promotion Flo
 
 ## Follow-along Git repo
 
-You can copy the manifests and the resources for the new applications from the [public GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
+You can copy the manifests and the resources for the new applications from the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
 
 * Application manifests
   * [`trio-prod-asia`](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests/trio-prod-asia){:target="\_blank"}
