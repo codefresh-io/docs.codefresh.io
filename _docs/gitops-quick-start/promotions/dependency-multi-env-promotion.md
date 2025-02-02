@@ -92,7 +92,7 @@ By now, you’ve successfully created environments, your first product, added ap
 Now that you’ve mastered the basics, learn more on promotion settings for products and configuring promotion entities.
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Configuring promotion entities]({{site.baseurl}}/docs/promotions/entities/)  
+
 
 
 

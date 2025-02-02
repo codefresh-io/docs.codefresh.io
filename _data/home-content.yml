@@ -54,8 +54,6 @@
       localurl: /docs/promotions/promotion-components/
     - title: Promotion setup guidelines
       localurl: /docs/promotions/create-promotion-sequence/
-    - title: Entity configuration
-      localurl: /docs/promotions/entities
     - title: YAML specs
       localurl: /docs/promotions/entities/yaml/
     - title: Trigger promotions
