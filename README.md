@@ -30,7 +30,7 @@ Node version `9.11.2`
 
 1. In the Enterprise collection, find the document for the ArgoHub collection.
 2. In the ArgoHub collection, create a folder structure for the required document.
-3. Create a symbolic link to the document inside the required folder in the ArgoHub collection.
+3. Create a symbolic link to the document inside the required folder in the ArgoHub collection (refer to the "Create a Symlink" section for details).
 4. Create a record for the side menu `argohub-nav.yml` that represents the new document.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
 6. In the `argohub-redirect-mapping.js`, add a redirect link between the Enterprise and ArgoHub collections.
@@ -59,6 +59,12 @@ No actions required - the new content will be automatically reflected in both Ar
 ## ArgoHub Collection Notes
 
 ### Reusing Existing Documents
+
+#### Create a Symlink between Enterprise and ArgoHub Collections
+
+1. In the IDE's file explorer, copy the relative path of the file you want to share.
+2. Open the terminal and navigate to the directory where you want to create the symlink.
+3. Run the following command: `npm run link <relative-path-from-step-1>`
 
 #### Conditions to Render Text for Specific Contexts
 
