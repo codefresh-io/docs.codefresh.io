@@ -33,7 +33,8 @@ Node version `9.11.2`
 3. Create a symbolic link to the document inside the required folder in the ArgoHub collection (refer to the "Create a Symlink" section for details).
 4. Create a record for the side menu `argohub-nav.yml` that represents the new document.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
-6. In the `argohub-redirect-mapping.js`, add a redirect link between the Enterprise and ArgoHub collections.
+6. Adjust the the document links (refter to the "Document Links" section)
+7. In the `argohub-redirect-mapping.js`, add a redirect link between the Enterprise and ArgoHub collections.
 
 ## Document Changes
 
@@ -47,14 +48,15 @@ No actions required - the new content will be automatically reflected in both Ar
 
 - Repeat step 3.
 - Repeat step 6.
+- Repeat step 7.
 
 #### If changes to the ArgoHub structure are required
 
-- Repeat steps 2 to 6.
+- Repeat steps 2 to 7.
 
 ### Splitting a Document into Multiple Documents
 
-- Repeat steps 2 to 6.
+- Repeat steps 2 to 7.
 
 ## ArgoHub Collection Notes
 
@@ -76,6 +78,9 @@ No actions required - the new content will be automatically reflected in both Ar
 
 Document links will automatically adjust to the relevant context, eliminating the need for duplication. For example:
 `({{site.baseurl}}/{{page.collection}}/installation/gitops/shared-configuration/)`
+
+Please note that the `{{page.collection}}` argument will only work if the folder structure in ArgoHub and Enterprise collections is the same.
+If the paths differ, use an `if` condition to create two separate links.
 
 #### Document Images
 
