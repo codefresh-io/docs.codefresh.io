@@ -78,9 +78,10 @@ max-width="60%"
 1. Click **Add** to add the user token for your Git provider account, and then paste the token in the field.
 1. Complete the installation by clicking **Configure as Argo Application**.  
   There is no need for any further action from you, as Codefresh takes care of the configuration.
-  By configuring the Hybrid GitOps Runtime as an Argo Application, you can ensure that GitOps is the single source of truth for the Runtime, view and monitor Runtime components. 
-
-
+  Configuring the Hybrid GitOps Runtime as an Argo CD application ensures:
+    * Git as the single source of truth: The Runtime’s state is declaratively managed in Git, ensuring consistency, traceability, and version control over all its configurations.
+    * Automated reconciliation: Argo CD continuously monitors the Runtime’s desired state (as defined in Git) and automatically corrects any drift, ensuring alignment between the cluster and the Git repository.
+    * Visibility & monitoring: The Runtime is displayed in the GitOps Apps dashboard where you can view and check health and sync statuses.
 
 
 ## What's next
