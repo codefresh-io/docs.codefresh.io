@@ -305,6 +305,8 @@
   pages:
     - title: Image enrichment with GitOps integrations
       url: "/image-enrichment-overview"
+    - title: Complete argument reference
+      url: "/ci-argument-reference"
     - title: GitOps CI integrations
       url: "/ci-integrations"
       sub-pages:
@@ -314,9 +316,6 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"
-        - title: Complete argument reference
-          url: "/ci-argument-reference"
-
     - title: GitOps issue tracking integrations
       url: "/issue-tracking"
       sub-pages:
@@ -410,26 +409,21 @@
       url: "/promotions-overview"
     - title: Getting started
       url: "/getting-started"  
-    - title: Promotion tutorials
-      url: "/promotion-scenarios"
     - title: Promotion building blocks
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
-    - title: Entity configuration
-      url: "/entities"
-      sub-pages: 
-      - title: Promotion Flows
-        url: "/promotion-flow"     
-      - title: Promotion Policies
-        url: "/promotion-policy"  
-      - title: Promotion Workflows
-        url: "/promotion-workflow"  
-      - title: Product Settings
-        url: "/product-promotion-props"          
-      - title: YAML specs
-        url: "/yaml"
-        sub-pages:
+    - title: Promotion Flows
+      url: "/promotion-flow"     
+    - title: Promotion Policies
+      url: "/promotion-policy"  
+    - title: Promotion Workflows
+      url: "/promotion-workflow"  
+    - title: Product promotion settings
+      url: "/product-promotion-props"          
+    - title: Promotion entity YAMLs 
+      url: "/yaml"
+      sub-pages:
         - title: Product YAML
           url: "/product-crd"
         - title: Promotion Template YAML

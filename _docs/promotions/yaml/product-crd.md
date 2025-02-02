@@ -4,6 +4,7 @@ description: "YAML specifications for the product defining its promotion and flo
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/yaml
+ - /docs/promotions/entities/yaml
 toc: true
 ---
 
@@ -84,6 +85,6 @@ spec:
 |`spec.promotionFlows.gitTriggerSelectors.values`  |Single or list of comma-separated values used to match or exclude Promotion Flows based on criteria defined by `gitTriggerSelectors.operator`. The values can be strings, numbers, or other data types depending on the context.|array |Required |
 
 ## Related articles
-[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-policy-crd/) 
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/)  
-[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-flow-crd/)  
+[Promotion Policy YAML]({{site.baseurl}}//docs/promotions/yaml/promotion-policy-crd/)  
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/)  
+[Promotion Flow YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/)  

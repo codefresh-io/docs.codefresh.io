@@ -4,6 +4,7 @@ description: "YAML specifications for the Promotion Template defining version in
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/yaml
+ - /docs/promotions/entities/yaml
 toc: true
 ---
 
@@ -61,9 +62,9 @@ spec:<!
 
 
 ## Related articles
-[Product YAML]({{site.baseurl}}/docs/promotions/entities/yaml/product-crd/)  
-[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-policy-crd/)  
-[Promotion Template YAML]({{site.baseurl}}/docs/promotions/entities/yaml/promotion-template-crd/)   
+[Product YAML]({{site.baseurl}}/docs/promotions/yaml/product-crd/)  
+[Promotion Policy YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-policy-crd/)  
+[Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/)   
 
 
 

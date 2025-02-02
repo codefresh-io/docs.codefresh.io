@@ -97,7 +97,7 @@ The table describes important insights in the Releases page.
 |-------------|---------------------|
 | **Date**     | The date the release was created. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
-| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
+| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
 | **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> <!--- or <img src="../../../images/icons/promotion-suspending-pending-pr?display=inline-block">-->: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
 
 
@@ -352,7 +352,7 @@ Manual release termination may be necessary if issues are detected in an environ
 
 {{site.data.callout.callout_tip}}
 **TIP**  
-To automatically terminate a release by configuring timeouts for Promotion Flows, see [Flow timeouts]({{site.baseurl}}/docs/promotions/entities/promotion-flow/#flow-timeouts).
+To automatically terminate a release by configuring timeouts for Promotion Flows, see [Flow timeouts]({{site.baseurl}}/docs/promotions/promotion-flow/#flow-timeouts).
 {{site.data.callout.end}}
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
@@ -409,7 +409,7 @@ max-width="60%"
 
 
 ## Related articles
-[Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
+[Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
