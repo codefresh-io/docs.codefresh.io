@@ -9,19 +9,17 @@ function getCookie(name) {
 }
 
 async function getArgoHubRedirectURL(currentPath) {
-  const redirectMap = await fetchRedirectMap();
-
-  console.log("SITE_BASE_URL", SITE_BASE_URL);
   currentPath = currentPath.replace(SITE_BASE_URL, "");
 
-  console.log(currentPath);
-  console.log(redirectMap);
+  const redirectMap = await fetchRedirectMap();
 
   const newPath = redirectMap[currentPath];
-  console.log(newPath);
   if (!newPath) return null;
 
-  const newURL = location.href.replace(currentPath, newPath);
+  const newURL =
+    newPath === ARGOHUB_MAIN_PATH
+      ? `${location.href}${SITE_GITOPS_COLLECTION}`
+      : location.href.replace(currentPath, newPath);
 
   return newURL;
 }
