@@ -81,10 +81,10 @@ collections:
   pages:
     output: true
     permalink: /:collection/:path
-  docs:
+  argohub:
     output: true
     permalink: /:collection/:path/
-  argohub:
+  docs:
     output: true
     permalink: /:collection/:path/
 
