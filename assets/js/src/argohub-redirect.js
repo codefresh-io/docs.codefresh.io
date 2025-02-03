@@ -30,7 +30,7 @@ async function handleRedirect() {
   if (currentPath.includes(ARGOHUB_MAIN_PATH)) return;
 
   const redirectCookie = getCookie(ARGOHUB_DOC_COOKIE_NAME);
-  // if (!redirectCookie) return;
+  if (!redirectCookie) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(currentPath);
   if (!argoHubRedirectURL) return;
