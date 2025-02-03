@@ -1,5 +1,5 @@
 const ARGOHUB_DOC_COOKIE_NAME = "argohubdoc";
-const ARGOHUB_MAIN_PATH = "/argohub/";
+const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -39,7 +39,7 @@ async function handleRedirect() {
 
 async function fetchRedirectMap() {
   const response = await fetch(
-    `${location.origin}/assets/js/src/argohub-redirect-mapping.json`
+    `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch the collections redirect map.");

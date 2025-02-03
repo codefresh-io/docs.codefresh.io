@@ -32,6 +32,7 @@ Node version `9.11.2`
 2. In the ArgoHub collection, create a folder structure for the required document.
 3. Create a symbolic link to the document inside the required folder in the ArgoHub collection (refer to the "Create a Symlink" section for details).
 4. Create a record for the side menu `argohub-nav.yml` that represents the new document.
+   > **Warning:** After adding a new side menu, it is required to delete the `_site` folder to apply the change.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
 6. Adjust the the document links (refter to the "Document Links" section).
 
