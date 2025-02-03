@@ -18,8 +18,14 @@ function getArgoHubRedirectURL(currentPath) {
   const newPath = redirectMap[currentPath];
   if (!newPath) return null;
 
-  const lastMatchRegex = new RegExp(`${currentPath}(?=[^${currentPath}]*$)`);
-  const newURL = location.href.replace(lastMatchRegex, newPath);
+  let newURL = location.href;
+
+  if (currentPath === "/") {
+    const lastMatchRegex = new RegExp(`${currentPath}(?=[^${currentPath}]*$)`);
+    newURL = newURL.replace(lastMatchRegex, newPath);
+  } else {
+    newURL = newURL.replace(currentPath, newPath);
+  }
 
   return newURL;
 }
