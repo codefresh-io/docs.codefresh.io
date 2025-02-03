@@ -571,7 +571,10 @@ The Git user token is a personal access token unique to every user. The permissi
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
 **Configure as Argo CD application**  
-Configuring the Runtime as an Argo CD application to view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.   
+Configuring the Hybrid GitOps Runtime as an Argo CD application ensures:
+* Git as the single source of truth: The Runtime’s state is declaratively managed in Git, ensuring consistency, traceability, and version control over all its configurations.
+* Automated reconciliation: Argo CD continuously monitors the Runtime’s desired state (as defined in Git) and automatically corrects any drift, ensuring alignment between the cluster and the Git repository.
+* Visibility & monitoring: The Runtime is displayed in the GitOps Apps dashboard where you can view and check health and sync statuses.
 
 
 <br><br>
