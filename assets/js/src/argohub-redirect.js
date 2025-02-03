@@ -12,7 +12,7 @@ async function getArgoHubRedirectURL(currentPath) {
   const redirectMap = await fetchRedirectMap();
 
   console.log("SITE_BASE_URL", SITE_BASE_URL);
-  currentPath = currentPath.replace(SITE_BASE_URL, "/");
+  currentPath = currentPath.replace(SITE_BASE_URL, "");
 
   console.log(currentPath);
   console.log(redirectMap);
