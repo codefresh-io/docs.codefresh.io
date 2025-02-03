@@ -45,7 +45,7 @@ The Environments, Product, and GitOps Apps dashboards display the product versio
 The Version attribute, defined as a JSON path expression, is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.   
 Review [examples of version attributes]({{site.baseurl}}/docs/products/promotion-version-properties/#examples-of-version-attributes).
 
-For details, see [Configuring versions for promoted applications]({{site.baseurl}}/docs/docs/products/promotion-version-properties/).
+For details, see [Configuring versions for promoted applications]({{site.baseurl}}/docs/products/promotion-version-properties/).
 
 
 ## Product properties for promotion

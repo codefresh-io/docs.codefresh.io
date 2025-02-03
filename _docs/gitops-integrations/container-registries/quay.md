@@ -1,14 +1,16 @@
 ---
 title: "GitOps Quay integration"
-description: ""
+description: "Integrate Quay with GitOps for image enrichment"
 group: gitops-integrations
 sub_group: container-registries
 toc: true
 ---
 
-Codefresh has native support for interacting with Quay registries, from where you can push, pull, and deploy images.  
-Adding a Quay integration allows you to reference the integration in external CI tools such as GitHub Actions by the name of the integration account, instead of adding explicit credentials. See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
+Codefresh offers native support for integrating with Quay, enabling seamless pushing, pulling, and deploying of container images.
 
+By adding a Quay integration in Codefresh, you can reference the integration account in external CI tools, such as GitHub Actions, using the integration name instead of managing explicit credentials. This simplifies security and enhances the ease of managing integrations in GitOps.
+
+For general information on container registry integrations for GitOps, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 ## Prerequisites
 

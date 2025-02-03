@@ -56,7 +56,7 @@ The table below lists the settings validated in the `values` file.
 {: .table .table-bordered .table-hover}
 |**Setting**              |**Validation**            | 
 | --------------         | --------------           |  
-|**userToken**            |If explicitly defined, or defined as a `secretKeyRef` which exists in the current k8s context and the defined namespace.|
+|**userToken**            |If explicitly defined, or defined as a `secretKeyRef` which exists in the current K8s context and the defined namespace.|
 |**Account permissions**  |If the user has admin permissions for the account in which they are installing the runtime. |
 | **Runtime name**        |If defined, and is unique to the account. |
 |**Access mode**          |{::nomarkdown}<ul><li>For tunnel-based (the default), if <code class="highlighter-rouge">accountId</code> is defined, and matches the account of the <code class="highlighter-rouge">userToken</code> defined in the file.</li><li>For ingress-based, if the hosts array contains at least one entry that is a valid URL (successful HTTP GET).</li><li>If both tunnel-based and ingress-based access modes are disabled, if <code class="highlighter-rouge">runtime.ingressUrl</code> is defined.</li></ul>{:/} |
@@ -74,7 +74,10 @@ where:
 ### Disable global installation validation
 You may want to disable automated validation for specific scenarios, such as to address false-negatives.
 
+
 To do so, either add the `--set installer.skipValidation=true` flag to the Helm install command, or the `installer.skipValidation: true` the `values` file. 
+
+
 
 
 ##### In install command 
@@ -111,6 +114,24 @@ global:
 ... 
 {% endraw %}
 {% endhighlight %}
+
+### Disabling validation for custom/fine-grained Git tokens
+If you use tokens with custom scopes, or GitHub's fine-grained tokens (currently not officially supported by Codefresh), _skip token validation_ to avoid validation failures when installing GitOps Runtimes.  
+
+Add the `skipGitPermissionValidation` flag to your `values.yaml` file: 
+
+```yaml
+app-proxy:
+  config:
+    skipGitPermissionValidation: "true"
+```
+
+If you set this flag, make sure that:
+1. The Git user token defined for the GitOps Runtime (the token defined for `runtime-repo-creds-secret`), has read and write access to the Shared Configuration Repository.
+1. The Git user tokens for the different Git repositories associated with the Runtimes have read and write permissions to those Git repositories they expect to write to and read from.  
+  Read more on configuring the repositories with multiple `repo-creds` secrets in [Argo CD Repositories](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories).
+
+For details on Git token usage, see [Git tokens]({{site.baseurl}}/docs/security/git-tokens/).
 
 ### Manually validate values.yaml
 To manually validate the values file, run:  
