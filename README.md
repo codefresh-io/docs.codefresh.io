@@ -33,8 +33,7 @@ Node version `9.11.2`
 3. Create a symbolic link to the document inside the required folder in the ArgoHub collection (refer to the "Create a Symlink" section for details).
 4. Create a record for the side menu `argohub-nav.yml` that represents the new document.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
-6. Adjust the the document links (refter to the "Document Links" section)
-7. In the `argohub-redirect-mapping.js`, add a redirect link between the Enterprise and ArgoHub collections.
+6. Adjust the the document links (refter to the "Document Links" section).
 
 ## Document Changes
 
@@ -48,15 +47,14 @@ No actions required - the new content will be automatically reflected in both Ar
 
 - Repeat step 3.
 - Repeat step 6.
-- Repeat step 7.
 
 #### If changes to the ArgoHub structure are required
 
-- Repeat steps 2 to 7.
+- Repeat steps 2 to 6.
 
 ### Splitting a Document into Multiple Documents
 
-- Repeat steps 2 to 7.
+- Repeat steps 2 to 6.
 
 ## ArgoHub Collection Notes
 
@@ -68,13 +66,19 @@ No actions required - the new content will be automatically reflected in both Ar
 2. Open the terminal and navigate to the directory where you want to create the symlink.
 3. Run the following command: `npm run link <relative-path-from-step-1>`
 
+Note: In addition to creating a symlink, the command will also add a record in `argohub-redirect-mapping.json` to ensure auto-redirection functionality.
+
 #### Conditions to Render Text for Specific Contexts
 
 - By default, all document content appears the same in both Enterprise and ArgoHub contexts.
-- To include content for the ArgoHub collection only: `{% if page.layout == "argohub" %}`
-- To exclude content from the ArgoHub collection (will appear only in the Enterprise collection): `{% if page.layout != "argohub" %}`
+- To include content for the ArgoHub collection only: `{% if page.collection == site.gitops_collection %}`
+- To exclude content from the ArgoHub collection (will appear only in the Enterprise collection): `{% if page.collection != site.gitops_collection %}`
 
 #### Document Links
+
+We can rely on the automatic redirect from the Enterprise to the ArgoHub Collection (details provided in the section below) to maintain the collection context. For instance, if a link in an ArgoHub Collection document directs to the Enterprise collection, the auto-redirect will return the user to the ArgoHub Collection.
+
+Additionally, we can use the following methods to avoid redirects if needed:
 
 Document links will automatically adjust to the relevant context, eliminating the need for duplication. For example:
 `({{site.baseurl}}/{{page.collection}}/installation/gitops/shared-configuration/)`
@@ -96,3 +100,5 @@ The ArgoHub home page and all pages within the ArgoHub collection are excluded f
 ### Auto Redirect from Enterprise to ArgoHub Collection
 
 When the GitOps client adds an ArgoHub system type cookie, the Documentation site will detect it and initiate an automatic redirect. If you open any page from the enterprise collection, the site will check for an equivalent document in the ArgoHub collection and redirect you there if one exists.
+
+Redirect links between the Enterprise and ArgoHub collections are stored in the `argohub-redirect-mapping.json` file. Running `npm run link` automatically updates the file, eliminating the need for manual updates.
