@@ -71,8 +71,8 @@ Modify your CI workflow to include the image enrichment step:
 ### 4. View enriched image metadata
 After deployment, view enriched image details in these dashboards :  
 * [Images]({{site.baseurl}}/docs/dashboards/images/)  
-* [GitOps Apps]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)
-<!-- remember to change the link for GitOps Apps to the new topic -->
+* [GitOps Apps]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/)
+
 
 
 Enriched data includes:   

@@ -2,7 +2,8 @@
 title: "Monitoring Argo CD applications"
 description: "Deep dive to "
 group: deployments
-sub_group: gitops
+redirect_from:
+  - /docs/deployments/gitops/applications-dashboard/
 toc: true
 ---
 
@@ -157,7 +158,7 @@ View deployment, definition, and event information for the selected application 
 A read-only view, the Quick View displays information on the application state and location, labels and annotations, parameters, sync options, manifest, status and sync events.
 Access the Quick View from the GitOps Apps dashboard, either from the application's context menu, or after drill down, from the Current State tab.
 
-1. In the Codefresh UI, from Ops in the sidebar, select [GitOps Apps](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
 1. Do one of the following:  
   * From the List or Card views, select the context menu and then select **Quick View**.
   

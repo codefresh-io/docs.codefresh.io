@@ -17,7 +17,18 @@ In Argo CD, an application is a core concept, representing a logical grouping of
 Argo CD automates synchronization, ensuring deployments remain consistent and preventing configuration drift through Git as the single source of truth. 
 
 ##### Argo CD applications with Codefresh GitOps
-Codefresh GitOps is fully integrated with and builds on the foundation of Argo CD applications, adding unique capabilities that provide context and lifecycle management.  
+
+With Codefresh, you can create fully GitOps-compliant Argo CD applications directly within the platform, supporting the full functionality to create, configure, and manage them. This includes automatically generating application manifests, committing them to Git, and synchronizing them with your Kubernetes clusters.
+
+* **GitOps Runtime and Argo CD applications**:  
+  When you install the GitOps Runtime and connect your clusters, all Argo CD applications across those clusters are displayed in the GitOps Apps dashboard, regardless of the cluster or namespace they are deployed to.  There is no manual action required from you. This centralized view provides unparalleled visibility into your entire application landscape, making it easy to monitor, manage, and troubleshoot deployments at scale.
+
+* **Argo CD application types**:
+    * Standard Argo CD applications: Full functionality to create, configure, and manage them.
+    * ApplicationSets: View and monitor resources and configuration.
+    * Multi-source applications: View and monitor resources and configuration
+
+
 
 {% include
 image.html
@@ -29,13 +40,8 @@ caption="Argo CD applications in Codefresh GitOps"
 max-width="60%"
 %}
 
-* **Automated integration with Argo CD**: When you install the GitOps Runtime and connect your clusters, all Argo CD applications across those clusters are displayed in the GitOps Apps dashboard, with no manual action required from you. 
 
-* **Create and manage**: You can create fully GitOps-compliant standalone Argo CD applications directly in the platform, with full functionality to monitor, configure, and manage them. Application manifests are automatically generated on commit to Git and synchronized with your Kubernetes clusters. This tight integration ensures every deployment adheres to GitOps principles.
-
-* **Application types**: The GitOps Apps dashboard displays ApplicationSets<!--- and multi-source applications-->, and the ability to view and monitor their resources. At this time, we do not support creating these in Codefresh.
-
-* **Unique GitOps features**: Features such as products for grouping relating applications, environments to align them with specific stages in your software lifecyle, and promotion mechanisms for deployment make application delivery transparent and efficient. Read more details in the sections that follow.
+Read more details in the sections that follow.
 
 
 
@@ -139,7 +145,7 @@ See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 
 ## Getting started with applications
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 
 

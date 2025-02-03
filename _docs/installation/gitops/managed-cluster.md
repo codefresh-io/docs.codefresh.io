@@ -130,10 +130,10 @@ View connection status for the managed cluster, and health and sync errors. Heal
 Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.
 If Argo Rollouts has not been installed on the target cluster, the **Install Argo Rollouts** button displayed.
 
-Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/).
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from the sidebar, select **GitOps Runtimes**.
 1. Select **Topology View**.
 1. Select the target cluster, and then select **+ Install Argo Rollouts**.
 

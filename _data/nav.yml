@@ -391,7 +391,7 @@
         - title: Creating Argo CD applications
           url: "/create-application"
         - title: Monitoring Argo CD applications
-          url: "/applications-dashboard"
+          url: "/monitor-applications"
         - title: Managing Argo CD applications
           url: "/manage-application"
         - title: Progressive delivery with GitOps

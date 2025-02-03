@@ -277,7 +277,7 @@ Once you commit the manifest to the Git Source, it is synced with the Git repo. 
    %}
 
 {:start="3"}
-1. In the Codefresh UI, from the sidebar, below Ops, select [**GitOps Apps**](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, below Ops, select **GitOps Apps**.
   The Applications Dashboard displays the new Git Source application.
   
   {% include 
@@ -308,7 +308,7 @@ Once you commit the manifest to the Git Source, it is synced with the Git repo. 
 
 ## Related articles
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

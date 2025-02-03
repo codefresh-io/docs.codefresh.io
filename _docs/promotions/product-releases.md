@@ -312,7 +312,7 @@ Errors can be categorized into:
 * **Application errors**
   * Prefixed with {::nomarkdown}<img src="../../../images/icons/product-release-app-error.png?display=inline-block">{:/}.
   * Occurs when the health status of an application connected to the product is Degraded, indicating that one of its resources is not healthy.
-    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).   
+    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#health-status-for-application-resources).   
     Clicking on the error takes you to the Current State tab in the GitOps Apps dashboard. 
 
 * **Git errors**

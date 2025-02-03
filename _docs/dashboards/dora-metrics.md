@@ -53,7 +53,7 @@ To view filters that are not displayed, click **More filters**.
 
 
 ## Metrics for favorite applications
-If you have [starred applications as favorites]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#gitops-apps-dashboard-information) in the Applications dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
+If you have [starred applications as favorites]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/#gitops-apps-dashboard-information) in the GitOps Apps dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
 
 
 ## Metric totals
@@ -101,8 +101,8 @@ In addition, you can select the granularity for each graph:
   The X-axis charts the time based on the granularity, and the Y-axis charts the time in hours. The number shown on the top right is the average number of hours between the previous deployment and rollback for the same application.
 
 ## Related articles    
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
+[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/)  
 [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 
