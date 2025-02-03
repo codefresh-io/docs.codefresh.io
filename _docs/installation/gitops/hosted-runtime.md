@@ -5,9 +5,11 @@ toc: true
 ---
 
 {{site.data.callout.callout_warning}}
-**Deprecated**  
-This article has been deprecated as we do not support Hosted GitOps Runtimes.
+**IMPORTANT**   
+Codefresh no longer offers _free_ Hosted GitOps Runtimes.
+If you’re interested in our paid options, please contact our sales team at `sales@codefresh.io` for details.
 {{site.data.callout.end}}
+
 
  For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes.  
  Hosted GitOps Runtimes are fully managed and maintained by Codefresh. 

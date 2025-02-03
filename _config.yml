@@ -84,6 +84,9 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
+  argohub:
+    output: true
+    permalink: /:collection/:path/
 
 # Defaults
 defaults:
@@ -107,6 +110,14 @@ defaults:
       type: docs
     values:
       layout: docs
+      toc: true
+      wide: true
+  # _argohub
+  - scope:
+      path: "_argohub"
+      type: argohub
+    values:
+      layout: argohub
       toc: true
       wide: true
 
