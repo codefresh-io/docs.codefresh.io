@@ -11,11 +11,14 @@ function getCookie(name) {
 async function getArgoHubRedirectURL(currentPath) {
   const redirectMap = await fetchRedirectMap();
 
-  if (currentPath.includes("/docs/docs/")) {
-    currentPath = currentPath.replace("/docs/docs/", "/docs/");
-  }
+  console.log("SITE_BASE_URL", SITE_BASE_URL);
+  currentPath = currentPath.replace(SITE_BASE_URL, "/");
+
+  console.log(currentPath);
+  console.log(redirectMap);
 
   const newPath = redirectMap[currentPath];
+  console.log(newPath);
   if (!newPath) return null;
 
   const newURL = location.href.replace(currentPath, newPath);
