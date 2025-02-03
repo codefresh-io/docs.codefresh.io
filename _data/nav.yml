@@ -382,6 +382,8 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
+        - title: What's changed in Applications documentation
+          url: "/apps-whats-changed-in-documentation"
         - title: About Argo CD applications
           url: "/about-apps"
         - title: GitOps Apps dashboard

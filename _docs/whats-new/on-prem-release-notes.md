@@ -1143,7 +1143,7 @@ If you have selected an application, the Diff View option is available in the co
 >**NOTE**  
 Diff View for application resources is supported from Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
 
-For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#analyze-out-of-sync-applications-with-diff-view).
+For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#analyze-out-of-sync-applications-in-diff-view).
 
 
 

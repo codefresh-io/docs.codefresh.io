@@ -1,13 +1,15 @@
 ---
 title: "Monitoring Argo CD applications"
-description: "Deep dive to "
+description: "Deep dive to monitoring application and resources"
 group: deployments
 redirect_from:
   - /docs/deployments/gitops/applications-dashboard/
 toc: true
 ---
 
-Drill down into applications
+
+
+## Monitor individual applications
 The GitOps Apps dashboard, a centralized hub for creating Argo CD applications in your enterprise, is also the dashboard for detailed insights into individual Argo CD applications, enabling you to monitor their deployments, resources, and services across all clusters in your enterprise.
 
 
@@ -23,29 +25,23 @@ max-width="70%"
 
 
 ##### Viewing and filtering applications
-By default, the GitOps Apps dashboard displays all applications deployed in the last 30 days. You can customize the scope of displayed applications using filters to refine the information to meet your specific needs. 
+By default, the GitOps Apps dashboard displays all applications deployed within the last 30 days. You can customize this view using filters to refine the displayed information based on deployment history, health status, cluster, namespace, or other attributes.
 
-##### Drilling down into individual applications
-From the dashboard, select any application to access detailed information, including:
-Deployment history: Review past deployments and associated changes.
-Resource details: Explore the application's resources, including associated services and components.
-Service status: Monitor active services and troubleshoot issues as needed.
+Applications with [warnings and errors](#identify-argo-cd-applications-with-warningserrors) are flagged, allowing you to quickly identify issues that may require attention.. 
 
+##### Drill down into individual applications
+From the dashboard, select any application to explore its details in depth. This provides a structured view of key aspects of the application, including deployment history, resource utilization, and service health.
 
+* **Application Header**  
+  Gain quick insights into the application's health, sync status, and available actions for further analysis. See [Application Header](#application-header).
 
-  
-Identify applications with [health and sync errors](#identify-gitops-applications-with-warningserrors), and then select an application to drill down into its resources, deployments, and services:  
-  * [Get status from application header](#monitoring-status-of-argo-cd-application-in-application-header)
-  * [Analyze out-of-sync applications in Diff View](#analyze-out-of-sync-applications-with-diff-view)
-  * [View deployment and configuration summary for selected Argo CD application](#view-deployment-and-configuration-summary-for-selected-argo-cd-application)
-  * [Monitor resources for selected Argo CD application](#monitoring-resources-for-selected-argo-cd-application)
-  * [Monitor deployments for selected Argo CD application](#monitoring-deployments-for-selected-argo-cd-application)
-  * [Monitor services for selected Argo CD application](#monitoring-services-for-selected-argo-cd-application)
+* **Deployment history**  
+  Review past deployments, track associated changes, and analyze deployment trends over time. See [Monitor deployments for selected Argo CD application](#monitoring-application-deployments).
+* **Resource states**  
+  Explore the application's resources, including associated services and components. See [Monitor resources for selected Argo CD application](#monitoring-application-resources).
 
-
-
-
-
+* **Service status**  
+  Monitor active services and troubleshoot issues as needed. See [Monitor services for selected Argo CD application](#monitoring-application-services).
 
 
 
@@ -102,7 +98,7 @@ The Codefresh default is Argo CD's default duration of 30 minutes for a sync ope
 1. To see more details such as the message and sync duration, switch to **Sync Info**.
 1. Drill down into the application to investigate the issue and make changes.
 
-## Application header
+## Application Header
 
 When you select an application in the GitOps Apps dashboard, the Application Header provides a summary of key details about the current release. It includes information such as the application’s health and sync status, ensuring you can monitor and manage deployments effectively.
 
@@ -111,8 +107,8 @@ image.html
 lightbox="true"
 file="/images/applications/application-header.png"
 url="/images/applications/application-header.png"
-alt="Application header for selected application"
-caption="Application header for selected application"
+alt="Application Header for selected application"
+caption="Application Header for selected application"
 max-width="80%"
 %}
 
@@ -172,15 +168,15 @@ caption="Quick View option in application's context menu"
 max-width="80%"
 %} 
 
-  * Select the application, and from the application header's context menu on the right, select **Details**.
+  * Select the application, and from the Application Header's context menu on the right, select **Details**.
 
  {% include
 image.html
 lightbox="true"
 file="/images/applications/app-header-view-details.png"
 url="/images/applications/app-header-view-details.png"
-alt="View app details from the application header context menu"
-caption="View app details from the application header context menu"
+alt="View app details from the Application Header context menu"
+caption="View app details from the Application Header context menu"
 max-width="80%"
 %}
 
@@ -366,7 +362,7 @@ The table describes the possible sync states for an application resource in the 
 
 
 >**NOTE**  
-  The application header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
+  The Application Header displays the statuses of the current and previous sync operations. Clicking **More** opens the Sync panels with Sync Info, Sync Result and Commit Info.
   The Application Warnings/Errors panel surfaces sync errors on exceeding the maximum number of retries and when a sync operation extends beyond 30 minutes.
 
 
@@ -688,7 +684,7 @@ max-width="50%"
 
 
 
-## Monitoring services for selected Argo CD application
+## Monitoring application services
 
 
 The Services tab shows the K8s services for each deployment of the application. 
@@ -712,8 +708,8 @@ max-width="50%"
 [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
-[GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
-[GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
+[Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 

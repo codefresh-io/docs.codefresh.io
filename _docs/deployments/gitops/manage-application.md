@@ -1,6 +1,6 @@
 ---
 title: "Managing Argo CD applications"
-description: ""
+description: "Explore options and actions to manage applications"
 group: deployments
 sub_group: gitops
 toc: true

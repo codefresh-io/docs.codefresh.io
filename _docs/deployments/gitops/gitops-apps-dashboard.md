@@ -60,7 +60,7 @@ max-width="60%"
 
 ## Application types in the GitOps Apps dashboard
 
-The GitOps Apps dashboard displays different types of Argo CD applications, each rendered differently based on their structure. 
+The GitOps Apps dashboard displays the different types of Argo CD applications, each rendered differently based on their structure. 
 Each application is clearly tagged to indicate its type in the hierarchy.
 
 ##### Standalone Argo CD applications
@@ -91,7 +91,7 @@ max-width="60%"
 %}
 
 ##### Applications with multiple sources
-A single application pulling configurations from multiple repositories or sources, multisource applications are displayed with the different sources nested below the main application.
+Multisource applications, which pull configurations from multiple repositories or sources, display the number of sources next to the **Sources** label.
 
 {% include
 image.html
