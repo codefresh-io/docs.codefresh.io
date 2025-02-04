@@ -31,14 +31,18 @@ Complete documentation on this and other environment variables available in the 
 
 Each of the metrics below has the following additional labels: `account_name`, `docker_node_address`, `pipeline_id`, `repo_branch`, `workflow`
 
+* `codefresh_engine_deprecated_images_pulled_total` [since engine:1.177.1]
+<br>Total number of deprecated Schema 1 images pulls
+<br>Type: Counter
+<br>Labels: `image_name`
 * `codefresh_engine_docker_daemon_requests_retries_delay_seconds_total`
 <br>Total delay in seconds for retry requests to Docker daemon
 <br>Type: Counter
-<br>Labels: `error`
+<br>Labels: `error`, `operation` [since engine:1.177.0]
 * `codefresh_engine_docker_daemon_requests_retries_total`
 <br>Total number of retry requests to Docker daemon
 <br>Type: Counter
-<br>Labels: `error`
+<br>Labels: `error`, `operation` [since engine:1.177.0]
 * `codefresh_workflow_composition_duration_seconds`
 <br>Composition duration in seconds
 <br>Type: Gauge
