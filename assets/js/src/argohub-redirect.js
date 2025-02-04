@@ -1,7 +1,5 @@
-import { redirectMap } from "./argohub-redirect-mapping.js";
-
 const ARGOHUB_DOC_COOKIE_NAME = "argohubdoc";
-const ARGOHUB_MAIN_PATH = "/argohub/";
+const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -10,27 +8,23 @@ function getCookie(name) {
   return null;
 }
 
-function getArgoHubRedirectURL(currentPath) {
-  if (currentPath.includes("/docs/docs/")) {
-    currentPath = currentPath.replace("/docs/docs/", "/docs/");
-  }
+async function getArgoHubRedirectURL(currentPath) {
+  currentPath = currentPath.replace(SITE_BASE_URL, "");
+
+  const redirectMap = await fetchRedirectMap();
 
   const newPath = redirectMap[currentPath];
   if (!newPath) return null;
 
-  let newURL = location.href;
-
-  if (currentPath === "/") {
-    const lastMatchRegex = new RegExp(`${currentPath}(?=[^${currentPath}]*$)`);
-    newURL = newURL.replace(lastMatchRegex, newPath);
-  } else {
-    newURL = newURL.replace(currentPath, newPath);
-  }
+  const newURL =
+    newPath === ARGOHUB_MAIN_PATH
+      ? `${location.href}${SITE_GITOPS_COLLECTION}`
+      : location.href.replace(currentPath, newPath);
 
   return newURL;
 }
 
-function handleRedirect() {
+async function handleRedirect() {
   const currentPath = location.pathname;
 
   if (currentPath.includes(ARGOHUB_MAIN_PATH)) return;
@@ -38,10 +32,20 @@ function handleRedirect() {
   const redirectCookie = getCookie(ARGOHUB_DOC_COOKIE_NAME);
   if (!redirectCookie) return;
 
-  const argoHubRedirectURL = getArgoHubRedirectURL(currentPath);
+  const argoHubRedirectURL = await getArgoHubRedirectURL(currentPath);
   if (!argoHubRedirectURL) return;
 
   window.location.href = argoHubRedirectURL;
+}
+
+async function fetchRedirectMap() {
+  const response = await fetch(
+    `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch the collections redirect map.");
+  }
+  return response.json();
 }
 
 handleRedirect();

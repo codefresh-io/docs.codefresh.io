@@ -141,6 +141,8 @@ link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
 link_community:       "https://community.codefresh.io/"
 
+gitops_collection:     "argohub"
+
 ga_tracking_code:     "UA-53554200-2"
 
 cdn:
