@@ -70,11 +70,11 @@
       url: "/git-sources"
 
 - title: Integrations
-  url: "/gitops-integrations"
+  url: "/integrations"
   pages:
     - title: Image enrichment with GitOps integrations
       url: "/image-enrichment-overview"
-    - title: GitOps CI integrations
+    - title: CI integrations
       url: "/ci-integrations"
       sub-pages:
         - title: Codefresh pipelines
@@ -83,12 +83,12 @@
           url: "/github-actions"
         - title: Jenkins
           url: "/jenkins"
-    - title: GitOps issue tracking integrations
+    - title: Issue tracking integrations
       url: "/issue-tracking"
       sub-pages:
         - title: Jira
           url: "/jira"
-    - title: GitOps container registry integrations
+    - title: Container registry integrations
       url: "/container-registries"
       sub-pages:
         - title: Amazon ECR
@@ -120,7 +120,7 @@
       url: "/images"
 
 - title: Applications
-  url: "/gitops"
+  url: "/applications"
   pages:
     - title: About Argo CD applications
       url: "/about-apps"
