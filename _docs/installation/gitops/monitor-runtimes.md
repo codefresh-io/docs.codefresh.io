@@ -3,6 +3,10 @@ title: "Monitoring GitOps Runtimes"
 description: "Explore List and Topology view for GitOps Runtimes"
 toc: true
 ---
+## Monitoring GitOps Runtimes
+
+This article describes the options and actions to monitor GitOps Runtimes after installation through the List and Topology view formats.   
+For options on managing GitOps Runtimes, see [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/).
 
 ## GitOps Runtime views
 
