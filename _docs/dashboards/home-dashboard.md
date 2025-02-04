@@ -22,6 +22,7 @@ The Home Dashboard includes three different dashboards:
   Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.  
 {{site.data.callout.end}}  -->
 
+
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
 
@@ -40,7 +41,7 @@ The Home Dashboard includes three different dashboards:
    %}
    
 
-{% if page.url contains '/argohub/' %}
+{% if page.url != '/argohub/' %}
 
 ## GitOps Dashboard
 Use the GitOps dashboard to:
