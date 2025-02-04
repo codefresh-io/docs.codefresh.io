@@ -24,7 +24,9 @@ You will need to add the `METRICS_PROMETHEUS_ENABLED: 'true'` environment variab
 
 To make such a change, you need to change Codefresh Runner Helm chart values. Full path to the entity in question is `runtime.engine.env.METRICS_PROMETHEUS_ENABLED`.
 
-Complete documentation on this and other environment variables available in the engine can be found on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env).
+When shutting down normally, the engine waits for a while, allowing it to perform a final scrape of metrics before the engine pod is terminated. The timeout is controlled by the `METRICS_PROMETHEUS_SCRAPE_TIMEOUT` engine variable. If you don't want to miss latest metrics values, we recommend setting this variable to 4 times your scrape interval.
+
+Complete documentation on these and other environment variables available in the engine (including their default values) can be found on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env).
 
 
 ### Available metrics
