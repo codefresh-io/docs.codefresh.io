@@ -69,7 +69,7 @@ The table has been moved to a dedicated standalone topic [here]({{site.baseurl}}
 ## Related articles
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
 [Issue tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
-[CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/)  
+[CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/)  
 
 
 

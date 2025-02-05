@@ -81,10 +81,10 @@ collections:
   pages:
     output: true
     permalink: /:collection/:path
-  docs:
+  argohub:
     output: true
     permalink: /:collection/:path/
-  argohub:
+  docs:
     output: true
     permalink: /:collection/:path/
 
@@ -140,6 +140,8 @@ link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
 link_community:       "https://community.codefresh.io/"
+
+gitops_collection:     "argohub"
 
 ga_tracking_code:     "UA-53554200-2"
 
