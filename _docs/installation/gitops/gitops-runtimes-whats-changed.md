@@ -14,8 +14,7 @@ The table below outlines the updates to the GitOps Runtime documentation, includ
 
 | **Location**         |  **Affected Articles**   | **Description of changes**    |
 |--------------------------|-----                 |----------------------------------------------------|
-| Installation > GitOps   |[About GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/gitops-runtime/gitops-runtime/)  | New overview article for improved readability. |
-|                         |[Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)     | New article describing components and concepts used in Runtime installation. |
+| Installation > GitOps    |[Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)     | New article describing components and concepts used in Runtime installation. |
 |                         |[System requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)     | Split from **Hybrid GitOps Runtime installation** article to standalone article entitled **System requirements & Prerequisites** for better visibility. |
 |        |[Runtime prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)           | Split from **Hybrid GitOps Runtime installation** article to new standalone article entitled **System requirements & Prerequisites** for better visibility.          |
 |                         |[Ingress-controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/)     | Split from **Hybrid GitOps Runtime installation** article to standalone article entitled **Ingress controller configuration**.          |
