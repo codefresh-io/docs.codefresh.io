@@ -1,5 +1,5 @@
 ---
-title: "GitOps Runtime essentials"
+title: "GitOps Runtime concepts"
 description: "Review concepts and components key to GitOps Runtimes"
 toc: true
 ---
@@ -29,29 +29,30 @@ We use Git personal access tokens for this: one for Runtimes, and another for ea
 At all times, _both tokens are securely stored on your cluster_ and never stored locally on our platform. 
 
 * **Git Runtime token**  
-  The Git Runtime token is a Git access token required during the Runtime installation. It is typically associated with a service or robot account and managed by the account administrator.      
-  It is used to create a Git repository to store configuration settings shared across all Runtimes in the account, such as Helm charts and values files. It also enables Argo CD to clone the Git repos, pull changes, and sync to the K8s cluster.
+  The Git Runtime token is a Git personal access token required during Runtime installation. It is typically associated with a service or robot account and managed by the account administrator.      
+  The Git Runtime token is used to create a Git repository to store configuration settings shared across all Runtimes in the account, such as Helm charts and values files. It also enables Argo CD to clone the Git repos, pull and sync changes to the K8s cluster.
 
 * **Git user token**  
-  The Git user token is also a Git access token, unique to each user in the account. It is created after Runtime installation and managed individually by each user. Enables users to manage Git repositories and authorize Git operations or actions directly from the UI or CLI.
+  The Git user token is also a Git personal access token, _unique to each user in the account_. It is created after Runtime installation and managed individually by each user. Enables users to manage Git repositories and authorize Git operations or actions directly from the UI or CLI.
 
-Read more on [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).
+For information on how the differences between the two and required scopes, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).
 
 
 
 ## Shared Configuration Repository in Runtimes
-A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes in this repository without affecting other Runtimes. 
+A Codefresh account with <!--- a Hosted or -->a GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes in this repository without affecting other Runtimes. 
 
-The Shared Configuration Repository (internally `ISO`/`iso`), is created on installing the first Hybrid GitOps Runtime in the account.
-You need to provide the URL to the Git repository to use as the Shared Configuration Repo. You can define the Shared Config Repo using only the repository URL, or add the path, reference a branch, or both.
+The Shared Configuration Repository (internally `ISO`/`iso`), is created on installing the first GitOps Runtime in the account.
+During installation, you need to provide the URL to the Git repository defined as the Shared Configuration Repo, using only the repository URL, or by adding the path, reference a branch, or both.
 Codefresh identifies the Git provider from the URL provided, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
-For information on the structure and the type of manifests stored, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
+For information on the structure and settings, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 ## Configuration Runtimes
-A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products promotions in GitOps ensure smooth platform operations. You can designate a Configuration Runtime through the UI or the `values.yaml`. 
+A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products promotions in GitOps ensure smooth platform operations.  
 
-When you designate a Configuration Runtime, Codefresh creates a folder entitled `configuration` within `resources` in the Shared Configuration Repository to store product and promotion configuration settings.
+Codefresh automatically designates the first GitOps Runtime in your account as the Configuration Runtime. When designated, Codefresh creates a folder entitled `configuration` within `resources` in the Shared Configuration Repository to store product and promotion configuration settings.  
+You can designate any Runtime as a Configuration Runtime through the UI or the `values.yaml` file. 
 
 For information on how to designate Configuration Runtimes, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
 

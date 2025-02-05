@@ -594,7 +594,7 @@
           url: "/gitops-runtime"  
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
-        - title: Runtime essentials
+        - title: Runtime concepts
           url: "/runtime-concepts"
         - title: System requirements & prerequisites
           url: "/runtime-system-requirements"    

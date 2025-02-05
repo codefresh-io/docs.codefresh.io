@@ -18,7 +18,7 @@ If you have a cluster with a version of Community Argo CD already installed, you
   For a smooth transition from Argo CD Applications to the same managed by Codefresh, migrate them at your preferred pace. After successful migration, view, track, and manage all aspects of the applications in Codefresh.
 
 ## What you need to be aware of
-Installing alongside Community Argo CD requires additional flags in the installation command for all access modes, tunnel-, ingress-, and service-mesh-based:
+Installing alongside Community Argo CD requires additional flags in the installation command for all access modes: tunnel, ingress, and service-mesh:
 
 * `fullnameOverride` configuration for resource conflicts  
   Conflicts can occur when resources in both Community and Codefresh's Argo CD instances have the same name or attempt to control the same objects.
@@ -111,15 +111,15 @@ where:
 
 
 ## Before you begin
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements.md#minimum-system-requirements) for installation
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
 * Verify that you complete all the prerequisites:  
-  * [Switch ownership of Argo Project CRDs]
-  * [Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/#prepare-argo-cd-cluster-for-gitops-runtime-installation)
+  * [Switch ownership of Argo Project CRDs]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/#switch-ownership-of-argo-project-crds)
+  * [Prerequisites: Cluster with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/#prerequisites-cluster-with-community-argo-cd-installation)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    * [Git user token]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) with the required scopes for Git-based actions 
+    * [Git user token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) to authorize Git-based actions per user
     * Server URLs for on-premises Git providers
-* For ingress-based runtimes only, verify that these ingress controllers are configured correctly:
+* For ingress-based and service-mesh based Runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#aws-alb-ingress-configuration)
   * [Istio ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#istio-ingress-configuration)
@@ -133,20 +133,7 @@ where:
 
 ### Step 1: Select Hybrid Runtime install option
 
-1. In the Welcome page, select **+ Install Runtime**.
-1. Select **Hybrid Runtime**, and click **Add**.
-
- {% include
-image.html
-lightbox="true"
-file="/images/runtime/helm/helm-select-hybrid-runtime.png"
-url="/images/runtime/helm/helm-select-hybrid-runtime.png"
-alt="Select Hybrid GitOps Runtime for installation"
-caption="Select Hybrid GitOps Runtime for installation"
-max-width="40%"
-%}
-
-{:start="3"}
+1. On the Getting Started page, click **Install Runtime**.
 1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
 
 ### Step 2: Set up GitOps Git provider
@@ -172,11 +159,13 @@ where:
 * `<branch>` is optional, and references a specific branch in the repository.  
   Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
+{% if page.layout != "argohub" %} 
 #### Git providers <!--- is this relevant for Argohub -->
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
 * Bitbucket Server: `<server-url>`
+{% endif %}
 
 
 <br>
@@ -249,13 +238,6 @@ max-width="50%"
   The commands differ depending on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
   Unless otherwise indicated, values are automatically populated by Codefresh. If you're using a terminal, remember to copy the values from the UI beforehand.<br>
 
-{{site.data.callout.callout_warning}}
-**IMPORTANT**    
-  For installations alongside Community Argo CD, you must add three mandatory flags. See [Additional installation flags for GitOps Runtime with Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side#additional-installation-flags-for-gitops-runtime-with-community-argo-cd). 
-{{site.data.callout.end}}
-
-  
-
   **Tunnel-based install chart command:**<br>
 {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
@@ -270,10 +252,6 @@ helm upgrade --install <helm-release-name> \
   oci://quay.io/codefresh/gitops-runtime \
   --wait
 {% endhighlight %}
-
-
-
-
 
 <br>
 
@@ -501,6 +479,8 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
 
 
+After successful installation, you may need to complete additional steps based on your Argo CD setup: if you have Argo Rollouts, [remove the Rollouts controller deployment](#remove-rollouts-controller-deployment).  
+Based on your requirements, [migrate Community Argo CD Applications to the GitOps Runtime](#migrate-community-argo-cd-applications-to-codefresh-gitops-runtime) to manage them in Codefresh.
 
 
 ## Remove Rollouts controller deployment
@@ -633,8 +613,8 @@ Once you commit the manifest to the Git Source, it is synced with the Git repo. 
 
 
 ## Related articles
-[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+
