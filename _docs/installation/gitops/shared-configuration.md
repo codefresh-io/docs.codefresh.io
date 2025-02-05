@@ -308,8 +308,9 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)   
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/git-sources/)  
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/gitops-runtimes/managed-cluster/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+
 
  
 
