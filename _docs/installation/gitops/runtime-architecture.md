@@ -1,7 +1,6 @@
 ---
 title: "GitOps Runtime architecture"
 description: "View components of GitOps Runtimes"
-group: installation
 toc: true
 ---
 
@@ -42,11 +41,13 @@ In the hosted environment, the Codefresh Runtime is installed on a K8s cluster m
 -->
 
 ## Tunnel-based Hybrid GitOps Runtime architecture
-Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer's cluster and the Codefresh GitOps Platform.  
+Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer's cluster and the GitOps Platform.  
 Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
+{% if page.url contains '/docs/' %}
 >**NOTE**  
 Tunnel-based access mode is not supported for GitOps on-premises installations.
+{% endif %}
 
 {% include
    image.html
@@ -60,7 +61,7 @@ Tunnel-based access mode is not supported for GitOps on-premises installations.
 
 
 ## Ingress-based Hybrid GitOps Runtime architecture
-Ingress-based Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the Codefresh GitOps Platform.  
+Ingress-based Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the GitOps Platform.  
 Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
 
 
@@ -76,7 +77,6 @@ Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is e
 %}
 
 ## Runtime components
-
 ### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
@@ -87,9 +87,9 @@ For Hybrid GitOps Runtimes with ingress, the App-Proxy is the single point-of-co
 The GitOps App-Proxy:  
 * Accepts and serves requests from GitOps Clients either via the UI or CLI 
 * Retrieves a list of Git repositories for visualization in the Client interfaces  
-* Retrieves permissions from the GitOps Control Plane to authenticate and authorize users for the required operations.    
-* Implements commits for GitOps-controlled entities, such as Delivery Pipelines and other CI resources
-* Implements state-change operations for non-GitOps controlled entities, such as terminating Argo Workflows
+* Retrieves permissions from the GitOps Control Plane to authenticate and authorize users for the required operations 
+* Implements commits for GitOps-controlled entities
+* Implements state-change operations for non-GitOps controlled entities
 
 
 
@@ -174,12 +174,11 @@ In monorepo environments where multiple applications share a single repository, 
 
 ##### Configuration
 
-The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for mono-repo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
-
+The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
 
 ### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
-It receives requests from the the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
+It receives requests from the Tunnel Client (tunnel-based) or the ingress controller (ingress-based), and forwards the request URLs to the Application Proxy, and webhooks directly to the Event Sources.  
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
@@ -211,10 +210,10 @@ The Tunnel Client:
 
 
 ### Customer environment
-The customer environment communicates with the GitOps Runtime and Codefresh, and generally includes:
+The customer environment that communicates with the GitOps Runtime and Codefresh generally includes:
 * Ingress controller for ingress-based Hybrid GitOps Runtimes  
   The ingress controller is configured on the same Kubernetes cluster as the GitOps Runtime, and implements the ingress traffic rules for the GitOps Runtime. 
-  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
+  See [Ingress controller requirements]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 * Managed clusters  
   Managed clusters are external clusters registered to provisioned GitOps Runtimes for application deployment.  
   <!---  Hosted GitOps requires you to connect at least one external K8s cluster as part of setting up the Hosted GitOps environment.  -->
@@ -228,5 +227,5 @@ The customer environment communicates with the GitOps Runtime and Codefresh, and
 ## Related articles
 <!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)-->
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)   
+{% if page.url contains '/docs/' %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)  {% endif %}  
  
