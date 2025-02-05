@@ -309,7 +309,8 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs//installation/gitops/managed-cluster/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+
 
  
 
