@@ -590,8 +590,6 @@
       sub-pages:
         - title: What's changed in GitOps Runtimes documentation
           url: "/gitops-runtimes-whats-changed"        
-        - title: About GitOps Runtimes
-          url: "/gitops-runtime"  
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
         - title: Runtime concepts
