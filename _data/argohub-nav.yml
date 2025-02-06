@@ -1,7 +1,7 @@
 - title: ArgoHub Introduction
   url: "/introduction"
   pages:
-    - title: What is Codefresh?
+    - title: What is Codefresh GitOps?
       url: "/intro-to-codefresh"
 
 - title: Installation
@@ -12,3 +12,11 @@
       sub-pages:
         - title: Shared Configuration Repository
           url: "/shared-configuration"
+
+- title: Security
+  url: "/security"
+  pages:
+    - title: Git tokens for GitOps
+      url: "/git-tokens"
+    - title: Secrets for GitOps
+      url: "/secrets"

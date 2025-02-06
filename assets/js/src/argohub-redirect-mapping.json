@@ -1,5 +1,7 @@
 {
   "/": "/argohub/",
   "/docs/installation/gitops/shared-configuration/": "/argohub/installation/gitops/shared-configuration/",
-  "/docs/getting-started/intro-to-codefresh/": "/argohub/introduction/intro-to-codefresh/"
+  "/docs/getting-started/intro-to-codefresh/": "/argohub/introduction/intro-to-codefresh/",
+  "/docs/security/git-tokens/": "/argohub/security/git-tokens/",
+  "/docs/security/secrets/": "/argohub/security/secrets/"
 }
