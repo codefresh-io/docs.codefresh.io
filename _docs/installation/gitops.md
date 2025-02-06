@@ -25,7 +25,7 @@ By leveraging the Runtime, teams can efficiently orchestrate deployments, monito
 %}
 
 
-### How GitOps Runtimes simplifies scalable deployments
+### How GitOps Runtimes simplify scalable deployments
 Enterprises using Argo CD for deployments often face significant challenges when scaling operations across clusters and environments. These include managing multiple Argo CD instances with limited visibility, and ensuring consistent configurations and updates.
 
 The GitOps Runtime solves these challenges by providing a single pane of glass for all GitOps activities. It connects your cluster to the Codefresh platform simplifying operations even in highly complex environments, providing:
