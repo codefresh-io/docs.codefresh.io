@@ -5,9 +5,9 @@ group: dashboards
 toc: true
 ---
 
-Get a global picture of performance for GitOps entities and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization for all stakeholders. 
+Get a global picture of performance for GitOps entities and pipelines in the Home dashboard with system-wide visualization for all stakeholders. 
  
-
+{% if page.layout != "argohub" %}
 The Home Dashboard includes three different dashboards:
 
 * **GitOps Dashboard**  
@@ -26,10 +26,6 @@ The Home Dashboard includes three different dashboards:
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
 
-
-
- 
-
   {% include 
    image.html 
    lightbox="true" 
@@ -41,14 +37,14 @@ The Home Dashboard includes three different dashboards:
    %}
    
 
-{% if page.url != '/argohub/' %}
+{% endif %}
 
 ## GitOps Dashboard
 Use the GitOps dashboard to:
 1. Identify status of GitOps Runtimes and the clusters managed by the Runtimes
-1. View deployment history for the date range
+1. View deployment history for a date range
 1. View the most active applications, and filter by cluster to which they are deployed
-1. Go to the GitOps Apps dashboard to further analyze specific applications 
+1. Navigate to the GitOps Apps dashboard to further analyze specific applications 
 
 ### Filters for GitOps Dashboard 
 
@@ -141,7 +137,7 @@ Displays up to five of the most active applications and their current deployment
 |**Application Name**     | The name of the application, and the names of the GitOps Runtime and the cluster on which it is deployed. Click the name to drill down into the application in the GitOps Apps dashboard. |
 |**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> To see the breakdown by health status, mouse over the chart. <br> The number at the end of the bar is the total number of deployments for the application, and the percentage indicates the overall decrease or increase compared to the reference period. {:/}  |
 
-{% endif %}
+
 <!---
 ## Argo Workflows Dashboard
 Displays aggregated chart views for the selected date range, and insights into active Delivery Pipelines triggered from Workflows. An active Delivery Pipeline is one with at least one active or completed Argo Workflow. 
@@ -232,6 +228,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   User count is aggregated per user, so multiple commits from the same user are counted as a single commit.
 
 -->
+{% if page.layout != "argohub" %}
 
 ## Pipelines Dashboard
 
@@ -370,12 +367,13 @@ Identify outliers in terms of executions and duration in the scatter chart map, 
     %} 
 
 You can then filter by the specific pipeline or pipelines and analyze success rate, overall, and phase-level duration.   
+{% endif %}
 
 ## Related articles
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-{% if page.url contains '/docs/' %}[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) {% endif %}  
-[Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)  
+{% if page.layout != "argohub" %}[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) {% endif %}  
+[Images]({{site.baseurl}}/docs/dashboards/images/)  
 
 
