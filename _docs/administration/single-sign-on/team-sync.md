@@ -93,7 +93,7 @@ max-width="40%"
 %}
 
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 ### Manual team-sync with Codefresh pipelines
 
 As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 

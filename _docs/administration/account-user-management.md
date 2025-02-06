@@ -9,7 +9,7 @@ Codefresh has comprehensive support for all aspects of administration for organi
 
 Review:
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 * [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/) 
 * Configure access control for [pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) and for [GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
 * Configure access control for [GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
@@ -20,7 +20,7 @@ Review:
 For on-premises environments, see [On-premises account and user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
 {% endif %}
 
-{% if page.url contains '/argohub/' %}
+{% if page.layout == "argohub" %}
 * [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/) 
 * Configure access control for [GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
 * [Configure Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  

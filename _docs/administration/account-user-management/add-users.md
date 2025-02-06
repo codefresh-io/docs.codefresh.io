@@ -12,7 +12,7 @@ toc: true
 ---
 
 Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, entities, and processes.  
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
 {% endif %}
 
@@ -25,7 +25,7 @@ Adding a user to an account requires assigning a role to define access to accoun
 * **Role**: Defines the user's access level to the resources in the account.  
   * **User**: The default. With this role, users can work with repositories and entities, but cannot change configuration settings.
   * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
-  For guidelines on access control, see {% if page.url contains '/docs/' %}[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/){% endif %}{% if page.url contains '/argohub/' %}
+  For guidelines on access control, see {% if page.layout != "argohub" %}[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/){% endif %}{% if page.layout == "argohub" %}
 [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 {% endif %}.  
 * **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [About Federated Single Sign-on]({{site.baseurl}}/docs/administration/single-sign-on/).
@@ -63,7 +63,7 @@ By default, there are two teams:
 > **NOTE**  
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/){:target="\_blank"} to upgrade to an Enterprise plan.
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 ### Automatically creating projects for teams
 
 As part of the global pipeline settings for an account, when creating a team, you can also automatically create a project and a project tag with the same name as that of the team. Enabling **auto-create projects for teams** (disabled by default), simplifies permissions setup for pipelines and projects, as it also creates a Read rule for the project. See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
@@ -132,10 +132,10 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Related articles
 [Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 [Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 {% endif %}
-{% if page.url contains '/argohub/' %}
+{% if page.layout == "argohub" %}
 [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
 {% endif %}

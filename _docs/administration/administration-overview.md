@@ -21,7 +21,7 @@ See [Account and user management]({{site.baseurl}}/docs/administration/account-u
 
 ## Access control
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 * **CI pipelines**  
   Implement role-based access control (RBAC) and attribute-based access control (ABAC) to restrict access to pipelines. Define roles, assign tags, and create rules to manage permissions effectively.  
   See [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
@@ -30,7 +30,7 @@ See [Account and user management]({{site.baseurl}}/docs/administration/account-u
   See [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
 {% endif %}
 
-{% if page.url contains '/argohub/' %}
+{% if page.layout == "argohub" %}
 Set up access control mechanisms for GitOps entities and processes to ensure secure operations.  
 See [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
 {% endif %}
@@ -41,7 +41,7 @@ See [About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/
 
 
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 ## Auditing and monitoring
 Maintain a comprehensive audit log of user activities to track changes, ensure compliance, and enhance security.
 See [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
@@ -51,7 +51,7 @@ See [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account
 ## Personal user settings
 Users in a Codefresh account can personalize settings such as notifications, date and time display formats, and manage their API keys.
 
-{% if page.url contains '/argohub/' %}
+{% if page.layout == "argohub" %}
 They can also securely manage Git Personal Access Tokens (PATs) to control access to repositories, and protect sensitive information.
 {% endif %}
 See [User settings]({{site.baseurl}}/=/docs/administration/user-self-management/).

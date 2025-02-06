@@ -114,7 +114,7 @@ max-width="50%"
 
 -->
 
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
 {% endif %}
 
@@ -146,11 +146,11 @@ Only account owners can delete the account.
 ## Related articles
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
-{% if page.url contains '/docs/' %}
+{% if page.layout != "argohub" %}
 [Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 [Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  
 {% endif %}
-{% if page.url contains '/argohub/' %}
+{% if page.layout == "argohub" %}
 [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 {% endif %}
 
