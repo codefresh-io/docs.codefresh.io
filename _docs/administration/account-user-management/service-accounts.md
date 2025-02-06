@@ -1,27 +1,27 @@
 ---
 title: "Managing service accounts"
 description: "Manage access and permissions with service accounts"
-group: administration
-sub_group: account-user-management
 toc: true
 ---
 
-## Service accounts overview
+## Service accounts
 
 A service account is an identity that provides automated processes, applications, and services with the necessary permissions to interact securely with your infrastructure. Service accounts can manage access and permissions programmatically, ensuring secure and efficient operations within your environment.
 
 Coderfesh supports creating service accounts and assigning them to teams with RBAC (Role-Based Access Control) compliance for CI pipelines. See [Create service accounts](#create-service-accounts).  
+
 Each service account can hold multiple API keys, making it easy to manage access for different purposes. See [Generate API keys for service accounts](#generate-api-keys-for-service-accounts).
 
 
 ## Create service accounts
 Create service accounts in Codefresh to manage processes, integrations, at the account level.  
 Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)).  
+
 Note that service account creation is not supported via CLI and Terraform.
 
 
 ##### Before you begin
-* Make sure you have created one or more [teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#create-a-team-in-codefresh)
+* Create one or more [teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#create-a-team-in-codefresh)
 
 ##### How to
 
@@ -47,13 +47,14 @@ max-width="60%"
 
 
 ## Generate API keys for service accounts
-Generate API keys for a service account after creating it. The procedure is similar to generating API keys for individual users.
+Generate API keys for a service account after creating it. The procedure is similar to how individual users can generate API keys.  
 There is no limit to the number of API keys you can generate for a single service account.
 
 After generating API keys, you can modify the scopes defined for the API key, or delete it.
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **Service Accounts**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar select **Service Accounts**.
 1. Select the service account for which to generate API keys.
 1. Click **Generate API Key**.
 1. In the Generate Codefresh API key form, do the following:
@@ -99,6 +100,7 @@ max-width="90%"
 | **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply reenable when needed. |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
+{% if page.layout != "argohub" %}
 ## Authenticating to Amazon ECR with service account
 
 Authenticate to Amazon ECR registries with credentials from the service account instead of the Access Key ID and Secret Access Key.  
@@ -107,10 +109,16 @@ This allows pipelines to seamlessly authenticate to Amazon ECR via service accou
 There are two requirements:
 1. Set the option to authenticate via service accounts at the account level for pipelines. See [Advanced options for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#advanced-options-for-pipelines).
 1. Configure Amazon ECR integration to use service account credentials. See [Amazon ECR Container Registry pipeline integration]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/).
-
+{% endif %}
 
 ## Related articles
+{% if page.layout != "argohub" %}
 [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
+{% endif %}
+{% if page.layout == "argohub" %}
+[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
+{% endif %}
 
 
 

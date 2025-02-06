@@ -626,7 +626,10 @@
 - title: Administration
   url: "/administration"
   pages:
+    - title: About administration in Codefresh
+    - url: "/administration-overview"
     - title: Account & user management
+    - url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
