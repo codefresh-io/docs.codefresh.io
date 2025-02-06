@@ -1,13 +1,17 @@
 ---
 title: "GitOps GitHub Container Registry (GHCR) integration"
-description: ""
+description: "Integrate GHCR with GitOps for image enrichment"
 group: gitops-integrations
 sub_group: container-registries
 toc: true
 ---
 
-The GitHub Container registry allows you to host and manage your Docker container images in your personal or organisation account on GitHub. One of the benefits is that permissions can be defined for the Docker image independent from any repository. Thus, your repository could be private and your Docker image public.   
-For information on adding a GitHub Container registry integration in Codefresh, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+
+Codefresh offers native support for interacting with GitHub Container Registry, allowing you to host and manage Docker container images within your personal or organization account on GitHub, to push, pull, and deploy images seamlessly.
+
+A key benefit of the GitHub Container Registry is the ability to define permissions for Docker images independently of the repository. This means you can keep your repository private while making the Docker image public, offering more flexibility in managing access.
+
+For general information on container registry integrations for GitOps, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 ## Prerequisites
 Before you configure settings in Codefresh to integrate GitHub container registry:  

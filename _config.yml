@@ -81,6 +81,9 @@ collections:
   pages:
     output: true
     permalink: /:collection/:path
+  argohub:
+    output: true
+    permalink: /:collection/:path/
   docs:
     output: true
     permalink: /:collection/:path/
@@ -109,6 +112,14 @@ defaults:
       layout: docs
       toc: true
       wide: true
+  # _argohub
+  - scope:
+      path: "_argohub"
+      type: argohub
+    values:
+      layout: argohub
+      toc: true
+      wide: true
 
 # #RSS Feed Location
 feed:
@@ -129,6 +140,8 @@ link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
 link_community:       "https://community.codefresh.io/"
+
+gitops_collection:     "argohub"
 
 ga_tracking_code:     "UA-53554200-2"
 

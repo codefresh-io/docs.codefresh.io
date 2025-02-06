@@ -1,13 +1,12 @@
 ---
 title: "GitOps GitHub Actions integration"
-description: ""
+description: "Connect GitHub Action pipelines with GitOps for enriched image data"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
 ---
 
-Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
-GitHub Actions is one of the third-party CI solutions that you can connect to Hosted GitOps for deployment with image reporting and enrichment.  
+If GitHub Actions is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage GitHub Actions for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata. 
 
  Connecting a GitHub Action, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
@@ -103,6 +102,7 @@ jobs:
 ## GitHub Action-GitOps integration settings
 The table describes the arguments required to connect a GitHub Action to Codefresh. 
 
+For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
@@ -219,6 +219,7 @@ You can:
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file in GitHub Actions, and view the Codefresh report image step
 
+<!--- 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/github-actions/github-actions-logs.png" 
@@ -228,6 +229,7 @@ caption="GitHub Action: Logs tab"
 max-width="50%"
 %}
 
+-->
 ##### Build YAML in GitHub Action
 
 The Run column includes the link to the build files for the actions.  

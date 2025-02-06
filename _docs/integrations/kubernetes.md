@@ -739,7 +739,7 @@ Codefresh also offers a simple solution for [templating]({{site.baseurl}}/docs/c
 ## Using a cluster for running CI/CD pipelines
 
 
-Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner//) to run pipelines in your cluster.
+Finally you can also use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) to run pipelines in your cluster.
 
 
 

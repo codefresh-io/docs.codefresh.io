@@ -359,7 +359,7 @@ Using the above syntax:
 As with other GitOps entities, you can configure Promotion Settings for the product in either Form or YAML modes. 
 
 When you define an Inline template, configure and commit the settings, they are saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
 To configure directly in YAML, refer to our [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/). 
 
