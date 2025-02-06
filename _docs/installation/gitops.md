@@ -78,7 +78,7 @@ You can install the Hybrid GitOps Runtime via Helm using one of two options, tai
 Within the same account, you can install one Hybrid GitOps Runtime per cluster.  
 To install additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster. Every Runtime within the same account must have a unique name.
 
-See [Installing additional GitOps Runtimes from the Codefresh UI]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation#install-additional-gitops-runtimes-in-account), or using [Terraform]({{site.baseurl}}/gitops/hybrid-gitops-helm-installation/#install-gitops-runtime-via-terraform).
+See [Installing additional GitOps Runtimes from the Codefresh UI]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation#install-additional-gitops-runtimes-in-account), or using [Terraform]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-gitops-runtime-via-terraform) to install Runtimes.
 
 <!--- ## Hosted GitOps
 The SaaS version of GitOps, Hosted GitOps has Argo CD installed in the Codefresh cluster.
