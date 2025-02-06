@@ -593,8 +593,6 @@
       sub-pages:
         - title: What's changed in GitOps Runtimes documentation
           url: "/gitops-runtimes-whats-changed"        
-        - title: About GitOps Runtimes
-          url: "/gitops-runtime"  
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
         - title: Runtime concepts
@@ -631,7 +629,10 @@
 - title: Administration
   url: "/administration"
   pages:
+    - title: About administration in Codefresh
+    - url: "/administration-overview"
     - title: Account & user management
+    - url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"

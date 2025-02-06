@@ -101,7 +101,7 @@ See [Connect to Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-r
 
 ### Enrich image information
 To enrich images with relevant information from Gerrit, incorporate Codefresh's image reporting step into your pipelines/workflows,  providing relevant Gerrit arguments.
-Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).  
+Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).  
   
 ## Related articles
 [Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  

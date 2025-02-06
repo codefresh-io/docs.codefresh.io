@@ -7,8 +7,10 @@ toc: true
 
 
 
+
 ## Products in GitOps
 Harness the power of **Products** to streamline the management and deployment of Argo CD applications in Codefresh GitOps. By grouping interconnected applications, products provide enhanced visibility and control as they progress across environments.
+
 
 Managing diverse applications in dynamic environments often leads to fragmented processes. You may have different versions of the same application that exist independently in different environments without built-in context or relationships. 
 Products change this by bridging the gap between applications and environments, providing clarity and control over the deployment lifecyle.
