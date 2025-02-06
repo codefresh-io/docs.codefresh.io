@@ -1,11 +1,14 @@
 ---
 title: "Hosted GitOps Runtime installation"
 description: "Set up your Hosted GitOps environment"
-group: installation
-sub_group: gitops
 toc: true
 ---
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT**   
+Codefresh no longer offers _free_ Hosted GitOps Runtimes.
+If you’re interested in our paid options, please contact our sales team at `sales@codefresh.io` for details.
+{{site.data.callout.end}}
 
 
  For GitOps, Codefresh offers the option of installing Hosted and Hybrid GitOps Runtimes.  

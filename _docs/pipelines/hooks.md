@@ -604,8 +604,8 @@ Below is an example pipeline hook using the `slack-notifier` step/plugin for whe
 {% raw %}
 hooks:
   on_elected:
-    steps:
-      exec:
+    exec:
+      steps:
         slack_pending:
           type: slack-notifier:0.0.8
           arguments:
