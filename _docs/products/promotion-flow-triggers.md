@@ -1,35 +1,32 @@
 ---
-title: "Configuring promotion flows and triggers"
+title: "Selecting Promotion Flows for Products"
 description: "Select Promotion Flows and configure triggers to orchestrate product promotions"
 group: products
 toc: true
 ---
 
+## Promotion Flows for Products
+A Promotion Flow in GitOps defines the steps, validations, and conditions required to promote products and their applications from one environment to another.  
+By selecting Promotion Flows for a product and defining the conditions that trigger each of the Flows, you can match your product’s specific promotion and deployment needs.
 
-Through Promotion Flows for Products, you can automate and control the promotion of applications from one environment to another. Promotion Flows define the steps and criteria for moving applications through different stages of deployment. 
+##### Benefits of Promotion Flows with triggers tailored for Products
 
-You can select multiple Promotion Flows for a product, and customize the conditions for triggering each of the selected flows to automate and control how applications are promoted.
-
-
-##### Benefits of custom promotion flows & triggers for products
-
-
-* Multiple flows
-  Configure multiple Promotion Flows to orchestrate promotions for the product in accordance with the deployment requirements.
+* **Multiple flows per product**
+  Select different Promotion Flows to orchestrate promotions for the product in accordance with the different deployment requirements.  
+  For example, select the Hotfix and Feature Testing flows for the product.
   Promotion Flows are predefined by account administrators for the account. If the Flow you require is not available, contact your administrator.  
 
-
-* Custom trigger conditions
+* **Custom trigger conditions per flow**
   Define specific trigger conditions for each Promotion Flow to tailor automated promotion based on the product’s unique deployment requirements.  
-  For example, configure the trigger to launch the hotfix flow whenever a commit message contains the phrase `hotfix`.
+  For example, configure the trigger to launch the Hotfix flow whenever a commit message contains the phrase `hotfix`.
  
-
-* Prioritization
-  Order the Promotion Flows in the list to define the priority you need.
+* **Prioritization**
+  Arrange the Promotion Flows in a prioritized order to control the sequence in which they are evaluated and executed.
 
 
 ##### Where can you configure Promotion Flows and triggers? 
-In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the product, and then configure custom conditions to trigger the flows.  
+In Product > Settings > Promotion Flows.  
+Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
 See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/).
 
 
@@ -127,19 +124,19 @@ The Rollback flow is designed to revert changes when issue are detected in produ
 
 The Rollback flow triggers when the commit message contains terms like `revert` or `rollback`, ensuring that the flow is triggered only for rollback operations.
 
-<!--- ##  Promotion Flow CRD
+##  Promotion Flow CRD
 
 As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
 
 Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
-To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions. -->
+To configure directly in YAML, refer to our [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/) for the syntax requirements and descriptions. 
 
 
 ## Related articles
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+[Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
 [Creating products]({{site.baseurl}}/docs/products/create-product/)   
 

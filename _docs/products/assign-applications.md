@@ -1,5 +1,5 @@
 ---
-title: "Assigning applications to products"
+title: "Assigning applications to Products"
 description: "Manually or declaratively connect applications to Products"
 group: products
 toc: true
@@ -26,7 +26,7 @@ You can always unassign an application from a product, for declaratively assigne
 
 
 ## Related articles
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  

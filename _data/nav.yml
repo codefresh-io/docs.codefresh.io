@@ -411,6 +411,9 @@
       url: "/promotion-version-properties"
     - title: Configuring promotion flows
       url: "/promotion-flow-triggers"
+    - title: Releases for Products
+      url: "/releases-in-products"
+
 
 
 - title: Promotions
