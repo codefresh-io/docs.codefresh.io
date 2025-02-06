@@ -54,4 +54,4 @@ Users in a Codefresh account can personalize settings such as notifications, dat
 {% if page.layout == "argohub" %}
 They can also securely manage Git Personal Access Tokens (PATs) to control access to repositories, and protect sensitive information.
 {% endif %}
-See [User settings]({{site.baseurl}}/=/docs/administration/user-self-management/).
+See [User settings]({{site.baseurl}}/docs/administration/user-self-management/).
