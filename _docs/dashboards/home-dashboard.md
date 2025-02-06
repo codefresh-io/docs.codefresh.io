@@ -8,7 +8,7 @@ toc: true
 Get a global picture of performance for GitOps entities and pipelines in the Home dashboard with system-wide visualization for all stakeholders. 
  
 {% if page.layout != "argohub" %}
-The Home Dashboard includes three different dashboards:
+The Home Dashboard includes two different dashboards:
 
 * **GitOps Dashboard**  
   Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
