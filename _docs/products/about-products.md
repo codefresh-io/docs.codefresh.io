@@ -1,6 +1,6 @@
 ---
 title: "About Products"
-description: "Create products to group and deploy applications"
+description: "Create Products to group and deploy applications"
 group: products
 toc: true
 ---
@@ -8,13 +8,10 @@ toc: true
 
 
 
-## Products in GitOps
-Harness the power of **Products** to streamline the management and deployment of Argo CD applications in Codefresh GitOps. By grouping interconnected applications, products provide enhanced visibility and control as they progress across environments.
+## Products in Codefresh GitOps
+Harness the power of **Products** in Codefresh GitOps to streamline the management and deployment of Argo CD applications. 
 
-
-Managing diverse applications in dynamic environments often leads to fragmented processes. You may have different versions of the same application that exist independently in different environments without built-in context or relationships. 
-Products change this by bridging the gap between applications and environments, providing clarity and control over the deployment lifecyle.
-With products, applications gain context and lifecycle awareness, making it easier to track, compare, and deploy them with confidence.
+A Product groups related Argo CD applications, providing a unified perspective as the applications progress through different stages of development and deployment. By defining relationships between applications across multiple environments, Products introduce an organizational layer providing context that help manage application releases as a cohesive unit.\
 
 {% include 
 image.html 
@@ -26,13 +23,10 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
+## Boosting application management with Products
+Products enhance and simplify application management by enabling controlled promotions, version tracking, and environment-specific configurations.  
+Since an application can exist in multiple environments (Development, Staging, Production for example), grouping them within a Product helps compare versions, track changes, and maintain consistency.
 
-Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/) for real-time visibility into product deployments, Git changes, and environment status. 
-Read more about it in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
-
-
-## How Products work
-Products group related Argo CD applications, offering a unified perspective as they transition through stages of development and deployment, allowing you to manage and deploy them as a single entity.
 
 {% include 
 image.html 
@@ -44,9 +38,11 @@ caption="Argo CD applications grouped by products organized by environments"
 max-width="60%"
 %}
 
+Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/) for real-time visibility into deployments, Git changes, and environment status.  
+Read more about the dashboard in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
-## Benefits of Products
 
+### Key benefits o
 * **Unified application management**  
   Grouping interconnected applications simplifies management and streamlines deployments across environments.
 
@@ -65,19 +61,25 @@ max-width="60%"
 
 ## Creating and configuring Products
 
-There are two ways to create a product in Codefresh GitOps:
+There are two ways to create a Product in Codefresh GitOps:
 
 * From within an application
 * From the Products page 
 
-After [creating products]({{site.baseurl}}/docs/products/create-product/), use its features to cohesively manage applications, streamline their promotions, and gain visibility across environments.
+After [creating products]({{site.baseurl}}/docs/products/create-product/), assign applications, streamline their promotions, and gain visibility across environments.
 See [Assigning applications to the product]({{site.baseurl}}/docs/products/assign-applications/).
 
-## Tailored promotion settings for Products
-Customize promotion settings to meet product-specific needs:  
-* Specify the *version source for applications*, ensuring consistency across deployments.
-* Define the *attributes in applications* to determine what gets promoted.
-* Select the *promotion flows that match the product and customize the conditions to trigger each of these flows* to optimize promotions.  
+## Promotions and promotion settings for Products
+
+Promote a product manually to a specific environment or automate promotions across multiple environments using Promotion Flows.   
+See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/).
+
+**Promotion settings for Products** give you control over what and how changes are advanced, ensuring that each promotion aligns with your deployment strategy. 
+
+Customize promotion settings to configure:  
+* **Version source for applications**: Maintain consistency by specifying where application versions originate.
+* **Promotable attributes in applications**: Define which changes are promoted across different environments.
+* **Promotion Flows**: Select the Promotion Flows that match the Product, and tailor the conditions to trigger each of these flows.  
   
 See [Application version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/) and [Promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/).
 
@@ -93,16 +95,9 @@ max-width="60%"
 %}
 
 
-## Promotions for Products
-Manually promote the product to a specific environment or to multiple environments through predefined Promotion Flows.   
 
-See [Manually promote to specific environment]({{site.baseurl}}/docs/promotions/trigger-promotions#manually-promote-products-to-specific-environments) and [Manually promote to multiple environments by Promotion Flow]({{site.baseurl}}/docs/promotions/trigger-promotions#manually-promote-products-to-multiple-environments-by-promotion-flow).
-
-
-## Track promotions for Products through Releases
-Triggering a promotion for a product creates a Release for the product. The Releases tab in the Product dashboard lists ongoing and historical releases.  
-Access detailed logs and insights, including Git activity and issue tracking, for complete visibility into the deployment process.  
-
+## Track Product promotions through Releases
+Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  
 See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
 
 {% include 
