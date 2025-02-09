@@ -36,19 +36,7 @@
       url: "/dependency-multi-env-promotion" 
 
 
-- title: Dashboards & insights
-  url: "/dashboards"
-  pages:
-    - title: Home
-      url: "/home-dashboard"
-    - title: Environments
-      url: "/gitops-environments"
-    - title: Products
-      url: "/gitops-products"
-    - title: DORA metrics
-      url: "/dora-metrics"
-    - title: Images
-      url: "/images"
+
 
 
 - title: Installation
@@ -85,38 +73,7 @@
     - title: Managing Git Sources in GitOps Runtimes
       url: "/git-sources"
 
-- title: Integrations
-  url: "/integrations"
-  pages:
-    - title: Image enrichment with GitOps integrations
-      url: "/image-enrichment-overview"
-    - title: CI integrations
-      url: "/ci-integrations"
-      sub-pages:
-        - title: Codefresh pipelines
-          url: "/codefresh-classic"
-        - title: GitHub Actions
-          url: "/github-actions"
-        - title: Jenkins
-          url: "/jenkins"
-    - title: Issue tracking integrations
-      url: "/issue-tracking"
-      sub-pages:
-        - title: Jira
-          url: "/jira"
-    - title: Container registry integrations
-      url: "/container-registries"
-      sub-pages:
-        - title: Amazon ECR
-          url: "/amazon-ecr"
-        - title: Docker Hub Registry
-          url: "/dockerhub"
-        - title: GitHub Container Registry
-          url: "/github-cr"
-        - title: JFrog Artifactory
-          url: "/jfrog"
-        - title: Quay Registry
-          url: "/quay"
+
 
 
 - title: Applications
