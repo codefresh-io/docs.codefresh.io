@@ -172,7 +172,7 @@
     - title: Promotion Flows
       url: "/promotion-flow"     
     - title: Promotion Policies
-        url: "/promotion-policy"  
+      url: "/promotion-policy"  
     - title: Promotion Workflows
       url: "/promotion-workflow"  
     - title: Product promotion settings
