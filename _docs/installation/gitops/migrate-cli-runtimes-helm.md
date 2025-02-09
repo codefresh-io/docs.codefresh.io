@@ -289,7 +289,8 @@ If you have private registries, you need to override specific image values, and 
 You can also create [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) for your Argo CD applications.
 
 ## Related articles
-[Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Monitor GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   

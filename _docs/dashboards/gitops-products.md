@@ -77,7 +77,7 @@ Clicking a Product name navigates you to the Product Dashboard for the selected 
 * The Products dashboard correlates sync information with other parts of the software lifecycle, such as issue-tracking systems.
 * Switch between Pods, Git, and Features views to gain insights beyond development, including source code commits, affected services, commit authorship, and incorporated features in releases. 
 
-See [Integrated insights with pod, Git and feature views]((#integrated-insights-with-pod-git-feature-views)).
+See [Integrated insights with pod, Git and feature views](#integrated-insights-with-pod-git-feature-views).
 
 
 ##### Manage applications
