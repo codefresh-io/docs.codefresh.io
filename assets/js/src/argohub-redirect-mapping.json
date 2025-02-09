@@ -36,7 +36,6 @@
   "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
   "/docs/dashboards/images/": "/argohub/dashboards/images/",
-
   "/docs/installation/gitops/argo-with-gitops-side-by-side/": "/argohub/gitops-runtimes/argo-with-gitops-side-by-side/",
   "/docs/installation/gitops/configuration-runtime/": "/argohub/gitops-runtimes/configuration-runtime/",
   "/docs/installation/gitops/git-sources/": "/argohub/gitops-runtimes/git-sources/",
@@ -49,8 +48,7 @@
   "/docs/installation/gitops/runtime-ingress-configuration/": "/argohub/gitops-runtimes/runtime-ingress-configuration/",
   "/docs/installation/gitops/runtime-system-requirements/": "/argohub/gitops-runtimes/runtime-system-requirements/",
   "/docs/installation/gitops/upgrade-gitops-cli/": "/argohub/gitops-runtimes/upgrade-gitops-cli/",
-  "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/"
-
+  "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/",
   "/docs/gitops-integrations/ci-argument-reference/": "/argohub/gitops-integrations/ci-argument-reference/",
   "/docs/gitops-integrations/ci-integrations/": "/argohub/gitops-integrations/ci-integrations/",
   "/docs/gitops-integrations/container-registries/": "/argohub/gitops-integrations/container-registries/",
