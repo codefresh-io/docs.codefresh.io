@@ -1,0 +1,1 @@
+../../../_docs/gitops-integrations/issue-tracking/jira.md
