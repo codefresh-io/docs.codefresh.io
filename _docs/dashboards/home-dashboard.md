@@ -5,9 +5,13 @@ group: dashboards
 toc: true
 ---
 
-Get a global picture of performance for GitOps entities and pipelines in the Home dashboard with system-wide visualization for all stakeholders. 
+{% page.collection == site.gitops_collection %}
+Get a global picture of performance for GitOps entities in the Home dashboard with system-wide visualization for all stakeholders.
+{% endif %}
  
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
+Get a global picture of performance for GitOps entities and pipelines in the Home dashboard with system-wide visualization for all stakeholders.
+
 The Home Dashboard includes two different dashboards:
 
 * **GitOps Dashboard**  
@@ -228,7 +232,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   User count is aggregated per user, so multiple commits from the same user are counted as a single commit.
 
 -->
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 
 ## Pipelines Dashboard
 
@@ -373,7 +377,7 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-{% if page.layout != "argohub" %}[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) {% endif %}  
+{% if page.collection != site.gitops_collection %}[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/) {% endif %}  
 [Images]({{site.baseurl}}/docs/dashboards/images/)  
 
 

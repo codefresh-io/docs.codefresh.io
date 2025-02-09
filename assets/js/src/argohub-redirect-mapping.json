@@ -3,5 +3,10 @@
   "/docs/installation/gitops/shared-configuration/": "/argohub/installation/gitops/shared-configuration/",
   "/docs/getting-started/intro-to-codefresh/": "/argohub/introduction/intro-to-codefresh/",
   "/docs/security/git-tokens/": "/argohub/security/git-tokens/",
-  "/docs/security/secrets/": "/argohub/security/secrets/"
+  "/docs/security/secrets/": "/argohub/security/secrets/",
+  "/docs/dashboards/dora-metrics/": "/argohub/dashboards/dora-metrics/",
+  "/docs/dashboards/gitops-environments/": "/argohub/dashboards/gitops-environments/",
+  "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
+  "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
+  "/docs/dashboards/images/": "/argohub/dashboards/images/"
 }
