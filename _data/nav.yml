@@ -630,9 +630,9 @@
   url: "/administration"
   pages:
     - title: About administration in Codefresh
-    - url: "/administration-overview"
+      url: "/administration-overview"
     - title: Account & user management
-    - url: "/account-user-management"
+      url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
@@ -653,6 +653,7 @@
         - title: Auditing actions in Codefresh
           url: "/audit"
     - title: Single Sign-On
+      url: "/single-sign-on"
       sub-pages:
         - title: Common configuration
           url: "/team-sync"
