@@ -90,7 +90,38 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
-
+- title: Integrations
+  url: "/integrations"
+  pages:
+    - title: Image enrichment with GitOps integrations
+      url: "/image-enrichment-overview"
+    - title: CI integrations
+      url: "/ci-integrations"
+      sub-pages:
+        - title: Codefresh pipelines
+          url: "/codefresh-classic"
+        - title: GitHub Actions
+          url: "/github-actions"
+        - title: Jenkins
+          url: "/jenkins"
+    - title: Issue tracking integrations
+      url: "/issue-tracking"
+      sub-pages:
+        - title: Jira
+          url: "/jira"
+    - title: Container registry integrations
+      url: "/container-registries"
+      sub-pages:
+        - title: Amazon ECR
+          url: "/amazon-ecr"
+        - title: Docker Hub Registry
+          url: "/dockerhub"
+        - title: GitHub Container Registry
+          url: "/github-cr"
+        - title: JFrog Artifactory
+          url: "/jfrog"
+        - title: Quay Registry
+          url: "/quay"
 
 
 - title: Security
