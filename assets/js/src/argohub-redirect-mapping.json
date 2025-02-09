@@ -62,5 +62,11 @@
   "/docs/gitops-integrations/container-registries/github-cr/": "/argohub/gitops-integrations/container-registries/github-cr/",
   "/docs/gitops-integrations/container-registries/jfrog/": "/argohub/gitops-integrations/container-registries/jfrog/",
   "/docs/gitops-integrations/container-registries/quay/": "/argohub/gitops-integrations/container-registries/quay/",
-
+  "/docs/products/about-products/": "/argohub/products/about-products/",
+  "/docs/products/assign-applications/": "/argohub/products/assign-applications/",
+  "/docs/products/configure-product-settings/": "/argohub/products/configure-product-settings/",
+  "/docs/products/create-product/": "/argohub/products/create-product/",
+  "/docs/products/promotion-flow-triggers/": "/argohub/products/promotion-flow-triggers/",
+  "/docs/products/promotion-version-properties/": "/argohub/products/promotion-version-properties/",
+  "/docs/products/releases-in-products/": "/argohub/products/releases-in-products/"
 }
