@@ -8,8 +8,11 @@ toc: true
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
 Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
-You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. All Runtimes require Codefresh platform IPs to be configured on the clusters.  
-In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access.
+{% if page.layout != "argohub" %}
+You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. 
+{% endif %}
+All Runtimes require Codefresh platform IPs to be configured on the clusters.  
+<!--- In addition, managed clusters registered to Hosted GitOps Runtimes must be configured with a set of specific IP addresses to authorize access. -->
 
 
 ## Codefresh IPs (updated September 2024)
@@ -72,7 +75,7 @@ The DR IPs apply to all tiers.
 - 18.197.46.161
 - 3.68.123.116
 
-## Hosted GitOps 
+<!--- ## Hosted GitOps 
 
 ### Hosted Runtime IPs
 
@@ -88,9 +91,9 @@ The DR IPs apply to all tiers.
 - 3.65.186.48
 - 3.123.55.242
 
-
+-->
 >**NOTE**    
-We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt). Recommended for monitoring changes.
+We have a [plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){:target="\_blank"}. Recommended for monitoring changes.
 
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
@@ -100,7 +103,12 @@ If you haven't configured your clusters with the required IPs, use the links bel
 * [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
+{% if page.layout != "argohub" %}
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
-[Set up a Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 [Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
+{% endif %}
+{% if page.layout == "argohub" %}
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
+{% endif %}
