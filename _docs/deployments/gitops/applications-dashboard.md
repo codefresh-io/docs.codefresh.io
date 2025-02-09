@@ -370,7 +370,7 @@ Every resource has a context menu that opens on clicking the three dots on the r
 
 {{site.data.callout.callout_tip}}
 **TIP**   
-If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources).
+If you have deep links configured for applications/resources for Hybrid GitOps Runtimes, these are also displayed in the context menu. To configure deep links in Codefresh, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#configure-deep-links-to-applications--resources).
 {{site.data.callout.end}}
 
 

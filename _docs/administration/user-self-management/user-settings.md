@@ -1,20 +1,24 @@
 ---
-title: "Managing personal user settings"
-description: "Manage your personal settings"
+title: "Personalizing user settings"
+description: "Manage user-specific settings"
 group: administration
-sub_group: user-self-management
 redirect_from:
   - /docs/administration/user-settings/
 toc: true
 ---
 
-As a Codefresh user, you can manage several settings and resources through your personal account, including:
-
+As a Codefresh user, you can manage several settings and resources in your personal account, including:
+{% if page.collection != site.gitops_collection %}
 * Email notifications for builds and build usage
-* Date and time formats for pipeline modules
 * Updates on weekly usage
+* Date and time formats
 * Account access to Codefresh support
 * API keys
+{% endif %}
+* Date and time formats
+* Account access to Codefresh support
+* API keys
+
 
 {{site.data.callout.callout_tip}}
 **TIP**    
@@ -23,8 +27,9 @@ As a Codefresh user, you can manage several settings and resources through your 
 
 
 ## Access user settings
-* In the Codefresh UI, on the toolbar, click the **Settings** icon and then select [**User Settings**](https://g.codefresh.io/user/settings){:target="\_blank"}.
+* In the Codefresh UI, click your avatar, and then select **User Settings**.
 
+{% if page.collection != site.gitops_collection %}
 ## Enable email notifications for pipeline builds 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
@@ -51,6 +56,7 @@ caption="Email notifications for pipeline builds"
 max-width="50%"
 %}
 
+
 ## Customize date and time formats
 
 Select your preferred formats for date (US or international) and time (24 or 12 hours) display in the Codefresh UI.
@@ -65,7 +71,7 @@ Select your preferred formats for date (US or international) and time (24 or 12 
 Select to receive weekly summaries of builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
 
 * In **Updates**, select or clear **Receive updates...**.
-
+{% endif %}
 
 ## Enable access for Codefresh support
 
@@ -79,7 +85,7 @@ You can disable this security setting at any time.
 {{site.data.callout.end}}
 
 
-* In **Security**, select **Allow Codefresh support team to log in…**..
+* In **Security**, select **Allow Codefresh support team to log in…**.
 
 
 {% include image.html

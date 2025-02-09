@@ -1,6 +1,6 @@
 ---
-title: "Tracking product releases"
-description: "Monitor promotion orchestration for a product through Releases"
+title: "Tracking Product Releases"
+description: "Monitor promotion orchestration for a Product through Releases"
 group: promotions
 toc: true
 ---
