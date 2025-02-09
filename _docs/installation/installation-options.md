@@ -1,13 +1,13 @@
 ---
 title: "Codefresh platform deployment"
-description: "On-premises and SaaS deployment options"
+description: "Platform deployment options"
 group: installation
 redirect_from:
   - /docs/administration/installation-security/
 toc: true
 ---
 
-{% if page.url contains '/docs/' %}
+{% if page.collection != site.gitops_collection %}
 Codefresh Enterprise provides a comprehensive platform for continuous integration and continuous delivery with Codefresh pipelines, and continuous delivery for Arog CD applications with GitOps, through flexible deployment options: SaaS and on-premises.
 
 * **SaaS platform deployment**  
@@ -36,11 +36,10 @@ Both deployments offer:
 
 
 
-{% if page.url contains '/argohub/' %}
-Codefresh GitOps Cloud is a lightweight, SaaS platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
+{% if page.collection == site.gitops_collection %}
+Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
 
-Focused exclusively on GitOps, GitOps Cloud empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps.
-As a SaaS offering, GitOps Cloud eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
+Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps. As a SaaS offering, GitOps eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
 {% include image.html
   lightbox="true"
@@ -58,7 +57,7 @@ As a SaaS offering, GitOps Cloud eliminates the complexity of infrastructure man
 
 The diagram shows the high-level architecture of the SaaS platform and its core components. 
 
-{% if page.url contains '/docs/' %}
+{% if page.collection != site.gitops_collection %}
 
 {% include
 image.html
@@ -71,7 +70,7 @@ max-width="100%"
 %}
 {% endif %}
 
-{% if page.url contains '/argohub/' %}
+{% if page.collection == site.gitops_collection %}
 
 {% include
 image.html
@@ -95,7 +94,7 @@ The GitOps Runtime is installed <!--- in either hosted mode within the Codefresh
 Read more in [GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/gitops-runtime/).
 
 
-{% if page.url contains '/docs/' %}
+{% if page.collection != site.gitops_collection %}
 ### Codefresh Runner
 The Codefresh Runner, also known as the Agent, is required for Codefresh pipelines, and enables running pipeline builds in the customer's environment.  It provides a way to run pipeline builds, tests, and deployments within your private network or on-premises environment by making API calls to the Codefresh platform.  
 Read more in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/).
@@ -105,7 +104,7 @@ Read more in [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/).
 Managed clusters are external clusters added to provisioned GitOps Runtimes. You can deploy applications to the clusters without having to install Argo CD on the clusters in order to do so.
 Read more in [Managed clusters in Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/).
 
-{% if page.url contains '/argohub/' %}
+{% if page.collection == site.gitops_collection %}
 ### Codefresh Clients
 
 ##### Codefresh UI
@@ -115,7 +114,7 @@ The global (Home) dashboard consolidates unified, enterprise-wide insights for A
 For in-depth analysis, the UI has several additional dashboards, each dedicated to distinct aspects of Argo CD application functionality and performance. For example, you have our unique Products and Environments dashboards to track and promote Argo CD applications.
 {% endif %}
 
-{% if page.url contains '/docs/' %}
+{% if page.collection != site.gitops_collection %}
 ### Codefresh Clients
  
 
@@ -298,5 +297,9 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
 {% endif %}
 
-
+{% if page.collection == site.gitops_collection %}
+## Related articles
+[Install GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
+{% endif %}
 

@@ -1,0 +1,1 @@
+../../_docs/installation/gitops/hybrid-gitops-helm-installation.md
