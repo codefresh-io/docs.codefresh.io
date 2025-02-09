@@ -154,6 +154,25 @@
           url: "/quay"
 
 
+- title: Products
+  url: "/products"
+  pages:
+    - title: About Products
+      url: "/about-products"
+    - title: Create Products
+      url: "/create-product"
+    - title: Configure Product Settings
+      url: "/configure-product-settings"
+    - title: Assigning applications
+      url: "/assign-applications"      
+    - title: Configuring version and promotable properties
+      url: "/promotion-version-properties"
+    - title: Selecting Promotion Flows
+      url: "/promotion-flow-triggers"
+    - title: Tracking Releases for Products
+      url: "/releases-in-products"
+
+
 - title: Security
   url: "/security"
   pages:

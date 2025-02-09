@@ -1,1 +1,0 @@
-_docs/administration/account-user-management/gitops-abac.md

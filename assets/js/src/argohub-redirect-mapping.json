@@ -36,7 +36,6 @@
   "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
   "/docs/dashboards/images/": "/argohub/dashboards/images/",
-
   "/docs/installation/gitops/argo-with-gitops-side-by-side/": "/argohub/gitops-runtimes/argo-with-gitops-side-by-side/",
   "/docs/installation/gitops/configuration-runtime/": "/argohub/gitops-runtimes/configuration-runtime/",
   "/docs/installation/gitops/git-sources/": "/argohub/gitops-runtimes/git-sources/",
@@ -49,8 +48,7 @@
   "/docs/installation/gitops/runtime-ingress-configuration/": "/argohub/gitops-runtimes/runtime-ingress-configuration/",
   "/docs/installation/gitops/runtime-system-requirements/": "/argohub/gitops-runtimes/runtime-system-requirements/",
   "/docs/installation/gitops/upgrade-gitops-cli/": "/argohub/gitops-runtimes/upgrade-gitops-cli/",
-  "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/"
-
+  "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/",
   "/docs/gitops-integrations/ci-argument-reference/": "/argohub/gitops-integrations/ci-argument-reference/",
   "/docs/gitops-integrations/ci-integrations/": "/argohub/gitops-integrations/ci-integrations/",
   "/docs/gitops-integrations/container-registries/": "/argohub/gitops-integrations/container-registries/",
@@ -64,5 +62,11 @@
   "/docs/gitops-integrations/container-registries/github-cr/": "/argohub/gitops-integrations/container-registries/github-cr/",
   "/docs/gitops-integrations/container-registries/jfrog/": "/argohub/gitops-integrations/container-registries/jfrog/",
   "/docs/gitops-integrations/container-registries/quay/": "/argohub/gitops-integrations/container-registries/quay/",
-
+  "/docs/products/about-products/": "/argohub/products/about-products/",
+  "/docs/products/assign-applications/": "/argohub/products/assign-applications/",
+  "/docs/products/configure-product-settings/": "/argohub/products/configure-product-settings/",
+  "/docs/products/create-product/": "/argohub/products/create-product/",
+  "/docs/products/promotion-flow-triggers/": "/argohub/products/promotion-flow-triggers/",
+  "/docs/products/promotion-version-properties/": "/argohub/products/promotion-version-properties/",
+  "/docs/products/releases-in-products/": "/argohub/products/releases-in-products/"
 }
