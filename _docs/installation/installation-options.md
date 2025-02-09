@@ -1,6 +1,6 @@
 ---
 title: "Codefresh platform deployment"
-description: "On-premises and SaaS deployment options"
+description: "Platform deployment options"
 group: installation
 redirect_from:
   - /docs/administration/installation-security/
