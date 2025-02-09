@@ -68,5 +68,21 @@
   "/docs/products/create-product/": "/argohub/products/create-product/",
   "/docs/products/promotion-flow-triggers/": "/argohub/products/promotion-flow-triggers/",
   "/docs/products/promotion-version-properties/": "/argohub/products/promotion-version-properties/",
-  "/docs/products/releases-in-products/": "/argohub/products/releases-in-products/"
+  "/docs/products/releases-in-products/": "/argohub/products/releases-in-products/",
+  "/docs/promotions/create-promotion-sequence/": "/argohub/promotions/create-promotion-sequence/",
+  "/docs/promotions/entities/": "/argohub/promotions/entities/",
+  "/docs/promotions/product-promotion-props/": "/argohub/promotions/product-promotion-props/",
+  "/docs/promotions/product-releases/": "/argohub/promotions/product-releases/",
+  "/docs/promotions/promotion-components/": "/argohub/promotions/promotion-components/",
+  "/docs/promotions/promotion-flow/": "/argohub/promotions/promotion-flow/",
+  "/docs/promotions/promotion-policy/": "/argohub/promotions/promotion-policy/",
+  "/docs/promotions/promotion-workflow/": "/argohub/promotions/promotion-workflow/",
+  "/docs/promotions/promotions-overview/": "/argohub/promotions/promotions-overview/",
+  "/docs/promotions/releases/": "/argohub/promotions/releases/",
+  "/docs/promotions/trigger-promotions/": "/argohub/promotions/trigger-promotions/",
+  "/docs/promotions/yaml/": "/argohub/promotions/yaml/",
+  "/docs/promotions/yaml/product-crd/": "/argohub/promotions/yaml/product-crd/",
+  "/docs/promotions/yaml/promotion-flow-crd/": "/argohub/promotions/yaml/promotion-flow-crd/",
+  "/docs/promotions/yaml/promotion-policy-crd/": "/argohub/promotions/yaml/promotion-policy-crd/",
+  "/docs/promotions/yaml/promotion-template-crd/": "/argohub/promotions/yaml/promotion-template-crd/"
 }
