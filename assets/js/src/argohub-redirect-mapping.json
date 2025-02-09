@@ -35,5 +35,19 @@
   "/docs/dashboards/gitops-environments/": "/argohub/dashboards/gitops-environments/",
   "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
-  "/docs/dashboards/images/": "/argohub/dashboards/images/"
+  "/docs/dashboards/images/": "/argohub/dashboards/images/",
+  "/docs/gitops-integrations/ci-argument-reference/": "/argohub/gitops-integrations/ci-argument-reference/",
+  "/docs/gitops-integrations/ci-integrations/": "/argohub/gitops-integrations/ci-integrations/",
+  "/docs/gitops-integrations/container-registries/": "/argohub/gitops-integrations/container-registries/",
+  "/docs/gitops-integrations/image-enrichment-overview/": "/argohub/gitops-integrations/image-enrichment-overview/",
+  "/docs/gitops-integrations/issue-tracking/": "/argohub/gitops-integrations/issue-tracking/",
+  "/docs/gitops-integrations/ci-integrations/codefresh-classic/": "/argohub/gitops-integrations/ci-integrations/codefresh-classic/",
+  "/docs/gitops-integrations/ci-integrations/github-actions/": "/argohub/gitops-integrations/ci-integrations/github-actions/",
+  "/docs/gitops-integrations/ci-integrations/jenkins/": "/argohub/gitops-integrations/ci-integrations/jenkins/",
+  "/docs/gitops-integrations/container-registries/amazon-ecr/": "/argohub/gitops-integrations/container-registries/amazon-ecr/",
+  "/docs/gitops-integrations/container-registries/dockerhub/": "/argohub/gitops-integrations/container-registries/dockerhub/",
+  "/docs/gitops-integrations/container-registries/github-cr/": "/argohub/gitops-integrations/container-registries/github-cr/",
+  "/docs/gitops-integrations/container-registries/jfrog/": "/argohub/gitops-integrations/container-registries/jfrog/",
+  "/docs/gitops-integrations/container-registries/quay/": "/argohub/gitops-integrations/container-registries/quay/",
+  "/docs/gitops-integrations/issue-tracking/jira/": "/argohub/gitops-integrations/issue-tracking/jira/"
 }

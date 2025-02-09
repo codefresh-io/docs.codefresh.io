@@ -1,0 +1,1 @@
+../../../_docs/gitops-integrations/container-registries/amazon-ecr.md
