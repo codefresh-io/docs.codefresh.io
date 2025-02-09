@@ -8,7 +8,7 @@ toc: true
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses. 
 Codefresh provides a list of IP addresses to be configured on clusters to allow access to them. 
 
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 You can register multiple external clusters to the Codefresh Runner and GitOps Runtimes. 
 {% endif %}
 All Runtimes require Codefresh platform IPs to be configured on the clusters.  
@@ -103,12 +103,8 @@ If you haven't configured your clusters with the required IPs, use the links bel
 * [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
+{% endif %}
 [Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 [Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
-{% endif %}
-{% if page.layout == "argohub" %}
-[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
-{% endif %}

@@ -112,7 +112,7 @@ Hybrid GitOps Runtime installation includes a forked version of the Argo Project
 -->
 
 
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 
 ## Hosted vs.Hybrid GitOps 
 

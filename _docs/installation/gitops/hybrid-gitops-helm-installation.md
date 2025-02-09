@@ -190,7 +190,7 @@ where:
 * `<branch>` is optional, and references a specific branch in the repository.  
   Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
-{% if page.layout != "argohub" %} 
+{% if page.collection != site.gitops_collection %} 
 #### Git providers <!--- is this relevant for Argohub -->
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`

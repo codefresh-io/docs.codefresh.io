@@ -8,19 +8,17 @@ toc: true
 ---
 
 As a Codefresh user, you can manage several settings and resources in your personal account, including:
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 * Email notifications for builds and build usage
 * Updates on weekly usage
 * Date and time formats
 * Account access to Codefresh support
 * API keys
 {% endif %}
-
-{% if page.layout == "argohub" %}
 * Date and time formats
 * Account access to Codefresh support
 * API keys
-{% endif %}
+
 
 {{site.data.callout.callout_tip}}
 **TIP**    
@@ -31,7 +29,7 @@ As a Codefresh user, you can manage several settings and resources in your perso
 ## Access user settings
 * In the Codefresh UI, click your avatar, and then select **User Settings**.
 
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 ## Enable email notifications for pipeline builds 
 
 Configure the email notifications you want to receive for builds based on the build status: only successful, only failed, or for both successful and failed builds.  
@@ -67,7 +65,7 @@ Select your preferred formats for date (US or international) and time (24 or 12 
   Currently applies only to pipeline modules. 
 
 
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 ## Receive weekly updates of build usage
 
 Select to receive weekly summaries of builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.
