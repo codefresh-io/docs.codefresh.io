@@ -36,6 +36,7 @@
   "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
   "/docs/dashboards/images/": "/argohub/dashboards/images/",
+
   "/docs/installation/gitops/argo-with-gitops-side-by-side/": "/argohub/gitops-runtimes/argo-with-gitops-side-by-side/",
   "/docs/installation/gitops/configuration-runtime/": "/argohub/gitops-runtimes/configuration-runtime/",
   "/docs/installation/gitops/git-sources/": "/argohub/gitops-runtimes/git-sources/",
@@ -49,4 +50,19 @@
   "/docs/installation/gitops/runtime-system-requirements/": "/argohub/gitops-runtimes/runtime-system-requirements/",
   "/docs/installation/gitops/upgrade-gitops-cli/": "/argohub/gitops-runtimes/upgrade-gitops-cli/",
   "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/"
+
+  "/docs/gitops-integrations/ci-argument-reference/": "/argohub/gitops-integrations/ci-argument-reference/",
+  "/docs/gitops-integrations/ci-integrations/": "/argohub/gitops-integrations/ci-integrations/",
+  "/docs/gitops-integrations/container-registries/": "/argohub/gitops-integrations/container-registries/",
+  "/docs/gitops-integrations/image-enrichment-overview/": "/argohub/gitops-integrations/image-enrichment-overview/",
+  "/docs/gitops-integrations/issue-tracking/": "/argohub/gitops-integrations/issue-tracking/",
+  "/docs/gitops-integrations/ci-integrations/codefresh-classic/": "/argohub/gitops-integrations/ci-integrations/codefresh-classic/",
+  "/docs/gitops-integrations/ci-integrations/github-actions/": "/argohub/gitops-integrations/ci-integrations/github-actions/",
+  "/docs/gitops-integrations/ci-integrations/jenkins/": "/argohub/gitops-integrations/ci-integrations/jenkins/",
+  "/docs/gitops-integrations/container-registries/amazon-ecr/": "/argohub/gitops-integrations/container-registries/amazon-ecr/",
+  "/docs/gitops-integrations/container-registries/dockerhub/": "/argohub/gitops-integrations/container-registries/dockerhub/",
+  "/docs/gitops-integrations/container-registries/github-cr/": "/argohub/gitops-integrations/container-registries/github-cr/",
+  "/docs/gitops-integrations/container-registries/jfrog/": "/argohub/gitops-integrations/container-registries/jfrog/",
+  "/docs/gitops-integrations/container-registries/quay/": "/argohub/gitops-integrations/container-registries/quay/",
+
 }
