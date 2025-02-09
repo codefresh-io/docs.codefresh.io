@@ -1,6 +1,6 @@
 {
   "/": "/argohub/",
-  "/docs/installation/gitops/shared-configuration/": "/argohub/installation/gitops/shared-configuration/",
+  "/docs/installation/gitops/shared-configuration/": "/argohub/gitops-runtimes/shared-configuration/",
   "/docs/getting-started/intro-to-codefresh/": "/argohub/introduction/intro-to-codefresh/",
   "/docs/security/git-tokens/": "/argohub/security/git-tokens/",
   "/docs/security/secrets/": "/argohub/security/secrets/",
@@ -35,5 +35,18 @@
   "/docs/dashboards/gitops-environments/": "/argohub/dashboards/gitops-environments/",
   "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
-  "/docs/dashboards/images/": "/argohub/dashboards/images/"
+  "/docs/dashboards/images/": "/argohub/dashboards/images/",
+  "/docs/installation/gitops/argo-with-gitops-side-by-side/": "/argohub/gitops-runtimes/argo-with-gitops-side-by-side/",
+  "/docs/installation/gitops/configuration-runtime/": "/argohub/gitops-runtimes/configuration-runtime/",
+  "/docs/installation/gitops/git-sources/": "/argohub/gitops-runtimes/git-sources/",
+  "/docs/installation/gitops/hybrid-gitops-helm-installation/": "/argohub/gitops-runtimes/hybrid-gitops-helm-installation/",
+  "/docs/installation/gitops/manage-runtimes/": "/argohub/gitops-runtimes/manage-runtimes/",
+  "/docs/installation/gitops/managed-cluster/": "/argohub/gitops-runtimes/managed-cluster/",
+  "/docs/installation/gitops/monitor-runtimes/": "/argohub/gitops-runtimes/monitor-runtimes/",
+  "/docs/installation/gitops/runtime-architecture/": "/argohub/gitops-runtimes/runtime-architecture/",
+  "/docs/installation/gitops/runtime-concepts/": "/argohub/gitops-runtimes/runtime-concepts/",
+  "/docs/installation/gitops/runtime-ingress-configuration/": "/argohub/gitops-runtimes/runtime-ingress-configuration/",
+  "/docs/installation/gitops/runtime-system-requirements/": "/argohub/gitops-runtimes/runtime-system-requirements/",
+  "/docs/installation/gitops/upgrade-gitops-cli/": "/argohub/gitops-runtimes/upgrade-gitops-cli/",
+  "/docs/installation/installation-options/": "/argohub/platform-installation/installation-options/"
 }

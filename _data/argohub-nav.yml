@@ -19,14 +19,42 @@
       url: "/images"
 
 
-- title: Installation
-  url: "/installation"
+- title: Platform Installation
+  url: "/platform-installation"
   pages:
-    - title: GitOps Runtimes
-      url: "/gitops"
-      sub-pages:
-        - title: Shared Configuration Repository
-          url: "/shared-configuration"
+  - title: Installation options
+    url: "/installation-options"
+
+- title: GitOps Runtimes
+  url: "/gitops-runtimes"
+  pages:     
+    - title: GitOps Runtime architecture
+      url: "/runtime-architecture"
+    - title: Runtime concepts
+      url: "/runtime-concepts"
+    - title: System requirements & prerequisites
+      url: "/runtime-system-requirements"    
+    - title: Ingress configuration
+      url: "/runtime-ingress-configuration"            
+    - title: Install GitOps Runtime
+      url: "/hybrid-gitops-helm-installation" 
+    - title: Install GitOps Runtime alongside Community Argo CD
+      url: "/argo-with-gitops-side-by-side"        
+    - title: Shared Configuration Repository
+      url: "/shared-configuration"
+    - title: Configuration Runtimes
+      url: "/configuration-runtime"
+    - title: Monitoring GitOps Runtimes
+      url: "/monitor-runtimes"
+    - title: Managing GitOps Runtimes
+      url: "/manage-runtimes"
+    - title: Managing external clusters in GitOps Runtimes
+      url: "/managed-cluster"
+    - title: Managing Git Sources in GitOps Runtimes
+      url: "/git-sources"
+    - title: Download/upgrade GitOps CLI
+      url: "/upgrade-gitops-cli"   
+
 
 - title: Administration
   url: "/administration"

@@ -1,0 +1,1 @@
+../../_docs/installation/gitops/upgrade-gitops-cli.md
