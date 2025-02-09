@@ -95,6 +95,8 @@
   pages:
     - title: Image enrichment with GitOps integrations
       url: "/image-enrichment-overview"
+    - title: Argument reference
+      url: "/ci-argument-reference"      
     - title: CI integrations
       url: "/ci-integrations"
       sub-pages:
