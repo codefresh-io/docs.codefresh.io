@@ -173,6 +173,40 @@
       url: "/releases-in-products"
 
 
+- title: Promotions
+  url: "/promotions"
+  pages:
+    - title: About promotions
+      url: "/promotions-overview"
+    - title: Promotion building blocks
+      url: "/promotion-components"
+    - title: Promotion setup guidelines
+      url: "/create-promotion-sequence"
+    - title: Promotion Flows
+      url: "/promotion-flow"     
+    - title: Promotion Policies
+      url: "/promotion-policy"  
+    - title: Promotion Workflows
+      url: "/promotion-workflow"  
+    - title: Product promotion settings
+      url: "/product-promotion-props"          
+    - title: Promotion entity YAMLs 
+      url: "/yaml"
+      sub-pages:
+        - title: Product YAML
+          url: "/product-crd"
+        - title: Promotion Template YAML
+          url: "/promotion-template-crd"
+        - title: Promotion Flow YAML
+          url: "/promotion-flow-crd"
+        - title: Promotion Policy YAML
+          url: "/promotion-policy-crd"
+    - title: Trigger promotions
+      url: "/trigger-promotions"   
+    - title: Tracking releases for Products
+      url: "/product-releases" 
+
+
 - title: Security
   url: "/security"
   pages:

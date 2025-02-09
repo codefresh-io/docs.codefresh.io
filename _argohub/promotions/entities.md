@@ -1,0 +1,1 @@
+../../_docs/promotions/entities.md

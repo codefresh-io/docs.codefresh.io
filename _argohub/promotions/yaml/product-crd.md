@@ -1,0 +1,1 @@
+../../../_docs/promotions/yaml/product-crd.md
