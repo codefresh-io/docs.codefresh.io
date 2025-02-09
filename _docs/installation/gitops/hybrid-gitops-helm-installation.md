@@ -503,7 +503,7 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
 
-That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. View the Runtime in the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views) page.
+That's it! You have successfully completed installing a Hybrid GitOps Runtime with Helm. View the Runtime on the [Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/#gitops-runtime-views) page.
 
 <br>
 
