@@ -55,7 +55,7 @@ alt="Email notifications for pipeline builds"
 caption="Email notifications for pipeline builds"
 max-width="50%"
 %}
-{% endif %}
+
 
 ## Customize date and time formats
 
@@ -65,7 +65,7 @@ Select your preferred formats for date (US or international) and time (24 or 12 
   Currently applies only to pipeline modules. 
 
 
-{% if page.collection != site.gitops_collection %}
+
 ## Receive weekly updates of build usage
 
 Select to receive weekly summaries of builds across your pipelines along with other statistical data. This information can be useful if you want to understand your overall project build health and capacity usage.

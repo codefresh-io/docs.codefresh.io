@@ -133,11 +133,7 @@ As an administrator, you can optionally define session timeouts to automatically
 ## Related articles
 [Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
 {% if page.collection != site.gitops_collection %}
-[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
-[Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup) 
-{% endif %}
-{% if page.collection == site.gitops_collection %}
+[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
 [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
-{% endif %}
+

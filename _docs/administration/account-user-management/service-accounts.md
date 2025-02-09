@@ -15,7 +15,7 @@ Each service account can hold multiple API keys, making it easy to manage access
 
 ## Create service accounts
 Create service accounts in Codefresh to manage processes, integrations, at the account level.  
-Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)).  
+{% if page.collection != site.gitops_collection %}Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)). {% endif %} 
 
 Note that service account creation is not supported via CLI and Terraform.
 
@@ -113,8 +113,7 @@ There are two requirements:
 
 ## Related articles
 {% if page.collection != site.gitops_collection %}
-[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-{% endif %}
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
 [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 
 

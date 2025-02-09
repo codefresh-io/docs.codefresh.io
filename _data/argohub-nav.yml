@@ -27,18 +27,12 @@
           url: "/add-users"
         - title: Managing service accounts
           url: "/service-accounts"
-        - title: Configuring access control for pipelines
-          url: "/access-control"
         - title: Configuring access control for GitOps
           url: "/gitops-abac"
         - title: Setting up OAuth2 for GitOps
           url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs"
-        - title: Pipeline execution context
-          url: "/pipeline-execution-context"
-        - title: Auditing actions in Codefresh
-          url: "/audit"
     - title: Single Sign-On
       sub-pages:
         - title: Common configuration

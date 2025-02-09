@@ -228,4 +228,3 @@ This rule grants manual promotion privileges to specific products that match a s
 
 ## Related articles
 [Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
-[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
