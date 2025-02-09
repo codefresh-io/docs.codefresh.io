@@ -401,7 +401,7 @@
   pages:
     - title: About Products
       url: "/about-products"
-    - title: Create products
+    - title: Create Products
       url: "/create-product"
     - title: Configure Product Settings
       url: "/configure-product-settings"
@@ -411,7 +411,7 @@
       url: "/promotion-version-properties"
     - title: Selecting Promotion Flows
       url: "/promotion-flow-triggers"
-    - title: Track Releases for Products
+    - title: Tracking Releases for Products
       url: "/releases-in-products"
 
 
