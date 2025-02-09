@@ -687,6 +687,7 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
     - title: User self-management
+      url: "/user-self-management"
       sub-pages:
         - title: Managing personal settings
           url: "/user-settings"

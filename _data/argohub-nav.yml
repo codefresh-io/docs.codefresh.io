@@ -28,6 +28,71 @@
         - title: Shared Configuration Repository
           url: "/shared-configuration"
 
+- title: Administration
+  url: "/administration"
+  pages:
+    - title: About administration in Codefresh
+    - url: "/administration-overview"
+    - title: Account & user management
+    - url: "/account-user-management"
+      sub-pages:
+        - title: Create a Codefresh account
+          url: "/create-codefresh-account"
+        - title: Adding users and teams
+          url: "/add-users"
+        - title: Managing service accounts
+          url: "/service-accounts"
+        - title: Configuring access control for GitOps
+          url: "/gitops-abac"
+        - title: Setting up OAuth2 for GitOps
+          url: "/oauth-setup"
+        - title: Authorize access to organizations/projects
+          url: "/hosted-authorize-orgs"
+    - title: Single Sign-On
+      sub-pages:
+        - title: Common configuration
+          url: "/team-sync"
+        - title: OpenID Connect
+          url: "/oidc"
+          sub-pages:
+            - title: Auth0
+              url: "/oidc-auth0"
+            - title: Azure
+              url: "/oidc-azure"
+            - title: Google
+              url: "/oidc-google"
+            - title: Keycloak
+              url: "/oidc-keycloak"
+            - title: Okta
+              url: "/oidc-okta"
+            - title: OneLogin
+              url: "/oidc-onelogin"
+        - title: SAML
+          url: "/saml"
+          sub-pages:
+            - title: JumpCloud
+              url: "/saml-jumpcloud"
+            - title: Okta
+              url: "/saml-okta"
+            - title: OneLogin
+              url: "/saml-onelogin"
+            - title: PingID SSO
+              url: "/saml-pingid"
+        - title: LDAP
+          url: "/ldap"
+    - title: Codefresh IP addresses
+      url: "/platform-ip-addresses"
+    - title: User self-management
+      url: "/user-self-management"
+      sub-pages:
+        - title: Managing personal settings
+          url: "/user-settings"
+        - title: Managing Git PATs
+          url: "/manage-pats"
+
+
+
+
 - title: Security
   url: "/security"
   pages:

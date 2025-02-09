@@ -132,4 +132,5 @@ You have now completed SSO setup for OneLogin via OIDC.
 
 ## Related articles
 [About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  

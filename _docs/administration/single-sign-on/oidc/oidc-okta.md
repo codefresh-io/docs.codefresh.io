@@ -210,5 +210,6 @@ After initial SSO setup, you can activate automatic syncing of teams for the int
  
 ## Related articles
 [About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  
 

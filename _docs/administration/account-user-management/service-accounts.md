@@ -15,7 +15,7 @@ Each service account can hold multiple API keys, making it easy to manage access
 
 ## Create service accounts
 Create service accounts in Codefresh to manage processes, integrations, at the account level.  
-Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)).  
+{% if page.collection != site.gitops_collection %}Assign teams to service accounts to ensure RBAC access for those teams and their users (see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control)). {% endif %} 
 
 Note that service account creation is not supported via CLI and Terraform.
 
@@ -100,7 +100,7 @@ max-width="90%"
 | **Status**               | Indicates if the service account is currently active (**Enabled**) or inactive (**Disabled**). You may want to disable a service account to invalidate its API keys without having to remove the service account, and simply reenable when needed. |
 | **Actions**               | The options available to manage the service account through its context menu: {::nomarkdown}<ul><li><b>Edit</b>: Modify the settings of the service account, including adding/removing teams, enabling/disabling admin role.</li><li><b>Delete</b>: Delete the service account, including all the API keys defined for the account. This means that actions through the Codefresh API or CLI that require these keys will fail.</li></ul>{:/} |
 
-{% if page.layout != "argohub" %}
+{% if page.collection != site.gitops_collection %}
 ## Authenticating to Amazon ECR with service account
 
 Authenticate to Amazon ECR registries with credentials from the service account instead of the Access Key ID and Secret Access Key.  
@@ -112,13 +112,9 @@ There are two requirements:
 {% endif %}
 
 ## Related articles
-{% if page.layout != "argohub" %}
-[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+{% if page.collection != site.gitops_collection %}
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
 [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
-{% endif %}
-{% if page.layout == "argohub" %}
-[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
-{% endif %}
 
 
 
