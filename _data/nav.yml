@@ -72,7 +72,7 @@
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: Home dashboard
+    - title: Home
       url: "/home-dashboard"
     - title: GitOps Environments
       url: "/gitops-environments"
