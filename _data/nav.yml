@@ -407,11 +407,11 @@
       url: "/configure-product-settings"
     - title: Assigning applications
       url: "/assign-applications"      
-    - title: Configuring app version and promoted properties
+    - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
-    - title: Configuring promotion flows
+    - title: Selecting Promotion Flows
       url: "/promotion-flow-triggers"
-    - title: Releases for Products
+    - title: Track Releases for Products
       url: "/releases-in-products"
 
 

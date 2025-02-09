@@ -1,6 +1,6 @@
 ---
 title: "Create Products"
-description: "Create Products and optimize with tailored settings"
+description: "Create Products and tailor settings to optimize them"
 group: products
 toc: true
 ---
@@ -10,10 +10,10 @@ toc: true
 A Product in Codefresh is a logical grouping of related Argo CD applications that provides context, versioning, and lifecycle management across environments. Unlike standalone applications in Argo CD, products establish relationships between applications, making it easier to track deployments, manage promotions, and maintain consistency. See [About Products]({{site.baseurl}}/docs/products/about-products/).
 
 There are two ways to create a product in GitOps:
-* When creating or editing an [application]({{site.baseurl}}/docs/deployments/gitops/create-application/#products) 
+* When creating or editing an [application]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products)<br>
   You can create a product while setting up an application.
 
-* From the [Products page](#create-products) 
+* From the [Products page](#create-products)<br>
   Create and manage products directly, then assign applications to them, as described in this article.
 
 
@@ -35,7 +35,9 @@ Note that products will not display any applications in these scenarios:
 
 
 ## Create Products 
-Create a product from the Product page
+Create a product from the Product page.  
+
+To create a product for a new or an existing application, see [Configuring applications]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products).
 
 ##### Before you begin
 * Create one or more [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-gitops-environments)
@@ -65,7 +67,7 @@ Create a product from the Product page
 
 
 ## Related articles
-[Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
-[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Selecting Promotion Flows and triggers for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  

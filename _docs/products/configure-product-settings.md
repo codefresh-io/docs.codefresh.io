@@ -17,13 +17,13 @@ This article describes how to configure the different Product Settings:
   Click names of unassigned applications to automatically assign them to environments. 
 
 
-* [Labels](#configure-labels)  
+* [Labels](#configure-labels-for-products)  
   Add labels for the product. 
 
-* [Promotion Flows](#configure-promotion-flows)  
+* [Promotion Flows](#select-promotion-flows-for-products)  
   Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each of the Flows.
   
-* [Promotion Settings](#configure-promotion-settings)  
+* [Promotion Settings](#configure-promotion-settings-for-products)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
 
 
@@ -233,7 +233,7 @@ Configure Promotion Settings to define:
 
 
 ##### How to
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click the **Promotion Settings** tab.
 1. From the list of Promotion Templates, do one of the following:
     * Select a predefined Promotion Template.  
@@ -271,5 +271,5 @@ Configure Promotion Settings to define:
 
 ## Related articles
 [Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating Products]({{site.baseurl}}/docs/products/create-product/)   
+[CreateProducts]({{site.baseurl}}/docs/products/create-product/)   
 [Access control for GitOps Products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  

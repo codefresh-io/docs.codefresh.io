@@ -1,6 +1,6 @@
 ---
 title: "Releases for Products"
-description: "Monitor deployment after promotion"
+description: "Monitor deployments after promotion"
 group: products
 toc: true
 ---
@@ -49,3 +49,9 @@ Commit status checks in Git include status checks for promotions in releases. Th
 %}
 
 For detailed information, see [Tracking Product Releases]({{site.baseurl}}/docs/promotions/releases/).
+
+
+## Related articles
+[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   

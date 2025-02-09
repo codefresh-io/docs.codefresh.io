@@ -27,7 +27,7 @@ You can always unassign an application from a product, for declaratively assigne
 
 ## Related articles
 [Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   

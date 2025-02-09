@@ -27,7 +27,7 @@ By selecting Promotion Flows for a product and defining the conditions that trig
 ##### Where can you configure Promotion Flows and triggers? 
 In Product > Settings > Promotion Flows.  
 Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
-See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/).
+See also [Promotion Flow CRD](#promotion-flow-yaml).
 
 
 {% include 
@@ -41,7 +41,7 @@ See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-fl
 %}
 
 
-For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-flows).
+For how to instructions on selecting Promotion Flows for products, see [Select Promotion Flows for Products]({{site.baseurl}}/docs/products/configure-product-settings/#select-promotion-flows-for-products).
 
 
 ## Examples of trigger conditions for Promotion Flows
@@ -124,21 +124,21 @@ The Rollback flow is designed to revert changes when issue are detected in produ
 
 The Rollback flow triggers when the commit message contains terms like `revert` or `rollback`, ensuring that the flow is triggered only for rollback operations.
 
-##  Promotion Flow CRD
+##  Promotion Flow YAML
 
 As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
 
 Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
-To configure directly in YAML, refer to our [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/) for the syntax requirements and descriptions. 
+To configure directly in YAML, refer to our [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/) for the syntax requirements and descriptions. 
 
 
 ## Related articles
-[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
 
 
 

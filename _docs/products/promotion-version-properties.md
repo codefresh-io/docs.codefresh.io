@@ -5,7 +5,7 @@ group: products
 toc: true
 ---
 
-## App version and promoted properties for Products
+## App version and promotable properties for Products
 By default, when you promote a product across environments, all its applications and their properties are promoted. You may not need to promote everything, as not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.
 
 By configuring the properties to promote, you ensure that only relevant updates move forward. This improves deployment accuracy, streamlines workflows, and enforces compliance with environment-specific constraints.
@@ -52,7 +52,7 @@ See also [Promotion Settings & Promotion Templates](#promotion-settings--promoti
 %} 
 
 
-For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings).
+For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings-for-products).
 
 
 
@@ -75,7 +75,7 @@ For other application types, product versions are not displayed even when config
 %} 
 
 
-The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
+The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-properties). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
 
 The diagram illustrates how the version attributes configured for the product are correlated with the repo URL and path defined in the application's manifest to retrieve the correct version.
 
@@ -368,7 +368,7 @@ See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/
 To configure directly in YAML, refer to our [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/). 
 
 ## Related articles
-[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   

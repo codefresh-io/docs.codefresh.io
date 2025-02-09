@@ -25,7 +25,7 @@ max-width="70%"
 
 ## Boosting application management with Products
 Products enhance and simplify application management by enabling controlled promotions, version tracking, and environment-specific configurations.  
-Since an application can exist in multiple environments (Development, Staging, Production for example), grouping them within a Product helps compare versions, track changes, and maintain consistency.
+Since an application can exist in multiple environments, grouping them within a Product helps compare versions, track changes, and maintain consistency.
 
 
 {% include 
@@ -42,7 +42,7 @@ Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products
 Read more about the dashboard in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
 
-### Key benefits o
+### Key benefits 
 * **Unified application management**  
   Grouping interconnected applications simplifies management and streamlines deployments across environments.
 
@@ -96,7 +96,7 @@ max-width="60%"
 
 
 
-## Track Product promotions through Releases
+## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  
 See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
 
