@@ -31,5 +31,9 @@
   "/docs/administration/cf-ip4.txt": "/argohub/administration/cf-ip4.txt",
   "/docs/administration/platform-ip-addresses/": "/argohub/administration/platform-ip-addresses/",
   "/docs/administration/single-sign-on/": "/argohub/administration/single-sign-on/",
-  "/docs/administration/user-self-management/": "/argohub/administration/user-self-management/"
+  "/docs/dashboards/dora-metrics/": "/argohub/dashboards/dora-metrics/",
+  "/docs/dashboards/gitops-environments/": "/argohub/dashboards/gitops-environments/",
+  "/docs/dashboards/gitops-products/": "/argohub/dashboards/gitops-products/",
+  "/docs/dashboards/home-dashboard/": "/argohub/dashboards/home-dashboard/",
+  "/docs/dashboards/images/": "/argohub/dashboards/images/"
 }

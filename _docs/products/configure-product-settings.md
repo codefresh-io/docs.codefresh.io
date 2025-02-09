@@ -5,25 +5,25 @@ group: products
 toc: true
 ---
 
-After creating a product, configure metadata, Promotion Settings, and Promotion Flows for the Product and the applications connected to it through Product Settings. 
+## Product settings
+After creating a product, optimize its features and functionality by configuring different settings for the product, such as metadata, promotion settings, and more through Product Settings. 
 
 This article describes how to configure the different Product Settings:
 
 * [Declaratively connect applications](#connect-applications-to-product-with-annotations)    
-  Declaratively connect an application to a product with the predefined and automatically generated product annotation. 
+  Declaratively connect an application to a product with the automatically generated product annotation. 
   
-
-* [Labels](#configure-labels)  
-  Add labels for the product. 
-
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Click names of unassigned applications to automatically assign them to environments. 
 
 
-* [Promotion Flows](#configure-promotion-flows)  
-  Select one or more predefined Promotion Flows, and customize the trigger conditions for each of the Flows.
+* [Labels](#configure-labels-for-products)  
+  Add labels for the product. 
+
+* [Promotion Flows](#select-promotion-flows-for-products)  
+  Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each of the Flows.
   
-* [Promotion Settings](#configure-promotion-settings)  
+* [Promotion Settings](#configure-promotion-settings-for-products)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
 
 
@@ -50,8 +50,7 @@ For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions
 
 
 ## Connect applications to product with annotations
-Connect applications to products declaratively by copying the Product annotation to the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you. 
-
+Connect applications to products declaratively by copying the product annotation to the application's manifest. If the product doesn’t exist, Codefresh automatically creates it for you.  
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 
 ##### Before you begin
@@ -92,20 +91,8 @@ To unassign an application assigned declaratively to the product, remove the ann
 1. Commit to save the changes.
 
 
-
-
-
-## Configure labels
-
-Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities by teams. 
-
-1. If needed, open [Product Settings](#open-product-settings).
-1. Click the **General** tab.
-1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
-
 ## Manually assign unassigned applications
-Manually assign applications with a one-click action for quick assignment.  
-  
+Manually assign applications with a one-click action for quick assignment.    
 This quick assignment option does not require a commit action as applications assigned to a product are not stored as part of the product's resource definition.  
 
 This method is recommended for testing purposes.
@@ -114,8 +101,6 @@ This method is recommended for testing purposes.
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 
 ##### How to
-
-
 1. Open [Product Settings](#open-product-settings).
 1. Click **Manage Applications**.
   The list of **Unassigned apps** is displayed on the left.
@@ -174,15 +159,26 @@ Unassign an application manually assigned to a product directly from its setting
 %}
 
 
-## Configure Promotion Flows
+## Configure labels for Products
+
+Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities. 
+
+1. Open [Product Settings](#open-product-settings).
+1. Click the **General** tab.
+1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
+
+
+
+
+## Select Promotion Flows for Products
 Automate and orchestrate promotions across different environments for the Product by:
 * Selecting one or more predefined Promotion Flows
 * Customizing the conditions that should trigger each Promotion Flow
-* Defining the priority when multiple Flows are configured 
+* Defining the priority for each Flow when multiple Flows are configured 
 
 
 ##### Before you begin
-* Review [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+* Review [Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 ##### How to
@@ -226,18 +222,18 @@ Automate and orchestrate promotions across different environments for the Produc
 {:start="8"}
 1. Click **Commit**.
 
-## Configure Promotion Settings
+## Configure Promotion Settings for Products
 Configure Promotion Settings to define:
-* The source from which to get application's release version
+* For Helm applications, the source from which to get application's release version
 * The precise changes to promote across multiple files in the applications 
 
 
 ##### Before you begin
-* Review [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+* Review [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 
 
 ##### How to
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click the **Promotion Settings** tab.
 1. From the list of Promotion Templates, do one of the following:
     * Select a predefined Promotion Template.  
@@ -274,6 +270,6 @@ Configure Promotion Settings to define:
 
 
 ## Related articles
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
-[Access control for GitOps products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[CreateProducts]({{site.baseurl}}/docs/products/create-product/)   
+[Access control for GitOps Products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  

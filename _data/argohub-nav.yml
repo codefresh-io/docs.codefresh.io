@@ -4,6 +4,21 @@
     - title: What is Codefresh GitOps?
       url: "/intro-to-codefresh"
 
+- title: Dashboards & insights
+  url: "/dashboards"
+  pages:
+    - title: Home
+      url: "/home-dashboard"
+    - title: Environments
+      url: "/gitops-environments"
+    - title: Products
+      url: "/gitops-products"
+    - title: DORA metrics
+      url: "/dora-metrics"
+    - title: Images
+      url: "/images"
+
+
 - title: Installation
   url: "/installation"
   pages:
@@ -85,3 +100,5 @@
       url: "/git-tokens"
     - title: Secrets for GitOps
       url: "/secrets"
+
+
