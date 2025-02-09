@@ -562,67 +562,7 @@
     - title: SonarQube scanning
       url: "/sonarqube-integration"
 
-- title: Installation
-  url: "/installation"
-  pages:
-    - title: Platform deployment
-      url: "/installation-options"
-      sub-pages:
-        - title: On-premises deployment
-          url: "/on-premises"
-          sub-pages:
-            - title: Installation & configuration
-              url: "/codefresh-on-prem"
-            - title: Upgrade
-              url: "/codefresh-on-prem-upgrade"
-            - title: Account and user setup
-              url: "/on-prem-configuration"            
-            - title: Feature management
-              url: "/on-prem-feature-management"
-    - title: Runner for pipelines
-      url: "/runner"
-      sub-pages:
-        - title: Runner architecture
-          url: "/runner-architecture"
-        - title: Runner installation for pipelines
-          url: "/install-codefresh-runner"
-        - title: Runner installation behind firewalls
-          url: "/behind-the-firewall"
-    - title: GitOps Runtimes
-      url: "/gitops"
-      sub-pages:
-        - title: What's changed in GitOps Runtimes documentation
-          url: "/gitops-runtimes-whats-changed"        
-        - title: GitOps Runtime architecture
-          url: "/runtime-architecture"
-        - title: Runtime concepts
-          url: "/runtime-concepts"
-        - title: System requirements & prerequisites
-          url: "/runtime-system-requirements"    
-        - title: Ingress configuration
-          url: "/runtime-ingress-configuration"            
-        - title: Install GitOps Runtime
-          url: "/hybrid-gitops-helm-installation" 
-        - title: Install GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"        
-        - title: On-premises GitOps Runtime
-          url: "/on-prem-gitops-runtime-install"
-        - title: Migrating GitOps Runtimes from CLI to Helm
-          url: "/migrate-cli-runtimes-helm"  
-        - title: Shared Configuration Repository
-          url: "/shared-configuration"
-        - title: Configuration Runtimes
-          url: "/configuration-runtime"
-        - title: Monitoring GitOps Runtimes
-          url: "/monitor-runtimes"
-        - title: Managing GitOps Runtimes
-          url: "/manage-runtimes"
-        - title: Managing external clusters in GitOps Runtimes
-          url: "/managed-cluster"
-        - title: Managing Git Sources in GitOps Runtimes
-          url: "/git-sources"
-        - title: Download/upgrade GitOps CLI
-          url: "/upgrade-gitops-cli"   
+
 
 
 
