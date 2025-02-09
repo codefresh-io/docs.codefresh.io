@@ -205,7 +205,7 @@
   url: "/administration"
   pages:
     - title: About administration in Codefresh
-    - url: "/administration-overview"
+      url: "/administration-overview"
     - title: Account & user management
     - url: "/account-user-management"
       sub-pages:
