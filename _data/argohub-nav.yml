@@ -178,8 +178,6 @@
   pages:
     - title: About promotions
       url: "/promotions-overview"
-    - title: Getting started
-      url: "/getting-started"  
     - title: Promotion building blocks
       url: "/promotion-components"
     - title: Promotion setup guidelines

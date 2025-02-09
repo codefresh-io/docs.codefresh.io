@@ -448,7 +448,7 @@
           url: "/promotion-policy-crd"
     - title: Trigger promotions
       url: "/trigger-promotions"   
-    - title: Tracking releases for products
+    - title: Tracking releases for Products
       url: "/product-releases"         
 
 
