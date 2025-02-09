@@ -1,14 +1,18 @@
 ---
 title: "Home dashboard"
-description: ""
+description: "Global dashboard"
 group: dashboards
 toc: true
 ---
 
-Get a global picture of performance for GitOps entities, Argo Workflow entites, and pipelines in the Home dashboard. The Home dashboard is displayed when you log in to Codefresh, providing system-wide visualization for all stakeholders. 
+{% if page.collection == site.gitops_collection %}
+Get a global picture of performance for GitOps entities in the Home dashboard with system-wide visualization for all stakeholders.
+{% endif %}
  
+{% if page.collection != site.gitops_collection %}
+Get a global picture of performance for GitOps entities and pipelines in the Home dashboard with system-wide visualization for all stakeholders.
 
-The Home Dashboard includes three different dashboards:
+The Home Dashboard includes two different dashboards:
 
 * **GitOps Dashboard**  
   Displays a global overview of GitOps Runtimes, clusters managed by the Runtimes, deployment history, and most active applications. 
@@ -22,12 +26,9 @@ The Home Dashboard includes three different dashboards:
   Go to [Pipeline Settings](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}.  
 {{site.data.callout.end}}  -->
 
+
 * **Pipelines Dashboard**  
   Displays aggregated pipeline data for performance analysis, identification of bottlenecks, and trends.  
-
-
-
- 
 
   {% include 
    image.html 
@@ -40,14 +41,14 @@ The Home Dashboard includes three different dashboards:
    %}
    
 
-
+{% endif %}
 
 ## GitOps Dashboard
 Use the GitOps dashboard to:
 1. Identify status of GitOps Runtimes and the clusters managed by the Runtimes
-1. View deployment history for the date range
+1. View deployment history for a date range
 1. View the most active applications, and filter by cluster to which they are deployed
-1. Go to the GitOps Apps dashboard to further analyze specific applications 
+1. Navigate to the GitOps Apps dashboard to further analyze specific applications 
 
 ### Filters for GitOps Dashboard 
 
@@ -231,6 +232,7 @@ KPI metrics for active Delivery Pipelines such as number of executions, duration
   User count is aggregated per user, so multiple commits from the same user are counted as a single commit.
 
 -->
+{% if page.collection != site.gitops_collection %}
 
 ## Pipelines Dashboard
 
@@ -366,15 +368,18 @@ Identify outliers in terms of executions and duration in the scatter chart map, 
   alt="Pipeline correlation in Metrics table with scatter chart"
   caption="Pipeline correlation in Metrics table with scatter chart"
   max-width="60%"
-    %} 
+%} 
 
 You can then filter by the specific pipeline or pipelines and analyze success rate, overall, and phase-level duration.   
+{% endif %}
 
 ## Related articles
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
-[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)   
-[Images in Codefresh]({{site.baseurl}}/docs/dashboards/images/)  
+{% if page.collection != site.gitops_collection %}
+[Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  
+{% endif %}  
+[Images]({{site.baseurl}}/docs/dashboards/images/)  
 
 
