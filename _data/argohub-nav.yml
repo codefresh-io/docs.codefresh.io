@@ -36,46 +36,6 @@
       url: "/dependency-multi-env-promotion" 
 
 
-
-
-
-- title: Platform installation
-  url: "/installation"
-  pages:
-    - title: Platform deployment
-      url: "/installation-options"
-
-- title: GitOps Runtimes
-  url: "/gitops-runtime"
-  pages:  
-    - title: About GitOps Runtimes
-      url: "/gitops-runtime"  
-    - title: GitOps Runtime architecture
-      url: "/runtime-architecture"
-    - title: Runtime essentials
-      url: "/runtime-concepts"
-    - title: System requirements & prerequisites
-      url: "/runtime-system-requirements"
-    - title: Ingress controller configuration
-      url: "/runtime-ingress-configuration"
-    - title: Install Hybrid GitOps Runtime
-      url: "/hybrid-gitops-helm-installation" 
-    - title: Install Hybrid GitOps Runtime alongside Community Argo CD
-      url: "/argo-with-gitops-side-by-side"        
-    - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
-      url: "/migrate-cli-runtimes-helm"  
-    - title: Monitoring & managing GitOps Runtimes
-      url: "/monitor-manage-runtimes"
-    - title: Shared Configuration Repository
-      url: "/shared-configuration"
-    - title: Managing external clusters in GitOps Runtimes
-      url: "/managed-cluster"
-    - title: Managing Git Sources in GitOps Runtimes
-      url: "/git-sources"
-
-
-
-
 - title: Applications
   url: "/applications"
   pages:
@@ -96,21 +56,7 @@
     - title: Troubleshooting Argo CD applications
       url: "/troubleshooting-gitops-apps"
 
-- title: Products
-  url: "/products"
-  pages:
-    - title: About Products
-      url: "/about-products"
-    - title: Create products
-      url: "/create-product"
-    - title: Configure Product Settings
-      url: "/configure-product-settings"
-    - title: Assigning applications
-      url: "/assign-applications"      
-    - title: Configuring app version and promoted properties
-      url: "/promotion-version-properties"
-    - title: Configuring promotion flows
-      url: "/promotion-flow-triggers"
+
 
 
 - title: Promotions
