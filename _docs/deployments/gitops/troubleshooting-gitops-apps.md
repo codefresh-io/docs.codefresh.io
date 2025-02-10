@@ -50,7 +50,7 @@ Either roll back to the previous notification template or trigger, or follow the
 
 ##### Runtime configuration
 1. Ensure that your Runtime version is `0.13.0` or higher.
-1. Confirm that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime.
+1. Confirm that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime.
 
 ##### Application configuration
 1. Verify if the application manifest includes the following:  

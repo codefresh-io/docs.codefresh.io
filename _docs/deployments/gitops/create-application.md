@@ -243,7 +243,7 @@ Edit the manifest directly in YAML mode, or define the settings in the Form mode
    %} 
 
 {:start="7"}   
-1. To commit all your changes, select **Commit**.  
+1. To commit all your changes, click **Commit**.  
   The Commit form is displayed with the application's definition on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Enter the path to the **Git Source** to which to commit the application configuration manifest.
 

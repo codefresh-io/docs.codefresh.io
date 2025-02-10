@@ -6,7 +6,7 @@ toc: true
 
 
 As a one-stop shop for Argo Rollouts and Argo CD, the GitOps Apps dashboard delivers on the challenge of creating and managing individual applications across all clusters in your enterprise. 
-A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility for deployments. 
+A wide range of filters, progressive delivery views, and enriched CI and CD information, provide full traceability and visibility into deployments. 
 
 {% include
 image.html
@@ -23,7 +23,7 @@ max-width="70%"
 ## View modes for GitOps Apps dashboard 
 
 When you navigate to the GitOps Apps dashboard, the dashboard displays the Argo CD applications you have created and deployed, sorted by the most recent deployments.  
-The applications are displayed in List view (the default). You can switch to Card view mode for applications. 
+The applications are displayed in List view (the default). You can switch to Card view mode if needed. 
 
 
 ### Applications List view
@@ -91,7 +91,8 @@ max-width="60%"
 %}
 
 ##### Applications with multiple sources
-Multisource applications, which pull configurations from multiple repositories or sources, display the number of sources next to the **Sources** label.
+Multisource applications are essentially standalone applications which pull configurations from multiple repositories or sources.  
+In the GitOps Apps dashboard, they can be identified by the number of sources displayed next to the **Sources** label.
 
 {% include
 image.html

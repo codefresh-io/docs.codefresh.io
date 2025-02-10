@@ -10,23 +10,30 @@ toc: true
 
 
 ## GitOps applications
-In the GitOps context, applications represent a declarative definition of infrastructure and services stored in Git repositories. These configurations ensure that the desired state of your system is always versioned, auditable, and easily recoverable in case of failure.
+In GitOps, applications define infrastructure and services declaratively in Git repositories. These configurations ensure that your system’s desired state is always versioned, auditable, and recoverable in case of failure.
 
-##### Argo CD applications
+### Argo CD applications
 In Argo CD, an application is a core concept, representing a logical grouping of Kubernetes manifests. These manifests define what resources to deploy, where to deploy them, and how to synchronize the live state on the cluster with the desired state stored in Git.  
 Argo CD automates synchronization, ensuring deployments remain consistent and preventing configuration drift through Git as the single source of truth. 
 
-##### Argo CD applications with Codefresh GitOps
+### Argo CD applications with Codefresh GitOps
 
-With Codefresh, you can create fully GitOps-compliant Argo CD applications directly within the platform, supporting the full functionality to create, configure, and manage them. This includes automatically generating application manifests, committing them to Git, and synchronizing them with your Kubernetes clusters.
+Codefresh GitOps integrates natively with Argo CD, allowing you to create, configure, and manage fully GitOps-compliant applications directly within the platform.   
 
-* **GitOps Runtime and Argo CD applications**:  
-  When you install the GitOps Runtime and connect your clusters, all Argo CD applications across those clusters are displayed in the GitOps Apps dashboard, regardless of the cluster or namespace they are deployed to.  There is no manual action required from you. This centralized view provides unparalleled visibility into your entire application landscape, making it easy to monitor, manage, and troubleshoot deployments at scale.
+Codefresh automates:
+* Generating application manifests
+* Committing them to Git
+* Synchronizing them with Kubernetes clusters
 
-* **Argo CD application types**:
-    * Standard Argo CD applications: Full functionality to create, configure, and manage them.
-    * ApplicationSets: View and monitor resources and configuration.
-    * Multi-source applications: View and monitor resources and configuration
+##### Seamless visibility across Argo CD applications
+When you install the GitOps Runtime and connect your clusters, all Argo CD applications—across all clusters and namespaces—are automatically displayed in the GitOps Apps dashboard. No manual action is required. This centralized view provides unparalleled visibility, simplifying monitoring, troubleshooting, and scaling deployments.
+
+##### Argo CD application types in Codefresh GitOps
+* **Standard Argo CD applications**: Full support for creation, configuration, and management.
+* **ApplicationSets**: View and monitor resources and configuration.
+* **Multi-source applications**: View and monitor resources and configuration.
+
+
 
 
 
@@ -41,12 +48,10 @@ max-width="60%"
 %}
 
 
-Read more details in the sections that follow.
-
 
 
 ## GitOps Apps dashboard
-The GitOps Apps dashboard is your central hub for viewing, creating, and managing Argo CD applications.  
+The GitOps Apps dashboard is the central hub for viewing, creating, and managing Argo CD applications.  
 
 {% include
 image.html
@@ -58,12 +63,14 @@ caption="GitOps Apps dashboard"
 max-width="60%"
 %}
 
-This dashboard provides a comprehensive view of your applications, their type, and structure, making it an essential starting point for managing them. From this high-level view, you can deep dive into detailed insights, including deployments, resources, configuration settings, and other critical aspects of individual applications:
-* Create new Argo CD applications
-* View and manage application configuration settings
-* Monitor application resources
-* View deployment history
-* Rollback application releases
+This dashboard provides a high-level overview of all applications, their types, and their structure. From here, you can drill down into individual applications for detailed insights into deployments, resources, and configuration settings. 
+
+Key actions include:
+* Creating new Argo CD applications
+* Managing application configuration settings
+* Monitoring application resources
+* Viewing deployment history
+* Rolling back application releases
 
 
 ## GitOps features for integrating applications
@@ -100,15 +107,14 @@ caption="Products in Codefresh GitOps"
 max-width="60%"
 %}
 
-Codefresh seamlessly collates the environments where each application in the product is deployed, along with insights into commits, contributors, and features deployed across versions.
-This approach simplifies complex deployments by enabling you to:
+Codefresh provides a holistic view of environments where product applications are deployed, along with insights into commits, contributors, and deployed features. This approach simplifies complex deployments by enabling you to:
 * Coordinate related applications across environments
 * Manage promotions at the product level for a unified view of application performance and health 
 
 See [About Products]({{site.baseurl}}/docs/products/about-products/).
 
 ##### Promotions and Argo CD applications
-Promotions are a key feature in Codefresh GitOps, simplifying the software development lifecyle and deployment of applications in production.
+Codefresh GitOps simplifies promotions, enabling controlled deployments across environments with minimal ef
 
 
 {% include
@@ -121,15 +127,15 @@ caption="Promotions in Codefresh GitOps"
 max-width="60%"
 %}
 
-Codefresh offers multiple promotion methods, ranging from manual drag-and-drop to Promotion Flows, which integrate seamlessly with environments and products, enabling you to:
-* Promote changes across multiple environments in sequence or in parallel.
-* Coordinate promotions across multiple applications grouped in a product.
+Codefresh offers multiple promotion methods, ranging from manual drag-and-drop to Promotion Flows, which integrate seamlessly with environments and products to:
+* Promote changes across multiple environments
+* Coordinate promotions across multiple applications within a product
 
 See [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
 ## DORA for DevOps metrics
-As mentioned, we have the Product and Environment dashboards for enterprise-wide visibility into your applications in the context of their current deployment.  
-Another key dashboard with critical insights into applications is the DORA dashboard, which tracks DevOps metrics like lead time for changes and deployment frequency.
+The Product and Environment dashboards provide enterprise-wide visibility into your applications in the context of their current deployment.  
+Another key dashboard with critical insights into applications is the DORA dashboard, which tracks DevOps performance metrics like lead time for changes and deployment frequency.
 
 {% include
 image.html
