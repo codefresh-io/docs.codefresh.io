@@ -83,5 +83,13 @@
   "/docs/promotions/yaml/product-crd/": "/argohub/promotions/yaml/product-crd/",
   "/docs/promotions/yaml/promotion-flow-crd/": "/argohub/promotions/yaml/promotion-flow-crd/",
   "/docs/promotions/yaml/promotion-policy-crd/": "/argohub/promotions/yaml/promotion-policy-crd/",
-  "/docs/promotions/yaml/promotion-template-crd/": "/argohub/promotions/yaml/promotion-template-crd/"
+  "/docs/promotions/yaml/promotion-template-crd/": "/argohub/promotions/yaml/promotion-template-crd/",
+  "/docs/terms-and-privacy-policy/acceptable-use-policy/": "/argohub/terms-and-privacy-policy/acceptable-use-policy/",
+  "/docs/terms-and-privacy-policy/cloud-credits/": "/argohub/terms-and-privacy-policy/cloud-credits/",
+  "/docs/terms-and-privacy-policy/legacy-cf-terms-of-service/": "/argohub/terms-and-privacy-policy/legacy-cf-terms-of-service/",
+  "/docs/terms-and-privacy-policy/octopus-deploy-customer-agreement/": "/argohub/terms-and-privacy-policy/octopus-deploy-customer-agreement/",
+  "/docs/terms-and-privacy-policy/privacy-policy/": "/argohub/terms-and-privacy-policy/privacy-policy/",
+  "/docs/terms-and-privacy-policy/sla/": "/argohub/terms-and-privacy-policy/sla/",
+  "/docs/terms-and-privacy-policy/support-triage-definitions/": "/argohub/terms-and-privacy-policy/support-triage-definitions/",
+  "/docs/terms-and-privacy-policy/terms-of-service/": "/argohub/terms-and-privacy-policy/terms-of-service/"
 }
