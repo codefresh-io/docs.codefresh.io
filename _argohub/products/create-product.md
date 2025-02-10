@@ -1,0 +1,1 @@
+../../_docs/products/create-product.md

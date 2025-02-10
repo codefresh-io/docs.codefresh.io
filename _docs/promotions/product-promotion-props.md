@@ -1,5 +1,5 @@
 ---
-title: "Customizing promotion settings for products"
+title: "Customizing promotion settings for Products"
 description: "Select promotion flows, triggers, and more to tailor promotion settings for product"
 group: promotions
 redirect-from: 
@@ -8,13 +8,13 @@ redirect-from:
 toc: true
 ---
 
-## Promotion settings for products
+## Promotion settings for Products
 
 Promotion settings for products define the configurations that determine which promotion sequences are valid based on changes to the product, the conditions under which to initiate them, and the exact changes to promote. These settings ensure consistent, accurate, and reliable delivery of updates across environments.
 
 By automating these configurations, promotion settings by product reduce manual effort, minimize errors, and align with your deployment strategy to ensure that changes are deployed under the right conditions.
 
-##### What promotion settings can you configure for the product?
+##### What promotion settings can you configure for the Product?
 * Product version (for Helm-based applications)
 * Properties to promote
 * Promotion Flows and their triggers

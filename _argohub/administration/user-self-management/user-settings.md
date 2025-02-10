@@ -1,0 +1,1 @@
+../../../_docs/administration/user-self-management/user-settings.md

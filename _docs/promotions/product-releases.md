@@ -8,14 +8,13 @@ toc: true
 
 
 
-Releases in Codefresh offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
+Releases in Codefresh GitOps offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
 
-A release is automatically created whenever a promotion is triggered for a product—either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
+A release is automatically created whenever a promotion is triggered for a product, either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
 
 ## Releases in GitOps
 In the context of GitOps, a release captures the progression of a product as it is promoted through environments. The release reflects the collective state of all environments and workflows involved in deploying a change, from the initial trigger to the final target environment, whether production or another specified target.
 
-Visually track deployments of your product across multiple environments using the Releases view.
 
 
 {% include 
@@ -47,7 +46,18 @@ Developers often lack visibility into what happens after code is pushed. The Rel
 * A detailed breakdown of changes associated with each release.
 
 
+##### Releases in Git
+Commit status checks in Git include status checks for promotions in releases. This means that you can track promotion progress and identify issues directly from Git. If more details are needed, you can always click **Details** to take you to the Releases view for investigation.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/releases/release-status-in-git.png" 
+	url="/images/gitops-products/releases/release-status-in-git.png" 
+	alt="Promotion status updates in Git" 
+	caption="Promotion status updates in Git"
+  max-width="50%" 
+%}
 
 ### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:

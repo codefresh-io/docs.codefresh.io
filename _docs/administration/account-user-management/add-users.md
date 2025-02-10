@@ -11,7 +11,10 @@ redirect_from:
 toc: true
 ---
 
-Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, workflows, and pipelines, and teams of users.  For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
+Once you have created a Codefresh account, you can add any number of users to collaborate on repositories, entities, and processes.  
+{% if page.collection != site.gitops_collection %}
+For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
+{% endif %}
 
 You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an orgranization.
 
@@ -20,16 +23,17 @@ You can then create teams in Codefresh to group users who share a common denomin
 Adding a user to an account requires assigning a role to define access to account resources, and optionally, selecting an SSO provider for the user:
 
 * **Role**: Defines the user's access level to the resources in the account.  
-  * **User**: The default. With this role, users can work with your repositories and pipelines, but cannot change settings
-on clusters, docker registries, git integrations, shared configurations etc.
+  * **User**: The default. With this role, users can work with repositories and entities, but cannot change configuration settings.
   * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
-  For guidelines on access control, see [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).  
-* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/).
+  For guidelines on access control, see {% if page.collection != site.gitops_collection %}[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) and [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/){% endif %}{% if page.collection == site.gitops_collection %}ops_collection %}
+[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
+{% endif %}.  
+* **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [About Federated Single Sign-on]({{site.baseurl}}/docs/administration/single-sign-on/).
 
 ### Add a user to a Codefresh account
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. On the sidebar, from Access & Collaboration select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.
+1. From the sidebar select **Users & Teams**.
 1. Select **Users**, and then select **+ [Add User]**.  
 1. Type the **User's email address**, and click **Invite**.
    <!---add screenshot-->
@@ -55,20 +59,22 @@ By default, there are two teams:
 
 * Users
 * Admins with users [invited as collaborators](#assign-a-user-to-a-team)  
-
+<!--- is this correct? -->
 > **NOTE**  
 > Only Enterprise customers can add new teams. Other Codefresh plans can only use the predefined *Users* and *Admin* teams. [Contact us](https://codefresh.io/contact-us/){:target="\_blank"} to upgrade to an Enterprise plan.
 
+{% if page.collection != site.gitops_collection %}
 ### Automatically creating projects for teams
 
 As part of the global pipeline settings for an account, when creating a team, you can also automatically create a project and a project tag with the same name as that of the team. Enabling **auto-create projects for teams** (disabled by default), simplifies permissions setup for pipelines and projects, as it also creates a Read rule for the project. See [Auto-create projects for teams]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#auto-create-projects-for-teams).
+{% endif %}
 
 ### Create a team in Codefresh
 
 Create a team in Codefresh and then assign users to the team. You can assign the same user to multiple teams, as in most companies, users have overlapping roles.  
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **User Management**.
-1. From the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.
+1. From the sidebar, select **Users & Teams**.
 1. Select **Teams**, and then select **Create a Team**.  
 1. Enter the **Team Name**.
    > **NOTE**  
@@ -100,7 +106,7 @@ As an administrator, you can optionally define session timeouts to automatically
 > The maximum duration for inactivity is 30 days. Inactive users are warned 15 minutes before they are logged out.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then select **Account Settings**.
-1. On the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}.
+1. From the sidebar, select **Users & Teams**.
 1. Select **Security**.  
 1. For **User Session**, add the timeout duration in minutes/hours/days.
 1. To restrict invitations to specific email domains, below User Invitations, turn on **Restrict inviting additional users..** and then in the **Email domains**, type in the domains to allow, one per line.
@@ -125,7 +131,9 @@ As an administrator, you can optionally define session timeouts to automatically
 1. If this issue persists, please know that our support team is here for you. [Contact](https://support.codefresh.io/hc/en-us/requests/new) them with as many details as you have, and they will assist you promptly.
 
 ## Related articles
-
-[Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
-[Single Sign on]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
+{% if page.collection != site.gitops_collection %}
+[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
+[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
+

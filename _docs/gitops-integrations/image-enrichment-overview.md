@@ -65,7 +65,7 @@ Modify your CI workflow to include the image enrichment step:
 
 **Examples**:
 * [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
-* [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}
+{% if page.collection != site.gitops_collection %}* [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}{% endif %}<!-- ask if this is relevant to argohub -->
 
 
 ### 4. View enriched image metadata

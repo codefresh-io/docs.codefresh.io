@@ -1,26 +1,30 @@
 ---
-title: "Configuring app version and promotable properties"
+title: "Configuring version and promotable properties for Products"
 description: "Configure application version and properties to promote for products"
 group: products
 toc: true
 ---
 
+## App version and promotable properties for Products
+By default, when you promote a product across environments, all its applications and their properties are promoted. You may not need to promote everything, as not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.
 
+By configuring the properties to promote, you ensure that only relevant updates move forward. This improves deployment accuracy, streamlines workflows, and enforces compliance with environment-specific constraints.
 
-Automating and customizing which changes are selected for promotion between environments ensures that only the necessary modifications are advanced, enhancing both accuracy and efficiency. By defining clear criteria for the changes to promote, you can streamline the promotion process while ensuring compliance with environment-specific requirements.
+##### Why automate version and property selection?
+Automating the selection of the application version and properties ensures that only relevant updates are promoted, improving accuracy, efficiency, and compliance with environment-specific constraints. This approach benefits teams managing complex applications by reducing manual oversight and enforcing structured deployments.
 
-<!--- maybe add diagram -->
-##### Benefits of automating selection of changes for promotion
+##### Key benefits of automated selection
+* **Targeted, reliable promotions**  
+  Ensures only approved updates, such as tested builds, specific artifact versions, are promoted, minimizing deployment errors.
 
-* **Precision through automation**  
-  Automating the selection of changes for promotion allows you to define which updates are moved forward, removing the need for manual diff reviews.  This functionality is invaluable when managing promotions for large-scale applications with large numbers of microservices and configuration files. 
+* **Environment-specific control**  
+  Defines promotable properties to enforce unique requirements per environment, allowing selective updates like image tags while excluding unnecessary modifications.
 
-* **Enforce environment-specific requirements**  
-  Each environment has distinct constraints and requirements. By automating which changes are promoted, you can ensure that only the updates are valid for each environment are promoted, ensuring compliance with environment-specific needs.  
-  While artifact versions and image tags typically warrant promotion for instance, other changes may be excluded based on the target environment's specific requirements. 
+* **Scalability for complex applications**  
+  Eliminates manual diff reviews for large-scale applications with numerous microservices and configuration files, streamlining deployments.
 
 ##### Primary aspects when promoting applications
-When defining which changes to promote, there are two primary aspects to focus on:
+When defining which changes to promote, focus one these two aspects:
 1. Defining the source for the [application's release version](#configuring-versions-for-promoted-applications)
 1. Defining the [changes to promote](#configuring-properties-for-promotion-across-applications) across multiple files in the applications 
 
@@ -34,7 +38,7 @@ Promotion across different environments requires consistent relative paths in ea
 {{site.data.callout.end}}
 
 ##### Where can you configure settings for application version and properties? 
-In Product > Settings > Promotion Settings, you can configure the changes to promote between the product's applications in the different environments.  
+In Product > Settings > Promotion Settings.   
 See also [Promotion Settings & Promotion Templates](#promotion-settings--promotion-templates).
 
 {% include
@@ -48,7 +52,7 @@ See also [Promotion Settings & Promotion Templates](#promotion-settings--promoti
 %} 
 
 
-For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings).
+For how-to instructions, see [Configure Promotion Settings]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-settings-for-products).
 
 
 
@@ -71,7 +75,7 @@ For other application types, product versions are not displayed even when config
 %} 
 
 
-The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-attributes). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
+The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-properties). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
 
 The diagram illustrates how the version attributes configured for the product are correlated with the repo URL and path defined in the application's manifest to retrieve the correct version.
 
@@ -358,13 +362,13 @@ Using the above syntax:
 
 As with other GitOps entities, you can configure Promotion Settings for the product in either Form or YAML modes. 
 
-When you define an Inline template, configure and commit the settings, they are saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+When you define an Inline template, configure, and commit the settings, the YAML generated, is saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
 To configure directly in YAML, refer to our [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/). 
 
 ## Related articles
-[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
