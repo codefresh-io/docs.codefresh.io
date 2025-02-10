@@ -320,8 +320,8 @@ Optional. Create an Argo CD application in Codefresh, deploy it to the cluster, 
   Create your own application. See [Create an application]({{site.baseurl}}/docs/deployments/gitops/create-application/).   
 
 {:start="2"}
-2. In the Codefresh UI, view your application in the [GitOps Apps dashboard](https://g.codefresh.io/2.0/applications-dashboard/list){:target="\_blank"}.
-  For more information, see [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+2. In the Codefresh UI, view your application in the **GitOps Apps dashboard**.
+  For more information, see [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/).
 
 ## (Optional) Connect CI 
 Optional. Integrate Codefresh with the third-party tools you use for CI to enrich image information in deployments.  

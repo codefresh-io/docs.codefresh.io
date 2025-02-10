@@ -549,7 +549,7 @@ caption="Ingress resource links in Current State Tree view"
 max-width="50%"
 %}
 
-For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#access-external-links).
+For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#access-external-links).
 
 #### GitOps: Application menu enhancements in Environment & Product dashboards
 
@@ -1143,7 +1143,7 @@ If you have selected an application, the Diff View option is available in the co
 >**NOTE**  
 Diff View for application resources is supported from Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
 
-For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view).
+For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#analyze-out-of-sync-applications-in-diff-view).
 
 
 

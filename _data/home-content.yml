@@ -54,8 +54,8 @@
       localurl: /docs/promotions/promotion-components/
     - title: Promotion setup guidelines
       localurl: /docs/promotions/create-promotion-sequence/
-    - title: Promotion tutorials
-      localurl: /docs/promotions/promotion-scenarios/
+    - title: YAML specs
+      localurl: /docs/promotions/entities/yaml/
     - title: Trigger promotions
       localurl: /docs/promotions/trigger-promotions/ 
     - title: Tracking releases for products
@@ -94,7 +94,7 @@
     - title: Creating Argo CD applications
       localurl: /docs/deployments/gitops/create-application/
     - title: Monitoring Argo CD applications
-      localurl: /docs/deployments/gitops/applications-dashboard/
+      localurl: /docs/deployments/gitops/monitor-applications/
     - title: Managing Argo CD applications
       localurl: /docs/deployments/gitops/manage-application/
 
