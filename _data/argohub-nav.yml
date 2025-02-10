@@ -66,20 +66,3 @@
       url: "/changelog"
 
 
-- title: Terms and Privacy Policy
-  url: "/terms-and-privacy-policy"
-  pages:
-    - title: Terms of Service
-      url: "/terms-of-service"
-    - title: Privacy Policy
-      url: "/privacy-policy"
-    - title: Acceptable Use Policy
-      url: "/acceptable-use-policy"      
-    - title: Service Commitment
-      url: "/sla"
-    - title: Cloud Credits
-      url: "/cloud-credits"
-    - title: Support Triage Definitions
-      url: "/support-triage-definitions"
-    - title: Legacy Codefresh Terms of Service
-      url: "/legacy-cf-terms-of-service"
