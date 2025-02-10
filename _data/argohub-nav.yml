@@ -36,25 +36,6 @@
       url: "/dependency-multi-env-promotion" 
 
 
-- title: Applications
-  url: "/applications"
-  pages:
-    - title: About Argo CD applications
-      url: "/about-apps"
-    - title: GitOps Apps dashboard
-      url: "/gitops-apps-dashboard"
-    - title: Application Groups for Argo CD applications
-      url: "/gitops-app-groups"
-    - title: Creating Argo CD applications
-      url: "/create-application"
-    - title: Monitoring Argo CD applications
-      url: "/applications-dashboard"
-    - title: Managing Argo CD applications
-      url: "/manage-application"
-    - title: Progressive delivery with GitOps
-      url: "/install-argo-rollouts"
-    - title: Troubleshooting Argo CD applications
-      url: "/troubleshooting-gitops-apps"
 
 
 
