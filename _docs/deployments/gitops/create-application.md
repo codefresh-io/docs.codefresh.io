@@ -18,7 +18,7 @@ For ease of use, settings are organized into distinct categories including:
 * [General configuration settings](#application-general-configuration-settings): Product, Group, source, destination, and sync policies for the application.
 * [Advanced configuration settings](#application-advanced-configuration-settings): Tool-specific options, project grouping, and propagation policies for resource and application deletion.
 
-For how-to instructions, see [Create applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+For how-to instructions, see [Create applications](#create-an-argo-cd-application).
 
 ## Application: Definitions
 Application definitions include the application name, the GitOps Runtime, and the name of the YAML manifest. By default, the YAML manifest has the same name as that of the application. 
@@ -64,7 +64,7 @@ See [Application Groups]({{site.baseurl}}/docs/deployments/gitops/gitops-app-gro
 
 ### Source 
 The Git repository with the application resources.  
-{::nomarkdown}<ul> <li><b>Repository URL</b>: The URL of the Git repo or the Helm package repo with the application resources. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/gitops-runtime/monitor-manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
+{::nomarkdown}<ul> <li><b>Repository URL</b>: The URL of the Git repo or the Helm package repo with the application resources. <br>If SSH is configured for the runtime, you can connect to the repo with either HTTPS or SSH. On selecting the repository, Codefresh automatically updates the URL format. See <a href="https://codefresh.io/docs/docs/gitops-runtime/manage-runtimes/#configure-ssh-for-gitops-runtimes">Configure SSH for runtimes</a>.<br>If the Argo CD project is not the <span style="font-family: var(--font-family-monospace); font-size: 87.5%; color: #ad6800; background-color: #fffbe6">default</span> project, make sure that the repo has the correct access roles for your application.<ul><li><b>Revision and Path</b>: Applies to Git repositories. </li><li><b>Chart</b>: Applies to Helm repositories. The name of the Helm package with all the resource definitions for the application, and the version. </li></ul>For more information, see <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/" target="\_blank">Tracking and Deployment Strategies</a>.</li></ul>{:/}   
 
 
 
@@ -86,7 +86,7 @@ Common to both manual and automatic sync policies.{% raw %}{::nomarkdown}<ul><li
 
 
 #### Prune propagation policy
-Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. For more information, see [Kubernetes - Cascading deletion](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion){:target="\_blank"}.{::nomarkdown}<ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
+Defines how resources are pruned, applying Kubernetes cascading deletion prune policies. For more information, see [Kubernetes - Cascading deletion](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)){:target="\_blank"}.{::nomarkdown}<ul><li><b>Foreground</b>: The default prune propagation policy used by Argo CD. With this policy, Kubernetes changes the state of the owner resource to `deletion in progress`, until the controller deletes the dependent resources and finally the owner resource itself. </li><li><b>Background</b>: When selected, Kubernetes deletes the owner resource immediately, and then deletes the dependent resources in the background.</li><li><b>Orphan</b>: When selected, Kubernetes deletes the dependent resources that remain orphaned after the owner resource is deleted.</li></ul> </br>{:/}
 All Prune propagation policies can be used with:  
 
 **Replace**: When selected, Argo CD executes `kubectl replace` or `kubectl create`, instead of the default `kubectl apply` to enforce the changes in Git. This action will potentially recreate resources and should be used with care. See [Replace Resource Instead Of Applying Change](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes){:target="\_blank"}.  
@@ -156,28 +156,6 @@ The tool used to create the application's manifests.  Codefresh supports definin
 
 For example applications, go to the [Argo CD example applications repo](https://github.com/argoproj/argocd-example-apps){:target="_blank"}.
 
-
-
-Codefresh provides all the options and functionality to create and manage Argo CD applications in the Codefresh UI.  
-
-Create Argo CD applications that are fully GitOps compliant, from generating the application configuration manifest, committing it to Git, and syncing and deploying to the cluster.  
-
-Creating an Argo CD application in Codefresh includes defining:  
-
-  * Application name and location
-  * General configuration settings
-  * Advanced configuration settings
-
-
-The Create application wizard guides you through the process of creating an application. For how-to information, see [Create an Argo CD application](#create-an-argo-cd-application).
-
-For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
-  
- 
-
-
-
-  
 
 
 
@@ -269,6 +247,6 @@ Your application is first committed to Git, and then synced to the cluster which
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
-[Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
+[Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  

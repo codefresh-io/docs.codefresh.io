@@ -35,7 +35,7 @@ In Codefresh, this issue leads to a loop with the following behavior:
 To resolve this issue when using Istio with Argo Rollouts, configure the application following the best practices for [integration with GitOps](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#integrating-with-gitops){:target="\_blank"} in the Argo Rollouts documentation.
 
 ## Not receiving application-scoped sync notifications with ACR Controller  
-You enabled the Application Change Revision (ACR) Controller and configured application-scoped sync notifications, but notifications are not receiving notifications.
+You enabled the Application Change Revision (ACR) Controller and configured application-scoped sync notifications, but are not receiving notifications.
 
 ### Possible Causes
 This issue can occur if any of the following are not configured:

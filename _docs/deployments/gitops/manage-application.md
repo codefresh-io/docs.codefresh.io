@@ -6,13 +6,14 @@ sub_group: gitops
 toc: true
 ---
 
+## Managing Argo CD applications
 Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is managing and optimizing deployed applications when needed. 
 
 There are two aspects to managing and optimizing Argo CD applications in Codefresh:
 * Optimizing deployments through Environments and Products 
 * Managing individual applications 
 
-##### Optimizing application deployments 
+### Optimizing application deployments 
 
 * [GitOps Environments](#gitops-environments--argo-cd-applications)  
   The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
@@ -20,7 +21,7 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [GitOps Products](#gitops-products--argo-cd-applications)  
   The Product Dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
 
-##### Managing individual applications
+### Managing individual applications
 
 >**NOTE**  
   The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
@@ -45,7 +46,7 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 * [Refresh Argo CD applications](#refreshhard-refresh-argo-cd-applications)  
   Force a refresh to fetch the latest application state without triggering a sync.
 
-* [Rollback Argo CD applications](#rollback-aro-cd-applications)   
+* [Rollback Argo CD applications](#rollback-argo-cd-applications)   
   Rollback applications to previous deployment versions.
 
 * [Manage rollouts for deployments](#manage-rollouts-for-argo-cd-application-deployments)  

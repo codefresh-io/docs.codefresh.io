@@ -1,6 +1,6 @@
 ---
 title: "Monitoring Argo CD applications"
-description: "Deep dive to monitoring application and resources"
+description: "Deep dive to monitoring applications and resources"
 group: deployments
 redirect_from:
   - /docs/deployments/gitops/applications-dashboard/
@@ -33,15 +33,19 @@ Applications with [warnings and errors](#identify-argo-cd-applications-with-warn
 From the dashboard, select any application to explore its details in depth. This provides a structured view of key aspects of the application, including deployment history, resource utilization, and service health.
 
 * **Application Header**  
-  Gain quick insights into the application's health, sync status, and available actions for further analysis. See [Application Header](#application-header).
+  Gain quick insights into the application's health, sync status, and available actions for further analysis.  
+  See [Application Header](#application-header).
 
 * **Deployment history**  
-  Review past deployments, track associated changes, and analyze deployment trends over time. See [Monitor deployments for selected Argo CD application](#monitoring-application-deployments).
+  Review past deployments, track associated changes, and analyze deployment trends over time.  
+  See [Monitor deployments for selected Argo CD application](#monitoring-application-deployments).
 * **Resource states**  
-  Explore the application's resources, including associated services and components. See [Monitor resources for selected Argo CD application](#monitoring-application-resources).
+  Explore the application's resources, including associated services and components.  
+  See [Monitor resources for selected Argo CD application](#monitoring-application-resources).
 
 * **Service status**  
-  Monitor active services and troubleshoot issues as needed. See [Monitor services for selected Argo CD application](#monitoring-application-services).
+  Monitor active services and troubleshoot issues as needed.  
+  See [Monitor services for selected Argo CD application](#monitoring-application-services).
 
 
 
@@ -227,22 +231,21 @@ This tab provides key insights into Kubernetes resources, including:
 * Resource manifests
 * Logs and events
 
-The icon for each resource node identifies its Kubernetes resource type. Learn more on K8s resources  in [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
+The icon for each resource node identifies its Kubernetes resource type. Learn more on K8s resources in [Working with Kubernetes objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/){:target="\_blank"}. 
 
 What can you do with application resources?
-* View application resources in [List or Tree views](#view-modes-for-application-resources)
+* View application resources in [List or Tree views](#tree-and-list-view-modes-for-application-resources)
 * [Filter resources](#filters-for-application-resources) to focus on what's important
-* [Access external links](#access-external-links) if defined
+* [Access external links](#tree-view-access-external-links) if defined
 * [Delete resources](#delete-application-resources)
 * Monitor resources:
   * [Health status](#health-status-for-application-resources)
   * [Sync status](#sync-status-for-application-resources)
-  * [Manifests](#manifests-for-application-resources)
-  * [Logs](#logs-for-application-resources)
-  * [Events](#events-for-application-resources)
+  * [Manifests, logs, and events](#manifests-logs-and-events-for-application-resources)
 
 
-### Tree and list view modes for application resources
+
+### Tree and List view modes for application resources
 
 The Current State tab supports Tree and List view formats. 
 
@@ -264,7 +267,7 @@ The Tree view is designed to impart key information at a glance. Review the sect
 
 ##### Context menu 
 Each resource node has a context menu (three dots icon) with options specific to the resource type.  
-For example, resources with configured deep links display additional options for quick access. To configure deep links, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources). 
+For example, resources with configured deep links display additional options for quick access. To configure deep links, see [(Hybrid GitOps) Configure Deep Links to applications & resources]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#hybrid-gitops-configure-deep-links-to-applications--resources). 
 
 {% include
 image.html
@@ -321,7 +324,44 @@ caption="List view of application resources in Current State"
 max-width="50%"
 %}
 
+### Filters for application resources
+Filters apply to both Tree and List views, and persist when switching between views. 
 
+##### `IgnoreExtraneous` filter
+Use the `IgnoreExtraneous` filter to hide generated resources such as `ConfigMap` and `pods`, that do not affect the sync status of the application in the Current State view.
+
+ The application remains in-sync even when such resources are syncing or out-of-sync.  
+[Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options){:target="\_blank"}
+>**NOTE**  
+The `IgnoreExtraneous` filter when applied only affects sync status.  
+Degraded resources impact the health status of the application.
+
+##### Add `IgnoreExtraneous` annotation
+
+* Add `IgnoreExtraneous` as an annotation to the resource, as in the example below of the `ConfigMap` resource. 
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-ignore-extraneous-annotation.png"
+url="/images/applications/current-state-ignore-extraneous-annotation.png"
+alt="Resource with IgnoreExtraneous annotation"
+caption="Resource with IgnoreExtraneous annotation"
+max-width="50%"
+%}
+
+* In the Current State tab, click the `IgnoreExtraneous` filter.  
+ You can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
+
+{% include
+image.html
+lightbox="true"
+file="/images/applications/current-state-ignore-extraneous-on.png"
+url="/images/applications/current-state-ignore-extraneous-on.png"
+alt="Current State filtered by IgnoreExtraneous resources"
+caption="Current State filtered by IgnoreExtraneous resources"
+max-width="50%"
+%}
 
 
 ### Health status for application resources
@@ -378,44 +418,7 @@ caption="Current State: Search resources"
 max-width="50%"
 %}
 
-### Filters for application resources
-Filters apply to both Tree and List views, and persist when switching between views. 
 
-##### `IgnoreExtraneous` filter
-Use the `IgnoreExtraneous` filter to hide generated resources such as `ConfigMap` and `pods`, that do not affect the sync status of the application in the Current State view.
-
- The application remains in-sync even when such resources are syncing or out-of-sync.  
-[Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options){:target="\_blank"}
->**NOTE**  
-The `IgnoreExtraneous` filter when applied only affects sync status.  
-Degraded resources impact the health status of the application.
-
-##### Add `IgnoreExtraneous` annotation
-
-* Add `IgnoreExtraneous` as an annotation to the resource, as in the example below of the `ConfigMap` resource. 
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-ignore-extraneous-annotation.png"
-url="/images/applications/current-state-ignore-extraneous-annotation.png"
-alt="Resource with IgnoreExtraneous annotation"
-caption="Resource with IgnoreExtraneous annotation"
-max-width="50%"
-%}
-
-* In the Current State tab, click the `IgnoreExtraneous` filter.  
- You can see that the `IgnoreExtraneous` filter is active and the `ConfigMap` resource is not displayed in the Current State.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/current-state-ignore-extraneous-on.png"
-url="/images/applications/current-state-ignore-extraneous-on.png"
-alt="Current State filtered by IgnoreExtraneous resources"
-caption="Current State filtered by IgnoreExtraneous resources"
-max-width="50%"
-%}
 
 
 
@@ -561,7 +564,7 @@ You can:
 * [Monitor CI details by deployments](#monitor-ci-details-by-deployment) 
 * [Monitor rollouts by deployment](#monitor-rollouts-by-deployment)  
 
-See also [Troubleshoot Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
+See also [Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/).
 
 ##### How to monitor deployments
 1. If required, set filters to narrow the number of deployments for the selected application.
@@ -705,9 +708,9 @@ max-width="50%"
 
 
 ## Related articles
-[Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
-[Managing GitOps applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
-[Troubleshooting GitOps applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
+[Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
+[Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
