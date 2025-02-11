@@ -31,7 +31,7 @@ To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://
 
 
 
-## Promote product applications through drag-and-drop
+## Promote Product applications through drag-and-drop
 
 Promote an application from the development environment to the testing environment to sync version changes.
 
@@ -106,7 +106,7 @@ max-width="60%"
 1. Continue with [View release created for product](#view-release-created-for-product).
 
 
-## View release created for product
+## View release created for Product
 After committing the changes, the promotion mechanism automatically creates a release for the product, `demo-trioapp` in our example.
 Here you can monitor how the promotion is orchestrated between the environments `dev` and `qa`.
 
@@ -139,6 +139,6 @@ max-width="60%"
 Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
 The next quick start demonstrates how to orchestrate a promotion through a Promotion Flow, enabling you to automate and streamline deployments across more than two environments.
 
-[Quick start: Automated promotions: Simple Promotion Flow]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)
+[Quick start: Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)
 
  

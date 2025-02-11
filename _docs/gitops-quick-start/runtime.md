@@ -16,7 +16,9 @@ Verify you have completed the [prerequisites]({{site.baseurl}}/docs/gitops-quick
 
 ## Install the GitOps Runtime
 1. On the Getting Started page, click **Install Runtime**.
-1. Install the Hybrid GitOps Runtime form:
+1. Define the URL of the **Shared Configuration Repository**.
+1. If required, select the **Git provider** from the list.
+1. Install the Hybrid GitOps Runtime:
     1. Click **Generate** to create a new API key.
     1. Retain the default values for the GitOps Runtime name and namespace, `codefresh`.
     1. Copy the command displayed in _Step 3_ in the UI, making sure you add the flag for the Runtime Git token `--set global.runtime.gitCredentials.password.value` and its value:  
@@ -87,7 +89,7 @@ max-width="60%"
 ## What's next
 Let's create a Git Source to which we'll link the applications we'll create later in the quick start series.  
 
-[Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/)
+[Quick start: Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)
 
 
 

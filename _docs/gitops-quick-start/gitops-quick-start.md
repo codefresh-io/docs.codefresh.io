@@ -26,14 +26,14 @@ We’ve provided an example GitHub repository containing all the applications an
 * [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)    
   Install the GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
 
-* [Adding a Gt Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
+* [Creating a Gt Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
   Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
-* [Creating applications and Products]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
   Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
 
 <!---
@@ -45,10 +45,10 @@ We’ve provided an example GitHub repository containing all the applications an
  * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
 
-## Promoting Products and applications
+## Promoting applications
 
 Validate and promote changes in applications across environments.
-Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with parallel execution and environment dependencies.
+Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with environment dependencies.
 
 * [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
   Manually promote a product between two environments.

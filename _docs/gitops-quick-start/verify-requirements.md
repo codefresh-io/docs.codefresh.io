@@ -10,7 +10,7 @@ redirect_from:
 
 
 The Hybrid GitOps Runtime is installed through a Helm chart.  
-For configuration details, refer to the Codefresh `values.yaml` file, which includes all available arguments (mandatory and optional) with descriptions. Go to [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}. 
+For configuration details, refer to the Codefresh `values.yaml` file, which includes all available arguments (mandatory and optional) with descriptions. Go to [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}. 
 
 ## Quick start assumptions for Runtime installation
 
@@ -64,39 +64,31 @@ Learn more on the [Shared Configuration Repository]({{site.baseurl}}/docs/instal
 Verify that your deployment environment meets the minimum requirements for Hybrid GitOps Runtimes.  
 Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
 
+### SealedSecret controller
+Ensure that the Runtime cluster does not have SealedSecret controller components.
 
 ### Argo project components & CRDs
-Ensure that the target cluster does not include Argo project components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
+Ensure that the Runtime cluster does not include Argo components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
 
-You can handle Argo project CRDs in two ways:
-* Outside the Helm chart
-* Adopt the CRDs to be managed by the GitOps Runtime Helm release (recommended)
+##### Verify clean cluster configuration
+* Run this command to verify that the Runtime cluster does not include Argo components:
 
-#### Handle Argo project CRDs outside the Helm chart
+`kubectl get crd | grep -E 'argoproj\.io|sealedsecrets\.bitnami\.com' && printf "\nERROR: Cluster needs cleaning\nUninstall the projects listed above\n" || echo "Cluster is clean. It's safe to install the GitOps Runtime"`
 
-Disable CRD installation for each of the Argo projects in the Helm chart by setting the following flag:<br>
-  `--set <argo-project>.crds.install=false`<br>
-  where:<br>
-  `<argo-project>` is the Argo project component to replace: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
+If you have Argo components, the result will be similar to the example below.
 
-See [Argo's Helm chart README](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.
 
-#### Adopt the CRDs into the Helm release
-Allow the `gitops-runtime helm release` to manage CRDs for automatic upgrades whenever you upgrade the Hybrid GitOps Runtime.
-
-Run this script _before_ installation:
-
-```
-#!/bin/sh
-RELEASE=<helm-release-name>
-NAMESPACE=<target-namespace>
-kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
-kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
-kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
-```
-
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/runtimes/qs-runtime-argo-projects-in-cluster-result.png" 
+	url="/images/quick-start/runtimes/qs-runtime-argo-projects-in-cluster-result.png" 
+	alt="Product Dashboard quick start: Explore Product Dashboard" 
+	caption="Product Dashboard quick start: Explore Product Dashboard"
+  max-width="60%" 
+%}
 
 ## What's next
 You are now ready to install the GitOps Runtime.
 
-[Quick start: Installing a Hybrid GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+[Quick start: Installing a Hybrid GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)

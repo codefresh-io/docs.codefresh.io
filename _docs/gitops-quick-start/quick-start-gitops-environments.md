@@ -7,10 +7,10 @@ toc: true
 
 
 ## Environments quick start
-In this quick start, we'll create three different environments: `dev`, `qa`, and `prod`.  
-These environments map to the typical stages of the software development lifecycle (SDLC), and will help in promoting changes in your applications. 
+In this quick start, we'll create different environments that map to the typical stages of the software development lifecycle (SDLC), and will help in promoting changes in your applications. 
 
-When creating the environments, we’ll:
+We'll do the following:
+* Create three different environments, `dev`, `qa`, and `prod`.
 * Map them to a cluster, typically the one where the GitOps Runtime is installed. 
 * Define namespaces within the cluster for each environment, ensuring clear separation between development, testing, and production.
 
@@ -48,7 +48,7 @@ Let's go ahead and create an environment. Setting up environments is as simple a
 For this quick start, we’ll create three environments: `dev`, `qa`, and `prod` on the cluster where you installed the GitOps Runtime.
 We’ll map the environments to `in-cluster` and associate each with a different namespace, to which we will deploy the demo applications that we’ll add later.
 
-
+##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
 1. Define the following:
     1. **Name**: A unique name for your environment, which is meaningful in the context of your development and deployment cycle. 

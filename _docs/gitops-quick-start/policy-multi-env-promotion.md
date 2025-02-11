@@ -7,7 +7,7 @@ redirect_from:
   - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
 ---
 
-## Automated promotions: Advanced Promotion Flow with Promotion Workflows
+## Advanced Promotion Flow with Promotion Workflows quick start
 
 With a Promotion Flow you can [automate promotions across multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/). 
 
@@ -33,7 +33,8 @@ A Promotion Workflow that runs _after the promotion action has completed_. These
 
 The Post-Action Workflow allows you to monitor and verify the effects of the promotion after it has taken place. This workflow helps ensure the promoted changes behave as expected in the new environment.
 
-<!--- ## How to create Promotion Workflows
+<!--- 
+## How to create Promotion Workflows
 
 TBD
 -->

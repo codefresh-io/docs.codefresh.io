@@ -23,14 +23,14 @@ We'll do the following:
   Create a new application `demo-trioapp-staging` aligned to `staging`.  
   For guidelines, see [Create an application]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/#create-your-first-application) in the Applications quick start.
  
-* Modify and save `multi-env-sequential-promotion` Promotion Flow   
+* Modify and save `multi-env-sequential-promotion` Promotion Flow  
   * Add `staging` as a parallel environment to `qa`.
   * Create a dependency for `prod` on both `qa` and `staging` 
  
 * Trigger the promotion  
   Manually trigger the Promotion Flow from within the Flow Builder to orchestrate the promotion.
 
-* Monitor release 
+* Monitor release  
   Track the progress of the promotion in the Releases tab for the `demo-trioapp` product.
 
 ## Requirements
@@ -137,6 +137,46 @@ caption="Promotions quick start: Release view of Promotion Flow with dependencie
 max-width="60%"
 %}
 
+## YAML of Promotion Flow with dependencies
+Here's the YAML of the `multi-env-sequential-promotion` Promotion Flow, updated with dependencies.
+
+
+The YAML is saved in the Shared Configuration Repository of the GitOps Runtime selected as the Configuration Runtime.
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/promotion-flows`.
+
+```yaml
+apiVersion: codefresh.io/v1beta1
+kind: PromotionFlow
+metadata:
+  name: multi-env-sequential-promotion
+  annotations:
+    description: Sequential promotion flow with environment dependencies
+    version: "3.0"
+spec:
+  triggerEnvironment: dev
+  steps:
+    - environment: qa
+      dependsOn:
+        - dev
+      policy:
+        action: commit
+        preAction: pre-action
+        postAction: post-action
+    - environment: prod
+      dependsOn:
+        - qa
+        - staging
+      policy:
+        action: commit
+        preAction: pre-action
+        postAction: post-action
+    - environment: staging
+      dependsOn:
+        - dev
+      policy:
+        action: commit
+  promotionTimeoutLimit: 5
+```
 
 
 By now, you’ve successfully created environments, your first product, added applications, and promoted them across environments.  

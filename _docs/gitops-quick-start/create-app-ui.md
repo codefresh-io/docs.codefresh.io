@@ -62,10 +62,9 @@ When you create the application, to use the resources, select the folder corresp
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
-<!--- * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   At least three environments for the different applications representing the basic stages in the SDLC
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)to group the applications
--->
+
 
 
 ## Create your first application
@@ -126,10 +125,10 @@ For the quick start, we'll do the following:
     In the follow along Git repo, if you are creating the development version of the application, the path should point to the resource files in `demo-applications/trioapp-dev` in [example repo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
   * **Namespace**: Define a namespace in the environment where you are creating the application. For example, `demo-dev`. 
   * **Auto-create namespace**: If you defined a namespace which doesn't already, select this option to ensure that the namespace is automatically created. 
-  * **Sync Policy**: 
-      * Change to **Automatic** if needed
-      * Select **Prune resources** to automatically remove unused resources
-      * Select **Self-heal** to always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster.
+  * **Sync Policy**:  
+    Change to **Automatic** if needed.  
+    Select **Prune resources** to automatically remove unused resources.  
+    Select **Self-heal** to always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster.
 
  
 {% include 
@@ -165,7 +164,7 @@ For the quick start, we'll do the following:
 1. Add a commit message and then click **Commit** at the bottom-right of the panel.  
   * A summary screen is displayed for the new product, `demo-trioapp`, including the annotation that links the application to the product.
   * Clicking **Explore Product** takes you to the Product Dashboard.  
-    We'll create the testing and production versions of the applications, and then explore the Product Dashboard.
+    We'll create the testing and production versions of the application, and then explore the Product Dashboard.
 
 {% include 
    image.html 
@@ -378,4 +377,4 @@ We'll dive into how to promote changes and deploy applications across environmen
 
 Let's move on to the first quick start on promotions to see this in action.
 
-[Quick start: Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
+[Quick start: Simple promotion with drag-and-drop]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
