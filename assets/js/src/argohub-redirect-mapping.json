@@ -102,5 +102,16 @@
   "/docs/deployments/gitops/troubleshooting-gitops-apps/": "/argohub/applications/troubleshooting-gitops-apps/",
   "/docs/getting-started/command-bar/": "/argohub/introduction/command-bar/",
   "/docs/getting-started/concepts/": "/argohub/introduction/concepts/",
-  "/docs/getting-started/gitops-codefresh/": "/argohub/introduction/gitops-codefresh/"
+  "/docs/getting-started/gitops-codefresh/": "/argohub/introduction/gitops-codefresh/",
+  "/docs/gitops-quick-start/create-app-ui/": "/argohub/gitops-quick-starts/create-app-ui/",
+  "/docs/gitops-quick-start/create-codefresh-account/": "/argohub/gitops-quick-starts/create-codefresh-account/",
+  "/docs/gitops-quick-start/create-git-source/": "/argohub/gitops-quick-starts/create-git-source/",
+  "/docs/gitops-quick-start/dependency-multi-env-promotion/": "/argohub/gitops-quick-starts/dependency-multi-env-promotion/",
+  "/docs/gitops-quick-start/drag-and-drop/": "/argohub/gitops-quick-starts/drag-and-drop/",
+  "/docs/gitops-quick-start/gitops-quick-start/": "/argohub/gitops-quick-starts/gitops-quick-start/",
+  "/docs/gitops-quick-start/multi-env-sequential-flow/": "/argohub/gitops-quick-starts/multi-env-sequential-flow/",
+  "/docs/gitops-quick-start/policy-multi-env-promotion/": "/argohub/gitops-quick-starts/policy-multi-env-promotion/",
+  "/docs/gitops-quick-start/quick-start-gitops-environments/": "/argohub/gitops-quick-starts/quick-start-gitops-environments/",
+  "/docs/gitops-quick-start/runtime/": "/argohub/gitops-quick-starts/runtime/",
+  "/docs/gitops-quick-start/verify-requirements/": "/argohub/gitops-quick-starts/verify-requirements/"
 }

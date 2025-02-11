@@ -1,0 +1,1 @@
+../../_docs/gitops-quick-start/dependency-multi-env-promotion.md
