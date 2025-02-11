@@ -101,7 +101,7 @@ Congratulations! Your new Codefresh account is now ready and you are directed to
 ## What's next
 Verify that you are ready to install the GitOps Hybrid Runtime, the foundation for GitOps operations. 
 
-[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
+[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/verify-requirements/)
 
 
 

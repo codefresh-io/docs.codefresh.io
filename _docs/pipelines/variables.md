@@ -589,7 +589,7 @@ Add the following step at the beginning of the pipeline.
 
 {% endraw %}
 
-In the Builds page, the step details of the child build displays the **Output URL** which is the link to the parent build, as in the image below.
+On the Builds page, the step details of the child build displays the **Output URL** which is the link to the parent build, as in the image below.
 
 {% include
 image.html

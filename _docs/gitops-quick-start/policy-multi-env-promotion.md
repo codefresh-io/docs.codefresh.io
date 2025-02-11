@@ -7,7 +7,7 @@ redirect_from:
   - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
 ---
 
-## Automated promotions: Advanced Promotion Flow with Promotion Workflows
+## Advanced Promotion Flow with Promotion Workflows quick start
 
 With a Promotion Flow you can [automate promotions across multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/). 
 
@@ -33,10 +33,11 @@ A Promotion Workflow that runs _after the promotion action has completed_. These
 
 The Post-Action Workflow allows you to monitor and verify the effects of the promotion after it has taken place. This workflow helps ensure the promoted changes behave as expected in the new environment.
 
+<!--- 
 ## How to create Promotion Workflows
 
-
-
+TBD
+-->
 
 
 ## Requirements
@@ -46,8 +47,7 @@ The Post-Action Workflow allows you to monitor and verify the effects of the pro
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
-* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
   Each environment must have an application for the product.
   For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
@@ -103,7 +103,7 @@ max-width="60%"
 
 {:start="5"}
 1. To save the changes, click **Save Promotion Flow**.
-1. Continue with [Trigger Promotion Flow and monitor product release](#trigger-promotion-flow-and-monitor-product-release).
+1. Continue with [Trigger Promotion Flow and monitor Product release](#trigger-promotion-flow-and-monitor-product-release).
 
 
 ## Trigger Promotion Flow and monitor product release
@@ -129,9 +129,12 @@ max-width="60%"
 
 
 ## What's next
-In the next quick start for promotions, we'll explore how to configure a Promotion Flow with parallel promotions, allowing changes to be promoted simultaneously across multiple environments.
+<!--- In the next quick start for promotions, we'll explore how to configure a Promotion Flow with parallel promotions, allowing changes to be promoted simultaneously across multiple environments.
 
-[Quick start: Advanced Promotion Flow: Parallel promotions across environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/)
+[Quick start: Advanced Promotion Flow: Parallel promotions across environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/) -->
+The final quick start on promotions will guide you through creating dependencies between environments to define the order for promotions.
+
+[Quick start: Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
 
  
  
