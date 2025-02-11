@@ -3,6 +3,12 @@
   pages:
     - title: What is Codefresh GitOps?
       url: "/intro-to-codefresh"
+    - title: Codefresh for GitOps
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+    - title: Global Search & Navigation
+      url: "/command-bar"
 
 - title: Dashboards & insights
   url: "/dashboards"
