@@ -10,7 +10,7 @@ redirect_from:
 
 
 The Hybrid GitOps Runtime is installed through a Helm chart.  
-For configuration details, refer to the Codefresh `values.yaml` file, which includes all available arguments (mandatory and optional) with descriptions. Go to [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml/){:target="\_blank"}. 
+For configuration details, refer to the Codefresh `values.yaml` file, which includes all available arguments (mandatory and optional) with descriptions. Go to [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}. 
 
 ## Quick start assumptions for Runtime installation
 
@@ -26,7 +26,7 @@ For details on access modes, see [GitOps Runtime architecture]({{site.baseurl}}/
 ### GitHub as the Git provider  
 The Hybrid GitOps Runtime requires a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
 
-The quick start uses GitHub as the Git provider and classic tokens. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
+The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
 
 ##### Git Runtime token
 Have your GitHub Runtime token ready with a valid expiration date and access permissions:
@@ -51,7 +51,7 @@ Have your GitHub user token ready with a valid expiration date and access permis
 For detailed information on GitHub tokens, see the [GitHub article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ### Shared Configuration Repository
-As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests common to all Runtimes in the account.
+As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests, common to all Runtimes in the account.
 
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
 
@@ -65,28 +65,10 @@ Verify that your deployment environment meets the minimum requirements for Hybri
 Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
 
 
-### Argo project components, CRDs & SealedSecrets controller
-Ensure that the cluster on which you'll install the Runtime does not include :
-* Argo project components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows
-* SealedSecrets controller  
+### Argo project components & CRDs
+Ensure that the target cluster does not include Argo project components or Custom Resource Definitions (CRDs), such as Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.  
 
-To verify that the Runtime cluster does not have Argo Project components and CRDs, run this command:
-`kubectl get crd | grep -E 'argoproj\.io|sealedsecrets\.bitnami\.com' && printf "\nERROR: Cluster needs cleaning\nUninstall the projects listed above\n" || echo "Cluster is clean. It's safe to install the GitOps Runtime"`
-
-The example below displays Argo Project components detected in the cluster that should be removed, including deployments, services, and associated CRDs. Additionally, the `SealedSecrets controller, if present, must also be removed.
-
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/quick-start/gitops/argo-projects-in-cluster-result.png" 
-	url="/images/quick-start/gitops/argo-projects-in-cluster-result.png" 
-	alt="Example of Argo Project components to be removed from Runtime cluster" 
-	caption="Example of Argo Project components to be removed from Runtime cluster"
-  max-width="60%" 
-%}
-
-<!--- You can handle Argo project CRDs in two ways:
+You can handle Argo project CRDs in two ways:
 * Outside the Helm chart
 * Adopt the CRDs to be managed by the GitOps Runtime Helm release (recommended)
 
@@ -112,7 +94,7 @@ kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{prin
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
--->
+
 
 ## What's next
 You are now ready to install the GitOps Runtime.

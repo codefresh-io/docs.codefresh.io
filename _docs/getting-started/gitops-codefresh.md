@@ -51,8 +51,7 @@ Codefresh offers two models for GitOps deployments:
 * Hybrid GitOps, which is a customer-managed version of Argo CD. The  Hybrid GitOps runtime is hosted on the customer cluster and managed by the customer.  
   The Hybrid GitOps offering retains runtimes within the customer infrastructure to comply your security rewhile giving you the power of Argo CD with Codefresh’s CI and CD tools, to help achieve continuous integration and continuous delivery goals.
 
-Review [GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).  
-For installation, see [Hosted GitOps setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) and [Hybrid GitOps installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/).
+Review [GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/) and [Hybrid GitOps installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 ## Argo CD applications
 
@@ -70,7 +69,7 @@ From global analytics on applications and deployments (), to failure rate and le
 See:  
 [Home]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
-[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
+[GitOps Apps]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/)  
 
 ## Codefresh & Argo Project  
 

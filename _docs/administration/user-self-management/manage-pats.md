@@ -2,21 +2,25 @@
 title: "Managing Git PATs"
 description: "Generate, assign, and manage Git user tokens for GitOps Runtimes"
 group: administration
-sub_group: user-self-management
 toc: true
 ---
 
-As a user in Codefresh, you must authorize access to your Git provider accounts, and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/).
+
+
+
+As a user in Codefresh, you must authorize access to your Git provider accounts and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/).
+
 
 The authorization mode depends on the authorization method set up by your account admin: 
-* OAuth2  
+* **OAuth2**  
   If your admin has set up authentication with OAuth2, you can authorize access using OAuth2.  
-* Git user access token  
+* **Git user token**  
   You can always generate a Git user token from your Git provider and then add the same to the GitOps Runtime in Codefresh to authorize access. 
 
+>**NOTE**  
+Codefresh GitOps does not officially support fine-grained tokens, or tokens with custom scopes. If you are using such tokens, make sure you turn off validation for Git tokens in the `values.yaml` file, as described in [Skipping token values.yaml]({{site.baseurl}}/docs/security/git-tokens#skipping-token-validation-in-valuesyaml).
 
-
-## Authorize Git access to GitOps Runtimes
+## Authorize Git access to GitOps Runtimes with OAuth2å
 Authorize Git access to GitOps Runtimes with OAuth2 if your account admin has set up Codefresh as an OAuth application, or alternatively through Git user access tokens from your Git provider.  
 
 If you have access to more than one GitOps Runtime in the same or in different accounts, you can use the same Git user token for all the Runtimes you have access to. _You must however authorize access for each GitOps Runtime individually_.  
@@ -34,14 +38,14 @@ Make sure you have:
   * [Bitbucket](#generate-bitbucket-user-access-tokens)
 
 **How to**  
-1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click your avatar, and then select **Git Personal Access Token**.
 1. Select the GitOps Runtime to authenticate to, and then click **Add Token**.
 1. Do as needed:
       * For **OAuth2**: 
         1. Click **Authorize Access to GitHub**.
         1. Enter your credentials, and select **Sign In**.
         1. Complete the verification if required, as when two-factor authentication is configured, for example.
-      * For **Git user access tokens**:  
+      * For **Git user tokens**:  
         1. Expand **Advanced authorization options**. 
         1. For Bitbucket, enter your **Bitbucket username**. 
         1. In the **Personal Access Token** field, paste the token you generated.
@@ -74,7 +78,7 @@ You can turn off these notifications for selectively for Runtimes for which thes
 Have your Git user token handy
 
 ##### How to  
-1. In the Codefresh UI, on the toolbar, click your avatar, and then select [**Git Personal Access Token**](https://g.codefresh.io/2.0/git-personal-access-token){:target="\_blank"}.
+1. In the Codefresh UI, on the toolbar, click your avatar, and then select **Git Personal Access Token**.
 1. To replace/delete the Git user token for a Runtime, do one of the following:
   * To replace, click **Add Token**, and then either click **Authorize Access to Git provider** for OAuth2, or paste your Git user token into the **Git Personal Access Token** field. 
   * To delete, click **Delete Token**. The token is deleted and the **Add Token** button is displayed next to the Runtime. 

@@ -1,7 +1,6 @@
 ---
 title: "Managing Git Sources in GitOps Runtimes"
 description: "Add Standard/Restricted Git Sources to GitOps Runtimes"
-group: installation
 toc: true
 ---
 

@@ -61,16 +61,14 @@ As a live example you can use:
 
 * Before continuing, if you don't have your own example application, fork all three repositories into your own GitHub account.
 
-## Connecting ArgoCD and Codefresh
+## Connecting Arg CD and Codefresh
 
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster.
 
 This is easy with our GitOps Runtimes. Argo CD is installed automatically on installing a GitOps runtime, either the Hosted or Hybrid versions.  
-See:  
-[Hosted GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)   
-[Hybrid GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
+See [Install GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-If you don't have a GitOps Runtime installed already, for this guide, install the Hosted GitOps runtime.
+
 
 <!--- Add hosted runtime image-->
 

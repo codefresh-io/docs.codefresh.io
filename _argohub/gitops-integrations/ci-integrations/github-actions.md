@@ -1,0 +1,1 @@
+../../../_docs/gitops-integrations/ci-integrations/github-actions.md

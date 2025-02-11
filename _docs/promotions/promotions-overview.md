@@ -11,7 +11,7 @@ A core element of CD is **promotion** - the process of advancing an application 
 
 
 
-##### Promotions with GitOps: The Codefresh advantage
+### Promotions with GitOps: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   
 
 {% include 
@@ -54,12 +54,12 @@ max-width="65%"
 >**NOTE**  
 You need Runtime version 0.13.4 or higher to support GitOps promotions. Ensure your runtime is updated to at least this version to access  promotion features.
 
-##### GitOps promotion entities
+### GitOps promotion entities
 Codefresh  GitOps provides specialized functionality to streamline and automate the promotion process, ensuring consistency and control without the need for custom scripts. These features allow you to design predictable reusable delivery lifecycles across products and environments, with all the required validations, reducing operational overhead and manual errors.
 
 * **Predefine properties to promote**  
   Specify which application properties to promote within products, maintaining precise control and avoiding the need to promote everything.   
-  See [Configuring app version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/). 
+  See [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/). 
 
 * **Enforce environment-specific checks**  
   Create different types of workflows to run at different stages of the promotion process for validation, compliance, performance checks.  
@@ -79,13 +79,13 @@ Codefresh  GitOps provides specialized functionality to streamline and automate 
 <!--- screenshot of yaml examples to differentiate and not overcrowd -->
 
 
-##### Getting started with promotions in GitOps
+### Getting started with promotions in GitOps
 
 Review these articles to begin with GitOps promotions:
-
+* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.
 * **Understand the components and entities**: Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/) to learn about the key entities and how they fit together in the promotion process.
 * **Set up and configure promotions**: Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.
-* **Walk through with quick starts**: Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.
+
 
 
 
