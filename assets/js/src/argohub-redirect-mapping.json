@@ -99,5 +99,8 @@
   "/docs/deployments/gitops/install-argo-rollouts/": "/argohub/applications/install-argo-rollouts/",
   "/docs/deployments/gitops/manage-application/": "/argohub/applications/manage-application/",
   "/docs/deployments/gitops/monitor-applications/": "/argohub/applications/monitor-applications/",
-  "/docs/deployments/gitops/troubleshooting-gitops-apps/": "/argohub/applications/troubleshooting-gitops-apps/"
+  "/docs/deployments/gitops/troubleshooting-gitops-apps/": "/argohub/applications/troubleshooting-gitops-apps/",
+  "/docs/getting-started/command-bar/": "/argohub/introduction/command-bar/",
+  "/docs/getting-started/concepts/": "/argohub/introduction/concepts/",
+  "/docs/getting-started/gitops-codefresh/": "/argohub/introduction/gitops-codefresh/"
 }
