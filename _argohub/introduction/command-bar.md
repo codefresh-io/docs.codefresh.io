@@ -1,0 +1,1 @@
+../../_docs/getting-started/command-bar.md
