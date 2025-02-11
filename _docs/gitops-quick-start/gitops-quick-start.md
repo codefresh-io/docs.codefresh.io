@@ -20,13 +20,16 @@ We’ve provided an example GitHub repository containing all the applications an
 
 ## Essential setup
 
-* [Creating an Account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
+* [Creating a Codefresh account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
   Get started by setting up your Codefresh account.
+
+* [Preparing for GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/verify-requirements/)  
+  Review system requirements and prerequisites before installing GitOps Runtimes.
 
 * [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)    
   Install the GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
 
-* [Creating a Gt Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
+* [Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
   Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
