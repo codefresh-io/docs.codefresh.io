@@ -54,7 +54,7 @@ Start with simple manual promotion, then automate with Promotion Flows—evolvin
   Manually promote a product between two environments.
 * [Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
   Automate promotions across multiple environments sequentially using a simple Promotion Flow.
-* [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/git/docs/gitops-quick-start/policy-multi-env-promotion/)  
+* [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)  
   Govern promotion behavior for environments using Promotion Workflows in a Promotion Flow.
 * [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
   Run promotions with defined dependencies between environments using an advanced Promotion Flow.
