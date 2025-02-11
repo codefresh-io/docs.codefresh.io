@@ -8,20 +8,46 @@ redirect_from:
 ---
 
 ## Applications quick start
-In this quick start we'll create applications—the fundamental building blocks of software delivery.  
+In this quick start we'll create applications — the fundamental building blocks of software delivery.  
 Applications are Argo CD applications that represent Kubernetes resources deployed and managed through GitOps principles. 
 
 Applications, together with environments and products we created in the previous quick starts, complete the core entities needed for GitOps promotions.
 
 We'll do the following:
-* Create three applications, each associated with a specific environment
-* Group them within a product
-* View the changes in the Environment and Product dashboards
+* Create three applications
+* Create a Product for the applications
+* View the applications in the Product Dashboard
 
 For detailed information, see [About Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
-## Follow-along Git repo
+## Products in GitOps
+
+Products are one of the three core entities for promotions in Codefresh GitOps, bridging the gap between environments and applications. They also amplify the capabilities of applications by grouping and managing them as cohesive units.
+
+
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/apps-grouped-by-product.png" 
+	url="/images/gitops-products/apps-grouped-by-product.png" 
+	alt="Applications quick start: Representation of a product in Codefresh GitOps" 
+	caption="Applications quick start: Representation of a product in Codefresh GitOps"
+  max-width="60%" 
+%} 
+
+For detailed information, see [Products]({{site.baseurl}}/docs/products/about-products/).
+
+##### Why create Products?
+
+Here are a few reasons why you would want to create products to manage your applications.
+
+* **Bridging applications and environments**: By grouping related applications within a product, you ensure visibility and control over their deployment paths, keeping all components in sync as they move through environments together. Products reflect how developers perceive applications (such as microservices)- not as separate entities across environments, but as a single entity with minor configuration differences.
+
+
+* **Unified application promotion and deployment**: Managing multiple individual Argo CD applications across various environments can be complex. Products streamline this process by grouping related applications, enabling more efficient and cohesive management and promotion.
+
+## Example Git repo
 To replicate the setup, use the example GitHub repository containing the [application configuration manifests](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="_blank"}. These manifests are preconfigured to help you deploy the applications easily to their respective environments.
 
 ### Demo applications folder
@@ -33,19 +59,22 @@ The [demo-applications folder](https://github.com/codefresh-sandbox/codefresh-qu
 ### How to use the files
 When you create the application, to use the resources, select the folder corresponding to the target environment. For example, `trioapp-dev` for development.
 
-
-
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+<!--- * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   At least three environments for the different applications representing the basic stages in the SDLC
 * [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)to group the applications
+-->
 
 
 ## Create your first application
-Create the first application to correspond to the version of the application we want in the development environment.  
-For the quick start, we'll create `demo-trioapp-dev` and connect it to the `demo-triopapp` product we created in the previous quick start, and configure other required settings. 
+Create the first application to correspond to the version of the application you want in the development environment.  
+For the quick start, we'll do the following:
+* Create the `demo-trioapp-dev` application
+* Create a Product for this application, the `demo-triopapp` product
+* Configure other required application configuration settings
+* Commit the application to a Git Source
 
 ### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
@@ -73,16 +102,34 @@ For the quick start, we'll create `demo-trioapp-dev` and connect it to the `demo
 {:start="4"}
 1. Click **Next** to go to the Configuration tab. 
   By default you are in Form mode. You can toggle between Form and YAML modes as you define the application's configuration settings.
-1. Define the **General** settings for the application: 
-  * **Product**: From the list of products, select the product you created to which to connect this application. For example, `demo-trioapp`.
+1. In the **General** settings for the application, first create a new product for the application: 
+  * Click the **Product** dropdown, and then click **Add Product**. 
+  * Type the name of the product, for example, `demo-trioapp`.  
+    The product is tagged with the label New, and the application is automatically assigned to the product.  
+
+   {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/quick-start/apps/qs-create-app-new-product.png" 
+   url="/images/quick-start/apps/qs-create-app-new-product.png" 
+   alt="Applications quick start: Configuration > General: Product settings" 
+   caption="Applications quick start: Configuration > General: Product settings"
+   max-width="70%" 
+   %}  
+
+{:start="6"}
+1. Define the other required **General** settings for the application:
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.  
-    For the follow along Git repo, this is the [repository URL](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}
+    For the example Git repo, this is the repository URL is [https://github.com/codefresh-sandbox/codefresh-quickstart-demo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}
   * **Revision**: The branch in Git with the resource files. For example, `main`.
   * **Path**: The folder in the Git repository with the resource files for the application.  
-    In the follow along Git repo, if you are creating the development version of the application, the path should point to the resource files in the `trioapp-dev` folder in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
+    In the follow along Git repo, if you are creating the development version of the application, the path should point to the resource files in `demo-applications/trioapp-dev` in [example repo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
   * **Namespace**: Define a namespace in the environment where you are creating the application. For example, `demo-dev`. 
   * **Auto-create namespace**: If you defined a namespace which doesn't already, select this option to ensure that the namespace is automatically created. 
-  * **Sync Policy**: Change to **Automatic** if needed, and select **Prune resources** to automatically remove unused resources.
+  * **Sync Policy**: 
+      * Change to **Automatic** if needed
+      * Select **Prune resources** to automatically remove unused resources
+      * Select **Self-heal** to always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster.
 
  
 {% include 
@@ -96,13 +143,12 @@ For the quick start, we'll create `demo-trioapp-dev` and connect it to the `demo
    %} 
 
 
-{:start="6"}
+{:start="7"}
 1. Retain the default **Advanced Settings**.  
   The only setting to note here is that we are creating a Helm application.
 1. To commit all changes, select **Commit**.  
   The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
-1. Select the **Git Source** you added to the Runtime which is the Git repository to which to commit the application's manifest.   
-  If you want to use the  
+1. Select the **Git Source** you added to the Runtime, which is the Git repository to which to commit the application's manifest.     
   For example, the Git Source which we created earlier, the `demo-trio-gitsource`.
 
 {% include 
@@ -115,9 +161,24 @@ For the quick start, we'll create `demo-trioapp-dev` and connect it to the `demo
    max-width="60%" 
    %} 
 
-{:start="9"} 
+{:start="10"} 
 1. Add a commit message and then click **Commit** at the bottom-right of the panel.  
-  You are directed to the GitOps Apps dashboard.  
+  * A summary screen is displayed for the new product, `demo-trioapp`, including the annotation that links the application to the product.
+  * Clicking **Explore Product** takes you to the Product Dashboard.  
+    We'll create the testing and production versions of the applications, and then explore the Product Dashboard.
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/quick-start/apps/qs-create-app-new-product-summary.png" 
+   url="/images/quick-start/apps/qs-create-app-new-product-summary.png" 
+   alt="Applications quick start: New product summary" 
+   caption="Applications quick start: New product summar"
+   max-width="60%" 
+   %} 
+
+{:start="11"} 
+1. View the new application in the GitOps Apps dashboard.  
   You may have to wait for a few seconds until the application is synced to the cluster for it to be displayed in the dashboard.
 
 {% include 
@@ -129,9 +190,13 @@ For the quick start, we'll create `demo-trioapp-dev` and connect it to the `demo
    caption="Applications quick start: New application in GitOps Apps dashboard"
    max-width="60%" 
    %} 
+  
+{:start="12"} 
+1. Continue with [Create additional applications](#create-additional-applications).
 
-### YAML manifest for application
-Here's an example of the YAML manifest generated for the `demo-trioapp-dev`.
+### YAML manifest for development version of application
+Here's an example of the YAML manifest generated for the `demo-trioapp-dev` application.
+ 
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -148,13 +213,13 @@ spec:
     name: in-cluster
     namespace: demo-dev
   source:
-    path: trioapp-dev
-    repoURL: https://github.com/codefresh-sandbox/demo-trioapps.git
+    path: demo-applications/trioapp-dev
+    repoURL: https://github.com/codefresh-sandbox/codefresh-quickstart-demo.git
     targetRevision: main
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      selfHeal: true
       allowEmpty: false
     syncOptions:
       - PrunePropagationPolicy=foreground
@@ -167,12 +232,13 @@ spec:
       - RespectIgnoreDifferences=false
 ```
 ## Create additional applications
-Follow the steps in [Create your first application](#create-your-first-application) to create two more applications, representing the testing and production stages in the application lifecyle.  
+Follow the steps in [Create your first application](#create-your-first-application) to create two more applications, representing the testing and production versions in the application lifecyle.  
 Remember to also select the same product for each application as you create it. 
 
-**Important**: When creating the two additional applications, make sure to update the following settings accordingly:
+##### Important
+When creating the two additional applications, make sure to update the following settings accordingly:
 * **Path**: The folder in the Git repository with the resource files for the application.  
-  In the follow along Git repo, for the testing and production versions of the application, the path should point to the resource files in the `trioapp-qa` and `trioapp-prod`  folders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
+  In the example Git repo, for the testing and production versions of the application, the path should point to the application's resource files in `demo-applications/trioapp-qa` and `demo-applications/trioapp-prod` folders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
 * **Namespace**: Define different namespaces in the different environments where you are creating the applications. For example, `demo-qa` and `demo-prod`. 
 
 Here's a view of the GitOps Apps dashboard with all the three applications linked to their Git Source.
@@ -182,13 +248,13 @@ Here's a view of the GitOps Apps dashboard with all the three applications linke
    lightbox="true" 
    file="/images/quick-start/apps/qs-create-app-apps-in-dashboard.png" 
    url="/images/quick-start/apps/qs-create-app-apps-in-dashboard.png" 
-   alt="Applications quick start: GitOps Apps dashboard with `demo-trioapp` applications" 
-   caption="Applications quick start: GitOps Apps dashboard with `demo-trioapp` applications"
+   alt="Applications quick start: GitOps Apps dashboard with applications for `demo-trioapp` product" 
+   caption="Applications quick start: GitOps Apps dashboard with applications for `demo-trioapp` product"
    max-width="60%" 
    %} 
 
 ### YAML manifest for testing version of application
-Here's an example of the YAML manifest automatically generated for the `demo-trioapp-qa`.
+Here's an example of the YAML manifest generated for the `demo-trioapp-qa` application.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -205,13 +271,13 @@ spec:
     name: in-cluster
     namespace: demo-qa
   source:
-    path: trioapp-qa
-    repoURL: https://github.com/codefresh-sandbox/demo-trioapps.git
+    path: demo-applications/trioapp-qa
+    repoURL: https://github.com/codefresh-sandbox/codefresh-quickstart-demo.git
     targetRevision: main
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      selfHeal: true
       allowEmpty: false
     syncOptions:
       - PrunePropagationPolicy=foreground
@@ -221,12 +287,12 @@ spec:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=false
       - ServerSideApply=true
-      - RespectIgnoreDifferences=false
+      - RespectIgnoreDifferences=false   
 ```
 
 
 ### YAML manifest for production version of application
-Here's an example of the YAML manifest automatically generated for the `demo-trioapp-prod`.
+Here's an example of the YAML manifest generated for the `demo-trioapp-prod` application.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -243,13 +309,13 @@ spec:
     name: in-cluster
     namespace: demo-prod
   source:
-    path: trioapp-prod
-    repoURL: https://github.com/codefresh-sandbox/demo-trioapps.git
+    path: demo-applications/trioapp-prod
+    repoURL: https://github.com/codefresh-sandbox/codefresh-quickstart-demo.git
     targetRevision: main
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      selfHeal: true
       allowEmpty: false
     syncOptions:
       - PrunePropagationPolicy=foreground
@@ -260,11 +326,10 @@ spec:
       - ApplyOutOfSyncOnly=false
       - ServerSideApply=true
       - RespectIgnoreDifferences=false
-
 ```
 ## View changes in Environments dashboard
 
-Return to the Environments dashboard to see how the applications you created are displayed in it.
+Return to the Environments dashboard to see how the environments are populated with the applications you created.
  
 * From the sidebar, select **Environments**.
   Each environment displays the product you created. For example, `demo-trioapp`.
@@ -280,9 +345,9 @@ Return to the Environments dashboard to see how the applications you created are
    max-width="70%" 
    %} 
 
-## View changes in Product Dashboard
+## Explore the Product Dashboard
 
-Also visit the Product Dashboard now that you have created applications and assigned them to a product. 
+Now that we have created the three applications for the `demo-trioapp` product, let's explore the Product Dashboard for the same. 
 
 The Product Dashboard provides a centralized view of your product's applications across environments, including release versions, dependencies, and insights from Kubernetes, Git, and issue-tracking tools. 
 

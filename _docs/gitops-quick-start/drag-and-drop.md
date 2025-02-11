@@ -16,7 +16,7 @@ Use this method when you want to:
 * Quickly test changes in a different environment
 * Manually promote a product version for validation or further deployment
 
-## Follow-along Git repo
+## Example Git repo
 The application version is defined in the  `appVersion` attribute of the `chart.yaml` file.  
 To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
 

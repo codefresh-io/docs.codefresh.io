@@ -13,22 +13,8 @@ redirect_from:
 By default, each environment in a promotion flow (except the Trigger Environment), is dependent on the one preceding it.  
 However, critical environments may rely on the success or stability of multiple environments before they are promoted to. By defining additional dependencies, you can ensure that changes are promoted only when all required environments meet the specified criteria.
 
-This quick start shows how to create additional dependencies between environments in a Promotion Flow.
-
-## Requirements
-
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
-* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
-  Each environment must have an application for the product.
-  For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
-  The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
-  If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources. <!--- add a link to the repo? -->
-
-
-
+This quick start shows how to create additional dependencies between environments in a Promotion Flow.  
+We'll do the following:
 * Create a new environment   
   Add a `staging` environment to our existing environments.  
   For guidelines, see [Create an environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/#create-an-environment) in the Environments quick start.
@@ -47,7 +33,22 @@ This quick start shows how to create additional dependencies between environment
 * Monitor release 
   Track the progress of the promotion in the Releases tab for the `demo-trioapp` product.
 
-## Follow-along Git repo
+## Requirements
+
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
+* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+  Each environment must have an application for the product.  
+  For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
+  The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
+  If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources.
+
+
+
+
+## Example Git repo
 
 You can copy the manifests and the resources for the new application from the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
 
@@ -64,16 +65,15 @@ Update the dependency on the `prod` environment, by selecting `staging` in addit
 
 ### Before you begin
 * Ensure that you have: 
-    * A new environment as a parallel environment before the final environment node
-      For the quick start, we created `staging` as a parallel environment to `qa`. 
+    * A new environment on which we'll create the dependency, `staging` in our example. 
     * Application in the new environment 
       For the quick start, we created the `demo-trioapp-staging` application aligned to `staging`. 
 
 
 ### Step-by-step
-1. From the list of Promotion Flows, open the first Promotion Flow you created, for example, `multi-env-sequential-promotion`.
+1. From the list of Promotion Flows, open the Promotion Flow you created, for example, `multi-env-sequential-promotion`.
 1. If required, change the **Version** to 3.00.
-1. Add the new environment as a parallel environment to the one before the final environment node.
+1. Mouse over the right of the environment node before the final one in the flow, and add the new environment you created as a parallel environment.  
   In the example, we added the `staging` environment as a parallel environment to `qa`.  
 1. Mouse over the final environment node in the Promotion Flow for which to add the dependency, `prod` for the quick start, and click **Depends on**.  
 1. Select the new environment you added, `staging` for the quick start, and then click **Update dependency**.
@@ -144,8 +144,8 @@ These foundational steps empower you to manage complex promotions confidently an
 
 ## Related articles
 Now that you’ve mastered simple and advanced promotion, you may want to learn more on customizing promotion settings for products. 
-* [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-* [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+* [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+* [Configuring Promotion Flows and triggers for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 

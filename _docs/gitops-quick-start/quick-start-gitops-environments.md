@@ -12,7 +12,7 @@ These environments map to the typical stages of the software development lifecyc
 
 When creating the environments, we’ll:
 * Map them to a cluster, typically the one where the GitOps Runtime is installed. 
-* Define namespaces within the cluster for each environment, ensuring clear separation between development, testing, and promotion.
+* Define namespaces within the cluster for each environment, ensuring clear separation between development, testing, and production.
 
 
   {% include 
@@ -37,15 +37,16 @@ Environments help you:
 For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
 
-## Prerequisites
-* GitOps Runtime installed, as described in [Quick start: Installing a Hybrid GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+## Requirements
+* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+
  
 
 ## Create an environment
 Let's go ahead and create an environment. Setting up environments is as simple as mapping the environment to one or more clusters and namespaces.
 
 For this quick start, we’ll create three environments: `dev`, `qa`, and `prod` on the cluster where you installed the GitOps Runtime.
-We’ll map the environments to the `in-cluster` and associate each with a different namespace, to which we will deploy the demo applications that we’ll add later.
+We’ll map the environments to `in-cluster` and associate each with a different namespace, to which we will deploy the demo applications that we’ll add later.
 
 
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
@@ -89,6 +90,6 @@ At this point, as we haven't created any applications, all environments are empt
 %} 
 
 ## What's next
-You’re probably eager to dive into applications. Before we do that let's create another entity that simplifies and supercharges applications: Products.
+You’re probably eager to dive into applications, and that's what we'll do in the next quick start. 
 
-[Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)
+[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)

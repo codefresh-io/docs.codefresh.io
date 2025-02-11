@@ -30,21 +30,22 @@ We’ve provided an example GitHub repository containing all the applications an
   Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
-* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Create Argo CD applications and configure their source repositories, manifests, and deployment paths.
-
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
+* [Creating applications and Products]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+  Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
+
+<!---
 * [Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
   Organize related applications under a single product, for better context and control of deployments.
 
 
 
-<!--- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
+ * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
 
-## Promoting products and applications
+## Promoting Products and applications
 
 Validate and promote changes in applications across environments.
 Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with parallel execution and environment dependencies.
@@ -55,8 +56,6 @@ Start with simple manual promotion, then automate with Promotion Flows—evolvin
   Automate promotions across multiple environments sequentially using a simple Promotion Flow.
 * [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/git/docs/gitops-quick-start/policy-multi-env-promotion/)  
   Govern promotion behavior for environments using Promotion Workflows in a Promotion Flow.
-* [Advanced Promotion Flow with parallel environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/)  
-  Run simultaneous promotions to multiple environments using an advanced Promotion Flow.
 * [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
   Run promotions with defined dependencies between environments using an advanced Promotion Flow.
 

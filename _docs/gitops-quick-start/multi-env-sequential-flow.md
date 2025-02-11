@@ -14,7 +14,6 @@ redirect_from:
 
 ## Simple Promotion Flow with multiple environments quick start
 [Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/) is ideal for on-demand promotions to a single environment.  
-
 In contrast, Promotion Flows offer a structured approach to promoting changes across multiple environments, minimizing deployment risks.
 
 This quick start demonstrates creating a Promotion Flow with three environments:
@@ -28,7 +27,7 @@ This quick start demonstrates creating a Promotion Flow with three environments:
 * Monitor release 
   Track the progress of the promotion in the `demo-trioapp` product's Releases tab.
 
-## Follow-along Git repo
+## Example Git repo
 To follow along, you can use the following applications in the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts:
 * `trio-dev` for the `dev` environment
 * `trio-qa` for the `qa` environment
@@ -194,7 +193,7 @@ max-width="50%"
 <!--- do we auto-select the app with the changes? -->
 
 
-## View and monitor product release 
+## View and monitor Product release 
 On triggering the Promotion Flow, the promotion mechanism automatically creates a new release for the product (`demo-trioapp`), and orchestrates the changes sequentially through the environments defined in the Promotion Flow.
 
 * Click **View Release Details** to go to the release view and monitor the sequential progression of changes through `dev`, `qa`, and `prod` as per the `multi-env-sequential-promotion` Promotion Flow.
@@ -211,7 +210,7 @@ caption="Promotions quick start: Release view for triggered Promotion Flow"
 max-width="60%"
 %}
 
-##### Release record in releases list
+##### Release record in Releases tab
 
 In the Releases page, the Promotion Flow column displays the name of the flow (`multi-env-sequential-promotion` for example) for traceability. For drag-and-drop promotions in contrast, this column displays Manual.
 
@@ -226,7 +225,7 @@ caption="Promotions quick start: Release list with release record for triggered 
 max-width="60%"
 %}
 
-## YAML 
+## YAML for Promotion Flow
 
   annotations:
     description: ""

@@ -43,8 +43,6 @@
       url: "/create-git-source"
     - title: Creating environments
       url: "/quick-start-gitops-environments"
-    - title: Creating products
-      url: "/quick-start-product-create"
     - title: Creating applications
       url: "/create-app-ui"
     - title: Simple promotion with drag-and-drop 
@@ -53,8 +51,6 @@
       url: "/multi-env-sequential-flow"  
     - title: Advanced Promotion Flow with Promotion Workflows
       url: "/policy-multi-env-promotion"  
-    - title: Advanced Promotion Flow with parallel environments
-      url: "/parallel-multi-env-promotion"  
     - title: Advanced Promotion Flow with environment dependencies
       url: "/dependency-multi-env-promotion"  
 

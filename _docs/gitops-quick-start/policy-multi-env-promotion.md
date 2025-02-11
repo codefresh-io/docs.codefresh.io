@@ -33,10 +33,10 @@ A Promotion Workflow that runs _after the promotion action has completed_. These
 
 The Post-Action Workflow allows you to monitor and verify the effects of the promotion after it has taken place. This workflow helps ensure the promoted changes behave as expected in the new environment.
 
-## How to create Promotion Workflows
+<!--- ## How to create Promotion Workflows
 
 TBD
-
+-->
 
 
 ## Requirements
@@ -129,9 +129,12 @@ max-width="60%"
 
 
 ## What's next
-In the next quick start for promotions, we'll explore how to configure a Promotion Flow with parallel promotions, allowing changes to be promoted simultaneously across multiple environments.
+<!--- In the next quick start for promotions, we'll explore how to configure a Promotion Flow with parallel promotions, allowing changes to be promoted simultaneously across multiple environments.
 
-[Quick start: Advanced Promotion Flow: Parallel promotions across environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/)
+[Quick start: Advanced Promotion Flow: Parallel promotions across environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/) -->
+The final quick start on promotions will guide you through creating dependencies between environments to define the order for promotions.
+
+[Quick start: Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
 
  
  
