@@ -61,7 +61,7 @@
   pages:
     - title: About administration in Codefresh
     - url: "/administration-overview"
-    - title: Account & user management
+    - title: Accounts & users
     - url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
