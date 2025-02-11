@@ -70,4 +70,4 @@ To create a product for a new or an existing application, see [Configuring appli
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
 [Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
