@@ -12,7 +12,7 @@ In this quick start, we'll focus on creating a Git Source for the GitOps Runtime
 A Git Source is a unique entity for use with GitOps Runtimes in Codefresh.  
 The Git Source connects to a Git repository within your organization. The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. You can manage the Git Source itself as an Argo CD application.
 
-For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/gitops-quick-start/products/). 
+For details, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/). 
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
@@ -27,7 +27,7 @@ If you don't have a repo, you can automatically create it at the same time as th
 If you plan to use our example Git repository with the application manifests, ensure that you point the Git source to this [repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/argocd-app-manifests){target="\_blank"} during setup.
 {{site.data.callout.end}}
 -->
-##### How to
+##### Step-by-step
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. In the List View, select the Runtime you installed earlier, and then click the **Git Sources** tab.  
@@ -73,9 +73,11 @@ Here's an example of the Git repository referenced in GitHub by the Git source.
 ## What's next
 With a Git Source set up, you are now ready to create applications. 
 Before diving into application creation, let’s focus on a key entities essential for promoting and deploying applications: Environments.
-* Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
 
-Let’s continue by creating environments. 
+Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
+
+Let’s continue by creating environments.  
+
 [Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/) 
 
 

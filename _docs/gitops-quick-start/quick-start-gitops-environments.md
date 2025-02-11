@@ -46,7 +46,7 @@ For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gi
 Let's go ahead and create an environment. Setting up environments is as simple as mapping the environment to one or more clusters and namespaces.
 
 For this quick start, we’ll create three environments: `dev`, `qa`, and `prod` on the cluster where you installed the GitOps Runtime.
-We’ll map the environments to `in-cluster` and associate each with a different namespace, to which we will deploy the demo applications that we’ll add later.
+We’ll map the environments to `in-cluster` and associate each with a different namespace, to which we will deploy the applications we’ll create later.
 
 ##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.

@@ -18,16 +18,16 @@ In contrast, Promotion Flows offer a structured approach to promoting changes ac
 
 This quick start demonstrates creating a Promotion Flow with three environments.
 
-We'll do the following
+We'll do the following:
 
 * Set up a Promotion Flow  
   Learn to work with the Flow Builder to create a Promotion Flow that promotes changes across multiple environments.
 
 * Trigger the promotion  
-  Manually trigger the Promotion Flow from within the Flow Builder to orchestrate the promotion.
+  Manually trigger the Promotion Flow to orchestrate the promotion.
 
 * Monitor release  
-  Track the progress of the promotion in the `demo-trioapp` product's Releases tab.
+  Track the progress of the promotion in the product's Releases tab.
 
 ## Example Git repo
 To follow along, you can use the following applications in the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"} containing the application manifests and resources used in the quick starts:
@@ -35,7 +35,7 @@ To follow along, you can use the following applications in the [example GitHub r
 * `trio-qa` for the `qa` environment
 * `trio-prod` for the `prod` environment
 
-The structure of the repos with the resources must be consistent across all the three applications. See [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"} in the Git repo.
+
 
 ## Requirements
 
@@ -44,8 +44,7 @@ The structure of the repos with the resources must be consistent across all the 
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
-* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
   Each environment must have an application for the product. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
 
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
@@ -61,7 +60,7 @@ You need to be an account administrator to create Promotion Flows.
 
 
 
-### Step-by-step
+##### Step-by-step
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
 1. From the sidebar select **Promotion Flows**, and then click **Add Promotion Flow**.
 1. Enter the settings for the Promotion Flow:
@@ -160,8 +159,8 @@ max-width="60%"
 ## Trigger Promotion Flow
 Manually trigger the Promotion Flow to promote changes from the Trigger Environment to the defined target environments.
 
-
-1. From the list of Promotion Flows, select `multi-env-sequential-promotion` and then click **Trigger** to initiate the promotion.
+##### Step-by-step
+1. From the list of Promotion Flows, select the Promotion Flow you created, `multi-env-sequential-promotion` for example, and then click **Trigger** to initiate the promotion.
 
 {% include 
 image.html 
@@ -263,7 +262,7 @@ spec:
 ## What's next
 The next quick start will guide you through adding Promotion Workflows to each environment, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
 
-[Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/git/docs/gitops-quick-start/policy-multi-env-promotion/)
+[Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
 
  
  

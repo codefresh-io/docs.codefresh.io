@@ -49,7 +49,7 @@ Codefresh identifies the Git provider from the URL provided, and for cloud provi
 For information on the structure and settings, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
 ## Configuration Runtimes
-A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products promotions in GitOps ensure smooth platform operations.  
+A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products and promotions in GitOps ensure smooth platform operations.  
 
 Codefresh automatically designates the first GitOps Runtime in your account as the Configuration Runtime. When designated, Codefresh creates a folder entitled `configuration` within `resources` in the Shared Configuration Repository to store product and promotion configuration settings.  
 You can designate any Runtime as a Configuration Runtime through the UI or the `values.yaml` file. 

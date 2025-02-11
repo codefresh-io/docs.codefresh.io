@@ -15,7 +15,7 @@ This quick start explores how to enhance Promotion Flows by configuring conditio
 
 You can automate and enforce gates throughout your promotion processes using Promotion Workflows. 
 Promotion Workflows are essentially Argo Workflows customized for promoting changes through your environments.  
-For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/entities/promotion-workflow/).
+For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).
 
 ## Promotion Workflows in Promotion Flows
 Promotion Workflows are designed to define the conditions under which changes are promoted to the next environment. They provide a way to automate testing, quality checks, validation, and any other requirements based on your deployment process, establishing gates that control the flow of changes between environments.
@@ -47,8 +47,7 @@ TBD
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
-* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
   Each environment must have an application for the product.
   For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
@@ -104,7 +103,7 @@ max-width="60%"
 
 {:start="5"}
 1. To save the changes, click **Save Promotion Flow**.
-1. Continue with [Trigger Promotion Flow and monitor product release](#trigger-promotion-flow-and-monitor-product-release).
+1. Continue with [Trigger Promotion Flow and monitor Product release](#trigger-promotion-flow-and-monitor-product-release).
 
 
 ## Trigger Promotion Flow and monitor product release

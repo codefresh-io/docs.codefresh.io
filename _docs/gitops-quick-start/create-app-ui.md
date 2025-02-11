@@ -11,12 +11,13 @@ redirect_from:
 In this quick start we'll create applications — the fundamental building blocks of software delivery.  
 Applications are Argo CD applications that represent Kubernetes resources deployed and managed through GitOps principles. 
 
-Applications, together with environments and products we created in the previous quick starts, complete the core entities needed for GitOps promotions.
+Applications and products, together with environments we created in the previous quick start, complete the core entities needed for GitOps promotions.
 
 We'll do the following:
 * Create three applications
-* Create a Product for the applications
-* View the applications in the Product Dashboard
+* Create a product for the applications
+* View the Environments dashboard populated with applications
+* Explore the Product Dashboard
 
 For detailed information, see [About Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
@@ -61,7 +62,7 @@ When you create the application, to use the resources, select the folder corresp
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
   At least three environments for the different applications representing the basic stages in the SDLC
 
@@ -173,7 +174,7 @@ For the quick start, we'll do the following:
    url="/images/quick-start/apps/qs-create-app-new-product-summary.png" 
    alt="Applications quick start: New product summary" 
    caption="Applications quick start: New product summar"
-   max-width="60%" 
+   max-width="40%" 
    %} 
 
 {:start="11"} 
@@ -368,8 +369,10 @@ The Product Dashboard provides a centralized view of your product's applications
 * **Release versions**: Quickly identify which version of an application is deployed in each environment to maintain consistency or troubleshoot issues. For detailed information, see [Configuring app version for promotions]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-versions-for-promoted-applications).
 * **Dependency insights**: Compare dependency versions across environments to detect inconsistencies or verify production readiness.
 * **Integrated application insights**: Use Git commit history, Kubernetes data, and feature mappings to evaluate changes, troubleshoot, and plan promotions.  
-  Requirement: Integrate CI platforms/tools
-  For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are integrated. If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking tools like Jira. For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
+  Requirement: Integrate CI platforms/tools  
+  For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are integrated.  
+  If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking tools like Jira.  
+  For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
  
 ## What's next?

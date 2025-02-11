@@ -17,11 +17,11 @@ This quick start shows how to create additional dependencies between environment
 We'll do the following:
 * Create a new environment   
   Add a `staging` environment to our existing environments.  
-  For guidelines, see [Create an environment]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/#create-an-environment) in the Environments quick start.
+
 
 * Create a new application
   Create a new application `demo-trioapp-staging` aligned to `staging`.  
-  For guidelines, see [Create an application]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/#create-your-first-application) in the Applications quick start.
+
  
 * Modify and save `multi-env-sequential-promotion` Promotion Flow  
   * Add `staging` as a parallel environment to `qa`.
@@ -38,8 +38,7 @@ We'll do the following:
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
-* [Products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/) 
-* [Applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
   Each environment must have an application for the product.  
   For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
@@ -183,7 +182,7 @@ By now, you’ve successfully created environments, your first product, added ap
 These foundational steps empower you to manage complex promotions confidently and effectively.
 
 ## Related articles
-Now that you’ve mastered simple and advanced promotion, you may want to learn more on customizing promotion settings for products. 
+Now that you’ve mastered simple and advanced promotion scenarios, you may want to learn more on customizing promotion settings for products. 
 * [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 * [Configuring Promotion Flows and triggers for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 

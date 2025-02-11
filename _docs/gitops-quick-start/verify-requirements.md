@@ -57,6 +57,13 @@ Because the Shared Configuration Repo is defined at the account-level, the Git p
 
 Learn more on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
+### Configuration Runtime
+A Configuration Runtime is a GitOps Runtime designated to manage platform-level resources that are not tied to a specific Runtime. These resources, essential for features like products and promotions in GitOps ensure smooth platform operations.  
+
+Codefresh automatically designates the first GitOps Runtime in your account as the Configuration Runtime. When designated, Codefresh creates a folder entitled `configuration` within `resources` in the Shared Configuration Repository to store product and promotion configuration settings.  
+
+Learn more on [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
+
 
 ## Prerequisites
 
@@ -83,8 +90,8 @@ If you have Argo components, the result will be similar to the example below.
 	lightbox="true" 
 	file="/images/quick-start/runtimes/qs-runtime-argo-projects-in-cluster-result.png" 
 	url="/images/quick-start/runtimes/qs-runtime-argo-projects-in-cluster-result.png" 
-	alt="Product Dashboard quick start: Explore Product Dashboard" 
-	caption="Product Dashboard quick start: Explore Product Dashboard"
+	alt="Argo components on cluster" 
+	caption="Argo components on cluster"
   max-width="60%" 
 %}
 
