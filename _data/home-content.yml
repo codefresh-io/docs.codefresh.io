@@ -56,7 +56,7 @@
     - title: Promotion setup guidelines
       localurl: /docs/promotions/create-promotion-sequence/
     - title: YAML specs
-      localurl: /docs/promotions/entities/yaml/
+      localurl: /docs/promotions/yaml/
     - title: Trigger promotions
       localurl: /docs/promotions/trigger-promotions/ 
     - title: Tracking releases for products

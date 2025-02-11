@@ -270,6 +270,6 @@ Configure Promotion Settings to define:
 
 
 ## Related articles
-[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [CreateProducts]({{site.baseurl}}/docs/products/create-product/)   
 [Access control for GitOps Products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  
