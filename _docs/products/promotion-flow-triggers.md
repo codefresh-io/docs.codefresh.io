@@ -137,7 +137,7 @@ To configure directly in YAML, refer to our [Promotion Flow YAML]({{site.baseurl
 ## Related articles
 [Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
 
 

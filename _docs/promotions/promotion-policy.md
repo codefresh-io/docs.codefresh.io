@@ -360,7 +360,7 @@ caption="Promotion Workflows in product release view"
 max-width="60%" 
 %}
 
-For more information, see [Promotion Workflows in Product Releases]({{site.baseurl}}/docs/promotions/releases/#promotion-workflows-in-product-releases).
+For more information, see [Promotion Workflows in Product Releases]({{site.baseurl}}/docs/promotions/product-releases/#promotion-workflows-in-product-releases).
 
 ## Related articles
 [Configure Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  

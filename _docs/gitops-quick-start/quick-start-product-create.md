@@ -41,7 +41,7 @@ Here are a few reasons why you would want to create products to manage your appl
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
 
 
 ## Create your first product
@@ -90,5 +90,5 @@ The annotation is automatically created using the product name. For the purposes
 ## What's next
 After creating two of the three core entities for GitOps promotions, environments and products, we are ready to dive into applications.
 
-[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)
+[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
 

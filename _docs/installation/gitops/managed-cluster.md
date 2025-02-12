@@ -119,7 +119,7 @@ resource "helm_release" "my-managed-cluster" {
 * Apply the file using Terraform or your favorite workflow tool.
 
 ## View managed clusters
-View managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#gitops-runtime-views).
+View managed clusters in either the Topology or List Runtime views. For information on Runtime views, see [Runtime views]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/#gitops-runtime-views).
 As the cluster is managed through the Runtime, updates to the Runtime automatically updates the components on all the managed clusters that include it.
 
 View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.

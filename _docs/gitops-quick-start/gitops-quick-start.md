@@ -45,7 +45,7 @@ We’ve provided an example GitHub repository containing all the applications an
 
 
 
- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)   
+ * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
   Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
 
 ## Promoting applications
