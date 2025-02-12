@@ -1,5 +1,5 @@
 - title: Introduction
-  icon: images/home-icons/introduction.svg
+  icon: ../images/home-icons/introduction.svg
   url: ""
   links:
     - title: What is Codefresh?
@@ -16,11 +16,31 @@
   url: ""
   links:
     - title: 
-      localurl: /argohub/gitops-quick-start/
+      localurl: 
+    - title: Create Codefresh account
+      localurl: /argohub/gitops-quick-start/create-codefresh-account/
+    - title: Preparing for Hybrid GitOps Runtime installation
+      localurl: /argohub/gitops-quick-start/verify-requirements/
+    - title: Installing a Hybrid GitOps Runtime
+      localurl: /argohub/gitops-quick-start/runtime/
+    - title: Creating Git Sources
+      localurl: /argohub/gitops-quick-start/create-git-source/
+    - title: Creating environments
+      localurl: /argohub/gitops-quick-start/quick-start-gitops-environments/
+    - title: Creating applications
+      localurl: /argohub/gitops-quick-start/create-app-ui/
+    - title: Simple promotion with drag-and-drop 
+      localurl: /argohub/gitops-quick-start/drag-and-drop/
+    - title: Simple Promotion Flow with multiple environments
+      localurl: /argohub/gitops-quick-start/multi-env-sequential-flow/ 
+    - title: Advanced Promotion Flow with Promotion Workflows
+      localurl: /argohub/gitops-quick-start/policy-multi-env-promotion/  
+    - title: Advanced Promotion Flow with environment dependencies
+      localurl: /argohub/gitops-quick-start/dependency-multi-env-promotion/ 
 
 
 - title: Applications
-  icon: images/home-icons/deployment.svg
+  icon: ../images/home-icons/deployment.svg
   url: ""
   links:
     - title: Creating Argo CD applications
@@ -31,7 +51,7 @@
       localurl: /argohub/applications/manage-application/
 
 - title: Products
-  icon: images/home-icons/product.svg
+  icon: ../images/home-icons/product.svg
   url: ""
   links:
     - title: About Products
@@ -49,7 +69,7 @@
 
 
 - title: Promotions
-  icon: images/home-icons/promotions.svg
+  icon: ../images/home-icons/promotions.svg
   url: ""
   links:
     - title: About promotions
@@ -71,7 +91,7 @@
 
 
 - title: Dashboards & insights
-  icon: images/home-icons/guides.png
+  icon: ../images/home-icons/guides.png
   url: ""
   links:
     - title: Home
@@ -88,7 +108,7 @@
 
 
 - title: GitOps integrations
-  icon: images/home-icons/integrations.svg
+  icon: ../images/home-icons/integrations.svg
   url: ""
   links:
     - title: GitOps image enrichment with integrations
@@ -113,7 +133,7 @@
       localurl: /argohub/gitops-integrations/container-registries/quay/
 
 - title: Installation
-  icon: images/home-icons/installation.svg
+  icon: ../images/home-icons/installation.svg
   url: ""
   links:
     - title: Codefresh platform deployment
@@ -123,7 +143,7 @@
 
 
 - title: Administration
-  icon: images/home-icons/administration.svg
+  icon: ../images/home-icons/administration.svg
   url: ""
   links:
     - title: Create a Codefresh account
@@ -144,7 +164,7 @@
       localurl: /argohub/administration/single-sign-on/
 
 - title: Security
-  icon: images/home-icons/guides.png
+  icon: ../images/home-icons/guides.png
   url: ""
   links:
     - title: Git tokens for GitOps
