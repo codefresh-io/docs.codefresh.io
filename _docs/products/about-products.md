@@ -95,6 +95,10 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue-small.png?display=inline-block ">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue-small.png?display=inline-block "><a href="https://www.youtube.com/watch?v=AjFhoja8TjY" target="_blank">**Dive into Promotion Settings for Products**</a>{:/}
+
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 ## Tracing Product promotions through Releases
