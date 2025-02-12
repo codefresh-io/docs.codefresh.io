@@ -84,11 +84,12 @@ title: ArgoHub Home
             </form>
           </div> -->
           <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
-            <a href="{{ site.baseurl }}/docs/ci-quick-start/ci-quick-start/"
+            <!--- <a href="{{ site.baseurl }}/docs/ci-quick-start/ci-quick-start/"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
               Get started with CI
             </a>
+          -->
             <a href="{{ site.baseurl }}/docs/gitops-quick-start/gitops-quick-start/"
             class="btn btn-primary mb-3 mb-md-0 mr-md-3"
             onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
@@ -127,7 +128,7 @@ title: ArgoHub Home
 <div class="masthead-followup row m-0 border border-white">
   <div class="container">
     <div class="row">
-      {% for homeContent in site.data.home-content %}
+      {% for homeContent in site.data.argohub-home-content %}
       <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
         <div class="d-flex align-items-center mb-3">
           <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mr-2"/>
