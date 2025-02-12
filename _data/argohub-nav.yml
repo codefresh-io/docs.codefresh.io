@@ -193,9 +193,11 @@
     - title: GitOps Apps dashboard
       url: "/gitops-apps-dashboard"
     - title: Application Groups for Argo CD applications
-      url: "/gitops-app-groups"
+      url: "/gitops-app-groups"      
     - title: Creating Argo CD applications
       url: "/create-application"
+    - title: Application configuration settings
+      url: "/application-configuration-settings"
     - title: Monitoring Argo CD applications
       url: "/monitor-applications"
     - title: Managing Argo CD applications

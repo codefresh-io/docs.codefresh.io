@@ -377,6 +377,8 @@
           url: "/gitops-app-groups"
         - title: Creating Argo CD applications
           url: "/create-application"
+        - title: Application configuration settings
+          url: "/application-configuration-settings"
         - title: Monitoring Argo CD applications
           url: "/monitor-applications"
         - title: Managing Argo CD applications
