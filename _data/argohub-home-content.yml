@@ -15,16 +15,12 @@
   icon: ../images/home-icons/administration.svg
   url: ""
   links:
-    - title: 
-      localurl: 
+    - title: About GitOps quick starts
+      localurl: /argohub/gitops-quick-start/gitops-quick-start/
     - title: Create Codefresh account
       localurl: /argohub/gitops-quick-start/create-codefresh-account/
-    - title: Preparing for Hybrid GitOps Runtime installation
-      localurl: /argohub/gitops-quick-start/verify-requirements/
     - title: Installing a Hybrid GitOps Runtime
       localurl: /argohub/gitops-quick-start/runtime/
-    - title: Creating Git Sources
-      localurl: /argohub/gitops-quick-start/create-git-source/
     - title: Creating environments
       localurl: /argohub/gitops-quick-start/quick-start-gitops-environments/
     - title: Creating applications
@@ -33,10 +29,7 @@
       localurl: /argohub/gitops-quick-start/drag-and-drop/
     - title: Simple Promotion Flow with multiple environments
       localurl: /argohub/gitops-quick-start/multi-env-sequential-flow/ 
-    - title: Advanced Promotion Flow with Promotion Workflows
-      localurl: /argohub/gitops-quick-start/policy-multi-env-promotion/  
-    - title: Advanced Promotion Flow with environment dependencies
-      localurl: /argohub/gitops-quick-start/dependency-multi-env-promotion/ 
+
 
 
 - title: Applications
