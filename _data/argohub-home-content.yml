@@ -12,7 +12,7 @@
       localurl: /argohub/getting-started/command-bar/
 
 - title: GitOps quick starts
-  icon: images/home-icons/tutorial.svg
+  icon: ../images/home-icons/administration.svg
   url: ""
   links:
     - title: 
