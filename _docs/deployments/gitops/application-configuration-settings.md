@@ -7,7 +7,7 @@ toc: true
 ## Application configuration settings
 Configuration settings for applications define the application’s structure, sources, destination, and operational behavior. 
 For ease of use, settings are organized into distinct categories including:
-* [Application definitions](#application-definitions): Basic metadata, such as the application name, GitOps Runtime, and the YAML manifest name. 
+* [Application definitions](#application-definitions): Basic metadata, such as the application name, GitOps Runtime, and the name of the YAML manifest. 
 * [General configuration settings](#application-general-configuration-settings): Product, Group, source, destination, and sync policies for the application.
 * [Advanced configuration settings](#application-advanced-configuration-settings): Tool-specific options, project grouping, and propagation policies for resource and application deletion.
 

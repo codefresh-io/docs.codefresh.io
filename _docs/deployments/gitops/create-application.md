@@ -11,13 +11,12 @@ When you commit the changes, the application manifest is generated and stored in
 
 For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
 
-After creating applications, monitor and track version in the Environments and Products dashboards, and promote them across environments.
 
 
 
 ## Create an Argo CD application
 Create a new application from the GitOps Apps dashboard. 
-Define settings in Form mode or edit the manifest directly in YAML mode, toggling between them as needed.  
+Define settings in Form mode, or edit the manifest directly in YAML mode, toggling between them as needed.  
 
 ##### Before you begin
 * Make sure you have a valid [Git Source]({{site.baseurl}}/docs/gitops-runtime/git-sources/)  
@@ -137,5 +136,6 @@ spec:
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Trigger promotions for applications]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
