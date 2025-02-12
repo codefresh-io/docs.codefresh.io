@@ -23,6 +23,13 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
+
+
+
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon.png?display=inline-block">{:/} [**Explore Products**](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
+
+
+
 ## Boosting application management with Products
 Products enhance and simplify application management by enabling controlled promotions, version tracking, and environment-specific configurations.  
 Since an application can exist in multiple environments, grouping them within a Product helps compare versions, track changes, and maintain consistency.
@@ -94,7 +101,7 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon.png?display=inline-block">{:/} [**Tailor Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}T
 
 ## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  
