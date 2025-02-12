@@ -29,10 +29,10 @@ The repository is structured to help you follow along with the guides:
 ## Quick start guides for environments, products, and applications
 
 To get started with environments, products, and applications, explore these quick starts:  
-[Quick start: Creating environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
-[Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-create/)  
-[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
-[Quick start: Exploring the Product Dashboard]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-product-dashboard/)  
+[Quick start: Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
+[Quick start: Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
+[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
+[Quick start: Exploring the Product Dashboard]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-dashboard/)  
 
 
 

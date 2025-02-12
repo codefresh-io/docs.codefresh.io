@@ -14,7 +14,7 @@ For details, see [Restore runtimes]({{site.baseurl}}/docs/installation/gitops/mo
 ### AWS ALB ingress controller
 
 AWS Application Load Balancer (ALB) is now part of our list of supported ingress controllers.
-For details, see [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#aws-alb-ingress-configuration).
+For details, see [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#aws-alb-ingress-configuration).
 
 ### Labels for runtime namespace
 

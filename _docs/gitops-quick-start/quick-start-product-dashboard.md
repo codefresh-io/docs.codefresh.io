@@ -5,7 +5,7 @@ group: gitops-quick-start
 toc: true
 ---
 
-In the previous quick start, we [created the demo-trioapp applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/) and assigned them to the `demo-trioapp` product.  
+In the previous quick start, we [created the demo-trioapp applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/) and assigned them to the `demo-trioapp` product.  
 
 Let's explore the Product Dashboard to see how these come together. The dashboard offers a consolidated view of your product's applications in their environments, including the application release versions, dependencies, and integrated insights from Kubernetes, Git, and issue-tracking tools. 
 

@@ -48,7 +48,7 @@ Commit status checks in Git include status checks for promotions in releases. Th
   max-width="50%" 
 %}
 
-For detailed information, see [Tracking Product Releases]({{site.baseurl}}/docs/promotions/releases/).
+For detailed information, see [Tracking Product Releases]({{site.baseurl}}/docs/promotions/product-releases/).
 
 
 ## Related articles

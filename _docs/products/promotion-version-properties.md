@@ -370,5 +370,5 @@ To configure directly in YAML, refer to our [Promotion Template YAML]({{site.bas
 ## Related articles
 [Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking Product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   

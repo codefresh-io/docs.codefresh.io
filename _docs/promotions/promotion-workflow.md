@@ -882,7 +882,7 @@ caption="Example of workflows in a product release view"
 max-width="60%"
 %}
 
-See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/).
+See [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/).
 
 
 

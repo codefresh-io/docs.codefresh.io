@@ -85,7 +85,7 @@ enhance consistency, create reusable templates that apply across products.
 1. [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
   Trigger the promotion, either manually or automatically.  
   
-1. [Track releases for products]({{site.baseurl}}/docs/promotions/releases/)  
+1. [Track releases for products]({{site.baseurl}}/docs/promotions/product-releases/)  
   Monitor the deployment progress for the product as it moves through the promotion sequence.  
   Use the Releases feature to track and ensure successful deployments across environments.
 

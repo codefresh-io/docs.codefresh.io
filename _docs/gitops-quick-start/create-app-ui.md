@@ -63,7 +63,7 @@ When you create the application, to use the resources, select the folder corresp
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   At least three environments for the different applications representing the basic stages in the SDLC
 
 

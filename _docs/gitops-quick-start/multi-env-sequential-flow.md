@@ -39,12 +39,12 @@ To follow along, you can use the following applications in the [example GitHub r
 
 ## Requirements
 
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
-* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
   Each environment must have an application for the product. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
 
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   

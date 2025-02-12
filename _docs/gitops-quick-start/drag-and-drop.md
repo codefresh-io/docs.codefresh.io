@@ -22,9 +22,9 @@ To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/products/quick-start-gitops-environments/)  
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   At least three environments for the different applications representing the basic stages in the SDLC
-* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/)  
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
   At least three different applications representing the development, testing, and production versions
 
 
