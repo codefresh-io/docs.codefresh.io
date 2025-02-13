@@ -24,7 +24,7 @@ This quick start describes how to configure parallel promotions in Promotion Flo
 ## Requirements
 
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
 * [Products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/) 
 * [Applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  

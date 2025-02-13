@@ -26,7 +26,7 @@ For details, see [Install GitOps Runtime]({{site.baseurl}}/docs/installation/git
 
 Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only within your private network, while keeping the webhook ingress unchanged.  
 
-* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Ingress controller flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#ingress-controller-flags).
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 * Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.
 For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#optional-internal-ingress-host-configuration-for-existing-hybrid-gitops-runtimes).  
 
