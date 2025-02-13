@@ -45,7 +45,9 @@ title: ArgoHub Home
 </div>
 -->
 
-
+---
+layout: home
+---
 
 <main class="bd-masthead bd-masthead-home" id="content" role="main">
   <div class="banner-home-inner">
@@ -60,32 +62,30 @@ title: ArgoHub Home
             <span class="badge cf-badge cf-badge-doc align-middle mt-2">DOCUMENTATION</span>
           </h2>
           <p class="lead bd-text-white mb-4">
-            GitOps Cloud: Codefresh for GitOps with Argo. <br>
-            <br>
+            GitOps Cloud: Codefresh and GitOps with Argo. <br>
             Realize your true DevOps potential with the premier Argo software delivery solution.
           </p>
-      <div id="searchbar"></div>
-          <!---<button
+<!--          <div id="searchbar"></div>-->
+          <button
             onclick="window.CommandBar.openHelpHub(); setTimeout(() => {
               document.querySelector('input[data-testid=helphub-input]').focus()
             }, 100)"
             class="helpbub-toggler mb-3"
             aria-label="Search Codefresh Documentation"
-            type="button"> 
-                   
+            type="button"
+          >
             <div class="d-flex align-items-center">
               <img src="{{site.baseurl}}/images/icons/search.png" />
               <span class="ml-2">Search</span>
             </div>
             <span class="helpbub-toggler--hotkey">Ctrl / &#8984; + K</span>
-          </button> 
-        -->
-          <div>
-             <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
+          </button>
+          <!-- <div>
+            <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
               <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
               <i class="fa fa-search"></i>
             </form>
-            </div> -->
+          </div> -->
           <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
             <!--- <a href="{{ site.baseurl }}/docs/ci-quick-start/ci-quick-start/"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
@@ -93,17 +93,16 @@ title: ArgoHub Home
               Get started with CI
             </a>
           -->
-            <a href="{{ site.baseurl }}/argohub/gitops-quick-start/gitops-quick-start/"
+            <a href="{{ site.baseurl }}/docs/gitops-quick-start/gitops-quick-start/"
             class="btn btn-primary mb-3 mb-md-0 mr-md-3"
             onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
            Get started with GitOps
            </a>
-           <!--- <a href="{{ site.baseurl }}/docs/kb/"
+           <a href="{{ site.baseurl }}/docs/kb/"
             class="btn btn-primary mb-3 mb-md-0 mr-md-3"
             onclick="ga('send', 'event', 'Jumbotron actions', 'Knowledge Base', 'Knowledge Base');">
            Knowledge Base
-           </a> 
-          -->
+           </a>
             <a href="{{ site.codefresh_signup }}"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Main page actions', 'SignUp', 'SignUp');">
@@ -131,7 +130,7 @@ title: ArgoHub Home
 <div class="masthead-followup row m-0 border border-white">
   <div class="container">
     <div class="row">
-      {% for homeContent in site.data.argohub-home-content %}
+      {% for homeContent in site.data.arghub-home-content %}
       <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
         <div class="d-flex align-items-center mb-3">
           <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mr-2"/>
@@ -141,7 +140,7 @@ title: ArgoHub Home
           </h4>
         </div>
 
-      <ul class="list-unstyled">
+        <ul class="list-unstyled">
           {% for homeContentLink in homeContent.links %}
           {% if homeContentLink.localurl %}
           {% assign localurl = homeContentLink.localurl %}
@@ -159,9 +158,10 @@ title: ArgoHub Home
           </li>
           {% endfor %}
         </ul>
-      -->
       </div>
       {% endfor %}
     </div>
   </div>
 </div>
+
+
