@@ -1,4 +1,6 @@
-
+- title: Introduction
+  icon: images/home-icons/introduction.svg
+  url: ""
   links:
     - title: What is Codefresh?
       localurl: /docs/getting-started/intro-to-codefresh/
