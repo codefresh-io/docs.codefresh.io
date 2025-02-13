@@ -19,10 +19,11 @@
   icon: images/home-icons/tutorial.svg
   url: ""
   links:
-    - title: CI/CD quick starts
-      localurl: /docs/ci-quick-start/ci-quick-start/
     - title: GitOps quick starts
       localurl: /docs/gitops-quick-start/gitops-quick-start/
+    - title: CI/CD quick starts
+      localurl: /docs/ci-quick-start/ci-quick-start/
+
 
 - title: Products
   icon: images/home-icons/product.svg
@@ -55,7 +56,7 @@
     - title: Promotion setup guidelines
       localurl: /docs/promotions/create-promotion-sequence/
     - title: YAML specs
-      localurl: /docs/promotions/entities/yaml/
+      localurl: /docs/promotions/yaml/
     - title: Trigger promotions
       localurl: /docs/promotions/trigger-promotions/ 
     - title: Tracking releases for products

@@ -98,7 +98,7 @@ max-width="60%"
 
 ## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  
-See [Tracking product releases]({{site.baseurl}}/docs/promotions/releases).
+See [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases).
 
 {% include 
 image.html 

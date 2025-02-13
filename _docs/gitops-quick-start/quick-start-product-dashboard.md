@@ -5,7 +5,7 @@ group: gitops-quick-start
 toc: true
 ---
 
-In the previous quick start, we [created applications]({{site.baseurl}}/docs/gitops-quick-start/products/create-app-ui/) and assigned them to the same product.  
+In the previous quick start, we [created the demo-trioapp applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/) and assigned them to the `demo-trioapp` product.  
 
 Let's explore the Product Dashboard to see how these come together. The dashboard offers a consolidated view of your product's applications in their environments, including the application release versions, dependencies, and integrated insights from Kubernetes, Git, and issue-tracking tools. 
 
@@ -36,7 +36,7 @@ The release version displayed for each application signifies the specific versio
 **Why is this important?**  
 Knowing the release version at a glance helps you quickly identify which version of an application is deployed in each environment. This is crucial for ensuring consistency, troubleshooting, and managing deployments effectively.
 
-In the example below, `dev` has a different version of the application compared to `qa` and `prod`.  
+In the example below, the version of the `demo-trioapp` in the `dev` environment is different compared to those in `qa` and `prod` environments.  
 
 
 {% include 
@@ -49,7 +49,7 @@ In the example below, `dev` has a different version of the application compared 
   max-width="60%" 
 %}
 
-You can use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments, which is covered in the next set of quick starts. 
+Use the integrated insights in the Product Dashboard—such as Git commit history and feature tracking—to evaluate the changes. Based on this information, you can decide whether to promote the changes and the version across environments, which is covered in the next set of quick starts. 
 
 Additionally, you can:
 
@@ -120,10 +120,6 @@ Provides _direct insights from the application's source repository, including th
 Maps commits to tickets in your issue-tracking tool, offering traceability for deployed features or bug fixes. 
 
 
-### Requirement: Integrate CI platforms/tools
-For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are integrated. If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking tools like Jira.
-
-For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## What's next?
 We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications.  
@@ -131,5 +127,5 @@ For an overview on promotions, read [Quick start: Promotions in Codefresh GitOps
 
 Let's move on to the first quick start on promotions to see this in action.
 
-[Quick start: Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/promotions/drag-and-drop/)
+[Quick start: Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
 

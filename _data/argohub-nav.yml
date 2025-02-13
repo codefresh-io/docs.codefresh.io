@@ -1,8 +1,40 @@
-- title: ArgoHub Introduction
+- title: Introduction
   url: "/introduction"
   pages:
     - title: What is Codefresh GitOps?
       url: "/intro-to-codefresh"
+    - title: Codefresh for GitOps
+      url: "/gitops-codefresh"
+    - title: Concepts in Codefresh
+      url: "/concepts"
+    - title: Global Search & Navigation
+      url: "/command-bar"
+
+- title: GitOps quick starts
+  url: "/gitops-quick-starts"
+  pages:
+    - title: About GitOps quick starts
+      url: "/gitops-quick-start"
+    - title: Create Codefresh account
+      url: "/create-codefresh-account"
+    - title: Preparing for Hybrid GitOps Runtime installation
+      url: "/verify-requirements"
+    - title: Installing a Hybrid GitOps Runtime
+      url: "/runtime"
+    - title: Creating Git Sources
+      url: "/create-git-source"
+    - title: Creating environments
+      url: "/quick-start-gitops-environments"
+    - title: Creating applications
+      url: "/create-app-ui"
+    - title: Simple promotion with drag-and-drop 
+      url: "/drag-and-drop"    
+    - title: Simple Promotion Flow with multiple environments
+      url: "/multi-env-sequential-flow"  
+    - title: Advanced Promotion Flow with Promotion Workflows
+      url: "/policy-multi-env-promotion"  
+    - title: Advanced Promotion Flow with environment dependencies
+      url: "/dependency-multi-env-promotion"  
 
 - title: Dashboards & insights
   url: "/dashboards"
@@ -60,9 +92,9 @@
   url: "/administration"
   pages:
     - title: About administration in Codefresh
-    - url: "/administration-overview"
-    - title: Account & user management
-    - url: "/account-user-management"
+      url: "/administration-overview"
+    - title: Accounts & users
+      url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
@@ -161,9 +193,11 @@
     - title: GitOps Apps dashboard
       url: "/gitops-apps-dashboard"
     - title: Application Groups for Argo CD applications
-      url: "/gitops-app-groups"
+      url: "/gitops-app-groups"      
     - title: Creating Argo CD applications
       url: "/create-application"
+    - title: Application configuration settings
+      url: "/application-configuration-settings"
     - title: Monitoring Argo CD applications
       url: "/monitor-applications"
     - title: Managing Argo CD applications

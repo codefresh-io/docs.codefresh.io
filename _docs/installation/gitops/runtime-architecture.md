@@ -150,7 +150,7 @@ The diagram below illustrates the data flow for the Application Event Reporter (
   * The application-change event is added to the Event Queue of the appropriate Application Reporter instance for processing based on the shard to which it belongs.  Each instance of the Application Reporter can queue up to 1,000 events at a time.
   
   >**NOTE**  
-  The number of Application Event Reporters are equal to the configured number of replicas. By default, there are five replicas, but the number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}.
+  The number of Application Event Reporters are equal to the configured number of replicas. By default, there are five replicas, but the number can be customized through the `argo-cd.eventReporter.replicas` parameter in your Helm values file [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}.
 
 {:start="4"}  
 1. The Application Event Reporter requests both the application's live-state manifest and the Git manifests for all the application's managed resources from the Argo CD Server.  
@@ -174,7 +174,7 @@ In monorepo environments where multiple applications share a single repository, 
 
 ##### Configuration
 
-The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
+The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
 
 ### Request Routing Service
 The Request Routing Service is installed on the same cluster as the GitOps Runtime in the customer environment.  
