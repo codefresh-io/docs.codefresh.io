@@ -45,6 +45,7 @@ Each method is available only if your account administrator has assigned permiss
 Drag-and-drop the product to the target environment to promote changes, and customize the Promotion Settings to control promotion behavior for the environment.    
 This method is useful to test changes within a specific environment. For example, QA teams wanting to test changes in staging or other internal environments.  
 
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"}
 
 
 ##### Before you begin
