@@ -45,10 +45,6 @@ title: ArgoHub Home
 </div>
 -->
 
----
-layout: home
----
-
 <main class="bd-masthead bd-masthead-home" id="content" role="main">
   <div class="banner-home-inner">
     <div class="container">
@@ -66,7 +62,7 @@ layout: home
             Realize your true DevOps potential with the premier Argo software delivery solution.
           </p>
 <!--          <div id="searchbar"></div>-->
-          <button
+          <!---<button
             onclick="window.CommandBar.openHelpHub(); setTimeout(() => {
               document.querySelector('input[data-testid=helphub-input]').focus()
             }, 100)"
@@ -79,7 +75,7 @@ layout: home
               <span class="ml-2">Search</span>
             </div>
             <span class="helpbub-toggler--hotkey">Ctrl / &#8984; + K</span>
-          </button>
+          </button>-->
           <!-- <div>
             <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
               <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
@@ -130,7 +126,7 @@ layout: home
 <div class="masthead-followup row m-0 border border-white">
   <div class="container">
     <div class="row">
-      {% for homeContent in site.data.arghub-home-content %}
+      {% for homeContent in site.data.argohub-home-content %}
       <div class="col-12 col-md-3 p-4 p-md-4 followup-card-item border border-white">
         <div class="d-flex align-items-center mb-3">
           <img src="{{ homeContent.icon }}" alt="{{ homeContent.title }}" class="mr-2"/>
