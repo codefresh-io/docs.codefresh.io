@@ -16,7 +16,7 @@
   url: ""
   links:
     - title: About GitOps quick starts
-      localurl: /argohub/gitops-quick-starts/gitops-quick-start/
+      localurl: /argohub/gitops-quick-start/gitops-quick-start/
     - title: Create Codefresh account
       localurl: /argohub/gitops-quick-start/create-codefresh-account/
     - title: Installing a Hybrid GitOps Runtime
