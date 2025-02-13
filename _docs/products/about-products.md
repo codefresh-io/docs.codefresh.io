@@ -23,7 +23,7 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon.png?display=inline-block">{:/} [**Explore Product Basics**](https://www.youtube.com/watch?v=m3wE4OfV9xE)
+{::nomarkdown}<img src=../../../../images/icons/video-play-blue-small-5x?display=inline-block">{:/} **Explore Product Basics**](https://www.youtube.com/watch?v=m3wE4OfV9xE)
 
 
 ##### Boosting application management with Products
@@ -97,7 +97,7 @@ max-width="60%"
 
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue-small.png?display=inline-block ">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue-small.png?display=inline-block "><a href="https://www.youtube.com/watch?v=AjFhoja8TjY" target="_blank">**Dive into Promotion Settings for Products**</a>{:/}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue-small.png?display=inline-block "><span><a href="https://www.youtube.com/watch?v=AjFhoja8TjY">Dive into Promotion Settings for Products</a></span>{:/}
 
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
