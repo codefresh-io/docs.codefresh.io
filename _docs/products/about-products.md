@@ -23,7 +23,7 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
-{::nomarkdown}<img src=../../../../images/icons/video-play-blue-small-5x?display=inline-block">{:/} **Explore Product Basics**](https://www.youtube.com/watch?v=m3wE4OfV9xE)
+{::nomarkdown}<img src=../../../../images/icons/video-play-blue-small-5x?display=inline-block">{:/}[**Explore Product Basics**](https://www.youtube.com/watch?v=m3wE4OfV9xE)
 
 
 ##### Boosting application management with Products
@@ -45,7 +45,7 @@ Explore the [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products
 Read more about the dashboard in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
 
-### Key benefits 
+##### Key benefits 
 * **Unified application management**  
   Grouping interconnected applications simplifies management and streamlines deployments across environments.
 
@@ -95,9 +95,9 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue-small.png?display=inline-block ">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+{::nomarkdown}<img src=../../../../images/icons/video-play-blue-small.png?display=inline-block ">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue-small.png?display=inline-block "><span><a href="https://www.youtube.com/watch?v=AjFhoja8TjY">Dive into Promotion Settings for Products</a></span>{:/}
+{::nomarkdown}<img src=../../../images/icons/video-play-blue-small.png?display=inline-block "><span><a href="https://www.youtube.com/watch?v=AjFhoja8TjY">Dive into Promotion Settings for Products</a></span>{:/}
 
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block">{:/} [**Dive into Promotion Settings for Products**](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
