@@ -11,7 +11,7 @@ The Git Source connects to a Git repository within your organization, serving as
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
 Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
 
 ##### Types of Git Sources  
 Codefresh allows you to create two types of Git Sources: Standard and Restricted Git Sources.

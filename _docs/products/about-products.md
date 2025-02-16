@@ -99,7 +99,7 @@ max-width="60%"
 %}
 
 Watch this video for a quick overview:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 
 
