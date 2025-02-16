@@ -133,6 +133,7 @@ Codefresh offers multiple promotion methods, ranging from manual drag-and-drop t
 
 See [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
+{% if page.collection != site.gitops_collection %}
 ## DORA for DevOps metrics
 The Product and Environment dashboards provide enterprise-wide visibility into your applications in the context of their current deployment.  
 Another key dashboard with critical insights into applications is the DORA dashboard, which tracks DevOps performance metrics like lead time for changes and deployment frequency.
@@ -148,6 +149,7 @@ max-width="80%"
 %}
 
 See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
+{% endif %}
 
 ## Getting started with applications
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  

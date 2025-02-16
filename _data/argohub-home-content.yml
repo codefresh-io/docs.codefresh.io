@@ -93,8 +93,6 @@
       localurl: /argohub/dashboards/gitops-environments/   
     - title: Products
       localurl: /argohub/dashboards/gitops-products/   
-    - title: DORA metrics
-      localurl: /argohub/dashboards/dora-metrics/
     - title: Images
       localurl: /argohub/dashboards/images/
 

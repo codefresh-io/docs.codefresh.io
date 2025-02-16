@@ -375,7 +375,7 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 
 ## Related articles
 [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 {% if page.collection != site.gitops_collection %}
 [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)  
