@@ -24,7 +24,9 @@ max-width="70%"
 %}
 
 Watch this video for a quick overview:  
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue?display=inline-block>{:/}[Explore Product Basics](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/}[Explore Product Basics](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
+
+
 
 
 ##### Boosting application management with Products
