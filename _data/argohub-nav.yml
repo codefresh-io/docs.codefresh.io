@@ -266,6 +266,11 @@
     - title: Secrets for GitOps
       url: "/secrets"
 
+- title: Support tickets
+  url: "/support"
+  pages:
+    - title: Create support tickets
+      url: "/support-ticket"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
