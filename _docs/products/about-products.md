@@ -23,10 +23,8 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
-Watch this video for a quick overview:
+Testing change in icon format to SVG:
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
-
-
 
 
 ##### Boosting application management with Products
@@ -98,10 +96,8 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-Why isn't my change effective on github Watch this video:
+Why isn't my change effective on github:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
-
-
 
 ## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  
