@@ -10,7 +10,7 @@ A Git Source is a unique entity created for use with GitOps Runtimes in Codefres
 The Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
-Watch this video:<br>
+Watch this video:
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
 
 ##### Types of Git Sources  
