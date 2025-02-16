@@ -98,7 +98,7 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-Watch this video:
+Testing changing content and icon Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 
