@@ -791,7 +791,7 @@ metadata:
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics)  
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 
 

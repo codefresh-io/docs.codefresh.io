@@ -270,4 +270,5 @@ Either create an environment, or add the cluster-namespace defined for the appli
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)   
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
+
