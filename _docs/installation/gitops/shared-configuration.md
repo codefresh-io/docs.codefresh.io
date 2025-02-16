@@ -7,8 +7,13 @@ toc: true
 ## Shared Configuration Repository
 A Codefresh account with <!--- a Hosted or -->a Hybrid GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
+Watch this video for an overview of the internal Shared Configration Repo:  
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}
+
+
 ##### When is it created? 
 The Shared Configuration Repository (internally ISO/iso) is created on installing the first Hybrid GitOps Runtime in the account. See [GitOps Runtimes & Shared Configuration Repos](#gitops-runtimes--shared-configuration-repos).
+
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
@@ -61,7 +66,7 @@ See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
   Currently, Codefresh supports a single Shared Configuration Repo per account.
   You may need to reset the Shared Configuration Repo after creating it. See [Reset Shared Configuration Repository for GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#reset-shared-configuration-repository-for-gitops-runtimes).  -->
 
-### Shared Configuration Repo URL formats
+## Shared Configuration Repo URL formats
 When defining the Shared Configuration Repository for the account, you have the option to specify a path, a branch, or both, within the repository URL.
 This allows for flexibility in targeting specific directories or branches in the repository. 
 

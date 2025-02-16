@@ -23,6 +23,7 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
+Watch this video for a quick overview:  
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue?display=inline-block>{:/}[Explore Product Basics](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
 
 
@@ -95,6 +96,7 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
+Watch this video for a quick overview:  
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 
