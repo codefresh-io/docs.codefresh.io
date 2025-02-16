@@ -235,7 +235,7 @@ The GitOps Runtime interacts with external systems and components in the custome
   * Codefresh components also access the Git provider to enable UI-driven commits and pull requests.
 
 * **Container registries and Jira (optional)**  
-  If enrichment functionality is enabled, jobs can be executed within the Runtime cluster or a CI system to retrieve metadata from container registries and Jira integrated with Codefresh.
+  If enrichment functionality is enabled, jobs can be executed within the Runtime cluster or a CI system to retrieve metadata from those container registries and Jira instances integrated with Codefresh.
 
 
 ## Data reporting: GitOps Runtime to Codefresh Platform
