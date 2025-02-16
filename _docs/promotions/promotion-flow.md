@@ -23,7 +23,7 @@ caption="Automated multi-environment Promotion Flow for multi-app product"
 max-width="60%"
 %}
 
-Watch this video:  
+Watch this video:
 {::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
 
 
