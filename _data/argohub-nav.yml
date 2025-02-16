@@ -45,8 +45,6 @@
       url: "/gitops-environments"
     - title: Products
       url: "/gitops-products"
-    - title: DORA metrics
-      url: "/dora-metrics"
     - title: Images
       url: "/images"
 
