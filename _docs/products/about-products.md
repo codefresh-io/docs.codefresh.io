@@ -23,8 +23,8 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
-Testing change in icon format to SVG:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
+Watch this video:
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
 
 
 ##### Boosting application management with Products
@@ -96,7 +96,7 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-Why isn't my change effective on github:
+Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 ## Tracing Product promotions through Releases
