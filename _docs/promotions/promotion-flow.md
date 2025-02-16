@@ -23,8 +23,8 @@ caption="Automated multi-environment Promotion Flow for multi-app product"
 max-width="60%"
 %}
 
-Watch this video and create a Promotion Flow:  
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Promotion Flow in action](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
+Watch this video:  
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.png?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
 
 
 Review [Promotion Flow behavior: Key insights](#promotion-flow-behavior-key-insights) before creating your first Promotion Flow. 
