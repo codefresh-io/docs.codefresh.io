@@ -1,5 +1,5 @@
 ---
-title: "Required Data: UI performance and other issues"
+title: "Data required for troubleshooting UI issues"
 description: "Data required to troubleshoot UI performance and issues"
 ---
 
