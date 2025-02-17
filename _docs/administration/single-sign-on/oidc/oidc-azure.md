@@ -169,11 +169,12 @@ max-width="70%"
 1. Enter the following:
    - **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
    - **Display Name**: Meaningful name for the SSO provider. This can be the name shown in Azure.
-   - **Application ID**: The Application ID from your Enterprise Application Properties in Microsoft Entra ID.
+   - **Application ID**: Required for SSO. The Application ID from your Microsoft Entra ID > Enterprise Application Properties. 
    - **Client Secret**: The key value you copied when you created the client secret in Azure.
    - **Tenant**: Optional. Required when **Auto Sync users and teams to Codefresh** is selected.<br>
-     Can be either the Tenant ID, for example, `0example1-0000-0aa0-a00a-1example0`, or the Primary Domain, for example, `mycompany.onmicrosoft.com` in Microsoft Entra ID.
-   - **Object ID**: The Object ID from your Enterprise Application Properties in Microsoft Entra ID.
+     Can be either the Tenant ID, for example, `0example1-0000-0aa0-a00a-1example0`, or the Primary Domain, for example, `mycompany.onmicrosoft.com` from Microsoft Entra ID.
+   - **Object ID**: Optional. Required when **Auto Sync users and teams to Codefresh** is selected.<br>
+     The Object ID from your Microsoft Entra ID > Enterprise Application Properties.
    - **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Microsoft Entra ID to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don’t specify an interval, the sync is every 12 hours.
 
 {% include image.html
