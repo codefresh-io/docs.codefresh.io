@@ -37,7 +37,8 @@ Here are instructions on how to capture a HAR file for various browsers:
 ### Chromium-based
 
 1. Open Chrome, in the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Developer tools**
-  {% include 
+
+{% include 
 image.html 
 lightbox="true" 
 file="/images/troubleshooting/data-needed-00.png" 
@@ -46,8 +47,9 @@ alt="Chromium: Developer tools"
 caption="Chromium: Developer tools" 
 max-width="100%" 
  %}
-    
-2. Click the **Network** tab.
+
+{:start="2"}   
+1. Click the **Network** tab.
 
   {% include 
 image.html 
@@ -59,10 +61,9 @@ caption="Chromium: Network tab"
 max-width="100%" 
  %}
  
-
-
-
-3. If the **Record** button is not active (red), go ahead and click this button.
+{:start="3"}   
+1. If the **Record** button is not active (red), go ahead and click this button.  
+  You are now ready to begin capture. 
 
   {% include 
 image.html 
@@ -74,9 +75,8 @@ caption="Chromium: Record button"
 max-width="100%" 
  %}
 
-  You are now ready to begin capture. 
-  
-4. Navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
+{:start="4"} 
+1. Navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
   You should now see network requests being populated in your developer tools.  
   Here is an example:
 
@@ -90,8 +90,9 @@ caption="Chromium: Example of network requests in Developer tools"
 max-width="100%" 
  %}
 
-5. Once you have reproduced the issue, stop the capture by clicking the **Record** button again.
-6. Click the **Export HAR...** button, and then download the HAR file.
+{:start="5"}
+1. Once you have reproduced the issue, stop the capture by clicking the **Record** button again.
+1. Click the **Export HAR...** button, and then download the HAR file.  
    **TIP**: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
   
   {% include 
@@ -104,7 +105,8 @@ caption="Chromium: Export HAR file"
 max-width="100%" 
  %}
 
-7. Upload the HAR file to your support case.  
+{:start="7"}
+1. Upload the HAR file to your support case.  
    **TIP**: Make sure to read the [important notes](#important) mentioned above.
 
 ### Safari
@@ -121,7 +123,8 @@ caption="Safari: Show Web Inspector"
 max-width="100%" 
  %}
 
-2. Navigate to the **Network** tab.
+{:start="2"}
+1. Navigate to the **Network** tab.
 
   {% include 
 image.html 
@@ -132,7 +135,9 @@ alt="Safari: Network tab"
 caption="Safari: Network tab" 
 max-width="100%" 
  %}
-3. You are now ready to begin capture. Navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
+
+{:start="3"}
+1. You are now ready to begin capture. Navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
   You should now see network requests being populated in your developer tools.  
   Here is an example:
 
@@ -146,7 +151,8 @@ caption="Safari: Example of network requests in Developer tools"
 max-width="100%" 
  %}
 
-4. Once you have finished reproducing the issue, click the **Export** button to download the HAR file.  
+{:start="4"}
+1. Once you have finished reproducing the issue, click the **Export** button to download the HAR file.  
    **TIP**: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
 
     {% include 
@@ -159,13 +165,13 @@ caption="Safari: Download HAR file"
 max-width="100%" 
  %}
 
-
-5. Upload the HAR file to your support case.
+{:start="5"}
+5. Upload the HAR file to your support case.  
    **TIP**: Make sure to read the [important notes](#important) mentioned above.
 
-## Firefox
+### Firefox
 
-1. Open Firefox, in the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Web Developer Tools**.
+1. Open Firefox, and from the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Web Developer Tools**.
 
     {% include 
 image.html 
@@ -177,7 +183,8 @@ caption="Firefox: Web Developer Tools"
 max-width="100%" 
  %}
 
-2. Click the **Network** tab.
+{:start="2"}
+1. Click the **Network** tab.
     
 {% include 
 image.html 
@@ -189,8 +196,8 @@ caption="Firefox: Network tab"
 max-width="100%" 
  %}
     
-    
-3. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
+{:start="3"}    
+1. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue.  
   You should now see network requests being populated in your developer tools.  
   Here is an example:  
 
@@ -204,8 +211,8 @@ caption="Firefox: Example of network requests in Web Developer Tools"
 max-width="100%" 
  %}
 
-4. Click **Cog Wheel** at the top-right of the Web Developer Tools window -> **Save All as HAR!**.
-    ![firefox image 5]({{site.baseurl}}/images/troubleshooting/data-needed-13.png)
+{:start="4"}
+1. Click **Cog Wheel** at the top-right of the Web Developer Tools window -> **Save All as HAR!**.  
     **TIP**: A suggested naming scheme is to use: _< ZD-Case-ID>_< YYYY-MM-DD>_< HH-mm-ss>_
 
   {% include 
@@ -218,5 +225,6 @@ caption="Firefox: Save as HAR file"
 max-width="100%" 
  %}
 
-5. Upload the HAR file to your support case.  
+{:start="5"}
+1. Upload the HAR file to your support case.  
    **TIP**: Make sure to read the [important notes](#important) mentioned above.
