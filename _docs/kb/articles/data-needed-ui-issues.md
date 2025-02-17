@@ -49,12 +49,12 @@ Here are instructions on how to capture a HAR file for various browsers:
 image.html 
 lightbox="true" 
 file="/images/troubleshooting/data-needed-00.png" 
-url="/images/troubleshooting/data-needed-00.pngg" 
+url="/images/troubleshooting/data-needed-00.png" 
 alt="Chromium: Developer tools" 
 caption="Chromium: Developer tools" 
 max-width="100%" 
  %}
-    <!--- ![chromium image 0]({{site.baseurl}}/images/troubleshooting/data-needed-00.png){: width="100%" }  -->
+    
 2. Click the **Network** tab
     ![chromium image 1]({{site.baseurl}}/images/troubleshooting/data-needed-01.png)
 3. If the " **Record** " button is not red, go ahead and click this button.
