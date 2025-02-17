@@ -218,8 +218,8 @@ max-width="100%"
   {% include 
 image.html 
 lightbox="true" 
-file="/images/troubleshooting/data-needed-12.png" 
-url="/images/troubleshooting/data-needed-12.png" 
+file="/images/troubleshooting/data-needed-13.png" 
+url="/images/troubleshooting/data-needed-13.png" 
 alt="Firefox: Save as HAR file" 
 caption="Firefox: Save as HAR file" 
 max-width="100%" 
