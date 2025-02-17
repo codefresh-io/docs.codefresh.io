@@ -12,12 +12,14 @@ Codefresh GitOps supports automated promotion scenarios tailored to various depl
 Watch the video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
 
+
 See also [Creating Promotion Flows](#{{site.baseurl}}/docs/promotions/promotion-flow/).  
 
 Recognizing that some scenarios require on-demand control, Codefresh also provides manual promotion triggers to handle specific needs. Whether deploying a hotfix to production, promoting an entire product release, or testing code changes in a targeted environment, manual promotion options offer flexibility to meet these demands.
 
 Watch the video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/}[Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
+
 
 Manual promotion triggers provide different levels of control, accessible from distinct areas of the platform, enabling:
 
@@ -53,7 +55,9 @@ Each method is available only if your account administrator has assigned permiss
 Drag-and-drop the product to the target environment to promote changes, and customize the Promotion Settings to control promotion behavior for the environment.    
 This method is useful to test changes within a specific environment. For example, QA teams wanting to test changes in staging or other internal environments.  
 
+Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"}
+
 
 
 ##### Before you begin

@@ -42,7 +42,7 @@ TBD
 
 ## Requirements
 
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/runtime/)
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.

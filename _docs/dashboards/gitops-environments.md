@@ -317,6 +317,6 @@ Manage applications from within Environments through each application's context 
 [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)
 

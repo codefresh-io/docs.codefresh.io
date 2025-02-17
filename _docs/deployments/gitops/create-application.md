@@ -19,7 +19,7 @@ Create a new application from the GitOps Apps dashboard.
 Define settings in Form mode, or edit the manifest directly in YAML mode, toggling between them as needed.  
 
 ##### Before you begin
-* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/gitops-runtime/git-sources/)  
+* Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 * Review:    
   [General configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#application-general-configuration-settings)  
   [Advanced configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings#application-advanced-configuration-settings)  
@@ -138,4 +138,4 @@ spec:
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Trigger promotions for applications]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  

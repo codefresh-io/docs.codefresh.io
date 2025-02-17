@@ -16,6 +16,7 @@ A Product groups related Argo CD applications, providing a unified perspective a
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
 
+
 {% include 
 image.html 
 lightbox="true" 
@@ -99,6 +100,7 @@ max-width="60%"
 
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+
 
 ## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  

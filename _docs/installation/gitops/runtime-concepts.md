@@ -70,6 +70,7 @@ You can add a Git Source as part of the Runtime installation, or after installat
 Watch this video for an overview:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
 
+
 For detailed information, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 ## External clusters in Runtimes

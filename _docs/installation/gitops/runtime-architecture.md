@@ -223,6 +223,33 @@ The customer environment that communicates with the GitOps Runtime and Codefresh
   Organizational Systems include the customer's tracking, monitoring, notification, container registries, Git providers, and other systems. They can be entirely on-premises or in the public cloud.   
   Either the ingress controller (ingress-based hybrid environments), or the Tunnel Client (tunnel-based hybrid environments), forwards incoming events to the GitOps Application Proxy. 
 
+## Data flow: GitOps Runtime & external systems
+The GitOps Runtime interacts with external systems and components in the customer environment to enable GitOps operations and processes.
+
+* **Runtime cluster**  
+  * Both Argo CD and Codefresh components within the Runtime interact with the Runtime cluster’s Kubernetes API server.
+  * Argo CD components also access managed clusters registered to GitOps Runtimes to deploy applications.
+
+* **Git providers**  
+  * Argo CD components access Git providers such as GitHub. Git provider credentials are always securlety stored in the customer’s cluster.
+  * Codefresh components also access the Git provider to enable UI-driven commits and pull requests.
+
+* **Container registries and Jira (optional)**  
+  If enrichment functionality is enabled, jobs can be executed within the Runtime cluster or a CI system to retrieve metadata from those container registries and Jira instances integrated with Codefresh.
+
+
+## Data reporting: GitOps Runtime to Codefresh Platform
+The GitOps Runtime reports data to the Codefresh platform, which stores the data.
+
+{: .table .table-bordered .table-hover}
+| Entity/Metadata        | Reported data             |
+| --------------         | --------------           |
+|**Kubernetes resources**     | {::nomarkdown}<ul><li>Argo CD applications</l><li>All managed resources within an Argo CD application, for example, Deployments, ConfigMaps</li><li>Argo Rollouts and ReplicaSets</li></ul>{:/}|
+|**Git commit metadata**     | {::nomarkdown}<ul><li>Commit SHA, message, and committer details (avatar URL, username)</l><li>Link to the commit in the Git provider</li></ul>{:/}|
+|**Jira issue metadata**      | {::nomarkdown}<ul><li>Jira ticket number, link, and title (if configured)</l></ul>{:/}|
+|**Docker image metadata**      | {::nomarkdown}<ul><li>Image name, digest, and repository information (if configured)</l></ul>{:/}|
+
+
 
 ## Related articles
 <!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)-->

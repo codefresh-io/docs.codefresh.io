@@ -29,6 +29,7 @@ Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/do
 Watch this video to learn how to configure an automated Promotion Flow:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
 
+
 ## Promotions with GitOps: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   
 

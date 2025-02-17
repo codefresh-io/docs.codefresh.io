@@ -157,4 +157,4 @@ For example applications, go to the [Argo CD example applications repo](https://
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  

@@ -20,15 +20,15 @@ For details, see [AWS ALB ingress configuration]({{site.baseurl}}/docs/installat
 
 When installing runtimes, the `--namespace-label` flag lets you add labels to the runtime namespace. The labels identify and grant access to the installation network, required with service mesh ingress controllers such as Istio.  
 For both CLI-based and silent installations, add the flag followed by one or more labels in `key=value` format. Note that these labels must be identical to those defined in the 'namespace' resource spec.  
-For details, see [Runtime flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#runtime-flags).
+For details, see [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 ### Internal and external ingress hosts
 
 Codefresh runtimes support defining two ingress hosts, an internal and an external ingress host, for private and public networks. Previously, runtimes supported a single ingress host for both the app-proxy and webhook ingress resources. Internal and external ingress separation allows you to expose the Codefresh app-proxy service only within your private network, while keeping the webhook ingress unchanged.  
 
-* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Ingress controller flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#ingress-controller-flags).
+* New runtime installations: The `--internal-ingress-host` flag lets you can define an ingress host for communication with the app-proxy. For details, see [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 * Existing runtimes: To add an internal ingress host, you need to commit changes to the installation repository by modifying `app-proxy ingress` and `<runtime-name>.yaml`.
-For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#optional-internal-ingress-host-configuration-for-existing-hybrid-gitops-runtimes).  
+For details, see _Internal ingress host configuration (optional)_ in [Post-installation configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#optional-internal-ingress-host-configuration-for-existing-hybrid-gitops-runtimes).  
 
 For further customizations, add annotations for internal and external ingress hosts through the `--internal-ingress-annotation` and `--external-ingress-annotation` flags.
 

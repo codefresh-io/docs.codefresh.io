@@ -16,6 +16,7 @@ Backed by the power of Argo CD, streamline the process of moving code changes th
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
 
+
 {% include 
 image.html 
 lightbox="true" 

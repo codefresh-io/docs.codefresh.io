@@ -35,8 +35,8 @@ We'll do the following:
 
 ## Requirements
 
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/create-git-source/) to store application manifests
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
   Each environment must have an application for the product.  

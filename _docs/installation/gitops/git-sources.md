@@ -13,6 +13,7 @@ The Git repository referenced by the Git Source stores application manifests and
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
 
+
 ##### Types of Git Sources  
 Codefresh allows you to create two types of Git Sources: Standard and Restricted Git Sources.
 
@@ -495,7 +496,8 @@ spec:
 
 
 ## Related articles
-[Monitoring & managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)   
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)   
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)   
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 
 
