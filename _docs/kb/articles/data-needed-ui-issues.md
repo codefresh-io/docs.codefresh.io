@@ -57,6 +57,23 @@ max-width="100%"
     
 2. Click the **Network** tab
     ![chromium image 1]({{site.baseurl}}/images/troubleshooting/data-needed-01.png)
+
+
+3. New image
+
+  {% include 
+image.html 
+lightbox="true" 
+file="/images/troubleshooting/data-needed-00.png" 
+url="/images/troubleshooting/data-needed-00.png" 
+alt="Chromium: Developer tools" 
+caption="Chromium: Developer tools" 
+max-width="100%" 
+ %}
+ 
+
+
+
 3. If the " **Record** " button is not red, go ahead and click this button.
     ![chromium image 2]({{site.baseurl}}/images/troubleshooting/data-needed-02.png)
 4. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue. You should now see network requests being populated in your developer tools. Here is an example:
