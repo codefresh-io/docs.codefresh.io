@@ -13,6 +13,9 @@ Harness the power of **Products** in Codefresh GitOps to streamline the manageme
 
 A Product groups related Argo CD applications, providing a unified perspective as the applications progress through different stages of development and deployment. By defining relationships between applications across multiple environments, Products introduce an organizational layer providing context that help manage application releases as a cohesive unit.
 
+Watch this video:
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
+
 {% include 
 image.html 
 lightbox="true" 
@@ -23,8 +26,6 @@ caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
 
-Watch this video:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
 
 
 ##### Boosting application management with Products
@@ -97,7 +98,7 @@ max-width="60%"
 %}
 
 Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 ## Tracing Product promotions through Releases
 Whenever a Product is promoted, Codefresh GitOps generates a Release, capturing the promotion orchestration across environments. The Releases tab of the product lists both ongoing and completed releases, from where you can monitor specific releases.  

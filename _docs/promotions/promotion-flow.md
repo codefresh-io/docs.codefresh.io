@@ -13,6 +13,9 @@ A Promotion Flow is a sequence of automated actions that systematically move cod
 Promotion Flows allow teams to manage their software delivery pipelines with precision, defining conditions, dependencies, and actions for each environment. Whether deploying to staging, production, or custom environments, Promotion Flows provide flexibility and control over your continuous delivery process.  
 Backed by the power of Argo CD, streamline the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
+Watch this video:
+{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
+
 {% include 
 image.html 
 lightbox="true" 
@@ -22,9 +25,6 @@ alt="Automated multi-environment Promotion Flow for multi-app product"
 caption="Automated multi-environment Promotion Flow for multi-app product"
 max-width="60%"
 %}
-
-Watch this video:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
 
 
 Review [Promotion Flow behavior: Key insights](#promotion-flow-behavior-key-insights) before creating your first Promotion Flow. 
