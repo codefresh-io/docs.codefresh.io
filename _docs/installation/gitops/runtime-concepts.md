@@ -47,7 +47,7 @@ During installation, you need to provide the URL to the Git repository defined a
 Codefresh identifies the Git provider from the URL provided, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 Watch this video for an overview: 
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}
 
 For detailed information, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
@@ -68,7 +68,8 @@ The Git Source connects to a Git repository within your organization, and stores
 You can add a Git Source as part of the Runtime installation, or after installation whenever required. The same Runtime can have multiple Git Sources. Codefresh manages the Git Source itself as an Argo CD application.
 
 Watch this video for an overview:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+
 
 For detailed information, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 

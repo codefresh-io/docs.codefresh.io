@@ -17,7 +17,7 @@ Review these articles to begin with promotions in Codefresh GitOps:
 Dive into [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/promotions/)<!--- ({{site.baseurl}}/docs/gitops-quick-start/)--> for step-by-step guides to get started efficiently.   
 
 Watch this video to see a promotion in action:  
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
 
 
 ##### Understand the components and entities 
@@ -27,7 +27,8 @@ Explore [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-c
 Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.  
 
 Watch this video to learn how to configure an automated Promotion Flow:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
+
 
 ## Promotions with GitOps: The Codefresh advantage
 Codefresh builds on the power of GitOps by fully integrating promotions into its framework, giving you enhanced visibility, control, and automation, with Git as the single source of truth.   

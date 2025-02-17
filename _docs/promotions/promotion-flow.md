@@ -14,7 +14,8 @@ Promotion Flows allow teams to manage their software delivery pipelines with pre
 Backed by the power of Argo CD, streamline the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
 Watch this video:
-{::nomarkdown}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
+
 
 {% include 
 image.html 
