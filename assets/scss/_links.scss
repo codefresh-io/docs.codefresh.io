@@ -63,5 +63,11 @@ ul > li {
     &:not([href^="https://g.codefresh.io/"]):not([href*="/docs/"]):not([href^="#"]){
       @include external-link("external-link");
     }
+
+    &[href^="https://www.youtube.com/"] {
+      &::after {
+        display: none !important;
+      }
+    }
   }
 }
