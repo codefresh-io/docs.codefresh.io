@@ -27,8 +27,8 @@ The Audit Log is divided into actions audited (All Audits), and triggers and web
 
 {{site.data.callout.callout_tip}}
 **TIP**  
-The maximum record limit for audit logs is 150,000 entries.  
-If you need to retrieve more logs, refine your filters to ensure you can access the most relevant data efficiently.
+The maximum record limit for audit logs is 50,000 entries.  
+To retrieve more logs, refine your filters to efficiently access the most relevant data.
 {{site.data.callout.end}}
 
 
