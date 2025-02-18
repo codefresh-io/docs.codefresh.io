@@ -215,7 +215,7 @@ Let's see how to achieve this for a single team, the Hulk team.
       * **Path**: `.`
     1. Leave the other settings empty, and click **Next**.
     1. Specify the deployment settings: 
-      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `cf-hulk-app-manifests` as the namespace. The `cf-` prefox is mandatory for the namespace. If the namespace does not exist, Codefresh will automatically create it.
+      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `cf-hulk-app-manifests` as the namespace. The `cf-` prefix is mandatory for the namespace. If the namespace does not exist, Codefresh will automatically create it.
       * **Allowed Clusters & Namespaces**: Select the relevant cluster and namespace to which to deploy the applications. Let's select `hulk-apps-zone` as the namespace to which to deploy applications.
     1. Click **Create**.
   You have now created the Restricted Git Source.
