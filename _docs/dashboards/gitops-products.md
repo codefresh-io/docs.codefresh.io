@@ -153,117 +153,13 @@ Connect commits to the application repo to tickets in your issue-tracking tool o
   max-width="60%" 
 %}
 
-<!---
 
 
 
-### View deployment (Timeline) history for applications
-Review the deployments for a specific application in the Products dashboard. 
-
-1. In the Codefresh UI, from the sidebar, select **Products**.
-1. Select the Product with the application for which to take action.
-1. In the Product Dashboard, go to the environment with the application.
-1. Click the context menu and then select **Application info > Timeline** to view deployment history.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-environments/app-timeline-view.png" 
-	url="/images/gitops-environments/app-timeline-view.png" 
-	alt="View deployment history for application from Products dashboard" 
-	caption="View deployment history for application from Products dashboard"
-  max-width="60%" 
-%}
-1. To view all the application’s tabs, including the Current State, Configuration, and others, click the link to **Full View** at the top.
 
 
-### Manage applications in products
-Manage applications grouped within a product through each application's context menu, that includes manual sync, refresh, and other options.
-
-1. In the Codefresh UI, from the sidebar, select **Products**.
-1. Select the Product with the application for which to take action.
-1. In the Product Dashboard, go to the environment with the application.
-1. Click the context menu to the right of the application, and select the option:
-
-  * [Quick View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#view-deployment-configuration-info-for-selected-argo-cd-application): View deployment, definition, and event information for the selected application in the same location.
-  * [Diff View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#analyze-out-of-sync-applications-in-diff-view): Analyze out of sync applications. This option is disabled when applications are synced.
-  * [Synchronize]({{site.baseurl}}/docs/deployments/gitops/manage-application/#manually-synchronize-an-argo-cd-application): Manually synchronize the application to expedite Git-to-cluster sync. 
-  * [Refresh/Hard Refresh]({{site.baseurl}}/docs/deployments/gitops/manage-application/#refreshhard-refresh-argo-cd-applications): As an alternative to manually syncing an application, either sync the application with the desired state in Git (refresh), or sync the application with the desired state Git while removing the cache (hard refresh).
-  * [Edit]({{site.baseurl}}/docs/deployments/gitops/manage-application/#edit-argo-cd-application-definitions): Update General or Advanced configuration settings for the application.
-  * [Delete]({{site.baseurl}}/docs/deployments/gitops/manage-application/#delete-argo-cd-applications): Delete the application from Codefresh.
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/app-context-menu-in-product.png" 
-	url="/images/gitops-products/app-context-menu-in-product.png" 
-	alt="Context menu with actions to manage applications within Products" 
-	caption="Context menu with actions to manage applications within Products"
-  max-width="60%" 
-%}
-
-## Troubleshooting Products
-
-Here are a few tips to troubleshoot issues you may encounter 
-
-### Applications not displayed for Product
-You have created the Product but not assigned or connected any applications to it.
-
-You must assign every application to the Product, either directly in the Products dashboard or through an annotation in the application's manifest.  
-See [Assigning applications to Products](#assigning-applications-to-products).
-
-### Applications assigned to products not displayed 
-
-##### Issue
-Applications assigned to a product are not displayed in the Product Dashboard.
-
-##### Possible cause
-One of the following:
-* No environments created
-* Application does not exist in the clusters-namespaces mapped to existing environments.
-
-##### Possible solution
-Applications assigned to products are only relevant in the context of the environments they are defined in.
-Either create an environment, or add the cluster-namespace defined for the application to the existing environment's definition.
-
-**Step 1: Create an Environment**  
-* If required, [Create an Environment]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments).
 
 
-**Step 2: Add application's destination settings to Environment definition** 
-1. In the Codefresh UI, from the sidebar, select **Environments**.  
-  In the example below, there are two environments defined: `test` and `prod`. There are no applications in the `test` environment.
-   
-   {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/trble-env-without-apps.png" 
-	url="/images/gitops-products/trble-env-without-apps.png" 
-	alt="Defined environment without applications" 
-	caption="Defined environment without applications"
-  max-width="60%" 
-  %}
-
-{:start="2"}  
-1. Mouse over the toolbar for the Environment and click {::nomarkdown}<img src="../../../images/icons/edit.png?display=inline-block">{:/}.
-1. Check the **Clusters and Namespaces** mapped to the environment.  
-  In the example, the namespace `dev` is mapped to this environment.
-
-  {% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/trble-edit-env-settings.png" 
-	url="/images/gitops-products/trble-edit-env-settings.png" 
-	alt="Example: Environment settings" 
-	caption="Example: Environment settings"
-  max-width="60%" 
-  %} 
-
-{:start="4"}  
-1. Add the namespace defined for the application to the Environment settings.
-1. Go back to the Product Dashboard.  
-  You will now see your application in the product and in the correct environment.
--->
 
 ## Related articles
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  

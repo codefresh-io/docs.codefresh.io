@@ -11,7 +11,7 @@ toc: true
 In GitOps-driven promotions with Codefresh, environments, products, and applications are the foundational entities that enable seamless deployment and lifecycle management. These quick starts guide you through creating and managing these entities to ensure structured and efficient application delivery.
 
 * **Environments** represent the various stages in your software delivery process, such as testing, staging, or production. Each environment serves a specific purpose, ensuring visibility into applications as they progress through development before reaching production.  
-For details, see [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+For details, see [About Environments]({{site.baseurl}}/docs/environments/environments-overview/).
 
 * **Products** bridge the gap between environments and applications. By grouping and managing applications as cohesive units, products simplify coordination, enhance organization, and amplify your ability to manage complex deployments.  
 For details, see [About Products]({{site.baseurl}}/docs/products/about-products/).
