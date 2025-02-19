@@ -1,6 +1,7 @@
 ---
 title: "Manage Products and applications in Environments"
 description: "Promote Products and manage applications from the Environments dashboard"
+group: environments
 toc: true
 ---
 

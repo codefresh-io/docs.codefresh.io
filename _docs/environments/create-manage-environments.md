@@ -1,6 +1,7 @@
 ---
 title: "Create and manage Environments"
 description: "Create and manage Environments to track SDLC for Argo CD applications"
+group: environments
 toc: true
 ---
 
