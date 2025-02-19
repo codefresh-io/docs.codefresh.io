@@ -30,7 +30,16 @@
     - title: Simple Promotion Flow with multiple environments
       localurl: /argohub/gitops-quick-start/multi-env-sequential-flow/ 
 
-
+- title: Environments
+  icon: ../images/home-icons/environments.svg
+  url: ""
+  links:
+    - title: About Environments
+      localurl: /argohub/environments/environments-overview/
+    - title: Create and manage Environments
+      localurl: /argohub/environments/create-manage-environments/      
+    - title: Manage Products and applications in Environments
+      localurl: /argohub/environments/manage-apps-in-environments/   
 
 - title: Applications
   icon: ../images/home-icons/deployment.svg

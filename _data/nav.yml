@@ -388,7 +388,16 @@
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
-
+- title: Environments
+  url: "/environments"
+  pages:
+    - title: About Environments
+      localurl: "/environments-overview"
+    - title: Create and manage Environments
+      localurl: "/create-manage-environments"     
+    - title: Manage Products and applications in Environments
+      localurl: "/manage-apps-in-environments"  
+      
 - title: Products
   url: "/products"
   pages:
