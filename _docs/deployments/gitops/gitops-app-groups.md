@@ -23,7 +23,7 @@ max-width="60%"
 
 Assign an application to one or more Groups when you create the application, or through the Configuration settings for existing applications. Changes to the Group have no impact on its applications.  
 
-You can also monitor and manage them in the GitOps Environments and Products dashboards by creating Environment and Product custom resources. See [GitOps Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).  
+You can also monitor and manage them in the GitOps Environments and Products dashboards by creating [Environments]({{site.baseurl}}/docs/environments/create-manage-environments/) and [Products]({{site.baseurl}}/docs/products/create-product/).
 
 
 

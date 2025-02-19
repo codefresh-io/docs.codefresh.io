@@ -114,7 +114,7 @@ Codefresh provides a holistic view of environments where product applications ar
 See [About Products]({{site.baseurl}}/docs/products/about-products/).
 
 ##### Promotions and Argo CD applications
-Codefresh GitOps simplifies promotions, enabling controlled deployments across environments with minimal ef
+Codefresh GitOps simplifies promotions, enabling controlled deployments across environments with minimal effort.
 
 
 {% include
