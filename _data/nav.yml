@@ -392,11 +392,11 @@
   url: "/environments"
   pages:
     - title: About Environments
-      localurl: "/environments-overview"
+      url: "/environments-overview"
     - title: Create and manage Environments
-      localurl: "/create-manage-environments"     
+      url: "/create-manage-environments"     
     - title: Manage Products and applications in Environments
-      localurl: "/manage-apps-in-environments"  
+      url: "/manage-apps-in-environments"  
       
 - title: Products
   url: "/products"
