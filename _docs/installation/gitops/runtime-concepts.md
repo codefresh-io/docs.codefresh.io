@@ -16,7 +16,9 @@ In the same account, you can install multiple GitOps Runtimes, provided each Run
 * Is installed on a different cluster
 * Has a unique name
 
+
 The Runtime installation command provides a default name (`codefresh`) for the Runtime. When installing additional Runtimes, make sure you use different names. This naming requirement prevents conflicts and ensures seamless operation across your clusters.
+
 
 
 ## Git tokens in Runtimes 
