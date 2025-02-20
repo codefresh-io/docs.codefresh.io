@@ -451,10 +451,9 @@ steps:
 You can use multiple steps in a hook in both the pipeline and the step level. 
 
 ### Hooks in parallel steps
-Hooks are not supported in [parallel step types]({{site.baseurl}}/docs/pipelines/advanced-workflows/).  
-However, you can add hooks to any other step type, even if the step is nested within a parallel step.
+Hooks are _not supported in [parallel step types]({{site.baseurl}}/docs/pipelines/advanced-workflows/)_.  
 
-##### Example
+However, you can add hooks to any other step type, even if the step is nested within a parallel step, as in the example below.
 
 ```yaml
 
