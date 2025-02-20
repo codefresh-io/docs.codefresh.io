@@ -976,7 +976,7 @@ App-Proxy requires a Kubernetes cluster:
   The ingress connection **must** have a hostname assigned for this route, and **must** be configured to perform SSL termination.
 
 >**NOTE**  
-Currently, App-Proxy is supported for both SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Server.
+Currently, App-Proxy is supported for both SaaS and on-prem versions of GitHub and GitLab, and Bitbucket Data Center.
 
 ##### Install App-Proxy
 

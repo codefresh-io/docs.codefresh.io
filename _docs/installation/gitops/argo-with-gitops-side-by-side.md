@@ -164,7 +164,7 @@ where:
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
-* Bitbucket Server: `<server-url>`
+* Bitbucket Data Center: `<server-url>`
 {% endif %}
 
 

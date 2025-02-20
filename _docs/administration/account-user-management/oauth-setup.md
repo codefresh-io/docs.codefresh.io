@@ -62,7 +62,7 @@ Create a custom OAuth2 Application for Codefresh in your Git provider accounts w
 Supported Git providers:
 * GitHub and GitHub Enterprise
 * GitLab Cloud and GitLab Server
-* Bitbucket Cloud (hosted) and Bitbucket Server (hybrid)
+* Bitbucket Cloud (hosted) and Bitbucket Data Center (hybrid)
 
 
 <br>
@@ -111,7 +111,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:
   * GitHub: Application ID from the URL, Client ID, and the client secret  
   * GitLab Cloud and Server: Application ID and Secret
-  * Bitbucket Server: Key and Secret
+  * Bitbucket Data Center: Key and Secret
 
 
 <br>
@@ -130,7 +130,7 @@ Create a K8s secret in the runtime cluster, using the example below as a guideli
 Make sure you have the following handy:
 * GitHub: Application ID from the URL, Client ID, and the client secret  
 * GitLab Cloud and Server: Application ID and Secret
-* Bitbucket Server: Key and Secret
+* Bitbucket Data Center: Key and Secret
 
 
 ##### How to

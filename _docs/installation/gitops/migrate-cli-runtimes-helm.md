@@ -25,7 +25,7 @@ Make sure you have:
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
-  * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.  
+  * Bitbucket Cloud and Bitbucket Data Center: Required, and is your username for the Bitbucket Cloud/Bitbucket Data Center account.  
 * CLI version 0.1.57 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
@@ -73,7 +73,7 @@ cf migrate <RUNTIME_NAME> \
   * `<GIT_USER>` is optional depending on the Git provider, and is your user or ogranization name:
         * GitHub and GitHub Enterprise: Not required. 
         * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy).
-        * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
+        * Bitbucket Cloud and Bitbucket Data Center: Required, and is your username for the Bitbucket Cloud/Bitbucket Data Center account. 
 1. Continue with [Step 3: Select Hybrid Runtime install option](#step-3-select-hybrid-runtime-install-option). 
 
 ## Step 3: Select Hybrid Runtime install option
