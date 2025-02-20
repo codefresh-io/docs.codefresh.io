@@ -7,7 +7,7 @@ redirect_from:
 toc: true
 ---
 
-Hooks in pipelines allow you to run specific actions at the end and the beginning of the pipeline, as well as before/after a step.
+Hooks in pipelines allow you to run specific actions at the end and the beginning of the pipeline, as well as before or after a step.
 
 Hooks can be a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as you need to define:
 
@@ -163,7 +163,7 @@ It is possible to define all possible hooks (`on_elected`, `on_finish`, `on_succ
 
 You can also define hooks for individual steps inside a pipeline. This capability allows you to enforce more granular control on defining prepare/cleanup phases for specific steps. 
 
-The syntax for step hooks is the same as pipeline hooks:  `on_elected`, `on_finish`, `on_success`, `on_fail`. The only difference is that you need to add the respective segment within a step instead of the at the root of the pipeline.
+The syntax for step hooks is the same as pipeline hooks: `on_elected`, `on_finish`, `on_success`, `on_fail`. The only difference is that you need to add the respective segment within a step instead of the at the root of the pipeline.
 
 For example, this pipeline will always run a cleanup step after integration tests (even if the tests themselves fail).
 
@@ -450,6 +450,40 @@ steps:
 
 You can use multiple steps in a hook in both the pipeline and the step level. 
 
+### Hooks in parallel steps
+Hooks are _not supported in [parallel step types]({{site.baseurl}}/docs/pipelines/advanced-workflows/)_.  
+
+However, you can add hooks to any other step type, even if the step is nested within a parallel step, as in the example below.
+
+```yaml
+
+version: "1.0"
+steps:
+  root_parallel_step:
+    type: parallel
+    steps:
+      child_step_a:
+        image: alpine
+        commands:
+          - exit 0
+        hooks:
+          on_finish:
+            exec:
+              image: alpine
+              commands:
+                - echo "✅ This is a hook in the 'child_step_a' step nested within 'root_parallel_step'. The hook will work because 'child_step_a' is a 'freestyle' step"
+      child_step_b:
+        image: alpine
+        commands:
+          - exit 0
+        hooks:
+          on_finish:
+            exec:
+              image: alpine
+              commands:
+                - echo "✅ This is a hook in the `child_step_b' step which is also nested within 'root_parallel_step'. The hook will work because 'child_step_b' is a 'freestyle' step"
+```
+
 ### Referencing the 'working_directory' in step hooks
 To access the [`working_directory`]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#working-directories) of a regular step through a hook, use the prefix `parentSteps.<step-name>` For example, to access the `working_directory` of the `clone` step, use {% raw %} `${{parentSteps.clone}}` {% endraw %}.  
 
@@ -614,12 +648,14 @@ hooks:
 {% endraw %}
 {% endhighlight %}
 
+
+
+
 ## Limitations of pipeline/step hooks
 
-With the current implementation of hooks, the following limitations are present:
+The current implementation of hooks has the following limitations:
 
 * The [debugger]({{site.baseurl}}/docs/pipelines/debugging-pipelines/) cannot inspect commands inside hook segments.
-* Hooks are not supported for [parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/).
 * Storage integrations don't resolve in hooks (for example, [test reports]({{site.baseurl}}/docs/testing/test-reports/#producing-allure-test-reports-from-codefresh-pipelines)).
 
 ## Related articles
