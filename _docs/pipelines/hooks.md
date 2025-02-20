@@ -458,19 +458,7 @@ However, you can add hooks to any other step type, even if the step is nested wi
 ```yaml
 
 version: "1.0"
-
 steps:
-  root_step:
-    image: alpine
-    commands:
-      - exit 0
-    hooks:
-      on_finish:
-        exec:
-          image: alpine
-          commands:
-            - echo "✅ This is a hook in 'root_step' step. It will work, because 'root_step' step type is 'freestyle'"
-
   root_parallel_step:
     type: parallel
     steps:
