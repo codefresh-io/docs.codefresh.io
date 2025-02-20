@@ -337,12 +337,11 @@ Your Azure DevOps repositories will be available when [creating a new project in
 Atlassian stash is only available for an on-premises connection. Follow the same instructions as Bitbucket.
 You also need to provide the URL of the Stash server in your organization.
 
-This option is only for Atlassian stash until version 3.10 which is the old version. It was then renamed
-to Bitbucket server.
+This option is only for Atlassian stash until version 3.10 which is the old version. Bitbucket Data Center is the new name of Atlassian Stash.
 
 ## Bitbucket Data Center
 
-Bitbucket Data Center is the new and current name of Bitbucket Server. Bitbucket Data Center is supported in both on-premises and Runner installations.
+Bitbucket Data Center is the new and current name of Bitbucket Server and Atlassian Stash. Bitbucket Data Center is supported in both on-premises and Runner installations.
 
 Codefresh supports Bitbucket Data Center versions 5.4.0+ since those expose the API used by the integration.
 
