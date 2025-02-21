@@ -1,0 +1,38 @@
+---
+title: "Quick start: Simple Promotion Workflow"
+description: "Create a workflow template to use as pre- or post-action"
+group: gitops-quick-start
+toc: true
+---
+
+## Simple Promotion Workflow
+In this quick start guide, we'll see how to create an Argo WorkflowTemplate using the UI, that you can use in your prmotionb flow as pre- or post-action.
+
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
+  For a Promotion Flow, you need at least three environments.
+  Here we use `dev`, `qa`, and `prod`.
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
+  Each environment must have an application for the product. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
+* [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
+  this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder)
+
+## Example 1: Slack notification
+
+Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTewmplate[(https://argo-workflows.readthedocs.io/en/latest/workflow-templates/). 
+You can do so directly from the UI.
+
+##### Step-by-step
+
+1. In the Codefresh UI, from the sidebar, select **Promotion Workflows**, and click **Add Promotion Workflow**.
+1. Define the following:
+    1. **Name**: A unique name for the Promotion Workflow, `slack-notification` for the quick start.
+    1. **Description**: A meaningful comment on what the workflowTemplate is doing, `A template to send a Slack notification when a promotion start` in our case.
+    1. **Resource Filename**: the name of the manifest file that will be saved under the `resources/control-planes/promotion-workflows`
+       folder in your Shared Configuration Repository. LEave as-is for the quick-start.
+
+## Related articles
+[Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/)   
+[Promotion Workflow]({{site.baseurl}}/docs/promotions/promotion-workflow/)   
+
