@@ -124,7 +124,7 @@ spec:
             arguments:
               parameters:
                 - name: SLACK_CHANNEL
-                  value: `laurent.rochette@octopus.com`
+                  value: 'laurent.rochette@octopus.com'
                 - name: SLACK_TEXT
                   value: 'Application `{{ workflow.parameters.APP_NAME }}` is ready to be promoted'
                 - name: SLACK_TOKEN
@@ -135,6 +135,19 @@ spec:
 1. Feel free to add a **commit message**
 1. Click on **Commit**. It will take you back to the Promotion Workflows page.
    After a few minutes, the new Promotion Worflow should appear in the list
+
+{% include
+	image.html
+	lightbox="true"
+	file="/images/quick-start/promotion-workflow/new-promotion-workflow.png"
+	url="/images/quick-start/promotion-workflow/new-promotion-workflow.png"
+	alt="Promotion workflow quick start: New promotion workflow"
+	caption="Promotion workflow quick start: New promotion workflow"
+ max-width="50%"
+%}
+
+## Example 2: Open a Service Now Change Request
+## Example 3: Close the Service Now Change Request
 
 
 ## Related articles
