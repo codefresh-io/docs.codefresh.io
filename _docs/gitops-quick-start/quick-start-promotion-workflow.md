@@ -73,10 +73,10 @@ You can do so directly from the UI.
               - name: LOG_LEVEL
                 value: '{{ inputs.parameters.LOG_LEVEL }}'
               - name: SLACK_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: 'slack-token'
-                  key: token          
+                valueFrom:
+                  secretKeyRef:
+                    name: 'slack-token'
+                    key: token          
     ```
     **Notes**:
     * We are using an existing template you can find in [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2)
