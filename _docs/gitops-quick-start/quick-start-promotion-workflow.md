@@ -17,7 +17,7 @@ In this quick start guide, we'll see how to create an Argo WorkflowTemplate usin
 
 ## Example 1: Slack notification
 
-Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTewmplate[(https://argo-workflows.readthedocs.io/en/latest/workflow-templates/).
+Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTewmplate](https://argo-workflows.readthedocs.io/en/latest/workflow-templates/).
 You can do so directly from the UI.
 
 ##### Step-by-step
@@ -99,6 +99,8 @@ You can do so directly from the UI.
 	caption="Promotion workflow quick start: New promotion workflow"
  max-width="50%"
 %}
+
+{:start="10"}
 
 1. Your Promotion Workflow is now ready to be used in your Promotion Flow
 
