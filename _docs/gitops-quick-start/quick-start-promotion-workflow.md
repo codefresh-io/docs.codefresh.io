@@ -9,7 +9,7 @@ toc: true
 In this quick start guide, we'll see how to create an Argo WorkflowTemplate using the UI, that you can use in your prmotionb flow as pre- or post-action.
 
 * [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests.
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
@@ -61,20 +61,25 @@ You can do so directly from the UI.
       entrypoint: slack-promotion
       templates:
         - name: slack-promotion
-          dag:
-            tasks:
-              - name: send-message
-                templateRef:
-                  name: argo-hub.slack.0.0.2
-                  template: send-message
-                arguments:
-                  parameters:
-                    - name: SLACK_CHANNEL
-                      value: 'name@domain.com'
-                    - name: SLACK_TEXT
-                      value: 'Application `{{ workflow.parameters.APP_NAME }}` is ready to be promoted'
-                    - name: SLACK_TOKEN
-                      value: slack-token
+          container:
+            name: main
+            imagePullPolicy: Always
+            image: quay.io/codefreshplugins/argo-hub-slack-post-to-channel:0.0.2-main
+            command:
+              - python
+              - /slack/slack.py
+            env:
+              - name: SLACK_CHANNEL
+                value: 'name@domain.com'
+              - name: SLACK_MESSAGE
+                value: 'Application `{{ workflow.parameters.APP_NAME }}` is ready to be promoted'
+              - name: LOG_LEVEL
+                value: '{{ inputs.parameters.LOG_LEVEL }}'
+              - name: SLACK_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: 'slack-token'
+                  key: token          
     ```
     **Notes**:
     * We are using an existing template you can find in [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2)
