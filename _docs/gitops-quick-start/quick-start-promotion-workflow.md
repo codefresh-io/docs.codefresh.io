@@ -6,15 +6,12 @@ toc: true
 ---
 
 ## Simple Promotion Workflow
-In this quick start guide, we'll see how to create an Argo WorkflowTemplate using the UI, that you can use in your prmotionb flow as pre- or post-action.
+In this quick start guide, we'll see how to create an Argo WorkflowTemplate using the UI, that you can use in your promotion flow as pre- or post-action.
 
+## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests.
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
-  For a Promotion Flow, you need at least three environments.
-  Here we use `dev`, `qa`, and `prod`.
-* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
-  Each environment must have an application for the product. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
 * [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
   this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder)
 
