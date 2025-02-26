@@ -52,6 +52,7 @@ You can do so directly from the UI.
 1. Before we commit the file, we are going to add a spec. So replace line 13 by the following block:
     ```
     spec:
+      serviceAccountName: promotion-template
       arguments:
         parameters:
           - name: APP_NAME
@@ -71,7 +72,7 @@ You can do so directly from the UI.
               - name: SLACK_MESSAGE
                 value: 'Application `{{ workflow.parameters.APP_NAME }}` is ready to be promoted'
               - name: LOG_LEVEL
-                value: '{{ inputs.parameters.LOG_LEVEL }}'
+                value: 'info'
               - name: SLACK_TOKEN
                 valueFrom:
                   secretKeyRef:
@@ -103,6 +104,17 @@ You can do so directly from the UI.
 {:start="10"}
 
 1. Your Promotion Workflow is now ready to be used in your Promotion Flow
+1. When you run your Promotion Flow using this Promotion Workflow, you should get a Slack message.
+
+{% include
+	image.html
+	lightbox="true"
+	file="/images/quick-start/promotion-workflow/slack-message.png"
+	url="/images/quick-start/promotion-workflow/slack-message.png"
+	alt="Promotion workflow quick start: New slack message"
+	caption="Promotion workflow quick start: New slack message"
+ max-width="50%"
+%}
 
 ## Example 2: Open a Service Now Change Request
 ## Example 3: Close the Service Now Change Request
