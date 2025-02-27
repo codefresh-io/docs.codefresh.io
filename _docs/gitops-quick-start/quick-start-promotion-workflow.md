@@ -103,7 +103,7 @@ You can do so directly from the UI.
 
 {:start="10"}
 
-1. Your Promotion Workflow is now ready to be used in your Promotion Flow
+1. Your Promotion Workflow is now ready to be used in your Promotion Flow.
 1. When you run your Promotion Flow using this Promotion Workflow, you should get a Slack message.
 
 {% include
@@ -116,9 +116,10 @@ You can do so directly from the UI.
  max-width="50%"
 %}
 
+<!--
 ## Example 2: Open a Service Now Change Request
 ## Example 3: Close the Service Now Change Request
-
+-->
 
 ## Related articles
 [Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/)   
