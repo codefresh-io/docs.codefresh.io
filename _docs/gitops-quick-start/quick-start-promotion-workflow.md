@@ -17,7 +17,7 @@ In this quick start guide, we'll see how to create an Argo WorkflowTemplate usin
 
 ## Example 1: Slack notification
 
-Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTewmplate](https://argo-workflows.readthedocs.io/en/latest/workflow-templates/).
+Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTemplate](https://argo-workflows.readthedocs.io/en/latest/workflow-templates/).
 You can do so directly from the UI.
 
 ##### Step-by-step
@@ -80,7 +80,7 @@ You can do so directly from the UI.
                     key: token          
     ```
     **Notes**:
-    * We are using an existing template you can find in [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2)
+    * We are using a hardcoded version (for simplification) of an existing template you can find in [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2)
     * SLACK_CHANNEL can either be the name of a Slack channel or the email of a user.
     * `slack-token` is the name of the secret holding your Slack Token (in the `token` key)
 
