@@ -36,7 +36,7 @@ We have introduced a new GitHub status check feature to make tracking your deplo
    %}
  
 
-For details, see [Tracking releases for products]({{site.baseurl}}/docs/promotions/product-releases/).
+For details, see [Tracking releases for Products]({{site.baseurl}}/docs/promotions/product-releases/).
 
 
 
