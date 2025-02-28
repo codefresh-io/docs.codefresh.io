@@ -11,7 +11,7 @@ Codefresh keeps a log of all actions that happen at all times based on API calls
 
 We have now increased the audit limit from 15,000 to 50,000, which means you can access more data on how you use your Codefresh account.  
 
-[Find out more]({{site.baseurl}}/docs/administration/account-user-management/audit/).
+For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
 
 
 
