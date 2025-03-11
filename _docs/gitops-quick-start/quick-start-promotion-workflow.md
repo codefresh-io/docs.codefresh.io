@@ -5,8 +5,17 @@ group: gitops-quick-start
 toc: true
 ---
 
-## Simple Promotion Workflow
-In this quick start guide, we'll see how to create an Argo WorkflowTemplate using the UI, that you can use in your promotion flow as pre- or post-action.
+## Simple Promotion Workflow quick start
+In this quick start guide, we'll guide you through creating a Promotion Workflow in Codefresh.  
+
+Promotion Workflows are Argo WorkflowTemplates that allow you to automate tasks such as notifications, validations, or additional deployments during the promotion process. They can be used in Promotion Flows to automate tasks before or after promotion.
+For detailed information, see [Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/). 
+
+In this example, you'll create a simple Promotion Workflow that sends a Slack notification when a promotion starts.  
+The Workflow runs a container from Codefresh’s Argo Hub, which posts a message to Slack.
+
+
+
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
@@ -15,24 +24,22 @@ In this quick start guide, we'll see how to create an Argo WorkflowTemplate usin
 * [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
   this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder)
 
-## Example 1: Slack notification
+## Example 1: Create Promotion Workflow for Slack notifications
 
-Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTemplate](https://argo-workflows.readthedocs.io/en/latest/workflow-templates/).
+Creating a Promotion Workflow is as simple as creating an [Argo WorkflowTemplate](https://argo-workflows.readthedocs.io/en/latest/workflow-templates/){:target="\_blank"}.
 You can do so directly from the UI.
+
+For simplification, we are using a hard coded version of an existing template from [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2){:target="\_blank"}.
 
 ##### Step-by-step
 
-1. In the Codefresh UI, from the sidebar, select **Promotion Workflows**, and
-   click **Add Promotion Workflow**.
+1. In the Codefresh UI, from the sidebar, select **Promotion Workflows**, and click **Add Promotion Workflow**.
 1. Define the following:
     1. **Name**: A unique name for the Promotion Workflow, `slack-notification`
     for the quick start.
-    1. **Description**: A meaningful comment on what the workflowTemplate is
-    doing, `A template to send a Slack notification when a promotion start` in
-    our case.
-    1. **Resource Filename**: the name of the manifest file that will be saved
-    under the `resources/control-planes/promotion-workflows`
-    folder in your Shared Configuration Repository. Leave as-is for the
+    1. **Description**: A meaningful comment on the purpose of the workflowTemplate, for example, `A template to send a Slack notification when a promotion start` in our case.
+    1. **Resource Filename**: The name of the manifest file that will be saved in `resources/control-planes/promotion-workflows`
+    folder in your Shared Configuration Repository. By default, this is identical to the Name of the Workflow. Leave as-is for the
     quick-start.
 
 {% include
@@ -47,10 +54,9 @@ You can do so directly from the UI.
 
 {:start="3"}
 1. Click **Add**.
-1. Select a **template**, for this quick-start, select the **Blank Skeleton File**
-1. Click **Next**
-1. Before we commit the file, we are going to add a spec. So replace line 13 by the following block:
-    ```
+1. For the quick start, select **Blank Skeleton File** as the Workflow Template, and click **Next**.
+1. In the YAML editor on the right, replace the `spec` in line 13 with the following block:
+    ```yaml
     spec:
       serviceAccountName: promotion-template
       arguments:
@@ -79,17 +85,16 @@ You can do so directly from the UI.
                     name: 'slack-token'
                     key: token          
     ```
-    **Notes**:
-    * We are using a hardcoded version (for simplification) of an existing template you can find in [our library](https://github.com/codefresh-io/argo-hub/tree/main/workflows/slack/versions/0.0.2)
-    * SLACK_CHANNEL can either be the name of a Slack channel or the email of a user.
-    * `slack-token` is the name of the secret holding your Slack Token (in the `token` key)
+  where:  
+  * `SLACK_CHANNEL` can either be the name of a Slack channel or the email of a user.
+  * `slack-token` is the name of the secret holding your Slack Token, in the `token` key.
 
 
-{:start="7"}
-1. Click on **Commit**
-1. Feel free to add a **commit message**
-1. Click on **Commit**. It will take you back to the Promotion Workflows page.
-   After a few minutes, the new Promotion Workflow should appear in the list
+{:start="6"}
+1. Click **Commit**
+1. Optional. Feel free to add a **Commit Message**.
+1. Click **Commit** again.  
+   After a few minutes, the new Promotion Workflow is displayed in the Promotion Workflows list.
 
 {% include
 	image.html
@@ -101,10 +106,9 @@ You can do so directly from the UI.
  max-width="50%"
 %}
 
-{:start="10"}
-
-1. Your Promotion Workflow is now ready to be used in your Promotion Flow.
-1. When you run your Promotion Flow using this Promotion Workflow, you should get a Slack message.
+## Using Promotion Workflows
+Once you create Promotion Workflows, you can use them in any Promotion Flow.
+When you run your Promotion Flow using this Promotion Workflow, you should get a Slack message as in the example below.
 
 {% include
 	image.html
@@ -121,6 +125,10 @@ You can do so directly from the UI.
 ## Example 3: Close the Service Now Change Request
 -->
 
-## Related articles
-[Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/)   
-[Promotion Workflow]({{site.baseurl}}/docs/promotions/promotion-workflow/)   
+
+## What's next
+The next quick start will guide you through adding Promotion Workflows to each environment, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
+
+[Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
+
+
