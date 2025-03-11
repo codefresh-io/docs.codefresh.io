@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-In the previous quick start we [created environments],  
+
 
 ## Products quick start
 

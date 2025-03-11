@@ -40,7 +40,7 @@ Create a product from the Product page.
 To create a product for a new or an existing application, see [Configuring applications]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products).
 
 ##### Before you begin
-* Create one or more [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-gitops-environments)
+* Create one or more [Environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)
 
 ##### How to
 1. In the Codefresh UI, from the sidebar, select **Products**.
