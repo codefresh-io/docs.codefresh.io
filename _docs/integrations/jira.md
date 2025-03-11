@@ -19,7 +19,7 @@ For information on Jira integration for notifications, see [Jira notification in
 
  When set up, you can reference the specific Jira integration in the pipeline by name for Codefresh to automatically retrieve the integration credentials for authentication. This functionality avoids the need to repeatedly define authentication credentials. 
  
-When you add a new Jira integration in Codefresh, you can authenticate using the username and password credentials for your Jira account.
+When you add a new Jira integration in Codefresh, you can authenticate using the username and password credentials of your Jira account.
 
 ## Set up Jira integration for pipelines in Codefresh
 <!---The goal of the Codefresh [GitOps Dashboard]({{site.baseurl}}/docs/ci-cd-guides/gitops-deployments/) is to provide the highest observability into your deployments. The Codefresh GitOps Dashboard tags the Jira issues associated to deployments automatically through the Codefresh Jira Integration. This section will provide an overview of setting up the integration. -->
@@ -32,7 +32,7 @@ The name assigned to the integration must be unique within the account. Using th
 
 ##### Before you begin 
 
-To authenticate, make sure you have username and password for your [Jira account](https://www.atlassian.com/software/jira){:target="\_blank"}
+* Make sure you have the username and password for your [Jira account](https://www.atlassian.com/software/jira){:target="\_blank"} for authentication
 
 ##### How to 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}. 
@@ -42,21 +42,20 @@ To authenticate, make sure you have username and password for your [Jira account
 1. To restrict access to only Codefresh admins, toggle **Allow access to all users** to OFF.
   <!--- >>When access is restricted, users **cannot** use the [CLI](https://codefresh-io.github.io/cli/){:target="\_blank"} or [API]({{site.baseurl}}/docs/integrations/codefresh-api/) to [programmatically access this Helm repository](https://codefresh-io.github.io/cli/contexts/){:target="\_blank"}.  
    Otherwise, all users from all your Codefresh teams will be able to access this Helm repository with CLI commands or API calls.  -->
-1. To authenticate with your Jira account details:
-  * Select **User/Pass**, and define the following:
+1. To authenticate with your Jira account details, select **User/Pass**, and define the following:
   * **Jira URL**: The URL of your organization, for example, `https://company-name.atlassian.net`.
   * **Username**: The username of your Jira account, usually the e-mail with which you are logged in to Jira.
   * **Password**: The Jira password/token of your Jira account. 
 
-{% include image.html 
+<!--- {% include image.html 
 lightbox="true" 
 file="/images/integrations/jira/add-jira-password.png" 
 url="/images/integrations/jira/add-jira-password.png" 
 alt="Account Information" 
 max-width="90%" 
 %}
-
-{:start="8"}
+-->
+{:start="7"}
 1. To apply the changes, click **Save**.
 
 You can now use the Jira integration in your pipelines.
