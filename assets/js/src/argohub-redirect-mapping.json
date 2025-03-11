@@ -113,5 +113,6 @@
   "/docs/gitops-quick-start/quick-start-gitops-environments/": "/argohub/gitops-quick-starts/quick-start-gitops-environments/",
   "/docs/gitops-quick-start/runtime/": "/argohub/gitops-quick-starts/runtime/",
   "/docs/gitops-quick-start/verify-requirements/": "/argohub/gitops-quick-starts/verify-requirements/",
-  "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/"
+  "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/",
+  "/docs/gitops-quick-start/quick-start-promotion-workflow/": "/argohub/gitops-quick-start/quick-start-promotion-workflow/"
 }
