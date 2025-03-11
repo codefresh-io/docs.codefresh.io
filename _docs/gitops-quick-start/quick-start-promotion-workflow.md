@@ -21,6 +21,7 @@ The Workflow runs a container from Codefresh’s Argo Hub, which posts a message
 * [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests.
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
 * [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
   this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder)
 
