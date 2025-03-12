@@ -5,7 +5,7 @@ toc: true
 ---
 
 Before installing the GitOps Runtime, ensure your environment meets the necessary system requirements, and complete the prerequisites.  
-This article outlines the Kubernetes cluster versions, minimum resource requirements, and key configurations needed for a smooth and successful Runtime installation. 
+This article outlines the Kubernetes cluster server versions, minimum resource requirements, and key configurations needed for a smooth and successful Runtime installation. 
 
 ## Minimum system requirements
 
@@ -16,13 +16,23 @@ This article outlines the Kubernetes cluster versions, minimum resource requirem
 |Helm| 3.8.0 or higher|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
-|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Data Center</li></ul>{:/}|
-|Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
+{% if page.collection != site.gitops_collection %}|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Data Center</li></ul>{:/}|{% endif %}
+{% if page.collection == site.gitops_collection %}|Git providers    |{::nomarkdown}<ul><li>GitHub</li>{:/}|{% endif %}
+|Git access tokens    | {::nomarkdown}Git Runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 
 
-## Common prerequisites
-These prerequisites are are required for both clean-cluster installations and those alongside Community Argo CD.
+## Prerequisites
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode: Runtime alongside existing Argo (bring your own Argo), or Runtime with built-in Argo (bundled Argo).
+| **Prerequisite**         |  **Required for**    |                           |
+|                          |  **Runtime with external Argo**   | **Runtime with built-in Argo**    |
+|--------------------------|-----                 |----------------------------|
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds) |✅  |✅ |
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) |- |✅ |
+| [Align Argo CD chart's minor versions](#align-argo-cd-charts-minor-versions) |✅  |- |
+| [Set Community Argo CD resource tracking to `label`](#set-community-argo-cd-resource-tracking-to-label) |✅  |- |
+
+
 
 ### Switch ownership of Argo Project CRDs
 If you already have Argo Project CRDs on your cluster, Codefresh recommends doing one of the following:
@@ -31,7 +41,7 @@ If you already have Argo Project CRDs on your cluster, Codefresh recommends doin
 * Handling the CRDs outside the chart
 
 #### (Recommended) Adopt all Argo Project CRDs
-Adopting _all CRDs_ switches ownership to the Hybrid GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
+Adopting _all CRDs_ switches ownership to the GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
  
 * Run this script _before_ installation:
 ```
@@ -42,7 +52,7 @@ curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scr
 >**NOTE**  
 If you already adopted all Argo Project CRDs, you can skip this part.
 
-You can also adopt only those CRDs that apply to Argo Rollouts. Adopting Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the Runtime cluster.
+You can also choose to adopt only those CRDs that apply to Argo Rollouts. Adopting only Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
 
 
 * Run this script _before_ installation:
@@ -64,17 +74,15 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
-## Prerequisites: Clean-cluster installation 
-For Runtime installation on a clean cluster, the cluster should not have:
+### Remove Argo Project and SealedSecret components
+For GitOps Runtime installation with built-in Argo, the _target cluster should not have_:
 * Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
 * SealedSecret controller components.
 
 
-## Prerequisites: Cluster with Community Argo CD installation 
-These prerequisites apply only for Runtime installation alongside Community Argo CD.
 
 ### Align Argo CD chart's minor versions 
-To avoid potentially incompatible changes or mismatches, ensure that the Community Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
+To avoid potentially incompatible changes or mismatches, ensure that the Runtime installation with an existing Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
 
 {{site.data.callout.callout_tip}}
 **TIP**  
@@ -130,15 +138,16 @@ If the chart's minor appversion is lower than the version used by Codefresh, you
 
 
 
-### Set Community Argo CD resource tracking to `label` 
-Set Community Argo CD to track resources using the `label` method.  If both Argo CD instances use the same tracking method, it can result in conflicts when tracking applications with the same name, or when tracking the same resource. 
+### Set resource tracking to `label` for existing Argo CD instance
 
-* In the Argo CD namespace, make sure `argocd-cm.application.resourceTrackingMethod` is either not defined, in which case it defaults to `label`, or if defined, is set to `label`.
+When installing a GitOps Runtime alongside an existing Argo CD instance, ensure that the existing Argo CD instance tracks resources using the `label` method. If both the existing Argo CD and the Runtime Argo CD use the same tracking methods, conflicts may occur when tracking applications with the same name or when tracking the same resource.
 
-
-
+1. In the Argo CD namespace, check the `argocd-cm` ConfigMap.
+1. Ensure that `argocd-cm.application.resourceTrackingMethod` is either:
+  * **Not defined**, in which case it defaults to `label`, or
+  * **Explicitly set** to `label`.
 
 
 ## Related articles
 [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)   
+{% if page.collection != site.gitops_collection %}[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/){% endif %}   

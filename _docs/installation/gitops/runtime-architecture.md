@@ -4,21 +4,49 @@ description: "View components of GitOps Runtimes"
 toc: true
 ---
 
+## GitOps Runtime architecture overview
 
-See detailed views of GitOps Runtime architecture for the different installation modes, and descriptions of the GitOps Runtime components.
+The GitOps Runtime in Codefresh provides the foundation for managing Argo CD applications using GitOps principles. It integrates with Argo CD to support continuous delivery, declarative deployments, and automated workflow execution.
 
-<!--- * [Hosted GitOps Runtime architecture](#hosted-gitops-runtime-architecture)
-* Hybrid GitOps Runtime architecture: -->
+Codefresh offers flexibility in how you can install the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD. See [Installation modes](#runtime-installation-modes).
+To optimize connectivity, the Runtime also supports different access modes, allowing communication through tunnelling or via an ingress controller. See [Access modes](#runtime-access-modes)
 
-The Hybrid GitOps Runtime supports tunnel-based and ingress-based access modes:  
+While the core components remain the same, the architecture can differ depending on the selected installation and access mode. See 
+
+
+## Runtime installation modes and architecture
+Codefresh supports two installation modes:
+
+* **Runtime alongide existing Argo CD instance**  
+  Install the GitOps Runtime alongside your existing Argo CD instance, integrating with its existing components.
+
+* **Runtime with built-in Argo CD Bundled Argo installation**  
+  Install the GitOps Runtime with all required components, including Argo CD, as a bundled installation.
+
+
+## Runtime access modes
+Each installation mode supports two access modes, which determine how the GitOps Runtime in the customer's cluster communicates with the Codefresh GitOps Platform.
+
+* **Tunnel-based access mode**    
+  Tunnel-based access mode for GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer's cluster and the GitOps Platform.  
+  Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
+
+* **Ingress-based access mode**  
+  Ingress-based access mode for GitOps Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the GitOps Platform.  
+  Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
+
+For detailed views of GitOps Runtime architecture for the different access modes, see:  
   * [Tunnel-based](#tunnel-based-hybrid-gitops-runtime-architecture)  
   * [Ingress-based](#ingress-based-hybrid-gitops-runtime-architecture)  
 
 
-The Runtime components are common to both installation modes:
+## Runtime components
+The Runtime components differ depending on the access mode:
   * [Application Proxy](#application-proxy)
   * [Argo Project](#argo-project)
   * [Event Reporters](#event-reporters)
+  * [GitOps Source Server](#gitops-source-server)  
+  * [GitOps Operator](#gitops-operator)  
   * [Application Change Revision Controller](#application-change-revision-controller)
   * [Request Routing Service](#request-routing-service)
   * [Tunnel Server](#tunnel-server)
@@ -26,25 +54,11 @@ The Runtime components are common to both installation modes:
 
 
 
-<!--- ## Hosted GitOps Runtime architecture
-In the hosted environment, the Codefresh Runtime is installed on a K8s cluster managed by Codefresh. 
-
-{% include
-   image.html
-   lightbox="true"
-   file="/images/runtime/architecture/arch-hosted.png"
- url="/images/runtime/architecture/arch-hosted.png"
-  alt="Hosted GitOps Runtime architecture"
-  caption="Hosted GitOps Runtime architecture"
-  max-width="100%"
-%}
--->
-
-## Tunnel-based Hybrid GitOps Runtime architecture
+## Tunnel-based GitOps Runtime architecture
 Tunnel-based Hybrid GitOps Runtimes use tunneling instead of ingress controllers to control communication between the GitOps Runtime in the customer's cluster and the GitOps Platform.  
 Tunnel-based runtimes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
-{% if page.url contains '/docs/' %}
+{% if page.collection != site.gitops_collection %}
 >**NOTE**  
 Tunnel-based access mode is not supported for GitOps on-premises installations.
 {% endif %}
@@ -60,7 +74,7 @@ Tunnel-based access mode is not supported for GitOps on-premises installations.
 %}
 
 
-## Ingress-based Hybrid GitOps Runtime architecture
+## Ingress-based GitOps Runtime architecture
 Ingress-based Runtimes use ingress controllers to control communication between the GitOps Runtime in the customer cluster and the GitOps Platform.  
 Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is exposed to the internet.  
 
@@ -77,14 +91,15 @@ Ingress-based Runtimes are optimal when the cluster with the GitOps Runtime is e
 %}
 
 ## Runtime components
+Runtime components specific to an access mode are indicated as such.
 ### Application Proxy
 The GitOps Application Proxy (App-Proxy) functions as the Codefresh agent, and is deployed as a service in the GitOps Runtime.  
 
-For tunnel-based Hybrid GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 
-For Hybrid GitOps Runtimes with ingress, the App-Proxy is the single point-of-contact between the GitOps Runtime, and the GitOps Clients, the GitOps Platform, and any organizational systems in the customer environment.  
+For tunnel-based GitOps Runtimes, the Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App-Proxy. 
+For ingress-based GitOps Runtime, the App-Proxy is the single point-of-contact between the GitOps Runtime, the GitOps Clients, the GitOps Platform, and any organizational systems in the customer environment.  
 
  
-The GitOps App-Proxy:  
+The App-Proxy:  
 * Accepts and serves requests from GitOps Clients either via the UI or CLI 
 * Retrieves a list of Git repositories for visualization in the Client interfaces  
 * Retrieves permissions from the GitOps Control Plane to authenticate and authorize users for the required operations 
@@ -96,7 +111,8 @@ The GitOps App-Proxy:
 ### Argo Project 
 
 The Argo Project includes:
-* Argo CD for declarative continuous deployment 
+* Argo CD for declarative continuous deployment  
+  Based on the installation mode, Argo CD is either external to the Runtime or included within the Runtime.
 * Argo Rollouts for progressive delivery 
 * Argo Workflows as the workflow engine 
 * Argo Events for event-driven workflow automation framework
@@ -159,6 +175,14 @@ The diagram below illustrates the data flow for the Application Event Reporter (
 
 1. The Application Event Reporter reports the application-change events to the Codefresh platform.
 
+### GitOps Source Server
+The GitOps Source Server retrieves Git manifest and revision information from Argo CD on request from the Event Reporter and App Proxy.
+It ensures that information for all GitOps operations is always up-to-date. 
+
+### GitOps Operator
+The GitOps Operator manages resources for Restricted GitSources and orchestrates promotions.  
+It interacts with Argo Workflows, App Proxy, and the Codefresh platform to ensure seamless promotion execution and governance.
+
 ### Application Change Revision Controller 
 
 The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment in monorepo environments. 
@@ -187,7 +211,7 @@ It receives requests from the Tunnel Client (tunnel-based) or the ingress contro
 {{site.data.callout.end}}
 
 ### Tunnel Server
-Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
+Applies only to _tunnel-based_ GitOps Runtimes.  
 The Codefresh Tunnel Server is installed in the Codefresh platform. It communicates with the enterprise cluster located behind a NAT or firewall.  
 
 The Tunnel Server:  
@@ -198,7 +222,7 @@ The Tunnel Server:
 
 
 ### Tunnel Client
-Applies only to _tunnel-based_ Hybrid GitOps Runtimes.  
+Applies only to _tunnel-based_  GitOps Runtimes.  
 
 Installed on the same cluster as the Hybrid GitOps Runtime, the Tunnel Client establishes the tunneling connection to the Tunnel Server via the WebSocket Secure (WSS) protocol.   
 A single Hybrid GitOps Runtime can have a single Tunnel Client.  
@@ -231,7 +255,7 @@ The GitOps Runtime interacts with external systems and components in the custome
   * Argo CD components also access managed clusters registered to GitOps Runtimes to deploy applications.
 
 * **Git providers**  
-  * Argo CD components access Git providers such as GitHub. Git provider credentials are always securlety stored in the customer’s cluster.
+  * Argo CD components access Git providers such as GitHub. Git provider credentials are always securely stored in the customer’s cluster.
   * Codefresh components also access the Git provider to enable UI-driven commits and pull requests.
 
 * **Container registries and Jira (optional)**  
@@ -252,7 +276,6 @@ The GitOps Runtime reports data to the Codefresh platform, which stores the data
 
 
 ## Related articles
-<!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)-->
 [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-{% if page.url contains '/docs/' %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)  {% endif %}  
+{% if page.collection != site.gitops_collection %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/){% endif %}  
  

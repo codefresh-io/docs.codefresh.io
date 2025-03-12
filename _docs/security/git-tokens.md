@@ -58,18 +58,29 @@ The token is used to:
 
 
 ## Git Runtime token scopes
-The table below lists the scopes required for Git Runtime tokens for the different Git providers. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](#git-runtime-token-in-valuesyaml).
+{% if page.collection == site.gitops_collection %}
+The table lists the scopes required for Git Runtime tokens for GitHub. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](#git-runtime-token-in-valuesyaml).
 
+| GitHub Git Runtime token                    | Required scopes         | 
+| ---------------------------- | ------------------------------ | 
+| **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}|
+|**Fine-grained** (personal or group-based) |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul></li> </ul>{:/}|
+{% endif %}
+
+{% if page.collection != site.gitops_collection %}
+The table below lists the scopes required for Git Runtime tokens for the different Git providers. You can also create a Git Runtime token with custom scopes and [add it directly to the `values.yaml` file](#git-runtime-token-in-valuesyaml).
 
 | Git provider                  | Required scopes for Git Runtime token           | 
 | ---------------------------- | ------------------------------ | 
 | GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul><li>Fine-grained (personal or group-based):<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul></li> </ul>{:/}|
 | GitLab Cloud and GitLab Server       |Can be personal or group-based:{::nomarkdown}<ul><li><code class="highlighter-rouge">api</code> (includes <code class="highlighter-rouge">read_api</code>, <code class="highlighter-rouge">read_repository</code>, and <code class="highlighter-rouge">write_repository</code>)</li></ul> {:/}**NOTE**<br>For _personal_ tokens, the token must have `write` access to the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/), and `read` access to all the repositories that Argo CD syncs from.<br>For _group_ tokens, the group must include all the repositories that Argo CD syncs from.      |             
 | Bitbucket Cloud and Bitbucket Data Center | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
+{% endif %}
+
 
 ### Git Runtime token in values.yaml
 
-You can directly add the Git Runtime token, or a reference to the Runtime secret, to your `values.yaml`. 
+You can directly add the Git Runtime token or a reference to the Runtime secret, to your `values.yaml`. 
 
 
 To skip token validation both during installation and upgrade in this scenario, add the `skipValidation` flag to `values.yaml`. 
@@ -87,6 +98,19 @@ If you set the flag to skip validation, _the onus is on you to provide a valid a
 
 
 ## Git user access token scopes
+{% if page.collection == site.gitops_collection %}
+The table below lists the scopes required for Git user access tokens with GitHub. 
+As with the Git Runtime token, you can create and use Git user tokens with custom scopes per GitOps Runtime and per Git repository to which the Runtime has access. 
+
+
+| GitHub Git user token        | Required scopes                | 
+| ---------------------------- | ------------------------------ | 
+| **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/} |
+|**Fine-grained** |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}|
+{% endif %}
+
+
+{% if page.collection != site.gitops_collection %}
 The table below lists the scopes required for Git user access tokens for the different Git providers. 
 As with the Git Runtime token, you can create and use Git user tokens with custom scopes per GitOps Runtime and per Git repository to which the Runtime has access. 
 
@@ -96,7 +120,7 @@ As with the Git Runtime token, you can create and use Git user tokens with custo
 | GitHub and GitHub Enterprise |{::nomarkdown}<ul><li>Classic:<ul><li><code class="highlighter-rouge">repo</code></li></ul><li>Fine-grained:<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}|
 | GitLab Cloud and GitLab Server       |{::nomarkdown}<ul><li><code class="highlighter-rouge">write_repository</code> (includes <code class="highlighter-rouge">read_repository</code>) </li><li><code class="highlighter-rouge">api_read</code></li></ul> {:/}  |
 | Bitbucket Cloud and Bitbucket Data Center | {::nomarkdown} <ul><li>Account: <code class="highlighter-rouge">Read</code></li><li>Workspace membership: <code class="highlighter-rouge">Read</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li><li>Repositories: <code class="highlighter-rouge">Write, Admin </code></li></ul>{:/}|
-
+{% endif %}
 
 ## Skipping token validation in values.yaml
 If you use tokens with custom scopes, or GitHub's fine-grained tokens (currently not officially supported by Codefresh), _you must skip token validation in the `values.yaml` file_ to avoid validation failures when installing GitOps Runtimes.  
@@ -124,7 +148,7 @@ If you set the flag to skip validation, _the onus is on you to provide valid and
 ## Best practices for Git token usage
 
 ### Use a service/robot account for GitOps Runtimes
-For GitOps Runtime installation, we recommend using an account not related to any specific user in your organization.  Service/robot accounts are ideal for this purpose, as they provide secure authentication, restricted permissions, and centralized management.
+For GitOps Runtime installation, we recommend using an account not associated with any specific user in your organization.  Service/robot accounts are ideal for this purpose, as they provide secure authentication, restricted permissions, and centralized management. 
 
 You need to create a service or robot account with your Git provider, generate the Git Runtime token, and use this account exclusively to install GitOps Runtimes.
 
@@ -142,4 +166,4 @@ Users can manage their Git user tokens for Runtimes, as described in [Managing G
 [Managing Git PATs]({{site.baseurl}}/docs/administration/user-self-management/manage-pats/)  
 [User settings]({{site.baseurl}}/docs/administration/user-self-management/user-settings/)  
 [Secrets for GitOps]({{site.baseurl}}/docs/security/secrets/)  
-[Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
+{% if page.collection != site.gitops_collection %}[Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/){% endif %} 
