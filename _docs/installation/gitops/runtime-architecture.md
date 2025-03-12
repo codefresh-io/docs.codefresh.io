@@ -8,14 +8,14 @@ toc: true
 
 The GitOps Runtime in Codefresh provides the foundation for managing Argo CD applications using GitOps principles. It integrates with Argo CD to support continuous delivery, declarative deployments, and automated workflow execution.
 
-Codefresh offers flexibility in how you can install the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD. See [Installation modes](#runtime-installation-modes).
-To optimize connectivity, the Runtime also supports different access modes, allowing communication through tunnelling or via an ingress controller. See [Access modes](#runtime-access-modes)
+Codefresh offers flexibility in how you can install the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD. See [Runtime installation modes and architecture](#runtime-installation-modes-and-architecture).
+To optimize connectivity, the Runtime also supports different access modes, allowing communication through tunnelling or via an ingress controller. See [Runtime access modes and architecture](#runtime-access-modes-and-architecture).
 
-While the core components remain the same, the architecture can differ depending on the selected installation and access mode. See 
+While the core components of the Runtime are the same for both installation and access modes, some components are specific to the access mode. See [Runtime components](#runtime-components).
 
 
 ## Runtime installation modes and architecture
-Codefresh supports two installation modes:
+Codefresh supports two installation modes.
 
 ### Runtime alongide existing Argo CD instance
 Install the GitOps Runtime alongside your existing Argo CD instance, integrating with its existing components.
@@ -43,7 +43,7 @@ Install the GitOps Runtime with all required components, including Argo CD, as a
   max-width="80%"
 %}
 
-## Runtime access modes
+## Runtime access modes and architecture
 Each installation mode supports two access modes, which determine how the GitOps Runtime in the customer's cluster communicates with the Codefresh GitOps Platform.
 
 ### Tunnel-based access mode Runtime architecture  
