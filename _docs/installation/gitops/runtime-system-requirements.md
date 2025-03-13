@@ -21,40 +21,47 @@ This article outlines the Kubernetes cluster server versions, minimum resource r
 |Git access tokens    | {::nomarkdown}Git Runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 
-
+{% if page.collection != site.gitops_collection %}
 ## Prerequisites
-This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: alongside existing Argo (bring your own Argo), or with built-in Argo (bundled Argo).
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD, existing Argo CD, or with Community Argo CD.
 
-| **Prerequisite**                                    | **Runtime with existing Argo** | **Runtime with built-in Argo** |
-|------------------------------------------------|---------------------------|----------------------------|
-| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)        | ✅                         | ✅                          |
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | -                          | ✅                          |
-| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions)         | ✅                         | -                          |
-| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance) | ✅                         | -                          |
-
-
-
+{: .table .table-bordered .table-hover}
+| **Prerequisite**   | **Runtime with built-in Argo** | **Runtime with existing Argo CD** | | **Runtime with Community Argo CD** |
+|--------------------|---------------------------|----------------------------|----------------------------|
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | ✅     | ✅     | -|
+| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions)         | -   | -   | ✅ |
+| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance) | - | - | ✅ |
 
 
 ### Switch ownership of Argo Project CRDs
-If you already have Argo Project CRDs on your cluster, Codefresh recommends doing one of the following:
-* Adopting the CRDs    
-  Adopting the CRDs switches ownership for them to the GitOps Runtime, ensures that the GitOps Runtime manages the CRDs, and that the CRDs are automatically upgraded whenever the Runtime is upgraded. 
-* Handling the CRDs outside the chart
+If your cluster already has Argo Project CRDs, you must decide how to manage them when installing the GitOps Runtime.  
+The table below lists the options available depending on your installation mode. 
 
-#### (Recommended) Adopt all Argo Project CRDs
-Adopting _all CRDs_ switches ownership to the GitOps Runtime, allowing them to be managed by the GitOps Runtime chart. 
- 
+{: .table .table-bordered .table-hover}
+| **Option** | **Description** | **Applicable Installation Modes** |
+|------------|---------------|---------------------------------|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {{:nomarkdown}}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {{:nomarkdown}}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {{:nomarkdown}}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
+
+
+
+#### Option: Adopt all Argo Project CRDs
+Adopt all Argo Project CRDs to transfer their ownership to the GitOps Runtime.  
+The GitOps Runtime manages them as part of the GitOps Runtime Helm chart: 
+* The CRDs are automatically upgraded whenever the Runtime is upgraded.
+* They remain compatible with the GitOps environment.
+
+
+##### Script to adopt all Argo Project CRDs
 * Run this script _before_ installation:
 ```
 curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
 ```
-#### (Optional) Switch ownership of only Argo Rollout CRDs
 
->**NOTE**  
-If you already adopted all Argo Project CRDs, you can skip this part.
-
-You can also choose to adopt only those CRDs that apply to Argo Rollouts. Adopting only Argo Rollouts CRDs also switches ownership of the Rollout CRDs to the GitOps Runtime, and ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
+##### Adopt only Argo Rollout CRDs
+Adopting only Argo Rollouts CRDs ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
 
 
 * Run this script _before_ installation:
@@ -67,7 +74,18 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
 
-#### Handle Argo Project CRDs outside of the chart
+
+#### Option: Adopt All CRDs except Argo CD CRDs (Existing Argo CD only)
+If you are installing the GitOps Runtime with  the Bring-Your-Own-Argo (BYOA) installation mode, you can adopt all Argo Project CRDs except for Argo CD.  
+This ensures that:
+* Workflows, Rollouts, and Events CRDs are managed by the GitOps Runtime.
+* Argo CD CRDs remain under the control of your existing Argo CD installation, avoiding conflicts.
+
+##### Script to exclude Argo CD CRDs
+Run this script before installation:
+
+
+#### Option: Handle Argo Project CRDs outside of the Runtime chart
 
 * Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
@@ -148,7 +166,80 @@ When installing a GitOps Runtime alongside an existing Argo CD instance, ensure 
 1. Ensure that `argocd-cm.application.resourceTrackingMethod` is either:
   * **Not defined**, in which case it defaults to `label`, or
   * **Explicitly set** to `label`.
+{% endif %}
 
+
+
+{% if page.collection == site.gitops_collection %}
+## Prerequisites
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD or existing Argo CD.
+
+### Switch ownership of Argo Project CRDs
+If your cluster already has Argo Project CRDs, you must decide how to manage them when installing the GitOps Runtime.  
+The table below lists the options available depending on your installation mode. 
+
+{: .table .table-bordered .table-hover}
+| **Option** | **Description** | **Applicable Installation Modes** |
+|------------|---------------|---------------------------------|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {{:nomarkdown}}<ul><li>Runtime with built-in Argo CD</li></ul>{:/} |
+| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {{:nomarkdown}}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {{:nomarkdown}}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li></ul>{:/}|
+
+
+
+#### Option: Adopt all Argo Project CRDs (Built-in Argo CD only)
+If you are installing the GitOps Runtime with a new Argo CD instance (built-in Argo CD), adopt all Argo Project CRDs to transfer their ownership to the GitOps Runtime.  
+The CRDs are managed as part the GitOps Runtime Helm chart, ensuring they: 
+* Are automatically upgraded whenever the Runtime is upgraded.
+* Remain compatible with the GitOps environment.
+
+
+##### Script to adopt all Argo Project CRDs 
+* Run this script _before_ installation:
+```
+curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
+```
+
+##### Adopt only Argo Rollout CRDs
+Adopting only Argo Rollouts CRDs ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
+
+
+* Run this script _before_ installation:
+```
+#!/bin/sh
+RELEASE=<runtime-helm-release-name>
+NAMESPACE=<runtime-namespace>
+kubectl label --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) app.kubernetes.io/managed-by=Helm
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-name=$RELEASE
+kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
+```
+
+
+#### Option: Adopt All CRDs except Argo CD CRDs (Existing Argo CD only)
+If you are installing the GitOps Runtime with  the Bring-Your-Own-Argo (BYOA) installation mode, you can adopt all Argo Project CRDs except for Argo CD.  
+This ensures that:
+* Workflows, Rollouts, and Events CRDs are managed by the GitOps Runtime.
+* Argo CD CRDs remain under the control of your existing Argo CD installation, avoiding conflicts.
+
+##### Script to exclude Argo CD CRDs
+Run this script before installation:
+<!-- NIMA: TBD  -->
+
+#### Option: Handle Argo Project CRDs outside of the Runtime chart
+
+* Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
+  `--set <argo-project>.crds.install=false`<br>
+  where:<br>
+  `<argo-project>` is the Argo Project component: `argo-cd` (only for built-in Argo CD), `argo-workflows`, `argo-rollouts` and `argo-events`.
+
+See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
+
+### Remove Argo Project and SealedSecret components
+For GitOps Runtime installation with built-in Argo, the _target cluster should not have_:
+* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
+* SealedSecret controller components.
+
+{% endif %}
 
 ## Related articles
 [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  

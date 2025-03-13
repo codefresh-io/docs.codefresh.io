@@ -7,11 +7,15 @@ toc: true
 
 
 ## GitOps Runtime installation
-This article walks you through the process of installing GitOps Runtimes in your Codefresh accounts using a Helm chart on a _clean cluster_.   
-To install the GitOps Runtime alongside your existing Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
+This article walks you through the process of installing GitOps Runtimes in your Codefresh accounts using a Helm chart on a _cluster without an Argo CD instance_.   
+{% if page.collection != site.gitops_collection %}
+To install the GitOps Runtime alongside your community Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
+{% endif %}
+
 
 **Runtimes in account**
-The installation process varies depending on whether you are installing your first Runtime or installing additional Runtimes in your account.Installation Options
+The installation process varies depending on whether you are installing your first Runtime or installing additional Runtimes in your account.
+
 * **First Runtime in account**: This requires a one-time setup before running the installation command. See [Install first GitOps Runtime in account](#install-first-gitops-runtime-in-account).
 * **Additional Runtimes in account**: You can install additional Runtimes by simply running the Install Runtime command. See [Install additional GitOps Runtimes in account](#install-additional-gitops-runtimes-in-account). You can also use [Terraform](/install-gitops-runtime-via-terraform). 
 
@@ -231,13 +235,13 @@ If you define a custom name, it must:
 The namespace must follow Kubernetes naming conventions.
 
 ##### Codefresh API Key
-(NIMA: Add instructions for users who skip this step.)
+The API 
 
 #### Access modes
 You can install the GitOps Runtime using one of the following access modes: 
-* **Tunnel-based (default)**: Automatically enabled if no other mode is specified. No additional configuration is needed. 	
-* **Ingress-based**:Uses an ingress controller. May require pre- and post-installation setup.	See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
-* **Service-mesh-based**: Requires disabling tunnel and ingress modes. May require pre- and post-installation setup. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
+* **Tunnel-based (default)**: The default access mode when other access mode are not specified. No additional configuration is needed. 	
+* **Ingress-based**: Uses an ingress controller. May require pre- and post-installation setup.	See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
+* **Service-mesh-based**: Requires explictly disabling tunnel-based and ingress-based access modes. May require pre- and post-installation setup. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 
 #### Install Runtime command
 When you copy the Install Runtime Command to the terminal, the command will differ depending on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
@@ -308,8 +312,9 @@ helm upgrade --install <helm-release-name> \
 
 #### Completing Installation
 Once installation is complete, you can:
-* Continue with the Configuration & Management steps in the Wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).
-* Or, go directly to the Runtimes page to view the installed Runtime.
+* Continue with the Configuration & Management steps in the Wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
+OR
+Go to the Runtimes page and view the installed Runtime.
 
 #### View installed Runtime
 After installation, go to **GitOps Runtimes > List View**:
@@ -352,7 +357,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 ### Step 1: Copy & run Install Runtime command
 
 ##### Runtime name
-The name of the Runtime must be unique within the same account. If you already used `codefresh` (the default) for your first Runtime, make sure you define a different name to prevent Runtime installation from failing.
+
 
 ##### Access mode 
 You can define the tunnel-/ingress-/service-mesh-based access mode for the additional GitOps Runtimes you install. 
@@ -376,8 +381,10 @@ max-width="40%"
 #### Installation Parameters
 
 ##### Runtime Name
-By default, the runtime name is `codefresh`.  
-If you define a custom name, it must:
+The name of the Runtime must be unique within the same account.  
+If you already used `codefresh` (the default) for the first Runtime in your account, make sure you define a different name to prevent Runtime installation from failing.
+ 
+The name must:
 * Start with a lowercase letter
 * Contain only lowercase letters and numbers
 * Be no longer than 38 characters
@@ -509,15 +516,7 @@ The Git repository referenced by the Git Source stores application manifests and
 Add a Git user token, as a personal access token unique to every user. The permissions for the Git user token are different from those of the Git Runtime token.
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
-This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
 
-{{site.data.callout.callout_tip}}
-**TIP**  
-If you already have added a Git user token, you can skip this step.  
-{{site.data.callout.end}}
-
-1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
-1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
 
 
 
