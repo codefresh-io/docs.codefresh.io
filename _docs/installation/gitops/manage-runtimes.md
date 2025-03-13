@@ -16,33 +16,20 @@ For options on monitoring GitOps Runtimes, see [Monitoring GitOps Runtimes]({{si
 
 ## Configure Runtime as Argo CD application
 
-Configure the Hybrid GitOps Runtime as an Argo CD Application.  This is usually done when installing the Runtime. 
-You can configure the Runtime when needed after installation.
+Configure the GitOps Runtime as an Argo application if you haven't already done so during installation.  
 
-Configuring the Runtime as an Argo CD application, allows you to: 
-* View the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
-* View and its resources, services, and deployment history in the GitOps Apps dashboard through the **Runtime Application** option in the Runtime's context menu
-
-
+Configuring the GitOps Runtime as an Argo application ensures:
+* Git as the single source of truth: The Runtime’s state is declaratively managed in Git, ensuring consistency, traceability, and version control over all its configurations.
+* Automated reconciliation: Argo CD continuously monitors the Runtime’s desired state (as defined in Git), and automatically corrects any drift, ensuring alignment between the cluster and the Git repository.
+* Visibility & monitoring: The Runtime is displayed in the GitOps Apps dashboard where you can view and check health and sync statuses.
 
 ##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From the sidebar, select **GitOps Runtimes**.
 1. Switch to the **List View**.
-1. Select the Hybrid GitOps Runtime to configure as an Argo CD application.
-1. In the Runtime Component tab, in **3: Configure runtime as an Argo Application**, click **Configure**.
-
-
-  {% include 
-      image.html 
-      lightbox="true" 
-      file="/images/runtime/helm/config-as-argo-app-post-install.png" 
-      url="/images/runtime/helm/config-as-argo-app-post-install.png" 
-      alt="Configuring GitOps Runtime as an Argo CD Application" 
-      caption="Configuring GitOps Runtime as an Argo CD Application"
-      max-width="60%" 
-   %}
+1. Select the GitOps Runtime to configure as an Argo CD application.
+1. In the Installation Wizard, select **Configure runtime as Argo Application**.
 
 The Runtime's context menu now includes the **Runtime Application** option, which when selected takes you to the Current State tab in the GitOps Apps dashboard. 
 
@@ -324,6 +311,7 @@ The methods for updating any Git token are the same regardless of the reason for
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
 1. Click **Update Credentials**.
 
+{% if page.collection != site.gitops_collection %}
 ### Update Git Runtime token through CLI
 If you are using Git Runtime tokens for authentication, you can also update them through the Codefresh CLI.
 
@@ -338,7 +326,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
       * Bitbucket Cloud: `bitbucket`
       * Bitbucket Data Center: `bitbucket-server`
   * `--git-api-url` is optional for all Git providers, including on-premises repo clones.
-
+{% endif %}
 
 
 ## Configure SSH for GitOps Runtimes
@@ -350,11 +338,12 @@ When SSH is configured for a GitOps Runtime, when creating/editing Git-Source ap
 **SSH keys**
 For more information on generating SSH private keys, see the official documentation:
 * [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
+{% if page.collection != site.gitops_collection %}
 * [GitLab](https://docs.gitlab.com/ee/user/ssh.html){:target="\_blank"}
 * [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html){:target="\_blank"}
 * [Azure](https://docs.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops&tabs=current-page){:target="\_blank"}
 * [Gerrit](https://gerrit-review.googlesource.com/Documentation/user-upload.html#ssh){:target="\_blank"}
-
+{% endif %}
 
 **Before you begin**
 Copy the SSH private key for your Git provider
