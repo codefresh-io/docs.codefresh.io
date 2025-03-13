@@ -23,14 +23,16 @@ This article outlines the Kubernetes cluster server versions, minimum resource r
 
 
 ## Prerequisites
-This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode: Runtime alongside existing Argo (bring your own Argo), or Runtime with built-in Argo (bundled Argo).
-| **Prerequisite**         |  **Required for**    |                           |
-|                          |  **Runtime with external Argo**   | **Runtime with built-in Argo**    |
-|--------------------------|-----                 |----------------------------|
-| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds) |✅  |✅ |
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) |- |✅ |
-| [Align Argo CD chart's minor versions](#align-argo-cd-charts-minor-versions) |✅  |- |
-| [Set Community Argo CD resource tracking to `label`](#set-community-argo-cd-resource-tracking-to-label) |✅  |- |
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: alongside existing Argo (bring your own Argo), or with built-in Argo (bundled Argo).
+
+| **Prerequisite**                                    | **Runtime with existing Argo** | **Runtime with built-in Argo** |
+|------------------------------------------------|---------------------------|----------------------------|
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)        | ✅                         | ✅                          |
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | -                          | ✅                          |
+| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions)         | ✅                         | -                          |
+| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance) | ✅                         | -                          |
+
+
 
 
 
