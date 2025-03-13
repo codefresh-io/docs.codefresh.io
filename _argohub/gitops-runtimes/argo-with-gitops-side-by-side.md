@@ -1,1 +1,0 @@
-../../_docs/installation/gitops/argo-with-gitops-side-by-side.md

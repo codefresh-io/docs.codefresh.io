@@ -58,6 +58,8 @@
 - title: GitOps Runtimes
   url: "/gitops-runtimes"
   pages:     
+    - title: About GitOps Runtimes
+      url: "/gitops"
     - title: GitOps Runtime architecture
       url: "/runtime-architecture"
     - title: Runtime concepts

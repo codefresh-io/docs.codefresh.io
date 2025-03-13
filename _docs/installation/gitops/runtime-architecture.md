@@ -21,7 +21,7 @@ The GitOps Runtime is an Argo CD instance that runs inside your cluster. To acco
 * **Runtime alongside an existing Argo CD instance**  
   Integrates with an externally managed Argo CD instance.
 
-* **Runtime with built-in Argo CD**
+* **Runtime with built-in Argo CD**  
   Installs a dedicated Argo CD instance as part of the GitOps Runtime.
 
 The primary architectural difference between these modes is the location of the Argo CD instance in relation to the GitOps Runtime.
@@ -71,7 +71,7 @@ Regardless of the installation mode, the core Runtime components remain the same
 Each installation mode supports two access modes, which determine how the GitOps Runtime in the customer's cluster communicates with the Codefresh GitOps Platform.
 
 ### Tunnel-based access mode Runtime architecture  
-Tunnel-based access mode is the default mode for GitOps Runtimes. Instead of using ingress controllers, this mode establishes a secure tunnel between the GitOps Runtime and the GitOps Platform. 
+Tunnel-based access mode is the default access mode for GitOps Runtimes. Instead of using ingress controllers, this mode establishes a secure tunnel between the GitOps Runtime and the GitOps Platform.  
 Tunnel-based access modes are optimal when the cluster with the GitOps Runtime is not exposed to the internet. 
 
 This access mode includes two additional Runtime components:  
