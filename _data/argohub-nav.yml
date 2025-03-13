@@ -11,7 +11,7 @@
       url: "/command-bar"
 
 - title: GitOps quick starts
-  url: "/gitops-quick-starts"
+  url: "/gitops-quick-start"
   pages:
     - title: About GitOps quick starts
       url: "/gitops-quick-start"
@@ -82,8 +82,11 @@
       url: "/managed-cluster"
     - title: Managing Git Sources in GitOps Runtimes
       url: "/git-sources"
+    - title: Troubleshooting GitOps Runtimes
+      url: "/troubleshooting-runtimes"   
     - title: Download/upgrade GitOps CLI
-      url: "/upgrade-gitops-cli"   
+      url: "/upgrade-gitops-cli"  
+     
 
 
 - title: Administration
@@ -266,6 +269,13 @@
     - title: Secrets for GitOps
       url: "/secrets"
 
+- title: Support tickets
+  url: "/support"
+  pages:
+    - title: Create support tickets
+      url: "/support-ticket"
+    - title: Data for UI issue troubleshooting
+      url: "/data-needed-ui-issues"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"

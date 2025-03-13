@@ -40,7 +40,7 @@ The Runtime Environment is attached to the Codefresh Runner, and includes the fo
 **Volume Provisioner**  
 The Volume Provisioner is the central component that controls all Codefresh services, and performs the following functions:
 * Acts as a Persistent Volume (PV) Kubernetes controller 
-* Manages DinD Persistent Volume Claim s(PVCs)
+* Manages DinD Persistent Volume Claims (PVCs)
 * Optimizes Docker caching volumes to enhance cache utilization for Codefresh builds
 
 

@@ -10,7 +10,9 @@ A Git Source is a unique entity created for use with GitOps Runtimes in Codefres
 The Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
-<br>
+Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+
 
 ##### Types of Git Sources  
 Codefresh allows you to create two types of Git Sources: Standard and Restricted Git Sources.
@@ -213,7 +215,7 @@ Let's see how to achieve this for a single team, the Hulk team.
       * **Path**: `.`
     1. Leave the other settings empty, and click **Next**.
     1. Specify the deployment settings: 
-      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `cf-hulk-app-manifests` as the namespace. The `cf-` prefox is mandatory for the namespace. If the namespace does not exist, Codefresh will automatically create it.
+      * **Source Namespace**: Define the namespace to which to deploy the application manifests. Because we want to enforce permissions, we will define `cf-hulk-app-manifests` as the namespace. The `cf-` prefix is mandatory for the namespace. If the namespace does not exist, Codefresh will automatically create it.
       * **Allowed Clusters & Namespaces**: Select the relevant cluster and namespace to which to deploy the applications. Let's select `hulk-apps-zone` as the namespace to which to deploy applications.
     1. Click **Create**.
   You have now created the Restricted Git Source.

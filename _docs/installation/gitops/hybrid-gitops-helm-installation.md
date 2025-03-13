@@ -198,7 +198,7 @@ where:
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
-* Bitbucket Server: `<server-url>`
+* Bitbucket Data Center: `<server-url>`
 {% endif %}
 
 <br>
@@ -751,7 +751,7 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 |Helm| 3.8.0 or higher|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
-|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Server</li></ul>{:/}|
+|Git providers    |{::nomarkdown}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Data Center</li></ul>{:/}|
 |Git access tokens    | {::nomarkdown}Git runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
 

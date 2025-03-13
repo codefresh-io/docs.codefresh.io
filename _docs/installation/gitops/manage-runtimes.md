@@ -336,7 +336,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
       * GitHub and GitHub Enterprise: `github`
       * GitLab Cloud and GitLab Server: `gitlab`
       * Bitbucket Cloud: `bitbucket`
-      * Bitbucket Server: `bitbucket-server`
+      * Bitbucket Data Center: `bitbucket-server`
   * `--git-api-url` is optional for all Git providers, including on-premises repo clones.
 
 

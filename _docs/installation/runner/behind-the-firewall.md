@@ -177,7 +177,7 @@ The instructions are different per GIT provider:
 
 * [GitHub webhooks](https://developer.github.com/webhooks/){:target="\_blank"}
 * [GitLab webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html){:target="\_blank"}
-* [Stash webhooks](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html){:target="\_blank"}
+* [Bitbucket Data Center webhooks](https://confluence.atlassian.com/bitbucketserver/managing-webhooks-in-bitbucket-server-938025878.html){:target="\_blank"}
 
 In all cases make sure that the payload is JSON, because this is what Codefresh expects.
 
