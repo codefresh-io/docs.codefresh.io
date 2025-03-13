@@ -58,7 +58,7 @@ For simplification, we are using a hard coded version of an existing template fr
 1. Click **Add**.
 1. For the quick start, select **Blank Skeleton File** as the Workflow Template,
    and click **Next**.
-1. In the YAML editor on the right, replace the `spec` in line 13 with the
+1. In the YAML editor on the right, replace the `spec` in line 15 with the
    following block:
     ```yaml
     spec:
@@ -173,9 +173,9 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
      arguments:
        parameters:
          - name: APP_NAME   
-       entrypoint: main
+       entrypoint: sn-open-cr
        templates:
-       - name: main
+       - name: sn-open-cr
          outputs:
            parameters:
            - name: CR_SYSID
@@ -204,12 +204,12 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
                      "justification": "My app is awesome! Please deploy ASAP",
                      "cmdb_ci":"tomcat", "assignment_group":"a715cd759f2002002920bde8132e7018"
                      }
-
    ```
+
 where:
-* `TOKEN` is the Codefresh CF API Key to allow Service Now to reach back to COdefresh instance.
+* `TOKEN` is the Codefresh CF API Key to allow Service Now to reach back to the Codefresh instance.
 * `SN_AUTH` is the secret holding credentials to connect to the ServiceNow instance (`SN_INSTANCE`)
-* `CR_DATA` is the JSON paylof to be able to open a Change Request.
+* `CR_DATA` is the JSON payload to be able to open a Change Request.
 
 {:start="6"}
 1. Click **Commit**
@@ -219,12 +219,15 @@ where:
 
 You can now use this Promotion Workflow as a pre-action to open a Change Request before proceeding with the deployment itself.
 
-
-<!--
-## Example 2: Open a Service Now Change Request
-## Example 3: Close the Service Now Change Request
--->
-
+{% include
+	image.html
+	lightbox="true"
+	file="/images/quick-start/promotion-workflow/sn-release.png"
+	url="/images/quick-start/promotion-workflow/sn-release.png"
+	alt="Promotion workflow quick start: Running a release with ServiceNow pre-action"
+	caption="Promotion workflow quick start: Running a release with ServiceNow pre-action
+  max-width="50%"
+%}
 
 ## What's next
 The next quick start will guide you through adding Promotion Workflows to each environment, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
