@@ -10,10 +10,6 @@ The GitOps Runtime is the cornerstone of Codefresh’s GitOps solution, enabling
 
 Beyond its core functionality, the Runtime introduces several key concepts and components that enhance flexibility, scalability, and control in managing GitOps processes. This article explores these concepts and components, including the secure usage of Git tokens, the role of the Shared configuration Repository, and the roles of Git Sources and external clusters in Runtimes. 
 
-## Runtime installation types
-Clean cluster
-ArgoCD
-
 ## Multiple Runtimes in account
 In the same account, you can install multiple GitOps Runtimes, provided each Runtime:
 * Is installed on a different cluster
