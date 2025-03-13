@@ -25,7 +25,7 @@ This article outlines the Kubernetes cluster server versions, minimum resource r
 This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD, existing Argo CD, or with Community Argo CD.
 
 {: .table .table-bordered .table-hover}
-| **Prerequisite**   | **Runtime with built-in Argo** | **Runtime with existing Argo CD** |  **Runtime with Community Argo CD** |
+| **Prerequisite**   | **Runtime with built-in Argo CD** | **Runtime with existing Argo CD** |  **Runtime with Community Argo CD** |
 |--------------------|---------------------------|----------------------------|----------------------------|
 | [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
 | [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | ✅     | ✅     | -|
@@ -40,9 +40,9 @@ The table below lists the options available depending on your installation mode.
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {:nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
-| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {:nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {:nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
 
 
 
@@ -180,9 +180,9 @@ The table below lists the options available depending on your installation mode.
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {:nomarkdown}<ul><li>Runtime with built-in Argo CD</li></ul>{:/} |
-| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {:nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {:nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li></ul>{:/}|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li></ul>{:/} |
+| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li></ul>{:/}|
 
 
 
