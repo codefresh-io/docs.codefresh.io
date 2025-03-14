@@ -144,15 +144,16 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
     identical to the Name of the Workflow. Leave as-is for the
     quick-start.
 
-{% include
-	image.html
-	lightbox="true"
-	file="/images/quick-start/promotion-workflow/add-sn-open-wkf.png"
-	url="/images/quick-start/promotion-workflow/add-sn-open-wkf.png"
-	alt="Promotion workflow quick start: Create promotion workflow for ServiceNow"
-	caption="Promotion workflow quick start: Create promotion workflow" for ServiceNow
-  max-width="50%"
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/promotion-workflow/add-sn-open-wkf.png" 
+	url="/images/quick-start/promotion-workflow/add-sn-open-wkf.png" 
+	alt="Promotion workflow quick start: Create promotion workflow for ServiceNow" 
+	caption="Promotion workflow quick start: Create promotion workflow for ServiceNow"
+    max-width="50%" 
 %}
+
 
 {:start="3"}
 1. Click **Add**.
@@ -161,7 +162,7 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
 1. In the YAML editor on the right, replace the `spec` in line 13 with the
    following block:
    {% highlight yaml %}
-    {% raw %}
+  {% raw %}
    spec:
      serviceAccountName: promotion-template
      arguments:
