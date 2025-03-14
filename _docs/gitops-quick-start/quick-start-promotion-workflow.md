@@ -215,15 +215,18 @@ where:
 
 You can now use this Promotion Workflow as a pre-action to open a Change Request before proceeding with the deployment itself.
 
-{% include
-	image.html
-	lightbox="true"
-	file="/images/quick-start/promotion-workflow/sn-release.png"
-	url="/images/quick-start/promotion-workflow/sn-release.png"
-	alt="Promotion workflow quick start: Running a release with ServiceNow pre-action"
-	caption="Promotion workflow quick start: Running a release with ServiceNow pre-action
-  max-width="50%"
+
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/promotion-workflow/sn-release.png" 
+	url="/images/quick-start/promotion-workflow/sn-release.png" 
+	alt="Promotion workflow quick start: Running a release with ServiceNow pre-action" 
+	caption="Promotion workflow quick start: Running a release with ServiceNow pre-action"
+    max-width="50%" 
 %}
+
+
 
 ## Using Promotion Workflows
 Once you create Promotion Workflows, you can use them in any Promotion Flow.
