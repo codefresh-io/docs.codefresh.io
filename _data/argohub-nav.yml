@@ -64,12 +64,16 @@
       url: "/runtime-architecture"
     - title: Runtime concepts
       url: "/runtime-concepts"
-    - title: System requirements & prerequisites
-      url: "/runtime-system-requirements"    
+    - title: System requirements
+      url: "/runtime-system-requirements" 
+    - title: Prerequisites
+      url: "/runtime-prerequisites"      
     - title: Ingress configuration
       url: "/runtime-ingress-configuration"            
     - title: Install GitOps Runtime
-      url: "/hybrid-gitops-helm-installation"     
+      url: "/hybrid-gitops-helm-installation"    
+    - title: Configure GitOps Runtime 
+      url: "/runtime-configuration" 
     - title: Shared Configuration Repository
       url: "/shared-configuration"
     - title: Configuration Runtimes

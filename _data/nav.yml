@@ -590,8 +590,10 @@
           url: "/runtime-architecture"
         - title: Runtime concepts
           url: "/runtime-concepts"
-        - title: System requirements & prerequisites
+        - title: System requirements
           url: "/runtime-system-requirements"    
+        - title: Prerequisites
+          url: "/runtime-prerequisites"   
         - title: Ingress configuration
           url: "/runtime-ingress-configuration"            
         - title: Install GitOps Runtime
@@ -600,6 +602,8 @@
           url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
+        - title: Configure GitOps Runtime 
+          url: "/runtime-configuration" 
         - title: Migrating GitOps Runtimes from CLI to Helm
           url: "/migrate-cli-runtimes-helm"  
         - title: Shared Configuration Repository

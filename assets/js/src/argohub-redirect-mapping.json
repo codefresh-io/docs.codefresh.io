@@ -114,5 +114,7 @@
   "/docs/gitops-quick-start/runtime/": "/argohub/gitops-quick-starts/runtime/",
   "/docs/gitops-quick-start/verify-requirements/": "/argohub/gitops-quick-starts/verify-requirements/",
   "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/",
-  "/docs/installation/gitops/": "/argohub/gitops-quick-start/gitops/"
+  "/docs/installation/gitops/": "/argohub/gitops-quick-start/gitops/",
+  "/docs/installation/gitops/runtime-prerequisites/": "/argohub/gitops-runtimes/runtime-prerequisites/",
+  "/docs/installation/gitops/runtime-configuration/": "/argohub/gitops-runtimes/runtime-configuration/"
 }
