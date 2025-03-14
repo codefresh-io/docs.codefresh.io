@@ -11,8 +11,9 @@ In this quick start guide, we'll guide you through creating a Promotion Workflow
 Promotion Workflows are Argo WorkflowTemplates that allow you to automate tasks such as notifications, validations, or additional deployments during the promotion process. They can be used in Promotion Flows to automate tasks before or after promotion.
 For detailed information, see [Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).
 
-In this example, you'll create a simple Promotion Workflow that sends a Slack notification when a promotion starts.  
-The Workflow runs a container from Codefresh’s Argo Hub, which posts a message to Slack.
+This quick start includes examples of two Promotion Workflows:
+* Example 1: Create Promotion Workflow for Slack notifications. The Workflow runs a container from Codefresh’s Argo Hub, which posts a message to Slack. 
+* Example 2: Open a Service Now Change Request
 
 
 
@@ -22,8 +23,8 @@ The Workflow runs a container from Codefresh’s Argo Hub, which posts a message
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests.
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)
-* [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
-  this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder)
+<!---* [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration)
+  this is where you promotion workflow will be stored (in the `resources/control-planes/promotion-workflows` folder) -->
 
 ## Example 1: Create Promotion Workflow for Slack notifications to be used as a post-action
 
@@ -60,7 +61,8 @@ For simplification, we are using a hard coded version of an existing template fr
    and click **Next**.
 1. In the YAML editor on the right, replace the `spec` in line 15 with the
    following block:
-    ```yaml
+   {% highlight yaml %}
+    {% raw %}
     spec:
       serviceAccountName: promotion-template
       arguments:
@@ -88,7 +90,8 @@ For simplification, we are using a hard coded version of an existing template fr
                   secretKeyRef:
                     name: 'slack-token'
                     key: token          
-    ```
+{% endraw %}
+{% endhighlight %}
   where:  
   * `SLACK_CHANNEL` can either be the name of a Slack channel or the email of a user.
   * `slack-token` is the name of the secret holding your Slack Token, in the `token` key.
@@ -110,19 +113,7 @@ For simplification, we are using a hard coded version of an existing template fr
  max-width="50%"
 %}
 
-## Using Promotion Workflows
-Once you create Promotion Workflows, you can use them in any Promotion Flow.
-When you run your Promotion Flow using this Promotion Workflow, you should get a Slack message as in the example below.
 
-{% include
-	image.html
-	lightbox="true"
-	file="/images/quick-start/promotion-workflow/slack-message.png"
-	url="/images/quick-start/promotion-workflow/slack-message.png"
-	alt="Promotion workflow quick start: New slack message"
-	caption="Promotion workflow quick start: New slack message"
- max-width="50%"
-%}
 
 ## Example 2: Open a Service Now Change Request as a pre-action
 
@@ -167,7 +158,8 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
    and click **Next**.
 1. In the YAML editor on the right, replace the `spec` in line 13 with the
    following block:
-   ``` yaml
+   {% highlight yaml %}
+    {% raw %}
    spec:
      serviceAccountName: promotion-template
      arguments:
@@ -204,7 +196,8 @@ So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/
                      "justification": "My app is awesome! Please deploy ASAP",
                      "cmdb_ci":"tomcat", "assignment_group":"a715cd759f2002002920bde8132e7018"
                      }
-   ```
+{% endraw %}
+{% endhighlight %}
 
 where:
 * `TOKEN` is the Codefresh CF API Key to allow Service Now to reach back to the Codefresh instance.
@@ -229,7 +222,20 @@ You can now use this Promotion Workflow as a pre-action to open a Change Request
   max-width="50%"
 %}
 
+## Using Promotion Workflows
+Once you create Promotion Workflows, you can use them in any Promotion Flow.
+
+{% include
+	image.html
+	lightbox="true"
+	file="/images/quick-start/promotion-workflow/slack-message.png"
+	url="/images/quick-start/promotion-workflow/slack-message.png"
+	alt="Promotion workflow quick start: New slack message"
+	caption="Promotion workflow quick start: New slack message"
+ max-width="50%"
+%}
+
 ## What's next
-The next quick start will guide you through adding Promotion Workflows to each environment, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
+The next quick start will guide you through adding Promotion Workflows to each environment in a Promotion Flow, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
 
 [Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
