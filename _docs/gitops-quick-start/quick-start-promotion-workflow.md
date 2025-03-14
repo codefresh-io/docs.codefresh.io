@@ -121,15 +121,17 @@ For this next example, we will use the existing [servicenow workflowTemplate fro
 
 So you will need to add a [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) pointing to that library.
 
-{% include
-	image.html
-	lightbox="true"
-	file="/images/quick-start/promotion-workflow/git-source.png"
-	url="/images/quick-start/promotion-workflow/git-source.png"
-	alt="Promotion workflow quick start: Argo hub git source"
-	caption="Promotion workflow quick start: Argo hub git source
-  max-width="50%"
+  {% include 
+	image.html 
+	lightbox="true" 
+	file="/images/quick-start/promotion-workflow/git-source.png" 
+	url="/images/quick-start/promotion-workflow/git-source.png" 
+	alt="Promotion workflow quick start: Argo hub git source" 
+	caption="Promotion workflow quick start: Argo hub git source"
+    max-width="50%" 
 %}
+
+
 
 ##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **Promotion Workflows**, and click **Add Promotion Workflow**.
