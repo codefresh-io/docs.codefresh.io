@@ -79,14 +79,14 @@ We’ll map the environments to `in-cluster` and associate each with a different
 1. Repeat _step 1_ through _step 3_ to create the two other environments: `qa` and `prod`.  
   For the quick start, we'll map these environments again to the `in-cluster`. And to the namespaces, `demo-qa` and `demo-prod` respectively, for the `demo` apps we'll create. 
 
-## View changes in Environments dashboard
+## View Environments dashboard
 
 Go to the Environments dashboard to see how the environments are populated with the applications you created.
 Here's an example of the Environments dashboard with the three environments, and the products and their applications in the clusters and namespaces mapped to them.
  
-* From the sidebar, select **Environments**.
+1. From the sidebar, select **Environments**.
   Each environment displays the product you created. For example, `demo-trioapp`.
-* Mouse over the product name in each environment to see the associated applications. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
+1. Mouse over the product name in each environment to see the associated applications. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
 
   {% include 
    image.html 
@@ -105,6 +105,5 @@ We’ll dive into how to promote changes and deploy applications across environm
 
 Let’s move on to the first quick start on promotions to see this in action.
 
-Quick start: Simple promotion with drag-and-drop
 
 [Quick start: Simple promotion with drag-and-drop]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
