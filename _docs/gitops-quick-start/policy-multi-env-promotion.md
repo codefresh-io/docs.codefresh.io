@@ -44,14 +44,14 @@ TBD
 
 * [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
-  For a Promotion Flow, you need at least three environments.
-  Here we use `dev`, `qa`, and `prod`.
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
   Each environment must have an application for the product.
   For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
   The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
   If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources. <!--- add a link to the repo? -->
+* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
+  For a Promotion Flow, you need at least three environments.
+  Here we use `dev`, `qa`, and `prod`.
 * [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/#create-promotion-workflows)
 
 ## Assign Pre- and Post-Action Workflows to environments in Promotion Flow
