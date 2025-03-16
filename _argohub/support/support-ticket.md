@@ -1,0 +1,99 @@
+---
+title: "Support Ticket Examples"
+description: "Easily create support tickets for bugs & feature requests using our templates"
+---
+
+## Overview
+
+Use the example templates below to create support tickets for bugs/issues, feature requests, or general questions you might have.
+
+## Support Template: Issues/bugs
+
+Use the following template to create a support ticket for bugs/issues.
+
+>### What is currently happening?
+>
+>A sentence or two that describes what's happening now.
+>
+>### What are the expected results?
+>
+>A sentence or two that describes what you expected to happen.
+>
+>### Details
+>
+>A detailed description of this issue.
+>
+>Please see [Additional Information for Issues/Bugs](#additional-information-for-issuesbugs)
+>
+>### How to reproduce
+>
+>A step-by-step guide on how to reproduce this issue. 
+>
+>### Impact
+>
+>Describe the business impact of this issue. Does the issue affect any projects with set deadlines?
+
+### Additional Information for Issues/Bugs
+
+To troubleshoot issues or bugs effectively, Codefresh Support requires a detailed description of the issue which includes the following information:
+
+#### Functional errors
+
+1. Exact **error messages** received.
+1. **User impersonation**.
+   - Support may sometimes need to impersonate your user to understand and troubleshoot the issue. To enable impersonation for your user, please navigate to [User Settings](https://g.codefresh.io/user/settings){:target="\_blank"}. Under the Security section, select the checkbox for `Allow Codefresh support team to login as my user (all the operations made by the team will be audited)` and save the settings. Please let support know if you have enabled impersonation.
+1. **Helm values file** (to identify overrides such as images or other configurations).
+
+#### UI: Slowness and other issues
+
+1. Codefresh **usernames** and **number** of affected users.
+1. **Link to UI** page being accessed.
+1. **Action** being performed.
+1. **Timestamp** of incident.
+1. Does the issue persist in **another browser** or in **incognito mode**?
+1. Do you use a **VPN/proxy** to access the page?
+1. **HAR file** (a log of network requests during the incident). [HAR File Guide](https://codefresh.io/docs/docs/kb/articles/data-needed-ui-issues/).
+1. **Screenshots** or **videos** showing the behavior.
+   - Please make sure that the screenshot/video includes the **full** browser window.
+
+
+#### Security concerns
+
+1. **Report from the security team/tool**, if any.
+1. Description of the potential data loss or **security vulnerability**.
+1. The **CVE and the specific image** it pertains to.
+1. **Logs or evidence** highlighting inconsistencies or failures.
+
+## Support Template: Feature requests
+
+Use the following template to submit feature requests.
+
+<!-- markdownlint-disable MD024-->
+
+>### Details
+>
+>Describe your feature request.
+>
+>### Current Workflow
+>
+>Describe the current process/workaround you have in place due to this feature not being implemented yet.
+>
+>### Impact
+>
+>Describe why you need this feature and the impact of this feature request when implemented.
+
+<!-- markdownlint-enable MD024-->
+
+## Support Template: General
+
+Use this template for general questions you have, not related to an issue or feature request.
+
+>### Question
+>
+>Add your question here.
+>
+>### Context
+>
+>Add background information on your question. Add links or any details that will help us to understand the question above.
+
+
