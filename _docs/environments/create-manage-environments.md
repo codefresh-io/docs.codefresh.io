@@ -20,7 +20,7 @@ Environments are automatically populated with the applications deployed in the c
 1. Define the following:
     1. **Name**: A unique name for your GitOps Environment, which is meaningful in the context of your development and deployment cycle. 
     1. **Kind**: The purpose of this GitOps Environment, and can be either **Production** where the live versions of the applications are deployed,  or **Non-production** where development, testing, staging versions are deployed.
-    1. **Tags**: Any metadata providing additional context and information about the GitOps Environment, used for filtering and organization purposes.
+    <!--- 1. **Tags**: Any metadata providing additional context and information about the GitOps Environment, used for filtering and organization purposes.  -->
     1. **Clusters and Namespaces**: Single or multiple clusters and namespaces in any combination to map to the GitOps Environment.  
 	  To include all namespaces in a cluster, leave Namespaces empty. Adding a cluster with one or more namespaces populates the Environment with all the applications deployed in the namespaces. <!--- When selecting namespaces in a cluster, use `*` as a wildcard for pattern-based matching. For example, you can use `prod-*` to add all namespaces with names starting with `prod-`. -->
 
