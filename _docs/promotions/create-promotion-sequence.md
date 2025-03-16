@@ -52,7 +52,7 @@ enhance consistency, create reusable templates that apply across products.
   Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
 ## Tasks
-1. [Create environments]({{site.baseurl}}/docs/dashboards/gitops-environments/#create-environments)  
+1. [Create environments]({{site.baseurl}}/docs/environments/create-manage-environments/create-environments)  
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
   

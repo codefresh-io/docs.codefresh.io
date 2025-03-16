@@ -190,6 +190,34 @@
         - title: Quay Registry
           url: "/quay"
 
+- title: Environments
+  url: "/environments"
+  pages:
+    - title: About Environments
+      url: "/environments-overview"
+    - title: Create and manage Environments
+      url: "/create-manage-environments"     
+    - title: Manage Products and applications in Environments
+      url: "/manage-apps-in-environments"  
+
+- title: Products
+  url: "/products"
+  pages:
+    - title: About Products
+      url: "/about-products"
+    - title: Create Products
+      url: "/create-product"
+    - title: Configure Product Settings
+      url: "/configure-product-settings"
+    - title: Assigning applications
+      url: "/assign-applications"      
+    - title: Configuring version and promotable properties
+      url: "/promotion-version-properties"
+    - title: Selecting Promotion Flows
+      url: "/promotion-flow-triggers"
+    - title: Tracking Releases for Products
+      url: "/releases-in-products"
+
 - title: Applications
   url: "/applications"
   pages:
@@ -211,26 +239,7 @@
       url: "/install-argo-rollouts"
     - title: Troubleshooting Argo CD applications
       url: "/troubleshooting-gitops-apps"
-
-- title: Products
-  url: "/products"
-  pages:
-    - title: About Products
-      url: "/about-products"
-    - title: Create Products
-      url: "/create-product"
-    - title: Configure Product Settings
-      url: "/configure-product-settings"
-    - title: Assigning applications
-      url: "/assign-applications"      
-    - title: Configuring version and promotable properties
-      url: "/promotion-version-properties"
-    - title: Selecting Promotion Flows
-      url: "/promotion-flow-triggers"
-    - title: Tracking Releases for Products
-      url: "/releases-in-products"
-
-
+      
 - title: Promotions
   url: "/promotions"
   pages:
@@ -273,6 +282,13 @@
     - title: Secrets for GitOps
       url: "/secrets"
 
+- title: Support tickets
+  url: "/support"
+  pages:
+    - title: Create support tickets
+      url: "/support-ticket"
+    - title: Data for UI issue troubleshooting
+      url: "/data-needed-ui-issues"
 
 - title: Terms and Privacy Policy
   url: "/terms-and-privacy-policy"
