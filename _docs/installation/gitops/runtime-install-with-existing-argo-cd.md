@@ -1,18 +1,19 @@
 ---
-title: "Install GitOps Runtime with new Argo CD"
-description: "Provision GitOps Runtimes with a new Argo CD installation through Helm"
+title: "Install GitOps Runtime with existing Argo CD"
+description: "Provision GitOps Runtimes alongside existing Argo CD instance"
 toc: true
 ---
 
 
 
-## GitOps Runtime installation
-This article walks you through the process of installing GitOps Runtimes in your Codefresh accounts using a Helm chart on a _cluster without an Argo CD instance_.   
-{% if page.collection != site.gitops_collection %}
-To install the GitOps Runtime:  
-* With an existing Argo CD instance, see [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)
-* Alongside your community Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
-{% endif %}
+## GitOps Runtime with existing Argo CD
+This article walks you through the process of installing GitOps Runtimes in your Codefresh accounts using a Helm chart on a _cluster with an existing Argo CD instance_.
+
+This option allows you to install the GitOps Runtime without deploying a built-in Argo CD instance. Instead, you use the existing Argo CD instance in the same namespace. This requires ensuring connectivity between the Runtime and key Argo CD services.
+
+
+To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
 
 
 **Runtimes in account**
@@ -23,13 +24,14 @@ The installation process varies depending on whether you are installing your fir
 
 For both first-time and additional GitOps Runtime installations:
 * Match [system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) to confirm your environment meets the necessary conditions.
-* Complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequsites/) depending on the installation mode for the Runtime.
+* Complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequsites/):
+  
 * Review the Runtime's `values.yaml` for accuracy, and also how Codefresh [validates the settings](#valuesyaml-validation).
 
 **Runtime configuration**
 After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the Runtime Installation wizard.  
 Alternatively, you can complete the configuration later through the Codefresh UI. Configuration includes setting up Git credentials, configuring the Runtime as an Argo application, and adding a Git Source to the Runtime.
-
+See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
 
 {{site.data.callout.callout_warning}}
 **ArgoCD password WARNING**  
@@ -144,6 +146,11 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 ### Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
+    * [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds) 
+    * [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components)
+    * [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only) 
+    * [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only)
+
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     * [Git user token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) to authorize Git-based actions per user
@@ -197,25 +204,6 @@ On-premises Git providers require you to define the API URL:
 
 <br>
 
-<!--- ##### How to
-
-1. Define the URL of the **Shared Configuration Repository**.
-1. If required, select the **Git provider** from the list.
-1. If required, define the **API URL** for the Git provider you selected.
-
- {% include
-image.html
-lightbox="true"
-file="/images/runtime/helm/helm-define-isc-git-provider.png"
-url="/images/runtime/helm/helm-define-isc-git-provider.png"
-alt="Define Shared Configuration Repo and Git provider"
-caption="Define Shared Configuration Repo and Git provider"
-max-width="40%"
-%}
-
-{:start="4"}
-1. Click **Next**.
-1. Continue with [Step 3: Install GitOps Runtime](#step-3-install-gitops-runtime).  -->
 
 ### Step 3: Install GitOps Runtime
 
@@ -231,7 +219,24 @@ If you define a custom name, it must:
 * Be no longer than 38 characters
 
 ##### Namespace
-The namespace must follow Kubernetes naming conventions.
+The namespace for the GitOps Runtime _which must be the same as that of the Argo CD instance_.
+
+##### Argo CD Admin API token
+The method by which the GitOps Runtime authenticates with the external Argo CD instance, either through a token or a username-password combination.  
+Whatever the method, the toe If revoked, GitOps operations will stop until the customer updates the token in the runtime.
+You have two options:
+* **Token-based authentication**  
+  The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime as the system does not automatically regenerate or validate the token.
+  * Provide a token directly  
+  OR  
+  * Reference a Kubernetes secret containing the token
+
+* **Password-based authentication**  
+  The system uses these credentials to maintain an API key stored in the `argocd-token` Secret. This is automatically managed and regenerated when needed.  
+  * Specify a username and password directly
+  OR
+  * Reference a Kubernetes secret, `argocd-initial-admin-secret`
+
 
 ##### Codefresh API Key
 The Codefresh API key authenticates the GitOps Runtime with the Codefresh platform, enabling secure registration, configuration retrieval, and communication with Codefresh services.   
@@ -354,7 +359,11 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 
 ### Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
-* Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
+* Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/):
+    * [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds) 
+    * [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components)
+    * [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only) 
+    * [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     * [Git user token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) to authorize Git-based actions per user
@@ -386,10 +395,28 @@ The name must:
 * Be no longer than 38 characters
 
 ##### Namespace
-The namespace must follow Kubernetes naming conventions.
+The namespace for the GitOps Runtime _which must be the same as that of the Argo CD instance_.
+
+##### Argo CD Admin API token
+The method by which the GitOps Runtime authenticates with the external Argo CD instance, either through a token or a username-password combination.  
+Whatever the method, the toe If revoked, GitOps operations will stop until the customer updates the token in the runtime.
+You have two options:
+* **Token-based authentication**  
+  The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime as the system does not automatically regenerate or validate the token.
+  * Provide a token directly  
+  OR  
+  * Reference a Kubernetes secret containing the token
+
+* **Password-based authentication**  
+  The system uses these credentials to maintain an API key stored in the `argocd-token` Secret. This is automatically managed and regenerated when needed.  
+  * Specify a username and password directly
+  OR
+  * Reference a Kubernetes secret, `argocd-initial-admin-secret`
+
 
 ##### Codefresh API Key
-Generate the API key which is automatically added to the install command.
+The Codefresh API key authenticates the GitOps Runtime with the Codefresh platform, enabling secure registration, configuration retrieval, and communication with Codefresh services.   
+Generate the API key to automatically add it to the Runtime Install command. 
 
 #### Access modes
 You can install the GitOps Runtime using one of the following access modes: 
@@ -478,7 +505,7 @@ After installation, go to **GitOps Runtimes > List View**:
   * **Synced**: Configuration is complete
   * **Complete Installation**: Pending configuration steps  
 * Drilling down into the Runtime shows tabs for Runtime Components, Git Sources, and Managed Clusters.  
-  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, described later on in the installation process.
+  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-argo-application).
 
 {% include
    image.html
@@ -497,28 +524,6 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#create-an-alias-to-load-balancer-in-route53)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% if page.collection != site.gitops_collection %}
 ### (Optional) Post-installation configuration
@@ -616,8 +621,6 @@ You can [monitor]({{site.baseurl}}/docs/deployments/gitops/applications-dashboar
 For upgrade instructions, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#upgrade-gitops-runtimes/).  
 
 For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_blank"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_blank"}. -->
-
-
 
 
 ## Related articles

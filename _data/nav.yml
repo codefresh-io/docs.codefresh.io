@@ -595,8 +595,10 @@
         - title: Prerequisites
           url: "/runtime-prerequisites"   
         - title: Ingress configuration
-          url: "/runtime-ingress-configuration"            
-        - title: Install GitOps Runtime
+          url: "/runtime-ingress-configuration"  
+        - title: Install GitOps Runtime with existing Argo CD
+          url: "/runtime-install-with-existing-argo-cd"                       
+        - title: Install GitOps Runtime with new Argo CD
           url: "/hybrid-gitops-helm-installation" 
         - title: Install GitOps Runtime alongside Community Argo CD
           url: "/argo-with-gitops-side-by-side"        
