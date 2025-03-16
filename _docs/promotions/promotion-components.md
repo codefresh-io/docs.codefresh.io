@@ -58,7 +58,7 @@ The table describes the core and promotion-specific entities.
       </ul>
     </td>
     <td>Users</td>
-    <td><a href="https://codefresh.io/docs/docs/dashboards/gitops-environments/">Environments</a></td>
+    <td><a href="https://codefresh.io/docs/docs/environments/environments-overview/">Environments</a></td>
   </tr>
   <tr>
     <td></td>
