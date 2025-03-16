@@ -18,7 +18,7 @@ These objectives apply only to actual outages, bugs, errors, or defects, in our 
 
   
 
-### 1.1 Response Time Objectives. 
+### 1.1. Response Time Objectives. 
 
 Our response may include:
   
@@ -38,8 +38,8 @@ The following timeframes are calculated from the time that we receive sufficient
 | **Normal**    | 1 Business Day[2]   | 4 Hours   | 2 Hours  |
 | **Low**       | None                | 2 Business Days | 8 Business Hours |
 
-[1]**Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
-[2]**Business Day** means weekdays (excluding public holidays) in your registered time zone.
+[1] **Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
+[2] **Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
 If our response time objective exceeds the remaining time available on that Business Day, our response time is paused at the end of the Business Day and shall resume on the next Business Day (where applicable). However, we may respond outside of these hours. 
 
@@ -50,9 +50,9 @@ If our response time objective exceeds the remaining time available on that Busi
 | **Priority Level** | **Description** |
 |--------------------|---------------|
 | **Urgent**  | A major service outage, e.g.: {::nomarkdown}<ul><li>Your Codefresh instance is completely unavailable or unable to deploy.</li><li> Your production use of our products for mission-critical systems has stopped or is so severely impacted that you cannot reasonably continue work.</li></ul>{:/} <br><br> Critical impact problems could have the following characteristics:{::nomarkdown}<ul><li>System hangs or crashes</li><li>Data loss or data corruption</li><li>Critical functionality not available</li><li>No reasonable workaround</li></ul>{:/} |
-| **High**  | Significant impairment to your ordinary usage, e.g.: {::nomarkdown}<ul><li>Disabled functionality, errors that result in a lack of significant functionality in the services which prevent you from accomplishing your deployments with no workaround provided.</li><li>Important product features are unavailable with no acceptable workaround. <br> - Your implementation or production use of our product in a primary business service, major application(s), or mission-critical system(s) are functioning with limited capability or are unstable with periodic interruptions. The product may be operating but is severely restricted.</li></ul>{:/} <br><br> High-impact problems could have the following characteristics: {::nomarkdown}<ul><li>Product error or failure forcing a restart or recovery</li><li>Severely degraded performance</li><li>Functionality unavailable, but the system can operate in a restricted fashion.</li></ul> |
+| **High**  | Significant impairment to your ordinary usage, e.g.: {::nomarkdown}<ul><li>Disabled functionality, errors that result in a lack of significant functionality in the services which prevent you from accomplishing your deployments with no workaround provided.</li><li>Important product features are unavailable with no acceptable workaround. Your implementation or production use of our product in a primary business service, major application(s), or mission-critical system(s) are functioning with limited capability or are unstable with periodic interruptions. The product may be operating but is severely restricted.</li></ul>{:/} <br><br> High-impact problems could have the following characteristics: {::nomarkdown}<ul><li>Product error or failure forcing a restart or recovery</li><li>Severely degraded performance</li><li>Functionality unavailable, but the system can operate in a restricted fashion.</li></ul> |
 | **Normal**  | Non-critical errors that do not significantly impair your ordinary usage, e.g.: {::nomarkdown}<ul><li>Errors that cause previously-working non-critical features to malfunction.</li><li>Product features are unavailable, but a workaround exists, and the majority of product functions are still usable.</li><li>Minor function/feature failure that the customer can circumvent or avoid.</li><li>Your work has minor loss of operational functionality.</li> </ul>{:/}<br><br>Normal impact problems could have the following characteristics:{::nomarkdown}<ul><li>Error message with a workaround</li><li>Minimal performance degradation</li><li>Incorrect product behavior with a workaround</li></ul>{:/} |
-| **Low**  | Minor problem or question that does not affect product functionality, e.g.:{::nomarkdown}<ul><li>How-to’s</li><li>Documentation</li><li>General questions</li><li>Enhancement requests</li></ul>{:/} <br><br> There is no or low impact on customer operations. <br><br> Low-impact problems could have the following characteristics:{::nomarkdown}<ul><li>General requests for advice on product usage<li></li>Questions on product functionality or configuration during implementation</li><li>Clarification on product documentation or release notes</li><li>Minor UI bugs</li><li> Nice-to-have product enhancement requests</li></ul>{:/}|
+| **Low**  | Minor problem or question that does not affect product functionality, e.g.:{::nomarkdown}<ul><li>How-to’s</li><li>Documentation</li><li>General questions</li><li>Enhancement requests</li></ul>{:/} <br><br> There is no or low impact on customer operations. <br><br> Low-impact problems could have the following characteristics:{::nomarkdown}<ul><li>General requests for advice on product usage</li><li>Questions on product functionality or configuration during implementation</li><li>Clarification on product documentation or release notes</li><li>Minor UI bugs</li><li> Nice-to-have product enhancement requests</li></ul>{:/}|
 
 
 ### 1.3. Support Channels. 
@@ -66,8 +66,8 @@ If our response time objective exceeds the remaining time available on that Busi
 | **Support Hours**                     | During Business Hours[1] | 24 x 7        | 24 x 7      |
 | **Primary Support Engineer**          |                        |               | ✅           |
 | **Video Conferencing***               |                        |               | ✅           |
-| **Phone** **                         |                        |               | ✅           |
-| **Dedicated Support Slack Channel***  |                        |               | ✅           |
+| **Phone****                         |                        |               | ✅           |
+| **Dedicated Support Slack Channel*****  |                        |               | ✅           |
 | **SLA**                               |                        |               | ✅           |
 
 ***Video Conferencing**: Real-time troubleshooting utilising Microsoft Teams or Zoom. Available to Premium Support customers.
