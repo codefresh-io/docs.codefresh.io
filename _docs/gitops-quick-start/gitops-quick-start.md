@@ -33,20 +33,15 @@ We’ve provided an example GitHub repository containing all the applications an
   Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
+* [Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+  Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
+
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
-* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
+* [Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)   
+  Automate pre- and post-promotion actions during GitOps promotions in environments, ensuring quality, security, and compliance at each stage.
 
-<!---
-* [Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
-  Organize related applications under a single product, for better context and control of deployments.
-
-
-
- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
 
 ## Promoting applications
 

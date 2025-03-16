@@ -90,6 +90,8 @@ At this point, as we haven't created any applications, all environments are empt
 %} 
 
 ## What's next
-You’re probably eager to dive into applications, and that's what we'll do in the next quick start. 
+Now that you've set up environments, we'll focus on another key entity in GitOps promotions—Promotion Workflows—which enhance and automate the promotion process. 
 
-[Quick start: Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
+Promotion Workflows are used in automated promotions flows to enforce quality, security, and compliance requirements at each stage of the promotion.
+
+[Quick start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
