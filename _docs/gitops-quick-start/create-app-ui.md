@@ -1,6 +1,6 @@
 ---
-title: "Quick start: Creating applications"
-description: "Create Argo CD applications in Codefresh"
+title: "Quick start: Creating Products and applications"
+description: "Create Argo CD applications and group them within Products"
 group: gitops-quick-start
 toc: true
 redirect_from:
@@ -11,12 +11,11 @@ redirect_from:
 In this quick start we'll create applications — the fundamental building blocks of software delivery.  
 Applications are Argo CD applications that represent Kubernetes resources deployed and managed through GitOps principles. 
 
-Applications and products, together with environments we created in the previous quick start, complete the core entities needed for GitOps promotions.
+Applications, products, and environments, complete the core entities needed for GitOps promotions.
 
 We'll do the following:
 * Create three applications
 * Create a product for the applications
-* View the Environments dashboard populated with applications
 * Explore the Product Dashboard
 
 For detailed information, see [About Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
@@ -63,8 +62,7 @@ When you create the application, to use the resources, select the folder corresp
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
 * [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
-* [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
-  At least three environments for the different applications representing the basic stages in the SDLC
+
 
 
 
@@ -327,23 +325,7 @@ spec:
       - ServerSideApply=true
       - RespectIgnoreDifferences=false
 ```
-## View changes in Environments dashboard
 
-Return to the Environments dashboard to see how the environments are populated with the applications you created.
- 
-* From the sidebar, select **Environments**.
-  Each environment displays the product you created. For example, `demo-trioapp`.
-* Mouse over the product name in each environment to see the associated applications. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
-
-  {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/quick-start/environments-products/env-with-assigned-apps.png" 
-   url="/images/quick-start/environments-products/env-with-assigned-apps.png" 
-   alt="Applications quick start: Environments with products and applications" 
-   caption="Applications quick start: Environments with products and applications"
-   max-width="70%" 
-   %} 
 
 ## Explore the Product Dashboard
 
@@ -376,8 +358,13 @@ The Product Dashboard provides a centralized view of your product's applications
 
  
 ## What's next?
-We'll dive into how to promote changes and deploy applications across environments using the entities you've created and worked with: Environments, products, and applications.  
+We'll create the final entity essential for promoting and deploying applications: Environments.  
+Environments represent stages in your software development lifecycle, providing a structured way to track and manage your applications.
 
-Let's move on to the first quick start on promotions to see this in action.
+Let’s continue by creating environments.  
 
-[Quick start: Simple promotion with drag-and-drop]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
+[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/) 
+
+
+
+

@@ -21,10 +21,12 @@
       localurl: /argohub/gitops-quick-start/create-codefresh-account/
     - title: Installing a Hybrid GitOps Runtime
       localurl: /argohub/gitops-quick-start/runtime/
-    - title: Creating environments
-      localurl: /argohub/gitops-quick-start/quick-start-gitops-environments/
-    - title: Creating applications
+    - title: Creating Products and applications
       localurl: /argohub/gitops-quick-start/create-app-ui/
+    - title: Creating Environments
+      localurl: /argohub/gitops-quick-start/quick-start-gitops-environments/
+    - title: Creating Promotion Workflows
+      localurl: /argohub/gitops-quick-start/quick-start-promotion-workflow/
     - title: Simple promotion with drag-and-drop 
       localurl: /argohub/gitops-quick-start/drag-and-drop/
     - title: Simple Promotion Flow with multiple environments
@@ -40,17 +42,6 @@
       localurl: /argohub/environments/create-manage-environments/      
     - title: Manage Products and applications in Environments
       localurl: /argohub/environments/manage-apps-in-environments/   
-
-- title: Applications
-  icon: ../images/home-icons/deployment.svg
-  url: ""
-  links:
-    - title: Creating Argo CD applications
-      localurl: /argohub/applications/create-application/
-    - title: Monitoring Argo CD applications
-      localurl: /argohub/applications/monitor-applications/
-    - title: Managing Argo CD applications
-      localurl: /argohub/applications/manage-application/
 
 - title: Products
   icon: ../images/home-icons/product.svg
@@ -68,6 +59,18 @@
       localurl: /argohub/products/promotion-version-properties/
     - title: Configuring promotion flows
       localurl: /argohub/products/promotion-flow-triggers/   
+
+
+- title: Applications
+  icon: ../images/home-icons/deployment.svg
+  url: ""
+  links:
+    - title: Creating Argo CD applications
+      localurl: /argohub/applications/create-application/
+    - title: Monitoring Argo CD applications
+      localurl: /argohub/applications/monitor-applications/
+    - title: Managing Argo CD applications
+      localurl: /argohub/applications/manage-application/
 
 
 - title: Promotions
