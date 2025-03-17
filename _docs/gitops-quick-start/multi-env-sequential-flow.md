@@ -243,7 +243,7 @@ metadata:
   name: multi-env-sequential-promotion
   annotations:
     description: Sequential promotion flow
-    version: "3.00"
+    version: "1.00"
 spec:
   triggerEnvironment: dev
   steps:
