@@ -6,7 +6,7 @@ toc: true
 redirect_from:
   - /docs/quick-start/gitops-quick-start/runtime/
   - /docs/gitops-quick-start/verify-requirements/
-  _ /docs/gitops-quick-start/runtime/
+  - /docs/gitops-quick-start/runtime/
 ---
 
 
