@@ -15,6 +15,7 @@ Depending on your installation mode, you also need to complete the [prerequisite
 | --------------         | --------------           |
 |Kubernetes cluster      | Server version 1.23 or higher {::nomarkdown}<br><b>Tip</b>: To check the server version, run:<br> <code class="highlighter-rouge">kubectl version --short</code>{:/}|
 |Helm| 3.8.0 or higher|
+|Argo CD | For installing with an existing Argo CD instance, Codefresh supports the current version and the previous two versions. {::nomarkdown}<ul><li>2.14</li><li>2.13</li><li>2.12</li></ul>{:/}|
 |Node requirements| {::nomarkdown}<ul><li>Memory: 5000 MB</li><li>CPU: 2</li></ul>{:/}|
 |Cluster permissions | Cluster admin permissions |
 |Git providers    |{::nomarkdown}<ul><li>GitHub</li>{% if page.collection != site.gitops_collection %}<li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Data Center</li>{% endif %}</ul>{:/}|
