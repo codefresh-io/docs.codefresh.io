@@ -52,7 +52,7 @@ enhance consistency, create reusable templates that apply across products.
   Users need permissions to create Promotion Workflows, configure product settings, and trigger promotions.
 
 ## Tasks
-1. [Create environments]({{site.baseurl}}/docs/environments/create-manage-environments/create-environments)  
+1. [Create Environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)  
   Environments define the starting and the end points of promotions.  
   For a promotion sequence, you need at least two environments: the trigger environment, which is the source of the changes to promote, and the target environment, to which the changes need to be promoted. 
   
@@ -60,13 +60,13 @@ enhance consistency, create reusable templates that apply across products.
   Applications represent the components or services to be promoted and deployed, and are the smallest unit of deployment within a promotion sequence. To promote across an application across environments, you need an application for each target environment.  
   Create Argo CD applications in our user interface. For seamless promotions, group related applications within a product to manage them collectively.
 
-1. [Create products]({{site.baseurl}}/docs/products/create-product/)  
+1. [Create Products]({{site.baseurl}}/docs/products/create-product/)  
   Products connect related applications and group them as a single entity. Applications represent instances of products within each environment. 
   Being able to apply promotion settings at the level of the product, and being able to promote applications belonging to the same product, simplifies promotion management.  
   Create a product and connect related applications to it, either manually or declaratively. 
 
 
-1. [Create promotion workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/)  
+1. [Create Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/)  
   As part of promoting changes across environments, it's customary to run tests and validations that match the requirements of the target environments in the promotion sequence. For example, create workflows that run smoke tests to verify basic functionality or database validation checks to ensure data integrity.
   Create Promotion Workflows (Argo Workflows) to implement any type of tests, validations, and custom requirements. 
 
@@ -74,7 +74,7 @@ enhance consistency, create reusable templates that apply across products.
   Govern promotion behavior for environments by setting rules, checks, and validations that environments must meet before and after changes are promoted.
   Promotion Policies allow you to define these rules by combining Promotion Workflows and the promotion action based on environment type, product, or other criteria. When a promotion is triggered for an environment, the policy mechanism merges settings from all relevant global policies according to priority, providing automated governance for consistent and reliable promotion behavior.
 
-1. [Create promotion flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
+1. [Create Promotion Flows to orchestrate promotions]({{site.baseurl}}/docs/promotions/promotion-flow/)  
   Orchestrate the sequence of actions to move and deploy changes through the required environments, from the trigger environment to the final target environment.  
   Promotion Flows ensure that changes are promoted in a controlled and predictable manner by integrating environments, products and applications, promotion workflows, and policies.
   

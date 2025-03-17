@@ -1222,7 +1222,7 @@ As a reminder, here's where you can find the **View logs** option:
   max-width="70%" 
 %}
 
-For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
+For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#viewdownload-logs-for-runtime-components).
 
 
 #### GitOps: Argo Events upgrade
