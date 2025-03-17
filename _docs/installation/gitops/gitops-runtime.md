@@ -59,20 +59,34 @@ The GitOps Runtime provides a robust suite of features to manage applications ac
 
 
 
-## Installation options for GitOps Runtimes
-You can install the Hybrid GitOps Runtime via Helm using one of two options, tailored to specific scenarios:
+## Installation modes for GitOps Runtimes
+Codefresh provides different installation options for GitOps Runtimes, allowing you to integrate with your existing Argo CD setup or deploy a new instance. Each option offers flexibility based on your infrastructure and operational needs.
 
-* **Clean-cluster installation without Argo CD**  
-  Use this option to deploy the GitOps Runtime on a cluster that does not already have Argo CD installed.
-  The cluster must not contain any Argo Project components.
-  The installation process will deploy the required Argo Project components, including Argo CD, as part of the setup.  
-  See [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+##### Installation with existing Argo CD instance
+Use this option if you already have an Argo CD instance managing applications and want to integrate it with Codefresh GitOps capabilities.
+
+The GitOps Runtime connects to your existing Argo CD without modifying its configuration or application management.  
+It enables deeper visibility, enhanced deployment tracking, and native integration with Codefresh environments, products, and promotions.  
+See [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
+
+##### Installation with new Argo CD instance
+Use this option if your cluster does not have Argo CD installed. Ideal for environments where you want a clean and controlled Argo CD deployment integrated with Codefresh GitOps.
+
+The installation process deploys a fully managed Argo CD instance along with the GitOps Runtime.  
+This setup ensures that Codefresh manages Argo CD's lifecycle, simplifying maintenance and upgrades.  
+See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
+{% if page.collection != site.gitops_collection %}
+##### Installation alongside Community Argo CD
+Use this option if your cluster has an existing Community Argo CD instance to which to add Codefresh GitOps Runtime capabilities. 
+
+Ensures coexistence between your Community Argo CD instance and the GitOps Runtime by using separate configurations.
+Requires additional configuration to manage resources separately and avoid interference with the existing Community Argo CD setup.  
+
+See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
+{% endif %}
 
 
-* **Cluster installation with Community Argo CD**  
-  Use this option to extend an existing cluster that has a Community Argo CD instance by adding GitOps Runtime capabilities.  
-  To prevent naming and tracking conflicts between the Community Argo CD instance and the GitOps Runtime-managed resources, you need additional configuration.  
-  See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
 
 ## Multiple GitOps Runtimes in account
 Within the same account, you can install one Hybrid GitOps Runtime per cluster.  
