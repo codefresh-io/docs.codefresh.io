@@ -45,7 +45,7 @@ We’ve provided an example GitHub repository containing all the applications an
 
 ## Promoting applications
 
-Validate and promote changes in applications across environments.
+Promote and deploy changes in applications across environments.
 Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with environment dependencies.
 
 * [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  

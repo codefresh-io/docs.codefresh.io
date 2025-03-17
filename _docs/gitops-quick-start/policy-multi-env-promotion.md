@@ -50,6 +50,7 @@ In this quick start, we'll use the Slack notification Promotion Workflow to send
   Here we use `dev`, `qa`, and `prod`.
 * [Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
 
+
 ## Assign Pre- and Post-Action Workflows to environments in Promotion Flow
 To ensure each environment's specific requirements are met, assign Promotion Workflows to govern promotion behavior.  
 In this quick start, we’ll select the Promotion Workflows to govern promotion behavior for the `qa` and `prod` environments.
