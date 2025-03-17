@@ -52,7 +52,7 @@ Read more about the dashboard in this [blog](https://codefresh.io/blog/introduci
 * **Unified application management**  
   Grouping interconnected applications simplifies management and streamlines deployments across environments.
 
-* **Aapplication-environment linking**  
+* **Application-environment linking**  
   Products bridge the gap between applications and environments, providing clarity and control over the deployment lifecyle.
 
 * **Deployment visibility**

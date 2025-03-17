@@ -31,24 +31,19 @@ We’ve provided an example GitHub repository containing all the applications an
 
 
 ## Creating GitOps entities for promotions
+* [Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+  Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
+
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
-* [Creating applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
+* [Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)   
+  Automate pre- and post-promotion actions during GitOps promotions in environments, ensuring quality, security, and compliance at each stage.
 
-<!---
-* [Creating products]({{site.baseurl}}/docs/gitops-quick-start/quick-start-product-create/)  
-  Organize related applications under a single product, for better context and control of deployments.
-
-
-
- * [Exploring the Product Dashboard for applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
-  Add applications to your product and configure their source repositories, manifests, and deployment paths. -->
 
 ## Promoting applications
 
-Validate and promote changes in applications across environments.
+Promote and deploy changes in applications across environments.
 Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with environment dependencies.
 
 * [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
