@@ -7,12 +7,15 @@ toc: true
 
 
 ## Environments quick start
-In this quick start, we'll create different environments that map to the typical stages of the software development lifecycle (SDLC), and will help in promoting changes in your applications. 
+In this quick start, we'll create different environments that map to the typical stages of the software development lifecycle (SDLC). Environments provide structure for organizing applications and managing promotions.
 
 We'll do the following:
 * Create three different environments, `dev`, `qa`, and `prod`.
 * Map them to a cluster, typically the one where the GitOps Runtime is installed. 
-* Define namespaces within the cluster for each environment, ensuring clear separation between development, testing, and production.
+* Define namespaces within the cluster for each environment, ensuring clear separation between development, testing, and production.  
+
+Products and their applications are displayed in the environments, providing visibility into where each version is deployed.
+
 
 
   {% include 
@@ -24,6 +27,7 @@ We'll do the following:
 	caption="Quick start: Environments in Codefresh GitOps"
   max-width="60%" 
 %} 
+
 
 ##### Why create environments? 
 
@@ -39,7 +43,7 @@ For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gi
 
 ## Requirements
 * [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-
+* [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/) 
  
 
 ## Create an environment
@@ -75,23 +79,30 @@ We’ll map the environments to `in-cluster` and associate each with a different
 1. Repeat _step 1_ through _step 3_ to create the two other environments: `qa` and `prod`.  
   For the quick start, we'll map these environments again to the `in-cluster`. And to the namespaces, `demo-qa` and `demo-prod` respectively, for the `demo` apps we'll create. 
 
-Here's an example of the Environments dashboard with the three environments.
-The environments are automatically populated with the applications in the clusters and namespaces mapped to them.  
-At this point, as we haven't created any applications, all environments are empty.
+## View Environments dashboard
 
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/quick-start/environments-products/envs-no-apps.png" 
-	url="/images/quick-start/environments-products/envs-no-apps.png" 
-	alt="Environments quick start: Newly created environments without applications" 
-	caption="Environments quick start: Newly created environments without applications"
-  max-width="60%" 
-%} 
+Go to the Environments dashboard to see how the environments are populated with the applications you created.
+Here's an example of the Environments dashboard with the three environments, and the products and their applications in the clusters and namespaces mapped to them.
+ 
+1. From the sidebar, select **Environments**.
+  Each environment displays the product you created. For example, `demo-trioapp`.
+1. Mouse over the product name in each environment to see the associated applications. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`.
+
+  {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/quick-start/environments-products/env-with-assigned-apps.png" 
+   url="/images/quick-start/environments-products/env-with-assigned-apps.png" 
+   alt="Applications quick start: Environments with products and applications" 
+   caption="Applications quick start: Environments with products and applications"
+   max-width="70%" 
+   %} 
+
+
 
 ## What's next
-Now that you've set up environments, we'll focus on another key entity in GitOps promotions—Promotion Workflows—which enhance and automate the promotion process. 
-
-Promotion Workflows are used in automated promotions flows to enforce quality, security, and compliance requirements at each stage of the promotion.
+Now that you've set up environments, we'll focus on another key entity in GitOps promotions which enhances the promotion process—Promotion Workflows.  
+Promotion Workflows are used in automated promotion flows to enforce quality, security, and compliance requirements at each stage of the promotion.
 
 [Quick start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
+
