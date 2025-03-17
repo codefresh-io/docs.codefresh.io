@@ -17,7 +17,6 @@ You can configure the Runtime immediately after installation by following the Co
 or at any time later through the Codefresh UI. 
 If any configuration steps are pending, the Runtime's status in the UI list view indicates it through the Complete installation .
 
-## Configure Runtime via UI
 
 
 ## Configure Git credentials for Runtime

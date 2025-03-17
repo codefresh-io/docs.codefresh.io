@@ -84,7 +84,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
 ## Remove Argo Project and SealedSecret components
-For GitOps Runtime installation with built-in Argo, the _target cluster should not have_:
+For GitOps Runtime installation with a new Argo CD instance, the _target cluster should not have_:
 * Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
 * SealedSecret controller components.
 
@@ -159,7 +159,6 @@ When installing a GitOps Runtime alongside an existing Argo CD instance, ensure 
 
 
 {% if page.collection == site.gitops_collection %}
-
 ## Prerequisites summary
 This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD or existing Argo CD.
 
@@ -235,6 +234,8 @@ See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/ma
 For GitOps Runtime installation with built-in Argo, the target cluster should not have:
 * Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
 * SealedSecret controller components.
+
+
 
 ## Configure connectivity with Argo CD services (Existing Argo only)
 

@@ -17,12 +17,10 @@
       url: "/gitops-quick-start"
     - title: Create Codefresh account
       url: "/create-codefresh-account"
-    - title: Preparing for Hybrid GitOps Runtime installation
-      url: "/verify-requirements"
-    - title: Installing a Hybrid GitOps Runtime
-      url: "/runtime"
-    - title: Creating Git Sources
-      url: "/create-git-source"
+    - title: Installing the GitOps Runtime
+      url: "/quick-start-install-runtime"
+    - title: Configuring the GitOps Runtime
+      url: "/quick-start-configure-runtime"
     - title: Creating environments
       url: "/quick-start-gitops-environments"
     - title: Creating applications
