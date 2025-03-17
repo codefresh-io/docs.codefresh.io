@@ -242,6 +242,8 @@ For example, you can configure the ServiceNow Promotion Workflow in example 2 as
 
 
 ## What's next
-The next quick start will guide you through adding Promotion Workflows to each environment in a Promotion Flow, acting as gates for conditional promotions, allowing you to introduce more control and flexibility in your promotion processes.
+Now that you have created all the entities required for GitOps-based promotions, you can trigger promotions to move application versions across environments.
 
-[Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
+We'll start with a simple drag-and-drop promotion.
+
+[Quick start: Simple promotion with drag-and-drop]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
