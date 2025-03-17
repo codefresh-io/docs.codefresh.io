@@ -23,10 +23,12 @@
       url: "/runtime"
     - title: Creating Git Sources
       url: "/create-git-source"
-    - title: Creating environments
-      url: "/quick-start-gitops-environments"
-    - title: Creating applications
+    - title: Creating Products and applications
       url: "/create-app-ui"
+    - title: Creating Environments
+      url: "/quick-start-gitops-environments"
+    - title: Creating Promotion Workflows
+      url: "/quick-start-promotion-workflow"  
     - title: Simple promotion with drag-and-drop 
       url: "/drag-and-drop"    
     - title: Simple Promotion Flow with multiple environments

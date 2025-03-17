@@ -11,10 +11,11 @@ redirect_from:
 
 With a Promotion Flow you can [automate promotions across multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/). 
 
-This quick start explores how to enhance Promotion Flows by configuring conditions for each environment in the flow, ensuring that changes are promoted to environments only on meeting the specific requirements for the environment.
+This quick start explores how to enhance Promotion Flows by configuring conditions for each environment in the flow through Promotion Workflows.  
+Promotion Workflows define the conditions under which changes are promoted to the next environment. They automate testing, validation, and other required checks, establishing gates that control how changes are promoted between environments.
 
-You can automate and enforce gates throughout your promotion processes using Promotion Workflows. 
-Promotion Workflows are essentially Argo Workflows customized for promoting changes through your environments.  
+For this quick start, we'll use the same Promotion Workflows we created [Quick Start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow) within the Promotion Flow.
+ 
 For detailed information, see [Configuring Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).
 
 ## Promotion Workflows in Promotion Flows
@@ -22,22 +23,17 @@ Promotion Workflows are designed to define the conditions under which changes ar
 
 You can create workflows tailored to the specific tasks required during a promotion and categorize them based on the stage of the promotion process in which they are executed, as Pre- and Post-Action Workflows.
 
-##### Pre-Action Workflow
-A Promotion Workflow that runs _before the promotion action is triggered_. These workflows can be used for tasks like smoke tests, unit tests, security scans, or any other validation that must pass before a change is promoted to the next environment.
-
-The Pre-Action Workflow plays a critical role in ensuring that changes meet all necessary requirements before being promoted to the next environment. It acts as the gatekeeper, validating changes and stopping the promotion if any tests or validations fail. 
-
+##### Pre-Action Workflows
+A Pre-Action Workflow runs _before the promotion action is triggered_. These workflows can be used for tasks like smoke tests, unit tests, security scans, or any other validation that must pass before a change is promoted to the next environment.
+If any validation in the Pre-Action Workflow fails, the promotion is blocked, ensuring that only approved changes proceed to the next environment.
+ 
+In this quick start, we'll use the ServiceNow Promotion Workflow to open a change request before the promotion starts.
 
 ##### Post-Action Workflows
-A Promotion Workflow that runs _after the promotion action has completed_. These workflows can be used for tasks like performance monitoring, database migrations, or notifications to inform stakeholders that the promotion is complete.
+A Post-Action Workflow runs _after the promotion action has completed_. These workflows can be used for tasks like performance monitoring, database migrations, or notifications to inform stakeholders that the promotion is complete.  
+Post-Action Workflows help ensure that promoted changes behave as expected in the new environment and allow teams to respond to any issues.
 
-The Post-Action Workflow allows you to monitor and verify the effects of the promotion after it has taken place. This workflow helps ensure the promoted changes behave as expected in the new environment.
-
-<!--- 
-## How to create Promotion Workflows
-
-TBD
--->
+In this quick start, we'll use the Slack notification Promotion Workflow to send a Slack notification when the promotion is complete. 
 
 
 ## Requirements
@@ -52,16 +48,17 @@ TBD
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   For a Promotion Flow, you need at least three environments.
   Here we use `dev`, `qa`, and `prod`.
-* [Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/#create-promotion-workflows)
+* [Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
+
 
 ## Assign Pre- and Post-Action Workflows to environments in Promotion Flow
 To ensure each environment's specific requirements are met, assign Promotion Workflows to govern promotion behavior.  
-In this quick start, we’ll define the Promotion Workflows to govern promotion behavior for the `qa` and `prod` environments.
+In this quick start, we’ll select the Promotion Workflows to govern promotion behavior for the `qa` and `prod` environments.
 
 1. From the Promotion Flow list, select the Promotion Flow you created, `multi-env-sequential-promotion` for the quick start.
 1. In the Settings panel, update the **Version** to indicate changes in the flow, for example, `2.0`. 
 1. Assign the workflows by clicking the respective controls and selecting the Promotion Workflows and the Promotion Action from the list. 
-  The example below shows the Pre-Action Workflows available.
+  The examples below show the Pre-Action Workflows available, and the `qa` environment configured with the Pre- and Post-Action Workflows and the Promotion Action.
 
 {% include 
 image.html 
@@ -129,9 +126,6 @@ max-width="60%"
 
 
 ## What's next
-<!--- In the next quick start for promotions, we'll explore how to configure a Promotion Flow with parallel promotions, allowing changes to be promoted simultaneously across multiple environments.
-
-[Quick start: Advanced Promotion Flow: Parallel promotions across environments]({{site.baseurl}}/docs/gitops-quick-start/parallel-multi-env-promotion/) -->
 The final quick start on promotions will guide you through creating dependencies between environments to define the order for promotions.
 
 [Quick start: Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)

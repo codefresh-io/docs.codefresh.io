@@ -101,9 +101,8 @@ Here's an example of the Environments dashboard with the three environments, and
 
 
 ## What's next
-We’ll dive into how to promote changes and deploy applications across environments using the entities you’ve created and worked with: Products,applications, and Environments.
+Now that you've set up environments, we'll focus on another key entity in GitOps promotions which enhances the promotion process—Promotion Workflows.  
+Promotion Workflows are used in automated promotion flows to enforce quality, security, and compliance requirements at each stage of the promotion.
 
-Let’s move on to the first quick start on promotions to see this in action.
+[Quick start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
 
-
-[Quick start: Simple promotion with drag-and-drop]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)
