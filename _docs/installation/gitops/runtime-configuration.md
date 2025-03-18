@@ -13,7 +13,7 @@ Configuration includes:
 * [Configuring Runtime as an Argo Application](#configure-runtime-as-argo-application)
 * [Adding a Git source](#add-git-source-to-runtime)
 
-You can configure the Runtime immediately after installation by following the Configuration and Management steps in the Runtime Installation Wizard, 
+You can configure the Runtime immediately after installation by following the Configuration and Management steps in the installation wizard, 
 or at any time later through the Codefresh UI. 
 If any configuration steps are pending, the Runtime's status in the UI list view indicates it through the Complete installation .
 

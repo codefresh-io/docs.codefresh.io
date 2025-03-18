@@ -29,7 +29,7 @@ Configuring the GitOps Runtime as an Argo application ensures:
 1. From the sidebar, select **GitOps Runtimes**.
 1. Switch to the **List View**.
 1. Select the GitOps Runtime to configure as an Argo CD application.
-1. In the Installation Wizard, select **Configure runtime as Argo Application**.
+1. In the installation wizard, select **Configure runtime as Argo Application**.
 
 The Runtime's context menu now includes the **Runtime Application** option, which when selected takes you to the Current State tab in the GitOps Apps dashboard. 
 

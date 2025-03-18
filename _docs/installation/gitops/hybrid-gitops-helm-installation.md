@@ -27,7 +27,7 @@ For both first-time and additional GitOps Runtime installations:
 * Review the Runtime's `values.yaml` for accuracy, and also how Codefresh [validates the settings](#valuesyaml-validation).
 
 **Runtime configuration**
-After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the Runtime Installation wizard.  
+After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the installation wizard.  
 Alternatively, you can complete the configuration later through the Codefresh UI. Configuration includes setting up Git credentials, configuring the Runtime as an Argo application, and adding a Git Source to the Runtime.
 
 
@@ -136,7 +136,7 @@ where:
 * `<version>` is the version of the runtime to install.
 
 ## Install first GitOps Runtime in account
-If you are installing the first GitOps Runtime in your Codefresh account, follow the Runtime Installation wizard for guided instructions.
+If you are installing the first GitOps Runtime in your Codefresh account, follow the installation wizard for guided instructions.
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
@@ -219,7 +219,7 @@ max-width="40%"
 
 ### Step 3: Install GitOps Runtime
 
-To install the GitOps Runtime, follow the instructions in the Runtime Installation Wizard. The wizard provides an Install Runtime command with pre-populated values, making installation quick and straightforward.
+To install the GitOps Runtime, follow the instructions in the installation wizard which provides an Install Runtime command with pre-populated values.
 
 #### Installation Parameters
 
@@ -313,7 +313,7 @@ helm upgrade --install <helm-release-name> \
 
 ### Step 4: Completing Installation
 Once installation is complete, you can:
-* Continue with the Configuration & Management steps in the Wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
+* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
 OR
 Go to the Runtimes page and view the installed Runtime.
 

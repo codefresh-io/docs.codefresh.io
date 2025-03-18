@@ -52,11 +52,11 @@ Before installing the GitOps Runtime, ensure your environment meets the [system 
 Review and complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/#prerequisites-summary-1) to prepare your environment for the selected installation mode.
 
 ## Installing with an existing Argo CD instance (default)
-To install the GitOps Runtime using an existing Argo CD instance, follow the steps in the Runtime Installation Wizard.  
+To install the GitOps Runtime using an existing Argo CD instance, follow the steps in the installation wizard.  
 For detailed information, see [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 ## Installing with a new Argo CD instance
-To install the GitOps Runtime using a new Argo CD instance, follow the steps in the Runtime Installation Wizard.  
+To install the GitOps Runtime using a new Argo CD instance, follow the steps in the installation wizard.  
 For detailed information, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 

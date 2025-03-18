@@ -28,7 +28,7 @@ For both first-time and additional GitOps Runtime installations:
 * Review the Runtime's `values.yaml` for accuracy, and also how Codefresh [validates the settings](#valuesyaml-validation).
 
 **Runtime configuration**
-After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the Runtime Installation wizard.  
+After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the installation wizard.  
 Alternatively, you can complete the configuration later through the Codefresh UI. Configuration includes setting up Git credentials, configuring the Runtime as an Argo application, and adding a Git Source to the Runtime.
 See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
 
@@ -137,7 +137,7 @@ where:
 * `<version>` is the version of the runtime to install.
 
 ## Install first GitOps Runtime in account
-If you are installing the first GitOps Runtime in your Codefresh account, follow the Runtime Installation wizard for guided instructions.
+If you are installing the first GitOps Runtime in your Codefresh account, follow the installation wizard for guided instructions.
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
@@ -166,7 +166,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 
 
 
-### Step 1: Select Hybrid Runtime install option
+### Step 1: Select Runtime install option
 
 1. On the Getting Started page, click **Install Runtime**.
 1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
@@ -206,7 +206,7 @@ On-premises Git providers require you to define the API URL:
 
 ### Step 3: Install GitOps Runtime
 
-To install the GitOps Runtime, follow the instructions in the Runtime Installation Wizard. The wizard provides an Install Runtime command with pre-populated values, making installation quick and straightforward.
+To install the GitOps Runtime, follow the instructions in the installation wizard which provides an Install Runtime command with pre-populated values, making installation quick and straightforward.
 
 #### Installation Parameters
 
@@ -223,7 +223,7 @@ The namespace for the GitOps Runtime _which must be the same as that of the Argo
 ##### Argo CD Admin API token
 The token through which the GitOps Runtime authenticates with the external Argo CD instance.  
 * The token must be a non-expiring API key.  
-* The Helm chart automatically creates a secret for the token, which the platform uses to authenticate API calls to Argo CD.
+* The Helm chart automatically creates a secret for the token, which the Runtime uses to authenticate API calls to Argo CD.
 * If the token is revoked, GitOps operations will stop until it is updated in the Runtime configuration.    
 
 You can generate the token in the Argo CD UI, or by using the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:target="\_blank"} command.
@@ -313,7 +313,7 @@ helm upgrade --install <helm-release-name> \
 
 ### Step 4: Completing Installation
 Once installation is complete, you can:
-* Continue with the Configuration & Management steps in the Wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
+* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
 OR
 Go to the Runtimes page and view the installed Runtime.
 
@@ -397,10 +397,76 @@ resource "helm_release" "my_gitops_runtime" {
 }
 ```
 
+## Authentication methods for Argo CD Admin API 
+The GitOps Runtime authenticates with the external Argo CD instance through a token or a username-password combination.
+During installation, the installation wizard supports token-based authentication where you paste the token into the field.  
+
+You can also authenticate referencing a token-secret or a username-password combination.
+
+
+### Token-based authentication for Argo CD Admin API 
+The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime, as the system does not automatically regenerate or validate the token.
+
+You can:
+* Provide a token directly  
+OR  
+* Reference a Kubernetes secret containing the token
+    * The secret must already exist and include a key with a valid `argo-cd apiKey` that has no expiration date.  
+    * The system injects the key into all required services<!---, including App Proxy (`app-proxy`), Source Server (`sources-server`), Event Reporter (`event-reporter`), and GitOps Operator (`gitops-operator`)-->.  
+
+##### Example configuration of token and secret in `values.yaml 
+  
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: token
+      tokenSecretKeyRef:
+        name: "secret-name"
+        key: "secret-key"
+```
+
+### Password-based authentication for Argo CD Admin API  
+This method uses an Argo CD username and password` to authenticate with Argo CD.  
+The system generates both an API key and a session token, which primarily differ in expiration date.  
+The system stores the API key in the `argocd-token` Secret and automatically regenerates it when needed. 
+
+You can:   
+* Specify the username and password as plain text  
+    * The Helm chart creates a secret to store the password. 
+    * The App Proxy uses these credentials to generate API keys and session tokens as needed.
+OR  
+* Specify the username in plain text and reference a Kubernetes secret containing the password  
+    * The secret must already exist and contain a key with the password.
+    * The App Proxy uses the secret name, key, and the plain-text username to generate API keys and session tokens.
+
+##### Example username and password as plain text 
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: password
+      username: "user-name"
+      password: "explicit-password"
+```
+
+##### Example username as plain text and password as secret reference
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: password
+      username: "some-user-name"
+      passwordSecretKeyRef:
+        name: "secret-name"
+        key: "secret-key"
+```
+
+
 ## Upgrade Runtimes 
 For upgrade instructions, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#upgrade-gitops-runtimes/).  
 
-For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_blank"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_blank"}. -->
+For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_blank"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_blank"}. 
 
 
 ## Related articles

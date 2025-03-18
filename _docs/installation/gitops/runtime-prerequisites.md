@@ -291,69 +291,6 @@ global:
       rootpath: '/argocd' # example value if ArgoCD is behind a reverse proxy such as https://example.com/argocd/
 ...
 ```
-
-## Configure authentication for Argo CD Admin API 
-The GitOps Runtime authenticates with the external Argo CD instance through a token or a username-password combination.
-During installation, the Runtime install wizard supports token-based authentication where you paste the token into the field.  
-
-
-### Token-based authentication for Argo CD Admin API 
-The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime, as the system does not automatically regenerate or validate the token.
-
-You can:
-* Provide a token directly  
-OR  
-* Reference a Kubernetes secret containing the token
-    * The secret must already exist and include a key with a valid `argo-cd apiKey` that has no expiration date.  
-    * The system injects the key into all required services, including App Proxy, Source Server, Event Reporter, and GitOps Operator.  
-
-##### Example configuration of token and secret in `values.yaml 
-  
-```yaml
-global:
-  external-arg-cd:
-    auth:
-      type: token
-      tokenSecretKeyRef:
-        name: "secret-name"
-        key: "secret-key"
-```
-
-### Password-based authentication for Argo CD Admin API  
-This method uses an Argo CD username and password` to authenticate with Argo CD.  
-The system generates both an API key and a session token, which primarily differ in expiration date.  
-The system stores the API key in the `argocd-token` Secret and automatically regenerates it when needed. 
-
-You can:   
-* Specify the username and password as plain text  
-    * The Helm chart creates a secret to store the password. 
-    * The App Proxy uses these credentials to generate API keys and session tokens as needed.
-OR  
-* Specify the username in plain text and reference a Kubernetes secret containing the password  
-    * The secret must already exist and contain a key with the password.
-    * The App Proxy uses the secret name, key, and the plain-text username to generate API keys and session tokens.
-
-##### Example username and password as plain text 
-```yaml
-global:
-  external-arg-cd:
-    auth:
-      type: password
-      username: "some-user-name"
-      password: "some-explicit-password"
-```
-
-##### Example username as plain text and password as secret reference
-```yaml
-global:
-  external-arg-cd:
-    auth:
-      type: password
-      username: "some-user-name"
-      passwordSecretKeyRef:
-        name: "secret-name"
-        key: "secret-key"
-```
 {% endif %}
 
 ## Related articles
