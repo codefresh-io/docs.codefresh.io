@@ -62,20 +62,23 @@ The GitOps Runtime provides a robust suite of features to manage applications ac
 ## Installation options for GitOps Runtimes
 You can install the Hybrid GitOps Runtime via Helm using one of two options, tailored to specific scenarios:
 
-* **Clean-cluster installation without Argo CD**  
-  Use this option to deploy the GitOps Runtime on a cluster that does not already have Argo CD installed.
-  The cluster must not contain any Argo Project components.
-  The installation process will deploy the required Argo Project components, including Argo CD, as part of the setup.  
-  See [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+* **Installation with existing Argo CD**  
+  Use this option if your cluster already an Argo CD installed. The installation process integrates the GitOps Runtime with the existing Argo CD instance and deploys the necessary Argo Project components.
+  See [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
+* **Installation with new Argo CD**  
+  Use this option to deploy if your cluster does not have Argo CD installed. The installation process deploys the GitOps Runtime and a new Argo CD instance along with the other Argo Project components.
+  See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-* **Cluster installation with Community Argo CD**  
-  Use this option to extend an existing cluster that has a Community Argo CD instance by adding GitOps Runtime capabilities.  
+{% if page.collection != site.gitops_collection %}
+* **Installation with Community Argo CD**  
+  Use this option if your cluster has Community Argo CD and you want to add GitOps Runtime capabilities.  
   To prevent naming and tracking conflicts between the Community Argo CD instance and the GitOps Runtime-managed resources, you need additional configuration.  
   See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
+{% endif  %}
 
 ## Multiple GitOps Runtimes in account
-Within the same account, you can install one Hybrid GitOps Runtime per cluster.  
+Within the same account, you can install Hybrid GitOps Runtime per cluster.  
 To install additional Hybrid GitOps Runtimes in the same account, each Runtime must be installed on a different cluster. Every Runtime within the same account must have a unique name.
 
 See [Installing additional GitOps Runtimes from the Codefresh UI]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation#install-additional-gitops-runtimes-in-account), or using [Terraform]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#install-gitops-runtime-via-terraform) to install Runtimes.
