@@ -9,10 +9,10 @@ The prerequisites differ depending on the installation mode for the Runtime.
 
 {% if page.collection != site.gitops_collection %}
 ## Prerequisites summary
-This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD, existing Argo CD, or with Community Argo CD.
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with new Argo CD, existing Argo CD, or Community Argo CD.
 
 {: .table .table-bordered .table-hover}
-| **Prerequisite**   | **Runtime with built-in Argo CD** | **Runtime with existing Argo CD** |  **Runtime with Community Argo CD** |
+| **Prerequisite**   | **Runtime with new Argo CD** | **Runtime with existing Argo CD** |  **Runtime with Community Argo CD** |
 |--------------------|---------------------------|----------------------------|----------------------------|
 | [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
 | [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | ✅     | ✅     | -|
@@ -27,10 +27,10 @@ The table below lists the options available depending on your installation mode.
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
-| **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Adopt all Argo Project CRD except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
+| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
 
 
 
@@ -160,10 +160,10 @@ When installing a GitOps Runtime alongside an existing Argo CD instance, ensure 
 
 {% if page.collection == site.gitops_collection %}
 ## Prerequisites summary
-This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with built-in Argo CD or existing Argo CD.
+This table lists the prerequisites for installing a GitOps Runtime in Codefresh, depending on the installation mode for the Runtime: with new Argo CD or existing Argo CD.
 
 {: .table .table-bordered .table-hover}
-| **Prerequisite**   | **Runtime with built-in Argo CD** | **Runtime with existing Argo CD** | 
+| **Prerequisite**   | **Runtime with new Argo CD** | **Runtime with existing Argo CD** | 
 |--------------------|---------------------------|----------------------------|----------------------------|
 | [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |
 | [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | ✅     | ✅     |
@@ -178,13 +178,13 @@ The table below lists the options available for the different installation modes
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li></ul>{:/} |
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li></ul>{:/} |
 | **Adopt all CRDs except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime. Leaves Argo CD CRDs managed by the existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manages CRDs externally by disabling installation for each type of CRD in the GitOps Runtime's Helm chart. This option requires you to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with built-in Argo CD</li><li>Runtime with existing Argo CD</li></ul>{:/}|
+| **Handle CRDs outside the GitOps Runtime** | Manages CRDs externally by disabling installation for each type of CRD in the GitOps Runtime's Helm chart. This option requires you to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime with existing Argo CD</li></ul>{:/}|
 
 
 
-### Option 1: Adopt all Argo Project CRDs (Built-in Argo CD only)
+### Option 1: Adopt all Argo Project CRDs (New Argo CD only)
 If you are installing the GitOps Runtime with a new Argo CD instance (built-in Argo CD), adopt all Argo Project CRDs to transfer their ownership to the GitOps Runtime. This action ensures that the CRDs are managed as part the GitOps Runtime Helm chart and: 
 * Are automatically upgraded whenever the Runtime is upgraded.
 * Remain compatible with the GitOps environment.
@@ -226,7 +226,7 @@ Run this script before installation:
 * Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
   where:<br>
-  `<argo-project>` is the Argo Project component: `argo-cd` (only for built-in Argo CD), `argo-workflows`, `argo-rollouts` and `argo-events`.
+  `<argo-project>` is the Argo Project component: `argo-cd` (only for new Argo CD), `argo-workflows`, `argo-rollouts` and `argo-events`.
 
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
 
@@ -247,7 +247,7 @@ The following Argo CD services must be accessible from the GitOps Runtime:
 
 There are two options to configure service discovery:
 * Auto-detection via labels
-* Configure service names and ports in the Runtime's `values.yaml` file.
+* Configuring service names and ports in the Runtime's `values.yaml` file.
 
 ### Configure auto-detect for Argo CD services
 Assign the correct labels to the Argo CD services for the GitOps Runtime to auto-detect them. 
@@ -290,6 +290,69 @@ global:
       port: 80
       rootpath: '/argocd' # example value if ArgoCD is behind a reverse proxy such as https://example.com/argocd/
 ...
+```
+
+## Configure authentication for Argo CD Admin API 
+The GitOps Runtime authenticates with the external Argo CD instance through a token or a username-password combination.
+During installation, the Runtime install wizard supports token-based authentication where you paste the token into the field.  
+
+
+### Token-based authentication for Argo CD Admin API 
+The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime, as the system does not automatically regenerate or validate the token.
+
+You can:
+* Provide a token directly  
+OR  
+* Reference a Kubernetes secret containing the token
+    * The secret must already exist and include a key with a valid `argo-cd apiKey` that has no expiration date.  
+    * The system injects the key into all required services, including App Proxy, Source Server, Event Reporter, and GitOps Operator.  
+
+##### Example configuration of token and secret in `values.yaml 
+  
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: token
+      tokenSecretKeyRef:
+        name: "secret-name"
+        key: "secret-key"
+```
+
+### Password-based authentication for Argo CD Admin API  
+This method uses an Argo CD username and password` to authenticate with Argo CD.  
+The system generates both an API key and a session token, which primarily differ in expiration date.  
+The system stores the API key in the `argocd-token` Secret and automatically regenerates it when needed. 
+
+You can:   
+* Specify the username and password as plain text  
+    * The Helm chart creates a secret to store the password. 
+    * The App Proxy uses these credentials to generate API keys and session tokens as needed.
+OR  
+* Specify the username in plain text and reference a Kubernetes secret containing the password  
+    * The secret must already exist and contain a key with the password.
+    * The App Proxy uses the secret name, key, and the plain-text username to generate API keys and session tokens.
+
+##### Example username and password as plain text 
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: password
+      username: "some-user-name"
+      password: "some-explicit-password"
+```
+
+##### Example username as plain text and password as secret reference
+```yaml
+global:
+  external-arg-cd:
+    auth:
+      type: password
+      username: "some-user-name"
+      passwordSecretKeyRef:
+        name: "secret-name"
+        key: "secret-key"
 ```
 {% endif %}
 

@@ -18,10 +18,10 @@ While the core components of the Runtime are the same for both installation and 
 
 ## Runtime installation modes and architecture
 The GitOps Runtime is an Argo CD instance that runs inside your cluster. To accommodate organizations with or without an existing Argo CD instance, Codefresh supports two installation modes:
-* **Runtime alongside an existing Argo CD instance**  
+* **Runtime with an existing Argo CD instance**  
   Integrates with an externally managed Argo CD instance.
 
-* **Runtime with built-in Argo CD**  
+* **Runtime with a new Argo CD instance**  
   Installs a dedicated Argo CD instance as part of the GitOps Runtime.
 
 The primary architectural difference between these modes is the location of the Argo CD instance in relation to the GitOps Runtime.
@@ -41,7 +41,7 @@ In this installation mode, the GitOps Runtime integrates with an Argo CD instanc
   max-width="80%"
 %}
 
-### Runtime with built-in Argo CD 
+### Runtime with new Argo CD instance
 In this installation mode, the GitOps Runtime includes a fully provisioned Argo CD instance as part of the installation. This provides a a Runtime with all required GitOps components.
 
 
@@ -51,8 +51,8 @@ In this installation mode, the GitOps Runtime includes a fully provisioned Argo 
    lightbox="true"
    file="/images/runtime/architecture/runtime-with-argo-high-level.png"
    url="/images/runtime/architecture/runtime-with-argo-high-level.png"
-  alt="High-level architecture: GitOps Runtime with built-in Argo CD"
-  caption="High-level architecture: GitOps Runtime with built-in Argo CD"
+  alt="High-level architecture: GitOps Runtime with new Argo CD instance"
+  caption="High-level architecture: GitOps Runtime with new Argo CD instance"
   max-width="80%"
 %}
 

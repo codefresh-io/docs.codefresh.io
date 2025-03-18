@@ -9,7 +9,7 @@ toc: true
 ## GitOps Runtime with existing Argo CD
 This article walks you through the process of installing GitOps Runtimes in your Codefresh accounts using a Helm chart on a _cluster with an existing Argo CD instance_.
 
-This option allows you to install the GitOps Runtime without deploying a built-in Argo CD instance. Instead, you use the existing Argo CD instance in the same namespace. This requires ensuring connectivity between the Runtime and key Argo CD services.
+This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you install the GitOps Runtime in the same namespace as the existing Argo CD instance. The Runtime integrates with Argo CD through key Argo CD services.
 
 
 To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
@@ -221,20 +221,16 @@ If you define a custom name, it must:
 The namespace for the GitOps Runtime _which must be the same as that of the Argo CD instance_.
 
 ##### Argo CD Admin API token
-The method by which the GitOps Runtime authenticates with the external Argo CD instance, either through a token or a username-password combination.  
-Whatever the method, the toe If revoked, GitOps operations will stop until the customer updates the token in the runtime.
-You have two options:
-* **Token-based authentication**  
-  The token must be a non-expiring API key. If revoked, GitOps operations stop until you manually update the token for the Runtime as the system does not automatically regenerate or validate the token.
-  * Provide a token directly  
-  OR  
-  * Reference a Kubernetes secret containing the token
+The token through which the GitOps Runtime authenticates with the external Argo CD instance.  
+* The token must be a non-expiring API key.  
+* The Helm chart automatically creates a secret for the token, which the platform uses to authenticate API calls to Argo CD.
+* If the token is revoked, GitOps operations will stop until it is updated in the Runtime configuration.    
 
-* **Password-based authentication**  
-  The system uses these credentials to maintain an API key stored in the `argocd-token` Secret. This is automatically managed and regenerated when needed.  
-  * Specify a username and password directly
-  OR
-  * Reference a Kubernetes secret, `argocd-initial-admin-secret`
+You can generate the token in the Argo CD UI, or by using the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:target="\_blank"} command.
+
+
+Codefresh supports other authentication methods, including username-password authentication.  
+To use a different authentication method, leave this field empty and configure the credentials directly in the Runtime's `values.yaml`.  See ???
 
 
 ##### Codefresh API Key
