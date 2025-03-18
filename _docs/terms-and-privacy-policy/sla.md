@@ -13,10 +13,9 @@ Issues with the {% if page.collection != site.gitops_collection %}Codefresh Plat
 For Premium support customers, we commit to meeting these objectives as our SLA for our supported products. Please note that if you have multiple products or subscriptions, you must purchase Premium support for all your products and subscriptions. 
 
 
-These objectives apply only to actual outages, bugs, errors, or defects, in our supported products when used in supported ways. If you report an unsupported issue - for example, the issue lies with an unsupported product (including out-of-date versions of otherwise supported products) or use of a supported product in an unsupported way - these objectives do not apply, but we may provide suggestions on how you can take your own independent steps to remedy your issue. For a list of our supported products, click here. 
+These objectives apply only to actual outages, bugs, errors, or defects, in our supported products when used in supported ways. If you report an unsupported issue - for example, the issue lies with an unsupported product (including out-of-date versions of otherwise supported products) or use of a supported product in an unsupported way - these objectives do not apply, but we may provide suggestions on how you can take your own independent steps to remedy your issue. <!--- For a list of our supported products, click here. -->
   
 
-  
 
 ### 1.1. Response Time Objectives. 
 
@@ -79,14 +78,14 @@ If our response time objective exceeds the remaining time available on that Busi
 
 | **Channel**                          | **Professional**        | **Enterprise** | **Premium**  |
 |--------------------------------------|------------------------|---------------|-------------|
-| **Community Slack**                  | ✅                      | ✅             | ✅           |
-| **Support Email**                     |  ✅                     | ✅             | ✅           |
-| **Support Hours**                     | During Business Hours[1] | 24 x 7        | 24 x 7      |
-| **Primary Support Engineer**          |                        |               | ✅           |
-| **Video Conferencing***               |                        |               | ✅           |
-| **Phone****                         |                        |               | ✅           |
-| **Dedicated Support Slack Channel*****  |                        |               | ✅           |
-| **SLA**                               |                        |               | ✅           |
+| **Community Slack**                  | ✅                      | ✅            | ✅         |
+| **Support Email**                     |  ✅                     | ✅           | ✅         |
+| **Support Hours**                     | During Business Hours[1] | 24 x 7      | 24 x 7      |
+| **Primary Support Engineer**          |                        |               | ✅          |
+| **Video Conferencing***               |                        |               | ✅          |
+| **Phone****                           |                        |               | ✅          |
+| **Dedicated Support Slack Channel*****|                        |               | ✅          |
+| **SLA**                               |                        |               | ✅          |
 {% endif %}
 
 
