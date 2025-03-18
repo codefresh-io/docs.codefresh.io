@@ -7,7 +7,8 @@ redirect_from:
   - /docs/codefresh-yaml/variables/
 toc: true
 ---
-Variables in pipelines allow you to parameterize the way your pipeline works. Codefresh provides a set of system variables, and the capability to define custom variables.
+Variables in pipelines allow you to parameterize the way your pipeline works.  
+Codefresh provides a set of system variables, and also provides the capability to define custom variables.
 
 * [System variables](#system-variables) are predefined variables prefixed with `CF`.  
   System variables are automatically included in every pipeline build. Here are some examples of system variables.  
@@ -16,7 +17,8 @@ Variables in pipelines allow you to parameterize the way your pipeline works. Co
   * `CF_BUILD_URL` is the url of the pipeline build.
 
 * [User-defined variables](#user-defined-variables) are custom variables which you create.  
-  You can create user-defined variables for different entities in Codefresh, such as projects, pipelines and steps, with or without a default value. You can also import variables you may have already defined.
+  You can create user-defined variables for different entities such as projects, pipelines and steps, with or without default values. You can also import variables you may have already defined.  
+
 
 Codefresh supports [two syntaxes](#using-codefresh-variables-in-pipelines) for variables: the UNIX syntax, and a proprietary syntax for use in YAML files.
 
@@ -24,7 +26,7 @@ Codefresh supports [two syntaxes](#using-codefresh-variables-in-pipelines) for v
 
 There are two ways to use a Codefresh variable in your pipelines:
 
-1. Expose as UNIX environment variables
+1. Expose as UNIX environment variables  
   This is the default method. All variables in all [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/) steps are exposed as UNIX environment variables. For example, `$MY_VARIABLE_EXAMPLE`.
 1. Directly in YAML properties  
    This format, specific to Codefresh, can be used in in YAML properties with the syntax {% raw %}`${{MY_VARIABLE_EXAMPLE}}`{% endraw %}.
@@ -53,7 +55,7 @@ MyOwnStep:
 
 {% endraw %}
 
-### Example: Use directly in YAML properties
+### Example: Use variable directly in YAML properties
 
 `YAML`
 {% raw %}
@@ -99,6 +101,7 @@ feature-vb145dh
 
 System variables are automatically injected to any freestyle step as environment variables.
 
+##### Git-based system variables
 The values of Git-based system variables, such as `CF_BRANCH`, `CF_COMMIT_MESSAGE`, `CF_REVISION` etc. are retrieved directly from the Git provider you use, and therefore have the same limitations of that provider.
 
 For example, GitLab sends less information in Pull Request (PR) events than normal pushes, and Bitbucket sends only the short hash of a commit in PR events. We suggest you read the documentation of your Git provider first to understand what information is available for every Git event.
@@ -261,14 +264,34 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 
 ## User-defined variables
 
-User-defined variables are custom variables you add to Codefresh entities such as projects, pipelines, build triggers, and manual build runs.  
-You create such variables manually or by importing predefined variables from files (see [How to](#create-user-defined-variables)). You can also create empty variables, without any values.
+User-defined variables are custom variables you add to CI entities such as projects, pipelines, build triggers, and manual build runs. 
+When adding a user-defined variable, you can create a:
+
+* **Variable**  
+  A standard variable whose value is visible in plain text unless explicitly encrypted. You can create these manually, import them from a file with predefined values, or define empty variables without assigned values.
+* **Secret**  
+  A variable whose value is automatically encrypted and masked in logs.
+    
+
+
+### Methods to define user-defined variables
+
+These are the options available to add user-defined variables.
+
+* **Add single variable**  
+  Supported for all entities, this method allows you to add one variable at a time, with or without values. 
+  You cannot encrypt empty variables.
+* **Add multiple variables**  
+  Add a set of variables by entering them manually, or by pasting them into the variable editor, one variable per line.  
+  This is a quick option to add variables defined locally or in specific environments to a pipeline.  
+  You simply copy the set of variables and paste them into the text editor.
+* **Import from file**  
+  Add predefined variables in bulk by importing from a file.
 
 ### Empty user-defined variables
 
-Codefresh allows you to add variables with just the key definitions, without values. The values are automatically populated during pipeline execution or defined manually.
+If you add variables with just the key definitions, the values are automatically populated during pipeline execution or can be defined manually prior to build runs.
 You can add empty variables to:
-
 * Projects
 * Pipelines
 * Build triggers
@@ -276,52 +299,78 @@ You can add empty variables to:
 > **NOTE**  
 > Encryption is not supported for empty variables.
 
-### Import user-defined variables in bulk
 
-Add custom variables in bulk by pasting them into the text editor or by importing them from a file.  
-
-* Import from text  
-  This is a quick option to add variables defined locally or in specific environments to a pipeline.
-  You simply copy the set of variables and paste them into the text editor.
-
-* Import from file  
-  Importing from a file is useful when you have a file containing the predefined variables.
 
 ### Order of precedence for user-defined variables
 
-In Codefresh, becuase you can add user-defined variables to different entities, variable definitions are available at levels.
-
-If the variable with the same name is defined at multiple levels, the override rules are based on the priority of the variable. Variables at levels with higher priority override those at levels with lower priority.
+Because you can add user-defined variables to different entities, you can have the same variables at different levels.  
+If the variable with the same name is defined for multiple entities, the override rules are based on the priority of the variable. Variables for entities with higher priority override those for entities with lower priority. 
 
 For example if a pipeline variable is defined both within a project, and as an execution parameter of a specific build, the final result will be the value of the variable defined as a build parameter. The project-level variable is ignored.
 
 Listed below are the different levels for user-defined variables in order of priority, from the highest to the lowest.
 
-1. Steps
+1. **Steps**
    * `export` command  
      Within the current step using [`export`](http://linuxcommand.org/lc3_man_pages/exporth.html){:target="\_blank"}, or in any **subsequent** step using [cf_export](#exporting-variables-with-cf_export) commands.
    * [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/#examples) steps with `environment` field.
   
     > **NOTE**  
     > Step-level variables with `export` take precedence over freestyle-step variables with `environment`.
-1. Builds
+1. **Builds**
    * Within a specific build execution from the Codefresh UI or from the [CLI]({{site.baseurl}}/docs/integrations/codefresh-api/#example---triggering-pipelines).
-1. Pipeline
+1. **Pipeline**
 1. [Shared-configurations]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/)
-1. Projects
+1. **Projects**
 
 The variables are injected into pipelines from different sources and at different levels. To view the variables actually used by a specific build of the pipeline, see [Viewing variables in pipeline builds]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#viewing-variables-in-pipeline-builds).
 
-### Create user-defined variables
 
-Create user-defined variables by selecting the target entity and then adding the variables.
 
-#### Step 1: Select entity to which to add variables
+### Add user-defined variables
 
-You can create user-defined variables for projects, pipelines, build runs, and steps.
+1. Select the entity to which to add variables:
+    * [Projects](#projects)
+    * [Pipelines](#pipelines)
+    * [Steps](#steps)
+    * [Builds](#builds)
+1. Select the type of variable to add: **Variable** or **Secret**. 
+  
+    {% include
+    image.html
+    lightbox="true"
+    file="/images/pipeline/variables/add-secret-variable-option.png"
+    url="/images/pipeline/variables/add-secret-variable-option.png"
+    alt="Add user-defined variables or secrets"
+    caption="Add user-defined variables or secrets"
+    max-width="60%"
+    %}
 
-* **Projects**  
-  In the row with the Project to which to add variables, click the **Settings** icon, and then click the **Variables** tab.
+
+**Standard variables**
+  * Add single or multiple variables manually as key-value pairs, or import them in bulk from a file.
+  * To encrypt a variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block alt="lock icon"> <b>Encrypt</b>{:/}, and confirm.
+
+   {% include
+    image.html
+    lightbox="true"
+    file="/images/pipeline/variables/add-variable-form.png"
+    url="/images/pipeline/variables/add-variable-form.png"
+    alt="Options to add standard variables"
+    caption="Options to add standard variables"
+    max-width="60%"
+    %}
+
+* **Secret variables**
+  * Secrets are automatically encrypted and become immutable once saved.
+  * Decrypting a secret resets its value to empty.
+
+
+
+
+
+##### Projects
+From the list of **Projects**, select the Project to which to add variables, click the **Settings** icon, and then click the **Variables** tab.
 
   {% include
   image.html
@@ -333,9 +382,9 @@ You can create user-defined variables for projects, pipelines, build runs, and s
   max-width="60%"
   %}
 
-* **Pipelines**  
-  * In the row with the Pipeline to which to add variables, click the **Settings** icon.
-  * On the right, click **Variables**.
+##### Pipelines
+* From the list of pipelines, select the Pipeline to which to add variables.
+* Click the **Settings** icon, click the **Workflow** tab, and then click **Variables** on the right.
 
     {% include
     image.html
@@ -347,11 +396,11 @@ You can create user-defined variables for projects, pipelines, build runs, and s
     max-width="60%"
     %}
 
-* **Steps**
+##### Steps
   * Select the pipeline.
   * In the **Workflow** tab, add the variable with the correct syntax to the step as required.
 
-* **Builds**
+##### Builds
   * From the Builds page, in the Pipelines column, click the pipeline name.
   * Click **Run**.
   * Expand Build Variables.
@@ -366,42 +415,11 @@ You can create user-defined variables for projects, pipelines, build runs, and s
     max-width="60%"
     %}
 
-#### Step 2: Add variables
 
-Add variables manually by defining them as key-value pairs, or by importing them from files.
 
-When adding variables, manually or through import, you can add/include empty variables, that is add only the key for the variable and leave the value empty to be dynamically or manually populated.
-Apart from empty variables, you can also encrypt sensitive variables for reasons of security.
 
-1. To manually add variables, click **Add Variable**.
-    * To add the variable with its default value, enter the key-value pair.  
-    * To add an empty variable without a default value, simply type the key.
 
-{% include
-image.html
-lightbox="true"
-file="/images/pipeline/variables/example-empty-variable.png"
-url="/images/pipeline/variables/example-empty-variable.png"
-alt="Example of empty variable in project"
-caption="Example of empty variable in project"
-max-width="60%"
-%}
 
-{:start="2"}
-1. (Applies only to projects and pipelines) To import by copy and paste, click **Import from Text**:
-  * Copy the set of variables to add.
-  * Paste into the text editor.
-  * Click **Import**
-{:start="3"}
-1. (Applies only to projects and pipelines) To import them from a file, click **Import from File**:
-  * Browse to the file to import, and then click **Import**.
-
-<!-- markdownlint-disable MD033 -->
-{:start="4"}
-1. Click **Save**.
-1. To encrypt the variables (not supported for empty variables), click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block alt="lock icon"> <b>Encrypt</b>{:/}, and confirm.
-
-<!-- markdownlint-enable MD033 -->
 
 ## Exporting environment variables from a freestyle step
 
