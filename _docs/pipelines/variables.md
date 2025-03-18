@@ -17,7 +17,8 @@ Codefresh provides a set of system variables, and also provides the capability t
   * `CF_BUILD_URL` is the url of the pipeline build.
 
 * [User-defined variables](#user-defined-variables) are custom variables which you create.  
-  You can create user-defined variables for different entities such as projects, pipelines and steps, with or without default values. You can also import variables you may have already defined.
+  You can create user-defined variables for different entities such as projects, pipelines and steps, with or without default values. You can also import variables you may have already defined.  
+
 
 Codefresh supports [two syntaxes](#using-codefresh-variables-in-pipelines) for variables: the UNIX syntax, and a proprietary syntax for use in YAML files.
 
@@ -263,8 +264,15 @@ Gerrit has no explicit concept of PRs as in other version control systems to map
 
 ## User-defined variables
 
-User-defined variables are custom variables you add to CI entities such as projects, pipelines, build triggers, and manual build runs.  
-You create such variables manually or by importing files with predefined variables (see [How to](#create-user-defined-variables)). You can also create empty variables, without any values.
+User-defined variables are custom variables you add to CI entities such as projects, pipelines, build triggers, and manual build runs. 
+When adding a user-defined variable, you can create a:
+
+* **Variable**  
+  A standard variable whose value is visible in plain text unless explicitly encrypted. You can create these manually, import them from a file with predefined values, or define empty variables without assigned values.
+* **Secret**  
+  A variable whose value is automatically encrypted and masked in logs.
+    
+
 
 ### Methods to define user-defined variables
 
@@ -321,20 +329,45 @@ The variables are injected into pipelines from different sources and at differen
 
 ### Add user-defined variables
 
-
-When you add a single variable at a time, to encrypt the variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block alt="lock icon"> <b>Encrypt</b>{:/}, and confirm.
-
-Don't forget to save the variables.
-
+1. Select the entity to which to add variables:
+    * [Projects](#projects)
+    * [Pipelines](#pipelines)
+    * [Steps](#steps)
+    * [Builds](#builds)
+1. Select the type of variable to add: **Variable** or **Secret**. 
+  
     {% include
+    image.html
+    lightbox="true"
+    file="/images/pipeline/variables/add-secret-variable-option.png"
+    url="/images/pipeline/variables/add-secret-variable-option.png"
+    alt="Add user-defined variables or secrets"
+    caption="Add user-defined variables or secrets"
+    max-width="60%"
+    %}
+
+
+**Standard variables**
+  * Add single or multiple variables manually as key-value pairs, or import them in bulk from a file.
+  * To encrypt a variable, click {::nomarkdown}<img src="../../../images/icons/encrypt.png"  display=inline-block alt="lock icon"> <b>Encrypt</b>{:/}, and confirm.
+
+   {% include
     image.html
     lightbox="true"
     file="/images/pipeline/variables/add-variable-form.png"
     url="/images/pipeline/variables/add-variable-form.png"
-    alt="Add user-defined variable form"
-    caption="Add user-defined variable form"
+    alt="Options to add standard variables"
+    caption="Options to add standard variables"
     max-width="60%"
     %}
+
+* **Secret variables**
+  * Secrets are automatically encrypted and become immutable once saved.
+  * Decrypting a secret resets its value to empty.
+
+
+
+
 
 ##### Projects
 From the list of **Projects**, select the Project to which to add variables, click the **Settings** icon, and then click the **Variables** tab.
@@ -384,7 +417,6 @@ From the list of **Projects**, select the Project to which to add variables, cli
 
 
 
-Add single or multiple variables manually by defining them as key-value pairs, or add them in bulk by importing them from files.
 
 
 
