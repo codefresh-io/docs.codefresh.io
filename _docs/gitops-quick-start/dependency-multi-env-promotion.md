@@ -10,13 +10,13 @@ redirect_from:
 
 ## Advanced Promotion Flow with environment dependencies quick start
 
-By default, each environment in a promotion flow (except the Trigger Environment), is dependent on the one preceding it.  
-However, critical environments may rely on the success or stability of multiple environments before they are promoted to. By defining additional dependencies, you can ensure that changes are promoted only when all required environments meet the specified criteria.
+By default, each environment in a Promotion Flow (except the Trigger Environment), is dependent on the one preceding it.  
+However, critical environments may rely on the success or stability of multiple environments before changes can be promoted to them. By defining additional dependencies, you ensure that changes are promoted only when all required environments meet the specified criteria.
 
 This quick start shows how to create additional dependencies between environments in a Promotion Flow.  
 We'll do the following:
 * Create a new environment   
-  Add a `staging` environment to our existing environments.  
+  Add a `staging` environment to the existing environments.  
 
 
 * Create a new application
@@ -35,20 +35,21 @@ We'll do the following:
 
 ## Requirements
 
-* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/quick-start-configure-runtime/#add-git-source-to-runtime) to store application manifests
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
-  Each environment must have an application for the product.  
-  For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.
-  The structure of the repos with the resources accessed by the applications must be consistent across all the three applications.   
-  If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources.
+    * Each environment must have an application for the product. For example, `demo-trioapp-dev`, `demo-trioapp-qa`, and `demo-trioapp-prod`representing the development, testing, and production versions.  
+    * The repository structure must be consistent across all applications.   
+    If it works for you, copy the corresponding subfolders in [demo-applications](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications) with the resources.
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
+  A Promotion Flow requires at least three environments.
+  In this quick start, we use `dev`, `qa`, and `prod`.
 
 
 
 
 
-## Example Git repo
+## Example Git repository
 
 You can copy the manifests and the resources for the new application from the [example GitHub repository](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}.
 
@@ -60,21 +61,21 @@ You can copy the manifests and the resources for the new application from the [e
 
 
 
-## Add dependency to Promotion Flow
+## Add a dependency to Promotion Flow
 Update the dependency on the `prod` environment, by selecting `staging` in addition to `qa`.
 
 ### Before you begin
-* Ensure that you have: 
-    * A new environment on which we'll create the dependency, `staging` in our example. 
-    * Application in the new environment 
-      For the quick start, we created the `demo-trioapp-staging` application aligned to `staging`. 
+* Make sure you have: 
+  * A new environment for the additional dependency, `staging` in our example. 
+  * Application in the new environment 
+    `demo-trioapp-staging` for the quick start. 
 
 
 ### Step-by-step
 1. From the list of Promotion Flows, open the Promotion Flow you created, for example, `multi-env-sequential-promotion`.
 1. If required, change the **Version** to 3.00.
-1. Mouse over the right of the environment node before the final one in the flow, and add the new environment you created as a parallel environment.  
-  In the example, we added the `staging` environment as a parallel environment to `qa`.  
+1. Mouse over the right of the environment node before the final environment in the flow, and add the new environment you created as a parallel environment.  
+  In the example, `staging` is the parallel environment to `qa`.  
 1. Mouse over the final environment node in the Promotion Flow for which to add the dependency, `prod` for the quick start, and click **Depends on**.  
 1. Select the new environment you added, `staging` for the quick start, and then click **Update dependency**.
 
@@ -101,7 +102,7 @@ caption="Promotions quick start: Chart view of Promotion Flow with updated depen
 max-width="60%"
 %}
 
-Here's the YAML view of the same flow with the updated dependency.
+Here's the YAML view of the same Promotion Flow with the updated dependency.
 
 {% include 
 image.html 
@@ -117,14 +118,14 @@ max-width="60%"
 1. Continue with [Trigger and view product release with dependencies](#trigger-and-view-product-release-with-dependencies).
 
 ## Trigger and view product release with dependencies
-Trigger the Promotion Flow with dependencies and monitor how change are promoted to the target environment only after all dependent environments are successfully promoted.
+Trigger the Promotion Flow with dependencies and and verify that changes are promoted to the final environment only after all dependent environments are successfully promoted.
 
 1. Open the Promotion Flow with environment dependencies, `multi-env-sequential-promotion` for the quick start, and click **Trigger**.
 1. Select the product, the application to promote, and then click **Trigger** once again. 
 1. Click **View Release Details**.
 
 The Release view highlights the dependencies within the Promotion Flow, indicating that promotion to the final environment depends on the successful promotion of one or more environments.  
-In the example below, `prod` is dependent on both `qa` and `staging`. While `qa` has been promoted successfully, `staging` is still pending promotion, preventing `prod` from starting its promotion.
+In the following example, `prod` is dependent on both `qa` and `staging`. `qa` has been promoted, but `staging` is still pending, preventing `prod` from starting promotion.
 
 
 {% include 
@@ -179,11 +180,11 @@ spec:
 ```
 
 
-By now, you’ve successfully created environments, your first product, added applications, and promoted them across environments.  
+By now, you’ve successfully created environments, created a product and applications, and promoted them across environments.  
 These foundational steps empower you to manage complex promotions confidently and effectively.
 
 ## Related articles
-Now that you’ve mastered simple and advanced promotion scenarios, you may want to learn more on customizing promotion settings for products. 
+Now that you’ve covered simple and advanced promotion scenarios, learn more on customizing promotion settings for products: 
 * [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 * [Configuring Promotion Flows and triggers for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
