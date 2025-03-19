@@ -9,11 +9,13 @@ toc: true
 The GitOps Runtime in Codefresh provides the foundation for managing Argo CD applications using GitOps principles. It integrates with Argo CD to support continuous delivery, declarative deployments, and automated workflow execution.
 
 
-Codefresh offers flexibility in how you can install the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD. See [Runtime installation modes and architecture](#runtime-installation-modes-and-architecture).
+Codefresh provides flexible installation options for the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD.  
+The GitOps Runtime always runs inside the customer’s cluster, regardless of the installation mode.  
+See [Runtime installation modes and architecture](#runtime-installation-modes-and-architecture).
 
 To optimize connectivity, the Runtime also supports different access modes, allowing communication through tunnelling or via an ingress controller. See [Runtime access modes and architecture](#runtime-access-modes-and-architecture).
 
-While the core components of the Runtime are the same for both installation and access modes, some components are specific to the access mode. See [Runtime components](#runtime-components).
+While the core components of the Runtime are the same for both installation and access modes, some components vary based on the access mode. See [Runtime components](#runtime-components).
 
 
 ## Runtime installation modes and architecture
@@ -28,8 +30,10 @@ The primary architectural difference between these modes is the location of the 
 
  
 
-### Runtime alongside existing Argo CD instance
-In this installation mode, the GitOps Runtime integrates with an Argo CD instance that is already deployed and managed separately. The Argo CD instance is within the same cluster as the GitOps Runtime but operates independently of it.
+### Runtime with existing Argo CD instance
+In this installation mode, the GitOps Runtime integrates with an Argo CD instance that is already deployed and managed separately.  
+The Argo CD instance is within the same cluster as the GitOps Runtime but operates independently of it.
+The Runtime authenticates with Argo CD and connects to key services to integrate GitOps capabilities. 
 
 {% include
    image.html
@@ -42,7 +46,7 @@ In this installation mode, the GitOps Runtime integrates with an Argo CD instanc
 %}
 
 ### Runtime with new Argo CD instance
-In this installation mode, the GitOps Runtime includes a fully provisioned Argo CD instance as part of the installation. This provides a a Runtime with all required GitOps components.
+In this installation mode, the GitOps Runtime includes a fully provisioned Argo CD instance as part of the installation. This provides a Runtime with all required GitOps components.
 
 
 
@@ -115,17 +119,19 @@ The Runtime components differ depending on the access mode.
 
 
 ### Application Proxy
-The GitOps Application Proxy (App Proxy), functions as the Codefresh agent and is deployed as a service within the GitOps Runtime.  
-* **Tunnel-based GitOps Runtimes**: The Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App Proxy. 
-* **Ingress-based GitOps Runtimes**: The App Proxy serves as the single point of contact between the GitOps Runtime, GitOps Clients, the GitOps Platform, and any organizational systems in the customer environment.  
+The Application Proxy (App Proxy), functions as the Codefresh agent and is deployed as a service within the GitOps Runtime.  
+A key component of the GitOps Runtime, the App Proxy enables secure and reliable access to services running inside the cluster.
 
- 
 The App Proxy:  
 * Accepts and serves requests from GitOps Clients either via the UI or CLI 
 * Retrieves a list of Git repositories for visualization in the Client interfaces  
 * Retrieves permissions from the GitOps Control Plane to authenticate and authorize users for the required operations 
 * Implements commits for GitOps-controlled entities
 * Implements state-change operations for non-GitOps controlled entities
+
+App Proxy implementation depends on the access mode: 
+* **Tunnel-based access mode**: The Tunnel Client forwards the incoming traffic from the Tunnel Server using the Request Routing Service to the GitOps App Proxy. 
+* **Ingress-based access mode**: The App Proxy serves as the single point of contact between the GitOps Runtime, GitOps Clients, the GitOps Platform, and any organizational systems in the customer environment.  
 
 
 
@@ -297,7 +303,7 @@ The GitOps Runtime reports data to the Codefresh platform, which stores the data
 
 
 ## Related articles
-[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-{% if page.collection != site.gitops_collection %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/)  
-[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/){% endif %}  
- 
+[Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)  
+{% if page.collection != site.gitops_collection %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/){% endif %}  
