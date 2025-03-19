@@ -48,7 +48,7 @@ Here are a few reasons why you would want to create products to manage your appl
 * **Unified application promotion and deployment**: Managing multiple individual Argo CD applications across various environments can be complex. Products streamline this process by grouping related applications, enabling more efficient and cohesive management and promotion.
 
 ## Example Git repo
-To replicate the setup, use the example GitHub repository containing the [application configuration manifests](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="_blank"}. These manifests are preconfigured to help you deploy the applications easily to their respective environments.
+To follow along, use the example GitHub repository which contains the [application configuration manifests](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/argocd-app-manifests){:target="_blank"}. These manifests are preconfigured to help you deploy the applications easily to their respective environments.
 
 ### Demo applications folder
 The [demo-applications folder](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="_blank"} in the same repository provides preconfigured Helm charts for creating the applications. Each subfolder corresponds to a specific application and includes:
@@ -60,8 +60,8 @@ The [demo-applications folder](https://github.com/codefresh-sandbox/codefresh-qu
 When you create the application, to use the resources, select the folder corresponding to the target environment. For example, `trioapp-dev` for development.
 
 ## Requirements
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
-* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/) to store application manifests
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
+* [Git Source]({{site.baseurl}}/docs/gitops-quick-start/quick-start-configure-runtime/#add-git-source-to-runtime) to store application manifests
 
 
 
@@ -118,7 +118,7 @@ For the quick start, we'll do the following:
 {:start="6"}
 1. Define the other required **General** settings for the application:
   * **Repository URL**: The URL to the repo in Git where you created the YAML resource files for the application.  
-    For the example Git repo, this is the repository URL is [https://github.com/codefresh-sandbox/codefresh-quickstart-demo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}
+    For the example Git repo, use this repository URL: [https://github.com/codefresh-sandbox/codefresh-quickstart-demo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo){:target="\_blank"}
   * **Revision**: The branch in Git with the resource files. For example, `main`.
   * **Path**: The folder in the Git repository with the resource files for the application.  
     In the follow along Git repo, if you are creating the development version of the application, the path should point to the resource files in `demo-applications/trioapp-dev` in [example repo](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/tree/main/demo-applications){:target="\_blank"}
@@ -127,7 +127,7 @@ For the quick start, we'll do the following:
   * **Sync Policy**:  
     Change to **Automatic** if needed.  
     Select **Prune resources** to automatically remove unused resources.  
-    Select **Self-heal** to always enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster.
+    Select **Self-heal** to alway enforces a sync to the desired state in Git, if and when there is a change to the actual state in the cluster.
 
  
 {% include 
@@ -144,7 +144,7 @@ For the quick start, we'll do the following:
 {:start="7"}
 1. Retain the default **Advanced Settings**.  
   The only setting to note here is that we are creating a Helm application.
-1. To commit all changes, select **Commit**.  
+1. To commit all changes, click **Commit**.  
   The Commit form is displayed with the application's definitions on the left, and the read-only version of the manifest with the configuration settings you defined on the right.
 1. Select the **Git Source** you added to the Runtime, which is the Git repository to which to commit the application's manifest.     
   For example, the Git Source which we created earlier, the `demo-trio-gitsource`.
