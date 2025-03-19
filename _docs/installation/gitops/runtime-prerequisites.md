@@ -8,11 +8,11 @@ Before installing GitOps Runtimes, ensure you meet the [system requirements]({{s
 
 
 ## Prerequisites summary
-This table lists the prerequisites for installing a GitOps Runtime, depending on the installation mode: with an existing Argo CD, new Argo CD, or Community Argo CD.
+This table lists the prerequisites for installing a GitOps Runtime, depending on the installation mode.
 
 {: .table .table-bordered .table-hover}
 | **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |{% if page.collection != site.gitops_collection %} **Runtime with Community Argo CD** |{% endif %}
-|--------------------|---------------------------|----------------------------|----------------------------|
+|--------------------|---------------------------|----------------------------|{% if page.collection != site.gitops_collection %} ----------------------------|{% endif %}
 | [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |{% if page.collection != site.gitops_collection %}✅     |{% endif %}
 | [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - | -|
 | [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | -|

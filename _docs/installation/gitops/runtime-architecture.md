@@ -146,7 +146,7 @@ The Argo Project components include:
 >**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
-For installations with new Argo CD, typically, new versions are available in the GitOPs Runtime within 30 days of their official release.
+For Runtime installations with new Argo CD instances, typically, new versions are available in the GitOps Runtime within 30 days of their official release.
 
 ### Event Reporters
 Event Reporters monitor changes to resources deployed in the cluster and report them to the Codefresh platform.
