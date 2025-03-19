@@ -1,1 +1,0 @@
-../../_docs/gitops-quick-start/verify-requirements.md
