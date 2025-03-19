@@ -14,9 +14,9 @@ This table lists the prerequisites for installing a GitOps Runtime, depending on
 | **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |{% if page.collection != site.gitops_collection %} **Runtime with Community Argo CD** |{% endif %}
 |--------------------|---------------------------|----------------------------|{% if page.collection != site.gitops_collection %} ----------------------------|{% endif %}
 | [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |{% if page.collection != site.gitops_collection %}✅     |{% endif %}
-| [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - | -|
-| [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | -|
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -    | ✅     | -|
+| [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - | {% if page.collection != site.gitops_collection %}-|{% endif %}
+| [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | {% if page.collection != site.gitops_collection %}-|{% endif %}
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -    | ✅     | {% if page.collection != site.gitops_collection %}-|{% endif %}
 {% if page.collection != site.gitops_collection %}| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions-community-argo-only)  | -   | -   | ✅ |
 | [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance-community-argo-only) | - | - | ✅ |{% endif %}
 
