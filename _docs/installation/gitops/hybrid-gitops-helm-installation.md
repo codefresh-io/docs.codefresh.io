@@ -17,7 +17,7 @@ You can migrate existing CLI-based GitOps Runtimes to Helm-based ones, as descri
 This article walks you through the process of installing Hybrid GitOps Runtimes in your Codefresh accounts using Helm charts on a _clean cluster_.   
 To install the GitOps Runtime alongside an existing Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
 
-You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each runtime must be on a different cluster. Every Runtime within the same account must have a unique name.
+You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each Runtime must be on a different cluster. Every Runtime within the same account must have a unique name.
 
 For both first-time and additional GitOps Runtime installations:
 * Match [system requirements and prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) to confirm your environment meets the necessary conditions.
