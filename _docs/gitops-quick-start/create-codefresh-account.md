@@ -5,12 +5,12 @@ group: gitops-quick-start
 toc: true
 ---
 
-Begin your GitOps journey by setting up a Codefresh account.
+Begin your GitOps journey by creating a Codefresh account.
 
-Creating an account provides access to the Codefresh platform, where you can install Runtimes, and create and manage GitOps entities.
+Creating an account gives you access to the Codefresh platform, where you can install Runtimes and create and manage GitOps entities.  
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 
-The permissions requested by Codefresh are needed in order to build and deploy your projects.
+Codefresh requires these permissions in order to build and deploy your applications.
 
 ## Supported IdPs
 Codefresh currently supports the following IdPs:
@@ -21,7 +21,7 @@ Codefresh currently supports the following IdPs:
 * Google 
 * LDAP
 
-If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
+If your preferred IdP is not listed, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
 
 
 >**NOTE**     
@@ -45,11 +45,11 @@ max-width="50%"
 
 {:start="3"}
 1. If required, accept the permissions request for the selected IdP:
-  * For Google, enter the email to use.
+  * For Google, enter the email address you want to use.
   * For GitHub: To continue, click **Authorize codefresh-io**.
   * For Bitbucket: To continue, click **Grant access**.
   * For GitLab: To continue, click **Authorize**.
-  Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
+  Once you confirm permissions, Codefresh connects to your Git provider and retrieves your basic account details, such as your email.
 
 {:start="4"}
 1. In the Verification screen, do the following:
@@ -99,9 +99,9 @@ Congratulations! Your new Codefresh account is now ready and you are directed to
 
 
 ## What's next
-Verify that you are ready to install the GitOps Hybrid Runtime, the foundation for GitOps operations. 
+You are now ready to install the GitOps Runtime, the foundation for GitOps operations. 
 
-[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/verify-requirements/)
+[Quick start: Install the GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 
 
 

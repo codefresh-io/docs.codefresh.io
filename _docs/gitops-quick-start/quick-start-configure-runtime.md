@@ -10,9 +10,8 @@ redirect_from:
 
 
 ## Configure GitOps Runtime quick start
-This quick start guides you through configuring the GitOps Runtime after installing it to ensure successful GitOps operations.  
-
-You can configure the Runtime immediately after installation using the Configuration and Management steps in the Runtime Installation Wizard.
+This quick start guides you through configuring the GitOps Runtime after installing it to enable GitOps workflows.    
+Configure the Runtime immediately after installation using the Configuration and Management steps in the Runtime Installation Wizard.
 
 Configuration includes:
 * [Configuring Git credentials](#configure-git-credentials-for-runtime)
@@ -23,29 +22,29 @@ For detailed information, see [Configuring the GitOps Runtime]({{site.baseurl}}/
 
 
 ## Configure Git credentials for Runtime
-Git credentials for the Runtime include defining two Git tokens: 
+Git credentials for the Runtime require two Git tokens: 
 * **Git Runtime token** (mandatory): Provided during installation, typically associated with a service or robot account.
 * **Git user token**: Unique to each user, required after installation for every Runtime the user has access to.
 
-To simplify setup, you can use the Git Runtime token as the Git user token, as long as it includes the necessary scopes for user access.
+To simplify setup, use the Git Runtime token also as the Git user token if it has the necessary scopes.
 
 
 ## Configure Runtime as Argo application
-Configuring the GitOps Runtime as an Argo Application allows you to:
-* View Runtime components
-* Monitor health and sync statuses
-* Ensure Git remains the single source of truth for the Runtime
+Configuring the GitOps Runtime as an Argo Application enables:
+* Visibility into Runtime components
+* Monitoring health and sync statuses
+* Enforcement of Git as the single source of truth
 
-To configure, click **Configure as Argo Application**. Codefresh will automatically handle the setup—no additional action required. 
+To configure, click **Configure as Argo Application**. Codefresh will automatically handle the setup—no further action required. 
 
 
 ## Add Git Source to Runtime
 
 A Git Source is a unique entity that connects a Git repository to a GitOps Runtime.  
-The repository contains application manifests and other resources, which are continuously synced to the cluster. You can manage the Git Source itself as an Argo CD application.
+The repository contains application manifests and other resources which continuously sync to the cluster. You can manage the Git Source itself as an Argo CD application.
 
 ### Git Source settings
-Here are the settings you can use for the Git Source.
+Define these settings for the Git Source:
 * **Git Source Name**: A name for the Git Source, `demo-trio-gitsource` for the quick start to tie in with set of applications we'll create later.
 * **Type**: Retain **Standard Git Source**.
 * **Source**: 
@@ -56,8 +55,7 @@ Here are the settings you can use for the Git Source.
 Leave all other settings as is.
 
 ## What's next
-Now that the GitOps Runtime is installed and configured, you are probably eager to dive into the world of applications in GitOps.
-And that's what we'll continue with:
+Now that the GitOps Runtime is installed and configured, you are ready to create applications.
 
 [Quick start: Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
 
