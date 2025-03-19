@@ -11,28 +11,28 @@ Before installing GitOps Runtimes, ensure you meet the [system requirements]({{s
 This table lists the prerequisites for installing a GitOps Runtime, depending on the installation mode: with an existing Argo CD, new Argo CD, or Community Argo CD.
 
 {: .table .table-bordered .table-hover}
-| **Prerequisite**   | | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |  **Runtime with Community Argo CD** |
+| **Prerequisite**   | | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |{% if page.collection != site.gitops_collection %} **Runtime with Community Argo CD** |{% endif %}
 |--------------------|---------------------------|----------------------------|----------------------------|
-| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |{% if page.collection != site.gitops_collection %}✅     |{% endif %}
 | [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - | -|
 | [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | -|
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components) | -    | ✅     | -|
-{% if page.collection != site.gitops_collection %}| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions)  | -   | -   | ✅ |
-| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance) | - | - | ✅ |{% endif %}
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -    | ✅     | -|
+{% if page.collection != site.gitops_collection %}| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions-community-argo-only)  | -   | -   | ✅ |
+| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance-community-argo-only) | - | - | ✅ |{% endif %}
 
 
 
 ## Switch ownership of Argo Project CRDs
-If your cluster already has Argo Project CRDs, you must decide how to manage them when installing the GitOps Runtime.  
+If you have Argo Project CRDs on your cluster, you must decide how to manage them when installing the GitOps Runtime.  
 The table below lists the options available depending on your installation mode. 
 
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/} |
 | **Adopt all Argo Project CRD except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime with existing Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/}|
+| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/}|
 
 
 
@@ -138,7 +138,7 @@ global:
 ...
 ```
 
-## Remove Argo Project and SealedSecret components
+## Remove Argo Project and SealedSecret components (New Argo only)
 For GitOps Runtime installation with a new Argo CD instance, the _target cluster should not have_:
 * Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
 * SealedSecret controller components.
@@ -146,7 +146,7 @@ For GitOps Runtime installation with a new Argo CD instance, the _target cluster
 
 
 {% if page.collection != site.gitops_collection %}
-## Align Argo CD chart's minor versions 
+## Align Argo CD chart's minor versions (Community Argo only)
 To avoid potentially incompatible changes or mismatches, ensure that the Runtime installation with an existing Argo CD instance uses the same upstream version of Argo CD used by Codefresh.  
 
 {{site.data.callout.callout_tip}}
@@ -203,7 +203,7 @@ If the chart's minor appversion is lower than the version used by Codefresh, you
 
 
 
-## Set resource tracking to `label` for existing Argo CD instance
+## Set resource tracking to `label` for existing Argo CD instance (Community Argo only)
 
 When installing a GitOps Runtime alongside an existing Argo CD instance, ensure that the existing Argo CD instance tracks resources using the `label` method. If both the existing Argo CD and the Runtime Argo CD use the same tracking methods, conflicts may occur when tracking applications with the same name or when tracking the same resource.
 
