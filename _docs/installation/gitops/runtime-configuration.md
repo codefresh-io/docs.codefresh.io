@@ -7,32 +7,34 @@ toc: true
 
 
 ## Configure GitOps Runtime 
-After installing a Runtime, you must complete its configuration to ensure successful GitOps operations.  
+After installing a Runtime, complete its configuration to enable GitOps operations.  
 Configuration includes:
 * [Defining Git credentials](#configure-git-credentials-for-runtime)
 * [Configuring Runtime as an Argo Application](#configure-runtime-as-argo-application)
 * [Adding a Git source](#add-git-source-to-runtime)
 
-You can configure the Runtime immediately after installation by following the Configuration and Management steps in the installation wizard, 
+You can configure the Runtime immediately after installation by following the **Configuration and Management** steps in the installation wizard, 
 or at any time later through the Codefresh UI. 
 If any configuration steps are pending, the Runtime's status in the UI list view indicates it through the Complete installation .
 
 
 
 ## Configure Git credentials for Runtime
-Git credentials for the Runtime include defining Git tokens: the Git Runtime token and the Git user token.
-* The Git Runtime token is mandatory for every GitOps Runtime.  
+Git credentials for the Runtime include defining:
+* **Git Runtime token**  
+  Required for every GitOps Runtime.  
   It must be provided during the Runtime installation, and is typically associated with a service/robot account.
-* The Git user token is an access token that is unique to every user in the Codefresh platform.  
+* **Git user token**  
+  A personal access token unique to every Codefresh user.  
   It is required after installation for every Runtime which the user has access to. 
 
 See [Git Runtime tokens versus Git user tokens]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-tokens-versus-git-user-tokens-in-codefresh).
 
 ### Why tokens are required
-Git tokens are needed both during installation and for ongoing GitOps operations, 
+Git tokens are used both during installation and for ongoing GitOps operations, 
 such as Argo CD syncing repositories, deploying templates, and performing Git actions.  
 
-Tokens are always securely stored on your cluster, and never in our platform.
+Tokens are always securely stored on your cluster and never in the Codefresh platform.
 
 ### Scopes for Git tokens
 {% if page.collection != site.gitops_collection %}
@@ -46,29 +48,25 @@ See [Git Runtime token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-r
 {% endif %}
 
 ### Using the Git Runtime token as the Git user token
-To simplify setup, you can use the Git Runtime token as the Git user token, provided it includes the additional scopes required for user access.
-
-
-
+To simplify setup, you can use the Git Runtime token as the Git user token if it includes the additional scopes required for user access.
 
 
 ## Configure Runtime as Argo application
 Configure the GitOps Runtime as an Argo Application to view Runtime components, monitor health and sync statuses, and ensure that Git is the single source of truth for the Runtime.  
-When you click **Configure as Argo Application**, Codefresh takes care of the configuration without any action required from you.
+
+Click **Configure as Argo Application** in the installation wizard to complete this step automatically.
 
 Configuring the GitOps Runtime as an Argo application ensures:
 * **Git as the single source of truth**  
-  The Runtime’s state is declaratively managed in Git, ensuring consistency, traceability, and version control over all its configurations.
+  The Runtime’s configuration is managed declaratively in Git, ensuring consistency, traceability, and version control over all its configurations.
 * **Automated reconciliation**  
-  Argo CD continuously monitors the Runtime’s desired state (as defined in Git), and automatically corrects any drift, ensuring alignment between the cluster and the Git repository.
-* **Visibility & monitoring**  
-  The Runtime is displayed in the GitOps Apps dashboard where you can view, check health and sync statuses, and manage it as any other Argo application.
-
-
+  Argo CD continuously monitors the Runtime’s desired state in Git and corrects any drift, ensuring alignment with the cluster.
+* **Visibility and monitoring**  
+  The Runtime appears in the GitOps Apps dashboard, where you can monitor and manage it as any other Argo application.
 
 ## Add Git Source to Runtime
+A **Git Source** is a critical component in GitOps Runtimes, connecting a Git repository to the cluster, enabling deployment and configuration management of Argo CD applications.
 
-A **Git Source** is a critical component in GitOps Runtimes, serving as a connection between a Git repository and the cluster. serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
 #### Git Source settings  
@@ -81,6 +79,12 @@ The Git repository referenced by the Git Source stores application manifests and
 | **Included and Excluded Files** | Define patterns to specify which files should be included or excluded when syncing the repository to the cluster. Use **GLOB patterns** to define paths: <br> - `workflows/**/*.yaml` → Includes all YAML files in `workflows` and its subdirectories. <br> - `**/images/**/*` → Excludes all directories named `images`. <br> For GLOB guidelines, see this [guide](https://deepsource.io/blog/glob-file-patterns/). |
 
 
+## Related articles
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
 
 
 
