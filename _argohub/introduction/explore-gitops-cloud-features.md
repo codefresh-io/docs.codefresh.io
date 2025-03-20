@@ -1,5 +1,5 @@
 ---
-title: "Explore Codefresh GitOps Cloud?"
+title: "Explore Codefresh GitOps Cloud"
 description: "Understand the key features of Codefresh GitOps Cloud"
 group: introduction
 toc: true

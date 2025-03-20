@@ -5,8 +5,7 @@
       url: "/what-is-gitops-cloud"
     - title: Explore Codefresh GitOps Cloud
       url: "/explore-gitops-cloud-features"
-    - title: Global Search & Navigation
-      url: "/command-bar"
+
 
 - title: GitOps quick starts
   url: "/gitops-quick-start"
