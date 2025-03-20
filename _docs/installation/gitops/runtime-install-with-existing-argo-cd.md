@@ -30,7 +30,7 @@ For both first-time and additional GitOps Runtime installations:
 After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the installation wizard.  
 Alternatively, you can complete the configuration later through the Codefresh UI. 
 
-Configuration includes setting up Git credentials, configuring the Runtime as an Argo application, and adding a Git Source to the Runtime.
+Configuration includes setting up Git credentials, configuring the Runtime as an Argo CD Application, and adding a Git Source to the Runtime.
 See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
 
 {{site.data.callout.callout_warning}}
@@ -328,7 +328,7 @@ After installation, go to **GitOps Runtimes > List View**:
   * **Synced**: Configuration is complete
   * **Complete Installation**: Pending configuration steps  
 * Drill down into the Runtime shows tabs for Runtime Components, Git Sources, and Managed Clusters.  
-  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-argo-application).
+  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-argo-application).
 
 {% include
    image.html

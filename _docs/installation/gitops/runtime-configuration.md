@@ -10,7 +10,7 @@ toc: true
 After installing a Runtime, complete its configuration to enable GitOps operations.  
 Configuration includes:
 * [Defining Git credentials](#configure-git-credentials-for-runtime)
-* [Configuring Runtime as an Argo Application](#configure-runtime-as-argo-application)
+* [Configuring Runtime as an Argo CD Application](#configure-runtime-as-an-argo-cd-application)
 * [Adding a Git source](#add-git-source-to-runtime)
 
 You can configure the Runtime immediately after installation by following the **Configuration and Management** steps in the installation wizard, 
@@ -51,18 +51,18 @@ See [Git Runtime token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-r
 To simplify setup, you can use the Git Runtime token as the Git user token if it includes the additional scopes required for user access.
 
 
-## Configure Runtime as Argo application
-Configure the GitOps Runtime as an Argo Application to view Runtime components, monitor health and sync statuses, and ensure that Git is the single source of truth for the Runtime.  
+## Configure Runtime as an Argo CD Application
+Configure the GitOps Runtime as an Argo CD Application to view Runtime components, monitor health and sync statuses, and ensure that Git is the single source of truth for the Runtime.  
 
-Click **Configure as Argo Application** in the installation wizard to complete this step automatically.
+Click **Configure as Argo CD Application** in the installation wizard to complete this step automatically.
 
-Configuring the GitOps Runtime as an Argo application ensures:
+Configuring the GitOps Runtime as an Argo CD Application ensures:
 * **Git as the single source of truth**  
   The Runtime’s configuration is managed declaratively in Git, ensuring consistency, traceability, and version control over all its configurations.
 * **Automated reconciliation**  
   Argo CD continuously monitors the Runtime’s desired state in Git and corrects any drift, ensuring alignment with the cluster.
 * **Visibility and monitoring**  
-  The Runtime appears in the GitOps Apps dashboard, where you can monitor and manage it as any other Argo application.
+  The Runtime appears in the GitOps Apps dashboard, where you can monitor and manage it as any other Argo CD application.
 
 ## Add Git Source to Runtime
 A **Git Source** is a critical component in GitOps Runtimes, connecting a Git repository to the cluster, enabling deployment and configuration management of Argo CD applications.

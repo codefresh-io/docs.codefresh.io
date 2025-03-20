@@ -16,9 +16,9 @@ For options on monitoring GitOps Runtimes, see [Monitoring GitOps Runtimes]({{si
 
 ## Configure Runtime as Argo CD application
 
-Configure the GitOps Runtime as an Argo application if you haven't already done so during installation.  
+Configure the GitOps Runtime as an Argo CD Application if you haven't already done so during installation.  
 
-Configuring the GitOps Runtime as an Argo application ensures:
+Configuring the GitOps Runtime as an Argo CD application ensures:
 * Git as the single source of truth: The Runtime’s state is declaratively managed in Git, ensuring consistency, traceability, and version control over all its configurations.
 * Automated reconciliation: Argo CD continuously monitors the Runtime’s desired state (as defined in Git), and automatically corrects any drift, ensuring alignment between the cluster and the Git repository.
 * Visibility & monitoring: The Runtime is displayed in the GitOps Apps dashboard where you can view and check health and sync statuses.
@@ -29,7 +29,7 @@ Configuring the GitOps Runtime as an Argo application ensures:
 1. From the sidebar, select **GitOps Runtimes**.
 1. Switch to the **List View**.
 1. Select the GitOps Runtime to configure as an Argo CD application.
-1. In the installation wizard, select **Configure runtime as Argo Application**.
+1. In the installation wizard, select **Configure runtime as Argo CD Application**.
 
 The Runtime's context menu now includes the **Runtime Application** option, which when selected takes you to the Current State tab in the GitOps Apps dashboard. 
 

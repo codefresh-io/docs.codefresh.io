@@ -318,7 +318,7 @@ helm upgrade --install <helm-release-name> \
   * The Type column for the Runtime displays **Helm**.
   * The Sync Status column displays **Complete Installation**, indicating that there are pending steps to complete the installation.  
   * Drilling down into the Runtime shows empty tabs for Runtime Components, Git Sources, and Managed Clusters.  
-    The Runtime Components are populated only when the GitOps Runtime is configured as an Argo Application, described later on in the installation process.
+    The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, described later on in the installation process.
  
 {% include
    image.html
@@ -338,7 +338,7 @@ helm upgrade --install <helm-release-name> \
 
 ### Step 4: Configure Git credentials for Hybrid GitOps Runtime
 Configure Git credentials to authorize access to and ensure proper functioning of the GitOps Runtime.  
-This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo Application, described in the steps that follow this one.
+This is the first of the three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git user token and configure the Runtime as an Argo CD Application, described in the steps that follow this one.
 
 Git credentials include authorizing access to Git repositories through OAuth2 or a Git Runtime token, and optionally configuring SSH access to the Git installation repo for the Runtime.
 
@@ -424,7 +424,7 @@ max-width="50%"
 Add a Git user token, as a personal access token unique to each user. The permissions for the Git user token are different from those of the Git Runtime token.
 Verify that you have an [access token from your Git provider with the correct scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 
-This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo Application (following step).
+This is the second of three steps needed to complete installing Hybrid GitOps Runtimes, the others being to add a Git Runtime token (previous step) and configure the Runtime as an Argo CD Application (following step).
 
 {{site.data.callout.callout_tip}}
 **TIP**  
@@ -432,21 +432,21 @@ If you already have added a Git user token, you can skip this step.
 {{site.data.callout.end}}
 
 1. Click **Git user token** to add your personal access token to authorize actions to Git repositories. 
-1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-application).
+1. Continue with [Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo CD Application](#step-6-optional-configure-hybrid-gitops-runtime-as-argo-cd-application).
 
 
 
-### Step 6: (Optional) Configure Hybrid GitOps Runtime as Argo Application
+### Step 6: (Optional) Configure GitOps Runtime as Argo CD Application
 
-Configure the Hybrid GitOps Runtime as an Argo Application as the final step in the installation process.
+Configure the Hybrid GitOps Runtime as an Argo CD Application as the final step in the installation process.
 By doing so, you can view the Runtime components, monitor health and sync statuses, and ensure that GitOps is the single source of truth for the Runtime.
 
 >**NOTE**  
-You cannot configure the Runtime as an Argo Application if you have not configured Git credentials for the Runtime, as described in the previous step.
+You cannot configure the Runtime as an Argo CD Application if you have not configured Git credentials for the Runtime, as described in the previous step.
 
 
 1. Go back to the List view.
-1. Click **Configure as Argo Application**. Codefresh takes care of the configuration for you. 
+1. Click **Configure as Argo CD Application**. Codefresh takes care of the configuration for you. 
   If you drill down into the Runtime and click Runtime Components, you'll see the list of components with their Health status. 
 
   {% include 
@@ -454,8 +454,8 @@ You cannot configure the Runtime as an Argo Application if you have not configur
       lightbox="true" 
       file="/images/runtime/helm/helm-runtime-components.png" 
       url="/images/runtime/helm/helm-runtime-components.png" 
-      alt="Runtime Components after configuring GitOps Runtime as Argo Application" 
-      caption="Runtime Components after configuring GitOps Runtime as Argo Application"
+      alt="Runtime Components after configuring GitOps Runtime as Argo CD Application" 
+      caption="Runtime Components after configuring GitOps Runtime as Argo CD Application"
       max-width="50%" 
    %}
 

@@ -65,9 +65,9 @@ app-proxy:
 ```
 
 ## Mirroring Helm chart in on-premises/air-gapped environments
-_After installing the GitOps On-premises Runtime_ in on-premises or air-gapped environments, you can manage it as an Argo Application to establish GitOps as the single source of truth for the Runtime. You can monitor the health and synchronization statuses of your Runtime components.  
+_After installing the GitOps On-premises Runtime_ in on-premises or air-gapped environments, you can manage it as an Argo CD Application to establish GitOps as the single source of truth for the Runtime. You can monitor the health and synchronization statuses of your Runtime components.  
 
-To manage the on-premises GitOps Runtime as an Argo Application, you need to:
+To manage the on-premises GitOps Runtime as an Argo CD Application, you need to:
 * **Mirror** the Helm chart to a repository that can be accessed by `app-proxy`
 * **Set an environment variable** in the `values` file in `.values.app-proxy` to reference the mirrored Helm repository, as shown in the example below.
 

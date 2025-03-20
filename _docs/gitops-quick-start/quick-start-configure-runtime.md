@@ -15,7 +15,7 @@ Configure the Runtime immediately after installation using the Configuration and
 
 Configuration includes:
 * [Configuring Git credentials](#configure-git-credentials-for-runtime)
-* [Configuring the Runtime as an Argo Application](#configure-runtime-as-argo-application)
+* [Configuring the Runtime as an Argo CD Application](#configure-runtime-as-argo-application)
 * [Adding a Git source](#add-git-source-to-runtime)
 
 For detailed information, see [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
@@ -29,13 +29,13 @@ Git credentials for the Runtime require two Git tokens:
 To simplify setup, use the Git Runtime token also as the Git user token if it has the necessary scopes.
 
 
-## Configure Runtime as Argo application
-Configuring the GitOps Runtime as an Argo Application enables:
+## Configure Runtime as Argo CD application
+Configuring the GitOps Runtime as an Argo CD Application enables:
 * Visibility into Runtime components
 * Monitoring health and sync statuses
 * Enforcement of Git as the single source of truth
 
-To configure, click **Configure as Argo Application**. Codefresh will automatically handle the setup—no further action required. 
+To configure, click **Configure as Argo CD Application**. Codefresh will automatically handle the setup—no further action required. 
 
 
 ## Add Git Source to Runtime
