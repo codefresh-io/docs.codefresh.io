@@ -1,1 +1,0 @@
-../../_docs/getting-started/intro-to-codefresh.md

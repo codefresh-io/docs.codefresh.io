@@ -1,12 +1,10 @@
 - title: Introduction
   url: "/introduction"
   pages:
-    - title: What is Codefresh GitOps?
-      url: "/intro-to-codefresh"
-    - title: Codefresh for GitOps
-      url: "/gitops-codefresh"
-    - title: Concepts in Codefresh
-      url: "/concepts"
+    - title: What is Codefresh GitOps Cloud?
+      url: "/what-is-gitops-cloud"
+    - title: Explore Codefresh GitOps Cloud
+      url: "/explore-gitops-cloud-features"
     - title: Global Search & Navigation
       url: "/command-bar"
 
