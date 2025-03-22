@@ -257,8 +257,8 @@ You must be in the List View for GitOps Runtimes to create Git Sources.
 
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
-1. In the List View, select the Runtime for which to create a Git Source, and then click the **Git Sources** tab.  
+1. From the sidebar, select **GitOps Runtimes**.
+1. From the List View, select the Runtime for which to create a Git Source, and then click the **Git Sources** tab.  
 1. Click **Create Git Source**, and in the Create Git Source panel, follow the instructions to define the settings for the Git Source.  
 
   {% include 
@@ -306,8 +306,9 @@ For how-to instructions, see [Create a Git Source](#create-a-git-source).
 ## View Git Sources and settings
 Drill down on a GitOps Runtime in List View to see its Git Sources. 
 
-1. In the Codefresh UI, go to the [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"} page.
-1. From the **List View** (the default), click a Runtime name, and then select the **Git Sources** tab.  
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **GitOps Runtimes**.
+1. From the **List View** (the default), select a Runtime, and then click the **Git Sources** tab.  
 
   {% include 
 	image.html 
@@ -321,7 +322,7 @@ Drill down on a GitOps Runtime in List View to see its Git Sources.
 
 {:start="3"}
 1. To go to the Git Source repo, in the Repo column, mouse over the repo name and select **Go to Git repo**.
-1. To see the settings for the Git Source, select the context menu at the end of the row, and click **Details**.
+1. To see the settings for the Git Source, from the context menu, select **Details**.
 
 
 
@@ -332,10 +333,10 @@ Edit an existing Git Source by changing the source and destination definitions, 
 You cannot change the name and type of the Git Source.
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes**){:target="\_blank"}.
-1. From the **List View** (the default), select the Runtime with the Git Source, and then select the **Git Sources** tab.  
-1. In the row with the Git Source to edit, from the context menu select **Details**.
-1. In the panel that appears, click **Edit**.
+1. From the sidebar, select **GitOps Runtimes**.
+1. From the **List View** (the default), select the Runtime with the Git Source, and then click the **Git Sources** tab.  
+1. From the context menu of the Git Source, select **Edit**.
+1. Change as needed and select **Save**.
 
 <!---
 {% include 
@@ -351,10 +352,28 @@ You cannot change the name and type of the Git Source.
 1. Update **Source**, **Destination**, and **Include** and **Exclude** definitions for the Git Source, and select **Save**. 
  -->
 
-<!--- ## Delete a Git Source
-Delete a Git Source 
+## Delete Git Sources
+Delete a Git Source from a GitOps Runtime whenever needed. You may want to delete a Git Source that is empty or no longer associated with active applications.
 
--->
+>**NOTE**  
+Only account administrators can delete Git Sources.
+
+##### Effect on applications and resources
+Deleting a Git Source impacts all applications and resources associated with it.  
+Whether an application or a resource is deleted depends on the presence of the `resources-finalizer.argocd.argoproj.io` finalizer in its **_parent application manifest_**.
+
+* **Git Source and linked applications**  
+  By default, the Git Source includes the `resources-finalizer.argocd.argoproj.io` finalizer. This means that when you delete the Git Source, all linked applications and their manifests are removed from both the Codefresh UI and the cluster.
+
+* **Resources associated with applications**  
+  Resources associated with applications are deleted **_only if the manifests of their parent applications_** contain the `resources-finalizer.argocd.argoproj.io` finalizer. If the finalizer is absent, the resources remain in the cluster even after the application is deleted.
+
+##### How to
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **GitOps Runtimes**.
+1. From the **List View** (the default), select the Runtime with the Git Source, and then click the **Git Sources** tab.  
+1. From the context menu of the Git Source, select **Delete**.
+1. To confirm, click **Delete**.
 
 ## Example YAMLs of Git Source resources
  
