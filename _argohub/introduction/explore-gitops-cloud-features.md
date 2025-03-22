@@ -95,7 +95,7 @@ Read more on [Products]({{site.baseurl}}/docs/docs/products/about-products/).
 
 ## Applications: Full control over creation and deployment
 
-Applications in Codefresh GitOps Cloud are **Argo CD applications**, representing a set of Kubernetes manifests that define how workloads are deployed. While Argo CD provides GitOps automation for individual applications, managing applications across multiple clusters at scale requires additional tooling and visibility.
+Applications in Codefresh GitOps Cloud are **Argo CD applications**, representing a set of Kubernetes manifests that define how you deploy workloads. While Argo CD provides GitOps automation for individual applications, managing applications across multiple clusters at scale requires additional tooling and visibility.
 
 {% include
 image.html
@@ -108,7 +108,7 @@ max-width="70%"
 %}
 
 
-What Codefresh GitOps Cloud adds to application management
+What Codefresh GitOps Cloud adds to application management:
 
 * **Effortless application creation**
   Create fully-compliant Argo CD applications in our UI, in YAML or form modes.
@@ -117,7 +117,7 @@ What Codefresh GitOps Cloud adds to application management
   Organize applications into products to manage microservices as a unit.
 
 * **Centralized application management** 
-  View and manage all Argo CD applications across all clusters and environments in a single dashboard, the **GitOps Apps dashboard**, the command center for Argo CD application management. You can deep dive into individual applications, including deployment timelines, the current state of applications and resources, diff views, and more. 
+  View and manage all Argo CD applications across all clusters and environments in a single dashboard, the **GitOps Apps dashboard**. This is the command center for Argo CD application management. You can deep dive into individual applications, including deployment timelines, the current state of applications and resources, diff views, and more. 
 
 * **GitOps-based deployment with promotions**  
   After creating applications, seamlessly deploy changes through promotions for controlled deployments across environments.  
@@ -159,7 +159,6 @@ caption="Codefresh GitOps Cloud: Promotions"
 max-width="70%"
 %}
 
-Instead of relying on custom scripts and manual approvals, use promotions to enforce consistent, repeatable deployment processes.
 
 Read more on [promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
