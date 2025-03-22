@@ -5,24 +5,38 @@ group: products
 toc: true
 ---
 
-After creating products, the next step is to assign applications to it.
-Assigning applications to products groups these applications into a single cohesive entity, enabling efficient management for promotions and deployments.
+After creating a product, the next step is to assign applications to it.
+Assigning applications to a product groups these applications into a single cohesive entity, making it easier to manage promotions and deployments.
 
-There are two methods of assigning applications to a product:
+## Methods for assigning applications
+There are three methods of assigning applications to a product:
 
-* Declarative assignment 
-  Defines an annotation with the Product name in the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you.  
-  The annotation is committed and saved in Git as part of the application definition.   
-  Fully GitOps-compatible, this is the preferred method.   
-  For how-to instructions, see [Connect applications to products with annotations]({{site.baseurl}}/docs/products/configure-product-settings/#connect-applications-to-product-with-annotations).
+### Assignment during application creation
+When creating an application, in the Configuration tab, select an existing product or create a new one.
+* Codefresh automatically adds the annotation to the application’s manifest.
+* The annotation is committed and saved in Git as part of the application definition.
+* This method is also declarative and GitOps-compatible.
 
-* Manual assignment  
-  A one-click action for quick assignment within Product Settings.  
-  Unlike other UI actions, manual assignment does not require a commit action. Applications assigned to a product are not stored in the product's resource definition.  
-  Recommended for testing purposes and not as the preferred method.  
-  For how-to instructions, see [Manually assign unassigned applications]({{site.baseurl}}/docs/products/configure-product-settings/#manually-assign-unassigned-applications).
+See [Products in application configuration]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products).
 
-You can always unassign an application from a product, for declaratively assigned applications by removing the annotation, and for manually assigned applications, by removing them through [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/#unassign-manually-assigned-applications).
+### Declarative assignment
+Defines an annotation with the product name in the application's manifest. If the product doesn’t exist, Codefresh GitOps automatically creates it for you. 
+* The annotation is committed and saved in Git as part of the application definition.   
+* This method is fully GitOps-compatible and ensures consistency across environments.   
+  
+For how-to instructions, see [Connect applications to products with annotations]({{site.baseurl}}/docs/products/configure-product-settings/#connect-applications-to-product-with-annotations).
+
+### Manual assignment
+Assign applications to a product directly in Product Settings with a one-click action. Recommended for testing purposes and not as the preferred method. 
+* Manual assignment does not require a commit action. 
+* Applications assigned this way are not stored in the product's resource definition.  
+ 
+For how-to instructions, see [Manually assign unassigned applications]({{site.baseurl}}/docs/products/configure-product-settings/#manually-assign-unassigned-applications).
+
+## Unassigning applications
+You can always unassign an application from a product:
+* **Declaratively assigned applications** by removing the annotation from the application's manifest.
+* **Manually assigned applications** by unassigning them through [Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/#unassign-manually-assigned-applications).
 
 
 ## Related articles

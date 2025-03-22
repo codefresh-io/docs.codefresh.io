@@ -1,16 +1,16 @@
 ---
-title: "Releases for Products"
-description: "Monitor deployments after promotion"
+title: "Releases for products"
+description: "Monitor promotions for products"
 group: products
 toc: true
 ---
 
-## Releases for Products
-The Releases feature for products visualizes the product’s deployment lifecycle as it moves through different environments during promotions.
+## Product Releases
+The **Releases** feature provides visibility into a product’s deployment lifecycle as it moves through different environments during promotions.
 
-A release is automatically created whenever a promotion is triggered, capturing the state of the product and its applications at that point in time. This allows you to monitor, visualize, and analyze changes from the initial trigger to the final deployment, providing valuable insights for all stakeholders.
+A release is automatically created when a promotion is triggered, capturing the product and its application states at that moment. It allows you to monitor, visualize, and analyze changes from the initial trigger to final deployment, providing valuable insights for all stakeholders.
 
-The Releases tab for a product displays the list of historical and ongoing releases. 
+The Releases tab for a product lists both historical and ongoing releases.
 
 {% include 
 	image.html 
@@ -23,7 +23,7 @@ The Releases tab for a product displays the list of historical and ongoing relea
 %}
 
 ##### Release visualization
-Drilling down into a specific release shows how promotions were orchestrated across environments through Promotion Workflows. The Release Notes compile all the changes leading up to the release.
+Drilling into a specific release shows how promotions were orchestrated across environments using Promotion Workflows. The Release Notes compile all the changes leading up to the release.
 
 {% include 
 	image.html 
@@ -36,7 +36,9 @@ Drilling down into a specific release shows how promotions were orchestrated acr
 %}
 
 ##### Tracking releases in Git
-Commit status checks in Git include status checks for promotions in releases. This means that you can track promotion progress and identify issues directly from Git. If more details are needed, you can always click **Details** to take you to the Releases view for investigation.
+Git commit status checks include promotion updates, allowing you to track progress and identify issues directly from Git. Clicking **Details** in Git takes you to the **Releases** view in Codefresh GitOps for further investigation.
+
+
 
 {% include 
 	image.html 
@@ -48,7 +50,7 @@ Commit status checks in Git include status checks for promotions in releases. Th
   max-width="50%" 
 %}
 
-For detailed information, see [Tracking Product Releases]({{site.baseurl}}/docs/promotions/product-releases/).
+For detailed information, see [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/).
 
 
 ## Related articles

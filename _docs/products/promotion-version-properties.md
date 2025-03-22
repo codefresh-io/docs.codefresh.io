@@ -6,16 +6,14 @@ toc: true
 ---
 
 ## App version and promotable properties for Products
-By default, when you promote a product across environments, all its applications and their properties are promoted. You may not need to promote everything, as not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.
+By default, when you promote a product across environments, all its applications and their properties are promoted. Not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.
 
-By configuring the properties to promote, you ensure that only relevant updates move forward. This improves deployment accuracy, streamlines workflows, and enforces compliance with environment-specific constraints.
+By configuring which properties to promote, you ensure that only relevant updates move forward. This improves deployment accuracy, streamlines workflows, and enforces compliance with environment-specific constraints. Manual reviews and oversight are reduced for managing complex applications.
 
-##### Why automate version and property selection?
-Automating the selection of the application version and properties ensures that only relevant updates are promoted, improving accuracy, efficiency, and compliance with environment-specific constraints. This approach benefits teams managing complex applications by reducing manual oversight and enforcing structured deployments.
 
 ##### Key benefits of automated selection
 * **Targeted, reliable promotions**  
-  Ensures only approved updates, such as tested builds, specific artifact versions, are promoted, minimizing deployment errors.
+  Ensures only approved updates, such as tested builds and specific artifact versions are promoted, minimizing deployment errors.
 
 * **Environment-specific control**  
   Defines promotable properties to enforce unique requirements per environment, allowing selective updates like image tags while excluding unnecessary modifications.
@@ -24,7 +22,7 @@ Automating the selection of the application version and properties ensures that 
   Eliminates manual diff reviews for large-scale applications with numerous microservices and configuration files, streamlining deployments.
 
 ##### Primary aspects when promoting applications
-When defining which changes to promote, focus one these two aspects:
+When defining which changes to promote, focus on these two aspects:
 1. Defining the source for the [application's release version](#configuring-versions-for-promoted-applications)
 1. Defining the [changes to promote](#configuring-properties-for-promotion-across-applications) across multiple files in the applications 
 
@@ -37,8 +35,8 @@ For automated retrieval of the application version and promotion of specific att
 Promotion across different environments requires consistent relative paths in each repository. For example, to promote properties from `config/settings.yaml` in environment `dev` to `testing`, `config/settings.yaml` must also exist in the `testing` environment. 
 {{site.data.callout.end}}
 
-##### Where can you configure settings for application version and properties? 
-In Product > Settings > Promotion Settings.   
+##### Where to configure settings for application version and properties
+In **Product > Settings > Promotion Settings**.   
 See also [Promotion Settings & Promotion Templates](#promotion-settings--promotion-templates).
 
 {% include
@@ -77,7 +75,7 @@ For other application types, product versions are not displayed even when config
 
 The Version attribute is defined using a [JSON path expression](#json-path-expressions-for-files-and-properties). It is relative to the `spec.source.repoURL` and `spec.source.path` attributes defined in the source application's configuration manifest.  
 
-The diagram illustrates how the version attributes configured for the product are correlated with the repo URL and path defined in the application's manifest to retrieve the correct version.
+The following diagram illustrates how the version attributes configured for a product correlate with the repo URL and path defined in the application's manifest to retrieve the correct version.
 
 {% include
  image.html
@@ -89,9 +87,9 @@ The diagram illustrates how the version attributes configured for the product ar
     max-width="60%"
 %} 
 
-**Version not displayed in dashboards**  
+### Application version not updated/displayed in dashboards 
 
-
+* There are no updates in the application. The application version updates only when the application itself is updated, not just by changing the version number. 
 * If the version is not displayed in the dashboards, it could be because your application is not a Helm application.
 * For Helm applications, if the version is either not displayed or is not correct, it could be because:
     * Codefresh could not find the values in the `repoURL` and `path`. Verify that the Source settings for the application correspond to the Version attribute configured for the product.
@@ -184,8 +182,8 @@ You can extract version information from different attributes to ensure that it 
 
 ## Configuring properties for promotion across applications
 
-Promotable Properties define the specific files or attributes within files which are selected for promotion between environments for the applications in a product.
-Although optional, defining these properties allow for precise control over which changes are included in a promotion, ensuring compliance with environment-specific requirements and preventing unwanted modifications.
+Promotable Properties define the files or attributes within files selected for promotion between environments for the applications in a product.
+Although optional, defining promotable properties allow for precise control over which changes are included in a promotion, ensuring compliance with environment-specific requirements and preventing unwanted modifications.
 
 {% include
  image.html
@@ -200,10 +198,10 @@ Although optional, defining these properties allow for precise control over whic
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
 When no Promotable Properties are defined, _all files in the application's source directory_ are promoted.  
-This can result in a large data transfer depending on the size of the directory.
+This can result in a large data transfer depending on the directory.
 {{site.data.callout.end}}
 
-Similar to how you define the Version attribute, Promotable Properties are also defined through [JSON path expressions](#json-path-expressions-for-files-and-properties). Unlike the Version attribute, you can define multiple JSON path expressions to different files, or to multiple attributes within the same file. 
+Like the Version attribute, Promotable Properties are defined through [JSON path expressions](#json-path-expressions-for-files-and-properties). Unlike the Version attribute, you can define multiple JSON path expressions, pointing to different files or to multiple attributes within the same file. 
 
 
 
@@ -276,21 +274,19 @@ Application versions and properties to be promoted are defined through JSON path
 
 **NOTE**  
 Our promotions are optimized for YAML-based configuration files.  
-For non-YAML file types, JSONPath expressions may not evaluate as expected. In these cases, you have the option to promote the entire file using **`*`** as a wildcard.
+For non-YAML file types, JSON path expressions may not evaluate as expected. In such cases, you can promote the entire file using **`*`** as a wildcard.
 
+## Autocomplete and path selectors for JSON files
 
+Instead of manually navigating to GitHub, copying the file name, and locating paths within the file, Codefresh GitOps simplifies the process with:
+* **File selector with autocomplete**  
+  Start typing the part of the filename and then select from the displayed list.
 
+* **Path-selectors**  
+  After selecting a file, clicking the attribute or property directly in the file automatically generates and adds the correct JSON path.
 
-
-<!--- Instead of having to navigate to GitHub, copy the file name, and then the paths in the file, we have made it easy to both select the file and configure JSON paths to its properties:
-* File selector with auto-complete
-  Start typing the part of the filename and then select from the list displayed.
-
-* Path-selectors
-  The selected file is displayed, and you can simply click the attribute or property in the file to select, and Codefresh generates and adds the correct JSON path.
-
-* Preview configuration
-  The Preview Configuration button allows you to select the application and see the version which will be retrieved. -->
+* **Preview configuration**  
+  The Preview Configuration button allows you to select the application and view the version retrieved. 
 
 
 
@@ -304,13 +300,13 @@ For non-YAML file types, JSONPath expressions may not evaluate as expected. In t
     max-width="60%"
 %} 
 
-<!--- You can always add JSON path expressions directly if that's what you prefer. -->
+You can enter JSON path expressions manually if preferred. 
 
 ### Dashes in JSON keys
 Dashes in JSON keys are currently _not supported_ in path expressions using dot notation.  
 
-**Workaround**: 
-Use square bracket notation to specify the path, as shown below, and double quotes within the brackets to escape the dashes.  
+##### Workaround
+Use square bracket notation with double quotes within the brackets to escape the dashes.  
 For example:
 
 ```json
@@ -360,9 +356,10 @@ Using the above syntax:
 
 ## Promotion Settings & Promotion Templates
 
-As with other GitOps entities, you can configure Promotion Settings for the product in either Form or YAML modes. 
+Configure Promotion Settings for the product in either Form or YAML modes. 
 
-When you define an Inline template, configure, and commit the settings, the YAML generated, is saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`.  
+When you define an **Inline template**, a new Promotion Template, configure it, and commit the settings, the YAML generated, is saved as a `promotion-template` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configuration/promotion-templates/`. 
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
 To configure directly in YAML, refer to our [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/). 

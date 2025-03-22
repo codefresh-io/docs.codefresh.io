@@ -6,7 +6,7 @@ toc: true
 ---
 
 ## Product settings
-After creating a product, optimize its features and functionality by configuring different settings for the product, such as metadata, promotion settings, and more through Product Settings. 
+After creating a product, optimize its functionality by configuring different settings for the product, including metadata, promotion settings, and more through Product Settings. 
 
 This article describes how to configure the different Product Settings:
 
@@ -14,25 +14,26 @@ This article describes how to configure the different Product Settings:
   Declaratively connect an application to a product with the automatically generated product annotation. 
   
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
-  Click names of unassigned applications to automatically assign them to environments. 
+  Assign applications to environments. 
 
 
 * [Labels](#configure-labels-for-products)  
-  Add labels for the product. 
+  Add labels to manage access control and permissions.
 
 * [Promotion Flows](#select-promotion-flows-for-products)  
-  Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each of the Flows.
+  Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each flow for automated deployments.
   
 * [Promotion Settings](#configure-promotion-settings-for-products)  
-  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
+  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining new promotion settings.
 
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
 
 ## Form & YAML modes
-As with most GitOps entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
+Configure Product Settings in Form or YAML modes, switching seamlessly between them during configuration.
 
-No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+All settings, except manually assigned applications, are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/products/<product-name>.crd`.  
 
 See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
@@ -93,10 +94,7 @@ To unassign an application assigned declaratively to the product, remove the ann
 
 
 ## Manually assign unassigned applications
-Manually assign applications with a one-click action for quick assignment.    
-This quick assignment option does not require a commit action as applications assigned to a product are not stored as part of the product's resource definition.  
-
-This method is recommended for testing purposes.
+Quickly assign applications through the UI without modifying manifests. This method does not require a commit and is recommended for testing.
 
 ##### Before you begin
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
@@ -166,15 +164,15 @@ Adding labels to a product lets you create access control rules that govern manu
 
 1. Open [Product Settings](#open-product-settings).
 1. Click the **General** tab.
-1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
+1. Below **Labels**, click **Add** and define key-value pairs following Kubernetes conventions.
 
 
 
 
 ## Select Promotion Flows for Products
-Automate and orchestrate promotions across different environments for the Product by:
+Automate and orchestrate promotions across different environments for the product by:
 * Selecting one or more predefined Promotion Flows
-* Customizing the conditions that should trigger each Promotion Flow
+* Customizing the conditions to trigger each Promotion Flow
 * Defining the priority for each Flow when multiple Flows are configured 
 
 

@@ -31,8 +31,9 @@ This article focuses on the Product Dashboard and the insights you can gain from
 
 For detailed information on creating products and how to work with them, see [About Products]({{site.baseurl}}/docs/products/about-products/) and [Creating products]({{site.baseurl}}/docs/products/create-product/).
 
->**NOTE**  
+<!--- >>**NOTE**  
 In the documentation, both Product (capitalized) and product (lowercase) refer to the same entity in Codefresh GitOps. They are used interchangeably for readability and consistency.
+-->
 
 ## Products page
 
@@ -55,17 +56,17 @@ Here's an example of the Product page with the list of all the products.
 Here are some key features of the Products page:
 
 ### Collapsed & expanded views
-* **Collapsed view**: The default view, displays the Product name alongside the Environments with the number of applications in each environment.<br> The options on the right allow you to manage products.  
-* **Expanded view**: The expanded view displays the applications in the product organized by their Environments.
+* **Collapsed view**: The default view, displays the product name alongside the environments with the number of applications in each environment.<br> The options on the right allow you to manage products.  
+* **Expanded view**: The expanded view displays the applications in the product organized by their environments.
 
 ### Product management options
 Mouse over the row with the product to display possible actions:
-{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Takes you to Product > Settings tab where you can configure . See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage Applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/products/assign-applications">Manually assign applications to Products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the Product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete Product</a>.</li></ul>{:/} 
+{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Takes you to the Product > Settings tab where you can configure . See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/products/assign-applications">Manually assign applications to products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete product</a>.</li></ul>{:/} 
 
 
 
 
-## Product Dashboard
+## Product dashboard
 Clicking a Product name navigates you to the Product Dashboard for the selected product with a detailed view of its applications. It also includes integrated insights into Git and issue-tracking systems and how they relate to deployments. 
  
 

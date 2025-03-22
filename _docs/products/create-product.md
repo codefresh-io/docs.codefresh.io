@@ -1,46 +1,46 @@
 ---
-title: "Create Products"
-description: "Create Products and tailor settings to optimize them"
+title: "Create products"
+description: "Create products and tailor settings to optimize them"
 group: products
 toc: true
 ---
 
 
 
-A Product in Codefresh is a logical grouping of related Argo CD applications that provides context, versioning, and lifecycle management across environments. Unlike standalone applications in Argo CD, products establish relationships between applications, making it easier to track deployments, manage promotions, and maintain consistency. See [About Products]({{site.baseurl}}/docs/products/about-products/).
+A product in Codefresh is a logical grouping of related Argo CD applications that provides context, versioning, and lifecycle management across environments. Unlike standalone applications in Argo CD, products establish relationships between applications, making it easier to track deployments, manage promotions, and maintain consistency. See [About Products]({{site.baseurl}}/docs/products/about-products/).
 
-There are two ways to create a product in GitOps:
+There are two ways to create a product in Codefresh GitOps:
 * When creating or editing an [application]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products)<br>
-  You can create a product while setting up an application.
+  You can create a product while creating an application.
 
 * From the [Products page](#create-products)<br>
   Create and manage products directly, then assign applications to them, as described in this article.
 
 
 
-## Understanding the role of Environments for Products
+## Understanding the role of environments for products
 
-When you drill down into specific products in the Product Dashboard, application visibility is closely tied to how you defined and mapped environments. 
+When you drill down into specific products in the Product Dashboard, application visibility depends on how you defined and mapped environments. 
 
-Note that products will not display any applications in these scenarios:
+Products will not display applications in these cases:
 
-* No environments defined  
-  If you have not created environments in Codefresh, the Product Dashboard will not display any applications, even if you have assigned applications to products.  
+* **No environments defined**  
+  If you have not created environments, the Product Dashboard does not display any applications, even if you have assigned applications to the product.  
 
 
-* Unmapped cluster-namespace  
-  Even if environments are defined, applications are not displayed within products if the corresponding clusters or namespaces they are not deployed to are not mapped to any existing environment. 
+* **Unmapped cluster-namespac**e  
+  If the cluster or namespace the application is deployed to is not mapped to an environment, the application is notdisplayed in the Product Dashboard. 
 
 
 
 
 ## Create Products 
-Create a product from the Product page.  
+Create a product from the Products page.  
 
 To create a product for a new or an existing application, see [Configuring applications]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products).
 
 ##### Before you begin
-* Create one or more [Environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)
+* Create one or more [environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)
 
 ##### How to
 1. In the Codefresh UI, from the sidebar, select **Products**.

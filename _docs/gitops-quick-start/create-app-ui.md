@@ -363,7 +363,7 @@ Environments represent stages in your software development lifecycle, providing 
 
 Let’s continue by creating environments.  
 
-[Quick start: Creating Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/) 
+[Quick start: Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/) 
 
 
 

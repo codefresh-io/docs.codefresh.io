@@ -1,23 +1,22 @@
 ---
-title: "Manage Products and applications in Environments"
-description: "Promote Products and manage applications from the Environments dashboard"
+title: "Manage products and applications in environments"
+description: "Work with products and applications in the Environments dashboard"
 group: environments
 toc: true
 ---
 
 
 
-## Working with Products and applications in Environments
-Environments provide visibility into which applications are running where. If you have created products for applications, environments display the products, and mo and and their associated applications. If there are no products grouping applications, the dashboard displays individual applications.
+## Working with products and applications in environments
+Environments provide visibility into which applications are running where. If you have created products to group applications, environments display the products, and their associated applications. If there are no products, the dashboard displays individual applications.
 
 Use the Environments dashboard to:
+* Promote products and applications between environments
+* Manage individual applications with actions like syncing, refreshing, and editing
+* View deployment history for applications
+* Compare deployed versions and dependencies across environments
 
-Promote products and applications to different environments
-Manage individual applications with actions like syncing, refreshing, and editing
-View deployment history for applications
-Compare deployed versions and dependencies across environments
-
-## Filter applications in Environments by health status
+## Filter applications in environments by health status
 Quickly filter applications within an Environment by health status. For health status descriptions, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#health-status-for-application-resources).
 
 1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
@@ -35,12 +34,12 @@ Quickly filter applications within an Environment by health status. For health s
 %}
 
 
-## Promote Products and applications
-You have two methods for promoting a product or application from the Environments dashboard:
+## Promote products and applications
+Promote a product or application from the Environments dashboard using one of two methods:
 * **Drag-and-drop promotion**  
-  Manually move a product or application from one environment to another, and define the Promotion Settings. This method is useful for quickly promoting changes between two environments to test changes, such as promoting an application from development to testing.
+  Manually move a product or application from one environment to another, and define the Promotion Settings. Use this method to quickly test changes, such as promoting an application from development to testing.
 * **Promote action**
-  Instead of drag-and-drop, select the target environment to promote to, or initiate a predefined Promotion Flow configured with promotion settings, including the action, and Pre-Action and post-action workflows. This method is best suited for structured promotions that follow defined policies.
+  Instead of drag-and-drop, select the target environment to promote to, or trigger a predefined Promotion Flow configured with promotion settings, including the action, and Pre-Action and Post-Action Workflows. This method is best for structured promotions that follow defined policies.
 
 
 
@@ -55,14 +54,14 @@ Watch this video:
 
 
 ##### Before you begin
-* Make sure you have permission to trigger promotions in the Environments dashboard
+* Make sure you have permissions to trigger promotions in the Environments dashboard
 
 
 ##### How to
 1. In the Codfresh UI, from the sidebar, select **Environments**, and then select the environment with the product or application to promote. 
 1. Drag the product or application to the desired target environment.
-    * On the left, you can see Promotion Settings, either populated from global Policy settings that match the product, or left empty for you to define.  
-    * The right panel displays a Compact Diff View with the files and changes to be promoted.
+    * The Promotion Settings panel on the lest displays settings populated from global Policies that match the product, or allow you to define them.  
+    * The panel on the right displays a Compact Diff View with the files and changes to be promoted.
 
 {% include 
 image.html 
@@ -82,22 +81,22 @@ max-width="60%"
 1. Add information on the commit or PR.
 1. Click **Promote**.
 
-A release is created for the Product and the Release tab displays the ongoing deployment.
+A [release]({{site.baseurl}}/docs/promotions/product-releases/) is created for the product and its Releases tab displays the ongoing deployment.
 
 
 
 ### Using the Promote action
 
-Select the Promote option to promote a product or application to a target environment or by triggering a Promotion Flow. 
-* **Target environment** (manual, configurable): Similar to drag-and-drop, this option lets you select a target environment and define the Promotion Settings before applying the promotion.
-* **Promotion Flow** (predefined, automated): This option allows you to view the available Promotion Flows, including their configured environments and settings, then select a Flow to trigger. The settings are predefined and cannot be modified.
+Use the Promote option to promote a product or application to a specific target environment or trigger a Promotion Flow. 
+* **Target environment** (manual, configurable): Select the target environment and define promotion settings before applying the promotion.
+* **Promotion Flow** (predefined, automated): Select a predefined Promotion Flow with configured environments and settings. The settings cannot be modified.
 
 ##### Before you begin
-* Make sure you have permission to trigger promotions in the Environments dashboard
+* Make sure you have permissions to trigger promotions in the Environments dashboard
 
 ##### How to
-1. In the Codfresh UI, from the sidebar, select **Environments**. 
-1. Click the context menu of the product or application with the change to promote, and select **Promote**.
+1. In the Codefresh UI, from the sidebar, select **Environments**. 
+1. Click the context menu for the product or application, and then select **Promote**.
 
 {% include 
 image.html 
@@ -123,8 +122,7 @@ max-width="60%"
   * Select a Promotion Flow from the list and view the environments and promotion settings configured for the Flow.
   * Click **Trigger**. 
 
-A release is created for the product, and the Release tab displays the ongoing deployment.
-
+A [release]({{site.baseurl}}/docs/promotions/product-releases/) is created for the product and its Releases tab displays the ongoing deployment.
 
 
 
@@ -133,7 +131,7 @@ A release is created for the product, and the Release tab displays the ongoing d
 
 
 ## View and compare deployed versions for dependencies
-View the dependencies included with each application, and compare versions of the application and dependencies deployed in different Environments. Track the progress of the applications, understand the changes made, and ensure that customers are using the latest or most appropriate release.
+View the dependencies included with each application, and compare versions across environments. Track the progress of the applications, understand changes, and ensure that customers are using the latest or the most appropriate release.
 
 **Table and YAML views**
 * Table: Compare more than two applications.
@@ -161,9 +159,9 @@ View the dependencies included with each application, and compare versions of th
 %}
   
 {:start="3"}
-1. To compare the versions of dependencies for the selected application across different Environments, enable **Compare**.
-1. Select the Environments to compare to. 
-1. To compare the versions of the dependencies for the applications in the selected Environments, switch to **Table** view.
+1. To compare the versions of dependencies for the selected application across different environments, enable **Compare**.
+1. Select the environments to compare to. 
+1. To compare the versions of the dependencies for the applications in the selected environments, switch to **Table** view.
 
 {% include 
 	image.html 
@@ -183,16 +181,16 @@ View the dependencies included with each application, and compare versions of th
 	lightbox="true" 
 	file="/images/gitops-environments/version-compare-apps.png" 
 	url="/images/gitops-environments/version-compare-apps.png" 
-	alt="Compare versions of dependencies in different Environments" 
-	caption="Compare versions of dependencies in different Environments"
+	alt="Compare versions of dependencies in different environments" 
+	caption="Compare versions of dependencies in different environments"
   max-width="60%" 
 %}
 
 
 ## View deployment (Timeline) history for applications
-Review the deployments for a specific application in the Environments dashboard. 
+Review the deployment history for an application in the Environments dashboard. 
 
-1. In the Codefresh UI, from the sidebar, select Environments.
+1. In the Codefresh UI, from the sidebar, select **Environments**.
 1. In the Environment column with the application you require, click the application name to view deployment history.
 
 {% include 
@@ -225,14 +223,14 @@ Manage applications from the Environments dashboard through each application's c
 	lightbox="true" 
 	file="/images/gitops-environments/app-context-menu-actions.png" 
 	url="/images/gitops-environments/app-context-menu-actions.png" 
-	alt="Context menu with actions for Argo CD applications within GitOps Environments" 
-	caption="Context menu with actions for Argo CD applications within GitOps Environments"
+	alt="Context menu with actions for Argo CD applications within environments" 
+	caption="Context menu with actions for Argo CD applications within environments"
   max-width="60%" 
 %}
 
 ## Related articles
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
-[Create and manage Environments]({{site.baseurl}}/docs/environments/create-manage-environments/)  
-[About Environments]({{site.baseurl}}/docs/environments/environments-overview/)  
+[Create and manage environments]({{site.baseurl}}/docs/environments/create-manage-environments/)  
+[About environments]({{site.baseurl}}/docs/environments/environments-overview/)  
 
 
