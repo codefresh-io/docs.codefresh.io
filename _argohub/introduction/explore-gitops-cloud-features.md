@@ -91,7 +91,7 @@ By grouping applications into products, Codefresh GitOps Cloud makes it easier t
 * Track the deployment status of all components in a single view
 * Reduce errors by ensuring that dependent services get promoted in sync
 
-Read more on [Products]({{site.baseurl}}/docs/docs/products/about-products/).
+Read more on [Products]({{site.baseurl}}/docs/products/about-products/).
 
 ## Applications: Full control over creation and deployment
 
@@ -133,7 +133,7 @@ caption="Codefresh GitOps Cloud: Managing applications"
 max-width="70%"
 %}
 
-Read more on [Applications]({{site.baseurl}}/docs/applications/about-apps/).
+Read more on [Applications]({{site.baseurl}}/docs/deployments/gitops/about-apps/).
 
 ## Promotions: Structured and controlled deployments
 Promotions in Codefresh GitOps Cloud go beyond Argo CD’s standard sync operation for applications. Instead of simply applying changes, promotions provide structure, governance, and visibility across environments.
@@ -188,7 +188,7 @@ max-width="70%"
 
 By defining Promotion Flows, teams can ensure reliability, repeatability, and security while moving applications from development to production.
 
-Read more [Promotion Flows]({{site.baseurl}}/docs/promotions/promotions/promotion-flow/).
+Read more [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
 
 
 ## Get started with Codefresh GitOps Cloud
