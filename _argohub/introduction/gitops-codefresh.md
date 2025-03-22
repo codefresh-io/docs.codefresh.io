@@ -1,1 +1,0 @@
-../../_docs/getting-started/gitops-codefresh.md
