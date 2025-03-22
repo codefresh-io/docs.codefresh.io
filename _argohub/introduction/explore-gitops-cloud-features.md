@@ -33,12 +33,12 @@ Migrating Argo CD configurations can be difficult and often requires a lot of ef
 ##### Bring your own Argo CD instance
 The Runtime lets you bring your own Argo CD instance, which works in plug-and-play mode. You install it in minutes, and if you change your mind you can also remove it without affecting your existing Argo CD instance. 
 
-Read more on [installing GitOps Runtime with your existing Argo CD]().
+Read more on [installing GitOps Runtime with your existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 ##### Use a managed Argo CD instance
 If you don’t have an Argo CD instance, that’s no problem. You can still choose the Codefresh Runtime to manage all Argo services in one bundle with our easy installation process. 
 
-Read more on [installing GitOps Runtime with a new Argo CD instance]().
+Read more on [installing GitOps Runtime with a new Argo CD instance]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 Regardless of your choice, Codefresh provides a single control plane to track and promote applications across environments.
 
@@ -69,7 +69,7 @@ max-width="70%"
 
 Since environments are tightly integrated with the Runtime, all changes and promotions are tracked and controlled from a single control plane, ensuring consistency across deployments.
 
-Read more on [Environments]({{site.baseurl}}/docs/environments/environments-overview/).
+Read more on [environments]({{site.baseurl}}/docs/environments/environments-overview/).
 
 ## Products: Moving beyond per-application deployments
 Argo CD is great for managing individual applications, but teams often need more structure and insights into applications in the wider context of their development and deployment lifecycle. 
@@ -91,7 +91,7 @@ By grouping applications into products, Codefresh GitOps Cloud makes it easier t
 * Track the deployment status of all components in a single view
 * Reduce errors by ensuring that dependent services get promoted in sync
 
-Read more on [Products]({{site.baseurl}}/docs/products/about-products/).
+Read more on [products]({{site.baseurl}}/docs/products/about-products/).
 
 ## Applications: Full control over creation and deployment
 
@@ -133,7 +133,7 @@ caption="Codefresh GitOps Cloud: Managing applications"
 max-width="70%"
 %}
 
-Read more on [Applications]({{site.baseurl}}/docs/deployments/gitops/about-apps/).
+Read more on [applications]({{site.baseurl}}/docs/deployments/gitops/about-apps/).
 
 ## Promotions: Structured and controlled deployments
 Promotions in Codefresh GitOps Cloud go beyond Argo CD’s standard sync operation for applications. Instead of simply applying changes, promotions provide structure, governance, and visibility across environments.
@@ -188,7 +188,7 @@ max-width="70%"
 
 By defining Promotion Flows, teams can ensure reliability, repeatability, and security while moving applications from development to production.
 
-Read more [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
+Read more on [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).
 
 
 ## Get started with Codefresh GitOps Cloud
