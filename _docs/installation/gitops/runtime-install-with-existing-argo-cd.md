@@ -346,7 +346,7 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
 * Complete configuring these ingress controllers:
   * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#create-an-alias-to-load-balancer-in-route53)
   * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
+  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)  
 
 
 ## Install additional GitOps Runtimes in account
@@ -354,10 +354,10 @@ You can install additional GitOps Runtimes on different clusters within the same
 
 The installation process is the same as for the [first Runtime](#install-first-gitops-runtime-in-account), with the following key differences:
 
-#### Shared Configuration Repository
+##### Shared Configuration Repository
 The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again when installing additional Runtimes.
 
-#### Runtime Name
+##### Runtime Name
 Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
 
 The Runtime name must:
