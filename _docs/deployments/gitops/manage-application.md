@@ -7,24 +7,25 @@ toc: true
 ---
 
 ## Managing Argo CD applications
-Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is managing and optimizing deployed applications when needed. 
+Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is tracking, optimizing, and managing applications after deployment. 
 
-There are two aspects to managing and optimizing Argo CD applications in Codefresh:
+There are two aspects to managing Argo CD applications in Codefresh GitOps:
 * Optimizing deployments through environments and products 
 * Managing individual applications 
 
 ### Optimizing application deployments 
 
 * [Environments](#gitops-environments--argo-cd-applications)  
-  The Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
+  Environments provide visibility into Argo CD applications in the context of their software lifecycle helping you track promotions from development to production.
 
 * [Products](#gitops-products--argo-cd-applications)  
-  The Product dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
+  Products group applications into logical units, showing version history, Git metadata, and feature tracking for improved organization and scalability.
+
 
 ### Managing individual applications
 
 >**NOTE**  
-  The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
+  Available actions depend on your assigned [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/). 
 
 
 * [Edit Argo CD applications](#edit-argo-cd-application-definitions)  
@@ -65,13 +66,17 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
 
 
 ## GitOps environments & Argo CD applications
-To track, optimize, and manage deployments at scale, you need a clear view of applications at every stage of their development and deployment lifecycle. Environments in Codefresh GitOps provide this visibility without requiring complex configuration or maintenance.
+Tracking and managing deployments at scale requires clear visibility into applications at every stage. Codefresh GitOps provides this visibility through environments.  
+When you define an environment by specifying one or more cluster-namespace pairs, Codefresh automatically detects and displays the applications deployed to those locations.
 
-On creating an environment by defining one or more cluster-namespace pairs, Codefresh automatically displays the applications deployed to the specified clusters and namespaces.  
-Use the Environments dashboard to track promotions, monitor application versions, and view details on the most recent commits that introduced changes.
+Use environments to:
+* Promote applications
+* Track promotions
+* Monitor application versions
+* View recent commits that introduced changes
 
 
-Here's a visualization of Argo CD applications in the Environments dashboard.
+Here's a visualization of the Environments dashboard with Argo CD applications.
 
 {% include 
 	image.html 
@@ -83,12 +88,12 @@ Here's a visualization of Argo CD applications in the Environments dashboard.
   max-width="70%" 
 %}
 
-For detailed information on how to work with Argo CD applications and environments in Codefresh, see [GitOps environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+For detailed information, see [environments]({{site.baseurl}}/docs/environments/environments-overview/) and [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
 ## Products & Argo CD applications
-The product is another entity in Codefresh GitOps enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+As applications and teams scale, tracking deployments across multiple environments can become challenging. Products in Codefresh GitOps provide a structured way to manage and track related applications across teams and environments.
 
-While environments focus on tracking deployments, products provide a higher-level view across multiple applications.
+Unlike environments, which focus on deployment tracking, products offer a broader view of multiple applications, simplifying organization and management.
 
 Here's a visualization of Argo CD applications grouped by products in the Products dashboard.
 
@@ -102,7 +107,7 @@ Here's a visualization of Argo CD applications grouped by products in the Produc
   max-width="70%" 
 %}
 
-For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
+For detailed information, see [products]({{site.baseurl}}/docs/products/about-products/) [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 
@@ -308,10 +313,12 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 
 
 ## Configure sync timeout for Argo CD applications
-Add an annotation with the timeout threshold for the application to get notified when an ongoing sync exceeds the defined timeout.  
-Codefresh uses Argo CD's default duration of 30 minutes which you can customize as needed.  
-
+Configure a custom sync timeout for Argo CD applications and get notified when an ongoing sync exceeds the defined timeout. 
 Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, get timely warnings from Codefresh.
+
+Add an annotation with the timeout threshold you need for the application. Codefresh uses Argo CD's default duration of 30 minutes which you can customize as needed.  
+
+
 
 * Add the following annotation to the application's YAML with the timeout you need:
   ```yaml
@@ -788,6 +795,7 @@ metadata:
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
+[GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)    
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
