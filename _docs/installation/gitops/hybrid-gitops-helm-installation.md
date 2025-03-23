@@ -62,16 +62,16 @@ Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs
 
 
 
-### Step 1: Select Runtime install option
+## Step 1: Select Runtime install option
 
 1. On the Getting Started page, click **Install Runtime**.
 1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
 
-### Step 2: Set up GitOps Git provider
+## Step 2: Set up GitOps Git provider
 As a one-time action, define the Shared Configuration Repository and associate it with your Git provider.  
 The Git provider you select for the first GitOps Runtime applies to all Runtimes in the same account.
 
-##### Shared Configuration Repository
+### Shared Configuration Repository
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository which stores configuration manifests shared between all the GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 You can specify only the repository URL, or add the path, reference a branch, or both:
@@ -90,7 +90,7 @@ where:
   Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
 {% if page.collection != site.gitops_collection %} 
-##### Git providers
+### Git providers
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
@@ -119,46 +119,30 @@ max-width="40%"
 1. Click **Next**.
 1. Continue with [Step 3: Install GitOps Runtime](#step-3-install-gitops-runtime).  -->
 
-### Step 3: Install GitOps Runtime
+## Step 3: Install GitOps Runtime
 To install the GitOps Runtime, follow the instructions in the installation wizard which provides an Install Runtime command with pre-populated values.
 
-#### Installation Parameters
-
-##### Runtime Name
+### Runtime Name
 By default, the runtime name is `codefresh`.  
 If you define a custom name, it must:
 * Start with a lowercase letter
 * Contain only lowercase letters and numbers
 * Be no longer than 38 characters
 
-##### Namespace
-The namespace where the GitOps Runtime installed, _which must be the same namespace as the Argo CD instance_.
-
-##### Argo CD Admin API token
-The API token used by the GitOps Runtime to authenticate with the Argo CD instance.  
-* The token must be a non-expiring API key.  
-* The Helm chart automatically creates a secret for the token, which the Runtime uses to authenticate API calls to Argo CD.
-* If revoked, GitOps operations stop until the token is updated.    
-
-You can generate the token in the Argo CD UI, or by using the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:target="\_blank"} command.
 
 
-Codefresh supports other authentication mechanisms, including username-password authentication.  
-For alternative mechanisms, configure the credentials directly in the Runtime's `values.yaml` file.  See [Authentication mechanisms for existing Argo CD](#authentication-methods-for-argo-cd-admin-api).
-
-
-##### Codefresh API Key
+### Codefresh API Key
 The API key authenticates the GitOps Runtime with the Codefresh platform, enabling secure registration, configuration retrieval, and communication with Codefresh services.   
 Generate the API key to automatically include it in the Runtime Install command. 
 
 
-#### Access modes
+### Access modes
 The GitOps Runtime supports these access modes: 
 * **Tunnel-based (default)**: The default access mode when other access mode are not specified. Does not require additional configuration. 	
 * **Ingress-based**: Uses an ingress controller. May require pre- and post-installation configuration.	See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 * **Service-mesh-based**: Requires explictly disabling tunnel-based and ingress-based access modes. May require pre- and post-installation configuration. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 
-#### Install Runtime command
+### Install Runtime command
 The Install Runtime Command differs based on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
 
 
@@ -204,7 +188,7 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 
 
-#### Install command parameters
+### Install command parameters
 
 | Parameter | Description |
 |-----------|------------|
