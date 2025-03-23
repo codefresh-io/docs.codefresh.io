@@ -33,19 +33,27 @@ This table lists the prerequisites for installing a GitOps Runtime, depending on
 
 {% if page.collection == site.gitops_collection %}
 ## Remove Argo Project and SealedSecret components 
-For GitOps Runtime installation with an existing Argo CD instance, the _target cluster should not have_:
+For GitOps Runtime installation with _an existing Argo CD instance, the target cluster should not have_:
 * Argo Project components: 
   * Argo Workflows
   * Argo Events
   * Argo Rollouts
 * SealedSecret controller components
-{% endif %}
+
 
 {% if page.collection != site.gitops_collection %}
 ## Remove Argo Project and SealedSecret components 
-For GitOps Runtime installation with a new Argo CD instance, the _target cluster should not have_:
-* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows
+For GitOps Runtime installation, the _target cluster should not have_:
 * SealedSecret controller components
+* For an _existing Argo CD instance_:
+  * Argo Workflows
+  * Argo Events
+  * Argo Rollouts
+* For a _new Argo CD instance_:
+  * Argo Rollouts
+  * Argo CD
+  * Argo Events
+  * Argo Workflows
 
 ## Switch ownership of Argo Project CRDs
 If you have Argo Project CRDs on your cluster, you must decide how to manage them when installing the GitOps Runtime.  
@@ -54,10 +62,9 @@ The table below lists the options available depending on your installation mode.
 {: .table .table-bordered .table-hover}
 | **Option** | **Description** | **Applicable Installation Modes** |
 |------------|---------------|---------------------------------|
-| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/} |
-| **Adopt all Argo Project CRD except Argo CD CRDs** | Transfers ownership of Workflows, Rollouts, and Events CRDs to the GitOps Runtime but leaves Argo CD CRDs managed by an existing Argo CD installation. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li></ul>{:/} |
-| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/} |
-| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/}|
+| **Adopt all Argo Project CRDs** | Transfers ownership of all CRDs to the GitOps Runtime, ensuring they are automatically upgraded with the Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Adopt only Argo Rollout CRDs** | Transfers ownership of only Rollout CRDs to the GitOps Runtime. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li><li>Runtime alongside Community Argo CD</li></ul>{:/} |
+| **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. | {::nomarkdown}<ul><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li></ul>{:/}|
 
 
 ### Option: Adopt all Argo Project CRDs
@@ -124,8 +131,8 @@ Assign the correct labels to the Argo CD services for the GitOps Runtime to auto
 * `argocd-repo-server`: `app.kubernetes.io/component=repo-server,app.kubernetes.io/part-of=argocd`
 * `argocd-redis`: `app.kubernetes.io/component=redis,app.kubernetes.io/part-of=argocd`
 
-Run this script to verify if the labels are correctly assigned:
-<!--- add the script -->
+
+<!--- Run this script to verify if the labels are correctly assigned: add the script -->
 
 ### Manually configure service names and ports in values.yaml
 If auto-detection is not feasible, configure the names and ports for each of the Argo CD services in the Runtime's `values.yaml` file located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}. 
