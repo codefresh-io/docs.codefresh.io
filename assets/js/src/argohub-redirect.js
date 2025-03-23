@@ -1,4 +1,4 @@
-const enterpriseDocumentationCookie = `cfdoctype=enterprise`
+const enterpriseDocumentationCookie = 'cfdoctype=enterprise'
 const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
 
 
