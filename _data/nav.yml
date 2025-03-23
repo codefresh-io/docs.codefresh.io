@@ -615,6 +615,8 @@
           url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
+        - title: Runtime values file validation
+          url: "/gitops-values-yaml-validation"  
         - title: Configure GitOps Runtime 
           url: "/runtime-configuration" 
         - title: Migrating GitOps Runtimes from CLI to Helm

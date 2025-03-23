@@ -75,6 +75,8 @@
       url: "/hybrid-gitops-helm-installation"    
     - title: Configure GitOps Runtime 
       url: "/runtime-configuration" 
+    - title: Runtime values file validation
+      url: "/gitops-values-yaml-validation"       
     - title: Shared Configuration Repository
       url: "/shared-configuration"
     - title: Configuration Runtimes
