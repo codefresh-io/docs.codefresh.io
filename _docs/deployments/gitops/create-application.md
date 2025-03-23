@@ -5,9 +5,8 @@ group: deployments
 toc: true
 ---
 
-## GitOps & Argo CD applications 
-Create Argo CD applications that are fully GitOps-compliant from the GitOps Apps dashboard. 
-When you commit the changes, the application manifest is generated and stored in Git, ensuring a declarative and auditable deployment process.
+## Codefresh GitOps & Argo CD applications 
+Create fully GitOps-compliant Argo CD applications directly from the GitOps Apps dashboard. When you commit the changes, Codefresh generates the application manifest and stores it in Git, ensuring a declarative, versioned, and auditable deployment process.
 
 For example Argo CD applications, see this [repo](https://github.com/oleksandr-codefresh/argocd-example-apps){:target="_blank"}.  
 
@@ -134,8 +133,8 @@ spec:
 ## Related articles
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
-[Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
-[Product dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
+[Environments]({{site.baseurl}}/docs/environments/environments-overview/)      
+[Products]({{site.baseurl}}/docs/products/about-products/)  
 [Trigger promotions for applications]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  

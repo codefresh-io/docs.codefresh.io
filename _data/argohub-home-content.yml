@@ -102,6 +102,8 @@
       localurl: /argohub/dashboards/gitops-environments/   
     - title: Products
       localurl: /argohub/dashboards/gitops-products/   
+    - title: GitOps Apps
+      localurl: /argohub/dashboards/gitops-apps-dashboard/      
     - title: Images
       localurl: /argohub/dashboards/images/
 
