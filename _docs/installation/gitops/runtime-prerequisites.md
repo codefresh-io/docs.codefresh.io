@@ -100,7 +100,9 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
   where:<br>
   `<argo-project>` is the Argo Project component: `argo-cd`, `argo-workflows`, `argo-rollouts` and `argo-events`.
 
+
 See [Argo's readme on Helm charts](https://github.com/argoproj/argo-helm/blob/main/README.md){:target="\_blank"}.  
+{% endif %}
 
 ## Configure connectivity with Argo CD services (Existing Argo only)
 
@@ -113,7 +115,7 @@ The following Argo CD services must be accessible from the GitOps Runtime:
 There are two options to configure service discovery:
 * Auto-detection via labels
 * Configuring service names and ports in the Runtime's `values.yaml` file.
-{% endif %}
+
 
 ### Configure auto-detect for Argo CD services
 Assign the correct labels to the Argo CD services for the GitOps Runtime to auto-detect them. 
