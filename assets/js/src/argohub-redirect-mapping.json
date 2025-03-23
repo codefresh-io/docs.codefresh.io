@@ -92,7 +92,7 @@
   "/docs/deployments/gitops/about-apps/": "/argohub/applications/about-apps/",
   "/docs/deployments/gitops/create-application/": "/argohub/applications/create-application/",
   "/docs/deployments/gitops/gitops-app-groups/": "/argohub/applications/gitops-app-groups/",
-  "/docs/deployments/gitops/gitops-apps-dashboard/": "/argohub/applications/gitops-apps-dashboard/",
+  "/docs/deployments/gitops/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/",
   "/docs/deployments/gitops/install-argo-rollouts/": "/argohub/applications/install-argo-rollouts/",
   "/docs/deployments/gitops/manage-application/": "/argohub/applications/manage-application/",
   "/docs/deployments/gitops/monitor-applications/": "/argohub/applications/monitor-applications/",
@@ -112,5 +112,6 @@
   "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/",
   "/docs/environments/create-manage-environments/": "/argohub/environments/create-manage-environments/",
   "/docs/environments/environments-overview/": "/argohub/environments/environments-overview/",
-  "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/"
+  "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/",
+  "/docs/dashboards/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/"
 }

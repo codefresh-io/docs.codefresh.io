@@ -69,7 +69,7 @@ From global analytics on applications and deployments (), to failure rate and le
 See:  
 [Home]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)  
-[GitOps Apps]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/)  
+[GitOps Apps]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)  
 
 ## Codefresh & Argo Project  
 

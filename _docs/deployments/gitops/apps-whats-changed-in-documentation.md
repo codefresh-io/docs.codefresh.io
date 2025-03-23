@@ -16,7 +16,7 @@ The table below outlines the updates to Applications documentation, including ar
 | **Location**         |  **Affected Articles**   | **Description of changes**    |
 |--------------------------|-----                 |----------------------------------------------------|
 | Deployments > GitOps   |[About applications in GitOps]({{site.baseurl}}/docs/deployments/gitops/about-apps/)  | New overview topic summarizing capabilities for Argo CD applications in Codefresh GitOps. |
-|                         |[GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/)     | Split from **Monitoring applications** article to standalone article entitled **GitOps Apps dashboard** for visibility. |
+|                         |[GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)     | Split from **Monitoring applications** article to standalone article entitled **GitOps Apps dashboard**. <br>Moved to **Dasboards & insights**. |
 |                         |[Create Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)     | Focuses on how-to instructions on creating applications. |
 |                         |[Application configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/)     | Split from **Creating applications** article to a standalone reference article describing the settings you can configure for applications. |
 |                         |[Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)     | Focuses on options to monitor individual applications. |

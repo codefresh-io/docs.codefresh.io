@@ -1,6 +1,6 @@
 ---
 title: "Application configuration settings"
-description: "Review descriptions of configuration settings for Argo CD applications in GitOps"
+description: "Review configuration settings for Argo CD applications in Codefresh GitOps"
 toc: true
 ---
 

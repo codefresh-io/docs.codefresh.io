@@ -74,6 +74,8 @@
       localurl: /docs/dashboards/gitops-environments/   
     - title: GitOps Products
       localurl: /docs/dashboards/gitops-products/   
+    - title: GitOps Apps
+      localurl: /docs/dashboards/gitops-apps-dashboard/
     - title: DORA metrics
       localurl: /docs/dashboards/dora-metrics/
     - title: Images

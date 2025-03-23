@@ -148,7 +148,7 @@ See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 The GitOps Apps dashboard displays a unified view of applications across runtimes and clusters. No matter what the volume and frequency of your deployments, the GitOps dashboard makes it easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application.
 
 Drill down into an application to view resources, timelines, services and more.
-See [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/).
+See [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/).
 
 
 ### Where to go from here

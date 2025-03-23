@@ -44,6 +44,8 @@
       url: "/gitops-environments"
     - title: Products
       url: "/gitops-products"
+    - title: GitOps Apps
+      url: "/gitops-apps-dashboard"
     - title: Images
       url: "/images"
 
@@ -218,8 +220,6 @@
   pages:
     - title: About Argo CD applications
       url: "/about-apps"
-    - title: GitOps Apps dashboard
-      url: "/gitops-apps-dashboard"
     - title: Application Groups for Argo CD applications
       url: "/gitops-app-groups"      
     - title: Creating Argo CD applications
