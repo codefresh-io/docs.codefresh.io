@@ -19,26 +19,6 @@ Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs
 To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 
-
-<!--- ##### Runtimes in account 
-The installation process varies depending on whether you are installing your first Runtime or installing additional Runtimes in your account.
-
-* **First Runtime**: Requires a one-time setup before running the installation command. See [Install first GitOps Runtime in account](#install-first-gitops-runtime-in-account).
-* **Additional Runtimes**: Install additional Runtimes by running the Install Runtime command. See [Install additional GitOps Runtimes in account](#install-additional-gitops-runtimes-in-account). You can also use [Terraform](/install-gitops-runtime-via-terraform). 
-
-For both first-time and additional GitOps Runtime installations:
-* Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) to ensure your environment meets the necessary conditions
-* Complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequsites/)
-* Review the Runtime's `values.yaml` for accuracy and how Codefresh [validates these settings](#valuesyaml-validation)
-
-##### Runtime configuration
-After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the installation wizard.  
-Alternatively, you can complete the configuration later through the Codefresh UI. 
-
-Configuration includes setting up Git credentials, configuring the Runtime as an Argo CD Application, and adding a Git Source to the Runtime.
-See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).  -->
-
-
 ## Argo CD admin token
 The GitOps Runtime needs an Argo CD Admin API token to communicate with your Argo CD instance. You need to provide this token during Runtime installation.
 If you don't have an Argo CD Admin API token, you can generate one from the Argo CD UI or the Argo CD CLI, following the steps below.
@@ -62,6 +42,8 @@ The admin account or the account you use for token generation must have these pr
   caption="Argo CD account privileges for Argo CD Admin API token generation"
   max-width="60%"
 %}
+
+{:start="4"}
 1. If needed, [Enable `apikey` privilege for Argo CD account](#enable-apikey-privilege-for-argo-cd-account).
 
 ### Enable `apikey` privilege for Argo CD account
