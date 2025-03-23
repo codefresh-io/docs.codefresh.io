@@ -1,11 +1,9 @@
-const ARGOHUB_DOC_COOKIE_NAME = "argohubdoc";
+const enterpriseDocumentationCookie = `cfdoctype=enterprise`
 const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
 
-function getCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(";").shift();
-  return null;
+
+function checkIfEnterpriseDocumentationCookieSet() {
+  return document.cookie.includes(enterpriseDocumentationCookie)
 }
 
 async function getArgoHubRedirectURL(currentPath) {
@@ -29,8 +27,8 @@ async function handleRedirect() {
 
   if (currentPath.includes(ARGOHUB_MAIN_PATH)) return;
 
-  const redirectCookie = getCookie(ARGOHUB_DOC_COOKIE_NAME);
-  if (!redirectCookie) return;
+  const isEnterpriseDocumentationCookieSet = checkIfEnterpriseDocumentationCookieSet()
+  if (isEnterpriseDocumentationCookieSet) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(currentPath);
   if (!argoHubRedirectURL) return;
