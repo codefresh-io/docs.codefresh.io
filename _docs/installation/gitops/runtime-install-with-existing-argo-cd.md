@@ -18,7 +18,6 @@ Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs
 
 To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-
 ## Argo CD admin token
 The GitOps Runtime needs an Argo CD Admin API token to communicate with your Argo CD instance. You need to provide this token during Runtime installation.
 If you don't have an Argo CD Admin API token, you can generate one from the Argo CD UI or the Argo CD CLI, following the steps below.
