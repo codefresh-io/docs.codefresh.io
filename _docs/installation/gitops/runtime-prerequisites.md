@@ -14,8 +14,8 @@ This table lists the prerequisites for installing a GitOps Runtime, depending on
 {: .table .table-bordered .table-hover}
 | **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |**Runtime with Community Argo CD** |
 |--------------------|---------------------------|----------------------------| ----------------------------|
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -  | ✅  | -|
-| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | ✅   | ✅  | -|
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | -    | ✅     |✅     |
 | [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only) | ✅ | - | -|
 | [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | -|
 | [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions-community-argo-only)  | -   | -   | ✅ |
