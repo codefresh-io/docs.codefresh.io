@@ -39,7 +39,7 @@ For GitOps Runtime installation with _an existing Argo CD instance, the target c
   * Argo Events
   * Argo Rollouts
 * SealedSecret controller components
-
+{% endif page %}
 
 {% if page.collection != site.gitops_collection %}
 ## Remove Argo Project and SealedSecret components 
