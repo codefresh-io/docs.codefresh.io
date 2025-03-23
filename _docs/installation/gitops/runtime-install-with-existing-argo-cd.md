@@ -33,10 +33,89 @@ Alternatively, you can complete the configuration later through the Codefresh UI
 Configuration includes setting up Git credentials, configuring the Runtime as an Argo CD Application, and adding a Git Source to the Runtime.
 See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
 
-{{site.data.callout.callout_warning}}
-**ArgoCD password WARNING**  
-  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
-{{site.data.callout.end}}
+
+## Argo CD admin token
+The GitOps Runtime needs an Argo CD Admin API token to communicate with your Argo CD instance. You need to provide this token during Runtime installation.
+If you don't have an Argo CD Admin API token, you can generate one from the Argo CD UI or the Argo CD CLI, following the steps below.
+
+### VerifyArgo CD account privileges
+The admin account or the account you use for token generation must have these privileges:
+* `apiKey` to enable API token generation
+* `login` to enable login from the UI
+
+##### How to
+1. From the Argo CD Dashboard, go to **Settings > Accounts**.
+1. Select the admin account or another account to use. 
+1. Confirm that the account includes these privileges: `apiKey` and `login`.
+
+{% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/argocd-api-key/argocd-account-privileges.png"
+  url="/images/runtime/argocd-api-key/argocd-account-privileges.png"
+  alt="Argo CD account privileges for Argo CD Admin API token generation"
+  caption="Argo CD account privileges for Argo CD Admin API token generation"
+  max-width="60%"
+%}
+1. If needed, [Enable `apikey` privilege for Argo CD account](#enable-apikey-privilege-for-argo-cd-account).
+
+### Enable `apikey` privilege for Argo CD account
+If the account does not include the `apikey` privilege, enable it using either the ConfigMap or the Helm values file, depending on how you installed Argo CD.
+
+##### Update argocd-cm ConfigMap
+Edit the `argocd-cm` ConfigMap. 
+Make sure `data.accounts.admin` includes `apiKey` and `login`, and  `data.accounts.admin.enabled` is set to `true`.
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  accounts.admin: apiKey, login
+  accounts.admin.enabled: "true"
+```
+
+##### Update Helm values.yaml
+If you installed Argo CD using Helm, update your `values.yaml`:
+
+```yaml
+configs:
+  cm:
+    accounts.admin: apiKey,login
+```
+
+Refresh the Dashboard and verify the account has been updated with the new privileges.  
+If needed, [generate the Argo CD Admin API token](#generate-argo-cd-admin-api-token).
+
+### Generate Argo CD Admin API token
+Generate the Argo CD Admin API token via the Argo CD Dashboard or via the Argo CD CLI.
+
+##### Generate via Dashboard
+1. Go to **Settings > Accounts**.
+1. Click the account enabled with `apiKey` privilege.
+1. In **Tokens** section, click **Generate New**.
+
+{% include
+   image.html
+   lightbox="true"
+   file="/images/runtime/argocd-api-key/argocd-generate-api-token.png"
+  url="/images/runtime/argocd-api-key/argocd-generate-api-token.png"
+  alt="Argo CD dashboard: Generate new Argo CD Admin API token"
+  caption="Argo CD dashboard: Generate new Argo CD Admin API token"
+  max-width="60%"
+%}
+
+
+{:start="4"}
+1. Copy the generated token and store it securely. 
+  You will need to paste it into the Argo CD Admin API token field during installation. 
+
+##### Generate via CLI
+`argocd account generate-token --account admin`
+
+For the complete CLI reference, see the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:"\_blank"} command.
 
 
 
@@ -139,6 +218,7 @@ where:
 * `<namespace>` is the namespace in which to install the Hybrid GitOps runtime, either the default `codefresh`, or the custom name you intend to use for the installation. The Namespace must conform to the naming conventions for Kubernetes objects.
 * `<version>` is the version of the runtime to install.
 
+
 ## Install first GitOps Runtime in account
 If you are installing the first GitOps Runtime in your Codefresh account, follow the installation wizard for guided instructions.
 
@@ -152,7 +232,7 @@ The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/git
     * [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components)
     * [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only) 
     * [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only)
-
+* Verify you have a [valid Argo CD Admin API token](#argo-cd-admin-api-token)
 * Git provider requirements:
     * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
     * [Git user token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) to authorize Git-based actions per user
@@ -224,13 +304,10 @@ If you define a custom name, it must:
 The namespace where the GitOps Runtime installed, _which must be the same namespace as the Argo CD instance_.
 
 ##### Argo CD Admin API token
-The API token used by the GitOps Runtime to authenticate with the Argo CD instance.  
+The API token used by the GitOps Runtime to authenticate with the Argo CD instance. If you don't have an Argo CD Admin API token, you can generate it in the Argo CD UI or through the CLI. See [Argo CD Admin API token](#argo-cd-admin-api-token).
 * The token must be a non-expiring API key.  
 * The Helm chart automatically creates a secret for the token, which the Runtime uses to authenticate API calls to Argo CD.
 * If revoked, GitOps operations stop until the token is updated.    
-
-You can generate the token in the Argo CD UI, or by using the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:target="\_blank"} command.
-
 
 Codefresh supports other authentication mechanisms, including username-password authentication.  
 For alternative mechanisms, configure the credentials directly in the Runtime's `values.yaml` file.  See [Authentication methods for existing Argo CD](#authentication-methods-for-existing-argo-cd).

@@ -35,10 +35,6 @@ Configuration includes setting up Git credentials, configuring the Runtime as an
 See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
 
 
-{{site.data.callout.callout_warning}}
-**ArgoCD password WARNING**  
-  Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
-{{site.data.callout.end}}
 
 
 ## `values.yaml` file validation
