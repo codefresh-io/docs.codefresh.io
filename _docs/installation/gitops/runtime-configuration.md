@@ -69,7 +69,7 @@ A **Git Source** is a critical component in GitOps Runtimes, connecting a Git re
 
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
-#### Git Source settings  
+### Git Source settings  
 
 | Setting                  | Description |
 |--------------------------|-------------|

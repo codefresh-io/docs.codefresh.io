@@ -18,8 +18,8 @@ To install the GitOps Runtime:
 The installation process varies depending on whether you are installing your first Runtime or installing additional Runtimes in your account.
 
 * **First Runtime**: Requires a one-time setup before running the installation command. See [Install first GitOps Runtime in account](#install-first-gitops-runtime-in-account).
-* **Additional Runtimes**: Install additional Runtimes by running the Install Runtime command. See [Install additional GitOps Runtimes in account](#install-additional-gitops-runtimes-in-account). You can also use [Terraform](/install-gitops-runtime-via-terraform). 
-=======
+* **Additional Runtimes**: Install additional Runtimes by running the Install Runtime command. See [Install additional GitOps Runtimes in account](#install-additional-gitops-runtimes-in-account). You can also use [Terraform](#install-gitops-runtime-via-terraform). 
+
 You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each Runtime must be on a different cluster. Every Runtime within the same account must have a unique name.
 
 For both first-time and additional GitOps Runtime installations:
@@ -39,7 +39,6 @@ See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/r
 **ArgoCD password WARNING**  
   Avoid changing the Argo CD password using the `argocd-initial-admin-secret` via the Argo CD UI. Doing so can cause system instability and disrupt the Codefresh platform.  
 {{site.data.callout.end}}
-
 
 
 ## `values.yaml` file validation
@@ -175,7 +174,7 @@ The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitop
 As a one-time action, define the Shared Configuration Repository and associate it with your Git provider.  
 The Git provider you select for the first GitOps Runtime applies to all Runtimes in the same account.
 
-#### Shared Configuration Repository
+##### Shared Configuration Repository
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository which stores configuration manifests shared between all the GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
 You can specify only the repository URL, or add the path, reference a branch, or both:
@@ -194,7 +193,7 @@ where:
   Example: `https://github.com/codefresh-io/our-isc.git?ref=isc-branch`
 
 {% if page.collection != site.gitops_collection %} 
-#### Git providers
+##### Git providers
 On-premises Git providers require you to define the API URL:
 * GitHub Enterprise: `https://<server-url>/api/v3`
 * GitLab Server: `<server-url>/api/v4`
@@ -224,7 +223,6 @@ max-width="40%"
 1. Continue with [Step 3: Install GitOps Runtime](#step-3-install-gitops-runtime).  -->
 
 ### Step 3: Install GitOps Runtime
-
 To install the GitOps Runtime, follow the instructions in the installation wizard which provides an Install Runtime command with pre-populated values.
 
 #### Installation Parameters
