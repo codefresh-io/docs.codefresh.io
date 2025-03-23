@@ -23,7 +23,7 @@ To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps R
 The GitOps Runtime needs an Argo CD Admin API token to communicate with your Argo CD instance. You need to provide this token during Runtime installation.
 If you don't have an Argo CD Admin API token, you can generate one from the Argo CD UI or the Argo CD CLI, following the steps below.
 
-### VerifyArgo CD account privileges
+### Verify Argo CD account privileges
 The admin account or the account you use for token generation must have these privileges:
 * `apiKey` to enable API token generation
 * `login` to enable login from the UI
