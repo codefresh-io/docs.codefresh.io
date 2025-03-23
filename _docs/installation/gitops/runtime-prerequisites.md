@@ -79,16 +79,6 @@ The GitOps Runtime manages them as part of the GitOps Runtime Helm chart:
 curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scripts/adopt-crds.sh | bash -s <runtime-helm-release name> <runtime-namespace>
 ```
 
-
-<!--- ### Option: Adopt All CRDs except Argo CD CRDs (Existing Argo CD only)
-If you are installing the GitOps Runtime with an existing Argo CD instance, you can adopt all Argo Project CRDs, excluding Argo CD CRDs.  
-This ensures that:
-* Workflows, Rollouts, and Events CRDs are managed by the GitOps Runtime.
-* Argo CD CRDs remain under the control of your existing Argo CD installation, avoiding conflicts.
-
-##### Script to exclude Argo CD CRDs
-Run this script before installation:
---->
 ### Option: Adopt only Argo Rollout CRDs
 Adopting only Argo Rollouts CRDs ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
 
