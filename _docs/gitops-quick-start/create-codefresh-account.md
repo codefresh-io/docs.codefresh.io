@@ -101,7 +101,7 @@ Congratulations! Your new Codefresh account is now ready and you are directed to
 ## What's next
 You are now ready to install the GitOps Runtime, the foundation for GitOps operations. 
 
-[Quick start: Install the GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
+[Quick start: Installing the GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 
 
 
