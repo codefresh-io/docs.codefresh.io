@@ -10,17 +10,42 @@ Before installing GitOps Runtimes, ensure you meet the [system requirements]({{s
 ## Prerequisites summary
 This table lists the prerequisites for installing a GitOps Runtime, depending on the installation mode.
 
+{% if page.collection != site.gitops_collection %}
 {: .table .table-bordered .table-hover}
-| **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |{% if page.collection != site.gitops_collection %} **Runtime with Community Argo CD** |{% endif %}
-|--------------------|---------------------------|----------------------------|{% if page.collection != site.gitops_collection %} ----------------------------|{% endif %}
-| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |{% if page.collection != site.gitops_collection %}✅     |{% endif %}
-| [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - | {% if page.collection != site.gitops_collection %}-|{% endif %}
-| [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | {% if page.collection != site.gitops_collection %}-|{% endif %}
-| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -    | ✅     | {% if page.collection != site.gitops_collection %}-|{% endif %}
-{% if page.collection != site.gitops_collection %}| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions-community-argo-only)  | -   | -   | ✅ |
-| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance-community-argo-only) | - | - | ✅ |{% endif %}
+| **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |**Runtime with Community Argo CD** |
+|--------------------|---------------------------|----------------------------| ----------------------------|
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | -  | ✅  | -|
+| [Switch ownership of Argo Project CRDs](#switch-ownership-of-argo-project-crds)  | ✅     | ✅     |✅     |
+| [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only) | ✅ | - | -|
+| [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | -|
+| [Align Argo CD chart’s minor versions](#align-argo-cd-charts-minor-versions-community-argo-only)  | -   | -   | ✅ |
+| [Set Community Argo CD resource tracking to label](#set-resource-tracking-to-label-for-existing-argo-cd-instance-community-argo-only) | - | - | ✅ |
+{% endif %}
+
+{% if page.collection == site.gitops_collection %}
+{: .table .table-bordered .table-hover}
+| **Prerequisite**   | **Runtime with existing Argo CD** | **Runtime with new Argo CD**  |
+|--------------------|---------------------------|----------------------------|
+| [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | ✅   | ✅     | 
+| [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - |
+| [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | 
 
 
+{% if page.collection == site.gitops_collection %}
+## Remove Argo Project and SealedSecret components 
+For GitOps Runtime installation with an existing Argo CD instance, the _target cluster should not have_:
+* Argo Project components: 
+  * Argo Workflows
+  * Argo Events
+  * Argo Rollouts
+* SealedSecret controller components
+{% endif %}
+
+{% if page.collection != site.gitops_collection %}
+## Remove Argo Project and SealedSecret components 
+For GitOps Runtime installation with a new Argo CD instance, the _target cluster should not have_:
+* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows
+* SealedSecret controller components
 
 ## Switch ownership of Argo Project CRDs
 If you have Argo Project CRDs on your cluster, you must decide how to manage them when installing the GitOps Runtime.  
@@ -35,13 +60,11 @@ The table below lists the options available depending on your installation mode.
 | **Handle CRDs outside the GitOps Runtime** | Manage CRDs externally, by disabling installation for each type of CRD in the Helm chart. This options requires to manually upgrade and maintain the CRDs. | {::nomarkdown}<ul><li>Runtime with existing Argo CD</li><li>Runtime with new Argo CD</li>{% if page.collection != site.gitops_collection %}<li>Runtime alongside Community Argo CD</li>{% endif %}</ul>{:/}|
 
 
-
-### Option 1: Adopt all Argo Project CRDs
+### Option: Adopt all Argo Project CRDs
 Adopt all Argo Project CRDs to transfer their ownership to the GitOps Runtime.  
 The GitOps Runtime manages them as part of the GitOps Runtime Helm chart: 
 * The CRDs are automatically upgraded whenever the Runtime is upgraded.
 * They remain compatible with the GitOps environment.
-
 
 ##### Script to adopt all Argo Project CRDs
 * Run this script _before_ installation:
@@ -50,7 +73,7 @@ curl https://raw.githubusercontent.com/codefresh-io/gitops-runtime-helm/main/scr
 ```
 
 
-### Option 2: Adopt All CRDs except Argo CD CRDs (Existing Argo CD only)
+<!--- ### Option: Adopt All CRDs except Argo CD CRDs (Existing Argo CD only)
 If you are installing the GitOps Runtime with an existing Argo CD instance, you can adopt all Argo Project CRDs, excluding Argo CD CRDs.  
 This ensures that:
 * Workflows, Rollouts, and Events CRDs are managed by the GitOps Runtime.
@@ -58,9 +81,8 @@ This ensures that:
 
 ##### Script to exclude Argo CD CRDs
 Run this script before installation:
-
-
-### Option 3: Adopt only Argo Rollout CRDs
+--->
+### Option: Adopt only Argo Rollout CRDs
 Adopting only Argo Rollouts CRDs ensures that there is only one active Argo Rollouts controller active on the cluster with the GitOps Runtime.
 
 
@@ -74,7 +96,7 @@ kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{p
 kubectl annotate --overwrite crds $(kubectl get crd | grep argoproj.io | awk '{print $1}' | xargs) meta.helm.sh/release-namespace=$NAMESPACE
 ```
 
-### Option 4: Handle Argo Project CRDs outside of the Runtime chart
+### Option: Handle Argo Project CRDs outside of the Runtime chart
 
 * Disable CRD installation under the relevant section for each of the Argo Projects in the Helm chart:<br>
   `--set <argo-project>.crds.install=false`<br>
@@ -94,6 +116,7 @@ The following Argo CD services must be accessible from the GitOps Runtime:
 There are two options to configure service discovery:
 * Auto-detection via labels
 * Configuring service names and ports in the Runtime's `values.yaml` file.
+{% endif %}
 
 ### Configure auto-detect for Argo CD services
 Assign the correct labels to the Argo CD services for the GitOps Runtime to auto-detect them. 
@@ -137,13 +160,6 @@ global:
       rootpath: '/argocd' # example value if ArgoCD is behind a reverse proxy such as https://example.com/argocd/
 ...
 ```
-
-## Remove Argo Project and SealedSecret components (New Argo only)
-For GitOps Runtime installation with a new Argo CD instance, the _target cluster should not have_:
-* Argo Project components: Argo Rollouts, Argo CD, Argo Events, and Argo Workflows.
-* SealedSecret controller components.
-
-
 
 {% if page.collection != site.gitops_collection %}
 ## Align Argo CD chart's minor versions (Community Argo only)
