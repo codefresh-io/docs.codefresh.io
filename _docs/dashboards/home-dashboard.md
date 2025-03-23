@@ -137,7 +137,7 @@ Displays up to five of the most active applications and their current deployment
 | Item                    | Description   |
 | ------------------------| ---------------- |
 |**Filter**                | Filter applications by the clusters on which they are deployed, either by Cluster Name or by Cluster.    |
-|**View**                  | Click to go to the GitOps Apps dashboard. See [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/) and [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications).  |
+|**View**                  | Click to go to the GitOps Apps dashboard. See [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/) and [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications).  |
 |**Application Name**     | The name of the application, and the names of the GitOps Runtime and the cluster on which it is deployed. Click the name to drill down into the application in the GitOps Apps dashboard. |
 |**Health status**         | The health status of the application, and can be either:{::nomarkdown}<ul><li>Healthy (green): The application is running on the cluster.</li><li>Degraded (red): The application failed to run.</li> <li>Rollback (yellow): There was a rollback to the previously deployed version.</li></ul> To see the breakdown by health status, mouse over the chart. <br> The number at the end of the bar is the total number of deployments for the application, and the percentage indicates the overall decrease or increase compared to the reference period. {:/}  |
 
@@ -374,7 +374,7 @@ You can then filter by the specific pipeline or pipelines and analyze success ra
 {% endif %}
 
 ## Related articles
-[GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
+[Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 [Monitoring applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/)  
 {% if page.collection != site.gitops_collection %}

@@ -10,7 +10,7 @@ toc: true
 
 
 ## Monitor individual applications
-The GitOps Apps dashboard, a centralized hub for creating Argo CD applications in your enterprise, is also the dashboard for detailed insights into individual Argo CD applications, enabling you to monitor their deployments, resources, and services across all clusters in your enterprise.
+The GitOps Apps dashboard provides a centralized view of all Argo CD applications in your enterprise, offering detailed insights into deployments, resources, and services across all clusters.
 
 
 {% include
@@ -25,19 +25,19 @@ max-width="70%"
 
 
 ##### Viewing and filtering applications
-By default, the GitOps Apps dashboard displays all applications deployed within the last 30 days. You can customize this view using filters to refine the displayed information based on deployment history, health status, cluster, namespace, or other attributes.
+By default, the GitOps Apps dashboard displays all applications deployed within the last 30 days. Use filters to refine the view based on deployment history, health status, cluster, namespace, or other attributes.
 
 Applications with [warnings and errors](#identify-argo-cd-applications-with-warningserrors) are flagged, allowing you to quickly identify issues that may require attention.. 
 
 ##### Drill down into individual applications
-From the dashboard, select any application to explore its details in depth. This provides a structured view of key aspects of the application, including deployment history, resource utilization, and service health.
+Select any application from the dashboard for a detailed view of its key aspects, including deployment history, resource utilization, and service health.
 
 * **Application Header**  
   Gain quick insights into the application's health, sync status, and available actions for further analysis.  
   See [Application Header](#application-header).
 
 * **Deployment history**  
-  Review past deployments, track associated changes, and analyze deployment trends over time.  
+  Track past deployments, review changes, and analyze deployment trends over time.  
   See [Monitor deployments for selected Argo CD application](#monitoring-application-deployments).
 * **Resource states**  
   Explore the application's resources, including associated services and components.  
@@ -53,25 +53,7 @@ From the dashboard, select any application to explore its details in depth. This
 
 
 ## Identify Argo CD applications with warnings/errors 
-Errors are flagged in the **Warnings/Errors** button, displayed at the top right of the Applications tab in the GitOps Apps dashboard. Clicking the button shows the list of applications with the warnings/errors and the possible reasons for these.
-
-{% include
-image.html
-lightbox="true"
-file="/images/applications/app-dashboard-warnings-errors.png"
-url="/images/applications/app-dashboard-warnings-errors.png"
-alt="Example of warning and error notifications for applications"
-caption="Example of warning and error notifications for applications"
-max-width="60%"
-%}
-
-Every notification identifies:  
-* The type of resource with the problem (`Application`, `Deployment`, `Pod`)
-* If it is health or sync related 
-* If it is a warning or error.
-
-All errors are Argo CD-generated errors. Codefresh generates custom warnings for missing Rollouts reporter and longer than expected sync operations.
-
+Select any application from the dashboard for a detailed view of its key aspects, including deployment history, resource utilization, and service health.
 
 ### Warning: Missing Rollouts reporter in cluster
 
@@ -713,7 +695,7 @@ max-width="50%"
 [Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 

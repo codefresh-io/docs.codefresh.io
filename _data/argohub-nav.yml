@@ -1,14 +1,11 @@
 - title: Introduction
   url: "/introduction"
   pages:
-    - title: What is Codefresh GitOps?
-      url: "/intro-to-codefresh"
-    - title: Codefresh for GitOps
-      url: "/gitops-codefresh"
-    - title: Concepts in Codefresh
-      url: "/concepts"
-    - title: Global Search & Navigation
-      url: "/command-bar"
+    - title: What is Codefresh GitOps Cloud?
+      url: "/what-is-gitops-cloud"
+    - title: Explore Codefresh GitOps Cloud
+      url: "/explore-gitops-cloud-features"
+
 
 - title: GitOps quick starts
   url: "/gitops-quick-start"
@@ -45,6 +42,8 @@
       url: "/gitops-environments"
     - title: Products
       url: "/gitops-products"
+    - title: GitOps Apps
+      url: "/gitops-apps-dashboard"
     - title: Images
       url: "/images"
 
@@ -223,8 +222,6 @@
   pages:
     - title: About Argo CD applications
       url: "/about-apps"
-    - title: GitOps Apps dashboard
-      url: "/gitops-apps-dashboard"
     - title: Application Groups for Argo CD applications
       url: "/gitops-app-groups"      
     - title: Creating Argo CD applications
@@ -303,7 +300,5 @@
       url: "/sla"
     - title: Cloud Credits
       url: "/cloud-credits"
-    - title: Support Triage Definitions
-      url: "/support-triage-definitions"
     - title: Legacy Codefresh Terms of Service
       url: "/legacy-cf-terms-of-service"

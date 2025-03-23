@@ -27,7 +27,7 @@
       url: "/quick-start-configure-runtime"
     - title: Creating Products and applications
       url: "/create-app-ui"
-    - title: Creating Environments
+    - title: Creating environments
       url: "/quick-start-gitops-environments"
     - title: Creating Promotion Workflows
       url: "/quick-start-promotion-workflow"  
@@ -63,6 +63,8 @@
       url: "/gitops-environments"
     - title: GitOps Products
       url: "/gitops-products"
+    - title: GitOps Apps
+      url: "/gitops-apps-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images
@@ -391,19 +393,19 @@
 - title: Environments
   url: "/environments"
   pages:
-    - title: About Environments
+    - title: About environments
       url: "/environments-overview"
-    - title: Create and manage Environments
+    - title: Create and manage environments
       url: "/create-manage-environments"     
-    - title: Manage Products and applications in Environments
+    - title: Manage Products and applications in environments
       url: "/manage-apps-in-environments"  
       
 - title: Products
   url: "/products"
   pages:
-    - title: About Products
+    - title: About products
       url: "/about-products"
-    - title: Create Products
+    - title: Create products
       url: "/create-product"
     - title: Configure Product Settings
       url: "/configure-product-settings"
@@ -413,7 +415,7 @@
       url: "/promotion-version-properties"
     - title: Selecting Promotion Flows
       url: "/promotion-flow-triggers"
-    - title: Tracking Releases for Products
+    - title: Tracking releases for products
       url: "/releases-in-products"
 
 
@@ -767,7 +769,5 @@
       url: "/sla"
     - title: Cloud Credits
       url: "/cloud-credits"
-    - title: Support Triage Definitions
-      url: "/support-triage-definitions"
     - title: Legacy Codefresh Terms of Service
       url: "/legacy-cf-terms-of-service"

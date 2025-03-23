@@ -7,8 +7,9 @@ toc: true
 ---
 
 
-Install Argo Rollouts on managed clusters to visualize rollout progress for deployed applications in the [GitOps Apps dashboard]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/#rollout-progress-visualization).  
-If Argo Rollouts has not been installed, an **Install Argo Rollouts** button is displayed on selecting the managed cluster. 
+Install Argo Rollouts on managed clusters to visualize [rollout progress]({{site.baseurl}}/docs/deployments/gitops/monitor-application/#rollout-progress) for deployed applications in the GitOps Apps dashboard. 
+ 
+If Argo Rollouts is not installed on the managed cluster, an **Install Argo Rollouts** button is displayed on selecting the cluster. 
 
 1. In the Codefresh UI, from the toolbar click the **Settings** icon.
 1. From Runtimes in the sidebar, select [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.

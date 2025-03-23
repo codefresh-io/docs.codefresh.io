@@ -1,7 +1,6 @@
 {
   "/": "/argohub/",
   "/docs/installation/gitops/shared-configuration/": "/argohub/gitops-runtimes/shared-configuration/",
-  "/docs/getting-started/intro-to-codefresh/": "/argohub/introduction/intro-to-codefresh/",
   "/docs/security/git-tokens/": "/argohub/security/git-tokens/",
   "/docs/security/secrets/": "/argohub/security/secrets/",
   "/docs/administration/account-user-management/add-users/": "/argohub/administration/account-user-management/add-users/",
@@ -89,19 +88,16 @@
   "/docs/terms-and-privacy-policy/octopus-deploy-customer-agreement/": "/argohub/terms-and-privacy-policy/octopus-deploy-customer-agreement/",
   "/docs/terms-and-privacy-policy/privacy-policy/": "/argohub/terms-and-privacy-policy/privacy-policy/",
   "/docs/terms-and-privacy-policy/sla/": "/argohub/terms-and-privacy-policy/sla/",
-  "/docs/terms-and-privacy-policy/support-triage-definitions/": "/argohub/terms-and-privacy-policy/support-triage-definitions/",
   "/docs/terms-and-privacy-policy/terms-of-service/": "/argohub/terms-and-privacy-policy/terms-of-service/",
   "/docs/deployments/gitops/about-apps/": "/argohub/applications/about-apps/",
   "/docs/deployments/gitops/create-application/": "/argohub/applications/create-application/",
   "/docs/deployments/gitops/gitops-app-groups/": "/argohub/applications/gitops-app-groups/",
-  "/docs/deployments/gitops/gitops-apps-dashboard/": "/argohub/applications/gitops-apps-dashboard/",
+  "/docs/deployments/gitops/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/",
   "/docs/deployments/gitops/install-argo-rollouts/": "/argohub/applications/install-argo-rollouts/",
   "/docs/deployments/gitops/manage-application/": "/argohub/applications/manage-application/",
   "/docs/deployments/gitops/monitor-applications/": "/argohub/applications/monitor-applications/",
   "/docs/deployments/gitops/troubleshooting-gitops-apps/": "/argohub/applications/troubleshooting-gitops-apps/",
   "/docs/getting-started/command-bar/": "/argohub/introduction/command-bar/",
-  "/docs/getting-started/concepts/": "/argohub/introduction/concepts/",
-  "/docs/getting-started/gitops-codefresh/": "/argohub/introduction/gitops-codefresh/",
   "/docs/gitops-quick-start/create-app-ui/": "/argohub/gitops-quick-starts/create-app-ui/",
   "/docs/gitops-quick-start/create-codefresh-account/": "/argohub/gitops-quick-starts/create-codefresh-account/",
   "/docs/gitops-quick-start/create-git-source/": "/argohub/gitops-quick-starts/create-git-source/",
@@ -121,5 +117,6 @@
   "/docs/environments/create-manage-environments/": "/argohub/environments/create-manage-environments/",
   "/docs/environments/environments-overview/": "/argohub/environments/environments-overview/",
   "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/",
-  "/docs/gitops-quick-start/quick-start-configure-runtime/": "/argohub/gitops-quick-start/quick-start-configure-runtime/"
+  "/docs/gitops-quick-start/quick-start-configure-runtime/": "/argohub/gitops-quick-start/quick-start-configure-runtime/",
+  "/docs/dashboards/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/"
 }

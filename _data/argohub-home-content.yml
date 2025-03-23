@@ -2,14 +2,11 @@
   icon: ../images/home-icons/introduction.svg
   url: ""
   links:
-    - title: What is Codefresh?
-      localurl: /argohub/getting-started/intro-to-codefresh/
-    - title: Codefresh for GitOps
-      localurl: /argohub/getting-started/gitops-codefresh/
-    - title: Concepts in Codefresh
-      localurl: /argohub/getting-started/concepts/
-    - title: Global Search & Navigation
-      localurl: /argohub/getting-started/command-bar/
+    - title: What is Codefresh GitOps Cloud?
+      localurl: /argohub/introduction/what-is-gitops-cloud/
+    - title: Explore Codefresh GitOps Cloud
+      localurl: /argohub/introduction/explore-gitops-cloud-features/
+
 
 - title: GitOps quick starts
   icon: ../images/home-icons/administration.svg
@@ -47,7 +44,7 @@
   icon: ../images/home-icons/product.svg
   url: ""
   links:
-    - title: About Products
+    - title: About products
       localurl: /argohub/products/about-products/
     - title: Create products
       localurl: /argohub/products/create-product/
@@ -105,6 +102,8 @@
       localurl: /argohub/dashboards/gitops-environments/   
     - title: Products
       localurl: /argohub/dashboards/gitops-products/   
+    - title: GitOps Apps
+      localurl: /argohub/dashboards/gitops-apps-dashboard/      
     - title: Images
       localurl: /argohub/dashboards/images/
 

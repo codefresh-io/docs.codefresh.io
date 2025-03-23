@@ -8,7 +8,7 @@ toc: true
 
 
 
-## Current release version stuck in Progessing state
+## Current release version stuck in Progressing state
 In the GitOps Apps dashboard, when viewing the Timeline tab for the selected Argo CD application, the Current Version is shown as **Progressing**, though the application status is Healthy and Synced.
 
 {% include 

@@ -1,6 +1,6 @@
 ---
 title: "Application configuration settings"
-description: "Review descriptions of configuration settings for Argo CD applications in GitOps"
+description: "Review configuration settings for Argo CD applications in Codefresh GitOps"
 toc: true
 ---
 
@@ -154,7 +154,7 @@ For example applications, go to the [Argo CD example applications repo](https://
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
 [Promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
-[Manage Products and applications in Environments]({{site.baseurl}}/docs/environments/manage-apps-in-environments/)  
+[Manage products and applications in environments]({{site.baseurl}}/docs/environments/manage-apps-in-environments/)  
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
 [Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  

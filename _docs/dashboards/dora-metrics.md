@@ -53,7 +53,7 @@ To view filters that are not displayed, click **More filters**.
 
 
 ## Metrics for favorite applications
-If you have [starred applications as favorites]({{site.baseurl}}/docs/deployments/gitops/gitops-apps-dashboard/#gitops-apps-dashboard-information) in the GitOps Apps dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
+If you have [starred applications as favorites]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/#gitops-apps-dashboard-information) in the GitOps Apps dashboard, clicking {::nomarkdown}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{:/} in DORA metrics, displays DORA metrics only for those applications.    
 
 
 ## Metric totals

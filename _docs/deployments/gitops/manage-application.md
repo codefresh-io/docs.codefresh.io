@@ -7,24 +7,25 @@ toc: true
 ---
 
 ## Managing Argo CD applications
-Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is managing and optimizing deployed applications when needed. 
+Application creation and deployment is one part of the continuous deployment/delivery process. An equally important part is tracking, optimizing, and managing applications after deployment. 
 
-There are two aspects to managing and optimizing Argo CD applications in Codefresh:
-* Optimizing deployments through Environments and Products 
+There are two aspects to managing Argo CD applications in Codefresh GitOps:
+* Optimizing deployments through environments and products 
 * Managing individual applications 
 
 ### Optimizing application deployments 
 
-* [GitOps Environments](#gitops-environments--argo-cd-applications)  
-  The GitOps Environments dashboard visualizes Argo CD applications within the context of their environments, allowing you to track their journey through the software development lifecycle.
+* [Environments](#gitops-environments--argo-cd-applications)  
+  Environments provide visibility into Argo CD applications in the context of their software lifecycle helping you track promotions from development to production.
 
-* [GitOps Products](#gitops-products--argo-cd-applications)  
-  The Product Dashboard displays applications grouped within a Product, with version, Git, and feature-tracking information. 
+* [Products](#gitops-products--argo-cd-applications)  
+  Products group applications into logical units, showing version history, Git metadata, and feature tracking for improved organization and scalability.
+
 
 ### Managing individual applications
 
 >**NOTE**  
-  The actions you can perform depend on the [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/) assigned to you. 
+  Available actions depend on your assigned [permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/). 
 
 
 * [Edit Argo CD applications](#edit-argo-cd-application-definitions)  
@@ -64,45 +65,49 @@ There are two aspects to managing and optimizing Argo CD applications in Codefre
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#delete-application-resources).
 
 
-## GitOps Environments & Argo CD applications
-To track, optimize, and manage deployments at scale, you need a clear view of applications at every stage of their development and deployment lifecycle. Environments in Codefresh GitOps provide this visibility without requiring complex configuration or maintenance.
+## GitOps environments & Argo CD applications
+Tracking and managing deployments at scale requires clear visibility into applications at every stage. Codefresh GitOps provides this visibility through environments.  
+When you define an environment by specifying one or more cluster-namespace pairs, Codefresh automatically detects and displays the applications deployed to those locations.
 
-On creating an environment by defining one or more cluster-namespace pairs, Codefresh automatically displays the applications deployed to the specified clusters and namespaces.  
-Use the Environments dashboard to track promotions, monitor application versions, and view details on the most recent commits that introduced changes.
+Use environments to:
+* Promote applications
+* Track promotions
+* Monitor application versions
+* View recent commits that introduced changes
 
 
-Here's a visualization of Argo CD applications in the Environments dashboard.
+Here's a visualization of the Environments dashboard with Argo CD applications.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-environments/argo-apps-organized-into-envs.png" 
 	url="/images/gitops-environments/argo-apps-organized-into-envs.png" 
-	alt="Argo CD applications organized in GitOps Environments" 
-	caption="Argo CD applications organized in GitOps Environments"
+	alt="Argo CD applications organized in GitOps environments" 
+	caption="Argo CD applications organized in GitOps environments"
   max-width="70%" 
 %}
 
-For detailed information on how to work with Argo CD applications and Environments in Codefresh, see [GitOps Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+For detailed information, see [environments]({{site.baseurl}}/docs/environments/environments-overview/) and [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/).
 
-## GitOps Products & Argo CD applications
-The Product is another entity in Codefresh GitOps enhancing application management at scale. As teams expand and applications and services multiply, keeping track of deployments across various environments can become challenging, if not unmanageable. Products allow you to group applications into cohesive units, simplifying viewing, tracking, and management. 
+## Products & Argo CD applications
+As applications and teams scale, tracking deployments across multiple environments can become challenging. Products in Codefresh GitOps provide a structured way to manage and track related applications across teams and environments.
 
-While Environments focus on tracking deployments, Products provide a higher-level view across multiple applications.
+Unlike environments, which focus on deployment tracking, products offer a broader view of multiple applications, simplifying organization and management.
 
-Here's a visualization of Argo CD applications grouped by Products in the GitOps Products dashboard.
+Here's a visualization of Argo CD applications grouped by products in the Products dashboard.
 
 {% include 
 	image.html 
 	lightbox="true" 
 	file="/images/gitops-products/apps-grouped-by-product.png" 
 	url="/images/gitops-products/apps-grouped-by-product.png" 
-	alt="Argo CD applications grouped by Products and organized by Environments" 
-	caption="Argo CD applications grouped by Products and organized by Environments"
+	alt="Argo CD applications grouped by products and organized by environments" 
+	caption="Argo CD applications grouped by products and organized by environments"
   max-width="70%" 
 %}
 
-For detailed information on how to work with Argo CD applications and Products in Codefresh, see [GitOps Products]({{site.baseurl}}/docs/dashboards/gitops-products/).
+For detailed information, see [products]({{site.baseurl}}/docs/products/about-products/) [GitOps Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/).
 
 
 
@@ -308,10 +313,12 @@ For example, if you made changes to `api` resources or `audit` resources, type `
 
 
 ## Configure sync timeout for Argo CD applications
-Add an annotation with the timeout threshold for the application to get notified when an ongoing sync exceeds the defined timeout.  
-Codefresh uses Argo CD's default duration of 30 minutes which you can customize as needed.  
-
+Configure a custom sync timeout for Argo CD applications and get notified when an ongoing sync exceeds the defined timeout. 
 Instead of waiting indefinitely for syncs to complete and then navigating through the GitOps Apps dashboard, get timely warnings from Codefresh.
+
+Add an annotation with the timeout threshold you need for the application. Codefresh uses Argo CD's default duration of 30 minutes which you can customize as needed.  
+
+
 
 * Add the following annotation to the application's YAML with the timeout you need:
   ```yaml
@@ -788,9 +795,10 @@ metadata:
 [Creating Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/)  
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps)  
+[GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)    
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
-[Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
+[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 
