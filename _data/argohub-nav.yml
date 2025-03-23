@@ -14,12 +14,10 @@
       url: "/gitops-quick-start"
     - title: Create Codefresh account
       url: "/create-codefresh-account"
-    - title: Preparing for Hybrid GitOps Runtime installation
-      url: "/verify-requirements"
-    - title: Installing a Hybrid GitOps Runtime
-      url: "/runtime"
-    - title: Creating Git Sources
-      url: "/create-git-source"
+    - title: Installing the GitOps Runtime
+      url: "/quick-start-install-runtime"
+    - title: Configuring the GitOps Runtime
+      url: "/quick-start-configure-runtime"
     - title: Creating Products and applications
       url: "/create-app-ui"
     - title: Creating Environments
@@ -59,18 +57,24 @@
 - title: GitOps Runtimes
   url: "/gitops-runtimes"
   pages:     
+    - title: About GitOps Runtimes
+      url: "/gitops"
     - title: GitOps Runtime architecture
       url: "/runtime-architecture"
     - title: Runtime concepts
       url: "/runtime-concepts"
-    - title: System requirements & prerequisites
-      url: "/runtime-system-requirements"    
+    - title: System requirements
+      url: "/runtime-system-requirements" 
+    - title: Prerequisites
+      url: "/runtime-prerequisites"      
     - title: Ingress configuration
-      url: "/runtime-ingress-configuration"            
-    - title: Install GitOps Runtime
-      url: "/hybrid-gitops-helm-installation" 
-    - title: Install GitOps Runtime alongside Community Argo CD
-      url: "/argo-with-gitops-side-by-side"        
+      url: "/runtime-ingress-configuration" 
+    - title: Install GitOps Runtime with existing Argo CD
+      url: "/runtime-install-with-existing-argo-cd"              
+    - title: Install GitOps Runtime with new Argo CD
+      url: "/hybrid-gitops-helm-installation"    
+    - title: Configure GitOps Runtime 
+      url: "/runtime-configuration" 
     - title: Shared Configuration Repository
       url: "/shared-configuration"
     - title: Configuration Runtimes
@@ -82,9 +86,7 @@
     - title: Managing external clusters in GitOps Runtimes
       url: "/managed-cluster"
     - title: Managing Git Sources in GitOps Runtimes
-      url: "/git-sources"
-    - title: Troubleshooting GitOps Runtimes
-      url: "/troubleshooting-runtimes"   
+      url: "/git-sources"   
     - title: Download/upgrade GitOps CLI
       url: "/upgrade-gitops-cli"  
      

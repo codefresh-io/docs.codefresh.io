@@ -8,29 +8,27 @@ redirect_from:
 ---
 
 ## GitOps quick starts: From start to deployment 
-Codefresh GitOps streamlines software delivery through automation, consistency, and scalability. These quick start guides are designed to help you get up and running quickly, providing step-by-step instructions to fully utilize Codefresh GitOps for managing and promoting your applications.
+Codefresh GitOps simplifies software delivery with automation, consistency, and scalability. These quick start guides provide step-by-step instructions to help you quickly set up, manage, and promote applications with Codefresh GitOps.
 
-Each quick start is standalone, allowing you to dive into specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a progressive journey from setup to seamless application promotion across environments.
+Each quick start is standalone, so you can explore specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a journey from setup to seamless application promotion across environments.
 
-The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, culminating in deploying and promoting applications effectively across multiple environments.
+The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, leading to deploying and promoting applications effectively across multiple environments.
 
-We’ve provided an example GitHub repository containing all the applications and resources used in these guides. You can follow along directly or fork the repository to create and manage your own applications.
+We've provided a GitHub repository with all the applications and resources used in the quick starts. You can follow along directly or fork the repository to create and manage your own applications.
 
 
 
 ## Essential setup
 
 * [Creating a Codefresh account]({{site.baseurl}}/docs/gitops-quick-start/create-codefresh-account/)  
-  Get started by setting up your Codefresh account.
+  Start by creating your Codefresh account.
 
-* [Preparing for GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/verify-requirements/)  
-  Review system requirements and prerequisites before installing GitOps Runtimes.
+* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)  
+  Review system requirements and prerequisites and install the GitOps Runtime.
 
-* [Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/runtime/)    
-  Install the GitOps Runtime, the single pane of glass component that bridges Git repositories, Kubernetes clusters, applications, and other GitOps entities.
+* [Configuring a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-configure-runtime/)    
+  Configure the GitOps Runtime for successful operation.
 
-* [Creating a Git Source]({{site.baseurl}}/docs/gitops-quick-start/create-git-source/)    
-  Add a Git Source referencing a repository as a centralized location for storing application manifests.
 
 ## Creating GitOps entities for promotions
 * [Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
@@ -53,7 +51,7 @@ Start with simple manual promotion, then automate with Promotion Flows—evolvin
 * [Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
   Automate promotions across multiple environments sequentially using a simple Promotion Flow.
 * [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)  
-  Govern promotion behavior for environments using Promotion Workflows in a Promotion Flow.
+  Control promotion behavior for environments using Promotion Workflows within a Promotion Flow.
 * [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
   Run promotions with defined dependencies between environments using an advanced Promotion Flow.
 

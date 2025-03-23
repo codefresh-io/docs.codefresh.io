@@ -32,7 +32,7 @@ Products and their applications are displayed in the environments, providing vis
 ##### Why create environments? 
 
 Environments are key to managing and promoting applications effectively.  
-They give you a structured, intuitive way to answer the question: _What’s running where?_
+They provide a structured, intuitive way to answer the question: _What’s running where?_
 
 Environments help you:
 * **Mirror your SDLC**: Align applications with their development stages, providing clarity and structure.
@@ -42,7 +42,7 @@ For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gi
 
 
 ## Requirements
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/) 
  
 
@@ -50,7 +50,7 @@ For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gi
 Let's go ahead and create an environment. Setting up environments is as simple as mapping the environment to one or more clusters and namespaces.
 
 For this quick start, we’ll create three environments: `dev`, `qa`, and `prod` on the cluster where you installed the GitOps Runtime.
-We’ll map the environments to `in-cluster` and associate each with a different namespace, to which we will deploy the applications we’ll create later.
+We’ll map the environments to `in-cluster`, associate each with a different namespace, to which we'll promote the applications.
 
 ##### Step-by-step
 1. In the Codefresh UI, from the sidebar, select **Environments**, and then click **Add Environment**.
@@ -58,10 +58,10 @@ We’ll map the environments to `in-cluster` and associate each with a different
     1. **Name**: A unique name for your environment, which is meaningful in the context of your development and deployment cycle. 
 	  For the first environment, we'll use `dev`.
     1. **Kind**: The purpose of the environment. Select **Non-production** where typically development, testing, and staging versions of applications are deployed.  
-	  The Kind property is used to also define rules for promotions and ABAC (Attribute Based Access Control) permissions.
-    1. **Tags**: Leave this empty for the quick start.
+	  The Kind property also defines the rules for promotions and ABAC (Attribute Based Access Control) permissions.
+    <!--- 1. **Tags**: Leave this empty for the quick start.  -->
     1. **Clusters and Namespaces**: Map the environment to the cluster with the GitOps Runtime.  
-        For the quick start, we'll map the environment to the `in-cluster`, and the `demo-dev` namespace. The namespace is associated with the `dev` environment, and the `demo` applications we'll add later on.
+        For the quick start, we'll map the environment to the `in-cluster` and the `demo-dev` namespace. The namespace is associated with the `dev` environment, and the `demo` applications we'll add later on.
 
 {% include 
 	image.html 
@@ -77,11 +77,11 @@ We’ll map the environments to `in-cluster` and associate each with a different
 1. Click **Add**.  
   The environment is displayed in the Environments dashboard. 
 1. Repeat _step 1_ through _step 3_ to create the two other environments: `qa` and `prod`.  
-  For the quick start, we'll map these environments again to the `in-cluster`. And to the namespaces, `demo-qa` and `demo-prod` respectively, for the `demo` apps we'll create. 
+  For the quick start, we'll again map these environments to `in-cluster` and associate them with the `demo-qa` and `demo-prod` namespaces respectively, for the `demo` apps we created earlier. 
 
 ## View Environments dashboard
 
-Go to the Environments dashboard to see how the environments are populated with the applications you created.
+Check the Environments dashboard to see how the environments are populated with the applications you created.
 Here's an example of the Environments dashboard with the three environments, and the products and their applications in the clusters and namespaces mapped to them.
  
 1. From the sidebar, select **Environments**.

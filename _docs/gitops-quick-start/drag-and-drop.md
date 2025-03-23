@@ -21,7 +21,7 @@ The application version is defined in the  `appVersion` attribute of the `chart.
 To view the current version of `demo-trioapp-dev`, see its [chart.yaml](https://github.com/codefresh-sandbox/codefresh-quickstart-demo/blob/main/demo-applications/trioapp-dev/Chart.yaml){:target="_blank"} file.
 
 ## Requirements
-* [GitOps Runtime]({{site.baseurl}}/docs/quick-start/gitops-quick-start/runtime/)
+* [GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 * [Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)  
   At least three different applications representing the development, testing, and production versions
 * [Environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
@@ -136,7 +136,7 @@ max-width="60%"
 
 ## What's next
 Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
-The next quick start demonstrates how to orchestrate a promotion through a Promotion Flow, enabling you to automate and streamline deployments across more than two environments.
+The next quick start describes how to orchestrate a promotion through a Promotion Flow, which automates deployments across more than two environments.
 
 [Quick start: Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)
 

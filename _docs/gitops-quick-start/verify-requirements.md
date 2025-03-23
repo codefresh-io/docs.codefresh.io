@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Preparing for GitOps Runtime installation"
+title: "Quick start: Preparing and installing GitOps Runtime"
 description: "Verify you're ready for Hybrid GitOps Runtime installation"
 group: gitops-quick-start
 toc: true
@@ -8,8 +8,56 @@ redirect_from:
 ---
 
 
+GitOps Runtime Installation Quick Start
+This guide walks you through installing the GitOps Runtime in Codefresh. It covers system requirements, prerequisites, and installation options for both existing and new Argo CD instances.
 
-The Hybrid GitOps Runtime is installed through a Helm chart.  
+For detailed configuration, see Configuring the GitOps Runtime.
+
+1. Runtime Installation Modes
+Codefresh supports two installation modes for the GitOps Runtime:
+
+Install with an existing Argo CD instance (default)
+Install with a new Argo CD instance
+2. System Requirements
+Before installing, ensure your environment meets the GitOps Runtime system requirements.
+
+3. Prerequisites
+Review the prerequisites to prepare your environment, including:
+
+Access to a Kubernetes cluster
+Required permissions
+Git repository setup for configuration
+4. Configuring values.yaml
+Customize the installation using a values.yaml file. See values.yaml reference for available options.
+
+5. Installing with an Existing Argo CD Instance (Default)
+To install the GitOps Runtime using an existing Argo CD instance, follow these steps:
+
+Ensure Argo CD is already deployed.
+Apply the required configuration.
+Run the installation command.
+For full details, see Installing with an existing Argo CD.
+
+6. Installing with a New Argo CD Instance
+If you do not have an existing Argo CD instance, Codefresh can install one for you. This method includes:
+
+Deploying a new Argo CD instance.
+Installing the GitOps Runtime alongside it.
+See Installing with a new Argo CD instance for more details.
+
+What’s Next?
+Continue with Configuring the GitOps Runtime to set up Git sources and other configurations.
+
+
+
+
+
+
+
+
+
+
+The GitOps Runtime is installed through a Helm chart.  
 For configuration details, refer to the Codefresh `values.yaml` file, which includes all available arguments (mandatory and optional) with descriptions. Go to [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}. 
 
 ## Quick start assumptions for Runtime installation
@@ -24,9 +72,9 @@ For the quick start, we'll use the default tunnel-based access mode, which does 
 For details on access modes, see [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
 ### GitHub as the Git provider  
-The Hybrid GitOps Runtime requires a Git Runtime token for authentication to the Git installation repository based on your Git provider, and a Git user token to authenticate Git-based actions for the Runtime.  
-
-The quick start uses GitHub as the Git provider. For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
+The quick start uses GitHub as the Git provider. 
+For the installation, you can
+For other Git providers and token requirements, see [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/).  
 
 ##### Git Runtime token
 Have your GitHub Runtime token ready with a valid expiration date and access permissions:
@@ -51,8 +99,7 @@ Have your GitHub user token ready with a valid expiration date and access permis
 For detailed information on GitHub tokens, see the [GitHub article](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 ### Shared Configuration Repository
-As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests, common to all Runtimes in the account.
-
+As part of the installation, you will be required to define the Shared Configuration Repository for your account. The shared repo stores account-level configuration settings and manifests, common to all Runtimes in the account. 
 Because the Shared Configuration Repo is defined at the account-level, the Git provider you select for the first Runtime in your account is used for all the other Runtimes in the same account. 
 
 Learn more on the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
@@ -65,11 +112,18 @@ Codefresh automatically designates the first GitOps Runtime in your account as t
 Learn more on [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
 
 
+## System requirements
+Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
+
+
 ## Prerequisites
+
+
+
+
 
 ### System requirements 
 Verify that your deployment environment meets the minimum requirements for Hybrid GitOps Runtimes.  
-Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
 
 ### SealedSecret controller
 Ensure that the Runtime cluster does not have SealedSecret controller components.

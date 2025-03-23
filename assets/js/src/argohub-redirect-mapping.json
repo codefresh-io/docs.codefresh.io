@@ -110,8 +110,13 @@
   "/docs/gitops-quick-start/runtime/": "/argohub/gitops-quick-starts/runtime/",
   "/docs/gitops-quick-start/verify-requirements/": "/argohub/gitops-quick-starts/verify-requirements/",
   "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/",
+  "/docs/installation/gitops/": "/argohub/gitops-quick-start/gitops/",
+  "/docs/installation/gitops/runtime-prerequisites/": "/argohub/gitops-runtimes/runtime-prerequisites/",
+  "/docs/installation/gitops/runtime-configuration/": "/argohub/gitops-runtimes/runtime-configuration/",
+  "/docs/installation/gitops/runtime-install-with-existing-argo-cd/": "/argohub/gitops-runtimes/runtime-install-with-existing-argo-cd/",
   "/docs/environments/create-manage-environments/": "/argohub/environments/create-manage-environments/",
   "/docs/environments/environments-overview/": "/argohub/environments/environments-overview/",
   "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/",
+  "/docs/gitops-quick-start/quick-start-configure-runtime/": "/argohub/gitops-quick-start/quick-start-configure-runtime/",
   "/docs/dashboards/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/"
 }
