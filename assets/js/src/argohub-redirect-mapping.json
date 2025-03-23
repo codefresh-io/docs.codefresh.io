@@ -112,5 +112,6 @@
   "/docs/deployments/gitops/application-configuration-settings/": "/argohub/applications/application-configuration-settings/",
   "/docs/environments/create-manage-environments/": "/argohub/environments/create-manage-environments/",
   "/docs/environments/environments-overview/": "/argohub/environments/environments-overview/",
-  "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/"
+  "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/",
+  "/docs/dashboards/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/"
 }
