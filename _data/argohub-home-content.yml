@@ -44,7 +44,7 @@
   icon: ../images/home-icons/product.svg
   url: ""
   links:
-    - title: About Products
+    - title: About products
       localurl: /argohub/products/about-products/
     - title: Create products
       localurl: /argohub/products/create-product/
