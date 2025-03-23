@@ -8,6 +8,12 @@ toc: true
 
 ## GitOps Runtime with new Argo CD
 This article describes how to install the GitOps Runtime in a Codefresh accounts using a Helm chart on a _cluster without an Argo CD instance_.   
+
+##### Runtime values.yaml
+
+The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
+Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
+
 {% if page.collection != site.gitops_collection %}
 To install the GitOps Runtime:  
 * With an existing Argo CD instance, see [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)
@@ -37,10 +43,7 @@ See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/r
 -->
 
 
-## Runtime values.yaml
 
-The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
-Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
 
 
 ## Before you begin
@@ -128,7 +131,6 @@ If you define a custom name, it must:
 * Start with a lowercase letter
 * Contain only lowercase letters and numbers
 * Be no longer than 38 characters
-
 
 
 ### Codefresh API Key
@@ -244,21 +246,6 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
   * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
 
 
-## Install additional GitOps Runtimes in account
-You can install additional GitOps Runtimes on different clusters within the same account.
-
-The installation process is the same as for the [first Runtime](#install-first-gitops-runtime-in-account), with the following key differences:
-
-#### Shared Configuration Repository
-The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again when installing additional Runtimes.
-
-#### Runtime Name
-Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
-
-The Runtime name must:
-* Start with a lowercase letter
-* Contain only lowercase letters and numbers
-* Be no longer than 38 characters
 
 
 {% if page.collection != site.gitops_collection %}
@@ -273,7 +260,10 @@ After completing the installation, you may need to perform additional configurat
 
 ## Install GitOps Runtime via Terraform
 
-You can also use Terraform to install a GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
+You can also use Terraform to install an additional GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
+
+* The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again.
+* Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
 
 
 Here is an example:

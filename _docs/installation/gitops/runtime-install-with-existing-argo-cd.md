@@ -11,6 +11,11 @@ This article describes how to install GitOps Runtimes in a Codefresh account usi
 
 This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime integrates with the existing Argo CD by connecting with its key Argo CD services.
 
+##### Runtime values.yaml 
+The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
+Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
+
+
 To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 
@@ -118,9 +123,6 @@ Generate the Argo CD Admin API token via the Argo CD Dashboard or via the Argo C
 For the complete CLI reference, see the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:"\_blank"} command.
 
 
-## values.yaml 
-The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
-Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
 
 ## Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
@@ -317,9 +319,7 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
 
 
 
-You can install additional GitOps Runtimes on different clusters within the same account:
-* The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again.
-* Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
+
 
 
 
@@ -327,7 +327,10 @@ You can install additional GitOps Runtimes on different clusters within the same
 
 ## Install GitOps Runtime via Terraform
 
-You can also use Terraform to install a GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
+You can also use Terraform to install additional GitOps Runtimes with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.  
+
+* The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again.
+* Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
 
 
 Here is an example:
