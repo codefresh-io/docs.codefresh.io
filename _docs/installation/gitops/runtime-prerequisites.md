@@ -29,7 +29,7 @@ This table lists the prerequisites for installing a GitOps Runtime, depending on
 | [Remove Argo Project and SealedSecret components](#remove-argo-project-and-sealedsecret-components-new-argo-only) | ✅   | ✅     | 
 | [Configure connectivity with Argo CD services](#configure-connectivity-with-argo-cd-services-existing-argo-only)  | ✅ | - |
 | [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | 
-
+{% endif %}
 
 {% if page.collection == site.gitops_collection %}
 ## Remove Argo Project and SealedSecret components 
