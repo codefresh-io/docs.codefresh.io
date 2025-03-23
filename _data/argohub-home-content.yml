@@ -3,9 +3,9 @@
   url: ""
   links:
     - title: What is Codefresh GitOps Cloud?
-      localurl: /argohub/introduction/what-is-gitops-cloud/
+      localurl: /gitops/introduction/what-is-gitops-cloud/
     - title: Explore Codefresh GitOps Cloud
-      localurl: /argohub/introduction/explore-gitops-cloud-features/
+      localurl: /gitops/introduction/explore-gitops-cloud-features/
 
 
 - title: GitOps quick starts
@@ -13,49 +13,49 @@
   url: ""
   links:
     - title: About GitOps quick starts
-      localurl: /argohub/gitops-quick-start/gitops-quick-start/
+      localurl: /gitops/gitops-quick-start/gitops-quick-start/
     - title: Create Codefresh account
-      localurl: /argohub/gitops-quick-start/create-codefresh-account/
+      localurl: /gitops/gitops-quick-start/create-codefresh-account/
     - title: Installing a Hybrid GitOps Runtime
-      localurl: /argohub/gitops-quick-start/runtime/
+      localurl: /gitops/gitops-quick-start/runtime/
     - title: Creating Products and applications
-      localurl: /argohub/gitops-quick-start/create-app-ui/
+      localurl: /gitops/gitops-quick-start/create-app-ui/
     - title: Creating Environments
-      localurl: /argohub/gitops-quick-start/quick-start-gitops-environments/
+      localurl: /gitops/gitops-quick-start/quick-start-gitops-environments/
     - title: Creating Promotion Workflows
-      localurl: /argohub/gitops-quick-start/quick-start-promotion-workflow/
+      localurl: /gitops/gitops-quick-start/quick-start-promotion-workflow/
     - title: Simple promotion with drag-and-drop 
-      localurl: /argohub/gitops-quick-start/drag-and-drop/
+      localurl: /gitops/gitops-quick-start/drag-and-drop/
     - title: Simple Promotion Flow with multiple environments
-      localurl: /argohub/gitops-quick-start/multi-env-sequential-flow/ 
+      localurl: /gitops/gitops-quick-start/multi-env-sequential-flow/ 
 
 - title: Environments
   icon: ../images/home-icons/environments.svg
   url: ""
   links:
     - title: About Environments
-      localurl: /argohub/environments/environments-overview/
+      localurl: /gitops/environments/environments-overview/
     - title: Create and manage Environments
-      localurl: /argohub/environments/create-manage-environments/      
+      localurl: /gitops/environments/create-manage-environments/      
     - title: Manage Products and applications in Environments
-      localurl: /argohub/environments/manage-apps-in-environments/   
+      localurl: /gitops/environments/manage-apps-in-environments/   
 
 - title: Products
   icon: ../images/home-icons/product.svg
   url: ""
   links:
     - title: About products
-      localurl: /argohub/products/about-products/
+      localurl: /gitops/products/about-products/
     - title: Create products
-      localurl: /argohub/products/create-product/
+      localurl: /gitops/products/create-product/
     - title: Configure Product Settings
-      localurl: /argohub/products/configure-product-settings/
+      localurl: /gitops/products/configure-product-settings/
     - title: Assigning applications
-      localurl: /argohub/products/assign-applications/      
+      localurl: /gitops/products/assign-applications/      
     - title: Configuring app version and promoted properties
-      localurl: /argohub/products/promotion-version-properties/
+      localurl: /gitops/products/promotion-version-properties/
     - title: Configuring promotion flows
-      localurl: /argohub/products/promotion-flow-triggers/   
+      localurl: /gitops/products/promotion-flow-triggers/   
 
 
 - title: Applications
@@ -63,11 +63,11 @@
   url: ""
   links:
     - title: Creating Argo CD applications
-      localurl: /argohub/applications/create-application/
+      localurl: /gitops/applications/create-application/
     - title: Monitoring Argo CD applications
-      localurl: /argohub/applications/monitor-applications/
+      localurl: /gitops/applications/monitor-applications/
     - title: Managing Argo CD applications
-      localurl: /argohub/applications/manage-application/
+      localurl: /gitops/applications/manage-application/
 
 
 - title: Promotions
@@ -75,19 +75,19 @@
   url: ""
   links:
     - title: About promotions
-      localurl: /argohub/promotions/promotions-overview/
+      localurl: /gitops/promotions/promotions-overview/
     - title: Getting started
-      localurl: /argohub/promotions/getting-started/
+      localurl: /gitops/promotions/getting-started/
     - title: Promotion building blocks
-      localurl: /argohub/promotions/promotion-components/
+      localurl: /gitops/promotions/promotion-components/
     - title: Promotion setup guidelines
-      localurl: /argohub/promotions/create-promotion-sequence/
+      localurl: /gitops/promotions/create-promotion-sequence/
     - title: YAML specs
-      localurl: /argohub/promotions/entities/yaml/
+      localurl: /gitops/promotions/entities/yaml/
     - title: Trigger promotions
-      localurl: /argohub/promotions/trigger-promotions/ 
+      localurl: /gitops/promotions/trigger-promotions/ 
     - title: Tracking releases for products
-      localurl: /argohub/promotions/product-releases/
+      localurl: /gitops/promotions/product-releases/
 
 
 
@@ -97,15 +97,15 @@
   url: ""
   links:
     - title: Home
-      localurl: /argohub/dashboards/home-dashboard/  
+      localurl: /gitops/dashboards/home-dashboard/  
     - title: Environments
-      localurl: /argohub/dashboards/gitops-environments/   
+      localurl: /gitops/dashboards/gitops-environments/   
     - title: Products
-      localurl: /argohub/dashboards/gitops-products/   
+      localurl: /gitops/dashboards/gitops-products/   
     - title: GitOps Apps
-      localurl: /argohub/dashboards/gitops-apps-dashboard/      
+      localurl: /gitops/dashboards/gitops-apps-dashboard/      
     - title: Images
-      localurl: /argohub/dashboards/images/
+      localurl: /gitops/dashboards/images/
 
 
 
@@ -114,36 +114,36 @@
   url: ""
   links:
     - title: GitOps image enrichment with integrations
-      localurl: /argohub/gitops-integrations/image-enrichment-overview/
+      localurl: /gitops/gitops-integrations/image-enrichment-overview/
     - title: Codefresh pipelines for GitOps
-      localurl: /argohub/gitops-integrations/ci-integrations/codefresh-classic/
+      localurl: /gitops/gitops-integrations/ci-integrations/codefresh-classic/
     - title: GitHub Actions for GitOps
-      localurl: /argohub/gitops-integrations/ci-integrations/github-actions/
+      localurl: /gitops/gitops-integrations/ci-integrations/github-actions/
     - title: Jenkins for GitOps
-      localurl: /argohub/gitops-integrations/ci-integrations/jenkins/
+      localurl: /gitops/gitops-integrations/ci-integrations/jenkins/
     - title: Jira for GitOps
-      localurl: /argohub/gitops-integrations/issue-tracking/jira/
+      localurl: /gitops/gitops-integrations/issue-tracking/jira/
     - title: Amazon ECR for GitOps
-      localurl: /argohub/gitops-integrations/container-registries/amazon-ecr/
+      localurl: /gitops/gitops-integrations/container-registries/amazon-ecr/
     - title: Docker Hub Registry for GitOps
-      localurl: /argohub/gitops-integrations/container-registries/dockerhub/
+      localurl: /gitops/gitops-integrations/container-registries/dockerhub/
     - title: GitHub Container Registry for GitOps
-      localurl: /argohub/gitops-integrations/container-registries/github-cr/
+      localurl: /gitops/gitops-integrations/container-registries/github-cr/
     - title: JFrog Artifactory for GitOps
-      localurl: /argohub/gitops-integrations/container-registries/jfrog/
+      localurl: /gitops/gitops-integrations/container-registries/jfrog/
     - title: Quay Registry for GitOps
-      localurl: /argohub/gitops-integrations/container-registries/quay/
+      localurl: /gitops/gitops-integrations/container-registries/quay/
 
 - title: Installation
   icon: ../images/home-icons/installation.svg
   url: ""
   links:
     - title: Codefresh platform deployment
-      localurl: /argohub/platform-installation/installation-options/ 
+      localurl: /gitops/platform-installation/installation-options/ 
     - title: Install GitOps Runtime with existing Argo CD
-      localurl: /argohub/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
+      localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
     - title: Install GitOps Runtime with new Argo CD
-      localurl: /argohub/gitops-runtimes/hybrid-gitops-helm-installation/
+      localurl: /gitops/gitops-runtimes/hybrid-gitops-helm-installation/
 
 
 - title: Administration
@@ -151,29 +151,29 @@
   url: ""
   links:
     - title: Create a Codefresh account
-      localurl: /argohub/administration/account-user-management/create-codefresh-account/
+      localurl: /gitops/administration/account-user-management/create-codefresh-account/
     - title: Adding users and teams
-      localurl: /argohub/administration/account-user-management/add-users/
+      localurl: /gitops/administration/account-user-management/add-users/
     - title: Set up OAuth2 for GitOps
-      localurl: /argohub/administration/account-user-management/oauth-setup/
+      localurl: /gitops/administration/account-user-management/oauth-setup/
     - title: Access control for GitOps
-      localurl: /argohub/administration/account-user-management/gitops-abac/
+      localurl: /gitops/administration/account-user-management/gitops-abac/
     - title: User settings
-      localurl: /argohub/administration/user-self-management/user-settings/
+      localurl: /gitops/administration/user-self-management/user-settings/
     - title: Manage Git PATs
-      localurl: /argohub/administration/user-self-management/manage-pats/
+      localurl: /gitops/administration/user-self-management/manage-pats/
     - title: Codefresh IP addresses
-      localurl: /argohub/administration/platform-ip-addresses/
+      localurl: /gitops/administration/platform-ip-addresses/
     - title: Single Sign-On
-      localurl: /argohub/administration/single-sign-on/
+      localurl: /gitops/administration/single-sign-on/
 
 - title: Security
   icon: ../images/home-icons/guides.png
   url: ""
   links:
     - title: Git tokens for GitOps
-      localurl: /argohub/security/git-tokens/
+      localurl: /gitops/security/git-tokens/
     - title: Secrets for GitOps
-      localurl: /argohub/security/secrets/
+      localurl: /gitops/security/secrets/
 
 

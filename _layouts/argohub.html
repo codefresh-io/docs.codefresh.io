@@ -47,7 +47,7 @@ layout: compress
         <main class="col-12 col-md-8 {% if page.toc == true %}col-xl-8 col-xxl-8{% else %}col-xl-10 col-xxl-10{% endif%} py-3 bd-content" role="main">
           <div class="bd-content-inner py-xl-3">
             <div class="bd-improve-link">
-              {% if page.url contains '/argohub/' %}
+              {% if page.url contains '/gitops/' %}
                 {% assign url_size = page.url | size | minus: 1 %}
                 {% capture edit_url %}https://github.com/codefresh-io/docs.codefresh.io/edit/master/_docs/{{ page.url | slice: 0, url_size | replace: '/docs/', ''  }}.md{% endcapture %}
                 <a href="{{ edit_url }}" target="_blank"><i class="fas fa-edit fa-sm"></i> Improve this page on GitHub</a>
