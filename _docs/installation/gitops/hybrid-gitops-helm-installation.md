@@ -20,30 +20,6 @@ To install the GitOps Runtime:
 * Alongside your community Argo CD installation, see [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
 {% endif %}
 
-<!--- ##### Runtimes in account 
-The installation process varies depending on whether you are installing your first Runtime or installing additional Runtimes in your account.
-
-* **First Runtime**: Requires a one-time setup before running the installation command. See [Install first GitOps Runtime in account](#install-first-gitops-runtime-in-account).
-* **Additional Runtimes**: Install additional Runtimes by running the Install Runtime command. See [Install additional GitOps Runtimes in account](#install-additional-gitops-runtimes-in-account). You can also use [Terraform](#install-gitops-runtime-via-terraform). 
-
-You can install a single GitOps Runtime on a cluster. To install additional Runtimes in the same account, each Runtime must be on a different cluster. Every Runtime within the same account must have a unique name.
-
-For both first-time and additional GitOps Runtime installations:
-* Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) to ensure your environment meets the necessary conditions
-* Complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequsites/)
-* Review the Runtime's `values.yaml` for accuracy and how Codefresh [validates these settings](#valuesyaml-validation)
-
-##### Runtime configuration
-After installing the Runtime, you can configure it by following the steps in the Configuration & Management section of the installation wizard.  
-Alternatively, you can complete the configuration later through the Codefresh UI. 
-
-Configuration includes setting up Git credentials, configuring the Runtime as an Argo CD Application, and adding a Git Source to the Runtime.
-See [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
-
--->
-
-
-
 
 
 ## Before you begin
