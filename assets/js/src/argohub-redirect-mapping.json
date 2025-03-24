@@ -119,5 +119,6 @@
   "/docs/environments/manage-apps-in-environments/": "/gitops/environments/manage-apps-in-environments/",
   "/docs/gitops-quick-start/quick-start-configure-runtime/": "/gitops/gitops-quick-start/quick-start-configure-runtime/",
   "/docs/dashboards/gitops-apps-dashboard/": "/gitops/dashboards/gitops-apps-dashboard/",
-  "/docs/installation/gitops/gitops-values-yaml-validation/": "/gitops/dashboards/gitops-values-yaml-validation/"
+  "/docs/installation/gitops/gitops-values-yaml-validation/": "/gitops/dashboards/gitops-values-yaml-validation/",
+  "/docs/installation/gitops/runtime-argocd-admin-api-token/": "/gitops/gitops-runtimes/runtime-argocd-admin-api-token/"
 }

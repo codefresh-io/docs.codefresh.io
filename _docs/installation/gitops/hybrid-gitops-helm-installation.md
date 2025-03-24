@@ -25,12 +25,6 @@ To install the GitOps Runtime:
 ## Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
-* Git provider requirements:
-    * [Git Runtime token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) which you need to supply as part of the Helm install command
-    * [Git user token with the required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens) to authorize Git-based actions per user
-    {% if page.collection != site.gitops_collection %} 
-    * Server URLs for on-premises Git providers
-    {% endif %}
 * For ingress-based and service-mesh based Runtimes only, verify that these ingress controllers are configured correctly:
   * [Ambassador ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#ambassador-ingress-configuration)
   * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#aws-alb-ingress-configuration)
@@ -280,7 +274,8 @@ Depending on your configuration:
 By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
-{% if page.url != "argohub" %}
+
+{% if page.collection != site.gitops_collection %}
 ## Optional GitOps Runtime configuration
 
 ### Image overrides for private registries
@@ -311,7 +306,6 @@ global:
             ...
             -----END CERTIFICATE-----
 {% endhighlight yaml %}
-
 
 {% endif %}
 
