@@ -100,6 +100,7 @@
   "/docs/gitops-quick-start/create-app-ui/": "/gitops/gitops-quick-start/create-app-ui/",
   "/docs/gitops-quick-start/create-codefresh-account/": "/gitops/gitops-quick-start/create-codefresh-account/",
   "/docs/gitops-quick-start/quick-start-configure-runtime/": "/gitops/gitops-quick-start/quick-start-configure-runtime/",
+  "/docs/gitops-quick-start/quick-start-install-runtime/": "/gitops/gitops-quick-start/quick-start-install-runtime/",
   "/docs/gitops-quick-start/dependency-multi-env-promotion/": "/gitops/gitops-quick-start/dependency-multi-env-promotion/",
   "/docs/gitops-quick-start/drag-and-drop/": "/gitops/gitops-quick-start/drag-and-drop/",
   "/docs/gitops-quick-start/gitops-quick-start/": "/gitops/gitops-quick-start/gitops-quick-start/",
