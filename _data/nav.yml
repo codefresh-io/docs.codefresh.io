@@ -607,8 +607,6 @@
           url: "/runtime-prerequisites"
         - title: Argo CD Admin API token
           url: "/runtime-argocd-admin-api-token"        
-        - title: Ingress configuration
-          url: "/runtime-ingress-configuration"  
         - title: Install GitOps Runtime with existing Argo CD
           url: "/runtime-install-with-existing-argo-cd"                       
         - title: Install GitOps Runtime with new Argo CD
@@ -621,6 +619,10 @@
           url: "/gitops-values-yaml-validation"  
         - title: Configure GitOps Runtime 
           url: "/runtime-configuration" 
+        - title: Ingress and service-mesh access modes
+          url: "/runtime-install-ingress-service-mesh-access-mode"   
+        - title: Ingress configuration
+          url: "/runtime-ingress-configuration" 
         - title: Migrating GitOps Runtimes from CLI to Helm
           url: "/migrate-cli-runtimes-helm"  
         - title: Shared Configuration Repository
