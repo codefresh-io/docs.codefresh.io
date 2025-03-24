@@ -81,7 +81,7 @@ collections:
   pages:
     output: true
     permalink: /:collection/:path
-  argohub:
+  gitops:
     output: true
     permalink: /:collection/:path/
   docs:
@@ -112,12 +112,12 @@ defaults:
       layout: docs
       toc: true
       wide: true
-  # _argohub
+  # _gitops
   - scope:
-      path: "_argohub"
-      type: argohub
+      path: "_gitops"
+      type: gitops
     values:
-      layout: argohub
+      layout: gitops
       toc: true
       wide: true
 
@@ -141,7 +141,7 @@ link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
 link_community:       "https://community.codefresh.io/"
 
-gitops_collection:     "argohub"
+gitops_collection:     "gitops"
 
 ga_tracking_code:     "UA-53554200-2"
 

@@ -18,7 +18,7 @@
       {%- assign link_slug = link.title | slugify -%}
     {% endif %}
 
-    {% assign group_url = site.baseurl | append: '/argohub/' | append: group_slug | append: '/' %}
+    {% assign group_url = site.baseurl | append: '/gitops/' | append: group_slug | append: '/' %}
 
     {%- assign active = nil -%}
 
@@ -38,7 +38,7 @@
       <ul class="nav bd-sidenav">
         {%- for doc in navItem.pages -%}
 
-          {% if doc.url contains '/argohub/'%}
+          {% if doc.url contains '/gitops/'%}
             {% assign doc_disabled = true %}
           {% else %}
             {% assign doc_disabled = false %}
@@ -73,7 +73,7 @@
               <ul class="nav bd-sidenav">
                 {%- for sub_doc in doc.sub-pages -%}
 
-                  {% if sub_doc.url contains '/argohub/'%}
+                  {% if sub_doc.url contains '/gitops/'%}
                     {% assign subdoc_disabled = true %}
                   {% else %}
                     {% assign subdoc_disabled = false %}
