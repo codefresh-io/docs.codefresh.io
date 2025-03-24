@@ -14,13 +14,15 @@
   links:
     - title: About GitOps quick starts
       localurl: /gitops/gitops-quick-start/gitops-quick-start/
-    - title: Create Codefresh account
+    - title: Creating a Codefresh account
       localurl: /gitops/gitops-quick-start/create-codefresh-account/
-    - title: Installing a Hybrid GitOps Runtime
-      localurl: /gitops/gitops-quick-start/runtime/
-    - title: Creating Products and applications
+    - title: Installing a  GitOps Runtime
+      localurl: /gitops/gitops-quick-start/quick-start-install-runtime/
+    - title: Configuring a  GitOps Runtime
+      localurl: /gitops/gitops-quick-start/quick-start-configure-runtime/
+    - title: Creating products and applications
       localurl: /gitops/gitops-quick-start/create-app-ui/
-    - title: Creating Environments
+    - title: Creating environments
       localurl: /gitops/gitops-quick-start/quick-start-gitops-environments/
     - title: Creating Promotion Workflows
       localurl: /gitops/gitops-quick-start/quick-start-promotion-workflow/
@@ -28,16 +30,20 @@
       localurl: /gitops/gitops-quick-start/drag-and-drop/
     - title: Simple Promotion Flow with multiple environments
       localurl: /gitops/gitops-quick-start/multi-env-sequential-flow/ 
+    - title: Advanced Promotion Flow with Promotion Workflows
+      localurl: /gitops/gitops-quick-start/policy-multi-env-promotion/
+    - title: Advanced Promotion Flow with environment dependencies
+      localurl: /gitops/gitops-quick-start/dependency-multi-env-promotion
 
 - title: Environments
   icon: ../images/home-icons/environments.svg
   url: ""
   links:
-    - title: About Environments
+    - title: About environments
       localurl: /gitops/environments/environments-overview/
-    - title: Create and manage Environments
+    - title: Create and manage environments
       localurl: /gitops/environments/create-manage-environments/      
-    - title: Manage Products and applications in Environments
+    - title: Manage Products and applications in environments
       localurl: /gitops/environments/manage-apps-in-environments/   
 
 - title: Products
@@ -54,7 +60,7 @@
       localurl: /gitops/products/assign-applications/      
     - title: Configuring app version and promoted properties
       localurl: /gitops/products/promotion-version-properties/
-    - title: Configuring promotion flows
+    - title: Selecting Promotion Flows
       localurl: /gitops/products/promotion-flow-triggers/   
 
 
@@ -83,8 +89,8 @@
     - title: Promotion setup guidelines
       localurl: /gitops/promotions/create-promotion-sequence/
     - title: YAML specs
-      localurl: /gitops/promotions/entities/yaml/
-    - title: Trigger promotions
+      localurl: /gitops/promotions/yaml/
+    - title: Triggering promotions
       localurl: /gitops/promotions/trigger-promotions/ 
     - title: Tracking releases for products
       localurl: /gitops/promotions/product-releases/

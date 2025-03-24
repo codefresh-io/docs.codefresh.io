@@ -1,6 +1,6 @@
 ---
-title: "Assigning applications to Products"
-description: "Manually or declaratively connect applications to Products"
+title: "Assigning applications to products"
+description: "Manually or declaratively connect applications to products"
 group: products
 toc: true
 ---
@@ -9,7 +9,7 @@ After creating a product, the next step is to assign applications to it.
 Assigning applications to a product groups these applications into a single cohesive entity, making it easier to manage promotions and deployments.
 
 ## Methods for assigning applications
-There are three methods of assigning applications to a product:
+There are three methods of assigning applications to a product: during application creation, through declarative or manual assignment.
 
 ### Assignment during application creation
 When creating an application, in the Configuration tab, select an existing product or create a new one.

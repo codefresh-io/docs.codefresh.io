@@ -1,5 +1,5 @@
 ---
-title: "GitOps Environments dashboard"
+title: "Environments dashboard"
 description: "Create environments to track SDLC for Argo CD applications"
 group: dashboards
 toc: true
