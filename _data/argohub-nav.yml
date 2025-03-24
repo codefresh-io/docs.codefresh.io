@@ -12,13 +12,13 @@
   pages:
     - title: About GitOps quick starts
       url: "/gitops-quick-start"
-    - title: Create Codefresh account
+    - title: Creating a Codefresh account
       url: "/create-codefresh-account"
     - title: Installing the GitOps Runtime
       url: "/quick-start-install-runtime"
     - title: Configuring the GitOps Runtime
       url: "/quick-start-configure-runtime"
-    - title: Creating Products and applications
+    - title: Creating products and applications
       url: "/create-app-ui"
     - title: Creating Environments
       url: "/quick-start-gitops-environments"

@@ -16,7 +16,7 @@ Once you have created a Codefresh account, you can add any number of users to co
 For Codefresh on-premises, see [On-premises account & user setup]({{site.baseurl}}/docs/installation/on-premises/on-prem-configuration/).
 {% endif %}
 
-You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an orgranization.
+You can then create teams in Codefresh to group users who share a common denominator, such as the same permissions, access to the same functionality, or roles. Teams make it easy for administrators to both define and manage items shared by multiple users in an organization.
 
 ## Users in Codefresh
 
@@ -25,9 +25,12 @@ Adding a user to an account requires assigning a role to define access to accoun
 * **Role**: Defines the user's access level to the resources in the account.  
   * **User**: The default. With this role, users can work with repositories and entities, but cannot change configuration settings.
   * **Administrator**: With this role, users have full access to accounts, and can change all settings, so make sure that they are trusted colleagues.
-  For guidelines on access control, see {% if page.collection != site.gitops_collection %}[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) and [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/){% endif %}{% if page.collection == site.gitops_collection %}ops_collection %}
-[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
-{% endif %}.  
+  {% if page.collection != site.gitops_collection %}
+  For guidelines on access control, see [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) and [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/). 
+  {% endif %}
+  {% if page.collection == site.gitops_collection %}
+  For guidelines on access control, see [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/).
+  {% endif %}
 * **SSO**: By default, SSO is not enabled for users. If required, explicitly select the SSO provider. For an overview of SSO, see [About Federated Single Sign-on]({{site.baseurl}}/docs/administration/single-sign-on/).
 
 ### Add a user to a Codefresh account
@@ -132,8 +135,8 @@ As an administrator, you can optionally define session timeouts to automatically
 
 ## Related articles
 [Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
-{% if page.collection != site.gitops_collection %}
-[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
 [Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 [Setting up OAuth authentication for Git providers]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup)  
-
+{% if page.collection != site.gitops_collection %}
+[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) 
+{% endif %}

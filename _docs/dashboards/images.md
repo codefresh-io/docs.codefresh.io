@@ -1,8 +1,7 @@
 ---
-title: "Images in Codefresh"
+title: "Images dashboard"
 description: ""
 group: deployments
-sub_group: gitops
 toc: true
 ---
 

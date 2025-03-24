@@ -1,5 +1,5 @@
 ---
-title: "GitOps Products"
+title: "Products dashboard"
 description: "Create Products to group and manage interrelated Argo CD applications environments"
 group: dashboards
 toc: true
