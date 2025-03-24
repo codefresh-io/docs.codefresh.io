@@ -5,7 +5,7 @@ group: products
 toc: true
 ---
 
-## Promotion Flows for roducts
+## Promotion Flows for products
 A Promotion Flow in Codefresh GitOps defines the steps, validations, and conditions required to promote a product and its applications from one environment to another.  
 
 By selecting Promotion Flows for a product you can choose the most relevant flows for its deployment strategy.By configuring trigger conditions for each Flow, you can structure promotions for the product, tailored to its needs, improving deployment consistency and efficiency.
