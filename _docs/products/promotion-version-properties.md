@@ -1,5 +1,5 @@
 ---
-title: "Configuring version and promotable properties for Products"
+title: "Configuring version and promotable properties for products"
 description: "Configure application version and properties to promote for products"
 group: products
 toc: true

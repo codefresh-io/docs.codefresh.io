@@ -106,5 +106,6 @@ If you haven't configured your clusters with the required IPs, use the links bel
 {% if page.collection != site.gitops_collection %}
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
 {% endif %}
-[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Codefresh platform architecture]({{site.baseurl}}/docs/installation/installation-options/)   
+[Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)   
+[Installing GitOps Runtimes with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+
