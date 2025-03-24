@@ -20,7 +20,7 @@
       url: "/quick-start-configure-runtime"
     - title: Creating products and applications
       url: "/create-app-ui"
-    - title: Creating Environments
+    - title: Creating environments
       url: "/quick-start-gitops-environments"
     - title: Creating Promotion Workflows
       url: "/quick-start-promotion-workflow"  
