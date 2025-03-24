@@ -66,7 +66,9 @@
     - title: System requirements
       url: "/runtime-system-requirements" 
     - title: Prerequisites
-      url: "/runtime-prerequisites"      
+      url: "/runtime-prerequisites"    
+    - title: Argo CD Admin API token
+      url: "/runtime-argocd-admin-api-token"         
     - title: Ingress configuration
       url: "/runtime-ingress-configuration" 
     - title: Install GitOps Runtime with existing Argo CD
