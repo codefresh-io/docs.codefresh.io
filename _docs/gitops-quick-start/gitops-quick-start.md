@@ -31,7 +31,7 @@ We've provided a GitHub repository with all the applications and resources used 
 
 
 ## Creating GitOps entities for promotions
-* [Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
+* [Creating products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
   Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
 
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  

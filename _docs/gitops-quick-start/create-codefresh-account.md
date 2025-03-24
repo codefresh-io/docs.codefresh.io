@@ -1,6 +1,6 @@
 ---
-title: "Creating a Codefresh account"
-description: "Start working in Codefresh"
+title: "Quick start: Creating a Codefresh account"
+description: "Create a Codefresh account and start working in Codefresh"
 group: gitops-quick-start
 toc: true
 ---
