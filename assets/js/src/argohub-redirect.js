@@ -23,14 +23,13 @@ async function getArgoHubRedirectURL(currentPath) {
 }
 
 async function handleRedirect() {
-  const currentPath = location.pathname;
-
-  if (currentPath.includes(ARGOHUB_MAIN_PATH)) return;
+  if (SITE_IS_GITOPS_COLLECTION) return;
 
   const isEnterpriseDocumentationCookieSet = checkIfEnterpriseDocumentationCookieSet()
   if (isEnterpriseDocumentationCookieSet) return;
 
-  const argoHubRedirectURL = await getArgoHubRedirectURL(currentPath);
+
+  const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
   if (!argoHubRedirectURL) return;
 
   window.location.href = argoHubRedirectURL;

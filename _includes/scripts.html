@@ -1,6 +1,7 @@
 <script>
   const SITE_BASE_URL = "{{ site.baseurl }}";
   const SITE_GITOPS_COLLECTION = "{{ site.gitops_collection }}";
+  const SITE_IS_GITOPS_COLLECTION = "{{ page.collection }}" === "{{ site.gitops_collection }}";
 </script>
 <script src="{{ site.baseurl }}/assets/js/src/argohub-redirect.js"></script>
 
