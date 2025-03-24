@@ -21,9 +21,9 @@
       url: "/gitops-quick-start"
     - title: Creating a Codefresh account
       url: "/create-codefresh-account"
-    - title: Installing the GitOps Runtime
+    - title: Installing a GitOps Runtime
       url: "/quick-start-install-runtime"
-    - title: Configuring the GitOps Runtime
+    - title: Configuring a GitOps Runtime
       url: "/quick-start-configure-runtime"
     - title: Creating products and applications
       url: "/create-app-ui"
