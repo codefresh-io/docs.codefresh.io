@@ -6,23 +6,24 @@ toc: true
 
 
 ## Argo CD admin API token
-The GitOps Runtime needs an Argo CD Admin API token to communicate with your Argo CD instance. You need to provide this token during Runtime installation.
-If you don't have an Argo CD Admin API token, you can generate one from the Argo CD UI or the Argo CD CLI as described below.
+When installing the GitOps Runtime with an existing Argo CD instance, the Runtime must authenticate to Argo CD. It does this using an Argo CD Admin API token, which you must provide during installation.
 
-Codefresh GitOps supports [token-based or a username-password-based authentication](#authentication-mechanisms-for-existing-argo-cd) mechanisms for GitOps Runtimes. 
+If you don't have an Argo CD Admin API token, generate one from the Argo CD UI or CLI as described below.
+
+Codefresh GitOps supports both [token-based or a username-password-based authentication](#authentication-methods-for-existing-argo-cd) mechanisms for GitOps Runtimes. 
 
 
 
 ## Generating Argo CD Admin API token
 Follow these steps to generate an Argo CD Admin API token:
-[Verify Argo CD account privileges](#verify-argo-cd-account-privileges)
-[Enable `apikey` privilege for Argo CD account](#enable-apikey-privilege-for-argo-cd-account)
-[Generate Argo CD Admin API token](#generate-argo-cd-admin-api-token)
+1. [Verify Argo CD account privileges](#verify-argo-cd-account-privileges)
+1. [Enable `apikey` privilege for Argo CD account](#enable-apikey-privilege-for-argo-cd-account)
+1. [Generate Argo CD Admin API token](#generate-argo-cd-admin-api-token)
 
 ### Verify Argo CD account privileges
-Verify that The admin account or the account you use for token generation must have these privileges:
-* `apiKey` to enable API token generation
-* `login` to enable login from the UI
+Ensure that the admin account or the account used for token generation has the following privileges:
+* `apiKey`: Enables API token generation
+* `login`: Enables UI login 
 
 ##### How to
 1. From the Argo CD Dashboard, go to **Settings > Accounts**.
@@ -43,7 +44,7 @@ Verify that The admin account or the account you use for token generation must h
 1. Continue with [Enable `apikey` privilege for Argo CD account](#enable-apikey-privilege-for-argo-cd-account).
 
 ### Enable `apikey` privilege for Argo CD account
-If the account does not include the `apikey` privilege, enable it using either the ConfigMap or the Helm values file, depending on how you installed Argo CD.
+If the account does not include the `apikey` privilege, enable it in either the ConfigMap or the Helm values file, depending on your Argo CD installation method.
 
 ##### Update argocd-cm ConfigMap
 Edit the `argocd-cm` ConfigMap. 
@@ -73,9 +74,9 @@ Refresh the Dashboard and verify the account has been updated with the new privi
 If needed, [generate the Argo CD Admin API token](#generate-argo-cd-admin-api-token).
 
 ### Generate Argo CD Admin API token
-Generate the Argo CD Admin API token via the Argo CD Dashboard or via the Argo CD CLI.
+Generate the Argo CD Admin API token using the Argo CD Dashboard or CLI.
 
-##### Generate via Dashboard
+##### Generate via Admin API token Dashboard
 1. Go to **Settings > Accounts**.
 1. Click the account enabled with `apiKey` privilege.
 1. In **Tokens** section, click **Generate New**.
@@ -95,15 +96,15 @@ Generate the Argo CD Admin API token via the Argo CD Dashboard or via the Argo C
 1. Copy the generated token and store it securely. 
   You will need to paste it into the Argo CD Admin API token field during installation. 
 
-##### Generate via CLI
+##### Generate via Admin API token CLI
 `argocd account generate-token --account admin`
 
-For the complete CLI reference, see the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:"\_blank"} command.
+For details, see the [argocd account generate-token](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_account_generate-token/){:"\_blank"} command.
 
-## Authentication mechanisms for existing Argo CD  
+## Authentication methods for existing Argo CD  
 The GitOps Runtime authenticates with the external Argo CD instance using either a token or a username-password combination.  
 
-The installation wizard supports API token-based authentication, allowing you to paste the API token directly.  
+The installation wizard supports API token-based authentication, allowing you to paste the API token directly into the Argo CD Admin API token field.  
 You can also configure authentication by referencing a token secret or using a username-password combination.
 
 
@@ -115,7 +116,7 @@ You can:
 OR  
 * Reference a Kubernetes secret containing the token
     * The secret must already exist and include a key with a valid, non-expiring `argo-cd apiKey`  
-    * The system injects the key into the required services<!---, including App Proxy (`app-proxy`), Source Server (`sources-server`), Event Reporter (`event-reporter`), and GitOps Operator (`gitops-operator`)-->.  
+    * The system injects the key into the required services that the Runtime connects to, including App Proxy (`app-proxy`), Source Server (`sources-server`), Event Reporter (`event-reporter`), and GitOps Operator (`gitops-operator`).  
 
 ##### Example: Referencing a token secret in `values.yaml` file
   
@@ -165,3 +166,5 @@ global:
         name: "secret-name"
         key: "secret-key"
 ```
+## Related articles
+[Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
