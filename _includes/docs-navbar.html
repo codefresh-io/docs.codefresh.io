@@ -59,9 +59,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ site.pricing }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Pricing');" target="_blank" rel="noopener">Pricing</a>
         </li>
-<!--        <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">-->
-<!--          <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>-->
-<!--        </li>-->
+        <li class="nav-item bulb bulb-red" data-bulb-text="LIVE">
+          <a class="nav-link" href="{{ site.schedule_demo }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Schedule Demo');" target="_blank" rel="noopener">Schedule demo</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ site.codefresh_login }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Login');" target="_blank" rel="noopener">Login</a>
         </li>
@@ -91,8 +91,12 @@
         -->
         {% endcomment %}
       </ul>
+    </div>
+  - <!-- </div>
+    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" style="background-color: #212437; border-color: #212437; color: #5FFFBF; font-weight: 500">View Codefresh Docs</a>
+  </div> -->
 
-      {% if page.layout != "home" %}
+    {% if page.layout != "home" %}
       <button
         onclick="window.CommandBar.openHelpHub(); setTimeout(() => {
           document.querySelector('input[data-testid=helphub-input]').focus()
@@ -107,9 +111,5 @@
         </div>
         <span class="helpbub-toggler--hotkey">Ctrl / &#8984; + K</span>
       </button>
-      {% endif %}
-    </div>
-  - <!-- </div>
-    <a class="btn btn-primary order-2 order-md-2" href="https://codefresh.io/docs/" style="background-color: #212437; border-color: #212437; color: #5FFFBF; font-weight: 500">View Codefresh Docs</a>
-  </div> -->
+    {% endif %}
 </header>
