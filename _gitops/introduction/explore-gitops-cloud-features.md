@@ -5,7 +5,7 @@ group: introduction
 toc: true
 ---
 
-[Codefresh GitOps Cloud]({{site.baseurl}}/argohub/introduction/what-is-gitops-cloud/) transforms how teams manage deployments. It brings application and environment promotion to Argo CD, making it fast and easy to promote software changes securely.
+[Codefresh GitOps Cloud]({{site.baseurl}}/{{site.gitops_collection}}/introduction/what-is-gitops-cloud/) transforms how teams manage deployments. It brings application and environment promotion to Argo CD, making it fast and easy to promote software changes securely.
 
 Below, we’ll explore some of the key features of Codefresh GitOps Cloud.
 
