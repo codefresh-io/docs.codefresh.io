@@ -67,8 +67,6 @@
       url: "/runtime-system-requirements" 
     - title: Prerequisites
       url: "/runtime-prerequisites"      
-    - title: Ingress configuration
-      url: "/runtime-ingress-configuration" 
     - title: Install GitOps Runtime with existing Argo CD
       url: "/runtime-install-with-existing-argo-cd"              
     - title: Install GitOps Runtime with new Argo CD
@@ -76,7 +74,11 @@
     - title: Configure GitOps Runtime 
       url: "/runtime-configuration" 
     - title: Runtime values file validation
-      url: "/gitops-values-yaml-validation"       
+      url: "/gitops-values-yaml-validation"   
+    - title: Ingress and service-mesh access modes
+      url: "/runtime-install-ingress-service-mesh"    
+    - title: Ingress configuration
+      url: "/runtime-ingress-configuration"     
     - title: Shared Configuration Repository
       url: "/shared-configuration"
     - title: Configuration Runtimes

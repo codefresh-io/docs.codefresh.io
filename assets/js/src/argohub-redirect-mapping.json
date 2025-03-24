@@ -119,5 +119,6 @@
   "/docs/environments/manage-apps-in-environments/": "/argohub/environments/manage-apps-in-environments/",
   "/docs/gitops-quick-start/quick-start-configure-runtime/": "/argohub/gitops-quick-start/quick-start-configure-runtime/",
   "/docs/dashboards/gitops-apps-dashboard/": "/argohub/dashboards/gitops-apps-dashboard/",
-  "/docs/installation/gitops/gitops-values-yaml-validation/": "/argohub/dashboards/gitops-values-yaml-validation/"
+  "/docs/installation/gitops/gitops-values-yaml-validation/": "/argohub/dashboards/gitops-values-yaml-validation/",
+  "/docs/installation/gitops/runtime-install-ingress-service-mesh/": "/argohub/gitops-runtimes/runtime-install-ingress-service-mesh/"
 }

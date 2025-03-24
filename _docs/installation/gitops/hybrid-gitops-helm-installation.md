@@ -31,13 +31,6 @@ To install the GitOps Runtime:
     {% if page.collection != site.gitops_collection %} 
     * Server URLs for on-premises Git providers
     {% endif %}
-* For ingress-based and service-mesh based Runtimes only, verify that these ingress controllers are configured correctly:
-  * [Ambassador ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#aws-alb-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#traefik-ingress-configuration)
 
 
 
@@ -115,16 +108,18 @@ Generate the API key to automatically include it in the Runtime Install command.
 
 
 ### Access modes
-The GitOps Runtime supports these access modes: 
-* **Tunnel-based (default)**: The default access mode when other access mode are not specified. Does not require additional configuration. 	
-* **Ingress-based**: Uses an ingress controller. May require pre- and post-installation configuration.	See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
-* **Service-mesh-based**: Requires explictly disabling tunnel-based and ingress-based access modes. May require pre- and post-installation configuration. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
+The GitOps Runtime is installed by default with the tunnel-based access mode which does not require any additional configuration. 
 
-### Install Runtime command
-The Install Runtime Command differs based on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
+The Runtime supports two additional access modes:
+* **Ingress-based**: Uses an ingress controller. 
+* **Service-mesh-based**: Requires explictly disabling tunnel-based and ingress-based access modes. 
+Both these access modes require _pre- and post-installation configuration, and  additional flags in the Install Runtime command_.	If you want to use either of these access modes, see [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}/docs/installation/gitops/runtime-install-ingress-service-mesh/).
+
+### Install Runtime command and parameters
+The Install Runtime Command is valid for to the default tunnel-based access mode.<br>
 
 
-##### Tunnel-based install chart command
+##### Default tunnel-based install chart command
 {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
   --create-namespace \
@@ -137,7 +132,7 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 
 
-##### Ingress-based install chart command
+<!--- ##### Ingress-based install chart command
 {% highlight yaml %}
 helm upgrade --install <helm-release-name> \
   --create-namespace \
@@ -165,8 +160,8 @@ helm upgrade --install <helm-release-name> \
   --wait  
 {% endhighlight %}
 
-
-### Install command parameters
+-->
+##### Install command parameters
 
 | Parameter | Description |
 |-----------|------------|
@@ -176,18 +171,10 @@ helm upgrade --install <helm-release-name> \
 | `<codefresh-api-key>` | API key used for authentication. You can use an existing key or generate a new one. Automatically populated in the command when generated. |
 | `<runtime-name>` | Name of the GitOps Runtime. Default is `codefresh`, or a custom name you define. |
 | `gitops-runtime` | Chart name defined by Codefresh. Cannot be changed. |
-| **Ingress-based parameters** | |
-| `global.runtime.ingress.enabled=true` | Mandatory for ingress-based Runtimes. Indicates the runtime is ingress-based. |
-| `<ingress-host>` | IP address or hostname of the ingress controller. Mandatory for ingress-based Runtimes. |
-| `<ingress-class>` | Ingress class of the ingress controller (e.g., `nginx` for the NGINX ingress controller). Mandatory for ingress-based Runtimes. |
-| **Service-mesh-based parameters** | |
-| `global.runtime.ingressUrl=<ingress-url>` | Ingress URL that serves as the entry point to the cluster. |
-| `global.runtime.ingress.enabled=false` | Disables ingress-based access mode. |
-| `tunnel-client.enabled=false` | Disables tunnel-based access mode. |
 | `--wait` | Optional. The duration the installation process waits for all pods to become ready before timing out. Recommend to set it to a period longer than 5 minutes which is the default if not set. |
 
 
-### Step 4: Completing Installation
+## Step 4: Completing Installation
 After installation, you can:
 * Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
 OR
@@ -213,7 +200,7 @@ After installation, go to **GitOps Runtimes > List View**:
   max-width="60%"
 %}
 
-### Step 5: (Optional) Configure ingress-controllers/service meshes
+## Step 5: (Optional) Configure ingress-controllers/service meshes
 Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
 
 * Complete configuring these ingress controllers:
