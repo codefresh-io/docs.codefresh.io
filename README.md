@@ -76,6 +76,8 @@ For more details, refer to the "Auto Redirect from Enterprise to ArgoHub Collect
 
 #### To switch segments in local development:
 
+In the local documentation site (`http://localhost:3131/`), open the console in developer tools and inject the appropriate cookie:
+
 - **Switch to Enterprise Segment:**
    ```js
    document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=2592000; Path=/';
