@@ -83,7 +83,7 @@
     - title: Promotion setup guidelines
       localurl: /gitops/promotions/create-promotion-sequence/
     - title: YAML specs
-      localurl: /gitops/promotions/entities/yaml/
+      localurl: /gitops/promotions/yaml/
     - title: Trigger promotions
       localurl: /gitops/promotions/trigger-promotions/ 
     - title: Tracking releases for products
