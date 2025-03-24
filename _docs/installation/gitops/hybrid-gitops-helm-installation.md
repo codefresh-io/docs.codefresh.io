@@ -280,7 +280,8 @@ Depending on your configuration:
 By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
 
-{% if page.url != "argohub" %}
+
+{% if page.collection != site.gitops_collection %}
 ## Optional GitOps Runtime configuration
 
 ### Image overrides for private registries
@@ -311,7 +312,6 @@ global:
             ...
             -----END CERTIFICATE-----
 {% endhighlight yaml %}
-
 
 {% endif %}
 
