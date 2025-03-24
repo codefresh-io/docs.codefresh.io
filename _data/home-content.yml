@@ -210,7 +210,9 @@
       localurl: /docs/installation/installation-options/on-premises/codefresh-on-prem-upgrade/
     - title: Codefresh Runner installation
       localurl: /docs/installation/runner/
-    - title: Hybrid GitOps Runtime installation
+    - title: Install GitOps Runtime with existing Argo CD
+      localurl: /docs/installation/gitops/runtime-install-with-existing-argo-cd/
+    - title: Install GitOps Runtime with new Argo CD
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
       localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/

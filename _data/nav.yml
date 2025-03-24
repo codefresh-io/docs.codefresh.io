@@ -385,7 +385,7 @@
           url: "/monitor-applications"
         - title: Managing Argo CD applications
           url: "/manage-application"
-        - title: Progressive delivery with GitOps
+        - title: Argo Rollouts on managed clusters
           url: "/install-argo-rollouts"
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
@@ -603,8 +603,10 @@
           url: "/runtime-concepts"
         - title: System requirements
           url: "/runtime-system-requirements"    
-        - title: Prerequisites
-          url: "/runtime-prerequisites"     
+        - title: Prerequisites     
+          url: "/runtime-prerequisites"
+        - title: Argo CD Admin API token
+          url: "/runtime-argocd-admin-api-token"        
         - title: Install GitOps Runtime with existing Argo CD
           url: "/runtime-install-with-existing-argo-cd"                       
         - title: Install GitOps Runtime with new Argo CD
@@ -612,11 +614,11 @@
         - title: Install GitOps Runtime alongside Community Argo CD
           url: "/argo-with-gitops-side-by-side"        
         - title: On-premises GitOps Runtime
-          url: "/on-prem-gitops-runtime-install"
-        - title: Runtime values file validation
-          url: "/gitops-values-yaml-validation"  
+          url: "/on-prem-gitops-runtime-install
         - title: Configure GitOps Runtime 
           url: "/runtime-configuration" 
+        - title: Runtime values file validation
+          url: "/gitops-values-yaml-validation"  
         - title: Ingress and service-mesh access modes
           url: "/runtime-install-ingress-service-mesh"    
         - title: Ingress configuration
