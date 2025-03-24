@@ -234,7 +234,7 @@
       url: "/monitor-applications"
     - title: Managing Argo CD applications
       url: "/manage-application"
-    - title: Progressive delivery with GitOps
+    - title: Argo Rollouts on managed clusters
       url: "/install-argo-rollouts"
     - title: Troubleshooting Argo CD applications
       url: "/troubleshooting-gitops-apps"
