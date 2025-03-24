@@ -6,7 +6,7 @@ toc: true
 
 Before installing the GitOps Runtime, ensure your environment meets the necessary system requirements, such as the Kubernetes cluster server version and minimum resource requirements needed for a smooth and successful installation. 
 
-Depending on your installation mode, you also need to complete the [prerequisites]({{site.basseurl}}/docs/installation/gitops/runtime-prerequisites/) before installing the Runtime.
+Depending on your installation mode, you also need to complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/) before installing the Runtime.
 
 ## Minimum system requirements
 
