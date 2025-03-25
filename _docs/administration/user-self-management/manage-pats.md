@@ -27,17 +27,18 @@ If you have access to more than one GitOps Runtime in the same or in different a
   For OAuth2, the administrator pre-configures the permissions and expiry date. Once you supply your credentials for authorization, you are automatically directed to the Git Personal Tokens page. 
 
 ##### Before you begin  
-
-Make sure you have:  
 {% if page.collection != site.gitops_collection %}
+Make sure you have:  
 * For Bitbucket only, your Bitbucket account username
-{% endif %}
 * If needed, a _user access token_ from your Git provider with the required scopes:
   * [GitHub](#generate-github-user-access-tokens)
-  {% if page.collection != site.gitops_collection %}
   * [GitLab](#generate-gitlab-user-access-tokens)
   * [Bitbucket](#generate-bitbucket-user-access-tokens)
-  {% endif %}
+{% endif %}
+
+{% if page.collection== site.gitops_collection %}
+* Make sure you have a _user access token_ with the required scopes for [GitHub](#generate-github-user-access-tokens)
+{% endif %}
 
 ##### How to
 1. In the Codefresh UI, on the toolbar, click your avatar, and then select **Git Personal Access Token**.
