@@ -40,6 +40,9 @@ The Git provider you select for the first GitOps Runtime applies to all Runtimes
 ### Shared Configuration Repository
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository which stores configuration manifests shared between all the GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
+>**NOTE**:  
+The Shared Configuration Repository and Git provider are configured once per account and are not required for additional Runtimes within the same account.
+
 You can specify only the repository URL, or add the path, reference a branch, or both:
 
 `<repo_url>.git[/<path>][?ref=<branch>]`
@@ -195,7 +198,7 @@ resource "helm_release" "my_gitops_runtime" {
 
 Feel free to use a different chart version and a unique name for the Runtime. You can get the values for both the Codefresh API token and account ID from the Codefresh UI as explained in the previous section.
 
-The example is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in [Step 3: Install Hybrid GitOps Runtime](#step-3-install-hybrid-gitops-runtime).
+The example is valid for the tunnel-based access mode. For ingress-based or service-mesh-based access modes, add the required arguments and values, as described in [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/).
 
 Depending on your configuration:  
 * If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration](#optional-gitops-runtime-configuration) in this article. 

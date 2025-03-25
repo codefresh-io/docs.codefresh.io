@@ -138,6 +138,9 @@ helm upgrade --install <helm-release-name> \
 | `<codefresh-api-key>` | API key used for authentication. You can use an existing key or generate a new one. Automatically populated in the command when generated. |
 | `<runtime-name>` | Name of the GitOps Runtime. Default is `codefresh`, or a custom name you define. |
 | `gitops-runtime` | Chart name defined by Codefresh. Cannot be changed. |
+|`argo-cd.fullnameOverride=codefresh-argo-cd` | _Mandatory_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.|
+| `argo-rollouts.fullnameOverride=codefresh-argo-rollouts`| _Mandatory_ when you have Argo Rollouts in your cluster to avoid conflicts. |
+| `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label`| _Mandatory_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.|
 | `--wait` | Optional. The duration the installation process waits for all pods to become ready before timing out. Recommend to set it to a period longer than 5 minutes which is the default if not set. |
 
 

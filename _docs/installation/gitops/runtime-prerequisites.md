@@ -31,30 +31,21 @@ This table lists the prerequisites for installing a GitOps Runtime, depending on
 | [Verify Argo CD root path configuration](#verify-argo-cd-root-path-configuration-existing-argo-only) | ✅ | - | 
 {% endif %}
 
-{% if page.collection == site.gitops_collection %}
-## Remove Argo Project and SealedSecret components 
-For GitOps Runtime installation with _an existing Argo CD instance, the target cluster should not have_:
-* Argo Project components: 
-  * Argo Workflows
-  * Argo Events
-  * Argo Rollouts
-* SealedSecret controller components
-{% endif %}
 
-{% if page.collection != site.gitops_collection %}
 ## Remove Argo Project and SealedSecret components 
 For GitOps Runtime installation, the _target cluster should not have_:
 * SealedSecret controller components
 * For an _existing Argo CD instance_:
-  * Argo Workflows
   * Argo Events
   * Argo Rollouts
+  * Argo Workflows
 * For a _new Argo CD instance_:
-  * Argo Rollouts
   * Argo CD
   * Argo Events
+  * Argo Rollouts 
   * Argo Workflows
 
+{% if page.collection != site.gitops_collection %}
 ## Switch ownership of Argo Project CRDs
 If you have Argo Project CRDs on your cluster, you must decide how to manage them when installing the GitOps Runtime.  
 The table below lists the options available depending on your installation mode. 
@@ -233,6 +224,7 @@ When installing a GitOps Runtime alongside an existing Argo CD instance, ensure 
 
 
 ## Related articles
+[GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/)  
 [Ingress configuration for Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/)  
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
 [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  

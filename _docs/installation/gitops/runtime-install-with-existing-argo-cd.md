@@ -38,6 +38,10 @@ The Git provider you select for the first GitOps Runtime applies to all Runtimes
 ### Shared Configuration Repository
 The [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) is a Git repository which stores configuration manifests shared between all the GitOps Runtimes within the same account. Codefresh identifies the Git provider from the URL of the Shared Configuration Repo, and for cloud providers, automatically populates the Git Provider and the API URL fields.
 
+>**NOTE**:  
+The Shared Configuration Repository and Git provider are configured once per account and are not required for additional Runtimes within the same account.
+
+
 You can specify only the repository URL, or add the path, reference a branch, or both:
 
 `<repo_url>.git[/<path>][?ref=<branch>]`
@@ -81,7 +85,7 @@ If you define a custom name, it must:
 If you are installing an additional Runtime in the same account, the Runtime name _must be unique_.
 
 ### Namespace
-The namespace where the GitOps Runtime is installed, _**which must be the same namespace as the Argo CD instance_**.
+The namespace where the GitOps Runtime is installed, **which must be the same namespace as the Argo CD instance**.
 
 ### Argo CD Admin API token
 The API token used by the GitOps Runtime to authenticate with the Argo CD instance. If you don't have an Argo CD Admin API token, you can generate it in the Argo CD UI or through the CLI. See [Argo CD Admin API token](#argo-cd-admin-api-token).
@@ -199,6 +203,6 @@ resource "helm_release" "my_gitops_runtime" {
 [Configuring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/)  
 [Upgrading GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#upgrade-gitops-runtimes/)  
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
-[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
