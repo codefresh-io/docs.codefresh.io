@@ -81,7 +81,7 @@ If you define a custom name, it must:
 If you are installing an additional Runtime in the same account, the Runtime name _must be unique_.
 
 ### Namespace
-The namespace where the GitOps Runtime installed, _which must be the same namespace as the Argo CD instance_.
+The namespace where the GitOps Runtime is installed, _**which must be the same namespace as the Argo CD instance_**.
 
 ### Argo CD Admin API token
 The API token used by the GitOps Runtime to authenticate with the Argo CD instance. If you don't have an Argo CD Admin API token, you can generate it in the Argo CD UI or through the CLI. See [Argo CD Admin API token](#argo-cd-admin-api-token).

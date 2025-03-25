@@ -80,6 +80,9 @@ If you define a custom name, it must:
 >**NOTE**  
 If you are installing an additional Runtime in the same account, the Runtime name _must be unique_.
 
+### Namespace
+The namespace where install the GitOps Runtime is installed, and must conform to Kubernetes naming conventions.
+
 ### Codefresh API Key
 The API key authenticates the GitOps Runtime with the Codefresh platform, enabling secure registration, configuration retrieval, and communication with Codefresh services.   
 Generate the API key to automatically include it in the Runtime Install command. 
@@ -87,6 +90,7 @@ Generate the API key to automatically include it in the Runtime Install command.
 
 ### Install Runtime command
 The Install Runtime Command differs based on the access mode. The command below is for the tunnel-based access mode. This is the default access mode and does not require any additional flags.  
+
 Ingress-based or service-mesh-based access modes require additional flags, as described in [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/).<br>
 
 
