@@ -25,13 +25,6 @@ To install the GitOps Runtime:
 ## Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
-* For ingress-based and service-mesh based Runtimes only, verify that these ingress controllers are configured correctly:
-  * [Ambassador ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#ambassador-ingress-configuration)
-  * [AWS ALB ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#aws-alb-ingress-configuration)
-  * [Istio ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#istio-ingress-configuration)
-  * [NGINX Enterprise ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#nginx-enterprise-ingress-configuration)
-  * [NGINX Community ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#nginx-community-version-ingress-configuration)
-  * [Traefik ingress configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#traefik-ingress-configuration)
 
 
 
@@ -72,25 +65,7 @@ On-premises Git providers require you to define the API URL:
 
 <br>
 
-<!--- ##### How to
 
-1. Define the URL of the **Shared Configuration Repository**.
-1. If required, select the **Git provider** from the list.
-1. If required, define the **API URL** for the Git provider you selected.
-
- {% include
-image.html
-lightbox="true"
-file="/images/runtime/helm/helm-define-isc-git-provider.png"
-url="/images/runtime/helm/helm-define-isc-git-provider.png"
-alt="Define Shared Configuration Repo and Git provider"
-caption="Define Shared Configuration Repo and Git provider"
-max-width="40%"
-%}
-
-{:start="4"}
-1. Click **Next**.
-1. Continue with [Step 3: Install GitOps Runtime](#step-3-install-gitops-runtime).  -->
 
 ## Step 3: Install GitOps Runtime
 To install the GitOps Runtime, follow the instructions in the installation wizard which provides an Install Runtime command with pre-populated values.
@@ -102,20 +77,17 @@ If you define a custom name, it must:
 * Contain only lowercase letters and numbers
 * Be no longer than 38 characters
 
+>**NOTE**  
+If you are installing an additional Runtime in the same account, the Runtime name _must be unique_.
 
 ### Codefresh API Key
 The API key authenticates the GitOps Runtime with the Codefresh platform, enabling secure registration, configuration retrieval, and communication with Codefresh services.   
 Generate the API key to automatically include it in the Runtime Install command. 
 
 
-### Access modes
-The GitOps Runtime supports these access modes: 
-* **Tunnel-based (default)**: The default access mode when other access mode are not specified. Does not require additional configuration. 	
-* **Ingress-based**: Uses an ingress controller. May require pre- and post-installation configuration.	See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
-* **Service-mesh-based**: Requires explictly disabling tunnel-based and ingress-based access modes. May require pre- and post-installation configuration. See [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
-
 ### Install Runtime command
-The Install Runtime Command differs based on the access mode. Ingress-based or service-mesh-based access modes for the Runtime require additional flags.<br>
+The Install Runtime Command differs based on the access mode. The command below is for the tunnel-based access mode. This is the default access mode and does not require any additional flags.  
+Ingress-based or service-mesh-based access modes require additional flags, as described in [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/).<br>
 
 
 ##### Tunnel-based install chart command
@@ -131,36 +103,8 @@ helm upgrade --install <helm-release-name> \
 {% endhighlight %}
 
 
-##### Ingress-based install chart command
-{% highlight yaml %}
-helm upgrade --install <helm-release-name> \
-  --create-namespace \
-  --namespace <namespace> \
-  --set global.codefresh.userToken.token=<codefresh-api-key> \
-  --set global.runtime.name=<runtime-name> \
-  --set global.runtime.ingress.enabled=true \
-  --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
-  --set global.runtime.ingress.className=<ingress-class> \
-  oci://quay.io/codefresh/gitops-runtime \
-  --wait  
-{% endhighlight %}
 
-##### Service-mesh-based install command (without ingress and tunnel)
-{% highlight yaml %}
-helm upgrade --install <helm-release-name> \
-  --create-namespace \
-  --namespace <namespace> \
-  --set global.codefresh.userToken.token=<codefresh-api-key> \
-  --set global.runtime.name=<runtime-name> \
-  --set global.runtime.ingressUrl=<ingress-url> \
-  --set global.runtime.ingress.enabled=false \
-  --set tunnel-client.enabled=false \
-  oci://quay.io/codefresh/gitops-runtime \
-  --wait  
-{% endhighlight %}
-
-
-### Install command parameters
+##### Install command parameters
 
 | Parameter | Description |
 |-----------|------------|
@@ -170,14 +114,6 @@ helm upgrade --install <helm-release-name> \
 | `<codefresh-api-key>` | API key used for authentication. You can use an existing key or generate a new one. Automatically populated in the command when generated. |
 | `<runtime-name>` | Name of the GitOps Runtime. Default is `codefresh`, or a custom name you define. |
 | `gitops-runtime` | Chart name defined by Codefresh. Cannot be changed. |
-| **Ingress-based parameters** | |
-| `global.runtime.ingress.enabled=true` | Mandatory for ingress-based Runtimes. Indicates the runtime is ingress-based. |
-| `<ingress-host>` | IP address or hostname of the ingress controller. Mandatory for ingress-based Runtimes. |
-| `<ingress-class>` | Ingress class of the ingress controller (e.g., `nginx` for the NGINX ingress controller). Mandatory for ingress-based Runtimes. |
-| **Service-mesh-based parameters** | |
-| `global.runtime.ingressUrl=<ingress-url>` | Ingress URL that serves as the entry point to the cluster. |
-| `global.runtime.ingress.enabled=false` | Disables ingress-based access mode. |
-| `tunnel-client.enabled=false` | Disables tunnel-based access mode. |
 | `--wait` | Optional. The duration the installation process waits for all pods to become ready before timing out. Recommend to set it to a period longer than 5 minutes which is the default if not set. |
 
 
@@ -206,15 +142,6 @@ After installation, go to **GitOps Runtimes > List View**:
   caption="Newly installed Hybrid GitOps Runtime with Complete Installation notification"
   max-width="60%"
 %}
-
-### Step 5: (Optional) Configure ingress-controllers/service meshes
-Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
-
-* Complete configuring these ingress controllers:
-  * [ALB AWS: Alias DNS record in route53 to load balancer]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#create-an-alias-to-load-balancer-in-route53)
-  * [Istio: Configure cluster routing service]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#cluster-routing-service)
-  * [NGINX Enterprise ingress controller: Patch certificate secret]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/#patch-certificate-secret)
-
 
 
 
@@ -309,19 +236,12 @@ global:
 
 {% endif %}
 
-## Upgrade Runtimes 
-For upgrade instructions, see [Upgrade GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#upgrade-gitops-runtimes/).  
-
-For details on Argo CD versions and their compatible Kubernetes versions, see [Argo CD versioning information](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/){:target="\_blank"} and [Kubernetes tested versions](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/#tested-versions){:target="\_blank"}. 
-
-
-
 
 ## Related articles
+[Configuring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/)  
+[Upgrading GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#upgrade-gitops-runtimes/)  
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
-
-
 
