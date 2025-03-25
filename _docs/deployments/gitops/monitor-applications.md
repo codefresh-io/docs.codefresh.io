@@ -355,7 +355,7 @@ The table describes the possible health statuses for an application resource in 
 {: .table .table-bordered .table-hover}
 |  Health icon    | Health status | Description  | 
 | --------------  | ------------| ------------------|  
-| {::nomarkdown}<img src="https://codefresh.io/docs/docs/images/icons/current-state-healthy.png" display=inline-block">{:/}       | **Healthy**     | Resource is functioning as required.  | 
+| ![Current state healthy](images/icons/current-state-healthy.png) {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/}       | **Healthy**     | Resource is functioning as required.  | 
 | {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/}   | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs. | 
 | {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/}     |  **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.|
 |{::nomarkdown}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{:/}        | **Missing**     | Resource is not present on the cluster.  |                        
