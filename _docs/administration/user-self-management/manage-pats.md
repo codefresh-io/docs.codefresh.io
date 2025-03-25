@@ -5,9 +5,7 @@ group: administration
 toc: true
 ---
 
-
-
-
+## Git user token management
 As a user in Codefresh, you must authorize access to your Git provider accounts and authenticate Git-based actions from Codefresh clients, per provisioned GitOps Runtime. This is done through the Git user token, which is an access token unique to each user. For more details, including required scopes and how the Git user token differs from the Git Runtime token, see [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/).
 
 
@@ -28,16 +26,21 @@ If you have access to more than one GitOps Runtime in the same or in different a
 >**NOTE**    
   For OAuth2, the administrator pre-configures the permissions and expiry date. Once you supply your credentials for authorization, you are automatically directed to the Git Personal Tokens page. 
 
-**Before you begin**  
-
+##### Before you begin  
+{% if page.collection != site.gitops_collection %}
 Make sure you have:  
 * For Bitbucket only, your Bitbucket account username
-* If needed, a _user access token_ from your Git provider with the required scopes
+* If needed, a _user access token_ from your Git provider with the required scopes:
   * [GitHub](#generate-github-user-access-tokens)
   * [GitLab](#generate-gitlab-user-access-tokens)
   * [Bitbucket](#generate-bitbucket-user-access-tokens)
+{% endif %}
 
-**How to**  
+{% if page.collection== site.gitops_collection %}
+* Make sure you have a _user access token_ with the required scopes for [GitHub](#generate-github-user-access-tokens)
+{% endif %}
+
+##### How to
 1. In the Codefresh UI, on the toolbar, click your avatar, and then select **Git Personal Access Token**.
 1. Select the GitOps Runtime to authenticate to, and then click **Add Token**.
 1. Do as needed:
@@ -47,10 +50,13 @@ Make sure you have:
         1. Complete the verification if required, as when two-factor authentication is configured, for example.
       * For **Git user tokens**:  
         1. Expand **Advanced authorization options**. 
+        {% if page.collection != site.gitops_collection %}
         1. For Bitbucket, enter your **Bitbucket username**. 
+        {% endif %}
         1. In the **Personal Access Token** field, paste the token you generated.
 
-{% include 
+{% 
+include 
 image.html 
 lightbox="true" 
 file="/images/runtime/gitops-user-authorize-runtime-access.png" 
@@ -84,7 +90,8 @@ Have your Git user token handy
   * To delete, click **Delete Token**. The token is deleted and the **Add Token** button is displayed next to the Runtime. 
 1. To turn off notifications, click the context menu at the right of the row with the Runtime and enable **Hide notifications**.
 
-{% include 
+{% 
+include 
 image.html 
 lightbox="true" 
 file="/images/runtime/gitops-user-disable-runtime-notifications.png" 
@@ -94,7 +101,8 @@ caption="Disable notifications option for GitOps Runtimes"
 max-width="70%" 
 %}
 
-{% include 
+{% 
+include 
 image.html 
 lightbox="true" 
 file="/images/runtime/gitops-indication-notification-disabled.png" 
@@ -108,14 +116,15 @@ max-width="70%"
 
 ## Generate GitHub user access tokens 
 
-1. Log in to your GitHub or GitHub Enterprise account.
+1. Log in to your GitHub {% if page.collection != site.gitops_collection %}or GitHub Enterprise{% endif %} account.
 1. Select **Settings > Developer Settings > Personal Access Tokens > Tokens (classic)**.
 1. Define the following:
   * Token name
   * Expiration date
   * Select scope: `repo`
 
-  {% include 
+  {% 
+  include 
    image.html 
    lightbox="true" 
    file="/images/administration/manage-pats/github-pat-scopes.png" 
@@ -128,12 +137,9 @@ max-width="70%"
 {:start="4"}  
 1. Copy the user access token generated as you will need it to authorize access.
 
-{::nomarkdown}
-</br>
-{:/}
 
+{% if page.collection != site.gitops_collection %}
 ## Generate GitLab user access tokens
-
 1. Log in to your GitLab Cloud or Server account.
 1. Select **User settings > Access tokens**.
 1. Define the following:
@@ -155,8 +161,6 @@ max-width="70%"
 1. Copy the user access token generated as you will need it to authorize access.
 
 ## Generate Bitbucket user access tokens
-
-
 1. Log in to your Bitbucket Cloud or Server account.
 1. Select **Personal Settings > App passwords**.
 1. Define the **Label**.
@@ -177,7 +181,7 @@ max-width="70%"
 
 {:start="4"}
 1. Copy the user access token generated as you will need it to authorize access.
-
+{% endif %}
 
 ## Related articles  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/)
