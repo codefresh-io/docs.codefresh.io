@@ -91,7 +91,7 @@ Generate the API key to automatically include it in the Runtime Install command.
 ### Install Runtime command
 The Install Runtime Command differs based on the access mode. The command below is for the tunnel-based access mode. This is the default access mode and does not require any additional flags.  
 
-Ingress-based or service-mesh-based access modes require additional flags, as described in [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/).<br>
+Ingress-based or service-mesh-based access modes require additional flags, as described in [GitOps Runtimes with ingress controllers/service meshes]({{site.baseurl}}/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/).<br>
 
 
 ##### Tunnel-based install chart command
@@ -134,7 +134,7 @@ After installation, go to **GitOps Runtimes > List View**:
   * **Synced**: Configuration is complete
   * **Complete Installation**: Pending configuration steps  
 * Drill down into the Runtime shows tabs for Runtime Components, Git Sources, and Managed Clusters.  
-  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-argo-application).
+  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-an-argo-cd-application).
 
 {% include
    image.html

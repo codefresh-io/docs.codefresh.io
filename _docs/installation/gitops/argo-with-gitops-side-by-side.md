@@ -157,7 +157,7 @@ After installation, go to **GitOps Runtimes > List View**:
   * **Synced**: Configuration is complete
   * **Complete Installation**: Pending configuration steps  
 * Drill down into the Runtime shows tabs for Runtime Components, Git Sources, and Managed Clusters.  
-  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-argo-application).
+  The Runtime Components are populated only when the GitOps Runtime is configured as an Argo CD Application, as described [here]({{site.baseurl}}/docs/installation/gitops/runtime-configuration#configure-runtime-as-an-argo-cd-application).
 
 {% include
    image.html
