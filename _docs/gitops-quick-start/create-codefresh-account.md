@@ -23,10 +23,11 @@ Codefresh currently supports the following IdPs:
 
 If your preferred IdP is not listed, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
 
-
+{% if page.collection != site.gitops_collection %}
 >**NOTE**     
 For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
 If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+{% endif %}
 
 ## Create Codefresh account
 1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
@@ -101,7 +102,7 @@ Congratulations! Your new Codefresh account is now ready and you are directed to
 ## What's next
 You are now ready to install the GitOps Runtime, the foundation for GitOps operations. 
 
-[Quick start: Installing the GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
+[Quick start: Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 
 
 

@@ -222,7 +222,7 @@ Visually design and create the flow by selecting environments, Promotion Actions
     * **Description**: (Optional) More information about the purpose of the Promotion Flow. 
     * **Flow Timeout**: The maximum duration allowed for the Promotion Flow to complete execution after being triggered, before it is automatically terminated. If not specified, the default timeout is 1 day (24 hours).
     * **Version**: (Optional) The version of the Promotion Flow. This is manually defined and manually updated, and is useful to indicate changes in the same flow.  
-1. In **Select Trigger Environment**, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} to see the list of available environments:
+1. In **Select Trigger Environment**, click {::nomarkdown}<img src="/images/icons/plus-icon.png" display=inline-block>{:/} to see the list of available environments:
     * Select an existing environment, select it and click **Add**. 
     * To create a new environment, click **Add New Environment**. 
 

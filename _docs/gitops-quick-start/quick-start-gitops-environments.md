@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Creating Environments"
+title: "Quick start: Creating environments"
 description: "Explore how environments empower application promotion and deployment"
 group: gitops-quick-start
 toc: true
@@ -38,7 +38,7 @@ Environments help you:
 * **Mirror your SDLC**: Align applications with their development stages, providing clarity and structure.
 * **Simplify promotions**: Easily move applications through stages, ensuring consistency.
 
-For detailed information, see [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/).
+For detailed information, see [Environments]({{site.baseurl}}/docs/environments/environments-overview/).
 
 
 ## Requirements

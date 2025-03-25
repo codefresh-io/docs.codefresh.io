@@ -18,7 +18,7 @@ We'll do the following:
 * Create a product for the applications
 * Explore the Product Dashboard
 
-For detailed information, see [About Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+For detailed information, see [Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/about-apps/).
 
 
 ## Products in GitOps
@@ -351,7 +351,7 @@ The Product Dashboard provides a centralized view of your product's applications
 * **Release versions**: Quickly identify which version of an application is deployed in each environment to maintain consistency or troubleshoot issues. For detailed information, see [Configuring app version for promotions]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-versions-for-promoted-applications).
 * **Dependency insights**: Compare dependency versions across environments to detect inconsistencies or verify production readiness.
 * **Integrated application insights**: Use Git commit history, Kubernetes data, and feature mappings to evaluate changes, troubleshoot, and plan promotions.  
-  Requirement: Integrate CI platforms/tools  
+ 
   For the Git and Features tabs to work seamlessly, ensure your CI/CD systems are integrated.  
   If you have CI platforms/tools already in place, be it Codefresh pipelines, GitHub Actions, or Jenkins, you can integrate them with Codefresh GitOps. The same applies to issue-tracking tools like Jira.  
   For setup instructions, see [Image enrichments with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).

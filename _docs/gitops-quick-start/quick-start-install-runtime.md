@@ -26,10 +26,10 @@ Choose from two installation options based on your existing Argo CD setup:
 
 * **Install with a new Argo CD instance**
   If Argo CD is not installed, Codefresh can deploy and configure it along with the GitOps Runtime.  
-  .
+
 
 The key difference is whether Argo CD instance is either external to the Runtime or installed as part of it.
-For an architectural overview, see [Runtime installation modes and architecture](#runtime-installation-modes-and-architecture). 
+For an architectural overview, see [Runtime installation modes and architecture]({{site.baseurl}}/docs/gitops-runtimes/runtime-architecture/#runtime-installation-modes-and-architecture). 
 
 
 
