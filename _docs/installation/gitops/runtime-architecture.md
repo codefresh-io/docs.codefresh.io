@@ -90,8 +90,8 @@ Tunnel-based access mode is not supported for GitOps on-premises installations.
 {% include
    image.html
    lightbox="true"
-   file="/images/runtime/architecture/runtime-ingress-detailed.png"
-   url="/images/runtime/architecture/runtime-ingress-detailed.png"
+   file="/images/runtime/architecture/runtime-tunnel-detailed.png"
+   url="/images/runtime/architecture/runtime-tunnel-detailed.png"
   alt="Tunnel-based GitOps Runtime architecture"
   caption="Tunnel-based GitOps Runtime architecture"
   max-width="80%"
@@ -104,8 +104,8 @@ Ingress-based access modes are optimal when the cluster with the GitOps Runtime 
 {% include
    image.html
    lightbox="true"
-   file="/images/runtime/architecture/runtime-tunnel-detailed.png"
-   url="/images/runtime/architecture/runtime-tunnel-detailed.png"
+   file="/images/runtime/architecture/runtime-ingress-detailed.png"
+   url="/images/runtime/architecture/runtime-ingress-detailed.png"
   alt="Ingress-based GitOps Runtime architecture"
   caption="Ingress-based GitOps Runtime architecture"
   max-width="80%"
