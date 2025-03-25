@@ -99,7 +99,7 @@ max-width="60%"
 
 {:start="6"}
 1. Select the target environments in the promotion sequence to which to promote changes. For example, `qa` and `prod`.
-    1. Mouse over the right of the environment node to which to add the new environment (`dev` for example), and click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/}.
+    1. Mouse over the right of the environment node to which to add the new environment (`dev` for example), and click {::nomarkdown}<img src="../../../images/icons/plus-icon.png" display=inline-block>{:/}.
     1. From the list, select the first target environment in the flow, `qa` for this quick start.
     1. Repeat the action on the newly added environment node (for example, `qa`) to add the next target environment. 
       For the quick start, we'll add `prod` as the final target environment in the flow. 

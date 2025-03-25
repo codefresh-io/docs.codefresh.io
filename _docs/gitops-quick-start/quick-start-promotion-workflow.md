@@ -1,5 +1,5 @@
 ---
-title: "Quick start: Create Promotion Workflows"
+title: "Quick start: Creating Promotion Workflows"
 description: "Create a workflow template to use as pre- or post-action"
 group: gitops-quick-start
 toc: true
@@ -9,6 +9,7 @@ toc: true
 This quick start will guide you through creating a Promotion Workflow in Codefresh.  
 
 Promotion Workflows are Argo Workflow Templates that automate tasks such as notifications, validations, and additional deployments before or after a promotion. They can be used in Promotion Flows to automate tasks before or after promotion.
+
 For detailed information, see [Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/).
 
 This quick start includes examples of two Promotion Workflows:

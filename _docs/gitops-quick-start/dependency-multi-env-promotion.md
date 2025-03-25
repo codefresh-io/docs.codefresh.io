@@ -185,8 +185,8 @@ These foundational steps empower you to manage complex promotions confidently an
 
 ## Related articles
 Now that you’ve covered simple and advanced promotion scenarios, learn more on customizing promotion settings for products: 
-* [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-* [Configuring Promotion Flows and triggers for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+* [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+* [Selecting Promotion Flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 

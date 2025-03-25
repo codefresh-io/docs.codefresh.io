@@ -15,7 +15,7 @@ Configure the Runtime immediately after installation using the Configuration and
 
 Configuration includes:
 * [Configuring Git credentials](#configure-git-credentials-for-runtime)
-* [Configuring the Runtime as an Argo CD Application](#configure-runtime-as-argo-application)
+* [Configuring the Runtime as an Argo CD Application](#configure-runtime-as-argo-cd-application)
 * [Adding a Git source](#add-git-source-to-runtime)
 
 For detailed information, see [Configuring the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/).
@@ -57,6 +57,6 @@ Leave all other settings as is.
 ## What's next
 Now that the GitOps Runtime is installed and configured, you are ready to create applications.
 
-[Quick start: Creating Products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
+[Quick start: Creating products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)
 
 
