@@ -34,7 +34,6 @@
   "/docs/dashboards/gitops-products/": "/gitops/dashboards/gitops-products/",
   "/docs/dashboards/home-dashboard/": "/gitops/dashboards/home-dashboard/",
   "/docs/dashboards/images/": "/gitops/dashboards/images/",
-  "/docs/installation/gitops/argo-with-gitops-side-by-side/": "/gitops/gitops-runtimes/argo-with-gitops-side-by-side/",
   "/docs/installation/gitops/configuration-runtime/": "/gitops/gitops-runtimes/configuration-runtime/",
   "/docs/installation/gitops/git-sources/": "/gitops/gitops-runtimes/git-sources/",
   "/docs/installation/gitops/hybrid-gitops-helm-installation/": "/gitops/gitops-runtimes/hybrid-gitops-helm-installation/",
