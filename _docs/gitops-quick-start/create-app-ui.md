@@ -1,6 +1,6 @@
 ---
-title: "Quick start: Creating Products and applications"
-description: "Create Argo CD applications and group them within Products"
+title: "Quick start: Creating products and applications"
+description: "Create Argo CD applications and group them within products"
 group: gitops-quick-start
 toc: true
 redirect_from:
@@ -38,7 +38,7 @@ Products are one of the three core entities for promotions in Codefresh GitOps, 
 
 For detailed information, see [Products]({{site.baseurl}}/docs/products/about-products/).
 
-##### Why create Products?
+##### Why create products?
 
 Here are a few reasons why you would want to create products to manage your applications.
 
@@ -70,7 +70,7 @@ When you create the application, to use the resources, select the folder corresp
 Create the first application to correspond to the version of the application you want in the development environment.  
 For the quick start, we'll do the following:
 * Create the `demo-trioapp-dev` application
-* Create a Product for this application, the `demo-triopapp` product
+* Create a product for this application, the `demo-triopapp` product
 * Configure other required application configuration settings
 * Commit the application to a Git Source
 
