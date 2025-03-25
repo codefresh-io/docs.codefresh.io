@@ -31,7 +31,6 @@ To install the GitOps Runtime:
 ## Step 1: Select Runtime install option
 
 1. On the Getting Started page, click **Install Runtime**.
-1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
 
 ## Step 2: Set up GitOps Git provider
 As a one-time action, define the Shared Configuration Repository and associate it with your Git provider.  
@@ -65,8 +64,6 @@ On-premises Git providers require you to define the API URL:
 * GitLab Server: `<server-url>/api/v4`
 * Bitbucket Data Center: `<server-url>`
 {% endif %}
-
-<br>
 
 
 
@@ -126,8 +123,7 @@ helm upgrade --install <helm-release-name> \
 
 ### Step 4: Completing Installation
 After installation, you can:
-* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
-OR
+* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#configure-gitops-runtime).  
 * View the installed Runtime in the Runtimes page, and complete the configuration at a later time.
 
 ##### View installed Runtime

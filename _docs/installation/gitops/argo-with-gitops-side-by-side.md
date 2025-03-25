@@ -43,7 +43,6 @@ Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs
 ## Step 1: Select Runtime install option
 
 1. On the Getting Started page, click **Install Runtime**.
-1. Continue with [Step 2: Set up GitOps Git provider](#step-2-set-up-gitops-git-provider).
 
 ## Step 2: Set up GitOps Git provider
 As a one-time action, define the Shared Configuration Repository and associate it with your Git provider.  
@@ -146,7 +145,7 @@ helm upgrade --install <helm-release-name> \
 
 ## Step 4: Completing Installation
 After installation, you can:
-* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime](#configure-gitops-runtime).  
+* Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#configure-gitops-runtime).  
 OR
 * View the installed Runtime in the Runtimes page, and complete the configuration at a later time.
 
@@ -210,7 +209,7 @@ A Git Source is a Git repository managed by Codefresh as an Argo CD Application.
 Read about [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 
 
-* Add a [Git Source to the GitOps Runtime]({{site.baseurl}}/docs/gitops-runtimes/runtime-configuration/#add-git-source-to-runtime).
+* Add a [Git Source to the GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#add-git-source-to-runtime).
 
 ### Step 2: Modify Argo CD applications
 
