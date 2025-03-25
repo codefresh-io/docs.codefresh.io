@@ -9,11 +9,9 @@ toc: true
 ## Environments dashboard
 The **Environments** dashboard introduces a new dimension to the developer and deployment experience with Argo CD applications in Codefresh.
 
-Within Codefresh's suite of dashboards, such as the GitOps Overview and GitOps Apps, you gain valuable insights into application deployments and configurations. These views focus on individual applications, lacking the broader context of their interconnections, if any.
+The Environments dashboard provides a comprehensive view of applications across their software development and deployment lifecycles in Codefresh. Unlike the GitOps Overview and GitOps Apps dashboards, which focus on individual applications, the Environments dashboard highlights their relationships within products and promotions.
 
-The Environments dashboard fills this gap by providing a holistic perspective on applications based on their software development and deployment lifecycles. It offers a centralized view of products and their applications as they progress through various promotions, placing them within the broader context of their development journey.
-
-The Environments dashboard in Codefresh gives you a real-time view of your applications across all environments. It provides insights into deployment status, promotions, and version history—helping teams track changes and make informed decisions. With built-in filtering and detailed environment data, you can quickly assess the state of your applications and streamline troubleshooting.
+It offers real-time insights into deployment status, promotions, and version history, helping teams track changes and make informed decisions. With built-in filtering and detailed environment data, you can quickly assess application health and streamline troubleshooting.
 
 
 {% include 
