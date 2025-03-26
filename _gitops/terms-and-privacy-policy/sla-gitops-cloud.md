@@ -1,5 +1,5 @@
 ---
-title: "Codefresh GitOps Cloud Service Commitment"
+title: "Service Commitment"
 description: ""
 group: terms-and-privacy-policy
 toc: true
@@ -37,8 +37,8 @@ The following timeframes are calculated from the time that we receive sufficient
 | **Normal**    | N/A             |  2 Hours  |
 | **Low**       | N/A             |  8 Business Hours |
 
-**Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
-**Business Day** means weekdays (excluding public holidays) in your registered time zone.
+[1] **Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
+[2] **Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
 
 
