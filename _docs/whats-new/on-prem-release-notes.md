@@ -6,6 +6,163 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+
+## On-premises version 2.7
+
+### Features & enhancements
+
+#### Installing v2.7 
+For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+#### Upgrading to v2.6
+For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
+
+
+
+#### General: Increased limit for audit logs
+
+Codefresh keeps a log of all actions that happen at all times based on API calls that reach Codefresh. These include UI actions from users, CLI invocations, and any external integration used with Codefresh.  
+We have now increased the audit limit _from 15,000 to 50,000_, which means you can access more data on how you use your Codefresh account.  
+
+For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
+
+<br><br>
+
+#### Pipelines: Deprecation of AND operations for ABAC rules
+We have deprecated the use of **AND** operations for tags when creating ABAC rules.  
+Previously, you could define rules requiring multiple tags to be present using an AND condition.  
+Going forward, only **OR** operations are supported for tag-based rules. Update your existing rules as needed to ensure they continue to function as expected.
+
+
+
+#### Pipelines: Create secret variables
+You can now add variables as secrets to securely manage sensitive data in pipelines. Instead of manually encrypting a variable’s value and temporarily exposing it, simply select the **Secret** option when adding a variable. Secret variables are automatically encrypted.
+
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/mar25/variable-secret.png" 
+   url="/images/whats-new/mar25/variable-secret.png" 
+   alt="Creating secret variables" 
+   caption="Creating secret variables" 
+   max-width="60%" 
+   %}
+
+Once saved, the variable is locked and cannot be modified. To change the value, you must decrypt it first, which resets it to empty.  
+
+For details, see [User-defined variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#user-defined-variables).
+
+<br><br>
+
+#### Pipelines: Alerts to prevent variable ovverides
+Now, you’ll get an alert if you create a variable that already exists at a higher level. Previously, it was easy to unintentionally override a project-level variable at the pipeline level without realizing it. These alerts help you manage variables more safely across shared configurations, projects, pipelines, and triggers.
+
+
+<br><br>
+
+#### GitOps: Argo CD upgraded to v2.13
+Codefresh GitOps now uses Argo CD v2.13, the latest version from Argo CD. You can take advantage of the latest features and bug fixes Argo CD 2.13 as detailed in the [release notes](https://github.com/argoproj/argo-cd/releases/tag/v2.13.0-rc1){:target="\_blank"}. 
+This [blog post](https://blog.argoproj.io/argo-cd-v2-13-release-candidate-6cf5c98cc312){:target="\_blank"} summarizes what's new in this release. 
+
+<br><br>
+
+#### GitOps: Settings for Promotion Flows
+
+We have introduced settings for Promotion Flows to give you greater control and flexibility in managing them.
+When creating a Promotion Flow, you can define several settings, including the Flow Timeout and Version. 
+
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/jan25/promotion-flow-settings.png" 
+   url="/images/whats-new/jan25/promotion-flow-settings.png" 
+   alt="Settings for Promotion Flows" 
+   caption="Settings for Promotion Flows" 
+   max-width="60%" 
+   %}
+
+   * **Flow Timeout**: Ensures Promotion Flows don’t run indefinitely by setting a maximum duration for execution. If a Flow exceeds this duration, it is automatically terminated.  
+     **Why is this useful?**  
+      * Manual approval delays: In PR-driven flows, the timeout automatically terminates the Flow if required approvals aren’t provided within the defined time frame.  
+      * Misconfigured tests: Prevents new Promotion Flows from running indefinitely due to errors in testing configurations. 
+    The default timeout, if not explicitly set, is 1 day (24 hours).
+  * **Version**: Allows you to indicate changes to the same Promotion Flow. 
+
+For details, see [Create a Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/#create-a-promotion-flow).
+
+<br><br>
+
+### GitOps: Product Releases enhancements
+We've made several improvements to the Product Releases page enhancing traceability and clarity.
+
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/jan25/product-releases.png" 
+   url="/images/whats-new/jan25/product-releases.png" 
+   alt="Product > Releases page" 
+   caption="Product > Releases page" 
+   max-width="60%" 
+   %}
+
+* **Date**: The Release ID has been replaced with the date when the release was initiated, making it easier to track when each release occurred. Failed releases now show a tooltip with a summary of the reason for the failure, improving troubleshooting.
+* **Initiator**: The name of the user who initiated the Promotion Flow that triggered the release is now displayed, helping with better accountability.
+* **Version**: The version defined in the Promotion Flow settings is now also shown on the Product Releases page, providing more context and consistency for each release.
+
+For details, see [Tracking releases for products]({{site.baseurl}}/docs/promotions/product-releases/).
+
+<br><br>
+
+### GitOps: GitHub status checks for Codefresh Promotions
+
+We have introduced a new GitHub status check feature to make tracking your deployments more seamless and efficient. When you promote across environments, Codefresh will automatically report back a Git status check on any commits. 
+
+* Status checks include a direct link to the release, so you can quickly view its progress.
+* There’s no need to leave GitHub. You can stay updated on your release status without switching tools.
+* If any issues arise, simply follow the link to troubleshoot effortlessly.
+
+
+
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/feb25/whats-new-feb25-release-status-in-git.png" 
+   url="/images/whats-new/feb25/whats-new-feb25-release-status-in-git.png" 
+   alt="Promotion status check in GitHub" 
+   caption="Promotion status check in GitHub" 
+   max-width="60%" 
+   %}
+ 
+
+For details, see [Tracking releases for Products]({{site.baseurl}}/docs/promotions/product-releases/).
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+<br>
+
+##### New Feature Flags in v2.7
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.6.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `auditing`  | When enabled (the default), displays the **Audit** tab in Account Settings. | TRUE         |
+| `runtimeInstallationWizard` | When enabled, shows the new Runtime Installation wizard for GitOps Runtime installation.| FALSE  |
+| `hideUsageMenuItem` | When enabled, hides the Usage menu item in the sidebar.| FALSE  |
+
+<br>
+
+##### Updated Feature Flags in v2.7
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+|`newVariablesConfiguration`| When enabled, displays the new revamped form to add and configure variables in projects, pipelines, and triggers. | _FALSE _        |  
+| `promotionCommitStatuses` | When enabled (the default), the promotion mechanism reports the statuses of Git commits to Git providers. | _TRUE_    |
+| `abacAndRule`             | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND".| _FALSE_  |
+
 ## On-premises version 2.6
 
 ### Features & enhancements

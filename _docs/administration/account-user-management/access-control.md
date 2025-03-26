@@ -225,6 +225,9 @@ Shared configuration can be environment variables, Helm values, encrypted secret
 Rules combine teams (who), privileges (what), and tags (where) to create fine-grained access control policies.  
 Codefresh supports ABAC with the flexibility to use both OR and AND operations for tags.
 
+>**NOTE**  
+_AND_ operations for tags are not supported in on-premises environments.
+
 Define rules using the *who, what, where* pattern to control access to entities and resources. Rules can be based on OR or AND relationships. See 
 
 For each rule, select:
