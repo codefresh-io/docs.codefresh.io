@@ -303,7 +303,7 @@
     - title: Acceptable Use Policy
       url: "/acceptable-use-policy"      
     - title: Service Commitment
-      url: "/sla-gitops-cloud"
+      url: "/gitops-cloud-sla"
     - title: Cloud Credits
       url: "/cloud-credits"
     - title: Legacy Codefresh Terms of Service
