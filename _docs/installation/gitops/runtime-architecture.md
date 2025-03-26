@@ -10,7 +10,8 @@ The GitOps Runtime in Codefresh provides the foundation for managing Argo CD app
 
 
 Codefresh provides flexible installation options for the GitOps Runtime. You can install it alongside your existing Argo CD instance leveraging your current setup (bring your own Argo), or bundled with all the necessary Argo Project components, including Argo CD.  
-The GitOps Runtime always runs inside the customer’s cluster, regardless of the installation mode.  
+
+The GitOps Runtime always runs inside the customer’s cluster, regardless of the installation mode.
 See [Runtime installation modes and architecture](#runtime-installation-modes-and-architecture).
 
 To optimize connectivity, the Runtime also supports different access modes, allowing communication through tunnelling or via an ingress controller. See [Runtime access modes and architecture](#runtime-access-modes-and-architecture).
@@ -65,7 +66,7 @@ Regardless of the installation mode, the core Runtime components remain the same
 * [Application Proxy](#application-proxy)
 * [Argo Project](#argo-project)
 * [Event Reporters](#event-reporters)
-* [Source Server](#gitops-source-server)  
+* [Source Server](#source-server)  
 * [GitOps Operator](#gitops-operator)  
 * [Application Change Revision Controller](#application-change-revision-controller)
 * [Request Routing Service](#request-routing-service)
