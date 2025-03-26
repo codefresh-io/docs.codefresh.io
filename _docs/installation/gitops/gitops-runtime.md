@@ -24,7 +24,7 @@ By leveraging the Runtime, teams can efficiently orchestrate deployments, monito
   max-width="70%"
 %}
 
-##### Why use GitOps Runtimes?  
+##### Why use a GitOps Runtimes?  
 Scaling GitOps across multiple clusters and environments can be complex, especially when managing multiple Argo CD instances.  
 Codefresh GitOps Runtimes simplify this by providing:  
 * **Unified visibility**: Manage all GitOps operations from a single control plane.  
@@ -58,8 +58,6 @@ Requires additional configuration to manage resources separately and avoid inter
 See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
 {% endif %}
 
-
-## Managing multiple GitOps Runtimes
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  
 
 
