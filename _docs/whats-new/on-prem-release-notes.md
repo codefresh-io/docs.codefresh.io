@@ -26,14 +26,6 @@ We have now increased the audit limit _from 15,000 to 50,000_, which means you c
 
 For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
 
-<br><br>
-
-#### Pipelines: Deprecation of AND operations for ABAC rules
-We have deprecated the use of **AND** operations for tags when creating ABAC rules.  
-Previously, you could define rules requiring multiple tags to be present using an AND condition.  
-Going forward, only **OR** operations are supported for tag-based rules. Update your existing rules as needed to ensure they continue to function as expected.
-
-
 
 #### Pipelines: Create secret variables
 You can now add variables as secrets to securely manage sensitive data in pipelines. Instead of manually encrypting a variable’s value and temporarily exposing it, simply select the **Secret** option when adding a variable. Secret variables are automatically encrypted.
@@ -169,6 +161,7 @@ The table below lists existing Feature Flags which have been updated by default 
 
 ##### GitOps
 * Broken hyperlink to Shared Configuration Repository in the Upgrade Runtime panel.
+* Typo in the parameter name in the `values.yaml` file of the `gitops-runtime` chart.
 
 ## On-premises version 2.6
 
