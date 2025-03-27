@@ -97,7 +97,7 @@ max-width="60%"
 
 You can: 
 * Filter by one or more applications to find the Groups they belong to.
-* Star one or more Application Groups as favorites for single-click access to them.{::nomarkdown}<br>Click <img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block"> to star a Group, and click <img src="../../../../images/icons/icon-fav-starred.png?display=inline-block"> to view starred Groups.{:}.
+* Star one or more Application Groups as favorites for single-click access to them.{::nomarkdown}<br>Click {% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/icon-mark-favorite.png?display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/icon-mark-favorite.png?display=inline-block">{% endif %} to star a Group, and click {% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">{% endif %} {% if page.collection == site.gitops_collection %}<img src="../../../../images/icons/icon-fav-starred.png?display=inline-block">{% endif %} to view starred Groups.{:/}.
 * Select a Group to view the Timelines of the applications in it. 
 * Navigate to the Card views of its applications by clicking Applications. 
 

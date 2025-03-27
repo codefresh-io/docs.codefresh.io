@@ -102,7 +102,7 @@ max-width="60%"
 %}
 
 Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=AjFhoja8TjY){:target="\_blank"}
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}
 
 
 ## Tracing Product promotions through Releases
