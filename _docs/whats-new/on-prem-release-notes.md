@@ -54,15 +54,9 @@ For details, see [User-defined variables in pipelines]({{site.baseurl}}/docs/pip
 
 <br><br>
 
-#### Pipelines: Alerts to prevent variable ovverides
+#### Pipelines: Alerts to prevent variable overrides
 Now, you’ll get an alert if you create a variable that already exists at a higher level. Previously, it was easy to unintentionally override a project-level variable at the pipeline level without realizing it. These alerts help you manage variables more safely across shared configurations, projects, pipelines, and triggers.
 
-
-<br><br>
-
-#### GitOps: Argo CD upgraded to v2.13
-Codefresh GitOps now uses Argo CD v2.13, the latest version from Argo CD. You can take advantage of the latest features and bug fixes Argo CD 2.13 as detailed in the [release notes](https://github.com/argoproj/argo-cd/releases/tag/v2.13.0-rc1){:target="\_blank"}. 
-This [blog post](https://blog.argoproj.io/argo-cd-v2-13-release-candidate-6cf5c98cc312){:target="\_blank"} summarizes what's new in this release. 
 
 <br><br>
 
@@ -148,8 +142,10 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
 | `auditing`  | When enabled (the default), displays the **Audit** tab in Account Settings. | TRUE         |
-| `runtimeInstallationWizard` | When enabled, shows the new Runtime Installation wizard for GitOps Runtime installation.| FALSE  |
 | `hideUsageMenuItem` | When enabled, hides the Usage menu item in the sidebar.| FALSE  |
+| `runtimeInstallationWizard` | When enabled, shows the new Runtime Installation wizard for GitOps Runtime installation.| FALSE  |
+
+
 
 <br>
 
@@ -159,9 +155,20 @@ The table below lists existing Feature Flags which have been updated by default 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
-|`newVariablesConfiguration`| When enabled, displays the new revamped form to add and configure variables in projects, pipelines, and triggers. | _FALSE _        |  
-| `promotionCommitStatuses` | When enabled (the default), the promotion mechanism reports the statuses of Git commits to Git providers. | _TRUE_    |
 | `abacAndRule`             | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND".| _FALSE_  |
+
+### Bug fixes
+
+##### Pipelines 
+* Builds frozen at the initialization phase when connecting to Vault secret store.
+* Build fails with `manifest unknown` error when referencing or including v1.0.12  of `jira-issue-manager` step.
+* `build` step fails to build ECR images when base image (`FROM`) is from a different AWS account.
+
+
+<br>
+
+##### GitOps
+* Broken hyperlink to Shared Configuration Repository in the Upgrade Runtime panel.
 
 ## On-premises version 2.6
 
@@ -2249,7 +2256,6 @@ The table below describes the Feature Flags in the Codefresh On-Premises release
 | `abacRuleRelatedResource`     | When enabled, allows admins to define rule-based access to pipelines for teams by project tags.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 | `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 |`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not sent for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
-
 
 
 
