@@ -48,10 +48,10 @@
       url: "/images"
 
 
-- title: Platform Installation
+- title: GitOps Cloud platform
   url: "/platform-installation"
   pages:
-  - title: Installation options
+  - title: Platform architecture
     url: "/installation-options"
 
 - title: GitOps Runtimes
