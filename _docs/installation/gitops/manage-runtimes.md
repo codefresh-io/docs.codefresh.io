@@ -66,7 +66,7 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 
 ##### How to
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From the sidebar, select [**GitOps Runtimes**](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
+1. From the sidebar, select **GitOps Runtimes**.
 1. To upgrade in **List view**, move to the **Version** column, and do the following:
     1. To see the changes in the new version of the Runtime, mouse over **Update Available!**, and click **View Complete Change Log**.
     1. Do one of the following:
@@ -103,7 +103,7 @@ If you have managed clusters for Hybrid GitOps Runtimes, upgrading the Runtime a
 1. For Runtimes configured as Argo CD applications, do the following:
     1. In your Shared Configuration Repository, go to `resources/<runtime_name>/chart`  
        where:  
-      `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
+      `<runtime_name>` is the name of the GitOps Runtime to upgrade.
     1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
     1. Commit the change, and push to your Git server.
 ```yaml
@@ -224,7 +224,7 @@ Manually change the version in the Helm chart (`chart.yaml`) located in the Shar
 1. In your Shared Configuration Repository, go to:  
   `resources/<runtime_name>/chart`  
   where:  
-  `<runtime_name>` is the name of the Hybrid GitOps Runtime to upgrade.
+  `<runtime_name>` is the name of the GitOps Runtime to upgrade.
 1. In `chart.yaml`, change the version number in both `.version` and `.dependencies.version`.
 1. Commit the change, and push to your Git server.
 
@@ -440,7 +440,7 @@ Online logs show up to 1000 of the most recent events (lines), updated in real t
   The file is downloaded as `<component-name>.log`.
 
 ## Reset Shared Configuration Repository for GitOps Runtimes
-When you install the first Hybrid <!--- or Hosted--> GitOps Runtime for your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
+When you install the first GitOps Runtime in your account, as part of the setup, Codefresh creates the [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) in your Git provider account and validates the URL. The Shared Configuration Repo is used for all GitOps Runtimes you add to the same account.
 
 As a Codefresh admin, you can reset the repo defined for your account if the URL is either incorrect or missing, or if there are no active GitOps Runtimes. See [Reset Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/#reset-shared-configuration-repo).
 
@@ -450,7 +450,7 @@ As a Codefresh admin, you can reset the repo defined for your account if the URL
 
 Deep Links is an Argo CD feature that redirects users to third-party applications/platforms by surfacing links to the same in Argo CD projects, applications, and resources. Read all about it in [Argo CD Deep Links](https://argo-cd.readthedocs.io/en/stable/operator-manual/deep_links/){:target="\_blank"}.
 
-In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo where you installed the Hybrid GitOps Runtime.
+In Codefresh, you can configure deep links to third-party applications/platforms in the `argocd-cm` ConfigMap, located in the repo where you installed the GitOps Runtime.
 When configured, deep links are displayed in the application's Current State tab in Tree view. See [Working with resources in Tree View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#working-with-resources-in-tree-view).
 
 >**NOTE**  
@@ -566,7 +566,7 @@ Uninstalling a GitOps Runtime permanently removes:
 
 
 
-
+{% if page.collection != site.gitops_collection %}
 ## Troubleshoot communication problems
 
 You have a communication problem if you see either of these notifications:
@@ -575,7 +575,7 @@ OR
  _Unable to communicate with two or more runtimes_
 
 Refer to our [troubleshooting section]({{site.baseurl}}/docs/kb/articles/runtime-issues/#unable-to-communicate-with-runtime-name-or-two-or-more-runtimes) for a list of possible causes and the corresponding corrective actions.
-
+{% endif %}
 
 ## View notifications in Activity Log
 
