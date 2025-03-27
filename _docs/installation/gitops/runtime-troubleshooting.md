@@ -7,12 +7,13 @@ toc: true
 
 
 ## Error: Job has reached the specified backoff limit
+Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
 
 ### Possible cause
 Validation errors in your `values.yaml` file.  
-Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
 
-### Possible actions
+
+### Resolution
 1. Get more detailed information on the reason for the validation failure by running:  
    `kubectl logs jobs/validate-values -n ${NAMESPACE}`  
    where:  
