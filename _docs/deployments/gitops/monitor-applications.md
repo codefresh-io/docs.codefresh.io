@@ -355,12 +355,12 @@ The table describes the possible health statuses for an application resource in 
 {: .table .table-bordered .table-hover}
 |  Health icon    | Health status | Description  | 
 | --------------  | ------------| ------------------|  
-| {::nomarkdown}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{:/}       | **Healthy**     | Resource is functioning as required.  | 
-| {::nomarkdown}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/}   | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs. | 
-| {::nomarkdown}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{:/}     |  **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.|
-|{::nomarkdown}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{:/}        | **Missing**     | Resource is not present on the cluster.  |                        
-| {::nomarkdown}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{:/}      | **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status. |
-| {::nomarkdown}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block/>{:/}      | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example, `ConfigMaps` resource types.   |
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-healthy.png" display=inline-block">{% endif %}{:/} {% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-healthy.png" display=inline-block">{% endif %}{:/}      | **Healthy**     | Resource is functioning as required.  | 
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-progressing.png" display=inline-block">{:/} {% endif %} {% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-progressing.png" display=inline-block">{:/} {% endif %}   | **Progressing** | Resource is not healthy but can become healthy before the timeout occurs. | 
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-suspended.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-suspended.png" display=inline-block">{% endif %}{:/}     |  **Suspended**   | Resource is not functioning, and is either suspended or paused. For example, Cron job or a canary rollout.|
+|{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-missing.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-missing.png" display=inline-block">{% endif %}{:/}        | **Missing**     | Resource is not present on the cluster.  |                        
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-degraded.png" display=inline-block/>{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-degraded.png" display=inline-block/>{% endif %}{:/}      | **Degraded**    | Resource is not healthy, or a timeout occurred before it could reach a healthy status. |
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-unknown.png" display=inline-block/>{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-unknown.png" display=inline-block/>{% endif %}{:/}      | **Unknown**   | Resource does not have a health status, or the health status is not tracked in Argo CD. For example, `ConfigMaps` resource types.   |
 
 
 See also [Argo CD's set of health checks](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/){:target="\_blank"}.
@@ -377,9 +377,9 @@ The table describes the possible sync states for an application resource in the 
 {: .table .table-bordered .table-hover}
 | Sync icon      | Sync state   |Description  |  
 | -------------- | ----------    | ----------     |  
-| {::nomarkdown}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{:/} | **Synced**  | The live state of the resource on the cluster is identical to the desired state in Git.|                            
-| {::nomarkdown}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{:/}| **Syncing**  | The live state of the resource was not identical to the desired state, and is currently being synced. |  
-| {::nomarkdown}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{:/}| **Out-of-Sync**  | The live state is not identical to the desired state.<br>To sync a resource, select the **Sync** option from the resource's context menu in Tree view.  |  
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-synced.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-synced.png" display=inline-block">{% endif %}{:/} | **Synced**  | The live state of the resource on the cluster is identical to the desired state in Git.|                            
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-syncing.png" display=inline-block/>{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-syncing.png" display=inline-block/>{% endif %}{:/}| **Syncing**  | The live state of the resource was not identical to the desired state, and is currently being synced. |  
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/current-state-out-of-sync.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/current-state-out-of-sync.png" display=inline-block">{% endif %}{:/}| **Out-of-Sync**  | The live state is not identical to the desired state.<br>To sync a resource, select the **Sync** option from the resource's context menu in Tree view.  |  
 | No icon | **Unknown**      | The sync status could not be determined.  |  
 
 
@@ -426,7 +426,7 @@ max-width="50%"
 
 
 ### Tree view: Access external links
-Resources with annotations for external links, display {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} below their context menu. Ingress resources automatically display external links. Clicking the icon lists available links.  
+Resources with annotations for external links, display {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/external-link-resources.png" display=inline-block">{% endif %}{:/} below their context menu. Ingress resources automatically display external links. Clicking the icon lists available links.  
 For more details on this feature, see [Argo CD's documentation on Adding external URLs](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/){:target="\_blank"}.
 
 >**NOTE**  
@@ -449,7 +449,7 @@ caption="External links for deployment resource in Current State Tree view"
 max-width="50%"
 %}
 
- Clicking {::nomarkdown}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{:/} displays the links configured. 
+ Clicking {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/external-link-resources.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/external-link-resources.png" display=inline-block">{% endif %}{:/} displays the links configured. 
 
 
 
@@ -631,10 +631,10 @@ The table lists the controls in the Rollout Player to manage an ongoing rollout.
 {: .table .table-bordered .table-hover}
 |Rollback player icon | Option   | Description |  
 | --------------  | ------------| 
-| {::nomarkdown}<img src="../../../../images/icons/rollout-rollback.png" display=inline-block"> {:/}  | **Rollback**  | Rollback rollout to the selec.  | 
-| {::nomarkdown}<img src="../../../../images/icons/rollout-resume.png" display=inline-block"> {:/}    |**Resume**     | Resume a step that has been paused indefinitely. | 
-| {::nomarkdown}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/} | **Skip step** | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
-| {::nomarkdown}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/}| **Promote full rollout**    | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/rollout-rollback.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/rollout-rollback.png" display=inline-block">{% endif %}  {:/}  | **Rollback**  | Rollback rollout to the selec.  | 
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/rollout-resume.png" display=inline-block">{% endif %} {% if page.collection == site.gitops_collection %}<img src="../../../images/icons/rollout-resume.png" display=inline-block">{% endif %}{:/}    |**Resume**     | Resume a step that has been paused indefinitely. | 
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/rollout-skip-step.png" display=inline-block">{% endif %} {% if page.collection == site.gitops_collection %}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block">{% endif %}{:/} | **Skip step** | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
+| {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/rollout-promote-full.png" display=inline-block">{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block">{% endif %} {:/}| **Promote full rollout**    | Skip remaining pause, traffic routing, and analysis steps, and deploy the current release. |                        
 
 
  
@@ -695,7 +695,6 @@ max-width="50%"
 [Troubleshooting Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/troubleshooting-gitops-apps/)  
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 

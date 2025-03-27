@@ -65,7 +65,7 @@ There are two aspects to managing Argo CD applications in Codefresh GitOps:
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#delete-application-resources).
 
 
-## GitOps environments & Argo CD applications
+## Environments & Argo CD applications
 Tracking and managing deployments at scale requires clear visibility into applications at every stage. Codefresh GitOps provides this visibility through environments.  
 When you define an environment by specifying one or more cluster-namespace pairs, Codefresh automatically detects and displays the applications deployed to those locations.
 
@@ -798,7 +798,6 @@ metadata:
 [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)    
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 

@@ -208,9 +208,9 @@
 - title: Products
   url: "/products"
   pages:
-    - title: About Products
+    - title: About products
       url: "/about-products"
-    - title: Create Products
+    - title: Create products
       url: "/create-product"
     - title: Configure Product Settings
       url: "/configure-product-settings"
@@ -220,7 +220,7 @@
       url: "/promotion-version-properties"
     - title: Selecting Promotion Flows
       url: "/promotion-flow-triggers"
-    - title: Tracking Releases for Products
+    - title: Tracking Releases for products
       url: "/releases-in-products"
 
 - title: Applications

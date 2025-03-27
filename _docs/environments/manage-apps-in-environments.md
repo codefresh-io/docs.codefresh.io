@@ -19,7 +19,7 @@ Use the Environments dashboard to:
 ## Filter applications in environments by health status
 Quickly filter applications within an Environment by health status. For health status descriptions, see [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#health-status-for-application-resources).
 
-1. In the Codefresh UI, from the sidebar, select [**Environments**](https://g.codefresh.io/2.0/environments?view=compact){:target="\_blank"}.
+1. In the Codefresh UI, from the sidebar, select **Environments**.
 1. For any Environment, click the Health status or statuses by which to filter.  
   The Environment displays those applications that match the selected status. 
 
@@ -38,7 +38,7 @@ Quickly filter applications within an Environment by health status. For health s
 Promote a product or application from the Environments dashboard using one of two methods:
 * **Drag-and-drop promotion**  
   Manually move a product or application from one environment to another, and define the Promotion Settings. Use this method to quickly test changes, such as promoting an application from development to testing.
-* **Promote action**
+* **Promote action**  
   Instead of drag-and-drop, select the target environment to promote to, or trigger a predefined Promotion Flow configured with promotion settings, including the action, and Pre-Action and Post-Action Workflows. This method is best for structured promotions that follow defined policies.
 
 

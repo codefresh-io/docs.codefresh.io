@@ -10,21 +10,21 @@ A Promotion Flow in Codefresh GitOps defines the steps, validations, and conditi
 
 By selecting Promotion Flows for a product you can choose the most relevant flows for its deployment strategy.By configuring trigger conditions for each Flow, you can structure promotions for the product, tailored to its needs, improving deployment consistency and efficiency.
 
-##### Benefits of Promotion Flows with triggers tailored products
+##### Benefits of Promotion Flows with triggers tailored for products
 
-* **Multiple flows per product**
+* **Multiple flows per product**  
   Select different Promotion Flows to orchestrate promotions for the product in accordance with the different deployment requirements.For example, you can select both Hotfix and Feature Testing flows to ensure urgent patches and new features follow separate promotion processes.  
   Promotion Flows are predefined by account administrators for the account. If the Flow you require is not available, contact your administrator.  
 
-* **Custom trigger conditions per flow**
+* **Custom trigger conditions per flow**  
   Define specific trigger conditions for each Promotion Flow to tailor automated promotion based on the product’s unique deployment requirements.  
   For example, configure the trigger to launch the Hotfix flow whenever a commit message contains the phrase `hotfix`.
  
-* **Prioritization**
+* **Prioritization**  
   Arrange the Promotion Flows in a prioritized order to control the sequence in which they are evaluated and executed.
 
 
-##### Where to configure Promotion Flows and triggers
+## Where to configure Promotion Flows and triggers
 In **Product > Settings > Promotion Flows**.  
 Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
 See also [Promotion Flow CRD](#promotion-flow-yaml).
