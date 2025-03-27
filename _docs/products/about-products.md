@@ -75,13 +75,17 @@ There are two ways to create a Product in Codefresh GitOps:
 After [creating products]({{site.baseurl}}/docs/products/create-product/), assign applications, define their promotion settings, and track deployments across environments.
 See [Assigning applications to the product]({{site.baseurl}}/docs/products/assign-applications/).
 
-## Promotion settings and promotions for Products
+## Optimizing promotions for Products
 
 Promotion settings for a product define which changes can be promoted and under what conditions, ensuring that each promotion aligns with your deployment strategy.  
 These settings control:
-* **Application version source**: Specify where application versions originate to maintain consistency across environments.
-* **Promotable properties**: Define precisely which applications settings are carried forward during a promotion.
-* **Promotion Flows**: Assign the Promotion Flows most relevant to the product, and configure the conditions that trigger each flow.  
+* **Application version source**  
+  Specify where application versions originate to maintain consistency across environments.
+* **Promotable properties**  
+  Define precisely which applications settings are carried forward during a promotion.
+* **Promotion Flows**  
+  Assign the Promotion Flows most relevant to the product, and configure the conditions that trigger each flow.  
+
 See [Application version and promotable properties]({{site.baseurl}}/docs/products/promotion-version-properties/) and [Promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/).
 
 Promote a product manually to a specific environment or automate promotions across multiple environments using Promotion Flows. See [Triggering promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/).

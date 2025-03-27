@@ -35,7 +35,7 @@ For automated retrieval of the application version and promotion of specific att
 Promotion across different environments requires consistent relative paths in each repository. For example, to promote properties from `config/settings.yaml` in environment `dev` to `testing`, `config/settings.yaml` must also exist in the `testing` environment. 
 {{site.data.callout.end}}
 
-##### Where to configure settings for application version and properties
+## Where to configure settings for application version and properties
 In **Product > Settings > Promotion Settings**.   
 See also [Promotion Settings & Promotion Templates](#promotion-settings--promotion-templates).
 

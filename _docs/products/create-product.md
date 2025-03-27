@@ -34,7 +34,7 @@ Products will not display applications in these cases:
 
 
 
-## Create Products 
+## Create products 
 Create a product from the Products page.  
 
 To create a product for a new or an existing application, see [Configuring applications]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#products).

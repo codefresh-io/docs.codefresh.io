@@ -29,7 +29,7 @@ Use the action as follows:
     * [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
     * [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
-1. View the image in the [Images dashboard]({{site.baseurl}}/docs/dashboards/images/), and in any [application]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/) in which it is used.
+1. View the image in the [Images dashboard]({{site.baseurl}}/docs/dashboards/images/), and in any [application]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/) in which it is used.
 
 ## Connect a third-party CI platform/tool to GitOps
 Connecting the CI platform/tool to GitOps from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
@@ -63,7 +63,7 @@ max-width="50%"
 1. Paste the copied manifest as the last step in your CI pipeline.
 
 ## CI integration argument reference 
-The table has been moved to a dedicated standalone topic [here]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
+See [here]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 
 ## Related articles
