@@ -1,1 +1,0 @@
-../../_docs/terms-and-privacy-policy/sla.md
