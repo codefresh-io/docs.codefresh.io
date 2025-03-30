@@ -29,7 +29,7 @@ For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administr
 <br><br>
 
 
-#### GitOps:  Promotions with GitOps-the Codefresh advantage
+#### GitOps: Promotions with GitOps-the Codefresh advantage
 We’re excited to introduce **promotions** in Codefresh GitOps !
 
 In Continuous Delivery (CD), promotions are essential for advancing application versions across environments in a controlled, traceable manner. 
@@ -78,21 +78,12 @@ Feature Flags are divided into new Feature Flags released in the current version
 
 <br>
 
-##### New Feature Flags in v2.7
-The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.6.
-
-{: .table .table-bordered .table-hover}
-| Feature Flag       | Description  | Default Value |
-| -----------        | --------------| ------------- |
-| `auditing`  | When enabled (the default), displays the **Audit** tab in Account Settings. | TRUE         |
-| `workflowPipelinesPage`   | When enabled (the default), shows the **Workflows** and **Workflow Templates** options in the sidebar.| TRUE  |
+#### New Feature Flags in v2.7
+There are no new feature flags in this release.
 
 
 
-
-<br>
-
-##### Updated Feature Flags in v2.7
+#### Updated Feature Flags in v2.7
 The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
 
 {: .table .table-bordered .table-hover}
