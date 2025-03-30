@@ -25,7 +25,7 @@ Promotions are a critical part of continuous delivery, enabling you to move chan
   Users need permissions to create Promotion Workflows, configure promotion settings for products, and trigger promotions.
 
 ## Tasks
-1. [Create Environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)  
+1. [Create environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)  
   Environments define the starting point and destination of promotions.   
   A promotion requires at least two environments:
     * Trigger environment, the source of the changes being promoted
