@@ -127,6 +127,7 @@ The table describes in alphabetical order, the features you can open for Codefre
 | `systemFonts`     | When enabled (the default), uses system fonts instead of custom fonts in the UI. | TRUE         | _New in v2.6_ |
 | `useSeparatePlanner` |When enabled, uses the new version of the Planner for pipelines.  | FALSE    | _New in v2.6_ |
 |`useRepoAndBranchesNextPagination`         | When enabled, when adding Triggers to pipeline workflows, the **Repository** dropdown displays repositories and branches in paginated format, with the Next button for navigating between pages.  | TRUE         | _Default changed to TRUE in v2.6_ |
+| `workflowPipelinesPage`   | When enabled (the default), shows the **Workflows** and **Workflow Templates** options in the sidebar.| TRUE  | _New in v2.7_ |
 | `yamlTreeJsonPathBuilder`     | When enabled, displays the YAML file in tree mode, allowing users to easily select an attribute and automatically generate a JSON path. Available in **Product > Settings > Promotion Settings**.   | TRUE         |  _New in v2.6_ |
 
 

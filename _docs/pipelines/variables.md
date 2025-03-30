@@ -271,6 +271,9 @@ When adding a user-defined variable, you can create a:
   A standard variable whose value is visible in plain text unless explicitly encrypted. You can create these manually, import them from a file with predefined values, or define empty variables without assigned values.
 * **Secret**  
   A variable whose value is automatically encrypted and masked in logs.
+
+>**NOTE**  
+Secret variables are currently not supported in on-premises environments.
     
 
 

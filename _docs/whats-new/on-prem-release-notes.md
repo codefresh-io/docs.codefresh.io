@@ -26,101 +26,52 @@ We have now increased the audit limit _from 15,000 to 50,000_, which means you c
 
 For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
 
-
-#### Pipelines: Create secret variables
-You can now add variables as secrets to securely manage sensitive data in pipelines. Instead of manually encrypting a variable’s value and temporarily exposing it, simply select the **Secret** option when adding a variable. Secret variables are automatically encrypted.
-
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/mar25/variable-secret.png" 
-   url="/images/whats-new/mar25/variable-secret.png" 
-   alt="Creating secret variables" 
-   caption="Creating secret variables" 
-   max-width="60%" 
-   %}
-
-Once saved, the variable is locked and cannot be modified. To change the value, you must decrypt it first, which resets it to empty.  
-
-For details, see [User-defined variables in pipelines]({{site.baseurl}}/docs/pipelines/variables/#user-defined-variables).
-
 <br><br>
 
-#### Pipelines: Alerts to prevent variable overrides
-Now, you’ll get an alert if you create a variable that already exists at a higher level. Previously, it was easy to unintentionally override a project-level variable at the pipeline level without realizing it. These alerts help you manage variables more safely across shared configurations, projects, pipelines, and triggers.
+
+#### GitOps:  Promotions with GitOps-the Codefresh advantage
+We’re excited to introduce **promotions** in Codefresh GitOps !
+
+In Continuous Delivery (CD), promotions are essential for advancing application versions across environments in a controlled, traceable manner. 
+**Promotions in Codefresh GitOps** enhance this process by providing greater visibility, control, and automation while maintaining Git as the single source of truth. Additionally, they integrate with and extend **Argo CD**, enabling structured promotion flows, policy enforcement, and enhanced deployment tracking beyond standard application syncs. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/overview/promos-gitops.png" 
+url="/images/gitops-promotions/overview/promos-gitops.png"
+alt="GitOps promotions in Codefresh" 
+caption="GitOps promotions in Codefresh"
+max-width="60%"
+%}
+
+>**NOTE**  
+GitOps promotions require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access promotion features.
+
+##### Why use GitOps promotions in Codefresh?
+Codefresh builds on Argo CD’s deployment model by introducing structured promotion flows with additional context and automation:
+
+* **Declarative and version-controlled**  
+  Promotions are fully tracked in Git, tied to commits, ensuring traceability. Teams can see who triggered a promotion and why.
+
+* **Enhanced context and visibility**  
+  While Argo CD manages application deployments, Codefresh GitOps provides additional structure with:  
+  * **Environments**, defining stages in the software lifecyle, allowing you to track application progress.  
+  * **Products**, grouping related applications for unified promotion management. 
+  * **Releases**, providing end-to-end visibility into deployments across environments. 
 
 
-<br><br>
+##### Promotion entities
+Codefresh GitOps streamlines and automates promotions, eliminating the need for custom scripts. 
+* **Promotion properties** to control which application properties are promoted and prevent unnecessary changes.  
+* **Promotion Workflows** to enforce environment-specific checks such as validations, compliance, and performance checks at different stages of promotions.    
+* **Promotion Policies** to govern advanced promotion behavior for environments.  
+* **Promotion Flows** to automate complex promotions across multiple environments.  
 
-#### GitOps: Settings for Promotion Flows
-
-We have introduced settings for Promotion Flows to give you greater control and flexibility in managing them.
-When creating a Promotion Flow, you can define several settings, including the Flow Timeout and Version. 
-
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/jan25/promotion-flow-settings.png" 
-   url="/images/whats-new/jan25/promotion-flow-settings.png" 
-   alt="Settings for Promotion Flows" 
-   caption="Settings for Promotion Flows" 
-   max-width="60%" 
-   %}
-
-   * **Flow Timeout**: Ensures Promotion Flows don’t run indefinitely by setting a maximum duration for execution. If a Flow exceeds this duration, it is automatically terminated.  
-     **Why is this useful?**  
-      * Manual approval delays: In PR-driven flows, the timeout automatically terminates the Flow if required approvals aren’t provided within the defined time frame.  
-      * Misconfigured tests: Prevents new Promotion Flows from running indefinitely due to errors in testing configurations. 
-    The default timeout, if not explicitly set, is 1 day (24 hours).
-  * **Version**: Allows you to indicate changes to the same Promotion Flow. 
-
-For details, see [Create a Promotion Flow]({{site.baseurl}}/docs/promotions/promotion-flow/#create-a-promotion-flow).
-
-<br><br>
-
-### GitOps: Product Releases enhancements
-We've made several improvements to the Product Releases page enhancing traceability and clarity.
-
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/jan25/product-releases.png" 
-   url="/images/whats-new/jan25/product-releases.png" 
-   alt="Product > Releases page" 
-   caption="Product > Releases page" 
-   max-width="60%" 
-   %}
-
-* **Date**: The Release ID has been replaced with the date when the release was initiated, making it easier to track when each release occurred. Failed releases now show a tooltip with a summary of the reason for the failure, improving troubleshooting.
-* **Initiator**: The name of the user who initiated the Promotion Flow that triggered the release is now displayed, helping with better accountability.
-* **Version**: The version defined in the Promotion Flow settings is now also shown on the Product Releases page, providing more context and consistency for each release.
-
-For details, see [Tracking releases for products]({{site.baseurl}}/docs/promotions/product-releases/).
-
-<br><br>
-
-### GitOps: GitHub status checks for Codefresh Promotions
-
-We have introduced a new GitHub status check feature to make tracking your deployments more seamless and efficient. When you promote across environments, Codefresh will automatically report back a Git status check on any commits. 
-
-* Status checks include a direct link to the release, so you can quickly view its progress.
-* There’s no need to leave GitHub. You can stay updated on your release status without switching tools.
-* If any issues arise, simply follow the link to troubleshoot effortlessly.
+For details, see [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
 
 
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/feb25/whats-new-feb25-release-status-in-git.png" 
-   url="/images/whats-new/feb25/whats-new-feb25-release-status-in-git.png" 
-   alt="Promotion status check in GitHub" 
-   caption="Promotion status check in GitHub" 
-   max-width="60%" 
-   %}
- 
-
-For details, see [Tracking releases for Products]({{site.baseurl}}/docs/promotions/product-releases/).
 
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
@@ -134,8 +85,8 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
 | `auditing`  | When enabled (the default), displays the **Audit** tab in Account Settings. | TRUE         |
-| `hideUsageMenuItem` | When enabled, hides the Usage menu item in the sidebar.| FALSE  |
-| `runtimeInstallationWizard` | When enabled, shows the new Runtime Installation wizard for GitOps Runtime installation.| FALSE  |
+| `workflowPipelinesPage`   | When enabled (the default), shows the **Workflows** and **Workflow Templates** options in the sidebar.| TRUE  |
+
 
 
 
@@ -148,6 +99,7 @@ The table below lists existing Feature Flags which have been updated by default 
 | Feature Flag       | Description                                               | Default Value |
 | -----------        | --------------------------------------------------------- | ------------------------- |
 | `abacAndRule`             | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND".| _FALSE_  |
+
 
 ### Bug fixes
 
