@@ -4,7 +4,7 @@ description: "Add multiple remote clusters to a GitOps Runtime and deploy applic
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/) <!--- or [Hosted]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/) -->GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
 
@@ -15,7 +15,6 @@ Adding a managed cluster via Codefresh ensures that Codefresh applies the requir
 
 ## Prerequisites
 
-<!--- * For _Hosted GitOps_ Runtimes: [Configure access to these IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  -->
 * Valid Git user token with the [required scopes]({{site.baseurl}}/docs/security/git-tokens/)
 * [Latest version of the Codefresh CLI]({{site.baseurl}}/docs/installation/gitops/upgrade-gitops-cli/)
 * Codefresh token in user settings
@@ -44,7 +43,7 @@ Optionally, to first generate the YAML manifests, and then manually apply them, 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Runtimes in the sidebar, select **GitOps Runtimes**.
 1. From either the **Topology** or **List** views, select the Runtime to which to add the cluster.
-1. Topology View: Select {::nomarkdown}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{:/}.
+1. Topology View: Select {::nomarkdown}{% if page.collection != site.gitops_collection %}<img src="../../../../images/icons/add-cluster.png" display=inline-block/>{% endif %}{% if page.collection == site.gitops_collection %}<img src="../../../images/icons/add-cluster.png" display=inline-block/>{% endif %}{:/}.
   List View: Select the **Managed Clusters** tab, and then select **+ Add Cluster**.
 1. In the Add Managed Cluster panel, if needed install the Codefresh GitOps CLI.
 1. Copy and run the command:
@@ -128,7 +127,7 @@ View connection status for the managed cluster, and health and sync errors. Heal
 Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.
 If Argo Rollouts has not been installed on the target cluster, the **Install Argo Rollouts** button displayed.
 
-Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [Applications dashboard]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/). 
 
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and from Runtimes in the sidebar, select **GitOps Runtimes**.
