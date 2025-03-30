@@ -23,6 +23,7 @@ async function getArgoHubRedirectURL(currentPath) {
 }
 
 async function handleRedirect() {
+  return
   if (SITE_IS_GITOPS_COLLECTION) return;
 
   const isEnterpriseDocumentationCookieSet = checkIfEnterpriseDocumentationCookieSet()
