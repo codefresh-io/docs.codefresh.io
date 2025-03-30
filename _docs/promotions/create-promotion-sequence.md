@@ -65,7 +65,7 @@ Promotions are a critical part of continuous delivery, enabling you to move chan
   Trigger the promotion manually or automatically.  
   
 1. [Monitor promotion releases for products]({{site.baseurl}}/docs/promotions/product-releases/)  
-  Track deployment progress as applications move through the promotion sequence.   
+  Monitor deployment progress as applications move through the promotion sequence.   
   * Use the Releases feature for products to monitor deployments
 
 

@@ -101,7 +101,7 @@ Learn how promotions work by exploring their core components. See [Promotion bui
 ##### Configure and trigger promotions
 Follow the guidelines in [Promotions: Setup & configuration]({{site.baseurl}}/docs/promotions/create-promotion-sequence/) to configure, trigger, and monitor promotions.  
 
-<!--- screenshot of yaml examples to differentiate and not overcrowd -->
+
 
 
 

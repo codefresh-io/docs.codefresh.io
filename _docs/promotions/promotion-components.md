@@ -127,7 +127,7 @@ If you have multiple Configuration Runtimes, Codefresh consolidates the settings
 
 >**NOTE**  
 The documentation uses Shared Configuration Repository or Shared Config Repo for clarity.  
-In code samples and internal references, it is represented as `isc`.
+Code samples and internal references use `isc`.
 
 
 {: .table .table-bordered .table-hover}
