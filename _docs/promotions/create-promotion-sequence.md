@@ -72,7 +72,7 @@ Promotions are a critical part of continuous delivery, enabling you to move chan
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion quick starts]({{site.baseurl}}/gitops-quick-start/gitops-quick-start/#promoting-applications/)   
+[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 
