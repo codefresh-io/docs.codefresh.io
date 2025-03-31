@@ -612,7 +612,9 @@
         - title: Install GitOps Runtime with new Argo CD
           url: "/hybrid-gitops-helm-installation" 
         - title: Install GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"        
+          url: "/argo-with-gitops-side-by-side"     
+        - title: Troubleshoot installation
+          url: "/runtime-troubleshooting"    
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
         - title: Runtime values file validation

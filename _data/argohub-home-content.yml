@@ -150,6 +150,8 @@
       localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
     - title: Install GitOps Runtime with new Argo CD
       localurl: /gitops/gitops-runtimes/hybrid-gitops-helm-installation/
+    - title: Troubleshooting Runtime installation
+      localurl: /gitops/gitops-runtimes/runtime-troubleshooting/  
 
 
 - title: Administration
