@@ -36,6 +36,7 @@ The following timeframes are calculated from the time that we receive sufficient
 | **High**      | N/A             |  1 Hour   |
 | **Normal**    | N/A             |  2 Hours  |
 | **Low**       | N/A             |  8 Business Hours[1] |
+
 If our response time objective exceeds the remaining time available on that Business Day[2], our response time is paused at the end of the Business Day[2] and shall resume on the next Business Day[2] (where applicable). However, we may respond outside of these hours. 
 
 [1]**Business Hours** means the hours of 9am to 5pm on Business Days[2] in the registered time zone for your supported product.  
