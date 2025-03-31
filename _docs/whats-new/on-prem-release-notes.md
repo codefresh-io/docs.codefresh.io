@@ -70,6 +70,32 @@ Codefresh GitOps streamlines and automates promotions, eliminating the need for 
 
 For details, see [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
 
+<!--- ## GitOps: Simplified Runtime installation with the installation wizard
+
+Our new installation wizard, designed for ease of use and maximum visibility into every step, makes installing a GitOps Runtime simple, intuitive, and quick.
+
+
+##### Key features
+* **Installation and configuration** steps clearly defined, allowing you to complete the entire setup from the same location.
+* **Guided experience** that walks you through each step.
+* **Inline parameter descriptions** so you always know what to define.
+* **Automatic progress saving** so you can stop anytime and resume exactly where you left off.
+
+##### Installation
+Install a Runtime in three simple steps:
+* Define the Shared Configuration Repo and Git provider—a one-time action for the first Runtime in your account.
+* Review and define installation parameters, which are automatically populated in the install command.
+* Run the install command in your terminal.
+
+##### Configuration
+Configuration steps are clearly defined, allowing you to complete setup correctly.
+* **Define Git credentials**, with the option to use the same token for both the Runtime and user authentication. Required scopes are detailed to ensure the correct permissions.
+* **Configure as an Argo CD Application** to take full advantage of GitOps. 
+* **Add a Git source** to the Runtime so you are ready to create applications.
+
+-->
+
+
 
 
 
