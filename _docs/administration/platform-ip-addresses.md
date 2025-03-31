@@ -38,7 +38,13 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 3.74.180.3
 - 18.197.46.161
 - 3.68.123.116
+{% if page.collection == site.gitops_collection %}
+- 54.235.42.99
+- 54.86.228.102
+- 107.22.212.247
+{% endif %}
 
+{% if page.collection != site.gitops_collection %}
 ## Pipeline Runtime IPs
 
 ### Basic tier
@@ -65,6 +71,7 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 
 - 54.235.42.99
 - 54.86.228.102
+{% endif %}
 
 ### Disaster Recovery (DR)
 
