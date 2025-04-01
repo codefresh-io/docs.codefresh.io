@@ -35,6 +35,8 @@ Node version `9.11.2`
    > **Warning:** After adding a new side menu, it is required to delete the `_site` folder to apply the change.
 5. Adjust the document and add conditions for Enterprise and ArgoHub contexts if needed.
 6. Adjust the the document links (refter to the "Document Links" section).
+7. After syncing the documentation content in the CommandBar's Enterprise account, please unpublish the new GitOps Cloud document from the Enterprise content table.
+   > **Recommendation:** To exclude all GitOps Cloud pages from the Enterprise segment, search for the keyword `/docs/gitops/`, select all entries, and unpublish them.
 
 ## Document Changes
 
@@ -48,14 +50,15 @@ No actions required - the new content will be automatically reflected in both Ar
 
 - Repeat step 3.
 - Repeat step 6.
+- Repeat step 7.
 
 #### If changes to the ArgoHub structure are required
 
-- Repeat steps 2 to 6.
+- Repeat steps 2 to 7.
 
 ### Splitting a Document into Multiple Documents
 
-- Repeat steps 2 to 6.
+- Repeat steps 2 to 7.
 
 ## ArgoHub Collection Notes
 

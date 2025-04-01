@@ -29,7 +29,7 @@ Choose from two installation options based on your existing Argo CD setup:
 
 
 The key difference is whether Argo CD instance is either external to the Runtime or installed as part of it.
-For an architectural overview, see [Runtime installation modes and architecture]({{site.baseurl}}/docs/gitops-runtimes/runtime-architecture/#runtime-installation-modes-and-architecture). 
+For an architectural overview, see [Runtime installation modes and architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/#runtime-installation-modes-and-architecture). 
 
 
 

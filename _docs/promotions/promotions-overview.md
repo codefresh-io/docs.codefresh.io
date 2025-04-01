@@ -24,6 +24,7 @@ Watch this video to see a promotion in action:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
 
 
+
 ### Why use Codefresh's GitOps promotions?
 Codefresh extends Argo CD’s deployment model by introducing structured promotion flows with additional context and automation:
 
@@ -31,7 +32,7 @@ Codefresh extends Argo CD’s deployment model by introducing structured promoti
   Every promotion is tracked in Git, tied to a commit, ensuring full traceability. Teams can see who triggered a promotion and why.
 
 * **Context and visibility**  
-While Argo CD manages deployments at the application level, promotions with Codefresh GitOps goes beyond this offering:
+  While Argo CD manages deployments at the application level, promotions with Codefresh GitOps goes beyond this offering:
   * **Environments**:  
     Represent stages in the software lifecyle, allowing teams to easily track application progression.  
     Read more on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/). 
@@ -56,7 +57,7 @@ max-width="65%"
 Promotions in Codefresh GitOps require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access  promotion features.
 
 
-## Key GitOps promotion entities
+## Key features with GitOps promotions
 Codefresh GitOps provides specialized functionality to streamline and automate promotions while maintaining consistency and control without the need for custom scripts. These capabilities enable predictable and reusable delivery lifecycles with built-in validations, reducing operational overhead.
 
 * **Predefine properties to promote**  

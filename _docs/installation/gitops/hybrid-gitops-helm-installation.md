@@ -121,7 +121,7 @@ helm upgrade --install <helm-release-name> \
 | `--wait` | Optional. The duration the installation process waits for all pods to become ready before timing out. Recommend to set it to a period longer than 5 minutes which is the default if not set. |
 
 
-### Step 4: Completing Installation
+## Step 4: Completing Installation
 After installation, you can:
 * Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#configure-gitops-runtime).  
 * View the installed Runtime in the Runtimes page, and complete the configuration at a later time.
