@@ -23,20 +23,16 @@ max-width="60%"
 Watch this video to see a promotion in action:  
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
 
-Watch this video to learn how to configure an automated Promotion Flow:  
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
 
 
-### Why use GitOps promotions in Codefresh?
-Codefresh extends Argo CD’s deployment model fby introducing structured promotion flow with additional context and automation:
+### Why use Codefresh's GitOps promotions?
+Codefresh extends Argo CD’s deployment model by introducing structured promotion flows with additional context and automation:
 
 * **Declarative and version-controlled**  
-  Every promotion is tracked in Git, tied to a commit, ensuring full traceability. Teams can see who approved or triggered a promotion and why.
-
-
+  Every promotion is tracked in Git, tied to a commit, ensuring full traceability. Teams can see who triggered a promotion and why.
 
 * **Context and visibility**  
-While Argo CD manages deployments at the application level, Codefresh GitOps goes beyond this with:
+  While Argo CD manages deployments at the application level, promotions with Codefresh GitOps goes beyond this offering:
   * **Environments**:  
     Represent stages in the software lifecyle, allowing teams to easily track application progression.  
     Read more on [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/). 
@@ -58,15 +54,15 @@ max-width="65%"
 %}
 
 >**NOTE**  
-GitOps promotions require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access  promotion features.
+Promotions in Codefresh GitOps require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access  promotion features.
 
 
-## Key GitOps promotion entities
-Codefresh  GitOps provides specialized functionality to streamline and automate promotions while maintaining consistency and control without the need for custom scripts. These capabilities enable predictable reusable delivery lifecycles with built-in validations, reducing operational overhead.
+## Key features with GitOps promotions
+Codefresh GitOps provides specialized functionality to streamline and automate promotions while maintaining consistency and control without the need for custom scripts. These capabilities enable predictable and reusable delivery lifecycles with built-in validations, reducing operational overhead.
 
 * **Predefine properties to promote**  
   Control which application properties are promoted to avoid unnecessary changes.  
-  See [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/). 
+  See [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/). 
 
 * **Enforce environment-specific checks**  
   Automate validations, compliance, and performance checks for different environments at different stages of promotions.    
@@ -91,8 +87,11 @@ Use these quick start guides to begin using promotions in Codefresh GitOps:
     * [Multi-environment Promotion Flow]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)
 
 * **Advanced promotions**  
-    * [Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
+    * [Promotions with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
     * [Environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
+
+Watch this video to learn how to configure an automated Promotion Flow:  
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
 
 
 ##### Understand the building blocks

@@ -50,8 +50,6 @@
   links:
     - title: About promotions
       localurl: /docs/promotions/promotions-overview/
-    - title: Getting started
-      localurl: /docs/promotions/getting-started/
     - title: Promotion building blocks
       localurl: /docs/promotions/promotion-components/
     - title: Promotion setup guidelines

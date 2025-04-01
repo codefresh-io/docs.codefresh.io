@@ -24,8 +24,7 @@ Promotions are a critical part of continuous delivery, enabling you to move chan
 1. [User permissions]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
   Users need permissions to create Promotion Workflows, configure promotion settings for products, and trigger promotions.
 
-## Tasks
-1. [Create Environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)  
+1. [Create environments]({{site.baseurl}}/docs/environments/create-manage-environments/#create-environments)  
   Environments define the starting point and destination of promotions.   
   A promotion requires at least two environments:
     * Trigger environment, the source of the changes being promoted
@@ -72,7 +71,6 @@ Promotions are a critical part of continuous delivery, enabling you to move chan
 ## Related articles
 [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/)  
 [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/)  
-[Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 

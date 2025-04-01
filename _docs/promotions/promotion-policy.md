@@ -322,7 +322,8 @@ Deleting a Promotion Policy removes it from all the products and environments it
 
 ## Visualize Promotion Workflows in Releases
 
-When a product is promoted manually or automatically, the promotion mechanism create a release for the product with a unique Release ID. The release provides a graphical representation of the promotion orchestration across the environments defined for it.
+When a product is promoted manually or automatically, the promotion mechanism create a release for the product. The release provides a graphical representation of the promotion orchestration across the environments defined for it.
+                 
 The visualization includes the Pre- and Post-Action Promotion Workflows within the environments, more specifically, the steps within the workflows.
 
 {% include 
