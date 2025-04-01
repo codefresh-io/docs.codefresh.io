@@ -150,7 +150,7 @@ Adding or deleting files from applications in target environments does not affec
 For each environment, you can explicitly set the Promotion Policy that defines governs promotion behavior for the environment through the Promotion Action (required), and  Pre- and Post-Action Workflows.  
 You can also preview Policy settings by product before the flow is triggered. 
 
-##### Inline vs. global Promotion Policy settings
+#### Inline vs. global Promotion Policy settings
 
 When you create or edit a Promotion Flow, the Flow Builder displays the Pre- and Post-Action Workflows, and the Promotion Action available for selection. 
 
@@ -171,7 +171,7 @@ max-width="60%"
 %}
 
 
-##### Previewing Promotion Policies by Product
+#### Previewing Promotion Policies by Product
 Before triggering a Promotion Flow, you can preview the global Promotion Policy settings that apply to a product.
 Policy evaluation by product is useful to verify if the environment and product have the desired policies in place, or identify those with missing policies, or missing settings such as the Promotion Action.
 
@@ -200,8 +200,10 @@ You can define a timeout for a Promotion Flow to automatically terminate it if t
 If not configured, the default timeout is 24 hours. 
 
 Timeouts are useful in scenarios such as:
-* Manual approval delays: Terminates the flow if manual approval isn’t provided within the defined time frame, for PR-driven flows for example.
-* Long-running tests: Terminates flows running indefinitely preventing unnecessary resource consumption and delays, for misconfigured tests for example. 
+* Manual approval delays  
+  Terminates the flow if manual approval isn’t provided within the defined time frame, for PR-driven flows for example.
+* Long-running tests  
+  Terminates flows running indefinitely preventing unnecessary resource consumption and delays, for misconfigured tests for example. 
 
 ## Create a Promotion Flow 
 Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, create new environments and promotion workflows on-the-fly when doing so. 
