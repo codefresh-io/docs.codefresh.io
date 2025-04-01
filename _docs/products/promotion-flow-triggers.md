@@ -28,11 +28,12 @@ By selecting Promotion Flows for a product you can choose the most relevant flow
 ## Where to configure Promotion Flows and triggers
 In **Product > Settings > Promotion Flows**.  
 Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
-See also [Promotion Flow CRD](#promotion-flow-yaml).
+See also [Product CRD](#promotion-crd).
 
 ##### Commit messages & Git revisions
 You can monitor changes based on the commit message (`commitMessage`) or the Git revision (`gitRevision`).  
-The commit message can contain a single word, a set of words, or phrases. For example, `hotfix` or `update image to v1.2`. There are no restrictions on commit messages. 
+The commit message can include single words, multiple words, or phrases. For example, `hotfix` or `update image to v1.2`. There are no restrictions on commit messages. 
+
 
 
 ##### Matching operators for filtering commits
@@ -144,9 +145,10 @@ The Rollback flow is designed to revert changes when issue are detected in produ
 
 The Rollback flow triggers when the commit message contains terms like `revert` or `rollback`, ensuring that the flow is triggered only for rollback operations.
 
-<!--- ##  Promotion Flow YAML
+<!---
+##  Product YAML
 
-Configure Promotion Flow settings in either Form or YAML modes.  
+Configure product settings in either Form or YAML modes.  
 
 Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 
@@ -158,9 +160,9 @@ To configure directly in YAML, refer to our [Promotion Flow YAML]({{site.baseurl
 -->
 
 ## Related articles
-[Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
+[Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
 
 
