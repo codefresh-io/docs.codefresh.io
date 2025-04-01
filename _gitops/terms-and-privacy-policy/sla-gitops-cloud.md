@@ -35,14 +35,12 @@ The following timeframes are calculated from the time that we receive sufficient
 | **Urgent**    | N/A             | 30 minutes |
 | **High**      | N/A             |  1 Hour   |
 | **Normal**    | N/A             |  2 Hours  |
-| **Low**       | N/A             |  8 Business Hours |
+| **Low**       | N/A             |  8 Business Hours[1] |
 
-[1] **Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
-[2] **Business Day** means weekdays (excluding public holidays) in your registered time zone.
+If our response time objective exceeds the remaining time available on that Business Day[2], our response time is paused at the end of the Business Day[2] and shall resume on the next Business Day[2] (where applicable). However, we may respond outside of these hours. 
 
-
-
-If our response time objective exceeds the remaining time available on that Business Day, our response time is paused at the end of the Business Day and shall resume on the next Business Day (where applicable). However, we may respond outside of these hours. 
+[1]**Business Hours** means the hours of 9am to 5pm on Business Days[2] in the registered time zone for your supported product.  
+[2]**Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
 
 ### 1.2. Priority Definitions.
@@ -63,22 +61,23 @@ If our response time objective exceeds the remaining time available on that Busi
 | **Channel**                          | **Standard**        |  **Premium**  |
 |--------------------------------------|------------------------|-------------|
 | **Community Slack**                  | ✅                     |  ✅            |
-| **Support Email**                     |  {::nomarkdown}<img src=../../../images/icons/gray-check-box.png?display=inline-block>{:/}  |  ✅            |
-| **Support Hours**                     | During Business Hours[1] | 24 x 7      |
-| **Primary Support Engineer**          |                        | ✅           |
-| **Video Conferencing***               |                        | ✅            |
-| **Phone****                         |                          | ✅           |
-| **Dedicated Support Slack Channel*****  |                      | ✅           |
+| **Support Email**                     |  {::nomarkdown}<img src=../../../images/icons/gray-check-box.png?display=inline-block>{:/}[1]  |  ✅            |
+| **Support Hours**                     | During Business Hours[2] | 24 x 7      |
+| **Primary Support Engineer**[3]       |                        | ✅           |
+| **Video Conferencing**[4]             |                        | ✅            |
+| **Phone**[5]                          |                          | ✅           |
+| **Dedicated Support Slack Channel**[6]|                      | ✅           |
 | **SLA**                               |                        | ✅           |
 
-**Standard Support Email**: Email support is provided for Standard subscriptions, however, there are no response or resolution objectives, and the priority definitions do not apply.
+[1]**Standard Support Email**: Email support is provided for Standard subscriptions, however, there are no response or resolution objectives, and the priority definitions do not apply.
 
-***Video Conferencing**: Real-time troubleshooting utilizing Microsoft Teams or Zoom. Available to Premium Support customers.
+[2]**Business Hours** means the hours of 9am to 5pm on Business Days* in the registered time zone for your supported product.  
+***Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
-****Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
+[3]**Primary support engineer**: Your dedicated primary support engineer is your primary contact for any support issues. They have deep knowledge of Octopus, and knowledge of your infrastructure, business, and deployment needs. They work closely with our global support team and engineering teams in APAC to resolve your issues as quickly as possible.
 
-*****Dedicated Support Slack Channel**: For Low Priority requests only; not to be used for business-impacting issues.
+[4]**Video Conferencing**: Real-time troubleshooting utilizing Microsoft Teams or Zoom. Available to Premium Support customers.
 
-**Primary support engineer**: Your dedicated primary support engineer is your primary contact for any support issues. They have deep knowledge of Octopus, and knowledge of your infrastructure, business, and deployment needs. They work closely with our global support team and engineering teams in APAC to resolve your issues as quickly as possible.
+[5]**Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
 
- 
+[6]**Dedicated Support Slack Channel**: For Low Priority requests only; not to be used for business-impacting issues.
