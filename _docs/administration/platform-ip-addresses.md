@@ -97,7 +97,7 @@ The DR IPs apply to all tiers.
 
 -->
 >**NOTE**    
-We have a [plain text version of the IP addresses]{% if page.collection != site.gitops_collection %}({{site.baseurl}}/docs/administration/cf-ip4.txt){% endif %}{% if page.collection == site.gitops_collection %}({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){% endif %}{:target="\_blank"}. Recommended for monitoring changes.
+We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){% endif %}{% if page.collection == site.gitops_collection %}{% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){% endif %}{:target="\_blank"}. Recommended for monitoring changes.
 
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
