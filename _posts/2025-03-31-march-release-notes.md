@@ -97,7 +97,7 @@ For details, see [Order of precedence for user-defined variables]({{site.baseurl
 ## Bug fixes
 
 ##### Pipelines 
-* Helm step does not use latest Helm version 3.14
+* Helm step does not use latest Helm version 3.14.
 
 ##### GitOps
 * Typo in parameter name in the `values.yaml` file of the `gitops-runtime chart`.
