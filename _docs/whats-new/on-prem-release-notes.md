@@ -14,7 +14,7 @@ Welcome to the release notes for our on-premises releases.
 #### Installing v2.7 
 For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
-#### Upgrading to v2.6
+#### Upgrading to v2.7
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
 
@@ -30,7 +30,7 @@ For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administr
 
 
 #### GitOps: Promotions with GitOps-the Codefresh advantage
-We’re excited to introduce **promotions** in Codefresh GitOps !
+We’re excited to introduce **promotions** in Codefresh GitOps!
 
 In Continuous Delivery (CD), promotions are essential for advancing application versions across environments in a controlled, traceable manner. 
 **Promotions in Codefresh GitOps** enhance this process by providing greater visibility, control, and automation while maintaining Git as the single source of truth. Additionally, they integrate with and extend **Argo CD**, enabling structured promotion flows, policy enforcement, and enhanced deployment tracking beyond standard application syncs. 
@@ -119,11 +119,14 @@ The table below lists existing Feature Flags which have been updated by default 
 
 
 ### Bug fixes
+##### General
+* Users not removed on selecting **Remove deactivated users during sync** in LDAP SSO settings.
 
 ##### Pipelines 
 * Builds frozen at the initialization phase when connecting to Vault secret store.
 * Build fails with `manifest unknown` error when referencing or including v1.0.12  of `jira-issue-manager` step.
 * `build` step fails to build ECR images when base image (`FROM`) is from a different AWS account.
+
 
 
 <br>
