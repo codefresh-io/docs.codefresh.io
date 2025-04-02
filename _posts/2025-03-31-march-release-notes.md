@@ -5,6 +5,27 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ## Features & enhancements
 
 
+
+
+
+### GitOps: Bring your own Argo CD
+We’ve made it easy to connect existing Argo CD infrastructure with GitOps Cloud.
+The agent lets you bring your own Argo CD instance, which works in plug-and-play mode. You install it in minutes, and if you change your mind you can also remove it without affecting your existing Argo CD instance. 
+
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/whats-new/mar25/runtime-install-wizard-existing-argo-cd.png" 
+   url="/images/whats-new/mar25/runtime-install-wizard-existing-argo-cd.png" 
+   alt="Installing GitOps Runtime connecting to existing Argo CD" 
+   caption="Installing GitOps Runtime connecting to existing Argo CD" 
+   max-width="60%" 
+   %}
+
+If you don’t want to bring your own Argo CD instance, that’s no problem. You can still choose the GitOps Runtime to manage all Argo services in one bundle with our easy installation process. 
+
+For details, see [Installing Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
+
 ### GitOps: Simplified Runtime installation with the installation wizard
 Our new installation wizard, designed for ease of use and maximum visibility into every step, makes installing a GitOps Runtime simple, intuitive, and quick.
 
@@ -34,26 +55,8 @@ Install a Runtime in three simple steps:
 Configuration steps are clearly defined, making the set up process easy to complete.
 * **Define Git credentials**, with the option to use the same token for both the Runtime and user authentication. Required scopes are detailed to ensure the correct permissions.
 * **Configure as an Argo CD Application** to take full advantage of GitOps.
-* **Add a Git source** to the Runtime so you’re ready to create applications
+* **Add a Git source** to the Runtime so you’re ready to create applications.
 
-
-### GitOps: Bring your own Argo CD
-We’ve made it easy to connect existing Argo CD infrastructure with GitOps Cloud.
-The agent lets you bring your own Argo CD instance, which works in plug-and-play mode. You install it in minutes, and if you change your mind you can also remove it without affecting your existing Argo CD instance. 
-
- {% include 
-   image.html 
-   lightbox="true" 
-   file="/images/whats-new/mar25/runtime-install-wizard-existing-argo-cd.png" 
-   url="/images/whats-new/mar25/runtime-install-wizard-existing-argo-cd.png" 
-   alt="Installing GitOps Runtime connecting to existing Argo CD" 
-   caption="Installing GitOps Runtime connecting to existing Argo CD" 
-   max-width="60%" 
-   %}
-
-If you don’t want to bring your own Argo CD instance, that’s no problem. You can still choose the GitOps Runtime to manage all Argo services in one bundle with our easy installation process. 
-
-For details, see [Installing Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 
 ### Pipelines: Easily add secret variables
@@ -80,7 +83,7 @@ This update brings:
 
 For details, see [User-defined variables]({{site.baseurl}}/docs/pipelines/variables/#user-defined-variables).
 
-### Prevent conflicts from overridden variables
+### Pipelines: Prevent conflicts from overridden variables
 
 We’ve introduced a smarter way to manage variables across shared configurations, projects, pipelines, and triggers.  
 Previously, it was easy to unintentionally override a project-level variable at the pipeline level—without realizing it. Now, you get a warning when creating a variable that already exists at a higher level, helping you make safer, more informed decisions.
@@ -94,7 +97,7 @@ For details, see [Order of precedence for user-defined variables]({{site.baseurl
 ## Bug fixes
 
 ##### Pipelines 
-
+* Helm step does not use latest Helm version 3.14
 
 ##### GitOps
 * Typo in parameter name in the `values.yaml` file of the `gitops-runtime chart`.
