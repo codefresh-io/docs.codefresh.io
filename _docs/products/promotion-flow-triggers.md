@@ -35,8 +35,8 @@ You can monitor changes based on the commit message (`commitMessage`) or the Git
 
 There are no restrictions on commit messages. The commit message can include:
 * A single word, for example, `hotfix`
-* Multiple words, for example, `hotfix` `upgrade`
-* Phrases with or without wildcards (`*`), for example, `refactor Helm chart values` or `update image to v1.*`, `[GitOps] Update image tag to v2.0`. 
+* Multiple words, for example, `hotfix`  `upgrade`
+* Phrases with or without wildcards (`*`), for example, `refactor Helm chart values`, `update image to v1.*`, `[GitOps] Update image tag to v2.0`. 
  
 
 ##### Matching operators for filtering commits
