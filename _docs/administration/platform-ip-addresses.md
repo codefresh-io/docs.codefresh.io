@@ -38,8 +38,7 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 3.74.180.3
 - 18.197.46.161
 - 3.68.123.116
-{% if page.collection == site.gitops_collection %}
-{% endif %}
+
 
 {% if page.collection != site.gitops_collection %}
 ## Pipeline Runtime IPs
@@ -97,7 +96,7 @@ The DR IPs apply to all tiers.
 
 -->
 >**NOTE**    
-We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){:target="\_blank"}{% endif %}{% if page.collection == site.gitops_collection %}{% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){:target="\_blank"}{% endif %}. Recommended for monitoring changes.
+We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){:target="\_blank"}{% endif %}{% if page.collection == site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){:target="\_blank"}{% endif %}. Recommended for monitoring changes.
 
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
