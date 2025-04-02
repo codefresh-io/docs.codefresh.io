@@ -773,6 +773,8 @@
       url: "/acceptable-use-policy"      
     - title: Service Commitment
       url: "/sla"
+    - title: Support Triage Definitions
+      url: "/support-triage-definitions"      
     - title: Cloud Credits
       url: "/cloud-credits"
     - title: Legacy Codefresh Terms of Service
