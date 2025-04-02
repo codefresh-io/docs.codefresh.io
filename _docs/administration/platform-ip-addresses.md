@@ -97,7 +97,7 @@ The DR IPs apply to all tiers.
 
 -->
 >**NOTE**    
-We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){% endif %}{% if page.collection == site.gitops_collection %}{% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){% endif %}{:target="\_blank"}. Recommended for monitoring changes.
+We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){:target="\_blank"}{% endif %}{% if page.collection == site.gitops_collection %}{% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){:target="\_blank"}{% endif %}. Recommended for monitoring changes.
 
 ## API access to IPs for clusters
 Clusters must be configured with API access to the authorized Codefresh IPs.  
@@ -107,9 +107,8 @@ If you haven't configured your clusters with the required IPs, use the links bel
 * [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters){:target="\_blank"}  
 
 ## Related articles
+[Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)   
+[Installing GitOps Runtimes with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 {% if page.collection != site.gitops_collection %}
 [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
 {% endif %}
-[Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)   
-[Installing GitOps Runtimes with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-
