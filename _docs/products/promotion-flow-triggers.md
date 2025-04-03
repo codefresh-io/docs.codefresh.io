@@ -30,16 +30,17 @@ In **Product > Settings > Promotion Flows**.
 Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
 See also [Product CRD](#promotion-crd).
 
-##### Commit messages & Git revisions
+## Commit messages & Git revisions
 You can monitor changes based on the commit message (`commitMessage`) or the Git revision (`gitRevision`).  
 
+### Commit message formats
 There are no restrictions on commit messages. The commit message can include:
 * A single word, for example, `hotfix`
 * Multiple words, for example, `hotfix`  `upgrade`
 * Phrases with or without wildcards (`*`), for example, `refactor Helm chart values`, `update image to v1.*`, `[GitOps] Update image tag to v2.0`. 
  
 
-##### Matching operators for filtering commits
+### Matching operators for filtering commits
 Operators define how commit messages or Git revisions are matched:
 * `In`: Includes the specified value or any value from a set.
 * `NotIn`: Excludes the specified value or any value from a set.
