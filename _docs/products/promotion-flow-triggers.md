@@ -1,6 +1,6 @@
 ---
-title: "Selecting Promotion Flows for products"
-description: "Select Promotion Flows and configure triggers to orchestrate product promotions"
+title: "Assigning Promotion Flows and triggers to products"
+description: "Select Promotion Flows and configure their trigger conditions to optimize product promotions"
 group: products
 toc: true
 ---
@@ -8,7 +8,7 @@ toc: true
 ## Promotion Flows for products
 A Promotion Flow in Codefresh GitOps defines the steps, validations, and conditions required to promote a product and its applications from one environment to another.  
 
-By selecting Promotion Flows for a product you can choose the most relevant flows for its deployment strategy.By configuring trigger conditions for each Flow, you can structure promotions for the product, tailored to its needs, improving deployment consistency and efficiency.
+By selecting Promotion Flows for a product you can choose the most relevant flows for its deployment strategy. By configuring trigger conditions for each Flow, you can structure promotions for the product, tailored to its needs, improving deployment consistency and efficiency.
 
 ##### Benefits of Promotion Flows with triggers tailored for products
 
@@ -25,18 +25,22 @@ By selecting Promotion Flows for a product you can choose the most relevant flow
   Arrange the Promotion Flows in a prioritized order to control the sequence in which they are evaluated and executed.
 
 
-## Where to configure Promotion Flows and triggers
+## Where to assign Promotion Flows and trigger conditions
 In **Product > Settings > Promotion Flows**.  
 Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
 See also [Product CRD](#promotion-crd).
 
-##### Commit messages & Git revisions
+## Commit messages & Git revisions
 You can monitor changes based on the commit message (`commitMessage`) or the Git revision (`gitRevision`).  
-The commit message can include single words, multiple words, or phrases. For example, `hotfix` or `update image to v1.2`. There are no restrictions on commit messages. 
 
+### Commit message formats
+There are no restrictions on commit messages. The commit message can include:
+* A single word, for example, `hotfix`
+* Multiple words, for example, `hotfix`  `upgrade`
+* Phrases with or without wildcards (`*`), for example, `refactor Helm chart values`, `update image to v1.*`, `[GitOps] Update image tag to v2.0`. 
+ 
 
-
-##### Matching operators for filtering commits
+### Matching operators for filtering commits
 Operators define how commit messages or Git revisions are matched:
 * `In`: Includes the specified value or any value from a set.
 * `NotIn`: Excludes the specified value or any value from a set.

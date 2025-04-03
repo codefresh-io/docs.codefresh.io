@@ -218,7 +218,7 @@
       url: "/assign-applications"      
     - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
-    - title: Selecting Promotion Flows
+    - title: Assigning Promotion Flows and triggers
       url: "/promotion-flow-triggers"
     - title: Tracking Releases for products
       url: "/releases-in-products"
