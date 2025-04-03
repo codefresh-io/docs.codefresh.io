@@ -486,7 +486,7 @@ View rollout progress in the Timeline tab, and manage rollouts through multiple 
 * **Rollout Player**: Offers additional controls, including custom actions such as skipping steps during rollouts.
 * **Rollout resources in Current State tab**: Offers the same controls as the Rollout Player.
 
-When using GitOps Runtime with an existing Argo CD instance, custom actions for the Rollout entity must be configured in the Argo CD config map (`argocd-cm`) to enable them in the Rollout Player and Current State tab.
+When using GitOps Runtime with an existing Argo CD instance, custom actions for the Rollout entity must be configured in the Argo CD config map (`argocd-cm`) to enable them in the Rollout Player and Current State tab. See [Argo CD's official documentation on resource actions](https://argo-cd.readthedocs.io/en/stable/operator-manual/resource_actions/#define-a-custom-resource-action-in-argocd-cm-configmap){:target="\_blank"}.
 
 ### Controls for ongoing rollouts
 The table describes the controls available to manage rollouts.
