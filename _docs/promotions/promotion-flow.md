@@ -135,7 +135,7 @@ It is recommended to have a single application for a product in the Trigger Envi
 #### Applications per defined environment
 To ensure a successful promotion, the product must include an application in each environment defined in the Promotion Flow. 
 
-#### Application health and sync status 
+#### Application sync and health status 
 Applications must be **Synced** and **Healthy** for a promotion to succeed.
 
 #### Multiple applications in a target environment
