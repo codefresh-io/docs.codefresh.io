@@ -481,12 +481,15 @@ max-width="70%"
 ## Manage rollouts for Argo CD application deployments
 A rollout represents the progressive deployment of a new version of an application, allowing controlled updates with rollback capabilities.
 
+##### Rollout controls
 View rollout progress in the Timeline tab, and manage rollouts through multiple controls:
 * **Timeline tab**: Pause and resume ongoing rollouts.
 * **Rollout Player**: Offers additional controls, including custom actions such as skipping steps during rollouts.
 * **Rollout resources in Current State tab**: Offers the same controls as the Rollout Player.
 
-When using GitOps Runtime with an existing Argo CD instance, custom actions for the Rollout entity must be configured in the Argo CD config map (`argocd-cm`) to enable them in the Rollout Player and Current State tab. See [Argo CD's official documentation on resource actions](https://argo-cd.readthedocs.io/en/stable/operator-manual/resource_actions/#define-a-custom-resource-action-in-argocd-cm-configmap){:target="\_blank"}.
+##### Custom action configuration
+For GitOps Runtimes with existing Argo CD instances, to enable actions in the Rollout Player and in the Current State tab for the Rollout entity, you must configure custom actions in the Argo CD config map (`argocd-cm`).  
+See [Argo CD's official documentation on resource actions](https://argo-cd.readthedocs.io/en/stable/operator-manual/resource_actions/#define-a-custom-resource-action-in-argocd-cm-configmap){:target="\_blank"}.
 
 ### Controls for ongoing rollouts
 The table describes the controls available to manage rollouts.
@@ -494,15 +497,15 @@ The table describes the controls available to manage rollouts.
 {: .table .table-bordered .table-hover}
 | Rollout control   | Description |  Available in  |
 | --------------  | ------------|  ----------------|  
-| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback).  | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current Resources</li>{:/}  |
-| **Abort**          | Terminate the current rollout. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current Resources</li>{:/} |
-| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause continues pausing the rollout also after the pause duration configured. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current Resources</li>{:/} |
-| **Resume** | Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current Resources</li>{:/} |
-|**Retry**              | Retry a rollout that has been aborted. Restarts the rollout from the beginning. Available only when a rollout has been aborted. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current Resources</li>{:/} |
-| **Skip step**  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current Resources</li>{:/} |
-| **Promote full**   | Skip all remaining steps, and deploy the current image. |  {::nomarkdown}<ul><li>Rollback Player</li><li>Current Resources</li>{:/}|   
+| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback).  | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/}  |
+| **Abort**          | Terminate the current rollout. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause continues pausing the rollout also after the pause duration configured. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Resume** | Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/} |
+|**Retry**              | Retry a rollout that has been aborted. Restarts the rollout from the beginning. Available only when a rollout has been aborted. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Skip step**  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Promote full**   | Skip all remaining steps, and deploy the current image. |  {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/}|   
 
-### Configure custom actions for rollout entities
+### Configure custom actions for Rollout entities
 For Runtime installations with existing Argo CD instances, configure custom rollout actions in Argo CD's config map. Otherwise, rollout controls such as **Skip step** and **Promote full** are disabled in the Rollout Player and Current State tab.
 
 1. Add the following to the `argocd-cm`:
