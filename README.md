@@ -84,7 +84,17 @@ To prevent automatic redirection to the ArgoHub collection and remain in the Ent
 
 - URL:  
   `https://codefresh.io/docs/docs/promotions/promotion-flow/?ent`  
-  Adding the `ent` parameter ensures users remain in the Enterprise segment without being redirected to the ArgoHub collection.
+
+- URL:  
+  `https://codefresh.io/docs/docs/promotions/product-promotion-props/?ent#product-properties-for-promotion`
+
+
+Adding the `ent` parameter ensures users remain in the Enterprise segment without being redirected to the ArgoHub collection.
+
+> When a page is accessed with the `?ent` parameter, it will remain locked in the Enterprise segment for the duration of the browser session. Closing the specific window or tab will release this lock. However, opening a new tab or window will not inherit this lock and will function as per the default behavior without the override.
+
+
+  
 
 #### To switch segments in local development:
 

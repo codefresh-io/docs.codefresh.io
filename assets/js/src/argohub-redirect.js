@@ -1,6 +1,6 @@
 const enterpriseDocumentationCookie = 'cfdoctype=enterprise'
 const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
-
+const enterpriseDocTypeLockKey = 'enterpriseDocTypeLock';
 
 function checkIfEnterpriseDocumentationCookieSet() {
   return document.cookie.includes(enterpriseDocumentationCookie)
@@ -23,6 +23,8 @@ async function getArgoHubRedirectURL(currentPath) {
 }
 
 async function handleRedirect() {
+  handleEnterpriseDocTypeLock()
+
   if (shouldSkipRedirect()) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
@@ -41,14 +43,23 @@ async function fetchRedirectMap() {
   return response.json();
 }
 
-function isEnterpriseQueryParamPresent(){
-  const searchParams = new URLSearchParams(location.search);
-  return searchParams.has('ent');
+function handleEnterpriseDocTypeLock() {
+  const queryParams = new URLSearchParams(location.search);
+  if (!queryParams.has('ent')) return;
+
+  sessionStorage.setItem(enterpriseDocTypeLockKey, 'true');
+}
+
+
+function isEnterpriseLockPresent(){
+  const enterpriseDocTypeLock = sessionStorage.getItem(enterpriseDocTypeLockKey)
+  return !!enterpriseDocTypeLock
+
 }
 
 function shouldSkipRedirect() {
   return (
-    isEnterpriseQueryParamPresent() ||
+    isEnterpriseLockPresent() ||
     SITE_IS_GITOPS_COLLECTION ||
     checkIfEnterpriseDocumentationCookieSet()
   );
