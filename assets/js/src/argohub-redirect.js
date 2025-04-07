@@ -23,16 +23,12 @@ async function getArgoHubRedirectURL(currentPath) {
 }
 
 async function handleRedirect() {
-  if (SITE_IS_GITOPS_COLLECTION) return;
-
-  const isEnterpriseDocumentationCookieSet = checkIfEnterpriseDocumentationCookieSet()
-  if (isEnterpriseDocumentationCookieSet) return;
-
+  if (shouldSkipRedirect()) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
   if (!argoHubRedirectURL) return;
 
-  window.location.href = argoHubRedirectURL;
+  location.href = argoHubRedirectURL;
 }
 
 async function fetchRedirectMap() {
@@ -43,6 +39,19 @@ async function fetchRedirectMap() {
     throw new Error("Failed to fetch the collections redirect map.");
   }
   return response.json();
+}
+
+function isEnterpriseQueryParamPresent(){
+  const searchParams = new URLSearchParams(location.search);
+  return searchParams.has('ent');
+}
+
+function shouldSkipRedirect() {
+  return (
+    isEnterpriseQueryParamPresent() ||
+    SITE_IS_GITOPS_COLLECTION ||
+    checkIfEnterpriseDocumentationCookieSet()
+  );
 }
 
 handleRedirect();
