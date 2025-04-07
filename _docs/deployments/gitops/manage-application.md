@@ -506,9 +506,14 @@ The table describes the controls available to manage rollouts.
 | **Promote full**   | Skip all remaining steps, and deploy the current image. |  {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/}|   
 
 ### Configure custom actions for Rollout entities
-For Runtime installations with existing Argo CD instances, configure custom rollout actions in Argo CD's config map. Otherwise, rollout controls such as **Skip step** and **Promote full** are disabled in the Rollout Player and Current State tab.
+For Runtime installations with existing Argo CD instances, configure custom rollout actions in Argo CD's config map. Otherwise, rollout controls such as **Pause** and **Skip Current Step** are disabled in the Rollout Player and in the Current State tab.
 
-1. Add the following to the `argocd-cm`:
+{{site.data.callout.callout_warning}}
+**Argo CD warning**  
+By default, defining a resource action customization will override any built-in action for this resource kind. As of Argo CD version 2.13.0, if you want to retain the built-in actions, you can set the `mergeBuiltinActions` key to `true`. Your custom actions will have precedence over the built-in actions.
+{{site.data.callout.end}} 
+
+* Add the following to the `argocd-cm`:
 
 ```yaml
 resource.customizations.actions.argoproj.io_Rollout: |
