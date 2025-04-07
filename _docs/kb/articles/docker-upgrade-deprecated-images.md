@@ -1,10 +1,10 @@
 ---
-title: Upgrade Docker images
+title: "How To: Upgrade Docker images"
 description: 
 group: kb
 sub-group: articles
 toc: true
-kb: true
+kb: false
 ht: true
 common: false
 categories: [Pipelines]
