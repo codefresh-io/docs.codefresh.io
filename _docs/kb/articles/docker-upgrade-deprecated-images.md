@@ -5,7 +5,7 @@ group: kb
 sub-group: articles
 toc: true
 kb: true
-ht: false
+ht: true
 common: false
 categories: [Pipelines]
 support-reviewed: 2025-04-07 ZT
