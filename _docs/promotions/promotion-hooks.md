@@ -80,7 +80,7 @@ For existing service accounts:
 
 
 ## Promotion contexts in Promotion Hook Workflows
-Codefresh GitOps automatically passes a default set of release metadata to all Promotion Hook Workflows. This includes system-generated values such as the release ID, commit SHA, product, and other release-related context.
+Codefresh GitOps automatically passes a [default set of release metadata](#default-arguments-in-promotion-hook-workflows) to all Promotion Hook Workflows. This includes system-generated values such as the release ID, commit SHA, product, and other release-related context.
 To expose or run actions based on user-specific or external metadata and custom logic-like Jira ticket IDs, approver names, Slack channels, or custom business logic—you must define and pass this information explicitly using a **promotion context**.  
 Unlike standard Promotion Workflows which have built-in access to internal context, Promotion Hook Workflows run within GitOps Runtimes in your own clusters. These workflows do not automatically receive custom values unless you define them in a promotion context. 
 
@@ -165,38 +165,29 @@ The following examples of Promotion Hook Workflows
 
 TBD
 
+## How promotion hooks work during execution
 
-## How promotion hooks work in Codefresh
+Once you assign Promotion Hook Workflows to environments in a Promotion Flow, Codefresh GitOps executes them automatically at the relevant stages of the Promotion Flow:
 
-TBD
-Promotion hooks are executed based on release events and environment transitions when Promotion Flows are triggered. 
+**Assigning hooks**
+You assign Promotion Hook Workflows in the Promotion Flow:
+* Release-level hooks run before the trigger environment and after the final target environment
+* Environment-level hooks run on entry to or exit from each environment
 
-After creating Promotion Hook Workflows with promotion contexts:
+  >**NOTE**  
+  You cannot assign a Promotion Hook Workflow to the Trigger Environment itself. 
 
-1. **Assign Promotion Hook Workflows**  
-   - Open the Promotion flow and add hooks:  
-     - **Release hooks** – Before the trigger environment and after the final target environment.  
-     - **Environment hooks** – Configured in the environment settings.  
-   - **Environment hooks cannot be set for the trigger environment.**  
+**Triggering the first hook**
+When the Promotion Flow is triggered, the promotion mechanism:
+* Passes the default promotion metadata (e.g., release ID, commit SHA)
+* Initializes the promotion context, if defined and valid, with any custom values 
 
-2. **Triggering the first hook**
-  When the first promotion hook is triggered:  
-   - All parameters first promotion hook passes the set of arguments defined as input parameters, including the default and custom arguments.  
-   - The **promotion context** with the custom arguments is initialized and exported as an output parameter.  
+**Triggering subsequent hooks**
+As the Flow progresses, the promotion mechanism:
+* Retrieves the promotion context with the custom variables stored in the first hook
+* Passes the context automatically to all subsequent hooks as input parameters, making user-defined values consistently available across the entire flow, regardless of environment or cluster
 
-3. **Triggering subsequent hooks**  
-   Codefresh GitOps:
-  - Retrieves the promotion context from the referenced file.
-  - Forwards or passes the **promotion context object** to each subsequent promotion hook that is triggered.
-    For example, if the Promotion Flow only has an OnRelease Fail hook configured, the promotion context is passed to the hook and  the previous hook. 
-
-
-
-
-
-
-
-
+For example, if a Jira ticket ID is defined in the context when a promotion starts, it’s accessible later when a post-promotion hook runs in a different environment or cluster.
 
 
 
@@ -215,19 +206,6 @@ After creating Promotion Hook Workflows with promotion contexts:
 |`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li>Name: The name of the environment that failed to complete the release. For example, production</li><li>Status: The release or promotion status for the environment. Can be one of the following: {::nomarkdown}<ul><li>**Successful** </li><li>Running</li><li>Suspended</li><li>Failed</li><li>Terminated</li></ul></li><li>Error-message: Thesystem-generated error message identifying the reason for the failed promotion. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
 
 
-
-
-
-### Custom arguments or parameters in promotion context
-To pass custom parameters to the promotion context, such as a Jira ticket or issue description, add these directly to the promotion context objec
-
-### How does it work
-* Promotion context is not available for on start release hook.
-* The promotion context is created after the first hook is run. 
-The promotion object
- 
-When the first hook runs, the promotion mechanism creates the promotion context with the default set of arguments.
-The promotion context is forwarded or every hook that follows or succeeds the first hook. This is so that you can get a complete picture of the promotion release at whatever stage it completed - successfully or failure. 
 
 ## Examples
 
