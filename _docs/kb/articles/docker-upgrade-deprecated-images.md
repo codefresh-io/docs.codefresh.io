@@ -1,14 +1,14 @@
 ---
-title: Upgrade Docker images
+title: "How To: Upgrade Docker images"
 description: 
 group: kb
 sub-group: articles
 toc: true
-kb: true
+kb: false
 ht: true
 common: false
 categories: [Pipelines]
-support-reviewed: 2025-04-07 ZT
+support-reviewed: 2025-04-05 ZT
 ---
 
 This article describes how to upgrade deprecated Docker image formats and manifests to the latest supported versions.
