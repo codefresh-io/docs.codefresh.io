@@ -15,7 +15,8 @@ This article describes how to upgrade deprecated Docker image formats and manife
 
 Docker issued a deprecation notice for older versions of images:
 {{site.data.callout.callout_tip}}
-**[DEPRECATION NOTICE]** Docker Image Format v1 and Docker Image manifest version 2, schema 1 support is disabled by default and will be removed in an upcoming release. Suggest the author of <image-name> to upgrade the image to the OCI Format or Docker Image manifest v2, schema 2. More information at https://docs.docker.com/go/deprecated-image-specs/
+**[DEPRECATION NOTICE]**  
+Docker Image Format v1 and Docker Image manifest version 2, schema 1 support is disabled by default and will be removed in an upcoming release. Suggest the author of <image-name> to upgrade the image to the OCI Format or Docker Image manifest v2, schema 2. More information at https://docs.docker.com/go/deprecated-image-specs/
 {{site.data.callout.end}}
 
 If you see this deprecation notice in the logs of your pipeline builds, you must upgrade older versions of image formats and manifests to the new versions as required.
