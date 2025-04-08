@@ -39,12 +39,12 @@ Tokens are always securely stored on your cluster and never in the Codefresh pla
 ### Scopes for Git tokens
 {% if page.collection != site.gitops_collection %}
 Create Git tokens with your Git provider, ensuring they have the required scopes.
-See [Git Runtime token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-runtime-token-scopes) and [Git user token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-user-access-token-scopes).
+See [Git Runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) and [Git user token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 {% endif %}
 
 {% if page.collection == site.gitops_collection %}
 Create personal access tokens in GitHub with the required scopes. GitHub supports Classic and Fine-Grained tokens.  
-See [Git Runtime token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-runtime-token-scopes) and [Git user token scopes]({{site.baseurl}}//docs/security/git-tokens/#git-user-access-token-scopes).
+See [Git Runtime token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes) and [Git user token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes).
 {% endif %}
 
 ### Using the Git Runtime token as the Git user token
