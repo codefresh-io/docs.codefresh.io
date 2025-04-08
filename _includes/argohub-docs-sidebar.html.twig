@@ -1,0 +1,189 @@
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {%- assign current_page_url = site.baseurl | append: page.url -%}
+
+  <ul id="bd-docs-nav-list" class="list-unstyled">
+  {%- for navItem in site.data.argohub-nav -%}
+
+    {% if navItem.url %}
+      {%- assign group_slug = navItem.url | slugify -%}
+    {% else %}
+      {%- assign group_slug = navItem.title | slugify -%}
+    {% endif %}
+
+    {%- assign link = navItem.pages | first -%}
+
+    {% if link.url %}
+      {%- assign link_slug = link.url | slugify -%}
+    {% else %}
+      {%- assign link_slug = link.title | slugify -%}
+    {% endif %}
+
+    {% assign group_url = site.baseurl | append: '/gitops/' | append: group_slug | append: '/' %}
+
+    {%- assign active = nil -%}
+
+    {%- if current_page_url contains group_url -%}
+      {%- assign active = 'active' -%}
+    {%- endif -%}
+
+    <li class="bd-toc-item bd-nav-links-item {% unless active == nil %} {{ active }}{% endunless %}{% unless navItem.pages.size != 0%} has-children {% endunless %}">
+      <!-- first lvl - group -->
+      <a class="h6 bd-nav-links-item-group bd-toc-link font-weight-bold"
+         data-size="{{ navItem.pages.size }}"
+         data-href="{{ group_url }}{% if link_slug %}{{ link_slug }}/{% endif %}">
+        {{ navItem.title }}
+      </a>
+
+      <!-- 2nd lvl menu - doc -->
+      <ul class="nav bd-sidenav">
+        {%- for doc in navItem.pages -%}
+
+          {% if doc.url contains '/gitops/'%}
+            {% assign doc_disabled = true %}
+          {% else %}
+            {% assign doc_disabled = false %}
+          {% endif %}
+
+          {% if doc.url %}
+            {%- assign doc_slug = doc.url | slugify -%}
+          {% else %}
+            {%- assign doc_slug = doc.title | slugify -%}
+          {% endif %}
+
+          {% assign doc_url = group_url | append: doc_slug | append: '/' %}
+
+          {%- assign active = nil -%}
+
+          {%- if current_page_url contains doc_url -%}
+            {%- assign active = 'bd-sidenav-active active' -%}
+          {%- endif -%}
+
+          <!-- 2nd lvl menu item - doc -->
+          <li class="{% unless active == nil %} {{ active }} {% endunless %} {% if doc.sub-pages.size > 0%} has-children {% endif %} {% if doc_disabled == true %}disabled{% endif %} ">
+            <a href="{{ doc_url }}"
+               data-size="{{ doc.sub-pages.size }}"
+               data-doc-slug="{{ doc_slug }}"
+              {% if doc_disabled == true %} class="disabled"{% endif %}
+            >
+              {{ doc.title }}
+            </a>
+
+            {% unless doc.sub-pages == nil %}
+              <!-- 3rd lvl menu - sub_doc -->
+              <ul class="nav bd-sidenav">
+                {%- for sub_doc in doc.sub-pages -%}
+
+                  {% if sub_doc.url contains '/gitops/'%}
+                    {% assign subdoc_disabled = true %}
+                  {% else %}
+                    {% assign subdoc_disabled = false %}
+                  {% endif %}
+
+                  {% if sub_doc.url %}
+                    {%- assign sub_doc_slug = sub_doc.url | slugify -%}
+                  {% else %}
+                    {%- assign sub_doc_slug = sub_doc.title | slugify -%}
+                  {% endif %}
+
+                  {%- assign sub_doc_url = doc_url | append: sub_doc_slug | append: '/' -%}
+
+                  {%- assign sub_active = nil -%}
+
+                  {%- if current_page_url contains sub_doc_url -%}
+                    {%- assign sub_active = 'active bd-sidenav-active' -%}
+                  {%- endif -%}
+
+                  <!-- 3rd lvl menu item - sub_doc -->
+                  <li class="bd-sidenav-item {% unless sub_active == nil %}{{ sub_active }}{% endunless %} {% if subdoc_disabled == true %}disabled{% endif %} {% if sub_doc.sub-pages.size > 0%}has-children{% endif %}">
+                    <a href="{{ sub_doc_url }}"
+                      {% if subdoc_disabled == true %} class="disabled"{% endif %}
+                    >
+                      {{ sub_doc.title }}
+                    </a>
+
+                    <!-- 4rd lvl menu - sub_doc_lvl2 -->
+                    {% unless sub_doc.sub-pages == nil %}
+                      <ul class="nav bd-sidenav">
+                        {%- for sub_doc_lvl2 in sub_doc.sub-pages -%}
+
+                          {% if sub_doc_lvl2.url %}
+                            {%- assign sub_doc_lvl2_slug = sub_doc_lvl2.url | slugify -%}
+                          {% else %}
+                            {%- assign sub_doc_lvl2_slug = sub_doc_lvl2.title | slugify -%}
+                          {% endif %}
+
+                          {%- assign sub_doc_lvl2_active = nil -%}
+
+                          {%- assign sub_doc_lvl2_url = sub_doc_url | append: sub_doc_lvl2_slug | append: '/' -%}
+
+                          {%- if current_page_url contains sub_doc_lvl2_url -%}
+                            {%- assign sub_doc_lvl2_active = 'active bd-sidenav-active' -%}
+                          {%- endif -%}
+
+                          <!-- 4rd lvl menu item - sub_doc_lvl2 -->
+                          <li class="bd-sidenav-item {% unless sub_doc_lvl2_active == nil %}{{ sub_doc_lvl2_active }}{% endunless %} {% if sub_doc_lvl2.sub-pages.size > 0%}has-children{% endif %}">
+                            <a href="{{ sub_doc_lvl2_url }}">
+                              {{ sub_doc_lvl2.title }}
+                            </a>
+
+                            <!-- 5rd lvl menu - subdoc_lvl3 -->
+                            {% unless sub_doc_lvl2.sub-pages == nil %}
+                              <ul class="nav bd-sidenav">
+                                {%- for sub_doc_lvl3 in sub_doc_lvl2.sub-pages -%}
+
+                                  {% if sub_doc_lvl3.url %}
+                                    {%- assign sub_doc_lvl3_slug = sub_doc_lvl3.url | slugify -%}
+                                  {% else %}
+                                    {%- assign sub_doc_lvl3_slug = sub_doc_lvl3.title | slugify -%}
+                                  {% endif %}
+
+                                  {%- assign sub_doc_lvl3_active = nil -%}
+
+                                  {%- assign sub_doc_lvl3_url = sub_doc_lvl2_url | append: sub_doc_lvl3_slug | append: '/' -%}
+
+                                  {%- if current_page_url contains sub_doc_lvl3_url -%}
+                                    {%- assign sub_doc_lvl3_active = 'active bd-sidenav-active' -%}
+                                  {%- endif -%}
+
+                                  <!-- 5rd lvl menu item - subdoc_lvl3 -->
+                                  <li class="bd-sidenav-item {% unless sub_doc_lvl3_active == nil %}{{ sub_doc_lvl3_active }}{% endunless %}">
+                                    <a href="{{ sub_doc_lvl3_url }}">
+                                      {{ sub_doc_lvl3.title }}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            {% endunless %}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {% endunless %}
+                  </li>
+
+                {%- endfor -%}
+              </ul>
+            {% endunless %}
+
+            {%- comment -%}
+
+            {% unless doc.sub-pages == nil %}
+              <ul class="nav">
+                {% for section in doc.sections %}
+                  <li>
+                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
+                      {{ section.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endunless %}
+
+            {%- endcomment -%}
+
+          </li>
+        {%- endfor -%}
+      </ul>
+    </li>
+  {%- endfor -%}
+    </ul>
+</nav>

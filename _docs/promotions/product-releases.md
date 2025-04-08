@@ -8,14 +8,13 @@ toc: true
 
 
 
-Releases in Codefresh offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
+Releases in Codefresh GitOps offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
 
-A release is automatically created whenever a promotion is triggered for a product—either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
+A release is automatically created whenever a promotion is triggered for a product, either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
 
 ## Releases in GitOps
 In the context of GitOps, a release captures the progression of a product as it is promoted through environments. The release reflects the collective state of all environments and workflows involved in deploying a change, from the initial trigger to the final target environment, whether production or another specified target.
 
-Visually track deployments of your product across multiple environments using the Releases view.
 
 
 {% include 
@@ -47,7 +46,18 @@ Developers often lack visibility into what happens after code is pushed. The Rel
 * A detailed breakdown of changes associated with each release.
 
 
+##### Releases in Git
+Commit status checks in Git include status checks for promotions in releases. This means that you can track promotion progress and identify issues directly from Git. If more details are needed, you can always click **Details** to take you to the Releases view for investigation.
 
+{% include 
+	image.html 
+	lightbox="true" 
+	file="/images/gitops-products/releases/release-status-in-git.png" 
+	url="/images/gitops-products/releases/release-status-in-git.png" 
+	alt="Promotion status updates in Git" 
+	caption="Promotion status updates in Git"
+  max-width="50%" 
+%}
 
 ### Tracking deployments through releases
 There are two key aspects of tracking deployments for a product through releases:
@@ -97,7 +107,7 @@ The table describes important insights in the Releases page.
 |-------------|---------------------|
 | **Date**     | The date the release was created. |
 | **Initiator**      | The user who created the release. The initiator is displayed only for releases created through automated promotions.  |
-| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
+| **Promotion Flow** | The name of the flow orchestrating the promotion for the specific release. Clicking the link takes you to the Promotion Flow page with a graphical representation of the flow. For details, see [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/).<br>**Manual** indicates that the release was created for manually triggered single-environment promotions, from the trigger to a single target environment. See [Manual promotion triggers]({{site.baseurl}}/docs/promotions/trigger-promotions/#manual-promotion-triggers-quick-reference). |
 | **Environments**   | The environments promoted for the release and their deployment statuses, which can be one of the following:{::nomarkdown}<ul><li><img src="../../../images/icons/promotion-success.png?display=inline-block">: Successful</li><li><img src="../../../images/icons/promotion-running.png?display=inline-block">: Running</li><li><img src="../../../images/icons/promotion-suspended.png?display=inline-block"> <!--- or <img src="../../../images/icons/promotion-suspending-pending-pr?display=inline-block">-->: Suspended or suspended pending PR approval/merge.</li><li><img src="../../../images/icons/promotion-pending.png?display=inline-block">: Pending</li><li><img src="../../../images/icons/promotion-terminated.png?display=inline-block">: Terminated</li><li><img src="../../../images/icons/promotion-failed.png?display=inline-block">: Failed</li></ul>{:/} See [Environment (deployment) status](#environment-deployment-status).|
 
 
@@ -207,7 +217,7 @@ The table describes the possible deployment statuses for environments.
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
 | **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |
@@ -312,7 +322,7 @@ Errors can be categorized into:
 * **Application errors**
   * Prefixed with {::nomarkdown}<img src="../../../images/icons/product-release-app-error.png?display=inline-block">{:/}.
   * Occurs when the health status of an application connected to the product is Degraded, indicating that one of its resources is not healthy.
-    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#health-status-for-application-resources).   
+    See [Health status for application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#health-status-for-application-resources).   
     Clicking on the error takes you to the Current State tab in the GitOps Apps dashboard. 
 
 * **Git errors**
@@ -352,7 +362,7 @@ Manual release termination may be necessary if issues are detected in an environ
 
 {{site.data.callout.callout_tip}}
 **TIP**  
-To automatically terminate a release by configuring timeouts for Promotion Flows, see [Flow timeouts]({{site.baseurl}}/docs/promotions/entities/promotion-flow/#flow-timeouts).
+To automatically terminate a release by configuring timeouts for Promotion Flows, see [Flow timeouts]({{site.baseurl}}/docs/promotions/promotion-flow/#flow-timeouts).
 {{site.data.callout.end}}
 
 1. In the Codefresh UI, from the sidebar, select **Products**.
@@ -409,7 +419,7 @@ max-width="60%"
 
 
 ## Related articles
-[Promotion Flows]({{site.baseurl}}/docs/promotions/entities/promotion-flow/)  
+[Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)

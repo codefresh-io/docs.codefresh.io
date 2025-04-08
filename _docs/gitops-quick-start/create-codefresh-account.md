@@ -1,17 +1,16 @@
 ---
-title: "Creating a Codefresh account"
-description: "Start working in Codefresh"
+title: "Quick start: Creating a Codefresh account"
+description: "Create a Codefresh account and start working in Codefresh"
 group: gitops-quick-start
 toc: true
 ---
 
-Begin your GitOps journey by setting up a Codefresh account.
+Begin your GitOps journey by creating a Codefresh account.
 
-Creating an account provides access to the Codefresh platform, where you can install Runtimes, and create and manage GitOps entities.
-
+Creating an account gives you access to the Codefresh platform, where you can install Runtimes and create and manage GitOps entities.  
 After you select the IdP (identity provider), Codefresh requests permission to access your basic details, and for Git providers, to access your Git repositories. 
 
-The permissions requested by Codefresh are needed in order to build and deploy your projects.
+Codefresh requires these permissions in order to build and deploy your applications.
 
 ## Supported IdPs
 Codefresh currently supports the following IdPs:
@@ -22,12 +21,13 @@ Codefresh currently supports the following IdPs:
 * Google 
 * LDAP
 
-If you need an IdP that is not in the list, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
+If your preferred IdP is not listed, please [contact us](https://codefresh.io/contact-us/){:target="\_blank"} with the details.
 
-
+{% if page.collection != site.gitops_collection %}
 >**NOTE**     
 For Git repositories, the login method is less important, as you can access Git repositories through [Git integrations]({{site.baseurl}}/docs/integrations/git-providers/), regardless of your sign-up process. <br><br>
 If you have multiple sign-up methods, as long as you use the same email address in all the sign-ups, Codefresh automatically redirects you to the account dashboard.
+{% endif %}
 
 ## Create Codefresh account
 1. Go to the [Codefresh Sign Up page](https://g.codefresh.io/signup).  <!---need to change the URL and the screenshot-->
@@ -46,11 +46,11 @@ max-width="50%"
 
 {:start="3"}
 1. If required, accept the permissions request for the selected IdP:
-  * For Google, enter the email to use.
+  * For Google, enter the email address you want to use.
   * For GitHub: To continue, click **Authorize codefresh-io**.
   * For Bitbucket: To continue, click **Grant access**.
   * For GitLab: To continue, click **Authorize**.
-  Once you confirm the permissions for your Git provider, Codefresh automatically connects to your Git provider and fetches your basic account details, such as your email.
+  Once you confirm permissions, Codefresh connects to your Git provider and retrieves your basic account details, such as your email.
 
 {:start="4"}
 1. In the Verification screen, do the following:
@@ -100,9 +100,9 @@ Congratulations! Your new Codefresh account is now ready and you are directed to
 
 
 ## What's next
-Verify that you are ready to install the GitOps Hybrid Runtime, the foundation for GitOps operations. 
+You are now ready to install the GitOps Runtime, the foundation for GitOps operations. 
 
-[Quick start: Preparing for Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/gitops-quick-start/gitops-runtimes/verify-requirements/)
+[Quick start: Installing a GitOps Runtime]({{site.baseurl}}/docs/gitops-quick-start/quick-start-install-runtime/)
 
 
 

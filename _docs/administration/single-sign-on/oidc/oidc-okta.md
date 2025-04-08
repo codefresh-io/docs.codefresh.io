@@ -136,7 +136,7 @@ max-width="60%"
 ### How to 
 
 1. In the Codefresh UI, from the toolbar click the **Settings** icon.
-1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. In the sidebar, from Access & Collaboration, select **Single Sign-On**.
 1. Select **+ Add Single Sign-On**, select **Okta** and then click **Next**.
 
 {% include image.html 
@@ -167,7 +167,7 @@ max-width="30%"
     Though you can assign an Okta application to both groups and individual users, Codefresh _only syncs users who are part of teams_.<br>   
     New users in Okta, _not_ assigned to a team, are **NOT** synced with Codefresh. You should first assign the user to a team for the sync to work.
 1. Optional. To also remove individual users who have been deactivated in Okta from their Codefresh accounts during sync, select **Remove deactivated users during sync**.  
-  When selected, deactivated users are removed from the current account, _and_ from all the accounts defined in **Additional accounts to sync**, if any. Their names are removed from both the Users list and from the Teams to which they belong in [Users and Teams](https://g.codefresh.io/account-admin/collaborators/users){:target="\_blank"}).  
+  When selected, deactivated users are removed from the current account, _and_ from all the accounts defined in **Additional accounts to sync**, if any. Their names are removed from both the Users list and from the Teams to which they belong in Users and Teams.  
   If not selected, the deactivated users are automatically removed from the Team or Teams to which they belong, but still displayed in the Users list.
 1. Select **+Add**.  
   Codefresh automatically generates the **Client Name** to which to identify the SSO configuration.
@@ -198,17 +198,18 @@ Syncing with Okta _only affects teams/groups_, and not individual users.
 
 After initial SSO setup, you can activate automatic syncing of teams for the integration account or for both the integration and additional accounts via the CLI and the UI.
 
-* CLI  
+* **CLI**  
   You can select multiple Codefresh accounts to sync through the **Additional accounts to sync** option in the UI, and then either create a Codefresh pipeline with the CLI command or run the CLI command when required.  
   The pipeline should run the CLI command `codefresh synchronize teams my-okta-client-name -t okta`.  
   See [Syncing teams in IdPs with Codefresh]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/#syncing-teams-in-idps-with-codefresh).
 
-* UI  
+* **UI**  
   Select the Codefresh accounts to sync to through the **Additional accounts to sync** option in the UI, and turn on **Auto-group sync** in the SSO configuration settings. 
 
  
  
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  
 

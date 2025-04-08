@@ -1,0 +1,1 @@
+../../_docs/deployments/gitops/about-apps.md

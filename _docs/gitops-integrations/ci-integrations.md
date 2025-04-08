@@ -1,22 +1,23 @@
 ---
 title: "GitOps CI integrations"
-description: ""
+description: "Seamlessly integrate existing CI tools with GitOps for image enrichment"
 group: gitops-integrations
 toc: true
 ---
 
-Use Codefresh Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.
+## Codefresh GitOps with CI solutions 
 
-You can connect a third-party CI solution to Codefresh, such as GitHub Actions for example, to take care of common CI tasks such as building/testing/scanning source code, and have Codefresh Hosted GitOps still responsible for the deployment, including image enrichment and reporting.  
-The integration brings in all the CI information to your images which you can see in the Images dashboard.   
+With Codefresh GitOps, you can integrate not only with Codefresh CI but also with other popular Continuous Integration (CI) solutions.
 
-See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
+For example, you can connect a third-party CI tool like GitHub Actions to handle common CI tasks, such as building, testing, and scanning source code. Codefresh GitOps can then take care of deployment, image enrichment, and reporting. This integration ensures that all CI-related information is included in the images, which you can view in the Images dashboard.
+
+For more details on how it works, see [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/).
 
 ## Codefresh image reporting and enrichment action
-To support the integration between Codefresh and third-party CI platforms and tools, we have created dedicated actions for supported CI tools in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
+To support the integration with third-party CI platforms and tools, we offer dedicated actions in the Codefresh Marketplace. These actions combine image enrichment and reporting through integrations with issue tracking and container registry tools. 
 
 >**NOTE**  
-You can also configure the integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-gitops).
+You can also configure these integration directly in the Codefresh UI, as described in [Connect a third-party CI platform/tool to Codefresh](#connect-a-third-party-ci-platformtool-to-gitops).
 
 
 Use the action as follows:
@@ -25,23 +26,23 @@ Use the action as follows:
 1. Use existing CI actions for compiling code, running unit tests, security scanning etc.
 1. Place the final action in the pipeline as the "report image" action provided by Codefresh.  
   See:  
-  [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
-  [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
+    * [GitHub Action Codefresh report image](https://github.com/marketplace/actions/codefresh-report-image){:target="\_blank"}  
+    * [Codefresh pipeline Codefresh report image](https://codefresh.io/steps/step/codefresh-report-image){:target="\_blank"}  
 1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified (essentially the same data that Codefresh CI would send automatically).
-1. View the image in Codefresh's [Images dashboard]({{site.baseurl}}/docs/dashboards/images/), and in any [application]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) in which it is used.
+1. View the image in the [Images dashboard]({{site.baseurl}}/docs/dashboards/images/), and in any [application]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/) in which it is used.
 
 ## Connect a third-party CI platform/tool to GitOps
 Connecting the CI platform/tool to GitOps from the UI includes configuring the required arguments, and then generating and copying the YAML manifest for the report image to your pipeline.  
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
-1. Filter by **CI tools**, then select the CI tool and click **Add**.
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
+1. Filter by **CI tools**, select the CI tool, and then click **Add**.
 1. Define the arguments for the CI tool:  
-  [Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/)  
-  [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/)  
-  [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/)  
+    * [Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#codefresh-pipeline-gitops-integration-settings)  
+    * [GitHub Actions]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/github-actions/#github-action-gitops-integration-settings)  
+    * [Jenkins]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/jenkins/#jenkins-gitops-integration-settings)  
     
   >**NOTE**  
-  For the complete list of arguments you can use, see [CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
+  For the complete list of arguments you can use, see [GitOps integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 {:start="4"}
 1. To generate a YAML snippet with the arguments, on the top-right, click **Generate Manifest**.  
@@ -62,13 +63,13 @@ max-width="50%"
 1. Paste the copied manifest as the last step in your CI pipeline.
 
 ## CI integration argument reference 
-The table has been moved to a dedicated standalone topic [here]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
+See [here]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 
 ## Related articles
 [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  
 [Issue tracking GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
-[CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/)  
+[CI integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/)  
 
 
 

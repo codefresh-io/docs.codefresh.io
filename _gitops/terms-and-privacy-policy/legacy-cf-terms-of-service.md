@@ -1,0 +1,1 @@
+../../_docs/terms-and-privacy-policy/legacy-cf-terms-of-service.md

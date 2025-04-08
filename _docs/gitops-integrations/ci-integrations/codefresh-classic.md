@@ -1,16 +1,15 @@
 ---
 title: "GitOps Codefresh pipeline integration"
-description: ""
+description: "Connect CI pipelines with GitOps for enriched image data"
 group: gitops-integrations
-sub_group: ci-integrations
 toc: true
 ---
 
 
- Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI. If you have Hosted or Hybrid GitOps, you can connect your CI pipelines to Hosted GitOps for deployment with image enrichment and reporting.  
+If Codefresh Pipelines is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage Codefresh Pipelines for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata.
 
+ Connecting a Codefresh Pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
- Connecting your CI pipeline, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
   {% include 
    image.html 
@@ -82,10 +81,10 @@ The table describes the arguments required to connect Codefresh pipelines to Cod
 
 {{site.data.callout.callout_tip}}
 **TIP**  
-Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the runtime context selected for the integration.
+Except for Git branch and Git repo which are required, you can omit other Git provider arguments. Codefresh retrieves the required values from the Runtime context selected for the integration.
 {{site.data.callout.end}}
 
-For the complete argument reference, see [CI integration for GitOps argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/ci-argument-reference/).
+For the complete argument reference, see [GitOps integrations argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
 
 {: .table .table-bordered .table-hover}
@@ -111,9 +110,9 @@ For the complete argument reference, see [CI integration for GitOps argument ref
 | `CF_GIT_PROVIDER`            | The Git provider for the integration, and can be either `github`, `gitlab`, or `bitbucket`. {::nomarkdown} <ul><li>Optional when you don't define other related Git provider arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Git provider arguments. For example, when you define <code class="highlighter-rouge">CF_GITLAB_TOKEN</code>, then you <i>must</i> define all Git provider arguments, in this case, <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">gitlab</code>, and <code class="highlighter-rouge">CF_GITLAB_HOST_URL</code>.</li><ul>{:/}| Optional  |
 | `CF_GITLAB_TOKEN`      | The token to authenticate the GitLab account. {::nomarkdown} <ul><li>Optional when you don't define any GitLab-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the GitLab-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">gitlab</code>, or <code class="highlighter-rouge">CF_GITLAB_HOST_URL</code>.</li><ul>{:/} | Optional  |
 | `CF_GITLAB_HOST_URL`      | The URL address of your GitLab Cloud/Server instance.  {::nomarkdown} <ul><li>Optional when you don't define other related GitLab-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the GitLab-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">gitlab</code>, or <code class="highlighter-rouge">CF_GITLAB_TOKEN</code>.</li><ul>{:/} | Optional  |
-| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the Bitbucket Server (on-prem) account. {::nomarkdown}<ul><li>Optional when you don't define other related Bitbucket-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Bitbucket-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_PASSWORD</code> or <code class="highlighter-rouge">CF_BITBUCKET_HOST_URL</code>.</li><ul>{:/}| Optional  |
-| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the Bitbucket Server (on-prem) account. {::nomarkdown} <ul><li>Optional when you don't define other related Bitbucket-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Bitbucket-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_USERNAME</code>, or <code class="highlighter-rouge">CF_BITBUCKET_HOST_URL</code>.</li><ul>{:/}| Optional  |
-| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Server accounts only. The URL address of your Bitbucket Server instance. Example, `https://bitbucket-server:7990`. {::nomarkdown}<ul><li>Optional when you don't define other related Bitbucket Server-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration.</li><li>Required when you define at least one of the Bitbucket Server-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_USERNAME</code> or <code class="highlighter-rouge">CF_BITBUCKET_PASSWORD</code>.</li></ul>{:/}  | Optional  |
+| `CF_BITBUCKET_USERNAME`      | The username for the Bitbucket or the Bitbucket Data Center (on-prem) account. {::nomarkdown}<ul><li>Optional when you don't define other related Bitbucket-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Bitbucket-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_PASSWORD</code> or <code class="highlighter-rouge">CF_BITBUCKET_HOST_URL</code>.</li><ul>{:/}| Optional  |
+| `CF_BITBUCKET_PASSWORD`      | The password for the Bitbucket or the Bitbucket Data Center (on-prem) account. {::nomarkdown} <ul><li>Optional when you don't define other related Bitbucket-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration. <li>Required when you define at least one of the Bitbucket-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_USERNAME</code>, or <code class="highlighter-rouge">CF_BITBUCKET_HOST_URL</code>.</li><ul>{:/}| Optional  |
+| `CF_BITBUCKET_HOST_URL`      | Relevant for Bitbucket Data Center accounts only. The URL address of your Bitbucket Data Center instance. Example, `https://bitbucket-server:7990`. {::nomarkdown}<ul><li>Optional when you don't define other related Bitbucket Data Center-specific arguments. When not defined, Codefresh retrieves the required information from the runtime selected for the integration.</li><li>Required when you define at least one of the Bitbucket Data Center-specific arguments, such as <code class="highlighter-rouge">CF_GIT_PROVIDER</code> as <code class="highlighter-rouge">bitbucket</code>, <code class="highlighter-rouge">CF_BITBUCKET_USERNAME</code> or <code class="highlighter-rouge">CF_BITBUCKET_PASSWORD</code>.</li></ul>{:/}  | Optional  |
 | `CF_GERRIT_CHANGE_ID`              | Relevant only for Gerrit accounts. <br>The change ID or the commit message containing the Change ID to add to the image. For Gerrit, use this instead of `CF_GIT_BRANCH`.    | Required  |
 | `CF_GERRIT_HOST_URL`              | Relevant only for Gerrit accounts. <br> The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.   | Required  |
 | `CF_GERRIT_USERNAME`              | Relevant only for Gerrit accounts. <br> The username for your user account in Gerrit.| Required  |
@@ -126,10 +125,11 @@ For how-to instructions, see [Connect a third-party CI platform/tool to Codefres
 
 ## Templatization examples for CF arguments
 
-Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh integration pipeline is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
+Arguments such as `CF_IMAGE`, `CF_GIT_BRANCH`, and `CF_JIRA_MESSAGE` are populated dynamically when the Codefresh pipeline used for integration is triggered. You can templatize the values of these arguments to ensure that the required information is included in the reported image.
 
+{% if page.url contains '/docs/' %}
 Codefresh pipelines have [system variables]({{site.baseurl}}/docs/pipelines/variables/#system-provided-variables) you can use to templatize argument values.
-
+{% endif %}
 
 ### CF_IMAGE examples
 
@@ -225,6 +225,7 @@ You can:
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file for the pipeline, and view the Codefresh report image step
 
+<!--
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/classic/classic-logs-tab.png" 
@@ -233,7 +234,7 @@ alt="Codefresh pipelines: Logs tab"
 caption="Codefresh pipelines: Logs tab"
 max-width="50%"
 %}
-
+-->
 ##### Build in Codefresh
 
 The Run column includes the link to the pipeline in Codefresh.  

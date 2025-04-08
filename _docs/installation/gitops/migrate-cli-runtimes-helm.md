@@ -1,9 +1,13 @@
 ---
 title: "Migrating GitOps Runtimes from CLI to Helm"
 description: "Migrate existing Hybrid GitOps Runtimes from CLI-based to Helm-based Runtimes"
-group: installation
 toc: true
 ---
+
+{{site.data.callout.callout_warning}}
+**Deprecated**  
+This article has been deprecated as we now support only Helm-based GitOps Runtimes.
+{{site.data.callout.end}}
 
 Codefresh has transitioned to Helm-based Runtimes for GitOps. CLI-based GitOps Runtimes are deprecated.  
 If you have CLI-based GitOps Runtimes, you can migrate the Runtimes to preserve important data and install the new Helm GitOps Runtime.
@@ -21,7 +25,7 @@ Make sure you have:
 * Git username, based on the Git provider
   * GitHub and GitHub Enterprise: Not required as Codefresh automatically retrieves and populates it.
   * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy)
-  * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account.  
+  * Bitbucket Cloud and Bitbucket Data Center: Required, and is your username for the Bitbucket Cloud/Bitbucket Data Center account.  
 * CLI version 0.1.57 or higher  
   Run `cf upgrade` if needed to download the latest CLI version
 
@@ -29,7 +33,7 @@ Make sure you have:
 
 Before migrating the CLI-based Runtime and installing the Helm-based Runtime, replicate all patches and customizations made to the CLI Runtime to the `values.yaml` file. This action is essential and ensures that the Helm-based Runtime inherits the configuration in the CLI Runtime's setup.  
 
-The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/tree/main/charts/gitops-runtime){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
+The Codefresh `values.yaml` is located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}. Every parameter is annotated in detail.  If you have questions, reach out to Codefresh Support for guidance. 
 
 {{site.data.callout.callout_tip}}
 **TIP**  
@@ -69,7 +73,7 @@ cf migrate <RUNTIME_NAME> \
   * `<GIT_USER>` is optional depending on the Git provider, and is your user or ogranization name:
         * GitHub and GitHub Enterprise: Not required. 
         * GitLab Cloud and GitLab Server: Required, and is either your username as the owner, or if your project is within a group, the front-slash separated path to the project. For example, `nr-codefresh` (owner), or `parent-group/child-group` (group hierarchy).
-        * Bitbucket Cloud and Bitbucket Server: Required, and is your username for the Bitbucket Cloud/Bitbucket Server account. 
+        * Bitbucket Cloud and Bitbucket Data Center: Required, and is your username for the Bitbucket Cloud/Bitbucket Data Center account. 
 1. Continue with [Step 3: Select Hybrid Runtime install option](#step-3-select-hybrid-runtime-install-option). 
 
 ## Step 3: Select Hybrid Runtime install option
@@ -282,13 +286,14 @@ In the Runtimes page, you can see that the Type column for the Runtime displays 
 
 If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#optional-gitops-runtime-configuration). 
 
-You can also create [Environments]({{site.baseurl}}/docs/dashboards/gitops-environments/) and [Products]({{site.baseurl}}/docs/dashboards/gitops-products/) for your Argo CD applications.
+You can also create [Environments]({{site.baseurl}}/docs/environments/create-manage-environments/) and [Products]({{site.baseurl}}/docs/products/create-product/) for your Argo CD applications.
 
 ## Related articles
-[Monitor & manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Monitor GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Manage GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Home Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)   
-[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/)
+{% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 

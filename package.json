@@ -33,7 +33,8 @@
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
     "dist": "npm-run-all --parallel css js",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css-docs\"",
-    "watch-js": "nodemon --ignore scss/ --ignore js/docs.min.js --ignore dist/ -e js -x \"npm run js-compile\""
+    "watch-js": "nodemon --ignore scss/ --ignore js/docs.min.js --ignore dist/ -e js -x \"npm run js-compile\"",
+    "link": "node ./build/create_symlink.js"
   },
   "repository": {
     "type": "git",

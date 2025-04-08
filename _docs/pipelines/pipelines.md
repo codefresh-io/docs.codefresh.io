@@ -524,7 +524,7 @@ caption="Template options"
 max-width="60%"
 %}
 
-In the Pipelines page, pipeline templates are marked **TEMPLATES**. On selecting a pipeline, pipeline templates in the sidebar are prefixed with a dot.  
+On the Pipelines page, pipeline templates are marked **TEMPLATES**. On selecting a pipeline, pipeline templates in the sidebar are prefixed with a dot.  
 
 {% include 
 image.html 

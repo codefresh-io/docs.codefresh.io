@@ -1,0 +1,1 @@
+../../_docs/products/configure-product-settings.md
