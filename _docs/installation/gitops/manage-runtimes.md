@@ -555,7 +555,9 @@ Uninstalling a GitOps Runtime permanently removes:
 
 {:start="6"}
 1. Copy and run the uninstall command:  
-  `RELEASE_NAME=$(helm ls -n codefresh-gitops-runtime -q) && helm uninstall ${RELEASE_NAME} -n codefresh-gitops-runtime`
+  `helm uninstall cf-gitops-runtime -n <runtime-namespace>`  
+  where:
+  * `<runtime-namespace>` is the namespace where the Runtime is installed.
 
 {:start="7"}
 1. Click **Close** to exit.
