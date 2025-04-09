@@ -6,7 +6,7 @@ toc: true
 
 {{site.data.callout.callout_warning}}
 **LEGACY INSTALLATION**  
-This installation method is no longer recommended. If you have your own Argo CD instance, use the new approach in [Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
+This installation method is no longer recommended. If you have your own Argo CD instance, see [Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 {{site.data.callout.end}}
 
 ## GitOps Runtime alongside Community Argo CD
