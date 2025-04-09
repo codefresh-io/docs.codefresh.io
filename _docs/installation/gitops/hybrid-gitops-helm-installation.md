@@ -162,8 +162,8 @@ After completing the installation, you may need to perform additional configurat
 
 You can also use Terraform to install an additional GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
 
-* The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again.
-* Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
+>**NOTE**  
+Every Runtime in an account must have a unique name. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
 
 
 Here is an example:

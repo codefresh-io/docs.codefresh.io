@@ -413,7 +413,7 @@
       url: "/assign-applications"      
     - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
-    - title: Selecting Promotion Flows
+    - title: Assigning Promotion Flows and triggers
       url: "/promotion-flow-triggers"
     - title: Tracking releases for products
       url: "/releases-in-products"
@@ -594,9 +594,7 @@
           url: "/behind-the-firewall"
     - title: GitOps Runtimes
       url: "/gitops"
-      sub-pages:
-        - title: What's changed in GitOps Runtimes documentation
-          url: "/gitops-runtimes-whats-changed"        
+      sub-pages:     
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
         - title: Runtime concepts
@@ -610,9 +608,7 @@
         - title: Install GitOps Runtime with existing Argo CD
           url: "/runtime-install-with-existing-argo-cd"                       
         - title: Install GitOps Runtime with new Argo CD
-          url: "/hybrid-gitops-helm-installation" 
-        - title: Install GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"        
+          url: "/hybrid-gitops-helm-installation"      
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
         - title: Runtime values file validation
@@ -623,8 +619,6 @@
           url: "/runtime-install-ingress-service-mesh-access-mode"   
         - title: Ingress configuration
           url: "/runtime-ingress-configuration" 
-        - title: Migrating GitOps Runtimes from CLI to Helm
-          url: "/migrate-cli-runtimes-helm"  
         - title: Shared Configuration Repository
           url: "/shared-configuration"
         - title: Configuration Runtimes
@@ -639,7 +633,10 @@
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
           url: "/upgrade-gitops-cli"   
-
+        - title: Migrating GitOps Runtimes from CLI to Helm
+          url: "/migrate-cli-runtimes-helm"  
+        - title: Install GitOps Runtime alongside Community Argo CD
+          url: "/argo-with-gitops-side-by-side"   
 
 
 - title: Administration
@@ -773,6 +770,8 @@
       url: "/acceptable-use-policy"      
     - title: Service Commitment
       url: "/sla"
+    - title: Support Triage Definitions
+      url: "/support-triage-definitions"      
     - title: Cloud Credits
       url: "/cloud-credits"
     - title: Legacy Codefresh Terms of Service

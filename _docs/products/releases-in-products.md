@@ -55,5 +55,5 @@ For detailed information, see [Tracking product releases]({{site.baseurl}}/docs/
 
 ## Related articles
 [Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Assigning Promotion Flows and triggers to products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
