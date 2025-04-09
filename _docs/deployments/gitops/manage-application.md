@@ -65,7 +65,7 @@ There are two aspects to managing Argo CD applications in Codefresh GitOps:
   To delete specific resources within an application, see [Delete application resources]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#delete-application-resources).
 
 
-## GitOps environments & Argo CD applications
+## Environments & Argo CD applications
 Tracking and managing deployments at scale requires clear visibility into applications at every stage. Codefresh GitOps provides this visibility through environments.  
 When you define an environment by specifying one or more cluster-namespace pairs, Codefresh automatically detects and displays the applications deployed to those locations.
 
@@ -479,19 +479,76 @@ max-width="70%"
 %}
 
 ## Manage rollouts for Argo CD application deployments
-Control ongoing rollouts by resuming indefinitely paused steps, promoting rollouts, aborting, restarting and retrying rollouts.  
+A rollout represents the progressive deployment of a new version of an application, allowing controlled updates with rollback capabilities.
+
+##### Rollout controls
+View rollout progress in the Timeline tab, and manage rollouts through multiple controls:
+* **Timeline tab**: Pause and resume ongoing rollouts.
+* **Rollout Player**: Offers additional controls, including custom actions such as skipping steps during rollouts.
+* **Rollout resources in Current State tab**: Offers the same controls as the Rollout Player.
+
+##### Custom action configuration
+For GitOps Runtimes with existing Argo CD instances, to enable actions in the Rollout Player and in the Current State tab for the Rollout entity, you must configure custom actions in the Argo CD config map (`argocd-cm`).  
+See [Argo CD's official documentation on resource actions](https://argo-cd.readthedocs.io/en/stable/operator-manual/resource_actions/#define-a-custom-resource-action-in-argocd-cm-configmap){:target="\_blank"}.
+
+### Controls for ongoing rollouts
+The table describes the controls available to manage rollouts.
+
+{: .table .table-bordered .table-hover}
+| Rollout control   | Description |  Available in  |
+| --------------  | ------------|  ----------------|  
+| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback).  | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/}  |
+| **Abort**          | Terminate the current rollout. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause continues pausing the rollout also after the pause duration configured. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Resume** | Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | {::nomarkdown}<ul><li>Timeline</li><li>Rollback Player</li><li>Current State</li>{:/} |
+|**Retry**              | Retry a rollout that has been aborted. Restarts the rollout from the beginning. Available only when a rollout has been aborted. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Skip step**  | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/} |
+| **Promote full**   | Skip all remaining steps, and deploy the current image. |  {::nomarkdown}<ul><li>Rollback Player</li><li>Current State</li>{:/}|   
+
+### Configure custom actions for Rollout entities
+For Runtime installations with existing Argo CD instances, configure custom rollout actions in Argo CD's config map. Otherwise, rollout controls such as **Pause** and **Skip Current Step** are disabled in the Rollout Player and in the Current State tab.
+
+{{site.data.callout.callout_warning}}
+**Argo CD warning**  
+By default, defining a resource action customization will override any built-in action for this resource kind. As of Argo CD version 2.13.0, if you want to retain the built-in actions, you can set the `mergeBuiltinActions` key to `true`. Your custom actions will have precedence over the built-in actions.
+{{site.data.callout.end}} 
+
+* Add the following to the `argocd-cm`:
+
+```yaml
+resource.customizations.actions.argoproj.io_Rollout: |
+  mergeBuiltinActions: true
+  discovery.lua: |
+    actions = {}
+    local fullyPromoted = obj.status.currentPodHash == obj.status.stableRS
+    actions["pause"] = {["disabled"] = fullyPromoted or obj.spec.paused == true}
+    actions["skip-current-step"] = {["disabled"] = obj.spec.strategy.canary == nil or obj.spec.strategy.canary.steps == nil or obj.status.currentStepIndex == table.getn(obj.spec.strategy.canary.steps)}
+    return actions
+  definitions:
+  - name: pause
+    action.lua: |
+      obj.spec.paused = true
+      return obj
+  - name: skip-current-step
+    action.lua: |
+      if obj.status ~= nil then
+          if obj.spec.strategy.canary ~= nil and obj.spec.strategy.canary.steps ~= nil and obj.status.currentStepIndex < table.getn(obj.spec.strategy.canary.steps) then
+              if obj.status.pauseConditions ~= nil and table.getn(obj.status.pauseConditions) > 0 then
+                  obj.status.pauseConditions = nil
+              end
+              obj.status.currentStepIndex = obj.status.currentStepIndex + 1
+          end
+      end
+      return obj
+```
 
 
+### Accessing rollout controls 
+Manage rollouts from different locations in the GitOps Apps dashboard.  
 
-### Pause/resume ongoing rollouts
-Pause and resume ongoing rollouts directly from the Timeline tab in the GitOps Apps dashboard.  
-If the rollout is already automatically paused as result of a step definition, this action pauses the rollout even after the pause duration.
-
-
-1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
-1. Select the application and go to the Timelines tab.
-1. In the deployment record for the ongoing rollout, expand **Updated Services**.
-1. Based on the current state of the rollout, click **Pause** or **Resume**, as relevant.
+#### Timeline tab  
+* **Where:**  
+  **GitOps Apps** > Selected application > **Timelines** > Deployment record > **Updated Services**  
 
 {% include 
    image.html 
@@ -504,15 +561,9 @@ If the rollout is already automatically paused as result of a step definition, t
    %}
 
 
-
-### Manage an ongoing rollout with the Rollout Player
-Manage an ongoing rollout using the controls in the Rollout Player to skip steps, and promote rollouts.
-
-1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
-1. Select the application and go to the Timelines tab.
-1. In the deployment record for the ongoing rollout, click the name of the rollout. 
-1. Select the required option in the Rollout Player.
-
+#### Rollout Player  
+* **Where:**  
+  **GitOps Apps** > Selected application > **Timelines** > Deployment record > Rollout name  
 
 {% include
 image.html
@@ -524,42 +575,9 @@ caption="Rollout Player controls for an ongoing rollout"
 max-width="50%"
 %}
 
- 
-The table describes the controls in the Rollout Player.
-
-{: .table .table-bordered .table-hover}
-| Rollback player option   | Description |  
-| --------------  | ------------| 
-| **Rollback**      | Rolls back to the previous deployment. See also [Prerequisites for rollback](#prerequisites-for-rollback).  | 
-|**Abort**          | Terminate the current rollout. | 
-| **Pause**         | Pause the rollout. If the rollout is already automatically paused as the result of a step definition, clicking Pause pauses the rollout also after the pause duration. | 
-| **Resume** <!---{::nomarkdown}<img src="../../../images/icons/rollout-resume.png" display=inline-block"> {:/}-->| Resume a rollout that was paused either manually by clicking Pause, or automatically through the step's definition. | 
-|**Retry**              | Retry a rollout that has been aborted. Restarts the rollout from the beginning. Available only when a rollout has been aborted. | 
-| **Skip step** <!---{::nomarkdown}<img src="../../../images/icons/rollout-skip-step.png" display=inline-block"> {:/}--> | Skip execution of current step. Such steps are marked as Skipped in the rollout visualization. | 
-| **Promote full** <!---{::nomarkdown}<img src="../../../images/icons/rollout-promote-full.png" display=inline-block"> {:/} -->  | Skip all remaining steps, and deploy the current image. |        
-
-
-
-### Manually rollback completed rollout to previous revision
-<!--- add screenshots -->
-Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout’s revision history. The revision depth is determined by the `spec.revisionHistoryLimit` parameter in the [Rollout Specification](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}.
-Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select.
-
-1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
-1. Select the application and select the **Timeline** tab.
-1. Click the name of the rollout to rollback.
-1. From the **Choose version to Rollabck** dropdown, select the revision to rollback to.
-1. Review the changes in the revision. 
-1. In the Rollout Player, click **Rollback to**.
-
-
-### Manage the Rollout resource
-
-Control the rollout through the options available for the Rollout resource in the Current State tab. 
-
-1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
-1. Select the application and go to the Current State tab.
-1. Open the context menu of the `Rollout` resource, and select the relevant option. 
+#### Current State tab  
+* **Where:**  
+  **GitOps Apps** > Selected application > **Current State** > Rollout resource's context menu 
 
 {% include
 image.html
@@ -571,21 +589,29 @@ caption="Options for `rollout` resource in the Current State tab"
 max-width="50%"
 %}
 
-The table describes the options for the `Rollout` resource.
 
-{: .table .table-bordered .table-hover}
-| Option             | Description              | 
-| --------------    | --------------           |
-|**Abort**              | Terminate the current rollout. | 
-|**Pause**              | Pause the current rollout.  | 
-|**Promote-full**       | Promote the current rollout by skipping all remaining stages in the rollout, and deploy the current image.  | 
-|**Restart**            | Manually restart the pods of the rollout.| 
-|**Resume**             | Resume a rollout that has been paused. | 
-|**Retry**              | Retry a rollout that has been aborted. Available only when a rollout has been aborted. | 
-|**Skip-current-step**  | Skip executing the current step, and continue with the next step. | 
+
+
+### Manually rollback completed rollout to previous revision
+<!--- add screenshots -->
+Manually rollback a completed rollout to a previous revision when and if needed. If after a successful analysis run and rollout, your application is not functioning as it should, you can rollback to a prior revision from the Rollout’s revision history.
+
+The revision depth is determined by the `spec.revisionHistoryLimit` parameter in the [Rollout Specification](https://argoproj.github.io/argo-rollouts/features/specification/#rollout-specification){:target="\_blank"}.
+Manual rollback changes the live state of the rollout resource to the state in the previous commit that you select.
+
+1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
+1. Select the application and select the **Timeline** tab.
+1. Click the name of the rollout to rollback.
+1. From the **Choose version to Rollback** dropdown, select the revision to rollback to.
+1. Review the changes in the revision. 
+1. In the Rollout Player, click **Rollback to**.
+
+
+
+
 
 ## Rename an Application Set
-Rename an Application Set and point all existing applications to the Application Set.
+Rename an Application Set and point all existing applications to the renamed Application Set.
 
 1. In the Codefresh UI, from the sidebar, select **GitOps Apps**.
 1. Click the Git Source application with the Application Set.
@@ -798,7 +824,6 @@ metadata:
 [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/)    
 [Environments dashboard]({{site.baseurl}}/docs/dashboards/gitops-environments/)    
 [Products dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)   
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  
 
 

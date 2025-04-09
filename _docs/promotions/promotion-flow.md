@@ -110,69 +110,58 @@ max-width="60%"
 Here are a few useful factors to be aware of when creating Promotion Flows.  
 
 
-### Trigger and target environments 
-Creating and assigning environments in a Promotion Flow starts with the Trigger Environment, where the change to the application initiates the flow, and continues with one or more target environments to which the changes are promoted. You need at least one target environment in a Promotion Flow. 
+### Environments in Promotion Flows
+
+#### Trigger and target environments 
+Promotion Flows start with a Trigger Environment, where the change to the application initiates the flow, and continue with one or more target environments where changes are promoted. 
+You need at least one target environment in a Promotion Flow.
 
 
-##### Adding environments  
-When adding an environment, you can select from the list of available environments, or create a new one that takes you to the Environments page for defining settings.  At this point, the Promotion Flow remains unsaved. A notification alerts you that there are unsaved changes to the Promotion Flow. This notification remains as long as you have unsaved changes in the Promotion Flow. 
+#### Adding and removing environments  
+* Adding environments  
+  When adding an environment to the Promotion Flow, you can select from the list of existing environments, or create a new one which redirects you to the Environments page for defining settings. The Flow remains unsaved until you complete these changes.
 
-##### Removing environments
-Removing an environment from the Promotion Flow requires you to reconnect next environments if any, to previous environments.  
-
-Reconnecting environments is only relevant when there are one or more environments in the flow _following_ the one being removed. If the environment you’re removing, for example `staging` is the final environment in the flow, you can remove it directly without needing to reconnect. 
+* Removing environments  
+ Removing an environment from the Promotion Flow may require you to reconnect subsequent environments if any, to preceding ones.  
+ You need to reconnect environments only if the environment you are removing is not the final environment in the Promotion Flow. If it's the final environment, you can remove it directly without needing to reconnect. 
 
 See [Remove environments from Promotion Flows](#remove-environments-from-promotion-flows).
 
-### Applications in environments
+### Application behavior in Promotion Flows
 
-##### Applications in Trigger Environment
-It is recommended to have a single application for a product in the Trigger Environment. If the product has multiple applications with changes, changes are promoted only for a single application. <!--- NIMA: which app is selected? the one with the most recent change? --> 
+#### Applications in Trigger Environment
+It is recommended to have a single application for a product in the Trigger Environment. If there are multiple applications within the product, changes are promoted only for a single application, typically the one with the most recent changes. <!--- NIMA: which app is selected? the one with the most recent change? --> 
 
-##### Applications per defined environment
+#### Applications per defined environment
 To ensure a successful promotion, the product must include an application in each environment defined in the Promotion Flow. 
 
-##### Multiple applications in a target environment
-If a target environment, such as staging or production, includes multiple applications for the same product—segmented for example by region, tenant, or other criteria—each application in that environment is updated with changes from the source environment. 
+#### Application sync and health status 
+Applications must be **Synced** and **Healthy** for a promotion to succeed.
+
+#### Multiple applications in a target environment
+If a target environment includes multiple applications for the same product—segmented for example by region, tenant, or other criteria—each application in that environment is updated with changes from the source environment. 
 
 Although this behavior may seem intuitive, it’s crucial to recognize that each set of Promotion Policy settings that govern the environment's promotion, _also applies individually to each application_.
 
-For example, if there are three applications with Pre-Action Workflows, the Pre-Action Workflow will execute three times—once for each application.
-Steps within the Pre-Action Workflow that create resources or perform actions are also executed multiple times.  
-Consider a step within the Pre-Action Workflow which creates a Jira ticket when initiating promotion, will run three times, creating three separate Jira tickets.
+#### Deleting/adding files in applications
 
-##### Deleting/adding files in applications
+Adding or deleting files from applications in target environments does not affect the Promotion Flow. The promotion mechanism simply retains the added/deleted files as they are in the target environments.
 
-Adding or deleting files from applications in target environments does not impact the success of the Promotion Flow. The promotion mechanism simply retains the added/deleted files as they are in the target environments.
-
-
-
-
-
-
-### Flow timeouts
-
-When you create a Promotion Flow, you can define a timeout to automatically terminate the flow if it exceeds the allowed time.  
-If not configured, the Flow inherits the default timeout of 24 hours. 
-
-Timeouts are useful in scenarios such as:
-* Manual approval delays: Terminates the flow if approval isn’t provided within the defined time frame for PR-driven flows for example.
-* Long-running tests: Terminate flows running indefinitely due to misconfigured tests, preventing resource waste and pipeline delays. 
 
 ### Promotion Policy settings
 
-For each environment, you can explicitly set the Promotion Policy that defines governs promotion behavior for the environment through the Promotion Action (required), and the optional Pre- and Post-Action Workflows.  
+For each environment, you can explicitly set the Promotion Policy that defines governs promotion behavior for the environment through the Promotion Action (required), and  Pre- and Post-Action Workflows.  
 You can also preview Policy settings by product before the flow is triggered. 
 
-##### Inline vs. global Promotion Policy settings
+#### Inline vs. global Promotion Policy settings
 
-When you create or edit a Promotion Flow, the Flow Builder displays available policy settings. 
+When you create or edit a Promotion Flow, the Flow Builder displays the Pre- and Post-Action Workflows, and the Promotion Action available for selection. 
 
 * **Inline policy settings**  
-  If you manually select policy settings for an environment, these _inline_ selections override any global Promotion Policy settings that match the product/environment when the flow is triggered.
+  Inline policy settings are those that you explicitly select for an environment. When the Promotion Flow is triggered, _inline_ Policy settings always override any global Promotion Policy settings that may match the product/environment.
 
 * **Global Promotion Policy settings**
-  If no inline settings are selected, the system applies global Promotion Policy settings based on predefined priorities. <!-- See TBD -->
+  When inline policy settings are not defined, the promotion mechanism applies global Promotion Policy settings based on predefined priorities. <!-- See TBD -->
 
 {% include 
 image.html 
@@ -184,12 +173,10 @@ caption="Inline vs. global Promotion Policy settings"
 max-width="60%"
 %}
 
-##### Promotion Workflows
-Both Pre- and Post-Action Workflows are optional in a Promotion Flow, unless defined in the Policy. 
 
-##### Previewing Promotion Policies by Product
-Instead of waiting for a Promotion Flow to be triggered to see policy settings applied to environments, you can preview which global Promotion Policy settings are applied to a product within the flow.
-Policy evaluation by product is useful to verify if the environment and product have the desired policies, or to identify environments with missing policies, or required settings such as the Promotion Action.
+#### Previewing Promotion Policies by Product
+Before triggering a Promotion Flow, you can preview the global Promotion Policy settings that apply to a product.
+Policy evaluation by product is useful to verify if the environment and product have the desired policies in place, or identify those with missing policies, or missing settings such as the Promotion Action.
 
 {% include 
 image.html 
@@ -202,7 +189,24 @@ max-width="60%"
 %}
 
 
+### Releases and Promotion Flows
 
+* **Manually triggered Promotion Flows**  
+  When a Promotion Flow is triggered manually, a release is immediately created for the product.
+
+* **Automatically triggered Promotion Flows**   
+  When a Promotion Flow is triggered automatically, the release is created only after the application in the Trigger Environment is Synced and Healthy.
+
+### Timeout behavior in Promotion Flows
+
+You can define a timeout for a Promotion Flow to automatically terminate it if the Flow exceeds the allowed time.  
+If not configured, the default timeout is 24 hours. 
+
+Timeouts are useful in scenarios such as:
+* Manual approval delays  
+  Terminates the flow if manual approval isn’t provided within the defined time frame, for PR-driven flows for example.
+* Long-running tests  
+  Terminates flows running indefinitely preventing unnecessary resource consumption and delays, for misconfigured tests for example. 
 
 ## Create a Promotion Flow 
 Visually design and create the flow by selecting environments, Promotion Actions, and Workflows, and defining dependencies through the Flow Builder. If needed, create new environments and promotion workflows on-the-fly when doing so. 

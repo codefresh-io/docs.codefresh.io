@@ -121,7 +121,7 @@ helm upgrade --install <helm-release-name> \
 | `--wait` | Optional. The duration the installation process waits for all pods to become ready before timing out. Recommend to set it to a period longer than 5 minutes which is the default if not set. |
 
 
-### Step 4: Completing Installation
+## Step 4: Completing Installation
 After installation, you can:
 * Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#configure-gitops-runtime).  
 * View the installed Runtime in the Runtimes page, and complete the configuration at a later time.
@@ -162,8 +162,8 @@ After completing the installation, you may need to perform additional configurat
 
 You can also use Terraform to install an additional GitOps Runtime with the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs){:target="\_blank"}.
 
-* The Shared Configuration Repository and Git provider are configured once per account and do not need to be set up again.
-* Each Runtime must have a unique name within the account. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
+>**NOTE**  
+Every Runtime in an account must have a unique name. If you used `codefresh` (the default) for the first Runtime, choose a different name to avoid installation failures.
 
 
 Here is an example:

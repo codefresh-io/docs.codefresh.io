@@ -47,7 +47,7 @@ The exact location depends on whether the integration is shared with all or spec
 
 ## View container registry integrations for GitOps
 Selecting a container registry integration displays the existing integrations for that registry in Codefresh.  
-The example below shows integrations for JFrog Artifactory.  
+<!--- The example below shows integrations for JFrog Artifactory.  
 
 {% include image.html 
 lightbox="true" 
@@ -57,6 +57,7 @@ alt="JFrog integrations in Codefresh"
 caption="JFrog integrations in Codefresh"
 max-width="70%"
 %}
+-->
 
 Every container registry integration displays the following information:
 * Name of the integration
@@ -72,7 +73,7 @@ Deleting an integration deletes the integration resource from the Shared Configu
 use it. 
 {{site.data.callout.end}}
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
 1. Filter by **Container Registry**, and select the specific container registry integration.
 1. In the row with the integration to edit or delete, click the three dots and select **Edit** or **Delete**.
 1. To edit, update the **Username** and **Password** fields, and click **Test Connection** to verify the account credentials.

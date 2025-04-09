@@ -114,7 +114,7 @@
   "/docs/environments/environments-overview/": "/gitops/environments/environments-overview/",
   "/docs/environments/manage-apps-in-environments/": "/gitops/environments/manage-apps-in-environments/",
   "/docs/dashboards/gitops-apps-dashboard/": "/gitops/dashboards/gitops-apps-dashboard/",
-  "/docs/installation/gitops/gitops-values-yaml-validation/": "/gitops/dashboards/gitops-values-yaml-validation/",
+  "/docs/installation/gitops/gitops-values-yaml-validation/": "/gitops/gitops-runtimes/gitops-values-yaml-validation/",
   "/docs/installation/gitops/runtime-argocd-admin-api-token/": "/gitops/gitops-runtimes/runtime-argocd-admin-api-token/",
   "/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/": "/gitops/gitops-runtimes/runtime-install-ingress-service-mesh-access-mode/",
   "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/",

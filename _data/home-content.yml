@@ -40,7 +40,7 @@
       localurl: /docs/products/assign-applications/      
     - title: Configuring app version and promoted properties
       localurl: /docs/products/promotion-version-properties/
-    - title: Selecting Promotion Flows
+    - title: Assigning Promotion Flows and triggers
       localurl: /docs/products/promotion-flow-triggers/   
 
 
@@ -50,8 +50,6 @@
   links:
     - title: About promotions
       localurl: /docs/promotions/promotions-overview/
-    - title: Getting started
-      localurl: /docs/promotions/getting-started/
     - title: Promotion building blocks
       localurl: /docs/promotions/promotion-components/
     - title: Promotion setup guidelines
@@ -216,8 +214,7 @@
       localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
     - title: Troubleshooting Runtime installation
       localurl: /docs/installation/gitops/runtime-troubleshooting/  
-    - title: Migrate Hybrid GitOps Runtimes from CLI to Helm
-      localurl: /docs/installation/gitops/migrate-cli-runtimes-helm/
+
 
 - title: Administration
   icon: images/home-icons/administration.svg

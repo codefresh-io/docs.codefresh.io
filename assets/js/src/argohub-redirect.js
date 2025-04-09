@@ -1,6 +1,6 @@
 const enterpriseDocumentationCookie = 'cfdoctype=enterprise'
 const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
-
+const enterpriseDocTypeLockKey = 'enterpriseDocTypeLock';
 
 function checkIfEnterpriseDocumentationCookieSet() {
   return document.cookie.includes(enterpriseDocumentationCookie)
@@ -23,16 +23,14 @@ async function getArgoHubRedirectURL(currentPath) {
 }
 
 async function handleRedirect() {
-  if (SITE_IS_GITOPS_COLLECTION) return;
+  handleEnterpriseDocTypeLock()
 
-  const isEnterpriseDocumentationCookieSet = checkIfEnterpriseDocumentationCookieSet()
-  if (isEnterpriseDocumentationCookieSet) return;
-
+  if (shouldSkipRedirect()) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
   if (!argoHubRedirectURL) return;
 
-  window.location.href = argoHubRedirectURL;
+  location.href = argoHubRedirectURL;
 }
 
 async function fetchRedirectMap() {
@@ -43,6 +41,28 @@ async function fetchRedirectMap() {
     throw new Error("Failed to fetch the collections redirect map.");
   }
   return response.json();
+}
+
+function handleEnterpriseDocTypeLock() {
+  const queryParams = new URLSearchParams(location.search);
+  if (!queryParams.has('ent')) return;
+
+  sessionStorage.setItem(enterpriseDocTypeLockKey, 'true');
+}
+
+
+function isEnterpriseLockPresent(){
+  const enterpriseDocTypeLock = sessionStorage.getItem(enterpriseDocTypeLockKey)
+  return !!enterpriseDocTypeLock
+
+}
+
+function shouldSkipRedirect() {
+  return (
+    isEnterpriseLockPresent() ||
+    SITE_IS_GITOPS_COLLECTION ||
+    checkIfEnterpriseDocumentationCookieSet()
+  );
 }
 
 handleRedirect();

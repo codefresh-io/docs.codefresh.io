@@ -59,7 +59,7 @@ use it.
 {{site.data.callout.end}}
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
 1. Filter by **Issue Tracking**, and select the specific integration.
 1. In the row with the integration to edit or delete, click the three dots and select **Edit** or **Delete**.
 1. To edit, update the **Username** and **Password** fields, and click **Test Connection** to verify the account credentials.

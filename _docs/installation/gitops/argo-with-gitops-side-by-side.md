@@ -4,6 +4,10 @@ description: "Install GitOps Runtime on cluster with existing Argo CD"
 toc: true
 ---
 
+{{site.data.callout.callout_warning}}
+**LEGACY INSTALLATION**  
+This installation method is no longer recommended. If you have your own Argo CD instance, see [Installing GitOps Runtimes with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
+{{site.data.callout.end}}
 
 ## GitOps Runtime alongside Community Argo CD
 If you have a cluster with a version of Community Argo CD already installed, you can install the GitOps Runtime to co-exist with your existing Argo CD installation.  This option enables you to extend your environment with Codefresh's GitOps capabilities through a few simple configuration changes, without the need to uninstall Argo CD. 

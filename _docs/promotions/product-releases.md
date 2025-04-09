@@ -217,7 +217,7 @@ The table describes the possible deployment statuses for environments.
 {: .table .table-bordered .table-hover}
 | Environment Status     | Description           |
 |------------        |---------------------------------------|
-| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
+| **Successful**     | Promotion to an environment is considered successful when the following conditions are met, in the order listed. {::nomarkdown}<ol><li>Pre-Action Workflow completed successfully.</li><li>Promotion Action submitted successfully. For PRs, the PR was successfully merged.</li><li>Application synced to the cluster.</li><li>Application is healthy.</li><li>Post-Action Workflow completed successfully.</li></ol>{:/}.    |
 | **Running**        | At least one step in a Pre- or Post-Action Workflow in the environment is currently in progress.  |
 | **Suspended**        | One or both the Pre- and Post-Action Workflows or the Promotion Action is pending execution. This could be because of a condition in the Workflow or because a pull request is pending manual approval.  |
 | **Failed**         | At least one step in a Workflow failed to execute, has a syntax error, was manually terminated, or the application is out of sync or degraded. |

@@ -133,8 +133,7 @@ spec:
 ## Related articles
 [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/)  
 [Managing Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/manage-application/)  
+[Trigger promotions for applications]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
 [Environments]({{site.baseurl}}/docs/environments/environments-overview/)      
 [Products]({{site.baseurl}}/docs/products/about-products/)  
-[Trigger promotions for applications]({{site.baseurl}}/docs/promotions/trigger-promotions/)  
-[Home dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/)  
 {% if page.collection != site.gitops_collection %}[DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/){% endif %}  

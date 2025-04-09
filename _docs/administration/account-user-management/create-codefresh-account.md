@@ -146,11 +146,11 @@ Only account owners can delete the account.
 ## Related articles
 [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
 [Single sign-on]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  
+[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 {% if page.collection != site.gitops_collection %}
 [Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
 {% endif %}
-[Codefresh IP addresses]({{site.baseurl}}/docs/administration/platform-ip-addresses/)  
-[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 
 
 

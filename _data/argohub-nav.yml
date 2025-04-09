@@ -48,10 +48,10 @@
       url: "/images"
 
 
-- title: Platform Installation
+- title: GitOps Cloud platform
   url: "/platform-installation"
   pages:
-  - title: Installation options
+  - title: Platform architecture
     url: "/installation-options"
 
 - title: GitOps Runtimes
@@ -210,9 +210,9 @@
 - title: Products
   url: "/products"
   pages:
-    - title: About Products
+    - title: About products
       url: "/about-products"
-    - title: Create Products
+    - title: Create products
       url: "/create-product"
     - title: Configure Product Settings
       url: "/configure-product-settings"
@@ -220,9 +220,9 @@
       url: "/assign-applications"      
     - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
-    - title: Selecting Promotion Flows
+    - title: Assigning Promotion Flows and triggers
       url: "/promotion-flow-triggers"
-    - title: Tracking Releases for Products
+    - title: Tracking Releases for products
       url: "/releases-in-products"
 
 - title: Applications

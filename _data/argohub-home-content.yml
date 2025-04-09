@@ -60,7 +60,7 @@
       localurl: /gitops/products/assign-applications/      
     - title: Configuring app version and promoted properties
       localurl: /gitops/products/promotion-version-properties/
-    - title: Selecting Promotion Flows
+    - title: Assigning Promotion Flows and triggers
       localurl: /gitops/products/promotion-flow-triggers/   
 
 
@@ -82,8 +82,6 @@
   links:
     - title: About promotions
       localurl: /gitops/promotions/promotions-overview/
-    - title: Getting started
-      localurl: /gitops/promotions/getting-started/
     - title: Promotion building blocks
       localurl: /gitops/promotions/promotion-components/
     - title: Promotion setup guidelines

@@ -8,7 +8,7 @@ toc: true
 
 ## ERROR PRIORITIES AND RESPONSE TIMES.
 
-Issues with the Codefresh GitOps Cloud are classified based on severity of the issues and the required resources needed to resolve them. We will designate the severity and impact of the reported issue as defined below and will use commercially reasonable efforts to respond and commence working on the applicable issue in accordance with the time periods below.  The following are our objectives (and - for Premium support customers - our commitment) to responding to your support requests. While we will make our best effort to help, we cannot guarantee any specific results, such as fixing or solving your problem, as this is dependent upon factors outside of our control including your particular software, infrastructure, configurations, and your ability to implement any rectification works such as installing updates or reconfiguring your environment and your own timeframes for doing so.
+Issues with the Codefresh Platform are classified based on severity of the issues and the required resources needed to resolve them. We will designate the severity and impact of the reported issue as defined below and will use commercially reasonable efforts to respond and commence working on the applicable issue in accordance with the time periods below.  The following are our objectives (and - for Premium support customers - our commitment) to responding to your support requests. While we will make our best effort to help, we cannot guarantee any specific results, such as fixing or solving your problem, as this is dependent upon factors outside of our control including your particular software, infrastructure, configurations, and your ability to implement any rectification works such as installing updates or reconfiguring your environment and your own timeframes for doing so.
 
 For Premium support customers, we commit to meeting these objectives as our SLA for our supported products. Please note that if you have multiple products or subscriptions, you must purchase Premium support for all your products and subscriptions. 
 
@@ -30,17 +30,19 @@ The following timeframes are calculated from the time that we receive sufficient
 
 {: .table .table-bordered .table-hover}
 
-| **Priority**  | **Standard**   |  **Premium**  |
-|-----------|---------------------|-----    |
-| **Urgent**    | N/A             | 30 minutes |
-| **High**      | N/A             |  1 Hour   |
-| **Normal**    | N/A             |  2 Hours  |
-| **Low**       | N/A             |  8 Business Hours[1] |
+| **Priority**  | **Professional**        | **Enterprise** | **Premium**  |
+|-----------|---------------------|-----------|----------|
+| **Urgent**    | 2 Business Hours[1] | 1 Hour    | 30 minutes |
+| **High**      | 6 Business Hours    | 2 Hours   | 1 Hour   |
+| **Normal**    | 1 Business Day[2]   | 4 Hours   | 2 Hours  |
+| **Low**       | None                | 2 Business Days | 8 Business Hours |
 
-If our response time objective exceeds the remaining time available on that Business Day[2], our response time is paused at the end of the Business Day[2] and shall resume on the next Business Day[2] (where applicable). However, we may respond outside of these hours. 
+[1] **Business Hours** means the hours of 9am to 5pm on Business Days in the registered time zone for your supported product.  
+[2] **Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
-[1]**Business Hours** means the hours of 9am to 5pm on Business Days[2] in the registered time zone for your supported product.  
-[2]**Business Day** means weekdays (excluding public holidays) in your registered time zone.
+
+
+If our response time objective exceeds the remaining time available on that Business Day, our response time is paused at the end of the Business Day and shall resume on the next Business Day (where applicable). However, we may respond outside of these hours. 
 
 
 ### 1.2. Priority Definitions.
@@ -58,26 +60,26 @@ If our response time objective exceeds the remaining time available on that Busi
 
 {: .table .table-bordered .table-hover}
 
-| **Channel**                          | **Standard**        |  **Premium**  |
-|--------------------------------------|------------------------|-------------|
-| **Community Slack**                  | ✅                     |  ✅            |
-| **Support Email**                     |  {::nomarkdown}<img src=../../../images/icons/gray-check-box.png?display=inline-block>{:/}[1]  |  ✅            |
-| **Support Hours**                     | During Business Hours[2] | 24 x 7      |
-| **Primary Support Engineer**[3]       |                        | ✅           |
-| **Video Conferencing**[4]             |                        | ✅            |
-| **Phone**[5]                          |                          | ✅           |
-| **Dedicated Support Slack Channel**[6]|                      | ✅           |
-| **SLA**                               |                        | ✅           |
+| **Channel**                          | **Professional**        | **Enterprise** | **Premium**  |
+|--------------------------------------|------------------------|---------------|-------------|
+| **Community Slack**                  | ✅                      | ✅            | ✅         |
+| **Support Email**                     |  ✅                     | ✅           | ✅         |
+| **Support Hours**                     | During Business Hours[1] | 24 x 7      | 24 x 7      |
+| **Primary Support Engineer**          |                        |               | ✅          |
+| **Video Conferencing***               |                        |               | ✅          |
+| **Phone****                           |                        |               | ✅          |
+| **Dedicated Support Slack Channel*****|                        |               | ✅          |
+| **SLA**                               |                        |               | ✅          |
 
-[1]**Standard Support Email**: Email support is provided for Standard subscriptions, however, there are no response or resolution objectives, and the priority definitions do not apply.
 
-[2]**Business Hours** means the hours of 9am to 5pm on Business Days* in the registered time zone for your supported product.  
-***Business Day** means weekdays (excluding public holidays) in your registered time zone.
 
-[3]**Primary support engineer**: Your dedicated primary support engineer is your primary contact for any support issues. They have deep knowledge of Octopus, and knowledge of your infrastructure, business, and deployment needs. They work closely with our global support team and engineering teams in APAC to resolve your issues as quickly as possible.
 
-[4]**Video Conferencing**: Real-time troubleshooting utilizing Microsoft Teams or Zoom. Available to Premium Support customers.
+***Video Conferencing**: Real-time troubleshooting utilizing Microsoft Teams or Zoom. Available to Premium Support customers.
 
-[5]**Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
+****Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
 
-[6]**Dedicated Support Slack Channel**: For Low Priority requests only; not to be used for business-impacting issues.
+*****Dedicated Support Slack Channel**: For Low Priority requests only; not to be used for business-impacting issues.
+
+**Primary support engineer**: Your dedicated primary support engineer is your primary contact for any support issues. They have deep knowledge of Octopus, and knowledge of your infrastructure, business, and deployment needs. They work closely with our global support team and engineering teams in APAC to resolve your issues as quickly as possible.
+
+ 
