@@ -6,23 +6,26 @@ toc: true
 ---
 
 
-## Overview
+## What are promotion hooks?
 
-Promotion hooks in Codefresh GitOps are implemented through Promotion Hook Workflows, which run custom logic during a promotion release without interacting directly with application deployments. They are especially useful to expose values and run actions that must persist across environments, independent of any specific cluster. Promotion hooks are created when you assign predefined Promotion Hook Workflows to your Promotion Flow. They are run when the Promotion Flow is triggered either manually or automatically to create promotion releases. 
+Promotion hooks in Codefresh GitOps are specialized workflows that run at key points during a promotion release. A promotion release is created when a Promotion Flow is manually or automatically triggered.   
+Promotion hooks are implemented using the same underlying mechanism as standard Promotion Workflows, but run with additional context and scope—on releases and environments. 
 
-While Pre- and Post-Action Workflows run within the target environment and operate on specific applications, Promotion Hook Workflows run at the release or environment level. 
+Unlike Pre- and Post-Action Promotion Workflows, which run in specific environments and target individual applications, promotion hooks run at the release or environment level. They are not tied to a particular deployment or application, and enable real-time alerts, custom logic and actions without requiring users to monitor the promotion directly in the UI. This allows teams to stay informed and take action instantly as promotions progress.
+
+DIAGRAM
 
 
-### When are promotion hooks triggered?  
-Promotion hooks can execute at different stages of a release:  
-* **Release start**: Runs when a release is initiated.  
-* **Release end**: Runs when a release completes, whether **successful** or **failed**.  
-* **Per environment**: Runs when a release transitions through specific environments:  
-  * **On start**: Runs when the promotion reaches an environment.  
-  * **On success**: Runs when the promotion completes successfully in an environment.  
-  * **On failure**: Runs when the promotion fails in an environment.  
+##### When are promotion hooks triggered?  
+Promotion hooks can run at different stages of a release:  
+* **Release start**: When a release is initiated.  
+* **Release end**: When a release completes, whether **successful** or **failed**.  
+* **Per environment**: When a release transitions through specific environments:  
+  * **On start**: When the promotion reaches an environment.  
+  * **On success**: When the promotion completes successfully in an environment.  
+  * **On failure**: When the promotion fails in an environment.  
 
-### Use cases for promotion hooks
+##### Use cases for promotion hooks
 * Auditing and visibility  
   Capture details on the entire promotion release and take action
 
@@ -30,23 +33,32 @@ Promotion hooks can execute at different stages of a release:
   Get timely alerts and notifications on success and failures alike through familiar channels. Send alerts to Slack, email, or monitoring tools based on release events to be always in the loop instead of having to constantly monitor the promotion release.
 
 * Integration with external tools
-  Automate updates to ticketing systems such as Jira, or observability platforms. Create 
+  Automate updates to ticketing systems such as Jira, or observability platforms.  
 
-### Promotion Hook Workflows vs. Promotion Workflows
+##### Requirements for promotion hooks
 
-The table lists key differences between Promotion Hook Workflows and Promotion (Pre- and Post-Action) Workflows.
+* Service account
+* Service account role and role binding 
+* Promotion context
+
+## Promotion hooks vs. Pre- and Post-Action Promotion Workflows
+
+The table lists key differences between Promotion Workflows containing hooks and Promotion (Pre- and Post-Action) Workflows.
 
 | **Feature**    | **Promotion Hooks**  | **Promotion Workflows**    |
 |----------------|----------------------|-----------------------------------------------|
-| **Purpose**    | Provide information on the release  | Provide information on promoted changes ing applications within an environment    |
-| **Execution**  | Runs at release start, end (success, failure), or per environment (start, success, failure) | Runs for each application in an environment before and after promotion |
+| **Purpose**    | Provide information on the release  | Provide information on promoted changes in applications within an environment    |
+| **Execution**  | Runs run at release start, end (success, failure), or per environment (start, success, failure) | Runs for each application in an environment before and after promotion |
 | **Scope**      | Runs on cluster at release or environment level      | Runs per application in the environment |
-| **Effect on Promotion**  | Does not modify applications or deployments | Blocks a promotion if conditions fail  |
+| **Effect on promotion**  | ??? | Blocks a promotion if conditions fail  |
 
-### What do you need for Promotion Hook Workflows
 
-* Service account, service account role, and role binding 
-* Promotion context
+
+## Promotion hooks in Shared Configuration Repository
+Promotion Workflows with hooks are saved in the Shared Configuration Repository of the Runitme designated as the Configuration Runtime.
+If you have multiple Configuration Runtimes, the hooks are saved in the first Configuration Runtime in the list  
+
+TBD - SHOW EXAMPLE OF SETTINGS
 
 ## Service accounts & service account roles for Promotion Hook Workflows
 When a GitOps Runtime is installed, to support promotion hooks, Codefresh GitOps creates the following resources:  
@@ -79,31 +91,25 @@ For existing service accounts:
 * Bind the `cf-default-promotion-workflows-role` to the new service account.
 
 
-## Promotion contexts in Promotion Hook Workflows
-Codefresh GitOps automatically passes a [default set of release metadata](#default-arguments-in-promotion-hook-workflows) to all Promotion Hook Workflows. This includes system-generated values such as the release ID, commit SHA, product, and other release-related context.
-To expose or run actions based on user-specific or external metadata and custom logic-like Jira ticket IDs, approver names, Slack channels, or custom business logic—you must define and pass this information explicitly using a **promotion context**.  
-Unlike standard Promotion Workflows which have built-in access to internal context, Promotion Hook Workflows run within GitOps Runtimes in your own clusters. These workflows do not automatically receive custom values unless you define them in a promotion context. 
+## Promotion contexts for promotion hooks
+All promotion hooks receive a standard set of [default arguments](#default-arguments-in-promotion-hook-workflows) such as the release ID, product, commit SHA.  
+To expose custom data such as Jira ticket IDs, approver names, or Slack channels, and make this data available to additional promotion hooks in the same Promotion Flow, you must define a **promotion context**.
+A promotion context is a user-defined JSON object passed between hooks in the same Promotion Flow. It enables the sharing values that Codefresh does not access by default.  
+
+Unlike standard Promotion Workflows which have built-in access to internal context, promotion hooks run within GitOps Runtimes in your own clusters. These hooks do not automatically receive custom values unless you define them in a promotion context. 
 
 Promotion contexts allow you to:
 * Expose and store user-defined variables that Codefresh cannot natively access.
 * Make those variables available as input parameters to subsequent Promotion Hook Workflows in the same Promotion Flow.
 
-For example:
-* Send a Slack notification when a promotion starts, you can pass the target channel in the promotion context.
-* For a Jira ticket related to the promotion to be available as an input parameter for subsequent promotion hooks.
+Examples:
+* Send a Slack alert to a specific channel by passing the channel name in the promotion context
+* Link to a Jira ticket across all hooks in the release by storing the ticket ID in the context
 
-### Promotion context features
-The promotion context:
-* Is a user-defined _JSON object_ in a Promotion Hook Workflow
-* Contains custom variables such as Jira ticket ID, approver, change reason, as key-value pairs
-* Contains the path where the file is saved
 
-### Creating a promotion context in a Promotion Hook Workflow
+### Creating and exporting a promotion context 
 
-Create a promotion context in the Promotion Hook Workflow by following these steps:
- 
-* Create the promotion context as a JSON object including the custom parameters, and the file to which to export or save it.
-* Export the promotion context an output parameter to pass to subsequent Promotion Hook Workflow
+Create a promotion context in a Promotion Workflow as a JSON object including the custom parameters, and the file to which to export or save it and export the promotion context an output parameter to pass to subsequent Promotion Hook Workflow
 
 
 1. **Create the promotion context**  
@@ -112,9 +118,9 @@ Create a promotion context in the Promotion Hook Workflow by following these ste
       * File to which to save the promotion context. The file is referenced as the promotion context source.
 
   **Example:**  
-  The example creates a promotion context `PROMOTION_CONTEXT` as a JSON object passed to subsequent Promotion Hook Workflows in the same Promotion Flow. 
+  The example creates a promotion context `PROMOTION_CONTEXT` as a JSON object passed to subsequent promotion hooks in the same Promotion Flow. 
   The promotion context:
-  * Defines `JIRA_ISSUE_SOURCE_FIELD` and makes it available an input parameter to subsequent Promotion Hook Workflows.
+  * Defines `JIRA_ISSUE_SOURCE_FIELD` and makes it available an input parameter to subsequent hooks.
   * Writes the context to a file `/tmp/promotion-context.txt`
   
 ```yaml 
@@ -140,7 +146,7 @@ spec:
 ``` 
 
 1. **Export promotion context**  
-  Expose the file with the promotion context as an output parameter to make it available to Codefresh  Promotion Hook Workflows.
+  Expose the file with the promotion context as an output parameter to make it available to promotion mechanism.
   * Add `PROMOTION_CONTEXT` as the `name` to `outputs.parameters`. _The name must not be changed_.
   * Add the `globalName` attribute to make it available globally. The value must be identical to the name of the promotion context.
   * `valueFrom` attribute to reference the file path
@@ -160,22 +166,32 @@ spec:
 ...
 ``` 
 
+
+
+
+
+
 ## Examples of Promotion Hook Workflows
 The following examples of Promotion Hook Workflows 
 
 TBD
 
-## How promotion hooks work during execution
 
-Once you assign Promotion Hook Workflows to environments in a Promotion Flow, Codefresh GitOps executes them automatically at the relevant stages of the Promotion Flow:
+## Assigning promotion hooks in Promotion Flows
 
-**Assigning hooks**
-You assign Promotion Hook Workflows in the Promotion Flow:
+Assign Promotion Workflows with promotion hooks in the Promotion Flow for the release or environments:
 * Release-level hooks run before the trigger environment and after the final target environment
 * Environment-level hooks run on entry to or exit from each environment
 
   >**NOTE**  
   You cannot assign a Promotion Hook Workflow to the Trigger Environment itself. 
+
+
+SCREENSHOT TBD
+
+## How promotion hooks work during execution
+
+Once you assign Promotion Workflows with promotion hooks in a Promotion Flow, Codefresh GitOps executes them automatically at the relevant stages of the Promotion Flow:
 
 **Triggering the first hook**
 When the Promotion Flow is triggered, the promotion mechanism:
@@ -189,7 +205,7 @@ As the Flow progresses, the promotion mechanism:
 
 For example, if a Jira ticket ID is defined in the context when a promotion starts, it’s accessible later when a post-promotion hook runs in a different environment or cluster.
 
-
+DIAGRAM
 
 
 ## Default arguments in Promotion Hook Workflows
@@ -205,9 +221,6 @@ For example, if a Jira ticket ID is defined in the context when a promotion star
 |`ERROR_MESSAGE` | The system-generated error message identifying the reason why the release failed to complete. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
 |`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li>Name: The name of the environment that failed to complete the release. For example, production</li><li>Status: The release or promotion status for the environment. Can be one of the following: {::nomarkdown}<ul><li>**Successful** </li><li>Running</li><li>Suspended</li><li>Failed</li><li>Terminated</li></ul></li><li>Error-message: Thesystem-generated error message identifying the reason for the failed promotion. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
 
-
-
-## Examples
 
 
 
