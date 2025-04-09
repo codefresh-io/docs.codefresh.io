@@ -137,11 +137,11 @@ max-width="70%"
 ## Step 4: Configure SSO settings for Azure in Codefresh
 
 Configure SSO for Azure in the Codefresh UI.
+Depending on your configuration, you may need values for specific settings such as Tenant ID if you require team sync for example.
 
-### Before You Begin
-
-- Have your client secret handy
-- Go to **Microsoft Entra ID > Enterprise Applications** and select the app you created, and note down these **Properties: Application ID and Object ID**
+The Codefresh application settings you'll require are available on log in to **Microsoft Entra ID**.
+* **Home**: **Tenant ID** or **Primary Domain** (required for team sync)
+* **Enterprise Applications > Properties**: **Application ID** and **Object ID**
 
 {% include image.html
 lightbox="true"
@@ -152,6 +152,15 @@ caption="Application and Object IDs under Enterprise Applications"
 max-width="70%"
 %}
 
+### Before You Begin
+
+* Have your client secret handy
+* From the Codefresh application in Azure: 
+  * **Tenant ID** or **Primary Domain** for team sync
+  * **Application ID** and **Object ID**
+
+
+
 ### How to
 
 1. In the Codefresh UI, click the **Settings** icon (gear) on the top right.
@@ -160,12 +169,12 @@ max-width="70%"
 1. Enter the following:
    - **Client Name**: For auto-generation, leave empty. Codefresh generates the client name once you save the settings.
    - **Display Name**: Meaningful name for the SSO provider. This can be the name shown in Azure.
-   - **Application ID**: The Application ID from your Enterprise Application Properties in Microsoft Entra ID.
+   - **Application ID**: Required for SSO. The Application ID from your Microsoft Entra ID > Enterprise Application Properties. 
    - **Client Secret**: The key value you copied when you created the client secret in Azure.
-   - **Tenant**: `mycompany.onmicrosoft.com` or the ID of `0example1-0000-0aa0-a00a-1example0`
-     - Required for Synchronizing Teams
-     - can be found under **Microsoft Entra ID** overview page
-   - **Object ID**: The Object ID from your Enterprise Application Properties in Microsoft Entra ID.
+   - **Tenant**: Optional. Required when **Auto Sync users and teams to Codefresh** is selected.<br>
+     Can be either the Tenant ID, for example, `0example1-0000-0aa0-a00a-1example0`, or the Primary Domain, for example, `mycompany.onmicrosoft.com` from Microsoft Entra ID.
+   - **Object ID**: Optional. Required when **Auto Sync users and teams to Codefresh** is selected.<br>
+     The Object ID from your Microsoft Entra ID > Enterprise Application Properties.
    - **Auto Sync users and teams to Codefresh**: Select to automatically sync user accounts in Microsoft Entra ID to your Codefresh account. Optionally, define the time interval, in hours, at which to sync, from 1 to 24. If you don’t specify an interval, the sync is every 12 hours.
 
 {% include image.html
@@ -180,7 +189,7 @@ max-width="70%"
 {:start="5"}
 
 1. Click **Save**.
-1. Copy the **Client Name** that is dispalyed in the UI
+1. Copy the **Client Name** that is displayed in the UI.
 
 {% include image.html
 lightbox="true"
@@ -248,6 +257,6 @@ max-width="70%"
 1. Now the app can be added to a Collection for My Apps page for Azure Initiated Login.
 
 ## Related articles
-
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  

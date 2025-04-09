@@ -5,30 +5,33 @@ group: products
 toc: true
 ---
 
-After creating a product, configure metadata, Promotion Settings, and Promotion Flows for the Product and the applications connected to it through Product Settings. 
+## Product settings
+After creating a product, optimize its functionality by configuring different settings for the product, including metadata, promotion settings, and more through Product Settings. 
 
 This article describes how to configure the different Product Settings:
 
 * [Declaratively connect applications](#connect-applications-to-product-with-annotations)    
-  Declaratively connect an application to a product with the predefined and automatically generated product annotation. 
+  Declaratively connect an application to a product with the automatically generated product annotation. 
   
-
-* [Labels](#configure-labels)  
-  Add labels for the product. 
-
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
-  Click names of unassigned applications to automatically assign them to environments. 
+  Assign applications to environments. 
 
-* [Promotion Flows](#configure-promotion-flows)  
-  Select one or more predefined Promotion Flows, and customize the trigger conditions for each of the Flows.
-
-* [Promotion concurrency](#configure-promotion-settings)  
-  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings. 
-
-* [Promotion Settings](#configure-promotion-settings)  
-  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
+* [Labels](#configure-labels-for-products)  
+  Add labels to manage access control and permissions.
 
 
+* [Promotion Flows](#select-promotion-flows-for-products)  
+  Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each flow for automated deployments.
+  
+ 
+* [Promotion concurrency](#configure-promotion-concurrency)  
+  Define the promotion behavior when multiple promotions are triggered for the same product. 
+  
+* [Promotion Settings](#configure-promotion-settings-for-products)  
+  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining new promotion settings.
+
+Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}
 
 
   
@@ -37,12 +40,13 @@ This article describes how to configure the different Product Settings:
 
 
 ## Form & YAML modes
-As with most GitOps entities, you have the option to configure Product Settings in Form or YAML modes, and switch seamlessly between them during configuration.
+Configure Product Settings in Form or YAML modes, switching seamlessly between them during configuration.
 
-No matter what mode you use to configure Product Settings, all settings, except applications manually assigned to the product are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+All settings, except manually assigned applications, are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
+
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/configurations/products/<product-name>.crd`.  
 
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
 For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions/yaml/product-crd/) and [Promotion Template YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-template-crd/).
 
@@ -58,8 +62,7 @@ For the YAML specifications, see [Product YAML]({{site.baseurl}}/docs/promotions
 
 
 ## Connect applications to product with annotations
-Connect applications to products declaratively by copying the Product annotation to the application's manifest. If the Product doesn’t exist, Codefresh automatically creates it for you. 
-
+Connect applications to products declaratively by copying the product annotation to the application's manifest. If the product doesn’t exist, Codefresh automatically creates it for you.  
 This is the preferred, declarative method of assigning applications to Products. The changes are committed and saved in Git as part of the application definition.    
 
 ##### Before you begin
@@ -100,30 +103,13 @@ To unassign an application assigned declaratively to the product, remove the ann
 1. Commit to save the changes.
 
 
-
-
-
-## Configure labels
-
-Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities by teams. 
-
-1. If needed, open [Product Settings](#open-product-settings).
-1. Click the **General** tab.
-1. Below **Labels**, click **Add** and define key-value pairs compatible with Kubernetes conventions for labels.
-
 ## Manually assign unassigned applications
-Manually assign applications with a one-click action for quick assignment.  
-  
-This quick assignment option does not require a commit action as applications assigned to a product are not stored as part of the product's resource definition.  
-
-This method is recommended for testing purposes.
+Quickly assign applications through the UI without modifying manifests. This method does not require a commit and is recommended for testing.
 
 ##### Before you begin
 * Review [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 
 ##### How to
-
-
 1. Open [Product Settings](#open-product-settings).
 1. Click **Manage Applications**.
   The list of **Unassigned apps** is displayed on the left.
@@ -182,15 +168,30 @@ Unassign an application manually assigned to a product directly from its setting
 %}
 
 
-## Configure Promotion Flows
-Automate and orchestrate promotions across different environments for the Product by:
-* Selecting one or more predefined Promotion Flows
-* Customizing the conditions that should trigger each Promotion Flow
-* Defining the priority when multiple Flows are assigned 
+
+## Configure labels for Products
+
+Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities. 
+
+1. Open [Product Settings](#open-product-settings).
+1. Click the **General** tab.
+1. Below **Labels**, click **Add** and define key-value pairs following Kubernetes conventions.
+
+
+
+
+## Select Promotion Flows for Products
+Customize automated promotions for products across different environments by:
+* Selecting one or more predefined Promotion Flows valid for the product
+* Customizing the conditions to trigger each Promotion Flow
+  Commit messages for trigger conditions are not restricted to single words. You can specify any commit message to trigger promotions.  
+  For example, `update image tag to v1.1` would be a valid commit message.
+* Defining the priority for each Flow when multiple Flows are configured 
+
 
 
 ##### Before you begin
-* Review [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+* Review [Assigning Promotion Flows and triggers to products to products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 
 
 ##### How to
@@ -199,9 +200,10 @@ Automate and orchestrate promotions across different environments for the Produc
 1. To add a Promotion Flow for the product, click **Add**.
 1. From the list of Promotion Flows, select a predefined Flow for the product. 
 1. Define the conditions to match and trigger the Promotion Flow:
-    1. **Property**: The property to monitor for changes, based on either the text description associated with the commit message (`commitMessage`), or the commit hash generated by Git (`gitRevision`). 
+    1. **Property**: The property to monitor for changes, based on either the text description associated with the commit message (`commitMessage`), or the commit hash generated by Git (`gitRevision`).  
+      `commitMessage` can be a single or multiple words, or phrases with or without wildcards (`*`).
     1. **Operator**: The operator to apply when matching the Property, based on inclusion or exclusion, with or without wildcards.  
-     `In`: Checks if the commit message or Git revision <i>includes</i> the specified value or any value within a set of values.   
+     `In`: Checks if the commit message or Git revision <i>includes</i> the specified value or any value within a set of values. Commit messages can include    
      `NotIn`: Checks if the commit message or Git revision <i>does not include</i> the specified value or any value within a set of values.
     1. **Values**: Single or multiple values used to match or exclude Promotion Flows based on the Property and Operator configured. 
     1. To add more trigger conditions, click **Add** and repeat _steps 4.1 through 4.3_.
@@ -266,16 +268,16 @@ Configure the promotion behavior when multiple promotions are triggered for the 
 
 ## Configure Promotion Settings
 Configure Promotion Settings to define:
-* The source from which to get application's release version
+* For Helm applications, the source from which to get application's release version
 * The precise changes to promote across multiple files in the applications 
 
 
 ##### Before you begin
-* Review [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
+* Review [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 
 
 ##### How to
-1. If needed, open [Product Settings](#open-product-settings).
+1. Open [Product Settings](#open-product-settings).
 1. Click the **Promotion Settings** tab.
 1. From the list of Promotion Templates, do one of the following:
     * Select a predefined Promotion Template.  
@@ -312,6 +314,6 @@ Configure Promotion Settings to define:
 
 
 ## Related articles
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
-[Access control for GitOps products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  
+[Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
+[CreateProducts]({{site.baseurl}}/docs/products/create-product/)   
+[Access control for GitOps Products]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#products)  

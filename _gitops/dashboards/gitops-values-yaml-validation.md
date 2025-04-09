@@ -1,0 +1,1 @@
+../../_docs/installation/gitops/gitops-values-yaml-validation.md

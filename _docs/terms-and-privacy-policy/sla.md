@@ -26,17 +26,17 @@ not exceed four (4) hours per month; and (ii) any additional maintenance for whi
 
 ##### 2. SERVICE AVAILABILITY.  
 
-**2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “Target Uptime Percentage”).  
+**2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “Target Uptime Percentage”).  
   
 
-**2.2. Achieved Uptime Percentage**. Actual Uptime percentage for each calendar month will be the quotient, expressed as (i) the total minutes potentially available for Uptime for that month minus total minutes of Downtime (other than Excused Downtime), divided by (ii) the total minutes potentially available for Uptime for that month minus any minutes of Excused Downtime (the “Achieved Uptime
+**2.2. Achieved Uptime Percentage**. Actual Uptime percentage for each calendar month will be the quotient, expressed as (i) the total minutes potentially available for Uptime for that month minus total minutes of Downtime (other than Excused Downtime), divided by (ii) the total minutes potentially available for Uptime for that month minus any minutes of Excused Downtime (the “Achieved Uptime
 Percentage”).  
   
 **2.2. Right to Cancel**.
 
 {::nomarkdown}
 
-<p style='margin-left:12px;text-indent:5px'>(i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event that the Achieved Uptime Percentage is less than the Target Uptime Percentage in three consecutive calendar months (a “<b>Triggering Event</b>”), Client shall have the right to cancel the agreement (the “<b>Cancellation Right</b>”) by providing Codefresh written notice of such cancellation (a “<b>Cancellation Notice</b>”) within 14 days after the last day of the calendar month in which the Triggering Event arose (the “<b>Triggering Month</b>”). If Client does not provide a Cancellation Notice within 14 days after the last day of the Triggering Month, the Cancellation Right arising with respect to the Triggering Event shall expire.</p>
+<p style='margin-left:12px;text-indent:5px'>(i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event that the Achieved Uptime Percentage is less than the Target Uptime Percentage in three consecutive calendar months (a “<b>Triggering Event</b>”), Client shall have the right to cancel the agreement (the “<b>Cancellation Right</b>”) by providing Codefresh written notice of such cancellation (a “<b>Cancellation Notice</b>”) within 14 days after the last day of the calendar month in which the Triggering Event arose (the “<b>Triggering Month</b>”). If Client does not provide a Cancellation Notice within 14 days after the last day of the Triggering Month, the Cancellation Right arising with respect to the Triggering Event shall expire.</p>
 
 
 <p style='margin-left:12px;text-indent:5px'>(ii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exercise of a Cancellation Right will be Client’s sole and exclusive remedy, and the entire liability of Codefresh, for any failure to achieve the Target Uptime Percentage or any breach of this our service level objectives herein.
@@ -74,7 +74,7 @@ issue as defined below and will use commercially reasonable efforts to respond a
 | Normal        | Errors that cause previously-working non-critical features to malfunction. |
 | Low | General questions, How-Tos, best practices questions, and feature requests.|
 
-[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/support-triage-definitions/)
+[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/support-triage-definitions/).
 
 **3.3. Support Channels**. 
 
@@ -99,3 +99,4 @@ issue as defined below and will use commercially reasonable efforts to respond a
 |2.0             | General updates               | April 20, 2022 |
 |1.1             | Added support information     | April 7, 2021 |
 |1.0             | Initial version               | January 17, 2021 |
+

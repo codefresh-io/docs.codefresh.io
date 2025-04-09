@@ -1,0 +1,1 @@
+../../../_docs/promotions/yaml/promotion-template-crd.md

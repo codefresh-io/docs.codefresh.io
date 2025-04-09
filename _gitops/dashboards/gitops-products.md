@@ -1,0 +1,1 @@
+../../_docs/dashboards/gitops-products.md

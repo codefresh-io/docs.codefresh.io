@@ -21,16 +21,15 @@ Currently Codefresh supports:
 * GitHub Cloud
 * GitHub On-premises
 * Bitbucket
-* Bitbucket Server (new version of Stash)
+* Bitbucket Data Center (new version of Bitbucket Server)
 * GitLab Cloud
 * GitLab On-premises
 * Azure DevOps Git
-* Atlassian Stash (old version of Bitbucket Server)
 * Gerrit
 
 
 
-Atlassian Stash/Bitbucket server, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
+Atlassian Stash/Bitbucket Data Center, as well as the on-premises version of GitLab and GitHub, are only available to Codefresh enterprise customers.
 
 ## Adding more Git providers to your Codefresh Account
 
@@ -338,18 +337,17 @@ Your Azure DevOps repositories will be available when [creating a new project in
 Atlassian stash is only available for an on-premises connection. Follow the same instructions as Bitbucket.
 You also need to provide the URL of the Stash server in your organization.
 
-This option is only for Atlassian stash until version 3.10 which is the old version. It was then renamed
-to Bitbucket server.
+This option is only for Atlassian stash until version 3.10 which is the old version. Bitbucket Data Center is the new name of Atlassian Stash.
 
-## Bitbucket Server
+## Bitbucket Data Center
 
-Bitbucket Server is the new and current name of Atlassian Stash. Bitbucket Server is supported in both on-premises and Runner installations.
+Bitbucket Data Center is the new and current name of Bitbucket Server and Atlassian Stash. Bitbucket Data Center is supported in both on-premises and Runner installations.
 
-Codefresh supports Bitbucket Server versions 5.4.0+ since those expose the API used by the integration.
+Codefresh supports Bitbucket Data Center versions 5.4.0+ since those expose the API used by the integration.
 
 ### Using External Secrets for BitBucket Token
 
-If your Bitbucket Server installation is behind your firewall, you can also
+If your Bitbucket Data Center installation is behind your firewall, you can also
 use any [external secrets that you have defined]({{site.baseurl}}/docs/integrations/secret-storage/) (such as Kubernetes secrets) as values by entering a secrets value
 with the same syntax [shown in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/).
 

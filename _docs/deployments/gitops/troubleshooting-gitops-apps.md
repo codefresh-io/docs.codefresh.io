@@ -8,7 +8,7 @@ toc: true
 
 
 
-## Current release version stuck in Progessing state
+## Current release version stuck in Progressing state
 In the GitOps Apps dashboard, when viewing the Timeline tab for the selected Argo CD application, the Current Version is shown as **Progressing**, though the application status is Healthy and Synced.
 
 {% include 
@@ -35,7 +35,7 @@ In Codefresh, this issue leads to a loop with the following behavior:
 To resolve this issue when using Istio with Argo Rollouts, configure the application following the best practices for [integration with GitOps](https://argoproj.github.io/argo-rollouts/features/traffic-management/istio/#integrating-with-gitops){:target="\_blank"} in the Argo Rollouts documentation.
 
 ## Not receiving application-scoped sync notifications with ACR Controller  
-You enabled the Application Change Revision (ACR) Controller and configured application-scoped sync notifications, but notifications are not receiving notifications.
+You enabled the Application Change Revision (ACR) Controller and configured application-scoped sync notifications, but are not receiving notifications.
 
 ### Possible Causes
 This issue can occur if any of the following are not configured:
@@ -50,7 +50,7 @@ Either roll back to the previous notification template or trigger, or follow the
 
 ##### Runtime configuration
 1. Ensure that your Runtime version is `0.13.0` or higher.
-1. Confirm that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime.
+1. Confirm that the [ACR controller is enabled]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps) for the Runtime.
 
 ##### Application configuration
 1. Verify if the application manifest includes the following:  

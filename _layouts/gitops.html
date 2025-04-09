@@ -1,0 +1,67 @@
+---
+layout: compress
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include header.html %}
+    <meta name="robots" content="noindex">
+  </head>
+  <body data-spy="scroll" data-target=".bd-toc" data-offset="100">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57JFSTSH"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+
+    {% include argohub-docs-navbar.html %}
+
+    {% if page.wide %}
+    <div class="container-fluid docs-layout" data-layout-mode="{% if page.wide == true %}wide{% else %}boxed{% endif%}">
+    {% else %}
+    <div class="container docs-layout" data-layout-mode="{% if page.wide == true %}wide{% else %}boxed{% endif%}">
+    {% endif %}
+      <div class="row flex-xl-nowrap">
+
+        <div class="col-12 col-md-4 col-xl-3 col-xxl-3 bd-sidebar">
+          {% include argohub-docs-sidebar.html.twig %}
+        </div>
+
+        {% if page.toc %}
+        <div class="d-none d-xl-block col-xl-2 col-xxl-2 bd-toc">
+          <div class="toc-inner">
+            {% include docs-toc.html.twig sanitize=true html=content h_min=2 h_max=4 class="section-nav" item_class="toc-entry nav" item_link_class="nav-link" %}
+          </div>
+        </div>
+        {% endif %}
+
+        <main class="col-12 col-md-8 {% if page.toc == true %}col-xl-8 col-xxl-8{% else %}col-xl-10 col-xxl-10{% endif%} py-3 bd-content" role="main">
+          <div class="bd-content-inner py-xl-3">
+            <div class="bd-improve-link">
+              {% if page.collection != site.gitops_collection %}
+                {% assign url_size = page.url | size | minus: 1 %}
+                {% capture edit_url %}https://github.com/codefresh-io/docs.codefresh.io/edit/master/_docs/{{ page.url | slice: 0, url_size | replace: '/docs/', ''  }}.md{% endcapture %}
+                <a href="{{ edit_url }}" target="_blank"><i class="fas fa-edit fa-sm"></i> Improve this page on GitHub</a>
+              {% endif %}
+            </div>
+            <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+            <p class="bd-lead">{{ page.description | smartify }}</p>
+            {{ content }}
+          </div>
+        </main>
+      </div>
+    </div>
+
+    {% include scripts.html %}
+    {% include modal.html %}
+  </body>
+</html>

@@ -1,7 +1,6 @@
 ---
 title: "On-premises GitOps Runtime installation"
 description: "Install GitOps Runtime in on-premises environments using Helm"
-group: installation
 toc: true
 ---
 
@@ -66,9 +65,9 @@ app-proxy:
 ```
 
 ## Mirroring Helm chart in on-premises/air-gapped environments
-_After installing the GitOps On-premises Runtime_ in on-premises or air-gapped environments, you can manage it as an Argo Application to establish GitOps as the single source of truth for the Runtime. You can monitor the health and synchronization statuses of your Runtime components.  
+_After installing the GitOps On-premises Runtime_ in on-premises or air-gapped environments, you can manage it as an Argo CD Application to establish GitOps as the single source of truth for the Runtime. You can monitor the health and synchronization statuses of your Runtime components.  
 
-To manage the on-premises GitOps Runtime as an Argo Application, you need to:
+To manage the on-premises GitOps Runtime as an Argo CD Application, you need to:
 * **Mirror** the Helm chart to a repository that can be accessed by `app-proxy`
 * **Set an environment variable** in the `values` file in `.values.app-proxy` to reference the mirrored Helm repository, as shown in the example below.
 
@@ -173,9 +172,10 @@ argo-cd:
 ```
 
 ## Ingress controller configuration 
-Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#ingress-controller-configuration).
+Ingress-based on-premises GitOps Runtimes require an ingress controller to be configured before the installation. For details, see [Ingress controller configuration]({{site.baseurl}}/docs/installation/gitops/runtime-ingress-configuration/).
 Depending on the ingress controller used, you may need post-installation configuration as well.
 
 
 ## Related articles
-[Managing and monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/)  
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 

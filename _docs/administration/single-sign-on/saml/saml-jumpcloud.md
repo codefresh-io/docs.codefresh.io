@@ -20,7 +20,7 @@ Set up SAML SSO for JumpCloud by:
 ## Step 1: Configure SSO settings for JumpCloud via SAML in Codefresh
 
 1. In the Codefresh UI, from the toolbar click the **Settings** icon.
-1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.  
+1. From the sidebar, select **Single Sign-On**.  
 1. Click **Add single-sign-on**, select **SAML**, and then click **Next**.
 1. Enter the connection details: 
   * **Display Name**: Any arbitrary name for this integration.
@@ -72,14 +72,14 @@ You have completed SSO integration for JumpCloud via SAML in Codefresh.
 
 ## Test SSO Connection
 
-Now test the SSO with a test user in a different browser or private/incognito browser to make sure the integration works as it should.
+Now test the SSO with a test user in a different browser or in a private/incognito tab to make sure the integration works as it should.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon and then select **Account Settings**.
-1. From the sidebar, below Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon. 
+1. From the sidebar, select **Users & Teams**.   
 1. Locate a test user, and from the SSO list, select the integration name to enable SSO for that user.
 1. In a different browser or private/incognito browser window use the Corporate option to log in.
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
 [Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
 [Common configuration for SSO providers]({{site.baseurl}}/docs/administration/single-sign-on/team-sync/)  

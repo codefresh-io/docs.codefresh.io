@@ -6,5 +6,5 @@ toc: true
 ---
 
 
-For the Octopus Deploy Customer Agreement, click [here](https://i.octopus.com/trust/Octopus+Deploy+Customer+Agreement+(Complete)+1+October+2024.pdf){:target="\_blank"}.
+For the Octopus Deploy Customer Agreement, click [here](https://i.octopus.com/trust/octopus-customer-agreement-2025.pdf){:target="\_blank"}.
 

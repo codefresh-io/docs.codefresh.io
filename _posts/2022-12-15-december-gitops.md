@@ -41,7 +41,7 @@ It is now configured as the default runtime mode for Hybrid GitOps. For silent i
 
 Access mode selection is relevant only for new runtime installations. Upgrading existing runtimes does not change the access mode for those runtimes.
 
-For details, see [Access mode in Runtime flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#runtime-flags).
+For details, see [Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
 ### Git provider selection in CLI Wizard
 

@@ -1,0 +1,1 @@
+../../_docs/deployments/gitops/install-argo-rollouts.md

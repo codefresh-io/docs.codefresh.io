@@ -6,6 +6,135 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+
+## On-premises version 2.7
+
+### Features & enhancements
+
+#### Installing v2.7 
+For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+#### Upgrading to v2.7
+For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
+
+
+
+#### General: Increased limit for audit logs
+
+Codefresh keeps a log of all actions that happen at all times based on API calls that reach Codefresh. These include UI actions from users, CLI invocations, and any external integration used with Codefresh.  
+We have now increased the audit limit _from 15,000 to 50,000_, which means you can access more data on how you use your Codefresh account.  
+
+For details, see [Auditing actions in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/audit/).
+
+<br><br>
+
+
+#### GitOps: Promotions with GitOps-the Codefresh advantage
+We’re excited to introduce **promotions** in Codefresh GitOps!
+
+In Continuous Delivery (CD), promotions are essential for advancing application versions across environments in a controlled, traceable manner. 
+**Promotions in Codefresh GitOps** enhance this process by providing greater visibility, control, and automation while maintaining Git as the single source of truth. Additionally, they integrate with and extend **Argo CD**, enabling structured promotion flows, policy enforcement, and enhanced deployment tracking beyond standard application syncs. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/overview/promos-gitops.png" 
+url="/images/gitops-promotions/overview/promos-gitops.png"
+alt="GitOps promotions in Codefresh" 
+caption="GitOps promotions in Codefresh"
+max-width="60%"
+%}
+
+>**NOTE**  
+GitOps promotions require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access promotion features.
+
+##### Why use GitOps promotions in Codefresh?
+Codefresh builds on Argo CD’s deployment model by introducing structured promotion flows with additional context and automation:
+
+* **Declarative and version-controlled**  
+  Promotions are fully tracked in Git, tied to commits, ensuring traceability. Teams can see who triggered a promotion and why.
+
+* **Enhanced context and visibility**  
+  While Argo CD manages application deployments, Codefresh GitOps provides additional structure with:  
+  * **Environments**, defining stages in the software lifecyle, allowing you to track application progress.  
+  * **Products**, grouping related applications for unified promotion management. 
+  * **Releases**, providing end-to-end visibility into deployments across environments. 
+
+
+##### Promotion entities
+Codefresh GitOps streamlines and automates promotions, eliminating the need for custom scripts. 
+* **Promotion properties** to control which application properties are promoted and prevent unnecessary changes.  
+* **Promotion Workflows** to enforce environment-specific checks such as validations, compliance, and performance checks at different stages of promotions.    
+* **Promotion Policies** to govern advanced promotion behavior for environments.  
+* **Promotion Flows** to automate complex promotions across multiple environments.  
+
+For details, see [About promotions]({{site.baseurl}}/docs/promotions/promotions-overview/).
+
+<!--- ## GitOps: Simplified Runtime installation with the installation wizard
+
+Our new installation wizard, designed for ease of use and maximum visibility into every step, makes installing a GitOps Runtime simple, intuitive, and quick.
+
+
+##### Key features
+* **Installation and configuration** steps clearly defined, allowing you to complete the entire setup from the same location.
+* **Guided experience** that walks you through each step.
+* **Inline parameter descriptions** so you always know what to define.
+* **Automatic progress saving** so you can stop anytime and resume exactly where you left off.
+
+##### Installation
+Install a Runtime in three simple steps:
+* Define the Shared Configuration Repo and Git provider—a one-time action for the first Runtime in your account.
+* Review and define installation parameters, which are automatically populated in the install command.
+* Run the install command in your terminal.
+
+##### Configuration
+Configuration steps are clearly defined, allowing you to complete setup correctly.
+* **Define Git credentials**, with the option to use the same token for both the Runtime and user authentication. Required scopes are detailed to ensure the correct permissions.
+* **Configure as an Argo CD Application** to take full advantage of GitOps. 
+* **Add a Git source** to the Runtime so you are ready to create applications.
+
+-->
+
+
+
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+<br>
+
+#### New Feature Flags in v2.7
+There are no new feature flags in this release.
+
+
+
+#### Updated Feature Flags in v2.7
+The table below lists existing Feature Flags which have been updated by default to be either enabled (set to _TRUE_), or disabled (set to _FALSE_).
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description                                               | Default Value |
+| -----------        | --------------------------------------------------------- | ------------------------- |
+| `abacAndRule`             | When enabled, supports creating ABAC rules for entities in Codefresh pipelines using "AND".| _FALSE_  |
+
+
+### Bug fixes
+##### General
+* Users not removed on selecting **Remove deactivated users during sync** in LDAP SSO settings.
+
+##### Pipelines 
+* Builds frozen at the initialization phase when connecting to Vault secret store.
+* Build fails with `manifest unknown` error when referencing or including v1.0.12  of `jira-issue-manager` step.
+* `build` step fails to build ECR images when base image (`FROM`) is from a different AWS account.
+
+
+
+<br>
+
+##### GitOps
+* Broken hyperlink to Shared Configuration Repository in the Upgrade Runtime panel.
+* Typo in the parameter name in the `values.yaml` file of the `gitops-runtime` chart.
+
 ## On-premises version 2.6
 
 ### Features & enhancements
@@ -549,7 +678,7 @@ caption="Ingress resource links in Current State Tree view"
 max-width="50%"
 %}
 
-For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#access-external-links).
+For details, see [Access external links]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#access-external-links).
 
 #### GitOps: Application menu enhancements in Environment & Product dashboards
 
@@ -818,7 +947,7 @@ Key features to note:
 * Ease of use  
   Set and unset a Configuration Runtime with just a click in the UI or a quick edit in your `values.yaml` file.
 
-For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes).
+For details, see [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).
 
 #### GitOps: Rollout enhancements 
 
@@ -1143,7 +1272,7 @@ If you have selected an application, the Diff View option is available in the co
 >**NOTE**  
 Diff View for application resources is supported from Runtime v1.0.38 and higher. <!--- To enable this feature, you need to turn on the `appDiffView` feature flag.  -->
 
-For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/#analyze-out-of-sync-applications-with-diff-view).
+For details, see [Analyze out-of-sync applications with Diff View]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/#analyze-out-of-sync-applications-in-diff-view).
 
 
 
@@ -1222,7 +1351,7 @@ As a reminder, here's where you can find the **View logs** option:
   max-width="70%" 
 %}
 
-For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#viewdownload-logs-for-runtime-components).
+For details, see [View/download logs for GitOps Runtime components]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#viewdownload-logs-for-runtime-components).
 
 
 #### GitOps: Argo Events upgrade
@@ -2092,7 +2221,6 @@ The table below describes the Feature Flags in the Codefresh On-Premises release
 | `abacRuleRelatedResource`     | When enabled, allows admins to define rule-based access to pipelines for teams by project tags.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 | `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 |`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not sent for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
-
 
 
 

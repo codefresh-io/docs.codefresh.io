@@ -27,7 +27,7 @@ Each Git provider requires runtime tokens with specific scopes and has specific 
 
 Note that GitLab cloud is not supported for hosted runtimes.
 
-See [Git provider and repo flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#git-provider-and-repo-flags).
+
 
 ### Turn off notifications for runtimes
 

@@ -38,7 +38,7 @@ For ready-to-use collections of pipeline steps, check out our [built-in steps]({
 For a seamless CI/CD experience, Codefresh has native integrations with almost every major Git or Cloud provider.
 Easily connect Git providers, registry providers, storage providers, secret stores, and notification channels.  
 
-Docker registries and all cluster integrations are automatically available to all pipelines, without  Docker login commands or `kubectl` commands to set up a Kube context inside your pipeline.
+Docker registries and all cluster integrations are automatically available to all pipelines, without Docker login commands or `kubectl` commands to set up a Kube context inside your pipeline.
 
 
 ### Dashboards and insights
@@ -73,11 +73,11 @@ See [CI/CD quick start]({{site.baseurl}}/docs/ci-quick-start/ci-quick-start/).
 
 ##### Example catalog 
 If you are familiar with CI/CD, we have an extensive collection of examples that cover several CI and CD scenarios: 
-[CI examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
-[CD examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
+* [CI examples]({{site.baseurl}}/docs/example-catalog/ci-examples/)
+* [CD examples]({{site.baseurl}}/docs/example-catalog/cd-examples/)
 
 ##### Guides 
-And finally, you can dive in to our detailed guides. Look for CI/CI guides in the documentation such as [Packaging/Compilations]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [Building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)
+And finally, you can dive in to our detailed guides. Look for CI/CI guides in the documentation such as [Packaging/Compilations]({{site.baseurl}}/docs/ci-cd-guides/packaging-compilation/) and [Building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/).
 
 
 ## Codefresh & GitOps with Argo CD
@@ -88,7 +88,7 @@ Codefresh is a full-featured, turn-key solution for application deployments and 
 
 
 **GitOps Runtimes**
-You can use [your own GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/) or get started quick with a [runtime hosted by Codefresh]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/).
+You can install a [Hybrid GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
 
@@ -100,7 +100,7 @@ Codefresh brings the power of the Argo Project to your Kubernetes deployments th
 * Argo Events for event-driven workflow automation framework
 
 
-Codefresh unified all 4 projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
+Codefresh unified all four projects of the Argo family into a single *Runtime*, providing an enterprise-supported version of all projects enhanced with unique functionality.
 
 
 >**Argo CD release policy**  
@@ -115,7 +115,7 @@ Codefresh supports the complete lifecycle for creating and deploying Argo CD app
 
 You can create full-featured Argo CD applications in Form or YAML modes in the Codefresh UI. Every action you take in the Codefresh GUI results in a Git commit behind the scenes. The application manifest is generated, committed to Git, and synced to your cluster. See [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) GitOps applications.   
 
-Track the deployed applications in the GitOps Apps dashboard. See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+Track the deployed applications in the GitOps Apps dashboard. See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/).
 
 ### GitOps image enrichment
 
@@ -148,7 +148,7 @@ See [DORA metrics]({{site.baseurl}}/docs/dashboards/dora-metrics/).
 The GitOps Apps dashboard displays a unified view of applications across runtimes and clusters. No matter what the volume and frequency of your deployments, the GitOps dashboard makes it easy to track them. Search for Jira issues, commit messages, committers, and see exactly when and if the change was applied to a specific application.
 
 Drill down into an application to view resources, timelines, services and more.
-See [Monitoring GitOps applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/).
+See [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/).
 
 
 ### Where to go from here

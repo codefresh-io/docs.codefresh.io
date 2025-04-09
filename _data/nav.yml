@@ -14,6 +14,32 @@
     - title: Global Search & Navigation
       url: "/command-bar"
 
+- title: GitOps quick starts
+  url: "/gitops-quick-start"
+  pages:
+    - title: About GitOps quick starts
+      url: "/gitops-quick-start"
+    - title: Creating a Codefresh account
+      url: "/create-codefresh-account"
+    - title: Installing a GitOps Runtime
+      url: "/quick-start-install-runtime"
+    - title: Configuring a GitOps Runtime
+      url: "/quick-start-configure-runtime"
+    - title: Creating products and applications
+      url: "/create-app-ui"
+    - title: Creating environments
+      url: "/quick-start-gitops-environments"
+    - title: Creating Promotion Workflows
+      url: "/quick-start-promotion-workflow"  
+    - title: Simple promotion with drag-and-drop 
+      url: "/drag-and-drop"    
+    - title: Simple Promotion Flow with multiple environments
+      url: "/multi-env-sequential-flow"      
+    - title: Advanced Promotion Flow with Promotion Workflows
+      url: "/policy-multi-env-promotion"  
+    - title: Advanced Promotion Flow with environment dependencies
+      url: "/dependency-multi-env-promotion"  
+
 - title: CI/CD quick starts
   url: "/ci-quick-start"
   pages:
@@ -28,56 +54,17 @@
     - title: On-demand environment quick start
       url: "/on-demand-environments"
 
-- title: GitOps quick starts
-  url: "/gitops-quick-start"
-  pages:
-    - title: About GitOps quick starts
-      url: "/gitops-quick-start"
-    - title: Create Codefresh account
-      url: "/create-codefresh-account"
-    - title: GitOps Runtimes & Git Sources
-      url: "/gitops-runtimes"
-      sub-pages: 
-      - title: Preparing for Hybrid GitOps Runtime installation
-        url: "/verify-requirements"
-      - title: Installing a Hybrid GitOps Runtime
-        url: "/runtime"
-      - title: Creating Git Sources
-        url: "/create-git-source"
-    - title: Environments, Products, Applications
-      url: "/products"
-      sub-pages: 
-      - title: Creating environments
-        url: "/quick-start-gitops-environments"
-      - title: Creating products
-        url: "/quick-start-product-create"
-      - title: Creating applications
-        url: "/create-app-ui"
-      - title: Exploring the Product Dashboard
-        url: "/quick-start-product-dashboard"
-    - title: Promotions
-      url: "/promotions"  
-      sub-pages: 
-      - title: Drag-and-drop promotion
-        url: "/drag-and-drop"    
-      - title: Multi-environment sequential promotion
-        url: "/multi-env-sequential-flow"  
-      - title: Multi-environment promotion with gates
-        url: "/policy-multi-env-promotion"  
-      - title: Multi-environment parallel promotion
-        url: "/parallel-multi-env-promotion"  
-      - title: Multi-environment promotion with dependencies
-        url: "/dependency-multi-env-promotion"  
-
 - title: Dashboards & insights
   url: "/dashboards"
   pages:
-    - title: Home dashboard
+    - title: Home
       url: "/home-dashboard"
     - title: GitOps Environments
       url: "/gitops-environments"
     - title: GitOps Products
       url: "/gitops-products"
+    - title: GitOps Apps
+      url: "/gitops-apps-dashboard"
     - title: DORA metrics
       url: "/dora-metrics"
     - title: Images
@@ -382,24 +369,41 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: Creating Argo CD applications
-          url: "/create-application"
-        - title: Monitoring Argo CD applications
-          url: "/applications-dashboard"
+        - title: What's changed in Applications documentation
+          url: "/apps-whats-changed-in-documentation"
+        - title: About Argo CD applications
+          url: "/about-apps"
+        - title: GitOps Apps dashboard
+          url: "/gitops-apps-dashboard"
         - title: Application Groups for Argo CD applications
           url: "/gitops-app-groups"
+        - title: Creating Argo CD applications
+          url: "/create-application"
+        - title: Application configuration settings
+          url: "/application-configuration-settings"
+        - title: Monitoring Argo CD applications
+          url: "/monitor-applications"
         - title: Managing Argo CD applications
           url: "/manage-application"
-        - title: Progressive delivery with GitOps
+        - title: Argo Rollouts on managed clusters
           url: "/install-argo-rollouts"
         - title: Troubleshooting Argo CD applications
           url: "/troubleshooting-gitops-apps"
 
-
+- title: Environments
+  url: "/environments"
+  pages:
+    - title: About environments
+      url: "/environments-overview"
+    - title: Create and manage environments
+      url: "/create-manage-environments"     
+    - title: Manage Products and applications in environments
+      url: "/manage-apps-in-environments"  
+      
 - title: Products
   url: "/products"
   pages:
-    - title: About Products
+    - title: About products
       url: "/about-products"
     - title: Create products
       url: "/create-product"
@@ -407,10 +411,13 @@
       url: "/configure-product-settings"
     - title: Assigning applications
       url: "/assign-applications"      
-    - title: Configuring app version and promoted properties
+    - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
-    - title: Configuring promotion flows
+    - title: Assigning Promotion Flows and triggers
       url: "/promotion-flow-triggers"
+    - title: Tracking releases for products
+      url: "/releases-in-products"
+
 
 
 - title: Promotions
@@ -445,7 +452,7 @@
           url: "/promotion-policy-crd"
     - title: Trigger promotions
       url: "/trigger-promotions"   
-    - title: Tracking releases for products
+    - title: Tracking releases for Products
       url: "/product-releases"         
 
 
@@ -587,31 +594,58 @@
           url: "/behind-the-firewall"
     - title: GitOps Runtimes
       url: "/gitops"
-      sub-pages:
+      sub-pages:     
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
-        - title: Hybrid GitOps Runtime
-          url: "/hybrid-gitops-helm-installation" 
-        - title: Hybrid GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"        
+        - title: Runtime concepts
+          url: "/runtime-concepts"
+        - title: System requirements
+          url: "/runtime-system-requirements"    
+        - title: Prerequisites
+          url: "/runtime-prerequisites"
+        - title: Argo CD Admin API token
+          url: "/runtime-argocd-admin-api-token"        
+        - title: Install GitOps Runtime with existing Argo CD
+          url: "/runtime-install-with-existing-argo-cd"                       
+        - title: Install GitOps Runtime with new Argo CD
+          url: "/hybrid-gitops-helm-installation"      
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
-        - title: Migrating Hybrid GitOps Runtimes from CLI to Helm
-          url: "/migrate-cli-runtimes-helm"  
+        - title: Runtime values file validation
+          url: "/gitops-values-yaml-validation"  
+        - title: Configure GitOps Runtime 
+          url: "/runtime-configuration" 
+        - title: Ingress and service-mesh access modes
+          url: "/runtime-install-ingress-service-mesh-access-mode"   
+        - title: Ingress configuration
+          url: "/runtime-ingress-configuration" 
         - title: Shared Configuration Repository
           url: "/shared-configuration"
-        - title: Monitoring & managing GitOps Runtimes
-          url: "/monitor-manage-runtimes"
+        - title: Configuration Runtimes
+          url: "/configuration-runtime"
+        - title: Monitoring GitOps Runtimes
+          url: "/monitor-runtimes"
+        - title: Managing GitOps Runtimes
+          url: "/manage-runtimes"
         - title: Managing external clusters in GitOps Runtimes
           url: "/managed-cluster"
         - title: Managing Git Sources in GitOps Runtimes
           url: "/git-sources"
+        - title: Download/upgrade GitOps CLI
+          url: "/upgrade-gitops-cli"   
+        - title: Migrating GitOps Runtimes from CLI to Helm
+          url: "/migrate-cli-runtimes-helm"  
+        - title: Install GitOps Runtime alongside Community Argo CD
+          url: "/argo-with-gitops-side-by-side"   
 
 
 - title: Administration
   url: "/administration"
   pages:
-    - title: Account & user management
+    - title: About administration in Codefresh
+      url: "/administration-overview"
+    - title: Accounts & users
+      url: "/account-user-management"
       sub-pages:
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
@@ -666,6 +700,7 @@
     - title: Codefresh IP addresses
       url: "/platform-ip-addresses"
     - title: User self-management
+      url: "/user-self-management"
       sub-pages:
         - title: Managing personal settings
           url: "/user-settings"
@@ -735,9 +770,9 @@
       url: "/acceptable-use-policy"      
     - title: Service Commitment
       url: "/sla"
+    - title: Support Triage Definitions
+      url: "/support-triage-definitions"      
     - title: Cloud Credits
       url: "/cloud-credits"
-    - title: Support Triage Definitions
-      url: "/support-triage-definitions"
     - title: Legacy Codefresh Terms of Service
       url: "/legacy-cf-terms-of-service"

@@ -136,9 +136,9 @@ For a description of the events and their payload, see [Bitbucket Cloud document
 * Pull request comment updated
 * Pull request comment deleted
 
-#### Bitbucket Server trigger events
+#### Bitbucket Data Center trigger events
 
-For a description of the events and their payload, see [Bitbucket Server documentation](https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html){:target="\_blank"}.
+For a description of the events and their payload, see [Bitbucket Data Center documentation](https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html){:target="\_blank"}.
 
 * Commit
 * Push commits
@@ -351,7 +351,7 @@ files affected by a commit are in a specific folder or match a specific naming p
 you can have a big Git repository with multiple projects, and build only the parts that actually change.
 
 > **NOTE**  
-> Currently, the option is supported only for GitHub, GitLab, Azure DevOps, [Bitbucket Server](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, Bitbucket (Cloud), and Gerrit. We will support other Git providers as soon as they add the respective feature.
+> Currently, the option is supported only for GitHub, GitLab, Azure DevOps, [Bitbucket Data Center](https://confluence.atlassian.com/bitbucketserver/manage-webhooks-938025878.html){:target="\_blank"}, Bitbucket (Cloud), and Gerrit. We will support other Git providers as soon as they add the respective feature.
 
 ### Using the Modified files option to constrain triggers to specific folder/files
 

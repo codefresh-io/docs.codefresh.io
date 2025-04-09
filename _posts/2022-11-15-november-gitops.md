@@ -11,10 +11,7 @@ Simplify installation without compromising on security with our tunnel-based ins
 
 Tunnel-based runtimes use tunneling for communication between the customer cluster and the Codefresh platform, with the customer cluster initiating the tunneling request. Simply add the flag `--access-mode` with `tunnel` as the value and you have your tunnel-based runtime without an ingress controller.
 
-See:  
-* [Tunnel-based runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
-* [Runtime flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#runtime-flags)
-* [Tunnel-based runtime flags]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/#tunnel-based-runtime-flags)
+
 
 ### Bitbucket Cloud for hosted runtimes
 

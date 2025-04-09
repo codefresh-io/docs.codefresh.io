@@ -1,0 +1,1 @@
+../../_docs/administration/platform-ip-addresses.md

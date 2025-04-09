@@ -1,37 +1,49 @@
 ---
-title: "Configuring promotion flows and triggers"
-description: "Select Promotion Flows and configure triggers to orchestrate product promotions"
+title: "Assigning Promotion Flows and triggers to products"
+description: "Select Promotion Flows and configure their trigger conditions to optimize product promotions"
 group: products
 toc: true
 ---
 
+## Promotion Flows for products
+A Promotion Flow in Codefresh GitOps defines the steps, validations, and conditions required to promote a product and its applications from one environment to another.  
 
-Through Promotion Flows for Products, you can automate and control the promotion of applications from one environment to another. Promotion Flows define the steps and criteria for moving applications through different stages of deployment. 
+By selecting Promotion Flows for a product you can choose the most relevant flows for its deployment strategy. By configuring trigger conditions for each Flow, you can structure promotions for the product, tailored to its needs, improving deployment consistency and efficiency.
 
-You can select multiple Promotion Flows for a product, and customize the conditions for triggering each of the selected flows to automate and control how applications are promoted.
+##### Benefits of Promotion Flows with triggers tailored for products
 
-
-##### Benefits of custom promotion flows & triggers for products
-
-
-* Multiple flows
-  Configure multiple Promotion Flows to orchestrate promotions for the product in accordance with the deployment requirements.
+* **Multiple flows per product**  
+  Select different Promotion Flows to orchestrate promotions for the product in accordance with the different deployment requirements.For example, you can select both Hotfix and Feature Testing flows to ensure urgent patches and new features follow separate promotion processes.  
   Promotion Flows are predefined by account administrators for the account. If the Flow you require is not available, contact your administrator.  
 
-
-* Custom trigger conditions
+* **Custom trigger conditions per flow**  
   Define specific trigger conditions for each Promotion Flow to tailor automated promotion based on the product’s unique deployment requirements.  
-  For example, configure the trigger to launch the hotfix flow whenever a commit message contains the phrase `hotfix`.
+  For example, configure the trigger to launch the Hotfix flow whenever a commit message contains the phrase `hotfix`.
+
+ 
+* **Prioritization**  
+  Arrange the Promotion Flows in a prioritized order to control the sequence in which they are evaluated and executed.
+
+
+## Where to assign Promotion Flows and trigger conditions
+In **Product > Settings > Promotion Flows**.  
+Select one or more Promotion Flows for the product, and then configure custom conditions to trigger each of the flows.  
+See also [Product CRD](#promotion-crd).
+
+## Commit messages & Git revisions
+You can monitor changes based on the commit message (`commitMessage`) or the Git revision (`gitRevision`).  
+
+### Commit message formats
+There are no restrictions on commit messages. The commit message can include:
+* A single word, for example, `hotfix`
+* Multiple words, for example, `hotfix`  `upgrade`
+* Phrases with or without wildcards (`*`), for example, `refactor Helm chart values`, `update image to v1.*`, `[GitOps] Update image tag to v2.0`. 
  
 
-* Prioritization
-  Order the Promotion Flows in the list to define the priority you need.
-
-
-##### Where can you configure Promotion Flows and triggers? 
-In Product > Settings > Promotion Flows, you can select one or more Promotion Flows for the product, and then configure custom conditions to trigger the flows.  
-See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/).
-
+### Matching operators for filtering commits
+Operators define how commit messages or Git revisions are matched:
+* `In`: Includes the specified value or any value from a set.
+* `NotIn`: Excludes the specified value or any value from a set.
 
 {% include 
 	image.html 
@@ -44,14 +56,12 @@ See also [Promotion Flow CRD]({{site.baseurl}}/docs/promotions/yaml/promotion-fl
 %}
 
 
-For how to instructions on configuring Promotion Flows, see [Configure Promotion Flows]({{site.baseurl}}/docs/products/configure-product-settings/#configure-promotion-flows).
+For how to instructions on selecting Promotion Flows for products, see [Select Promotion Flows for products]({{site.baseurl}}/docs/products/configure-product-settings/#select-promotion-flows-for-products).
 
 
 ## Examples of trigger conditions for Promotion Flows
 
-Trigger conditions allow you to determine when and how to trigger the Promotion Flows for the product.
-
-Let's review a few flows and the trigger conditions you would configure for these.
+Trigger conditions allow you to determine when and how a Promotion Flow is triggered for the product.
 
 
 ### Hotfix Promotion Flow
@@ -68,11 +78,22 @@ The Hotfix flow is designed for urgent fixes that need to be deployed quickly, t
 
 The Hotfix flow triggers when the `commit message` contains either `hotfix` or `patch`, ensuring that only critical changes labeled trigger the flow.
 
+### Commit message-based Promotion Flow
+
+The Commit message based Promotion Flow  triggers the promotion when the message contains a specific phrase. 
+
+{: .table .table-bordered .table-hover}
+| **Trigger condition** | **Setting** |
+|----------------------|------------------|
+| **Property**         | `commitMessage`  |
+| **Operator**         | `In`          |
+| **Values**           | `bump Kubernetes version`   |
+
+This type of trigger monitors the commit message and triggers the promotion when the message contains a specific phrase. This is useful when you follow commit conventions like `bump version`, `update dependency` for example.
 
 ### Feature branch Promotion Flow
 
 The Feature branch flow is designed for promoting new features from development to testing/staging environments.
-
 
 {: .table .table-bordered .table-hover}
 | **Trigger condition** | **Setting** |
@@ -81,7 +102,8 @@ The Feature branch flow is designed for promoting new features from development 
 | **Operator**          | `In`          |
 | **Values**           | `feature/*`   |
 
-The Feature branch flow triggers when the Git revision matches a feature branch pattern, such as `feature/*`. This ensures that only feature branches are promoted to the testing environment. 
+
+This Feature branch flow triggers when the commit message matches the phrase `Bump Kubernetes version`. Any commit message that includes Bump Kubernetes version (exact phrase match) will trigger the promotion.
 
 ### Multi-region Promotion Flow
 The Multi-region flow is designed to first deploy to several regional environments for validation before final deployment to production.
@@ -127,21 +149,25 @@ The Rollback flow is designed to revert changes when issue are detected in produ
 
 The Rollback flow triggers when the commit message contains terms like `revert` or `rollback`, ensuring that the flow is triggered only for rollback operations.
 
-<!--- ##  Promotion Flow CRD
+<!---
+##  Product YAML
 
-As with other GitOps entities, you can configure Promotion Flow settings in either Form or YAML modes.  
+Configure product settings in either Form or YAML modes.  
 
-Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime. The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-manage-runtimes/#designating-configuration-runtimes)).  
+Once configured and committed, these settings are saved as the `promotion-flow` resource within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 
-To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the syntax requirements and descriptions. -->
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/entities/promotion-flows/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).  
 
+To configure directly in YAML, refer to our [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/) for the syntax requirements and descriptions. 
+
+-->
 
 ## Related articles
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
+[Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
 
 
 

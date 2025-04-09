@@ -1,5 +1,5 @@
 ---
-title: "Customizing promotion settings for products"
+title: "Customizing promotion settings for Products"
 description: "Select promotion flows, triggers, and more to tailor promotion settings for product"
 group: promotions
 redirect-from: 
@@ -30,6 +30,7 @@ By automating promotion settings, you reduce manual effort, minimize errors, and
 
 * [Promotion Flows and triggers](#assigning-promotion-flows-and-triggers)  
   Assign one or more predefined Promotion Flows and configure the conditions under which each is triggered.
+
 
 {% include 
 image.html 
