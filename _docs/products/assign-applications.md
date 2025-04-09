@@ -40,7 +40,7 @@ You can always unassign an application from a product:
 
 
 ## Related articles
-[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Assigning Promotion Flows and triggers to products to products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Configuring version and promotable properties for Products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Product Dashboard]({{site.baseurl}}/docs/dashboards/gitops-products/)  

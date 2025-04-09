@@ -69,5 +69,5 @@ To create a product for a new or an existing application, see [Configuring appli
 ## Related articles
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
 [Assigning applications to Products]({{site.baseurl}}/docs/products/assign-applications/)   
-[Selecting Promotion Flows for Products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
+[Assigning Promotion Flows and triggers to products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  

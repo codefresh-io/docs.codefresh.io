@@ -76,6 +76,27 @@ For more details, refer to the "Auto Redirect from Enterprise to ArgoHub Collect
 - To switch to the GitOps segment, log in to Codefresh and switch to an account with the GitOps type. This will clear the Enterprise cookie.
 - To switch to the Enterprise segment, log in to Codefresh and switch to an account with any other type. This will set the Enterprise cookie.
 
+#### Disabling Auto-Redirect to Stay in the Enterprise Segment
+
+To prevent automatic redirection to the ArgoHub collection and remain in the Enterprise segment, add the `?ent` query parameter to the URL. When this parameter is present, the redirect logic is bypassed.  
+You can also link to mid-topic titles using `?ent. Add the link _after_ the query parameter as in Example 2 below.
+
+**Example:**
+
+- URL to topic title:  
+  `https://codefresh.io/docs/docs/promotions/promotion-flow/?ent`  
+
+- URL for mid-topic links:  
+  `https://codefresh.io/docs/docs/promotions/product-promotion-props/?ent#product-properties-for-promotion`
+
+
+Adding the `ent` parameter ensures users remain in the Enterprise segment without being redirected to the ArgoHub collection.
+
+> When a page is accessed with the `?ent` parameter, it will remain locked in the Enterprise segment for the duration of the browser session.  Closing the specific window or tab will release this lock.
+> The lock is _not inherited_ when opening a new tab or window with the same link. It will function as per the default behavior without the override.
+
+
+  
 
 #### To switch segments in local development:
 

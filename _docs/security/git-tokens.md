@@ -18,8 +18,6 @@ Codefresh requires two types of Git tokens for authentication in GitOps, a Git R
 >**IMPORTANT**  
 _Both tokens are always securely stored on your cluster_ and never locally on our platform. 
 
-Users can also create and use Git tokens with custom scopes for both GitOps Runtimes and for Git repositories associated with the Runtimes that they need to access. See [Git user tokens with custom scopes](#git-user-tokens-with-custom-scopes).
-
 ## Git Runtime tokens versus Git user tokens in Codefresh
 The table below summarizes the main differences between the Git Runtime token and Git user tokens in Codefresh.
 
