@@ -1,6 +1,6 @@
 ---
 title: "Troubleshooting GitOps Runtimes"
-description: "Review common issues during Runtime installation"
+description: "Review how to resolve issues during Runtime installation"
 toc: true
 ---
 
