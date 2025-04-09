@@ -635,8 +635,7 @@
           url: "/upgrade-gitops-cli"   
         - title: Migrating GitOps Runtimes from CLI to Helm
           url: "/migrate-cli-runtimes-helm"  
-        - title: Install GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"   
+
 
 
 - title: Administration
