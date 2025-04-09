@@ -19,12 +19,20 @@ This article describes how to configure the different Product Settings:
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Click names of unassigned applications to automatically assign them to environments. 
 
-
 * [Promotion Flows](#configure-promotion-flows)  
   Select one or more predefined Promotion Flows, and customize the trigger conditions for each of the Flows.
-  
+
+* [Promotion concurrency](#configure-promotion-settings)  
+  Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings. 
+
 * [Promotion Settings](#configure-promotion-settings)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining the promotion settings.
+
+
+
+
+  
+
 
 
 
@@ -178,7 +186,7 @@ Unassign an application manually assigned to a product directly from its setting
 Automate and orchestrate promotions across different environments for the Product by:
 * Selecting one or more predefined Promotion Flows
 * Customizing the conditions that should trigger each Promotion Flow
-* Defining the priority when multiple Flows are configured 
+* Defining the priority when multiple Flows are assigned 
 
 
 ##### Before you begin
@@ -225,6 +233,36 @@ Automate and orchestrate promotions across different environments for the Produc
 
 {:start="8"}
 1. Click **Commit**.
+
+
+## Configure Promotion Concurrency
+Configure the promotion behavior when multiple promotions are triggered for the same product creating multiple releases.
+
+
+##### Before you begin
+* Review [Configuring promotion concurrency for products]({{site.baseurl}}/docs/products/promotion-concurrency/)   
+
+
+##### How to
+1. Open [Product Settings](#open-product-settings).
+1. Click the **Promotion Concurrency** tab.
+1. Select one of the options:
+    1. **Queue releases**: Start the new release only after the currently active release is completed.  
+    1. **Terminate release**: Terminate the currently active release and start the new release.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotion-concurrency.png"
+ url="/images/gitops-products/settings/promotion-concurrency.png"
+ alt="Product Settings: Promotion Concurrency"
+ caption="Product Settings: Promotion Concurrency"
+ max-width="50%"
+%}
+
+1. Click **Commit**.
+
 
 ## Configure Promotion Settings
 Configure Promotion Settings to define:

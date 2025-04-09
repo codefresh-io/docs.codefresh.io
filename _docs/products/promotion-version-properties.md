@@ -5,7 +5,7 @@ group: products
 toc: true
 ---
 
-
+## Application version and promotable properties for products
 
 Automating and customizing which changes are selected for promotion between environments ensures that only the necessary modifications are advanced, enhancing both accuracy and efficiency. By defining clear criteria for the changes to promote, you can streamline the promotion process while ensuring compliance with environment-specific requirements.
 
@@ -367,4 +367,5 @@ To configure directly in YAML, refer to our [Promotion Template YAML]({{site.bas
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+

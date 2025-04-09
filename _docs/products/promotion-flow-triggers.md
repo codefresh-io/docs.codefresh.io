@@ -141,7 +141,8 @@ To configure directly in YAML, refer to our [Promotion Flow CRD](tbd) for the sy
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring version and promotable properties for products]({{site.baseurl}}/docs/products/promotion-version-properties/)  
 [Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
-[Creating products]({{site.baseurl}}/docs/products/create-product/)   
+[Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
+
 
 
 
