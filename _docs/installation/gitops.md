@@ -74,29 +74,27 @@ The comparison below is provided for historical reference only.
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
-| GitOps Functionality    |Feature             |  Hosted                    | Hybrid |
+| **GitOps Functionality**    |**Feature**             |  **Hosted**                    | **Hybrid** |
 | --------------          | --------------     |---------------             | --------------- |
-| Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
+| **Runtime**             | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
 |                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
 |                         | External cluster   | Managed by customer        | Managed by customer         |
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
-| Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
-| Workflows               | Workflow Pipelines |Not supported               | Supported  |
+| **Argo CD**             |                    | Codefresh cluster          | Customer cluster  |
+| **Workflows**           | Workflow Pipelines |Not supported               | Supported  |
 |                         | Workflows          |Not supported               | Supported  |
 |                         | Workflow Templates |Not supported               | Supported  |
-| Ops                     |GitOps Apps        | Supported: see below for details                  | Supported: see below for details |
-|                         |                    |Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
-|                         |                     |Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}| Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}|
+| **Ops**                     |GitOps Apps        | Supported:<br>Deployment supported only on managed clusters<br>Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"} | |                  | Supported:<br>Deployment supported on both in-cluster and managed clusters<br>Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"} |
 |                         |Environments        |Supported                   | Supported  |
 |                         |Products            |Supported                   | Supported  |
 |                         |Promotion Workflows | Not supported              | Supported  |
 |                         |Promotion Flows     |Not supported              | Supported  |
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
-|Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
+|**Integrations**         |                    | Supported                  | Supported  |
+|**Dashboards**           |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
 |                         |DORA metrics        | Supported                 |Supported        |
 |                         |Applications        | Supported                 |Supported        |  
 
