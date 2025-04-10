@@ -102,8 +102,9 @@ max-width="90%"
 
 
 ## Related articles
-[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 {% if page.collection != site.gitops_collection %}
 [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  {% endif %}
+[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
+
 
 
