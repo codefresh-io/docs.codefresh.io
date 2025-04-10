@@ -309,8 +309,7 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 
 
 ## Related articles
-<!--- [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  -->
-[GitOps Runtime essentials]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)  
+[GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)  
 [Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 

@@ -46,23 +46,13 @@ Following are the additional flags you need to add to the install command for in
   --set global.runtime.ingress.enabled=true \
   --set "global.runtime.ingress.hosts[0]"=<ingress-host> \
   --set global.runtime.ingress.className=<ingress-class> \ 
-  {% if page.collection != site.gitops_collection %}
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \  
-  {% endif  %}
 {% endhighlight %}
 
 where:
 * `global.runtime.ingress.enabled=true`is mandatory for ingress-based Runtimes. Indicates the runtime is ingress-based. 
 * `<ingress-host>` is the IP address or hostname of the ingress controller. Mandatory for ingress-based Runtimes.
 * `<ingress-class>` is the ingress class of the ingress controller (e.g., `nginx` for the NGINX ingress controller). Mandatory for ingress-based Runtimes. 
-<!--- {% if page.collection != site.gitops_collection %}
-**Community Argo CD only**  
-* `argo-cd.fullnameOverride=codefresh-argo-cd` is _mandatory_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
-* `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is _mandatory_ when you have Argo Rollouts in your cluster to avoid conflicts.
-* `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label` is _mandatory_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
-{% endif %}  -->
+
 
 ### Service-mesh-based install command (without ingress and tunnel)
 Following are the additional flags you need to add to the install command for service-mesh based access modes.
@@ -71,24 +61,13 @@ Following are the additional flags you need to add to the install command for se
   --set global.runtime.ingressUrl=<ingress-url> \
   --set global.runtime.ingress.enabled=false \
   --set tunnel-client.enabled=false \
-  {% if page.collection != site.gitops_collection %}
-  --set argo-cd.fullnameOverride=codefresh-argo-cd \
-  --set argo-rollouts.fullnameOverride=codefresh-argo-cd \
-  --set argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label \  
-  {% endif  %}
-
 {% endhighlight %}
 
 where:
 * `global.runtime.ingressUrl=<ingress-url>` is the ingress URL that serves as the entry point to the cluster. 
 * `global.runtime.ingress.enabled=false` explicitly disables ingress-based access mode. 
 * `tunnel-client.enabled=false` explicitly disables tunnel-based access mode. 
-<!---{% if page.collection != site.gitops_collection %}
-**Community Argo CD only**  
-* `argo-cd.fullnameOverride=codefresh-argo-cd` is _mandatory_ to avoid conflicts at the cluster-level for resources in both the Community Argo CD and GitOps Runtime's Argo CD.
-* `argo-rollouts.fullnameOverride=codefresh-argo-rollouts` is _mandatory_ when you have Argo Rollouts in your cluster to avoid conflicts.
-* `argo-cd.configs.cm.application.resourceTrackingMethod=annotation+label` is _mandatory_ to avoid conflicts when tracking resources with the same application names or when tracking the same resource in both the Community Argo CD and GitOps Runtime's Argo CD.
-{% endif %}  -->
+
 
 ## Post-installation: Configure ingress controllers/service meshes
 Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio service meshes.<br>
@@ -101,5 +80,6 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
 
 ## Related articles
 [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
+[Runtime prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)  
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
 [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)
