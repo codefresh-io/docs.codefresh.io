@@ -11,8 +11,8 @@ Managing applications at scale requires efficient tools and practices. Codefresh
 ##### What is a GitOps Runtime?
 The GitOps Runtime is a specialized component installed within your cluster, acting as a bridge between your infrastructure and the Codefresh platform. It integrates seamlessly with Argo CD, a leading tool for continuous delivery, and Argo Rollouts for advanced deployment strategies.
 
-This Runtime forms the foundation of your GitOps operations, enabling centralized control and visibility across multiple Argo CD instances.
-By leveraging the Runtime, teams can efficiently orchestrate deployments, monitor environments, and ensure consistency across applications. To better understand how the Runtime manages key aspects like Git token usage and shared config repos, see [GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/).
+This Runtime forms the foundation of your GitOps operations, enabling centralized control and visibility across multiple Argo CD instances from a single control plane.
+By leveraging the Runtime, teams can efficiently orchestrate deployments, monitor environments, and ensure consistency across applications. To better understand how the Runtime manages key aspects like Git token usage and shared configuration, see [GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/).
 
 {% include
    image.html
@@ -50,13 +50,6 @@ No Argo CD yet?  Deploy a new, fully managed instance of Argo CD with the GitOps
 
 See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-{% if page.collection != site.gitops_collection %}
-##### Installation alongside Community Argo CD
-Using Community Argo CD? Add Codefresh GitOps without disrupting your existing setup. 
-Requires additional configuration to manage resources separately and avoid interference with the existing Community Argo CD setup.  
-
-See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
-{% endif %}
 
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  
 

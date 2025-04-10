@@ -668,6 +668,6 @@ providers:
 ```
 
 ## Related articles
-[System requirements & prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)  
-[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/)   
+[Runtime prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)  
+[Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  

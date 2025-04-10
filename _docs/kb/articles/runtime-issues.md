@@ -19,11 +19,6 @@ support-reviewed: 2023-04-18 LG
 
 ### Possible actions
 
-You can either: 
-* Install Codefresh GitOps Runtime alongside Community Argo CD   
-
-_OR_ 
-
 1. Uninstall the Codefresh GitOps Runtime.
 1. Remove the Argo Project components from your cluster.
 1. Reinstall the Codefresh GitOps Runtime.
