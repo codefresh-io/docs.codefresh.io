@@ -439,10 +439,11 @@ There are two ways to add variables to the shared file:
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
 > **NOTE**  
-> Variables exported through `cf_export` override those at the pipeline-level.
+> As a rule, variables exported through `cf_export` override those at the pipeline-level.
+  If your pipeline variables were defined or added before the `cf_export` functionality was introduced, the existing variables do not inherit the default override behavior. _To enable the `cf_export` override for existing variables, please contact support_. 
+
 
 You can either:
-
 * Explicitly state a VAR=VAL pair  
 * State the name of an existing *exported* environment variable, for example, `EXISTING_VAR`
 
