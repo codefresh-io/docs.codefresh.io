@@ -74,7 +74,7 @@ The comparison below is provided for historical reference only.
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
-| GitOps Functionality           |Feature             |  Hosted                    | Hybrid |
+| GitOps Functionality    |Feature             |  Hosted                    | Hybrid |
 | --------------          | --------------     |---------------             | --------------- |
 | Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
 |                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
@@ -83,12 +83,16 @@ The table below highlights the main differences between Hosted and Hybrid GitOps
 |                         | Upgrade            | Managed by Codefresh       | Managed by customer |
 |                         | Uninstall          | Managed by customer        | Managed by customer |
 | Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
-| CI Ops                  |Delivery Pipelines |Not supported               | Supported  |
-|                         |Workflows           | Not supported              | Supported  |
-|                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Supported: see below for details                  | Supported: see below for details |
+| Workflows               | Workflow Pipelines |Not supported               | Supported  |
+|                         | Workflows          |Not supported               | Supported  |
+|                         | Workflow Templates |Not supported               | Supported  |
+| Ops                     |GitOps Apps        | Supported: see below for details                  | Supported: see below for details |
 |                         |                    |Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
 |                         |                     |Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}| Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}|
+|                         |Environments        |Supported                   | Supported  |
+|                         |Products            |Supported                   | Supported  |
+|                         |Promotion Workflows | Not supported              | Supported  |
+|                         |Promotion Flows     |Not supported              | Supported  |
 |                         |Image enrichment    | Supported                  | Supported  |
 |                         | Rollouts           | Supported                  |  Supported  |
 |Integrations             |                    | Supported                  | Supported  |
