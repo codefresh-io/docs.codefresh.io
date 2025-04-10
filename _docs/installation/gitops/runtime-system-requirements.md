@@ -28,6 +28,6 @@ Depending on your installation mode, you also need to complete the [prerequisite
 [Runtime prerequisites ]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)  
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
 [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
-{% if page.collection != site.gitops_collection %}[Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/){% endif %}   
+ 
 
 
