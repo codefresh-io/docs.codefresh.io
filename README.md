@@ -151,6 +151,10 @@ The ArgoHub home page and all pages within the ArgoHub collection are excluded f
 - Commandbar HelpHub Search (managed via Commandbar Content Manager).
 - Search engines that support the `noindex` rule, such as Google.
 
+#### Commandbar's HelpHub and Copilot Content Sync
+
+Commandbar synchronizes the documentation site content using a crawler. However, the Auto Redirect mechanism prevents the crawler from accessing all Enterprise pages (see the "Auto Redirect from Enterprise to ArgoHub Collection" section for details). To address this issue, the Commandbar team configured the crawler to include the `cfdoctype` cookie, enabling it to access all documentation pages and bypass the redirect.
+
 ### Auto Redirect from Enterprise to ArgoHub Collection
 
 When the GitOps client adds an ArgoHub system type cookie, the Documentation site will detect it and initiate an automatic redirect. If you open any page from the enterprise collection, the site will check for an equivalent document in the ArgoHub collection and redirect you there if one exists.
