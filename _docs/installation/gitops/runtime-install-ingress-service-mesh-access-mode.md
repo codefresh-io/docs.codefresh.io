@@ -12,17 +12,17 @@ In addition to the tunnel-based access mode which is is the default, the GitOps 
   The ingress controller configured on the same Kubernetes cluster as the GitOps Runtime, implements the ingress traffic rules for the GitOps Runtime. 
 * **Service-mesh based access mode**   
   The runtime integrates with a service mesh for communication.
-For details, see [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
+For details, see [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/). 
 
 ##### Pre-installation configuration  
-Configure ingress controllers and service meshes before installing the GitOps Runtime.
+Configure ingress controllers and service meshes before installing the GitOps Runtime. See [Pre-installation: Configure ingress controllers/service meshes](#pre-installation-configure-ingress-controllersservice-meshes).
 
 ##### Installation command flags
-The Runtime Install command requires additional flags to specify ingress or service-mesh compatibility. 
+The Runtime Install command requires additional flags to specify ingress or service-mesh compatibility. See [Install Runtime command for ingress-based/service-mesh based access modes](#installation-install-runtime-command-for-ingress-basedservice-mesh-based-access-modes).
 
 
 ##### Post-installation configuration
-After installing the GitOps Runtime, specific ingress controllers and service meshes need additional configuration.
+After installing the GitOps Runtime, specific ingress controllers and service meshes need additional configuration. See [Post-installation: Configure ingress controllers/service meshes](#post-installation-configure-ingress-controllersservice-meshes).
 
 
 ## Pre-installation: Configure ingress controllers/service meshes
