@@ -117,5 +117,6 @@
   "/docs/installation/gitops/gitops-values-yaml-validation/": "/gitops/gitops-runtimes/gitops-values-yaml-validation/",
   "/docs/installation/gitops/runtime-argocd-admin-api-token/": "/gitops/gitops-runtimes/runtime-argocd-admin-api-token/",
   "/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/": "/gitops/gitops-runtimes/runtime-install-ingress-service-mesh-access-mode/",
-  "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/"
+  "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/",
+  "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/"
 }
