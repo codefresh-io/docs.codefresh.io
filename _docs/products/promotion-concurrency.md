@@ -38,9 +38,9 @@ When a promotion starts for a product, it follows one of two concurrency policie
 
 ### Queue releases (default)
 With this policy, new releases are queued and wait until the ongoing release completes execution.
-* If a release is already in progress, the new release enters a PENDING state.
+* If a release is already in progress, the new release enters a **QUEUED** state.
 * The new release starts automatically once all previous releases reach a final state: successful, failed, terminated, or error.
-* The default queue limit for pending releases is 50 releases, ensuring releases do not accumulate indefinitely.
+* The default predefined queue limit for pending releases is 50 releases, ensuring releases do not accumulate indefinitely.
 * If the release queue exceeds the limit for pending releases, older releases are terminated in order from first to last (configurable).
 
 ### Terminate releases
