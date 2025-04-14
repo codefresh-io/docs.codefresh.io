@@ -16,18 +16,28 @@ This article describes how to configure the different Product Settings:
 * [Manually assign unassigned applications](#manually-assign-unassigned-applications)  
   Assign applications to environments. 
 
-
 * [Labels](#configure-labels-for-products)  
   Add labels to manage access control and permissions.
 
+
 * [Promotion Flows](#select-promotion-flows-for-products)  
   Select one or more predefined Promotion Flows valid for the product, and customize the trigger conditions for each flow for automated deployments.
+  
+ 
+* [Promotion concurrency](#configure-promotion-concurrency)  
+  Define the promotion behavior when multiple promotions are triggered for the same product. 
   
 * [Promotion Settings](#configure-promotion-settings-for-products)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining new promotion settings.
 
 Watch this video:
 {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}
+
+
+  
+
+
+
 
 ## Form & YAML modes
 Configure Product Settings in Form or YAML modes, switching seamlessly between them during configuration.
@@ -158,6 +168,7 @@ Unassign an application manually assigned to a product directly from its setting
 %}
 
 
+
 ## Configure labels for Products
 
 Adding labels to a product lets you create access control rules that govern manual promotion triggers and retry permissions for failed releases for product entities. 
@@ -176,6 +187,7 @@ Customize automated promotions for products across different environments by:
   Commit messages for trigger conditions are not restricted to single words. You can specify any commit message to trigger promotions.  
   For example, `update image tag to v1.1` would be a valid commit message.
 * Defining the priority for each Flow when multiple Flows are configured 
+
 
 
 ##### Before you begin
@@ -224,7 +236,38 @@ Customize automated promotions for products across different environments by:
 {:start="8"}
 1. Click **Commit**.
 
-## Configure Promotion Settings for Products
+
+## Configure Promotion Concurrency
+Configure the promotion behavior when multiple promotions are triggered for the same product creating multiple releases.
+
+
+##### Before you begin
+* Review [Configuring promotion concurrency for products]({{site.baseurl}}/docs/products/promotion-concurrency/)   
+
+
+##### How to
+1. Open [Product Settings](#open-product-settings).
+1. Click the **Promotion Concurrency** tab.
+1. Select one of the options:
+    1. **Queue releases**: Start the new release only after the currently active release is completed.  
+    1. **Terminate release**: Terminate the currently active release and start the new release.
+
+
+{% include
+ image.html
+ lightbox="true"
+ file="/images/gitops-products/settings/promotion-concurrency.png"
+ url="/images/gitops-products/settings/promotion-concurrency.png"
+ alt="Product Settings: Promotion Concurrency"
+ caption="Product Settings: Promotion Concurrency"
+ max-width="50%"
+%}
+
+{:start="4"}
+1. Click **Commit**.
+
+
+## Configure Promotion Settings
 Configure Promotion Settings to define:
 * For Helm applications, the source from which to get application's release version
 * The precise changes to promote across multiple files in the applications 

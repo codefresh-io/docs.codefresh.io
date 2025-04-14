@@ -60,6 +60,8 @@
       localurl: /gitops/products/assign-applications/      
     - title: Configuring app version and promoted properties
       localurl: /gitops/products/promotion-version-properties/
+    - title: Configuring promotion concurrency
+      localurl: /gitops/products/promotion-concurrency/
     - title: Assigning Promotion Flows and triggers
       localurl: /gitops/products/promotion-flow-triggers/   
 

@@ -5,10 +5,12 @@ group: products
 toc: true
 ---
 
-## App version and promotable properties for Products
+
+## Application version and promotable properties for products
 By default, when you promote a product across environments, all its applications and their properties are promoted. Not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.
 
 By configuring which properties to promote, you ensure that only relevant updates move forward. This improves deployment accuracy, streamlines workflows, and enforces compliance with environment-specific constraints. Manual reviews and oversight are reduced for managing complex applications.
+
 
 
 ##### Key benefits of automated selection
@@ -369,3 +371,4 @@ To configure directly in YAML, refer to our [Promotion Template YAML]({{site.bas
 [Assigning Promotion Flows and triggers to products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
 [Tracking Product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)   
+

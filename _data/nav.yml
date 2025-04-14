@@ -413,6 +413,8 @@
       url: "/assign-applications"      
     - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
+    - title: Configuring promotion concurrency
+      url: "/promotion-concurrency"
     - title: Assigning Promotion Flows and triggers
       url: "/promotion-flow-triggers"
     - title: Tracking releases for products
@@ -637,8 +639,7 @@
           url: "/upgrade-gitops-cli"   
         - title: Migrating GitOps Runtimes from CLI to Helm
           url: "/migrate-cli-runtimes-helm"  
-        - title: Install GitOps Runtime alongside Community Argo CD
-          url: "/argo-with-gitops-side-by-side"   
+
 
 
 - title: Administration
