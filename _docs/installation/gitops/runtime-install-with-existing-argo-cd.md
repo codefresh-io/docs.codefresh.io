@@ -139,6 +139,9 @@ After installation, you can:
 * Continue with the Configuration & Management steps in the installation wizard. See [Configure GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-configuration/#configure-gitops-runtime).   
 OR
 * View the installed Runtime in the Runtimes page, and complete the configuration at a later time.
+* Depending on your setup, complete the post-installation configuration:
+    * For private registries, you need to [override specific image values](#image-overrides-for-private-registries).  
+    * If your Git servers are on-premises, [add custom repository certificates](#custom-repository-certificates). 
 
 ##### View installed Runtime
 After installation, go to **GitOps Runtimes > List View**:
@@ -159,6 +162,38 @@ After installation, go to **GitOps Runtimes > List View**:
   caption="Newly installed Hybrid GitOps Runtime with Complete Installation notification"
   max-width="60%"
 %}
+
+
+## Optional GitOps Runtime configuration
+
+### Image overrides for private registries
+If you use private registries, you must override specific image values for the different subcharts and container images.
+Our utility helps override image values for GitOps Runtimes by creating `values` files that match the structure of the subcharts, allowing you to easily replace image registries. During chart installation, you can provide these `values` files to override the images, as needed.
+For more details, see [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime#using-with-private-registries---helper-utility){:target="\_blank"}.
+
+### Custom repository certificates
+
+Repository certificates are required to authenticate users to on-premises Git servers.
+
+If your Git servers are on-premises, add the repository certificates to your Codefresh `values` file, in `.values.argo-cd`. These values are used by the Argo CD that Codefresh deploys. For details on adding repository certificates, see this [section](https://github.com/codefresh-io/argo-helm/blob/argo-cd-5.29.2-cap-CR-18430/charts/argo-cd/values.yaml#LL336C7-L336C7){:target="\_blank"}.
+
+{% highlight yaml %}
+global:
+  codefresh:
+    tls:
+      caCerts:
+        # optional - use an existing secret that contains the cert
+        # secretKeyRef:
+        #   name: my-certificate-secret
+        #   key: ca-bundle.crt
+        # or create "codefresh-tls-certs" secret
+        secret:
+          create: true
+          content: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            -----END CERTIFICATE-----
+{% endhighlight yaml %}
 
 
 ## Install GitOps Runtime via Terraform
