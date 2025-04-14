@@ -263,6 +263,7 @@ Configure the promotion behavior when multiple promotions are triggered for the 
  max-width="50%"
 %}
 
+{:start="4"}
 1. Click **Commit**.
 
 

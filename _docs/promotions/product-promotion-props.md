@@ -97,6 +97,7 @@ Manage this by configuring the behavior for concurrent promotions.
 * **Terminate active promotion**  
   The current promotion will be stopped immediately, and the new promotion will begin.
 
+For details, see [Configuring promotion for products]({{site.baseurl}}/docs/products/promotion-concurrency/).
 
 
 ## Assigning Promotion Flows and triggers
