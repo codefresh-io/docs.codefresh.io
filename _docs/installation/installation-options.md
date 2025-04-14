@@ -47,11 +47,11 @@ Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work s
 {::nomarkdown}
 <table border="0" width="80%">
   <tr>
-    <td><img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 40%; height: 40%;">  </td>
+    <td><img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 40%; height: 40%;"> </td>
     <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: 40%;"> </td>
   </tr>  
 </table>
-{:\}
+{:/}
  
 {% endif %}
 
