@@ -433,6 +433,8 @@
       url: "/create-promotion-sequence"
     - title: Promotion Flows
       url: "/promotion-flow"     
+    - title: Promotion hooks
+      url: "/promotion-hooks"
     - title: Promotion Policies
       url: "/promotion-policy"  
     - title: Promotion Workflows
