@@ -79,9 +79,10 @@ global:
 {% endhighlight %}
 
 ## Disable validation for custom/fine-grained Git tokens
-When using token with custom scopes, or GitHub's fine-grained tokens (currently not officially supported by Codefresh), _skip token validation_ to avoid validation failures during installation.  
+When using token with custom scopes, or GitHub's fine-grained tokens (currently not officially supported by Codefresh), _for Runtime version v0.18.0 or lower, skip token validation_ to avoid validation failures during installation.  
 
-Add the `skipGitPermissionValidation` flag to your `values.yaml` file: 
+
+* Add the `skipGitPermissionValidation` flag to your `values.yaml` file: 
 
 ```yaml
 app-proxy:
@@ -105,6 +106,5 @@ where:
 * `<version>` is the version of the runtime to install.
 
 
-## Install first GitOps Runtime in account
-If you are installing the first GitOps Runtime in your Codefresh account, follow the installation wizard for guided instructions.
+
 

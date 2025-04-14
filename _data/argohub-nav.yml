@@ -75,6 +75,8 @@
       url: "/hybrid-gitops-helm-installation"    
     - title: Configure GitOps Runtime 
       url: "/runtime-configuration" 
+    - title: Troubleshoot installation
+      url: "/runtime-troubleshooting" 
     - title: Runtime values file validation
       url: "/gitops-values-yaml-validation" 
     - title: Ingress and service-mesh access modes
