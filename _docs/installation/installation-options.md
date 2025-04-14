@@ -21,17 +21,20 @@ Codefresh Enterprise provides a comprehensive platform for continuous integratio
 Both deployments offer:
 * Seamless integration of CI and CD with Codefresh pipelines, and CD with GitOps for managing Argo CD applications.
 * Modular functionality where pipelines and GitOps can operate independently or together.
-* Robust compliance with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"} standards.
+* Robust compliance with [SOC2 and SOC3](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services){:target="\_blank"} standards.
 
-{% include image.html
-  lightbox="true"
-  file="/images/installation/soc2-type2-certified.png"
-  url="/images/installation/soc2-type2-certified.png"
-  alt="sso-diagram.png"
-  max-width="35%"
-    %} 
+{::nomarkdown}
+<table border="0" width="80%">
+  <tr>
+    <td><img src="../../../images/installation/soc2-type2-certified.png" style="max-width: 40%; height: 100%;">
+  </tr>  
+  <tr>
+    <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: 100%;">
+  </tr>  
+</table>
+{:\}
+
 {% endif %}
-
 
 
 
@@ -41,13 +44,17 @@ Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD 
 
 Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps. As a SaaS offering, GitOps eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
-{% include image.html
-  lightbox="true"
-  file="/images/installation/soc2-type2-certified.png"
-  url="/images/installation/soc2-type2-certified.png"
-  alt="sso-diagram.png"
-  max-width="35%"
-    %} 
+{::nomarkdown}
+<table border="0" width="80%">
+  <tr>
+    <td><img src="../../../images/installation/soc2-type2-certified.png" style="max-width: 40%; height: 100%;">
+  </tr>  
+  <tr>
+    <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: 100%;">
+  </tr>  
+</table>
+{:\}
+ 
 {% endif %}
 
 
