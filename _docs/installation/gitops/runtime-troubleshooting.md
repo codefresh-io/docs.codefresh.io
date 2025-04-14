@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting GitOps Runtimes"
+title: "Troubleshooting GitOps Runtime installation"
 description: "Review how to resolve issues during Runtime installation"
 toc: true
 ---
@@ -70,22 +70,24 @@ The `--wait` flag in Install Runtime command controls how long the installation 
 ## Invalid Git token error
 
 ### Possible cause
-Your token is invalid because of missing scopes, or you are using a fine-grained token or one with custom scopes.
+Your token is invalid because of missing scopes  
+OR  
+You are using a fine-grained token or one with custom scopes
 
 ### Resolution
 
 ##### Check token scopes
 
 **GitHub Git Runtime token**
-| Type    | Required scopes                | 
-| ---------------------------- | ------------------------------ | 
+| Type    | Required scopes    | 
+| -------- | ----------------- | 
 | **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}|
 |**Fine-grained** (personal or group-based) |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul></li> </ul>{:/}
-  **User token**
+
 
 **GitHub Git user token**
-| Type        | Required scopes                | 
-| ---------------------------- | ------------------------------ | 
+| Type        | Required scopes | 
+| ------------ |  ----------------- | 
 | **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/} |
 |**Fine-grained** |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul></li></ul>{:/}|
 
@@ -93,9 +95,14 @@ Your token is invalid because of missing scopes, or you are using a fine-grained
 Make sure the token is pasted without leading or trailing spaces. -->
 
 ##### Skip validation for fine-grained GitHub tokens
-If using a custom-scope or fine-grained token, disable token validation to prevent failures.  
+If using a custom-scope or fine-grained token and your _Runtime version is v0.18.0 or lower_, you must disable token validation to prevent failures.  
 
-* Add the `skipGitPermissionValidation` flag to your `values.yaml` file: 
+1. Check Runtime version:
+  * In the Codefresh UI, on the toolbar, click the **Settings** icon.
+  * From the sidebar, select **GitOps Runtimes**.
+  * In the **Versionw** column, if the chart version is v0.18.0 or lower, continue with _step 2_.
+
+1. Add the `skipGitPermissionValidation` flag to your `values.yaml` file: 
 
 ```yaml
 app-proxy:
