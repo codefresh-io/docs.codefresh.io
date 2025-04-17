@@ -45,7 +45,7 @@ Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD 
 Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps. As a SaaS offering, GitOps eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
 {::nomarkdown}
-<table border="0" width="80%">
+<table border="#ffffff" width="80%">
   <tr>
     <td><img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 40%; height: 40%;"> </td>
     <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: 40%;"> </td>
