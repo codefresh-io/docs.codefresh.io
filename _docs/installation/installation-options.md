@@ -24,13 +24,16 @@ Both deployments offer:
 * Robust compliance with [SOC2 and SOC3](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services){:target="\_blank"} standards.
 
 {::nomarkdown}
-<table style="border: none; width: 80%;">
+<table style="border: 1px solid white; border-collapse: collapse; width: 80%;">
   <tr>
-    <td><img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 40%; height: auto;"></td>
-    <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: auto;"></td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 40%; height: auto;">
+    </td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: auto;">
+    </td>
   </tr>  
 </table>
-
 {:\}
 
 {% endif %}
@@ -44,13 +47,16 @@ Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD 
 Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps. As a SaaS offering, GitOps eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
 {::nomarkdown}
-<table style="border: none; width: 80%;">
+<table style="border: 1px solid white; border-collapse: collapse; width: 80%;">
   <tr>
-    <td><img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 40%; height: auto;"></td>
-    <td><img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: auto;"></td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 40%; height: auto;">
+    </td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 40%; height: auto;">
+    </td>
   </tr>  
 </table>
-
 {:/}
  
 {% endif %}
