@@ -55,7 +55,7 @@ Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work s
       <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 100%; height: auto;">
     </td>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc3-logo-resized.png" style="max-width: 100%; height: auto;">
     </td>
   </tr>  
 </table>
