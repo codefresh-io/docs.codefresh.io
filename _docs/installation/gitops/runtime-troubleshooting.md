@@ -79,7 +79,6 @@ You are using a fine-grained token or one with custom scopes
 ##### Check token scopes
 
 **GitHub Git Runtime token**
-
 {: .table .table-bordered .table-hover}
 | Type    | Required scopes    | 
 | -------- | ----------------- | 
@@ -89,7 +88,6 @@ You are using a fine-grained token or one with custom scopes
 
 
 **GitHub Git user token**
-
 {: .table .table-bordered .table-hover}
 | Type    | Required scopes    | 
 | -------- | ----------------- | 
