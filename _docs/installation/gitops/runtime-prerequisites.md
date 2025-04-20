@@ -116,7 +116,7 @@ Assign the correct labels to the Argo CD services for the GitOps Runtime to auto
 <!--- Run this script to verify if the labels are correctly assigned: add the script -->
 
 ### Manually configure service names and ports in values.yaml
-If auto-detection is not feasible, configure the names and ports for each of the Argo CD services in the Runtime's `values.yaml` file located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}. 
+If auto-detection is not feasible, configure the names and ports for each of the Argo CD services in the Runtime's `values.yaml` file located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}. 
 
 Here's an example of the service configuration in `values.yaml`.
 
