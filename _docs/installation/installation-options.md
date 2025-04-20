@@ -27,7 +27,7 @@ Both deployments offer:
 <table style="border: 1px solid white; width: 60%;">
   <tr>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 100%; height: auto;">
     </td>
     <td style="border: 1px solid white;">
       <img src="../../../images/installation/aicpa-soc3-logo-resized.png" style="max-width: 100%; height: auto;">
@@ -52,7 +52,7 @@ Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work s
 <table style="border: 1px solid white; border-collapse: collapse; width: 60%;">
   <tr>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 100%; height: auto;">
     </td>
     <td style="border: 1px solid white;">
       <img src="../../../images/installation/aicpa-soc3-logo-resized.png" style="max-width: 100%; height: auto;">
