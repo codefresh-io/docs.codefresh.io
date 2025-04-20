@@ -27,10 +27,10 @@ Both deployments offer:
 <table style="border: 1px solid white; width: 60%;">
   <tr>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
     </td>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc3-logo-.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc3-logo-resized.png" style="max-width: 100%; height: auto;">
     </td>
   </tr>  
 </table>
@@ -49,10 +49,10 @@ Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work s
  GitOps Cloud is compliant with [SOC2 and SOC3](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services){:target="\_blank"} standards.
 
 {::nomarkdown}
-<table style="border: 1px solid white; border-collapse: collapse; width: 30%;">
+<table style="border: 1px solid white; border-collapse: collapse; width: 60%;">
   <tr>
     <td style="border: 1px solid white;">
-      <img src="../../../images/installation/aicpa-soc2-logo-resized.png" style="max-width: 100%; height: auto;">
+      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
     </td>
     <td style="border: 1px solid white;">
       <img src="../../../images/installation/aicpa-soc3-logo-resized.png" style="max-width: 100%; height: auto;">
