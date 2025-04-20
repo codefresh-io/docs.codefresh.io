@@ -35,7 +35,7 @@ Installing alongside Community Argo CD requires additional flags in the Runtime 
 
 
 ##### Runtime values.yaml 
-The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
+The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml/){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
 Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
 
 

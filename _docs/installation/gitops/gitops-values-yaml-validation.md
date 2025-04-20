@@ -6,7 +6,7 @@ toc: true
 
 
 ## `values.yaml` file validation
-The Codefresh `values.yaml` file available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/installation/gitops/){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
+The Codefresh `values.yaml` file available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 
 
 Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
 A validation error will automatically terminate the installation.
