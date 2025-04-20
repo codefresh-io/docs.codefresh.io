@@ -70,9 +70,9 @@ The `--wait` flag in Install Runtime command controls how long the installation 
 ## Invalid Git token error
 
 ### Possible cause
-Your token is invalid because of missing scopes  
+Your token is [invalid because of missing scopes](#check-token-scopes)  
 OR  
-You are using a fine-grained token or one with custom scopes
+You are using a [fine-grained token or one with custom scopes](#skip-validation-for-fine-grained-github-tokens)
 
 ### Resolution
 
@@ -87,8 +87,7 @@ You are using a fine-grained token or one with custom scopes
 | **Fine-grained** (personal or group-based) | {::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions: <ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul>{:/} |
 
 
-
-
+<br>
 
 **GitHub Git user token**
 
