@@ -15,10 +15,7 @@ By managing concurrency per product, teams can prevent deployment conflicts, red
 
 
 ##### Why use promotion concurrency?
-* **Improved reliability**  
-  Ensures that each release completes before the next one begins, preventing conflicts and incomplete deployments.
-* **Operational consistency**  
-  Ensures that ongoing releases are not abruptly terminated, preserving deployment stability.
+Adopt the promotion strategy that best matches the product. Always promote the latest changes for products in development, while enforcing sequential promotions for production environments ensuring that releases to production are not terminated abruptly.
 
 ##### Where can you configure promotion concurrency for products? 
 In **Product > Settings > Promotion Concurrency**.
@@ -37,15 +34,17 @@ In **Product > Settings > Promotion Concurrency**.
 When a promotion starts for a product, it follows one of two concurrency policies:
 
 ### Queue releases (default)
-With this policy, new releases are queued and wait until the ongoing release completes execution.
+With this policy, new releases are queued and wait until the ongoing release completes execution. Queing 
 * If a release is already in progress, the new release enters a **QUEUED** state.
 * The new release starts automatically once all previous releases reach a final state: successful, failed, terminated, or error.
 * The default predefined queue limit for pending releases is 50 releases, ensuring releases do not accumulate indefinitely.
-* If the release queue exceeds the limit for pending releases, older releases are terminated in order from first to last (configurable).
+* If the release queue exceeds the limit for pending releases, older releases are terminated first.
 
 ### Terminate releases
-The second concurrency policy is to terminate releases. With this policy, when a new release is created, the ongoing release is automatically terminated.  
-With this policy, only one release is active for a product at any one time. 
+With this policy, ongoing releases are terminated when a new release is created for the same product and environment.
+* The existing release is automatically terminated to allow the new one to proceed.
+* Only one release can be active for a product at any given time.
+
 
 
 ## Related articles
