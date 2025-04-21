@@ -95,7 +95,7 @@ Manage this by configuring the behavior for concurrent promotions.
   The new promotion will wait until the current one completes before starting.
 
 * **Terminate active promotion**  
-  If the new promotion targets the same environment being currently updated, the current promotion will be stopped immediately, and the new promotion will begin.
+  If the new promotion targets the same environment being currently updated, the current promotion is terminated immediately, and the new promotion will begin.
 
 For details, see [Configuring promotion concurrency for products]({{site.baseurl}}/docs/products/promotion-concurrency/).
 
