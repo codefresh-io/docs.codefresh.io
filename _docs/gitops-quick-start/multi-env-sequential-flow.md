@@ -263,9 +263,15 @@ spec:
 
 
 ## What's next
-The next quick start will guide you through adding Promotion Workflows to each environment in a Promotion Flow. Promotion Workflows act as gates for conditional promotions, giving you more control and flexibility over promotion processes.
+Before we move to more advanced scenarios for promotion applications, we'll create another key entity which enhances the promotion process—Promotion Workflows.  
+Promotion Workflows are used in automated promotion flows to enforce quality, security, and compliance requirements at each stage of the promotion.
 
-[Quick start: Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
+[Quick start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)
+
+
+
+
+
 
  
  

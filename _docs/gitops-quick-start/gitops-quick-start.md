@@ -37,19 +37,24 @@ We've provided a GitHub repository with all the applications and resources used 
 * [Creating environments]({{site.baseurl}}/docs/gitops-quick-start/quick-start-gitops-environments/)  
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
-* [Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)   
-  Automate pre- and post-promotion actions during GitOps promotions in environments, ensuring quality, security, and compliance at each stage.
 
 
-## Promoting applications
+
+## Simple promotions for applications
 
 Promote and deploy changes in applications across environments.
-Start with simple manual promotion, then automate with Promotion Flows—evolving from simple sequential promotions to advanced ones with environment dependencies.
+Start with simple manual promotion across two environments, then automate across multiple environments with a simple Promotion Flows.
 
 * [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
   Manually promote a product between two environments.
 * [Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
   Automate promotions across multiple environments sequentially using a simple Promotion Flow.
+
+## Advanced promotions for applications
+Evolve from simple sequential promotions to advanced application promotion scenarios with validations and environment dependencies.
+
+* [Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)   
+  Automate pre- and post-promotion actions during GitOps promotions in environments, ensuring quality, security, and compliance at each stage.
 * [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)  
   Control promotion behavior for environments using Promotion Workflows within a Promotion Flow.
 * [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
