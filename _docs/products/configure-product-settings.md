@@ -250,7 +250,7 @@ Configure the promotion behavior when multiple promotions are triggered for the 
 1. Click the **Promotion Concurrency** tab.
 1. Select one of the options:
     1. **Queue releases**: Start the new release only after the currently active release is completed.  
-    1. **Terminate release**: Terminate the currently active release and start the new release.
+    1. **Terminate release**: If the new release is promoting to an environment with an ongoing promotion, terminate the currently active release and start the new release.
 
 
 {% include
