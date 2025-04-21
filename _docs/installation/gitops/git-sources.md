@@ -10,8 +10,10 @@ A Git Source is a unique entity created for use with GitOps Runtimes in Codefres
 The Git Source connects to a Git repository within your organization, serving as an easy way to manage the deployment and configuration of Argo CD applications on clusters.  
 The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
 
-Watch this video:
-{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/StKxdCcOIQc?si=s3tc2tcq7fwxBUbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} -->
 
 
 ##### Types of Git Sources  

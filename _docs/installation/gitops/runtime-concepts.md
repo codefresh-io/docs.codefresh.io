@@ -47,8 +47,10 @@ A Codefresh account with a GitOps Runtime can store configuration manifests for 
 When you install the first GitOps Runtime in your account, Codefresh automatically creates the Shared Configuration Repository (internally referred to as (internally `ISO`/`iso`).
 During installation, you must specify the Git repository URL for the Shared Configuration Repository. You can specify just the repository URL or include additional details such as a specific branch and path.
 
-Watch this video for an overview: 
-{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7WNoNZ58IzU?si=8r_PT755m5DD6O5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video for an overview: 
+{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}  -->
 
 For detailed information, see [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).
 
@@ -69,8 +71,10 @@ The Git Source connects to a Git repository within your organization, and stores
 You can add a Git Source during Runtime installation or later as needed. A single Runtime can have any number of Git Sources.  
 Codefresh manages the Git Source itself as an Argo CD application.
 
-Watch this video for an overview:
-{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/StKxdCcOIQc?si=s3tc2tcq7fwxBUbz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video for an overview:
+{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Git Sources in Runtimes](https://www.youtube.com/watch?v=StKxdCcOIQc&t=2s){:target="\_blank"} -->
 
 For detailed information, see [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
 

@@ -7,9 +7,10 @@ toc: true
 ## Shared Configuration Repository
 A Codefresh account with a GitOps Runtime can store configuration manifests for account-level resources in a Git repository. This repository, the Shared Configuration Repository, can be shared with other GitOps Runtimes in the same account, avoiding the need to create and maintain different configuration manifests for every GitOps Runtime. At the same time, you also have the flexibility to store resources unique to specific Runtimes without affecting other Runtimes. 
 
-Watch this video for an overview:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7WNoNZ58IzU?si=8r_PT755m5DD6O5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}
+<!--- Watch this video for an overview:
+{::nomarkdown}{% if page.collection != site.gitops_collection %}<img src=../../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{% if page.collection == site.gitops_collection %}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{% endif %}{:/} [Shared Configuration Repository](https://www.youtube.com/watch?v=7WNoNZ58IzU){:target="\_blank"}  -->
 
 
 

@@ -44,8 +44,10 @@ Each method is available only if your account administrator has assigned the nec
 Drag and drop the product to the target environment to promote changes. Customize the Promotion Settings to control promotion behavior for the environment.    
 This method is useful to test changes within a specific environment. For example, QA teams verifying changes in staging or other internal environments.  
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4isYoutmRco?si=EDSfZFQQ4Dp5gw6i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"} -->
 
 
 

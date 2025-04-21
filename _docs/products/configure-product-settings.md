@@ -30,8 +30,11 @@ This article describes how to configure the different Product Settings:
 * [Promotion Settings](#configure-promotion-settings-for-products)  
   Define the version and properties to promote for the applications in the product either from a predefined promotion template, or by defining new promotion settings.
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ijf-3pKSBiA?si=ysueAKtLXJk1DZ_7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}  -->
 
 
   
