@@ -482,7 +482,7 @@ export MY_VAR='example' # Makes MY_VAR available in this step only
 cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this one
 ```
 
-There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline.
+<!--- There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. -->
 
 #### `cf_export` syntax
 
