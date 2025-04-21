@@ -332,7 +332,7 @@ If you are using Git Runtime tokens for authentication, you can also update them
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
  
-When SSH is configured for a GitOps Runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
+When SSH is configured for a GitOps Runtime, on creating/editing Argo CD applications linked to a Git Source (Git Source Apps) assigned to the Runtime , you can select SSH as the protocol to connect to the Git repository instead of HTTPS. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
 {{site.data.callout.callout_important}}
 SSH URLs are supported only for Argo CD applications and used by Argo CD.<br>
