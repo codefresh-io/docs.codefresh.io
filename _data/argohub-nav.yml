@@ -22,12 +22,12 @@
       url: "/create-app-ui"
     - title: Creating environments
       url: "/quick-start-gitops-environments"
-    - title: Creating Promotion Workflows
-      url: "/quick-start-promotion-workflow"  
     - title: Simple promotion with drag-and-drop 
       url: "/drag-and-drop"    
     - title: Simple Promotion Flow with multiple environments
       url: "/multi-env-sequential-flow"  
+    - title: Creating Promotion Workflows
+      url: "/quick-start-promotion-workflow"  
     - title: Advanced Promotion Flow with Promotion Workflows
       url: "/policy-multi-env-promotion"  
     - title: Advanced Promotion Flow with environment dependencies
