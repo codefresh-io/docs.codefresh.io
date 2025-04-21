@@ -34,15 +34,16 @@ In **Product > Settings > Promotion Concurrency**.
 When a promotion starts for a product, it follows one of two concurrency policies:
 
 ### Queue releases (default)
-With this policy, new releases are queued and wait until the ongoing release completes execution. Queing 
+With the queue concurrency policy, new releases are queued and wait for the ongoing release to complete execution.  
 * If a release is already in progress, the new release enters a **QUEUED** state.
 * The new release starts automatically once all previous releases reach a final state: successful, failed, terminated, or error.
 * The default predefined queue limit for pending releases is 50 releases, ensuring releases do not accumulate indefinitely.
 * If the release queue exceeds the limit for pending releases, older releases are terminated first.
 
 ### Terminate releases
-With this policy, ongoing releases are terminated when a new release is created for the same product and environment.
-* The existing release is automatically terminated to allow the new one to proceed.
+With the terminate concurrency policy, ongoing releases are terminated when a new release is created for the same product and environment.
+* If a new release promotes to the same environment as an active release, the active release is automatically terminated to allow the new one to proceed.  
+  For example, if the ongoing release is currently promoting to `staging` and the new release also advances to `staging`, the ongoing release is terminated.
 * Only one release can be active for a product at any given time.
 
 
