@@ -334,7 +334,8 @@ By default, Git repositories use the HTTPS protocol. You can also use SSH to con
  
 When SSH is configured for a GitOps Runtime, on creating/editing Argo CD applications linked to a Git Source (Git Source Apps) assigned to the Runtime , you can select SSH as the protocol to connect to the Git repository instead of HTTPS. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
-{{site.data.callout.callout_important}}
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
 SSH URLs are supported only for Argo CD applications and used by Argo CD.<br>
 Git Sources cannot use SSH URLs as they are verified using Personal Access Tokens (PAT).
 {{site.data.callout.end}}
