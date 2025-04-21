@@ -331,11 +331,16 @@ If you are using Git Runtime tokens for authentication, you can also update them
 
 ## Configure SSH for GitOps Runtimes
 By default, Git repositories use the HTTPS protocol. You can also use SSH to connect Git repositories by entering the SSH private key.
+ 
+When SSH is configured for a GitOps Runtime, on creating/editing Argo CD applications linked to a Git Source (Git Source Apps) assigned to the Runtime , you can select SSH as the protocol to connect to the Git repository instead of HTTPS. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
 
->**NOTE**  
-When SSH is configured for a GitOps Runtime, when creating/editing Git-Source applications, you can select HTTPS OR SSH as the protocol to connect to the Git repository. See [Repository URL in Application Source definitions]({{site.baseurl}}/docs/deployments/gitops/create-application/#source).
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+SSH URLs are supported only for Argo CD applications and used by Argo CD.<br>
+Git Sources cannot use SSH URLs as they are verified using Personal Access Tokens (PAT).
+{{site.data.callout.end}}
 
-**SSH keys**
+##### SSH keys
 For more information on generating SSH private keys, see the official documentation:
 * [GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent){:target="\_blank"}
 {% if page.collection != site.gitops_collection %}
@@ -345,13 +350,14 @@ For more information on generating SSH private keys, see the official documentat
 * [Gerrit](https://gerrit-review.googlesource.com/Documentation/user-upload.html#ssh){:target="\_blank"}
 {% endif %}
 
-**Before you begin**
+##### Before you begin
 Copy the SSH private key for your Git provider
 
 
-**How to**
-1. In the Codefresh UI, make sure you are in [GitOps Runtimes](https://g.codefresh.io/2.0/account-settings/runtimes){:target="\_blank"}.
-1. From the **List View**, select the runtime for which to configure SSH.
+##### How to
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **GitOps Runtimes**.
+1. From the **List View**, select the Runtime for which to configure SSH.
 1. From the context menu with the additional actions on the top-right, select **Update Git Runtime Credentials**.
 
   {% include

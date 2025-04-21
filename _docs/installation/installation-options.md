@@ -8,7 +8,7 @@ toc: true
 ---
 
 {% if page.collection != site.gitops_collection %}
-Codefresh Enterprise provides a comprehensive platform for continuous integration and continuous delivery with Codefresh pipelines, and continuous delivery for Arog CD applications with GitOps, through flexible deployment options: SaaS and on-premises.
+Codefresh Enterprise provides a comprehensive platform for continuous integration and continuous delivery with Codefresh pipelines, and continuous delivery for Argo CD applications with GitOps, through flexible deployment options: SaaS and on-premises.
 
 * **SaaS platform deployment**  
   The SaaS option leverages the Codefresh Control Plane hosted in the cloud, enabling streamlined operations with minimal infrastructure overhead. Runtimes for GitOps and Runners for CI Pipelines are installed in your environment, ensuring data security and compliance.  
@@ -21,17 +21,22 @@ Codefresh Enterprise provides a comprehensive platform for continuous integratio
 Both deployments offer:
 * Seamless integration of CI and CD with Codefresh pipelines, and CD with GitOps for managing Argo CD applications.
 * Modular functionality where pipelines and GitOps can operate independently or together.
-* Robust compliance with [SOC2 - Type2](https://us.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report){:target="\_blank"} standards.
+* Robust compliance with [SOC2 and SOC3](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services){:target="\_blank"} standards.
 
-{% include image.html
-  lightbox="true"
-  file="/images/installation/soc2-type2-certified.png"
-  url="/images/installation/soc2-type2-certified.png"
-  alt="sso-diagram.png"
-  max-width="35%"
-    %} 
+{::nomarkdown}
+<table style="border: 1px solid white; border-collapse: collapse; width: 40%;">
+  <tr>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
+    </td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 100%; height: auto;">
+    </td>
+  </tr>  
+</table>
+{:/}
+
 {% endif %}
-
 
 
 
@@ -41,13 +46,21 @@ Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD 
 
 Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work seamlessly with Argo CD while leveraging the unique capabilities offered by Codefresh GitOps. As a SaaS offering, GitOps eliminates the complexity of infrastructure management, enabling users to quickly adopt GitOps best practices without compromising security.
 
-{% include image.html
-  lightbox="true"
-  file="/images/installation/soc2-type2-certified.png"
-  url="/images/installation/soc2-type2-certified.png"
-  alt="sso-diagram.png"
-  max-width="35%"
-    %} 
+ GitOps Cloud is compliant with [SOC2 and SOC3](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services){:target="\_blank"} standards.
+
+{::nomarkdown}
+<table style="border: 1px solid white; border-collapse: collapse; width: 40%;">
+  <tr>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc2-logo.png" style="max-width: 100%; height: auto;">
+    </td>
+    <td style="border: 1px solid white;">
+      <img src="../../../images/installation/aicpa-soc3-logo.png" style="max-width: 100%; height: auto;">
+    </td>
+  </tr>  
+</table>
+{:/}
+ 
 {% endif %}
 
 

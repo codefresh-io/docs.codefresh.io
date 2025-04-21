@@ -50,14 +50,6 @@ No Argo CD yet?  Deploy a new, fully managed instance of Argo CD with the GitOps
 
 See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-{% if page.collection != site.gitops_collection %}
-##### Installation alongside Community Argo CD
-Using Community Argo CD? Add Codefresh GitOps without disrupting your existing setup. 
-Requires additional configuration to manage resources separately and avoid interference with the existing Community Argo CD setup.  
-
-See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
-{% endif %}
-
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  
 
 

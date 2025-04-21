@@ -135,7 +135,7 @@ max-width="60%"
 
 
 ## What's next
-Now that you've learned how to promote a product using the drag-and-drop method, we'll explore more advanced promotion scenarios.  
+Now that you've learned how to promote a product using the drag-and-drop method, we'll explore a more advanced promotion scenario.  
 The next quick start describes how to orchestrate a promotion through a Promotion Flow, which automates deployments across more than two environments.
 
 [Quick start: Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)

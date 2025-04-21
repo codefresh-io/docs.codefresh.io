@@ -11,8 +11,8 @@ Managing applications at scale requires efficient tools and practices. Codefresh
 ##### What is a GitOps Runtime?
 The GitOps Runtime is a specialized component installed within your cluster, acting as a bridge between your infrastructure and the Codefresh platform. It integrates seamlessly with Argo CD, a leading tool for continuous delivery, and Argo Rollouts for advanced deployment strategies.
 
-This Runtime forms the foundation of your GitOps operations, enabling centralized control and visibility across multiple Argo CD instances.
-By leveraging the Runtime, teams can efficiently orchestrate deployments, monitor environments, and ensure consistency across applications. To better understand how the Runtime manages key aspects like Git token usage and shared config repos, see [GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/).
+This Runtime forms the foundation of your GitOps operations, enabling centralized control and visibility across multiple Argo CD instances from a single control plane.
+By leveraging the Runtime, teams can efficiently orchestrate deployments, monitor environments, and ensure consistency across applications. To better understand how the Runtime manages key aspects like Git token usage and shared configuration, see [GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/).
 
 {% include
    image.html
@@ -50,13 +50,6 @@ No Argo CD yet?  Deploy a new, fully managed instance of Argo CD with the GitOps
 
 See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
-{% if page.collection != site.gitops_collection %}
-##### Installation alongside Community Argo CD
-Using Community Argo CD? Add Codefresh GitOps without disrupting your existing setup. 
-Requires additional configuration to manage resources separately and avoid interference with the existing Community Argo CD setup.  
-
-See [Install GitOps Runtime alongside Community Argo CD]({{site.baseurl}}/docs/installation/gitops/argo-with-gitops-side-by-side/).
-{% endif %}
 
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  
 
@@ -74,27 +67,30 @@ The comparison below is provided for historical reference only.
 The table below highlights the main differences between Hosted and Hybrid GitOps.
 
 {: .table .table-bordered .table-hover}
-| GitOps Functionality           |Feature             |  Hosted                    | Hybrid |
+| **GitOps Functionality**    |**Feature**             |  **Hosted**                    | **Hybrid** |
 | --------------          | --------------     |---------------             | --------------- |
-| Runtime                 | Installation       | Provisioned by Codefresh   | Provisioned by customer       |
-|                         | Runtime cluster    | Managed by Codefresh       | Managed by customer       |
-|                         | Number per account | One Runtime                | Multiple Runtimes, one per cluster            |
-|                         | External cluster   | Managed by customer        | Managed by customer         |
-|                         | Upgrade            | Managed by Codefresh       | Managed by customer |
-|                         | Uninstall          | Managed by customer        | Managed by customer |
-| Argo CD                 |                    | Codefresh cluster          | Customer cluster  |
-| CI Ops                  |Delivery Pipelines |Not supported               | Supported  |
-|                         |Workflows           | Not supported              | Supported  |
-|                         |Workflow Templates  | Not supported              | Supported  |
-| CD  Ops                 |Applications        | Supported: see below for details                  | Supported: see below for details |
-|                         |                    |Deployment supported only on managed clusters | Deployment supported on both in-cluster and managed clusters|
-|                         |                     |Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}| Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"}|
-|                         |Image enrichment    | Supported                  | Supported  |
-|                         | Rollouts           | Supported                  |  Supported  |
-|Integrations             |                    | Supported                  | Supported  |
-|Dashboards               |Home                | Hosted Runtime and deployments|Runtimes, deployments, Delivery Pipelines |
-|                         |DORA metrics        | Supported                 |Supported        |
-|                         |Applications        | Supported                 |Supported        |  
+| **Runtime**             | **Installation**       | Provisioned by Codefresh   | Provisioned by customer       |
+|                         | **Runtime cluster**    | Managed by Codefresh       | Managed by customer       |
+|                         | **Number per account** | One Runtime                | Multiple Runtimes, one per cluster |
+|                         | **External cluster**   | Managed by customer        | Managed by customer         |
+|                         | **Upgrade**            | Managed by Codefresh       | Managed by customer |
+|                         | **Uninstall**          | Managed by customer        | Managed by customer |
+| **Argo CD**             |                    | Codefresh cluster          | Customer cluster  |
+| **Workflows**           | **Workflow Pipelines** |Not supported               | Supported  |
+|                         | **Workflows**          |Not supported               | Supported  |
+|                         | **Workflow Templates** |Not supported               | Supported  |
+| **Ops**                 |**GitOps Apps**         | Supported:<br>Deployment supported only on managed clusters<br>Self-healing interval: 90 seconds<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"} |  Supported:<br>Deployment supported on both in-cluster and managed clusters<br>Self-healing interval:  5 seconds (Argo CD default)<br>See [Argo CD automatic self-healing](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing){:target="\_blank"} |
+|                         |**Environments**        |Supported                   | Supported  |
+|                         |**Products**            |Supported                   | Supported  |
+|                         |**Promotion Workflows** | Not supported              | Supported  |
+|                         |**Promotion Flows**     |Not supported               | Supported  |
+|                         |**Promotion Policies**  |Not supported               | Supported  |
+|                         |**Image enrichment**    | Supported                  | Supported  |
+|                         | **Rollouts**           | Supported                  |  Supported  |
+|**Integrations**         |                        | Supported                  | Supported  |
+|**Dashboards**           |**Home**            | Hosted Runtime and deployments|Runtimes, deployments, Workflow Pipelines |
+|                         |**DORA metrics**        | Supported                 |Supported        |
+|                         |**Applications**        | Supported                 |Supported        |  
 
 
 {% endif %}

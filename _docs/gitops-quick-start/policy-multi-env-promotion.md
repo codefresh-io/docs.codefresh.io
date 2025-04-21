@@ -11,7 +11,7 @@ redirect_from:
 
 Promotion Flows allow you to [automate promotions across multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/). 
 
-This quick start explores how to enhance Promotion Flows by configuring conditions for each environment through Promotion Workflows.  
+This quick start explores how to enhance Promotion Flows by configuring Promotion Workflows for each environment.  
 Promotion Workflows define the conditions under which changes are promoted to the next environment. They automate testing, validation, and other required checks, establishing gates to enforce promotion criteria.
 
 For this quick start, we'll use the same Promotion Workflows created in [Quick Start: Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow) within the Promotion Flow.
