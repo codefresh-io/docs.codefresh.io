@@ -389,13 +389,14 @@ dockerDaemonScheduler:
 {% endhighlight %}
 
 ## Replacing expired certificates
-If your builds are stuck in Pending or failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify if your certificates have expired, and if needed replace them.  
+If your builds are stuck in Pending or failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify if your certificates have expired, and then replace them if needed.  
 
-### Codefresh Runner installed with [HELM chart](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime)
+### For Codefresh Runner installed with HELM chart
 
-Re-apply the [`cf-runtime` helm chart](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime). Post-upgrade `gencerts-dind` helm hook will regenerate the dind certificates using a new CA.
+* Re-apply the [`cf-runtime` helm chart](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"}.  
+  Post-upgrade, the `gencerts-dind` Helm hook regenerates the DinD certificates using a new CA (Certificate Authority).
 
-### Codefresh Runner installed with [legacy CLI](https://codefresh-io.github.io/cli/runner/init/)
+### For Codefresh Runner installed with legacy CLI
 
 1. Delete `codefresh-certs-server` k8s secret;
 2. Download [`./configure-dind-certs.sh` script](https://github.com/codefresh-support/cf-utils/blob/master/configure-dind-certs.sh) and run it:
