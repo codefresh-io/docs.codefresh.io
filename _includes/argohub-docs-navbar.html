@@ -90,12 +90,12 @@
 
   function setEnterpriseDocumentationCookie() {
     const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
-    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/`
+    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Max-age=2592000; Path=/`
   }
 
   function removeEnterpriseDocumentationCookie() {
     const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
-    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Domain=.codefresh.io; Max-age=0; Path=/`
+    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Max-age=0; Path=/`
   }
 
   // Close dropdown when clicking outside
