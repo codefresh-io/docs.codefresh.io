@@ -389,8 +389,30 @@ dockerDaemonScheduler:
 {% endhighlight %}
 
 ## Replacing expired certificates
-If your builds are failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify if your certificates have expired, and if needed replace them.  
-See [Troubleshooting this error on ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#error-failed-to-validate-connection-to-docker-daemon-caused-by-error-certificate-has-expired){:target="\_blank"}.
+If your builds are stuck in Pending or failing with `Failed to validate connection to Docker daemon; caused by Error: certificate has expired`, you can verify if your certificates have expired, and then replace them if needed.  
+
+### For Codefresh Runner installed with HELM chart
+
+* Re-apply the [`cf-runtime` helm chart](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime){:target="\_blank"}.  
+  Post-upgrade, the `gencerts-dind` Helm hook regenerates the DinD certificates using a new CA (Certificate Authority).
+
+### For Codefresh Runner installed with legacy CLI
+
+1. Delete `codefresh-certs-server` k8s secret;
+2. Download [`./configure-dind-certs.sh` script](https://github.com/codefresh-support/cf-utils/blob/master/configure-dind-certs.sh) and run it:
+
+```
+# Ensure the following environment variables are defined before running the command:
+# $RUNTIME_NAMESPACE: The namespace where the runtime is installed.
+# $CODEFRESH_HOST: The Codefresh host URL (e.g., g.codefresh.io).
+# $CODEFRESH_API_TOKEN: Your Codefresh API token with the required scopes.
+
+kubectl -n $RUNTIME_NAMESPACE delete secret codefresh-certs-server
+
+chmod +x ./configure-dind-certs.sh
+./configure-dind-certs.sh -n $RUNTIME_NAMESPACE https://$CODEFRESH_HOST $CODEFRESH_API_TOKEN
+```
+
 
 ## CLI-based Codefresh Runner installation
 
@@ -1822,5 +1844,3 @@ For troubleshooting information, refer to the [Knowledge Base]({{site.baseurl}}/
 [Codefresh platform deployment]({{site.baseurl}}/docs/installation/installation-options/)  
 [Codefresh on-premises deployment]({{site.baseurl}}/docs/installation/on-premises/codefresh-on-prem/)  
 [Codefresh API]({{site.baseurl}}/docs/integrations/codefresh-api/)  
-
-
