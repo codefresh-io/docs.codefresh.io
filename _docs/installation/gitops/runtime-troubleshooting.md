@@ -4,10 +4,12 @@ description: "Review how to resolve issues during Runtime installation"
 toc: true
 ---
 
-
+## Troubleshooting Runtime installation
+This article describes potential issues you may encounter when installing the GitOps Runtime, whether you're using an existing Argo CD instance or setting up a new one.
 
 ## Error: Job has reached the specified backoff limit
-Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+This error appears when you copy and run the Install Runtime command in the Runtime Installation wizard.
+Before starting the installation, GitOps Cloud automatically validates the `values.yaml` file to ensure the supplied values are correct.
 
 ### Possible cause
 Validation errors in your `values.yaml` file.  
@@ -31,18 +33,18 @@ Validation errors in your `values.yaml` file.
 
 
 ## Error: failed converting helm release <runtime-name> to GitOops;...ISC repo not initialized
-This error  displayed when you try to Configure the Runtime as Argo CD Application. 
+This error appears when you try to Configure the Runtime as Argo CD Application in the Runtime Installation wizard. 
 
 ### Possible cause
-The Shared Configuration Repository (`ISC`)  has been created but is not yet initialized. 
+The Shared Configuration Repository (`ISC`) has been created but is not yet initialized. 
 
 ### Resolution
 Wait a few seconds, and try again.
 
 
 ## Runtime timeout errors
-One of these errors indicating a timeout:
-* `Error: "unable to initialise Codefresh Client", "error": "secrets \"codefresh-token\" not found"` 
+One of these errors appear in the UI indicating a timeout after completing Runtime installation and configuration in the Runtime Installation wizard:
+* `Error: "unable to initialize Codefresh Client", "error": "secrets \"codefresh-token\" not found"` 
 * For tunnel-based access mode, the `codefresh-tunnel-client` pod fails after installation.
 * Pods failed error
 
@@ -68,6 +70,7 @@ The `--wait` flag in Install Runtime command controls how long the installation 
 
 
 ## Invalid Git token error
+This error appears in the UI ??//
 
 ### Possible cause
 Your token is [invalid because of missing scopes](#check-token-scopes)  
@@ -175,6 +178,6 @@ global:
 ...
 ```
 
-
-## Add  Git Source failure
-TBD
+## Related articles
+[Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)
