@@ -70,7 +70,7 @@ The `--wait` flag in Install Runtime command controls how long the installation 
 
 
 ## Invalid Git token error
-This error appears in the UI ??//
+This error appears in the UI after Runtime installation when all Runtime components including the Application Proxy (app-proxy) are up and running. 
 
 ### Possible cause
 Your token is [invalid because of missing scopes](#check-token-scopes)  
@@ -80,6 +80,9 @@ You are using a [fine-grained token or one with custom scopes](#skip-validation-
 ### Resolution
 
 ##### Check token scopes
+1. Check the scopes for the Runtime token you provided during installation. 
+  If you provided the same token as both the Runtime and user token, make sure the token has the additional scopes required.
+1. If needed, generate a new PAT (Personal Access Token) with the correct scopes.
 
 **GitHub Git Runtime token**
 
