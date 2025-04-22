@@ -441,7 +441,7 @@ Within every freestyle step, the `cf_export` command allows you to export variab
 > **NOTE**  
 > As a rule, variables exported through `cf_export` override those at the pipeline-level.  
   Depending on when your account was created, existing variables may not inherit the default override behavior. For example, `cf_export` may not override pipeline variables referenced outside of command blocks, such as in step arguments or step conditional expressions.  
-  To fully enable `cf_export` override for variables, please contact Support.
+  To verify the behavior, and enable `cf_export` override for variables if needed, please contact [Support](mailto:support@codefresh.io){:target="\_blank"}.
 
 You can either:
 * Explicitly state a VAR=VAL pair  
