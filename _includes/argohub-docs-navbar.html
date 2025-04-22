@@ -2,21 +2,33 @@
   <div
     class="container-fluid navbar navbar-dark flex-column flex-md-row py-0"
   >
-    <a
-      class="navbar-brand mx-0 mx-md-2 d-flex align-items-center"
-      href="{{ site.baseurl }}/{{site.gitops_collection}}"
-      onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');"
-      aria-label="Codefresh"
-    >
-      <div>
-        {%- include icons/codefresh-logo.svg width="160" height="auto"
-        class="align-middle" -%}
+    <div class="d-inline-flex align-content-center">
+      <a
+        class="navbar-brand mx-0 mx-md-2 d-flex align-items-center"
+        href="{{ site.baseurl }}/{{site.gitops_collection}}"
+        onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');"
+        aria-label="Codefresh"
+      >
+        <div>
+          {%- include icons/codefresh-logo.svg width="160" height="auto"
+          class="align-middle" -%}
+        </div>
+      </a>
+
+      <div class="divider-vertical mt-1"></div>
+
+      <div class="custom-select">
+        <div class="select-display" onclick="toggleDropdown()">GitOps Cloud</div>
+        <ul class="options">
+          <li class="option selected" onclick="selectOption(this, 'gitops')">GitOps Cloud</li>
+          <li class="option" onclick="selectOption(this, 'enterprise')">Pipelines & GitOps</li>
+        </ul>
       </div>
-    </a>
+    </div>
 
     <div class="navbar-nav-scroll order-1 order-md-1">
       <ul class="navbar-nav flex-row mx-md-auto">
-      <!--- 
+      <!---
         <li class="nav-item">
           <a class="nav-link" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
         </li>
@@ -51,3 +63,46 @@
     {% endif %}
   </div>
 </header>
+
+<script>
+  function toggleDropdown() {
+    const select = document.querySelector('.custom-select');
+    select.classList.toggle('open');
+  }
+
+  function selectOption(option, selectedValue) {
+    const selectDisplay = document.querySelector('.select-display');
+    const options = document.querySelectorAll('.option');
+
+    // Update the display text
+    selectDisplay.textContent = option.textContent;
+
+    // change cookie
+    if (selectedValue === 'enterprise') {
+      setEnterpriseDocumentationCookie();
+      location.href = `${SITE_BASE_URL}/`
+    } else if (selectedValue === 'gitops') {
+      console.log('here 3')
+      removeEnterpriseDocumentationCookie();
+      location.href = SITE_GITOPS_COLLECTION
+    }
+  }
+
+  function setEnterpriseDocumentationCookie() {
+    const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
+    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Domain=.codefresh.io; Max-age=2592000; Path=/`
+  }
+
+  function removeEnterpriseDocumentationCookie() {
+    const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
+    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Domain=.codefresh.io; Max-age=0; Path=/`
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const select = document.querySelector('.custom-select');
+    if (!select.contains(e.target)) {
+      select.classList.remove('open');
+    }
+  });
+</script>
