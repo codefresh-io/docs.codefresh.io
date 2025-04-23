@@ -1,1 +1,0 @@
-../../../_docs/administration/account-user-management/oauth-setup.md

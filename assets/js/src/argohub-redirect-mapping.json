@@ -7,7 +7,6 @@
   "/docs/administration/account-user-management/create-codefresh-account/": "/gitops/administration/account-user-management/create-codefresh-account/",
   "/docs/administration/account-user-management/gitops-abac/": "/gitops/administration/account-user-management/gitops-abac/",
   "/docs/administration/account-user-management/hosted-authorize-orgs/": "/gitops/administration/account-user-management/hosted-authorize-orgs/",
-  "/docs/administration/account-user-management/oauth-setup/": "/gitops/administration/account-user-management/oauth-setup/",
   "/docs/administration/account-user-management/service-accounts/": "/gitops/administration/account-user-management/service-accounts/",
   "/docs/administration/single-sign-on/ldap/": "/gitops/administration/single-sign-on/ldap/",
   "/docs/administration/single-sign-on/oidc/": "/gitops/administration/single-sign-on/oidc/",

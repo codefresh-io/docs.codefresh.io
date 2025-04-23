@@ -255,17 +255,21 @@ Otherwise, you have to update Git tokens in the following situations:
 * Invalid, revoked, or expired tokens<br>
   Codefresh automatically flags Runtimes with such tokens. It is mandatory to update the Git tokens to continue working with the platform.
 
+{% if page.collection != site.gitops_collection %}
 **Update methods**<br>
 The methods for updating any Git token are the same regardless of the reason for the update:
 * OAuth2 authorization, if your admin has registered an OAuth Application for Codefresh.
-* Git access token authentication, by generating a Git Runtime token in your Git provider account with the correct scopes.
-  You can update your Git Runtime token in the UI or through the CLI.
+* Git access token authentication, by generating a Git user token in your Git provider account with the correct scopes.
+  You can update your Git token in the UI or through the CLI.
+{% endif %}
+
 
 ### Update Git Runtime credentials in Codefresh UI
 
 **Before you begin**
 * To authenticate through a Git Runtime token, make sure your token is valid and has the [required scopes]({{site.baseurl}}/docs/security/git-tokens/#git-runtime-token-scopes)
 
+{% if page.collection != site.gitops_collection %}
 **How to**
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From the sidebar, select **GitOps Runtimes**.
@@ -310,6 +314,31 @@ The methods for updating any Git token are the same regardless of the reason for
 {:start="7"}
 1. For Git token authentication, paste the generated token in the **Git runtime token** field.
 1. Click **Update Credentials**.
+{% endif %}
+
+{% if page.collection == site.gitops_collection %}
+**How to**
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From the sidebar, select **GitOps Runtimes**.
+1. Switch to the **List View**.
+1. Do one of the following:
+  * To the right of the row with the Runtime to update, click the context menu and select **Update Git Runtime Credentials**.
+  * Click the Runtime name, click the context-menu on the top-right, and then select **Update Git Runtime Credentials**.
+
+  {% include
+ image.html
+ lightbox="true"
+ file="/images/runtime/update-git-runtime-token.png"
+ url="/images/runtime/update-git-runtime-token.png"
+ alt="Update Git Runtime credentials"
+ caption="Update Git Runtime credentials"
+  max-width="60%"
+%}
+
+{:start="5"}
+1. Paste the generated token in the **Git runtime token** field.
+1. Click **Update Credentials**.
+{% endif %}
 
 {% if page.collection != site.gitops_collection %}
 ### Update Git Runtime token through CLI
