@@ -116,8 +116,6 @@
           url: "/service-accounts"
         - title: Configuring access control for GitOps
           url: "/gitops-abac"
-        - title: Setting up OAuth2 for GitOps
-          url: "/oauth-setup"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs"
     - title: Single Sign-On
