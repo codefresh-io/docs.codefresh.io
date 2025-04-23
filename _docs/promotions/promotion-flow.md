@@ -4,7 +4,7 @@ description: "Orchestrate promotion for products across environment with Promoti
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/
- - /docs/promotions/entities/
+ - /docs/promotions/entities/promotion-flow
 toc: true
 ---
 ## Promotion Flows in Codefresh GitOps
