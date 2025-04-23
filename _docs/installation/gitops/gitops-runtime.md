@@ -52,7 +52,7 @@ See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation
 
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  
 
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vtCoi3-Rt6w?si=EqlKsiRtdIGcZLaX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 {% if page.collection != site.gitops_collection %}
