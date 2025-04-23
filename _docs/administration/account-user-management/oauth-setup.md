@@ -127,10 +127,9 @@ Create and register an OAuth App under your organization to authorize Codefresh.
 {:start="2"}
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:
   * GitHub: Application ID from the URL, Client ID, and the client secret  
-  {% if page.collection != site.gitops_collection %}
   * GitLab Cloud and Server: Application ID and Secret
   * Bitbucket Data Center: Key and Secret
-  {% endif %}
+  
 
 <br>
 
