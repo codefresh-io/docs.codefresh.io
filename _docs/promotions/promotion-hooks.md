@@ -8,10 +8,10 @@ toc: true
 
 ## What are promotion hooks?
 
-Promotion hooks in Codefresh GitOps are specialized workflows that run at key points during a promotion release. A promotion release is created when a Promotion Flow is manually or automatically triggered.   
+Promotion hooks in Codefresh GitOps are specialized workflows that run at key points during a product release. A product release is created when a Promotion Flow is manually or automatically triggered.   
 
 Promotion hooks are implemented using the same underlying mechanism as standard Promotion Workflows, but run with additional context and scope on releases and environments. 
-Unlike Pre- and Post-Action Promotion Workflows, which run in specific environments and target individual applications, promotion hooks run at the release or environment level. They are not tied to a particular deployment or application, and enable real-time alerts, custom logic and actions without requiring users to monitor the promotion directly in the UI. Teams can stay informed and take action instantly as promotions progress.
+Unlike Pre- and Post-Action Promotion Workflows, which run in specific environments and target individual applications, promotion hooks run at the release or environment level.  They are not tied to a particular deployment or application, and enable real-time alerts, custom logic and actions without requiring users to monitor the promotion directly in the UI. Teams can stay informed and take action instantly as promotions progress.
 
 DIAGRAM
 
@@ -35,11 +35,16 @@ Promotion hooks can run at different stages of a release:
 * Integration with external tools
   Automate updates to ticketing systems such as Jira, or observability platforms.  
 
-##### Requirements for promotion hooks
+For examples, check out [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
-* Service account
-* Service account role and role binding 
+##### Components for promotion hooks
+
+For promotion hooks to work in Promotion Workflows: 
+* Service account, service account role and role binding  
+  A default service account, service account role, and role binding are automatically added to all Workflow Templates when you install the GitOps Runtime. The provided defaults are sufficent to implement promotion hooks. To use your own service accounts, see [Service accounts & service account roles for promotion hooks](#service-accounts--service-account-roles-for-promotion-hooks).
+
 * Promotion context
+  To make internal or custom parameters available to  
 
 ## Promotion hooks vs. Pre- and Post-Action Promotion Workflows
 
@@ -47,8 +52,8 @@ The table lists key differences between Promotion Workflows containing hooks and
 
 | **Feature**    | **Promotion Hooks**  | **Promotion Workflows**    |
 |----------------|----------------------|-----------------------------------------------|
-| **Purpose**    | Provide information on the release  | Provide information on promoted changes in applications within an environment    |
-| **Execution**  | Runs run at release start, end (success, failure), or per environment (start, success, failure) | Runs for each application in an environment before and after promotion |
+| **Purpose**    | Provides information on the release  | Provides information on promoted changes in applications within an environment    |
+| **Execution**  | Runs at release start, end (success, failure), or per environment (start, success, failure) | Runs for each application in an environment before and after promotion |
 | **Scope**      | Runs on cluster at release or environment level      | Runs per application in the environment |
 | **Effect on promotion**  | Notifies on promotion status | Blocks a promotion if conditions fail  |
 
@@ -58,42 +63,48 @@ The table lists key differences between Promotion Workflows containing hooks and
 Promotion Workflows with hooks are saved in the Shared Configuration Repository of the Runtime designated as the Configuration Runtime.
 If you have multiple Configuration Runtimes, the hooks are saved in the first Configuration Runtime in the list  
 
+The hooks are configure in isc for all runtimes (I would mention here the path)
+Then when submitting and running the workflow, it will run on the configuration runtime ns, but if there are multiple configuration runtimes then it will run on the first one that will act (we are planning to change it to the first one that was installed)
+
+
 TBD - SHOW EXAMPLE OF SETTINGS
 
-## Service accounts & service account roles for Promotion Hook Workflows
-When a GitOps Runtime is installed, to support promotion hooks, Codefresh GitOps creates the following resources:  
+## Service accounts & service account roles for promotion hooks
+When a GitOps Runtime is installed, to support promotion hooks, Codefresh GitOps creates the service account, service account role and binding. If you need a new role with custom permissions, or a new service account with  
+
+### Default service account and service role 
 
 * **Service account**  
-  * `cf-default-promotion-workflows-sa` service account with the required role and role binding.  
-  * Workflow template manifests in Codefresh reference this service account.  
+  `cf-default-promotion-workflows-sa` with the required role and role binding.  
+    * Workflow template manifests in Codefresh reference this service account. 
+    * When you create a Promotion Workflow from the UI, the service account is added automatically to the YAML. 
+    * If you're creating the Promotion Workflow in Git, you must add the service account manually.
 
 * **Service account role**
-  `cf-default-promotion-workflows-role`, the default role for Promotion Workflows, bound to the service account `cf-default-promotion-workflows-sa`.  
+  `cf-default-promotion-workflows-role`, the default role for promotion hooks, automatically bound to the service account `cf-default-promotion-workflows-sa`.  
 
-If you already have service accounts or want to create your own service accounts, make sure that the system-provided service account is not compromised.
-
-
-### RBAC permissions for service account role  
-The following Role-Based Access Control (RBAC) permissions are required:   
-* `GET`  
-* `WATCH`  
-* `PATCH`  
-
-These permissions allow hooks to retrieve and update release and promotion details securely. 
-
-### Using an existing service account
-For existing service accounts:
-* Create a new role with the required RBAC permissions.
-* Add a role binding to associate the new role with the service account.
+* **RBAC permissions for service account role**   
+  The following Role-Based Access Control (RBAC) permissions are required to allow hooks to retrieve and update release and promotion details securely:    
+    * `GET`  
+    * `WATCH`  
+    * `PATCH`  
 
 
-### Creating a new service account.
-* Bind the `cf-default-promotion-workflows-role` to the new service account.
+### Custom options for service accounts and service role
+
+If you need a service role with additional permissions or a new service account, do one of the following:
+
+* **Use a custom role**  
+  Create a new service role with the required permissions and bind it to the default service account, `cf-default-promotion-workflows-sa`.
+
+* **Use a custom service account**  
+  Use your own service account and bind it to the default service role, `cf-default-promotion-workflows-role`.
+
 
 
 ## Promotion contexts for promotion hooks
 All promotion hooks receive a standard set of [default arguments](#default-arguments-in-promotion-hook-workflows) such as the release ID, product, commit SHA.  
-To expose custom data such as Jira ticket IDs, approver names, or Slack channels, and make this data available to additional promotion hooks in the same Promotion Flow, you must define a **promotion context**.
+To expose custom data such as Jira ticket IDs, approver names, or Slack channels, and make this data available to additional promotion hooks in the same Promotion Flow, you must define and export a **promotion context**.
 A promotion context is a user-defined JSON object passed between hooks in the same Promotion Flow. It enables sharing values that the promotion mechanism cannot access by default.  
 
 Unlike standard Promotion Workflows which have built-in access to internal context, promotion hooks run within GitOps Runtimes in your own clusters. These hooks do not automatically receive custom values unless you define them in a promotion context. 
@@ -109,21 +120,25 @@ Examples:
 
 ### Creating and exporting a promotion context 
 
-To create a promotion context in the Promotion Flow:
-* Create the JSON object including the custom parameters, and the file to which to export or save the promotion context
-* Export the promotion context an output parameter to pass to subsequent hooks
+
+* Create the promotion context as a JSON object 
+  Use any method to create your promotion context. 
+  including the custom parameters, and the file to which to export or save the promotion context
+* Export the promotion context  
+  What is crucial is to export the promotion context as an output parameter to pass to subsequent hooks
+    Expose the file with the promotion context as an output parameter to make it available to the promotion mechanism.
+  * Add `PROMOTION_CONTEXT` as the `name` to `outputs.parameters`. _The name must not be changed_.
+  * Add the `globalName` attribute to make it available globally. The value must be identical to the name of the promotion context.
+  * Add the `valueFrom` attribute to reference the file path.
 
 
-1. **Create the promotion context**  
-  * Create the promotion context as a JSON object containing the:
-      * Input parameters as variables
-      * File to which to save the promotion context. The file is referenced as the promotion context source.
 
-  **Example:**  
-  The example creates a promotion context `PROMOTION_CONTEXT` as a JSON object passed to subsequent promotion hooks in the same Promotion Flow. 
-  The promotion context:
-  * Defines `JIRA_ISSUE_SOURCE_FIELD` and makes it available an input parameter to subsequent hooks.
-  * Writes the context to a file `/tmp/promotion-context.txt`
+### Example of Promotion Workflow with promotin context *  
+The example creates a promotion context `PROMOTION_CONTEXT` as a JSON object and exports it as output parameter.
+* The promotion context defines `JIRA_ISSUE_SOURCE_FIELD` and `JIRA_BASE_URL` 
+* Writes the context to a file `/tmp/promotion-context.txt`
+* Adds `PROMOTION_CONTEXT` to `outputs.parameters.name`, defines `globalName` as the name of the promotion context, and in `valueFrom.path` specifies the file path where the promotion context JSON was saved for GitOps Cloud to retrieve and pass on to subsequent Promotion  Workflows.
+
   
 ```yaml 
 ...
@@ -144,21 +159,6 @@ spec:
             export JIRA_ISSUE_SOURCE_FIELD="{{inputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}"
             PROMOTION_CONTEXT=$(echo "{\"JIRA_ISSUE_URL\": \"${JIRA_ISSUE_BASE_URL}/browse/${JIRA_ISSUE_SOURCE_FIELD}\"}")
             echo "$PROMOTION_CONTEXT" > /tmp/promotion-context.txt
-...
-``` 
-
-1. **Export promotion context**  
-  Expose the file with the promotion context as an output parameter to make it available to the promotion mechanism.
-  * Add `PROMOTION_CONTEXT` as the `name` to `outputs.parameters`. _The name must not be changed_.
-  * Add the `globalName` attribute to make it available globally. The value must be identical to the name of the promotion context.
-  * Add the `valueFrom` attribute to reference the file path.
-
-  **Example:** The example adds `PROMOTION_CONTEXT` to `outputs.parameters.name`,  defines `globalName` as the name of the promotion context, and in `valueFrom.path` specifies the file path where the promotion context JSON was saved for GitOps Cloud to retrieve and pass on to subsequent Promotion Hook Workflows.
-
-```yaml 
-...
-spec:
-...
       outputs:
         parameters:
           - name: PROMOTION_CONTEXT  #  cannot be changed
@@ -173,18 +173,18 @@ spec:
 
 
 
-## Examples of Promotion Hook Workflows
+## Examples of hooks in Promotion Workflows
 The following are examples of Promotion Workflows with hooks 
 They show that even though the hooks runs in the context of a promotion, they do not rely on implicit promotion behavior. Instead, they define their own logic for what to do and how (which plugin to use, which parameters to pass).
 This makes the hook reusable in different workflows, or even outside promotion flows, as long as the required parameters are provided.
 
 
-### On-start hook Promotion Workflow
+### On-start promotion hook example
 The example below shows a Promotion Workflow configured as an on-start hook. This workflow can run when a new release starts or when a promotion begins in any environment. It sends a Slack notification with the required parameters defined explicitly as input parameters and not as part of a promotion context.
 
 
 ##### Default parameters in on-start hook
-  These are passed automatically as workflow arguments and are typically used to build contextual messages or logs.
+These are passed automatically as workflow arguments and are typically used to build contextual messages or logs.
 
 `RELEASE_URL`
 `PRODUCT_NAME`
@@ -376,8 +376,11 @@ spec:
           duration: "5s"
       inputs:
         parameters:
-          - name: JIRA_API_KEY
-            value: 1234
+          - name: SLACK_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: promotions-secrets
+                key: slack-token
           - name: JIRA_BASE_URL
             value: https://testjira273.atlassian.net
           - name: JIRA_USERNAME
@@ -472,23 +475,28 @@ SCREENSHOT TBD
 
 ## How promotion hooks work during execution
 
-Once you assign Promotion Workflows with promotion hooks in a Promotion Flow, Codefresh GitOps executes them automatically at the relevant stages of the Promotion Flow:
+When you assign Promotion Workflows with promotion hooks in a Promotion Flow, the promotion mechanism runs the hooks at the relevant stages of the Promotion Flow.
 
-**Triggering the first hook**
-When the Promotion Flow is triggered, the promotion mechanism:
-* Passes the default promotion metadata (e.g., release ID, commit SHA)
-* Initializes the promotion context, if defined and valid, with any custom values 
+##### Triggering the first promotion hook
+When the Promotion Flow is triggered and a product release is created, the promotion mechanism:
+* Passes the default promotion metadata (e.g., release ID, commit SHA) to the first hook
+* Initializes the promotion context, if defined and exported, with any custom values 
 
-**Triggering subsequent hooks**
+##### Triggering subsequent promotion hooks**
 As the Flow progresses, the promotion mechanism:
-* Retrieves the promotion context with the custom variables stored in the previous hook
+* Retrieves the promotion context from the previous hook
 * Passes the context automatically to the next hook as input parameters:
-  * New custom parameters are added to the next hook's promotion context
-  * If the same custom parameter exists in both the previous and next hooks, the parameter in the next hook overrides the one in the previous hook.  
+  * New custom parameters are added to the input parameters of the next hook.
+  * If the same custom parameter exists also in the current hook, the value in the current hook always takes precedence and overrides the previous one.  
   
-User-defined custom parameters and their values are consistently available across the entire flow, regardless of environment or cluster
+##### Promotion context sharing across all promotion hooks 
+If a hook includes a promotion context and exports it, the promotion mechanism passes those context parameters to all subsequent hooks, regardless of whether the hooks include promotion contexts.
 
-For example, if a Jira ticket ID is defined in the context when the release starts, it’s accessible later when another promotion hook runs in a different environment or cluster.
+This ensures:
+* Consistent access to custom data (e.g., Jira ticket ID, build number) throughout the Promotion Flow.
+* Parameters remain available even across hooks running in different environments or clusters.
+
+
 
 DIAGRAM
 
