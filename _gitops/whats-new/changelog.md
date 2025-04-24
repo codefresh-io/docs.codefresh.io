@@ -9,7 +9,7 @@ If you missed any of our previous online announcements, you can find the latest 
 
 {% assign posts_by_year = site.posts-gitops | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year in posts_by_year %}
-  <h2>{{ year.name }} Releases</h2>
+  <h2>{{ year.name }}</h2>
   <ul>
     {% for post in year.items %}
       <li>
