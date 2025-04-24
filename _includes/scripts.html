@@ -98,7 +98,7 @@
 
     if (selectedValue === 'enterprise') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'true');
-      location.href = `${SITE_BASE_URL}/`;
+      location.href = `${SITE_BASE_URL}/?ent`;
     } else if (selectedValue === 'gitops') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'false');
       location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
