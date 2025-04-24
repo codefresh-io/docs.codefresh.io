@@ -18,10 +18,10 @@
       <div class="divider-vertical mt-1"></div>
 
       <div class="custom-select">
-        <div class="select-display" onclick="toggleDropdown()">GitOps Cloud</div>
+        <div class="select-display" onclick="toggleSegmentDropdown()">GitOps Cloud</div>
         <ul class="options">
-          <li class="option selected" onclick="selectOption(this, 'gitops')">GitOps Cloud</li>
-          <li class="option" onclick="selectOption(this, 'enterprise')">Pipelines & GitOps</li>
+          <li class="option selected" onclick="selectSegmentOption(this, 'gitops')">GitOps Cloud</li>
+          <li class="option" onclick="selectSegmentOption(this, 'enterprise')">Pipelines & GitOps</li>
         </ul>
       </div>
     </div>
@@ -63,46 +63,3 @@
     {% endif %}
   </div>
 </header>
-
-<script>
-  function toggleDropdown() {
-    const select = document.querySelector('.custom-select');
-    select.classList.toggle('open');
-  }
-
-  function selectOption(option, selectedValue) {
-    const selectDisplay = document.querySelector('.select-display');
-    const options = document.querySelectorAll('.option');
-
-    // Update the display text
-    selectDisplay.textContent = option.textContent;
-
-    // change cookie
-    if (selectedValue === 'enterprise') {
-      setEnterpriseDocumentationCookie();
-      location.href = `${SITE_BASE_URL}/`
-    } else if (selectedValue === 'gitops') {
-      console.log('here 3')
-      removeEnterpriseDocumentationCookie();
-      location.href = SITE_GITOPS_COLLECTION
-    }
-  }
-
-  function setEnterpriseDocumentationCookie() {
-    const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
-    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Max-age=2592000; Path=/`
-  }
-
-  function removeEnterpriseDocumentationCookie() {
-    const enterpriseDocumentationCookieName = `cfdoctype=enterprise`
-    document.cookie = `${enterpriseDocumentationCookieName}; SameSite=Strict; Secure; Max-age=0; Path=/`
-  }
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    const select = document.querySelector('.custom-select');
-    if (!select.contains(e.target)) {
-      select.classList.remove('open');
-    }
-  });
-</script>

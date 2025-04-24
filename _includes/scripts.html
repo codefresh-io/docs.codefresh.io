@@ -82,3 +82,35 @@
   });
 </script>
 
+<script>
+  window.toggleSegmentDropdown = function() {
+    const select = document.querySelector('.custom-select');
+    console.log(select)
+    select.classList.toggle('open');
+  };
+
+  window.selectSegmentOption = function(option, selectedValue) {
+    const selectDisplay = document.querySelector('.select-display');
+    const options = document.querySelectorAll('.option');
+
+    // Update the display text
+    selectDisplay.textContent = option.textContent;
+
+    if (selectedValue === 'enterprise') {
+      localStorage.setItem(enterpriseDocTypeLockKey, 'true');
+      location.href = `${SITE_BASE_URL}/`;
+    } else if (selectedValue === 'gitops') {
+      localStorage.setItem(enterpriseDocTypeLockKey, 'false');
+      location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
+    }
+  };
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const select = document.querySelector('.custom-select');
+    if (!select.contains(e.target)) {
+      select.classList.remove('open');
+    }
+  });
+</script>
+

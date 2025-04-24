@@ -47,12 +47,12 @@ function handleEnterpriseDocTypeLock() {
   const queryParams = new URLSearchParams(location.search);
   if (!queryParams.has('ent')) return;
 
-  sessionStorage.setItem(enterpriseDocTypeLockKey, 'true');
+  localStorage.setItem(enterpriseDocTypeLockKey, 'true');
 }
 
 
 function isEnterpriseLockPresent(){
-  const enterpriseDocTypeLock = sessionStorage.getItem(enterpriseDocTypeLockKey)
+  const enterpriseDocTypeLock = localStorage.getItem(enterpriseDocTypeLockKey)
   return !!enterpriseDocTypeLock
 
 }
