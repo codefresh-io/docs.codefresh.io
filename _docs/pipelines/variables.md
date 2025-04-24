@@ -439,7 +439,8 @@ There are two ways to add variables to the shared file:
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
 > **NOTE**
-> The default behavior for cf_export is to override the variable value passed in at the pipeline level. Depending on when your account was created, existing variables may not inherit the default override behavior. If you are experiencing situations where you are passing in a variable to a pipeline and resetting the value via cf_export and you are not seeing the desired value for future steps, please contact [Support](mailto:support@codefresh.io){:target="\_blank"}. They can verify the behavior, and enable the Feature Flag for the account.
+> The default behavior for `cf_export` is to override the variable value passed at the pipeline level. Depending on when your account was created, existing variables may not inherit the default override behavior.  
+If you are experiencing situations where you are passing a variable to a pipeline, resetting the value via `cf_export`, and not seeing the desired value for future steps, please contact [Support](mailto:support@codefresh.io){:target="\_blank"}. Support can verify the behavior, and enable the Feature Flag for the account.
 
 You can either:
 * Explicitly state a VAR=VAL pair  
