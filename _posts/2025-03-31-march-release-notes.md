@@ -1,6 +1,6 @@
 ---
-title: "Pipelines Release Notes: March 2025"
-description: "Release Notes for Codefresh Pipelines"
+title: "Release Notes: March 2025"
+description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
@@ -60,6 +60,8 @@ Configuration steps are clearly defined, making the set up process easy to compl
 * **Configure as an Argo CD Application** to take full advantage of GitOps.
 * **Add a Git source** to the Runtime so you’re ready to create applications.
 
+{% if page.collection == "posts" %}
+
 ### Pipelines: Easily add secret variables
 
 We've introduced a simpler and more secure way to add secret variables in your pipelines, making it faster and safer to manage sensitive data. Before this update, adding a secret required creating a standard variable, temporarily exposing the value, and manually encrypting it, increasing the risk of accidental exposure.
@@ -95,11 +97,17 @@ Previously, it was easy to unintentionally override a project-level variable at 
 
 For details, see [Order of precedence for user-defined variables]({{site.baseurl}}/docs/pipelines/variables/#order-of-precedence-for-user-defined-variables).
 
+{% endif %}
+
 ## Bug fixes
+
+{% if page.collection == "posts" %}
 
 ##### Pipelines
 
 * Helm step does not use latest Helm version 3.14.
+
+{% endif %}
 
 ##### GitOps
 
