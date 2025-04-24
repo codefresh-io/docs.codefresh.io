@@ -227,8 +227,6 @@ spec:
 
 ### How promotion context works during execution
 
-
-##### Sharing promotion context
 When a hook exports a promotion context, the promotion mechanism passes those parameters to all subsequent hooks in the Promotion Flow, regardless of whether the hooks include promotion contexts.
 
 This ensures:
