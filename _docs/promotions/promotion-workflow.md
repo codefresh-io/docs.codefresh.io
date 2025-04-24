@@ -3,7 +3,7 @@ title: "Configure Promotion Workflows"
 description: "Create, run, and manage Promotion Workflows"
 redirect-from: 
  - /docs/promotions/configuration/
- - /docs/promotions/entities/promotion-workflow
+ - /docs/promotions/entities/promotion-workflow/
 group: promotions
 toc: true
 ---
