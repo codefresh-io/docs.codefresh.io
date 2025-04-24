@@ -11,6 +11,8 @@ This article describes how to install GitOps Runtimes in a Codefresh account usi
 
 This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime authenticates with the Argo CD instance through the [Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/) which you need to provide, and connects to key Argo CD services.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vtCoi3-Rt6w?si=EqlKsiRtdIGcZLaX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ##### Runtime values.yaml 
 The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
 Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).

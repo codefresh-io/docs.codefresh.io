@@ -439,10 +439,11 @@ There are two ways to add variables to the shared file:
 Within every freestyle step, the `cf_export` command allows you to export variables across steps by writing to the shared variables file.  
 
 > **NOTE**  
-> Variables exported through `cf_export` override those at the pipeline-level.
+> As a rule, variables exported through `cf_export` override those at the pipeline-level.  
+  Depending on when your account was created, existing variables may not inherit the default override behavior. For example, `cf_export` may not override pipeline variables referenced outside of command blocks, such as in step arguments or step conditional expressions.  
+  To verify the behavior, and enable `cf_export` override for variables if needed, please contact [Support](mailto:support@codefresh.io){:target="\_blank"}.
 
 You can either:
-
 * Explicitly state a VAR=VAL pair  
 * State the name of an existing *exported* environment variable, for example, `EXISTING_VAR`
 
@@ -481,7 +482,7 @@ export MY_VAR='example' # Makes MY_VAR available in this step only
 cf_export MY_VAR='example' # Makes MY_VAR available also to all steps after this one
 ```
 
-There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline.
+<!--- There is nothing really magical about `cf_export`. It is a normal script. You can see its contents on your own by entering the command `cat /codefresh/volume/cf_export` on any [Codefresh freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/) inside a pipeline. -->
 
 #### `cf_export` syntax
 

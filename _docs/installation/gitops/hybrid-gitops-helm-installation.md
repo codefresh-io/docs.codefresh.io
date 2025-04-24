@@ -9,6 +9,8 @@ toc: true
 ## GitOps Runtime with new Argo CD
 This article describes how to install the GitOps Runtime in a Codefresh accounts using a Helm chart on a _cluster without an Argo CD instance_.   
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vtCoi3-Rt6w?si=EqlKsiRtdIGcZLaX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ##### Runtime values.yaml
 
 The Codefresh `values.yaml` located [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}, contains all the arguments you can configure, including optional ones. 

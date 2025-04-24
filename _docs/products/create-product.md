@@ -16,7 +16,7 @@ There are two ways to create a product in Codefresh GitOps:
 * From the [Products page](#create-products)<br>
   Create and manage products directly, then assign applications to them, as described in this article.
 
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m3wE4OfV9xE?si=IO-SSoPPIKR8B9r0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Understanding the role of environments for products
 

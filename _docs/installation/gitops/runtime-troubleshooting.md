@@ -4,10 +4,12 @@ description: "Review how to resolve issues during Runtime installation"
 toc: true
 ---
 
-
+## Troubleshooting Runtime installation
+This article describes potential issues you may encounter when installing the GitOps Runtime, whether you're using an existing Argo CD instance or setting up a new one.
 
 ## Error: Job has reached the specified backoff limit
-Before initiating the installation, Codefresh automatically validates the `values.yaml` file to verify that the supplied values are correct.
+This error appears when you copy and run the Install Runtime command in the Runtime Installation wizard.
+Before starting the installation, GitOps Cloud automatically validates the `values.yaml` file to ensure the supplied values are correct.
 
 ### Possible cause
 Validation errors in your `values.yaml` file.  
@@ -31,18 +33,18 @@ Validation errors in your `values.yaml` file.
 
 
 ## Error: failed converting helm release <runtime-name> to GitOops;...ISC repo not initialized
-This error  displayed when you try to Configure the Runtime as Argo CD Application. 
+This error appears when you try to Configure the Runtime as Argo CD Application in the Runtime Installation wizard. 
 
 ### Possible cause
-The Shared Configuration Repository (`ISC`)  has been created but is not yet initialized. 
+The Shared Configuration Repository (`ISC`) has been created but is not yet initialized. 
 
 ### Resolution
 Wait a few seconds, and try again.
 
 
 ## Runtime timeout errors
-One of these errors indicating a timeout:
-* `Error: "unable to initialise Codefresh Client", "error": "secrets \"codefresh-token\" not found"` 
+One of these errors appear in the UI indicating a timeout after completing Runtime installation and configuration in the Runtime Installation wizard:
+* `Error: "unable to initialize Codefresh Client", "error": "secrets \"codefresh-token\" not found"` 
 * For tunnel-based access mode, the `codefresh-tunnel-client` pod fails after installation.
 * Pods failed error
 
@@ -68,45 +70,40 @@ The `--wait` flag in Install Runtime command controls how long the installation 
 
 
 ## Invalid Git token error
+This error appears in the UI after Runtime installation when all Runtime components including the Application Proxy (app-proxy) are up and running. 
 
 ### Possible cause
-Your token is invalid because of missing scopes  
+Your token is [invalid because of missing scopes](#check-token-scopes)  
 OR  
-You are using a fine-grained token or one with custom scopes
+You are using a [fine-grained token or one with custom scopes](#skip-validation-for-fine-grained-github-tokens)
 
 ### Resolution
 
 ##### Check token scopes
+1. Check the scopes for the Runtime token you provided during installation. 
+  If you provided the same token as both the Runtime and user token, make sure the token has the additional scopes required.
+1. If needed, generate a new PAT (Personal Access Token) with the correct scopes.
 
 **GitHub Git Runtime token**
-{: .table .table-bordered .table-hover}
-| Type    | Required scopes    | 
-| -------- | ----------------- | 
-| **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/}|
-|**Fine-grained** (personal or group-based) |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul>{:/}|
 
 {: .table .table-bordered .table-hover}
 | Type    | Required scopes    | 
 | -------- | ----------------- | 
 | **Classic** | {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/} |
-| **Fine-grained** (personal or group-based) | {::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from
-</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li</ul>{:/} |
+| **Fine-grained** (personal or group-based) | {::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions: <ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul>{:/} |
 
 
+<br>
 
 **GitHub Git user token**
-{: .table .table-bordered .table-hover}
-| Type        | Required scopes | 
-| ------------ |  ----------------- | 
-| **Classic** |{::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li></ul>{:/} |
-|**Fine-grained** |{::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code></li><li>Repository permissions:<ul><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li></ul></li></ul>{:/}|
-
 
 {: .table .table-bordered .table-hover}
-| Type    | Required scopes    | 
+| Type     | Required scopes   | 
 | -------- | ----------------- | 
 | **Classic** | {::nomarkdown}<ul><li><code class="highlighter-rouge">repo</code></li><li><code class="highlighter-rouge">admin:repo_hook</code></li></ul>{:/} |
-| **Fine-grained** (personal or group-based) | {::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions:<ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul>{:/} |
+| **Fine-grained** (personal or group-based) | {::nomarkdown}<ul><li>Repository access: <code class="highlighter-rouge">All repositories</code> or <code class="highlighter-rouge">Only select repositories</code> including all repos that Argo CD syncs from</li><li>Repository permissions: <ul><li>Administration: <code class="highlighter-rouge">Read and write</code></li><li>Commit statuses: <code class="highlighter-rouge">Read and write</code></li><li>Contents: <code class="highlighter-rouge">Read and write</code></li><li>Metadata: <code class="highlighter-rouge">Read-only</code></li><li>Pull requests: <code class="highlighter-rouge">Read and write</code></li><li>Webhooks: <code class="highlighter-rouge">Read and write</code></li></ul></li></ul>{:/} |
+
+
 
 
 <!--- ##### Ensure token formatting
@@ -184,6 +181,6 @@ global:
 ...
 ```
 
-
-## Add  Git Source failure
-TBD
+## Related articles
+[Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)

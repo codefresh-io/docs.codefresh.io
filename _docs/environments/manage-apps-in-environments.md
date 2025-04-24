@@ -48,8 +48,10 @@ Promote a product or application from the Environments dashboard using one of tw
 Drag a product or application with changes to the target environment to promote it. Customize the Promotion Settings to control promotion behavior for the environment.    
 This method is best for quick promotions to test changes within a specific environment, typically in internal environments.  
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4isYoutmRco?si=DYKHnarfK2Wx6rNI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop promotions](https://www.youtube.com/watch?v=4isYoutmRco){:target="\_blank"}  -->
 
 
 

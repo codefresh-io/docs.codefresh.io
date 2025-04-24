@@ -4,7 +4,7 @@ description: "Orchestrate promotion for products across environment with Promoti
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/
- - /docs/promotions/entities/
+ - /docs/promotions/entities/promotion-flow/
 toc: true
 ---
 ## Promotion Flows in Codefresh GitOps
@@ -13,8 +13,10 @@ A Promotion Flow is a sequence of automated actions that systematically move cod
 Promotion Flows allow teams to manage their software delivery pipelines with precision, defining conditions, dependencies, and actions for each environment. Whether deploying to staging, production, or custom environments, Promotion Flows provide flexibility and control over your continuous delivery process.  
 Backed by the power of Argo CD, streamline the process of moving code changes through different stages, minus all the manual work of custom scripting to manage environment-specific requirements. 
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M8G-AY7FIIg?si=LQzY5FkIelQr4qMP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg){:target="\_blank"}  -->
 
 
 {% include 
