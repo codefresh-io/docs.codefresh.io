@@ -22,7 +22,7 @@ To stay up-to-date with our on-premises enhancements and features, see our [dedi
   <ul>
     {% for post in year.items %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </li>
     {% endfor %}
   </ul>

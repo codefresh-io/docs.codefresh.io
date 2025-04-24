@@ -13,7 +13,7 @@ If you missed any of our previous online announcements, you can find the latest 
   <ul>
     {% for post in year.items %}
       <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </li>
     {% endfor %}
   </ul>
