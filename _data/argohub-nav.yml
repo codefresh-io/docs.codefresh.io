@@ -287,6 +287,12 @@
     - title: Secrets for GitOps
       url: "/secrets"
 
+- title: What's new
+  url: "/whats-new"
+  pages:
+    - title: Release notes
+      url: "/changelog"
+
 - title: Support tickets
   url: "/support"
   pages:
