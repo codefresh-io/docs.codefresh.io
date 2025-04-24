@@ -71,14 +71,12 @@ The table lists key differences between Promotion Workflows containing hooks and
 
 
 ## Promotion hooks in Shared Configuration Repository
-Promotion Workflows with hooks are saved in the Shared Configuration Repository of the Runtime designated as the Configuration Runtime.
-If you have multiple Configuration Runtimes, the hooks are saved in the first Configuration Runtime in the list  
+Promotion Workflows with hooks are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository for all the GitOps Runtimes.
+The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).  
 
-The hooks are configure in isc for all runtimes (I would mention here the path)
-Then when submitting and running the workflow, it will run on the configuration runtime ns, but if there are multiple configuration runtimes then it will run on the first one that will act (we are planning to change it to the first one that was installed)
+The Workflow when submitted runs in the namespace of the Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/). If there is more than one Configuration Runtime, it runs on the first such Runtime in the list.  
 
-
-TBD - SHOW EXAMPLE OF SETTINGS
 
 ## Service accounts & service account roles for promotion hooks
 When a GitOps Runtime is installed, GitOps creates required resources to support hooks in Promotion Flows such as the service account, service account role and binding.  
