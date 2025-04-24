@@ -150,6 +150,8 @@
       localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
     - title: Install GitOps Runtime with new Argo CD
       localurl: /gitops/gitops-runtimes/hybrid-gitops-helm-installation/
+    - title: Troubleshooting Runtime installation
+      localurl: /gitops/gitops-runtimes/runtime-troubleshooting/  
 
 
 - title: Administration
@@ -160,8 +162,6 @@
       localurl: /gitops/administration/account-user-management/create-codefresh-account/
     - title: Adding users and teams
       localurl: /gitops/administration/account-user-management/add-users/
-    - title: Set up OAuth2 for GitOps
-      localurl: /gitops/administration/account-user-management/oauth-setup/
     - title: Access control for GitOps
       localurl: /gitops/administration/account-user-management/gitops-abac/
     - title: User settings

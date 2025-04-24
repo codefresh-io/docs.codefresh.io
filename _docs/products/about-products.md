@@ -13,10 +13,6 @@ Harness the power of **products** in Codefresh GitOps to streamline the manageme
 
 A product groups related Argo CD applications into a logical unit, providing a unified view as applications progress through different stages of development and deployment. By defining relationships between applications across multiple environments, products add an organizational layer providing context that help manage application releases as a cohesive unit.
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}
-
-
 {% include 
 image.html 
 lightbox="true" 
@@ -26,6 +22,12 @@ alt="Products and Product Dashboard in GitOps"
 caption="Products and Product Dashboard in GitOps"
 max-width="70%"
 %}
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m3wE4OfV9xE?si=IO-SSoPPIKR8B9r0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Explore Products](https://www.youtube.com/watch?v=m3wE4OfV9xE){:target="\_blank"}  -->
 
 
 
@@ -101,8 +103,10 @@ caption="Promotion settings for products"
 max-width="60%"
 %}
 
-Watch this video:
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ijf-3pKSBiA?si=ysueAKtLXJk1DZ_7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<!--- Watch this video:
+{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Dive into Promotion Settings for Products](https://www.youtube.com/watch?v=Ijf-3pKSBiA){:target="\_blank"}  -->
 
 
 ## Tracing Product promotions through Releases

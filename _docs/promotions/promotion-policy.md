@@ -4,7 +4,7 @@ description: "Create patterns to govern promotion behavior for environments"
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/
- - /docs/promotions/entities/
+ - /docs/promotions/entities/promotion-policy/
 toc: true
 ---
 

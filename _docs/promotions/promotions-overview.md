@@ -20,8 +20,10 @@ caption="GitOps promotions in Codefresh"
 max-width="60%"
 %}
 
-Watch this video to see a promotion in action:  
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"}
+Watch this video to see a promotion in action: 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4isYoutmRco?si=EDSfZFQQ4Dp5gw6i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+
+<!--- {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"} -->
 
 
 
@@ -90,8 +92,10 @@ Use these quick start guides to begin using promotions in Codefresh GitOps:
     * [Promotions with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)
     * [Environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)
 
-Watch this video to learn how to configure an automated Promotion Flow:  
-{::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"}
+Watch this video to learn how to configure an automated Promotion Flow: 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M8G-AY7FIIg?si=LQzY5FkIelQr4qMP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
+
+<!--- {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Promotion Flows](https://www.youtube.com/watch?v=M8G-AY7FIIg&t=76s){:target="\_blank"} -->
 
 
 ##### Understand the building blocks

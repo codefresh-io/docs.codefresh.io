@@ -36,8 +36,6 @@ Codefresh needs access to Git repositories for reading and writing to configurat
 ### GitOps Runtime token and secret
 The Git Runtime token is the personal access token provided during Runtime installation and is automatically converted to a secret. The secret for the Runtime repository is stored in the `runtime-repo-creds-secret` secret, labeled with `argocd.argoproj.io/secret-type: repo-creds`.  
 
-This label 
-The Runtime uses the same credentials 
 
 The secret:
 * Allows Argo CD to use the credentials to clone and pull data from the repositories it syncs from for read-only operations.
