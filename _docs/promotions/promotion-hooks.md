@@ -13,8 +13,8 @@ Promotion hooks in GitOps Cloud are specialized workflows that run at key stages
 {% include 
 image.html 
 lightbox="true" 
-file="/images/hooks/promotion-hooks-in-flow.png" 
-url="/images/hooks/promotion-hooks-in-flow.png"
+file="/images/gitops-promotions/hooks/promotion-hooks-in-flow.png" 
+url="/images/gitops-promotions/hooks/promotion-hooks-in-flow.png"
 alt="Promotion hooks in Promotion Flow" 
 caption="Promotion hooks in Promotion Flow"
 max-width="60%"
@@ -251,8 +251,8 @@ As the Flow progresses, the promotion mechanism:
 {% include 
 image.html 
 lightbox="true" 
-file="/images/hooks/promotion-context-behavior.png" 
-url="/images/hooks/promotion-context-behavior.png"
+file="/images/gitops-promotions/hooks/promotion-context-behavior.png" 
+url="/images/gitops-promotions/hooks/promotion-context-behavior.png"
 alt="Promotion context shared across promotion hooks in Promotion Flow" 
 caption="Promotion context shared across promotion hooks in Promotion Flow"
 max-width="60%"
