@@ -4,6 +4,8 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
 
+
+{% if page.collection == site.gitops_collection %}
 ### GitOps: Bring your own Argo CD
 
 We’ve made it easy to connect existing Argo CD infrastructure with GitOps Cloud.
@@ -59,9 +61,9 @@ Configuration steps are clearly defined, making the set up process easy to compl
 * **Define Git credentials**, with the option to use the same token for both the Runtime and user authentication. Required scopes are detailed to ensure the correct permissions.
 * **Configure as an Argo CD Application** to take full advantage of GitOps.
 * **Add a Git source** to the Runtime so you’re ready to create applications.
+{% endif  %}
 
-{% if page.collection == "posts" %}
-
+{% if page.collection != site.gitops_collection %}
 ### Pipelines: Easily add secret variables
 
 We've introduced a simpler and more secure way to add secret variables in your pipelines, making it faster and safer to manage sensitive data. Before this update, adding a secret required creating a standard variable, temporarily exposing the value, and manually encrypting it, increasing the risk of accidental exposure.
@@ -101,7 +103,7 @@ For details, see [Order of precedence for user-defined variables]({{site.baseurl
 
 ## Bug fixes
 
-{% if page.collection == "posts" %}
+{% if page.collection != site.gitops_collection %}
 
 ##### Pipelines
 
