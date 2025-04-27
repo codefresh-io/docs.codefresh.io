@@ -21,7 +21,7 @@ When a GitOps Runtime is installed, GitOps Cloud automatically creates the requi
     * When you create a Promotion Workflow from the UI, the service account is added automatically to the YAML. 
     * If you're creating the Promotion Workflow in Git, you must add the service account manually.
 
-* **Service account role**
+* **Service account role**  
   `cf-default-promotion-workflows-role`, the default role for promotion hooks, automatically bound to the service account `cf-default-promotion-workflows-sa`.  
 
 * **RBAC permissions for service account role**   
@@ -31,7 +31,7 @@ When a GitOps Runtime is installed, GitOps Cloud automatically creates the requi
     * `PATCH`  
 
 
-## Custom options for service accounts and service role
+## Custom options for service account and service role
 
 If you need a service role with additional permissions or a new service account, do one of the following:
 
@@ -41,7 +41,7 @@ If you need a service role with additional permissions or a new service account,
 * **Use a custom service account**  
   Use your own service account, and bind it to the default service role, `cf-default-promotion-workflows-role`.
 
-## Example of service account and service role for promotion hooks
+## Example of service account and service role
 
 ```yaml
 apiVersion: v1
