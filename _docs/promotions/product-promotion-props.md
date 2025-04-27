@@ -103,7 +103,7 @@ Assign predefined Promotion Flows to a product and configure the triggers that i
 
 ##### Why is this important?
 
-Assigning flows and defining their triggers ensures that changes are promoted under the right conditions, reduces manual work improving automation for a more reliable promotion process.
+Assigning flows and defining their triggers ensure that changes to the product are promoted under the right conditions, and improves automation for a more reliable promotion process.
 
 {% include
  image.html
