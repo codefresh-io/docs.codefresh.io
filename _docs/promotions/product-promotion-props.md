@@ -80,9 +80,6 @@ For details, see [Configuring properties for promotion across applications]({{si
 
 
 
-
-
-
 ## Concurrent promotion behavior for product
 
 Promotion flows can be triggered either automatically or manually, which may lead to multiple promotions being activated for the same product.  
@@ -104,7 +101,7 @@ For details, see [Configuring promotion concurrency for products]({{site.baseurl
 
 Assign predefined Promotion Flows to a product and configure the triggers that initiate each flow based on specific conditions.
 
-#### Why is this important?
+##### Why is this important?
 
 Assigning flows and defining their triggers ensures that changes are promoted under the right conditions, reduces manual work improving automation for a more reliable promotion process.
 
@@ -117,7 +114,6 @@ Assigning flows and defining their triggers ensures that changes are promoted un
  caption="Product Settings: Promotion Flows & triggers"
  max-width="50%"
 %}
-
 
 
 ## Related articles
