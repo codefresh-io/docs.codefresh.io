@@ -243,13 +243,12 @@ By default, the GitOps Runtime can deploy to the cluster it is installed on. You
 
 ## Behavior notes: GitOps Runtime with existing Argo CD
 
-The table below outlines the  differences in features and functionality when using GitOps Cloud with an existing (bring your own) Argo CD installation, compared to a new Argo CD (forked) installation.
+The table below outlines the differences in features and functionality when using GitOps Cloud with an existing (bring your own) Argo CD installation, compared to a new Argo CD (forked) installation.
 
 {: .table .table-bordered .table-hover}
 | **Feature/Functionality**|  **Behavior for existing Argo CD installation**   |
 | --------------        | ---------------- |
 |**Multiple GitOps Runtimes and Argo CD instances on same cluster** | Not supported. Multiple GitOps Runtimes and Argo CD instances when separated by namespaces on the same cluster is not supported.  |
-| **Multisource applications** | Applications with multiple sources are  |
 | **Sync detection for monorepo apps** | The Application Change Revision (ACR) Controller which enables precise and accurate sync detections for applications from mono repositories is not supported. When using mono repos for applications with an existing Argo CD instance, this means that notifications may not be not aligned with the precise sync operations that triggered syncs for deployments. For details, see [Application Change Revision Controller]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/). |
 | **Application source and destination field verification** | When creating new Argo CD applications from the Codefresh UI, GitOps Cloud does not validate the Source and Destination URLs configured for the application. This means that incorrect URLs are  <br>_Update pending_. |
 |**Filter application resources by label** | Not supported. The filter by **Kubernetes labels** in More Filters in the Current State tab is disabled. <br>_Update pending_. |
