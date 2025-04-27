@@ -48,14 +48,14 @@ max-width="60%"
 
 The product version defines the source from which the application version is retrieved and promoted.
 
-#### Why is this important?
+##### Why is this important?
 
 Defining the version source ensures that each promotion consistently targets the correct version, reducing the risk of mismatches, maintaining application integrity, and providing a traceable version history.
 
 > **NOTE**  
 The Environments, Product, and GitOps Apps dashboards display product versions **only for Helm-based applications**. For other types, versions are not displayed—even if configured.
 
-#### Version Attribute
+##### Version Attribute
 
 The version is defined using a JSON path expression, relative to the `spec.source.repoURL` and `spec.source.path` attributes in the application's manifest.
 Review [examples of version attributes]({{site.baseurl}}/docs/products/promotion-version-properties/#examples-of-version-attributes).
