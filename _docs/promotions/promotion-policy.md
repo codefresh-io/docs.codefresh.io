@@ -341,6 +341,7 @@ For more information, see [Promotion Workflows in Product Releases]({{site.baseu
 ## Related articles
 [Configure Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  
 [Configure Promotion Workflows]({{site.baseurl}}/docs/promotions/promotion-workflow/)  
+[Hooks in Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-hooks/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  

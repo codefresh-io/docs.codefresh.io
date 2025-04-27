@@ -1,5 +1,5 @@
 ---
-title: "Hooks in Promotion Flows"
+title: "Configure hooks in Promotion Workflows"
 description: "Configure hooks to capture release- and environment-level events in promotion releases"
 group: promotions"
 toc: true
@@ -8,7 +8,7 @@ toc: true
 
 ## What are promotion hooks?
 
-Promotion hooks in GitOps Cloud are specialized workflows that run at key stages of  a product release. A product release is created when a Promotion Flow is triggered, either manually or automatically.   
+Promotion hooks in GitOps Cloud are specialized Promotion Workflows that run at key stages of a product release. A product release is created when a Promotion Flow is triggered, either manually or automatically.   
 
 {% include 
 image.html 
@@ -27,8 +27,9 @@ Unlike Pre- and Post-Action Promotion Workflows, which operate on each applicati
 
 ##### When are promotion hooks triggered?  
 Promotion hooks can run at different stages of a product release:  
-* **Release start**: When a release is initiated  
-* **Release end**: When a release completes, whether **successful** or **failed** 
+* **Release**: When Promotion Flow trigger creates a product release:
+  * **On release start**: When a release is initiated  
+  * **On release end**: When a release completes, whether **successful** or **failed** 
 * **Per environment**: When a release transitions through specific environments:  
   * **On start**: When the promotion reaches an environment
   * **On success**: When the promotion completes successfully in an environment  
@@ -48,217 +49,45 @@ See [Assigning promotion hooks in Promotion Flows](#assigning-promotion-hooks-in
 
 Explore examples in [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
-##### Components required for promotion hooks
-
-To run promotion hooks in Promotion Workflows, you need these resources: 
-* **(Required) Service account, service account role and role binding** 
-  A default service account, service account role, and role binding, are automatically added to all Workflow Templates when you install the GitOps Runtime. The provided default resources are sufficient to implement promotion hooks. To use your own resources, see [Service accounts & service account roles for promotion hooks](#service-accounts--service-account-roles-for-promotion-hooks).
-
-* **(Optional) Promotion context**  
-  To make internal or custom parameters available to other in the same Promotion Flow, you need to create a promotion context as a JSON object and export it. See [Creating and exporting a promotion context](#creating-and-exporting-a-promotion-context).
+##### Arguments in promotion hooks
+A default set of arguments are available to all Promotion Workflows with hooksd. See [Default arguments in Promotion Workflows with hooks](#default-arguments-for-promotion-hooks).
 
 ## Promotion hooks vs. Pre- and Post-Action Promotion Workflows
 
 The table lists key differences between Promotion Workflows containing hooks and Promotion (Pre- and Post-Action) Workflows.
 
-| **Feature**    | **Promotion Hooks**  | **Promotion Workflows**    |
+| **Feature**    | **Promotion Hooks in Workflows**  | **Pre- and Post-Action Workflows**    |
 |----------------|----------------------|-----------------------------------------------|
-| **Purpose**    | Provides information on the release.  | Provides information on promoted changes in applications within an environment.    |
-| **Execution**  | Runs at release start, end (success, failure), or per environment (start, success, failure). | Runs for each application in an environment before and after promotion. |
-| **Scope**      | Runs on cluster at release or environment (once for each environment) level.      | Runs per application in the environment. |
-| **Effect on promotion**  | {::nomarkdown}<ul><li>If a hook fails, the product release fails as well.</li>If the release is terminated, On Fail and On Release Fail hooks are run.</li>If an On Start or On Success hook fails, the On Fail hook if defined, is run.</li></ul>{:/}| Blocks the promotion when a workflow fails.  |
+| **Purpose**    | Provide information on the release.  | Provide information on promoted changes in applications within an environment.    |
+| **Execution**  | Run at release start, end (success, failure), or per environment (start, success, failure). | Run for each application in an environment before and after promotion. |
+| **Runtime**    | Configuration Runtime. | Runtime managing the application.    |
+| **Scope**      | Runs on cluster at release, or once per environment.    | Runs per application in the environment. |
+| **Effect on promotion**  | If a hook fails, the product release fails as well. | If a workflow fails, product release fails as well.  |
 
 
-## Promotion hooks in Shared Configuration Repository
-Promotion Workflows with hooks are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository for all the GitOps Runtimes.
-The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/).  
+<!--- ## Promotion hooks in Shared Configuration Repository
+Promotion Workflows with hooks are saved in the Shared Configuration Repo in `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
 
-The Workflow when submitted runs in the namespace of the Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/). If there is more than one Configuration Runtime, it runs on the first such Runtime in the list.  
+The Workflow when submitted runs in the namespace of the Runtime designated as the [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/). If there is more than one Configuration Runtime, it runs on the first such Runtime in the list.  -->
 
 
-## Service accounts & service account roles for promotion hooks
-When a GitOps Runtime is installed, GitOps creates required resources to support hooks in Promotion Flows such as the service account, service account role and binding.  
+## Default arguments in Promotion Workflows with hooks
+The table below describes the default arguments available to all Promotion Workflows with promotion hooks.
 
-### Default service account and service role 
+{: .table .table-bordered .table-hover}
+| Parameter                     | Description            | Notes | 
+| --------------                 | --------------           |  --------------   |
+|`RELEASE_URL` | The URL link to the release associated with the promotion. Is this the release nmae? Can you see this somewhere? How can users  | All hooks   | 
+|`PRODUCT_NAME` | The name of the product for which the promotion release is running.  | All hooks   | 
+|`COMMIT_SHA`   | The unique identifier (SHA) of the commit, generated by Git, that triggered the promotion and creaged the release.| All hooks   | 
+|`PROMOTION_FLOW_NAME` | The name of the Promotion Flow triggerend for the release .  | All hooks   | 
+|`RELEASE_ID` | The unique identifier of the release.  | All hooks   | 
+|`ERROR_MESSAGE` | The system-generated error message identifying the reason why the release failed to complete. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
+|`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li>Name: The name of the environment that failed to complete the release. For example, production</li><li><b>Status</b>: The release or promotion status for the environment. Can be one of the following: <ul><li>Successful</li><li>Running</li><li>Suspended</li><li><b>Failed</b></li><li><b>Terminated</b></li></ul></li><li>Error-message: Thesystem-generated error message identifying the reason for the failed promotion. For example, `Product release was automatically terminated because the workflow state remained unknown`. {:/}| OnFailed hooks only  | 
 
-* **Service account**  
-  `cf-default-promotion-workflows-sa` with the required role and role binding.  
-    * Workflow template manifests reference this service account. 
-    * When you create a Promotion Workflow from the UI, the service account is added automatically to the YAML. 
-    * If you're creating the Promotion Workflow in Git, you must add the service account manually.
+## Service accounts for promotion hooks
 
-* **Service account role**
-  `cf-default-promotion-workflows-role`, the default role for promotion hooks, automatically bound to the service account `cf-default-promotion-workflows-sa`.  
-
-* **RBAC permissions for service account role**   
-  The following Role-Based Access Control (RBAC) permissions are required to allow hooks to retrieve and update release and promotion details securely:    
-    * `GET`  
-    * `WATCH`  
-    * `PATCH`  
-
-
-### Custom options for service accounts and service role
-
-If you need a service role with additional permissions or a new service account, do one of the following:
-
-* **Use a custom role**  
-  Create a new service role with the required permissions, and bind it to the default service account, `cf-default-promotion-workflows-sa`.
-
-* **Use a custom service account**  
-  Use your own service account, and bind it to the default service role, `cf-default-promotion-workflows-role`.
-
-### Example of service account and service role for promotion hooks
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: hook
-  annotations:
-    argo-hub/version: '0.0.2'
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: hook
-  annotations:
-    argo-hub/version: '0.0.2'
-rules:
-  - apiGroups:
-      - ""
-    resources:
-      - pods
-    verbs:
-      - get
-      - watch
-      - patch
-  - apiGroups:
-      - ""
-    resources:
-      - pods/log
-    verbs:
-      - get
-      - watch
-  - apiGroups:
-    - argoproj.io
-    resources:
-    - workflowtaskresults
-    verbs:
-    - create
-    - get
-    - list
-    - patch
-    - watch   
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: hook
-  annotations:
-    argo-hub/version: '0.0.2'
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: hook
-subjects:
-  - kind: ServiceAccount
-    name: hook
-```
-
-## Promotion contexts for promotion hooks
-All promotion hooks receive a standard set of [default arguments](#default-arguments-in-promotion-hook-workflows) such as the release ID, product, commit SHA.  
-To pass custom values such as Jira ticket IDs, approver names, or Slack channels between promotion hooks in the same Promotion Flow, define and export a **promotion context**.
-A promotion context is a user-defined JSON object that enables sharing values not natively available to the promotion mechanism.  
-
-Unlike standard Promotion Workflows which have built-in access to internal context, promotion hooks run within GitOps Runtimes in your own clusters. These hooks do not automatically receive custom parameters unless you explicitly define and export a promotion context. 
-
-Promotion contexts allow you to share user-defined variables across hooks in the Promotion Flow, making them available as input parameters to subsequent hooks.
-
-Examples:
-* Send a Slack alert to a specific channel by passing the channel name in the promotion context
-* Link to a Jira ticket across all hooks in the release by storing the ticket ID in the promotion context
-
-
-### Creating and exporting a promotion context 
-Use any method to create the promotion context as a JSON object and define the parameters. 
-
-**Export the promotion context**   
-Expose the file with the promotion context as an output parameter to make it available to the promotion mechanism.
-* Add `PROMOTION_CONTEXT` as the `name` to `outputs.parameters`. _The name must not be changed_.
-* Add the `globalName` attribute to make it available globally. The value must be identical to the name of the promotion context.
-* Add the `valueFrom` attribute to reference the file path.
-
-
-### Example of Promotion Workflow with promotion context  
-The example creates a promotion context `PROMOTION_CONTEXT` as a JSON object and exports it as output parameter.
-* The promotion context defines `JIRA_ISSUE_SOURCE_FIELD` and `JIRA_BASE_URL` 
-* Writes the context to a file `/tmp/promotion-context.txt`
-* Adds `PROMOTION_CONTEXT` to `outputs.parameters.name`, defines `globalName` as the name of the promotion context, and in `valueFrom.path` specifies the file path where the promotion context JSON was saved for GitOps Cloud to retrieve and pass on to subsequent Promotion  Workflows.
-
-  
-```yaml 
-...
-spec:
-...
-    - name: set-promotion-context
-      serviceAccountName: hook
-      inputs:
-        parameters:
-          - name: JIRA_ISSUE_SOURCE_FIELD
-          - name: JIRA_BASE_URL
-      script:
-        image: alpine
-        command:
-          - sh
-        source: |
-            export JIRA_ISSUE_BASE_URL="{{inputs.parameters.JIRA_BASE_URL}}"
-            export JIRA_ISSUE_SOURCE_FIELD="{{inputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}"
-            PROMOTION_CONTEXT=$(echo "{\"JIRA_ISSUE_URL\": \"${JIRA_ISSUE_BASE_URL}/browse/${JIRA_ISSUE_SOURCE_FIELD}\"}")
-            echo "$PROMOTION_CONTEXT" > /tmp/promotion-context.txt
-      outputs:
-        parameters:
-          - name: PROMOTION_CONTEXT  #  cannot be changed
-            globalName: PROMOTION_CONTEXT # name of promotion context
-            valueFrom:
-              path: /tmp/promotion-context.txt
-...
-``` 
-
-### How promotion context works during execution
-
-When a hook exports a promotion context, the promotion mechanism passes those parameters to all subsequent hooks in the Promotion Flow, regardless of whether the hooks include promotion contexts.
-
-This ensures:
-* Context values persist across environments and clusters
-* If a hook redefines a parameter already in the context, the new value takes precedence
-
-
-##### Triggering the first promotion hook
-When the Promotion Flow is triggered and a product release is created, the promotion mechanism:
-* Passes the default metadata (release ID, commit SHA for example) to the first hook
-* Initializes the promotion context, if defined and exported, with custom values 
-
-##### Triggering subsequent promotion hooks**
-As the Flow progresses, the promotion mechanism:
-* Retrieves the promotion context from the previous hook
-* Passes the context automatically to the next hook as input parameters:
-  * New parameters are added to the input parameters of the next hook
-  * For existing parameters, the value of the parameter in the current hook always takes precedence
-  
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/hooks/promotion-context-behavior.png" 
-url="/images/gitops-promotions/hooks/promotion-context-behavior.png"
-alt="Promotion context shared across promotion hooks in Promotion Flow" 
-caption="Promotion context shared across promotion hooks in Promotion Flow"
-max-width="60%"
-%}
-
-
+Promotion Workflows that include hooks must also specify a service account with the required permissions. Hook workflows may perform additional or external actions beyond standard promotions. For details, see [Service accounts for Promotion Workflows]({{site.baseurl}}/docs/promotions/service-accounts-promotion-workflows/).
 
 
 ## Examples of hooks in Promotion Workflows
@@ -279,7 +108,7 @@ These are passed automatically as workflow arguments and are typically used to b
 * `RELEASE_ID`  
 
 
-##### Custom parameters in on-start hook  
+##### Additional parameters in on-start hook  
 This hook defines additional inputs in the send-message template:
 * `MODE` is the value used by the Slack plugin logic.
 * `SLACK_HOOK_URL` is the user-define incoming webhook URL.
@@ -562,18 +391,7 @@ SCREENSHOT TBD
 
 
 
-## Default arguments in Promotion Hook Workflows
 
-{: .table .table-bordered .table-hover}
-| Parameter                     | Description            | Notes | 
-| --------------                 | --------------           |  --------------   |
-|`RELEASE_URL` | The URL link to the release associated with the promotion. Is this the release nmae? Can you see this somewhere? How can users  | All hooks   | 
-|`PRODUCT_NAME` | The name of the product for which the promotion release is running.  | All hooks   | 
-|`COMMIT_SHA`   | The unique identifier (SHA) of the commit, generated by Git, that triggered the promotion and creaged the release.| All hooks   | 
-|`PROMOTION_FLOW_NAME` | The name of the Promotion Flow triggerend for the release .  | All hooks   | 
-|`RELEASE_ID` | The unique identifier of the release.  | All hooks   | 
-|`ERROR_MESSAGE` | The system-generated error message identifying the reason why the release failed to complete. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
-|`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li>Name: The name of the environment that failed to complete the release. For example, production</li><li>Status: The release or promotion status for the environment. Can be one of the following: {::nomarkdown}<ul><li>**Successful** </li><li>Running</li><li>Suspended</li><li>Failed</li><li>Terminated</li></ul></li><li>Error-message: Thesystem-generated error message identifying the reason for the failed promotion. For example, `Product release was automatically terminated because the workflow state remained unknown`. | OnFailed hooks only  | 
 
 
 

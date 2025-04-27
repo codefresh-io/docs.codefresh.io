@@ -118,5 +118,7 @@
   "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/",
   "/docs/promotions/promotion-hooks/": "/gitops/promotions/promotion-hooks/",
   "/docs/installation/gitops/runtime-troubleshooting/": "/gitops/gitops-runtimes/runtime-troubleshooting/",
-  "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/"
+  "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/",
+  "/docs/promotions/promotion-context-promotion-workflows/": "/gitops/promotions/promotion-context-promotion-workflows/",
+  "/docs/promotions/service-accounts-promotion-workflows/": "/gitops/promotions/service-accounts-promotion-workflows/"
 }
