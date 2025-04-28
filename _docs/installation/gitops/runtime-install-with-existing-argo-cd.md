@@ -248,11 +248,11 @@ The table below outlines the differences in features and functionality when usin
 {: .table .table-bordered .table-hover}
 | **Feature/Functionality**|  **Behavior for existing Argo CD installation**   |
 | --------------        | ---------------- |
-|**Multiple GitOps Runtimes and Argo CD instances on same cluster** | Not supported. Multiple GitOps Runtimes and Argo CD instances when separated by namespaces on the same cluster is not supported.  |
-| **Sync detection for monorepo apps** | Not supported. The Application Change Revision (ACR) Controller which enables precise and accurate sync detections for applications from mono repositories is not supported. When using mono repos for applications with an existing Argo CD instance, this means that notifications may not be aligned with the precise sync operations that triggered syncs for deployments. For details, see [Application Change Revision Controller]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/). |
-| **Application source and destination URL validations** | When creating new Argo CD applications from the Codefresh UI, GitOps Cloud does not validate the Source and Destination URLs configured for the application. This means that incorrect URLs are saved and may cause application sync or deployment failures.<br>_Update pending_. |
-|**Filter application resources by label** | Not supported. The filter by **Kubernetes labels** in More Filters in the Current State tab is disabled. <br>_Update pending_. |
-|**Filter application by extraneous resources** | Not supported. The **Ignore Extraneous** button in the Current State tab is disabled. |
+|**Multiple GitOps Runtimes and Argo CD instances on same cluster** | Not supported. <br>Multiple GitOps Runtimes and Argo CD instances when separated by namespaces on the same cluster is not supported.  |
+| **Sync detection for monorepo apps** | Not supported. <br> The Application Change Revision (ACR) Controller which enables precise and accurate sync detections for applications from mono repositories is not supported. When using mono repos for applications with an existing Argo CD instance, this means that notifications may not be aligned with the precise sync operations that triggered syncs for deployments. For details, see [Application Change Revision Controller]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/). |
+| **Application source and destination URL validations** | Not supported. <br>When creating new Argo CD applications from the Codefresh UI, GitOps Cloud does not validate the Source and Destination URLs configured for the application. This means that incorrect URLs are saved and may cause application sync or deployment failures.<br>_Update pending_. |
+|**Filter application resources by label** | Not supported. <br>The filter by **Kubernetes labels** in More Filters in the Current State tab is disabled. <br>_Update pending_. |
+|**Filter application by extraneous resources** | Not supported.<br> The **Ignore Extraneous** button in the Current State tab is disabled. |
 
 
 
