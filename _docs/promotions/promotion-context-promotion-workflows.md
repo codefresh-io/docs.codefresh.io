@@ -103,13 +103,14 @@ max-width="60%"
 
 ## Walkthough: Using promotion hooks in Promotion Flows to handle promotion failures
 
-If you are familir with promotion hooks, you know that they are meant to take action or provude information for the release and environments when a promotion is intiated.
-In this walkthrough we'll show you how to use hooks to handle promotion failures so that users or staeksholders get all the information they need in a timely manner without needing or having to monio the release.
+Promotion hooks are designed to take action or provide information related to a release and its environments when a promotion is triggered.
+In this walkthrough, you'll see how to use promotion hooks to handle promotion failures, ensuring that stakeholders are notified with the right information—without needing to monitor the release manually.
 
-This walkthgoh 
-1. Creating the hooks
-1. Assignig hooks to a Promotion Flow
-1. See result 
+This walkthrough covers:
+* [Creating Promotion Workflows with hooks](#create-promotion-workflows-with-hooks)
+* [Assigning hooks in Promotion Flow](#assign-hooks-to-promotion-flow)
+* [Triggering hooks in Promotion Flow](#result-of-triggering-hooks-1-and-2-work-in-the-promotion-flow)
+
 
 ### Create Promotion Workflows with hooks
 
@@ -125,11 +126,12 @@ This hook performs two main actions:
 | **Two-step DAG structure** | The hook uses a Directed Acyclic Graph (DAG) with two tasks: first `create-issue`, then `set-promotion-context`. The second task depends on the successful creation of the Jira issue. |
 | **Jira issue creation** | The `create-issue` task uses a custom container to create a Jira ticket.|
 | **Promotion context definition** | After creating the Jira issue, the `set-promotion-context` task creates a JSON object with the full Jira issue URL. This JSON is saved to `/tmp/promotion-context.txt` and exported as the `PROMOTION_CONTEXT` global output. |
-| **Sharing information across hooks** | By exporting `PROMOTION_CONTEXT`, later hooks in the same Promotion Flow, have access to the Jira issue details. |
+| **Sharing information across hooks** | By exporting `PROMOTION_CONTEXT`, later hooks in the same Promotion Flow, have access to the Jira issue URL. |
 
 
 
 
+##### Example YAML
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
@@ -255,8 +257,9 @@ spec:
             valueFrom:
               path: /tmp/promotion-context.txt
 ```
+<br><br>
 
-#### Hook 2: Create a hook that sends a Slack notification with 
+#### Hook 2: Create a hook that sends a Slack notification 
 This hook sends a Slack notification when a promotion fails. It uses the promotion context set by the Jira creation hook to include a direct link to the Jira issue in the Slack message.
 
 
@@ -269,7 +272,7 @@ This hook sends a Slack notification when a promotion fails. It uses the promoti
 | **Simple and reusable Slack template** | The hook uses a standard Slack webhook and a flexible `SLACK_TEXT` format, making it easy to modify for different products or flows without changing the container logic. |
 | **Promotion context usage** | The `JIRA_ISSUE_URL` from the promotion context created in the previous hook is injected into the Slack message, linking the notification directly to the Jira ticket for tracking. |
 
-
+##### Example YAML
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
@@ -362,8 +365,8 @@ max-width="60%"
 
 
 
-### How Hooks 1 and 2 work in the Promotion Flow
-The table describes how the two hooks interact to provide the 
+### Result of triggering Hooks 1 and 2 work in the Promotion Flow
+The table describes the results when the two hooks are triggered. 
 
 
 {: .table .table-bordered .table-hover}
