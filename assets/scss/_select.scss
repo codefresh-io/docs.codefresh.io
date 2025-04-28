@@ -80,6 +80,7 @@
       &.selected {
         color: $ant-select-option-selected-color;
         background-color: $ant-select-option-selected-bg;
+        pointer-events: none;
       }
     }
   }
