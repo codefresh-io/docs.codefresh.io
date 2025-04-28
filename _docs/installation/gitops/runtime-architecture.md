@@ -223,8 +223,9 @@ In monorepo environments where multiple applications share a single repository, 
 * Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
 
 >**NOTE**  
-  The ACR Controller is supported from Runtime version 0.13.0 and higher.   
-  It does not support multi-source applications.
+  The ACR Controller is supported from Runtime version 0.13.0 and higher for GitOps Runtime installations with new Argo CD. Not supported for installations with existing Argo CD.   
+  It does not support multi-source applications.  
+
 
 ##### Configuration
 

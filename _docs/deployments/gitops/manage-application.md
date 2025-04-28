@@ -707,8 +707,13 @@ Rename an Application Set and point all existing applications to the renamed App
 %}
 
 ## Enable precise sync detection for monorepo apps
-Enable the ACR Controller in GitOps Runtimes to precisely detect sync operations that triggered deployments for applications in monorepo setups.
+Enable the ACR (Application Change Revision) Controller in GitOps Runtimes to precisely detect sync operations that triggered deployments for applications in monorepo setups.
 
+>**NOTE**  
+Not supported for GitOps Runtime installations with existing Argo CD. 
+
+
+ACR Controller 
 When enabled, the ACR Controller:
 * Identifies and tracks application-specific changes by analyzing the application’s source path.
 * Compares revisions to identify the specific sync operation that triggered the promotion or deployment.
