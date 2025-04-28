@@ -8,10 +8,33 @@
       </a>
       <div class="divider-vertical mt-1"></div>
       <div class="custom-select">
-        <div class="select-display" onclick="toggleSegmentDropdown()">Pipelines & GitOps</div>
-        <ul class="options">
-          <li class="option" onclick="selectSegmentOption(this, 'gitops')">GitOps Cloud</li>
-          <li class="option selected" onclick="selectSegmentOption(this, 'enterprise')">Pipelines & GitOps</li>
+        <div
+          class="select-display"
+          role="button"
+          tabindex="0"
+          onclick="toggleSegmentDropdown()"
+          onkeydown="handleDropdownKeydown(event)"
+        >
+          Pipelines & GitOps
+        </div>
+        <ul class="options" role="listbox" aria-hidden="true">
+          <li
+            class="option"
+            role="option"
+            tabindex="0"
+            aria-selected="false"
+            onclick="selectSegmentOption(this, 'gitops')"
+          >
+            GitOps Cloud
+          </li>
+          <li
+            class="option selected"
+            role="option"
+            tabindex="0"
+            aria-selected="true"
+          >
+            Pipelines & GitOps
+          </li>
         </ul>
       </div>
     </div>
