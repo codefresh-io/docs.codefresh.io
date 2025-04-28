@@ -83,10 +83,10 @@ When the Promotion Flow is triggered and a product release is created, the promo
 
 ##### Triggering subsequent promotion hooks
 As the Flow progresses, the promotion mechanism:
-* Retrieves the promotion context from the previous hook
-* Passes the context automatically to the next hook as input parameters:
-  * New parameters are added to the input parameters of the next hook
-  * For existing parameters, the value of the parameter in the current hook always takes precedence
+* Retrieves the promotion context exported by the previous hook
+* Passes the promotion context automatically to the next hook
+* If the current hook defines one or more of the parameters from the promotion context as input parameters, their values are taken from the context
+* If the current hook also exports a promotion context with the same parameter, the value from the current hook’s promotion context overrides the value from the previous context
   
 
 
@@ -124,8 +124,8 @@ This hook performs two main actions:
 | --------------    | --------------    |  
 | **Two-step DAG structure** | The hook uses a Directed Acyclic Graph (DAG) with two tasks: first `create-issue`, then `set-promotion-context`. The second task depends on the successful creation of the Jira issue. |
 | **Jira issue creation** | The `create-issue` task uses a custom container to create a Jira ticket.|
-| **Promotion context definition** | After the issue is created, the `set-promotion-context` task creates a JSON object with the full Jira issue URL. This JSON is saved to `/tmp/promotion-context.txt` and exported as the `PROMOTION_CONTEXT` global output. |
-| **Sharing information across hooks** | By exporting `PROMOTION_CONTEXT`, later hooks in the same Promotion Flow, like a Slack notification hook, can access the Jira issue details. |
+| **Promotion context definition** | After creating the Jira issue, the `set-promotion-context` task creates a JSON object with the full Jira issue URL. This JSON is saved to `/tmp/promotion-context.txt` and exported as the `PROMOTION_CONTEXT` global output. |
+| **Sharing information across hooks** | By exporting `PROMOTION_CONTEXT`, later hooks in the same Promotion Flow, have access to the Jira issue details. |
 
 
 
