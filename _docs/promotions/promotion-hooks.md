@@ -60,9 +60,9 @@ The table lists key differences between Promotion Workflows containing hooks and
 |----------------|----------------------|-----------------------------------------------|
 | **Purpose**    | Provide information on the release.  | Provide information on promoted changes in applications within an environment.    |
 | **Execution**  | Run at release start, end (success, failure), or per environment (start, success, failure). | Run for each application in an environment before and after promotion. |
-| **Runtime**    | Configuration Runtime. | Runtime managing the application.    |
+| **Runtime**    | Cluster with the Configuration Runtime. | Runtime managing the application.    |
 | **Scope**      | Runs on cluster at release, or once per environment.    | Runs per application in the environment. |
-| **Effect on promotion**  | If a hook fails, the product release fails as well. | If a workflow fails, product release fails as well.  |
+| **Effect on promotion**  | If a hook fails, the product release fails as well. <br>If the release is terminated, the On Fail and On Release Fail hooks, if defined, will run.<br>If an On Start or On Success hook fails, the On Fail hook, if defined, will run. |   If a workflow fails, the product release fails as well.  |
 
 
 <!--- ## Promotion hooks in Shared Configuration Repository
@@ -72,7 +72,9 @@ The Workflow when submitted runs in the namespace of the Runtime designated as t
 
 
 ## Default arguments in Promotion Workflows with hooks
-The table below describes the default arguments available to all Promotion Workflows with promotion hooks.
+The table below describes the default arguments that are replaced with values that GitOps Cloud retrieves from the promotion process.
+* When you create a Promotion Workflow template from the Codefresh UI, these arguments are automatically defined in `spec.arguments.parameters`.
+* When you create a template in Git, you must _manually add these arguments as required inputs_ if you want to use them.
 
 {: .table .table-bordered .table-hover}
 | Parameter         | Description       | Notes | 
@@ -86,7 +88,7 @@ The table below describes the default arguments available to all Promotion Workf
 |`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li><b>Name</b>: The name of the environment that failed to complete the release. For example, production</li><li><b>Status</b>: The release or promotion status for the environment. Can be one of the following: <ul><li>Successful</li><li>Running</li><li>Suspended</li><li>Failed</li><li>Terminated</li></ul></li><li><b>Error-message</b>: The system-generated error message identifying the reason for the failed promotion. For example, <code class="highlighter-rouge">Product release was automatically terminated because the workflow state remained unknown</code>. {:/}| OnFailed hooks only  | 
 
 ## Promotion contexts in Promotion Workflows with hooks
-In a Promotion Flow, hooks may need custom parameters beyond the default ones available. Because promotion hooks run within GitOps Runtimes in your own clusters, they do not automatically have access to custom internal parameters. To pass custom values like Jira ticket IDs, approver names, or Slack channel information between hooks in the same Promotion Flow, you must define and export a promotion context. For details, see [Creating and exporting a promotion context](#creating-and-exporting-a-promotion-context).
+In a Promotion Flow, hooks may need custom parameters beyond the default ones available to the promotion mechanism. Because promotion hooks run within GitOps Runtimes in your own clusters, they do not automatically have access to these custom internal parameters. To pass custom values like Jira ticket IDs, approver names, or Slack channel information between hooks in the same Promotion Flow, you must define and export a promotion context. For details, see [Creating and exporting a promotion context](#creating-and-exporting-a-promotion-context).
 
 
 ## Service accounts for promotion hooks
@@ -96,7 +98,9 @@ Promotion Workflows that include hooks must also specify a service account with 
 
 ## Examples of hooks in Promotion Workflows
 The following are examples of Promotion Workflows with hooks. 
-Though the hooks runs in the context of a promotion, they do not rely on implicit promotion behavior which makes the hook reusable in different Promotion Flows.
+Though the hooks runs in the context of a promotion, they do not rely on implicit promotion behavior which makes the hooks reusable in different Promotion Flows at release or environment levels.
+
+For examples of hooks with promotion contexts, see 
 
 
 ### On-start promotion hook example
@@ -104,7 +108,7 @@ The example below shows a Promotion Workflow configured as an on-start hook. Thi
 
 
 ##### Default parameters in on-start hook
-These are passed automatically as workflow arguments and are typically used to build contextual messages or logs:  
+These are defined in `arguments.parameters` and GitOps Cloud dynamically retrieves their values during the promotion. 
 * `RELEASE_URL`  
 * `PRODUCT_NAME`  
 * `COMMIT_SHA`  
@@ -113,7 +117,7 @@ These are passed automatically as workflow arguments and are typically used to b
 
 
 ##### Additional parameters in on-start hook  
-This hook defines additional inputs in the send-message template:
+This hook defines additional input parameters in the `send-message` template. Note that all parameters are defined with explicit values. 
 * `MODE` is the value used by the Slack plugin logic.
 * `SLACK_HOOK_URL` is the user-define incoming webhook URL.
 * `SLACK_TEXT` is the message to send. The example uses the default parameter `RELEASE_URL`.
@@ -153,7 +157,7 @@ spec:
           - name: MODE
             value: "simple"
           - name: SLACK_HOOK_URL
-            value: <put here your webhook url>
+            value: https://hooks.slack.com/services/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
           - name: SLACK_TEXT
             value: Successfully started a release flow {{workflow.parameters.RELEASE_URL}}!  
       container:
@@ -178,7 +182,7 @@ The example below shows a Promotion Workflow configured as an on-fail hook. This
 
 
 ##### Default parameters in on-fail hook
-It includes the same set of default parameters as for the [on-start hook Promotion Workflow](#default-parameters-in-on-start-hook) with two additional parameters specific to promotion failures which are passed automatically:
+It includes the same set of default parameters as for the [on-start hook Promotion Workflow](#default-parameters-in-on-start-hook) with two additional parameters specific to failed promotions:
 * `FAILED_ENVIRONMENTS` is a JSON array of failed environments if the hook is configured at release-level, or the specific environment if configured at environment level. 
 * `ERROR_MESSAGE` is the message describing the failure.
 
@@ -250,132 +254,7 @@ spec:
             value: '{{ inputs.parameters.SLACK_TEXT }}'
 ```
 
-### On-start hook with promotion context example
 
-The example below shows a Promotion Workflow configured as an _on-start hook including a promotion context_. This workflow can run when a new release starts or when a promotion starts in any environment. It defines a promotion context with the Jira issue ID and exports the promotion context as an output parameter.
-
-
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
-metadata:
-  name: on-start-hook-jira
-  annotations:
-    codefresh.io/workflow-origin: promotion
-    version: 0.0.1
-
-spec:
-  serviceAccountName: hook
-  entrypoint: main-dag
-  templates:
-    - name: main-dag
-      dag:
-        tasks:
-          - name: create-issue
-            template: create-issue
-          - name: set-promotion-context
-            template: set-promotion-context
-            depends: "create-issue.Succeeded"
-            arguments:
-              parameters:
-                - name: JIRA_ISSUE_SOURCE_FIELD
-                  value: "{{tasks.create-issue.outputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}"
-
-    - name: create-issue
-      serviceAccountName: hook
-      retryStrategy:
-        limit: "3"
-        retryPolicy: "Always"
-        backoff:
-          duration: "5s"
-      inputs:
-        parameters:
-          - name: SLACK_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: promotions-secrets
-                key: slack-token
-          - name: JIRA_BASE_URL
-            value: https://testjira273.atlassian.net
-          - name: JIRA_USERNAME
-            value: testjira273@gmail.com
-          - name: JIRA_API_KEY_SECRET_KEY
-            default: 'api-key'
-          - name: JIRA_USERNAME_SECRET_KEY
-            default: 'username'
-          - name: ISSUE_PROJECT
-            default: 'TEST'
-          - name: ISSUE_SUMMARY
-            default: 'some summary'
-          - name: ISSUE_DESCRIPTION
-            default: 'ISSUE_DESCRIPTION'
-          - name: ISSUE_COMPONENTS
-            default: ''
-          - name: ISSUE_CUSTOMFIELDS
-            default: ''
-          - name: ISSUE_TYPE
-            default: 'Task'
-      outputs:
-        parameters:
-          - name: JIRA_ISSUE_SOURCE_FIELD
-            valueFrom:
-              path: /tmp/JIRA_ISSUE_SOURCE_FIELD
-      container:
-        name: main
-        imagePullPolicy: Always
-        image: quay.io/codefreshplugins/argo-hub-workflows-jira-versions-0.0.1-images-jira-manager:main
-        command:
-          - python
-          - /jira/jira_issue_manager.py
-        env:
-          - name: JIRA_BASE_URL
-            value: '{{ inputs.parameters.JIRA_BASE_URL }}'
-          - name: JIRA_USERNAME
-            value: '{{ inputs.parameters.JIRA_USERNAME }}'
-          - name: SLACK_TOKEN
-            value: '{{ inputs.parameters.SLACK_TOKEN }}'
-          - name: ACTION
-            value: 'issue_create'
-          - name: ISSUE_PROJECT
-            value: '{{ inputs.parameters.ISSUE_PROJECT }}'
-          - name: ISSUE_SUMMARY
-            value: '{{ inputs.parameters.ISSUE_SUMMARY }}'
-          - name: ISSUE_DESCRIPTION
-            value: '{{ inputs.parameters.ISSUE_DESCRIPTION }}'
-          - name: ISSUE_COMPONENTS
-            value: '{{ inputs.parameters.ISSUE_COMPONENTS }}'
-          - name: ISSUE_CUSTOMFIELDS
-            value: '{{ inputs.parameters.ISSUE_CUSTOMFIELDS }}'
-          - name: ISSUE_TYPE
-            value: '{{ inputs.parameters.ISSUE_TYPE }}'
-        volumeMounts:
-          - name: promotion-context
-            mountPath: /tmp
-      volumes:
-        - name: promotion-context
-          emptyDir: {}
-
-    - name: set-promotion-context
-      serviceAccountName: hook
-      inputs:
-        parameters:
-          - name: JIRA_ISSUE_SOURCE_FIELD
-      script:
-        image: alpine
-        command:
-          - sh
-        source: |
-          PROMOTION_CONTEXT=$(echo "{\"jira_issue_id\": \"{{inputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}\"}")
-          echo $PROMOTION_CONTEXT > /tmp/promotion-context.txt
-      outputs:
-        parameters:
-          - name: PROMOTION_CONTEXT
-            globalName: PROMOTION_CONTEXT
-            valueFrom:
-              path: /tmp/promotion-context.txt
-
-```
 
 ## Assigning promotion hooks in Promotion Flows
 
@@ -388,13 +267,6 @@ Assign Promotion Workflows with promotion hooks in the Promotion Flow for the re
 
   >**NOTE**  
   You cannot assign a Promotion Hook Workflow to the Trigger Environment itself. 
-
-
-SCREENSHOT TBD
-
-
-
-
 
 
 
