@@ -9,21 +9,21 @@ toc: true
 ## GitOps Runtime with existing Argo CD
 This article describes how to install GitOps Runtimes in a Codefresh account using a Helm chart on a _cluster that already has an Argo CD instance_.
 
-This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime authenticates with the Argo CD instance through the [Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/) which you need to provide, and connects to key Argo CD services.
+This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime authenticates with the Argo CD instance through the [Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/) which you need to provide, and connects to key Argo CD services. See also [notes on behavior for Runtimes with existing Argo CD](#gitops-runtime-with-existing-argo-cd-behavior).
+
+To install the _GitOps Runtime with a new Argo CD instance_, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+
 
 ##### Runtime values.yaml 
 The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"}, contains all the arguments you can configure, including optional ones.  
 Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
 
 
-To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 ## Before you begin
 * Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
 * Verify you have a [valid Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/)
-
-
 
 
 ## Step 1: Select Runtime install option
@@ -241,7 +241,7 @@ By default, the GitOps Runtime can deploy to the cluster it is installed on. You
 
 
 
-## Behavior notes: GitOps Runtime with existing Argo CD
+## GitOps Runtime with existing Argo CD behavior
 
 The table below outlines the differences in features and functionality when using GitOps Cloud with an existing (bring your own) Argo CD installation, compared to a new Argo CD (forked) installation.
 
