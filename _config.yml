@@ -104,7 +104,7 @@ defaults:
   # _posts-gitops
   - scope:
       path: "_posts-gitops"
-      type: posts
+      type: posts-gitops
     values:
       layout: gitops
       toc: true
