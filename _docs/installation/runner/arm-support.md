@@ -1,5 +1,5 @@
 ---
-title: "ARM Support"
+title: "ARM support"
 description: "Use Docker containers on ARM architecture"
 group: incubation
 redirect_from:
