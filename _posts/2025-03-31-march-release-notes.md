@@ -1,6 +1,6 @@
 ---
 title: "Release Notes: March 2025"
-description: "Release Notes for Codefresh Pipelines and GitOps"
+description: ""
 ---
 ## Features & enhancements
 
@@ -54,7 +54,7 @@ Install a Runtime in three simple steps:
 
 ##### Configuration
 
-Configuration steps are clearly defined, making the set up process easy to complete.
+Configuration steps are clearly defined, making the setup process easy to complete.
 
 * **Define Git credentials**, with the option to use the same token for both the Runtime and user authentication. Required scopes are detailed to ensure the correct permissions.
 * **Configure as an Argo CD Application** to take full advantage of GitOps.
