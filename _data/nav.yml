@@ -592,7 +592,7 @@
           url: "/runner-architecture"
         - title: Runner installation for pipelines
           url: "/install-codefresh-runner"
-        - title: ARM architecture Support
+        - title: ARM support
           url: "/arm-support"
         - title: Runner installation behind firewalls
           url: "/behind-the-firewall"
