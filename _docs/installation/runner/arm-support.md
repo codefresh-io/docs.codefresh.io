@@ -1,7 +1,6 @@
 ---
 title: "ARM support"
 description: "Use Docker containers on ARM architecture"
-group: incubation
 redirect_from:
   - /docs/incubation/arm-support/
 toc: true
