@@ -262,8 +262,7 @@
       localurl: /docs/incubation/windows/
     - title: Mac OSX and iOS builds
       localurl: /docs/incubation/osx-ios-builds/
-    - title: ARM architecture Support
-      localurl: /docs/incubation/arm-support
+
 
 - title: "Knowledge Base"
   icon: images/home-icons/knowledge-base.svg
