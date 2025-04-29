@@ -748,9 +748,6 @@
     - title: Windows Container Support Overview
       url: "/windows"
     - title: Mac OSX and iOS builds
-      url: "/osx-ios-builds"
-    - title: ARM architecture support
-      url: "/arm-support"
 
 - title: Knowledge Base
   url: "/kb"

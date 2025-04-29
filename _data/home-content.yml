@@ -254,16 +254,6 @@
     - title: Verify authenticity of Codefresh artifacts
       localurl: /docs/security/codefresh-signed-artifacts/
 
-- title: "Incubation"
-  icon: images/home-icons/plugins.svg
-  url: ""
-  links:
-    - title: Windows Containers Support
-      localurl: /docs/incubation/windows/
-    - title: Mac OSX and iOS builds
-      localurl: /docs/incubation/osx-ios-builds/
-
-
 - title: "Knowledge Base"
   icon: images/home-icons/knowledge-base.svg
   url: ""
