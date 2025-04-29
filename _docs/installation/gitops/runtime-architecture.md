@@ -144,6 +144,8 @@ The Argo Project components include:
 * **Argo Workflows** as the workflow engine.
 * **Argo Events** for event-driven workflow automation framework.
 
+To see which Argo Project component versions correspond to a Runtime version, see [GitOps Runtime and Argo Project versions](https://kostis-codefresh.github.io/runtime-versions/){:target="\_blank"}. 
+
 >**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
