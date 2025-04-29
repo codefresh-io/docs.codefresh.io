@@ -592,6 +592,8 @@
           url: "/runner-architecture"
         - title: Runner installation for pipelines
           url: "/install-codefresh-runner"
+        - title: ARM support
+          url: "/arm-support"
         - title: Runner installation behind firewalls
           url: "/behind-the-firewall"
     - title: GitOps Runtimes
@@ -746,9 +748,6 @@
     - title: Windows Container Support Overview
       url: "/windows"
     - title: Mac OSX and iOS builds
-      url: "/osx-ios-builds"
-    - title: ARM architecture support
-      url: "/arm-support"
 
 - title: Knowledge Base
   url: "/kb"

@@ -1,5 +1,5 @@
 ---
-title: "ARM Support"
+title: "ARM support"
 description: "Use Docker containers on ARM architecture"
 group: incubation
 redirect_from:
@@ -7,14 +7,16 @@ redirect_from:
 toc: true
 ---
   
-Codefresh is offering initial support for building Docker images for the ARM architecture. ARM support
-is only available to Enterprise customers.
+Codefresh supports building Docker images for ARM architecture.  
+ARM support is only available to Enterprise customers.
 
 ## Enabling ARM support
 
-To run ARM pipelines in Codefresh, [open a free account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/) and then [contact sales](https://codefresh.io/contact-us/){:target="\_blank"} in order to enable ARM support.
+To run ARM pipelines in Codefresh:
+* [Open a free account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/)
+* [Contact sales](https://codefresh.io/contact-us/){:target="\_blank"} to enable ARM support
 
-Once approved, you will get access to a new runtime environment installed on an ARM cluster. This means that you will be able to run both ARM and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings).
+Once approved, you will get access to a new runtime environment installed on an ARM cluster. You can run both ARM and Linux/x86 builds from the same Codefresh account by choosing the appropriate [pipeline settings]({{site.baseurl}}/docs/pipelines/pipelines/#pipeline-settings).
 
 ## Using ARM builders in Codefresh
 
@@ -29,7 +31,8 @@ Just read the Codefresh documentation:
 * [On demand environments]({{site.baseurl}}/docs/quick-start/ci-quick-start/on-demand-environments/)
 
 
-The only important thing to notice is to make sure that the base Docker images you use are ARM-compiled.
+>**NOTE**  
+Make sure that the base Docker images you use are ARM-compiled.
 
 Most popular Docker images (i.e., Alpine) already offer ARM support so all your builds should work right away.
 
@@ -43,7 +46,7 @@ caption="Checking for ARM images in Dockerhub"
 max-width="60%"
 %}
 
-Dockerhub has a lot of public images that are offered in multiple architectures.
+Dockerhub has many public images that are offered in multiple architectures.
 You will get errors only if you use a less popular image that has no ARM support.
 
 
@@ -100,7 +103,7 @@ caption="Running Unit tests"
 max-width="60%"
 %}
 
-Once the pipeline is finished you will see the Docker image stored in the [default Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry):
+Once the pipeline completes execution, you will see the Docker image stored in the [default Docker Registry]({{site.baseurl}}/docs/docker-registries/external-docker-registries/#the-default-registry):
 
 {% include 
 image.html 
@@ -127,6 +130,5 @@ max-width="60%"
 In summary, the workflow for ARM images is exactly the same as the usual Linux/x86 images.
 
 ## Related articles
-[Windows container support]({{site.baseurl}}/docs/incubation/windows-beta/) 
-[macOS and iOS builds]({{site.baseurl}}/docs/incubation/osx-ios-builds/)  
+[Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/)  
 
