@@ -1,6 +1,6 @@
 ---
-title: "Release Notes: March 2025"
-description: "Release Notes for Codefresh Pipelines and GitOps"
+title: "Release Notes: April 2025"
+description: ""
 ---
 ## Features & enhancements
 
