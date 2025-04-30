@@ -21,7 +21,7 @@ Using our new preview window, you can now select JSON paths directly from your Y
 
 [Find out more]({{site.baseurl}}/docs/gitops/products/promotion-version-properties/#autocomplete-and-path-selectors-for-json-files).
 
-### Align your pipelines with your team’s delivery rhythm with smart promotion concurrency for products
+### Align your delivery rhythm with smart promotion concurrency for products
 
 Take full control over how releases are promoted across environments with two powerful concurrency modes now available per product.
 
@@ -71,7 +71,7 @@ Everything you need to know about the **latest release** is now available at a g
 
 You also have a **direct link to Product Settings**—giving you quick access to configuration options you're likely to update frequently.
 
-Explore the new Products page!
+Enjoy the new experience.
 
 
 
