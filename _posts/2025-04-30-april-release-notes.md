@@ -49,7 +49,7 @@ With smart promotion concurrency, you can:
 This makes it easier to align your GitOps pipelines with your team’s delivery rhythm.
 [Find out more]({{site.baseurl}}/docs/products/promotion-concurrency/)}.
 
-### Redesigned Products page for a more intuitive experience
+### More intuitive redesigned Products page 
 
 Get faster access to key information and actions with our newly redesigned Products page! Better understand release activity and manage your products more efficiently.
 
@@ -77,16 +77,21 @@ Enjoy the new experience.
 
 ## Bug fixes
 
+{% if page.collection == "posts" %}
 ##### General
+{% endif %}
 * Blank screen after login for invited users with SSO sync enabled.
 
+{% if page.collection == "posts" %}
 ##### Pipelines 
 * Git trigger for "Release published" fires incorrectly when any release-related trigger is enabled. 
 * Webhook events for Bitbucket ignored when pipeline trigger uses different Bitbucket integrations. 
 <!--- * Postgres Connectivity Issues: Azure Compatibility & Networking (CR-28067)-->
 * For GitHub, list of files modified by PR (pull request) does not include all modified files. 
 
+
 ##### GitOps
+{% endif %}
 * For installations with existing Argo CD, applications added from Helm repository show Unknown status in GitOps Apps dashboard. 
 * Unable to set up OAuth authentication for GitOps Runtime.
 * Incorrect merge for promotable properties defined as an array (Products > Product Settings > Promotion Settings).
