@@ -4,7 +4,7 @@ description: ""
 ---
 ## Features & enhancements
 
-### Configure your promotion settings easily using the JSON Path Selector with live preview
+### GitOps: Configure promotion settings with JSON Path Selector and live preview
 
 We’ve made configuring your promotion settings simpler, so you can get it right the first time without guesswork. 
 Using our new preview window, you can now select JSON paths directly from your YAML files. Just point to the file, browse its structure, and the correct path is inserted for you—wildcards included. This takes the guesswork out of configuring your promotion settings. 
@@ -21,7 +21,7 @@ Using our new preview window, you can now select JSON paths directly from your Y
 
 [Find out more]({{site.baseurl}}/docs/gitops/products/promotion-version-properties/#autocomplete-and-path-selectors-for-json-files).
 
-### Align your delivery rhythm with smart promotion concurrency for products
+### GitOps: Align delivery rhythm with smart promotion concurrency
 
 Take full control over how releases are promoted across environments with two powerful concurrency modes now available per product.
 
@@ -49,7 +49,7 @@ With smart promotion concurrency, you can:
 This makes it easier to align your GitOps pipelines with your team’s delivery rhythm.
 [Find out more]({{site.baseurl}}/docs/products/promotion-concurrency/)}.
 
-### More intuitive redesigned Products page 
+### GitOps: More intuitive redesigned Products page 
 
 Get faster access to key information and actions with our newly redesigned Products page! Better understand release activity and manage your products more efficiently.
 
