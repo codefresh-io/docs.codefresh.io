@@ -140,22 +140,39 @@
     }
   };
 
-  window.selectSegmentOption = function(option, selectedValue) {
+  window.selectSegmentOption = async function (option, selectedValue) {
     const selectDisplay = document.querySelector('.select-display');
-    const options = document.querySelectorAll('.option');
 
-    // Update the display text
     selectDisplay.textContent = option.textContent;
+
+    const redirectMap = await fetchRedirectMap();
+
+    const currentPath = window.location.pathname;
 
     if (selectedValue === 'enterprise') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'true');
-      location.href = `${SITE_BASE_URL}/?ent`;
+
+      const enterprisePath = Object.keys(redirectMap).find(
+        key => redirectMap[key] === currentPath
+      );
+
+      if (enterprisePath) {
+        window.location.href = `${SITE_BASE_URL}${enterprisePath}?ent`;
+      } else {
+        window.location.href = `${SITE_BASE_URL}/`;
+      }
     } else if (selectedValue === 'gitops') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'false');
-      location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
+
+      const gitOpsPath = redirectMap[currentPath];
+
+      if (gitOpsPath) {
+        window.location.href = `${SITE_BASE_URL}${gitOpsPath}`;
+      } else {
+        window.location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`; // Redirect to home page
+      }
     }
   };
-
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     const select = document.querySelector('.custom-select');
