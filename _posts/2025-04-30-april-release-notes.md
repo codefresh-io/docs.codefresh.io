@@ -19,7 +19,7 @@ Using our new preview window, you can now select JSON paths directly from your Y
    max-width="60%" 
    %}
 
-[Find out more]({{site.baseurl}}/docs/gitops/products/promotion-version-properties/#autocomplete-and-path-selectors-for-json-files).
+[Find out more]({{site.baseurl}}/docs/products/promotion-version-properties/#autocomplete-and-path-selectors-for-json-files).
 
 ### GitOps: Align delivery cadence with smart promotion concurrency
 
