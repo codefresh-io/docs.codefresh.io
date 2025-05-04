@@ -76,3 +76,17 @@ time="2024-10-15T18:35:54Z" level=info msg="Patch operation sync result for appl
 1. Send the logs collected to the Support team for further investigation.
 
 
+## Filter by Kubernetes labels in Current State is disabled
+
+### Possible Causes
+You have installed the GitOps Runtime with an existing Argo CD instance.  
+This filter option in the Current State tab is currently not supported.  
+
+Stay tuned for updates on this feature.
+
+## Ignore Extraneous filter in the Current State tab is disabled
+
+### Possible Causes
+You have installed the GitOps Runtime with an existing Argo CD instance.  
+This filter option in the Current State tab is currently not supported.  
+

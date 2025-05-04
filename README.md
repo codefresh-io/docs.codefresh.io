@@ -84,10 +84,10 @@ You can also link to mid-topic titles using `?ent. Add the link _after_ the quer
 **Example:**
 
 - URL to topic title:  
-  `https://codefresh.io/docs/docs/promotions/promotion-flow/?ent`  
+  `https://[placeholder-domain]/docs/docs/promotions/promotion-flow/?ent`  
 
 - URL for mid-topic links:  
-  `https://codefresh.io/docs/docs/promotions/product-promotion-props/?ent#product-properties-for-promotion`
+  `https://[placeholder-domain]/docs/docs/promotions/product-promotion-props/?ent#product-properties-for-promotion`
 
 
 Adding the `ent` parameter ensures users remain in the Enterprise segment without being redirected to the ArgoHub collection.
