@@ -21,7 +21,7 @@ Using our new preview window, you can now select JSON paths directly from your Y
 
 [Find out more]({{site.baseurl}}/docs/gitops/products/promotion-version-properties/#autocomplete-and-path-selectors-for-json-files).
 
-### GitOps: Align delivery rhythm with smart promotion concurrency
+### GitOps: Align delivery cadence with smart promotion concurrency
 
 Take full control over how releases are promoted across environments with two powerful concurrency modes now available per product.
 
@@ -47,7 +47,7 @@ With smart promotion concurrency, you can:
 * Adapt your promotion strategy per product
 
 This makes it easier to align your GitOps pipelines with your team’s delivery rhythm.
-[Find out more]({{site.baseurl}}/docs/products/promotion-concurrency/)}.
+[Find out more]({{site.baseurl}}/docs/products/promotion-concurrency/).
 
 ### GitOps: More intuitive redesigned Products page 
 
