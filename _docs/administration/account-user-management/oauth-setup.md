@@ -69,7 +69,8 @@ To set up OAuth2 authorization in Codefresh, you must:
 ### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
-1. For [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"} do the following:      
+{:start="1"}
+1. For [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}, do the following:      
     * For **Authorization callback URL**, enter this value:  
       `<ingressHost>/app-proxy/api/git-auth/github/callback`  
       where:  
@@ -79,6 +80,7 @@ Create and register an OAuth App under your organization to authorize Codefresh.
     * Select **Register application**.<br>
       The client ID is automatically generated, and you are prompted to generate the client secret.
     * Select **Generate a new client secret**, and copy the generated secret.  
+
 {:start="2"}
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:<br>
   * Application ID from the URL, Client ID, and the client secret  
