@@ -171,6 +171,8 @@ max-width="70%"
 1. Copy the user access token generated as you will need it to authorize access.
 
 
+<!--- commenting this out as these providers are not currently supported in Enterprise 
+
 {% if page.collection != site.gitops_collection %}
 ## Generate GitLab user access tokens
 1. Log in to your GitLab Cloud or Server account.
@@ -215,6 +217,8 @@ max-width="70%"
 {:start="4"}
 1. Copy the user access token generated as you will need it to authorize access.
 {% endif %}
+
+-->
 
 ## Related articles  
 [Git tokens in Codefresh]({{site.baseurl}}/docs/security/git-tokens/)
