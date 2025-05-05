@@ -19,19 +19,8 @@ Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs
 To install the GitOps Runtime with an existing Argo CD instance, see [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 
-## Installation in air-gapped environments
-When installing the GitOps Runtime in air-gapped clusters, you must ensure outbound connectivity to the required services.
-
-* **Platform access**  
-  Requires HTTPS egress to the Codefresh platform. Verify that these [IP addresses are in your allowed list]({{site.baseurl}}/docs/gitops/administration/platform-ip-addresses/#platform-ips).
-
-* **Repository access**
-  Requires egress to all Git, Helm, and OCI repositories accessed by Argo CD, using the appropriate protocol: HTTP, HTTPS, or SSH.
-
-
-
 ## Before you begin
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation, including egress requirements for air-gapped clusters
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
 
 
