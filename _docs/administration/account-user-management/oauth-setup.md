@@ -48,7 +48,7 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
 * **Token-based authentication using PAT**  
   With token-based authentication, users must generate personal access tokens with the required scopes in their GitHub accounts, and enter their personal access tokens when prompted to authorize access.<br>
   See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
-{% endif %}
+
 
 
 ## Authentication for Git providers and Runtime accounts
