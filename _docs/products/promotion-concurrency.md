@@ -51,7 +51,7 @@ With the terminate concurrency policy, ongoing releases are terminated when a ne
 ## Related articles
 [Assigning applications to products]({{site.baseurl}}/docs/products/assign-applications/)   
 [Configuring promotion flows and triggers for products]({{site.baseurl}}/docs/products/promotion-flow-triggers/)   
-[Tracking product releases]({{site.baseurl}}/docs/promotions/releases/)  
+[Tracking product releases]({{site.baseurl}}/docs/promotions/releases-in-products/)  
 [Configuring Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
 
 
