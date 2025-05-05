@@ -7,10 +7,10 @@ toc: true
 ---
 
 ## OAuth2 authentication for GitOps
-Codefresh integrates with GitHub as the Git provider defined for the GitOps Runtime to sync repositories to your clusters, implementing Git-based operations when creating resources such as applications, and enriching images with valuable information.  
+Codefresh integrates with GitHub Cloud as the Git provider defined for the GitOps Runtime to sync repositories to your clusters, implementing Git-based operations when creating resources such as applications, and enriching images with valuable information.  
 
 As the account administrator, you can select the authentication method for the account associated with the Runtime.  
-Users in the account can then authorize access to the Git provider through the defined mechanism.  
+Users in the account can then authorize access to GitHub as the Git provider through the defined mechanism.  
 
 {% include 
    image.html 
@@ -34,21 +34,6 @@ Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:
 * **Token-based authentication using PAT**  
   With token-based authentication, users must generate personal access tokens for their GitHub  accounts with the required scopes and enter their personal access tokens when prompted to authorize access.<br>
   See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
-
-
-
-Codefresh supports OAuth2 or personal access tokens (PATs) for authentication:  
-
-* **OAuth2 with Codefresh OAuth Application or custom OAuth2 Application**  
-  OAuth2 is the preferred authentication mechanism for GitHub. You have the option to use the default predefined Codefresh OAuth Application, or a custom Oauth2 Application for Codefresh in your Git provider account.  
-
-  To use a custom Oauth2 Application for Codefresh, first create the application in your Git provider account, then create a secret on your K8s cluster, and finally configure OAuth2 access for the custom application in Authentication > Settings. <br>
-  See [Create a custom OAuth2 Application for Git provider](#create-a-custom-oauth2-application-for-git-provider) in this article.
-
-* **Token-based authentication using PAT**  
-  With token-based authentication, users must generate personal access tokens with the required scopes in their GitHub accounts, and enter their personal access tokens when prompted to authorize access.<br>
-  See [Authorize Git access in Codefresh]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#git-provider-private-access).
-
 
 
 ## Authentication for Git providers and Runtime accounts
@@ -84,16 +69,16 @@ To set up OAuth2 authorization in Codefresh, you must:
 ### Step 1: Create a custom OAuth2 Application in Git
 Create and register an OAuth App under your organization to authorize Codefresh.  
 
-1. Follow the step-by-step instructions for [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"}:      
-  * For **Authorization callback URL**, enter this value:  
-    `<ingressHost>/app-proxy/api/git-auth/github/callback`  
-    where:  
-    `<ingressHost>` is the IP address or URL of the ingress host in the Runtime cluster as defined in your `values.yaml`. <br>For 
-    tunnel-based access modes, run the command `codefresh runtime list` to retrieve the correct host.
-  * Make sure **Enable Device Flow** is _not_ selected. 
-  * Select **Register application**.<br>
-    The client ID is automatically generated, and you are prompted to generate the client secret.
-  * Select **Generate a new client secret**, and copy the generated secret.  
+1. For [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app){:target="\_blank"} do the following:      
+    * For **Authorization callback URL**, enter this value:  
+      `<ingressHost>/app-proxy/api/git-auth/github/callback`  
+      where:  
+      `<ingressHost>` is the IP address or URL of the ingress host in the Runtime cluster as defined in your `values.yaml`. <br>
+      For tunnel-based access modes, run the command `codefresh runtime list` to retrieve the correct host.
+    * Make sure **Enable Device Flow** is _not_ selected. 
+    * Select **Register application**.<br>
+      The client ID is automatically generated, and you are prompted to generate the client secret.
+    * Select **Generate a new client secret**, and copy the generated secret.  
 {:start="2"}
 1. Note down the following, as you will need them to create the K8s secret for the Git OAuth2 application:<br>
   * Application ID from the URL, Client ID, and the client secret  
@@ -112,7 +97,7 @@ Create a K8s secret in the Runtime cluster, using the example below as a guideli
 ##### Before you begin 
 
 Make sure you have the following handy:
-* GitHub: Application ID from the URL, Client ID, and the client secret  
+* Application ID from the URL, Client ID, and the client secret  
 
 
 ##### How to
@@ -175,7 +160,7 @@ The values for all the settings in the ConfigMap are the `keys` in the secret fi
    max-width="50%" 
    %}
 
-{:start="4"}
+{:start="5"}
 1. Configure the settings for the **Git OAuth2 Application**, either in **Form** or in **YAML** modes:
   * **Secret Name**: The name of the K8s secret file you created in the runtime cluster.
   * **Secret Namespace**: The namespace in the runtime cluster where you created the K8s secret.
@@ -184,7 +169,7 @@ The values for all the settings in the ConfigMap are the `keys` in the secret fi
   * **Client Secret**: The `key` representing the client secret in the K8s secret. For example, `clientSecret`.
   * **URL**: The `key` representing the Git provider URL in the K8s secret. For example, `url`.
 
-{:start="5"}
+{:start="6"}
 1. Click **Commit**.
   The Commit Changes panel shows a summary of the settings and the final version of the YAML manifest in read-only mode. 
   
@@ -198,7 +183,7 @@ The values for all the settings in the ConfigMap are the `keys` in the secret fi
    max-width="50%" 
    %}
 
-{:start="6"}  
+{:start="7"}  
 1. From the **Select Git Source** list, select the Git Source in which to store the manifest for the `ConfigMap` you are creating.
   The list displays all the Git Sources created for the selected runtime. 
 1. Optional. Enter a commit message.
