@@ -45,11 +45,13 @@ You can run Promotion Workflows at different stages of the promotion:
 See [Creating Promotion Workflows](#create-promotion-workflows) and [Promotion Workflow examples](#promotion-workflow-examples). 
 
 
-
 ##### Arguments in Pre-Action and Post-Action Workflows
 Codefresh passes arguments retrieved during the promotion process to both Pre- and Post-Action Workflows. You can use these arguments to dynamically adjust requirements throughout the promotion lifecycle.  
 
 See [Parameters in Pre-Action and Post-Action Workflows](#parameters-in-pre-action-and-post-action-workflows).
+
+
+
 
 ## Using Promotion Workflows in promotions
 After creating Promotion Workflows, depending on the level of control and scalability you need, you can use them through:
@@ -75,7 +77,11 @@ See [Annotation attribute for Promotion Workflows](#annotation-attribute-for-pro
 ## Promotion Workflow YAML
 Once configured and committed, Promotion Workflow settings are saved as a CRD (Custom Resource Definition) within the Shared Configuration Repository in the GitOps Runtime selected as the Configuration Runtime.  
 The path in the Shared Configuration Repo is `<gitops-runtime>/<shared-configuration-repo>/resources/control-planes/promotion-workflows/`.  
-See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/).   
+See [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/) and [Designating Configuration Runtimes]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/). 
+
+## Service accounts for Promotion Workflow
+
+Every Promotion Workflow requires a service account to run. The service account grants the necessary permissions for actions in the target cluster. For details, see [Service accounts for Promotion Workflows]({{site.baseurl}}/docs/promotions/service-accounts-promotion-workflows/).
 
 ## Annotation attribute for Promotion Workflows
 An Argo Workflow or Workflow Template is classified as a Promotion Workflow when it includes the following annotation:  
@@ -777,85 +783,65 @@ caption="Workflow execution instances"
 max-width="60%"
 %}
 
+## Promotion hooks in Promotion Workflows 
+Promotion hooks are special steps you can configure within Promotion Workflows to expose promotion status and trigger custom actions during a Promotion Flow. Compared to Pre- and Post-Action Promotion Workflows that run on applications within environments, hooks provide tailored information about the success or failure of a release or environment, and can send notifications, execute external logic, or update external systems.
+
+Promotion hooks run at specific stages when a Promotion Flow is triggered manually or automatically. They can be reused across releases and environments to standardize processes and improve visibility across your GitOps workflows.
+
+Hooks have access to a default set of promotion arguments, such as the product, release ID, and commit SHA. You can also pass custom information, such as Jira ticket IDs, Slack channels, or release notes, by creating and exporting a promotion context within the workflow.
+
+The following example shows an on-start hook in a Promotion Workflow that sends a Slack notification at the start of a product release or environment promotion. 
 
 
-
-<!--- ### View/analyze Workflow instances
-
-
-
-1. In the Codefresh UI, from the sidebar, select **Promotion Workflows**.
-1. Click a Promotion Workflow, and then click the **Workflows** tab to see its instances.
-1. If needed, filter by Status, Target Environment, Product, or Application.
-1. To visualize steps and view detailed information, click **View Workflow Details**.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/workflows/workflow-instance-details.png" 
-url="/images/gitops-promotions/workflows/workflow-instance-details.png"
-alt="Detailed view of workflow execution instance" 
-caption="Detailed view of workflow execution instance"
-max-width="60%"
-%}
-
-
-
-### Workflow summary
-
-SCREENSHOT
-
-The table highlights key information you can find in the Summary tab for a workflow.
-
-{: .table .table-bordered .table-hover}
-|  Workflow Summary    | Description                   | 
-| --------------       | ------------------------------|  
-| **Errors**               | Displayed when the Workflow instance has at least one failed step.   |  
-| **Summary**              | Namespace, memory and CPU resource usage, and execution context of the workflow.<br>If triggered by a parent workflow, displays the link to that workflow.|  
-| **Manifests**            | The version of the manifest used for the specific Workflow execution. This may not be the same version currently displayed in the Manifest tab. Useful to troubleshoot failed steps and errors in the execution instance. |  
-| **Labels**            | Labels assigned to the workflow. Useful to filter, search, organize workflow executions. <br>Examples:<br>`codefresh.io/app-name: trioapp-qa`, `codefresh.io/app-namespace: gitops`.| 
-| **Parameters**            | The inputs set/modified for the specific execution. <br>Examples:<br>`Threshold: 50`, `Nb: 100`.| 
-| **Artifacts**            | The outputs if any generated by a workflow step, and can be logs, test-reports, binaries or any other type of file. Each artifact is associated with a specific step in the workflow. For example: `main-logs: smoketests-k9ss6`.| 
-
-
-
-###  Workflow actions
-Depending on the status of the workflow instance, you can do the following: 
-
-
-
-SCREENSHOT 
-Remove unused or legacy workflow instances. Deleting a workflow instance removes it from the list of executions. The Promotion Workflow itself is not changed. 
-
-### Workflow steps
-Visualize the steps in the Workflow. For additional information on the step, click the step to open the pull-out panel.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/workflows/workflow-step-details.png" 
-url="/images/gitops-promotions/workflows/workflow-step-details.png"
-alt="Workflow instance step detailed view" 
-caption="Workflow instance step detailed view"
-max-width="60%"
-%}
-
-
-
-### Workflow logs
-
-
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/gitops-promotions/workflows/workflow-logs.png" 
-url="/images/gitops-promotions/workflows/workflow-logs.png"
-alt="Workflow instance logs" 
-caption="Workflow instance logs"
-max-width="60%"
-%}
--->
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: on-start-hook
+  annotations:
+    codefresh.io/workflow-origin: promotion
+    version: 0.0.1
+spec:
+  arguments:
+    parameters:
+      - name: RELEASE_URL
+      - name: PRODUCT_NAME
+      - name: COMMIT_SHA
+      - name: PROMOTION_FLOW_NAME
+      - name: RELEASE_ID
+  serviceAccountName: hook
+  entrypoint: send-message
+  templates:
+    # Send-message template
+    - name: send-message
+      retryStrategy:
+        limit: "1"
+        retryPolicy: "Always"
+        backoff:
+          duration: "5s"
+      inputs:
+        parameters:
+          - name: MODE
+            value: "simple"
+          - name: SLACK_HOOK_URL
+            value: <put here your webhook url>
+          - name: SLACK_TEXT
+            value: Successfully started a release flow {{workflow.parameters.RELEASE_URL}}!  
+      container:
+        name: main
+        imagePullPolicy: Always
+        image: quay.io/codefreshplugins/argo-hub-slack-send-message:0.0.2-main
+        command:
+          - node
+          - /usr/src/app/index.js
+        env:
+          - name: MODE
+            value: '{{ inputs.parameters.MODE }}'
+          - name: SLACK_HOOK_URL
+            value: '{{ inputs.parameters.SLACK_HOOK_URL }}'
+          - name: SLACK_TEXT
+            value: '{{ inputs.parameters.SLACK_TEXT }}'
+```
 
 
 ## Promotion Workflows in product release views

@@ -3,7 +3,8 @@ title: "YAML specs"
 description: "YAML specifications for promotion entities"
 group: promotions
 redirect-from: 
- - /docs/promotions/entities/yaml
+ - /docs/promotions/configuration/
+ - /docs/promotions/entities/yaml/
 toc: true
 ---
 
