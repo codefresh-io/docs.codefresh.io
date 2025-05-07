@@ -8,7 +8,7 @@ toc: true
 
 
 
-## Promotion contexts in promotion hooks
+## About promotion contexts
 
 Promotion Workflows with hooks in Codefresh GitOps have access to a standard set of [default parameters]({{site.baseurl}}/docs/promotions/promotion-hooks/#default-arguments-in-promotion-hooks), such as the release ID, current release version, product, and commit SHA. When you define these parameters in the hook as input parameters, their values are dynamically retrieved from the ongoing promotion.
 

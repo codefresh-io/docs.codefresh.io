@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-## What are promotion hooks?
+## About promotion hooks
 
 Promotion hooks in GitOps Cloud are specialized Promotion Workflows that run at key stages of a product release. A product release is created when a Promotion Flow is triggered, either manually or automatically.   
 
