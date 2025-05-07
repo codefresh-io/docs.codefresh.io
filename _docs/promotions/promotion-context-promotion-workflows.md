@@ -101,7 +101,7 @@ max-width="60%"
 %}
 
 
-## Walkthough: Using promotion hooks in Promotion Flows to handle promotion failures
+## Walkthrough: Using promotion hooks in Promotion Flows to handle promotion failures
 
 Promotion hooks are designed to take action or provide information related to a release and its environments when a promotion is triggered.
 In this walkthrough, you'll see how to create and export a promotion context, and create promotion hooks and use the promotion context to handle promotion failures, ensuring that stakeholders are notified with the right information—without needing to monitor the release manually.
