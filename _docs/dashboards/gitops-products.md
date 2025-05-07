@@ -25,7 +25,8 @@ In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. 
 
 Read more on the first of their kind dashboards for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
-This article focuses on the two product dashboards: the **Products dashboard**, which lists all products, and the **Product Dashboard**, available when you drill down into a specific product.
+This article focuses on the two product dashboards: the **Products dashboard**, which lists all products, and the **Product Dashboard**, available when you drill down into a specific product.  
+
 For detailed information on creating products and how to work with them, see [About Products]({{site.baseurl}}/docs/products/about-products/) and [Creating products]({{site.baseurl}}/docs/products/create-product/).
 
 
