@@ -10,7 +10,7 @@ toc: true
 
 ## Promotion contexts in promotion hooks
 
-Promotion Workflows with hooks in Codefresh GitOps have access to a standard set of [default parameters]({{site.baseurl}}/docs/promotions/promotion-hooks/#default-arguments-in-promotion-hooks), such as the release ID, product, and commit SHA. When you define these parameters in the hook as input parameters, their values are dynamically retrieved from the ongoing promotion.
+Promotion Workflows with hooks in Codefresh GitOps have access to a standard set of [default parameters]({{site.baseurl}}/docs/promotions/promotion-hooks/#default-arguments-in-promotion-hooks), such as the release ID, current release version, product, and commit SHA. When you define these parameters in the hook as input parameters, their values are dynamically retrieved from the ongoing promotion.
 
 Because promotion hooks run within GitOps Runtimes in your own clusters, custom parameters such as Jira ticket IDs, approver names, or Slack channel names are not automatically exposed to the promotion process. To use these custom parameters in hooks, you have two options:
 * Define the custom parameters and their values manually in the workflow
@@ -104,29 +104,75 @@ max-width="60%"
 ## Walkthough: Using promotion hooks in Promotion Flows to handle promotion failures
 
 Promotion hooks are designed to take action or provide information related to a release and its environments when a promotion is triggered.
-In this walkthrough, you'll see how to use promotion hooks to handle promotion failures, ensuring that stakeholders are notified with the right information—without needing to monitor the release manually.
+In this walkthrough, you'll see how to create and export a promotion context, and create promotion hooks and use the promotion context to handle promotion failures, ensuring that stakeholders are notified with the right information—without needing to monitor the release manually.
 
 This walkthrough covers:
+* [Creating a Promotion Workflow template with a generic promotion context](#create-promotion-workflow-template-with-generic-promotion-context)
 * [Creating Promotion Workflows with hooks](#create-promotion-workflows-with-hooks)
 * [Assigning hooks in Promotion Flow](#assign-hooks-to-promotion-flow)
 * [Triggering hooks in Promotion Flow](#result-of-triggering-hooks-1-and-2-work-in-the-promotion-flow)
 
+### Create Promotion Workflow template with generic promotion context
+
+This Promotion Workflow template:
+* Defines a generic promotion context as a key-value map in JSON format. 
+* Uses a single parameter, `context-params`, which is a JSON string of arbitrary keys and values, such as metadata for the promotion, Jira ticket references, base URLs.
+* Exports the promotion context as `PROMOTION_CONTEXT`, ensuring that it's available to any promotion hook which references it.
+
+##### Example YAML
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: set-promotion-context
+  annotations:
+    version: 0.0.1
+    codefresh.io/workflow-origin: promotion
+spec:
+  entrypoint: generate-context
+  templates:
+    - name: generate-context
+      serviceAccountName: hook
+      inputs:
+        parameters:
+          - name: context-params
+            description: JSON string of key-value pairs
+            # Example: '{"JIRA_ISSUE_SOURCE_FIELD": "ABC-123", "JIRA_BASE_URL": "https://jira.example.com"}'
+      script:
+        image: alpine
+        command: [sh]
+        source: |
+          echo '{{inputs.parameters.context-params}}' > /tmp/context.json
+          CONTEXT_JSON=$(cat /tmp/context.json)
+
+          # Output the context as is
+          echo "$CONTEXT_JSON" > /tmp/promotion-context.txt
+      outputs:
+        parameters:
+          - name: PROMOTION_CONTEXT
+            globalName: PROMOTION_CONTEXT
+            valueFrom:
+              path: /tmp/promotion-context.txt
+```
+
 
 ### Create Promotion Workflows with hooks
 
-#### Hook 1: Create Jira ticket on promotion failure and export Jira 
+#### Hook 1: Create Jira ticket on promotion failure and export Jira issue URL through promotion context
 This hook performs two main actions:
 * Creates a Jira issue when a promotion fails.
-* Defines and exports a promotion context that stores the URL of the created Jira issue, making it available to later hooks in the same Promotion Flow.
+* References the  exports a promotion context that stores the URL of the created Jira issue, making it available to later hooks in the same Promotion Flow.
 
 
 {: .table .table-bordered .table-hover}
-| Hook 1 feature         | Description       | 
-| --------------    | --------------    |  
-| **Two-step DAG structure** | The hook uses a Directed Acyclic Graph (DAG) with two tasks: first `create-issue`, then `set-promotion-context`. The second task depends on the successful creation of the Jira issue. |
-| **Jira issue creation** | The `create-issue` task uses a custom container to create a Jira ticket.|
-| **Promotion context definition** | After creating the Jira issue, the `set-promotion-context` task creates a JSON object with the full Jira issue URL. This JSON is saved to `/tmp/promotion-context.txt` and exported as the `PROMOTION_CONTEXT` global output. |
-| **Sharing information across hooks** | By exporting `PROMOTION_CONTEXT`, later hooks in the same Promotion Flow, have access to the Jira issue URL. |
+| Hook 1 feature               | Description                                                                                       |
+|-----------------------------|---------------------------------------------------------------------------------------------------|
+| **Two-step DAG structure**  | The hook defines a Directed Acyclic Graph (DAG) with two steps: `create-issue` followed by `set-promotion-context`, which depends on successful Jira issue creation. |
+| **Jira issue creation**     | The `create-issue` step runs a container that creates a Jira issue and outputs its key or ID.     |
+| **Referenced template**     | The `set-promotion-context` step uses a reusable WorkflowTemplate named `set-promotion-context`, referencing its `generate-context` template. |
+| **Promotion context setup** | The `set-promotion-context` step passes a `context-params` JSON object with a dynamic Jira field value (`JIRA_ISSUE_SOURCE_FIELD`) from `create-issue` and a static base URL (`JIRA_ISSUE_URL`). It outputs this object as `PROMOTION_CONTEXT`. |
+| **Global sharing of context** | The exported `PROMOTION_CONTEXT` is globally accessible to any subsequent hook in the Promotion Flow. |
 
 
 
@@ -151,14 +197,18 @@ spec:
           - name: create-issue
             template: create-issue
           - name: set-promotion-context
-            template: set-promotion-context
+            templateRef:
+              name: set-promotion-context
+              template: generate-context
             depends: "create-issue.Succeeded"
             arguments:
               parameters:
-                - name: JIRA_ISSUE_SOURCE_FIELD
-                  value: "{{tasks.create-issue.outputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}"
-                - name: JIRA_ISSUE_URL
-                  value: https://testjira273.atlassian.net   
+                - name: context-params
+                  value: |
+                    {
+                      "JIRA_ISSUE_SOURCE_FIELD": "{{tasks.create-issue.outputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}",
+                      "JIRA_ISSUE_URL": "https://testjira273.atlassian.net"
+                    }
 
     - name: create-issue
       serviceAccountName: hook
@@ -208,54 +258,32 @@ spec:
           - /jira/jira_issue_manager.py
         env:
           - name: JIRA_BASE_URL
-            value: '{{ inputs.parameters.JIRA_BASE_URL }}'
+            value: ''
           - name: JIRA_USERNAME
-            value: '{{ inputs.parameters.JIRA_USERNAME }}'
-          - name: JIRA_API_KEY???
-            value: '{{ inputs.parameters.JIRA_API_KEY }}'
+            value: ''
+          - name: JIRA_API_SECRET_KEY
+            value: ''
           - name: ACTION
             value: 'issue_create'
           - name: ISSUE_PROJECT
-            value: '{{ inputs.parameters.ISSUE_PROJECT }}'
+            value: ''
           - name: ISSUE_SUMMARY
-            value: '{{ inputs.parameters.ISSUE_SUMMARY }}'
+            value: ''
           - name: ISSUE_DESCRIPTION
-            value: '{{ inputs.parameters.ISSUE_DESCRIPTION }}'
+            value: ''
           - name: ISSUE_COMPONENTS
-            value: '{{ inputs.parameters.ISSUE_COMPONENTS }}'
+            value: ''
           - name: ISSUE_CUSTOMFIELDS
-            value: '{{ inputs.parameters.ISSUE_CUSTOMFIELDS }}'
+            value: ''
           - name: ISSUE_TYPE
-            value: '{{ inputs.parameters.ISSUE_TYPE }}'
+            value: ''
         volumeMounts:
           - name: promotion-context
             mountPath: /tmp
       volumes:
         - name: promotion-context
           emptyDir: {}
-
-    - name: set-promotion-context
-      serviceAccountName: hook
-      inputs:
-        parameters:
-          - name: JIRA_ISSUE_SOURCE_FIELD
-          - name: JIRA_ISSUE_URL
-      script:
-        image: alpine
-        command:
-          - sh
-        source: |
-            export JIRA_ISSUE_BASE_URL="{{inputs.parameters.JIRA_ISSUE_URL}}"
-            export JIRA_ISSUE_SOURCE_FIELD="{{inputs.parameters.JIRA_ISSUE_SOURCE_FIELD}}"
-            PROMOTION_CONTEXT=$(echo "{\"JIRA_ISSUE_URL\": \"${JIRA_ISSUE_URL}/browse/${JIRA_ISSUE_SOURCE_FIELD}\"}")
-            echo "$PROMOTION_CONTEXT" > /tmp/promotion-context.txt
-
-      outputs:
-        parameters:
-          - name: PROMOTION_CONTEXT
-            globalName: PROMOTION_CONTEXT
-            valueFrom:
-              path: /tmp/promotion-context.txt
+   
 ```
 <br><br>
 
@@ -267,7 +295,7 @@ This hook sends a Slack notification when a promotion fails. It uses the promoti
 | Hook 2 feature         | Description       | 
 | --------------    | --------------    |  
 | **Single-step notification flow** | This hook uses a simple, single `send-message` template to post a Slack message. |
-| **Detailed Slack notification** | The Slack message includes product name, commit SHA, promotion flow name, release URL, release ID, failed environments, error message, and **the Jira ticket URL**. |
+| **Detailed Slack notification** | The Slack message the includes product name, commit SHA, promotion flow name, release URL, release ID, failed environments, error message, and **the Jira ticket URL**. |
 | **Dynamic inputs** | Parameters like `PRODUCT_NAME`, `COMMIT_SHA`, `ERROR_MESSAGE`, and `JIRA_ISSUE_URL` are passed dynamically, allowing the message to include real-time promotion failure details. |
 | **Simple and reusable Slack template** | The hook uses a standard Slack webhook and a flexible `SLACK_TEXT` format, making it easy to modify for different products or flows without changing the container logic. |
 | **Promotion context usage** | The `JIRA_ISSUE_URL` from the promotion context created in the previous hook is injected into the Slack message, linking the notification directly to the Jira ticket for tracking. |
