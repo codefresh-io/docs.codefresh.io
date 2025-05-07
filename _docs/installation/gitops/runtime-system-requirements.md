@@ -21,7 +21,7 @@ Depending on your installation mode, you also need to complete the [prerequisite
 |Git providers    |{::nomarkdown}{% if page.collection != site.gitops_collection %}<ul><li>GitHub</li><li>GitHub Enterprise</li><li>GitLab Cloud</li><li>GitLab Server</li><li>Bitbucket Cloud</li><li>Bitbucket Data Center</li></ul>{% endif %}{% if page.collection == site.gitops_collection %}<ul><li>GitHub</li>{% endif %}{:/}|
 |Git access tokens    | {::nomarkdown}Git Runtime token:<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-runtime-token-scopes">Scopes</a> </li></ul></ul>{:/}|
 | |Git user token:{::nomarkdown}<ul><li>Valid expiration date</li><li><a href="https://codefresh.io/docs/docs/security/git-tokens/#git-user-access-token-scopes">Scopes</a> </li></ul>{:/}|
-
+|Egress for air-gapped clusters |{::nomarkdown}<ul><li>Codefresh platform:<br>HTTPS egress to platform through <a href="https://codefresh.io/docs/docs/administration/platform-ip-addresses/#platform-ip">allowed list of IP addresses</a></li><li>Repository access:<br>Egress to Git, Helm, OCI repos accessed by Argo CD via HTTP, HTTPS, or SSH, as appropriate</li><li>Domains for Helm charts: <br>Access to the following domains:<br><ul><li>github.com</li><li>github.io</li><li>quay.io</li><li>ghcr.io</li><li>docker.io</li><li>ecr.aws</li></ul></li></ul>{:/}|
 
 
 ## Related articles
