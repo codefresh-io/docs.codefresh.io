@@ -1,6 +1,6 @@
 ---
 title: "Products dashboard"
-description: "Create Products to group and manage interrelated Argo CD applications environments"
+description: "Create products to group and manage interrelated Argo CD applications in environments"
 group: dashboards
 toc: true
 ---
@@ -8,36 +8,30 @@ toc: true
 
 
 
-Explore the power of Products for Argo CD applications in Codefresh GitOps. 
+Explore the power of products for Argo CD applications in Codefresh GitOps. 
 
 Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
-
 In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
 
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/expanded-view.png" 
-	url="/images/gitops-products/expanded-view.png" 
-	alt="GitOps Products (expanded view)" 
-	caption="GitOps Products (expanded view)"
-  max-width="70%" 
-%}
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/gitops-products/products-page.png" 
+   url="/images/gitops-products/products-page.png" 
+   alt="Products dashboard" 
+   caption="Products dashboard" 
+   max-width="60%" 
+   %}
 
 Read more on the first of their kind dashboards for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
-This article focuses on the main Products dashboard and the deta and the insights you can gain from it. 
-
+This article focuses on the two product dashboards: the **Products dashboard**, which lists all products, and the **Product Dashboard**, available when you drill down into a specific product.
 For detailed information on creating products and how to work with them, see [About Products]({{site.baseurl}}/docs/products/about-products/) and [Creating products]({{site.baseurl}}/docs/products/create-product/).
 
-<!--- >>**NOTE**  
-In the documentation, both Product (capitalized) and product (lowercase) refer to the same entity in Codefresh GitOps. They are used interchangeably for readability and consistency.
--->
 
 ## Products dashboard
 
-The Products dashboard lists all the products created for the account and key information on each. 
+The Products dashboard lists all the products created for the account and key information on their releases. 
 
 
  {% include 
@@ -68,13 +62,8 @@ View information on the latest release at a glance: release activity and manage 
  
 
 
-
-
-
-
-
-## Product dashboard
-Clicking a Product name navigates you to the Product Dashboard for the selected product with a detailed view of its applications. It also includes integrated insights into Git and issue-tracking systems and how they relate to deployments. 
+## Product Dashboard
+Clicking a product name navigates you to the Product Dashboard for the selected product with a detailed view of its applications. It also includes integrated insights into Git and issue-tracking systems and how they relate to deployments. 
  
 
 ##### Application release version
