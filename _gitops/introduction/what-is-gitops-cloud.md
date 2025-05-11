@@ -28,5 +28,5 @@ Codefresh GitOps Cloud makes it fast and easy to promote software changes secure
 Ready to get started? You can sign up for a [free 45-day trial](https://codefresh.io/codefresh-signup/){:"\_blank"} to try Codefresh GitOps Cloud for yourself. 
 
 ##### Want to know more?  
-[Explore Codefresh GitOps Cloud]({{site.baseurl}}/docs/gitops/introduction/explore-gitops-cloud-features/)  
+[Explore Codefresh GitOps Cloud]({{site.baseurl}}/{{site.gitops_collection}}/introduction/explore-gitops-cloud-features/)  
 [Watch the videos](https://www.youtube.com/playlist?list=PL8mgsmlx4BWUmxV9SnoekqFd3WHcNIDl_){:target="\_blank"}
