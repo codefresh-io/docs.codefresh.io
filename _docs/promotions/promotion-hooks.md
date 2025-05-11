@@ -6,9 +6,9 @@ toc: true
 ---
 
 
-## About promotion hooks
+## Promotion hooks overview
 
-Promotion hooks in GitOps Cloud are specialized Promotion Workflows that run at key stages of a product release. A product release is created when a Promotion Flow is triggered, either manually or automatically.   
+Promotion hooks in GitOps Cloud are specialized Promotion Workflows that run at key stages of a product release to provide information on the release and its environments. A product release is created when a Promotion Flow is triggered, either manually or automatically.   
 
 {% include 
 image.html 
@@ -36,7 +36,7 @@ Promotion hooks can run at different stages of a product release:
   * **On success**: When the promotion completes successfully in an environment  
   * **On failure**: When the promotion fails in an environment
 
-See [Assigning promotion hooks in Promotion Flows](#assigning-promotion-hooks-in-promotion-flows).
+See [Assigning promotion hooks in Promotion Flows](#assigning-promotion-hooks-in-promotion-flows). For the YAML specifications of promotion hooks when assigned, see [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/).
 
 ##### Use cases for promotion hooks
 * Auditing and visibility  
@@ -48,6 +48,9 @@ See [Assigning promotion hooks in Promotion Flows](#assigning-promotion-hooks-in
 * Integration with external tools
   Automate updates to ticketing systems such as Jira, or observability platforms.  
 
+* Approvals from external systems
+  Handle approvals required from external systems such as ServiceNow by pausing the promotion through a promotion hook when a PR pause is not feasible.
+
 Explore examples in [Codefresh Hub for Argo](https://codefresh.io/argohub/){:target="\_blank"}.
 
 ##### Arguments in promotion hooks
@@ -57,7 +60,8 @@ A default set of arguments are available to all Promotion Workflows with hooks. 
 
 The table lists key differences between Promotion Workflows containing hooks and Promotion (Pre- and Post-Action) Workflows.
 
-| **Feature**    | **Promotion Hooks in Workflows**  | **Pre- and Post-Action Workflows**    |
+|                | **Promotion Workflows**    |
+| **Feature**    | **Promotion Hook Workflows**  | **Pre- and Post-Action Workflows**    |
 |----------------|----------------------|-----------------------------------------------|
 | **Purpose**    | Provide information on the release.  | Provide information on promoted changes in applications within an environment.    |
 | **Execution**  | Run at release start, end (success, failure), or per environment (start, success, failure). | Run for each application in an environment before and after promotion. |
@@ -260,15 +264,26 @@ spec:
 
 ## Assigning promotion hooks in Promotion Flows
 
-Assign Promotion Workflows with promotion hooks in the Promotion Flow for the release or environments:
+Assign Promotion Workflows with promotion hooks to the Promotion Flow for the release or for one or more environments:
 * Release-level hooks run before the trigger environment and after the final target environment.
 * Environment-level hooks run on entry to or exit from each environment.
 * Multiple hooks can run based the stage in the product release they are configured. Promotion failure for an environment will run both On Fail hooks if configured the environment and for the release.
 
+You can also define them in the YAML manifest, as described in [Promotion Flow YAML]({{site.baseurl}}/docs/promotions/yaml/promotion-flow-crd/).
 
 
-  >**NOTE**  
-  You cannot assign a Promotion Hook Workflow to the Trigger Environment itself. 
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/hooks/assign-promotion-hooks-in-ui.png" 
+url="/images/gitops-promotions/hooks/assign-promotion-hooks-in-ui.png"
+alt="Assign promotion hooks in Promotion Flow" 
+caption="Assign promotion hooks in Promotion Flow"
+max-width="60%"
+%}
+
+>**NOTE**  
+You cannot assign a Promotion Hook Workflow to the Trigger Environment itself. 
 
 
 

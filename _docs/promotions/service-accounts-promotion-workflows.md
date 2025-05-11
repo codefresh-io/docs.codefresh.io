@@ -31,9 +31,9 @@ When a GitOps Runtime is installed, GitOps Cloud automatically creates the requi
     * `PATCH`  
 
 
-## Custom options for service account and service role
+## Custom options for service account and role
 
-If you need a service role with additional permissions or a new service account, do one of the following:
+If you need a role with additional permissions or a new service account, do one of the following:
 
 * **Use a custom role**  
   Create a new service role with the required permissions, and bind it to the default service account, `cf-default-promotion-workflows-sa`.
@@ -41,7 +41,7 @@ If you need a service role with additional permissions or a new service account,
 * **Use a custom service account**  
   Use your own service account, and bind it to the default service role, `cf-default-promotion-workflows-role`.
 
-## Example of service account and service role
+## Example of a service account and role
 
 ```yaml
 apiVersion: v1
