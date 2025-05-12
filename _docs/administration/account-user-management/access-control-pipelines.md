@@ -9,7 +9,7 @@ redirect_from:
   - /docs/enterprise-account-mng/ent-account-mng/
   - /docs/enterprise/ent-account-mng/
   - /docs/administration/ent-account-mng/  
-  _ /docs/administration/account-user-management/access-control/
+  - /docs/administration/account-user-management/access-control/
 toc: true
 ---
 
