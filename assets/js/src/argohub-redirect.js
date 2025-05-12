@@ -22,7 +22,7 @@ async function getArgoHubRedirectURL(currentPath) {
   return newURL;
 }
 
-async function handleRedirect() {
+async function handleRedirect () {
   handleEnterpriseDocTypeLock()
 
   if (shouldSkipRedirect()) return;
