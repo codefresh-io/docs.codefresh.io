@@ -83,12 +83,12 @@
 </script>
 
 <script>
-  window.toggleSegmentDropdown = function() {
+  toggleSegmentDropdown = function() {
     const select = document.querySelector('.custom-select');
     select.classList.toggle('open');
   };
 
-  window.handleDropdownKeydown = function (event) {
+  handleDropdownKeydown = function (event) {
     const select = document.querySelector('.custom-select');
     const options = select.querySelectorAll('.option');
     const isOpen = select.classList.contains('open');
@@ -110,7 +110,7 @@
     }
   };
 
-  window.handleOptionKeydown = function (event, option, selectedValue) {
+  handleOptionKeydown = function (event, option, selectedValue) {
     const select = document.querySelector('.custom-select');
     const options = select.querySelectorAll('.option');
     const currentIndex = Array.from(options).indexOf(option);
@@ -140,22 +140,39 @@
     }
   };
 
-  window.selectSegmentOption = function(option, selectedValue) {
+  selectSegmentOption = async function (option, selectedValue) {
     const selectDisplay = document.querySelector('.select-display');
-    const options = document.querySelectorAll('.option');
 
-    // Update the display text
     selectDisplay.textContent = option.textContent;
+
+    const redirectMap = await fetchRedirectMap();
+
+    const currentPath = window.location.pathname;
 
     if (selectedValue === 'enterprise') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'true');
-      location.href = `${SITE_BASE_URL}/?ent`;
+
+      const enterprisePath = Object.keys(redirectMap).find(
+        key => redirectMap[key] === currentPath
+      );
+
+      if (enterprisePath) {
+        window.location.href = `${SITE_BASE_URL}${enterprisePath}`;
+      } else {
+        window.location.href = `${SITE_BASE_URL}/`;
+      }
     } else if (selectedValue === 'gitops') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'false');
-      location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
+
+      const gitOpsPath = redirectMap[currentPath];
+
+      if (gitOpsPath) {
+        window.location.href = `${SITE_BASE_URL}${gitOpsPath}`;
+      } else {
+        window.location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
+      }
     }
   };
-
   // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     const select = document.querySelector('.custom-select');
