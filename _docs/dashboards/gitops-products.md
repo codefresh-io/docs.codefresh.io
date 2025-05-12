@@ -16,8 +16,8 @@ In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. 
  {% include 
    image.html 
    lightbox="true" 
-   file="/images/gitops-products/products-page.png" 
-   url="/images/gitops-products/products-page.png" 
+   file="/images/gitops-products/products-dashboard-view.png" 
+   url="/images/gitops-products/products-dashboard-view.png" 
    alt="Products dashboard" 
    caption="Products dashboard" 
    max-width="60%" 
@@ -40,8 +40,8 @@ The Products dashboard lists all the products created for the account and key in
    lightbox="true" 
    file="/images/gitops-products/products-page.png" 
    url="/images/gitops-products/products-page.png" 
-   alt="Products dashboard" 
-   caption="Products dashboard" 
+   alt="Products page with product and release information" 
+   caption="Products page with product and release information" 
    max-width="60%" 
    %}
 
