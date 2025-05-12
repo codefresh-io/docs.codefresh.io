@@ -14,6 +14,8 @@ Image enrichment enhances visibility into deployments by associating metadata—
 
 With Codefresh GitOps, you can enrich and report images to the Codefresh platform, even if you're using third-party CI tools. This allows you to maintain existing workflows while gaining full deployment insights in Codefresh.
 
+>**NOTE**  
+To enable image enrichment, please contact Support.
   
 ## Report image templates
 Codefresh provides **report image templates** optimized for third-party CI tools, enabling seamless integration with your workflows. By connecting external tools—such as Jira, Docker Hub, and Quay—you can enrich and report images with minimal disruption to existing CI/CD processes.
