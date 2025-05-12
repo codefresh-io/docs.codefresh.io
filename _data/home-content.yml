@@ -225,11 +225,11 @@
     - title: Create a Codefresh account
       localurl: /docs/administration/account-user-management/create-codefresh-account/
     - title: Adding users and teams
-      localurl: /docs/administration/account-user-management/add-users/
+      localurl: /docs/administration/account-user-management/add-users-teams/
     - title: Set up OAuth2 for GitOps
-      localurl: /docs/administration/account-user-management/oauth-setup/
+      localurl: /docs/administration/account-user-management/oauth-setup/    
     - title: Access control for pipelines
-      localurl: /docs/administration/account-user-management/access-control/
+      localurl: /docs/administration/account-user-management/access-control-pipelines/
     - title: Access control for GitOps
       localurl: /docs/administration/account-user-management/gitops-abac/
     - title: Audit

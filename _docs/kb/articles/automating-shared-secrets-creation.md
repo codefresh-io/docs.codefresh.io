@@ -58,5 +58,5 @@ echo "$CMD"
 ## Related articles
 
 [Secrets in pipelines]({{site.baseurl}}/docs/pipelines/configuration/secrets-store/)  
-[Configuring access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/)  
 [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/)  

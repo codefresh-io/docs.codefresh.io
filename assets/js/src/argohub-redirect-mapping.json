@@ -3,7 +3,7 @@
   "/docs/installation/gitops/shared-configuration/": "/gitops/gitops-runtimes/shared-configuration/",
   "/docs/security/git-tokens/": "/gitops/security/git-tokens/",
   "/docs/security/secrets/": "/gitops/security/secrets/",
-  "/docs/administration/account-user-management/add-users/": "/gitops/administration/account-user-management/add-users/",
+  "/docs/administration/account-user-management/add-users-teams/": "/gitops/administration/account-user-management/add-users-teams/",
   "/docs/administration/account-user-management/create-codefresh-account/": "/gitops/administration/account-user-management/create-codefresh-account/",
   "/docs/administration/account-user-management/gitops-abac/": "/gitops/administration/account-user-management/gitops-abac/",
   "/docs/administration/account-user-management/hosted-authorize-orgs/": "/gitops/administration/account-user-management/hosted-authorize-orgs/",

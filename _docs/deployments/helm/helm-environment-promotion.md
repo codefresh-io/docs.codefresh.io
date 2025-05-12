@@ -200,7 +200,7 @@ By default Codefresh will use a built-in install/upgrade pipeline for performing
 Note that the variable `CF_HELM_CHART_JSON_GZIP` is both compressed and base64 encoded. To get the raw value you need a command like `echo $CF_HELM_CHART_JSON_GZIP | base64 -d | gunzip`
 
 >**NOTE**  
-Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators) can override the default pipeline.
+Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#users-and-administrators) can override the default pipeline.
 
 Once you click the *update* button, a new build will run that will perform the deployment.
 

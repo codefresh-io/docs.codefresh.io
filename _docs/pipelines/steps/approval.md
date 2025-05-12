@@ -103,7 +103,7 @@ the approval step will be automatically rejected.
 ## Approval Restrictions
 
 By default, any Codefresh user can approve any pipeline that is paused at the approval state. If you want to restrict
-the approval action to a subset of people, you can use the [access control capabilities]({{site.baseurl}}/docs/administration/account-user-management/access-control/) that Codefresh provides.
+the approval action to a subset of people, you can use the [access control capabilities]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/) that Codefresh provides.
 
 This is a two-step process. First you need to tag your pipeline with one or more tags (tag names are arbitrary). You can edit tags in the pipeline settings screen.
 

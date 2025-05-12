@@ -83,10 +83,10 @@ The following resources can be targeted with the API:
 * *Agent* - Used for [Codefresh Runner installation]({{site.baseurl}}/docs/installation/behind-the-firewall/)
 * *Audit* - Read [Audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit/)
 * *Build* - Get/change [build status]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/)
-* *Cluster* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
+* *Cluster* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/) for [Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)
 * *Environments-v2* - Read/Write [Environment Dashboard]({{site.baseurl}}/docs/deployments/kubernetes/environment-dashboard/) information
 * *GitHub Actions* - Run [GitHub Actions inside Codefresh pipelines]({{site.baseurl}}/docs/integrations/github-actions/)
-* *Pipeline* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/) for [pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
+* *Pipeline* - [Access control]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/) for [pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/)
 * *Repos* - Refers to [Git repositories]({{site.baseurl}}/docs/integrations/git-providers/)
 * *Step Type* - Refers to [custom pipeline steps]({{site.baseurl}}/docs/pipelines/steps/#creating-a-typed-codefresh-plugin)
 
@@ -292,7 +292,7 @@ Codefresh automatically generates additional fields, usually fields with dates a
 | `project`       | `metadata`  | string | the project that contains this pipeline |
 | `originalYamlString`       | `metadata` | string | the full contents of the pipeline editor. Only kept for archival purposes |
 | `labels`       |  `metadata` | object | Holds the `tags` array |
-| `tags`       |  `labels` | array | A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control/#marking-pipelines-with-policy-attributes) for this pipeline |
+| `tags`       |  `labels` | array | A list of [access control tags]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#marking-pipelines-with-policy-attributes) for this pipeline |
 | `description`       |  `metadata` | string | Human readable description of the pipeline |
 | `isPublic `       |  `metadata` | boolean | If true, the pipeline logs [will be public]({{site.baseurl}}/docs/pipelines/configuration/build-status/) even for non-authenticated users |
 | `template `       |  `metadata` | boolean | If true, this pipeline will be listed as a template when creating a new pipeline |

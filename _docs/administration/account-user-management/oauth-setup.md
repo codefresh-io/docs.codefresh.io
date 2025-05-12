@@ -204,8 +204,8 @@ For a Git provider and a Runtime account, select the authentication mechanism: C
 
 
 ## Related articles
-[Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/)  
-[Configuring access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
+[Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/)  
+[Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)  
 [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)  
 
  

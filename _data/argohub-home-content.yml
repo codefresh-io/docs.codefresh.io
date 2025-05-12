@@ -161,7 +161,7 @@
     - title: Create a Codefresh account
       localurl: /gitops/administration/account-user-management/create-codefresh-account/
     - title: Adding users and teams
-      localurl: /gitops/administration/account-user-management/add-users/
+      localurl: /gitops/administration/account-user-management/add-users-teams/      
     - title: Access control for GitOps
       localurl: /gitops/administration/account-user-management/gitops-abac/
     - title: User settings

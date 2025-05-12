@@ -1,5 +1,5 @@
 ---
-title: "Configuring access control for pipelines"
+title: "Access control for pipelines"
 description: "Restrict resources to pipelines in a company environment"
 group: administration
 sub_group: account-user-management
@@ -9,6 +9,7 @@ redirect_from:
   - /docs/enterprise-account-mng/ent-account-mng/
   - /docs/enterprise/ent-account-mng/
   - /docs/administration/ent-account-mng/  
+  _ /docs/administration/account-user-management/access-control/
 toc: true
 ---
 
@@ -38,7 +39,7 @@ Let's review the different access mechanisms in more detail, including privilege
   
 ## Role-based access for users and administrators
 
-Role-based access is usually defined when you [add teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh) to accounts. Role-based access means assigning either a user or an administrator role.
+Role-based access is usually defined when you [add teams]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/#teams-in-codefresh) to accounts. Role-based access means assigning either a user or an administrator role.
 
 >**NOTE**  
 Only a user with an administrator role can add other users, and assign or change user roles.
@@ -248,7 +249,7 @@ Also review our examples in [Creating rules for pipelines by project tags](#crea
 
 ##### Before you begin
 Make sure you have:
-* [Created at least one team]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh)
+* [Created at least one team]({{site.baseurl}}/docs/administration/account-user-management/add-user-teams/#teams-in-codefresh)
 * Reviewed [CRUD privileges for entities/resources](#crud-privileges-for-entitiesresources)   
 * Added tags for all entities, except pipelines
 
@@ -385,7 +386,7 @@ We want:
 
 **Step 1: Set up the teams**  
 The first step is to create the teams, and add the users you want to each team.  
-See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users/#teams-in-codefresh).
+See [Teams in Codefresh]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/#teams-in-codefresh).
 
 If you have already created the DevOps and Users teams, you'll need to create the Marvel team.
 
@@ -624,6 +625,7 @@ By default, if configured for the account, users can also load pipeline definiti
   
 
 ## Related articles
+[Access control for user accounts]({{site.baseurl}}/docs/administration/account-user-management/access-control-user-accounts)  
 [Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
 [Managing your Kubernetes cluster]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 

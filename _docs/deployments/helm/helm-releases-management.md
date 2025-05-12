@@ -212,7 +212,7 @@ By default, when you take an action in the UI, Codefresh executes the native Hel
 You can override these actions for a specific Helm release by defining custom pipelines for each action. This way you can add your extra logic on top of these actions. For example your own Helm uninstall pipeline might also have a notification step that posts a message to a Slack channel after a release is removed.
 
 >**NOTE**  
-Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators) can override the default pipelines defined for a Helm release.
+Only [Codefresh admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#users-and-administrators) can override the default pipelines defined for a Helm release.
 
 1. In the Codefresh UI, from the DevOps Insights section in the sidebar, select [**Helm Releases**](https://g.codefresh.io/helm/releases/releasesNew/){:target="\_blank"}. 
 1. In the row with the Helm release for which to override default actions, click the **Settings** (gear) icon.
