@@ -33,7 +33,7 @@ async function handleRedirect() {
   location.href = argoHubRedirectURL;
 }
 
-window.fetchRedirectMap = async function () {
+async function fetchRedirectMap () {
   const response = await fetch(
     `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
   );

@@ -83,12 +83,12 @@
 </script>
 
 <script>
-  window.toggleSegmentDropdown = function() {
+  toggleSegmentDropdown = function() {
     const select = document.querySelector('.custom-select');
     select.classList.toggle('open');
   };
 
-  window.handleDropdownKeydown = function (event) {
+  handleDropdownKeydown = function (event) {
     const select = document.querySelector('.custom-select');
     const options = select.querySelectorAll('.option');
     const isOpen = select.classList.contains('open');
@@ -110,7 +110,7 @@
     }
   };
 
-  window.handleOptionKeydown = function (event, option, selectedValue) {
+  handleOptionKeydown = function (event, option, selectedValue) {
     const select = document.querySelector('.custom-select');
     const options = select.querySelectorAll('.option');
     const currentIndex = Array.from(options).indexOf(option);
@@ -140,7 +140,7 @@
     }
   };
 
-  window.selectSegmentOption = async function (option, selectedValue) {
+  selectSegmentOption = async function (option, selectedValue) {
     const selectDisplay = document.querySelector('.select-display');
 
     selectDisplay.textContent = option.textContent;
