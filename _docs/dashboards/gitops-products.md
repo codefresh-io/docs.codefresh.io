@@ -1,6 +1,6 @@
 ---
 title: "Products dashboard"
-description: "Create products to group and manage interrelated Argo CD applications in environments"
+description: "Explore the Products page for insights and management options"
 group: dashboards
 toc: true
 ---
@@ -11,7 +11,7 @@ toc: true
 Explore the power of products for Argo CD applications in Codefresh GitOps. 
 
 Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
-In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
+In Codefresh GitOps, products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
 
  {% include 
    image.html 
