@@ -24,7 +24,7 @@ See [Account and user management]({{site.baseurl}}/docs/administration/account-u
 {% if page.collection != site.gitops_collection %}
 * **CI pipelines**  
   Implement role-based access control (RBAC) and attribute-based access control (ABAC) to restrict access to pipelines. Define roles, assign tags, and create rules to manage permissions effectively.  
-  See [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
+  See [Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/).
 {% endif %}
 * **GitOps**  
   Set up access control mechanisms for GitOps entities and processes to ensure secure operations.

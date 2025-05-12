@@ -131,7 +131,7 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitHub Token
 
@@ -204,7 +204,7 @@ If you need additional permission for your integration, use the Manual Creation 
 1. To apply your changes, click **Save**.  
 
 >**NOTE**  
-If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/-pipelines/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
 
@@ -225,7 +225,7 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the Git integration.
 
-For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitLab Token
 
@@ -330,7 +330,7 @@ alt="Codefresh integration with Azure Devops"
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+ If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Atlassian Stash
 

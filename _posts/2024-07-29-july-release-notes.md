@@ -42,7 +42,7 @@ caption="Rules for runtime environments and resources in pipelines"
 max-width="60%"
 %}
 
-For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/administration/account-user-management/access-control/#assign-tags-to-pipeline-runtimes) and [Creating rules for Pipeline Runtimes and runtime environments]({{site.baseurl}}/docs/administration/account-user-management/access-control/#creating-rules-for-pipeline-runtimes-and-runtime-environments).
+For details, see [Assign tags to Pipeline Runtimes]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#assign-tags-to-pipeline-runtimes) and [Creating rules for Pipeline Runtimes and runtime environments]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#creating-rules-for-pipeline-runtimes-and-runtime-environments).
 
 ### GitOps: Runtime upgrade
 

@@ -115,5 +115,5 @@ Export all audited events, both Audits and Triggers, to a  `CSV` file, for offli
 
 ## Related articles
 [Codefresh installation options]({{site.baseurl}}/docs/installation/installation-options/)  
-[Configuring access Control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)  
+[Access control for pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-contro-pipelines/)  
 [Codefresh API integration]({{site.baseurl}}/docs/integrations/codefresh-api/)  

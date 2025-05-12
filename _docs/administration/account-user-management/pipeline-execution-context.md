@@ -21,7 +21,7 @@ A pipeline execution context is an entity attached to the pipeline that makes AP
 
 ## Permissions
 
-When a new execution context is created, it has no permissions at first. An account admin must add ABAC rules to grant permissions to that execution context. The enforcement of the execution context permissions will be based on the existing [ABAC model]({{site.baseurl}}/docs/administration/account-user-management/access-control/) that we have today on our platform. The available permissions for execution context will be the same as we have today for codefresh teams. There will be a new tab on the Permissions page for assigning ABAC rules to the execution context.
+When a new execution context is created, it has no permissions at first. An account admin must add ABAC rules to grant permissions to that execution context. The enforcement of the execution context permissions will be based on the existing [ABAC model]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/) that we have today on our platform. The available permissions for execution context will be the same as we have today for codefresh teams. There will be a new tab on the Permissions page for assigning ABAC rules to the execution context.
 
 In addition, there will be a new action for team rules: assigning execution context to pipelines. Account admins will be able to control which teams will be able to set execution contexts to certain pipelines by creating a rule like: “Dev team can assign execution context with tags ‘dev-context’ to pipelines that have ‘dev’ tags.”
 

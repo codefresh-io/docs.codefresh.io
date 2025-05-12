@@ -17,7 +17,7 @@ Rules define the *who*, *what*, and *where* to control access through the follow
     * [Products](#products-actions--attributes)
 
 * **Teams**  
-  Teams control the _who_ part of the rule. See [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/). 
+  Teams control the _who_ part of the rule. See [Adding users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/). 
 
 * **Actions**  
   Actions control the _what_ part of the rule. You need to select at least one action per entity. Available actions differ based on the selected entity.
@@ -239,3 +239,5 @@ This rule grants manual promotion privileges to specific products that match a s
 
 ## Related articles
 [Codefresh Provider for Terraform](https://registry.terraform.io/providers/codefresh-io/codefresh/latest/docs){:target="\_blank"}   
+[Access control for user accounts]({{site.baseurl}}/docs/administration/account-user-management/access-control-user-accounts)  
+

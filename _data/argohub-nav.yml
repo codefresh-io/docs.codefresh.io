@@ -111,10 +111,10 @@
         - title: Create a Codefresh account
           url: "/create-codefresh-account"
         - title: Adding users and teams
-          url: "/add-users"
+          url: "/add-users-teams"
         - title: Managing service accounts
           url: "/service-accounts"
-        - title: Configuring access control for GitOps
+        - title: Access control for GitOps
           url: "/gitops-abac"
         - title: Authorize access to organizations/projects
           url: "/hosted-authorize-orgs"

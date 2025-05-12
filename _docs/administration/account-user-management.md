@@ -10,8 +10,8 @@ Codefresh has comprehensive support for all aspects of administration for organi
 Review:
 
 {% if page.collection != site.gitops_collection %}
-* [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/) 
-* Configure access control for [pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control/) and for [GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
+* [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/) 
+* Configure access control for [pipelines]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/) and for [GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
 * [Configure access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
 * [Configure Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)
 * Get [audit logs]({{site.baseurl}}/docs/administration/account-user-management/audit/) for runtimes (hosted or private)
@@ -21,7 +21,7 @@ For on-premises environments, see [On-premises account and user setup]({{site.ba
 {% endif %}
 
 {% if page.collection == site.gitops_collection %}
-* [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users/) 
+* [Add users and teams]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/) 
 * [Configure access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/)
 * [Configure Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
 {% endif %}

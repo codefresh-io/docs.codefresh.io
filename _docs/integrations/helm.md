@@ -18,7 +18,7 @@ Native support for Helm in Codefresh includes:
 The built-in Helm repository is production ready. You can start using Helm right away with your Codefresh account,
 even if you don't have an external Helm repository. See our [quick start guide for Helm]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-with-helm/)  or the [complete Helm example]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/).  
 
-For each Helm integration, you can toggle the level of access for [non-admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control/#users-and-administrators). 
+For each Helm integration, you can toggle the level of access for [non-admin users]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#users-and-administrators). 
 
 {{site.data.callout.callout_warning}}
 **IMPORTANT**    

@@ -55,7 +55,7 @@ Of course, you can also have a simpler scenario where the trigger, the pipeline 
 
 ## Creating a pipeline
 
-You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/).
+You can create new projects by clicking on *Projects* in the left sidebar and then selecting the *New Project* button on the top right corner. A dialog will appear that will ask you for the project name and optional tags that you can use for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/).
 
 
 >**NOTE**  
@@ -206,7 +206,7 @@ Once you create your pipeline you can also click on the top tab called *Settings
     {{site.data.callout.end}}
 
 - **Pipeline Description**: Free text description of the pipeline. 
-- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
+- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/)
 - **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) can view the builds of this pipeline.
 - **Template**: Convert this pipeline to a template (see the next section for details on templates).
 - **Badges**: Simple images that show you the last [build status]({{site.baseurl}}/docs/pipelines/configuration/build-status/).
@@ -267,7 +267,7 @@ Codefresh authenticates the credentials of each cluster during the build initial
   The option to select clusters for a pipeline is available only when the account-level pipeline setting is enabled. See [Enabling cluster contexts for pipelines]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/#enabling-cluster-contexts-for-pipelines).  
 
 * **Update Cluster** permission for users in the Codefresh UI through [Permissions](https://g.codefresh.io/account-admin/permissions/teams){:target="\_blank"}.  
-  For more information, see [Access Control]({{site.baseurl}}/docs/administration/account-user-management/access-control/#access-to-kubernetes-clusters-and-pipelines).
+  For more information, see [Access Control]({{site.baseurl}}/docs/administration/account-user-management/access-control-pipelines/#access-to-kubernetes-clusters-and-pipelines).
 
 As part of the Pipeline > Policies, you can either allow access to all clusters (the default), or only specific clusters as in the example below. 
 

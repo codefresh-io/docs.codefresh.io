@@ -71,7 +71,7 @@ Manually synchronize users and teams provisioned in your SSO provider account, o
 
 
 >**NOTE**    
-Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
+Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 As an example, you can sync your Azure teams with the CLI: 
 
@@ -99,7 +99,7 @@ max-width="40%"
 As an alternative to manually syncing teams on demand via the Codefresh CLI, you can manually sync teams using Codefresh pipelines. 
 
 >**NOTE**    
-Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
+Make sure that there are no [domain restrictions on the email address]({{site.baseurl}}/docs/administration/account-user-management/add-users-teams/#define-session-timeouts-and-domain-restrictions-for-user-accounts).
 
 A pipeline makes it possible to run team-sync periodically as a job. You can use the CLI as a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/), as in the example below.
 You can create a Git repository with a [codefresh.yml]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/) file with the following content:
