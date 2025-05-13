@@ -22,7 +22,7 @@ async function getArgoHubRedirectURL(currentPath) {
   return newURL;
 }
 
-async function handleRedirect() {
+async function handleRedirect () {
   handleEnterpriseDocTypeLock()
 
   if (shouldSkipRedirect()) return;
@@ -33,7 +33,7 @@ async function handleRedirect() {
   location.href = argoHubRedirectURL;
 }
 
-async function fetchRedirectMap() {
+async function fetchRedirectMap () {
   const response = await fetch(
     `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
   );
@@ -41,7 +41,7 @@ async function fetchRedirectMap() {
     throw new Error("Failed to fetch the collections redirect map.");
   }
   return response.json();
-}
+};
 
 function handleEnterpriseDocTypeLock() {
   const queryParams = new URLSearchParams(location.search);

@@ -4,7 +4,7 @@ description: "YAML specifications for the Promotion Policy defining promotion co
 group: promotions
 redirect-from: 
  - /docs/promotions/configuration/yaml
- - /docs/promotions/entities/yaml
+ - /docs/promotions/entities/yaml/
 toc: true
 ---
 
