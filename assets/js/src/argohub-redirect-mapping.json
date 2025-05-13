@@ -35,7 +35,6 @@
   "/docs/dashboards/images/": "/gitops/dashboards/images/",
   "/docs/installation/gitops/configuration-runtime/": "/gitops/gitops-runtimes/configuration-runtime/",
   "/docs/installation/gitops/git-sources/": "/gitops/gitops-runtimes/git-sources/",
-  "/docs/installation/gitops/hybrid-gitops-helm-installation/": "/gitops/gitops-runtimes/hybrid-gitops-helm-installation/",
   "/docs/installation/gitops/manage-runtimes/": "/gitops/gitops-runtimes/manage-runtimes/",
   "/docs/installation/gitops/managed-cluster/": "/gitops/gitops-runtimes/managed-cluster/",
   "/docs/installation/gitops/monitor-runtimes/": "/gitops/gitops-runtimes/monitor-runtimes/",
@@ -118,5 +117,6 @@
   "/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/": "/gitops/gitops-runtimes/runtime-install-ingress-service-mesh-access-mode/",
   "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/",
   "/docs/installation/gitops/runtime-troubleshooting/": "/gitops/gitops-runtimes/runtime-troubleshooting/",
-  "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/"
+  "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/",
+  "/docs/installation/gitops/runtime-install-with-new-argo-cd/": "/gitops/gitops-runtimes/runtime-install-with-new-argo-cd/"
 }

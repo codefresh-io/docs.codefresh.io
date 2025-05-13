@@ -284,7 +284,7 @@ In the Runtimes page, you can see that the Type column for the Runtime displays 
 
 ## What to do next
 
-If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#optional-gitops-runtime-configuration). 
+If you have private registries, you need to override specific image values, and if your Git servers are on-premises, you need to add custom repository certificates. See [Optional GitOps Runtime configuration]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/#optional-gitops-runtime-configuration). 
 
 You can also create [Environments]({{site.baseurl}}/docs/environments/create-manage-environments/) and [Products]({{site.baseurl}}/docs/products/create-product/) for your Argo CD applications.
 

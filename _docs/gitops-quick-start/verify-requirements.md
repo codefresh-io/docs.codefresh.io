@@ -113,7 +113,7 @@ Learn more on [Designating Configuration Runtimes]({{site.baseurl}}/docs/install
 
 
 ## System requirements
-Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#minimum-system-requirements).  
+Check the [system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/#minimum-system-requirements).  
 
 
 ## Prerequisites
