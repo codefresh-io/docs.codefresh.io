@@ -91,7 +91,7 @@ A single Runtime can connect to and manage multiple remote clusters.
 
 See:  
 [GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 [Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
 
 
