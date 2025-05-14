@@ -79,7 +79,7 @@ In addition, you can select the granularity for each graph:
 {{site.data.callout.end}}
 
 ### Deployment Frequency
-  The frequency at which applications are deployed to production, including both successful (Healthy) and failed (Degraded), deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  
+  The frequency at which applications are deployed to production, including successful (Healthy) deployments. A deployment is considered an Argo CD sync where there was a change in the application source code that resulted in a new deployment of the application to production.  
 
   The X-axis charts the time based on the granularity selected, and the Y-axis charts the number of deployments. The number shown on the top right is the average deployment frequency based on granularity.  
 

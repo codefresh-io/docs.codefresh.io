@@ -2,21 +2,55 @@
   <div
     class="container-fluid navbar navbar-dark flex-column flex-md-row py-0"
   >
-    <a
-      class="navbar-brand mx-0 mx-md-2 d-flex align-items-center"
-      href="{{ site.baseurl }}/{{site.gitops_collection}}"
-      onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');"
-      aria-label="Codefresh"
-    >
-      <div>
-        {%- include icons/codefresh-logo.svg width="160" height="auto"
-        class="align-middle" -%}
+    <div class="d-inline-flex align-content-center">
+      <a
+        class="navbar-brand mx-0 mx-md-2 d-flex align-items-center"
+        href="{{ site.baseurl }}/{{site.gitops_collection}}"
+        onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');"
+        aria-label="Codefresh"
+      >
+        <div>
+          {%- include icons/codefresh-logo.svg width="160" height="auto"
+          class="align-middle" -%}
+        </div>
+      </a>
+
+      <div class="divider-vertical mt-1"></div>
+
+      <div class="custom-select">
+        <div
+          class="select-display"
+          role="button"
+          tabindex="0"
+          onclick="toggleSegmentDropdown()"
+          onkeydown="handleDropdownKeydown(event)"
+        >
+          GitOps Cloud
+        </div>
+        <ul class="options" role="listbox" aria-hidden="true">
+          <li
+            class="option selected"
+            role="option"
+            tabindex="0"
+          >
+            GitOps Cloud
+          </li>
+          <li
+            class="option"
+            role="option"
+            tabindex="0"
+            onclick="selectSegmentOption(this, 'enterprise')"
+            onkeydown="handleOptionKeydown(event, this, 'enterprise')"
+          >
+            Pipelines & GitOps
+          </li>
+        </ul>
       </div>
-    </a>
+    </div>
 
     <div class="navbar-nav-scroll order-1 order-md-1">
       <ul class="navbar-nav flex-row mx-md-auto">
-      <!--- 
+      <!---
         <li class="nav-item">
           <a class="nav-link" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
         </li>
@@ -27,7 +61,9 @@
         <li class="nav-item">
           <a class="nav-link" href="https://gitops-graphql-docs.codefresh.io/introduction/welcome" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/gitops/whats-new/changelog/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Changelog');" >What's New</a>
+        </li>
 
 
       </ul>

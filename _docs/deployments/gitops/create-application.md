@@ -21,7 +21,7 @@ Define settings in Form mode, or edit the manifest directly in YAML mode, toggli
 * Make sure you have a valid [Git Source]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 * Review:    
   [General configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#application-general-configuration-settings)  
-  [Advanced configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings#application-advanced-configuration-settings)  
+  [Advanced configuration settings]({{site.baseurl}}/docs/deployments/gitops/application-configuration-settings/#application-advanced-configuration-settings)  
 
 
 ##### How to

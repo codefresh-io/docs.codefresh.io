@@ -55,7 +55,7 @@ Complete the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-p
 Follow the installation wizard to [install the GitOps Runtime with an existing Argo CD instance]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/).
 
 ## Installing with a new Argo CD instance
-Follow the installation wizard to [install the GitOps Runtime with a new Argo CD instance]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+Follow the installation wizard to [install the GitOps Runtime with a new Argo CD instance]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
 
 
 

@@ -598,6 +598,8 @@
           url: "/runner-architecture"
         - title: Runner installation for pipelines
           url: "/install-codefresh-runner"
+        - title: ARM support
+          url: "/arm-support"
         - title: Runner installation behind firewalls
           url: "/behind-the-firewall"
     - title: GitOps Runtimes
@@ -616,7 +618,7 @@
         - title: Install GitOps Runtime with existing Argo CD
           url: "/runtime-install-with-existing-argo-cd"                       
         - title: Install GitOps Runtime with new Argo CD
-          url: "/hybrid-gitops-helm-installation"   
+          url: "/runtime-install-with-new-argo-cd"   
         - title: Troubleshoot installation
           url: "/runtime-troubleshooting"    
         - title: On-premises GitOps Runtime
@@ -752,9 +754,6 @@
     - title: Windows Container Support Overview
       url: "/windows"
     - title: Mac OSX and iOS builds
-      url: "/osx-ios-builds"
-    - title: ARM architecture support
-      url: "/arm-support"
 
 - title: Knowledge Base
   url: "/kb"

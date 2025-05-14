@@ -35,11 +35,7 @@ Both deployments offer:
   </tr>  
 </table>
 {:/}
-
 {% endif %}
-
-
-
 
 {% if page.collection == site.gitops_collection %}
 Codefresh GitOps is a lightweight SaaS platform dedicated to GitOps for Argo CD users. It provides the essential tools to simplify, standardize, and enhance creation, management, deployments for Argo CD applications.
@@ -60,7 +56,6 @@ Focused exclusively on GitOps, Codefresh GitOps empowers organizations to work s
   </tr>  
 </table>
 {:/}
- 
 {% endif %}
 
 
@@ -81,6 +76,7 @@ alt="Platform architecture: Codefresh SaaS deployment"
 caption="Platform architecture: Codefresh SaaS deployment"
 max-width="100%"
 %}
+
 {% endif %}
 
 {% if page.collection == site.gitops_collection %}
@@ -94,6 +90,7 @@ alt="Platform architecture: Codefresh SaaS deployment"
 caption="Platform architecture: Codefresh SaaS deployment"
 max-width="100%"
 %}
+
 {% endif %}
 
 
@@ -105,8 +102,7 @@ The Codefresh Control Plane is the SaaS component in the platform. External to t
 The GitOps Runtime is installed on a Kubernetes cluster, and houses the enterprise distribution of the Codefresh Application Proxy and the Argo Project.  
 The GitOps Runtime is installed in hybrid mode within the customer environment.  
 
-Read more on [GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/) and [GitOps Runtime Architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
-
+Read more in [GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/) and [GitOps Runtime Architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/).
 
 
 {% if page.collection != site.gitops_collection %}
@@ -149,9 +145,6 @@ The CLI for Codefresh Pipelines can:
 * Create and run pipelines for complex use cases using the CLI within pipeline steps
 
 For installation instructions and CLI command descriptions, see the [CLI documentation](https://codefresh-io.github.io/cli/getting-started/){:target="\_blank"}.
-
-
-
 
 ## Codefresh on-premises platform architecture
 
@@ -315,6 +308,6 @@ Each microservice within the Codefresh Pipeline and GitOps modules has its own d
 {% if page.collection == site.gitops_collection %}
 ## Related articles
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
-[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 {% endif %}
 

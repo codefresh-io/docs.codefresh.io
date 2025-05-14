@@ -9,7 +9,10 @@ toc: true
 ## GitOps Runtime with existing Argo CD
 This article describes how to install GitOps Runtimes in a Codefresh account using a Helm chart on a _cluster that already has an Argo CD instance_.
 
-This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime authenticates with the Argo CD instance through the [Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/) which you need to provide, and connects to key Argo CD services.
+This option allows you to install the GitOps Runtime without deploying a new Argo CD instance. Instead, you _install the GitOps Runtime in the same namespace as the existing Argo CD instance_. The Runtime authenticates with the Argo CD instance through the [Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/) which you need to provide, and connects to key Argo CD services. See also [notes on behavior for Runtimes with existing Argo CD](#gitops-runtime-with-existing-argo-cd-behavior).
+
+To install the _GitOps Runtime with a new Argo CD instance_, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
+
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vtCoi3-Rt6w?si=EqlKsiRtdIGcZLaX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -18,14 +21,11 @@ The Codefresh `values.yaml` available [here](https://github.com/codefresh-io/git
 Review how Codefresh [validates the Runtime's values.yaml]({{site.baseurl}}/docs/installation/gitops/gitops-values-yaml-validation/).
 
 
-To install the GitOps Runtime with a new Argo CD instance, see [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
 
 ## Before you begin
-* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation
+* Make sure you meet the [minimum requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/) for installation, including egress requirements for air-gapped clusters
 * Verify that you complete all the [prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)
 * Verify you have a [valid Argo CD Admin API token]({{site.baseurl}}/docs/installation/gitops/runtime-argocd-admin-api-token/)
-
-
 
 
 ## Step 1: Select Runtime install option
@@ -240,6 +240,23 @@ Depending on your configuration, if you have private registries, you need to ove
 
 
 By default, the GitOps Runtime can deploy to the cluster it is installed on. You can add [Git Sources]({{site.baseurl}}/docs/installation/gitops/git-sources/), use [Terraform to connect external clusters]({{site.baseurl}}/docs/installation/gitops/managed-cluster/#add-a-managed-cluster-with-terraform), and [create and deploy Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
+
+
+
+## GitOps Runtime with existing Argo CD behavior
+
+The table below outlines the differences in features and functionality when using GitOps Cloud with an existing (bring your own) Argo CD installation, compared to a new Argo CD (forked) installation.
+
+{: .table .table-bordered .table-hover}
+| **Feature/Functionality**|  **Behavior for existing Argo CD installation**   |
+| --------------        | ---------------- |
+|**Multiple GitOps Runtimes and Argo CD instances on same cluster** | Not supported. <br>Multiple GitOps Runtimes and Argo CD instances when separated by namespaces on the same cluster is not supported.  |
+| **Sync detection for monorepo apps** | Not supported. <br> The Application Change Revision (ACR) Controller which enables precise and accurate sync detections for applications from mono repositories is not supported. When using mono repos for applications with an existing Argo CD instance, this means that notifications may not be aligned with the precise sync operations that triggered syncs for deployments. For details, see [Application Change Revision Controller]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/). |
+| **Application source and destination URL validations** | Not supported. <br>When creating new Argo CD applications from the Codefresh UI, GitOps Cloud does not validate the Source and Destination URLs configured for the application. This means that incorrect URLs are saved and may cause application sync or deployment failures.<br>_Update pending_. |
+|**Filter application resources by label** | Not supported. <br>The filter by **Kubernetes labels** in More Filters in the Current State tab is disabled. <br>_Update pending_. |
+|**Filter application by extraneous resources** | Not supported.<br> The **Ignore Extraneous** button in the Current State tab is disabled. |
+
+
 
 
 ## Related articles

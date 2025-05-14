@@ -78,6 +78,9 @@ collections:
   posts:
     output: true
     permalink: /:collection/:year/:month/:day/:title/
+  posts-gitops:
+    output: true
+    permalink: /:collection/:year/:month/:day/:title/
   pages:
     output: true
     permalink: /:collection/:path
@@ -96,6 +99,14 @@ defaults:
       type: posts
     values:
       layout: docs
+      toc: true
+      wide: true
+  # _posts-gitops
+  - scope:
+      path: "_posts-gitops"
+      type: posts-gitops
+    values:
+      layout: gitops
       toc: true
       wide: true
   # _pages
@@ -124,6 +135,12 @@ defaults:
 # #RSS Feed Location
 feed:
   path: /changelog/feed.xml
+  excerpt_only: false
+  collections:
+    posts-gitops:
+      path: /changelog/gitops.xml
+
+
 
 # Custom variables
 repo:                 "https://github.com/codefresh-io/docs.codefresh.io"

@@ -66,7 +66,7 @@ As a live example you can use:
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster.
 
 This is easy with our GitOps Runtimes. Argo CD is installed automatically on installing a GitOps runtime, either the Hosted or Hybrid versions.  
-See [Install GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+See [Install GitOps runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
 
 
 
