@@ -87,7 +87,7 @@
     - title: Promotion building blocks
       localurl: /gitops/promotions/promotion-components/
     - title: Promotion setup guidelines
-      localurl: /gitops/promotions/create-promotion-sequence/
+      localurl: /gitops/promotions/create-promotion-sequence/   
     - title: YAML specs
       localurl: /gitops/promotions/yaml/
     - title: Triggering promotions

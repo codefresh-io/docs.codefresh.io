@@ -260,10 +260,10 @@
       url: "/promotion-policy"  
     - title: Promotion Workflows
       url: "/promotion-workflow"
-    - title: Service accounts for Promotion Workflows
-      url: "/service-accounts-promotion-workflows"      
     - title: Promotion hooks
-      url: "/promotion-hooks"          
+      url: "/promotion-hooks"     
+    - title: Service accounts for Promotion Workflows
+      url: "/service-accounts-promotion-workflows"           
     - title: Promotion contexts in promotion hooks
       url: "/promotion-context-promotion-workflows"     
     - title: Product promotion settings
