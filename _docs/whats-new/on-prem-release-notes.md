@@ -17,7 +17,7 @@ For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifa
 #### Upgrading to v2.7
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
-**New indexes in 2.7**  
+**New indexes**  
 We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
 You must create the indexes listed below _**after** upgrading_ to prevent disruption and avoid performance issues.
 
