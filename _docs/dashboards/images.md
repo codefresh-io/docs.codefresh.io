@@ -9,6 +9,10 @@ toc: true
 ##  Images dashboard 
 The Images dashboard provides a centralized view of container images built and used in deployments. With powerful filtering options and enriched metadata, it enhances visibility into an image’s provenance and deployment history.
 
+{% if page.collection = site.gitops_collection %}
+Enabled on request. Please contact Support.
+{% endif %}
+
 {% include 
    image.html 
    lightbox="true" 

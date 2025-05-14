@@ -160,8 +160,6 @@
       localurl: /gitops/administration/account-user-management/create-codefresh-account/
     - title: Adding users and teams
       localurl: /gitops/administration/account-user-management/add-users/
-    - title: Set up OAuth2 for GitOps
-      localurl: /gitops/administration/account-user-management/oauth-setup/
     - title: Access control for GitOps
       localurl: /gitops/administration/account-user-management/gitops-abac/
     - title: User settings
