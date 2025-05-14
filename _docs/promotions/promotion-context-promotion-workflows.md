@@ -26,6 +26,7 @@ Using promotion contexts enables scenarios like notifying specific Slack channel
 To see a practical example, follow the [Walkthrough: Using promotion hooks in Promotion Flows to handle promotion failures](#walkthrough-using-promotion-hooks-in-promotion-flows-to-handle-promotion-failures), where you create different Promotion Workflows with hooks, define a promotion context in a workflow, and assign hooks at different stages of the Promotion Flow.
 
 
+
 ## Creating and exporting a promotion context 
 You can use any method to create a promotion context as a JSON object and define the parameters you need.  
 The key step is **exporting the promotion context**, as this makes its content available to the Promotion Workflow. The content is saved in the platform. 

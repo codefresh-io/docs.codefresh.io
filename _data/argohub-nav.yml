@@ -263,7 +263,7 @@
     - title: Promotion hooks
       url: "/promotion-hooks"     
     - title: Service accounts for Promotion Workflows
-      url: "/service-accounts-promotion-workflows"           
+      url: "/service-accounts-promotion-workflows"                     
     - title: Promotion contexts in promotion hooks
       url: "/promotion-context-promotion-workflows"     
     - title: Product promotion settings

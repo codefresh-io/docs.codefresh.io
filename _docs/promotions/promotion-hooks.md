@@ -59,6 +59,7 @@ Explore examples in [Codefresh Hub for Argo](https://codefresh.io/argohub/){:tar
 ##### Arguments in promotion hooks
 A default set of arguments are available to all Promotion Workflows with hooks. See [Default arguments in Promotion Workflows with hooks](#default-arguments-in-promotion-workflows-with-hooks).
 
+
 ## Promotion hooks vs. Pre- and Post-Action Promotion Workflows
 
 The table lists key differences between Promotion Workflows containing hooks and Promotion (Pre- and Post-Action) Workflows.
@@ -97,7 +98,9 @@ The table below describes the default arguments that are replaced with values th
 |`FAILED_ENVIRONMENTS` | The environment or environments which failed in the release with this information: {::nomarkdown}<ul><li><b>Name</b>: The name of the environment that failed to complete the release. For example, production</li><li><b>Status</b>: The release or promotion status for the environment. Can be one of the following: <ul><li>Successful</li><li>Running</li><li>Suspended</li><li>Failed</li><li>Terminated</li></ul></li><li><b>Error-message</b>: The system-generated error message identifying the reason for the failed promotion. For example, <code class="highlighter-rouge">Product release was automatically terminated because the workflow state remained unknown</code>. {:/}| OnFailed hooks only  | 
 
 ## Promotion contexts in Promotion Workflows with hooks
+
 In a Promotion Flow, hooks may need custom parameters beyond the default ones available to the promotion mechanism. Because promotion hooks run within GitOps Runtimes in your own clusters, they do not automatically have access to these custom internal parameters. To pass custom values like Jira ticket IDs, approver names, or Slack channel information between hooks in the same Promotion Flow, you must define and export a promotion context. For details, see [Promotion contexts in promotion hooks]({{site.baseurl}}/docs/promotions/promotion-context-promotion-workflows/).
+
 
 
 ## Service accounts for promotion hooks
