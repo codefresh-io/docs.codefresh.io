@@ -213,7 +213,7 @@
     - title: Install GitOps Runtime with existing Argo CD
       localurl: /docs/installation/gitops/runtime-install-with-existing-argo-cd/
     - title: Install GitOps Runtime with new Argo CD
-      localurl: /docs/installation/gitops/hybrid-gitops-helm-installation/
+      localurl: /docs/installation/gitops/runtime-install-with-new-argo-cd/
     - title: Troubleshooting Runtime installation
       localurl: /docs/installation/gitops/runtime-troubleshooting/  
 
@@ -253,17 +253,6 @@
       localurl: /docs/security/secrets/
     - title: Verify authenticity of Codefresh artifacts
       localurl: /docs/security/codefresh-signed-artifacts/
-
-- title: "Incubation"
-  icon: images/home-icons/plugins.svg
-  url: ""
-  links:
-    - title: Windows Containers Support
-      localurl: /docs/incubation/windows/
-    - title: Mac OSX and iOS builds
-      localurl: /docs/incubation/osx-ios-builds/
-    - title: ARM architecture Support
-      localurl: /docs/incubation/arm-support
 
 - title: "Knowledge Base"
   icon: images/home-icons/knowledge-base.svg

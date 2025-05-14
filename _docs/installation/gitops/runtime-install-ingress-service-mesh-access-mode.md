@@ -82,4 +82,4 @@ Required only for ALB AWS and NGINX Enterprise ingress-controllers, and Istio se
 [GitOps Runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
 [Runtime prerequisites]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)  
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
-[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)

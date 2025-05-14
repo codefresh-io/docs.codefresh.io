@@ -1,6 +1,6 @@
 ---
 title: "Products dashboard"
-description: "Create Products to group and manage interrelated Argo CD applications environments"
+description: "Explore the Products page for insights and management options"
 group: dashboards
 toc: true
 ---
@@ -8,66 +8,63 @@ toc: true
 
 
 
-Explore the power of Products for Argo CD applications in Codefresh GitOps. 
+Explore the power of products for Argo CD applications in Codefresh GitOps. 
 
 Managing complex applications across multiple environments is a common challenge faced by developers and platform engineers. The diverse nature of applications and the variety of environments they deploy to can lead to fragmented management and deployment processes.
+In Codefresh GitOps, products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
 
-In Codefresh GitOps, Products serve as a strategic layer that bridges this gap. Products group different yet interconnected applications based on their similarities and dependencies. 
-
-
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/expanded-view.png" 
-	url="/images/gitops-products/expanded-view.png" 
-	alt="GitOps Products (expanded view)" 
-	caption="GitOps Products (expanded view)"
-  max-width="70%" 
-%}
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/gitops-products/products-dashboard-view.png" 
+   url="/images/gitops-products/products-dashboard-view.png" 
+   alt="Products dashboard" 
+   caption="Products dashboard" 
+   max-width="60%" 
+   %}
 
 Read more on the first of their kind dashboards for GitOps Environments and Products in this [blog](https://codefresh.io/blog/introducing-the-worlds-first-dashboard-for-gitops-environments/){:target="\_blank"}.
 
-This article focuses on the Product Dashboard and the insights you can gain from it. 
+This article focuses on the two product dashboards: the **Products dashboard**, which lists all products, and the **Product Dashboard**, available when you drill down into a specific product.  
 
 For detailed information on creating products and how to work with them, see [About Products]({{site.baseurl}}/docs/products/about-products/) and [Creating products]({{site.baseurl}}/docs/products/create-product/).
 
-<!--- >>**NOTE**  
-In the documentation, both Product (capitalized) and product (lowercase) refer to the same entity in Codefresh GitOps. They are used interchangeably for readability and consistency.
--->
 
-## Products page
+## Products dashboard
 
-Here's an example of the Product page with the list of all the products.
+The Products dashboard lists all the products created for the account and key information on their releases. 
 
 
-{% include 
-	image.html 
-	lightbox="true" 
-	file="/images/gitops-products/expanded-view.png" 
-	url="/images/gitops-products/expanded-view.png" 
-	alt="GitOps Products (expanded view)" 
-	caption="GitOps Products (expanded view)"
-  max-width="60%" 
-%}
+ {% include 
+   image.html 
+   lightbox="true" 
+   file="/images/gitops-products/products-page.png" 
+   url="/images/gitops-products/products-page.png" 
+   alt="Products page with product and release information" 
+   caption="Products page with product and release information" 
+   max-width="60%" 
+   %}
 
+
+### Product release information
+
+View information on the latest release at a glance: release activity and manage your products more efficiently.
+* **Latest Release**, date and time
+* **User** who initiated the latest release
+* **Status** of the latest release 
+* **Direct link** to the release view
+
+### Product information and actions
+* **Product name**: Click to go to the Product dashboard for the selected product.
+* {::nomarkdown}<img src="../../../images/icons/settings-outlined.png?display=inline-block"> <b>Product Settings</b>: Takes you to the Product > Settings tab where you assign applications, configure promotion settings. See <a href="https://codefresh.io/docs/docs/products/configure-product-settings/">Configure product settings</a>.{:/}  
+* {::nomarkdown}<img src="../../../images/icons/list.png?display=inline-block"> <b>Releases</b>: Takes you to the Product > Releases tab with the list of releases for the product. See <a href="https://codefresh.io/docs/docs/products/releases-in-products/">Releases for products</a>.{:/}  
+* {::nomarkdown}<img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Removes the product from the Products dashboard, unassigning any manually-assigned applications.{:/}
 
  
 
-Here are some key features of the Products page:
 
-### Collapsed & expanded views
-* **Collapsed view**: The default view, displays the product name alongside the environments with the number of applications in each environment.<br> The options on the right allow you to manage products.  
-* **Expanded view**: The expanded view displays the applications in the product organized by their environments.
-
-### Product management options
-Mouse over the row with the product to display possible actions:
-{::nomarkdown}<ul><li><img src="../../../images/icons/edit.png?display=inline-block"> <b>Edit</b>: Takes you to the Product > Settings tab where you can configure . See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete product</a>.</li><li><img src="../../../images/icons/settings.png?display=inline-block"> <b>Manage applications</b>: Manually assign unassigned applications to environments in the Products dashboard. See <a href="https://codefresh.io/docs/docs/products/assign-applications">Manually assign applications to products</a>.</li><li><img src="../../../images/icons/trash.png?display=inline-block"> <b>Delete</b>: Remove the product from the Products dashboard, unassigning any manually-assigned applications. See <a href="https://codefresh.io/docs/docs/dashboards/gitops-products/#editdelete-product">Edit/delete product</a>.</li></ul>{:/} 
-
-
-
-
-## Product dashboard
-Clicking a Product name navigates you to the Product Dashboard for the selected product with a detailed view of its applications. It also includes integrated insights into Git and issue-tracking systems and how they relate to deployments. 
+## Product Dashboard
+Clicking a product name navigates you to the Product Dashboard for the selected product with a detailed view of its applications. It also includes integrated insights into Git and issue-tracking systems and how they relate to deployments. 
  
 
 ##### Application release version

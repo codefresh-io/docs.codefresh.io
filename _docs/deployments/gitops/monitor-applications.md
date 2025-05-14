@@ -314,8 +314,10 @@ Use the `IgnoreExtraneous` filter to hide generated resources such as `ConfigMap
 
  The application remains in-sync even when such resources are syncing or out-of-sync.  
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/compare-options){:target="\_blank"}
+
 >**NOTE**  
-The `IgnoreExtraneous` filter when applied only affects sync status.  
+The `IgnoreExtraneous` filter is disabled for Runtime installations with existing Argo CD instances.   
+When applied, the `IgnoreExtraneous` filter only affects sync status.  
 Degraded resources impact the health status of the application.
 
 ##### Add `IgnoreExtraneous` annotation

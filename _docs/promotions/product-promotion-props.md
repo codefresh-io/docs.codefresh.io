@@ -48,14 +48,14 @@ max-width="60%"
 
 The product version defines the source from which the application version is retrieved and promoted.
 
-#### Why is this important?
+##### Why is this important?
 
 Defining the version source ensures that each promotion consistently targets the correct version, reducing the risk of mismatches, maintaining application integrity, and providing a traceable version history.
 
 > **NOTE**  
 The Environments, Product, and GitOps Apps dashboards display product versions **only for Helm-based applications**. For other types, versions are not displayed—even if configured.
 
-#### Version Attribute
+##### Version Attribute
 
 The version is defined using a JSON path expression, relative to the `spec.source.repoURL` and `spec.source.path` attributes in the application's manifest.
 Review [examples of version attributes]({{site.baseurl}}/docs/products/promotion-version-properties/#examples-of-version-attributes).
@@ -80,9 +80,6 @@ For details, see [Configuring properties for promotion across applications]({{si
 
 
 
-
-
-
 ## Concurrent promotion behavior for product
 
 Promotion flows can be triggered either automatically or manually, which may lead to multiple promotions being activated for the same product.  
@@ -104,9 +101,9 @@ For details, see [Configuring promotion concurrency for products]({{site.baseurl
 
 Assign predefined Promotion Flows to a product and configure the triggers that initiate each flow based on specific conditions.
 
-#### Why is this important?
+##### Why is this important?
 
-Assigning flows and defining their triggers ensures that changes are promoted under the right conditions, reduces manual work improving automation for a more reliable promotion process.
+Assigning flows and defining their triggers ensure that changes to the product are promoted under the right conditions, and improves automation for a more reliable promotion process.
 
 {% include
  image.html
@@ -117,7 +114,6 @@ Assigning flows and defining their triggers ensures that changes are promoted un
  caption="Product Settings: Promotion Flows & triggers"
  max-width="50%"
 %}
-
 
 
 ## Related articles

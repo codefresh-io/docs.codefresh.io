@@ -144,6 +144,8 @@ The Argo Project components include:
 * **Argo Workflows** as the workflow engine.
 * **Argo Events** for event-driven workflow automation framework.
 
+To see which Argo Project component versions correspond to a Runtime version, see [GitOps Runtime and Argo Project versions](https://kostis-codefresh.github.io/runtime-versions/){:target="\_blank"}. 
+
 >**NOTE**  
 Codefresh users rely on our platform to deliver software reliably, and predictably without interruption.  
 To maintain that high standard, we add several weeks of testing and bug fixes to new versions of Argo before making them available within Codefresh.  
@@ -223,8 +225,9 @@ In monorepo environments where multiple applications share a single repository, 
 * Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
 
 >**NOTE**  
-  The ACR Controller is supported from Runtime version 0.13.0 and higher.   
-  It does not support multi-source applications.
+  The ACR Controller is supported from Runtime version 0.13.0 and higher for GitOps Runtime installations with new Argo CD. Not supported for installations with existing Argo CD.   
+  It does not support multi-source applications.  
+
 
 ##### Configuration
 
@@ -305,5 +308,5 @@ The GitOps Runtime reports data to the Codefresh platform, which stores the data
 
 ## Related articles
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
-[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 {% if page.collection != site.gitops_collection %}[On-premises GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/on-prem-gitops-runtime-install/){% endif %}  

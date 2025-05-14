@@ -274,21 +274,21 @@ On the left, you can see the YAML manifests, on the right, the previews show how
 ## JSON path expressions for files and properties
 Application versions and properties to be promoted are defined through JSON path expressions. Each JSON expression points to the specified file and the location of the property within the file. 
 
-**NOTE**  
+>**NOTE**  
 Our promotions are optimized for YAML-based configuration files.  
 For non-YAML file types, JSON path expressions may not evaluate as expected. In such cases, you can promote the entire file using **`*`** as a wildcard.
 
 ## Autocomplete and path selectors for JSON files
 
-Instead of manually navigating to GitHub, copying the file name, and locating paths within the file, Codefresh GitOps simplifies the process with:
+Instead of manually navigating to GitHub, copying the file name, and locating paths within the file, Codefresh GitOps simplifies the process of working with JSON files through auto-selection options:
 * **File selector with autocomplete**  
-  Start typing the part of the filename and then select from the displayed list.
+  Typing part of the filename displays a list of available files for selection.
 
-* **Path-selectors**  
-  After selecting a file, clicking the attribute or property directly in the file automatically generates and adds the correct JSON path.
+* **Path-selector**  
+  Clicking the attribute or property directly within the selected file automatically generates and adds the correct JSON path.
 
 * **Preview configuration**  
-  The Preview Configuration button allows you to select the application and view the version retrieved. 
+  Verify that the correct property is selected through the Preview Configuration button, which allows you to select the application and view the version retrieved. 
 
 
 
@@ -302,7 +302,7 @@ Instead of manually navigating to GitHub, copying the file name, and locating pa
     max-width="60%"
 %} 
 
-You can enter JSON path expressions manually if preferred. 
+You can enter JSON path expressions manually if preferred. See [Dashes in JSON keys](#dashes-in-json-keys) and [JSON syntax for YAML files](#json-syntax-for-yaml-files).
 
 ### Dashes in JSON keys
 Dashes in JSON keys are currently _not supported_ in path expressions using dot notation.  
@@ -318,7 +318,7 @@ $["rollout-Canary"]["image"]["tag"]
 
 
 ### JSON syntax for YAML files
-Here's a brief summary of JSON syntax and rules.
+Here's a brief summary of JSON syntax and rules if you are manually defining path expressions.
 For detailed information, see [JSON syntax](https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html){:target="\_blank"}.
 
 

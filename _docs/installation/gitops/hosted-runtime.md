@@ -17,7 +17,7 @@ If you’re interested in our paid options, please contact our sales team at `sa
 This article describes how to install the Hosted GitOps Runtime to leverage GitOps capabilities.
 
 
-For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).  
+For Hybrid GitOps Runtime installation, see [Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).  
 For a comparison between the two types of Runtime installations, see [Hosted vs. Hybrid GitOps]({{site.baseurl}}/docs/installation/gitops/#hosted-vshybrid-gitops).
 
 {{site.data.callout.callout_warning}}

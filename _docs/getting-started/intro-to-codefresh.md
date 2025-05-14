@@ -88,7 +88,7 @@ Codefresh is a full-featured, turn-key solution for application deployments and 
 
 
 **GitOps Runtimes**
-You can install a [Hybrid GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+You can install a [Hybrid GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
 
 Codefresh offers security, maintainability, traceability, and most importantly, a single control plane for all stakeholders, be they developers, operators, product owners or project managers.
 

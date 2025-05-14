@@ -60,7 +60,7 @@ See [Shared Configuration Repo structure](#shared-configuration-repo-structure).
   As part of the setup for a Hosted GitOps runtime, Codefresh creates the Shared Configuration Repository in the selected organization, together with the default Git Source repo. See [Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#step-2-connect-git-provider) in Hosted GitOps setup.  
 
 * Hybrid GitOps Runtimes -->  
-  When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation: Set up Git provider]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/#step-2-set-up-gitops-git-provider).  
+  When you install the first Hybrid GitOps runtime for an account, you are required to define the Shared Configuration Repo as part of setting up your Git account.  See [Installing Hybrid GitOps Helm Runtime installation: Set up Git provider]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/#step-2-set-up-gitops-git-provider).  
 
 
 
@@ -311,7 +311,7 @@ You can then monitor these applications in the GitOps Apps dashboard, and drill 
 
 ## Related articles
 [GitOps Runtime concepts]({{site.baseurl}}/docs/installation/gitops/runtime-concepts/)  
-[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/) 
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
