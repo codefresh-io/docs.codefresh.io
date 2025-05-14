@@ -1,0 +1,1 @@
+../../_docs/terms-and-privacy-policy/terms-of-service.md

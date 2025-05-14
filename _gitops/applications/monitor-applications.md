@@ -1,0 +1,1 @@
+../../_docs/deployments/gitops/monitor-applications.md

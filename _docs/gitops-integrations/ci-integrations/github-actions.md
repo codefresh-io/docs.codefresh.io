@@ -1,13 +1,12 @@
 ---
 title: "GitOps GitHub Actions integration"
-description: ""
+description: "Connect GitHub Action pipelines with GitOps for enriched image data"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
 ---
 
-Use Hosted GitOps with any popular Continuous Integration (CI) solution, not just with Codefresh CI.  
-GitHub Actions is one of the third-party CI solutions that you can connect to Hosted GitOps for deployment with image reporting and enrichment.  
+If GitHub Actions is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage GitHub Actions for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata. 
 
  Connecting a GitHub Action, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  
 
@@ -57,7 +56,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
+          CF_IMAGE: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
           echo "Image should be accessible to your local machine (after docker login) by:"
@@ -80,7 +79,7 @@ jobs:
           CF_GIT_BRANCH: 'main'
 
           # Image path to enrich 
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
+          CF_IMAGE: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/build-by-github-action:0.0.1
 
           # GitHub Access token !! Committing a plain text token is a security risk. We highly recommend using encrypted secrets. !!
           # Documentation - https://docs.github.com/en/actions/security-guides/encrypted-secrets
@@ -103,14 +102,14 @@ jobs:
 ## GitHub Action-GitOps integration settings
 The table describes the arguments required to connect a GitHub Action to Codefresh. 
 
+For the complete argument reference, see [GitOps integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).
 
  {: .table .table-bordered .table-hover}
 | Argument  | Description     | Required/Optional/Default |
 | ---------- |  -------- | ------------------------- |
 | `CF_HOST`                      | _Deprecated from v 0.0.460 and higher._ Recommend using `CF_RUNTIME_NAME` instead. {::nomarkdown}<br><code class="highlighter-rouge">CF_HOST</code> has been deprecated because the URL is not static, and any change can fail the enrichment.<br><br>  The URL to the cluster with the Codefresh runtime to integrate with. If you have more than one runtime, select the runtime from the list. Codefresh displays the URL of the selected runtime cluster.{:/}   | Required  |
 | `CF_RUNTIME_NAME`       | The runtime to use for the integration. If you have more than one runtime, select the runtime from the list. | Required  |
-| `CF_PLATFORM_URL`       | The root URL of the Codefresh application. The default value is `https://g.codefresh.io`.  | Optional  |
-| `CF_API_KEY`                   | The API key to authenticate the GitHub Actions user to Codefresh. Generate the key for the GitHub Action. {::nomarkdown}<br>Enter this token in GitHub Actions <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets" target=”_blank”>as a secret</a> with the name <code class="highlighter-rouge">CF_API_KEY</code>. You can then reference it in all GitHub pipelines as you would any other secret.{:/}| Required  |
+| `CF_API_KEY` | The API key with which to authenticate the GitHub Actions user to Codefresh. Generate a valid API key for the GitHub Action. The key does not require any specific scopes. See [Create and manage API keys]({{site.baseurl}}/docs/administration/user-self-management/user-settings/#create-and-manage-api-keys).<br>Enter this token in GitHub Actions [as a secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets){:target="\_blank"} with the name `CF_API_KEY`. You can then reference it in all GitHub pipelines as you would any other secret. | Required |
 | `CF_CONTAINER_REGISTRY_INTEGRATION` | The name of the container registry integration created in Codefresh where the image is stored. {::nomarkdown}<br><ul><li>For a GitHub Container registry, select <code class="highlighter-rouge">GHCR_GITHUB_TOKEN_AUTHENTICATION</code> even if you have not created an integration in Codefresh.<br>Codefresh retrieves and provides the explicit credentials for the container registry on generating the integration manifest.</li> <li>To create a container registry integration in Codefresh, if you don't have one, click <b>Create Container Registry Integration</b>, and then configure the settings.<br>See <a href="https://codefresh.io/docs/docs/gitops-integrations/container-registries/">Container registry integrations</a>.</li><li>Alternatively, you can use <i>one</i> of these container registries with explicit credentials:<ul><li>DockerHub registry with <code class="highlighter-rouge"> CF_DOCKERHUB_USERNAME</code> and <code class="highlighter-rouge">CF_DOCKERHUB_PASSWORD</code>.</li><li><a href="https://docs.docker.com/registry/spec/api/">Docker Registry Protocol v2</a> with <code class="highlighter-rouge"> CF_REGISTRY_DOMAIN</code>, <code class="highlighter-rouge"> CF_REGISTRY_USERNAME</code>, and <code class="highlighter-rouge">CF_REGISTRY_PASSWORD</code>.</li><li>Google Artifact Registry (GAR)  with <code class="highlighter-rouge"> CF_GOOGLE_JSON_KEY</code> and <code class="highlighter-rouge">CF_GOOGLE_REGISTRY_HOST</code>.</li></li></ul></ul>{:/} | Optional  |
 | `CF_DOCKERHUB_USERNAME` | Relevant only to provide explicit credentials to the Docker Hub container registry where the image is stored. <br>The username for the Docker Hub container registry.<br><br>To use a Docker Hub container registry integration created in Codefresh, set `CF_CONTAINER_REGISTRY_INTEGRATION` instead. | Optional  |
 | `CF_DOCKERHUB_PASSWORD` | Relevant only if `CF_DOCKERHUB_USERNAME` is specified.<br>The password for the Docker Hub container registry. | Optional  |
@@ -125,7 +124,7 @@ The table describes the arguments required to connect a GitHub Action to Codefre
 | `CF_IMAGE`                    | The image to be enriched and reported in Codefresh. Pass the `[account-name]/[image-name]:[tag]` built in your CI. | Required  |
 | `CF_WORKFLOW_NAME`           | The name assigned to the workflow that builds the image. When defined, the name is displayed in the Codefresh platform. Example, `Staging step` | Optional  |
 | `CF_GIT_BRANCH`              | The Git branch with the commit and PR (pull request) data to add to the image. Pass the Branch from the event payload used to trigger your action.  | Required  |
-| `CF_GITHUB_TOKEN`            | The GitHub authentication token. See [Git tokens]({{site.baseurl}}/docs/security/git-tokens/#git-personal-tokens). | Required  |
+| `CF_GITHUB_TOKEN`            | The GitHub authentication token. See [Git user token scopes]({{site.baseurl}}/docs/security/git-tokens/#git-user-access-token-scopes). | Required  |
 | `CF_GERRIT_CHANGE_ID`              | Relevant only for Gerrit accounts. <br>The change ID or the commit message containing the Change ID to add to the image. For Gerrit, use this instead of `CF_GIT_BRANCH`.    | Required  |
 | `CF_GERRIT_HOST_URL`              | Relevant only for Gerrit accounts. <br> The URL of your website with the Gerrit instance, for example, `https://git.company-name.io`.   | Required  |
 | `CF_GERRIT_USERNAME`              | Relevant only for Gerrit accounts. <br> The username for your user account in Gerrit.| Required  |
@@ -201,10 +200,10 @@ This example illustrates how to define the value for `CF_GIT_BRANCH` to report o
 
 
 Value:  
-{% raw %}`${{ github.ref-name }}`{% endraw %}  
+{% raw %}`${{ github.ref_name }}`{% endraw %}  
 
 where: 
-* {% raw %}`${{ github.ref-name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
+* {% raw %}`${{ github.ref_name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
 
 
 
@@ -220,6 +219,7 @@ You can:
 * Filter by status or by date range to view a subset of actions
 * Navigate to the build file in GitHub Actions, and view the Codefresh report image step
 
+<!--- 
 {% include image.html 
 lightbox="true" 
 file="/images/integrations/github-actions/github-actions-logs.png" 
@@ -229,6 +229,7 @@ caption="GitHub Action: Logs tab"
 max-width="50%"
 %}
 
+-->
 ##### Build YAML in GitHub Action
 
 The Run column includes the link to the build files for the actions.  

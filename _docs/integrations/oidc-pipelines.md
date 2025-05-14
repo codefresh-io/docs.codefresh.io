@@ -18,7 +18,7 @@ With OIDC, Codefresh pipelines can utilize short-lived ID tokens for authenticat
 These ID tokens do not need to be stored and managed in Codefresh. See [OIDC ID tokens, standard & custom claims](#oidc-id-tokens-standard--custom-claims).
 
 ##### How do you set up OIDC for Codefresh pipelines?
-The bulk of the process to setup the OIDC ID token in Codefresh pipelines is on the cloud provider's platform.  
+The bulk of the process to set up the OIDC ID token in Codefresh pipelines is on the cloud provider's platform.  
 The setup requires configuring Codefresh as an OIDC provider, establishing the trust relationship, and defining the OIDC claims to enable secure authentication for the actions performed by the pipeline. 
 
 The specific steps vary depending on the cloud provider. Codefresh is cloud-provider agnostic, with the only requirement being that the cloud provider supports OIDC. For detailed instructions, please refer to the documentation of your preferred cloud provider.
@@ -27,6 +27,11 @@ The specific steps vary depending on the cloud provider. Codefresh is cloud-prov
 After setup, to use the ID token, on the Codefresh side, we have a dedicated Marketplace step. The step when added to the pipeline, obtains the ID token without any action required from you.
 
 Review the [generic setup for OIDC](#oidc-setup-for-codefresh-pipelines), or follow the instructions in our example for [OIDC with AWS (Amazon Web Services)](#codefresh-oidc-for-aws). 
+
+##### Creating artifacts signed with Codefresh OIDC and keyless signing 
+Once you have set up Codefresh as an OIDC provider, you can sign container images created by Codefresh pipelines with the keyless signing method introduced by sigstore. See [Securing container images with OIDC and keyless signing]({{site.baseurl}}/docs/pipelines/steps/build/#securing-container-images-with-oidc-and-keyless-signing).
+
+Any organization can then verify artifacts created and signed by Codefresh pipelines. See [Verifying artifacts signed with Codefresh pipelines]({{site.baseurl}}/docs/security/pipelines-verify-cf-artifacts/).
 
 ## OIDC ID tokens, standard & custom claims
 

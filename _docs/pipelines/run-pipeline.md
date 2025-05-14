@@ -37,7 +37,7 @@ The table below describes the settings in the Triggers page.
 |**Simulate trigger from**      | The trigger to simulate for the manual run of the pipeline. All the triggers defined for the pipeline are available.|
 |**Select branch**      | The branch on which to run the build on.|
 |**Build variables**       | The variables to use for this build. All the variables defined for the pipeline are displayed. You can modify the values of existing variables or manually add one or more new variables. Clicking the Lock icon, encrpts the variable.    |
-|**Advanced options**        | Select the options to override the behavior for the manual run. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Docker engine cache</a>.</li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See <a href="https://codefresh.io/docs/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/">Hangs on restoring data from pre-existing image</a>.</li><li><b>Report notification on pipeline execution</b>: When selected, sends <a href="https://codefresh.io/docs/docs/integrations/notifications/slack-integration/">Slack notifications</a>, in addition to status updates to your Git provider</li></ul>{:/}|
+|**Advanced options**        | Select the options to override the behavior for the manual run. <br>{::nomarkdown}<ul><li><b>Ignore Docker engine cache for build</b>: When selected, ignores the local Docker engine cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms/">Docker engine cache</a>.</li><li><b>Ignore Codefresh cache optimizations for build</b>: When selected, ignores the last build's cache. Selecting this option may slow down your build. See <a href="https://codefresh.io/docs/docs/kb/articles/disabling-codefresh-caching-mechanisms/">Last build cache</a>.</li><li><b>Reset pipeline volume</b>:</li>Useful for troubleshooting a build that hangs on the first step.  See <a href="https://codefresh.io/docs/docs/kb/articles/restoring-data-from-pre-existing-image-hangs-on/">Hangs on restoring data from pre-existing image</a>.</li><li><b>Report notification on pipeline execution</b>: When selected, sends <a href="https://codefresh.io/docs/docs/integrations/notifications/slack-integration/">Slack notifications</a>, in addition to status updates to your Git provider</li></ul>{:/}|
 |**Runtime Environment**        |{::nomarkdown}<ul><li><b>Use regular settings</b>: Use the <a href="https://codefresh.io/docs/docs/pipelines/pipelines/#pipeline-settings">settings</a> defined at the pipeline level.</li><li>Override settings</b>:Override the settings for the manual build run, and select the Runtime Environment and OS, the CPI and Memory resource allocation, and the Minimum disk space required for the build. See <a href="https://codefresh.io/docs/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger">Set minimum disk space for build volume by trigger</a>.</li></ul>{:/} |
 |**Share run configuration**      | Copies the modified or new settings defined for the current run, except for encrypted variables, and generates a URL with the settings appended as query parameters. You can then share the URL with colleagues who have access to the same account. See [Sharing manual build run settings](#sharing-manual-build-run-settings).
 |**Debug** | Runs the pipeline in debug mode where you can add breakpoints and use the debug terminal. See [Debugging pipelines]({{site.baseurl}}/docs/pipelines/debugging-pipelines/). |
@@ -91,6 +91,29 @@ alt="Result of shared build configuration"
 caption="Result of shared build configuration"
 max-width="50%"
 %}
+
+## Data retention for pipeline builds and logs
+Codefresh retains build and log data for pipelines for a period of six months, for both on-premises and SaaS installation configurations. 
+
+For on-premises, for configuration details, see [Retention policy for builds and logs in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#retention-policy-for-builds-and-logs){:target="\_blank"}.
+
+## Note on Cloud Builds for Codefresh pipelines
+
+Cloud Builds for Codefresh pipelines are disabled for all accounts by default. 
+Account admins can request Codefresh to enable Cloud Builds for an account. There is no manual action required except to click on the Enable Cloud Builds button as shown below. The timeframe for the response is up to 24 hours.<br>
+
+{% include image.html
+  lightbox="true"
+  file="/images/installation/enable-cloud-builds-request.png"
+  url="/images/installation/enable-cloud-builds-request.png"
+  caption="Enable Cloud Builds for pipelines"
+  alt="Enable Cloud Builds for pipelines"
+  max-width="70%"
+    %} 
+
+As an account admin, you can then grant access to users or have the users explicitly request access to a runtime environment to run pipelines. 
+
+If you [create a free account]({{site.baseurl}}/docs/ci-quick-start/ci-create-codefresh-account/), to run pipelines, you need to configure [Build Runtime settings]({{site.baseurl}}/docs/pipelines/pipelines/#build-runtime) with a Hybrid Runner runtime environment.  
 
 ## Related articles
 [Codefresh YAML for pipeline definitions]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/)  

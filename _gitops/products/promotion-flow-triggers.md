@@ -1,0 +1,1 @@
+../../_docs/products/promotion-flow-triggers.md

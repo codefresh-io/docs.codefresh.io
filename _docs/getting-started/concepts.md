@@ -35,12 +35,12 @@ Argo CD applications conform to Argo CD's application definition CRD (Custom Res
 
 Create Argo CD applications that are fully GitOps-compliant in Codefresh. Identify and fix errors before commit with our built-in validations. The application manifest is generated, committed to Git, and synced to your cluster.   
 
-See [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) Argo CD applications  
+See [Creating]({{site.baseurl}}/docs/deployments/gitops/create-application/) and [Managing]({{site.baseurl}}/docs/deployments/gitops/manage-application/) Argo CD applications. 
 
 
-Just as with Dockerized applications, you get full visibility into the applications and their deployment through the global Analytics, DORA metrics, and the Application dashboards. The Applications dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
+Just as with Dockerized applications, you get full visibility into the applications and their deployment through the Home, DORA metrics, and the GitOps Apps dashboards. The GitOps Apps dashboard shows the current state of all the resources in the application, including information for each resource, and possible actions.  
 
-See [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/applications-dashboard/) 
+See [Monitoring Argo CD applications]({{site.baseurl}}/docs/deployments/gitops/monitor-applications/).
 
 
 ## Pipeline
@@ -71,14 +71,14 @@ The Runner is the hybrid installation option for pipelines in your Codefresh acc
 
 Codefresh Runner gives you: 
 * Access to secure services (such as Git repositories or databases) that are behind the firewall and normally not accessible to the public cloud.
-* The ability to use special resources in your Codefresh pipeline that are unique to your application, GPU nodes or other special hardware only present in your data center.
+* The ability to use special resources in your Codefresh pipeline that are unique to your application or other special hardware only present in your data center.
 * Complete control over the build environment in addition to resources for pipelines.
 
 Every Runner installation creates a runtime environment in your account. Assign the Runner to any pipeline to automatically run the pipeline in your own cluster. External integrations (such as Docker registry or Helm repositories) are also available to the Runner making pipelines exactly the same regardless of their runtime environment.
 
 You can have multiple Runner installations in the same Codefresh account. A Runner can also manage multiple remote clusters in your account. 
 
-See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/codefresh-runner) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall)  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and [Runner installation behind firewalls]({{site.baseurl}}/docs/installation/behind-the-firewall/)  
 
 ## Runtime
 A Runtime in Codefresh is a  GitOps installation in your Codefresh account, in either a Hosted or Hybrid installation environment. Hosted Runtimes are installed on a Codefresh cluster and managed by Codefresh. Hybrid Runtimes are installed on customer clusters, and managed by the customers.
@@ -90,9 +90,9 @@ A single Runtime can connect to and manage multiple remote clusters.
 
 
 See:  
-[GitOps runtime architecture]({{site.baseurl}}/docs/installation/runtime-architecture/#gitops-architecture)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
-[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)
+[GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/)  
+[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
+[Hosted GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)
 
 
 ## Triggers

@@ -1,19 +1,16 @@
-{% comment out begin %}
+
 <footer class="bd-footer text-muted">
   <div class="container-fluid p-3 p-md-5">
     <ul class="bd-footer-links">
-      <li>
-        <a class="text-uppercase" href="{{ site.link_main }}" onclick="ga('send', 'event', 'Footer', 'Docs links', 'Open Codefresh');" target="_blank" rel="noopener">Codefresh</a>
-      </li>
+{% comment out begin %}     
       <li>
         <a class="text-uppercase" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Footer', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
       </li>
       <li>
         <a class="text-uppercase" href="{{ site.link_community }}" onclick="ga('send', 'event', 'Footer', 'Docs links', 'Open Community');" target="_blank" rel="noopener">Community</a>
       </li>
-
+{% endcomment %}
     </ul>
     <p>&copy; {{ 'now' | date: '%Y' }} <a href="https://codefresh.io">Codefresh.io</a></p>
   </div>
 </footer>
-{% endcomment %}

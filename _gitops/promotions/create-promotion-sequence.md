@@ -1,0 +1,1 @@
+../../_docs/promotions/create-promotion-sequence.md

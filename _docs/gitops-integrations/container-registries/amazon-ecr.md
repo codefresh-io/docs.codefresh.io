@@ -1,33 +1,41 @@
 ---
 title: "GitOps Amazon ECR integration"
-description: ""
+description: "Integrate Amazon ECR with GitOps for image enrichment"
 group: gitops-integrations
 sub_group: container-registries
 toc: true
 ---
 
-Codefresh has native support to interact with Amazon ECR (Elastic Container Registry), and push, pull, and deploy images.  
-For general information on adding an Amazon ECR integration for GitOps in Codefresh, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
+Codefresh offers native support for interacting with Amazon ECR (Elastic Container Registry), enabling you to push, pull, and deploy container images seamlessly.  
+For general information on container registry integrations for GitOps, see [Container registry GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 
 ## GitOps Amazon ECR integration options
 
 You can set up the integration with Amazon ECR in one of two modes:
-* IAM (Identity and Access Management) role (dynamic integration)  
+* **IAM (Identity and Access Management) role (dynamic integration)**  
   [IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html){:target="\_blank"} roles provide temporary security credentials for applications and services to access AWS resources securely, that expire after a period of time.  
-* Access key and secret (static integration)  
+* **Access key and secret (static integration)**  
   Access keys consist of an access key ID and a secret access key, used to authenticate and authorize API requests to AWS services for a specific user.
   Unlike IAM roles, access keys are long-term credentials, without a default expiration date.
 
 >**NOTE**  
-  Amazon ECR integration with IAM Role is supported only for Hybrid GitOps.
-  Access Key integration is supported for both Hosted and Hybrid GitOps. Access Key integration requires runtime version 0.1.27 or higher. 
+Access Key integration requires Runtime version 0.1.27 or higher. 
 
 
 Both IAM and access key modes use AWS Identity and Access Management (IAM) to create the integration with Amazon ECR.  
 For detailed information, see [How Amazon Elastic Container Registry Works with IAM](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security_iam_service-with-iam.html){:target="\_blank"} and the [AWS security blog](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/){:target="\_blank"}.
 
 ## Prerequisites
+
+### Permissions for IAM Role and Access Key integrations
+
+The IAM Role/Access Key user must have one of the following permissions:
+* `AmazonEC2ContainerRegistryReadOnly` for read-only access to Amazon EC2 Container Registry repositories.
+* `AmazonEC2ContainerRegistryFullAccess` for administrative access to Amazon ECR resources.
+* `AmazonEC2ContainerRegistryPowerUser` for full access to Amazon EC2 Container Registry repositories, without permissions to delete repositories or make changes to policies.
+
+If any of these permissions are not granted, images cannot be successfully reported from ECR.
 
 
 ### IAM Role integration

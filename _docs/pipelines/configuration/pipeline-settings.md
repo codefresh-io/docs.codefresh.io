@@ -9,7 +9,8 @@ toc: true
 ---
 
 
-As a Codefresh account administrator, you can define [global settings for pipelines] which are inherited by all new pipelines created in the account. Users can still override specific settings for individual pipelines.
+As a Codefresh account administrator, you can define global settings for pipelines which are inherited by all new pipelines created in the account.  
+Users can still override specific settings for individual pipelines.
 
 ## Account-level pipeline settings
 
@@ -32,13 +33,19 @@ As a Codefresh account administrator, you can define [global settings for pipeli
 
 
 ## Configure account-level settings for pipelines
-Configure default settings for pipelines to be inherited by all pipelines in the account. 
+Configure default settings for all pipelines in the account. 
+
+##### Before you begin
+* Review [account-level pipeline settings](#account-level-pipeline-settings)
+
+##### How to
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
 1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
 
 ## Auto-create projects for teams
-Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account. It also creates access-control rules for the same team to projects and pipeline, simplifying setup and saving time.
+Enabled by default, auto-create projects for teams, automatically creates projects whenever you create teams in your account.  
+It also creates access-control rules for the same team to projects and pipelines, simplifying setup and saving time.
 
   {% include image.html
 lightbox="true"
@@ -90,7 +97,7 @@ Once created, there is no synchronization between the project and the team. Modi
 **What are the benefits?**  
 As you can see, this option both simplifies and strengthens access-control:
 
-* Use the Project rule automatically created for the team to grant access to additional projects simply by assigning the same tag to the other projects.
+* Using the Project rule automatically created for the team to grants access to additional projects simply by assigning the same tag to the other projects.
 * Avoids the need to create rules per pipeline for the same project. The Pipeline rule automatically created for the team, automatically grants the same permissions to all pipelines in the same project. New pipelines in the project automatically inherit these permissions.
 * Easily grant the same permissions to other teams for the same pipelines by creating Pipeline rules for the teams with the same project tags.
 
@@ -115,7 +122,8 @@ The options are:
 * **YAML from repository**: Enable/disable pipeline uploading YAMLs from connected Git repositories
 * **YAML from external URLs**: Enable/disable loading YAMLs for pipelines from [external URLs]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
 
->**NOTE**
+
+>**NOTE**  
 You must allow at least one of these options so that users can create new pipelines.  
 We suggest selecting the **Inline YAML** option when users are still learning about Codefresh and want to experiment. 
 
@@ -145,9 +153,6 @@ Selectively restricting access to clusters for a pipeline:
 * Reduces the overall duration of the build by shortening the initialization phase.
   Codefresh authenticates the credentials of every cluster that the pipeline accesses during the initialization phase. This action affects build duration for accounts with large numbers of clusters. 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration in the sidebar, select [**Pipeline Settings**](https://g.codefresh.io/account-admin/account-conf/pipeline-settings){:target="\_blank"}. 
-1. Toggle **Kubernetes cluster context pipeline injection** to ON.
 
 {% include image.html
 lightbox="true"
@@ -237,28 +242,28 @@ Configure if manual confirmation is required after clicking the Approve or Rejec
 
 ## Advanced options for pipelines
 
-Configure the default settings that define the advanced behavior for pipelines.
+Configure the default settings that define advanced behavior for pipelines.
 
 
-* Manage shared volumes for builds pending approval
+* **Manage shared volumes for builds pending approval**  
   Define if to [retain or discard]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) the volume when a pipeline build is pending approval.
   
   >**NOTE**  
     This option _affects pipeline resources and/or billing in the case of SaaS pricing_.  
     It will also affect users of existing pipelines that depend on this behavior.  
-    Once you either enable or disable this option for an account, we recomend leaving it unchanged.
+    Once you either enable or disable this option for an account, we recommend leaving it unchanged.
 
-* Concurrency policy for build pending approval
-  Determines whether pipelines pending approval are [included or excluded from the concurrency count]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).
+* **Concurrency policy for builds pending approval**  
+  Determines whether pipeline builds pending approval are [included or excluded from the concurrency count]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).
 
-* Service Account for Amazon ECR authentication  
-  Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) for Amazon ECR integration.
+* **Service account credentials for Amazon ECR authentication**  
+  Define the [Service Account]({{site.baseurl}}/docs/integrations/docker-registries/amazon-ec2-container-registry/#setting-up-ecr-integration---service-account) to optionally use for authentication in Amazon ECR integrations.
 
-* Public Marketplace Registry  
+* **Public Marketplace Registry**  
   Set the default registry from which to pull images for all _Public Marketplace Steps_.  
-  You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration setup in Codefresh.
+  You can select any [Docker Registry]({{site.baseurl}}/docs/integrations/docker-registries/) integration that has been set up in Codefresh.
   
-  Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration, all Public Marketplace Step images are pulled from `quay.io` instead of from Docker Hub.
+  Example: Public Marketplace Step image is defined to use Docker Hub. If you select a `quay.io` integration as the Public Marketplace Registry, all Public Marketplace Step images are pulled from `quay.io` instead of from Docker Hub.
   
   > **NOTE**  
     The selected registry affects only custom or typed steps.<br>  

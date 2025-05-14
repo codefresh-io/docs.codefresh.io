@@ -14,7 +14,7 @@ Make sure also that you know the scope of the search, that is, where users to se
 
 ## Step 1: Configure SSO settings for LDAP in Codefresh
 1. In the Codefresh UI, from the toolbar click the **Settings** icon.
-1. In the sidebar, from Access & Collaboration, select [Single Sign-On](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.
+1. From the sidebar, select **Single Sign-On**.
 1. Select **+ Add Single Sign-On**, **LDAP**, and then **Next**.
 
    {% include image.html 
@@ -69,6 +69,6 @@ Team synchronization is implemented based on the SSO options configured for LDAP
 
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)  
-[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)  
+[Setting up OIDC Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  

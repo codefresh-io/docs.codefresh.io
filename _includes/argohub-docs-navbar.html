@@ -1,0 +1,89 @@
+<header class="bd-navbar py-2 py-md-0">
+  <div
+    class="container-fluid navbar navbar-dark flex-column flex-md-row py-0"
+  >
+    <div class="d-inline-flex align-content-center">
+      <a
+        class="navbar-brand mx-0 mx-md-2 d-flex align-items-center"
+        href="{{ site.baseurl }}/{{site.gitops_collection}}"
+        onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Home');"
+        aria-label="Codefresh"
+      >
+        <div>
+          {%- include icons/codefresh-logo.svg width="160" height="auto"
+          class="align-middle" -%}
+        </div>
+      </a>
+
+      <div class="divider-vertical mt-1"></div>
+
+      <div class="custom-select">
+        <div
+          class="select-display"
+          role="button"
+          tabindex="0"
+          onclick="toggleSegmentDropdown()"
+          onkeydown="handleDropdownKeydown(event)"
+        >
+          GitOps Cloud
+        </div>
+        <ul class="options" role="listbox" aria-hidden="true">
+          <li
+            class="option selected"
+            role="option"
+            tabindex="0"
+          >
+            GitOps Cloud
+          </li>
+          <li
+            class="option"
+            role="option"
+            tabindex="0"
+            onclick="selectSegmentOption(this, 'enterprise')"
+            onkeydown="handleOptionKeydown(event, this, 'enterprise')"
+          >
+            Pipelines & GitOps
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="navbar-nav-scroll order-1 order-md-1">
+      <ul class="navbar-nav flex-row mx-md-auto">
+      <!---
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.link_plugins }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Plugins');" target="_blank" rel="noopener">Plugins</a>
+        </li>
+      -->
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.link_community }}" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Community');" target="_blank" rel="noopener">Community</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://gitops-graphql-docs.codefresh.io/introduction/welcome" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open API Swagger');" target="_blank" rel="noopener">API</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/gitops/whats-new/changelog/" onclick="ga('send', 'event', 'Navbar', 'Docs links', 'Open Changelog');" >What's New</a>
+        </li>
+
+
+      </ul>
+    </div>
+
+    {% if page.layout != "home" %}
+      <button
+        onclick="window.CommandBar.openHelpHub(); setTimeout(() => {
+          document.querySelector('input[data-testid=helphub-input]').focus()
+        }, 100)"
+        class="helpbub-toggler helpbub-toggler--small order-2 order-md-2"
+        aria-label="Search Codefresh Documentation"
+        type="button"
+      >
+        <div class="d-flex align-items-center">
+          <img src="{{site.baseurl}}/images/icons/search.png" />
+          <span class="ml-2">Search</span>
+        </div>
+        <span class="helpbub-toggler--hotkey">Ctrl / &#8984; + K</span>
+      </button>
+    {% endif %}
+  </div>
+</header>

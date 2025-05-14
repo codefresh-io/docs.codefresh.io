@@ -99,5 +99,5 @@ Here is an example for Codefresh.
 Now, every time you push/tag a Docker image to the selected Artifactory repository, manually, with Codefresh or any other CI/CD tool, Codefresh will trigger execution of all pipelines associated with that Artifactory Push trigger event.
 
 ## Related articles
-[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers)  
+[Triggers in pipelines]({{site.baseurl}}/docs/pipelines/triggers/)  
 [Creating pipelines]({{site.baseurl}}/docs/pipelines/pipelines/)  

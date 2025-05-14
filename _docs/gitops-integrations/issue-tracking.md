@@ -1,16 +1,19 @@
 ---
 title: "GitOps issue tracking integrations"
-description: ""
+description: "Seamlessly connect issue-trackers with GitOps for image enrichment"
 group: gitops-integrations
 redirect_from:
   - /csdp-docs/docs/integrations/issue-tracking/jira/
 toc: true
 ---
 
-One of the major highlights of the Codefresh platform is the ability to automatically correlate 
-software features with their deployment (where and when). While the software version of a component is easily identifiable, what is likely more interesting and important is to know which features are included in a release.
+A key feature of Codefresh GitOps is the ability to automatically correlate software features with their deployments—identifying not just the software version, but also which features are included in each release.
 
-Adding an issue-tracking integration in Codefresh allows you to reference the integration in third-party CI platforms/tools such as GitHub Actions and Codefresh pipelines by the name of the integration, instead of explicit credentials. See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations for GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
+By adding an issue-tracking integration for GitOps, you can link issues (such as user stories, bugs, and feature requests) directly to your deployments. This allows you to track which features are deployed and when, providing better visibility and traceability in your images.
+
+With issue-tracking integrations, you can reference the integration by name in third-party CI tools (e.g., GitHub Actions, Codefresh pipelines) instead of needing to manage explicit credentials. 
+
+See [Image enrichment with GitOps integrations]({{site.baseurl}}/docs/gitops-integrations/image-enrichment-overview/) and [CI integrations for GitOps]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/).
 
 You add an issue-tracking integration in Codefresh by:
 * Defining the integration name 
@@ -23,12 +26,12 @@ Once added, Codefresh displays the list of existing integrations with their sync
 ##  Configure issue tracking integrations for GitOps in Codefresh
 Configure the settings for an issue tracking integration for GitOps in Codefresh.
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
 1. Filter by **Issue Tracking**, select the issue tracking tool to integrate, and click **Configure**.
-1. Jira integrations only: For a new Jira integration, from the **Add Integration** dropdown, select the type of integration, as either **Deployment reporting** or **Image enrichment**.
+1. Jira integrations only: For a new Jira integration, from the **Add Integration** dropdown, select the type of integration, as either **Reporting** or **Image enrichment**.
 1. If you already have integrations, click **Add**.
 1. Define the arguments for the issue tracking tool:  
-  [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/)   
+  [Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/#jira-gitops-integration-settings-in-codefresh)   
 1. To confirm, click **Commit**.
   It may take a few moments for the new integration to be synced to the cluster before it appears in the list.
 
@@ -40,7 +43,6 @@ The exact location depends on whether the integration is shared with all or spec
 
 ### View issue-tracking integrations for GitOps
 Selecting an issue tracking tool displays the existing integrations in Codefresh.  
-
 
 Every issue tracking integration displays the following information:
 * Name of the integration
@@ -57,7 +59,7 @@ use it.
 {{site.data.callout.end}}
 
 
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select [**GitOps Integrations**](https://g.codefresh.io/2.0/account-settings/integrations){:target="\_blank"}. 
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon, and then from the sidebar, select **GitOps Integrations**. 
 1. Filter by **Issue Tracking**, and select the specific integration.
 1. In the row with the integration to edit or delete, click the three dots and select **Edit** or **Delete**.
 1. To edit, update the **Username** and **Password** fields, and click **Test Connection** to verify the account credentials.

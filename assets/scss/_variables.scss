@@ -77,6 +77,11 @@ $bd-doc-content-border: #dadada;
 $bd-link-color:                $bd-topaz-main !default;
 $bd-link-hover-color:          darken($bd-link-color, 15%) !default;
 
+// Helphub
+$helpbub-bg: #3f4255;
+$helpbub-text-color: #b0c4e7;
+$helpbub-border: #35384b;
+
 // Fonts
 // stylelint-disable value-keyword-case
 $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -136,3 +141,14 @@ $container-max-widths: (
 
 $grid-columns:               12;
 $grid-gutter-width-base:     28px;
+
+//ANT design system
+$ant-input-background-color: #2b2e41;
+$ant-input-border-color: #3f4255;
+$ant-input-hover-border-color: #46d49e;
+$ant-input-color: #8c91c0;
+$ant-select-dropdown-bg: #2b2e41;
+$ant-select-option-hover-color: #454661;
+$ant-select-option-selected-color: #5fffbf;
+$ant-select-option-selected-bg: #395257;
+$ant-divider-color: #3f4255;

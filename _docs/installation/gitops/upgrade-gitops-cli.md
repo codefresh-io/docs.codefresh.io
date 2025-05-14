@@ -1,11 +1,10 @@
 ---
 title: "Download/upgrade GitOps CLI"
 description: "Have the latest version of the GitOps CLI"
-group: installation
-sub_group: gitops
 toc: true
 ---
 
+## GitOps CLI
 You need the Codefresh CLI to install and upgrade Hybrid GitOps Runtimes, and get access to all the newest features. 
 For the initial download, you need to generate an API key and create the API authentication context, which you do from the UI.  
 When newer versions are available, the CLI automatically notifies you through a banner that an upgrade is required. You can use the existing API credentials for the upgrade. 
@@ -21,7 +20,7 @@ The table lists the modes available to install the GitOps CLI.
 |             | MacOS-m1 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-darwin-arm64.tar.gz | tar zx && mv ./cf-darwin-arm64 /usr/local/bin/cf && cf version` |          
 |             | Linux - X64 |`curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-amd64.tar.gz | tar zx && mv ./cf-linux-amd64 /usr/local/bin/cf && cf version` |       
 |              | Linux - ARM  |  `curl -L --output - https://github.com/codefresh-io/cli-v2/releases/latest/download/cf-linux-arm64.tar.gz | tar zx && mv ./cf-linux-arm64 /usr/local/bin/cf && cf version`|     
-| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|````
+| `brew` | N/A| `brew tap codefresh-io/cli && brew install cf2`|
 
 ## Download the GitOps CLI
 Download the GitOps CLI using the option that best suits you: `curl`, `brew`, or standard download.  
@@ -81,5 +80,4 @@ You can upgrade to a specific version if you so require, or download the latest 
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
 
 ## Related articles
-[Hosted GitOps Runtime setup]({{site.baseurl}}/docs/installation/gitops/hosted-runtime)  
-[Hybrid GitOps Runtime installation]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops)  
+[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  

@@ -104,11 +104,13 @@
         height: 60px;
         padding: 0 1rem;
         line-height: 60px;
+        text-wrap: nowrap;
       }
 
       &.active,
       &:hover {
         color: $bd-topaz-main;
+        text-wrap: nowrap;
 
         &::after {
           height: 2px;

@@ -140,7 +140,7 @@ You can then view the image in the DigitalOcean Container Registry:
 %}
 
 ## Related articles
-[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries)  
+[Docker registries for pipeline integrations]({{site.baseurl}}/docs/integrations/docker-registries/)  
 [Working with Docker Registries]({{site.baseurl}}/docs/ci-cd-guides/working-with-docker-registries/)  
 [Building Docker images]({{site.baseurl}}/docs/ci-cd-guides/building-docker-images/)  
 [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)  

@@ -184,7 +184,7 @@ You can take advantage of this mechanism by [not mixing deployment docker images
 
 ## Traditional build caching
 
-If you have read the [introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps. This volume is not only used for data exchange between steps of the same pipeline, but is also stored/fetched for each subsequent build as well.
+If you have read the [introduction to pipelines]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/) page you will already be familiar with the shared volume that is automatically mounted on all pipeline steps. This volume is not only used for data exchange between steps of the same pipeline, but is also stored/fetched for each subsequent build as well.
 
 {% include image.html 
 lightbox="true" 
@@ -200,7 +200,7 @@ This means that unlike other CI solutions where you have to manually describe wh
 The main choice that you have is which files to place on the volume. For example, Node.js uses the folder `node_modules` for its dependencies which are placed under the project folder [which is automatically placed under the volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#cloning-the-source-code). So all contents of `node_modules` will be cached by default without any further action on your part.
 
 >**NOTE**  
- If you are using [Codefresh on-premises]({{site.baseurl}}/docs/installation/codefresh-on-prem/), this kind of caching is not available for the built-in runtime.<br>You need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/codefresh-runner/) with your own runtime to activate volume caching.
+ If you are using [Codefresh on-premises]({{site.baseurl}}/docs/installation/installation-options/on-premises/), this kind of caching is not available for the built-in runtime.<br>You need to use the [Codefresh Runner]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) with your own runtime to activate volume caching.
 
 The simplest way to see this caching mechanism in action is this pipeline:
 
@@ -247,7 +247,7 @@ Some important points on this caching mechanism:
 * The volume is **NOT available** in [build steps]({{site.baseurl}}/docs/pipelines/steps/build/). This is not a Codefresh limitation. Docker itself [does not allow volumes during builds](https://github.com/moby/moby/issues/14080){:target="\_blank"}. There is no folder `/codefresh/volume` inside a Dockerfile for you to access.
 * This is the only caching mechanism that is not related to Docker images. So if you compile/package a traditional application with Codefresh that is not packaged as a Docker image this is the only way to get faster builds.
 
-See also a [full example]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-between-builds/) that uses the volume at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds){:target="\_blank"}.
+See also a [full example]({{site.baseurl}}/docs/example-catalog/ci-examples/shared-volumes-between-builds/) that uses the volume at [https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds](https://github.com/codefreshdemo/cf-example-shared-volumes-between-builds/){:target="\_blank"}.
 
 ### Caching folders which are outside your project folder
 

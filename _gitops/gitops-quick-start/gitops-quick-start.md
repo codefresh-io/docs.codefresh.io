@@ -1,0 +1,1 @@
+../../_docs/gitops-quick-start/gitops-quick-start.md

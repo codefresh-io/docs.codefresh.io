@@ -10,7 +10,9 @@ toc: true
 Codefresh supports integration with Gerrit, the open-source web-based code review tool for Git repositories. Configure Gerrit as the primary Git provider for Codefresh GitOps. Codefresh can fetch the approved changes from Gerrit and build, test, and deploy the application based on your predefined workflows.
 
 >**NOTE**   
-Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.
+Currently, Gerrit is supported as a Git provider for only Hosted GitOps Runtimes.   
+We support Gerrit version 3.6 (tested with 3.6.3) and 3.10 (tested with 3.10.1).
+>For your next Gerrit upgrade, we’ll make our best effort to support the new version, but cannot guarantee specific timelines.
 
 
 By integrating Gerrit with Codefresh GitOps, when you set up your [Hosted GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/), you can select Gerrit as your Git provider.
@@ -99,7 +101,7 @@ See [Connect to Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-r
 
 ### Enrich image information
 To enrich images with relevant information from Gerrit, incorporate Codefresh's image reporting step into your pipelines/workflows,  providing relevant Gerrit arguments.
-Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/#ci-integration-argument-reference).  
+Look for `CF_GERRIT_` in [CI integration argument reference]({{site.baseurl}}/docs/gitops-integrations/ci-argument-reference/).  
   
 ## Related articles
 [Shared Configuration Repo]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  

@@ -89,6 +89,11 @@
   // Links
   @include content-links();
 
+  .borderless-table {
+    td {
+      border: none !important;
+    }
+  }
   // Tables
   > table {
     width: 100%;
@@ -101,7 +106,7 @@
       -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
       &.table-bordered {
-        border: 0;
+        border: 0 !important;
       }
     }
 

@@ -1,31 +1,69 @@
 ---
-title: "Images in Codefresh"
+title: "Images dashboard"
 description: ""
 group: deployments
-sub_group: gitops
 toc: true
 ---
 
 
+##  Images dashboard 
+The Images dashboard provides a centralized view of container images built and used in deployments. With powerful filtering options and enriched metadata, it enhances visibility into an image’s provenance and deployment history.
 
+{% if page.collection == site.gitops_collection %}
+Enabled on request. Please contact Support.
+{% endif %}
+
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/image/images-default-main-view.png" 
+   url="/images/image/images-default-main-view.png" 
+   alt="Images dashboard" 
+   caption="Images dashboard"
+   max-width="60%" 
+   %}
+
+##### Image enrichment and metadata
+Image enrichment is the process of enhancing container images with valuable metadata to improve traceability and governance. 
+The metadata is added to the image through third-party integrations with CI, registry, and issue-tracking tools.  
+
+Each image tag reflects enriched information from these integrations, which can include:
+* Source code details: Commit SHA, repository, branch, and PR associations
+* Build metadata: Pipeline name, build status, timestamp
+* Deployment tracking: Visibility into where an image is currently running
+
+##### Advanced filtering
+The dashboard offers a variety of filters to help quickly find relevant images. The default and most useful is the **Currently Deployed** filter, which pinpoints images actively deployed in applications with additional information on the tag, services, most recent commits and more. 
+
+Other filters include build status, repository, commit SHA, and promotion status, giving you granular control over image tracking.
+
+##### Layered views for enhanced visibility
+
+The Images dashboard presents information in multiple layers, allowing you to drill down from high-level summaries to detailed metadata.  
+This structure helps to quickly analyze images based on your needs:
+* Current deployment view
+* Tag-level view, displaying images in applications by tag versions
+* Detailed view, displaying summary, Dockerfile, and layers
+
+{% include 
+   image.html 
+   lightbox="true" 
+   file="/images/image/images-default-main-view.png" 
+   url="/images/image/images-default-main-view.png" 
+   alt="Images dashboard" 
+   caption="Images dashboard"
+   max-width="60%" 
+   %}
 
 ## Access the Images dashboard 
 
 
-* In the Codefresh UI, from Artifacts in the sidebar, select [Images](https://g.codefresh.io/2.0/images){:target="\_blank"}.
+* In the Codefresh UI, from the sidebar, select **Images**.
 
-
-
-Image views to show multiple levels of data: 
-
-1. Repository and application deployment
-1. Tags
-1. Summary with metadata and binary information 
-1. Dockerfile info
-1. Layers
 
 ## Filters for Image views
-As with any resource in Codefresh, the Images dashboard supports filters that allow you focus on the data that's important to you.
+As with any resource, the Images dashboard supports filters that allow you focus on the data that's important to you.
 Most image filters support multi-selection.  Unless otherwise indicated, the filters are common to all view levels.
 
 {: .table .table-bordered .table-hover}
@@ -42,9 +80,10 @@ Most image filters support multi-selection.  Unless otherwise indicated, the fil
 
 
 
-## Image main view: deployment and repo information
+## Image high-level view: current deployment and repo information
 The main view of the Images dashboard displays high-level deployment, repository, and registry information. 
 
+<!---
 
 {% include 
    image.html 
@@ -56,18 +95,19 @@ The main view of the Images dashboard displays high-level deployment, repository
    max-width="60%" 
    %}
 
- 
+-->
+
 For each image, you can see:
-* The name of the image. Clicking the image name 
-* The application or list of applications in which the image is currently deployed. Clicking an application takes you to the GitOps Apps dashboard with detailed information on the application.| 
+* The name of the image. Clicking the name takes you to the tag-level view of the image.
+* The application or list of applications in which the image is currently deployed. Clicking an application takes you to the GitOps Apps dashboard with detailed information on the application.
 * Binary information from Git, including the most recent commit, creation date, size, and tag. 
 * The registry to which the image is pushed, and from which it is distributed.
 
 The Currently Deployed stamp on the right shows the number of applications in which the image is deployed.
 
                      
-## Image tag view
-Drilldown on the repository shows all the tags created for the image.
+## Image tag-level view
+Drill down on the repository shows all the tags created for the image.
 {% include 
    image.html 
    lightbox="true" 
@@ -78,7 +118,7 @@ Drilldown on the repository shows all the tags created for the image.
    max-width="60%" 
    %}
 
-Each row displays information on the tag:
+Each tag displays information:
                             
 * The comment describing the commit or change, with the name of the Git provider and the corresponding PR. To view details of the commit changes in the Git repository, select the commit text.|  
 * The hash of the Docker image, generated as sha256. A change in the digest indicates that something has changed in the image.|
@@ -93,12 +133,19 @@ For Summary, Dockerfile, and Layer information on a tag, click **more details**.
 {{site.data.callout.end}}
 
 
-##  Image Summary 
-The Summary view summarizes the metadata for the image. 
+##  Image detailed view
+The detailed view provides a granular breakdown of the image through the Summary, Dockerfile, and Layers tabs.
 
+### Summary view
+Summarizes the metadata for the image:
+* **Image info**: The image name, registry, OS architecture, and last update.                          
+* **Applications** : The application or applications in which the image is deployed. 
+* **Build Info**: The size of the image, and the Argo Workflow for the image step. Click the link to go to the Argo Workflow.
+* **Issues**: The Jira issue number and the committer, enriched with the commit message and its status.
+* **Git**: The Git details for this image tag, such as repo, branch, commit message, committer(s) and Pull Request information.
+* **Annotations**: Annotations if any assigned to the image.
 
-
-{% include 
+<!--- {% include 
    image.html 
    lightbox="true" 
    file="/images/image/images-summary-tab.png" 
@@ -107,18 +154,14 @@ The Summary view summarizes the metadata for the image.
    caption="Image Summary tab"
    max-width="60%" 
    %}
+-->
 
 
-* **Image info**:  The image name, registry, OS architecture, and last update.                          
-* **Applications** : The application or applications in which the image is deployed. 
-* **Build Info**: The size of the image, and the Argo Workflow for the image step. Click the link to go to the Argo Workflow.
-* **Issues**: The Jira issue number and the committer, enriched with the commit message and its status.
-* **Git**: The Git details for this image tag, such as repo, branch, commit message, committer(s) and Pull Request information.
-* **Annotations**: Annotations if any assigned to the image.
 
-##  Image Dockerfile 
+###  Dockerfile 
+The Dockerfile tab is populated only for images built with Dockerfiles.
 
-
+<!--- 
 {% include 
    image.html 
    lightbox="true" 
@@ -128,11 +171,11 @@ The Summary view summarizes the metadata for the image.
    caption="Image Dockerfile tab"
    max-width="60%" 
    %}
- 
-##  Image Layers
+-->
+###  Layers
+The Layers tab provides a step-by-step breakdown of how an image was built, mapping each layer to a specific Docker instruction. Reviewing layers helps identify unnecessary bloat, detect security risks, and optimize images for faster builds and deployments.
 
-
-{% include 
+<!--- {% include 
    image.html 
    lightbox="true" 
    file="/images/image/images-layers-tab.png" 
@@ -141,6 +184,7 @@ The Summary view summarizes the metadata for the image.
    caption="Image Layers tab"
    max-width="60%" 
    %}
+-->
 
 ## Related articles 
 [Image enrichment for GitOps with integrations]({{site.baseurl}}/docs/ci-cd-guides/image-enrichment/)  

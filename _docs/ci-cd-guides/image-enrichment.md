@@ -39,7 +39,7 @@ Complete these steps to view enriched image information in the Images dashboard 
  
 1. (Mandatory) Connect to Docker registries  
   Connect Docker registries to Codefresh to store Docker images.  
-  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries).
+  See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).
 
 1. (Mandatory) Report image information to Codefresh  
   This is the equivalent to pushing the image in Codefresh pipelines.  

@@ -17,7 +17,14 @@ When navigating through the Codefresh UI. I am experiencing slowness or I am see
 
 ## Details
 
-For troubleshooting UI-related issues, it's helpful to provide the Codefresh support team with a HAR file. This file is a log of network requests that occurred during a recorded period.
+In order to troubleshooting UI-related issues, Codefresh support requires at minimum the following information:
+
+* Codefresh username of affected user
+* Link to UI page being accessed
+* Action being performed
+* Timestamp of incident
+
+It's also helpful to provide the Codefresh support team with a HAR file. This file is a log of network requests that occurred during a recorded period.
 
 ### Important
 
@@ -25,7 +32,7 @@ Before capturing a HAR file, it's important to note a few items.
 
 1. A HAR file may contain sensitive data. (personal data, emails, hostnames, IP Addresses, passwords, etc.) It's highly recommended that you review the HAR file for sensitive information before uploading it to Codefresh Support.
 2. For the best results, it's recommended that you begin the capture of the HAR file before you attempt to reproduce the issue and continue to capture it throughout the problem.
-3. ( _Optional_ ) It's also a good idea to record your screen while you are facing the issue to help give a better understanding of what you are seeing concerning the HAR file.
+3. (_Optional_) It's also a good idea to record your screen while you are facing the issue to help give a better understanding of what you are seeing concerning the HAR file.
 
 ### Capturing a HAR file
 
@@ -38,9 +45,35 @@ Here are instructions on how to capture a HAR file for various browsers:
 #### Chromium-based
 
 1. Open Chrome, in the top right, select the **vertical "Meatball" menu** -> **More tools** -> **Developer tools**
-    ![chromium image 0]({{site.baseurl}}/images/troubleshooting/data-needed-00.png)
+  {% include 
+image.html 
+lightbox="true" 
+file="/images/troubleshooting/data-needed-00.png" 
+url="/images/troubleshooting/data-needed-00.png" 
+alt="Chromium: Developer tools" 
+caption="Chromium: Developer tools" 
+max-width="100%" 
+ %}
+    
 2. Click the **Network** tab
     ![chromium image 1]({{site.baseurl}}/images/troubleshooting/data-needed-01.png)
+
+
+3. New image
+
+  {% include 
+image.html 
+lightbox="true" 
+file="/images/troubleshooting/data-needed-00.png" 
+url="/images/troubleshooting/data-needed-00.png" 
+alt="Chromium: Developer tools" 
+caption="Chromium: Developer tools" 
+max-width="100%" 
+ %}
+ 
+
+
+
 3. If the " **Record** " button is not red, go ahead and click this button.
     ![chromium image 2]({{site.baseurl}}/images/troubleshooting/data-needed-02.png)
 4. You are now ready to begin capture. Please navigate to the URL where you are facing the issue and attempt to reproduce the issue. You should now see network requests being populated in your developer tools. Here is an example:

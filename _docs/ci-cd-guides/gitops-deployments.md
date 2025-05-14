@@ -14,7 +14,7 @@ For an overview on GitOps, Argo CD, and how Codefresh implements both, see [Code
 Even though GitOps is not specific to Kubernetes, current GitOps tools work great with Kubernetes in the form of cluster controllers. The GitOps controller monitors the state of the Git repository, and when there is a commit, instructs the cluster to match the same state.
 
 
-Codefresh has native support for GitOps, from creating GitOps applications, deploying them, and monitoring and managing the deployments with dedicated dashboards optimized for GitOps. 
+Codefresh has native support for GitOps, from creating Argo CD applications, deploying, monitoring, and managing them via the GitOps paradigm, and  deployments with dedicated dashboards compai GitOps. 
 
 {% include
 image.html
@@ -31,8 +31,8 @@ Starting with pointers on setting up Git repos, this guide takes you through the
 * Connecting Argo CD and Codefresh
 * Creating a CI pipeline for GitOps
 * Creating an Argo CD application for GitOps
-* Deploying the application
-* Working with the GitOps Apps dashboard, and a look at the insights from the GitOps Dashboard (Home) and DORA dashboards
+* Deploying the Argo CD application
+* Working with the GitOps Apps dashboard, and GitOps Dashboard (Home) and DORA dashboards for additional insights
 
 
 
@@ -48,7 +48,8 @@ As a live example you can use:
   The repository with the application code contains the source code plus a Dockerfile. You can use any Git workflow for this repository. We will create a pipeline in Codefresh that creates a container image on each commit.  
 
 * For the Kubernetes configuration, the [https://github.com/codefresh-contrib/gitops-kubernetes-configuration](https://github.com/codefresh-contrib/gitops-kubernetes-configuration){:target="\_blank"} repository.   
-  The configuration repository holds the kubernetes manifests. This is one of the critical points of GitOps:
+  The configuration repository holds the Kubernetes manifests.  
+  This is one of the critical points of GitOps:  
     * The configuration repository holds the manifests that are also present in the Kubernetes cluster  
     * Whenever there is a commit to the configuration repository, the cluster is notified to deploy the new version of the files (we will set up a pipeline for this)
     * Every subsequent configuration change should become a Git commit. Ad-hoc changes to the cluster with `kubectl` commands are **NOT** allowed
@@ -58,37 +59,102 @@ As a live example you can use:
 
 **Fork repositories**  
 
-* Before continuing, if don't have already your own example application, fork all three repositories into your own GitHub account.
+* Before continuing, if you don't have your own example application, fork all three repositories into your own GitHub account.
 
-## Connecting ArgoCD and Codefresh
+## Connecting Arg CD and Codefresh
 
 GitOps deployments are powered by [ArgoCD](https://argoproj.github.io/argo-cd/){:target="\_blank"}, so you need an active ArgoCD installation in your cluster.
 
 This is easy with our GitOps Runtimes. Argo CD is installed automatically on installing a GitOps runtime, either the Hosted or Hybrid versions.  
-See:  
-[Hosted GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)   
-[Hybrid GitOps runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops/)  
+See [Install GitOps runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
 
-If you don't have a runtime installed already, for this guide, install the Hosted GitOps runtime.
+
 
 <!--- Add hosted runtime image-->
 
-## Creating a CI Pipeline for GitOps
+## Creating a CI Pipeline for image enrichment with GitOps Jira integration
 
 Creating a CI pipeline for GitOps is no different from creating a standard pipeline. The only difference is that as the final action for the pipeline, you should add the report image action provided by Codefresh. The report image action correlates the Docker image with the Git repository details, Jira issues associated with it, and additional information from the registry that stores the image. 
 
 Follow these steps to create a CI pipeline for GitOps:
 
-1. Set up Jira and registry integrations for GitOps
-  You need to connect Jira and your container registry to Codefresh. These integrations are specific to GitOps, and differ from the pipeline integrations that you may have already set up.  
-  Once you set up the GitOps integrations, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
-1. Set up Codefresh pipeline integration for GitOps
-1. Create your Codefresh pipeline as you usually do, using the Example CI pipeline for GitOps as a guide:  
+1. Set up [issue-tracking and container registry integrations for GitOps](#set-up-jira-and-docker-hub-integrations-for-gitops-image-enrichment)
+  You need to connect Jira and your container registry to Codefresh. 
+  >**NOTE**  
+  These integrations are specific to GitOps, and differ from the Jira and container registry integrations that you may have already set up for pipelines.  
+  Once you set up the GitOps integrations for Jira and container registries, you can reference them in the CI pipeline's report image step for Codefresh to retrieve the necessary information.
+1. Set up [Codefresh pipeline integration for GitOps](#set-up-codefresh-pipeline-integration-for-gitops)
+1. Create your Codefresh pipeline as you usually do, using the [Example CI pipeline for GitOps] as a guide:  
    Use existing CI actions for compiling code, running unit tests, security scanning etc.
      1. Place the final action in the pipeline as the “report image” action provided by Codefresh.  
-  See Codefresh report image
      1. When the pipeline completes execution, Codefresh retrieves the information on the image that was built and its metadata through the integration names specified.
-1. View the enriched image in Codefresh’s Images dashboard, and in any application in which it is used.
+1. View the enriched image in Codefresh’s [Images dashboard]({{site.baseurl}}/docs/dashboards/images/), and in any application in which it is used.
+
+
+
+
+You can see the associated metadata in the [Images dashboard](https://g.codefresh.io/images/){:target="\_blank"}.
+
+<!--- get a good image and replace
+ {% include image.html
+  lightbox="true"
+  file="/images/guides/gitops/image-annotations.png"
+  url="/images/guides/gitops/image-annotations.png"
+  alt="Enriched Docker image"
+  caption="Enriched Docker image"  
+  max-width="80%"
+ %}
+
+-->
+
+
+
+### Set up Jira and Docker Hub integrations for GitOps image enrichment
+GitOps integration for Atlassian Jira allows you to both enrich images with information from Jira, and report the deployment information back to Jira. For this guide, you need to select the image enrichment option.
+
+Codefresh GitOps can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more. See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).  
+For this guide, we'll connect Docker Hub to Codefresh as the container registry for GitOps.
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select **GitOps Integrations**.
+1. For Jira:
+    * Filter by **Issue Tracking**, select **Atlassian Jira** and click **Configure**.
+    * From the **Add Integration** dropdown, select **Image enrichment**.
+    * Define the [integration settings for Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/#jira-gitops-integration-settings-in-codefresh).
+  The **Integration name** must be unique.
+1. For Docker Hub:
+    * Complete the [prerequisites]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#prerequisites)  
+    * Filter by **Container Registry**, select **Docker Hub**, and click **Configure**.
+    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
+
+
+
+Don't forget to click **Commit**. It may take a few moments for the new integrations to be synced to the cluster before they appear in the list of **Active** integrations.
+
+
+
+ {% include image.html
+  lightbox="true"
+  file="/images/guides/gitops/active-integrations.png"
+  url="/images/guides/gitops/active-integrations.png"
+  alt="Active Jira and DockerHub integrations for GitOps"
+  caption="Active Jira and DockerHub integrations for GitOps"  
+  max-width="60%"
+ %}
+
+### Set up Codefresh pipeline integration for GitOps
+After completing the Jira and Docker Hub integrations for GitOps, we can set up the pipeline integration as well for GitOps. 
+Why would you do this? When you create the CI pipeline as you usually do, you'll see that the final report image step references several Codefresh variables to report image information to Codefresh for image enrichment.  
+
+Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/), and make sure to also review [Templatization examples for CF arguments]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#templatization-examples-for-cf-arguments).
+
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+1. From Configuration in the sidebar, select **GitOps Integrations**.
+1. Filter by **CI tools**, select **Codefresh** and click **Add**.
+1. Define the [integration settings for Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#codefresh-pipeline-gitops-integration-settings).  
+
+<!--- View the enriched image in the Images -->
 
 ### Example CI pipeline for GitOps
 
@@ -155,78 +221,12 @@ Pipeline steps:
 1. [Build step]({{site.baseurl}}/docs/pipelines/steps/build/): Builds a Docker image
 1. `codefresh-report-image`: Reports the Jira and registry information to Codefresh. Populates the values of the Codefresh Git variables from those you defined in the respective GitOps integrations. 
 
-
-You can see the associated metadata in the [Images dashboard](https://g.codefresh.io/images/){:target="\_blank"}.
-
-<!--- get a good image and replace
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/image-annotations.png"
-  url="/images/guides/gitops/image-annotations.png"
-  alt="Enriched Docker image"
-  caption="Enriched Docker image"  
-  max-width="80%"
- %}
-
--->
-
-
-
-### Set up Jira and Docker Hub integrations for GitOps image enrichment
-GitOps integration for Atlassian Jira allows you to both enrich images with information from Jira, and report the deployment information back to Jira. For this guide, you need to select the image enrichment option.
-
-Codefresh GitOps can integrate with popular container registries such as Docker Hub, JFrog Artifactory, and more. See [GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/).  
-For this guide, we'll connect Docker Hub to Codefresh as the container registry for GitOps.
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration in the sidebar, select **GitOps Integrations**.
-1. For Jira:
-    * Filter by **Issue Tracking**, select **Atlassian Jira** and click **Configure**.
-    * From the **Add Integration** dropdown, select **Image enrichment**.
-    * Define the [integration settings for Jira]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/jira/#jira-gitops-integration-settings-in-codefresh).
-  The **Integration name** must be unique.
-1. For Docker Hub:
-    * Complete the [prerequisites]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#prerequisites)  
-    * Filter by **Container Registry**, select **Docker Hub**, and click **Configure**.
-    * Define the [integration settings for Docker Hub]({{site.baseurl}}/docs/gitops-integrations/container-registries/dockerhub/#docker-hub-gitops-integration-settings-in-codefresh).
-
-
-
-Don't forget to click **Commit**. It may take a few moments for the new integrations to be synced to the cluster before they appear in the list of **Active** integrations.
-
-
-
- {% include image.html
-  lightbox="true"
-  file="/images/guides/gitops/active-integrations.png"
-  url="/images/guides/gitops/active-integrations.png"
-  alt="Active Jira and DockerHub integrations for GitOps"
-  caption="Active Jira and DockerHub integrations for GitOps"  
-  max-width="60%"
- %}
-
-### Set up Codefresh pipeline integration for GitOps
-After completing the Jira and Docker Hub integrations for GitOps, we can set up the pipeline integration as well for GitOps. 
-Why would you do this? When you create the CI pipeline as you usually do, you'll see that the final report image step references several Codefresh variables to report image information to Codefresh for image enrichment.  
-
-Read more in [GitOps CI integrations]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/), and make sure to also review [Templatization examples for CF arguments]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#templatization-examples-for-cf-arguments).
-
-
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From Configuration in the sidebar, select **GitOps Integrations**.
-1. Filter by **CI tools**, select **Codefresh** and click **Add**.
-1. Define the [integration settings for Codefresh pipelines]({{site.baseurl}}/docs/gitops-integrations/ci-integrations/codefresh-classic/#codefresh-pipeline-gitops-integration-settings).  
-
-<!--- View the enriched image in the Images -->
-
-
-
 ## Creating an Argo CD application for GitOps
 
 Codefresh provides an easy-to-use editor to create GitOps-compatible Argo CD applications.
-When creating the application, you can use the Form mode or the YAML editor, and toggle between the two.  
+When creating the application, you can use the Form mode or the YAML editor, and always toggle between the two.  
 
-A GitOps application includes:  
+An Argo CD application in Codefresh includes:  
 
 * Application definitions  
   Application definitions include the name, runtime, and the location of the YAML manifest. You can define subfolders by adding / to the path.
@@ -276,7 +276,7 @@ The next step after creating the GitOps application is to deploy it.  To deploy 
 * `Rollout` resource defining the deployment strategy 
 * `Service` resource to expose the application to external traffic
 
-You will also need to [install Argo Rollouts]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts) on the cluster to which you are deploying the application. 
+You will also need to [install Argo Rollouts]({{site.baseurl}}/docs/deployments/gitops/install-argo-rollouts/) on the cluster to which you are deploying the application. 
 
 ### Create rollout.yaml
 
@@ -450,14 +450,14 @@ You can see the:
 ### Review and update application Configuration
 The Configuration tab displays the definitions for the application. Apart from the application name and runtime, you can change any setting, and commit the changes. 
 
-For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application).
+For more information on application definitions, see [Creating GitOps applications]({{site.baseurl}}/docs/deployments/gitops/create-application/).
 
-## GitOps Dashboard and DORA dashboards
+## Home and DORA Metrics dashboards
 
-If you have several applications and deployments, the GitOps Dashboard  and the DORA metrics dashboards are the go-to dashboards for managers and developers alike.
+If you have several applications and deployments, the Home Dashboard and the DORA Metrics dashboards are the go-to dashboards for managers and developers alike.
 
-The **GitOps Dashboard**, part of the Home dashboard, offers a global view of runtimes, managed clusters, deployments, and applications. For system-wide visualization in real-time, this is your dashboard of choice in Codefresh.  
-* Go to [GitOps Dashboard](https://g.codefresh.io/2.0/?startDateFrom=2023-04-26&startDateTo=2023-05-03&time=LAST_7_DAYS){:target="\_blank"}.  
+The **GitOps Dashboard** in the Home dashboard offers a global view of GitOps Runtimes, managed clusters, deployments, and applications. For system-wide visualization in real-time, this is your dashboard of choice in Codefresh.  
+* Go to [Home Dashboard](https://g.codefresh.io/2.0/?startDateFrom=2023-04-26&startDateTo=2023-05-03&time=LAST_7_DAYS){:target="\_blank"}.  
 
 For detailed information, see [GitOps Dashboard]({{site.baseurl}}/docs/dashboards/home-dashboard/#gitops-dashboard). 
 
@@ -491,7 +491,7 @@ max-width="80%"
 The GitOps Apps dashboard displays applications created using the [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/){:target="\_blank"}. If you have a number of applications that are related, and you always
 install them as a set in your cluster, you can group them in a single Application. The parent application can be defined using [declarative Argo Resources](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/){:target="\_blank"}.
 
-As an example, you might find that you always install in your cluster Linkerd, Prometheus and Ambassador. You can group all of them in a single Application and deploy them all at once.
+As an example, you might find that you always install in your cluster Linkerd, Prometheus, and Ambassador. You can group all of them as a single application and deploy them all at once.
 
 You can find an existing example of app-of-apps at [https://github.com/argoproj/argocd-example-apps/tree/master/apps](https://github.com/argoproj/argocd-example-apps/tree/master/apps){:target="\_blank"}. It uses [Helm]({{site.baseurl}}/docs/example-catalog/cd-examples/helm/), but you can use any other Kubernetes templating mechanism such as [Kustomize]({{site.baseurl}}/docs/example-catalog/cd-examples/deploy-with-kustomize/), or even plain manifests.
 
@@ -525,5 +525,7 @@ Clicking on the parent application takes you to the Current State tab with the c
 {{site.data.callout.end}}
 
 
-<!---## Related articles
-[Progressive delivery with Argo Rollouts]({{site.baseurl}}/docs/ci-cd-guides/progressive-delivery/)  -->
+## Related articles
+[Image enrichment with integrations for GitOps]({{site.baseurl}}/docs/ci-cd-guides/image-enrichment/)  
+[GitOps issue tracking integrations]({{site.baseurl}}/docs/gitops-integrations/issue-tracking/)  
+[GitOps container registry integrations]({{site.baseurl}}/docs/gitops-integrations/container-registries/)  

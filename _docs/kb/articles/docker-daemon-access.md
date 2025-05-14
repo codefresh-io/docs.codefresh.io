@@ -11,38 +11,39 @@ categories: [Pipelines]
 support-reviewed: 2023-04-18 LG
 ---
 
-## Overview
+This article describes how to access the Docker Daemon within a pipeline step for custom use cases.
 
-The general and most common uses-cases that require access to the Docker Daemon are covered by [Codefresh-provided native steps]({{site.baseurl}}/docs/pipelines/steps/):
+## Docker Daemon access support
 
-* To build a Docker image: [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
-* To push a Docker image: [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)
-* To run a Docker Composition: [Composition step]({{site.baseurl}}/docs/pipelines/steps/composition/) and [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
+> Docker Daemon as only available on the **Hybrid Runtime** and **On-Prem** instances. Docker Daemon access is not supported on **SaaS Runtimes** for security Reasons.
 
-But there are still cases when you need direct access to the Docker Daemon in
-your steps, for example:
+Codefresh's built-in steps cover the most common uses-cases for access to the Docker Daemon:
 
-* As part of your test-step you need to dynamically create new containers (e.g.: [Testcontainers](https://www.testcontainers.org/) library)
+* Build a Docker image: [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
+* Push a Docker image: [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)
+* Run a Docker Composition: [Composition step]({{site.baseurl}}/docs/pipelines/steps/composition/) and [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
+
+You may have custom use-cases when you need direct access to the Docker Daemon in your steps.  
+For example:
+
+* As part of your test-step you need to dynamically create new containers ([Testcontainers](https://www.testcontainers.org/) library)
 * You need to run a composition and dynamically add to that composition a new container you'll create
 * You need to send specific flags to your docker-build process
 
-For all those cases (and any others), you're still able to access the Docker
-Daemon on a step of your build, by providing the correct configuration (and
-under certain circumstances).
+For all custom cases, you can access the Docker Daemon in your pipeline step by providing the correct configuration in `freestyle` and `composition` steps. <!--- and under certain circumstances -->.
 
-## Details
+## Direct access to Docker Daemon options
 
 There are two main options to access the Docker Daemon in a pipeline step:
 
-* **In a [freestyle]({{site.baseurl}}/docs/pipelines/steps/freestyle/) step**: using an image with Docker installed, and mounting the required volumes (the Docker socket). In Hybrid REs, these volumes are already mounted. You don't need to specify anything else.
-* **In a [composition]({{site.baseurl}}/docs/pipelines/steps/composition/) step**: same as with the freestyle option, you'll need to use an image with Docker installed in one of the composition-services. Also, you'll need to mount the corresponding volumes to that composition-service
+* **In a [`freestyle`]({{site.baseurl}}/docs/pipelines/steps/freestyle/) step**: By using an image with Docker installed, and mounting the required volumes (the Docker socket). In Hybrid Runtime Environments, these volumes are already mounted. You don't need to specify anything else.
+* **In a [`composition`]({{site.baseurl}}/docs/pipelines/steps/composition/) step**: Similar to the `freestyle` step option, you'll need to use an image with Docker installed in one of the composition-services. And mount the corresponding volumes to that composition-service.
 
-In the following sections, we'll provide details on how to use each of the
-options described above.
+The following sections provide details on how to use each of the options.
 
-### Accessing the Docker Daemon in a freestyle step
+### Accessing the Docker Daemon in a `freestyle` step
 
-The following snippet shows a step using this approach:
+The following snippet shows an example of how to access the Docker Daemon in a `freestyle` step:
 
 ```yaml
 docker_daemon_access:
@@ -54,15 +55,9 @@ docker_daemon_access:
     - docker build -t your/image -f yourDockerfile .
 ```  
 
-> **Note 1** : By default, and for security reasons, the Docker Daemon is not exposed to freestyle steps running on our SaaS environments. In other words, this approach **cannot** be used in our SaaS Runtime Environments.
->
-> **Note 2** : There's still a way to use this approach in a RE **hosted by Codefresh**. For this option, you'll need a **dedicated Runtime Environment**.
->
-> **Note 3** : This approach is **usable by default in Hybrid REs** (i.e.: Codefresh Runner REs). Since the REs is running in your infrastructure, access to the Docker Daemon in a freestyle step is enabled by default
-
 ### Accessing the Docker Daemon in a composition step
 
-The following snippet shows a step using this approach:
+The following snippet shows an example of how to access the Docker Daemon in a `composition` step:
 
 {% raw %}
 
@@ -92,9 +87,10 @@ docker_daemon_access:
 
 {% endraw %}
 
-> **Note 1** : This approach can be used in On-Prem out-of-the-box  
->  
-> **Note 2** : Docker socket mapping in composition can only be provided to customers that have **all** concurrency in **Hybrid REs** , or, in a **dedicated cluster** (provided by Codefresh)
+* On-premises  
+  This approach is supported out-of-the-box in on-premises environments.
+* Hybrid REs  
+  Docker socket mapping in `composition` is supported only when the concurrency is set to **all**.
 
 A similar implementation can be achieved using **[Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)** :
 
@@ -118,15 +114,14 @@ docker_daemon_access_serv_cont:
 
 {% endraw %}
 
-> **_Note:_**
->
-> As mentioned at the beginning of this article, Codefresh covers the general cases where access to the Docker Daemon is required (building a Docker image, pushing a Docker image, etc). For all these common cases **we encourage you to keep using our native steps**. Since they'll provide different levels of optimization (e.g.: Codefresh-cache mechanism), also their usage is directly related to the level of traceability you will get (e.g.: the images you build in Codefresh using our docker-build step will be reflected in the images view and other dashboards we provide).
->
-> This way of directly accessing the Docker Dameon should be **exclusively used for very specific use-cases.**
+{{site.data.callout.callout_tip}}
+We encourage you to keep using our built-in steps as they cover almost all common use cases for access to the Docker Daemon.
+
+Because the built-in steps support different levels of optimization, such as the Codefresh caching mechanism, their usage is directly related to the level of traceability. For example, the images you build in Codefresh using the `build` step  are reflected in the images view and other dashboards we provide.
+
+Reserve directly accessing the Docker Dameon **for very specific use-cases.**
 
 ## Related Items
 
-* [Build step]({{site.baseurl}}/docs/pipelines/steps/build/)
-* [Composition step]({{site.baseurl}}/docs/pipelines/steps/composition/)
-* [Push step]({{site.baseurl}}/docs/pipelines/steps/push/)
-* [Service Containers]({{site.baseurl}}/docs/pipelines/service-containers/)
+[Steps in pipelines]({{site.baseurl}}/docs/pipelines/steps/)  
+[Caching in pipelines]({{site.baseurl}}/docs/pipelines/pipeline-caching/)  

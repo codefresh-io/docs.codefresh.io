@@ -6,7 +6,7 @@ redirect_from:
 toc: true
 ---
 
-Codefresh natively supports login with GitHub, Bitbucket and GitLab, using the OpenID Connect (OAuth2) protocol. 
+Codefresh natively supports login with GitHub, Bitbucket and GitLab, using the OpenID Connect (OIDC) protocol. 
   
 
 ## Prerequisites
@@ -18,9 +18,10 @@ To successfully add an identity provider (IdP) in Codefresh, you need to do some
 
 The first procedure differs according to your IdP, but the second one is common to all providers.
 
+<!---
 >**NOTE**  
   SSO is only available to Enterprise customers. Please [contact sales](https://codefresh.io/contact-sales/){:target="\_blank"} in order to enable it for your Codefresh account.
-
+-->
 ## OIDC SSO configuration in Codefresh 
 
 Here's what you need to do to configure SSO via OIDC in Codefresh:
@@ -39,15 +40,15 @@ Here's what you need to do to configure SSO via OIDC in Codefresh:
     
     {{site.data.callout.callout_tip}}
     **TIP**  
-      Before enabling SSO for users in Codefresh, you **MUST** make sure that it is working for the test user.  
-      When SSO is enabled for a user, Codefresh allows login only through the SSO and blocks logins through other IdPs. If the selected SSO method does not work for some reason, the user is locked out of Codefresh.
+      Before enabling SSO for users, you **MUST** make sure that it is working for the test user.  
+      When SSO is enabled for a user, Codefresh allows login only through the SSO and blocks logins through other IdPs. If the selected SSO method does not work for some reason, the user is locked out of the platform.
     {{site.data.callout.end}}
 
-    1. In the Codefresh UI, on the toolbar, from your avatar dropdown, select **Account Settings**.
-    1. In the sidebar, from Access & Collaboration, select [**Users & Teams**](https://g.codefresh.io/2.0/account-settings/single-sign-on){:target="\_blank"}.   
+    1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+    1. From the sidebar, select **Users & Teams**.   
     1. Add an active user to be used for testing. We recommend you use your own user.
     1. From the **SSO** dropdown, select the provider you want to test.
-    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab (or another browser).
+    1. Keep the current browser session open, and log in via Corporate SSO in an incognito tab or from another browser.
 
     {% include image.html
     lightbox="true"
@@ -70,6 +71,6 @@ Codefresh has an internal cache for SSO configuration, and it can take up to fiv
 {{site.data.callout.end}}
 
 ## Related articles
-[Federated Single Sign-On (SSO) overview]({{site.baseurl}}/docs/administration/single-sign-on/)   
-[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
+[About Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/)   
+[Setting up SAML2 Federated SSO]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
 

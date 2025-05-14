@@ -28,5 +28,7 @@ caption="Authorize Codefresh organizations in GitHub"
 max-width="70%"
 %}
 
+{% if page.collection != site.gitops_collection %}
 ## Related articles
-[Connect Git provider]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/#2-connect-git-provider)
+[Setting up OAuth2 for GitOps]({{site.baseurl}}/docs/administration/account-user-management/oauth-setup/)  
+{% endif %}

@@ -11,15 +11,29 @@ layout: home
         <!--</div>-->
         <div class="col-md-7 order-md-1 text-center mx-auto pr-md-5">
           <h2 class="mb-3 bd-text-white text-uppercase">
-            {%- include icons/codefresh-dark.svg class="align-middle" width="180" height="auto" -%}
-            <span class="badge cf-badge cf-badge-doc align-middle">DOCUMENTATION</span>
+            {%- include icons/codefresh-logo.svg class="align-middle" width="180" height="auto" -%}
+            <span class="badge cf-badge cf-badge-doc align-middle mt-2">DOCUMENTATION</span>
           </h2>
           <p class="lead bd-text-white mb-4">
             Codefresh for Docker-native CI/CD and GitOps with Argo. <br>
             Instantly build, test, and deploy Docker images.<br>
             Realize your true DevOps potential with the premier enterprise Argo software delivery solution.
           </p>
-          <div id="searchbar"></div>
+<!--          <div id="searchbar"></div>-->
+          <button
+            onclick="window.CommandBar.openHelpHub(); setTimeout(() => {
+              document.querySelector('input[data-testid=helphub-input]').focus()
+            }, 100)"
+            class="helpbub-toggler mb-3"
+            aria-label="Search Codefresh Documentation"
+            type="button"
+          >
+            <div class="d-flex align-items-center">
+              <img src="{{site.baseurl}}/images/icons/search.png" />
+              <span class="ml-2">Search</span>
+            </div>
+            <span class="helpbub-toggler--hotkey">Ctrl / &#8984; + K</span>
+          </button>
           <!-- <div>
             <form class="bd-search bd-search--home d-flex mt-1 mb-3 mt-md-0 order-2 order-md-2 align-items-center">
               <input type="search" class="form-control form-control-dark mr-sm-2 doc-search-input" id="navbar-search-input" placeholder="{{ site.data.translations[site.locale].search_placeholder_text }}" aria-label="{{ site.data.translations[site.locale].search_placeholder_text }}" autocomplete="off">
@@ -27,12 +41,12 @@ layout: home
             </form>
           </div> -->
           <div class="d-flex flex-column flex-md-row justify-content-center lead mb-3">
-            <a href="{{ site.baseurl }}/docs/quick-start/ci-quick-start/"
+            <a href="{{ site.baseurl }}/docs/ci-quick-start/ci-quick-start/"
                class="btn btn-primary mb-3 mb-md-0 mr-md-3"
                onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
-              Get started with CI/CD
+              Get started with CI
             </a>
-            <a href="{{ site.baseurl }}/docs/quick-start/gitops-quick-start/"
+            <a href="{{ site.baseurl }}/docs/gitops-quick-start/gitops-quick-start/"
             class="btn btn-primary mb-3 mb-md-0 mr-md-3"
             onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
            Get started with GitOps
@@ -47,11 +61,11 @@ layout: home
                onclick="ga('send', 'event', 'Main page actions', 'SignUp', 'SignUp');">
               Sign Up
             </a>
-            <a href="{{ site.schedule_demo }}"
-               class="btn btn-secondary mb-3 mb-md-0 mr-md-3"
-               onclick="ga('send', 'event', 'Main page actions', 'Schedule demo', 'Schedule demo');">
-              Schedule demo
-            </a>
+<!--            <a href="{{ site.schedule_demo }}"-->
+<!--               class="btn btn-secondary mb-3 mb-md-0 mr-md-3"-->
+<!--               onclick="ga('send', 'event', 'Main page actions', 'Schedule demo', 'Schedule demo');">-->
+<!--              Schedule demo-->
+<!--            </a>-->
             <!--
             <a href="{{ site.baseurl }}/docs/getting-started/download/"
                class="btn btn-lg btn-outline-secondary"

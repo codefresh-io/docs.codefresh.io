@@ -1,23 +1,21 @@
 ---
-title: "Federated Single Sign-On (SSO) overview"
-description: ""
+title: "About Federated Single Sign-On (SSO)"
+description: "Integrate SSO for centralized authentication"
 group: single-sign-on
 redirect_from:
   - /docs/single-sign-on/sso-overview/
   - /docs/sso/federated-sso-overview/
   - /docs/enterprise/single-sign-on/
+  - /docs/single-sign-on/single-sign-on/
 toc: true
 ---
   
-  Customers in our **enterprise plan** can log in to Codefresh using Federated Single Sign-On (SSO). To learn more, please [contact sales](https://codefresh.io/contact-sales/){:target="\_blank"}. 
+## Federated Single Sign-On (SSO)
+Federated identity management enables the cross organizational exchange of identity information across internet domains, without migrating credential information or consolidating several security domains. With federation, customers can authenticate with their corporate credentials to gain access to Codefresh.  
 
-  Federated identity management enables the cross organizational exchange of identity information across internet domains, without migrating credential information or consolidating several security domains. With federation, customers can authenticate with their corporate credentials to gain access to Codefresh.  
-
-  To set up Federated SSO, your identity management organization must use either of the following:
-
-  - **A Security Assertion Markup Language 2.0 (SAML 2.0)** compliant Identity Provider (IdP),  configured to communicate with the Codefresh Service Provider (SP). For example, ADFS, Auth0, Okta and Ping Identity. 
-  
-  - **OpenID Connect (OAuth 2.0)** identity management. For example, Google, GitHub, Bitbucket and GitLab.
+To set up Federated SSO, your identity management organization must use either of the following:
+* **A Security Assertion Markup Language 2.0 (SAML 2.0)** compliant Identity Provider (IdP),  configured to communicate with the Codefresh Service Provider (SP). For example, ADFS, Auth0, Okta and Ping Identity. 
+* **OpenID Connect (OAuth 2.0)** identity management. For example, Google, GitHub, Bitbucket and GitLab.
   
 Asserting the identity of the user to Codefresh ensures seamless SSO from a browser.
 
@@ -43,7 +41,6 @@ Using federated SSO significantly simplifies cross-domain user management as fol
 * There is no need to migrate identity information or consolidate between the two security domains.
 * Corporate credentials aren't exposed to the SaaS provider.
 
-
-## Related articles
-[Setting Up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml)  
-[Setting Up OpenID Connect Federated Single Sign-On]({{site.baseurl}}/docs/administration/single-sign-on/oidc)    
+See:  
+[Setting Up SAML2 Federated Single Sign-On (SSO)]({{site.baseurl}}/docs/administration/single-sign-on/saml/)  
+[Setting Up OpenID Connect Federated Single Sign-On]({{site.baseurl}}/docs/administration/single-sign-on/oidc/)    

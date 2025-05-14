@@ -1,0 +1,183 @@
+- title: Introduction
+  icon: ../images/home-icons/introduction.svg
+  url: ""
+  links:
+    - title: What is Codefresh GitOps Cloud?
+      localurl: /gitops/introduction/what-is-gitops-cloud/
+    - title: Explore Codefresh GitOps Cloud
+      localurl: /gitops/introduction/explore-gitops-cloud-features/
+
+
+- title: GitOps quick starts
+  icon: ../images/home-icons/administration.svg
+  url: ""
+  links:
+    - title: About GitOps quick starts
+      localurl: /gitops/gitops-quick-start/gitops-quick-start/
+    - title: Creating a Codefresh account
+      localurl: /gitops/gitops-quick-start/create-codefresh-account/
+    - title: Installing a  GitOps Runtime
+      localurl: /gitops/gitops-quick-start/quick-start-install-runtime/
+    - title: Configuring a  GitOps Runtime
+      localurl: /gitops/gitops-quick-start/quick-start-configure-runtime/
+    - title: Creating products and applications
+      localurl: /gitops/gitops-quick-start/create-app-ui/
+    - title: Creating environments
+      localurl: /gitops/gitops-quick-start/quick-start-gitops-environments/
+    - title: Creating Promotion Workflows
+      localurl: /gitops/gitops-quick-start/quick-start-promotion-workflow/
+    - title: Simple promotion with drag-and-drop 
+      localurl: /gitops/gitops-quick-start/drag-and-drop/
+    - title: Simple Promotion Flow with multiple environments
+      localurl: /gitops/gitops-quick-start/multi-env-sequential-flow/ 
+    - title: Advanced Promotion Flow with Promotion Workflows
+      localurl: /gitops/gitops-quick-start/policy-multi-env-promotion/
+    - title: Advanced Promotion Flow with environment dependencies
+      localurl: /gitops/gitops-quick-start/dependency-multi-env-promotion
+
+- title: Environments
+  icon: ../images/home-icons/environments.svg
+  url: ""
+  links:
+    - title: About environments
+      localurl: /gitops/environments/environments-overview/
+    - title: Create and manage environments
+      localurl: /gitops/environments/create-manage-environments/      
+    - title: Manage Products and applications in environments
+      localurl: /gitops/environments/manage-apps-in-environments/   
+
+- title: Products
+  icon: ../images/home-icons/product.svg
+  url: ""
+  links:
+    - title: About products
+      localurl: /gitops/products/about-products/
+    - title: Create products
+      localurl: /gitops/products/create-product/
+    - title: Configure Product Settings
+      localurl: /gitops/products/configure-product-settings/
+    - title: Assigning applications
+      localurl: /gitops/products/assign-applications/      
+    - title: Configuring app version and promoted properties
+      localurl: /gitops/products/promotion-version-properties/
+    - title: Selecting Promotion Flows
+      localurl: /gitops/products/promotion-flow-triggers/   
+
+
+- title: Applications
+  icon: ../images/home-icons/deployment.svg
+  url: ""
+  links:
+    - title: Creating Argo CD applications
+      localurl: /gitops/applications/create-application/
+    - title: Monitoring Argo CD applications
+      localurl: /gitops/applications/monitor-applications/
+    - title: Managing Argo CD applications
+      localurl: /gitops/applications/manage-application/
+
+
+- title: Promotions
+  icon: ../images/home-icons/promotions.svg
+  url: ""
+  links:
+    - title: About promotions
+      localurl: /gitops/promotions/promotions-overview/
+    - title: Getting started
+      localurl: /gitops/promotions/getting-started/
+    - title: Promotion building blocks
+      localurl: /gitops/promotions/promotion-components/
+    - title: Promotion setup guidelines
+      localurl: /gitops/promotions/create-promotion-sequence/
+    - title: YAML specs
+      localurl: /gitops/promotions/yaml/
+    - title: Triggering promotions
+      localurl: /gitops/promotions/trigger-promotions/ 
+    - title: Tracking releases for products
+      localurl: /gitops/promotions/product-releases/
+
+
+
+
+- title: Dashboards & insights
+  icon: ../images/home-icons/guides.png
+  url: ""
+  links:
+    - title: Home
+      localurl: /gitops/dashboards/home-dashboard/  
+    - title: Environments
+      localurl: /gitops/dashboards/gitops-environments/   
+    - title: Products
+      localurl: /gitops/dashboards/gitops-products/   
+    - title: GitOps Apps
+      localurl: /gitops/dashboards/gitops-apps-dashboard/      
+    - title: Images
+      localurl: /gitops/dashboards/images/
+
+
+
+- title: GitOps integrations
+  icon: ../images/home-icons/integrations.svg
+  url: ""
+  links:
+    - title: GitOps image enrichment with integrations
+      localurl: /gitops/gitops-integrations/image-enrichment-overview/
+    - title: Codefresh pipelines for GitOps
+      localurl: /gitops/gitops-integrations/ci-integrations/codefresh-classic/
+    - title: GitHub Actions for GitOps
+      localurl: /gitops/gitops-integrations/ci-integrations/github-actions/
+    - title: Jenkins for GitOps
+      localurl: /gitops/gitops-integrations/ci-integrations/jenkins/
+    - title: Jira for GitOps
+      localurl: /gitops/gitops-integrations/issue-tracking/jira/
+    - title: Amazon ECR for GitOps
+      localurl: /gitops/gitops-integrations/container-registries/amazon-ecr/
+    - title: Docker Hub Registry for GitOps
+      localurl: /gitops/gitops-integrations/container-registries/dockerhub/
+    - title: GitHub Container Registry for GitOps
+      localurl: /gitops/gitops-integrations/container-registries/github-cr/
+    - title: JFrog Artifactory for GitOps
+      localurl: /gitops/gitops-integrations/container-registries/jfrog/
+    - title: Quay Registry for GitOps
+      localurl: /gitops/gitops-integrations/container-registries/quay/
+
+- title: Installation
+  icon: ../images/home-icons/installation.svg
+  url: ""
+  links:
+    - title: Codefresh platform deployment
+      localurl: /gitops/platform-installation/installation-options/ 
+    - title: Install GitOps Runtime with existing Argo CD
+      localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
+    - title: Install GitOps Runtime with new Argo CD
+      localurl: /gitops/gitops-runtimes/runtime-install-with-new-argo-cd/
+
+
+- title: Administration
+  icon: ../images/home-icons/administration.svg
+  url: ""
+  links:
+    - title: Create a Codefresh account
+      localurl: /gitops/administration/account-user-management/create-codefresh-account/
+    - title: Adding users and teams
+      localurl: /gitops/administration/account-user-management/add-users/
+    - title: Access control for GitOps
+      localurl: /gitops/administration/account-user-management/gitops-abac/
+    - title: User settings
+      localurl: /gitops/administration/user-self-management/user-settings/
+    - title: Manage Git PATs
+      localurl: /gitops/administration/user-self-management/manage-pats/
+    - title: Codefresh IP addresses
+      localurl: /gitops/administration/platform-ip-addresses/
+    - title: Single Sign-On
+      localurl: /gitops/administration/single-sign-on/
+
+- title: Security
+  icon: ../images/home-icons/guides.png
+  url: ""
+  links:
+    - title: Git tokens for GitOps
+      localurl: /gitops/security/git-tokens/
+    - title: Secrets for GitOps
+      localurl: /gitops/security/secrets/
+
+

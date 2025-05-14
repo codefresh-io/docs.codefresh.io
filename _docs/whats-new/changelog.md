@@ -14,15 +14,16 @@ If you missed any of our previous online announcements, you can find the latest 
 
 To stay up-to-date with our on-premises enhancements and features, see our [dedicated on-premises release notes]({{site.baseurl}}/docs/whats-new/on-prem-release-notes/).
 
-
 > To subscribe to an RSS / Atom feed for our SaaS release notes, please [click here]({{ site.baseurl }}/changelog/feed.xml).
 
-
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
-</ul>
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in posts_by_year %}
+  <h2>{{ year.name }}</h2>
+  <ul>
+    {% for post in year.items %}
+      <li>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
