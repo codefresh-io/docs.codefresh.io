@@ -194,70 +194,61 @@ As an example:
 
 ## Pipeline settings
 
-Once you create your pipeline you can also click on the top tab called *Settings* for some extra parameters.
+Once you create your pipeline, in addition to the steps and other definitions you add to the workflow YAML file, you can also define several settings for the individual pipeline through the **Settings*** tab. 
 
-### General 
+>**NOTE**  
+Settings defined for an individual pipeline override the [account-level settings]({{site.baseurl}}/docs/pipelines/configuration/pipeline-settings/) defined by account administrators. 
 
-- **Pipeline Name**: The name of your pipeline (useful for working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"})
-- **Pipeline ID**: The ID of your pipeline (useful for working with the Codefresh CLI)
-    {{site.data.callout.callout_tip}}
-    **TIP**  
-    When working with the Codefresh CLI, the Pipeline Name and ID are interchangeable.
-    {{site.data.callout.end}}
+* [General](#general)
+* [Policies](#policies)
+* [External resources](#external-resources)
+* [Build Runtime](#build-runtime)
+* [Scopes](#scopes)
 
-- **Pipeline Description**: Free text description of the pipeline. 
-- **Pipeline Tags**: One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/)
-- **Public Build Logs**: If enabled, [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) can view the builds of this pipeline.
-- **Template**: Convert this pipeline to a template (see the next section for details on templates).
-- **Badges**: Simple images that show you the last [build status]({{site.baseurl}}/docs/pipelines/configuration/build-status/).
+
+
+
+
+### General
+
+The table below describes the General settings.
+
+{: .table .table-bordered .table-hover}
+| Setting              | Description                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **Pipeline Name**         | The name of the pipeline, useful when working with the [Codefresh CLI](https://codefresh-io.github.io/cli/){:target="\_blank"}.<br>When working with the Codefresh CLI, the Pipeline ID is interchangeable with the Pipeline Name.  |
+| **Pipeline ID**           | The ID of the pipeline automatically generated when the pipeline is created. Useful when working with the Codefresh CLI. <br>When working with the Codefresh CLI, the Pipeline ID is interchangeable with the Pipeline Name.  |
+| **Pipeline Description**  | Additional information describing the pipeline in free text.                                  |
+| **Pipeline Tags**         | One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/). |
+| **Public Build Logs**     | When enabled, allows [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) to view the builds of this pipeline. |
+| **Pipeline Template**              | Convert this pipeline to a template that users can use to create new pipelines. The (see the next section for details on templates).               |
+| **Badges**                | Simple images to display the most recent [build status]({{site.baseurl}}/docs/pipelines/configuration/build-status/).                      |
+
+
 
 ### Policies
 
+The table below describes the Policy settings.
 
+{: .table .table-bordered .table-hover}
+| Setting              | Description                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **Kubernetes clusters**   | Control pipeline access to Kubernetes clusters integrated with Codefresh.{::nomarkdown} <ul><li>To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle <b>Inject all Kubernetes cluster context to pipeline builds** to ON.</b></li><li>To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh. When defined, the initialization step in the pipeline displays the clusters selected for it.</li></ul>.{:/}See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).|  
+| **Priority**              | The priority of the pipeline build, determining the order in which the build is queued. The priority can range from **100** (highest priority) to **-100** (lowest priority).<br>Priority **0** is the default level.  |  
+| **Concurrency**              | The number of concurrent builds, triggers, and per-branch builds for the pipeline. You can control the three types of concurrency settings for the same pipeline.{::nomarkdown} <ul><li><b>Pipeline Concurrency</b>: The maximum number of concurrent builds for the pipeline, ranging from 0-14, or unlimited. Define the Pipeline Concurrency when your pipeline has only one trigger. <br>When set to <b>0</b>, freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes.</li><li><b>Trigger Concurrency</b>: The maximum number of concurrent builds per trigger, ranging from 1-15, or unlimited. Define the Trigger Concurrency when your pipeline has multiple triggers.</li><li><b>Branch Concurrency</b>: The maximum number of concurrent builds per branch, ranging from 1-15, or unlimited. Define the branch concurrency when your pipeline can run builds on different branches.</li></ul>{:/} |
+| **Build termination**    | The termination behavior for the pipeline builds, based on a specific trigger or any trigger.<br>By default, all build termination settings are disabled.{::nomarkdown} <ul><li>From the _same_ branch: When a new build is created from the same branch, terminate previous builds from that branch.</li>From a <i>specific</i> branch: When a new build is created for the branch whose name  matches the regular expression defined, terminate previous builds from that branch.</li> <li>Running builds: When a new build is created, terminate all running builds for the pipeline.</li><li>Child builds: On terminating a build, terminate all child builds initiated from it. </li></ul>{:/}|
+| **Pending approval**            | The pipeline volume retention and concurrency policy for pipeline builds pending approval. See [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) and [approval]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) {::nomarkdown} <ul><li>Pipeline volume for pending approval builds: <ul><li><b>Use account settings</b>: Inherit the pipeline volume setting defined for the account by the account administrator.</li><li><b>Be removed</b>: Discard the pipeline volume</li><li><b>Remain (build remains active)</b>: </li> </ul><li><ul><li><b>Concurrency impact on pending approval </b>: Inherit the concurrency policy defined for the account by the account administrator.</li><li><b>Not included in concurrency</b>: _Does not include_ builds pending approval when determining the concurrency limit for the pipeline.</li><li><b>Included in concurrency</b>: _Includes_ builds pending approval when determining the concurrency limit for the pipeline.</li></ul></ul>{:/}See [Define concurrency limits]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits).     |
+| | Determines if a build that is pending approval [counts against] the concurrency limits or |
+| **Restart pipeline**                  | The restart behavior for failed pipelines, either allowing users to restart the pipeline directly from the failed step, or  restart the pipeline from the beginning.{::nomarkdown}<ul><li><b>Use account settings</b>: The default, inherit the account-level setting defined.</li><li><b>Permit</b>: Always permits users to restart this pipeline from the failed step. </li><li><b>Forbid</b>: Disables the restart from failed step option for the pipeline. Users can only restart the pipeline from the beginning.</li> </ul> {:/}Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.  |
 
-##### Kubernetes clusters
-Control pipeline access to Kubernetes clusters integrated with Codefresh.  
-  * To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle **Inject all Kubernetes cluster context to pipeline builds** to ON. 
-  *  To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh.  
-    When defined, the initialization step in the pipeline displays the clusters selected for it.  
-See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
-
-
-- **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
-    {{site.data.callout.callout_tip}}
-    **TIP**   
-    A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
-    {{site.data.callout.end}}
-- **Trigger Concurrency**: The maximum number of concurrent builds per trigger (1-15 or unlimited). Define the trigger concurrency when your pipeline has multiple triggers.
-- **Branch Concurrency**: The maximum number of concurrent builds per branch (1-15 or unlimited). Define this when your pipeline can build different branches.
-- **Build Termination**: Options that determine when a build from the pipeline should terminate:
-  - Once a build is created terminate previous builds from the same branch
-  - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
-  - Once a build is created, terminate all other running builds
-  - Once a build is terminated, terminate all child builds initiated from it
-- **Pending approval volume**: Choose what happens with the [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval)
-  - Keep the volume available
-  - Discard the volume
-  - Honor the option defined globally in your Codefresh account
-- **Pending approval concurrency limit effect**: Determines if a build that is pending approval [counts against]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits) the concurrency limits or not
-  - Builds in pending approval will **not** be counted when determining the concurrency limit for a pipeline
-  - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
-  - Honor the option defined globally in your Codefresh account  
-
-- **Restart pipeline**  
-  **Permit restart pipeline from failed step**: Allows users to restart this pipeline directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.
-      * Use account settings: Inherits the account-level setting defined.
-      * Permit: Always permits users to restart this pipeline from the failed step.
-      * Forbid: Always disables the restart from failed step option for this pipeline.  
-
-  Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
+<br>
 
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
 The inject cluster option when enabled for the account allows you to selectively restrict the clusters which can be accessed from pipelines created for the user account. 
 
 >**NOTE**  
-This option is only available for Enterprise customers.
+This option is only available to Enterprise customers.
 
 Increase security by restricting access to users from different teams.   
 Codefresh authenticates the credentials of each cluster during the build initialization phase. Fewer clusters mean shorter initializations and reduced build durations. 
@@ -297,15 +288,17 @@ caption="Imported cluster contexts in pipeline's init step"
 max-width="60%"
 %}
 
+<br>
+
 #### Pipeline concurrency
 
-The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when multiple commits or multiple pull requests take place. 
+The **Pipeline and Trigger Concurrency** limits are very important as they allow you to define how many instances of a pipeline can run in parallel when there are multiple commits or multiple pull requests. 
 
  
 **Balancing concurrency and performance**  
 While a single Runtime Environment technically supports concurrent build executions in the hundreds, it is essential to be aware of the actual number of concurrent builds that are initiated at the same point in time. To prevent potential slowdowns due to extremely large build-bursts, we recommend capping the number of concurrent builds initiated for a Runtime Environment to a maximum of 500.
 
-> **NOTE**  
+>**NOTE**  
 Pipeline and trigger concurrency limits are *unrelated* to [parallelism within a single pipeline]({{site.baseurl}}/docs/pipelines/advanced-workflows/). 
 
 Some common scenarios are:
@@ -317,7 +310,7 @@ Some common scenarios are:
 
 Concurrency limits control the number of simultaneous builds for Codefresh pipelines. Concurrency limits are set at both the account and specific pipeline levels. 
 
-
+<br>
 
 #### Build termination
 The **Build Termination** settings are useful for pipelines where you commit too fast (i.e. faster then the actual runtime of the pipeline).
@@ -327,13 +320,18 @@ You will find them very useful in cases where too many developers are performing
 Some common scenarios are:
 
 * You are interested only on the latest commit of a branch. If pipelines from earlier commits are still running you want to terminate them.
-* You don't want to wait for children pipelines to finish (i.e. when a pipeline calls another pipeline) or when a new build starts for a parent pipeline.
+* You don't want to wait for child pipelines - when a pipeline calls another pipeline - to finish, or when a new build starts for a parent pipeline.
 
-For the volume behavior during approvals, notice that if [you keep the volume available]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) on the pipeline while it is waiting for approval it will still count as "running" against your pricing tier limit.
+For the volume behavior during approvals, note that if [you keep the volume available]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval) for the pipeline while it is waiting for approval, it still counts as "running" against your pricing tier limit.
 
 ### External resources
 
-In a big organization you might have some reusable scripts or other resources (such as Dockerfiles) that you want to use in multiple pipelines. Instead of fetching them manually in freestyle steps you can simply define them as *external resources*. When a pipeline runs, Codefresh will fetch them automatically and once the pipeline starts the files/folders will already be available in the paths that you define.
+Large organizations may have reusable scripts or other resources such as Dockerfiles they want to use in multiple pipelines.  
+Instead of fetching them manually in freestyle steps, defining them as *external resources* as part of the pipeline's settings ensures that all files/folders are available to all freestyle steps in the paths defined as the destination folder.
+
+You can define multiple external resources for the same pipeline.
+
+Below is an example of External Resource settings.
 
 {% include 
 image.html 
@@ -345,20 +343,29 @@ caption="Bringing external resources into a pipeline"
 max-width="80%"
 %}
 
-Currently Codefresh supports the automatic fetching of files or folders from another Git repository. To create an external resource click the *Add Resource* button and choose:
+The table describes the settings you define for external resources.
 
-* The Git repository that contains the files/folder you wish to bring in the pipeline workspace
-* The branch from the Git repository that contains the files/folders you wish to bring in the pipeline workspace
-* The source folder in the GIT repo (use relative path)
-* The target folder in the pipeline workspace where the file folder will be copied to (use absolute path)
+{: .table .table-bordered .table-hover}
+| Setting              | Description                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **Select Git integration**       | An existing integration with a Git provider, or a new integration, where the . |
+| **Repository**                   | The Git repository containing the external files/folder to bring in to the pipeline workspace. |
+| **Resource type**                | The type of external resource to add to the pipeline workspace, and can be either **File** or **Folder**. |
+| **Source**                       | The _relative_ path to the source file or folder in the Git repo defined in **Repository** from which to retrieve the resource. <!--- example -->|
+| **Destination**                  | The _absolute_ path to the target folder in the pipeline workspace to which to copy the file or folder for the external resource. <!--- example -->|
 
-Once the pipeline starts, all files will be available to all freestyle steps in the paths mentioned in the target folder field.
-You can define multiple external resources in a single pipeline.
+
+
+
+
+
+
+
 
 ### Build Runtime
 
 Build Runtime settings allow you to:  
-* Select the runtime environment, runtime OS and resource sizes for the pipeline
+* Select the runtime environment, runtime OS, and resources for the pipeline
 * Set the minimum disk space for the pipeline build 
 * Set the memory-usage threshold for the pipeline, overriding the account-level threshold
 
@@ -372,24 +379,35 @@ caption="Build Runtime settings for pipeline"
 max-width="60%"
 %}
 
-- **Runtime Environment**: The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, it is automatically selected. You can override the default runtime environment, and select a different one for the pipeline.    
 
->**NOTE**  
-You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
+The table describes the Build Runtime settings.
+
+{: .table .table-bordered .table-hover}
+| Setting              | Description                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **Runtime Environment**         | The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, this environment is automatically selected. You can override the default runtime environment by selecting a different one for the pipeline. <br>See also [Runtime environments for pipelines](#runtime-environments-for-pipelines). |
+| **CPU**               | The CPU, in millicores (**m**) to allocate to the pipeline.  | 
+| **Memory**               | The memory, in mebibytes (**Mi**) to allocate to the pipeline.  | 
+| **Minimum disk space required for build filesystem (Gi)**  | The minimum disk space you need for the pipeline's build volume, inherited by all the builds run for the pipeline.<br>When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>Track the actual disk usage in **Builds > Metrics**.<br>If not defined, because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error. <br><br>To configure the disk space for a specific trigger used by the pipeline or for a specific run, see [Set minimum disk space for build volume by trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger). |
+| **Cluster Name** and **Cluster Namespace**          | The name of the cluster and the namespace where the pipeline build runs.  | 
+| **Service Account**          |   | 
+| **Display a warning banner when builds exceeds**  | The memory-usage threshold exceeding which to display a banner notification indicating the same. To inherit the account-level memory-usage threshold, leave empty.<br><br>Useful depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
+Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings. |
 
 
-- **Runtime OS**: Set to Linux by default
-- **Resources Size**: 
-  - Small (recommended for 1-2 concurrent steps)
-  - Medium (recommended 3-4 steps)
-  - Large (recommended 5-6 steps)
+
 
 #### Runtime environments for pipelines
 
 You need at least one runtime environment configured for your account to run a pipeline.  
 Runtime environments are available on installing the Codefresh Runner. 
 
-**User request for runtime environment**<br>
+>**NOTE**  
+You need at least [one runtime environment to run the pipeline](#runtime-environments-for-pipeline).  
+
+<br>
+
+##### User request for runtime environment
 If, as a user, you do not have a runtime environment, send a request to your account admin. 
 
 {% include 
@@ -402,7 +420,9 @@ caption="Request account admin to configure runtime environment"
 max-width="50%"
 %}
 
-**Configure runtime environment**<br>
+<br>
+
+##### Configure runtime environment
 As an account admin, if the account is not configured with a runtime environment, Codefresh displays the steps to [install the Runner]({{site.baseurl}}/docs/installation/codefresh-runner/).
 
 {% include 
@@ -415,7 +435,7 @@ caption="Build Runtime settings for pipeline without runtime environment"
 max-width="60%"
 %}
 
-As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. Clicking the Enable Cloud Builds button sends an automated email request, with a response timeframe of 24 hours. If approved, you should see the **SaaS runtime** in the list of Runtime Environments. 
+As the account admin, you can also request a Cloud Build (SaaS runtime environment) to be enabled for the pipeline, which is not available by default. Clicking the Enable Cloud Builds button sends an automated email request, with a response time frame of 24 hours. If approved, you should see the **SaaS runtime** in the list of Runtime Environments. 
 
 {% include 
 image.html 
@@ -428,53 +448,10 @@ max-width="60%"
 %}
 
 
-#### Set minimum disk space for a pipeline build
-To speed up builds and improve performance, Codefresh caches different types of data during pipeline execution for reuse across builds. Image-caching is one example of cached data, where Codefresh pulls the required images during the first build and caches them for reuse in future builds. For more info, see [Pipeline caching]({{site.baseurl}}/docs/pipelines/pipeline-caching/).   
-Because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error.
 
-To prevent out-of-space scenarios that lead to failed builds, you can set the minimum disk space you need for the pipeline's build volume. Defining the minimum disk space ensures that Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build.  
-
-The disk space set for the pipeline is inherited by all the builds run for the pipeline.  
-You can also configure the disk space for a [specific trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger) used by the pipeline or for a specific run, and override what's set for the pipeline.
-
-1. Select the pipeline for which to set the disk space.
-1. Select **Settings**, and then **Runtime**.
-1. Enable **Set minimum required disk space** and either retain the default displayed or change as needed. 
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/set-build-disk-space.png" 
-url="/images/pipeline/create/set-build-disk-space.png"
-alt="Set disk space for pipeline builds" 
-caption="Set disk space for pipeline builds"
-max-width="60%"
-%}
-
-{{site.data.callout.callout_tip}}
-**TIP**  
-Track the actual disk usage in **Builds > Metrics**.
-{{site.data.callout.end}}
-
-#### Set memory-usage threshold for pipeline build
-If needed, select a memory-usage threshold for the pipeline build to override the account-level setting for the same. Codefresh displays a banner when memory usage has exceeded the selected threshold. 
-
-The global memory-usage threshold is set in **Pipeline Settings**, for all pipelines in the account. 
-You can override the memory-usage threshold for individual pipelines, depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%.  
-Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings.
-
-{% include 
-image.html 
-lightbox="true" 
-file="/images/pipeline/create/memory-usage-threshold.png" 
-url="/images/pipeline/create/memory-usage-threshold.png"
-alt="Memory-usage thresholds for pipeline" 
-caption="Memory-usage thresholds for pipeline"
-max-width="60%"
-%}
 
 ### Scopes
-If needed, Codefresh account administrators can override the scopes set at the account-level with custom scopes for ehe dividual pipeline. All the pipeline's builds inherit the custom scopes. 
+If needed, Codefresh account administrators can override the scopes set at the account-level (the default), with custom scopes for the individual pipeline. All the pipeline's builds inherit the custom scopes. 
 
 {% include 
 image.html 
