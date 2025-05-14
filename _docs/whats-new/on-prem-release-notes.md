@@ -15,27 +15,25 @@ Welcome to the release notes for our on-premises releases.
 For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 #### Upgrading to v2.7
+
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
-#### New indexes
-
-We added a new `feature-store-versioned` collection which requires a couple of indexes for good performance.
-
+**New indexes in 2.7**  
+We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
 You must create the indexes listed below _**after** upgrading_ to prevent disruption and avoid performance issues.
 
 ##### `createdAt_1`
 
 `createdAt_1` (db: `codefresh`; collection: `feature-store-versioned`)
 
-###### Index details
+* **Index details**  
 
 ```json
 {
   "createdAt" : 1
 }
 ```
-
-###### Index properties
+* **Index properties**  
 
 ```json
 {
@@ -47,7 +45,7 @@ You must create the indexes listed below _**after** upgrading_ to prevent disrup
 
 `LDRedisStoreVersion_1__id_-1` (db: `codefresh`; collection: `feature-store-versioned`)
 
-###### Index details
+* **Index details**  
 
 ```json
 {
