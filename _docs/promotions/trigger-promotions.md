@@ -22,7 +22,7 @@ Manual promotion offer different levels of control, accessible from distinct are
 
 The [quick reference for manual promotion triggers](#manual-promotion-triggers-quick-reference) provides details on the different options, where you can find them, and potential use cases for each. How-to details are in the sections that follow the quick reference.
 
-
+For details on current limitations when working with promotions, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ## Manual promotion triggers: quick reference
 

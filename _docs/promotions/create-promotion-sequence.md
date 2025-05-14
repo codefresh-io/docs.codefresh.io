@@ -10,7 +10,7 @@ This article outlines the tasks required to configure, trigger, and monitor prom
 
 Promotions are a critical part of continuous delivery, enabling you to move changes through environments while meeting deployment and compliance requirements. A successful promotion sequence depends on key components that define and orchestrate the promotion flow. To review these components, see [Promotion building blocks]({{site.baseurl}}/docs/promotions/promotion-components/).
 
-
+For details on current limitations when working with promotions, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ## Prerequisites
 1. [Configuration Runtime]({{site.baseurl}}/docs/installation/gitops/configuration-runtime/)  

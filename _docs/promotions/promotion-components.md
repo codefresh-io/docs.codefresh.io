@@ -19,7 +19,7 @@ For an end-to-end guide on continuous delivery with Codefresh GitOps, see [Promo
 A promotion comprises several entities, some optional and some required, that define its behavior.
 
 The table below summarizes the core entities and promotion-specific entities, outlining their roles in the promotion process.
-
+For details on current limitations when working with promotions, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ### Core entities for promotions
 These entities define the structure of your deployment.<br>They support standard promotion flows, enabling typical deployment scenarios such as promotions between two environments. See our [quick starts on promotions]({{site.baseurl}}/docs/gitops-quick-start/gitops-quick-start/#promoting-applications).

@@ -110,7 +110,7 @@ max-width="60%"
  
 ## Promotion Flow behavior: Key insights
 Here are a few useful factors to be aware of when creating Promotion Flows.  
-
+For details on current limitations, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ### Environments in Promotion Flows
 

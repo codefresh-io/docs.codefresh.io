@@ -23,7 +23,7 @@ max-width="60%"
 Watch this video to see a promotion in action: 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4isYoutmRco?si=EDSfZFQQ4Dp5gw6i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
 
-<!--- {::nomarkdown}<img src=../../../images/icons/video-play-icon-blue.svg?display=inline-block>{:/} [Drag-and-drop Promotion](https://www.youtube.com/watch?v=4isYoutmRco&t=1s){:target="\_blank"} -->
+
 
 
 
@@ -56,7 +56,9 @@ max-width="65%"
 %}
 
 >**NOTE**  
-Promotions in Codefresh GitOps require Runtime version 0.13.4 or higher. Ensure your runtime is updated to access  promotion features.
+Promotions in Codefresh GitOps require Runtime version 0.13.4 or higher. Ensure your Runtime is updated to access promotion features.  
+
+For details on current limitations when working with promotions, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 
 ## Key features with GitOps promotions

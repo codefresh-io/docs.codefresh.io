@@ -81,6 +81,7 @@ Release notes compile changes from various sources into a single view, enabling 
 See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
 
 
+
 ## View releases for products
 
 The Releases tab for a product displays the releases for that product, whether successful or failed.
@@ -421,6 +422,7 @@ max-width="60%"
 ## Related articles
 [Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-flow/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
+[Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/)  
 [Promotion quick starts]({{site.baseurl}}/docs/gitops-quick-start/promotions/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)
  

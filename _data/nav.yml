@@ -431,6 +431,8 @@
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
+    - title: Promotion limitations
+      url: "/promotion-limitations"   
     - title: Promotion Flows
       url: "/promotion-flow"  
     - title: Promotion Policies

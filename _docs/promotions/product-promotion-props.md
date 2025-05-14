@@ -78,7 +78,8 @@ Review [examples of promotable properties]({{site.baseurl}}/docs/products/promot
 
 For details, see [Configuring properties for promotion across applications]({{site.baseurl}}/docs/products/promotion-version-properties/#configuring-properties-for-promotion-across-applications).
 
-
+>**NOTE**  
+For details on current limitations when working with promotions, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ## Concurrent promotion behavior for product
 
@@ -119,3 +120,4 @@ Assigning flows and defining their triggers ensure that changes to the product a
 ## Related articles
 [Configure Product Settings]({{site.baseurl}}/docs/products/configure-product-settings/)  
 [Create products]({{site.baseurl}}/docs/products/create-product/)  
+[Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/)  
