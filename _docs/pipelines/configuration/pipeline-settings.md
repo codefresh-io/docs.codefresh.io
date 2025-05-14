@@ -1,6 +1,6 @@
 ---
 title: "Account-level settings for pipelines"
-description: "Configure global pipeline settings for the account"
+description: "Configure settings pipelines at the account-level"
 group: pipelines
 sub_group: configuration
 redirect_from:
@@ -26,9 +26,9 @@ Users can still override specific settings for individual pipelines.
 | |[Restarting from failed steps](#restarting-from-failed-steps) | Enable option to restart pipelines from failed steps instead of from the beginning.|
 | |[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
 | |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
-| |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if `pending-approval` steps require manual action. |
-|Advanced options|[Advanced options for pipelines](#advanced-options-for-pipelines) | Configure the default behavior for volumes, concurrent builds, and authentication for Amazon ECR integrations, and more. |
-|Argo Workflows |[Enable pipelines with Argo Workflows]({{site.baseurl}}/docs/workflows/create-pipeline/) | Create pipelines based on Argo Workflows. |
+| |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if pending-approval steps require manual action. |
+|Other|[Advanced options for pipelines](#advanced-options-for-pipelines)| Configure options for build approval and pipeline volumes. |
+|Argo Workflows |Enable pipelines with Argo Workflows | Create pipelines based on Argo Workflows. |
 
 
 
@@ -117,9 +117,11 @@ Define if users can create pipelines from pipeline templates or by cloning exist
 
 If required, restrict the sources from which users can create or upload YAML files for a pipeline workflow.
 
+The options are:
 * **Inline YAML**: Enable/disable the [inline editor]({{site.baseurl}}/docs/pipelines/pipelines/#using-the-inline-pipeline-editor) where YAML is stored in Codefresh SaaS
 * **YAML from repository**: Enable/disable pipeline uploading YAMLs from connected Git repositories
 * **YAML from external URLs**: Enable/disable loading YAMLs for pipelines from [external URLs]({{site.baseurl}}/docs/pipelines/pipelines/#loading-codefreshyml-from-version-control)
+
 
 >**NOTE**  
 You must allow at least one of these options so that users can create new pipelines.  
@@ -144,8 +146,7 @@ As a Codefresh administrator, you can override the account-level scopes for a sp
 
 
 ## Kubernetes cluster-contexts for pipelines
-By default, all pipelines in the account can access all clusters integrated with Codefresh.  
-Restrict pipeline access to clusters by enabling cluster-injection for pipelines in the account. When enabled, users are required to select the clusters for the pipeline build.
+By default, all pipelines in the account can access all clusters integrated with Codefresh. Restrict pipeline access to clusters by enabling cluster-injection for individual pipelines in the account.
 
 Selectively restricting access to clusters for a pipeline:  
 * Enhances security by restricting access to users from different teams. 
@@ -188,23 +189,14 @@ max-width="60%"
 ## Restarting from failed steps
 Enable or disable restarting pipelines directly from the failed step for all pipelines in the account. The setting affects the restart options displayed in the [Builds view]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restart-pipeline-from-builds-view) and [step view]({{site.baseurl}}docs/pipelines/monitoring-pipelines/#restart-from-step-view). 
 
-{% include image.html
-lightbox="true"
-file="/images/pipeline/settings/account-permit-restart.png"
-url="/images/pipeline/settings/account-permit-restart.png"
-alt="Enable/disable restart from failed step"
-caption="Enable/disable restart from failed step"
-max-width="60%"
-%}
-
-* When **enabled** (the default), allows users to restart the pipeline directly from the specific step that failed. 
+* When **enabled**, allows users to restart the pipeline directly from the specific step that failed. 
 * When **disabled**, allows users to restart the pipeline from the beginning.
 
-Individual pipeline are set to use the account's setting by default, but users can override this setting to enable/disable failed step restart for the specific pipeline. See [Pipeline settings - Policies]({{site.baseurl}}/docs/pipelines/pipelines/#policies).
+Individual pipeline are set to use the account's setting by default, but users can override this setting to enable/disable failed step restart for the specific pipeline. See [Pipeline settings - Policies]({{site.baseurl}}/docs/docs/pipelines/pipelines/#policies).
 
 ## Memory usage warning for pipeline builds
 Select the memory-usage threshold for pipeline builds at which to display alerts. <br>
-Memory-usage thresholds for pipeline builds are useful get timely warnings and prevent build failures, while at the same time avoiding premature and unnecessary warnings.
+Memory-usage thresholds for pipeline builds are useful to both avoid premature and unnecessary warnings, and get timely warnings to avoid build failures, as needed.
 
 Accounts with pipelines that do not consume a lot of memory can have higher thresholds, or even the maximum threshold, as they are unikely to hit available memory limits.  
 Resource-intensive pipelines on the contrary require lower thresholds for timely warnings to prevent build failures. 90% is recommended for such pipelines.
@@ -240,7 +232,7 @@ This behavior is simply a convenience feature for legacy pipelines.
 Users can still use a [`push` step]({{site.baseurl}}/docs/pipelines/steps/push/) to always push an image to a registry regardless of what was chosen in the `build` step.
 {{site.data.callout.end}}
 
-## Default behavior for `pending-approval` step 
+## Default behavior for `pending-approval` step
 Configure if manual confirmation is required after clicking the Approve or Reject buttons for [pending-approval steps]({{site.baseurl}}/docs/pipelines/steps/approval/). When required, a confirmation prompt is displayed on clicking Approve or Reject.  
 * **None**: No manual intervention required on clicking either Approve or Reject. 
 * **All**: Require manual intervention for both Approve and Reject.
