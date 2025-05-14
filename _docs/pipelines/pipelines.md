@@ -221,7 +221,7 @@ The table below describes the General settings.
 | **Pipeline Description**  | Additional information describing the pipeline in free text.                                  |
 | **Pipeline Tags**         | One or more tags used for [access control]({{site.baseurl}}/docs/administration/account-user-management/access-control/). |
 | **Public Build Logs**     | When enabled, allows [users without a Codefresh account]({{site.baseurl}}/docs/pipelines/configuration/build-status/#public-build-logs) to view the builds of this pipeline. |
-| **Pipeline Template**              | Convert this pipeline to a template that users can use to create new pipelines. The (see the next section for details on templates).               |
+| **Pipeline Template**              | Convert this pipeline to a template which users can use to create new pipelines. The (see the next section for details on templates).               |
 | **Badges**                | Simple images to display the most recent [build status]({{site.baseurl}}/docs/pipelines/configuration/build-status/).                      |
 
 
