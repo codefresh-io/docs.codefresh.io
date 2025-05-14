@@ -241,42 +241,7 @@ The table below describes the Policy settings.
 | | Determines if a build that is pending approval [counts against] the concurrency limits or |
 | **Restart pipeline**                  | The restart behavior for failed pipelines, either allowing users to restart the pipeline directly from the failed step, or  restart the pipeline from the beginning.{::nomarkdown}<ul><li><b>Use account settings</b>: The default, inherit the account-level setting defined.</li><li><b>Permit</b>: Always permits users to restart this pipeline from the failed step. </li><li><b>Forbid</b>: Disables the restart from failed step option for the pipeline. Users can only restart the pipeline from the beginning.</li> </ul> {:/}Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.  |
 
-##### Kubernetes clusters
-Control pipeline access to Kubernetes clusters integrated with Codefresh.  
-  * To allow the pipeline access to _all_ the cluster contexts integrated with Codefresh (the default), toggle **Inject all Kubernetes cluster context to pipeline builds** to ON. 
-  *  To allow the pipeline access to _only_ specific clusters, start typing in the name of the cluster as defined in its integration settings, and select it from the list displayed by Codefresh.  
-    When defined, the initialization step in the pipeline displays the clusters selected for it.  
-See [Select Kubernetes cluster contexts](#select-kubernetes-cluster-contexts).
 
-
-- **Pipeline Concurrency**: The maximum number of concurrent builds (0-14 or unlimited). Set the concurrency when your pipeline has only one trigger.  
-    {{site.data.callout.callout_tip}}
-    **TIP**   
-    A Pipeline Concurrency of **0** freezes execution of the pipeline, switching it to maintenance mode. Use this concurrency setting to modify existing pipelines and freeze execution until you complete the changes. 
-    {{site.data.callout.end}}
-- **Trigger Concurrency**: The maximum number of concurrent builds per trigger (1-15 or unlimited). Define the trigger concurrency when your pipeline has multiple triggers.
-- **Branch Concurrency**: The maximum number of concurrent builds per branch (1-15 or unlimited). Define this when your pipeline can build different branches.
-- **Build Termination**: Options that determine when a build from the pipeline should terminate:
-  - Once a build is created terminate previous builds from the same branch
-  - Once a build is created terminate previous builds only from a specific branch (name matches a regular expression)
-  - Once a build is created, terminate all other running builds
-  - Once a build is terminated, terminate all child builds initiated from it
-- **Pending approval volume**: Choose what happens with the [pipeline volume]({{site.baseurl}}/docs/pipelines/introduction-to-codefresh-pipelines/#sharing-the-workspace-between-build-steps) when a pipeline is waiting for [approval]({{site.baseurl}}/docs/pipelines/steps/approval/#keeping-the-shared-volume-after-an-approval)
-  - Keep the volume available
-  - Discard the volume
-  - Honor the option defined globally in your Codefresh account
-- **Pending approval concurrency limit effect**: Determines if a build that is pending approval [counts against]({{site.baseurl}}/docs/pipelines/steps/approval/#define-concurrency-limits) the concurrency limits or not
-  - Builds in pending approval will **not** be counted when determining the concurrency limit for a pipeline
-  - Builds in pending approval will **be** counted when determining the concurrency limit for a pipeline
-  - Honor the option defined globally in your Codefresh account  
-
-- **Restart pipeline**  
-  **Permit restart pipeline from failed step**: Allows users to override the account-level setting for this option, and enable/disable restart directly from the failed step. Otherwise, users can only restart the pipeline from the beginning.  
-  * Use account settings (default): Inherits the account-level setting defined.
-  * Permit: Always permits users to restart this pipeline from the failed step.
-  * Forbid: Always disables the restart from failed step option for this pipeline.  
-
-  Enabling this option restarts the failed step with the same state, so you may find it useful to disable this option based on the usage. For example, restarting a custom Helm promotion step that failed, restarts the step with the same revision and does not promote the newest images as it should.
 
 #### Select Kubernetes cluster contexts
 By default, all clusters integrated with Codefresh are automatically available for all pipelines in the account. 
