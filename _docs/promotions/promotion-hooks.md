@@ -5,6 +5,9 @@ group: promotions"
 toc: true
 ---
 
+{{site.data.callout.callout_tip}}
+Available as part of the early access program.
+{{site.data.callout.end}}
 
 ## Promotion hooks overview
 

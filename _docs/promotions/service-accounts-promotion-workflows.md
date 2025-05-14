@@ -5,7 +5,9 @@ group: promotions
 toc: true
 ---
 
-
+{{site.data.callout.callout_tip}}
+Available as part of the early access program.
+{{site.data.callout.end}}
 
 ## Service accounts & service account roles for Promotion Workflows
 Service accounts are essential for all types of Promotion Workflows in GitOps Cloud. These accounts provide the necessary permissions for workflows to interact with clusters and other resources during the promotion process, including when hooks are used. 
