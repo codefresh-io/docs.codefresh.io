@@ -21,7 +21,8 @@ For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages
 We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
 You must create the indexes listed below _**after** upgrading_ to prevent disruption and avoid performance issues.
 
-#### New indexes after upgrade
+#### New indexes in v2.7
+You must _**create the indexes after upgrading** to prevent disruption and avoid performance issues.
 
 ##### `createdAt_1`
 
@@ -57,11 +58,6 @@ You must create the indexes listed below _**after** upgrading_ to prevent disrup
 
 
 ### Features & enhancements
-
-
-
-
-
 
 
 #### General: Increased limit for audit logs
