@@ -65,7 +65,6 @@
   "/docs/products/promotion-version-properties/": "/gitops/products/promotion-version-properties/",
   "/docs/products/releases-in-products/": "/gitops/products/releases-in-products/",
   "/docs/promotions/create-promotion-sequence/": "/gitops/promotions/create-promotion-sequence/",
-  "/docs/promotions/entities/": "/gitops/promotions/entities/",
   "/docs/promotions/product-promotion-props/": "/gitops/promotions/product-promotion-props/",
   "/docs/promotions/product-releases/": "/gitops/promotions/product-releases/",
   "/docs/promotions/promotion-components/": "/gitops/promotions/promotion-components/",
@@ -116,7 +115,10 @@
   "/docs/installation/gitops/runtime-argocd-admin-api-token/": "/gitops/gitops-runtimes/runtime-argocd-admin-api-token/",
   "/docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode/": "/gitops/gitops-runtimes/runtime-install-ingress-service-mesh-access-mode/",
   "/docs/promotions/getting-started/": "/gitops/promotions/getting-started/",
+  "/docs/promotions/promotion-hooks/": "/gitops/promotions/promotion-hooks/",
   "/docs/installation/gitops/runtime-troubleshooting/": "/gitops/gitops-runtimes/runtime-troubleshooting/",
   "/docs/products/promotion-concurrency/": "/gitops/products/promotion-concurrency/",
+  "/docs/promotions/promotion-context-promotion-workflows/": "/gitops/promotions/promotion-context-promotion-workflows/",
+  "/docs/promotions/service-accounts-promotion-workflows/": "/gitops/promotions/service-accounts-promotion-workflows/",
   "/docs/installation/gitops/runtime-install-with-new-argo-cd/": "/gitops/gitops-runtimes/runtime-install-with-new-argo-cd/"
 }

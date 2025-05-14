@@ -98,11 +98,17 @@ These entities provide additional control and automation, enabling advanced mult
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/products/configure-product-settings/">Promotion settings for products</a></td>
   </tr>
-    <tr>
+  <tr>
     <td><strong>Promotion Workflow</strong></td>
-    <td>An Argo Workflow which runs tests and validations during promotion for each environment. Promotion Workflows can include smoke tests, rollback mechanisms, database validation checks, performance checks, and more.</td>
+    <td>An Argo Workflow which runs tests and validations during promotion for each application within an environment. Promotion Workflows can include smoke tests, rollback mechanisms, database validation checks, performance checks, and more.</td>
     <td>Users with ABAC permissions</td>
     <td><a href="https://codefresh.io/docs/docs/promotions/promotion-workflow/">Promotion Workflows</a></td>
+  </tr>
+  <tr>
+    <td><strong>Promotion hooks</strong></td>
+    <td>Promotion hooks are configured in Promotion Workflows to run at the start or end of a product release, or at the start or end of promotions in environments. Promotion hooks can include notifications and actions such as sending Slack messages or custom issue-tracking information based on the status of the promotion for release or environment.</td>
+    <td>Users with ABAC permissions</td>
+    <td><a href="https://codefresh.io/docs/docs/promotions/promotion-hooks/">Promotion Workflows</a></td>
   </tr>
   <tr>
     <td><strong>Promotion Policy</strong></td>

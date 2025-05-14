@@ -7,12 +7,11 @@ toc: true
 
 
 
-
+## Releases for promotions in GitOps
 Releases in Codefresh GitOps offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
 
 A release is automatically created whenever a promotion is triggered for a product, either manually or through an automated flow. This ensures every change is documented and linked to its promotion lifecycle, giving teams complete visibility into their deployment processes.
 
-## Releases in GitOps
 In the context of GitOps, a release captures the progression of a product as it is promoted through environments. The release reflects the collective state of all environments and workflows involved in deploying a change, from the initial trigger to the final target environment, whether production or another specified target.
 
 
@@ -28,7 +27,7 @@ max-width="60%"
 %}
 
 ### Why Releases matter
-Whether you are a product manager or an application developer, Releases offer:
+Whether you are a product manager or an application developer, releases offer:
 * Lifecycle visualization: Clearly track the deployment lifecycle of a product
 * Integrated change list: Access a unified list of changes leading to a deployment
 * Deployment status: Monitor ongoing deployments and quickly identify issues
@@ -64,7 +63,7 @@ There are two key aspects of tracking deployments for a product through releases
 
 ##### Release promotion flow 
 Track the release visually to monitor its progression through each phase of the promotion lifecycle across environments.  
-Specific Release views centralizes all information, allowing you to:  
+Release views centralizes all information, allowing you to:  
 * Identify and resolve deployment issues without switching between tools
 * Access everything you need to troubleshoot errors in one place.
 
@@ -82,7 +81,7 @@ Release notes compile changes from various sources into a single view, enabling 
 See [Analyze change history in Release Notes](#analyze-change-history-in-release-notes).
 
 
-## View Releases for products
+## View releases for products
 
 The Releases tab for a product displays the releases for that product, whether successful or failed.
 
@@ -145,7 +144,7 @@ max-width="60%"
 The header in the Releases page summarizes the change that triggered the promotion, the overall status of the release, and the count of failed, successful, running, and pending environments.
 
 >**NOTE:**  
-The commit details are always for the trigger environment that initiated the promotion.
+The commit details are always for the Trigger Environment that initiated the promotion.
 
 {% include 
 image.html 
@@ -186,8 +185,8 @@ max-width="60%"
 
 ## Environments in product releases
 
-The graphical view of the different environments defined in the Promotion Flo allows you to:
-* Understand the interconnections between the environments, whether sequential or parallel.
+The graphical view of the different environments defined in the Promotion Flow allows you to:
+* Understand the interconnections between the environments, whether sequential or parallel
 * Visualize the dependencies between environments to see how changes propagate through the deployment process
 
 Each environment is color-coded to indicate the overall status of the promotion for that environment. 
@@ -253,8 +252,9 @@ If there is an update that triggers a Pre- or Post-Action Workflow within an env
 For example, if an update in the `staging` environment triggers the `echo-pre-action` Pre-Action Workflow, and a later update in the same environment also triggers the same `echo-pre-action` Pre-Action Workflow, the earlier instance is terminated, and the later instance continues to run. 
 
 
+## Promotion Hooks in product release
+The **Show/Hide Hooks** toggle button in the Release view displays/hides the [promotion hooks]({{site.baseurl}}/docs/promotions/promotion-hooks/) assigned to the Promotion Flow.
 
-<!--- NIMA: how will it be shown in the releases tab? -->
 
 ## Promotion Workflows in product releases
 
