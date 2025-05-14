@@ -23,7 +23,8 @@ A **promotion context** is a user-defined JSON object that allows you to pass cu
 Defining a promotion context with the custom parameters and then **exporting the context** makes these custom values available to all subsequent hooks in the same Promotion Flow. Each hook can access and use the values from the promotion context as needed.  
 Using promotion contexts enables scenarios like notifying specific Slack channels or linking Jira tickets to releases. See [How promotion context works during execution](#how-promotion-context-works-during-execution).  
 
-To see a practical example, follow the [Walkthrough: Using promotion hooks in Promotion Flows to handle promotion failures](#walkthough-using-promotion-hooks-in-promotion-flows-to-handle-promotion-failures), where you create different Promotion Workflows with hooks, define a promotion context in a workflow, and assign hooks at different stages of the Promotion Flow.
+To see a practical example, follow the [Walkthrough: Using promotion hooks in Promotion Flows to handle promotion failures](#walkthrough-using-promotion-hooks-in-promotion-flows-to-handle-promotion-failures), where you create different Promotion Workflows with hooks, define a promotion context in a workflow, and assign hooks at different stages of the Promotion Flow.
+
 
 
 ## Creating and exporting a promotion context 
