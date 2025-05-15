@@ -9,7 +9,7 @@ Welcome to the release notes for our on-premises releases.
 
 ## On-premises version 2.7
 
-### Features & enhancements
+### Installation & Upgrade
 
 #### Installing v2.7 
 For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
@@ -17,6 +17,48 @@ For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifa
 #### Upgrading to v2.7
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
+**New indexes**  
+We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
+You must create the indexes listed below _**right after** upgrading_ to prevent disruption and avoid performance issues.
+
+#### New indexes in v2.7
+
+You must create the indexes listed below **right after upgrading** to prevent disruption and avoid performance issues.
+
+##### createdAt_1
+
+`createdAt_1` (db: `codefresh`; collection: `feature-store-versioned`)
+
+* **Index details**  
+
+```json
+{
+  "createdAt" : 1
+}
+```
+* **Index properties**  
+
+```json
+{
+  "expireAfterSeconds" : 43200
+}
+```
+
+##### LDRedisStoreVersion_1__id_-1
+
+`LDRedisStoreVersion_1__id_-1` (db: `codefresh`; collection: `feature-store-versioned`)
+
+* **Index details**  
+
+```json
+{
+  "LDRedisStoreVersion" : 1,
+  "_id" : -1
+}
+```
+
+
+### Features & enhancements
 
 
 #### General: Increased limit for audit logs
