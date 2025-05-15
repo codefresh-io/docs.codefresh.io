@@ -19,12 +19,13 @@ For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages
 
 **New indexes**  
 We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
-You must create the indexes listed below _**after** upgrading_ to prevent disruption and avoid performance issues.
+You must create the indexes listed below _**right after** upgrading_ to prevent disruption and avoid performance issues.
 
 #### New indexes in v2.7
-You must _**create the indexes after upgrading** to prevent disruption and avoid performance issues.
 
-##### `createdAt_1`
+You must create the indexes listed below **right after upgrading** to prevent disruption and avoid performance issues.
+
+##### createdAt_1
 
 `createdAt_1` (db: `codefresh`; collection: `feature-store-versioned`)
 
@@ -43,7 +44,7 @@ You must _**create the indexes after upgrading** to prevent disruption and avoid
 }
 ```
 
-##### `LDRedisStoreVersion_1__id_-1`
+##### LDRedisStoreVersion_1__id_-1
 
 `LDRedisStoreVersion_1__id_-1` (db: `codefresh`; collection: `feature-store-versioned`)
 
