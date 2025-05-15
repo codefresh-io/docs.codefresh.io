@@ -157,7 +157,6 @@ The table below describes the fields you can define in a Cron expression.
 {: .table .table-bordered .table-hover}
 Field    | Mandatory | Allowed values  | Allowed special characters
 |----------   | ---------- | --------------  | --------------------------|
-Seconds      | No         | 0-59            | * / , -|
 Minutes      | Yes        | 0-59            | * / , -|
 Hours        | Yes        | 0-23            | * / , -|
 Day of month | Yes        | 1-31            | * / , - ?|
@@ -177,28 +176,6 @@ The table below describes the purpose of the special characters in a Cron expres
 |**Comma** (`,`) | Commas separate items in a list. For example, using `MON,WED,FRI` in the 5th field (day of week) would mean Mondays, Wednesdays, and Fridays.|
 |**Hyphen** (`-`) | Hyphens define ranges. For example, `9-17` would indicate every hour between 9am and 5pm inclusive.|
 |**Question mark** (`?`) | Question marks are instead of asterisks (`*`) to leave either day-of-month or day-of-week blank.|
-
-### Predefined scheduling for Cron jobs
-
-You can use one of several predefined schedules instead of a Cron expression.
-The table below describes the predefined schedules supported.
-
-{: .table .table-bordered .table-hover}
-|Predefined schedule                  | Description                  | Equivalent to|
-|-----                  | -----------                                | -------------|
-|@YEARLY (or @ANNUALLY) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *|
-|@MONTHLY               | Run once a month, midnight, first of month | 0 0 0 1 **|
-|@WEEKLY                | Run once a week, midnight on Sunday        | 0 0 0 ** 0|
-|@DAILY (or @MIDNIGHT)  | Run once a day, midnight                   | 0 0 0 ** *|
-|@HOURLY                | Run once an hour, beginning of hour        | 0 0 ** **|
-
-### Fixed interval scheduling for Cron jobs
-
-You can also schedule a job to execute at fixed intervals by adding `@every <interval>`. The <interval> is a string that represents the desired frequency.  
-For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 hour, 30 minutes, 10 seconds.
-
->**NOTE**  
-The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
 
 ### Conditional triggers for Cron jobs
 
@@ -248,6 +225,28 @@ codefresh create trigger "cron:codefresh:codefresh:0 */20* ** *:hello-once-in-20
 {% endhighlight %}
 
 From now on, Codefresh will trigger a pipeline execution for two pipelines linked to the previously specified `cron` `trigger-event`, every 20 minutes (`once in 20 minutes`).
+
+### Predefined scheduling for Cron jobs
+
+You can use one of several predefined schedules instead of a Cron expression.
+The table below describes the predefined schedules supported.
+
+{: .table .table-bordered .table-hover}
+|Predefined schedule                  | Description                  | Equivalent to|
+|-----                  | -----------                                | -------------|
+|@YEARLY (or @ANNUALLY) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *|
+|@MONTHLY               | Run once a month, midnight, first of month | 0 0 0 1 **|
+|@WEEKLY                | Run once a week, midnight on Sunday        | 0 0 0 ** 0|
+|@DAILY (or @MIDNIGHT)  | Run once a day, midnight                   | 0 0 0 ** *|
+|@HOURLY                | Run once an hour, beginning of hour        | 0 0 ** **|
+
+### Fixed interval scheduling for Cron jobs
+
+You can also schedule a job to execute at fixed intervals by adding `@every <interval>`. The <interval> is a string that represents the desired frequency.  
+For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 hour, 30 minutes, 10 seconds.
+
+>**NOTE**  
+The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
 
 ## Cron event payload
 
