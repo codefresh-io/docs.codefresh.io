@@ -226,28 +226,6 @@ codefresh create trigger "cron:codefresh:codefresh:0 */20* ** *:hello-once-in-20
 
 From now on, Codefresh will trigger a pipeline execution for two pipelines linked to the previously specified `cron` `trigger-event`, every 20 minutes (`once in 20 minutes`).
 
-### Predefined scheduling for Cron jobs
-
-You can use one of several predefined schedules instead of a Cron expression.
-The table below describes the predefined schedules supported.
-
-{: .table .table-bordered .table-hover}
-|Predefined schedule                  | Description                  | Equivalent to|
-|-----                  | -----------                                | -------------|
-|@YEARLY (or @ANNUALLY) | Run once a year, midnight, Jan. 1st        | 0 0 0 1 1 *|
-|@MONTHLY               | Run once a month, midnight, first of month | 0 0 0 1 **|
-|@WEEKLY                | Run once a week, midnight on Sunday        | 0 0 0 ** 0|
-|@DAILY (or @MIDNIGHT)  | Run once a day, midnight                   | 0 0 0 ** *|
-|@HOURLY                | Run once an hour, beginning of hour        | 0 0 ** **|
-
-### Fixed interval scheduling for Cron jobs
-
-You can also schedule a job to execute at fixed intervals by adding `@every <interval>`. The <interval> is a string that represents the desired frequency.  
-For example, `@every 1h30m10s` would indicate a schedule that triggers every 1 hour, 30 minutes, 10 seconds.
-
->**NOTE**  
-The interval does not take the runtime of the job into account. For example, if a job takes three minutes to run, and it is scheduled to run every five minutes, it will have only two minutes of idle time between each run.
-
 ## Cron event payload
 
 The following variables are available to any Codefresh pipeline linked to a Cron trigger event:
