@@ -18,45 +18,55 @@ For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifa
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
 **New indexes**  
-We added a new `feature-store-versioned` collection which requires **two new indexes** for good performance.
-You must create the indexes listed below _**right after** upgrading_ to prevent disruption and avoid performance issues.
+We added a new `feature-store-versioned` collection which requires **two new indexes** for proper operation.
+You must create the indexes listed below _**before or right after** the upgrade_ to prevent disruption and avoid performance issues.
 
 #### New indexes in v2.7
 
-You must create the indexes listed below **right after upgrading** to prevent disruption and avoid performance issues.
+You must create the indexes listed below **before or right after the upgrade** to prevent disruption and avoid performance issues.
 
-##### createdAt_1
+{{site.data.callout.callout_warning}}
+**WARNING**
 
-`createdAt_1` (db: `codefresh`; collection: `feature-store-versioned`)
+If you create indexes before the upgrade, please, create **codefresh.feature-store-versioned** collection in advance.
 
-* **Index details**  
+E.g., using mongo shell script below:
+
+```js
+use codefresh;
+db.createCollection('feature-store-versioned');
+```
+{{site.data.callout.end}}
+
+
+##### codefresh.feature-store-versioned
+
+DB: `codefresh`
+
+Collection: `feature-store-versioned`
+
+Required indexes:
 
 ```json
+// Index keys:
 {
-  "createdAt" : 1
+  "createdAt": 1
+},
+// Index options:
+{
+  "expireAfterSeconds": 43200
 }
 ```
-* **Index properties**  
 
 ```json
+// Index keys:
 {
-  "expireAfterSeconds" : 43200
-}
+  "LDRedisStoreVersion": 1,
+  "_id": -1
+},
+// Index options:
+{}
 ```
-
-##### LDRedisStoreVersion_1__id_-1
-
-`LDRedisStoreVersion_1__id_-1` (db: `codefresh`; collection: `feature-store-versioned`)
-
-* **Index details**  
-
-```json
-{
-  "LDRedisStoreVersion" : 1,
-  "_id" : -1
-}
-```
-
 
 ### Features & enhancements
 
@@ -213,25 +223,25 @@ The index list is in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.js
 <br>
 
 #### New index for image-binaries
+
 We have introduced a new index for the `image-binaries` collection.  
 If you are upgrading to this version, you must create the index _before upgrading_ to prevent disruption and avoid performance issues.
 
-##### Create index 
+##### codefresh.image-binaries
 
-`accountId_1_imageName_1` (db: `codefresh`; collection: `image-binaries`)
+DB: `codefresh`
 
-##### Index details
+Collection: `image-binaries`
+
+Required indexes:
 
 ```json
+// Index keys:
 {
   "accountId": 1,
   "imageName": 1
-}
-```
-
-##### Index properties
-
-```json
+},
+// Index options:
 {
   "collation": {
     "locale": "en_US",
