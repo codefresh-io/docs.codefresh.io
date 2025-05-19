@@ -78,7 +78,6 @@ step_name:
 
 ## Fields
 
-The default behavior of the `build` step is defined a
 
 <!-- markdownlint-disable MD033 -->
 
@@ -103,7 +102,7 @@ The default behavior of the `build` step is defined a
 |`tag_policy`     | The case-transformation policy for the tag name. <br>`original`pushes the tag name as is, without changing it. <br>`lowercase`, the default, automatically converts the tag name to lowercase. <br><br>Tags in mixed case are pushed as `image_name:<tagname>` when set to the default value.    | Default                   |
 | `no_cache`      | Defines if to enable or disable Docker engine cache for the build.  When set to `false`, the default, enables Docker engine cache. To disable, set to `true`. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/).        | Optional                  |
 | `no_cf_cache`   | Defines if to enable or disable Codefresh build optimization for the build. When set to `false`, the default, enables Codefresh build optimization. See [more info]({{site.baseurl}}/docs/kb/articles/disabling-codefresh-caching-mechanisms/). |                                                                          |
-| `build_arguments`   | The set of [Docker build arguments](https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg){:target="\_blank"} to pass to the build process.   | Optional                  |
+| `build_arguments`   | The set of [Docker build arguments](https://docs.docker.com/build/guide/build-args/){:target="\_blank"} to pass to the build process. Build arguments, including variables, are supported only for Docker builds, and not for Docker arguments or flags.<br>For details on using `build_arguments`, see [Build an image with build arguments]({{site.baseurl}}/docs/example-catalog/ci-examples/build-an-image-with-build-arguments/).  | Optional                  |
 | `target`  | The target stage at which to stop the build in a multistage build. | Optional                  |
 |`timeout`   | The maximum duration permitted to complete step execution in seconds (`s`), minutes (`m`), or hours (`h`), after which to automatically terminate step execution. For example, `timeout: 1.5h`. <br>The timeout supports integers and floating numbers, and can be set to a maximum of 2147483647ms (approximately 24.8 days). <br><br>If defined and set to either `0s/m/h` or `null`, the timeout is ignored and step execution is not terminated.<br>See [Add a timeout to terminate step execution](#add-a-timeout-to-terminate-step-execution). |Optional|
 | `fail_fast`                              | Determines pipeline execution behavior in case of step failure. {::nomarkdown}<ul><li><code class="highlighter-rouge">true</code>: The default, terminates pipeline execution upon step failure. The Build status returns `Failed to execute`.</li><li><code class="highlighter-rouge">false</code>: Continues pipeline execution upon step failure. The Build status returns <code class="highlighter-rouge">Build completed successfully</code>. <br>To change the Build status, set <code class="highlighter-rouge">strict_fail_fast</code> to <code class="highlighter-rouge">true</code>.</li></ul>{:/}| Optional  |
