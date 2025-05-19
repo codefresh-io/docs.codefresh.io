@@ -147,7 +147,8 @@
 
     const redirectMap = await fetchRedirectMap();
 
-    const currentPath = window.location.pathname;
+    const pathname = window.location.pathname;
+    const currentPath = pathname.replace(SITE_BASE_URL, "");
 
     if (selectedValue === 'enterprise') {
       localStorage.setItem(enterpriseDocTypeLockKey, 'true');
