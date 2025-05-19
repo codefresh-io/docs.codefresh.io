@@ -72,7 +72,7 @@
     - title: Install GitOps Runtime with existing Argo CD
       url: "/runtime-install-with-existing-argo-cd"              
     - title: Install GitOps Runtime with new Argo CD
-      url: "/hybrid-gitops-helm-installation"    
+      url: "/runtime-install-with-new-argo-cd"    
     - title: Configure GitOps Runtime 
       url: "/runtime-configuration" 
     - title: Troubleshoot installation
@@ -254,12 +254,20 @@
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
+    - title: Promotion limitations
+      url: "/promotion-limitations"      
     - title: Promotion Flows
-      url: "/promotion-flow"     
+      url: "/promotion-flow"
     - title: Promotion Policies
       url: "/promotion-policy"  
     - title: Promotion Workflows
-      url: "/promotion-workflow"  
+      url: "/promotion-workflow"
+    - title: Promotion hooks
+      url: "/promotion-hooks"     
+    - title: Service accounts for Promotion Workflows
+      url: "/service-accounts-promotion-workflows"                     
+    - title: Promotion contexts in promotion hooks
+      url: "/promotion-context-promotion-workflows"     
     - title: Product promotion settings
       url: "/product-promotion-props"          
     - title: Promotion entity YAMLs 
@@ -286,6 +294,12 @@
       url: "/git-tokens"
     - title: Secrets for GitOps
       url: "/secrets"
+
+- title: What's new
+  url: "/whats-new"
+  pages:
+    - title: Release notes
+      url: "/changelog"
 
 - title: Support tickets
   url: "/support"

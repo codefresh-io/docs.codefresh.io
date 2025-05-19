@@ -1,6 +1,6 @@
 ---
 title: "Releases for products"
-description: "Monitor promotions for products"
+description: "Monitor promotions for products through releases"
 group: products
 toc: true
 ---

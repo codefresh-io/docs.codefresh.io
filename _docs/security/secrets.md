@@ -53,7 +53,7 @@ The applications you deploy with Codefresh should also have no knowledge of the 
 [Verifying authenticity of Codefresh artifacts]({{site.baseurl}}/docs/security/codefresh-signed-artifacts/)  
 [Git tokens for GitOps]({{site.baseurl}}/docs/security/git-tokens/)  
 [Set up a Hosted GitOps environment]({{site.baseurl}}/docs/installation/gitops/hosted-runtime/)  
-[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install Hybrid GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 
 
 

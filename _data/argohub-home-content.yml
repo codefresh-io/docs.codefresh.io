@@ -24,12 +24,12 @@
       localurl: /gitops/gitops-quick-start/create-app-ui/
     - title: Creating environments
       localurl: /gitops/gitops-quick-start/quick-start-gitops-environments/
+    - title: Creating Promotion Workflows
+      localurl: /gitops/gitops-quick-start/quick-start-promotion-workflow/
     - title: Simple promotion with drag-and-drop 
       localurl: /gitops/gitops-quick-start/drag-and-drop/
     - title: Simple Promotion Flow with multiple environments
       localurl: /gitops/gitops-quick-start/multi-env-sequential-flow/ 
-    - title: Creating Promotion Workflows
-      localurl: /gitops/gitops-quick-start/quick-start-promotion-workflow/
     - title: Advanced Promotion Flow with Promotion Workflows
       localurl: /gitops/gitops-quick-start/policy-multi-env-promotion/
     - title: Advanced Promotion Flow with environment dependencies
@@ -60,9 +60,7 @@
       localurl: /gitops/products/assign-applications/      
     - title: Configuring app version and promoted properties
       localurl: /gitops/products/promotion-version-properties/
-    - title: Configuring promotion concurrency
-      localurl: /gitops/products/promotion-concurrency/
-    - title: Assigning Promotion Flows and triggers
+    - title: Selecting Promotion Flows
       localurl: /gitops/products/promotion-flow-triggers/   
 
 
@@ -84,10 +82,12 @@
   links:
     - title: About promotions
       localurl: /gitops/promotions/promotions-overview/
+    - title: Getting started
+      localurl: /gitops/promotions/getting-started/
     - title: Promotion building blocks
       localurl: /gitops/promotions/promotion-components/
     - title: Promotion setup guidelines
-      localurl: /gitops/promotions/create-promotion-sequence/
+      localurl: /gitops/promotions/create-promotion-sequence/   
     - title: YAML specs
       localurl: /gitops/promotions/yaml/
     - title: Triggering promotions
@@ -149,9 +149,7 @@
     - title: Install GitOps Runtime with existing Argo CD
       localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/ 
     - title: Install GitOps Runtime with new Argo CD
-      localurl: /gitops/gitops-runtimes/hybrid-gitops-helm-installation/
-    - title: Troubleshooting Runtime installation
-      localurl: /gitops/gitops-runtimes/runtime-troubleshooting/  
+      localurl: /gitops/gitops-runtimes/runtime-install-with-new-argo-cd/
 
 
 - title: Administration

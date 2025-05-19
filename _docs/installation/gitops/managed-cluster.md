@@ -4,7 +4,7 @@ description: "Add multiple remote clusters to a GitOps Runtime and deploy applic
 toc: true
 ---
 
-Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
+Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
 

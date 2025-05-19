@@ -48,7 +48,7 @@ No Argo CD yet?  Deploy a new, fully managed instance of Argo CD with the GitOps
 * Ideal for clean setups 
 * Codefresh manages Argo CD’s lifecycle, including upgrades and maintenance
 
-See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/).
+See [Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
 
 
 You can install one GitOps Runtime per cluster. To add more, each Runtime must be on a separate cluster and have a unique name.  

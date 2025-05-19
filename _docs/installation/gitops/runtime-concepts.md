@@ -90,5 +90,5 @@ For information on adding clusters and managing them, see [Managing external clu
 [Runtime system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/)  
 [Runtime prerequisites ]({{site.baseurl}}/docs/installation/gitops/runtime-prerequisites/)  
 [Install GitOps Runtime with existing Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-existing-argo-cd/)  
-[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime with new Argo CD]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  
 

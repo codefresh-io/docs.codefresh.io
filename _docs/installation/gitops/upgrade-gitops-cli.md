@@ -80,4 +80,4 @@ You can upgrade to a specific version if you so require, or download the latest 
     * `<output-file>` is the path to the destination file, for example, `/cli-download`.
 
 ## Related articles
-[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/hybrid-gitops-helm-installation/)  
+[Install GitOps Runtime]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/)  

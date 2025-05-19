@@ -110,7 +110,7 @@ max-width="60%"
  
 ## Promotion Flow behavior: Key insights
 Here are a few useful factors to be aware of when creating Promotion Flows.  
-
+For details on current limitations, see [Promotion limitations]({{site.baseurl}}/docs/promotions/promotion-limitations/).
 
 ### Environments in Promotion Flows
 
@@ -140,6 +140,7 @@ To ensure a successful promotion, the product must include an application in eac
 #### Application sync and health status 
 Applications must be **Synced** and **Healthy** for a promotion to succeed.
 
+
 #### Multiple applications in a target environment
 If a target environment includes multiple applications for the same product—segmented for example by region, tenant, or other criteria—each application in that environment is updated with changes from the source environment. 
 
@@ -149,11 +150,27 @@ Although this behavior may seem intuitive, it’s crucial to recognize that each
 
 Adding or deleting files from applications in target environments does not affect the Promotion Flow. The promotion mechanism simply retains the added/deleted files as they are in the target environments.
 
+### Hooks in Promotion Flows
+Promotion hooks provide promotion status and custom information for releases and environments during the Promotion Flow.
+* Hooks are configured in Promotion Workflows and assigned to start/end of the release or specific environments in the Promotion Flow.
+* All hooks receive a default set of arguments to configure actions or notifications based on success or failure.
+* Promotion contexts within hooks when exported, expose custom parameters not natively available to the hooks. For example, you can link a Jira issue by creating a promotion context with the Jira ID and exporting it.
+
 
 ### Promotion Policy settings
 
-For each environment, you can explicitly set the Promotion Policy that defines governs promotion behavior for the environment through the Promotion Action (required), and  Pre- and Post-Action Workflows.  
+For each environment, you can explicitly set the Promotion Policy that defines governs promotion behavior for the environment through the Promotion Action (required), and Pre- and Post-Action Workflows.  
 You can also preview Policy settings by product before the flow is triggered. 
+
+{% include 
+image.html 
+lightbox="true" 
+file="/images/gitops-promotions/hooks/promotion-hooks-in-flow.png" 
+url="/images/gitops-promotions/hooks/promotion-hooks-in-flow.png"
+alt="Promotion hooks in Promotion Flow" 
+caption="Promotion hooks in Promotion Flow"
+max-width="60%"
+%}
 
 #### Inline vs. global Promotion Policy settings
 
@@ -229,7 +246,7 @@ Visually design and create the flow by selecting environments, Promotion Actions
     * **Flow Timeout**: The maximum duration allowed for the Promotion Flow to complete execution after being triggered, before it is automatically terminated. If not specified, the default timeout is 1 day (24 hours).
     * **Version**: (Optional) The version of the Promotion Flow. This is manually defined and manually updated, and is useful to indicate changes in the same flow.  
 1. In **Select Trigger Environment**, click {::nomarkdown}<img src="/images/icons/plus-icon.png" display=inline-block>{:/} to see the list of available environments:
-    * Select an existing environment, select it and click **Add**. 
+    * Select an existing environment and click **Add**. 
     * To create a new environment, click **Add New Environment**. 
 
 {% include 
@@ -243,7 +260,7 @@ max-width="50%"
 %}
 
 {:start="5"}
-1. Optional. To add a trigger workflow to validate the trigger environment after the change and commit action, mouse over the left of the environment node, and click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}, and select a Workflow.
+1. Optional. To assign a workflow to validate the trigger environment after the change and commit action, mouse over the left of the environment node, and click {::nomarkdown}<img src="../../../../images/icons/flow-builder-add-workflow.png" display=inline-block>{:/}, and select a Workflow.
     * To apply a trigger workflow from global Promotion Policy settings, click **Account-level Promotion Policy**.  
     * To add a new Promotion Workflow as the trigger workflow, click **Add New Workflow**. 
 
@@ -260,7 +277,6 @@ max-width="50%"
 {:start="6"}
 1. To add a target environment to promote to, either sequentially or in parallel, mouse over the right of the environment to add to, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} and then select the environment or environments.
   The example below shows two environments, `qa` and `staging` as parallel environments to `dev`.
-  <!--- To add parallel environments, click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} on the right of the previous environment. For example, to add `qa` and `staging` as parallel environments to `dev`, you would click {::nomarkdown}<img src="../../../../images/icons/plus-icon.png" display=inline-block>{:/} on the `dev` environment.  -->
 
 {% include 
 image.html 
@@ -319,7 +335,9 @@ caption="Add Pre-/Post-Action Workflows"
 max-width="60%"
 %}
 
-{:start="10"}
+1. To assign promotion hooks to the start or release or to an environment do 
+
+{:start="11"}
 1. Click **Save Promotion Flow** on the top-right.
   The Name and Description are populated from the Settings. The flow's YAML version on the right lists the environment sequence.
 1. To confirm, click **Save**. 
@@ -400,6 +418,7 @@ TBD
 -->
 
 ## Related articles
+[Hooks in Promotion Flows]({{site.baseurl}}/docs/promotions/promotion-hooks/)  
 [Trigger promotions]({{site.baseurl}}/docs/promotions/trigger-promotions/)   
 [Tracking product promotions through releases]({{site.baseurl}}/docs/promotions/product-releases/)  
 [Promotions: Setup & configuration guidelines]({{site.baseurl}}/docs/promotions/create-promotion-sequence/)  

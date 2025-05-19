@@ -32,9 +32,9 @@
     - title: Simple promotion with drag-and-drop 
       url: "/drag-and-drop"    
     - title: Simple Promotion Flow with multiple environments
+      url: "/multi-env-sequential-flow.md"  
     - title: Creating Promotion Workflows
-      url: "/quick-start-promotion-workflow" 
-      url: "/multi-env-sequential-flow"      
+      url: "/quick-start-promotion-workflow"      
     - title: Advanced Promotion Flow with Promotion Workflows
       url: "/policy-multi-env-promotion"  
     - title: Advanced Promotion Flow with environment dependencies
@@ -369,8 +369,6 @@
     - title: GitOps
       url: "/gitops"
       sub-pages:
-        - title: What's changed in Applications documentation
-          url: "/apps-whats-changed-in-documentation"
         - title: About Argo CD applications
           url: "/about-apps"
         - title: GitOps Apps dashboard
@@ -433,12 +431,20 @@
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
+    - title: Promotion limitations
+      url: "/promotion-limitations"   
     - title: Promotion Flows
-      url: "/promotion-flow"     
+      url: "/promotion-flow"  
     - title: Promotion Policies
       url: "/promotion-policy"  
     - title: Promotion Workflows
       url: "/promotion-workflow"  
+    - title: Promotion hooks
+      url: "/promotion-hooks" 
+    - title: Service accounts for Promotion Workflows
+      url: "/service-accounts-promotion-workflows"      
+    - title: Promotion contexts in promotion hooks
+      url: "/promotion-context-promotion-workflows"           
     - title: Product promotion settings
       url: "/product-promotion-props"          
     - title: Promotion entity YAMLs 
@@ -612,7 +618,7 @@
         - title: Install GitOps Runtime with existing Argo CD
           url: "/runtime-install-with-existing-argo-cd"                       
         - title: Install GitOps Runtime with new Argo CD
-          url: "/hybrid-gitops-helm-installation"   
+          url: "/runtime-install-with-new-argo-cd"   
         - title: Troubleshoot installation
           url: "/runtime-troubleshooting"    
         - title: On-premises GitOps Runtime

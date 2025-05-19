@@ -122,7 +122,7 @@ OR
   
 ```yaml
 global:
-  external-arg-cd:
+  external-argo-cd:
     auth:
       type: token
       tokenSecretKeyRef:
@@ -148,7 +148,7 @@ OR
 ##### Example username and password as plain text 
 ```yaml
 global:
-  external-arg-cd:
+  external-argo-cd:
     auth:
       type: password
       username: "user-name"
@@ -158,7 +158,7 @@ global:
 ##### Example username as plain text and password as secret reference
 ```yaml
 global:
-  external-arg-cd:
+  external-argo-cd:
     auth:
       type: password
       username: "some-user-name"
