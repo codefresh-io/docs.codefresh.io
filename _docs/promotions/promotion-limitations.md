@@ -14,7 +14,7 @@ The table below lists the current limitations when working with promotions.
 | --------------         | --------------           |
 |Git providers           | GitHub only.<br>The following Git-based actions are supported:{::nomarkdown}<ul><li>Opening a pull request (PR)</li><li>Adding Git commit status updates with a link to the release</li></ul>{:/}|
 |Argo Rollouts           | Partially supported.<br>{::nomarkdown}<ul><li>An application that reports a Healthy status may trigger the next stage in the promotion before the rollout is complete.</li><li>Promotion release fails if Argo Rollout remains in Processing state for over two hours</li></ul>{:/}|
-|Multi-source applications           | Not supported.<br>{::nomarkdown}<ul><li>Promotion Flows are not supported for Argo CD applications with multiple sources (multi-source applications.)</li></ul>{:/}|
+|Multi-source applications           | Not supported.<br>{::nomarkdown}<ul><li>Promotions are not supported for Argo CD applications with multiple sources (multi-source applications).</li></ul>{:/}|
 |Promotable files & properties       | {::nomarkdown}<ul><li><b>File scope</b>:<br>Only files in the root or a subdirectory of the <a href="https://codefresh.io/docs/docs/deployments/gitops/application-configuration-settings/#source"> Argo CD application source</a> can be promoted. Files outside this scope are ignored.</li><li><b>Value overrides</b>:<br> Inline value overrides in the application manifest, by adding `values:` in `spec.source.helm` for example, are not supported for promotion.</li></ul>{:/}|
 
 ## Related articles
