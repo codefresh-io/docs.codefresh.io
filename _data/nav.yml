@@ -397,6 +397,8 @@
       url: "/create-manage-environments"     
     - title: Manage Products and applications in environments
       url: "/manage-apps-in-environments"  
+    - title: New content topic
+      url: "/new-content-topic"        
       
 - title: Products
   url: "/products"

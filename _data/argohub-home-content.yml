@@ -45,6 +45,8 @@
       localurl: /gitops/environments/create-manage-environments/      
     - title: Manage Products and applications in environments
       localurl: /gitops/environments/manage-apps-in-environments/   
+    - title: New content topic
+      localurl: /gitops/environments/new-content-topic  
 
 - title: Products
   icon: ../images/home-icons/product.svg
