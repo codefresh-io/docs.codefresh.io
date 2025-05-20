@@ -121,5 +121,6 @@
   "/docs/promotions/promotion-context-promotion-workflows/": "/gitops/promotions/promotion-context-promotion-workflows/",
   "/docs/promotions/service-accounts-promotion-workflows/": "/gitops/promotions/service-accounts-promotion-workflows/",
   "/docs/installation/gitops/runtime-install-with-new-argo-cd/": "/gitops/gitops-runtimes/runtime-install-with-new-argo-cd/",
-  "/docs/promotions/promotion-limitations/": "/gitops/promotions/promotion-limitations/"
+  "/docs/promotions/promotion-limitations/": "/gitops/promotions/promotion-limitations/",
+  "/docs/environments/new-topic/": "/gitops/environments/new-topic/"
 }

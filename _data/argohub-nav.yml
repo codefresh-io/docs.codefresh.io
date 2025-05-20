@@ -204,6 +204,8 @@
       url: "/create-manage-environments"     
     - title: Manage Products and applications in Environments
       url: "/manage-apps-in-environments"  
+    - title: New topic
+      url: "/new-topic" 
 
 - title: Products
   url: "/products"
