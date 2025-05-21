@@ -521,7 +521,7 @@ See trigger events for:
 | Field           | Description                 | Type      | Required/Optional |
 | --------------  | ---------------------------- |-----------| -------------------------|
 | `spec.runtimeEnvironment.name`     | The name of the runtime environment to use for the pipeline.  <!-- does this override the account-level setting? Or must it one of those REs allowed for the pipeline? Should I add it's also based on permissions? --> |string   | Required |
-| `spec.runtimeEnvironment.memory`     | The memory threshold for the pipeline using Kubernetes notation.   <!--- NIMA: does this override the account-level setting? Or must it one of those in the UI? --> |string   | Optional |
+| `spec.runtimeEnvironment.memory`     | The memory threshold for the pipeline using Kubernetes notation.  |string   | Optional |
 | `spec.runtimeEnvironment.cpu`     | The number of CPUs to use for the pipeline using Kubernetes notation. <!--- NIMA: does this override the account-level setting? Or must it one of those in the UI? -->|string   | Optional |
 | `spec.runtimeEnvironment.dindStorage`     | The DIND storage size using Kubernetes notation. |string   | Optional |
 | `spec.runtimeEnvironment.requiredAvailableStorage`    | The minimum disk space for the pipeline’s build volume in `Gi`. <br> When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>When empty, only the space not allocated for caching is available for the build volume. <br>See [Set minimum disk space for a pipeline build]({{site.baseurl}}/docs/pipelines/pipelines/#set-minimum-disk-space-for-a-pipeline-build).  | string    | Optional |
