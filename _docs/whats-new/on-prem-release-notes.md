@@ -6,6 +6,52 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.8
+
+### Installation & Upgrade
+
+#### Installing v2.8
+For detailed instructions on installing v2.8, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+
+#### Upgrading to v2.8
+For details, see [Upgrade to 2.8 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-8-0){:target="\_blank"}.
+
+### Features & enhancements
+This release 
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+<br>
+
+#### New Feature Flags in v2.7
+There are no new feature flags in this release.
+
+
+
+#### Updated Feature Flags in v2.7
+There are no updated feature flags in this release. 
+
+### Bug fixes
+
+
+##### General
+
+* Blank screen after login for invited users with SSO sync enabled.
+
+
+##### Pipelines 
+* Git trigger for "Release published" fires incorrectly when any release-related trigger is enabled. 
+* Webhook events for Bitbucket ignored when pipeline trigger uses different Bitbucket integrations. 
+* For GitHub, list of files modified by PR (pull request) does not include all modified files. 
+
+
+##### GitOps
+* GitOps permission rule for applications including the Git Source attribute not supported for applications from ApplicationSets.<!--- runtime version with fix to be released  -->
+* Removed the **SSH** option from the **Repository** field in the Create Git Source form. Selecting SSH resulted in the error `failed creating git-source. error: Invalid URL`, as SSH is not a valid option for Git Sources. 
+* Inaccurate change failure rate for DORA metrics. 
+* Labels for ingress controllers not supported in GitOps Runtime Helm chart.
 
 ## On-premises version 2.7
 
