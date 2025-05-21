@@ -9,7 +9,7 @@ Welcome to the release notes for our on-premises releases.
 
 ## On-premises version 2.7
 
-### Features & enhancements
+### Installation & Upgrade
 
 #### Installing v2.7 
 For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
@@ -17,7 +17,7 @@ For detailed instructions on installing v2.7, visit [ArtifactHub](https://artifa
 #### Upgrading to v2.7
 For details, see [Upgrade to 2.7 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-7-0){:target="\_blank"}
 
-
+### Features & enhancements
 
 #### General: Increased limit for audit logs
 
@@ -148,57 +148,6 @@ For details, see [Upgrade to 2.6 in ArtifactHub](https://artifacthub.io/packages
 
 #### GitHub repo 
 We're excited to announce that the on-prem release is now available on a [public GitHub repository](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh){:target="\_blank"}, in addition to ArtifactHub, providing easier access and transparency for our users.
-
-
-<br>
-
-#### Enable auto-index creation in MongoDB
-From v2.6, the `cfapi` service can automatically create indexes in MongoDB.
-
-This feature is disabled by default. To enable it, set the `MONGOOSE_AUTO_INDEX` environment variable to `true` as shown below. 
-
-```yaml
-cfapi:
-  container:
-    env:
-      MONGOOSE_AUTO_INDEX: "true"
-```
-<!--- In GitHub, the list of indexes are in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json`. Go to [GitHub](https://github.com/codefresh-io/codefresh-onprem-helm/tree/release-2.6/codefresh/files/indexes/2.6){:target="\_blank"}.  -->
-The index list is in `codefresh/files/indexes/<MAJOR.MINOR>/<collection_name>.json` files.
-
-**Important**: We recommend enabling this feature during a maintenance window, as creating indexes can temporarily degrade database performance.
-
-<br>
-
-#### New index for image-binaries
-We have introduced a new index for the `image-binaries` collection.  
-If you are upgrading to this version, you must create the index _before upgrading_ to prevent disruption and avoid performance issues.
-
-##### Create index 
-
-`accountId_1_imageName_1` (db: `codefresh`; collection: `image-binaries`)
-
-##### Index details
-
-```json
-{
-  "accountId": 1,
-  "imageName": 1
-}
-```
-
-##### Index properties
-
-```json
-{
-  "collation": {
-    "locale": "en_US",
-    "strength": 1
-  }
-}
-```
-
-<br>
 
 #### General: Annotate image by name via CLI
 Now using the CLI, you can annotate your images also by their names, instead of only the image SHA.
