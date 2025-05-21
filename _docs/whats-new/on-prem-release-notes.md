@@ -18,16 +18,14 @@ For detailed instructions on installing v2.8, visit [ArtifactHub](https://artifa
 For details, see [Upgrade to 2.8 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-8-0){:target="\_blank"}.
 
 ### Features & enhancements
-This release 
+This release focuses on stability for an improved user experience.
 
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
-<br>
 
 #### New Feature Flags in v2.7
 There are no new feature flags in this release.
-
 
 
 #### Updated Feature Flags in v2.7
