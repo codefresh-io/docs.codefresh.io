@@ -325,8 +325,9 @@ Codefresh automatically generates additional fields, usually fields with dates a
 | `metadata.template.generatedFrom` | The ID of the template pipeline from which the pipeline is created.  | objectId | Optional |
 | `metadata.executionContextId`  |  The name of the specific execution context to use for the pipeline to makes API calls to the pipeline.<br>See [Pipeline execution context]({{site.baseurl}}/docs/administration/account-user-management/pipeline-execution-context/).    | string | Optional |
 
-### .spec
 
+
+### .spec
 
 {: .table .table-bordered .table-hover}
 | Field           | Description                 | Type      | Required/Optional |
@@ -357,11 +358,6 @@ Codefresh automatically generates additional fields, usually fields with dates a
 | `spec.branchConcurrency`           | The maximum number of concurrent builds per branch, ranging from `1-15`, or unlimited. Define the branch concurrency when your pipeline can run builds on different branches. | integer | Optional |
 | `spec.priority`             | The priority of the pipeline build, determining the order in which the build is queued. The priority can range from `100` (highest priority), to `-100`(lowest priority), with `0` as the default.  |  
 | `spec.debug.steps.phases`     |The phase or stage at which the debug step should run.{::nomarkdown}<ul><li><code class="highlighter-rouge">before</code>: The step runs before the build starts.</li><li><code class="highlighter-rouge">after</code>: The step runs after the build starts.</li><li><code class="highlighter-rouge">override</code>: ???.</li></ul> {:/} |boolean   | Optional |
-
-
-
-
-
 
 
 
