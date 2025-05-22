@@ -64,6 +64,26 @@ On-premises Git providers require you to define the API URL:
 * Bitbucket Data Center: `<server-url>`
 {% endif %}
 
+### Default Git Source
+
+When you install a Runtime, Codefresh GitOps automatically adds a default Standard Git Source to the Shared Configuration Repository.
+
+A Git Source is a core component of GitOps Runtimes. It connects a Git repository to the cluster that stores manifests of Argo CD applications, and enables continuous synchronization.
+The Git Source is itself managed as an Argo CD application. Codefresh defines it in the Shared Configuration Repository as a standard Argo CD Application resource, which points to a specific path within the same repository.
+
+Learn more in [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/).
+
+##### Git Source definition
+The Git Source is defined in the Shared Configuration Repository as follows:
+
+* **Application manifest path**
+  Defines the Git Source as an Argo CD application in `resources/<runtime-name>/default-git-source.yaml`.
+
+* **Application `spec.source`**
+  The `spec.source` for the Git Source application:
+    * `repoURL`: Shared Configuration Repo 
+    * `path`: Set to `git-sources/<runtime-name>/default`
+    * `targetRevision`: Shared Configuration repo branch (`isc-repo-branch`)
 
 
 ## Step 3: Install GitOps Runtime
