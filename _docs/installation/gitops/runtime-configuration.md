@@ -11,7 +11,7 @@ After installing a Runtime, complete its configuration to enable GitOps operatio
 Configuration includes:
 * [Defining Git credentials](#configure-git-credentials-for-runtime)
 * [Configuring Runtime as an Argo CD Application](#configure-runtime-as-an-argo-cd-application)
-* [Adding a Git source](#add-git-source-to-runtime)
+
 
 You can configure the Runtime immediately after installation by following the **Configuration and Management** steps in the installation wizard, 
 or at any time later through the Codefresh UI. 
@@ -64,23 +64,10 @@ Configuring the GitOps Runtime as an Argo CD Application ensures:
 * **Visibility and monitoring**  
   The Runtime appears in the GitOps Apps dashboard, where you can monitor and manage it as any other Argo CD application.
 
-## Add Git Source to Runtime
-A **Git Source** is a critical component in GitOps Runtimes, connecting a Git repository to the cluster, enabling deployment and configuration management of Argo CD applications.
 
-The Git repository referenced by the Git Source stores application manifests and other resources which are always synced to the cluster. Codefresh manages the Git Source itself as an Argo CD application.
-
-### Git Source settings  
-
-| Setting                  | Description |
-|--------------------------|-------------|
-| **Git Source Name**      | A unique name for the Git Source within the cluster. Must follow Kubernetes naming conventions. |
-| **Git Source Type**      | Select **Standard Git Source** to create the Git Source as an Argo CD application in the Runtime's namespace. It belongs to the default or user-defined Application Project, without deployment or repo restrictions. |
-| **Git Repository Source** | The Git repository which stores the application manifests, including the Git Source application manifest. Choose one of the following: <br> **Use an existing repository**: <br> - **Repository (Required):** The URL of the Git repository. <br> - **Branch (Optional):** The branch in which to create the Git Source application manifest. <br> - **Path (Optional):** The directory within the repo where the manifest will be stored. <br> **Create a new repository**: <br> - **Organization Name:** Select the organization for which to create the repository. <br> - **Repository Name:** The name of the new repository. |
-| **Included and Excluded Files** | Define patterns to specify which files should be included or excluded when syncing the repository to the cluster. Use **GLOB patterns** to define paths: <br> - `workflows/**/*.yaml` → Includes all YAML files in `workflows` and its subdirectories. <br> - `**/images/**/*` → Excludes all directories named `images`. <br> For GLOB guidelines, see this [guide](https://deepsource.io/blog/glob-file-patterns/). |
 
 
 ## Related articles
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
