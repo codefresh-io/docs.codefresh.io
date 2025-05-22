@@ -96,7 +96,7 @@ helm install oci://quay.io/codefresh/charts/csdp-add-cluster -f values.yaml --ge
 
 >**NOTES**  
 1. For ingress-based GitOps Runtimes, to get the `ingressUrl` for your Runtime, first authenticate to the  GitOps CLI, and then run `cf runtime list` in your terminal.
-<br/>2.The Helm Chart is installed by default in the `kube-system` namespace. To change the namespace, configure the `systemNamespace` value **in addition** to the  `--namespace` option, so both the Helm Release and the resources are installed in the desired namespace.
+1. The Helm Chart is installed by default in the `kube-system` namespace. To change the namespace, configure the `systemNamespace` value **in addition** to the  `--namespace` option, so both the Helm Release and the resources are installed in the desired namespace.
 
 
 ### Add a managed cluster with Terraform
@@ -124,8 +124,8 @@ As the cluster is managed through the Runtime, updates to the Runtime automatica
 View connection status for the managed cluster, and health and sync errors. Health and sync errors are flagged by the error notification in the toolbar, and visually flagged in the List and Topology views.
 
 ## Install Argo Rollouts
-Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the Applications dashboard and control rollout steps with the Rollout Player.
-If Argo Rollouts has not been installed on the target cluster, the **Install Argo Rollouts** button displayed.
+Applications with `rollout` resources need Argo Rollouts on the target cluster, both to visualize rollouts in the GitOps Apps dashboard, and control rollouts  with the Rollout Player.
+If Argo Rollouts has not been installed on the target cluster, the **Install Argo Rollouts** button is displayed.
 
 Install Argo Rollouts with a single click to execute rollout instructions, deploy the application, and visualize rollout progress in the [GitOps Apps dashboard]({{site.baseurl}}/docs/dashboards/gitops-apps-dashboard/). 
 
@@ -154,13 +154,11 @@ This action only removes the management link between your GitOps Runtime and you
 Remove a managed cluster in any of the following ways:
 * [Codefresh UI](#remove-a-managed-cluster-from-the-codefresh-ui)
 * [GitOps CLI](#remove-a-managed-cluster-through-the-gitops-cli)
-* [Kustomize](#remove-a-managed-cluster-with-kustomize)
-* [Helm](#remove-a-managed-cluster-with-helm)
 * [Terraform](#remove-a-managed-cluster-with-terraform)
 
 
 ### Remove a managed cluster from the Codefresh UI
-Remove a cluster from the list managed by the GitOps Runtime in the Codefresh UI.
+Remove a cluster from a GitOps Runtime through the Codefresh UI.
 
 {{site.data.callout.callout_tip}} 
 **TIP**  
@@ -186,24 +184,18 @@ In the Codefresh UI, on the toolbar, click the **Settings** icon, expand Runtime
 
 
 ### Remove a managed cluster through the GitOps CLI
-Remove a managed cluster from the list managed by the GitOps Runtime through the GitOps CLI.
+Remove a managed cluster from the GitOps Runtime through the GitOps CLI.
 
-* Run:
+>**NOTE**  
+Run the command on the cluster you want to remove.
+
+* Run:  
   `cf cluster remove <runtime-name> --server-url <server-url>`
   where:
   `<runtime-name>` is the name of the GitOps Runtime that the managed cluster is registered to.
   `<server-url>` is the URL of the server on which the managed cluster is installed.
 
 
-
-
-### Remove a managed cluster with Kustomize
-
-Run `kubectl delete -f <your_yaml>` with the result of the `kustomize build` command that you run during installation
-
-### Remove a managed cluster with Helm
-
-Run `helm delete <release_name>` with the name of the release that was created during installation.
 
 ### Remove a managed cluster with Terraform
 
