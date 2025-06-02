@@ -28,14 +28,15 @@ For details, see [Codefresh Terraform Provider documentation]({{site.baseurl}}/d
 {% endif %}
 
 ## Bug fixes
+{% if page.collection == "posts" %}
+##### Pipelines
 
-### Pipelines
-
-* Fixed an issue where Git triggers using `release.published` were incorrectly executing matching rules for other release sub-events (such as `release.unpublished`), even when those sub-events weren’t explicitly configured. The webhook event handler now correctly distinguishes between sub-event types and only triggers builds on exact matches.
-* Fixed an issue where Bitbucket webhook events were ignored when the same trigger was configured across two Bitbucket integrations. The fix ensures uniqueness by properly identifying each webhook event and its destination.
-* Removed the limit on the number of modified files returned in the GitHub pull request file list.
+* Git trigger for "Release published" fires incorrectly when any release-related trigger is enabled. 
+* Webhook events for Bitbucket ignored when pipeline trigger uses different Bitbucket integrations. 
+* For GitHub, list of files modified by PR (pull request) does not include all modified files. 
 
 ##### GitOps
+{% if page.collection == "posts" %}
 * Wrong revision promoted when a Promotion Flow is triggered manually by clicking Trigger button or automatically. 
 * Release status not updated for product when a Promotion Flow is triggered manually by clicking the Trigger button. <!--- runtime version with fix to be released -->
 * Updated validation for the Name field in Promotion Workflows to not allow underscores.
