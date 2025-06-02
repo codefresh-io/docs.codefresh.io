@@ -23,8 +23,6 @@ This update helps you eliminate manual UI configuration, reduce human error, and
 * **Match existing ABAC behavior** found in the UI and API.
 
 This feature helps teams maintain consistent, automated access control at scale.
-
-For details, see [Codefresh Terraform Provider documentation]({{site.baseurl}}/docs/integrations/terraform/).
 {% endif %}
 
 ## Bug fixes
