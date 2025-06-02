@@ -24,11 +24,16 @@ This release focuses on stability for an improved user experience.
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
 
-#### New Feature Flags in v2.7
-There are no new feature flags in this release.
+#### New Feature Flags in v2.8
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.8.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `newUsersAndTeamsPages`  | Activates the new user and team management experience with an updated layout and streamlined controls. | FALSE         |
 
 
-#### Updated Feature Flags in v2.7
+#### Updated Feature Flags in v2.8
 There are no updated feature flags in this release. 
 
 ### Bug fixes
