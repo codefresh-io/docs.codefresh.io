@@ -36,7 +36,7 @@ For details, see [Codefresh Terraform Provider documentation]({{site.baseurl}}/d
 * For GitHub, list of files modified by PR (pull request) does not include all modified files. 
 
 ##### GitOps
-{% if page.collection == "posts" %}
+{% endif %}
 * Wrong revision promoted when a Promotion Flow is triggered manually by clicking Trigger button or automatically. 
 * Release status not updated for product when a Promotion Flow is triggered manually by clicking the Trigger button. <!--- runtime version with fix to be released -->
 * Updated validation for the Name field in Promotion Workflows to not allow underscores.
