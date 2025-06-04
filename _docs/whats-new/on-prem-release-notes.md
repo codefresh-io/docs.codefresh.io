@@ -16,7 +16,7 @@ For detailed instructions on installing v2.8, visit [ArtifactHub](https://artifa
 
 #### Upgrading to v2.8
 >**NOTE**  
-This version includes **breaking changes**. Please review the documentation carefully here [Upgrade to 2.8 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-8-0){:target="\_blank"}.
+This version includes **breaking changes**. Please review the upgrade documentation carefully before proceeding. See [Upgrade to 2.8 in ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh#to-2-8-0){:target="\_blank"}.
 
 ### Features & enhancements
 This release focuses on stability for an improved user experience.
