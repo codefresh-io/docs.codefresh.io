@@ -1,9 +1,9 @@
-const enterpriseDocumentationCookie = 'cfdoctype=enterprise'
+const enterpriseDocumentationCookie = "cfdoctype=enterprise";
 const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
-const enterpriseDocTypeLockKey = 'enterpriseDocTypeLock';
+const enterpriseDocTypeLockKey = "enterpriseDocTypeLock";
 
 function checkIfEnterpriseDocumentationCookieSet() {
-  return document.cookie.includes(enterpriseDocumentationCookie)
+  return document.cookie.includes(enterpriseDocumentationCookie);
 }
 
 async function getArgoHubRedirectURL(currentPath) {
@@ -22,9 +22,7 @@ async function getArgoHubRedirectURL(currentPath) {
   return newURL;
 }
 
-async function handleRedirect () {
-  handleEnterpriseDocTypeLock()
-
+async function handleRedirect() {
   if (shouldSkipRedirect()) return;
 
   const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
@@ -33,7 +31,7 @@ async function handleRedirect () {
   location.href = argoHubRedirectURL;
 }
 
-async function fetchRedirectMap () {
+async function fetchRedirectMap() {
   const response = await fetch(
     `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
   );
@@ -41,28 +39,20 @@ async function fetchRedirectMap () {
     throw new Error("Failed to fetch the collections redirect map.");
   }
   return response.json();
-};
-
-function handleEnterpriseDocTypeLock() {
-  const queryParams = new URLSearchParams(location.search);
-  if (!queryParams.has('ent')) return;
-
-  localStorage.setItem(enterpriseDocTypeLockKey, 'true');
 }
 
-
-function isEnterpriseLockPresent(){
-  const enterpriseDocTypeLock = localStorage.getItem(enterpriseDocTypeLockKey)
-  return !!enterpriseDocTypeLock
-
+function isEnterpriseLockPresent() {
+  const enterpriseDocTypeLock = localStorage.getItem(enterpriseDocTypeLockKey);
+  return !!enterpriseDocTypeLock;
 }
 
 function shouldSkipRedirect() {
-  return (
-    isEnterpriseLockPresent() ||
-    SITE_IS_GITOPS_COLLECTION ||
-    checkIfEnterpriseDocumentationCookieSet()
-  );
+  return true; // Redirect temporarily disabled. Will be re-enabled with a new cookie-based mechanism.
+  // return (
+  //   isEnterpriseLockPresent() ||
+  //   SITE_IS_GITOPS_COLLECTION ||
+  //   checkIfEnterpriseDocumentationCookieSet()
+  // );
 }
 
 handleRedirect();
