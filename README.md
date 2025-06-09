@@ -118,6 +118,7 @@ The ArgoHub home page and all pages within the ArgoHub collection are excluded f
 
 - Commandbar HelpHub Search (managed via Commandbar Content Manager).
 - Search engines that support the `noindex` rule, such as Google.
+- All pages in the `gitops` collection, including the home page, are excluded from the Sitemap.xml file.
 
 ### Auto-Redirect: Enterprise to ArgoHub Collection
 
