@@ -71,24 +71,13 @@ By default, users are redirected from the Enterprise segment to the GitOps (Argo
 
 For more details, refer to the "Auto Redirect from Enterprise to ArgoHub Collection" section below.
 
-#### To switch segments in production:
+#### Switching Between Segments
 
-- To switch to the GitOps segment, log in to Codefresh and switch to an account with the GitOps type. This will clear the Enterprise cookie.
-- To switch to the Enterprise segment, log in to Codefresh and switch to an account with any other type. This will set the Enterprise cookie.
+- Use the segment selector in the documentation header.
+- Use a cookie to automatically switch segments (production only):
 
-#### To switch segments in local development:
-
-In the local documentation site (`http://localhost:3131/`), open the console in developer tools and inject the appropriate cookie:
-
-- **Switch to Enterprise Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=2592000; Path=/';
-   ```
-
-- **Switch to GitOps Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=0; Path=/';
-   ```
+  - **To switch to the GitOps segment:** Log in to Codefresh and switch to an account with the GitOps type. This will set the GitOps cookie.
+  - **To switch to the Enterprise segment:** Log in to Codefresh and switch to an account with any other type. This will clear the GitOps cookie.
 
 ### Reusing Existing Documents
 

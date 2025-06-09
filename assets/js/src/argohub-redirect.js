@@ -1,58 +1,157 @@
-const enterpriseDocumentationCookie = "cfdoctype=enterprise";
-const ARGOHUB_MAIN_PATH = `/${SITE_GITOPS_COLLECTION}/`;
-const enterpriseDocTypeLockKey = "enterpriseDocTypeLock";
+const GITOPS_DOC_COOKIE = 'cfdoctype=gitops'
+const IS_GITOPS_DOC_COOKIE_SET = document.cookie.includes(GITOPS_DOC_COOKIE)
 
-function checkIfEnterpriseDocumentationCookieSet() {
-  return document.cookie.includes(enterpriseDocumentationCookie);
-}
+handleRedirect()
 
 async function getArgoHubRedirectURL(currentPath) {
-  currentPath = currentPath.replace(SITE_BASE_URL, "");
+  currentPath = currentPath.replace(SITE_BASE_URL, '')
 
-  const redirectMap = await fetchRedirectMap();
+  const redirectMap = await fetchRedirectMap()
 
-  const newPath = redirectMap[currentPath];
-  if (!newPath) return null;
+  const newPath = redirectMap[currentPath]
+  if (!newPath) return null
 
   const newURL =
-    newPath === ARGOHUB_MAIN_PATH
+    newPath === `/${SITE_GITOPS_COLLECTION}/`
       ? `${location.href}${SITE_GITOPS_COLLECTION}`
-      : location.href.replace(currentPath, newPath);
+      : location.href.replace(currentPath, newPath)
 
-  return newURL;
+  return newURL
 }
 
 async function handleRedirect() {
-  if (shouldSkipRedirect()) return;
+  if (SITE_IS_GITOPS_COLLECTION || !IS_GITOPS_DOC_COOKIE_SET) return
 
-  const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname);
-  if (!argoHubRedirectURL) return;
+  const argoHubRedirectURL = await getArgoHubRedirectURL(location.pathname)
+  if (!argoHubRedirectURL) return
 
-  location.href = argoHubRedirectURL;
+  location.href = argoHubRedirectURL
 }
 
 async function fetchRedirectMap() {
-  const response = await fetch(
-    `${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`
-  );
+  const response = await fetch(`${SITE_BASE_URL}/assets/js/src/argohub-redirect-mapping.json`)
   if (!response.ok) {
-    throw new Error("Failed to fetch the collections redirect map.");
+    throw new Error('Failed to fetch the collections redirect map.')
   }
-  return response.json();
+  return response.json()
 }
 
-function isEnterpriseLockPresent() {
-  const enterpriseDocTypeLock = localStorage.getItem(enterpriseDocTypeLockKey);
-  return !!enterpriseDocTypeLock;
+function setGitOpsDocumentationCookie() {
+  const maxAge = 2592000
+  configureGitOpsDocumentationCookie(maxAge)
 }
 
-function shouldSkipRedirect() {
-  return true; // Redirect temporarily disabled. Will be re-enabled with a new cookie-based mechanism.
-  // return (
-  //   isEnterpriseLockPresent() ||
-  //   SITE_IS_GITOPS_COLLECTION ||
-  //   checkIfEnterpriseDocumentationCookieSet()
-  // );
+function removeGitOpsDocumentationCookie() {
+  configureGitOpsDocumentationCookie(0)
 }
 
-handleRedirect();
+function configureGitOpsDocumentationCookie(maxAge) {
+  let cookie = `${GITOPS_DOC_COOKIE}; Max-Age=${maxAge}; Path=/; SameSite=Strict`
+
+  if (location.protocol === 'https:') {
+    cookie += '; Secure'
+  }
+
+  if (location.hostname.endsWith('.codefresh.io')) {
+    cookie += '; Domain=.codefresh.io'
+  }
+
+  document.cookie = cookie
+}
+
+function toggleSegmentDropdown() {
+  const select = document.querySelector('.custom-select')
+  select.classList.toggle('open')
+}
+
+function handleDropdownKeydown(event) {
+  const select = document.querySelector('.custom-select')
+  const options = select.querySelectorAll('.option')
+  const isOpen = select.classList.contains('open')
+
+  switch (event.key) {
+    case 'Enter':
+    case ' ':
+      event.preventDefault()
+      toggleSegmentDropdown()
+      break
+    case 'ArrowDown':
+      event.preventDefault()
+      if (!isOpen) toggleSegmentDropdown()
+      options[0].focus()
+      break
+    case 'Escape':
+      if (isOpen) toggleSegmentDropdown()
+      break
+  }
+}
+
+function handleOptionKeydown(event, option, selectedValue) {
+  const select = document.querySelector('.custom-select')
+  const options = select.querySelectorAll('.option')
+  const currentIndex = Array.from(options).indexOf(option)
+
+  switch (event.key) {
+    case 'Enter':
+    case ' ':
+      event.preventDefault()
+      selectSegmentOption(option, selectedValue)
+      break
+    case 'ArrowDown':
+      event.preventDefault()
+      if (currentIndex < options.length - 1) {
+        options[currentIndex + 1].focus()
+      }
+      break
+    case 'ArrowUp':
+      event.preventDefault()
+      if (currentIndex > 0) {
+        options[currentIndex - 1].focus()
+      }
+      break
+    case 'Escape':
+      select.classList.remove('open')
+      select.querySelector('.select-display').focus()
+      break
+  }
+}
+
+async function selectSegmentOption(option, selectedValue) {
+  const selectDisplay = document.querySelector('.select-display')
+
+  selectDisplay.textContent = option.textContent
+
+  const redirectMap = await fetchRedirectMap()
+
+  const pathname = window.location.pathname
+  const currentPath = pathname.replace(SITE_BASE_URL, '')
+
+  if (selectedValue === 'enterprise') {
+    removeGitOpsDocumentationCookie()
+
+    const enterprisePath = Object.keys(redirectMap).find((key) => redirectMap[key] === currentPath)
+
+    if (enterprisePath) {
+      window.location.href = `${SITE_BASE_URL}${enterprisePath}`
+    } else {
+      window.location.href = `${SITE_BASE_URL}/`
+    }
+  } else if (selectedValue === 'gitops') {
+    setGitOpsDocumentationCookie()
+
+    const gitOpsPath = redirectMap[currentPath]
+
+    if (gitOpsPath) {
+      window.location.href = `${SITE_BASE_URL}${gitOpsPath}`
+    } else {
+      window.location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`
+    }
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const select = document.querySelector('.custom-select')
+  if (!select.contains(e.target)) {
+    select.classList.remove('open')
+  }
+})
