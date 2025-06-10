@@ -1,1 +1,0 @@
-_docs/administration/account-user-management/create-codefresh-account.md
