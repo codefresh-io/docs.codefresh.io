@@ -52,7 +52,7 @@ function configureGitOpsDocumentationCookie(maxAge) {
     cookie += '; Secure'
   }
 
-  if (location.hostname.endsWith('.codefresh.io')) {
+  if (location.hostname === 'codefresh.io') {
     cookie += '; Domain=.codefresh.io'
   }
 
