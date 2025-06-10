@@ -59,8 +59,7 @@
 <!-- End of Doc Search Embed Code -->
 
 <script>
-  const isEnterpriseDocumentationCookieSet = document.cookie.includes('cfdoctype=enterprise')
-  const commandbarSegment = isEnterpriseDocumentationCookieSet ? '3033bf7f' : '43836ac3'
+  const commandbarSegment = IS_GITOPS_DOC_COOKIE_SET ? '43836ac3': '3033bf7f'
 
   var o=commandbarSegment,n=["Object.assign","Symbol","Symbol.for"].join("%2C"),a=window;function r(o,n){void 0===n&&(n=!1),"complete"!==document.readyState&&window.addEventListener("load",r.bind(null,o,n),{capture:!1,once:!0});var a=document.createElement("script");a.type="text/javascript",a.async=n,a.src=o,document.head.appendChild(a)}function t(){var n;if(void 0===a.CommandBar){delete a.__CommandBarBootstrap__;var t=Symbol.for("CommandBar::configuration"),e=Symbol.for("CommandBar::orgConfig"),i=Symbol.for("CommandBar::disposed"),c=Symbol.for("CommandBar::isProxy"),m=Symbol.for("CommandBar::queue"),d=Symbol.for("CommandBar::unwrap"),l=Symbol.for("CommandBar::eventSubscriptions"),s=[],u=localStorage.getItem("commandbar.lc"),f=u&&u.includes("local")?"http://localhost:8000":"https://api.commandbar.com",p=Object.assign(((n={})[t]={uuid:o},n[e]={},n[i]=!1,n[c]=!0,n[m]=new Array,n[d]=function(){return p},n[l]=void 0,n),a.CommandBar),b=["addCommand","boot","addEventSubscriber","addRecordAction","setFormFactor"],y=p;Object.assign(p,{shareCallbacks:function(){return{}},shareContext:function(){return{}}}),a.CommandBar=new Proxy(p,{get:function(o,n){return n in y?p[n]:"then"!==n?b.includes(n)?function(){var o=Array.prototype.slice.call(arguments);return new Promise((function(a,r){o.unshift(n,a,r),p[m].push(o)}))}:function(){var o=Array.prototype.slice.call(arguments);o.unshift(n),p[m].push(o)}:void 0}}),null!==u&&s.push("lc=".concat(u)),s.push("version=2"),r("".concat(f,"/latest/").concat(o,"?").concat(s.join("&")),!0)}}void 0===Object.assign||"undefined"==typeof Symbol||void 0===Symbol.for?(a.__CommandBarBootstrap__=t,r("https://polyfill.io/v3/polyfill.min.js?version=3.101.0&callback=__CommandBarBootstrap__&features="+n)):t();
   window.CommandBar.setThemeMode('dark_mode')
@@ -81,105 +80,3 @@
     }
   });
 </script>
-
-<script>
-  toggleSegmentDropdown = function() {
-    const select = document.querySelector('.custom-select');
-    select.classList.toggle('open');
-  };
-
-  handleDropdownKeydown = function (event) {
-    const select = document.querySelector('.custom-select');
-    const options = select.querySelectorAll('.option');
-    const isOpen = select.classList.contains('open');
-
-    switch (event.key) {
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        toggleSegmentDropdown();
-        break;
-      case 'ArrowDown':
-        event.preventDefault();
-        if (!isOpen) toggleSegmentDropdown();
-        options[0].focus();
-        break;
-      case 'Escape':
-        if (isOpen) toggleSegmentDropdown();
-        break;
-    }
-  };
-
-  handleOptionKeydown = function (event, option, selectedValue) {
-    const select = document.querySelector('.custom-select');
-    const options = select.querySelectorAll('.option');
-    const currentIndex = Array.from(options).indexOf(option);
-
-    switch (event.key) {
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        selectSegmentOption(option, selectedValue);
-        break;
-      case 'ArrowDown':
-        event.preventDefault();
-        if (currentIndex < options.length - 1) {
-          options[currentIndex + 1].focus();
-        }
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        if (currentIndex > 0) {
-          options[currentIndex - 1].focus();
-        }
-        break;
-      case 'Escape':
-        select.classList.remove('open');
-        select.querySelector('.select-display').focus();
-        break;
-    }
-  };
-
-  selectSegmentOption = async function (option, selectedValue) {
-    const selectDisplay = document.querySelector('.select-display');
-
-    selectDisplay.textContent = option.textContent;
-
-    const redirectMap = await fetchRedirectMap();
-
-    const pathname = window.location.pathname;
-    const currentPath = pathname.replace(SITE_BASE_URL, "");
-
-    if (selectedValue === 'enterprise') {
-      localStorage.setItem(enterpriseDocTypeLockKey, 'true');
-
-      const enterprisePath = Object.keys(redirectMap).find(
-        key => redirectMap[key] === currentPath
-      );
-
-      if (enterprisePath) {
-        window.location.href = `${SITE_BASE_URL}${enterprisePath}`;
-      } else {
-        window.location.href = `${SITE_BASE_URL}/`;
-      }
-    } else if (selectedValue === 'gitops') {
-      localStorage.setItem(enterpriseDocTypeLockKey, 'false');
-
-      const gitOpsPath = redirectMap[currentPath];
-
-      if (gitOpsPath) {
-        window.location.href = `${SITE_BASE_URL}${gitOpsPath}`;
-      } else {
-        window.location.href = `${SITE_BASE_URL}/${SITE_GITOPS_COLLECTION}/`;
-      }
-    }
-  };
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    const select = document.querySelector('.custom-select');
-    if (!select.contains(e.target)) {
-      select.classList.remove('open');
-    }
-  });
-</script>
-

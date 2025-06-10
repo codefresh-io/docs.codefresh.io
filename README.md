@@ -64,31 +64,21 @@ No actions required - the new content will be automatically reflected in both Ar
 
 ### Switching Between GitOps (ArgoHub) and Enterprise Segments
 
-By default, users are redirected from the Enterprise segment to the GitOps (ArgoHub) segment. 
+By default, users are redirected from the Enterprise segment to the GitOps (ArgoHub) segment.
 
 #### Example:
+
 - Accessing https://codefresh.io/docs/ will redirect to https://codefresh.io/docs/gitops/
 
 For more details, refer to the "Auto Redirect from Enterprise to ArgoHub Collection" section below.
 
-#### To switch segments in production:
+#### Switching Between Segments
 
-- To switch to the GitOps segment, log in to Codefresh and switch to an account with the GitOps type. This will clear the Enterprise cookie.
-- To switch to the Enterprise segment, log in to Codefresh and switch to an account with any other type. This will set the Enterprise cookie.
+- Use the segment dropdown menu in the page header to select a segment.
+- Use a cookie to automatically switch segments (production only):
 
-#### To switch segments in local development:
-
-In the local documentation site (`http://localhost:3131/`), open the console in developer tools and inject the appropriate cookie:
-
-- **Switch to Enterprise Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=2592000; Path=/';
-   ```
-
-- **Switch to GitOps Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=0; Path=/';
-   ```
+  - **To switch to the GitOps segment:** Log in to Codefresh and switch to an account with the GitOps type. This will set the GitOps cookie.
+  - **To switch to the Enterprise segment:** Log in to Codefresh and switch to an account with any other type. This will clear the GitOps cookie.
 
 ### Reusing Existing Documents
 
@@ -128,13 +118,26 @@ The ArgoHub home page and all pages within the ArgoHub collection are excluded f
 
 - Commandbar HelpHub Search (managed via Commandbar Content Manager).
 - Search engines that support the `noindex` rule, such as Google.
+- All pages in the `gitops` collection, including the home page, are excluded from the Sitemap.xml file.
 
-#### Commandbar's HelpHub and Copilot Content Sync
+### Auto-Redirect: Enterprise to ArgoHub Collection
 
-Commandbar synchronizes the documentation site content using a crawler. However, the Auto Redirect mechanism prevents the crawler from accessing all Enterprise pages (see the "Auto Redirect from Enterprise to ArgoHub Collection" section for details). To address this issue, the Commandbar team configured the crawler to include the `cfdoctype` cookie, enabling it to access all documentation pages and bypass the redirect.
+The documentation site automatically redirects users from any Enterprise page to the corresponding GitOps (ArgoHub) page when the GitOps cookie is present.
 
-### Auto Redirect from Enterprise to ArgoHub Collection
+#### Redirect Logic
 
-When the GitOps client adds an ArgoHub system type cookie, the Documentation site will detect it and initiate an automatic redirect. If you open any page from the enterprise collection, the site will check for an equivalent document in the ArgoHub collection and redirect you there if one exists.
+```mermaid
+flowchart LR
+  A[Enterprise Page] --> B{GitOps Cookie Present?}
+  B -->|No| C[Stay on Enterprise Page]
+  B -->|Yes| D[Redirect to GitOps Page]
+```
+
+```mermaid
+flowchart LR
+  A[GitOps Page] --> B[Stay on GitOps Page]
+```
+
+#### Redirect Mapping
 
 Redirect links between the Enterprise and ArgoHub collections are stored in the `argohub-redirect-mapping.json` file. Running `npm run link` automatically updates the file, eliminating the need for manual updates.
