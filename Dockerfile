@@ -11,13 +11,13 @@ WORKDIR /srv/jekyll
 
 RUN chown jekyll:jekyll -R . && bundle install
 
-COPY . /srv/jekyll 
+COPY . /srv/jekyll
 
 
 
 RUN chmod 777 -R .  && ls -aFl \
       && sed -i 's|^url:.*|url: "${{JEKYLL_URL}}"|' _config.yml \
-      && sed -i 's|^baseurl:.*|baseurl: "${{MY_JEKYLL_BASEURL}}"|' _config.yml 
+      && sed -i 's|^baseurl:.*|baseurl: "${{MY_JEKYLL_BASEURL}}"|' _config.yml
 
 
 CMD chmod 777 -R . && jekyll serve --watch --incremental
