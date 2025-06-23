@@ -5,7 +5,7 @@
 .btn-link {
   color: $bd-link-color;
 
-  @include hover {
+  &:hover {
     color: $bd-link-color;
     border-color: transparent;
   }

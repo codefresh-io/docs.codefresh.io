@@ -1,7 +1,8 @@
 a {
   color: rgba($bd-link-color, .99);
+  text-decoration: none;
 
-  @include hover {
+  &:hover {
     color: $bd-link-hover-color;
   }
 
@@ -47,6 +48,7 @@ ul > li {
   a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
     color: $bd-link-default;
     border-bottom: none;
+    text-decoration: none;
     transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
 
     &:hover {
