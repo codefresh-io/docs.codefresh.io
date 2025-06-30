@@ -776,8 +776,10 @@
       url: "/privacy-policy"
     - title: Acceptable Use Policy
       url: "/acceptable-use-policy"      
-    - title: Service Commitment
+    - title: Support Service Objectives
       url: "/sla"
+    - title: Previous Service Commitment
+      url: "/previous"
     - title: Support Triage Definitions
       url: "/support-triage-definitions"      
     - title: Cloud Credits
