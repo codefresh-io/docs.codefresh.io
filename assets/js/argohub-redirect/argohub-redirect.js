@@ -37,7 +37,7 @@ async function handleRedirect() {
 }
 
 async function fetchRedirectMap() {
-  const response = await fetch(`${SITE_BASE_URL}/assets/js/argohub-redirect-mapping.json`)
+  const response = await fetch(`${SITE_BASE_URL}/assets/js/argohub-redirect/argohub-redirect-mapping.json`)
   if (!response.ok) {
     throw new Error('Failed to fetch the collections redirect map.')
   }

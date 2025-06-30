@@ -3,7 +3,7 @@
   const SITE_GITOPS_COLLECTION = "{{ site.gitops_collection }}";
   const SITE_IS_GITOPS_COLLECTION = "{{ page.collection }}" === "{{ site.gitops_collection }}";
 </script>
-<script src="/assets/js/argohub-redirect.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/argohub-redirect/argohub-redirect.min.js"></script>
 
 
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
