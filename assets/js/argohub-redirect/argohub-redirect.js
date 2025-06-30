@@ -112,9 +112,7 @@ async function selectSegmentOption(option, selectedValue) {
   if (selectedValue === 'enterprise') {
     removeGitOpsDocumentationCookie()
 
-    const enterprisePath = Object.keys(redirectMap).find(
-      (key) => redirectMap[key] === currentPath
-    )
+    const enterprisePath = Object.keys(redirectMap).find(key => redirectMap[key] === currentPath)
 
     if (enterprisePath) {
       window.location.href = `${SITE_BASE_URL}${enterprisePath}`
@@ -167,7 +165,7 @@ function handleOptionKeydown(event, option, selectedValue) {
   }
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
   const select = document.querySelector('.custom-select')
   if (!select.contains(e.target)) {
     select.classList.remove('open')
