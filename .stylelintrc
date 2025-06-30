@@ -1,14 +1,14 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recommended-scss"],
-  "plugins": [
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-scss", "stylelint-order"],
   "rules": {
     "at-rule-empty-line-before": [null,
       "except": ["first-nested"]
     ],
     "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
     "at-rule-semicolon-space-before": "never",
     "block-closing-brace-empty-line-before": null,
     "block-closing-brace-newline-after": null,
