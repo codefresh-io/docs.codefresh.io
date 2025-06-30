@@ -7,7 +7,7 @@ toc: true
 
 > **Note**  
 > Codefresh Service Level Agreements have been updated to align with Octopus Deploy standards.  
-> To view the previous SLA page, see [Previous SLA](./previous).
+> To view the previous SLA page, see [Previous SLA](../previous).
 
 # Support Service Objectives
 
@@ -63,7 +63,7 @@ If a support response would exceed remaining Business Hours in a day, time will 
 
 ### Footnotes and Channel Details
 
--\* **Video Conferencing**: Real-time troubleshooting via Microsoft Teams or Zoom. Available to Premium Support customers.
+- \* **Video Conferencing**: Real-time troubleshooting via Microsoft Teams or Zoom. Available to Premium Support customers.
 - ** **Phone**: An answering service creates a prioritized support ticket. Does not include live support, onboarding, or co-pilot services from Professional Services.
 - \*\*\* **Dedicated Support Slack Channel**: For Low Priority requests only. Not to be used for business-impacting issues.
 - **Primary Support Engineer**: Your dedicated primary contact for support. They understand your infrastructure and deployment needs, and work with our global teams (including in APAC) to resolve issues efficiently.
