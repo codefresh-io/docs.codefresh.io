@@ -7,7 +7,7 @@ toc: true
 
 > **Note**  
 > Codefresh Service Level Agreements have been updated to align with Octopus Deploy standards.  
-> To view the previous SLA page, see [Previous SLA](https://codefresh.io/docs/docs/terms-and-privacy-policy/previous/).
+> To view the previous SLA page, see [Previous SLA](https://codefresh.io/docs/docs/terms-and-privacy-policy/previous).
 
 # Support Service Objectives
 
@@ -44,7 +44,7 @@ If a support response would exceed remaining Business Hours in a day, time will 
 | **High**  | Significant impairment to your ordinary usage, e.g.: {::nomarkdown}<ul><li>Disabled functionality, errors that result in a lack of significant functionality in the services which prevent you from accomplishing your deployments with no workaround provided.</li><li>Important product features are unavailable with no acceptable workaround. Your implementation or production use of our product in a primary business service, major application(s), or mission-critical system(s) are functioning with limited capability or are unstable with periodic interruptions. The product may be operating but is severely restricted.</li></ul>{:/} <br><br> High-impact problems could have the following characteristics: {::nomarkdown}<ul><li>Product error or failure forcing a restart or recovery.</li><li>Severely degraded performance</li><li>Functionality unavailable, but the system can operate in a restricted fashion.</li></ul>{:/} |
 | **Normal**  | Non-critical errors that do not significantly impair your ordinary usage, e.g.: {::nomarkdown}<ul><li>Errors that cause previously-working non-critical features to malfunction.</li><li>Product features are unavailable, but a workaround exists, and the majority of product functions are still usable. Minor function/feature failure that the customer can circumvent or avoid.</li><li>Your work has minor loss of operational functionality.</li> </ul>{:/}<br><br>Normal impact problems could have the following characteristics:{::nomarkdown}<ul><li>Error message with a workaround</li><li>Minimal performance degradation</li><li>Incorrect product behavior with a workaround</li></ul>{:/} |
 | **Low**  | Minor problem or question that does not affect product functionality, e.g.:{::nomarkdown}<ul><li>How-tos</li><li>Documentation</li><li>General questions</li><li>Enhancement requests</li></ul>{:/} <br><br> There is no or low impact on customer operations. <br><br> Low-impact problems could have the following characteristics:{::nomarkdown}<ul><li>General requests for advice on product usage</li><li>Questions on product functionality or configuration during implementation</li><li>Clarification on product documentation or release notes</li><li>Minor UI bugs</li><li> Nice-to-have product enhancement requests</li></ul>{:/}|
----
+
 
 ## 1.3 Support Channels
 
