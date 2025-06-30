@@ -1,9 +1,13 @@
 {
   "root": true,
-  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2022
   },
   "extends": "eslint:recommended",
   "rules": {

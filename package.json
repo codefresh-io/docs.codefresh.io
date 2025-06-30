@@ -14,11 +14,11 @@
     "css-compile-docs": "sass --load-path=node_modules assets/scss/docs.scss assets/css/docs.min.css",
     "css-lint-docs": "echo 'Stylelint skipped'",
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"assets/css/docs.min.css\" \"docs/**/*.css\"",
-    "css-minify-docs": "cleancss --level 1 --source-map --source-map-inline-sources --output assets/css/docs.min.css assets/css/docs.min.css",
+    "css-minify-docs": "cleancss --source-map --source-map-inline-sources --output assets/css/docs.min.css assets/css/docs.min.css",
     "js": "npm-run-all js-lint* js-minify",
     "js-compile": "npm-run-all --parallel js-docs",
     "js-docs": "npm-run-all js-lint-docs js-minify",
-    "js-lint-docs": "eslint assets/js/ docs/ sw.js",
+    "js-lint-docs": "eslint assets/js/",
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/vendor/jquery.smooth-scroll.min.js assets/js/vendor/jquery.cookie.min.js assets/js/vendor/jquery.navgoco.js \"assets/js/src/*.js\"",
     "js-minify-argohub": "uglifyjs assets/js/argohub-redirect/argohub-redirect.js --output assets/js/argohub-redirect/argohub-redirect.min.js --comments \\\\\\\"/^!/\\\\\\\"",
@@ -35,7 +35,8 @@
     "dist": "npm-run-all --parallel css js",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css-docs\"",
     "watch-js": "nodemon --ignore scss/ --ignore js/docs.min.js --ignore js/**/*.min.js --ignore dist/ -e js -x \"npm run js-compile\"",
-    "link": "node ./build/create_symlink.js"
+    "link": "node ./build/create_symlink.js",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -53,17 +54,13 @@
     "popper.js": "^1.12.9"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
+    "@babel/eslint-parser": "^7.27.5",
     "autoprefixer": "^7.2.5",
-    "babel-eslint": "^8.2.1",
     "bootstrap": "5.3",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^5.6.2",
     "cross-env": "^5.1.3",
-    "eslint": "^4.16.0",
-    "eslint-plugin-compat": "^2.2.0",
+    "eslint": "^8.56.0",
     "fs-extra": "^11.3.0",
     "glob": "^7.1.2",
     "htmllint-cli": "^0.0.6",
@@ -77,9 +74,9 @@
     "npm-run-all": "^4.1.2",
     "popper.js": "^1.12.9",
     "postcss-cli": "^11.0.1",
+    "prettier": "^3.6.2",
     "qunitjs": "^2.4.1",
     "rollup": "^0.55.1",
-    "rollup-plugin-babel": "4.0.0-beta.0",
     "rollup-plugin-node-resolve": "^3.0.2",
     "shelljs": "^0.8.1",
     "shx": "^0.2.2",
@@ -93,7 +90,7 @@
     "workbox-build": "^2.1.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.0.0"
   },
   "files": [
     "dist/",
