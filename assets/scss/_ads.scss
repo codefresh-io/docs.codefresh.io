@@ -1,8 +1,8 @@
+@use "bootstrap/scss/bootstrap" as bootstrap;
+
 // stylelint-disable declaration-no-important, selector-max-id
 
-//
 // Carbon ads
-//
 
 #carbonads {
   position: static;
@@ -14,14 +14,14 @@
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
-  background-color: rgba(0, 0, 0, .05);
+  background-color: rgba(0 0 .05);
 
   a {
     color: #333;
     text-decoration: none;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include bootstrap.media-breakpoint-up(sm) {
     max-width: 330px;
     border-radius: 4px;
   }

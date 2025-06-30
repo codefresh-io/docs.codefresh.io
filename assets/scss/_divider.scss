@@ -1,6 +1,8 @@
+@use "variables";
+
 .divider-vertical {
   height: 32px;
   width: 1px;
   margin: 0 16px;
-  background-color: $ant-divider-color;
+  background-color: variables.$ant-divider-color;
 }

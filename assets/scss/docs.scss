@@ -7,37 +7,37 @@
 
 
 // Load docs components
-@import "variables";
+@use "variables";
 
-@import "root";
-@import "reboot";
-@import "code";
-@import "type";
-@import "nav";
-@import "masthead";
-@import "ads";
-@import "content";
-@import "skiplink";
-@import "footer";
-@import "component-examples";
-@import "buttons";
-@import "switch";
-@import "sidebar";
-@import "callouts";
-@import "examples";
-@import "browser-bugs";
-@import "brand";
-@import "colors";
-@import "clipboard-js";
-@import "bulb";
-@import "modal";
-@import "select";
-@import "divider";
-@import "custom-overrides";
+@use "root";
+@use "reboot";
+@use "code";
+@use "type";
+@use "nav";
+@use "masthead";
+@use "ads";
+@use "content";
+@use "skiplink";
+@use "footer";
+@use "component-examples";
+@use "buttons";
+@use "switch";
+@use "sidebar";
+@use "callouts";
+@use "examples";
+@use "browser-bugs";
+@use "brand";
+@use "colors";
+@use "clipboard-js";
+@use "bulb";
+@use "modal";
+@use "select";
+@use "divider";
+@use "custom-overrides";
 
 // Load docs dependencies
-@import "syntax";
-@import "anchor";
-@import "links";
-@import "algolia";
-@import "helpbub";
+@use "syntax";
+@use "anchor";
+@use "links";
+@use "algolia";
+@use "helpbub";

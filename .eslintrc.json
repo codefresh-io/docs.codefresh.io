@@ -234,6 +234,8 @@
     "sort-imports": "error",
     "symbol-description": "error",
     "template-curly-spacing": "error",
-    "yield-star-spacing": "error"
+    "yield-star-spacing": "error",
+    "color-function-notation": null,
+    "alpha-value-notation": null
   }
 }

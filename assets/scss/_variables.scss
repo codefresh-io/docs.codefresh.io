@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Colors
 $cf-light: #f7f9f9;
 $cf-dark: #212437;
@@ -7,62 +9,52 @@ $cf-bright-green: #5fffbf;
 $cf-border-color: #d6e2e4;
 
 // Local docs variables
-$bd-white:         $white !default;
-$bd-black:         #000 !default;
-
-$bd-purple:        #563d7c !default;
-$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%) !default;
-$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%) !default;
-$bd-dark:          #231f20 !default;
-$bd-download:      #ffe484 !default;
-
-$bd-info:          #ffcc30 !default;
-$bd-warning:       #d9534f !default;
-$bd-danger:       #d9534f !default;
-$bd-success:       #03c77c !default;
-$bd-tip:           #508eeb !default;
-
-$bd-link-default:  #34af9d !default;
+$white: #fff !default;
+$bd-white: $white !default;
+$bd-black: #000 !default;
+$bd-purple: #563d7c !default;
+$bd-purple-bright: color.adjust($bd-purple, $saturation: 5%, $lightness: 15%) !default;
+$bd-purple-light: color.adjust($bd-purple, $saturation: 5%, $lightness: 45%) !default;
+$bd-dark: #231f20 !default;
+$bd-download: #ffe484 !default;
+$bd-info: #ffcc30 !default;
+$bd-warning: #d9534f !default;
+$bd-danger: #d9534f !default;
+$bd-success: #03c77c !default;
+$bd-tip: #508eeb !default;
+$bd-link-default: #34af9d !default;
 $bd-link-default-hover: #228164 !default;
 $bd-link-external: #508eeb !default;
 $bd-link-external-hover: #646fd4 !default;
-
-$bd-topaz-extra-light:    #e4f3f1 !default;
-
-$bd-topaz-main:    #11b5a4 !default;
-$bd-topaz-bright: lighten(saturate($bd-topaz-main, 5%), 15%) !default;
-$bd-topaz-light:  lighten(saturate($bd-topaz-main, 5%), 45%) !default;
-$bd-topaz-dark:    rgb(11, 111, 99) !default;
-
+$bd-topaz-extra-light: #e4f3f1 !default;
+$bd-topaz-main: #11b5a4 !default;
+$bd-topaz-bright: color.adjust($bd-topaz-main, $saturation: 5%, $lightness: 15%) !default;
+$bd-topaz-light: color.adjust($bd-topaz-main, $saturation: 5%, $lightness: 45%) !default;
+$bd-topaz-dark: rgb(11 111 99) !default;
 $bd-greenish-blue: #2a897d;
-
 $bd-divider-color: #dce7e8;
 
 // Navbar colors
 $bd-topaz-navbar-g1: #0f9c8d;
 $bd-topaz-navbar-g2: #11b5a4;
 $bd-topaz-navbar-g3: #4ebbd3;
-
 $cf-navbar-link-color: $bd-white;
-
-$bd-bulb-white:      $bd-white;
-$bd-bulb-red:        $bd-danger;
-
-$btn-get-started:   #235f5d;
+$bd-bulb-white: $bd-white;
+$bd-bulb-red: $bd-danger;
+$btn-get-started: #235f5d;
 
 // Body
 // Settings for the `<body>` element.
 $font-size-base: 15px;
 $line-height-base: 1.6;
-$body-bg:                   #fff;
-$body-color:                #03363d;
+$body-bg: #fff;
+$body-color: #03363d;
 
 // Doc Sidebar colors
 $bd-doc-sidebar-link: $body-color;
 $bd-doc-sidebar-link-active: #0f9d8e;
 
 // Doc TOC
-
 $bd-doc-toc-link: $body-color;
 $bd-doc-toc-link-active: #10aa9a;
 
@@ -71,11 +63,9 @@ $bd-doc-content-bg: $body-bg;
 $bd-doc-content-border: #dadada;
 
 // Links
-//
 // Style anchor elements.
-
-$bd-link-color:                $bd-topaz-main !default;
-$bd-link-hover-color:          darken($bd-link-color, 15%) !default;
+$bd-link-color: $bd-topaz-main !default;
+$bd-link-hover-color: color.adjust($bd-link-color, $lightness: -15%) !default;
 
 // Helphub
 $helpbub-bg: #3f4255;
@@ -85,14 +75,14 @@ $helpbub-border: #35384b;
 // Fonts
 // stylelint-disable value-keyword-case
 $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$font-family-monospace:       "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-$font-family-base:            $font-family-sans-serif;
+$font-family-monospace: "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+$font-family-base: $font-family-sans-serif;
 $font-weight-medium: 500;
-// stylelint-enable value-keyword-case
 
+// stylelint-enable value-keyword-case
 // Headings
-$headings-color:              #212438;
-$headings-font-family:       roboto, sans-serif;
+$headings-color: #212438;
+$headings-font-family: roboto, sans-serif;
 $h1-font-size: 35px;
 $h2-font-size: 26px;
 $h3-font-size: 22px;
@@ -105,12 +95,9 @@ $h4-line-height: 28px;
 $h5-line-height: 24px;
 
 // Override grids
-
 // Grid breakpoints
-//
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
-
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -121,9 +108,7 @@ $grid-breakpoints: (
 );
 
 // Grid containers
-//
 // Define the maximum width of `.container` for different screen sizes.
-
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -133,13 +118,11 @@ $container-max-widths: (
 );
 
 // Grid columns
-//
 // Set the number of columns and specify the width of the gutters.
+$grid-columns: 12;
+$grid-gutter-width-base: 28px;
 
-$grid-columns:               12;
-$grid-gutter-width-base:     28px;
-
-//ANT design system
+// ANT design system
 $ant-input-background-color: #2b2e41;
 $ant-input-border-color: #3f4255;
 $ant-input-hover-border-color: #46d49e;

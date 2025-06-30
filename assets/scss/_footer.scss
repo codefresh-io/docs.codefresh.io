@@ -1,6 +1,7 @@
-//
+@use "variables";
+@use "bootstrap/scss/bootstrap" as bootstrap;
+
 // Footer
-//
 
 .bd-footer {
   font-size: 85%;
@@ -9,7 +10,7 @@
 
   a {
     color: #8c91c0;
-    border-bottom: 1px solid  rgba($cf-dark-alt, .2);
+    border-bottom: 1px solid  rgba(variables.$cf-dark-alt, .2);
     transition: background .2s ease, border-color, .2s ease;
 
     &:hover,
@@ -22,10 +23,10 @@
 
   p {
     margin-bottom: 0;
-    color: rgba($white, .5) !important;
+    color: rgba(variables.$white, .5) !important;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include bootstrap.media-breakpoint-up(sm) {
     text-align: left;
   }
 }

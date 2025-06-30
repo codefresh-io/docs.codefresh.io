@@ -1,8 +1,10 @@
-//
-// Callouts
-//
+@use "sass:color";
+@use "bootstrap/scss/bootstrap" as bootstrap;
+@use "variables";
 
-$backgroundTransparentFilterValue: .85;
+// Callouts
+
+$background-transparent-filter-value: .85;
 
 blockquote,
 .blockquote,
@@ -11,7 +13,7 @@ blockquote,
   padding: 1.5rem;
   margin: 1.5rem 0;
   font-size: 1rem;
-  background: transparentize($bd-info, $backgroundTransparentFilterValue);
+  background: color.adjust(variables.$bd-info, $alpha: - $background-transparent-filter-value);
 
 
   &::before {
@@ -21,10 +23,10 @@ blockquote,
     width: 8px;
     height: 100%;
     content: "";
-    background-color: $bd-info;
+    background-color: variables.$bd-info;
   }
 
-  @include media-breakpoint-up(xxl) {
+  @include bootstrap.media-breakpoint-up(xxl) {
     margin: 1.5rem 0;
   }
 
@@ -52,7 +54,7 @@ blockquote,
 
 // Variations
 @mixin bs-callout-variant($color) {
-  background: transparentize($color, $backgroundTransparentFilterValue);
+  background: color.adjust($color, $alpha: - $background-transparent-filter-value);
 
   &::before {
     background-color: $color;
@@ -61,7 +63,7 @@ blockquote,
   h4 { color: $color; }
 }
 
-.bd-callout-info { @include bs-callout-variant($bd-info); }
-.bd-callout-warning { @include bs-callout-variant($bd-warning); }
-.bd-callout-success { @include bs-callout-variant($bd-success); }
-.bd-callout-tip { @include bs-callout-variant($bd-tip); }
+.bd-callout-info { @include bs-callout-variant(variables.$bd-info); }
+.bd-callout-warning { @include bs-callout-variant(variables.$bd-warning); }
+.bd-callout-success { @include bs-callout-variant(variables.$bd-success); }
+.bd-callout-tip { @include bs-callout-variant(variables.$bd-tip); }
