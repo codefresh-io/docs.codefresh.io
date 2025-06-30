@@ -21,7 +21,7 @@
     "js-lint-docs": "eslint assets/js/",
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/vendor/jquery.smooth-scroll.min.js assets/js/vendor/jquery.cookie.min.js assets/js/vendor/jquery.navgoco.js \"assets/js/src/*.js\"",
-    "js-minify-argohub": "uglifyjs assets/js/argohub-redirect/argohub-redirect.js --output assets/js/argohub-redirect/argohub-redirect.min.js --comments \\\\\\\"/^!/\\\\\\\"",
+    "js-minify-argohub": "uglifyjs assets/js/argohub-redirect/argohub-redirect.js --output assets/js/argohub-redirect/argohub-redirect.min.js",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "set JEKYLL_ENV=production && bundle exec jekyll build",
     "postdocs-compile": "npm run docs-workbox-precache",
