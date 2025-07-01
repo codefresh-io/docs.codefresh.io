@@ -16,7 +16,6 @@ The site is automatically deployed when commits are merged/pushed in `master`, h
 
 To compile scss files into css run the command `npm run css` or in the live mode `npm run watch-css`.
 To compile js files into a bundle run the command `npm run js` or in the live mode `npm run watch-js`.
-Node version `9.11.2`
 
 ### Preview documentation locally (Legacy method)
 
@@ -64,53 +63,21 @@ No actions required - the new content will be automatically reflected in both Ar
 
 ### Switching Between GitOps (ArgoHub) and Enterprise Segments
 
-By default, users are redirected from the Enterprise segment to the GitOps (ArgoHub) segment. 
+By default, users are redirected from the Enterprise segment to the GitOps (ArgoHub) segment.
 
 #### Example:
+
 - Accessing https://codefresh.io/docs/ will redirect to https://codefresh.io/docs/gitops/
 
 For more details, refer to the "Auto Redirect from Enterprise to ArgoHub Collection" section below.
 
-#### To switch segments in production:
+#### Switching Between Segments
 
-- To switch to the GitOps segment, log in to Codefresh and switch to an account with the GitOps type. This will clear the Enterprise cookie.
-- To switch to the Enterprise segment, log in to Codefresh and switch to an account with any other type. This will set the Enterprise cookie.
+- Use the segment dropdown menu in the page header to select a segment.
+- Use a cookie to automatically switch segments (production only):
 
-#### Disabling Auto-Redirect to Stay in the Enterprise Segment
-
-To prevent automatic redirection to the ArgoHub collection and remain in the Enterprise segment, add the `?ent` query parameter to the URL. When this parameter is present, the redirect logic is bypassed.  
-You can also link to mid-topic titles using `?ent. Add the link _after_ the query parameter as in Example 2 below.
-
-**Example:**
-
-- URL to topic title:  
-  `https://[placeholder-domain]/docs/docs/promotions/promotion-flow/?ent`  
-
-- URL for mid-topic links:  
-  `https://[placeholder-domain]/docs/docs/promotions/product-promotion-props/?ent#product-properties-for-promotion`
-
-
-Adding the `ent` parameter ensures users remain in the Enterprise segment without being redirected to the ArgoHub collection.
-
-> When a page is accessed with the `?ent` parameter, it will remain locked in the Enterprise segment for the duration of the browser session.  Closing the specific window or tab will release this lock.
-> The lock is _not inherited_ when opening a new tab or window with the same link. It will function as per the default behavior without the override.
-
-
-  
-
-#### To switch segments in local development:
-
-In the local documentation site (`http://localhost:3131/`), open the console in developer tools and inject the appropriate cookie:
-
-- **Switch to Enterprise Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=2592000; Path=/';
-   ```
-
-- **Switch to GitOps Segment:**
-   ```js
-   document.cookie = 'cfdoctype=enterprise; SameSite=Strict; Domain=localhost; Max-age=0; Path=/';
-   ```
+  - **To switch to the GitOps segment:** Log in to Codefresh and switch to an account with the GitOps type. This will set the GitOps cookie.
+  - **To switch to the Enterprise segment:** Log in to Codefresh and switch to an account with any other type. This will clear the GitOps cookie.
 
 ### Reusing Existing Documents
 
@@ -150,13 +117,26 @@ The ArgoHub home page and all pages within the ArgoHub collection are excluded f
 
 - Commandbar HelpHub Search (managed via Commandbar Content Manager).
 - Search engines that support the `noindex` rule, such as Google.
+- All pages in the `gitops` collection, including the home page, are excluded from the Sitemap.xml file.
 
-#### Commandbar's HelpHub and Copilot Content Sync
+### Auto-Redirect: Enterprise to ArgoHub Collection
 
-Commandbar synchronizes the documentation site content using a crawler. However, the Auto Redirect mechanism prevents the crawler from accessing all Enterprise pages (see the "Auto Redirect from Enterprise to ArgoHub Collection" section for details). To address this issue, the Commandbar team configured the crawler to include the `cfdoctype` cookie, enabling it to access all documentation pages and bypass the redirect.
+The documentation site automatically redirects users from any Enterprise page to the corresponding GitOps (ArgoHub) page when the GitOps cookie is present.
 
-### Auto Redirect from Enterprise to ArgoHub Collection
+#### Redirect Logic
 
-When the GitOps client adds an ArgoHub system type cookie, the Documentation site will detect it and initiate an automatic redirect. If you open any page from the enterprise collection, the site will check for an equivalent document in the ArgoHub collection and redirect you there if one exists.
+```mermaid
+flowchart LR
+  A[Enterprise Page] --> B{GitOps Cookie Present?}
+  B -->|No| C[Stay on Enterprise Page]
+  B -->|Yes| D[Redirect to GitOps Page]
+```
+
+```mermaid
+flowchart LR
+  A[GitOps Page] --> B[Stay on GitOps Page]
+```
+
+#### Redirect Mapping
 
 Redirect links between the Enterprise and ArgoHub collections are stored in the `argohub-redirect-mapping.json` file. Running `npm run link` automatically updates the file, eliminating the need for manual updates.

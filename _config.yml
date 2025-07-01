@@ -129,6 +129,7 @@ defaults:
       type: gitops
     values:
       layout: gitops
+      sitemap: false
       toc: true
       wide: true
 
