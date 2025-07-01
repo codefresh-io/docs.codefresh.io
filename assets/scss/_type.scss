@@ -1,6 +1,3 @@
-@use "variables";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-
 // stylelint-disable declaration-no-important, selector-list-comma-newline-after
 
 // Headings
@@ -14,33 +11,33 @@
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: .5rem;
-  font-family: variables.$headings-font-family;
-  font-weight: bootstrap.$font-weight-bold;
-  color: variables.$headings-color;
+  font-family: $headings-font-family;
+  font-weight: $font-weight-bold;
+  color: $headings-color;
 }
 
 
 h1,
 .h1 {
-  @include heading(variables.$h1-font-size, bootstrap.$font-weight-bold, variables.$h1-line-height);
+  @include heading($h1-font-size, $font-weight-bold, $h1-line-height);
 }
 
 h2,
 .h2 {
-  @include heading(variables.$h2-font-size, bootstrap.$font-weight-bold, variables.$h2-line-height);
+  @include heading($h2-font-size, $font-weight-bold, $h2-line-height);
 }
 
 h3,
 .h3 {
-  @include heading(variables.$h3-font-size, bootstrap.$font-weight-medium, variables.$h3-line-height);
+  @include heading($h3-font-size, $font-weight-medium, $h3-line-height);
 }
 
 h4,
 .h4 {
-  @include heading(variables.$h4-font-size, bootstrap.$font-weight-light, variables.$h4-line-height);
+  @include heading($h4-font-size, $font-weight-light, $h4-line-height);
 }
 
 h5,
 .h5 {
-  @include heading(variables.$h5-font-size, bootstrap.$font-weight-bold, variables.$h5-line-height);
+  @include heading($h5-font-size, $font-weight-bold, $h5-line-height);
 }

@@ -1,6 +1,4 @@
 @use "sass:color";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-@use "variables";
 
 // Callouts
 
@@ -13,7 +11,7 @@ blockquote,
   padding: 1.5rem;
   margin: 1.5rem 0;
   font-size: 1rem;
-  background: color.adjust(variables.$bd-info, $alpha: - $background-transparent-filter-value);
+  background: color.adjust($bd-info, $alpha: - $background-transparent-filter-value);
 
 
   &::before {
@@ -23,10 +21,10 @@ blockquote,
     width: 8px;
     height: 100%;
     content: "";
-    background-color: variables.$bd-info;
+    background-color: $bd-info;
   }
 
-  @include bootstrap.media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(xxl) {
     margin: 1.5rem 0;
   }
 
@@ -63,7 +61,7 @@ blockquote,
   h4 { color: $color; }
 }
 
-.bd-callout-info { @include bs-callout-variant(variables.$bd-info); }
-.bd-callout-warning { @include bs-callout-variant(variables.$bd-warning); }
-.bd-callout-success { @include bs-callout-variant(variables.$bd-success); }
-.bd-callout-tip { @include bs-callout-variant(variables.$bd-tip); }
+.bd-callout-info { @include bs-callout-variant($bd-info); }
+.bd-callout-warning { @include bs-callout-variant($bd-warning); }
+.bd-callout-success { @include bs-callout-variant($bd-success); }
+.bd-callout-tip { @include bs-callout-variant($bd-tip); }

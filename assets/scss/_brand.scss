@@ -1,5 +1,3 @@
-@use "variables";
-
 // stylelint-disable no-duplicate-selectors
 
 
@@ -95,10 +93,10 @@
 // Docs colors
 .color-swatches {
   .bd-purple {
-    background-color: variables.$bd-purple;
+    background-color: $bd-purple;
   }
   .bd-purple-light {
-    background-color: variables.$bd-purple-light;
+    background-color: $bd-purple-light;
   }
   .bd-purple-lighter {
     background-color: #e5e1ea;

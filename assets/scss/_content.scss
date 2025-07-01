@@ -1,11 +1,10 @@
 @use "sass:color";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-@use "variables";
+
 // stylelint-disable no-duplicate-selectors, selector-max-combinators, selector-max-compound-selectors, selector-max-type, selector-no-qualifying-type
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
 
 // ;_images.scss;
-@use "links";
+@import "links";
 
 @keyframes intro {
   0% {
@@ -17,7 +16,7 @@
   }
 }
 
-@include bootstrap.media-breakpoint-up(lg) {
+@include media-breakpoint-up(lg) {
   .container-fluid {
     max-width: 1440px;
   }
@@ -50,11 +49,11 @@
   margin-right: auto;
   margin-left: auto;
 
-  @include bootstrap.media-breakpoint-up(lg) {
+  @include media-breakpoint-up(lg) {
     max-width: 660px;
   }
 
-  @include bootstrap.media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(xxl) {
     max-width: 880px;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -62,7 +61,7 @@
 }
 
 .bd-content-inner {
-  background: variables.$white;
+  background: $white;
 
   // Hack the sticky header
   > h2[id],
@@ -88,7 +87,7 @@
   }
 
   // Links
-  @include links.content-links;
+  @include content-links;
 
   .borderless-table {
     td {
@@ -102,7 +101,7 @@
     max-width: 100%;
     margin-bottom: 1rem;
 
-    @include bootstrap.media-breakpoint-down(md) {
+    @include media-breakpoint-down(md) {
       display: block;
       overflow-x: auto;
       -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
@@ -122,7 +121,7 @@
           padding: .6rem;
           font-size: .875rem;
           vertical-align: top;
-          border: 1px solid rgba(variables.$cf-dark-alt, .2);
+          border: 1px solid rgba($cf-dark-alt, .2);
 
           > p:last-child {
             margin-bottom: 0;
@@ -144,12 +143,12 @@
     }
 
     thead {
-      color: variables.$cf-light;
-      background: variables.$cf-dark-alt;
+      color: $cf-light;
+      background: $cf-dark-alt;
     }
 
     tbody tr:hover {
-      background: variables.$cf-light;
+      background: $cf-light;
     }
 
     // Prevent breaking of code (e.g., Grunt tasks list)
@@ -169,7 +168,7 @@
 
   figcaption {
     font-size: 1rem;
-    color: variables.$cf-dark-alt;
+    color: $cf-dark-alt;
   }
 }
 
@@ -201,7 +200,7 @@
       margin-top: 2px;
       content: "";
 
-      background-color: variables.$bd-divider-color;
+      background-color: $bd-divider-color;
     }
   }
 
@@ -220,7 +219,7 @@
     margin-top: .625rem;
   }
 
-  @include bootstrap.media-breakpoint-up(lg) {
+  @include media-breakpoint-up(lg) {
     > ul,
     > ol,
     > p {
@@ -246,11 +245,11 @@
     .dropdown-toggle {
       &.btn-control-dropdown {
         padding: .375rem;
-        color: color.adjust(variables.$body-color, $lightness: 29%);
+        color: color.adjust($body-color, $lightness: 29%);
         text-decoration: none;
-        background-color: variables.$body-bg;
+        background-color: $body-bg;
 
-        border: 1px solid variables.$bd-doc-content-border;
+        border: 1px solid $bd-doc-content-border;
         border-radius: 4px;
         border-top-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -328,9 +327,9 @@
 .bd-lead {
   font-size: 1.125rem;
   font-weight: 300;
-  color: variables.$cf-dark-alt;
+  color: $cf-dark-alt;
 
-  @include bootstrap.media-breakpoint-up(sm) {
+  @include media-breakpoint-up(sm) {
     max-width: 80%;
     margin-bottom: 2rem;
     font-size: 1.5rem;
@@ -345,13 +344,13 @@
     display: block;
     padding: .375rem 0;
     font-size: 1rem;
-    color: variables.$cf-dark-alt !important;
+    color: $cf-dark-alt !important;
     text-decoration: underline !important;
     background-color: transparent !important;
     border-color: transparent !important;
 
     &:hover {
-      color: variables.$bd-topaz-main !important;
+      color: $bd-topaz-main !important;
     }
 
     &::after {
@@ -360,8 +359,8 @@
   }
 }
 
-.bd-text-purple { color: variables.$bd-purple; }
-.bd-text-purple-bright { color: variables.$bd-purple-bright; }
+.bd-text-purple { color: $bd-purple; }
+.bd-text-purple-bright { color: $bd-purple-bright; }
 
-.bd-text-topaz-main { color: variables.$bd-topaz-main; }
+.bd-text-topaz-main { color: $bd-topaz-main; }
 .bd-text-white { color: #5fffbf; }

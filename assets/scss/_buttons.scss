@@ -1,15 +1,14 @@
 @use "sass:color";
-@use "variables";
 
 // Buttons
 
 // Custom buttons for the docs.
 
 .btn-link {
-  color: variables.$bd-link-color;
+  color: $bd-link-color;
 
   &:hover {
-    color: variables.$bd-link-color;
+    color: $bd-link-color;
     border-color: transparent;
   }
 }
@@ -25,42 +24,42 @@
   &:hover,
   &:active {
     color: #fff;
-    background-color: variables.$bd-purple-bright;
-    border-color: variables.$bd-purple-bright;
+    background-color: $bd-purple-bright;
+    border-color: $bd-purple-bright;
   }
 }
 
 .btn-bd-download {
   font-weight: 500;
-  color: variables.$bd-download;
-  border-color: variables.$bd-download;
+  color: $bd-download;
+  border-color: $bd-download;
 
   &:hover,
   &:active {
-    color: variables.$bd-dark;
-    background-color: variables.$bd-download;
-    border-color: variables.$bd-download;
+    color: $bd-dark;
+    background-color: $bd-download;
+    border-color: $bd-download;
   }
 }
 
 .btn-get-started {
-  color: variables.$btn-get-started;
-  background-color: variables.$bd-white;
+  color: $btn-get-started;
+  background-color: $bd-white;
   border-radius: 5px;
   &:hover,
   &:active {
-    color: variables.$bd-white;
-    background-color: color.adjust(variables.$btn-get-started, $lightness: 15%);
+    color: $bd-white;
+    background-color: color.adjust($btn-get-started, $lightness: 15%);
   }
 }
 
 .btn-get-beta {
-  color: variables.$white;
-  background-color: variables.$btn-get-started;
+  color: $white;
+  background-color: $btn-get-started;
   border-radius: 5px;
   &:hover,
   &:active {
-    color: variables.$bd-white;
-    background-color: color.adjust(variables.$btn-get-started, $lightness: 15%);
+    color: $bd-white;
+    background-color: color.adjust($btn-get-started, $lightness: 15%);
   }
 }

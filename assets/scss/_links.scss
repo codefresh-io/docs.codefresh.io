@@ -1,11 +1,9 @@
-@use "variables";
-
 a {
-  color: rgba(variables.$bd-link-color, .99);
+  color: rgba($bd-link-color, .99);
   text-decoration: none;
 
   &:hover {
-    color: variables.$bd-link-hover-color;
+    color: $bd-link-hover-color;
   }
 
   &.disabled,
@@ -28,7 +26,7 @@ ul > li {
 }
 
 @mixin external-link($icon) {
-  color: variables.$bd-link-external;
+  color: $bd-link-external;
   &::after {
     display: inline-block;
     width: 12px;
@@ -41,22 +39,22 @@ ul > li {
   }
 
   &:hover {
-    color: variables.$bd-link-external-hover;
-    border-bottom: 1px solid variables.$bd-link-external-hover;
+    color: $bd-link-external-hover;
+    border-bottom: 1px solid $bd-link-external-hover;
   }
 }
 
 @mixin content-links() {
   a:not([data-type="image"], [data-anchorjs-icon="#"]) {
-    color: variables.$bd-link-default;
+    color: $bd-link-default;
     border-bottom: none;
     text-decoration: none;
     transition: color .3s ease-in-out, border-bottom .3s ease-in-out;
 
     &:hover {
-      color: variables.$bd-link-default-hover;
+      color: $bd-link-default-hover;
       text-decoration: none;
-      border-bottom: 1px solid variables.$bd-link-default-hover;
+      border-bottom: 1px solid $bd-link-default-hover;
     }
 
 

@@ -1,5 +1,3 @@
-@use "variables";
-
 .helpbub-toggler {
   display: flex;
   flex-wrap: nowrap;
@@ -9,19 +7,19 @@
   width: 100%;
   padding: 4px 12px 4px 8px;
 
-  color: variables.$helpbub-text-color;
+  color: $helpbub-text-color;
   cursor: pointer;
-  background-color: variables.$helpbub-bg;
+  background-color: $helpbub-bg;
 
-  border: 1px solid variables.$helpbub-border;
+  border: 1px solid $helpbub-border;
   border-radius: 16px;
 
   .helpbub-toggler-hotkey {
-    color: variables.$bd-doc-content-bg;
+    color: $bd-doc-content-bg;
   }
 
   &:focus {
-    outline: 1px solid variables.$cf-bright-green;
+    outline: 1px solid $cf-bright-green;
     box-shadow: 0 0 0 5px rgba(95 255 191 / 24%);
   }
 }

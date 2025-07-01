@@ -1,6 +1,3 @@
-@use "variables";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-
 .bulb {
   position: relative;
   &::before,
@@ -15,9 +12,9 @@
     padding: 2px 5px;
     font-size: 10px;
     line-height: 11px;
-    color: variables.$bd-white;
+    color: $bd-white;
     content: attr(data-bulb-text);
-    background: variables.$bd-dark;
+    background: $bd-dark;
     border-radius: 3px;
   }
   &::after {
@@ -27,7 +24,7 @@
     display: inline-block;
     width: 0;
     height: 0;
-    border-top: 4px solid variables.$bd-dark;
+    border-top: 4px solid $bd-dark;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
   }
@@ -73,17 +70,17 @@
   }
   &.bulb-red {
     &::before {
-      color: variables.$bd-white;
-      background: rgba(variables.$bd-bulb-red, .9);
+      color: $bd-white;
+      background: rgba($bd-bulb-red, .9);
     }
     &::after {
-      color: variables.$bd-white;
-      border-top: 4px solid rgba(variables.$bd-bulb-red, .9);
+      color: $bd-white;
+      border-top: 4px solid rgba($bd-bulb-red, .9);
     }
     &.bulb-left {
       &::after {
         border-top-color: transparent;
-        border-left: 4px solid rgba(variables.$bd-bulb-red, .9);
+        border-left: 4px solid rgba($bd-bulb-red, .9);
         transform: translateY(7.5px);
       }
     }
@@ -92,10 +89,10 @@
 
 .cf-badge {
   font-size: 12px;
-  font-weight: bootstrap.$font-weight-bold;
+  font-weight: $font-weight-bold;
 
   &.cf-badge-new {
     color: #5fffbf;
-    background-color: variables.$cf-dark;
+    background-color: $cf-dark;
   }
 }

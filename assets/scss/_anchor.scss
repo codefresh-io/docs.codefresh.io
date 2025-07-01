@@ -1,12 +1,10 @@
-@use "variables";
-
 .anchorjs-link {
   font-weight: 400;
-  color: rgba(variables.$bd-link-color, .5);
+  color: rgba($bd-link-color, .5);
   transition: color .16s linear;
 
   &:hover {
-    color: variables.$bd-link-hover-color;
+    color: $bd-link-hover-color;
     text-decoration: none;
   }
 }

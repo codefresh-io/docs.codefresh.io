@@ -1,12 +1,10 @@
-@use "variables";
-
 // stylelint-disable selector-max-id
 
 #skippy {
   display: block;
   padding: 1em;
-  color: variables.$bd-white;
-  background-color: variables.$bd-topaz-dark;
+  color: $bd-white;
+  background-color: $bd-topaz-dark;
   outline: 0;
 
   .skiplink-text {

@@ -1,6 +1,4 @@
 @use "sass:color";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-@use "variables";
 
 
 // stylelint-disable declaration-no-important
@@ -18,7 +16,7 @@
     overflow-y: auto;
   }
 
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     order: 2;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -51,7 +49,7 @@
     padding: .125rem 0;
     margin-top: 5px;
     line-height: 1.3;
-    color: variables.$cf-dark-alt;
+    color: $cf-dark-alt;
     transition: color .2s linear, height .2s linear;
 
     &::before {
@@ -60,18 +58,18 @@
       left: -15px;
       height: 0;
       content: "";
-      border-left: 3px solid variables.$bd-doc-toc-link-active;
+      border-left: 3px solid $bd-doc-toc-link-active;
       transition: height .2s linear;
       transition-delay: .1s;
     }
 
     &:hover {
-      color: variables.$bd-topaz-main;
+      color: $bd-topaz-main;
       text-decoration: none;
     }
 
     &.active {
-      color: variables.$cf-dark;
+      color: $cf-dark;
       text-decoration: none;
       transition-delay: 0;
 
@@ -87,10 +85,10 @@
 .bd-sidebar {
   position: relative;
   order: 1;
-  background-color: variables.$cf-light;
-  border-right: 1px solid variables.$cf-border-color;
+  background-color: $cf-light;
+  border-right: 1px solid $cf-border-color;
 
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       position: sticky;
       top: 60px;
@@ -99,11 +97,11 @@
     }
   }
 
-  @include bootstrap.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     flex: 0 1 320px;
   }
 
-  @include bootstrap.media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(xxl) {
     flex: 0 1 385px;
   }
 
@@ -120,7 +118,7 @@
   margin-right: -15px;
   margin-left: -15px;
 
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       max-height: calc(100vh - 60px);
       overflow-y: auto;
@@ -128,13 +126,13 @@
   }
 
   // Override collapse behaviors
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     display: block !important;
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
 
-  @include bootstrap.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     position: fixed;
     top: 60px;
     max-width: 1300px;
@@ -142,12 +140,12 @@
     padding-top: 2rem;
     padding-left: 999px;
     margin-left: -999px;
-    background: variables.$cf-light;
+    background: $cf-light;
   }
 }
 
 .bd-search + .bd-links {
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       max-height: calc(100vh - 8.5rem);
     }
@@ -162,17 +160,17 @@
   border-bottom: 1px solid rgba(0 0 0 / 5%);
 
   .form-control:focus {
-    border-color: rgba(variables.$bd-topaz-main, .4);
-    box-shadow: 0 0 0 3px rgba(variables.$bd-topaz-main, .22);
+    border-color: rgba($bd-topaz-main, .4);
+    box-shadow: 0 0 0 3px rgba($bd-topaz-main, .22);
   }
 }
 
 .bd-search-docs-toggle {
   line-height: 1;
-  color: variables.$cf-light;
+  color: $cf-light;
 
   &:hover {
-    color: variables.$bd-link-hover-color;
+    color: $bd-link-hover-color;
   }
 }
 
@@ -181,11 +179,11 @@
   padding: .25rem 1.5rem;
   margin-bottom: 0;
   font-size: .75rem;
-  color: variables.$cf-dark-alt !important;
+  color: $cf-dark-alt !important;
   text-transform: uppercase;
   transition: color 200ms linear;
 
-  @include bootstrap.media-breakpoint-up(lg) {
+  @include media-breakpoint-up(lg) {
     font-size: .875rem;
   }
 
@@ -261,10 +259,10 @@
 
   &.active {
     > .bd-toc-link {
-      color: variables.$cf-dark !important;
+      color: $cf-dark !important;
 
       &:hover {
-        color: color.adjust(variables.$bd-doc-sidebar-link-active, $lightness: 5%);
+        color: color.adjust($bd-doc-sidebar-link-active, $lightness: 5%);
         background-color: transparent;
       }
     }
@@ -278,11 +276,11 @@
     padding: .21rem 1.5rem;
     font-size: .875rem; // =14px
     font-weight: 400;
-    color: rgba(variables.$bd-doc-sidebar-link, 1);
+    color: rgba($bd-doc-sidebar-link, 1);
     transition: color 200ms linear;
 
     &:hover {
-      color: rgba(variables.$bd-doc-sidebar-link-active, 1);
+      color: rgba($bd-doc-sidebar-link-active, 1);
       text-decoration: none;
       background-color: transparent;
     }
@@ -324,7 +322,7 @@
         left: 5px;
         height: 80%;
         content: "";
-        border-left: 3px solid variables.$bd-topaz-main;
+        border-left: 3px solid $bd-topaz-main;
         transition: height 200ms linear;
       }
     }
@@ -379,6 +377,6 @@
 .bd-sidebar .nav > .active > a,
 .bd-sidebar .nav > .active:hover > a {
   font-weight: 600;
-  color: variables.$cf-dark;
+  color: $cf-dark;
   background-color: transparent;
 }

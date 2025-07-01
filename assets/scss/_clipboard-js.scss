@@ -1,6 +1,3 @@
-@use "variables";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-
 // clipboard.js
 
 // JS-based `Copy` buttons for code snippets.
@@ -23,25 +20,25 @@
   display: block;
   padding: .25rem .5rem;
   font-size: 75%;
-  color: variables.$cf-dark-alt;
+  color: $cf-dark-alt;
   cursor: pointer;
-  background-color: bootstrap.$light;
+  background-color: $light;
   border: 0;
   border-top-right-radius: .25rem;
   border-bottom-left-radius: .25rem;
 
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     right: -1rem;
   }
 
-  @include bootstrap.media-breakpoint-up(xxl) {
+  @include media-breakpoint-up(xxl) {
     top: 0;
     right: -1.5rem;
   }
 
   &:hover {
-    color: variables.$white;
-    background-color: variables.$bd-topaz-main;
+    color: $white;
+    background-color: $bd-topaz-main;
   }
 }
 

@@ -1,11 +1,8 @@
-@use "variables";
-@use "bootstrap/scss/bootstrap" as bootstrap;
-
 // stylelint-disable declaration-no-important
 
 .bd-masthead {
   position: relative;
-  padding: 1rem calc(bootstrap.$grid-gutter-width / 2);
+  padding: 1rem calc($grid-gutter-width / 2);
   background: #2a2b3d;
 
   h1 {
@@ -29,7 +26,7 @@
 
 
   .btn-primary {
-    color: variables.$white;
+    color: $white;
     background-color: #35384b;
     border-color: #35384b;
   }
@@ -45,7 +42,7 @@
     margin-bottom: -3rem !important;
   }
 
-  @include bootstrap.media-breakpoint-up(sm) {
+  @include media-breakpoint-up(sm) {
     padding-top: 4rem;
     padding-bottom: 4rem;
 
@@ -54,7 +51,7 @@
     }
   }
 
-  @include bootstrap.media-breakpoint-up(md) {
+  @include media-breakpoint-up(md) {
     h1 {
       font-size: 4rem;
     }
@@ -69,11 +66,11 @@
 
     h2 {
       font-size: 40px;
-      text-shadow: 0 1px 2px rgba(variables.$bd-dark, .35);
+      text-shadow: 0 1px 2px rgba($bd-dark, .35);
     }
 
     .lead {
-      color: variables.$cf-light;
+      color: $cf-light;
     }
 
     &::after,
@@ -95,7 +92,7 @@
       z-index: 1;
     }
 
-    @include bootstrap.media-breakpoint-down(md) {
+    @include media-breakpoint-down(md) {
       h2 {
         font-size: 1.875rem;
       }
@@ -110,20 +107,20 @@
 
 .masthead-followup {
   position: relative;
-  background: variables.$bd-doc-content-bg;
+  background: $bd-doc-content-bg;
 
   .followup-card-item {
-    background-color: variables.$bd-doc-content-bg;
+    background-color: $bd-doc-content-bg;
 
     h4 {
       margin-bottom: 1rem;
     }
 
     a {
-      color: variables.$cf-dark-alt;
+      color: $cf-dark-alt;
 
       &:hover {
-        color: variables.$bd-topaz-main;
+        color: $bd-topaz-main;
       }
     }
   }
