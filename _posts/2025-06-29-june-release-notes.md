@@ -2,9 +2,12 @@
 title: "Release Notes: June 2025"
 description: ""
 ---
-{% if page.collection == "posts" %}
 ## Features & enhancements
 
+### GitOps: Retention policy for promotions
+Promotion workflows and product releases are now retained for up to 9 months. Anything older will be automatically deleted.
+
+{% if page.collection == "posts" %}
 ### Pipelines: Better visibility and control over pipeline resource usage
 
 Based on your feedback, we’ve expanded coverage of pipeline metrics to give you more visibility and control. Until now, CPU and memory usage metrics weren’t available for all steps during builds, making it harder to analyze performance and resource use.
