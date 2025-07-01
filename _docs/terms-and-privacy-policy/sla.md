@@ -1,102 +1,71 @@
 ---
-title: "Service Commitment"
-description: ""
+title: "Support Service Objectives"
+description: "Service Level Agreements for Codefresh support"
 group: terms-and-privacy-policy
 toc: true
 ---
 
-Our service level objectives
+> **Note**  
+> Codefresh Service Level Agreements have been updated to align with Octopus Deploy standards.  
+> To view the previous SLA page, see [Previous SLA](../previous).
 
-##### 1. DEFINITIONS.  
+# Support Service Objectives
 
+These objectives apply only to actual outages, bugs, errors, or defects in Codefresh-supported products when used in supported configurations. For unsupported issues—such as legacy product versions or unsupported configurations—we may still provide advice, but these SLAs will not apply.
 
-  
+For Premium support customers, these objectives are contractually guaranteed.
 
-**1.1. “Downtime”** means any time that Codefresh-hosted portions of the Services are not available for access by Users.  
-  
+---
 
-**1.2. “Excused Downtime”** means any Downtime that is caused by (i) Maintenance, (ii) Licensee’s or Users’ telecommunications, internet, and network services, (iii) software, hardware, and services not controlled by Codefresh (including but not limited to third-party services used to provide the Services and software or sites that are accessed or linked through the Services), or (iv) any Force Majeure events or other matter beyond Codefresh’s reasonable control.  
-  
-**1.3. “Maintenance”** means maintenance to the Codefresh Services: (i) that occurs during the time period that Codefresh or its third-party service providers reserve for scheduled maintenance, which will be non-business hours (i.e. not during 9:00 a.m. to 6:00 p.m. Pacific Time, Monday through Friday, excluding those weekdays on which any federal holidays occurs in the United States) and will
-not exceed four (4) hours per month; and (ii) any additional maintenance for which Codefresh provides Client with at least two (2) days advance notice.  
-  
+## 1.1 Response Time Objectives
 
-**1.4. “Uptime”** means any time that is not Downtime.  
-  
+The following table outlines our target response times based on priority and support plan:
 
-##### 2. SERVICE AVAILABILITY.  
+| **Priority** | **Professional** | **Enterprise** | **Premium**     |
+|--------------|------------------|----------------|-----------------|
+| **Urgent**   | 2 Business Hours¹ | 1 Hour         | 30 Minutes      |
+| **High**     | 6 Business Hours  | 2 Hours        | 1 Hour          |
+| **Normal**   | 1 Business Day²   | 4 Hours        | 2 Hours         |
+| **Low**      | None              | 2 Business Days| 8 Business Hours|
 
-**2.1. Target Uptime Percentage**. Codefresh will use commercially reasonable efforts to provide at least 99.5% Uptime in any calendar month (the “Target Uptime Percentage”).  
-  
+¹ **Business Hours**: 9am–5pm on Business Days in the registered time zone for your supported product.  
+² **Business Day**: Weekdays (excluding public holidays) in your registered time zone.
 
-**2.2. Achieved Uptime Percentage**. Actual Uptime percentage for each calendar month will be the quotient, expressed as (i) the total minutes potentially available for Uptime for that month minus total minutes of Downtime (other than Excused Downtime), divided by (ii) the total minutes potentially available for Uptime for that month minus any minutes of Excused Downtime (the “Achieved Uptime
-Percentage”).  
-  
-**2.2. Right to Cancel**.
+If a support response would exceed remaining Business Hours in a day, time will resume on the next Business Day. Codefresh may respond outside these hours at its discretion.
 
-{::nomarkdown}
+---
 
-<p style='margin-left:12px;text-indent:5px'>(i)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the event that the Achieved Uptime Percentage is less than the Target Uptime Percentage in three consecutive calendar months (a “<b>Triggering Event</b>”), Client shall have the right to cancel the agreement (the “<b>Cancellation Right</b>”) by providing Codefresh written notice of such cancellation (a “<b>Cancellation Notice</b>”) within 14 days after the last day of the calendar month in which the Triggering Event arose (the “<b>Triggering Month</b>”). If Client does not provide a Cancellation Notice within 14 days after the last day of the Triggering Month, the Cancellation Right arising with respect to the Triggering Event shall expire.</p>
-
-
-<p style='margin-left:12px;text-indent:5px'>(ii)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Exercise of a Cancellation Right will be Client’s sole and exclusive remedy, and the entire liability of Codefresh, for any failure to achieve the Target Uptime Percentage or any breach of this our service level objectives herein.
-
-
-{:/}
-
-##### [3. ERROR PRIORITIES AND RESPONSE TIMES.](#3-error-priorities-and-response-times)
-
-
-Issues with the Codefresh Platform are classified based on severity of the issues and the required resources needed to resolve them. Codefresh will designate the severity and impact of the reported
-issue as defined below and will use commercially reasonable efforts to respond and commence working on the applicable issue in accordance with the time periods below.
-
-**3.1. Response Times**.
-
-| Priority         | Silver*                    | Gold*            | Platinum** |
-| -------------- | ---------------------------- | -----------------| -----------------| 
-|Urgent          | 4 Hours                      | 2 Hours          | 1 Hour        |
-| High           | 6 Business Hours             | 4 Business Hours | 2 Hours   | 
-| Normal         | 1 Business Day               | 6 Business Hours | 3 Business Hours |
-| Low            | 1 Business Week              | 2 Business Days | 8 Business Hours |
-
-***Silver and Gold:** 9AM - 5PM PST support. Production down events will be handled with utmost urgency.
-
-****Platinum:** 24/7 support. Platinum Customers can open urgent tickets in our Off-hours.
-
-
-**3.2. Priority Definitions**.
+### 1.2. Priority Definitions.
 
 {: .table .table-bordered .table-hover}
-| Priority Level         | Description     |
-| -------------- | ---------------------------- | 
-| Urgent         | Previously-working production services or functionality of the services are not available and there is no acceptable work around provided. |
-| High           | Disabled functionality, errors that result in a lack of significant functionality in the Services which prevent the user from accomplishing their testing with no acceptable work around provided.|
-| Normal        | Errors that cause previously-working non-critical features to malfunction. |
-| Low | General questions, How-Tos, best practices questions, and feature requests.|
+| **Priority Level** | **Description** |
+|--------------------|---------------|
+| **Urgent**  | A major service outage, e.g.: {::nomarkdown}<ul><li>Your Codefresh instance is completely unavailable or unable to deploy.</li><li> Your production use of our products for mission-critical systems has stopped or is so severely impacted that you cannot reasonably continue work.</li></ul>{:/} <br><br> Critical impact problems could have the following characteristics:{::nomarkdown}<ul><li>System hangs or crashes</li><li>Data loss or data corruption</li><li>Critical functionality not available</li><li>No reasonable workaround</li></ul>{:/} |
+| **High**  | Significant impairment to your ordinary usage, e.g.: {::nomarkdown}<ul><li>Disabled functionality, errors that result in a lack of significant functionality in the services which prevent you from accomplishing your deployments with no workaround provided.</li><li>Important product features are unavailable with no acceptable workaround. Your implementation or production use of our product in a primary business service, major application(s), or mission-critical system(s) are functioning with limited capability or are unstable with periodic interruptions. The product may be operating but is severely restricted.</li></ul>{:/} <br><br> High-impact problems could have the following characteristics: {::nomarkdown}<ul><li>Product error or failure forcing a restart or recovery.</li><li>Severely degraded performance</li><li>Functionality unavailable, but the system can operate in a restricted fashion.</li></ul>{:/} |
+| **Normal**  | Non-critical errors that do not significantly impair your ordinary usage, e.g.: {::nomarkdown}<ul><li>Errors that cause previously-working non-critical features to malfunction.</li><li>Product features are unavailable, but a workaround exists, and the majority of product functions are still usable. Minor function/feature failure that the customer can circumvent or avoid.</li><li>Your work has minor loss of operational functionality.</li> </ul>{:/}<br><br>Normal impact problems could have the following characteristics:{::nomarkdown}<ul><li>Error message with a workaround</li><li>Minimal performance degradation</li><li>Incorrect product behavior with a workaround</li></ul>{:/} |
+| **Low**  | Minor problem or question that does not affect product functionality, e.g.:{::nomarkdown}<ul><li>How-tos</li><li>Documentation</li><li>General questions</li><li>Enhancement requests</li></ul>{:/} <br><br> There is no or low impact on customer operations. <br><br> Low-impact problems could have the following characteristics:{::nomarkdown}<ul><li>General requests for advice on product usage</li><li>Questions on product functionality or configuration during implementation</li><li>Clarification on product documentation or release notes</li><li>Minor UI bugs</li><li> Nice-to-have product enhancement requests</li></ul>{:/}|
 
-[Severity Examples]({{site.baseurl}}/docs/terms-and-privacy-policy/support-triage-definitions/).
 
-**3.3. Support Channels**. 
+## 1.3 Support Channels
 
-{: .table .table-bordered .table-hover}
-| Channel         | Free     | Silver   | Gold | Platinum|
-|----------------|-----------|--------- |------|---------|
-| Support Portal | X         |   X      | X    | X       |
-| SLA            |           |   X      | X    | X       |
-| Phone*         |           |          | X    | X       |
-| Slack**        |           |          |      | X       |
+| **Channel**                       | **Professional**       | **Enterprise** | **Premium**     |
+|----------------------------------|-------------------------|----------------|-----------------|
+| Community Slack                  | ✅                      | ✅             | ✅              |
+| Support Email                    | ✅                      | ✅             | ✅              |
+| Support Hours                    | During Business Hours¹  | 24×7           | 24×7            |
+| Primary Support Engineer         |                         |                | ✅              |
+| Video Conferencing*              |                         |                | ✅              |
+| Phone**                          |                         |                | ✅              |
+| Dedicated Support Slack Channel*** |                         |                | ✅              |
+| SLA                              |                         | ✅             | ✅              |
 
-***Phone**: An initial reply by our answering service who will open a support ticket immediately which will be prioritized accordingly. This does include the 'Live support'/co-piloting/on boarding features offered by our Professional Services.
+---
 
-****Slack:** Not intended to be used for critical issues.
+### Footnotes and Channel Details
 
-##### 4. VERSION HISTORY.
+- \* **Video Conferencing**: Real-time troubleshooting via Microsoft Teams or Zoom. Available to Premium Support customers.
+- ** **Phone**: An answering service creates a prioritized support ticket. Does not include live support, onboarding, or co-pilot services from Professional Services.
+- \*\*\* **Dedicated Support Slack Channel**: For Low Priority requests only. Not to be used for business-impacting issues.
+- **Primary Support Engineer**: Your dedicated primary contact for support. They understand your infrastructure and deployment needs, and work with our global teams (including in APAC) to resolve issues efficiently.
 
-{: .table .table-bordered .table-hover}
-| Version Number | Nature of Change              | Date Approved    |
-| -------------- | ---------------------------- | ---------------------------- |
-|3.0             | General updates               | 1 September, 2024 |
-|2.0             | General updates               | April 20, 2022 |
-|1.1             | Added support information     | April 7, 2021 |
-|1.0             | Initial version               | January 17, 2021 |
-
+---
