@@ -4,7 +4,7 @@ description: ""
 ---
 ## Features & enhancements
 
-### GitOps Cloud: New release of GitOps Runtime v0.20.0
+### GitOps: New release of GitOps Runtime v0.20.0
 
 We’re excited to announce the release of GitOps Runtime v0.20.0 — a major step forward in improving the stability and reliability of our platform.
 
