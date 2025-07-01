@@ -4,7 +4,18 @@ description: ""
 ---
 ## Features & enhancements
 
+### GitOps Cloud: New release of GitOps Runtime v0.20.0
+
+We’re excited to announce the release of GitOps Runtime v0.20.0 — a major step forward in improving the stability and reliability of our platform.
+
+This version includes significant architectural improvements and a large number of bug fixes, setting the stage for upcoming enhancements. 
+
+This release marks a major milestone in hardening the GitOps runtime for scale, reliability, and enterprise readiness. It also introduces breaking changes, so please read carefully before upgrading.
+
+[Read the full release notes](https://github.com/codefresh-io/gitops-runtime-helm/releases/tag/0.20.0){:target=”\_blank”}.
+
 ### GitOps: Retention policy for promotions
+
 Promotion workflows and product releases are now retained for up to 9 months. Anything older will be automatically deleted.
 
 {% if page.collection == "posts" %}
