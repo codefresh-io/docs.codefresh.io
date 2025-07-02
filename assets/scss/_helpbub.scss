@@ -33,3 +33,9 @@
   inset: 0;
   margin: auto;
 }
+
+.codehilite {
+  code {
+    color: $helphub-copilot-code-color !important
+  }
+}
