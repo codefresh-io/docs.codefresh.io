@@ -1,5 +1,7 @@
+@use "sass:color";
+
 // Buttons
-//
+
 // Custom buttons for the docs.
 
 .btn-link {
@@ -47,7 +49,7 @@
   &:hover,
   &:active {
     color: $bd-white;
-    background-color: lighten($btn-get-started, 15%);
+    background-color: color.adjust($btn-get-started, $lightness: 15%);
   }
 }
 
@@ -58,6 +60,6 @@
   &:hover,
   &:active {
     color: $bd-white;
-    background-color: lighten($btn-get-started, 15%);
+    background-color: color.adjust($btn-get-started, $lightness: 15%);
   }
 }

@@ -1,8 +1,8 @@
 // stylelint-disable no-duplicate-selectors
 
-//
+
 // Brand guidelines
-//
+
 
 // Logo series wrapper
 .bd-brand-logos {
@@ -55,7 +55,7 @@
 //   background-color: #d9534f;
 // }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .bd-brand-item {
     display: table-cell;
     width: 1%;
@@ -70,10 +70,7 @@
 }
 
 
-//
 // Color swatches
-//
-
 .color-swatches {
   margin: 0 -5px;
   overflow: hidden; // clearfix
@@ -87,7 +84,7 @@
   margin-left: .25rem;
   border-radius: .25rem;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     width: 6rem;
     height: 6rem;
   }

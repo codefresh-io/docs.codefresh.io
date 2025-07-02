@@ -1,8 +1,6 @@
 // stylelint-disable declaration-no-important, selector-max-id
 
-//
 // Carbon ads
-//
 
 #carbonads {
   position: static;
@@ -14,7 +12,7 @@
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
-  background-color: rgba(0, 0, 0, .05);
+  background-color: rgba(0 0 0 / 5%);
 
   a {
     color: #333;

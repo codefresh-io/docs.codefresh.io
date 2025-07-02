@@ -1,6 +1,4 @@
-//
 // Examples
-//
 
 .bd-examples .img-thumbnail {
   margin-bottom: .75rem;
@@ -12,7 +10,7 @@
   margin-bottom: 1.25rem;
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .bd-examples {
     margin-right: -.75rem;
     margin-left: -.75rem;

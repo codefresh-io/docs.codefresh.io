@@ -45,7 +45,7 @@ ul > li {
 }
 
 @mixin content-links() {
-  a:not([data-type="image"]):not([data-anchorjs-icon="#"]) {
+  a:not([data-type="image"], [data-anchorjs-icon="#"]) {
     color: $bd-link-default;
     border-bottom: none;
     text-decoration: none;

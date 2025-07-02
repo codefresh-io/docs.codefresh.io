@@ -1,9 +1,9 @@
-// stylelint-disable no-duplicate-selectors, selector-max-combinators, selector-max-compound-selectors, selector-max-type, selector-no-qualifying-type
+@use "sass:color";
 
-//
+// stylelint-disable no-duplicate-selectors, selector-max-combinators, selector-max-compound-selectors, selector-max-type, selector-no-qualifying-type
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
-//
-@import "../../node_modules/bootstrap/scss/images"; //;_images.scss;
+
+// ;_images.scss;
 @import "links";
 
 @keyframes intro {
@@ -87,13 +87,14 @@
   }
 
   // Links
-  @include content-links();
+  @include content-links;
 
   .borderless-table {
     td {
       border: none !important;
     }
   }
+
   // Tables
   > table {
     width: 100%;
@@ -158,7 +159,8 @@
 
   > p {
     > img {
-      @include img-fluid;
+      max-width: 100%;
+      height: auto;
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
@@ -170,10 +172,7 @@
   }
 }
 
-//
 // Docs sections
-//
-
 .bd-content-inner {
   position: relative;
 
@@ -246,7 +245,7 @@
     .dropdown-toggle {
       &.btn-control-dropdown {
         padding: .375rem;
-        color: lighten($body-color, 29%);
+        color: color.adjust($body-color, $lightness: 29%);
         text-decoration: none;
         background-color: $body-bg;
 
@@ -268,7 +267,7 @@
 
     .dropleft {
       display: none;
-      @media (min-width: 768px) {
+      @media (width >= 768px) {
         display: inline-flex;
       }
 
@@ -289,7 +288,7 @@
 
           &.btn-control-dropdown {
             i.fas {
-              //transition: all .2s linear;
+              // transition: all .2s linear;
               transform: rotate(62deg);
             }
           }
