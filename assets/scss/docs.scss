@@ -5,22 +5,10 @@
 
 // Load Bootstrap variables and mixins
 
-// @import "../../scss/functions";
-
 @import "../../node_modules/bootstrap/scss/functions";
-
-// @import "../../scss/variables";
-
 @import "../../node_modules/bootstrap/scss/variables";
-
-// @import "../../scss/mixins";
-
 @import "../../node_modules/bootstrap/scss/mixins";
-
-// Load docs components
-
 @import "variables";
-
 @import "../../node_modules/bootstrap/scss/bootstrap-grid";
 
 @import "root";
@@ -45,8 +33,6 @@
 @import "clipboard-js";
 @import "bulb";
 @import "modal";
-
-// Load docs dependencies
 @import "syntax";
 @import "anchor";
 @import "links";
