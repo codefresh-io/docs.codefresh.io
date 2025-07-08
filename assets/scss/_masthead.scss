@@ -2,7 +2,7 @@
 
 .bd-masthead {
   position: relative;
-  padding: 1rem ($grid-gutter-width / 2);
+  padding: 1rem calc($grid-gutter-width / 2);
   background: #2a2b3d;
 
   h1 {

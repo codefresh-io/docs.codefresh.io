@@ -1,6 +1,4 @@
-//
 // Docs color palette classes
-//
 
 @each $color, $value in $colors {
   .swatch-#{$color} {

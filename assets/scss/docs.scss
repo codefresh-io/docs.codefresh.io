@@ -3,11 +3,13 @@
  * Copyright 2018 Codefresh, Inc.
  */
 
-@use "bootstrap/scss/bootstrap" as *;
+// Load Bootstrap variables and mixins
 
-
-// Load docs components
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 @import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
 
 @import "root";
 @import "reboot";
@@ -33,11 +35,9 @@
 @import "modal";
 @import "select";
 @import "divider";
-@import "custom-overrides";
-
-// Load docs dependencies
 @import "syntax";
 @import "anchor";
 @import "links";
 @import "algolia";
 @import "helpbub";
+@import "custom-overrides";

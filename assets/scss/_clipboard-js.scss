@@ -1,5 +1,5 @@
 // clipboard.js
-//
+
 // JS-based `Copy` buttons for code snippets.
 
 .bd-clipboard {
@@ -42,7 +42,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .bd-clipboard {
     display: block;
   }

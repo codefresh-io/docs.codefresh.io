@@ -18,7 +18,7 @@ body {
     align-items: flex-end;
   }
 
-  .redirect-popup__close {
+  .redirect-popup-close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -32,7 +32,7 @@ body {
     outline: none;
   }
 
-  .redirect-popup__info-icon {
+  .redirect-popup-info-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,14 +42,14 @@ body {
     border-radius: 8px;
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .modal-dialog {
       margin-right: 1.75rem;
       margin-left: auto;
     }
   }
 
-  @media (min-width: 576px) {
+  @media (width >= 576px) {
     .modal-dialog {
       max-width: 526px;
     }

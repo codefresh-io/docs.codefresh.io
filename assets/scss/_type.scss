@@ -1,8 +1,6 @@
 // stylelint-disable declaration-no-important, selector-list-comma-newline-after
 
-//
 // Headings
-//
 
 @mixin heading($fontSize, $fontWeight, $lineHeight) {
   font-size: $fontSize;

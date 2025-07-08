@@ -1,7 +1,6 @@
-//
-// Main navbar
-//
+@use "sass:color";
 
+// Main navbar
 .bd-navbar {
   min-height: 50px;
   background: #212437;
@@ -28,7 +27,7 @@
         height: 100%;
         pointer-events: none;
         content: "";
-        background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), $cf-dark);
+        background: linear-gradient(90deg, hsl(0deg 0% 100% / 0%), $cf-dark);
       }
     }
   }
@@ -155,13 +154,14 @@
 
     &::placeholder {
       color: rgba($bd-topaz-extra-light, .75);
+
       // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
       opacity: .75;
     }
 
     &.form-control-dark {
       color: $bd-topaz-extra-light;
-      background: darken($cf-dark, 3%);
+      background: color.adjust($cf-dark, $lightness: -3%);
       border-color: transparent;
 
       @include media-breakpoint-up(md) {
@@ -169,12 +169,13 @@
       }
 
       &:focus {
-        background: darken($cf-dark, 3%);
+        background: color.adjust($cf-dark, $lightness: -3%);
         border-color: transparent;
         box-shadow: none;
 
         &::placeholder {
           color: rgba($bd-topaz-extra-light, .55);
+
           // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
           opacity: .55;
         }
