@@ -236,13 +236,6 @@ under monitoring. Login to Grafana, open “Explore → Metrics” in the left-h
 Type codefresh_ in “Search” field, ensure that time range covers at least one running 
 build. You will see a list of available metrics.
 
-http://localhost:3000
-
-## How to use/understand metrics
-
-codefresh_engine_deprecated_images_pulled_total metric is a counter increased 
-by 1 each time Docker daemon pulls a deprecated image. Labels {account_name, 
-pipeline_id, workflow, image_name} allow you to group results.
 {% include
 image.html
 lightbox="true"
@@ -251,6 +244,13 @@ url="/images/troubleshooting/before-verify.png"
 alt="codefresh_no_such_file_directory.png"
 max-width="70%"
 %}
+
+## How to use/understand metrics
+
+codefresh_engine_deprecated_images_pulled_total metric is a counter increased 
+by 1 each time Docker daemon pulls a deprecated image. Labels {account_name, 
+pipeline_id, workflow, image_name} allow you to group results.
+
 ## Grafana dashboard
 
 Easiest way to analyze data — to use the attached Grafana dashboard.
@@ -258,11 +258,40 @@ Easiest way to analyze data — to use the attached Grafana dashboard.
 1. Download [this Grafana dashboard json](../../grafana-dashboard.json) 
 2. Login to Grafana
 3. Open “Dashboards → New → Import”
+
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/import-dashboard.png"
+url="/images/troubleshooting/import-dashboard.png"
+alt="codefresh_no_such_file_directory.png"
+max-width="70%"
+%}
+
 4. Upload Dashboard JSON
 5. Select “Select a JSON API data source → Mimir API”. Click “Import”
+
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/select-api-source.png"
+url="/images/troubleshooting/select-api-source.png"
+alt="codefresh_no_such_file_directory.png"
+max-width="70%"
+%}
+
 6. Done! 🎉
 
 Deprecated Images Dashboard overview
+
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/deprecated-images-overview.png"
+url="/images/troubleshooting/deprecated-images-overview.png"
+alt="codefresh_no_such_file_directory.png"
+max-width="70%"
+%}
 
 On the screenshot above:
 
@@ -285,6 +314,15 @@ aggregated by account ID, pipeline ID, build and image:
 4.  [$__rate_interval])
 5. ) by (account_name, pipeline_id, workflow, image_name)
 ```
+
+{% include
+image.html
+lightbox="true"
+file="/images/troubleshooting/deprecated-images.png"
+url="/images/troubleshooting/deprecated-images.png"
+alt="codefresh_no_such_file_directory.png"
+max-width="70%"
+%}
 
 Deprecated images docker.io/tutum/dnsutils:latest and docker.io/docker/whalesay:latest 
 has been pulled in Pipeline #67867cfe8307bd8f9b7b034e
