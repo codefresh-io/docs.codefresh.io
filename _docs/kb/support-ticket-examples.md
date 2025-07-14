@@ -58,7 +58,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires a detaile
 1. **Engine and DIND logs** for the failed build:
    - While the build is running, navigate to the cluster, and locate the pods named `engine-[buildID]` and `dind-[buildID]`.
    - Save those logs to a file and attach them to the ticket.
-   - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"} to collect the required data *while the affected build is running and the error message is received*.
+   - Alternatively, you can use the [Codefresh Support Package](https://github.com/codefresh-io/codefresh-support-package){:target="\_blank"} to collect the required data *while the affected build is running and the error message is received*.
 1. **Helm values file** (to identify overrides such as images or other configurations).
 
 #### UI: Slowness and other issues
@@ -84,7 +84,7 @@ To troubleshoot issues or bugs effectively, Codefresh Support requires a detaile
 1. **Ebs-csi pod logs** in the `kube-system` namespace if there are volume issues and you're using `ebs-csi`.
 1. Overview of cluster **scale up/down events** for the relevant timeframe.
 
-> Alternatively, to collect the data for 3 through 6, use the [Codefresh Support Package](https://github.com/codefresh-support/codefresh-support-package){:target="\_blank"}.
+> Alternatively, to collect the data for 3 through 6, use the [Codefresh Support Package](https://github.com/codefresh-io/codefresh-support-package){:target="\_blank"}.
 
 #### Security concerns
 

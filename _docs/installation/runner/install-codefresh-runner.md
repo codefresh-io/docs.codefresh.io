@@ -399,7 +399,7 @@ If your builds are stuck in Pending or failing with `Failed to validate connecti
 ### For Codefresh Runner installed with legacy CLI
 
 1. Delete `codefresh-certs-server` k8s secret;
-2. Download [`./configure-dind-certs.sh` script](https://github.com/codefresh-support/cf-utils/blob/master/configure-dind-certs.sh) and run it:
+2. Download [`./configure-dind-certs.sh` script](https://github.com/codefresh-io/cf-utils/blob/master/configure-dind-certs.sh) and run it:
 
 ```shell
 # Ensure the following environment variables are defined before running the command:
