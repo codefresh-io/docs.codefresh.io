@@ -210,7 +210,7 @@ This returns the pull rate of deprecated images by account and pipeline.
 
 ### Grafana Dashboard (Optional)
 
-- Download the provided dashboard JSON
+- Download [this Grafana dashboard json](../grafana-dashboard.json)
 - Go to **Dashboards → New → Import**
 - Upload the file and select `Mimir API` as the data source
 
