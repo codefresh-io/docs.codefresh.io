@@ -255,9 +255,9 @@ pipeline_id, workflow, image_name} allow you to group results.
 
 Easiest way to analyze data — to use the attached Grafana dashboard.
 
-1. Download [this Grafana dashboard json](../../grafana-dashboard.json) 
-2. Login to Grafana
-3. Open “Dashboards → New → Import”
+1\. Download [this Grafana dashboard json](../../grafana-dashboard.json) 
+2\. Login to Grafana
+3\. Open “Dashboards → New → Import”
 
 {% include
 image.html
@@ -268,8 +268,8 @@ alt="codefresh_no_such_file_directory.png"
 max-width="70%"
 %}
 
-4. Upload Dashboard JSON
-5. Select “Select a JSON API data source → Mimir API”. Click “Import”
+4\. Upload Dashboard JSON
+5\. Select “Select a JSON API data source → Mimir API”. Click “Import”
 
 {% include
 image.html
@@ -280,7 +280,7 @@ alt="codefresh_no_such_file_directory.png"
 max-width="70%"
 %}
 
-6. Done! 🎉
+6\. Done! 🎉
 
 Deprecated Images Dashboard overview
 
