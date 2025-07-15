@@ -1,0 +1,214 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_MIMIR_API",
+      "label": "Mimir API",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "marcusolsson-json-datasource",
+      "pluginName": "JSON API"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.5.2"
+    },
+    {
+      "type": "datasource",
+      "id": "marcusolsson-json-datasource",
+      "name": "JSON API",
+      "version": "1.3.23"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-json-datasource",
+        "uid": "${DS_MIMIR_API}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "account"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "",
+                    "url": "https://g.codefresh.io/admin/accounts?filter=search:%5E${__value.text}$"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 2,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "account"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "cacheDurationSeconds": 0,
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "${DS_MIMIR_API}"
+          },
+          "fields": [
+            {
+              "jsonPath": "$distinct(\n  data.{\n    \"account\":  $.account_name,\n    \"image\":    $.image_name,\n    \"pipeline\": $.pipeline_id\n})",
+              "language": "jsonata"
+            }
+          ],
+          "hide": false,
+          "method": "GET",
+          "params": [
+            [
+              "match[]",
+              "{__name__=\"codefresh_engine_deprecated_images_pulled_total\", account_name=~\"$account\"}"
+            ],
+            [
+              "start",
+              "${__from:date:seconds}"
+            ]
+          ],
+          "queryParams": "",
+          "refId": "A",
+          "urlPath": "/series"
+        }
+      ],
+      "title": "Deprecated images in time interval",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "auto",
+            "keepTime": false,
+            "replace": true,
+            "source": "result"
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": ".+",
+        "current": {},
+        "definition": "label_values(codefresh_engine_deprecated_images_pulled_total,account_name)",
+        "includeAll": true,
+        "multi": true,
+        "name": "account",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_engine_deprecated_images_pulled_total,account_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Deprecated Images",
+  "uid": "bea5uff48krgge",
+  "version": 2,
+  "weekStart": ""
+}
