@@ -12,9 +12,6 @@ support-reviewed: 2025-07-14 AA
 ---
 
 # How to: Upgrade to the newer classic docker-27 runner
-
-How To: Find and Upgrade deprecated Docker 27 
-images in classic pipelines 
 As part of our ongoing platform upgrades, we’re moving to a newer classic runner version based 
 on  docker ver 27. This change deprecates older Docker image formats, and you may need to 
 identify and upgrade deprecated images in your pipelines.
@@ -27,7 +24,7 @@ This guide will help you:
 
 ### Step 1: Find Deprecated Docker Images
 There are two recommended approaches to identify deprecated images in your Classic 
-Pipelines. Each has its pros and cons:
+Pipelines. 
 
 #### Analyze Build Logs
 
@@ -44,14 +41,10 @@ tries to pull a deprecated image.
 version 2, schema 1 support is disabled by default...
 ```
 
-Use the following script to scan logs and extract deprecated image names: Find deprecated 
-images used in previous builds
+Use the following script to scan logs and extract deprecated image names: [Find deprecated images used in previous builds](https://gist.github.com/francisco-cocozza/6046028184cc12b5ee4513bdcb4217c5)
 
 💡 For large-scale environments with thousands of builds, we offer a more scalable, 
 metrics-based detection method. See Appendix I for details.
-
-https://gist.github.com/francisco-cocozza/6046028184cc12b5ee4513bdcb4217c5
-https://gist.github.com/francisco-cocozza/6046028184cc12b5ee4513bdcb4217c5
 
 ### Step 2: Upgrade Deprecated Docker Images
 Once you’ve identified deprecated images using engine metrics, the next step is to upgrade 
@@ -152,10 +145,10 @@ end user.
 
 If the monitoring stack is not installed in the target cluster, the easiest way is to install 
 kube-prometheus-stack Chart: 
-kube-prometheus-stack 75.6.2 · prometheus/prometheus-community
+[kube-prometheus-stack 75.6.2 · prometheus/prometheus-community](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack)
 
 While installing, please consider enabling persistence for the Prometheus operator so that 
-collected metrics are not purged on node rotation. Please follow the official docs for details 
+collected metrics are not purged on node rotation. Please follow the [official docs](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack?modal=values&path=prometheus.prometheusSpec.storageSpec) for details 
 (check prometheus.prometheusSpec.storageSpec value).
 
 #### Example installation
