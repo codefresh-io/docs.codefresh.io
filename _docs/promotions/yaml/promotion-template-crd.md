@@ -24,7 +24,7 @@ apiVersion: codefresh.io/v1beta1
 kind: PromotionTemplate
 metadata:
   name: base-helm                     # any valid k8s name
-spec:<!
+spec:
   versionSource:                      # get release version from this file 
     file: Chart.yaml
     jsonPath: $appVersion
