@@ -35,8 +35,8 @@ Configuring the GitOps Runtime as an Argo CD Application enables:
 * Monitoring health and sync statuses
 * Enforcement of Git as the single source of truth
 
-To configure, click **Configure as Argo CD Application**. Codefresh will automatically handle the setup—no further action required. 
-
+To configure, click **Configure as Argo CD Application**. Codefresh will automatically handle the setup—no further action required.  
+To manually install the runtime as an Argo CD application, visit [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#manually-configuring-the-runtime-application).
 
 ## Add Git Source to Runtime
 
