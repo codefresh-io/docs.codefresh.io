@@ -64,7 +64,7 @@ Configuring the GitOps Runtime as an Argo CD Application ensures:
 * **Visibility and monitoring**  
   The Runtime appears in the GitOps Apps dashboard, where you can monitor and manage it as any other Argo CD application.
 
-To view additional ways to configure the GitOps Runtime as an Argo CD Application manually, visit [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#manually-configuring-the-runtime-application).
+To manually install the runtime as an Argo CD application, visit [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#manually-configuring-the-runtime-application).
 
 ## Add Git Source to Runtime
 A **Git Source** is a critical component in GitOps Runtimes, connecting a Git repository to the cluster, enabling deployment and configuration management of Argo CD applications.
