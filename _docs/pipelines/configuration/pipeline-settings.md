@@ -27,6 +27,7 @@ Users can still override specific settings for individual pipelines.
 | |[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
 | |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
 | |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if pending-approval steps require manual action. |
+|Security |[OIDC Setting](#oidc-setting) |Define the expiration time of ID tokens issued to pipelines using OIDC authentication. |
 |Other|[Advanced options for pipelines](#advanced-options-for-pipelines)| Configure options for build approval and pipeline volumes. |
 |Argo Workflows |Enable pipelines with Argo Workflows | Create pipelines based on Argo Workflows. |
 
@@ -239,6 +240,8 @@ Configure if manual confirmation is required after clicking the Approve or Rejec
 * **Approve only**: Require manual intervention only after Approve.
 * **Reject only**: Require manual intervention only after Reject.
 
+## OIDC Setting
+Specifies the expiration time (in seconds) for ID tokens issued to pipelines using OIDC authentication. The default value is 300 seconds (5 minutes). You can set a value up to a maximum of 3600 seconds (1 hour). This setting allows you to control how long the token remains valid when authenticating with external systems via OIDC.
 
 ## Advanced options for pipelines
 
