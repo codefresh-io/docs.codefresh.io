@@ -27,7 +27,7 @@ Users can still override specific settings for individual pipelines.
 | |[Memory usage warning for pipeline builds](#memory-usage-warning-for-pipeline-builds)| Enable alerts when pipelines reach/exceed the threshold. |
 | |[Default behavior for build step](#default-behavior-for-build-step)| Configure push image options for build steps.  |
 | |[Default behavior for pending-approval step](#default-behavior-for-pending-approval-step) | Determine if pending-approval steps require manual action. |
-|Security |[OIDC Setting](#oidc-setting) |Define the expiration time of ID tokens issued to pipelines using OIDC authentication. |
+|Security |[OIDC Setting](#oidc-setting) |Define the expiration time of ID tokens issued to pipelines via OIDC authentication. |
 |Other|[Advanced options for pipelines](#advanced-options-for-pipelines)| Configure options for build approval and pipeline volumes. |
 |Argo Workflows |Enable pipelines with Argo Workflows | Create pipelines based on Argo Workflows. |
 
