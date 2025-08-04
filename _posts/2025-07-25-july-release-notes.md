@@ -23,8 +23,8 @@ For details, see the [runtime v0.22.1 release notes](https://github.com/codefres
 {% if page.collection == "posts" %}
 ##### Pipelines
 * Fixed an issue that caused timeouts when loading UI pages for pipelines with a large number of triggers.
-* Fixed an issue where MacOS builds failed with an Unauthorized error when provisioning the runtime, preventing customers from running MacOS builds successfully.
-* Fixed an issue where builds intermittently failed with a Failed to prepare dockerfile error, preventing the Dockerfile from being fetched correctly during the build process.
+* Fixed an issue where MacOS builds failed with an 'Unauthorized' error when provisioning the runtime, preventing customers from running MacOS builds successfully.
+* Fixed an issue where builds intermittently failed with a 'Failed to prepare dockerfile' error, preventing the Dockerfile from being fetched correctly during the build process.
 * Fixed an issue where SaaS builds failed due to insufficient disk space by re-enabling cleanup processes.
 
 ##### GitOps
