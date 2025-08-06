@@ -41,17 +41,19 @@ Codefresh is the easiest way to get started with GitOps and Argo CD. Codefresh l
 
 
 
-## GitOps Runtimes 
+## GitOps Runtimes
 
-Codefresh offers two models for GitOps deployments:  
+Codefresh offers two models for GitOps deployments:
 
-* Hosted GitOps, which is a fully-managed version of Argo CD. The runtime for Hosted GitOps is hosted on a Codefresh cluster (easy setup) and managed by Codefresh (zero maintenance overhead).  
-  If you already have Argo CD installations, this is the option for you. Click once to provision the hosted runtime, and start deploying applications to clusters without having to install and maintain Argo CD.
+### Connect to an existing Argo CD
+If you already have Argo CD installed, you can connect it directly to Codefresh without reinstallation or migration. This allows you to manage your existing Argo CD setup through Codefresh while taking advantage of Codefresh’s CI/CD capabilities.  
+For details, see [Install a GitOps runtime with an existing Argo CD](https://codefresh.io/docs/gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/).
 
-* Hybrid GitOps, which is a customer-managed version of Argo CD. The  Hybrid GitOps runtime is hosted on the customer cluster and managed by the customer.  
-  The Hybrid GitOps offering retains runtimes within the customer infrastructure to comply your security rewhile giving you the power of Argo CD with Codefresh’s CI and CD tools, to help achieve continuous integration and continuous delivery goals.
+### Hybrid GitOps
+Hybrid GitOps is a customer-managed version of Argo CD. The GitOps runtime is hosted on your own cluster and managed by your team.  
+This model keeps the runtime within your infrastructure to meet security and compliance requirements while leveraging the power of Argo CD with Codefresh’s CI/CD tools to achieve continuous delivery goals.
 
-Review [GitOps runtime architecture]({{site.baseurl}}/docs/installation/gitops/runtime-architecture/) and [Hybrid GitOps installation]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/).
+Review [GitOps runtime architecture](https://codefresh.io/docs/gitops/gitops-runtimes/gitops-architecture/) and [Hybrid GitOps installation](https://codefresh.io/docs/gitops/gitops-runtimes/runtime-install/).
 
 ## Argo CD applications
 

@@ -738,16 +738,6 @@
     - title: On-premises
       url: "/on-prem-release-notes"
 
-- title: Codefresh New Experience
-  url: "/new-codefresh"
-  pages:
-    - title: The Codefresh New Experience
-      url: "/enable-new-experience"
-    - title: Navigation quick reference
-      url: "/menu-navigation"
-    - title: Documentation changes
-      url: "/doc-changes"
-
 - title: Incubation
   url: "/incubation"
   pages:
