@@ -43,6 +43,123 @@ The Runtime's context menu now includes the **Runtime Application** option, whic
       max-width="60%" 
    %}
 
+Although this step is highly recommended, it’s not required. You can choose to:
+* Skip this step and manage the runtime using your own deployment process (e.g., Helm), or  
+* Manually create your own Argo CD Application to manage the GitOps runtime.
+
+---
+
+## Manually Configuring the Runtime Application
+
+### 1. Add the Chart and Values Files to Git
+
+Start by adding the `gitops-runtime` Helm chart to your Git repository. Create both a `Chart.yaml` and a `values.yaml` file.
+
+#### Chart.yaml
+Replace `<Chart Version>` with the version of the chart you'd like to install.
+
+```yaml
+apiVersion: v2
+name: codefresh-gitops-runtime
+description: Codefresh GitOps Runtime umbrella chart
+version: <Chart Version>
+appVersion: 1.0.0
+dependencies:
+  - name: gitops-runtime
+    repository: oci://quay.io/codefresh
+    version: <Chart Version>
+```
+
+[View the Helm Chart on ArtifactHub](https://artifacthub.io/packages/helm/codefresh-gitops-runtime/gitops-runtime){:target="_blank"}
+
+---
+
+#### values.yaml
+
+Here's a basic example. Adjust it based on your setup:
+
+```yaml
+gitops-runtime:
+  argo-cd:
+    enabled: false
+
+  global:
+    codefresh:
+      accountId: <CODEFRESH_ACCOUNT_ID>
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+
+    external-argo-cd:
+      auth:
+        type: token
+        tokenSecretKeyRef:
+          name: gitops-runtime-argo-cd-token
+          key: token
+
+    runtime:
+      name: codefresh
+      isConfigurationRuntime: true
+```
+
+**Where to find these values:**
+* **accountId:** [Account Settings → Account Information](https://g.codefresh.io/2.0/account-settings/account-information){:target="_blank"}
+* **userToken:** [User Settings → Generate Token](https://g.codefresh.io/user/settings){:target="_blank"}
+* **external Argo CD token:** Create via Argo CD CLI or UI if connecting to an external Argo CD instance.
+
+> **Note:** Make sure not to commit any secret tokens to Git.
+
+---
+
+### 2. Create an Argo CD Application
+
+Create an Argo CD Application that points to the Git repo where your runtime manifests are stored. We recommend storing this Application manifest in Git as well.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: <runtime-name>
+  labels:
+    codefresh.io/entity: runtime
+    codefresh.io/internal: 'true'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/<owner>/<repo>.git
+    targetRevision: HEAD
+    path: <runtime-folder-path>
+    helm:
+      releaseName: <runtime-name>
+  destination:
+    namespace: runtime
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+```
+
+Ensure you include the following labels:
+* `codefresh.io/entity: runtime`
+* `codefresh.io/internal: 'true'`
+
+---
+
+### 3. (Optional) Manage This Application via Shared Configuration
+
+We recommend managing the runtime Argo CD application as part of the Internal Shared Configuration (ISC). This ensures consistent configuration across all runtimes.
+
+1. Go to [Account Settings → Account Information](https://g.codefresh.io/2.0/account-settings/account-information){:target="_blank"} and locate your Shared Configuration repository.
+2. Navigate to `runtimes/<runtime-name>/in-cluster.yaml`.
+3. Add the path to your runtime application's manifest under `source.directory.include`.
+
+If your runtime app manifest is stored in a separate repository, you can:
+* Add a second source (see [Argo CD multi-source applications](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple-source-repositories/){:target="_blank"}), or
+* Apply the manifest directly to the cluster without wrapping it in a parent application.
+
 ## Upgrade GitOps Runtimes
 
 Upgrade provisioned Hybrid GitOps Runtimes to install critical security updates, new functionality, and the latest versions of all components. 
