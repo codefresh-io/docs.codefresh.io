@@ -11,6 +11,8 @@ toc: true
 
 Modern versions of the Codefresh Classic Runtime ([`cf-runtime` chart >=8.2.0](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime/){:target="\_blank"}, `engine` >=1.179.1) provide the `engine` component metrics in OpenTelemetry format, with the preferable *push* model.
 
+You can still use the *pull* model by switching to the Prometheus Metrics Exporter, which is fully compatible with Prometheus. However, we recommend using the default configuration, as it is better suited for the short-lived nature of Classic Builds and provides more precise and complete metrics.
+
 Please refer to the `cf-runtime` Chart default values on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env){:target="\_blank"} for configuration options.
 
 ### List of metrics
