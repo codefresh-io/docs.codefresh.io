@@ -15,7 +15,21 @@ You can still use the *pull* model by switching to the Prometheus Metrics Export
 
 Please refer to the `cf-runtime` Chart default values on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env){:target="\_blank"} for configuration options.
 
-### List of metrics
+### Resource attributes
+
+By default, the `engine` resource has the following attributes:
+
+{: .table .table-bordered .table-hover}
+| Attribute | Type | Description | Examples |
+| --------- | ---- | ----------- | -------- |
+| **`service.name`** | string | The name of the `engine` component. | `cf-classic-engine` |
+| **`service.namespace`** | string | The namespace of the `engine` component. | `cf-classic-runtime` |
+| **`service.version`** | string | The version of the `engine` component; in format `<image-tag>@<image-digest>` | `1.179.1@sha256:37caef1e58f8d07ed76da753fb46eb59224e723495c1b9081d3ef7e0bc9449f9` |
+| **`cf.classic.runtime.name`** | string | The name of the runtime of which this `engine` component is a part. | `my-runtime` |
+| **`cf.classic.runtime.version`** | string | The version of the runtime chart. | `8.2.0` |
+
+
+### Metrics
 
 #### Default attributes
 
