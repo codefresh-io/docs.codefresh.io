@@ -453,7 +453,7 @@ These metrics are not needed for most users and disabled by default.
 ### Deprecated metrics
 
 {{site.data.callout.callout_tip}} 
-Older versions of the Classic Runtime (`cf-runtime` chart <8.1.0, `engine` <1.179.0) provided the following Prometheus metrics on port `9100` of the `engine` pod.
+Older versions of the Classic Runtime (`cf-runtime` chart <8.2.0, `engine` <1.179.0) provided the following Prometheus metrics on port `9100` of the `engine` pod.
 {{site.data.callout.end}}
 
 {{site.data.callout.callout_warning}}
