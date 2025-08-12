@@ -28,17 +28,17 @@
     - title: Creating products and applications
       url: "/create-app-ui"
     - title: Creating environments
-      url: "/quick-start-gitops-environments" 
-    - title: Simple promotion with drag-and-drop 
-      url: "/drag-and-drop"    
+      url: "/quick-start-gitops-environments"
+    - title: Simple promotion with drag-and-drop
+      url: "/drag-and-drop"
     - title: Simple Promotion Flow with multiple environments
-      url: "/multi-env-sequential-flow.md"  
+      url: "/multi-env-sequential-flow.md"
     - title: Creating Promotion Workflows
-      url: "/quick-start-promotion-workflow"      
+      url: "/quick-start-promotion-workflow"
     - title: Advanced Promotion Flow with Promotion Workflows
-      url: "/policy-multi-env-promotion"  
+      url: "/policy-multi-env-promotion"
     - title: Advanced Promotion Flow with environment dependencies
-      url: "/dependency-multi-env-promotion"  
+      url: "/dependency-multi-env-promotion"
 
 - title: CI/CD quick starts
   url: "/ci-quick-start"
@@ -228,7 +228,7 @@
     - title: Git Providers
       url: "/git-providers"
     - title: OpenID Connect
-      url: "/oidc-pipelines"      
+      url: "/oidc-pipelines"
     - title: Kubernetes
       url: "/kubernetes"
     - title: Amazon Web Services
@@ -238,7 +238,7 @@
     - title: Google Cloud
       url: "/google-cloud"
     - title: Octopus Deploy
-      url: "/octopus-deploy"      
+      url: "/octopus-deploy"
     - title: Docker registries
       url: "/docker-registries"
       sub-pages:
@@ -394,10 +394,10 @@
     - title: About environments
       url: "/environments-overview"
     - title: Create and manage environments
-      url: "/create-manage-environments"     
+      url: "/create-manage-environments"
     - title: Manage Products and applications in environments
-      url: "/manage-apps-in-environments"  
-      
+      url: "/manage-apps-in-environments"
+
 - title: Products
   url: "/products"
   pages:
@@ -408,7 +408,7 @@
     - title: Configure Product Settings
       url: "/configure-product-settings"
     - title: Assigning applications
-      url: "/assign-applications"      
+      url: "/assign-applications"
     - title: Configuring version and promotable properties
       url: "/promotion-version-properties"
     - title: Configuring promotion concurrency
@@ -426,28 +426,28 @@
     - title: About promotions
       url: "/promotions-overview"
     - title: Getting started
-      url: "/getting-started"  
+      url: "/getting-started"
     - title: Promotion building blocks
       url: "/promotion-components"
     - title: Promotion setup guidelines
       url: "/create-promotion-sequence"
     - title: Promotion limitations
-      url: "/promotion-limitations"   
+      url: "/promotion-limitations"
     - title: Promotion Flows
-      url: "/promotion-flow"  
+      url: "/promotion-flow"
     - title: Promotion Policies
-      url: "/promotion-policy"  
+      url: "/promotion-policy"
     - title: Promotion Workflows
-      url: "/promotion-workflow"  
+      url: "/promotion-workflow"
     - title: Promotion hooks
-      url: "/promotion-hooks" 
+      url: "/promotion-hooks"
     - title: Service accounts for Promotion Workflows
-      url: "/service-accounts-promotion-workflows"      
+      url: "/service-accounts-promotion-workflows"
     - title: Promotion contexts in promotion hooks
-      url: "/promotion-context-promotion-workflows"           
+      url: "/promotion-context-promotion-workflows"
     - title: Product promotion settings
-      url: "/product-promotion-props"          
-    - title: Promotion entity YAMLs 
+      url: "/product-promotion-props"
+    - title: Promotion entity YAMLs
       url: "/yaml"
       sub-pages:
         - title: Product YAML
@@ -459,9 +459,9 @@
         - title: Promotion Policy YAML
           url: "/promotion-policy-crd"
     - title: Trigger promotions
-      url: "/trigger-promotions"   
+      url: "/trigger-promotions"
     - title: Tracking releases for Products
-      url: "/product-releases"         
+      url: "/product-releases"
 
 
 
@@ -501,7 +501,7 @@
         - title: Deploy
           url: "/deploy"
         - title: Approval
-          url: "/approval"   
+          url: "/approval"
     - title: Triggers in pipelines
       url: "/triggers"
       sub-pages:
@@ -588,7 +588,7 @@
             - title: Upgrade
               url: "/codefresh-on-prem-upgrade"
             - title: Account and user setup
-              url: "/on-prem-configuration"            
+              url: "/on-prem-configuration"
             - title: Feature management
               url: "/on-prem-feature-management"
     - title: Runner for pipelines
@@ -602,35 +602,37 @@
           url: "/arm-support"
         - title: Runner installation behind firewalls
           url: "/behind-the-firewall"
+        - title: Monitoring Classic Runtime
+          url: "/classic-runtime-monitoring"
     - title: GitOps Runtimes
       url: "/gitops"
-      sub-pages:     
+      sub-pages:
         - title: GitOps Runtime architecture
           url: "/runtime-architecture"
         - title: Runtime concepts
           url: "/runtime-concepts"
         - title: System requirements
-          url: "/runtime-system-requirements"    
+          url: "/runtime-system-requirements"
         - title: Prerequisites
           url: "/runtime-prerequisites"
         - title: Argo CD Admin API token
-          url: "/runtime-argocd-admin-api-token"        
+          url: "/runtime-argocd-admin-api-token"
         - title: Install GitOps Runtime with existing Argo CD
-          url: "/runtime-install-with-existing-argo-cd"                       
+          url: "/runtime-install-with-existing-argo-cd"
         - title: Install GitOps Runtime with new Argo CD
-          url: "/runtime-install-with-new-argo-cd"   
+          url: "/runtime-install-with-new-argo-cd"
         - title: Troubleshoot installation
-          url: "/runtime-troubleshooting"    
+          url: "/runtime-troubleshooting"
         - title: On-premises GitOps Runtime
           url: "/on-prem-gitops-runtime-install"
         - title: Runtime values file validation
-          url: "/gitops-values-yaml-validation"  
-        - title: Configure GitOps Runtime 
-          url: "/runtime-configuration" 
+          url: "/gitops-values-yaml-validation"
+        - title: Configure GitOps Runtime
+          url: "/runtime-configuration"
         - title: Ingress and service-mesh access modes
-          url: "/runtime-install-ingress-service-mesh-access-mode"   
+          url: "/runtime-install-ingress-service-mesh-access-mode"
         - title: Ingress configuration
-          url: "/runtime-ingress-configuration" 
+          url: "/runtime-ingress-configuration"
         - title: Shared Configuration Repository
           url: "/shared-configuration"
         - title: Configuration Runtimes
@@ -644,9 +646,9 @@
         - title: Managing Git Sources in GitOps Runtimes
           url: "/git-sources"
         - title: Download/upgrade GitOps CLI
-          url: "/upgrade-gitops-cli"   
+          url: "/upgrade-gitops-cli"
         - title: Migrating GitOps Runtimes from CLI to Helm
-          url: "/migrate-cli-runtimes-helm"  
+          url: "/migrate-cli-runtimes-helm"
 
 
 
@@ -728,7 +730,7 @@
     - title: Verify authenticity of Codefresh artifacts in GitOps
       url: "/codefresh-signed-artifacts"
     - title: Verify authenticity of artifacts signed with Codefresh pipelines
-      url: "/pipelines-verify-cf-artifacts"      
+      url: "/pipelines-verify-cf-artifacts"
 
 - title: What's new
   url: "/whats-new"
@@ -765,13 +767,13 @@
     - title: Privacy Policy
       url: "/privacy-policy"
     - title: Acceptable Use Policy
-      url: "/acceptable-use-policy"      
+      url: "/acceptable-use-policy"
     - title: Support Service Objectives
       url: "/sla"
     - title: Previous Service Commitment
       url: "/previous"
     - title: Support Triage Definitions
-      url: "/support-triage-definitions"      
+      url: "/support-triage-definitions"
     - title: Cloud Credits
       url: "/cloud-credits"
     - title: Legacy Codefresh Terms of Service
