@@ -193,7 +193,9 @@ The metric is always emitted for every build step phase.
 
 #### `codefresh.classic.build.step.cpu.time`
 
-The metric is always emitted for every build step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
@@ -210,7 +212,9 @@ The metric is always emitted for every build step. It may be missing if the step
 
 #### `codefresh.classic.build.step.cpu.periods`
 
-The metric is emitted for every build step only if CPU limits has been defined on the step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
@@ -225,7 +229,9 @@ The metric is emitted for every build step only if CPU limits has been defined o
 
 #### `codefresh.classic.build.step.cpu.throttled.periods`
 
-The metric is emitted for every build step only if CPU limits has been defined on the step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
@@ -240,7 +246,9 @@ The metric is emitted for every build step only if CPU limits has been defined o
 
 #### `codefresh.classic.build.step.cpu.throttled.time`
 
-The metric is emitted for every build step only if CPU limits has been defined on the step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
@@ -257,7 +265,9 @@ The metric is emitted for every build step only if CPU limits has been defined o
 
 #### `codefresh.classic.build.step.memory.usage`
 
-The metric is always emitted for every build step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
@@ -272,7 +282,9 @@ The metric is always emitted for every build step. It may be missing if the step
 
 #### `codefresh.classic.build.step.memory.working_set`
 
-The metric is always emitted for every build step. It may be missing if the step was too short to collect Docker metrics.
+The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+
+For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
 {: .table .table-bordered .table-hover}
 | Name | Instrument Type | Unit | Description |
