@@ -142,10 +142,10 @@ Code samples and internal references use `isc`.
 | Environments           |N/A | None  |
 | Product                |`isc/resources/configuration/products` | Git user token |
 | Applications           |Git Source associated with Runtime | Git user token |
-| Promotion Flow         |`isc/configuration/promotion-flows`| Git user token |
-| Promotion Policy       |`isc/configuration/promotion-policies`| Git user token |
+| Promotion Flow         |`isc/resources/configuration/promotion-flows`| Git user token |
+| Promotion Policy       |`isc/resources/configuration/promotion-policies`| Git user token |
 | Promotion Workflows    |`isc/resources/control-planes/promotion-workflows` |Git user token |
-| Promotion Template     |`isc/configuration/promotion-templates`| N/A |
+| Promotion Template     |`isc/resources/configuration/promotion-templates`| N/A |
 
 
 
