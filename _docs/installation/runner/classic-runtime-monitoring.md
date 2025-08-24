@@ -193,7 +193,9 @@ The metric is always emitted for every build step phase.
 
 #### `codefresh.classic.build.step.cpu.time`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
@@ -212,7 +214,9 @@ For steps of type `build` that are not using `buildx` with `docker-container` dr
 
 #### `codefresh.classic.build.step.cpu.periods`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
@@ -229,7 +233,9 @@ For steps of type `build` that are not using `buildx` with `docker-container` dr
 
 #### `codefresh.classic.build.step.cpu.throttled.periods`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
@@ -246,7 +252,9 @@ For steps of type `build` that are not using `buildx` with `docker-container` dr
 
 #### `codefresh.classic.build.step.cpu.throttled.time`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
@@ -265,7 +273,9 @@ For steps of type `build` that are not using `buildx` with `docker-container` dr
 
 #### `codefresh.classic.build.step.memory.usage`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
@@ -282,7 +292,9 @@ For steps of type `build` that are not using `buildx` with `docker-container` dr
 
 #### `codefresh.classic.build.step.memory.working_set`
 
-The metric is always emitted for every build step, unless the step was too short to collect Docker metrics.
+The metric is emitted for every build step, unless the step was too short to collect Docker metrics.
+
+Emitted for Linux builds only. Not emitted if `dind` component is rootless.
 
 For steps of type `build` that are not using `buildx` with `docker-container` driver, this metric may be underreported.
 
