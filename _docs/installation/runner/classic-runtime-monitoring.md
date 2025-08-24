@@ -124,7 +124,8 @@ The metric is always emitted for every build step.
 | Attribute | Type | Description | Examples |
 | --------- | ---- | ----------- | -------- |
 | **`cf.classic.build.step.name`** | string | The name of the step as defined in the pipeline YAML. Unique per build. | `my-clone` |
-| **`cf.classic.build.step.type`** | string | The type of the step. | `cf-internal` (for internal steps); `freestyle`; `build` |
+| **`cf.classic.build.step.type`** | string enum | The type of the step (for internal steps). | `_internal:pre-step` \| `_internal:post-step` \| `_internal:init` |
+| **`cf.classic.build.step.type`** | string | The type of the step. | `freestyle`; `build` |
 | **`cf.classic.build.step.version`** | string | The version of the step. | `1.0.0`; `latest` |
 | **`cf.classic.build.step.phase`** | string enum | The phase of the build step. | `preparing` \| `running` \| `finalizing` \| `failed` \| `succeeded` \| `terminated` \| `finished` |
 
