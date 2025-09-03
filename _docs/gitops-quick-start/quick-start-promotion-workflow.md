@@ -5,6 +5,12 @@ group: gitops-quick-start
 toc: true
 ---
 
+{{site.data.callout.callout_tip}}
+**Promotions is currently in development.**
+This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
+We don't recommend using Promotions for mission-critical or production deployments at this time.
+{{site.data.callout.end}}
+
 ## Promotion Workflows quick start
 This quick start will guide you through creating a Promotion Workflow in Codefresh.  
 
