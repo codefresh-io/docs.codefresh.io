@@ -15,7 +15,7 @@ A Codefresh account with a GitOps Runtime can store configuration manifests for 
 
 
 ##### When is it created? 
-The Shared Configuration Repository (internally ISO/iso) is created on installing the first Hybrid GitOps Runtime in the account. See [GitOps Runtimes & Shared Configuration Repos](#gitops-runtimes--shared-configuration-repos).
+The Shared Configuration Repository (internally ISC/isc) is created on installing the first Hybrid GitOps Runtime in the account. See [GitOps Runtimes & Shared Configuration Repos](#gitops-runtimes--shared-configuration-repos).
 
 
 {{site.data.callout.callout_warning}}
