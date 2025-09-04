@@ -731,30 +731,6 @@ OR
 Refer to our [troubleshooting section]({{site.baseurl}}/docs/kb/articles/runtime-issues/#unable-to-communicate-with-runtime-name-or-two-or-more-runtimes) for a list of possible causes and the corresponding corrective actions.
 {% endif %}
 
-## View notifications in Activity Log
-
-The Activity Log is a quick way to monitor notifications for Runtime events such as upgrades. A pull-down panel in the Codefresh toolbar, the Activity Log shows ongoing, success, and error notifications, sorted by date, starting with today's date.
-
-1. In the Codefresh UI, on the top-right of the toolbar, select  **Activity Log**.
-1. To see notifications for provisioned Runtimes, filter by **Runtime**.
-
-
-  <!--- ask dev for help -->
-  {% include image.html
-  lightbox="true"
-  file="/images/runtime/runtime-activity-log.png"
-  url="/images/runtime/runtime-activity-log.png"
-  alt="Activity Log filtered by Runtime events"
-  caption="Activity Log filtered by Runtime events"
-  max-width="30%"
-  %}
-
-{:start="3"}
-
-1. To see more information on an error, select the **+** sign.
-
-
-
 ## Related articles
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)  
 [Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
