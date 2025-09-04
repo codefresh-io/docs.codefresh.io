@@ -1,1 +1,1 @@
-../_posts/2025-08-29-August-release-notes.md
+../_posts/2025-08-29-august-release-notes.md
