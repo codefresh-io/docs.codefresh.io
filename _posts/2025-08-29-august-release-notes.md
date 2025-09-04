@@ -76,8 +76,9 @@ This enhancement gives teams greater peace of mind, ensuring that access policie
 {% endif %}
 
 ## Bug fixes
+TBD
 ##### General
-* Fixed an issue where Quick Search (CMD + K) did not return any GitOps-related items, including applications. Users can now search and access GitOps items directly through Quick Search as expected.
+ * Fixed an issue where Quick Search (CMD + K) did not return any GitOps-related items, including applications. Users can now search and access GitOps items directly through Quick Search as expected.
 {% if page.collection == "posts" %}
 ##### Pipelines
 * Fixed an issue that caused timeouts when loading UI pages for pipelines with a large number of triggers.
