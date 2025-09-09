@@ -7,6 +7,11 @@ redirect_from:
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
+
 A key feature of Codefresh GitOps is the ability to automatically correlate software features with their deployments—identifying not just the software version, but also which features are included in each release.
 
 By adding an issue-tracking integration for GitOps, you can link issues (such as user stories, bugs, and feature requests) directly to your deployments. This allows you to track which features are deployed and when, providing better visibility and traceability in your images.

@@ -5,6 +5,10 @@ group: gitops-integrations
 sub_group: ci-integrations
 toc: true
 ---
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
 
 ## CI integrations: Complete argument reference
 The table describes _all_ the arguments required for CI integrations in general. The actual arguments required, differs according to the specific CI integration tool.

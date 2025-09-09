@@ -5,6 +5,11 @@ group: gitops-integrations
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
+
 Codefresh supports integration with popular container registries, including Docker Hub, JFrog Artifactory, and others, enabling seamless management of container images in GitOps workflows.
 
 By adding a container registry integration in Codefresh, you can reference it by name in third-party CI tools like GitHub Actions or Codefresh Pipelines, rather than using explicit credentials. This simplifies your workflow and enhances security.  

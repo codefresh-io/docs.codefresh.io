@@ -6,6 +6,10 @@ sub_group: container-registries
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
 
 Codefresh offers native support for interacting with GitHub Container Registry, allowing you to host and manage Docker container images within your personal or organization account on GitHub, to push, pull, and deploy images seamlessly.
 

@@ -6,6 +6,10 @@ sub_group: ci-integrations
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
 
 If Jenkins is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage Jenkins for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata. 
 

@@ -6,6 +6,10 @@ sub_group: issue-tracking
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
 
 Codefresh offers native integration with Atlassian Jira, enabling you to enrich images with Jira ticket information. This integration allows you to track a feature from its creation in Jira through to its implementation and deployment across environments, providing visibility into the full lifecycle.
 
