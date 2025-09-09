@@ -1,6 +1,6 @@
 ---
-title: "Install GitOps Runtime in a k8s namespace scope"
-description: "Provision GitOps Runtimes with a new Argo CD installation in a dedicated k8s namespace scope"
+title: "Install GitOps Runtime in a Kubernetes namespace scope"
+description: "Provision GitOps Runtimes with a new Argo CD installation in a dedicated Kubernetes namespace scope"
 toc: true
 ---
 
@@ -127,13 +127,13 @@ global:
 
 Each runtime must use unique values:
 
-```bash
+{% highlight bash %}
 export RELEASE_NAME=<RELEASE_NAME>
 export RUNTIME_NAME=<RUNTIME_NAME>
 export NAMESPACE=<RUNTIME_NAMESPACE>
 export INGRESS_HOST=<INGRESS_HOST>
 export CONTEXT=<KUBE_CONTEXT>
-```
+{% endhighlight %}
 
 ---
 
@@ -141,15 +141,15 @@ export CONTEXT=<KUBE_CONTEXT>
 
 For the **first runtime** (with CRDs):
 
-```bash
+{% highlight bash %}
 helm upgrade ${RELEASE_NAME}   --install   --namespace ${NAMESPACE}   --create-namespace   --kube-context ${CONTEXT}   --set global.runtime.name=${RUNTIME_NAME}   --set "global.runtime.ingress.hosts[0]=${INGRESS_HOST}"   -f values.yaml   -f multi-values.yaml   -f first-values.yaml   oci://quay.io/codefresh/gitops-runtime:0.24.0
-```
+{% endhighlight %}
 
 For **additional runtimes** (skip CRDs):
 
-```bash
+{% highlight bash %}
 helm upgrade ${RELEASE_NAME}   --install   --namespace ${NAMESPACE}   --create-namespace   --kube-context ${CONTEXT}   --set global.runtime.name=${RUNTIME_NAME}   --set "global.runtime.ingress.hosts[0]=${INGRESS_HOST}"   -f values.yaml   -f multi-values.yaml   oci://quay.io/codefresh/gitops-runtime:0.24.0
-```
+{% endhighlight %}
 
 ---
 
@@ -157,9 +157,9 @@ helm upgrade ${RELEASE_NAME}   --install   --namespace ${NAMESPACE}   --create-n
 
 1. Check that a new Argo CD instance is running in the target namespace:
 
-   ```bash
+   {% highlight bash %}
    kubectl get pods -n ${NAMESPACE}
-   ```
+   {% endhighlight %}
 
 2. Confirm the runtime appears in the Codefresh UI.
 

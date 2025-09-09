@@ -21,7 +21,6 @@ The Shared Configuration Repository (internally ISC/isc) is created on installin
 {{site.data.callout.callout_warning}}
 **IMPORTANT**  
 Only _Codefresh account administrators should have access_ to the Shared Configuration Repository. Its content is automatically generated and maintained by Codefresh.  
-While it is useful to understand its structure, we recommend using it for reference only, and _NOT_ for making commits or manual changes. 
 {{site.data.callout.end}}
 
 ##### Benefits
