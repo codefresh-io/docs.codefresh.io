@@ -33,15 +33,18 @@ If you have not yet upgraded, you have 2 options:
 
 
 ##### Option 1:  
-Use the Modern Helm-Based Runner Installer
-* Breaking change: Support for legacy Docker images ([manifest schema v2, schema 1](https://docs.docker.com/engine/deprecated/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#pushing-and-pulling-with-image-manifest-v2-schema-1){:target=”\_blank”}) has been removed. Pipelines that build or pull these images will fail after upgrade.
-* What to do:
-*Identify and update deprecated images using our [migration guide](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink){:target=”\_blank”} in [GitHub](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart){:target=”\_blank”}.
-*Upgrade to Runner 8.0 via the Helm-based installer.  
+**Use the Modern Helm-Based Runner Installer**  
+Breaking change: Support for legacy Docker images ([manifest schema v2, schema 1](https://docs.docker.com/engine/deprecated/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#pushing-and-pulling-with-image-manifest-v2-schema-1){:target=”\_blank”}) has been removed. Pipelines that build or pull these images will fail after upgrade.  
+  
+**What to do:**
+* Identify and update deprecated images using our [migration guide](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink){:target=”\_blank”} in [GitHub](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart){:target=”\_blank”}.
+* Upgrade to Runner 8.0 via the Helm-based installer. 
+
 ##### Option 2:  
-Continue with the Legacy CLI-Based Runner Installer
-* The legacy installer is now deprecated. You will no longer receive upgrades, updates, or security patches. It will remain locked to the last version based on Docker v26.
-* What to do:
+**Continue with the Legacy CLI-Based Runner Installer**  
+The legacy installer is now deprecated. You will no longer receive upgrades, updates, or security patches. It will remain locked to the last version based on Docker v26.  
+  
+**What to do:**
 * We strongly recommend [migrating to the Helm-based installer](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/){:target=”\_blank”}.
 * This lets you upgrade to Runner 8.0 and continue receiving updates and security patches.
 
