@@ -8,7 +8,6 @@ We're excited to announce a major enhancement to the GitOps App breadcrumbs, des
 * **Direct Runtime navigation**: We added the **Runtime name** directly to your breadcrumb trail. A simple click on the Runtime name will take you to the main applications page, automatically filtered to display only the apps associated with that specific runtime.
 * **Visual clarity with new icons**: To help you better understand your application's hierarchy at a glance, we introduced new icons for each breadcrumb component:
 * A unique icon for the **Runtime Name**.
-* A distinct icon for the **GitSource**, showing you where the application manifest is defined.
 * A helpful icon for the **ApplicationSet**, if your application uses one.
 * A clear icon for the **Application Name** itself.
 These improvements provide a more visually organized and functional navigation system, helping you manage your GitOps applications with greater speed and clarity.
@@ -24,23 +23,25 @@ These improvements provide a more visually organized and functional navigation s
    %}
 {% if page.collection == "posts" %}
 
-### Pipelines: Classic Runner 8.0 Release – Breaking Changes
+### Pipelines: Classic Runner 8.x Release – Breaking Changes
 
-On July 17, 2025, we released [Classic Runner version 8.0](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime/8.2.0#to-8-2-x){:target=”\_blank”} (based on Docker v28) for our hybrid customers. This release introduces breaking changes and requires action before upgrading.
+On July 17, 2025, we released [Classic Runner version 8.x](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime/8.2.0#to-8-2-x){:target=”\_blank”} (based on Docker v28) for our hybrid customers. This release introduces breaking changes and requires action before upgrading.
 
 
 **For Hybrid Customers**
 If you have not yet upgraded, you have 2 options:
 
 
-**Option 1**: Use the Modern Helm-Based Runner Installer
+##### Option 1:  
+Use the Modern Helm-Based Runner Installer
 * Breaking change: Support for legacy Docker images ([manifest schema v2, schema 1](https://docs.docker.com/engine/deprecated/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#pushing-and-pulling-with-image-manifest-v2-schema-1){:target=”\_blank”}) has been removed. Pipelines that build or pull these images will fail after upgrade.
 * What to do:
 *Identify and update deprecated images using our [migration guide](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink){:target=”\_blank”} in [GitHub](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart){:target=”\_blank”}.
-*Upgrade to Runner 8.0 via the Helm-based installer.
-**Option 2**: Continue with the Legacy CLI-Based Runner Installer
+*Upgrade to Runner 8.0 via the Helm-based installer.  
+##### Option 2:  
+Continue with the Legacy CLI-Based Runner Installer
 * The legacy installer is now deprecated. You will no longer receive upgrades, updates, or security patches. It will remain locked to the last version based on Docker v26.
-*What to do:
+* What to do:
 * We strongly recommend [migrating to the Helm-based installer](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/){:target=”\_blank”}.
 * This lets you upgrade to Runner 8.0 and continue receiving updates and security patches.
 
@@ -76,16 +77,6 @@ This enhancement gives teams greater peace of mind, ensuring that access policie
 {% endif %}
 
 ## Bug fixes
-TBD
-##### General
- * Fixed an issue where Quick Search (CMD + K) did not return any GitOps-related items, including applications. Users can now search and access GitOps items directly through Quick Search as expected.
-{% if page.collection == "posts" %}
 ##### Pipelines
-* Fixed an issue that caused timeouts when loading UI pages for pipelines with a large number of triggers.
-* Fixed an issue where MacOS builds failed with an 'Unauthorized' error when provisioning the runtime, preventing customers from running MacOS builds successfully.
-* Fixed an issue where builds intermittently failed with a 'Failed to prepare dockerfile' error, preventing the Dockerfile from being fetched correctly during the build process.
-* Fixed an issue where SaaS builds failed due to insufficient disk space by re-enabling cleanup processes.
-
-##### GitOps
-{% endif %}
-* Fixed an issue where applications nested more than three layers deep were not displayed in the UI tree view. The full application hierarchy now appears correctly in the tree view.
+* Fixed recurring "socket hang up" build failures in by increasing engine pod CPU requests and stabilizing dind/network behavior.
+* Fixed cron trigger creation errors caused by outdated regex handling of short custom cron expressions, adding clearer error messaging.
