@@ -16,7 +16,7 @@ This setup allows you to run multiple isolated runtimes in the same Kubernetes c
 - A Kubernetes cluster with access via `kubectl` and `helm`.
 - Cluster administrator permissions (needed for the first runtime installation).
 - Codefresh account with GitOps enabled.
-- Runtime Helm chart version **0.24.0 or earlier** (multi-namespace supported).
+- Runtime Helm chart version **0.24.0 or later** (multi-namespace supported).
 - Unique values for each runtime:
   - `RELEASE_NAME`
   - `RUNTIME_NAME`
