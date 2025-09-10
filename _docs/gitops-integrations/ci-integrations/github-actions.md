@@ -6,6 +6,11 @@ sub_group: ci-integrations
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
+
 If GitHub Actions is your CI tool, you can integrate it with GitOps for streamlined deployment, image enrichment, and reporting. This integration allows you to leverage GitHub Actions for CI tasks—such as building, testing, and scanning code—while using GitOps for managing deployments and tracking enriched image metadata. 
 
  Connecting a GitHub Action, adds the CI information to images which are displayed in the Images dashboard, as in the example below.  

@@ -47,7 +47,7 @@ function syncArgohubRedirectMap(
 ) {
   const filePath = join(
     __dirname,
-    "../assets/js/src",
+    "../assets/js/argohub-redirect",
     "argohub-redirect-mapping.json"
   );
   const data = readFileSync(filePath, "utf8");

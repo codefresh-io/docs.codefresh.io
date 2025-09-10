@@ -1,0 +1,1 @@
+../../_docs/installation/gitops/runtime-install-namespace-scope.md

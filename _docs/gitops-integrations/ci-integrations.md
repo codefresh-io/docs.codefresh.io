@@ -5,6 +5,11 @@ group: gitops-integrations
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
+
 ## Codefresh GitOps with CI solutions 
 
 With Codefresh GitOps, you can integrate not only with Codefresh CI but also with other popular Continuous Integration (CI) solutions.

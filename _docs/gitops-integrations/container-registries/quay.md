@@ -6,6 +6,11 @@ sub_group: container-registries
 toc: true
 ---
 
+{% if page.collection == site.gitops_collection %}
+>**Early Access**  
+This feature is available upon request through our Early Access Program. As it is still in development, you may encounter occasional bugs or limitations.
+{% endif %}
+
 Codefresh offers native support for integrating with Quay, enabling seamless pushing, pulling, and deploying of container images.
 
 By adding a Quay integration in Codefresh, you can reference the integration account in external CI tools, such as GitHub Actions, using the integration name instead of managing explicit credentials. This simplifies security and enhances the ease of managing integrations in GitOps.

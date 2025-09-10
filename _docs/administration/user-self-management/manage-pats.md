@@ -154,7 +154,9 @@ max-width="70%"
 1. Define the following:
   * Token name
   * Expiration date
-  * Select scope: `repo`
+  * Select scopes: 
+      * `repo` 
+      * `admin:repo_hook`
 
   {% 
   include 
