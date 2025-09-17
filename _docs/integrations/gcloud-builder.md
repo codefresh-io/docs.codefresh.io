@@ -7,7 +7,7 @@ toc: true
 
 Google Cloud builder is an online service that allows you to build Docker images using the Google infrastructure and also push them to the Google Cloud registry.
 
-You can also use Cloud builder in a Codefresh pipeline in place of the  standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GCR).
+You can also use Cloud builder in a Codefresh pipeline in place of the  standard [build step]({{site.baseurl}}/docs/pipelines/steps/build/). This way you can take advantage of the Cloud builder in your Codefresh pipelines, but still push to other registries that are connected to Codefresh (and not just GAR).
 
 
 ## Prerequisites
@@ -30,18 +30,18 @@ You will use this JSON file either by integrating a [Google Docker registry]({{s
 
 The Google Cloud builder integration/authentication can be used in the following ways:
 
-1. Authentication is retrieved from the GCR integration in your Codefresh account, and the resulting Docker image:
-  * Is also be pushed to GCR.
+1. Authentication is retrieved from the GAR integration in your Codefresh account, and the resulting Docker image:
+  * Is also be pushed to GAR.
   * Is pushed to any other [external registry connected to Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/).
 1. Authentication is defined in the pipeline itself, and the resulting image can be pushed to any registry connected to Codefresh
 
-In the first case, you will define the service account file centrally in the GCR integration screen, and then any pipeline can authenticate to Google Cloud builder without any further configuration.
+In the first case, you will define the service account file centrally in the GAR integration screen, and then any pipeline can authenticate to Google Cloud builder without any further configuration.
 
 {% 
 	include image.html 
 	lightbox="true" 
-	file="/images/integrations/docker-registries/add-gcr-registry.png" 
-	url="/images/integrations/docker-registries/add-gcr-registry.png" 
+	file="/images/integrations/docker-registries/add-gar-registry.png" 
+	url="/images/integrations/docker-registries/add-gar-registry.png" 
 	alt="Using the JSON service account in Codefresh" 
 	caption="Using the JSON service account in Codefresh"
 	max-width="50%" 
@@ -51,7 +51,7 @@ In the first case, you will define the service account file centrally in the GCR
 
 ## Using Google Cloud builder in a Codefresh pipeline
 
-In the most straightforward scenario, you want to create a Docker image with Google Cloud builder and also push to GCR.
+In the most straightforward scenario, you want to create a Docker image with Google Cloud builder and also push to GAR.
 
 {% include image.html 
 lightbox="true" 
@@ -81,7 +81,7 @@ steps:
     image_name: my-golang-image
     working_directory: ./
     tag: slim
-    registry: gcr
+    registry: gar
     dockerfile: Dockerfile.multistage
     provider:
       type: gcb
@@ -115,7 +115,7 @@ The Docker image is also visible in the Google Cloud Console view of your regist
 
 ### Pushing to a different registry
 
-Even though the Cloud builder pipeline step authentication is fetched from the GCR configuration, you don't have to push to GCR.
+Even though the Cloud builder pipeline step authentication is fetched from the GAR configuration, you don't have to push to GAR.
 To push the Docker image to another connected registry, simply change the `registry` property in the build step.  
 
 The pipeline in the example below pushes the Docker image created to another registry that is identified by [Azure]({{site.baseurl}}/docs/integrations/docker-registries/azure-docker-registry/).
@@ -241,7 +241,7 @@ The extra fields are:
 | ------------------------------------------ | ------------------------------------------------------ | ------------------------- |
 | `type`                                    | Defines which provider to use (currently `gcb` and `cf` types are available). It uses `cf` provider by default and the whole provider section can be omitted for a regular build step.   | Required                  |
 | `arguments`                  | Parameters  for Google Cloud builder                                  | Required                  |
-| `google_app_creds`           | base64 encoded string of the [Google app credentials JSON](https://cloud.google.com/docs/authentication/production){:target="\_blank"}. By default, taken from the existing GCR integration.   | Optional                  | 
+| `google_app_creds`           | base64 encoded string of the [Google app credentials JSON](https://cloud.google.com/docs/authentication/production){:target="\_blank"}. By default, taken from the existing GAR integration.   | Optional                  | 
 | `cache`                  | The list of Kaniko cache parameters                             | Required                  |
 | `repo`    | Docker repository path for the Kaniko cache                                  | Required                  |
 | `ttl`    | Kaniko cache retention. Default value is `336h`                                  | Optional                 |
