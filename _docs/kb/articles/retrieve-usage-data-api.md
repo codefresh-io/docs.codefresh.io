@@ -81,7 +81,7 @@ curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/repor
 
 ### Suggested script
 
-```bash
+```
 #!/bin/bash
 # Expects these env vars:
 #   API_KEY       -> Codefresh API key
