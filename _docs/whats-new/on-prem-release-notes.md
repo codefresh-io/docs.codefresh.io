@@ -27,7 +27,16 @@ Pipelines using these images will fail after upgrade — [update them before pro
 To upgrade to the new Docker runtime 8.x, you must first [migrate to the Helm-based runtime](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/) in [this repo](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart)
 
 ### Features & enhancements
-This release focuses on stability for an improved user experience.
+**Enhanced GitOps App Breadcrumbs**  
+Navigation is now clearer and faster with:
+- Runtime link in breadcrumbs – click to view all apps for that runtime.
+- New icons for Runtime, GitSource, ApplicationSet, and Application, making app hierarchy easier to understand at a glance.
+
+**Easily Add Secret Variables**  
+You can now create secret variables directly in the UI:
+- One-step creation – no manual encryption needed.
+- Improved security – secrets are encrypted automatically.
+- Clearer workflow – easily distinguish regular vs. secret variables.
 
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
