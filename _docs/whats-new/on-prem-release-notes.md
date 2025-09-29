@@ -15,14 +15,16 @@ For detailed instructions on installing v2.9, visit [ArtifactHub](https://artifa
 
 
 #### Upgrading to v2.9
+The maximum GitOps runtime that is supported for this version is **0.24.x**.
+
 >**NOTE**  
 ⚠️ Breaking Changes in On-Prem 2.9
 
-**[Classic runtime 8.x](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#migrating-from-cli-based-installation-to-helm-chart) now uses Docker v28, which drops support for legacy (manifest v2 schema 1) images.**  
-Pipelines using these images will fail after upgrade — update them before proceeding.
+**[Classic runtime 8.x](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#migrating-from-cli-based-installation-to-helm-chart) now uses Docker v28, which drops support for legacy ([manifest v2 schema 1](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)) images.**  
+Pipelines using these images will fail after upgrade — [update them before proceeding](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/).
 
 **CLI-based runtime installs are deprecated.**  
-To upgrade to the new Docker runtime 8.x, you must first migrate to the Helm-based runtime in
+To upgrade to the new Docker runtime 8.x, you must first [migrate to the Helm-based runtime](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/) in [this repo](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart)
 
 ### Features & enhancements
 This release focuses on stability for an improved user experience.
@@ -37,7 +39,10 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
-| `newUsersAndTeamsPages`  | Activates the new user and team management experience with an updated layout and streamlined controls. | FALSE         |
+| `hideProductManageApps`  | Hide ability to manage apps directly from the product view | TRUE |
+| `csdpAppAndAppSetWithoutManifestFields` | Gitops Application Tree optimization. It will use an improved MongoDB aggregation pipeline when enabled. Gitops apps and app sets will be extracted from DB without heavy manifest fields (when need to read >2k items) | TRUE |
+| `pipelineTriggerOptimization` | Enables optimization for requests from pipeline manager to cf-api internal for getting trigger information | TRUE |
+| `newVariablesConfiguration` | New component for variables configuration | TRUE |
 
 
 #### Updated Feature Flags in v2.9
