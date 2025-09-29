@@ -69,20 +69,20 @@ The table below describes the changes to existing Feature Flags in the Codefresh
 
 ##### General
 
-* Blank screen after login for invited users with SSO sync enabled.
+* mongoSeedJob now honors RUNTIME_MONGO_TLS_VALIDATE="false", allowing seeds to run against MongoDB with self-signed certificates without manual script changes.
+* Removing an LDAP IDP now deactivates and unassigns users from that IDP, preventing broken states and login issues. This approach also avoids accidental removals when users belong to multiple accounts.
 
 
 ##### Pipelines 
-* Git trigger for "Release published" fires incorrectly when any release-related trigger is enabled. 
-* Webhook events for Bitbucket ignored when pipeline trigger uses different Bitbucket integrations. 
-* For GitHub, list of files modified by PR (pull request) does not include all modified files. 
+* cf-system-etl-postgres pods fail with self-signed certificate errors.
+* Windows runtime builds using cf_export no longer fail with exit code 1 when running on Engine v1.178.1.
+* Stable feature flags are now enabled by default in RabbitMQ when upgrading from 2.6.7 to 2.8.0/2.8.3, preventing upgrade failures.
+* Runtime upgrades no longer hit “Resulting document after update is larger than 16777216.” Fixed in runtime-environment-manager v3.42.1.
+* The Terraform codefresh_pipeline resource now correctly updates the permit_restart_from_failed_steps setting, ensuring changes are reflected in pipeline configuration and UI.
 
 
 ##### GitOps
-* GitOps permission rule for applications including the Git Source attribute not supported for applications from ApplicationSets.<!--- runtime version with fix to be released  -->
-* Removed the **SSH** option from the **Repository** field in the Create Git Source form. Selecting SSH resulted in the error `failed creating git-source. error: Invalid URL`, as SSH is not a valid option for Git Sources. 
-* Inaccurate change failure rate for DORA metrics. 
-* Labels for ingress controllers not supported in GitOps Runtime Helm chart.
+* Added support for self-signed certificates in the cf-argocd-extras event-reporter and sources-server, eliminating the need for insecure config workarounds.
 
 
 ## On-premises version 2.8
