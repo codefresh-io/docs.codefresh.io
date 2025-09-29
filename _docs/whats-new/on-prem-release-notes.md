@@ -6,6 +6,64 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.9
+
+### Installation & Upgrade
+
+#### Installing v2.9
+For detailed instructions on installing v2.9, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+
+#### Upgrading to v2.9
+>**NOTE**  
+⚠️ Breaking Changes in On-Prem 2.9
+
+**[Classic runtime 8.x](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#migrating-from-cli-based-installation-to-helm-chart) now uses Docker v28, which drops support for legacy (manifest v2 schema 1) images.**  
+Pipelines using these images will fail after upgrade — update them before proceeding.
+
+**CLI-based runtime installs are deprecated.**  
+To upgrade to the new Docker runtime 8.x, you must first migrate to the Helm-based runtime in
+
+### Features & enhancements
+This release focuses on stability for an improved user experience.
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+
+#### New Feature Flags in v2.9
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.9.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `newUsersAndTeamsPages`  | Activates the new user and team management experience with an updated layout and streamlined controls. | FALSE         |
+
+
+#### Updated Feature Flags in v2.9
+There are no updated feature flags in this release. 
+
+### Bug fixes
+
+
+##### General
+
+* Blank screen after login for invited users with SSO sync enabled.
+
+
+##### Pipelines 
+* Git trigger for "Release published" fires incorrectly when any release-related trigger is enabled. 
+* Webhook events for Bitbucket ignored when pipeline trigger uses different Bitbucket integrations. 
+* For GitHub, list of files modified by PR (pull request) does not include all modified files. 
+
+
+##### GitOps
+* GitOps permission rule for applications including the Git Source attribute not supported for applications from ApplicationSets.<!--- runtime version with fix to be released  -->
+* Removed the **SSH** option from the **Repository** field in the Create Git Source form. Selecting SSH resulted in the error `failed creating git-source. error: Invalid URL`, as SSH is not a valid option for Git Sources. 
+* Inaccurate change failure rate for DORA metrics. 
+* Labels for ingress controllers not supported in GitOps Runtime Helm chart.
+
+
 ## On-premises version 2.8
 
 ### Installation & Upgrade
