@@ -20,14 +20,14 @@ The maximum GitOps runtime that is supported for this version is **0.24.x**.
 >**NOTE**  
 ⚠️ Breaking Changes in On-Prem 2.9
 
-**[Classic runtime 8.x](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime?utm_source=beamer&utm_medium=sidebar&utm_campaign=Hybrid-Customers-Classic-Runner-80-Is-Here-Action-Required&utm_content=textlink#migrating-from-cli-based-installation-to-helm-chart) now uses Docker v28, which drops support for legacy ([manifest v2 schema 1](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)) images.**  
+**[Classic runtime 8.x](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime) now uses Docker v28, which drops support for legacy ([manifest v2 schema 1](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)) images.**  
 Pipelines using these images will fail after upgrade — [update them before proceeding](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/).
 
 **CLI-based runtime installs are deprecated.**  
 To upgrade to the new Docker runtime 8.x, you must first [migrate to the Helm-based runtime](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/) in [this repo](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart)
 
 ### Features & enhancements
-**Enhanced GitOps App Breadcrumbs**  
+[**Enhanced GitOps App Breadcrumbs**](https://app.getbeamer.com/codefreshio7974/en/exciting-new-feature-enhanced-gitops-app-breadcrumbs-9Jr0zhN8)  
 Navigation is now clearer and faster with:
 - Runtime link in breadcrumbs – click to view all apps for that runtime.
 - New icons for Runtime, GitSource, ApplicationSet, and Application, making app hierarchy easier to understand at a glance.
@@ -35,7 +35,7 @@ Navigation is now clearer and faster with:
 **Applications are now associated with Products only via an Annotation.**  
 The older "Manage Apps" section for product association has been deprecated.
 
-**Easily Add Secret Variables**  
+[**Easily Add Secret Variables**](https://app.getbeamer.com/codefreshio7974/en/easily-add-secret-variables)  
 You can now create secret variables directly in the UI:
 - One-step creation – no manual encryption needed.
 - Improved security – secrets are encrypted automatically.
