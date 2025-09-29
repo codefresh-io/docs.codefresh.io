@@ -54,12 +54,15 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `hideProductManageApps`  | Hide ability to manage apps directly from the product view | TRUE |
 
 
-
 #### Updated Feature Flags in v2.9
+The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.9.
+
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
-| `newVariablesConfiguration` | New component for variables configuration | TRUE | 
+| `newVariablesConfiguration`  | New component for variables configuration | TRUE |
+
+
 
 ### Bug fixes
 
