@@ -32,6 +32,9 @@ Navigation is now clearer and faster with:
 - Runtime link in breadcrumbs – click to view all apps for that runtime.
 - New icons for Runtime, GitSource, ApplicationSet, and Application, making app hierarchy easier to understand at a glance.
 
+**Applications are now associated with Products only via an Annotation.**  
+The older "Manage Apps" section for product association has been deprecated.
+
 **Easily Add Secret Variables**  
 You can now create secret variables directly in the UI:
 - One-step creation – no manual encryption needed.
@@ -49,13 +52,14 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | Feature Flag       | Description  | Default Value |
 | -----------        | --------------| ------------- |
 | `hideProductManageApps`  | Hide ability to manage apps directly from the product view | TRUE |
-| `csdpAppAndAppSetWithoutManifestFields` | Gitops Application Tree optimization. It will use an improved MongoDB aggregation pipeline when enabled. Gitops apps and app sets will be extracted from DB without heavy manifest fields (when need to read >2k items) | TRUE |
-| `pipelineTriggerOptimization` | Enables optimization for requests from pipeline manager to cf-api internal for getting trigger information | TRUE |
-| `newVariablesConfiguration` | New component for variables configuration | TRUE |
+
 
 
 #### Updated Feature Flags in v2.9
-There are no updated feature flags in this release. 
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `newVariablesConfiguration` | New component for variables configuration | TRUE | 
 
 ### Bug fixes
 
