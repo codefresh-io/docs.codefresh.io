@@ -6,6 +6,85 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.9
+
+### Installation & Upgrade
+
+#### Installing v2.9
+For detailed instructions on installing v2.9, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+
+#### Upgrading to v2.9
+The maximum GitOps runtime that is supported for this version is **0.24.x**.
+
+>**NOTE**  
+⚠️ Breaking Changes in On-Prem 2.9
+
+**[Classic runtime 8.x](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime) now uses Docker v28, which drops support for legacy ([manifest v2 schema 1](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1)) images.**  
+Pipelines using these images will fail after upgrade — [update them before proceeding](https://codefresh.io/docs/docs/kb/articles/upgrade-deprecated-docker-images/).
+
+**CLI-based runtime installs are deprecated.**  
+To upgrade to the new Docker runtime 8.x, you must first [migrate to the Helm-based runtime](https://codefresh.io/docs/docs/installation/runner/install-codefresh-runner/) in [this repo](https://github.com/codefresh-io/venona/tree/main/charts/cf-runtime#migrating-from-cli-based-installation-to-helm-chart)
+
+### Features & enhancements
+[**Enhanced GitOps App Breadcrumbs**](https://app.getbeamer.com/codefreshio7974/en/exciting-new-feature-enhanced-gitops-app-breadcrumbs-9Jr0zhN8)  
+Navigation is now clearer and faster with:
+- Runtime link in breadcrumbs – click to view all apps for that runtime.
+- New icons for Runtime, GitSource, ApplicationSet, and Application, making app hierarchy easier to understand at a glance.
+
+**Applications are now associated with Products only via an Annotation.**  
+The older "Manage Apps" section for product association has been deprecated.
+
+[**Easily Add Secret Variables**](https://app.getbeamer.com/codefreshio7974/en/easily-add-secret-variables)  
+You can now create secret variables directly in the UI:
+- One-step creation – no manual encryption needed.
+- Improved security – secrets are encrypted automatically.
+- Clearer workflow – easily distinguish regular vs. secret variables.
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+
+#### New Feature Flags in v2.9
+The table below describes the _new_ Feature Flags in the Codefresh On-Premises release v2.9.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `hideProductManageApps`  | Hide ability to manage apps directly from the product view | TRUE |
+
+
+#### Updated Feature Flags in v2.9
+The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.9.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `newVariablesConfiguration`  | New component for variables configuration | TRUE |
+
+
+
+### Bug fixes
+
+
+##### General
+
+* mongoSeedJob now honors RUNTIME_MONGO_TLS_VALIDATE="false", allowing seeds to run against MongoDB with self-signed certificates without manual script changes.
+* Removing an LDAP IDP now deactivates and unassigns users from that IDP, preventing broken states and login issues. This approach also avoids accidental removals when users belong to multiple accounts.
+
+
+##### Pipelines 
+* cf-system-etl-postgres pods fail with self-signed certificate errors.
+* Windows runtime builds using cf_export no longer fail with exit code 1 when running on Engine v1.178.1.
+* Stable feature flags are now enabled by default in RabbitMQ when upgrading from 2.6.7 to 2.8.0/2.8.3, preventing upgrade failures.
+* Runtime upgrades no longer hit “Resulting document after update is larger than 16777216.” Fixed in runtime-environment-manager v3.42.1.
+* The Terraform codefresh_pipeline resource now correctly updates the permit_restart_from_failed_steps setting, ensuring changes are reflected in pipeline configuration and UI.
+
+
+##### GitOps
+* Added support for self-signed certificates in the cf-argocd-extras event-reporter and sources-server, eliminating the need for insecure config workarounds.
+
+
 ## On-premises version 2.8
 
 ### Installation & Upgrade
