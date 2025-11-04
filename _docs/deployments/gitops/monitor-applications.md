@@ -614,7 +614,7 @@ max-width="50%"
 %}
 
 #### Rollout traffic weights
-When traffic management is enabled in your environment, Codefresh displays accurate traffic weights during a progressive rollout. This means that as your new version is gradually promoted, you can observe the exact percentage of traffic directed to the new and stable versions.
+When traffic management is enabled in your rollout strategy, Codefresh displays accurate traffic weights during a progressive rollout. This means that as your new version is gradually promoted, you can observe the exact percentage of traffic directed to the new and stable versions.
 
 > **NOTE**  
 > Accurate traffic weights are only displayed if traffic management is configured and used in your rollout strategy.
