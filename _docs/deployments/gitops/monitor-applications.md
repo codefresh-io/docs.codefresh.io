@@ -613,6 +613,17 @@ caption="Rollout completed for deployment"
 max-width="50%"
 %}
 
+#### Rollout traffic weights
+When traffic management is enabled in your rollout strategy, Codefresh displays accurate traffic weights during a progressive rollout. This means that as your new version is gradually promoted, you can observe the exact percentage of traffic directed to the new and stable versions.
+
+> **NOTE**  
+> Accurate traffic weights are only displayed if traffic management is configured and used in your rollout strategy.
+>
+> If traffic management is not used, Codefresh reports simplified, static weights:
+>
+> - 100 - 0 for a progressing rollout
+> - 0 - 100 for a healthy finished rollout
+
 #### Manage ongoing rollout
 Click the rollout name to visualize its steps. Manually manage the rollout through the controls in the Rollout Player. 
 Here you can see that two out of four steps have been completed, 25% of the traffic has been routed, and the rollout has been paused for the defined length of time.  
