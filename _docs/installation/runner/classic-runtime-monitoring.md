@@ -11,9 +11,21 @@ toc: true
 
 Modern versions of the Codefresh Classic Runtime ([`cf-runtime` chart >=8.2.0](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime/){:target="\_blank"}, `engine` >=1.179.1) provide the `engine` component metrics in OpenTelemetry format, with the preferable *push* model.
 
-You can still use the *pull* model by switching to the Prometheus Metrics Exporter, which is fully compatible with Prometheus. However, we recommend using the default configuration, as it is better suited for the short-lived nature of Classic Builds and provides more precise and complete metrics.
+You can still use the *pull* model by switching to the Prometheus Metrics Exporter, which is fully compatible with Prometheus. At the same time, we recommend using the default configuration, as it is better suited for the short-lived nature of Classic Builds and provides more precise and complete metrics.
 
-Please refer to the `cf-runtime` Chart default values on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env){:target="\_blank"} for configuration options.
+To switch to the Prometheus Metrics Exporter, use the following values ​​in the chart:
+```yaml
+runtime:
+  engine:
+    env:
+      OTEL_METRICS_EXPORTER: 'prometheus'
+      METRICS_SCRAPE_TIMEOUT_MS: '<4×scrape_interval>' # On exit, wait <timeout>ms for the scrape before exiting
+podMonitor:
+  main:
+    enabled: true # Enable PodMonitor for engine pods
+```
+
+Please refer to the `cf-runtime` Chart default values on [Artifact Hub](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=values&path=runtime.engine.env){:target="\_blank"} for more configuration options.
 
 ### Resource attributes
 
