@@ -72,7 +72,7 @@ GET https://g.codefresh.io/api/analytics/metadata
 curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/creditConsumption?granularity=month&dateRange=${START_DATE}&dateRange=${END_DATE}" | jq .
 ```
 
-**Pipeline credit consumption (daily within 45 days)**
+**Pipeline credit consumption (daily)**
 ```
 curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/pipelineCreditConsumption?granularity=day&dateRange=${START_DATE}&dateRange=${END_DATE}" | jq .
 ```
