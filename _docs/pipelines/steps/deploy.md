@@ -8,9 +8,15 @@ redirect_from:
   - /docs/deploy/
 toc: true
 ---
-The *Deploy* step can be used as a step to deploy a pre-built Docker image to a cluster
+The *Deploy* step can be used as a step to deploy a pre-built Docker image to a cluster.
 
-This step allows to (re)deploy a Kubernetes application in your cluster
+This step allows to (re)deploy a Kubernetes application in your cluster.
+
+{{site.data.callout.callout_tip}}
+The *Deploy* step supports the three most recent minor releases of Kubernetes.
+
+Please refer to [the official Kubernetes documentation](https://kubernetes.io/releases/){:target="\_blank"} for details on supported versions.
+{{site.data.callout.end}}
 
 It has two modes:
 
@@ -184,6 +190,3 @@ If you find the deploy step limited, feel free to look at the other deployment o
 [Kubernetes deployment quick start]({{site.baseurl}}/docs/quick-start/ci-quick-start/deploy-to-kubernetes/)   
 [Manage Kubernetes clusters]({{site.baseurl}}/docs/deployments/kubernetes/manage-kubernetes/)  
 [Using Helm in Codefresh pipelines]({{site.baseurl}}/docs/deployments/helm/using-helm-in-codefresh-pipeline/)  
-
-
-
