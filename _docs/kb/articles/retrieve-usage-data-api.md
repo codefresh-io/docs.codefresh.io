@@ -38,7 +38,7 @@ Replace `{reportName}` with the specific report you want to query. Examples:
 ```
 GET https://g.codefresh.io/api/analytics/reports/creditConsumption
 GET https://g.codefresh.io/api/analytics/reports/pipelineCreditConsumption
-GET https://g.codefresh.io/api/analytics/reports/activeCommiters
+GET https://g.codefresh.io/api/analytics/reports/activeCommitters
 ```
 
 **Discover reports and parameters**
@@ -61,43 +61,54 @@ GET https://g.codefresh.io/api/analytics/metadata
 - **Daily granularity:** 2 days – 45 days  
   `?granularity=day&dateRange=YYYY-MM-DD&dateRange=YYYY-MM-DD`  
 
-**activeCommiters** supports:  
+**activeCommitters** supports:  
 - **Monthly granularity:** 3 months – 1 year  
   `?granularity=month&dateRange=YYYY-MM-DD&dateRange=YYYY-MM-DD`
 
 ### Examples
 
-**Credit consumption (monthly)**
+**Credit consumption for the last 3 months with monthly granularity**
 ```
-curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/creditConsumption?granularity=month&dateRange=${START_DATE}&dateRange=${END_DATE}" | jq .
-```
-
-**Pipeline credit consumption (daily)**
-```
-curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/pipelineCreditConsumption?granularity=day&dateRange=${START_DATE}&dateRange=${END_DATE}" | jq .
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/creditConsumption?granularity=month&dateRange=$(date -v-3m +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
 ```
 
-**Active committers (monthly)**
+**Credit consumption for the last 11 months without granularity**
 ```
-curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/activeCommiters?granularity=month&dateRange=${START_DATE}&dateRange=${END_DATE}" | jq .
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/creditConsumption?dateRange=$(date -v-11m +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
+```
+
+**Pipeline credit consumption for the last 14 days with daily granularity**
+```
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/pipelineCreditConsumption?granularity=day&dateRange=$(date -v-14d +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
+```
+
+**Active committers for the last 6 months with monthly granularity**
+```
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/activeCommitters?granularity=month&dateRange=$(date -v-6m +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
 ```
 
 ## Suggested script
 
 ```
 #!/bin/bash
-# Expects these env vars:
-#   API_KEY       -> Codefresh API key
-#   START_DATE    -> "YYYY-MM-DD"
-#   END_DATE      -> "YYYY-MM-DD"
+# Expects these variables will be passed as parameters:
+# API_KEY -> pass Codefresh API key
+API_KEY=$1
+# START_DATE -> pass start date formatted like "YYYY-MM-DD"
+START_DATE=$2
+# END_DATE -> pass end date formatted like "YYYY-MM-DD"
+END_DATE=$3
+# REPORT_NAME -> pass report name: creditConsumption | pipelineCreditConsumption | activeCommitters 
+REPORT_NAME=$4
 
+# Validate passed variables are not empty:
 : "${API_KEY:?Set API_KEY}"
 : "${START_DATE:?Set START_DATE}"
 : "${END_DATE:?Set END_DATE}"
+: "${REPORT_NAME:?Set REPORT_NAME}"
 
-# Example: fetch credit consumption (monthly)
-curl -s -H "Authorization: $API_KEY"   "https://g.codefresh.io/api/analytics/reports/creditConsumption?granularity=month&dateRange=${START_DATE}&dateRange=${END_DATE}"   | jq .
-# Adapt the endpoint for pipelineCreditConsumption or activeCommiters as needed.
+# Fetch report with monthly granularity
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/${REPORT_NAME}?granularity=month&dateRange=${START_DATE}&dateRange=${END_DATE}"   | jq .
 ```
 
 ## Error handling
