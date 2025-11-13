@@ -38,7 +38,7 @@ Replace `{reportName}` with the specific report you want to query. Examples:
 ```
 GET https://g.codefresh.io/api/analytics/reports/creditConsumption
 GET https://g.codefresh.io/api/analytics/reports/pipelineCreditConsumption
-GET https://g.codefresh.io/api/analytics/reports/activeCommiters
+GET https://g.codefresh.io/api/analytics/reports/activeCommitters
 ```
 
 **Discover reports and parameters**
@@ -61,7 +61,7 @@ GET https://g.codefresh.io/api/analytics/metadata
 - **Daily granularity:** 2 days – 45 days  
   `?granularity=day&dateRange=YYYY-MM-DD&dateRange=YYYY-MM-DD`  
 
-**activeCommiters** supports:  
+**activeCommitters** supports:  
 - **Monthly granularity:** 3 months – 1 year  
   `?granularity=month&dateRange=YYYY-MM-DD&dateRange=YYYY-MM-DD`
 
@@ -84,7 +84,7 @@ curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/repor
 
 **Active committers for the last 6 months with monthly granularity**
 ```
-curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/activeCommiters?granularity=month&dateRange=$(date -v-6m +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
+curl -s -H "Authorization: $API_KEY" "https://g.codefresh.io/api/analytics/reports/activeCommitters?granularity=month&dateRange=$(date -v-6m +'%Y-%m-%d')&dateRange=$(date +'%Y-%m-%d')" | jq .
 ```
 
 ## Suggested script
@@ -98,7 +98,7 @@ API_KEY=$1
 START_DATE=$2
 # END_DATE -> pass end date formatted like "YYYY-MM-DD"
 END_DATE=$3
-# REPORT_NAME -> pass report name: creditConsumption | pipelineCreditConsumption | activeCommiters 
+# REPORT_NAME -> pass report name: creditConsumption | pipelineCreditConsumption | activeCommitters 
 REPORT_NAME=$4
 
 # Validate passed variables are not empty:
