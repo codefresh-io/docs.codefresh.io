@@ -32,7 +32,7 @@
     - title: Simple promotion with drag-and-drop
       url: "/drag-and-drop"
     - title: Simple Promotion Flow with multiple environments
-      url: "/multi-env-sequential-flow.md"
+      url: "/multi-env-sequential-flow"
     - title: Creating Promotion Workflows
       url: "/quick-start-promotion-workflow"
     - title: Advanced Promotion Flow with Promotion Workflows
