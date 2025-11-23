@@ -5,7 +5,7 @@ group: administration
 toc: true
 
 ---
-# Test do not merge!
+# Test do not merge!!
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses.
 Codefresh provides a list of IP addresses to be configured on clusters to allow access to them.
 
