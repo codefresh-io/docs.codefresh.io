@@ -51,7 +51,7 @@ Our complete Customer Agreement with you has four parts:
 </table>
 {:/}
 
-You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/octopus-customer-agreement-2025.pdf){:target="\_blank"}.
+You can download our current Customer Agreement here: [Octopus Deploy Customer Agreement](https://i.octopus.com/trust/octopus-customer-agreement-2025-v2.pdf){:target="\_blank"}.
 
 If you require a signed copy of the Customer Agreement for your records, please contact [sales@codefresh.io](mailto:sales@codefresh.io).
 
