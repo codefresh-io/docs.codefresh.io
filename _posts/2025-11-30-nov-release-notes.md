@@ -8,10 +8,8 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 We've improved the application sync dialog with new safeguards to provide better clarity and control when initiating a manual sync with pruning enabled.
 
-{% include image.html lightbox="true" file="/images/whats-new/nov25/new-sync.png" url="/images/whats-new/novg25/new-sync.png" alt="Enhanced resource pruning information
-" caption="Enhanced resource pruning information
+{% include image.html lightbox="true" file="/images/whats-new/nov25/new-sync.png" url="/images/whats-new/novg25/new-sync.png" alt="Enhanced resource pruning information" caption="Enhanced resource pruning information
 " max-width="60%" %} {% if page.collection == "posts" %}
-
 
 
 **Sync dialog enhancements**
