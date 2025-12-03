@@ -1,5 +1,5 @@
 ---
-\title: "Release Notes: November 2025"
+title: "Release Notes: November 2025"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
