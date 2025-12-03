@@ -1,5 +1,5 @@
 ---
-title: "Release Notes: Novembrer 2025"
+\title: "Release Notes: November 2025"
 description: "Release Notes for Codefresh Pipelines and GitOps"
 ---
 ## Features & enhancements
@@ -8,11 +8,7 @@ description: "Release Notes for Codefresh Pipelines and GitOps"
 
 We've improved the application sync dialog with new safeguards to provide better clarity and control when initiating a manual sync with pruning enabled.
 
-{% include image.html lightbox="true" file="/images/whats-new/nov25/new-sync.png" url="/images/whats-new/novg25/new-sync.png" alt="Enhanced resource pruning information
-" caption="Enhanced resource pruning information
-" max-width="60%" %} {% if page.collection == "posts" %}
-
-
+{% include image.html lightbox="true" file="/images/whats-new/nov25/new-sync.png" url="/images/whats-new/novg25/new-sync.png" alt="Enhanced resource pruning information" caption="Enhanced resource pruning information" max-width="60%" %}
 
 **Sync dialog enhancements**
 
@@ -36,7 +32,6 @@ To provide a final check against unintended deletions:
 
 These updates are designed to give you more control and confidence when managing your application synchronization.
 
-
 ### GitOps Cloud: New release of GitOps Runtime v0.25.0 
 
 We’re excited to announce the release of GitOps Runtime v0.25.0 — another step forward in improving the stability and reliability of our platform. 
@@ -47,4 +42,4 @@ This release includes the following dependency update:
 
 There are some breaking changes planned for the *next* release, so we encourage you to read the release notes and prepare your deployments accordingly.
 
-[Read the full release notes](https://github.com/codefresh-io/gitops-runtime-helm/releases/tag/0.25.0){:target=”\_blank”}.
+[Read the full release notes](https://github.com/codefresh-io/gitops-runtime-helm/releases/tag/0.25.0){:target="_blank"}.
