@@ -284,8 +284,6 @@
       url: "/gcloud-builder"
     - title: Google Marketplace
       url: "/google-marketplace"
-    - title: GitHub Actions
-      url: "/github-actions"
     - title: Notifications
       url: "/notifications"
       sub-pages:
