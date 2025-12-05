@@ -102,7 +102,6 @@
 /docs/integrations/docker-registries/quay-io/
 /docs/integrations/gcloud-builder/
 /docs/integrations/git-providers/
-/docs/integrations/github-actions/
 /docs/integrations/google-cloud/
 /docs/integrations/google-marketplace/
 /docs/integrations/hashicorp-vault/
