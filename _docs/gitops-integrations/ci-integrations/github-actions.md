@@ -189,19 +189,19 @@ where:
 
 ### CF_GIT_BRANCH 
 
-##### Example: Report fully-formed reference of the branch or tag
-This example illustrates how to define the value for `CF_GIT_BRANCH` to report the fully-formed reference of the branch or tag that triggered the workflow run.  
-For workflows triggered by push events, this is the branch or tag ref that was pushed. 
+##### Example: Report fully-formed reference of the branch
+This example illustrates how to define the value for `CF_GIT_BRANCH` to report the fully-formed reference of the branch that triggered the workflow run.  
+For workflows triggered by push events, this is the branch that was pushed.
 For workflows triggered by pull_requests, this is the pull request merge branch.
 
 Value:  
 {% raw %}`${{ github.ref }}`{% endraw %}
 
 where:
-* {% raw %}`${{ github.ref }}`{% endraw %} is the reference to the branch or tag. For example, `refs/heads/auth-feature-branch` (branch), and `refs/pull/#843/merge` (pull request).
+* {% raw %}`${{ github.ref }}`{% endraw %} is the reference to the branch. For example, `refs/heads/auth-feature-branch` (branch), and `refs/pull/#843/merge` (pull request).
 
-##### Example: Report short reference name of the branch or tag 
-This example illustrates how to define the value for `CF_GIT_BRANCH` to report only the name of the branch or tag that triggered the workflow run.  
+##### Example: Report short reference name of the branch
+This example illustrates how to define the value for `CF_GIT_BRANCH` to report only the name of the branch that triggered the workflow run.
 
 
 Value:  
