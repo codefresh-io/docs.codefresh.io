@@ -208,7 +208,7 @@ Value:
 {% raw %}`${{ github.ref_name }}`{% endraw %}  
 
 where: 
-* {% raw %}`${{ github.ref_name }}`{% endraw %} is the name of the target branch or tag. For example, `auth-feature-branch`. 
+* {% raw %}`${{ github.ref_name }}`{% endraw %} is the name of the target branch. For example, `auth-feature-branch`. 
 
 
 
