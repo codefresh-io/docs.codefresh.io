@@ -10,7 +10,7 @@ Welcome to the release notes for our on-premises releases.
 ### Installation & Upgrade
 
 #### Installing v2.10
-For detailed instructions on installing v2.9, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+For detailed instructions on installing v2.10, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 
 #### Upgrading to v2.10
