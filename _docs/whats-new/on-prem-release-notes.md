@@ -17,7 +17,7 @@ For detailed instructions on installing v2.10, visit [ArtifactHub](https://artif
 The maximum GitOps runtime that is supported for this version is **0.26.x**.
 
 
-### Features & enhancements
+### Features & enhancements in 2.10
 **Pipeline Trigger Optimization** 
 Improves the efficiency of how trigger information is retrieved by optimizing internal requests between the pipeline manager and the cf-api, resulting in faster and more reliable trigger evaluation:
 - Reduces the number and cost of internal API calls when resolving pipeline triggers.
