@@ -30,7 +30,7 @@ Feature Flags are divided into new Feature Flags released in the current version
 
 
 #### Updated Feature Flags
-The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.9.
+The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.10.
 
 {: .table .table-bordered .table-hover}
 | Feature Flag       | Description  | Default Value |
