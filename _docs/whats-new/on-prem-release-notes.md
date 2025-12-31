@@ -29,7 +29,7 @@ Improves the efficiency of how trigger information is retrieved by optimizing in
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
 
 
-#### Updated Feature Flags in v2.10
+#### Updated Feature Flags
 The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.9.
 
 {: .table .table-bordered .table-hover}
