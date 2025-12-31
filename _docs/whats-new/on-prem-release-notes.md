@@ -5,6 +5,56 @@ toc: true
 ---
 
 Welcome to the release notes for our on-premises releases.
+## On-premises version 2.10
+
+### Installation & Upgrade
+
+#### Installing v2.10
+For detailed instructions on installing v2.10, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+
+#### Upgrading to v2.10
+The maximum GitOps runtime that is supported for this version is **0.26.x**.
+
+
+### Features & enhancements in 2.10
+**Pipeline Trigger Optimization** 
+Improves the efficiency of how trigger information is retrieved by optimizing internal requests between the pipeline manager and the cf-api, resulting in faster and more reliable trigger evaluation:
+- Reduces the number and cost of internal API calls when resolving pipeline triggers.
+- Improves trigger evaluation performance, especially in environments with many pipelines or triggers.
+- Lowers internal API load, contributing to overall platform stability
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+
+#### Updated Feature Flags
+The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.10.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `pipelineTriggerOptimization`  | Enables optimization for requests from pipeline manager to cf-api internal for getting trigger information | TRUE |
+
+
+
+### Bug fixes
+
+
+##### Pipelines 
+* Fixed an issue where the branch selection dropdown in trigger configuration and run dialogs failed to load branches for some GitHub integrations, preventing users from selecting existing branches.
+* Fixed an issue where pipelines stopped triggering for newly created pull requests after a commit containing a [skip ci] tag, while older branches continued to trigger as expected.
+* Improved Hybrid and Classic Runtime documentation to clarify how Helm chart values, upgrade/install hooks, and reconciliation jobs affect the runtime specification, helping prevent issues caused by excessive runtime spec updates.
+* Fixed an issue where the Manage Runtime Environments modal in on-prem installations returned an INTERNAL_SERVER_ERROR despite changes applying correctly, reducing user confusion in the Admin panel.
+* Fixed an issue in new Windows runtimes where image pulls could fail due to temporary files being written to the system drive despite a custom Docker root directory, causing disk-space errors during builds.
+
+
+##### GitOps
+* Fixed an issue where installing a Hybrid GitOps Runtime failed if the shared configuration Git repository was empty, ensuring runtime setup now succeeds on first-time installations.
+* Fixed an issue where some Git source and child applications were shown multiple times in the Codefresh UI, ensuring the application list now correctly matches what is displayed in the native Argo UI.
+
+
 
 ## On-premises version 2.9
 
