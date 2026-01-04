@@ -668,9 +668,32 @@ The Delete option is available in List View, and is enabled only when a Helm Run
 
 Uninstall provisioned GitOps Runtimes that are not in use.
 
-Uninstalling a GitOps Runtime permanently removes:
+### What gets removed during uninstall
+
+Uninstalling a GitOps Runtime removes the following resources:
+
+**Runtime components and infrastructure:**
 * The Runtime from the Codefresh platform and from the cluster it is provisioned on
-* The Git Sources and managed clusters associated with it
+* All Runtime components
+* The Git Sources and managed clusters associated with the Runtime
+* Runtime-related Argo CD Applications (including the Shared Configuration Application)
+
+**Optional cleanup:**
+* If you select **Clean up internal Shared Configuration (ISC)**, the Runtime files are also removed from the Shared Configuration Repository
+
+**What remains:**
+* Your deployed user applications remain untouched and continue running
+* If you installed the Runtime with your own Argo CD (BYOA), only the Runtime components are removed. The Argo CD Applications managed by your external Argo CD instance remain, as they are not managed by the Codefresh Runtime
+
+### Uninstall process
+
+The uninstall process consists of two steps:
+
+**Step 1: Runtime uninstall**  
+Removes the Runtime from the Codefresh platform and deletes Runtime-related resources from the cluster. This step also optionally cleans up files from the Shared Configuration Repository if selected.
+
+**Step 2: Helm uninstall (manual)**  
+After Step 1 completes, manually run the Helm uninstall command to remove the Helm release from your cluster.
 
 ##### How to
 
@@ -706,13 +729,23 @@ Uninstalling a GitOps Runtime permanently removes:
 %}
 
 {:start="6"}
-1. Copy and run the uninstall command:  
-  `helm uninstall cf-gitops-runtime -n <runtime-namespace>`  
-  where:
-  * `<runtime-namespace>` is the namespace where the Runtime is installed.
+1. In the uninstall dialog that opens:
+   * **Step 1: Runtime uninstall**
+     * Optionally select **Clean up internal Shared Configuration (ISC)** to remove Runtime files from the Shared Configuration Repository
+     * Click **Uninstall runtime** to start the uninstall process
+     * Wait for the process to complete. Once Step 1 finishes, you'll see a confirmation message
+   
+   * **Step 2: Helm uninstall (manual)**
+     * After Step 1 completes, copy and run the Helm uninstall command shown in the dialog:
+     ```bash
+     helm uninstall <runtime-name> -n <runtime-namespace>
+     ```
+     where:
+     * `<runtime-name>` is the name of the Helm release (typically the Runtime name)
+     * `<runtime-namespace>` is the namespace where the Runtime is installed
 
 {:start="7"}
-1. Click **Close** to exit.
+1. Click **Close** to exit the uninstall dialog.
 
 
 
