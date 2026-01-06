@@ -20,26 +20,6 @@ In the current Codefresh implementation, this expands to `/codefresh/volume/sens
 
 When you use custom `kubectl` commands, it is your responsibility to template your manifests using any of the available options. To employ Codefresh for templating, it is better to use the dedicated [cf-deploy-kubernetes step]({{site.baseurl}}/docs/ci-cd-guides/kubernetes-templating/), which provides simple templating capabilities.
 
-## Using the Codefresh kubectl image
-
-Codefresh already offers a public Docker image with `kubectl` at [https://hub.docker.com/r/codefresh/kubectl/tags](https://hub.docker.com/r/codefresh/kubectl/tags){:target="\_blank"}. You can choose a specific version of `kubectl` with the appropriate tag or just select `latest` for the most up-to-date version.
-
-`YAML`
-{% highlight yaml %}
-{% raw %}
-version: '1.0'
-steps:
-  MyCustomKubectlCommands:
-    title: Running Kubectl
-    image: codefresh/kubectl:1.13.3
-    commands: 
-      - echo $CF_KUBECONFIG_PATH
-      - kubectl help
-{% endraw %}
-{% endhighlight %}
-
-If you run the pipeline, you can see the help options for `kubectl`.
-
 ## Getting a config context
 
 The important thing to know when running custom `kubectl` commands is that Codefresh automatically sets up
