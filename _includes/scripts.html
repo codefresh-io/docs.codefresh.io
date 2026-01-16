@@ -60,37 +60,73 @@
 <!-- End of Doc Search Embed Code -->
 
 <script>
-  const apiKey = '42885a887590b9e28cce52518224850b';
+  // Initialize Amplitude Analytics + Guides & Surveys (Resource Center)
+  (function() {
+    const API_KEY = '42885a887590b9e28cce52518224850b';
 
-  const amplitudeScript = document.createElement('script');
-  amplitudeScript.src = `https://cdn.amplitude.com/script/${apiKey}.engagement.js`;
+    // Load and initialize Amplitude Analytics first
+    function loadAnalyticsSDK() {
+      const script = document.createElement('script');
+      script.src = `https://cdn.amplitude.com/script/${API_KEY}.js`;
+      script.onload = onAnalyticsLoaded;
+      script.onerror = () => console.error('Failed to load Amplitude Analytics');
+      document.head.appendChild(script);
+    }
 
-  amplitudeScript.onload = async function() {
-    if (typeof window.engagement !== 'undefined') {
-      window.engagement.init(apiKey);
+    function onAnalyticsLoaded() {
+      if (typeof window.amplitude === 'undefined') {
+        console.warn('Amplitude Analytics not available');
+        return;
+      }
 
-      const userId = 'docs-site-user';
-      await window.engagement.boot({
-        user: {
-          user_id: userId,
-        },
+      window.amplitude.init(API_KEY, {
+        autocapture: false,
       });
 
-      document.addEventListener("keydown", function (event) {
+      setContentSegmentation();
+      loadEngagementSDK();
+    }
+
+    // Load and initialize Guides & Surveys SDK
+    function loadEngagementSDK() {
+      const script = document.createElement('script');
+      script.src = `https://cdn.amplitude.com/script/${API_KEY}.engagement.js`;
+      script.onload = onEngagementLoaded;
+      script.onerror = () => console.error('Failed to load Amplitude Engagement');
+      document.head.appendChild(script);
+    }
+
+    function onEngagementLoaded() {
+      if (typeof window.engagement === 'undefined') {
+        console.warn('Amplitude Engagement not available');
+        return;
+      }
+
+      window.amplitude.add(window.engagement.plugin());
+      setupResourceCenterShortcut();
+    }
+
+    function setupResourceCenterShortcut() {
+      document.addEventListener('keydown', function(event) {
         const isMac = navigator.userAgent.includes('Mac');
-        if ((event.key === "k") && ((isMac && event.metaKey) || (!isMac && event.ctrlKey))) {
+        const isShortcut = (event.key === 'k') &&
+          ((isMac && event.metaKey) || (!isMac && event.ctrlKey));
+
+        if (isShortcut) {
           event.preventDefault();
           window.engagement.rc.open();
         }
       });
-    } else {
-      console.warn('Amplitude engagement is not available.');
     }
-  };
 
-  amplitudeScript.onerror = function() {
-    console.error('Failed to load Amplitude engagement script');
-  };
+    // Set content segment based on system type
+    function setContentSegmentation() {
+      const identify = new window.amplitude.Identify();
+      const segment = IS_GITOPS_DOC_COOKIE_SET ? 'gitOpsCloud' : 'enterprise';
+      identify.set('segment', segment);
+      window.amplitude.identify(identify);
+    }
 
-  document.head.appendChild(amplitudeScript);
+    loadAnalyticsSDK();
+  })();
 </script>
