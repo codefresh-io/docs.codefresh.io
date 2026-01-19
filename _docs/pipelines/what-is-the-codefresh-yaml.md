@@ -234,9 +234,12 @@ steps:
 Notice that Codefresh also provides the following variables that allow you change your script/applications according to the retry attempts:
 
 * `CF_CURRENT_ATTEMPT` contains the number of current retry attempt.
+
 * `CF_MAX_ATTEMPTS` contains all the number of total attempts defined.
 
 The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/pipelines/steps/).
+
+> **Note:** `CF_CURRENT_ATTEMPT` variable is always contextual to the exact step and does not reflect the parent state
 
 ## Escaping strings
 
