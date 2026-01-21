@@ -239,7 +239,7 @@ Notice that Codefresh also provides the following variables that allow you chang
 
 The retry mechanism is available for all kinds of [steps]({{site.baseurl}}/docs/pipelines/steps/).
 
-> **Note:** `CF_CURRENT_ATTEMPT` variable is always contextual to the exact step and does not reflect the parent state
+> **Note:** `CF_CURRENT_ATTEMPT` variable is always contextual to the exact step and does not reflect the parent state.
 
 ## Escaping strings
 
