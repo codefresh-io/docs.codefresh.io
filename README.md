@@ -140,3 +140,22 @@ flowchart LR
 #### Redirect Mapping
 
 Redirect links between the Enterprise and ArgoHub collections are stored in the `argohub-redirect-mapping.json` file. Running `npm run link` automatically updates the file, eliminating the need for manual updates.
+
+# Amplitude Resource Center Integration
+
+Docs site integrates Amplitude Analytics and Engagement SDKs to provide user analytics and a Resource Center. The integration includes:
+
+- **Analytics tracking** with content segmentation based on system type (Enterprise vs GitOps)
+- **Resource Center** accessible via keyboard shortcut (Cmd/Ctrl+K) for contextual help
+- **Automatic SDK loading** with error handling
+
+The integration is implemented in `_includes/scripts.html` and loads both the Analytics and Engagement SDKs sequentially for optimal performance.
+
+**Important Notes:**
+- The Analytics SDK must be properly initialized for the Engagement SDK (Resource Center) to function correctly
+- Amplitude automatically creates and manages unique deviceIds under the hood to cache and identify users across sessions, eliminating the need for custom user identification logic
+
+**References:**
+- [Browser SDK 2 (Analytics) Documentation](https://amplitude.com/docs/sdks/analytics/browser/browser-sdk-2)
+- [Guides and Surveys (Resource Center) SDK Documentation](https://amplitude.com/docs/guides-and-surveys/sdk)
+
