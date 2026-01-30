@@ -143,10 +143,13 @@ Redirect links between the Enterprise and ArgoHub collections are stored in the 
 
 # Amplitude Resource Center Integration
 
-Docs site integrates Amplitude Analytics and Engagement SDKs to provide user analytics and a Resource Center. The integration includes:
+Docs site integrates Amplitude Analytics and Engagement SDKs to provide user analytics and a comprehensive search solution. **Amplitude Resource Center serves as the primary search and indexing system for the documentation site**, replacing previous search implementations.
+
+The integration includes:
 
 - **Analytics tracking** with content segmentation based on system type (Enterprise vs GitOps)
-- **Resource Center** accessible via keyboard shortcut (Cmd/Ctrl+K) for contextual help
+- **Resource Center with Search** - Provides intelligent, contextual search capabilities accessible via keyboard shortcut (Cmd/Ctrl+K)
+- **Content Indexing** - Amplitude automatically indexes documentation content to enable fast, relevant search results
 - **Automatic SDK loading** with error handling
 
 The integration is implemented in `_includes/scripts.html` and loads both the Analytics and Engagement SDKs sequentially for optimal performance.
