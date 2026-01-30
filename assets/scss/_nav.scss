@@ -182,37 +182,6 @@
       }
     }
   }
-
-  .bd-search {
-    position: relative;
-    padding: 0;
-    margin-right: 0;
-    margin-left: 0;
-    border: 0;
-
-    i {
-      position: absolute;
-      left: 10px;
-      font-size: 15px;
-      color: $white;
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    .bd-search {
-      width: 18.2%;
-    }
-  }
-
-  @include media-breakpoint-down(sm) {
-    .bd-search {
-      width: 100%;
-
-      .form-control {
-        width: 100%;
-      }
-    }
-  }
 }
 
 .collapsing {
