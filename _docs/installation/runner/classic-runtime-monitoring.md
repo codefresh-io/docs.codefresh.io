@@ -477,7 +477,7 @@ The metric is emitted when the `engine` retries a request to the Docker daemon.
 | **`docker.operation.error`** | string | The error encountered during the Docker operation and caused retry. | `ENOTFOUND`; `ECONNRESET` |
 
 
-#### `codefresh.classic.build.deprecated_images.pulled`
+#### `codefresh.classic.build.deprecated_images.pulled` [removed in [Runtime 9.0.0](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime?modal=changelog&version=9.0.0)]
 
 The metric is emitted when the `engine` pulls a deprecated "Docker Image Format v1" or "Docker Image manifest version 2, schema 1" image ([Docker docs](https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1){:target="\_blank"}).
 
@@ -498,83 +498,3 @@ The metric is emitted when the `engine` pulls a deprecated "Docker Image Format 
 If needed, you can also collect various process metrics from the `engine`. These Prometheus metrics are available on port `9100` and controlled by the `cf-runtime` chart values `runtime.engine.env.CF_TELEMETRY_PROMETHEUS_ENABLE` and `runtime.engine.env.CF_TELEMETRY_PROMETHEUS_ENABLE_PROCESS_METRICS`.
 
 These metrics are not needed for most users and disabled by default.
-
----
-
-### Deprecated metrics
-
-{{site.data.callout.callout_tip}} 
-Older versions of the Classic Runtime (`cf-runtime` chart <8.2.0, `engine` <1.179.0) provided the following Prometheus metrics on port `9100` of the `engine` pod.
-{{site.data.callout.end}}
-
-{{site.data.callout.callout_warning}}
-**Deprecated**  
-These metrics are deprecated and will be removed in future releases. We recommend migrating to the modern metrics described above as soon as possible.
-{{site.data.callout.end}}
-
-Each of the metrics below has the following additional labels: `account_name`, `docker_node_address`, `pipeline_id`, `repo_branch`, `workflow`
-
-* `codefresh_engine_deprecated_images_pulled_total` [since engine:1.177.1]
-<br>Total number of deprecated Schema 1 images pulls
-<br>Type: Counter
-<br>Labels: `image_name`
-
-* `codefresh_engine_docker_daemon_requests_retries_delay_seconds_total`
-<br>Total delay in seconds for retry requests to Docker daemon
-<br>Type: Counter
-<br>Labels: `error`, `operation` [since engine:1.177.0]
-
-* `codefresh_engine_docker_daemon_requests_retries_total`
-<br>Total number of retry requests to Docker daemon
-<br>Type: Counter
-<br>Labels: `error`, `operation` [since engine:1.177.0]
-
-* `codefresh_workflow_composition_duration_seconds`
-<br>Composition duration in seconds
-<br>Type: Gauge
-<br>Labels: `composition_name`, `phase`
-
-* `codefresh_workflow_composition_phase_status`
-<br>Composition phase status: 1 for current status, 0 otherwise
-<br>Type: Gauge
-<br>Labels: `composition_name`, `phase`, `status`
-
-* `codefresh_workflow_composition_status`
-<br>Composition status: 1 for current status, 0 otherwise
-<br>Type: Gauge
-<br>Labels: `composition_name`, `status`
-
-* `codefresh_workflow_duration_seconds`
-<br>Workflow duration in seconds
-<br>Type: Gauge
-<br>Labels: `phase`
-
-* `codefresh_workflow_internal_images_reused`
-<br>1 if internal images were reused from cache by workflow, 0 otherwise
-<br>Type: Gauge
-<br>Labels: —
-
-* `codefresh_workflow_phase_status`
-<br>Workflow phase status: 1 for current status, 0 otherwise
-<br>Type: Gauge
-<br>Labels: `phase`, `status`
-
-* `codefresh_workflow_status`
-<br>Workflow status: 1 for current status, 0 otherwise
-<br>Type: Gauge
-<br>Labels: `status`
-
-* `codefresh_workflow_step_duration_seconds`
-<br>Workflow step duration in seconds
-<br>Type: Gauge
-<br>Labels: `phase`, `step_name`, `step_type`
-
-* `codefresh_workflow_step_status`
-<br>Workflow step status: 1 for current status, 0 otherwise
-<br>Type: Gauge
-<br>Labels: `phase`, `status`, `step_name`, `step_type`
-
-* `codefresh_workflow_volume_reused`
-<br>1 if the volume was reused by workflow, 0 otherwise
-<br>Type: Gauge
-<br>Labels: —
