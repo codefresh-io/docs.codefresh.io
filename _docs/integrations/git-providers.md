@@ -240,27 +240,29 @@ For example if you already have a `token` on a resource call `git-credentials` y
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
-For the **Application Password** method you need:
+For the **API token** method you need:
 
 * A friendly name for the Git context (It can be anything you want.)
-* Your Bitbucket username
-* A Bitbucket application password
+* The email associated with your Bitbucket account  
+* A Bitbucket API token
 
-To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
-Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}.
+The email can be found in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/)).
 
-The minimum permissions needed by Codefresh are shown below.
+To create an API token, go to your *Persoanl settings*, select *Atlassian account settings*, then *Security* tab on top, and follow *Create and manage API tokens* link.
+Click **Create API token with scopes** button to create one, give it a name and expiration date, and on the next view select *Bitbucket*. For more information see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/){:target="_blank"}.
+
+To easily find all scopes needed by Codefresh, enter them in the search box separated by comma: `delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:webhook:bitbucket`. You will get a list of required scopes, please, select them all.
 
 {% include image.html
 lightbox="true"
-file="/images/integrations/git/bitbucket-permissions.png"
-url="/images/integrations/git/bitbucket-permissions.png"
+file="/images/integrations/git/bitbucket-scopes.png"
+url="/images/integrations/git/bitbucket-scopes.png"
 max-width="40%"
-caption="Bitbucket permissions"
-alt="Bitbucket permissions"
+caption="Bitbucket scopes"
+alt="Bitbucket scopes"
 %}
 
-The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
+Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the Git integration.
 
  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
