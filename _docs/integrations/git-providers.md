@@ -246,7 +246,7 @@ For the **API token** method you need:
 * The email associated with your Bitbucket account  
 * A Bitbucket API token
 
-You can find the email in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/)).
+You can find the email in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/).
 
 To create an API token, go to your *Personal settings*, select *Atlassian account settings*, then the *Security* tab at the top, and follow the *Create and manage API tokens* link.
 Click **Create API token with scopes** button to create one, give it a name and expiration date, and on the next view select *Bitbucket*. For more information, see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/){:target="_blank"}.
