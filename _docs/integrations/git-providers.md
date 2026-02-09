@@ -259,7 +259,7 @@ You will get a list of required scopes, please select them all.
 lightbox="true"
 file="/images/integrations/git/bitbucket-scopes.png"
 url="/images/integrations/git/bitbucket-scopes.png"
-max-width="90%"
+max-width="60%"
 caption="Bitbucket scopes"
 alt="Bitbucket scopes"
 %}
