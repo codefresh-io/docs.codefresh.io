@@ -246,12 +246,12 @@ For the **API token** method you need:
 * The email associated with your Bitbucket account  
 * A Bitbucket API token
 
-The email can be found in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/)).
+You can find the email in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/)).
 
-To create an API token, go to your *Persoanl settings*, select *Atlassian account settings*, then *Security* tab on top, and follow *Create and manage API tokens* link.
-Click **Create API token with scopes** button to create one, give it a name and expiration date, and on the next view select *Bitbucket*. For more information see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/){:target="_blank"}.
+To create an API token, go to your *Personal settings*, select *Atlassian account settings*, then the *Security* tab at the top, and follow the *Create and manage API tokens* link.
+Click **Create API token with scopes** button to create one, give it a name and expiration date, and on the next view select *Bitbucket*. For more information, see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/){:target="_blank"}.
 
-To easily find all scopes needed by Codefresh, enter them in the search box separated by comma: `delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:webhook:bitbucket`. You will get a list of required scopes, please, select them all.
+To easily find all scopes needed by Codefresh, enter them in the search box separated by commas: `delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:webhook:bitbucket`. You will get a list of required scopes, please select them all.
 
 {% include image.html
 lightbox="true"
