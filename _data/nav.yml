@@ -718,6 +718,15 @@
         - title: Managing Git PATs
           url: "/manage-pats"
 
+
+- title: API
+  url: "/api-examples"
+  pages:
+    - title: Analytics API
+      url: "/analytics-api-examples"
+
+- title: Reference
+  url: "/reference"
 - title: Security
   url: "/security"
   pages:
@@ -729,6 +738,7 @@
       url: "/codefresh-signed-artifacts"
     - title: Verify authenticity of artifacts signed with Codefresh pipelines
       url: "/pipelines-verify-cf-artifacts"
+
 
 - title: What's new
   url: "/whats-new"
