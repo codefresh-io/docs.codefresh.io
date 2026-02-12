@@ -241,7 +241,7 @@ For the **OAuth2 method** you only need to enter a name for your connection and 
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
 >**WARNING!**  
-For Bitbucket, **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).
+For Bitbucket, **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).<br />
 If you already use an App password for your Bitbucket integration in Codefresh, we recommend switching to the new **API token** method described below.
 
 For the **API token** method you need:
