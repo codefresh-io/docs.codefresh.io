@@ -1176,7 +1176,7 @@ The table below describes the _new_ Feature Flags in the Codefresh On-Premises r
 | `delightedSurvey`            | When enabled (the default), displays Delighted CX surveys in the Codefresh UI.<br>If there are security concerns because of outbound requests from clients, disable this Feature Flag.  | TRUE|
 | `fullstory`                   | When enabled, allows Codefresh to track user activity in the Codefresh UI through FullStory.<br>**NOTE**: When enabled for air-gapped environments, client attempts to communicate with a Fullstory service may result in network errors.| FALSE  |
 | `gitopsDynamicBreadcrumbs`     | When enabled (the default), supports rendering dynamic breadcrumbs for GitOps.<br>See [GitOps breadcrumbs](#gitops-breadcrumbs) in this article.  | TRUE         |
-| `piplineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
+| `pipelineCreditConsumption` | When enabled (the default), supports credit-consumption analytics for pipelines. | TRUE         |
 | `productCRD`  | _New feature currently in development for GitOps._<br>When enabled, allows creating a Custom Resource Definition (CRD) for the Product entity in GitOps.  | FALSE         |
 | `promotionOrchestration` | _New feature currently in development for GitOps._<br>When enabled, allows promotion orchestration for products including product's releases API and promotion flow API.  | FALSE    |
 | `reportBuildStatusPerPipelineTriggerEvent`     | Currently supported for Bitbucket cloud.<br>When enabled, for builds with the same `pipelineId`, reports build statuses separately per `triggerId` and trigger event. | FALSE         |
