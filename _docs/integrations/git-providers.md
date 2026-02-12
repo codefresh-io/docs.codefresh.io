@@ -240,6 +240,10 @@ For example if you already have a `token` on a resource call `git-credentials` y
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
+>**WARNING!**  
+For Bitbucket, **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).
+If you already use an App password for your Bitbucket integration in Codefresh, we recommend switching to the new **API token** method described below.
+
 For the **API token** method you need:
 
 * A friendly name for the Git context (It can be anything you want.)
