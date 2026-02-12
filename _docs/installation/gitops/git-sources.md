@@ -364,21 +364,7 @@ Delete a Git Source from a GitOps Runtime whenever needed. You may want to delet
 Only account administrators can delete Git Sources.
 
 ##### Effect on applications and resources
-Deleting a Git Source impacts all applications and resources associated with it.  
-Whether an application or a resource is deleted depends on the presence of the `resources-finalizer.argocd.argoproj.io` finalizer in its **_parent application manifest_**.
-
-* **Git Source and linked applications**  
-  By default, the Git Source includes the `resources-finalizer.argocd.argoproj.io` finalizer. This means that when you delete the Git Source, all linked applications and their manifests are removed from both the Codefresh UI and the cluster.
-
-* **Resources associated with applications**  
-  Resources associated with applications are deleted **_only if the manifests of their parent applications_** contain the `resources-finalizer.argocd.argoproj.io` finalizer. If the finalizer is absent, the resources remain in the cluster even after the application is deleted.
-
-##### How to
-1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
-1. From the sidebar, select **GitOps Runtimes**.
-1. From the **List View** (the default), select the Runtime with the Git Source, and then click the **Git Sources** tab.  
-1. From the context menu of the Git Source, select **Delete**.
-1. To confirm, click **Delete**.
+Deleting a Git Source does not delete the applications defined in the Git Source. The applications and their manifests will remain in the cluster. However, the Git Source will no longer manage these applications, and you will need to manage them manually if required.
 
 ## Example YAMLs of Git Source resources
  
@@ -522,6 +508,6 @@ spec:
 ## Related articles
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)   
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)   
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
 
 
