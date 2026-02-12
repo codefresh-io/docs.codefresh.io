@@ -87,7 +87,7 @@ For ingress-based GitOps Runtimes, to get the `ingressUrl` for your, first authe
 The Helm chart is published at oci://quay.io/codefresh/charts/csdp-add-cluster. You can see the source templates at [https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm](https://github.com/codefresh-io/csdp-official/tree/main/add-cluster/helm){:target="\_blank"}.
 
 To deploy the chart:
-1. Copy the [values.yaml](https://github.com/codefresh-io/gitops-runtime-helm/blob/main/charts/gitops-runtime/values.yaml){:target="\_blank"} file locally.
+1. Copy the [values.yaml](https://github.com/codefresh-io/csdp-official/blob/main/add-cluster/helm/values.yaml){:target="\_blank"} file locally.
 1. Fill in the required values.
 1. Run:
 ```shell
