@@ -280,6 +280,8 @@ lightbox="true"
 file="/images/integrations/git/bitbucket-scopes.png"
 url="/images/integrations/git/bitbucket-scopes.png"
 max-width="60%"
+figure_class="my-0"
+p_class="mb-0"
 caption="Bitbucket scopes"
 alt="Bitbucket scopes"
 %}
