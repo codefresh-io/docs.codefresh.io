@@ -264,6 +264,7 @@ The mimimum scopes required for the token are:
 * `read:user:bitbucket`
 * `read:webhook:bitbucket`
 * `read:workspace:bitbucket`
+* `write:repository:bitbucket`
 * `write:webhook:bitbucket`
 
 {{site.data.callout.callout_tip}}
@@ -273,7 +274,7 @@ To easily find all scopes needed by Codefresh, enter them in the search box sepa
 
 {% highlight text %}
 {% raw %}
-delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:webhook:bitbucket
+delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:repository:bitbucket, write:webhook:bitbucket
 {% endraw %}
 {% endhighlight %}
 
