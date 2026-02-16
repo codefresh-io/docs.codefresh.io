@@ -240,27 +240,59 @@ For example if you already have a `token` on a resource call `git-credentials` y
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
-For the **Application Password** method you need:
+>**WARNING!**  
+Bitbucket **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).<br />
+If you already use an App password for your Bitbucket integration in Codefresh, we recommend switching to the new **API token** method described below.
+
+For the **API token** method you need:
 
 * A friendly name for the Git context (It can be anything you want.)
-* Your Bitbucket username
-* A Bitbucket application password
+* The email associated with your Bitbucket account  
+* A Bitbucket API token
 
-To create an application password, go to your *Bitbucket settings* and select *App passwords* from the sidebar.
-Click the button to create one. For more information see the [Bitbucket Documentation page](https://confluence.atlassian.com/bitbucket/app-passwords-828781300.html){:target="_blank"}.
+You can find the email in your [Bitbucket Account settings](https://bitbucket.org/account/settings/email/).
 
-The minimum permissions needed by Codefresh are shown below.
+To create an API token, go to your *Personal settings*, select *Atlassian account settings*, then the *Security* tab at the top, and follow the *Create and manage API tokens* link.
+Click **Create API token with scopes** button to create one, give it a name and expiration date, and on the next view select *Bitbucket*. For more information, see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/){:target="_blank"}.
+
+The mimimum scopes required for the token are:
+
+* `delete:webhook:bitbucket`
+* `read:issue:bitbucket`
+* `read:pullrequest:bitbucket`
+* `read:repository:bitbucket`
+* `read:user:bitbucket`
+* `read:webhook:bitbucket`
+* `read:workspace:bitbucket`
+* `write:repository:bitbucket`
+* `write:webhook:bitbucket`
+
+{{site.data.callout.callout_tip}}
+**TIP**  
+
+To easily find all scopes needed by Codefresh, enter them in the search box separated by commas:
+
+{% highlight text %}
+{% raw %}
+delete:webhook:bitbucket, read:issue:bitbucket, read:pullrequest:bitbucket, read:repository:bitbucket, read:user:bitbucket, read:webhook:bitbucket, read:workspace:bitbucket, write:repository:bitbucket, write:webhook:bitbucket
+{% endraw %}
+{% endhighlight %}
+
+You will get a list of required scopes, please select them all.
 
 {% include image.html
 lightbox="true"
-file="/images/integrations/git/bitbucket-permissions.png"
-url="/images/integrations/git/bitbucket-permissions.png"
-max-width="40%"
-caption="Bitbucket permissions"
-alt="Bitbucket permissions"
+file="/images/integrations/git/bitbucket-scopes.png"
+url="/images/integrations/git/bitbucket-scopes.png"
+max-width="60%"
+figure_class="my-0"
+p_class="mb-0"
+caption="Bitbucket scopes"
+alt="Bitbucket scopes"
 %}
+{{site.data.callout.end}}
 
-The "label" you enter in your Bitbucket account in order to create the application password is completely arbitrary (use "Codefresh" for an example). Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
+Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the Git integration.
 
  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
