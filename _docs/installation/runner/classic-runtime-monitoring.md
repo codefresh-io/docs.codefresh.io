@@ -539,8 +539,8 @@ All metrics should have the following labels:
 
 {% include image.html
 lightbox="true"
-file="../assets/pipelines-overview-1.png"
-url="../assets/pipelines-overview-1.png"
+file="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
+url="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
@@ -548,8 +548,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="../assets/pipelines-overview-2.png"
-url="../assets/pipelines-overview-2.png"
+file="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
+url="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
@@ -570,8 +570,8 @@ Using this dashboard, teams can answer questions such as:
 
 {% include image.html
 lightbox="true"
-file="../assets/build-details-1.png"
-url="../assets/build-details-1.png"
+file="/images/runtime/runner/grafana-dashboards/build-details-1.png"
+url="/images/runtime/runner/grafana-dashboards/build-details-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
@@ -579,8 +579,8 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="../assets/build-details-2.png"
-url="../assets/build-details-2.png"
+file="/images/runtime/runner/grafana-dashboards/build-details-2.png"
+url="/images/runtime/runner/grafana-dashboards/build-details-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
