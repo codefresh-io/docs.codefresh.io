@@ -539,8 +539,8 @@ All metrics should have the following labels:
 
 {% include image.html
 lightbox="true"
-file="./assets/pipelines-overview-1.png"
-url="./assets/pipelines-overview-1.png"
+file="../assets/pipelines-overview-1.png"
+url="../assets/pipelines-overview-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
@@ -548,14 +548,14 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="./assets/pipelines-overview-2.png"
-url="./assets/pipelines-overview-2.png"
+file="../assets/pipelines-overview-2.png"
+url="../assets/pipelines-overview-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
 %}
 
-Download: [grafana-classic-pipelines-overview.json](./assets/grafana-classic-pipelines-overview.json)
+Download: [grafana-classic-pipelines-overview.json](../assets/grafana-classic-pipelines-overview.json)
 
 The “*Classic Pipelines — Overview*” dashboard is designed to help teams understand how their pipelines behave over time, rather than focusing on a single build in isolation. It provides a high-level view of performance trends, making it easier to spot gradual slowdowns, sudden regressions, or improvements introduced by recent changes.
 
@@ -570,8 +570,8 @@ Using this dashboard, teams can answer questions such as:
 
 {% include image.html
 lightbox="true"
-file="./assets/build-details-1.png"
-url="./assets/build-details-1.png"
+file="../assets/build-details-1.png"
+url="../assets/build-details-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
@@ -579,15 +579,14 @@ max-width="70%"
 
 {% include image.html
 lightbox="true"
-file="./assets/build-details-2
-.png"
-url="./assets/build-details-2.png"
+file="../assets/build-details-2.png"
+url="../assets/build-details-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
 max-width="70%"
 %}
 
-Download: [grafana-classic-build-details.json](./assets/grafana-classic-build-details.json)
+Download: [grafana-classic-build-details.json](../assets/grafana-classic-build-details.json)
 
 While the Pipeline Overview focuses on trends, The "*Classic Build — Details*" dashboard zooms in on individual builds to support faster troubleshooting and optimization. It is designed for moments when something looks off and teams need to understand exactly what happened during a specific execution.
 
