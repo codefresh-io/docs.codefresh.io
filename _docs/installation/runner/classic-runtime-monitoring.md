@@ -543,7 +543,7 @@ file="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
 url="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
-max-width="70%"
+max-width="100%"
 %}
 
 {% include image.html
@@ -552,7 +552,7 @@ file="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
 url="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
-max-width="70%"
+max-width="100%"
 %}
 
 Download: [grafana-classic-pipelines-overview.json](../assets/grafana-classic-pipelines-overview.json)
@@ -574,7 +574,7 @@ file="/images/runtime/runner/grafana-dashboards/build-details-1.png"
 url="/images/runtime/runner/grafana-dashboards/build-details-1.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
-max-width="70%"
+max-width="100%"
 %}
 
 {% include image.html
@@ -583,7 +583,7 @@ file="/images/runtime/runner/grafana-dashboards/build-details-2.png"
 url="/images/runtime/runner/grafana-dashboards/build-details-2.png"
 alt="Classic Pipelines — Overview"
 caption="Classic Pipelines — Overview"
-max-width="70%"
+max-width="100%"
 %}
 
 Download: [grafana-classic-build-details.json](../assets/grafana-classic-build-details.json)
