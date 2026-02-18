@@ -498,3 +498,100 @@ The metric is emitted when the `engine` pulls a deprecated "Docker Image Format 
 If needed, you can also collect various process metrics from the `engine`. These Prometheus metrics are available on port `9100` and controlled by the `cf-runtime` chart values `runtime.engine.env.CF_TELEMETRY_PROMETHEUS_ENABLE` and `runtime.engine.env.CF_TELEMETRY_PROMETHEUS_ENABLE_PROCESS_METRICS`.
 
 These metrics are not needed for most users and disabled by default.
+
+
+---
+
+## Grafana Dashboards
+
+Codefresh provides ready-to-use Grafana dashboards that turn raw pipeline metrics into clear, actionable insights, helping teams move quickly from “something feels slow” to “here’s where the problem is.”
+
+
+### How to install
+
+1\. Download dashboard file (check links below) <br>
+2\. Login to Grafana <br>
+3\. Open “Dashboards → New → Import” <br>
+
+
+#### Required metrics
+
+Dashboards are based on metrics emitted by [Classic Hybrid Runtime](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime). Please check [the documentation](./) to learn more.
+
+Additionally, they require the following metrics:
+
+- `container_memory_working_set_bytes`
+- `container_cpu_usage_seconds_total`
+- `container_cpu_cfs_periods_total`
+- `container_cpu_cfs_throttled_periods_total`
+- `kube_pod_container_resource_requests`
+- `kube_pod_container_resource_limits`
+
+#### Required labels
+
+All metrics should have the following labels:
+- `cluster`
+- `namespace`
+- `pod`
+
+
+### Classic Pipelines — Overview
+
+{% include image.html
+lightbox="true"
+file="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
+url="/images/runtime/runner/grafana-dashboards/pipelines-overview-1.png"
+alt="Classic Pipelines — Overview"
+caption="Classic Pipelines — Overview"
+max-width="100%"
+%}
+
+{% include image.html
+lightbox="true"
+file="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
+url="/images/runtime/runner/grafana-dashboards/pipelines-overview-2.png"
+alt="Classic Pipelines — Overview"
+caption="Classic Pipelines — Overview"
+max-width="100%"
+%}
+
+Download: [grafana-classic-pipelines-overview.json](../assets/grafana-classic-pipelines-overview.json)
+
+The “*Classic Pipelines — Overview*” dashboard is designed to help teams understand how their pipelines behave over time, rather than focusing on a single build in isolation. It provides a high-level view of performance trends, making it easier to spot gradual slowdowns, sudden regressions, or improvements introduced by recent changes.
+
+Using this dashboard, teams can answer questions such as:
+
+- How is build duration changing over time?
+- What is causing delays during build initialization?
+- Are resources allocated effectively for this pipeline?
+
+
+### Classic Build — Details
+
+{% include image.html
+lightbox="true"
+file="/images/runtime/runner/grafana-dashboards/build-details-1.png"
+url="/images/runtime/runner/grafana-dashboards/build-details-1.png"
+alt="Classic Pipelines — Overview"
+caption="Classic Pipelines — Overview"
+max-width="100%"
+%}
+
+{% include image.html
+lightbox="true"
+file="/images/runtime/runner/grafana-dashboards/build-details-2.png"
+url="/images/runtime/runner/grafana-dashboards/build-details-2.png"
+alt="Classic Pipelines — Overview"
+caption="Classic Pipelines — Overview"
+max-width="100%"
+%}
+
+Download: [grafana-classic-build-details.json](../assets/grafana-classic-build-details.json)
+
+While the Pipeline Overview focuses on trends, The "*Classic Build — Details*" dashboard zooms in on individual builds to support faster troubleshooting and optimization. It is designed for moments when something looks off and teams need to understand exactly what happened during a specific execution.
+
+With this level of detail, teams can answer questions such as:
+
+- Which step consumes the most time or resources?
+- Can the step structure be redesigned for faster execution?
+- What caused delays during build bootstrap or startup?
