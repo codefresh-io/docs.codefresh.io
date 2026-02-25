@@ -5,8 +5,11 @@
 {% assign layout_align = site.layout.image_align %}}
 {% endif %}
 
-<figure class="my-4 my-md-5">
-  <p class="mb-2">
+{% assign figure_class = include.figure_class | default: 'my-4 my-md-5' %}
+{% assign p_class = include.p_class | default: 'mb-2' %}
+
+<figure class="{{figure_class}}">
+  <p class="{{p_class}}">
     {% if layout_align == 'center' %}
       {% assign align_class = 'mx-auto' %}
     {% elsif layout_align == 'left' %}
