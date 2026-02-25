@@ -81,7 +81,8 @@ build-step:
 
 Alternatively, you can use more advanced condition expressions.
 
-This follows the standard [condition expression  syntax](#condition-expression-syntax). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.
+This follows the standard [condition expression  syntax](#condition-expression-syntax). In this case, you can choose to execute if ```all``` expression conditions evaluate to ```true```, or to execute if ```any``` expression conditions evaluate to ```true```.  
+The length of the expression is limited to 12,000 characters. The limit applies to the length both before and after variable interpolation.  
 
 >**NOTE**  
   Use "" around variables with text to avoid errors in processing the conditions. Example: "${{CF_COMMIT_MESSAGE}}"

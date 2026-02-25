@@ -1,0 +1,2799 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_MIMIR",
+      "label": "Mimir",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Build",
+      "tooltip": "Open build in Codefresh",
+      "type": "link",
+      "url": "${codefresh_url}/build/${cf_classic_build_id}?noAccount=${no_account}"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 36,
+      "panels": [],
+      "title": "Build overview",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Information about build",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 27,
+      "interval": "$min_interval",
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Runtime traces",
+          "url": "./a/grafana-exploretraces-app/explore?${__url_time_range}&timezone=utc&var-ds=Tempo&var-primarySignal=nestedSetParent%3C0&var-filters=resource.k8s.pod.name%7C%3D~%7C%28dind__gfp__engine%29-${cf_classic_build_id}&var-metric=rate&var-groupBy=resource.service.name&var-spanListColumns=&var-latencyThreshold=&var-partialLatencyThreshold=&actionView=breakdown"
+        },
+        {
+          "targetBlank": true,
+          "title": "Platform traces",
+          "url": "./a/grafana-exploretraces-app/explore?${__url_time_range}&timezone=utc&var-ds=Tempo&var-primarySignal=true&var-filters=span.cf.classic.build.id%7C%3D%7C${cf_classic_build_id}&var-metric=rate&var-groupBy=resource.service.name&var-spanListColumns=&var-latencyThreshold=&var-partialLatencyThreshold=&actionView=breakdown"
+        },
+        {
+          "targetBlank": true,
+          "title": "Engine logs",
+          "url": "./a/grafana-lokiexplore-app/explore/k8s_cluster_name/${cluster}/logs?patterns=%5B%5D&${__url_time_range}&var-lineFormat=&var-ds=Loki&var-filters=k8s_cluster_name%7C%3D~%7C__CV%CE%A9__${cluster},${cluster}&var-filters=k8s_namespace_name%7C%3D~%7C__CV%CE%A9__${k8s_namespace_name},${k8s_namespace_name}&var-filters=service_name%7C%3D%7Ccf-classic-engine&var-fields=&var-levels=&var-metadata=k8s_pod_name%7C%3D%7C__CV%CE%A9__engine-${cf_classic_build_id},engine-${cf_classic_build_id}&var-jsonFields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&timezone=utc&var-all-fields=k8s_pod_name%7C%3D%7C__CV%CE%A9__engine-${cf_classic_build_id},engine-${cf_classic_build_id}&displayedFields=%5B%5D&urlColumns=%5B%5D&visualizationType=%22logs%22&prettifyLogMessage=true&sortOrder=%22Ascending%22&wrapLogMessage=true"
+        },
+        {
+          "targetBlank": true,
+          "title": "DinD logs",
+          "url": "./a/grafana-lokiexplore-app/explore/k8s_cluster_name/${cluster}/logs?patterns=%5B%5D&${__url_time_range}&var-lineFormat=&var-ds=Loki&var-filters=k8s_cluster_name%7C%3D~%7C__CV%CE%A9__${cluster},${cluster}&var-filters=k8s_namespace_name%7C%3D~%7C__CV%CE%A9__${k8s_namespace_name},${k8s_namespace_name}&var-filters=service_name%7C%3D%7Ccf-classic-dind&var-fields=&var-levels=&var-metadata=k8s_pod_name%7C%3D%7C__CV%CE%A9__dind-${cf_classic_build_id},dind-${cf_classic_build_id}&var-jsonFields=&var-patterns=&var-lineFilterV2=&var-lineFilters=&timezone=utc&var-all-fields=k8s_pod_name%7C%3D%7C__CV%CE%A9__dind-${cf_classic_build_id},dind-${cf_classic_build_id}&displayedFields=%5B%5D&urlColumns=%5B%5D&visualizationType=%22logs%22&prettifyLogMessage=true&sortOrder=%22Ascending%22&wrapLogMessage=true"
+        }
+      ],
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "codefresh_classic_build_info{cf_classic_build_id=\"$cf_classic_build_id\"} > 0",
+          "format": "table",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Build info",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "pattern": "cf_.*|k8s_.*"
+            }
+          }
+        },
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": true,
+            "labelsToFields": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": false,
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Field": "",
+              "Last *": "Value"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Build preparation duration, broken down by sub-steps.\n\nThese steps are required to bootstrap the build and are reflected in the Codefresh UI as “Initializing Process.”",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": [
+                "sum"
+              ]
+            },
+            "inspect": false
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 30
+              },
+              {
+                "color": "light-red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "valueDisplayMode": "text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "string"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Build phase"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 114
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "id": 53,
+      "interval": "$min_interval",
+      "options": {
+        "cellHeight": "sm",
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Duration"
+          }
+        ]
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    sum(\n        (\n            {__name__=~\"codefresh_classic_build_step_completion_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n            -\n            {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n        )\n        or\n        (\n            time()\n            -\n            {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n        )\n    ) by (cf_classic_build_id, cf_classic_build_step_name)\n    * on(cf_classic_build_id, cf_classic_build_step_name)\n    sum(codefresh_classic_build_step_info{cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_type=~\"$pre_step_type\"} > 0) by (cf_classic_build_id, cf_classic_build_step_name)\n) by (cf_classic_build_step_name)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Preparation duration",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "labelsToFields": true,
+            "mode": "seriesToRows",
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Field": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Field": 0,
+              "Last *": 3,
+              "cf_classic_build_phase": 1,
+              "cf_classic_build_step_name": 2
+            },
+            "renameByName": {
+              "Field": "",
+              "Last *": "Duration",
+              "cf_classic_build_phase": "Build phase",
+              "cf_classic_build_step_name": "Step"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Build finalization duration, broken down by sub-steps.\n\nThese steps are required to gracefully terminate build execution and are not reflected in the Codefresh UI.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": [
+                "sum"
+              ]
+            },
+            "inspect": false
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 30
+              },
+              {
+                "color": "light-red",
+                "value": 60
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "valueDisplayMode": "text"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "string"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Build phase"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 114
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 54,
+      "interval": "$min_interval",
+      "options": {
+        "cellHeight": "sm",
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Duration"
+          }
+        ]
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    sum(\n        (\n            {__name__=~\"codefresh_classic_build_step_completion_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n            -\n            {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n        )\n        or\n        (\n            time()\n            -\n            {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\"}\n        )\n    ) by (cf_classic_build_id, cf_classic_build_step_name)\n    * on(cf_classic_build_id, cf_classic_build_step_name)\n    sum(codefresh_classic_build_step_info{cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_type=~\"$post_step_type\"} > 0) by (cf_classic_build_id, cf_classic_build_step_name)\n) by (cf_classic_build_step_name)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Finalization duration",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "labelsToFields": true,
+            "mode": "seriesToRows",
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Field": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Field": 0,
+              "Last *": 3,
+              "cf_classic_build_phase": 1,
+              "cf_classic_build_step_name": 2
+            },
+            "renameByName": {
+              "Field": "",
+              "Last *": "Duration",
+              "cf_classic_build_phase": "Build phase",
+              "cf_classic_build_step_name": "Step"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Memory resources allocated to the build (`dind` pod).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 11
+      },
+      "id": 58,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build memory",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (`dind` pod) memory utilization as a percent of requests/limits.\n\nIf utilization is close to 100%, it indicates that the build is using all of its allocated memory, which may lead to performance issues or OOM (Out of Memory) kills.\n\nIf utilization is close to 0%, it indicates that the build is not using much memory, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 0.2
+              },
+              {
+                "color": "light-green",
+                "value": 0.3
+              },
+              {
+                "color": "light-orange",
+                "value": 0.7
+              },
+              {
+                "color": "light-red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 2,
+        "y": 11
+      },
+      "id": 41,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\"}\n)\n/\nsum(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\"}\n)\n/\nsum(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build memory utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (`dind` pod) CPU utilization as a percent of requests/limits.\n\nIf utilization is close to 100%, it indicates that the build is using all of its allocated CPU, which may lead to performance issues.\n\nIf utilization is close to 0%, it indicates that the build is not using much CPU, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 0.2
+              },
+              {
+                "color": "light-green",
+                "value": 0.3
+              },
+              {
+                "color": "light-orange",
+                "value": 0.7
+              },
+              {
+                "color": "light-red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 9,
+        "y": 11
+      },
+      "id": 42,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\"}\n    [$__rate_interval])\n)\n/\nsum(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\"}\n    [$__rate_interval])\n)\n/\nsum(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build CPU utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Share of throttled CPU periods for the build (`dind` pod) as a percent of the total CPU periods.\n\nIf the value is above 0, it indicates that the build is being throttled due to CPU limits set on the `dind` pod. This can lead to slower build times and should be monitored to ensure that the pod has sufficient CPU resources.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 11
+      },
+      "id": 34,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    irate(\n        container_cpu_cfs_throttled_periods_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", image!=\"\", container!=\"\"}\n    [$__rate_interval])\n    /\n    irate(\n        container_cpu_cfs_periods_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", image!=\"\", container!=\"\"}\n    [$__rate_interval])\n) by (container)\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Throttled periods",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Build CPU throttling",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "CPU resources allocated to the build (`dind` pod).",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "cpu"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 16
+      },
+      "id": 59,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build CPU",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (attached volume) storage utilization.\n\nIf utilization is at 80%, in-DinD cleaner may be triggered (configurable, [docs](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners)).\n\nIf it's close to 100%, the build may fail because of Out Of Storage.\n\nIf utilization is close to 0%, it indicates that the build is not using much storage, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              },
+              {
+                "color": "light-red",
+                "value": 95
+              }
+            ]
+          },
+          "unit": "deckbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "id": 56,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "docker_volume_kb_total{pod=\"dind-$cf_classic_build_id\"}\n",
+          "hide": false,
+          "legendFormat": "Total",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "(\n    docker_volume_kb_total{pod=\"dind-$cf_classic_build_id\"}\n    -\n    docker_volume_kb_available{pod=\"dind-$cf_classic_build_id\"}\n)",
+          "hide": false,
+          "legendFormat": "Used",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Storage utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (attached volume) index nodes utilization.\n\nIf utilization is at 80%, in-DinD cleaner may be triggered (configurable, [docs](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#volume-cleaners)).\n\nIf it's close to 100%, the build may fail because of Out Of Storage.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 0.8
+              },
+              {
+                "color": "light-red",
+                "value": 0.95
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "id": 57,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "(\n    docker_volume_inodes_total{pod=\"dind-$cf_classic_build_id\"}\n    -\n    docker_volume_inodes_available{pod=\"dind-$cf_classic_build_id\"}\n)\n/\ndocker_volume_inodes_total{pod=\"dind-$cf_classic_build_id\"}",
+          "hide": false,
+          "legendFormat": "Used",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Inodes utilization",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 55,
+      "panels": [],
+      "title": "Steps",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Step names are displayed as defined in the pipeline YAML.\n\nEach step is clickable, allowing you to navigate directly to the corresponding step in Codefresh.\n\nDuration of the steps is shown with $min_interval precision, which is controlled by “Min interval” variable.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": 10000,
+            "lineWidth": 0,
+            "spanNulls": true
+          },
+          "fieldMinMax": false,
+          "links": [
+            {
+              "oneClick": true,
+              "targetBlank": true,
+              "title": "the step in Codefresh",
+              "url": "${codefresh_url}/build/${cf_classic_build_id}?noAccount=${no_account}&step=${__field.labels.cf_classic_build_step_name}&tab=output&logs=terminal"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 30,
+      "interval": "$min_interval",
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "never",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(\n    (codefresh_classic_build_step_info{cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_phase=~\"preparing|running|finalizing\", cf_classic_build_step_name=~\"[^.]+\", cf_classic_build_step_type!~\"$pre_step_type|$post_step_type\"} > 0)\n) by (cf_classic_build_step_name)",
+          "format": "table",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Steps timeline",
+      "transformations": [
+        {
+          "id": "prepareTimeSeries",
+          "options": {
+            "format": "multi"
+          }
+        },
+        {
+          "id": "renameByRegex",
+          "options": {}
+        }
+      ],
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Step durations, broken down by phases:\n\n* `preparing`: Internal preparation time before the actual step begins.\n* `running`: Time taken to execute the step.\n* `finalizing`: Time spent on internal finalization after the step is executed.\n\nStep names are displayed as defined in the pipeline YAML.\n\nEach step is clickable, allowing you to navigate directly to the corresponding step in Codefresh.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "footer": {
+              "reducers": [
+                "sum"
+              ]
+            },
+            "inspect": false
+          },
+          "fieldMinMax": false,
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Step"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Go to the step in Codefresh",
+                    "url": "${codefresh_url}/build/${cf_classic_build_id}?noAccount=${no_account}&step=${__data.fields.Step}&tab=output&logs=terminal"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Step"
+            },
+            "properties": [
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/Preparing|Finalizing/"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": 0
+                    },
+                    {
+                      "color": "light-orange",
+                      "value": 10
+                    },
+                    {
+                      "color": "light-red",
+                      "value": 15
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": 40,
+      "interval": "$min_interval",
+      "options": {
+        "cellHeight": "sm",
+        "enablePagination": false,
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Running"
+          }
+        ]
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    (\n        {__name__=~\"codefresh_classic_build_step_phase_completion_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_name=~\"[^.]+\"}\n        -\n        {__name__=~\"codefresh_classic_build_step_phase_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_name=~\"[^.]+\"}\n    )\n    or\n    (\n        time()\n        -\n        {__name__=~\"codefresh_classic_build_step_phase_start_timestamp(_seconds)*$\", cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_name=~\"[^.]+\"}\n    )\n) by (cf_classic_build_step_name, cf_classic_build_step_phase)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{cf_classic_build_step_name}}: {{cf_classic_build_step_phase}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Steps duration",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "labelsToFields": true,
+            "mode": "seriesToRows",
+            "reducers": [
+              "lastNotNull"
+            ]
+          }
+        },
+        {
+          "id": "groupingToMatrix",
+          "options": {
+            "columnField": "cf_classic_build_step_phase",
+            "emptyValue": "zero",
+            "rowField": "cf_classic_build_step_name",
+            "valueField": "Last *"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "cf_classic_build_step_name\\cf_classic_build_step_phase": 0,
+              "finalizing": 3,
+              "preparing": 1,
+              "running": 2
+            },
+            "renameByName": {
+              "cf_classic_build_step_name\\cf_classic_build_step_phase": "Step",
+              "finalizing": "Finalizing",
+              "preparing": "Preparing",
+              "running": "Running"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Memory consumption broken down by step, stacked.\n\nStep names are displayed as defined in the pipeline YAML.\n\nEach step is clickable, allowing you to navigate directly to the corresponding step in Codefresh.\n\n“Build pod memory” is the total memory used by the `dind` pod, which includes the memory used by the Docker daemon itself and any step containers running inside it.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [
+            {
+              "oneClick": true,
+              "targetBlank": true,
+              "title": "the step in Codefresh",
+              "url": "${codefresh_url}/build/${cf_classic_build_id}?noAccount=${no_account}&step=${__field.labels.cf_classic_build_step_name}&tab=output&logs=terminal"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "gte",
+                "reducer": "allIsZero",
+                "value": 0
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Build pod memory"
+            },
+            "properties": [
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "links"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/.*\\..*/"
+            },
+            "properties": [
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 42
+      },
+      "id": 32,
+      "interval": "$min_interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    {__name__=~\"codefresh_classic_build_step_memory_working_set(_bytes)*$\", cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_name=~\"[^.]+\"}\n) by (cf_classic_build_step_name)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container=\"dind\"}\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Build pod memory",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Steps memory",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "CPU consumption broken down by step, stacked.\n\nStep names are displayed as defined in the pipeline YAML.\n\nEach step is clickable, allowing you to navigate directly to the corresponding step in Codefresh.\n\n“Build pod CPU” is the total CPU used by the `dind` pod, which includes the CPU used by the Docker daemon itself and any step containers running inside it.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
+          "links": [
+            {
+              "oneClick": true,
+              "targetBlank": true,
+              "title": "the step in Codefresh",
+              "url": "${codefresh_url}/build/${cf_classic_build_id}?noAccount=${no_account}&step=${__field.labels.cf_classic_build_step_name}&tab=output&logs=terminal"
+            }
+          ],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "core"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Build pod CPU"
+            },
+            "properties": [
+              {
+                "id": "custom.stacking",
+                "value": {
+                  "group": "A",
+                  "mode": "none"
+                }
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    10,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "links"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 42
+      },
+      "id": 31,
+      "interval": "$min_interval",
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    rate(\n        {__name__=~\"codefresh_classic_build_step_cpu_time(_seconds)*(_total)*$\",cf_classic_build_id=\"$cf_classic_build_id\", cf_classic_build_step_name=~\"[^.]+\"}\n    [$__rate_interval])\n) by (cf_classic_build_step_name)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{cf_classic_build_step_name}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "rate(\n    container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"dind-${cf_classic_build_id}\", container=\"dind\"}\n[$__rate_interval])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Build pod CPU",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Steps CPU",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 53
+      },
+      "id": 49,
+      "panels": [],
+      "title": "Engine",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Memory resources allocated to the `engine` pod.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 54
+      },
+      "id": 60,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Engine memory",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total `engine` pod memory utilization as a percent of requests/limits.\n\nThe `engine` is responsible for steps orchestration and execution.\n\nIf utilization is close to 100%, it indicates that the `engine` pod is using all of its allocated memory, which may lead to performance issues or OOM (Out of Memory) kills.\n\nIf utilization is close to 0%, it indicates that the `engine` pod is not using much memory, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 20
+              },
+              {
+                "color": "light-green",
+                "value": 30
+              },
+              {
+                "color": "light-orange",
+                "value": 70
+              },
+              {
+                "color": "light-red",
+                "value": 79.9996
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 2,
+        "y": 54
+      },
+      "id": 50,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\"}\n)\n/\nsum(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\"}\n)\n/\nsum(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"memory\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Engine memory utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total `engine` pod CPU utilization as a percent of requests/limits.\n\nThe `engine` is responsible for steps orchestration and execution.\n\nIf utilization is close to 100%, it indicates that the `engine` pod is using all of its allocated CPU, which may lead to performance issues.\n\nIf utilization is close to 0%, it indicates that the `engine` pod is not using much CPU, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 20
+              },
+              {
+                "color": "light-green",
+                "value": 30
+              },
+              {
+                "color": "light-orange",
+                "value": 70
+              },
+              {
+                "color": "light-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 9,
+        "y": 54
+      },
+      "id": 51,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\"}\n    [$__rate_interval])\n)\n/\nsum(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\"}\n    [$__rate_interval])\n)\n/\nsum(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Engine CPU utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Share of throttled CPU periods for the `engine` pod as a percent of the total CPU periods.\n\nIf the value is above 0, it indicates that the `engine` pod is being throttled due to CPU limits set on the pod. This can lead to slower build times and should be monitored to ensure that the pod has sufficient CPU resources.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 54
+      },
+      "id": 52,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    irate(\n        container_cpu_cfs_throttled_periods_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", image!=\"\", container!=\"\"}\n    [$__rate_interval])\n    /\n    irate(\n        container_cpu_cfs_periods_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", image!=\"\", container!=\"\"}\n    [$__rate_interval])\n) by (container)\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Throttled periods",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Engine CPU throttling",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "CPU resources allocated to the `engine` pod.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "cpu"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 2,
+        "x": 0,
+        "y": 59
+      },
+      "id": 61,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "max(\n    kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", pod=\"engine-${cf_classic_build_id}\", container!=\"\", resource=\"cpu\"}\n)",
+          "hide": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build CPU",
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "10s",
+          "value": "10s"
+        },
+        "description": "A lower limit for the interval. Recommended to be set to write frequency, for example `1m` if your data is written every minute.",
+        "hide": 2,
+        "label": "Min interval",
+        "name": "min_interval",
+        "options": [
+          {
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
+          },
+          {
+            "selected": false,
+            "text": "5s",
+            "value": "5s"
+          },
+          {
+            "selected": true,
+            "text": "10s",
+            "value": "10s"
+          },
+          {
+            "selected": false,
+            "text": "15s",
+            "value": "15s"
+          },
+          {
+            "selected": false,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          }
+        ],
+        "query": "1s, 5s, 10s, 15s, 30s, 1m",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "https://g.codefresh.io",
+          "value": "https://g.codefresh.io"
+        },
+        "description": "Codefresh root URL. Will be used to provide external links in dashboard. No trailing slash allowed.",
+        "hide": 2,
+        "label": "Codefresh URL",
+        "name": "codefresh_url",
+        "options": [
+          {
+            "selected": true,
+            "text": "https://g.codefresh.io",
+            "value": "https://g.codefresh.io"
+          }
+        ],
+        "query": "https://g.codefresh.io",
+        "type": "custom"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "true",
+          "value": "true"
+        },
+        "description": "Open build in Codefresh as Platform Admin",
+        "hide": 2,
+        "label": "Admin view",
+        "name": "no_account",
+        "options": [
+          {
+            "selected": true,
+            "text": "true",
+            "value": "true"
+          },
+          {
+            "selected": false,
+            "text": "false",
+            "value": "false"
+          }
+        ],
+        "query": "true,false",
+        "type": "custom"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_MIMIR}"
+        },
+        "definition": "label_values(codefresh_classic_build_info,cf_account_name)",
+        "description": "Account to which the build belongs to",
+        "includeAll": true,
+        "label": "Account",
+        "name": "cf_account_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info,cf_account_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\"},cluster)",
+        "description": "Cluster in which the build runs",
+        "includeAll": true,
+        "label": "Cluster",
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\"},cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\"},k8s_namespace_name)",
+        "description": "Namespace in which the build runs",
+        "includeAll": true,
+        "label": "Namespace",
+        "name": "k8s_namespace_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\"},k8s_namespace_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_MIMIR}"
+        },
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\"},cf_classic_runtime_name)",
+        "description": "",
+        "includeAll": true,
+        "label": "Runtime",
+        "name": "cf_classic_runtime_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\"},cf_classic_runtime_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_MIMIR}"
+        },
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\"},cf_classic_pipeline_name)",
+        "description": "Pipeline in which the build runs. In the format `<project-name>/<pipeline-name>`",
+        "includeAll": true,
+        "label": "Pipeline",
+        "name": "cf_classic_pipeline_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\"},cf_classic_pipeline_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_MIMIR}"
+        },
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"},cf_classic_build_id)",
+        "description": "The ID of the build",
+        "label": "Build ID",
+        "name": "cf_classic_build_id",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"},cf_classic_build_id)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 2,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "_internal:pre-step",
+          "value": "_internal:pre-step"
+        },
+        "hide": 2,
+        "name": "pre_step_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "_internal:pre-step",
+            "value": "_internal:pre-step"
+          }
+        ],
+        "query": "_internal:pre-step",
+        "type": "custom"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "_internal:post-step",
+          "value": "_internal:post-step"
+        },
+        "hide": 2,
+        "name": "post_step_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "_internal:post-step",
+            "value": "_internal:post-step"
+          }
+        ],
+        "query": "_internal:post-step",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Codefresh / Classic Build / Details",
+  "uid": "0c67f24b-cfbb-4904-bb5a-c380576fdd26",
+  "version": 14,
+  "weekStart": ""
+}

@@ -1,0 +1,1258 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_MIMIR",
+      "label": "Mimir",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "12.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "panels": [],
+      "title": "Total build duration",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build duration, broken down by phases:\n\n* `preparing`: Build preparation duration. This phase is required to bootstrap the build and is reflected in the Codefresh UI as “Initializing Process.”\n* `running`: Build execution duration.\n* `finalizing`: Build finalization duration. This phase is required to gracefully terminate build execution and is not reflected in the Codefresh UI.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 10,
+      "maxPerRow": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "repeat": "percentile",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    max_over_time(\n        (\n            sum(\n                {__name__=~\"codefresh_classic_build_phase_completion_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"preparing|running|finalizing\"}\n                -\n                {__name__=~\"codefresh_classic_build_phase_start_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"preparing|running|finalizing\"}\n            ) by (cf_classic_build_id, cf_classic_build_phase)\n            * on (cf_classic_build_id) group_left\n            sum(\n                codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"$cf_classic_build_phase_final\", cf_classic_build_volume=~\"$cf_classic_build_volume\"}\n            ) by (cf_classic_build_id)\n        )\n    [$aggregation_window:])\n) by (cf_classic_build_phase)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total build duration, p$percentile",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 13,
+      "panels": [],
+      "title": "Build preparation duration",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Build preparation duration, broken down by sub-steps.\n\nThese steps are required to bootstrap the build and are reflected in the Codefresh UI as “Initializing Process.”",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 11,
+      "maxPerRow": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "repeat": "percentile",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    max_over_time(\n        (\n            sum(\n                {__name__=~\"codefresh_classic_build_step_completion_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"}\n                -\n                {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"}\n            ) by (cf_classic_build_id, cf_classic_build_step_name)\n            * on (cf_classic_build_id, cf_classic_build_step_name)\n            sum(\n                codefresh_classic_build_step_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_step_type=\"$pre_step_type\"}\n            ) by (cf_classic_build_id, cf_classic_build_step_name)\n            * on (cf_classic_build_id) group_left\n            sum(\n                codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"$cf_classic_build_phase_final\", cf_classic_build_volume=~\"$cf_classic_build_volume\"}\n            ) by (cf_classic_build_id)\n        )\n    [$aggregation_window:])\n) by (cf_classic_build_step_name)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Build preparation duration, p$percentile",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 16,
+      "panels": [],
+      "title": "Build finalization duration",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Build finalization duration, broken down by sub-steps.\n\nThese steps are required to gracefully terminate build execution and are not reflected in the Codefresh UI.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 15,
+      "maxPerRow": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "repeat": "percentile",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    max_over_time(\n        (\n            sum(\n                {__name__=~\"codefresh_classic_build_step_completion_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"}\n                -\n                {__name__=~\"codefresh_classic_build_step_start_timestamp(_seconds)*$\", cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"}\n            ) by (cf_classic_build_id, cf_classic_build_step_name)\n            * on (cf_classic_build_id, cf_classic_build_step_name)\n            sum(\n                codefresh_classic_build_step_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_step_type=\"$post_step_type\"}\n            ) by (cf_classic_build_id, cf_classic_build_step_name)\n            * on (cf_classic_build_id) group_left\n            sum(\n                codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"$cf_classic_build_phase_final\", cf_classic_build_volume=~\"$cf_classic_build_volume\"}\n            ) by (cf_classic_build_id)\n        )\n    [$aggregation_window:])\n) by (cf_classic_build_step_name)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Build finalization duration, p$percentile",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 19,
+      "panels": [],
+      "title": "Build memory utilization",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (`dind` pod) memory utilization as a percent of requests/limits.\n\nIf utilization is close to 100%, it indicates that the build is using all of its allocated memory, which may lead to performance issues or OOM (Out of Memory) kills.\n\nIf utilization is close to 0%, it indicates that the build is not using much memory, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 0.2
+              },
+              {
+                "color": "light-green",
+                "value": 0.3
+              },
+              {
+                "color": "light-orange",
+                "value": 0.7
+              },
+              {
+                "color": "light-red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 17,
+      "maxPerRow": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "repeat": "percentile",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    sum(\n        container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\"}\n    ) by (pod)\n    /\n    sum(\n        kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\", resource=\"memory\"}\n    ) by (pod)\n    * on (pod)\n    sum(\n        label_replace(\n            codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_volume=~\"$cf_classic_build_volume\"},\n            \"pod\",\n            \"dind-$1\",\n            \"cf_classic_build_id\",\n            \"(.*)\"\n        )\n    ) by (pod)\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    sum(\n        container_memory_working_set_bytes{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\"}\n    ) by (pod)\n    /\n    sum(\n        kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\", resource=\"memory\"}\n    ) by (pod)\n    * on (pod)\n    sum(\n        label_replace(\n            codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_volume=~\"$cf_classic_build_volume\"},\n            \"pod\",\n            \"dind-$1\",\n            \"cf_classic_build_id\",\n            \"(.*)\"\n        )\n    ) by (pod)\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build memory utilization, p$percentile",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 18,
+      "panels": [],
+      "title": "Build CPU utilization",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Total build (`dind` pod) CPU utilization as a percent of requests/limits.\n\nIf utilization is close to 100%, it indicates that the build is using all of its allocated CPU, which may lead to performance issues.\n\nIf utilization is close to 0%, it indicates that the build is not using much CPU, which may suggest over-provisioning.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-red",
+                "value": 0
+              },
+              {
+                "color": "light-orange",
+                "value": 0.2
+              },
+              {
+                "color": "light-green",
+                "value": 0.3
+              },
+              {
+                "color": "light-orange",
+                "value": 0.7
+              },
+              {
+                "color": "light-red",
+                "value": 0.8
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 45
+      },
+      "id": 20,
+      "maxPerRow": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "repeat": "percentile",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    sum(\n        rate(\n            container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\"}\n        [$__rate_interval])\n    ) by (pod)\n    /\n    sum(\n        kube_pod_container_resource_requests{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\", resource=\"cpu\"}\n    ) by (pod)\n    * on (pod)\n    sum(\n        label_replace(\n            codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_volume=~\"$cf_classic_build_volume\"},\n            \"pod\",\n            \"dind-$1\",\n            \"cf_classic_build_id\",\n            \"(.*)\"\n        )\n    ) by (pod)\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Requests",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "quantile(0.$percentile,\n    sum(\n        rate(\n            container_cpu_usage_seconds_total{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\"}\n        [$__rate_interval])\n    ) by (pod)\n    /\n    sum(\n        kube_pod_container_resource_limits{cluster=~\"$cluster\", namespace=~\"$k8s_namespace_name\", container=\"dind\", resource=\"cpu\"}\n    ) by (pod)\n    * on (pod)\n    sum(\n        label_replace(\n            codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_volume=~\"$cf_classic_build_volume\"},\n            \"pod\",\n            \"dind-$1\",\n            \"cf_classic_build_id\",\n            \"(.*)\"\n        )\n    ) by (pod)\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Limits",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build CPU utilization, p$percentile",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 14,
+      "panels": [],
+      "title": "Build executions",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Number of concurrently running builds.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 56
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_volume=~\"$cf_classic_build_volume\", cf_classic_build_phase!~\"$cf_classic_build_phase_final\"} > 0\n)",
+          "hide": false,
+          "legendFormat": "Active builds",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Build concurrency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_MIMIR}"
+      },
+      "description": "Number of finished builds, broken down by their results.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "failed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "succeeded"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 56
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": true,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_MIMIR}"
+          },
+          "editorMode": "code",
+          "expr": "sum(\n    codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\", cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"$cf_classic_build_phase_final\", cf_classic_build_volume=~\"$cf_classic_build_volume\"}\n) by (cf_classic_build_phase)\n",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Build results",
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "3h",
+          "value": "3h"
+        },
+        "label": "Aggregation window",
+        "name": "aggregation_window",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": true,
+            "text": "3h",
+            "value": "3h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "24h",
+            "value": "24h"
+          }
+        ],
+        "query": "1m, 10m, 30m, 1h, 3h, 6h, 12h, 24h",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": [
+            "$__all"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "description": "",
+        "includeAll": true,
+        "label": "Percentile",
+        "multi": true,
+        "name": "percentile",
+        "options": [
+          {
+            "selected": false,
+            "text": "50",
+            "value": "50"
+          },
+          {
+            "selected": false,
+            "text": "90",
+            "value": "90"
+          },
+          {
+            "selected": false,
+            "text": "95",
+            "value": "95"
+          }
+        ],
+        "query": "50, 90, 95",
+        "type": "custom"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info,cf_account_name)",
+        "description": "Account name",
+        "includeAll": true,
+        "label": "Account",
+        "multi": true,
+        "name": "cf_account_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info,cf_account_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\"},cluster)",
+        "description": "Cluster in which Codefresh Classic Build is running",
+        "includeAll": true,
+        "label": "Cluster",
+        "multi": true,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cf_account_name=~\"$cf_account_name\"},cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\"},k8s_namespace_name)",
+        "description": "Cluster namespace in which Codefresh Classic Build is running",
+        "includeAll": true,
+        "label": "Namespace",
+        "multi": true,
+        "name": "k8s_namespace_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\"},k8s_namespace_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\"},cf_classic_runtime_name)",
+        "includeAll": true,
+        "label": "Runtime",
+        "multi": true,
+        "name": "cf_classic_runtime_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_account_name=~\"$cf_account_name\"},cf_classic_runtime_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\"},cf_classic_pipeline_name)",
+        "description": "Pipeline name",
+        "includeAll": true,
+        "label": "Pipeline",
+        "multi": true,
+        "name": "cf_classic_pipeline_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", k8s_namespace_name=~\"$k8s_namespace_name\", cf_classic_runtime_name=~\"$cf_classic_runtime_name\"},cf_classic_pipeline_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"terminated|succeeded|failed\"},cf_classic_build_phase)",
+        "description": "Build result",
+        "includeAll": true,
+        "label": "Build result",
+        "multi": true,
+        "name": "cf_classic_build_phase_final",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\", cf_classic_build_phase=~\"terminated|succeeded|failed\"},cf_classic_build_phase)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "definition": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"},cf_classic_build_volume)",
+        "description": "If the build volume was new or reused",
+        "includeAll": true,
+        "label": "Volume",
+        "multi": true,
+        "name": "cf_classic_build_volume",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(codefresh_classic_build_info{cluster=~\"$cluster\", cf_account_name=~\"$cf_account_name\", cf_classic_pipeline_name=~\"$cf_classic_pipeline_name\"},cf_classic_build_volume)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "_internal:pre-step",
+          "value": "_internal:pre-step"
+        },
+        "hide": 2,
+        "name": "pre_step_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "_internal:pre-step",
+            "value": "_internal:pre-step"
+          }
+        ],
+        "query": "_internal:pre-step",
+        "type": "custom"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "_internal:post-step",
+          "value": "_internal:post-step"
+        },
+        "hide": 2,
+        "name": "post_step_type",
+        "options": [
+          {
+            "selected": true,
+            "text": "_internal:post-step",
+            "value": "_internal:post-step"
+          }
+        ],
+        "query": "_internal:post-step",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "Codefresh / Classic Pipelines / Overview",
+  "uid": "a12506b8-b9fb-4c14-8512-d1f73ec84f2f",
+  "version": 4,
+  "weekStart": ""
+}
