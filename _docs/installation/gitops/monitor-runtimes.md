@@ -100,8 +100,8 @@ Here is a description of the information and options in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Related articles
-[Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/)
-[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
-[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
+[Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/)  
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)  
