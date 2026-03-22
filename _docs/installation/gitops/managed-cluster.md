@@ -7,6 +7,7 @@ toc: true
 Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.
 
 When you add an external cluster to a provisioned GitOps Runtime, the cluster is registered as a managed cluster. A managed cluster is treated as any other managed K8s resource, meaning that you can monitor its health and sync status, deploy applications to it, view information in the Applications dashboard, and remove the cluster from the Runtime's managed list.
+To monitor connection status for all managed clusters in one place, see [Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/).
 
 Adding a managed cluster via Codefresh ensures that Codefresh applies the required RBAC resources (`ServiceAccount`, `ClusterRole` and `ClusterRoleBinding`) to the target cluster, creates a `Job` that updates the selected Runtime with the information, registers the cluster in Argo CD as a managed cluster, and updates the platform with the new cluster information.
 

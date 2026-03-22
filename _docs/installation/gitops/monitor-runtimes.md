@@ -1,11 +1,13 @@
 ---
 title: "Monitoring GitOps Runtimes"
-description: "Explore List and Topology view for GitOps Runtimes"
+description: "View and navigate all provisioned GitOps Runtimes in List and Topology views"
 toc: true
 ---
 ## Monitoring GitOps Runtimes
 
-This article describes the options and actions to monitor GitOps Runtimes after installation through the List and Topology view formats.   
+This article describes the List and Topology views for GitOps Runtimes — your starting point for navigating provisioned runtimes, checking versions, and reviewing high-level sync status across runtimes and managed clusters.
+
+For a deeper health view with per-runtime connectivity, component status, and actionable issue cards, see [Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/).
 For options on managing GitOps Runtimes, see [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/).
 
 ## GitOps Runtime views
@@ -98,7 +100,8 @@ Here is a description of the information and options in the Topology view.
 |**Search and View options** | {::nomarkdown}<ul><li>Find a Runtime or its clusters by typing part of the Runtime/cluster name, and then navigate to the entries found. </li> <li>Topology view options: Resize to window, zoom in, zoom out, full screen view.</li></ul> {:/}|
 
 ## Related articles
-[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)  
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)  
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)  
+[Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/)
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
 [Shared Configuration Repository]({{site.baseurl}}/docs/installation/gitops/shared-configuration/)
