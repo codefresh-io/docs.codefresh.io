@@ -184,8 +184,8 @@ Lists all runtime components with their descriptions and health status. Health s
 
 ## Related articles
 
-[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)
-[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)
-[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)
-[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)
-[Troubleshooting GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-troubleshooting/)
+[Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)   
+[Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)   
+[Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)   
+[Managing Git Sources in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/git-sources/)   
+[Troubleshooting GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/runtime-troubleshooting/)   
