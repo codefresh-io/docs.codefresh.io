@@ -35,6 +35,23 @@
     - title: Advanced Promotion Flow with environment dependencies
       localurl: /gitops/gitops-quick-start/dependency-multi-env-promotion
 
+- title: GitOps Runtimes
+  icon: ../images/home-icons/installation.svg
+  url: ""
+  links:
+    - title: About GitOps Runtimes
+      localurl: /gitops/gitops-runtimes/gitops/
+    - title: Install GitOps Runtime with existing Argo CD
+      localurl: /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/
+    - title: Install GitOps Runtime with new Argo CD
+      localurl: /gitops/gitops-runtimes/runtime-install-with-new-argo-cd/
+    - title: Monitoring GitOps Runtimes
+      localurl: /gitops/gitops-runtimes/monitor-runtimes/
+    - title: Runtime Status Panel
+      localurl: /gitops/gitops-runtimes/runtime-status-panel/
+    - title: Managing GitOps Runtimes
+      localurl: /gitops/gitops-runtimes/manage-runtimes/
+
 - title: Environments
   icon: ../images/home-icons/environments.svg
   url: ""
