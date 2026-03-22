@@ -183,7 +183,6 @@ Lists all runtime components with their descriptions and health status. Health s
 - **View Logs** icon — opens component logs for troubleshooting
 
 ## Related articles
-
 [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/)   
 [Managing GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/)   
 [Managing external clusters in GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/managed-cluster/)   
