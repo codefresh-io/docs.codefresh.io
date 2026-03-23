@@ -196,6 +196,23 @@
     - title: Quay Registry for GitOps
       localurl: /docs/gitops-integrations/container-registries/quay/
 
+- title: GitOps Runtimes
+  icon: images/home-icons/installation.svg
+  url: ""
+  links:
+    - title: About GitOps Runtimes
+      localurl: /docs/installation/gitops/gitops-runtime/
+    - title: Install GitOps Runtime with existing Argo CD
+      localurl: /docs/installation/gitops/runtime-install-with-existing-argo-cd/
+    - title: Install GitOps Runtime with new Argo CD
+      localurl: /docs/installation/gitops/runtime-install-with-new-argo-cd/
+    - title: Monitoring GitOps Runtimes
+      localurl: /docs/installation/gitops/monitor-runtimes/
+    - title: Runtime Status Panel
+      localurl: /docs/installation/gitops/runtime-status-panel/
+    - title: Managing GitOps Runtimes
+      localurl: /docs/installation/gitops/manage-runtimes/
+
 - title: Installation
   icon: images/home-icons/installation.svg
   url: ""

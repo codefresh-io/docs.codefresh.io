@@ -637,6 +637,8 @@
           url: "/configuration-runtime"
         - title: Monitoring GitOps Runtimes
           url: "/monitor-runtimes"
+        - title: Runtime Status Panel
+          url: "/runtime-status-panel"
         - title: Managing GitOps Runtimes
           url: "/manage-runtimes"
         - title: Managing external clusters in GitOps Runtimes

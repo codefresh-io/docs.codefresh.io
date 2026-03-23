@@ -9,8 +9,9 @@ toc: true
 
 
 ## Managing GitOps Runtimes
-This article describes the options and actions to manage GitOps Runtimes after installation, including configuring the Runtime as an application, updating Git credentials, and more.  
+This article describes the options and actions to manage GitOps Runtimes after installation, including configuring the Runtime as an application, updating Git credentials, and more.
 For options on monitoring GitOps Runtimes, see [Monitoring GitOps Runtimes]({{site.baseurl}}/docs/installation/gitops/monitor-runtimes/).
+For a unified health overview with actionable issue cards, see [Runtime Status Panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/).
 
 
 
