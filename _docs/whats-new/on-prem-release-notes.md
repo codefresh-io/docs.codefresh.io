@@ -5,6 +5,52 @@ toc: true
 ---
 
 Welcome to the release notes for our on-premises releases.
+## On-premises version 2.11
+
+### Installation & Upgrade
+
+#### Installing v2.11
+For detailed instructions on installing v2.11, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+
+
+#### Upgrading to v2.11
+The maximum GitOps runtime that is supported for this version is **0.29.x**.
+
+
+### Features & enhancements in 2.11
+**Enhanced Security: Trigger Secrets Masking** 
+We’ve introduced improved protection for sensitive data in pipeline integrations. When enabled, trigger secrets used in pipeline endpoints are automatically masked, reducing the risk of accidental exposure in logs or UI.
+
+
+**Improved Runtime Installation Experience** 
+We’ve revamped the runtime installation flow with a new guided wizard that simplifies setup and improves usability. As part of this enhancement, users can now seamlessly connect additional Git providers directly during setup, including:
+- GitLab
+- Bitbucket
+
+This streamlined experience makes onboarding faster and more flexible across different source control platforms.
+
+
+### Feature Flags
+Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
+
+
+#### Updated Feature Flags
+The table below describes the changes to existing Feature Flags in the Codefresh On-Premises release v2.10.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Default Value |
+| -----------        | --------------| ------------- |
+| `maskTriggerSecrets`  | When enabled, masks trigger secrets for pipeline endpoints | TRUE |
+| `runtimeInstallationWizard`  | Enables new runtime installation flow wizard | TRUE |
+| `gitlabSupportInRuntimeWizard`  | Adds ability to connect Gitlab as git provider in runtime installation wizard | TRUE |
+| `bitbucketSupportInRuntimeWizard`  | Adds ability to connect Bitbucket as git provider in runtime installation wizard | TRUE |
+
+
+### Bug fixes
+
+* Fixes an issue where audit logs were not visible in restricted environments by allowing explicit configuration of the audit store schema instead of relying on the default public schema.
+
+
 ## On-premises version 2.10
 
 ### Installation & Upgrade
