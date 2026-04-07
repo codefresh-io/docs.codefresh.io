@@ -29,6 +29,9 @@ We’ve revamped the runtime installation flow with a new guided wizard that sim
 
 This streamlined experience makes onboarding faster and more flexible across different source control platforms.
 
+**Reduced Database Network Usage with MongoDB Compression** 
+Enabled compression for traffic between services and MongoDB, significantly reducing network usage and lowering infrastructure costs.
+
 
 ### Feature Flags
 Feature Flags are divided into new Feature Flags released in the current version, and changes to existing Feature Flags which are now enabled by default.
@@ -49,6 +52,7 @@ The table below describes the changes to existing Feature Flags in the Codefresh
 ### Bug fixes
 
 * Fixes an issue where audit logs were not visible in restricted environments by allowing explicit configuration of the audit store schema instead of relying on the default public schema.
+* Fixes issues caused by abrupt pod terminations (e.g., Spot instances), improving stability of in-progress operations and preventing build and UI disruptions.
 
 
 ## On-premises version 2.10
