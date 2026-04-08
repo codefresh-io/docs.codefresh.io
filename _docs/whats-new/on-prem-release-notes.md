@@ -9,6 +9,12 @@ Welcome to the release notes for our on-premises releases.
 
 ### Installation & Upgrade
 
+{{site.data.callout.callout_warning}}
+Starting from this version, the built-in Ingress NGINX chart is disabled by default. It will be removed in future releases. *Please migrate to external ingress as soon as possible.*
+
+The reason: Ingress NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026 and will no longer receive updates, including security patches.
+{{site.data.callout.end}}
+
 #### Installing v2.11
 For detailed instructions on installing v2.11, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
@@ -19,10 +25,12 @@ The maximum GitOps runtime that is supported for this version is **0.29.x**.
 
 ### Features & enhancements in 2.11
 **Enhanced Security: Trigger Secrets Masking** 
+
 We’ve introduced improved protection for sensitive data in pipeline integrations. When enabled, trigger secrets used in pipeline endpoints are automatically masked, reducing the risk of accidental exposure in logs or UI.
 
 
 **Improved Runtime Installation Experience** 
+
 We’ve revamped the runtime installation flow with a new guided wizard that simplifies setup and improves usability. As part of this enhancement, users can now seamlessly connect additional Git providers directly during setup, including:
 - GitLab
 - Bitbucket
@@ -30,6 +38,7 @@ We’ve revamped the runtime installation flow with a new guided wizard that sim
 This streamlined experience makes onboarding faster and more flexible across different source control platforms.
 
 **Reduced Database Network Usage with MongoDB Compression** 
+
 Enabled compression for traffic between services and MongoDB, significantly reducing network usage and lowering infrastructure costs.
 
 
@@ -2399,13 +2408,3 @@ The table below describes the Feature Flags in the Codefresh On-Premises release
 | `abacRuleRelatedResource`     | When enabled, allows admins to define rule-based access to pipelines for teams by project tags.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 | `workflowAbacByPipeline`     | When enabled, builds will not be visible to users who don’t have access to the corresponding pipelines.<br>See [Project-based ABAC](#project-based-abac) in this article. | FALSE         |
 |`filterMailsByAbac` |When enabled, together with `workflowAbacByPipeline`, email notifications are not sent for users without access to the builds. <br>See [Project-based ABAC](#project-based-abac) in this article. |FALSE
-
-
-
-
-
-
-
-
-
-
