@@ -9,18 +9,18 @@ Welcome to the release notes for our on-premises releases.
 
 ### Installation & Upgrade
 
+{{site.data.callout.callout_warning}}
+Starting from this version, the built-in Ingress NGINX chart is disabled by default. It will be removed in future releases. *Please migrate to external ingress as soon as possible.*
+
+The reason: Ingress NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026 and will no longer receive updates, including security patches.
+{{site.data.callout.end}}
+
 #### Installing v2.11
 For detailed instructions on installing v2.11, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
 
 
 #### Upgrading to v2.11
 The maximum GitOps runtime that is supported for this version is **0.29.x**.
-
-{{site.data.callout.callout_warning}}
-Starting from this version, the built-in Ingress NGINX chart is disabled by default. It will be removed in future releases. *Please migrate to external ingress as soon as possible.*
-
-The reason: Ingress NGINX is [deprecated](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/) since March 2026 and will no longer receive updates, including security patches.
-{{site.data.callout.end}}
 
 
 ### Features & enhancements in 2.11
