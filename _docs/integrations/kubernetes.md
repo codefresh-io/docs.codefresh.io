@@ -66,118 +66,6 @@ If this is your first time, you'll be prompted to authenticate using your Google
 
 For GKE cluster versions >=1.19 basic authentication is deprecated. You can add the GKE cluster manually by [using the custom Kubernetes integration option](#adding-any-other-cluster-type-not-dependent-on-any-provider) instead.
 
-### Adding a GKE Autopilot Cluster
-
-GKE Autopilot clusters have additional restrictions compared to standard GKE clusters. Specifically, **modifications to the `kube-system` namespace are not allowed** in Autopilot clusters. Therefore, you must use a custom namespace for the Codefresh service account.
-
-{{site.data.callout.callout_warning}}
-**IMPORTANT**
-GKE Autopilot clusters do not allow modifications to the `kube-system` namespace. Use the dedicated namespace approach described below instead of the standard integration method.
-{{site.data.callout.end}}
-
-**Before you begin**
-* Ensure you have `kubectl` access to your GKE Autopilot cluster
-* Ensure you have appropriate permissions to create namespaces and cluster roles
-
-**How to**
-
-1. Create the Codefresh service account and resources in a dedicated namespace.
-   Download or create the following manifest file:
-
-`codefresh-autopilot.yaml`
-{% highlight yaml %}
-{% raw %}
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: codefresh
----
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: codefresh-role
-rules:
-  - apiGroups: ["*"]
-    resources: ["*"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: codefresh-user
-  namespace: codefresh
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: codefresh-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: codefresh-role
-subjects:
-  - kind: ServiceAccount
-    name: codefresh-user
-    namespace: codefresh
----
-apiVersion: v1
-kind: Secret
-type: kubernetes.io/service-account-token
-metadata:
-  name: codefresh-user-token
-  namespace: codefresh
-  annotations:
-    kubernetes.io/service-account.name: "codefresh-user"
-{% endraw %}
-{% endhighlight %}
-
-{:start="2"}
-2. Apply the manifest to your GKE Autopilot cluster:
-
-`Apply Codefresh resources for Autopilot`
-{% highlight shell %}
-{% raw %}
-kubectl apply -f codefresh-autopilot.yaml
-{% endraw %}
-{% endhighlight %}
-
-{:start="3"}
-3. Get the cluster configuration values to enter in Codefresh UI.
-   Run the following commands and copy the results to the respective fields in the [Custom Providers integration form](#adding-any-other-cluster-type-not-dependent-on-any-provider):
-
-`Host IP`
-{% highlight shell %}
-{% raw %}
-export CURRENT_CONTEXT=$(kubectl config current-context) && export CURRENT_CLUSTER=$(kubectl config view -o go-template="{{\$curr_context := \"$CURRENT_CONTEXT\" }}{{range .contexts}}{{if eq .name \$curr_context}}{{.context.cluster}}{{end}}{{end}}") && echo $(kubectl config view -o go-template="{{\$cluster_context := \"$CURRENT_CLUSTER\"}}{{range .clusters}}{{if eq .name \$cluster_context}}{{.cluster.server}}{{end}}{{end}}")
-{% endraw %}
-{% endhighlight %}
-
-`Certificate`
-{% highlight shell %}
-{% raw %}
-kubectl get secret -n codefresh codefresh-user-token -o go-template='{{index .data "ca.crt" }}'
-{% endraw %}
-{% endhighlight %}
-
-`Token`
-{% highlight shell %}
-{% raw %}
-kubectl get secret -n codefresh codefresh-user-token -o go-template='{{index .data "token" }}'
-{% endraw %}
-{% endhighlight %}
-
-{:start="4"}
-4. In the Codefresh UI, navigate to **Pipeline Integrations** > **Kubernetes** > **Custom Providers**.
-5. Enter the values obtained from the commands above:
-   * **Name**: A unique name for your Autopilot cluster
-   * **Host**: The URL from the first command
-   * **Certificate**: The base64-encoded certificate from the second command
-   * **Token**: The base64-encoded token from the third command
-6. Click **Test Connection** to verify the integration, then click **Save**.
-
-Your GKE Autopilot cluster is now connected and ready to use with Codefresh pipelines.
-
-
 ### Adding an AKS cluster
 
 To add an Azure cluster, select *Azure AKS* from the drop-down menu instead of *Azure AKS SP*. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
@@ -502,6 +390,14 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" 
 echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
+
+If you try to use GKE Autopilot clusters they have additional restrictions compared to standard GKE clusters. Specifically, **modifications to the `kube-system` namespace are not allowed** in Autopilot clusters. Therefore, you must use a custom namespace for the Codefresh service account.
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**
+GKE Autopilot clusters do not allow modifications to the `kube-system` namespace. Use the dedicated namespace approach described below instead of the standard integration method.
+REPLACE all occurrences in manifests and commands of "kube-system" on your own namespace for instance 'codefresh' or what you have.
+{{site.data.callout.end}}
 
 #### The proper/secure way Kubernetes 1.23 and older
 
