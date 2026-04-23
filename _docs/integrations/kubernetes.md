@@ -66,7 +66,6 @@ If this is your first time, you'll be prompted to authenticate using your Google
 
 For GKE cluster versions >=1.19 basic authentication is deprecated. You can add the GKE cluster manually by [using the custom Kubernetes integration option](#adding-any-other-cluster-type-not-dependent-on-any-provider) instead.
 
-
 ### Adding an AKS cluster
 
 To add an Azure cluster, select *Azure AKS* from the drop-down menu instead of *Azure AKS SP*. Click the *Authenticate button* and enter your Azure credentials. You will see a description of all permissions that Codefresh needs
@@ -391,6 +390,14 @@ echo $(kubectl get secret -n kube-system -o go-template='{{index .data "ca.crt" 
 echo $(kubectl get secret -n kube-system -o go-template='{{index .data "token" }}' codefresh-user-token)
 {% endraw %}
 {% endhighlight %}
+
+If you try to use GKE Autopilot clusters they have additional restrictions compared to standard GKE clusters. Specifically, **modifications to the `kube-system` namespace are not allowed** in Autopilot clusters. Therefore, you must use a custom namespace for the Codefresh service account.
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**
+GKE Autopilot clusters do not allow modifications to the `kube-system` namespace. Use the dedicated namespace approach described below instead of the standard integration method.
+REPLACE all occurrences in manifests and commands of "kube-system" on your own namespace for instance 'codefresh' or what you have.
+{{site.data.callout.end}}
 
 #### The proper/secure way Kubernetes 1.23 and older
 
