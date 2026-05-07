@@ -731,6 +731,8 @@
       url: "/codefresh-signed-artifacts"
     - title: Verify authenticity of artifacts signed with Codefresh pipelines
       url: "/pipelines-verify-cf-artifacts"
+    - title: Codefresh API keys rate limiter
+      url: "/api-key-rate-limiting"
 
 - title: What's new
   url: "/whats-new"
