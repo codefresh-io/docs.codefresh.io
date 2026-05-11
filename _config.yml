@@ -157,7 +157,6 @@ link_cli:             "https://github.com/codefresh-io/cli-v2#installation"
 link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
-link_community:       "https://community.codefresh.io/"
 
 gitops_collection:     "gitops"
 
