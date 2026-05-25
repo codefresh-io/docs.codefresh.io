@@ -47,6 +47,13 @@ Make sure you have the [latest version of the CLI](https://codefresh-io.github.i
 If after analyzing the debug output you're unable to resolve the issue, please submit a ticket to Codefresh Support, including the output details. 
 {{site.data.callout.end}}
 
+## Important Considerations When Using Debug Mode
+
+
+>**NOTE**  
+>**Retries are disabled in Debug Mode** <br>
+Enabling **DEBUG** stops the CLI from automatically retrying failed requests. This is necessary so the CLI can capture and show the exact network errors in your logs. As a result, temporary network issues (like socket hangups) will cause the command to fail immediately instead of recovering automatically.
+
 ## Related articles
 [Codefresh CLI documentation](https://codefresh-io.github.io/cli/)
 
