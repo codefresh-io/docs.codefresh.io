@@ -26,18 +26,12 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 
 ## Platform IPs
 
-- 107.21.238.215
-- 18.209.185.91
-- 23.20.5.235
 - 107.22.212.247
 - 23.21.197.195
 - 34.238.37.0
 - 54.221.236.3
 - 54.235.42.99
 - 54.86.228.102
-- 3.74.180.3
-- 18.197.46.161
-- 3.68.123.116
 
 
 {% if page.collection != site.gitops_collection %}
@@ -69,15 +63,6 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 54.86.228.102
 {% endif %}
 
-### Disaster Recovery (DR)
-
->**NOTE**  
-The DR IPs apply to all tiers.
-
-- 3.74.180.3
-- 18.197.46.161
-- 3.68.123.116
-
 <!--- ## Hosted GitOps 
 
 ### Hosted Runtime IPs
@@ -90,6 +75,10 @@ The DR IPs apply to all tiers.
 - 3.212.173.12
 
 ### Disaster Recovery (DR)
+
+>**NOTE**  
+The DR IPs apply to all tiers.
+
 - 3.75.252.115
 - 3.65.186.48
 - 3.123.55.242
