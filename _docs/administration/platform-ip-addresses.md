@@ -74,15 +74,6 @@ If you do use these IPs, we **strongly recommend** that you monitor this page on
 - 34.200.130.17
 - 3.212.173.12
 
-### Disaster Recovery (DR)
-
->**NOTE**  
-The DR IPs apply to all tiers.
-
-- 3.75.252.115
-- 3.65.186.48
-- 3.123.55.242
-
 -->
 >**NOTE**    
 We have a {% if page.collection != site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/docs/administration/cf-ip4.txt){:target="\_blank"}{% endif %}{% if page.collection == site.gitops_collection %}[plain text version of the IP addresses]({{site.baseurl}}/gitops/administration/cf-gitops-cloud-ip4.txt){:target="\_blank"}{% endif %}. Recommended for monitoring changes.
