@@ -79,7 +79,7 @@ postgresql-ha:
 
 * **RabbitMQ**  
   Scale up the number of replicas  with `bitnami/rabbitmq-ha`.
-
+  
 ```yaml
 ...
 rabbitmq:
@@ -87,6 +87,13 @@ rabbitmq:
   replicaCount: 3
 ...
 ```
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+If you use an externally deployed RabbitMQ broker (for example, Amazon MQ for RabbitMQ on AWS) instead of the Helm chart, increase the `consumer_max_per_channel` limit to `100`.  
+By default, RabbitMQ does not enforce a limit on the number of consumers per channel (see [Per-channel limits](https://www.rabbitmq.com/docs/limits#per-channel){:target="\_blank"}). However, AWS sets this limit to `10` (see [RabbitMQ default resource limits](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/rabbitmq-resource-limits-configuration.html#rabbitmq-default-resource-limit){:target="\_blank"}), which is too low for Codefresh.
+{{site.data.callout.end}}
+
 
 * **Redis**  
   Use the `redis-ha` chart instead of `bitnami/redis`.
