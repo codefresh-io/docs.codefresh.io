@@ -68,7 +68,7 @@ Regardless of the installation mode, the core Runtime components remain the same
 * [Event Reporters](#event-reporters)
 * [Source Server](#source-server)  
 * [GitOps Operator](#gitops-operator)  
-* [Application Change Revision Controller](#application-change-revision-controller)
+* [Monorepo Controller](#monorepo-controller)
 * [Request Routing Service](#request-routing-service)
 
 
@@ -216,22 +216,37 @@ The GitOps Operator manages:
 * Orchestrates promotions 
   It interacts with Argo Workflows, App Proxy, and the Codefresh platform to ensure seamless promotion execution and governance.
 
-### Application Change Revision Controller 
+### Monorepo Controller 
 
-The Application Change Revision (ACR) Controller is a Codefresh-specific component integrated into Argo CD. Its primary function is to identify and display the exact revision associated with an application change that triggered a promotion or deployment in monorepo environments. 
+In monorepo environments where multiple applications share a single repository, the Monorepo Controller identifies the precise revision associated with an application change that triggered a promotion or deployment. This ensures that enrichments and notifications are scoped to the application that was actually modified, preventing noise from unrelated changes to other applications in the same repository.
 
-In monorepo environments where multiple applications share a single repository, the ACR Controller:
-* Detects and associates the precise revision responsible for triggering a promotion or deployment of a specific application. 
-* Ensures that notifications are scoped to the application that was actually modified, preventing unnecessary notifications for other applications within the same repository, improving clarity and reducing noise.
+{{site.data.callout.callout_warning}}
+**DEPRECATED: Application Change Revision (ACR) Controller**  
+The Codefresh-specific Application Change Revision (ACR) Controller has been removed and is no longer supported. Use the open-source [Argo CD Monorepo Controller](https://argocd-monorepo-controller.readthedocs.io/en/latest/install/){:target="\_blank"} instead.
+{{site.data.callout.end}}
 
->**NOTE**  
-  The ACR Controller is supported from Runtime version 0.13.0 and higher for GitOps Runtime installations with new Argo CD. Not supported for installations with existing Argo CD.   
-  It does not support multi-source applications.  
+##### Installation
 
+Install the Monorepo Controller in the same namespace as Argo CD (for example, `codefresh`):
+
+```bash
+helm upgrade --install monorepo-controller --namespace codefresh \
+ --set configs.params.applicationsetcontroller.global.preserved.annotations="mrp-controller.argoproj.io/change-revision\,mrp-controller.argoproj.io/change-revisions\,mrp-controller.argoproj.io/git-revision\,mrp-controller.argoproj.io/git-revisions" \
+ oci://quay.io/eugened/argocd-monorepo-controller --version <version> \
+```
+
+Replace `<version>` with the [Monorepo Controller version](https://argocd-monorepo-controller.readthedocs.io/en/latest/install/){:target="\_blank"} you want to install.
 
 ##### Configuration
 
-The ACR Controller must be explicitly enabled in the `argo-cd` section of the Runtime's `values.yaml` file. See [Enable precise sync detection for monorepo apps]({{site.baseurl}}/docs/installation/gitops/manage-runtimes/#enable-precise-sync-detection-for-monorepo-apps). 
+For the controller to detect application-specific changes, add the following annotation to your Application manifests:
+
+```yaml
+annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+```
+
+The Monorepo Controller writes the change revision to the `mrp-controller.argoproj.io/change-revisions` annotation. The Codefresh event reporter observes this annotation and reflects the change revision on the respective application timeline. 
 
 ### Request Routing Service
 The Request Routing Service is installed in the same cluster as the GitOps Runtime, and:  
