@@ -13,9 +13,11 @@ support-reviewed: 2023-04-18 LG
 
 ## Overview
 
-The build failed with following error during execution of maven commands:
+The build failed with following error during installation of maven dependencies:
 ```shell
-Exception in thread "main" java.io.IOException: Server returned HTTP response code: 429 for URL: https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.6/apache-maven-3.8.6-bin.zip
+Exception in thread "main" java.io.IOException: 
+Server returned HTTP response code: 429 for URL: 
+https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.6/apache-maven-3.8.6-bin.zip
 ```
 
 ## Details
@@ -36,6 +38,7 @@ The fix is straightforward: route your Maven dependency downloads through a cach
 ## Configure Maven Proxy Cache using AWS CodeArtifact
 
 ### Step 1: Create a CodeArtifact domain and repository
+
 ```shell
 # Create a domain (one per AWS account is typical)
 aws codeartifact create-domain --domain my-org
@@ -52,6 +55,7 @@ aws codeartifact associate-external-connection \
   --repository maven-proxy \
   --external-connection public:maven-central
 ```
+
 ### Step 2: Get your repository endpoint
 
 ```shell
@@ -70,6 +74,7 @@ aws codeartifact associate-external-connection \
   --repository maven-proxy \
   --external-connection public:maven-central
 ```
+
 ### Step 3: Configure ~/.m2/settings.xml
 
 ```yaml
@@ -99,7 +104,9 @@ aws codeartifact associate-external-connection \
 
 </settings>
 ```
+
 ### Step 4: Add a token refresh step to your Codefresh pipeline
+
 CodeArtifact auth tokens expire every 12 hours, so you need to fetch a fresh one at the start of each build. Add this as the first step in your pipeline:
 ```yaml
 version: "1.0"
@@ -128,7 +135,9 @@ steps:
 ```
 
 ## Configure Maven Proxy Cache using Google Artifact Registry
+
 ### Step 1: Create a Remote Repository
+
 ```shell
 gcloud artifacts repositories create maven-proxy \
   --project=YOUR_PROJECT_ID \
@@ -140,6 +149,7 @@ gcloud artifacts repositories create maven-proxy \
 ```
 
 ### Step 2: Get the repository URL
+
 Your proxy URL follows this pattern:
 ```shell
 https://LOCATION-maven.pkg.dev/PROJECT_ID/REPOSITORY_NAME/
@@ -147,6 +157,7 @@ https://LOCATION-maven.pkg.dev/PROJECT_ID/REPOSITORY_NAME/
 https://us-east1-maven.pkg.dev/my-project/maven-proxy/
 ```
 ### Step 3: Configure ~/.m2/settings.xml
+
 ```yaml
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -173,6 +184,7 @@ https://us-east1-maven.pkg.dev/my-project/maven-proxy/
 </settings>
 ```
 ### Step 4: Authenticate in Codefresh pipeline
+
 Store your service account json key file as a Codefresh secret variable named `GOOGLE_JSON_KEY_FILE`. Maven picks it
 up automatically via the `${env.GOOGLE_JSON_KEY_FILE}` reference in `settings.xml`.
 
@@ -196,6 +208,7 @@ steps:
 ```
 
 ## Configure Maven Proxy Cache using Azure Artifacts
+
 ### Step 1: Create a feed with Maven Central upstream
 
 1. In Azure DevOps, go to **Artifacts** → **Create Feed**
@@ -286,7 +299,7 @@ Nexus OSS is free. Infrastructure cost depends on your setup — a minimal deplo
 >The reason the YAML editor does not catch this at this time is because it istechnically a valid YAML file.
 
 
-### Step 1 — Deploy Nexus OSS to your cluster
+### Step 1: Deploy Nexus OSS to your cluster
 
 Use [official sonatype documentation](https://help.sonatype.com/en/install-nexus-repository.html) to check requirements for Nexus repository installation.
 
@@ -362,7 +375,8 @@ steps:
       - mvn -s ci/settings.xml clean install
 ```
 ## Verifying the Proxy Works
-Check logs for the step where maven package installations are executed
+
+Check logs for the step where maven dependencies installations are executed
 ```
 Downloading from proxy: https://your-proxy-url/org/apache/...
 ```
