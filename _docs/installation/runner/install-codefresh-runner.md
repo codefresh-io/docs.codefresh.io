@@ -536,7 +536,7 @@ After installation, configure the Kubernetes cluster with the Codefresh Runner t
 For Codefresh Runners on [EKS](https://aws.amazon.com/eks/){:target="\_blank"} or any other custom cluster in Amazon, such as kops for example, configure the Runner to work with EBS volumes to support [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) during pipeline execution.
 
 >**NOTE**  
-The configuration assumes that you have installed the Runner with the default options: `codefresh runner init`.
+The configuration assumes that you have installed the Runner via Helm, with the default values.
 
 <br />
 
@@ -582,11 +582,13 @@ There are three options for this:
 
 #### Configuration 
 
-**Step 1:** Create Storage Class for EBS volumes:
-  >**NOTE**  
-  Choose **one** of the Availability Zones (AZs)to be used for your pipeline builds. Multi AZ configuration is not supported.  
+>**IMPORTANT**  
+CLI-based installation and configuration of the Codefresh Runner (`cf-runtime`) is no longer supported; Helm is the only supported method.<br>
+As a result, if your runtime was installed via Helm, all configuration changes, including switching to an EBS-backed StorageClass, must be made through Helm values. Directly patching the `runtime-environment` resource, for example with the legacy `codefresh patch runtime-environment` command, has no lasting effect, as the change is overwritten on the next `dind-volume-provisioner` restart or reconciliation.
 
-  * **Storage Class (gp2)**
+**Step 1:** Create the StorageClass for EBS volumes:
+  >**NOTE**  
+  Choose **one** Availability Zone (AZ) for your pipeline builds. Multi-AZ configuration is not supported.  
 
 ```yaml
 kind: StorageClass
@@ -601,112 +603,52 @@ parameters:
   volumeBackend: ebs
   # Valid zone
   AvailabilityZone: us-central1-a # <---- change it to your AZ
-  #  gp2, gp3 or io1
-  VolumeType: gp2
-  # in case of io1 you can set iops
-  # iops: 1000
-  # ext4 or xfs (default to xfs, ensure that there is xfstools )
-  fsType: xfs
-```
-  * **Storage Class (gp3)**
-
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: dind-ebs
-### Specify name of provisioner
-provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
-volumeBindingMode: Immediate
-parameters:
-  # ebs or ebs-csi
-  volumeBackend: ebs
-  # Valid zone
-  AvailabilityZone: us-central1-a  # <---- change it to your AZ
-  #  gp2, gp3 or io1
+  # gp2, gp3 or io1
   VolumeType: gp3
-  # ext4 or xfs (default to xfs, ensure that there is xfstools )
-  fsType: xfs
-  # I/O operations per second. Only effetive when gp3 volume type is specified.
-  # Default value - 3000.
-  # Max - 16,000
+  # ext4 or xfs; ensure xfsprogs is installed on nodes if using xfs
+  fsType: ext4
+  # I/O operations per second. Only effective for gp3. Default: 3000, max: 16,000
   iops: "5000"
-  # Throughput in MiB/s. Only effective when gp3 volume type is specified.
-  # Default value - 125.
-  # Max - 1000.
+  # Throughput in MiB/s. Only effective for gp3. Default: 125, max: 1000
   throughput: "500"
 ```
-**Step 2:** Apply storage class manifest:
+
+**Step 2:** Apply the StorageClass manifest:
 ```shell
 kubectl apply -f dind-ebs.yaml
 ```
-**Step 3:** Get the YAML representation of the runtime you just added:
-  * Get a list of all available runtimes:
-```shell
-codefresh get runtime-environments
-```
-  * Select the runtime you just added, and get its YAML representation:
-```shell
-codefresh get runtime-environments my-eks-cluster/codefresh -o yaml > runtime.yaml
-```
 
-**Step 4:** Modify the YAML:
-  *  In `dockerDaemonScheduler.cluster`, add `nodeSelector: topology.kubernetes.io/zone: <your_az_here>`.
-    > Make sure you define the same AZ you selected for Runtime Configuration.
-  * Modify `pvcs.dind` to use the Storage Class you created above (`dind-ebs`).
-
-  Here is an example of the `runtime.yaml` including the required updates:
-
+**Step 3:** Update the Runner through Helm values, setting the new StorageClass for the `dind` PVC and pinning `dind` pods to the matching AZ:
 
 ```yaml
-version: 1
-metadata:
-  ...
-runtimeScheduler:
-  cluster:
-    clusterProvider:
-      accountId: 5f048d85eb107d52b16c53ea
-      selector: my-eks-cluster
-    namespace: codefresh
-    serviceAccount: codefresh-engine
-  annotations: {}
-dockerDaemonScheduler:
-  cluster:
-    clusterProvider:
-      accountId: 5f048d85eb107d52b16c53ea
-      selector: my-eks-cluster
-    namespace: codefresh
+runtime:
+  dind:
+    pvcs:
+      dind:
+        storageClassName: dind-ebs
     nodeSelector:
-      topology.kubernetes.io/zone: us-central1-a
-    serviceAccount: codefresh-engine
-  annotations: {}
-  userAccess: true
-  defaultDindResources:
-    requests: ''
-  pvcs:
-    dind:
-      volumeSize: 30Gi
-      storageClassName: dind-ebs
-      reuseVolumeSelector: 'codefresh-app,io.codefresh.accountName'
-extends:
-  - system/default/hybrid/k8s_low_limits
-description: '...'
-accountId: 5f048d85eb107d52b16c53ea
+      topology.kubernetes.io/zone: us-central1-a # <---- must match the AZ used in the StorageClass
 ```
 
-**Step 5:** Update your runtime environment with the [patch command](https://codefresh-io.github.io/cli/operate-on-resources/patch/):
+  >**NOTE**  
+  The `nodeSelector` AZ must match the AZ used in the StorageClass, as EBS volumes cannot be attached across zones. All `dind` pods must be scheduled on nodes in that AZ for this configuration to work.
+
+Apply the change:
+```shell
+helm upgrade cf-runtime codefresh-io/cf-runtime \
+  -n codefresh \
+  --reuse-values \
+  -f dind-ebs-values.yaml
+```
+
+**Step 4:** If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim) objects that remain from the default local provisioner:
 
 ```shell
-codefresh patch runtime-environment my-eks-cluster/codefresh -f runtime.yaml
-```
-
-**Step 6:**  If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim ) objects that remain from the default local provisioner:
-
-```
 kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
 kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
 ```
-**Step 7:** Restart the volume provisioner pod.
+
+**Step 5:** Restart the `dind-volume-provisioner` pod.
 
 
 ### GKE (Google Kubernetes Engine) backend volume configuration
