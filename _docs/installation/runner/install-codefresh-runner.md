@@ -50,6 +50,127 @@ After installing the Codefresh Runner, you can:
 
 To install the latest version of Codefresh Runner, follow the [chart installation instructions](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime) on ArtifactHub.
 
+### AWS backend volume configuration
+
+{{site.data.callout.callout_warning}}
+**IMPORTANT**  
+This configuration is supported only for Codefresh Runner installations done via Helm; it cannot be performed through the Codefresh CLI.<br>
+CLI-based installation and configuration of the Codefresh Runner (`cf-runtime`) is no longer supported, so all configuration changes, including switching to an EBS-backed StorageClass, must be made through Helm values. Directly patching the `runtime-environment` resource, for example with the legacy `codefresh patch runtime-environment` command, has no lasting effect, as the change is overwritten on the next `dind-volume-provisioner` restart or reconciliation.
+{{site.data.callout.end}}
+
+For Codefresh Runners on [EKS](https://aws.amazon.com/eks/){:target="\_blank"} or any other custom cluster in Amazon, such as kops for example, configure the Runner to work with EBS volumes to support [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) during pipeline execution.
+
+>**NOTE**  
+The configuration assumes that you have installed the Runner via Helm, with the default values.
+
+<br />
+
+#### `dind-volume-provisioner` permissions
+The `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get EBS volumes.  
+
+There are three options for this:
+1. Run `dind-volume-provisioner` pod on the node/node-group with IAM role
+1. Mount K8s secret in [AWS credential format](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html){:target="\_blank"}: 
+    To ~/.aws/credentials 
+    OR  
+    By passing the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables to the `dind-volume-provisioner` pod
+1. Use [AWS identity for Service Account](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html){:target="\_blank"} IAM role assigned to `volume-provisioner-runner` service account
+
+
+**Minimal policy for `dind-volume-provisioner`**  
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AttachVolume",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DescribeInstances",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DetachVolume"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+#### Configuration 
+
+**Step 1:** Create the StorageClass for EBS volumes:
+  >**NOTE**  
+  Choose **one** Availability Zone (AZ) for your pipeline builds. Multi-AZ configuration is not supported.  
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: dind-ebs
+### Specify name of provisioner
+provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
+volumeBindingMode: Immediate
+parameters:
+  # ebs or ebs-csi
+  volumeBackend: ebs
+  # Valid zone
+  AvailabilityZone: us-central1-a # <---- change it to your AZ
+  # gp2, gp3 or io1
+  VolumeType: gp3
+  # ext4 or xfs; ensure xfsprogs is installed on nodes if using xfs
+  fsType: ext4
+  # I/O operations per second. Only effective for gp3. Default: 3000, max: 16,000
+  iops: "5000"
+  # Throughput in MiB/s. Only effective for gp3. Default: 125, max: 1000
+  throughput: "500"
+```
+
+**Step 2:** Apply the StorageClass manifest:
+```shell
+kubectl apply -f dind-ebs.yaml
+```
+
+**Step 3:** Update the Runner through Helm values, setting the new StorageClass for the `dind` PVC and pinning `dind` pods to the matching AZ:
+
+```yaml
+runtime:
+  dind:
+    pvcs:
+      dind:
+        storageClassName: dind-ebs
+    nodeSelector:
+      topology.kubernetes.io/zone: us-central1-a # <---- must match the AZ used in the StorageClass
+```
+
+  >**NOTE**  
+  The `nodeSelector` AZ must match the AZ used in the StorageClass, as EBS volumes cannot be attached across zones. All `dind` pods must be scheduled on nodes in that AZ for this configuration to work.
+
+Apply the change:
+```shell
+helm upgrade cf-runtime codefresh-io/cf-runtime \
+  -n codefresh \
+  --reuse-values \
+  -f dind-ebs-values.yaml
+```
+
+**Step 4:** If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim) objects that remain from the default local provisioner:
+
+```shell
+kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
+kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
+```
+
+**Step 5:** Restart the `dind-volume-provisioner` pod.
+
 
 ## Migrating existing installations 
 You need to migrate existing CLI- and Helm-based installations of the Codefresh Runner to the new Helm installation.
@@ -530,126 +651,6 @@ codefresh runner info
 
 
 After installation, configure the Kubernetes cluster with the Codefresh Runner to better match your environment and cloud provider.
-
-### AWS backend volume configuration
-
-For Codefresh Runners on [EKS](https://aws.amazon.com/eks/){:target="\_blank"} or any other custom cluster in Amazon, such as kops for example, configure the Runner to work with EBS volumes to support [caching]({{site.baseurl}}/docs/configure-ci-cd-pipeline/pipeline-caching/) during pipeline execution.
-
->**NOTE**  
-The configuration assumes that you have installed the Runner via Helm, with the default values.
-
-<br />
-
-#### `dind-volume-provisioner` permissions
-The `dind-volume-provisioner` deployment should have permissions to create/attach/detach/delete/get EBS volumes.  
-
-There are three options for this:
-1. Run `dind-volume-provisioner` pod on the node/node-group with IAM role
-1. Mount K8s secret in [AWS credential format](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html){:target="\_blank"}: 
-    To ~/.aws/credentials 
-    OR  
-    By passing the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as environment variables to the `dind-volume-provisioner` pod
-1. Use [AWS identity for Service Account](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html){:target="\_blank"} IAM role assigned to `volume-provisioner-runner` service account
-
-
-**Minimal policy for `dind-volume-provisioner`**  
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:AttachVolume",
-        "ec2:CreateSnapshot",
-        "ec2:CreateTags",
-        "ec2:CreateVolume",
-        "ec2:DeleteSnapshot",
-        "ec2:DeleteTags",
-        "ec2:DeleteVolume",
-        "ec2:DescribeInstances",
-        "ec2:DescribeSnapshots",
-        "ec2:DescribeTags",
-        "ec2:DescribeVolumes",
-        "ec2:DetachVolume"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
-
-#### Configuration 
-
->**IMPORTANT**  
-CLI-based installation and configuration of the Codefresh Runner (`cf-runtime`) is no longer supported; Helm is the only supported method.<br>
-As a result, if your runtime was installed via Helm, all configuration changes, including switching to an EBS-backed StorageClass, must be made through Helm values. Directly patching the `runtime-environment` resource, for example with the legacy `codefresh patch runtime-environment` command, has no lasting effect, as the change is overwritten on the next `dind-volume-provisioner` restart or reconciliation.
-
-**Step 1:** Create the StorageClass for EBS volumes:
-  >**NOTE**  
-  Choose **one** Availability Zone (AZ) for your pipeline builds. Multi-AZ configuration is not supported.  
-
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: dind-ebs
-### Specify name of provisioner
-provisioner: codefresh.io/dind-volume-provisioner-runner-<-NAMESPACE-> # <---- rename <-NAMESPACE-> with the runner namespace
-volumeBindingMode: Immediate
-parameters:
-  # ebs or ebs-csi
-  volumeBackend: ebs
-  # Valid zone
-  AvailabilityZone: us-central1-a # <---- change it to your AZ
-  # gp2, gp3 or io1
-  VolumeType: gp3
-  # ext4 or xfs; ensure xfsprogs is installed on nodes if using xfs
-  fsType: ext4
-  # I/O operations per second. Only effective for gp3. Default: 3000, max: 16,000
-  iops: "5000"
-  # Throughput in MiB/s. Only effective for gp3. Default: 125, max: 1000
-  throughput: "500"
-```
-
-**Step 2:** Apply the StorageClass manifest:
-```shell
-kubectl apply -f dind-ebs.yaml
-```
-
-**Step 3:** Update the Runner through Helm values, setting the new StorageClass for the `dind` PVC and pinning `dind` pods to the matching AZ:
-
-```yaml
-runtime:
-  dind:
-    pvcs:
-      dind:
-        storageClassName: dind-ebs
-    nodeSelector:
-      topology.kubernetes.io/zone: us-central1-a # <---- must match the AZ used in the StorageClass
-```
-
-  >**NOTE**  
-  The `nodeSelector` AZ must match the AZ used in the StorageClass, as EBS volumes cannot be attached across zones. All `dind` pods must be scheduled on nodes in that AZ for this configuration to work.
-
-Apply the change:
-```shell
-helm upgrade cf-runtime codefresh-io/cf-runtime \
-  -n codefresh \
-  --reuse-values \
-  -f dind-ebs-values.yaml
-```
-
-**Step 4:** If necessary, delete all existing PV (Persistent Volume) and PVC (Persistent Volume Claim) objects that remain from the default local provisioner:
-
-```shell
-kubectl delete pvc -l codefresh-app=dind -n <your_runner_ns>
-kubectl delete pv -l codefresh-app=dind -n <your_runner_ns>
-```
-
-**Step 5:** Restart the `dind-volume-provisioner` pod.
-
 
 ### GKE (Google Kubernetes Engine) backend volume configuration
 
