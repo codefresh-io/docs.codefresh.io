@@ -33,7 +33,14 @@ This issue mostly affects pipelines running on Codefresh shared SaaS runtimes wh
 
 If your pipelines run on a hybrid runner (your own Kubernetes cluster), your builds already use your own egress IP and you might not face this issue. However, if it happens this guide is still relevant for you.
 
-The fix is straightforward: route your Maven dependency downloads through a caching proxy that sits between your pipeline and Maven Central. After the first download of each artifact, all subsequent requests are served from the cache — Maven Central never sees repeated traffic from your builds.
+**The fix is straightforward**: route your Maven dependency downloads through a caching proxy that sits between your pipeline and Maven Central. After the first download of each artifact, all subsequent requests are served from the cache — Maven Central never sees repeated traffic from your builds.
+
+There are a **couple of options** to proceed with:
+- AWS CodeArtifact
+- Google Artifact Registry
+- Azure Artifacts
+- Self-hosted Nexus Repository Manager
+
 
 ## Configure Maven Proxy Cache using AWS CodeArtifact
 
