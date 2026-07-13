@@ -388,4 +388,3 @@ Check the build logs for the pipeline step where maven dependencies installation
 Downloading from proxy: https://your-proxy-url/org/apache/...
 ```
 
-If you see your proxy URL instead of repo.maven.apache.org, the redirect is working.
