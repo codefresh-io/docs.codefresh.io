@@ -115,7 +115,9 @@ aws codeartifact associate-external-connection \
 ### Step 4: Add a token refresh step to your Codefresh pipeline
 
 CodeArtifact auth tokens expire every 12 hours, so you need to fetch a fresh one at the start of each build. Add this as the first step in your pipeline:
-```yaml
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
 version: "1.0"
 
 steps:
@@ -139,7 +141,8 @@ steps:
     working_directory: "${{clone}}"
     commands:
       - mvn -s ci/settings.xml clean install
-```
+{% endraw %}
+{% endhighlight %}
 
 ## Configure Maven Proxy Cache using Google Artifact Registry
 
@@ -195,7 +198,9 @@ https://us-east1-maven.pkg.dev/my-project/maven-proxy/
 Store your service account json key file as a Codefresh secret variable named `GOOGLE_JSON_KEY_FILE`. Maven picks it
 up automatically via the `${env.GOOGLE_JSON_KEY_FILE}` reference in `settings.xml`.
 
-```yaml
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
 version: "1.0"
 
 steps:
@@ -212,7 +217,8 @@ steps:
     working_directory: "${{clone}}"
     commands:
       - mvn -s ci/settings.xml clean install
-```
+{% endraw %}
+{% endhighlight %}
 
 ## Configure Maven Proxy Cache using Azure Artifacts
 
@@ -278,7 +284,9 @@ Set scope: **Packaging → Read & write**
 Store your PAT as a Codefresh secret variable named `AZURE_ARTIFACTS_PAT`. Maven picks it
 up automatically via the `${env.AZURE_ARTIFACTS_PAT}` reference in `settings.xml`.
 
-```yaml
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
 version: "1.0"
 
 steps:
@@ -295,7 +303,8 @@ steps:
     working_directory: "${{clone}}"
     commands:
       - mvn -s ci/settings.xml clean install
-```
+{% endraw %}
+{% endhighlight %}
 
 ## Configure Maven Proxy Cache using Self-Hosted Nexus Repository Manager
 
@@ -359,7 +368,9 @@ http://nexus.your-domain.com/repository/maven-central-proxy/
 Add Codefresh secret variables named `NEXUS_USER` and 'NEXUS_PASSWORD''. Maven picks it
 up automatically via the `${env.NEXUS_USER}` and `${env.NEXUS_PASSWORD}` reference in `settings.xml`.:
 
-```yaml
+`codefresh.yml`
+{% highlight yaml %}
+{% raw %}
 version: "1.0"
 
 steps:
@@ -376,7 +387,9 @@ steps:
     working_directory: "${{clone}}"
     commands:
       - mvn -s ci/settings.xml clean install
-```
+{% endraw %}
+{% endhighlight %}
+
 ## Verifying the Proxy Works
 
 Check the build logs for the pipeline step where maven dependencies installation is executed -- if you see your proxy URL instead of repo.maven.apache.org, the caching proxy is working as expected:
