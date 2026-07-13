@@ -301,10 +301,6 @@ steps:
 
 Nexus OSS is free. Infrastructure cost depends on your setup — a minimal deployment (2 vCPU, 4 GB RAM, 100 GB storage) runs roughly $60–120/month on most cloud providers. A production-grade setup with SSD storage and egress is closer to $200–500/month.
 
->_**Note**:_
->
->The reason the YAML editor does not catch this at this time is because it istechnically a valid YAML file.
-
 
 ### Step 1: Deploy Nexus OSS to your cluster
 
