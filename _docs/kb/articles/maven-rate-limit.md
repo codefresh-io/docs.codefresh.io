@@ -22,16 +22,16 @@ https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.6/apache-
 
 ## Details
 
-Maven Central (operated by Sonatype) rate-limits traffic per IP, and the combined volume from all customers running on shared runtimes can trigger that limit — causing your builds to fail with HTTP 429 Too Many Requests.
+Maven Central (operated by Sonatype) rate-limits traffic per IP, and the combined volume from all customers running on shared runtimes can trigger that limit — causing your builds to fail with HTTP 429 Too Many Requests. When facing the rate limit for a long time it might result in 403 Forbidden error.
 
-This issue only affects pipelines running on Codefresh shared SaaS runtimes:
+This issue mostly affects pipelines running on Codefresh shared SaaS runtimes which is Cloud Builds or these runtimes:
 
     system/linux_paying_plan
     system/linux_non_paying_plan
     system/codefresh-enterprise
     system/plan/linux
 
-If your pipelines run on a hybrid runner (your own Kubernetes cluster), your builds already use your own egress IP and are not affected by this issue.
+If your pipelines run on a hybrid runner (your own Kubernetes cluster), your builds already use your own egress IP and you might not face this issue. However, if it happens this guide is still relevant for you.
 
 The fix is straightforward: route your Maven dependency downloads through a caching proxy that sits between your pipeline and Maven Central. After the first download of each artifact, all subsequent requests are served from the cache — Maven Central never sees repeated traffic from your builds.
 
