@@ -383,7 +383,7 @@ steps:
 ```
 ## Verifying the Proxy Works
 
-Check logs for the step where maven dependencies installations are executed
+Check the build logs for the pipeline step where maven dependencies installation is executed -- if you see your proxy URL instead of repo.maven.apache.org, the caching proxy is working as expected:
 ```
 Downloading from proxy: https://your-proxy-url/org/apache/...
 ```
