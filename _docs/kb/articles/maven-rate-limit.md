@@ -22,7 +22,7 @@ https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.6/apache-
 
 ## Details
 
-Codefresh SaaS pipelines share a single egress IP. Maven Central (operated by Sonatype) rate-limits traffic per IP, and the combined volume from all customers running on shared runtimes can trigger that limit — causing your builds to fail with HTTP 429 Too Many Requests.
+Maven Central (operated by Sonatype) rate-limits traffic per IP, and the combined volume from all customers running on shared runtimes can trigger that limit — causing your builds to fail with HTTP 429 Too Many Requests.
 
 This issue only affects pipelines running on Codefresh shared SaaS runtimes:
 
