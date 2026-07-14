@@ -366,7 +366,7 @@ http://nexus.your-domain.com/repository/maven-central-proxy/
 ### Step 4: Add credentials to your Codefresh pipeline
 
 Add Codefresh secret variables named `NEXUS_USER` and `NEXUS_PASSWORD`. Maven picks it
-up automatically via the `${env.NEXUS_USER}` and `${env.NEXUS_PASSWORD}` reference in `settings.xml`.:
+up automatically via the `${env.NEXUS_USER}` and `${env.NEXUS_PASSWORD}` reference in `settings.xml`.
 
 `codefresh.yml`
 {% highlight yaml %}
