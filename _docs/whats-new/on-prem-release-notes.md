@@ -19,9 +19,9 @@ For detailed instructions on installing v2.12, visit [ArtifactHub](https://artif
 
 The maximum GitOps runtime that is supported for this version is **0.29.x**.
 
-## Features & enhancements
+### Features & enhancements
 
-#### [Public Preview] Security: IP Allowlist for API Keys
+##### [Public Preview] Security: IP Allowlist for API Keys
 
 {{site.data.callout.callout_info}}
 This feature is behind the feature flag `enableApiKeysIpAllowlist` (Default: _off_).
@@ -33,31 +33,31 @@ Account admins can now restrict API-token use to a defined set of IP addresses. 
 - Enforcement happens at authentication time; default is deny when the allowlist is on and no entries match.
 - The user's current IP address is shown in the allowlist management UI and on the API keys section of user settings, so admins/users can self-diagnose a blocked key.
 
-#### Pipelines: Bulk-add Shared Configuration variables
+##### Pipelines: Bulk-add Shared Configuration variables
 
 When adding pipeline variables, you can now select multiple Shared Configuration variables at once instead of adding them one at a time.
 
-#### Pipelines: Re-authorize Bitbucket OAuth git context
+##### Pipelines: Re-authorize Bitbucket OAuth git context
 
 If a Bitbucket OAuth git context's token expires, gets revoked, or otherwise stops working, you can now re-authorize it directly from where it's configured. Previously, the only fix was deleting the git context and setting it up again from scratch — which meant re-linking anything that pointed at it. This keeps the existing context (and its references) intact and just refreshes the credentials behind it.
 
-#### Pipelines: Bitbucket Integration stability hardening
+##### Pipelines: Bitbucket Integration stability hardening
 
 A broader push to make the Bitbucket integration more reliable: moved off deprecated Bitbucket endpoints to avoid future disruptions, improved handling of Bitbucket's API rate limits and added better monitoring capabilities for Bitbucket-related features for faster troubleshooting.
 
 
-#### GitOps: Improved Runtime credentials drawer
+##### GitOps: Improved Runtime credentials drawer
 
 The "Update Git Runtime Credentials" drawer now points to the correct token-generation documentation and provides clearer in-drawer guidance for configuring the Runtime Git token.
 
-## Updated Feature Flags
+### Feature Flags
 
 {: .table .table-bordered .table-hover}
 | Feature Flag | Description | Default Value |
 | --- | --- | --- |
 | `enableApiKeysIpAllowlist` | Enables the IP allowlist feature for API keys (management UI + enforcement) | FALSE |
 
-## Bug fixes
+### Bug fixes
 
 ##### Pipelines
 
