@@ -71,6 +71,7 @@ The "Update Git Runtime Credentials" drawer now points to the correct token-gene
 - Fixed: `git-clone` step occasionally failed downloading files tracked by Git LFS.
 - Fixed: `git-clone` step failed occasionaly with `grep: command not found`.
 - Fixed: builds using Bitbucket OAuth integration failed with `ForbiddenError`.
+- Fixed: for Bitbucket repositories, the owner's UUID was displayed instead of their name under some conditions.
 
 ##### GitOps
 
