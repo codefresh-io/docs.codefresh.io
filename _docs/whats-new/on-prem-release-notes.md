@@ -12,10 +12,12 @@ Welcome to the release notes for our on-premises releases.
 
 #### Installing v2.12
 
-For detailed instructions on installing v2.12, visit [ArtifactHub](https://artifacthub.io/packages/helm/codefresh-onprem/codefresh){:target="\_blank"}.
+For detailed instructions on installing v2.12, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#codefresh-on-premises){:target="\_blank"}.
 
 
 #### Upgrading to v2.12
+
+For detailed instructions on upgrading to v2.12, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#to-2-12-0){:target="\_blank"}.
 
 The maximum GitOps runtime that is supported for this version is **0.29.x**.
 
