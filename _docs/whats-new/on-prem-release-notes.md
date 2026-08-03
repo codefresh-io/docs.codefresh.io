@@ -28,7 +28,7 @@ The maximum GitOps runtime that is supported for this version is **0.29.x**.
 {{site.data.callout.callout_info}}
 This feature is behind the feature flag `enableApiKeysIpAllowlist` (Default: _off_).
 
-For configuration details, see [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm/tree/main#api-keys-ip-allowlist){:target="\_blank"}.
+For configuration details, see [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#api-keys-ip-allowlist){:target="\_blank"}.
 {{site.data.callout.end}}
 
 Account admins can now restrict API-token use to a defined set of IP addresses. When enabled, API requests from addresses not on the allowlist are rejected — so a leaked token is useless outside the account's own network.
