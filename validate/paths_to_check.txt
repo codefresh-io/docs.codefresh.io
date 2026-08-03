@@ -81,7 +81,6 @@
 /docs/how-to-guides/migrating-from-drone-io/
 /docs/how-to-guides/migrating-from-travis-ci/
 /docs/incubation/arm-support/
-/docs/incubation/osx-ios-builds/
 /docs/incubation/windows/
 /docs/integrations/amazon-web-services/
 /docs/integrations/argocd/
