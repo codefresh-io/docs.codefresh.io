@@ -1,0 +1,14 @@
+_docs/whats-new/on-prem-release-notes.md
+  h_e5037b46dfdc11 31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "eff32489c295592fd6f923bf7769b16b7163f414",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
