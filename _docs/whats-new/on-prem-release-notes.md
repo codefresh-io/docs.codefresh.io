@@ -5,6 +5,82 @@ toc: true
 ---
 
 Welcome to the release notes for our on-premises releases.
+
+## On-premises version 2.12
+
+### Installation & Upgrade
+
+#### Installing v2.12
+
+For detailed instructions on installing v2.12, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#codefresh-on-premises){:target="\_blank"}.
+
+
+#### Upgrading to v2.12
+
+For detailed instructions on upgrading to v2.12, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#to-2-12-0){:target="\_blank"}.
+
+The maximum GitOps runtime that is supported for this version is **0.29.x**.
+
+### Features & enhancements
+
+##### [Public Preview] Security: IP Allowlist for API Keys
+
+{{site.data.callout.callout_info}}
+This feature is behind the feature flag `enableApiKeysIpAllowlist` (Default: _off_).
+
+For configuration details, see [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#api-keys-ip-allowlist){:target="\_blank"}.
+{{site.data.callout.end}}
+
+Account admins can now restrict API-token use to a defined set of IP addresses. When enabled, API requests from addresses not on the allowlist are rejected — so a leaked token is useless outside the account's own network.
+
+- New **API Keys Management** page (Account Settings → Access & Collaboration) with an **IP Allowlist** tab: on/off switch, add/edit/remove/enable/disable entries.
+- Enforcement happens at authentication time; default is deny when the allowlist is on and no entries match.
+- The user's current IP address is shown in the allowlist management UI and on the API keys section of user settings, so admins/users can self-diagnose a blocked key.
+
+##### Pipelines: Bulk-add Shared Configuration variables
+
+When adding pipeline variables, you can now select multiple Shared Configuration variables at once instead of adding them one at a time.
+
+##### Pipelines: Re-authorize Bitbucket OAuth git context
+
+If a Bitbucket OAuth git context's token expires, gets revoked, or otherwise stops working, you can now re-authorize it directly from where it's configured. Previously, the only fix was deleting the git context and setting it up again from scratch — which meant re-linking anything that pointed at it. This keeps the existing context (and its references) intact and just refreshes the credentials behind it.
+
+##### Pipelines: Bitbucket Integration stability hardening
+
+A broader push to make the Bitbucket integration more reliable: moved off deprecated Bitbucket endpoints to avoid future disruptions, improved handling of Bitbucket's API rate limits and added better monitoring capabilities for Bitbucket-related features for faster troubleshooting.
+
+
+##### GitOps: Improved Runtime credentials drawer
+
+The "Update Git Runtime Credentials" drawer now points to the correct token-generation documentation and provides clearer in-drawer guidance for configuring the Runtime Git token.
+
+### Feature Flags
+
+{: .table .table-bordered .table-hover}
+| Feature Flag | Description | Default Value |
+| --- | --- | --- |
+| `enableApiKeysIpAllowlist` | Enables the IP allowlist feature for API keys (management UI + enforcement) | FALSE |
+
+### Bug fixes
+
+##### Pipelines
+
+- Fixed: `codecov-reporter` step failed with a GPG error on every run.
+- Fixed: `deploy` step failed occasionaly with `ReferenceError`.
+- Fixed: ECR integration using a Service Account ignored the configured region and logged in using the runtime's own region instead.
+- Fixed: cron-triggered builds were occasionally duplicated.
+- Fixed: pipelines using a Git integration with a `/` in its name could not be retrieved.
+- Fixed: `git-clone` step occasionally failed downloading files tracked by Git LFS.
+- Fixed: `git-clone` step failed occasionaly with `grep: command not found`.
+- Fixed: builds using Bitbucket OAuth integration failed with `ForbiddenError`.
+- Fixed: for Bitbucket repositories, the owner's UUID was displayed instead of their name under some conditions.
+
+##### GitOps
+
+- Fixed: runtime installation's generated GitHub App link didn't request all required permissions.
+- Fixed: incorrect scopes documented for Bitbucket runtime tokens.
+
+
 ## On-premises version 2.11
 
 ### Installation & Upgrade
