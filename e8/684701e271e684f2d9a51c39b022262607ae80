@@ -1,0 +1,33 @@
+_data/nav.yml
+  s_e2e4fbe59d88fa::t_f7a64ecdf3e297 775-776
+_docs/terms-and-privacy-policy/sla-gitops-cloud.md
+  s_e2e4fbe59d88fa::t_94138b7e920a0c 1-83
+_includes/scripts.html
+  s_e2e4fbe59d88fa::t_7e05cd6a0c23d2 100
+_data/home-content.yml
+  s_e2e4fbe59d88fa::t_9d9256fe705eb8 44
+README.md
+  s_e2e4fbe59d88fa::t_132779738b1d1c 34
+_docs/installation/gitops/runtime-troubleshooting.md
+  s_e2e4fbe59d88fa::t_8e6f86ea04b36e 184-369
+_config.yml
+  s_e2e4fbe59d88fa::t_4c2b77280a1b98 135-137
+_layouts/home.html
+  s_e2e4fbe59d88fa::t_83242b59a1bf43 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "e8684701e271e684f2d9a51c39b022262607ae80",
+  "prompts": {},
+  "sessions": {
+    "s_e2e4fbe59d88fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0cd2976c-388f-4e96-bb5c-6b24741f2c6f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Idan Arbel <idan.arbel@codefresh.io>"
+    }
+  }
+}
