@@ -43,7 +43,7 @@ The table below describes the settings in the Triggers page.
 |**Debug** | Runs the pipeline in debug mode where you can add breakpoints and use the debug terminal. See [Debugging pipelines]({{site.baseurl}}/docs/pipelines/debugging-pipelines/). |
 |**Run** | Triggers a build with the current settings and takes you to the Builds page where you can monitor the pipeline. See [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/). |
 
->**NOTES**
+>**NOTES**  
 There are a few disclaimers in case of using Gitlab provider
   * When a build is triggered manually with a simulated Git trigger, actually, only comitter name (public name) is available to attach build metadata instead of the correct GitLab username when build triggered directly by webhook. It's Gitlab restriction related to committ metadata
   * In this case, Codefresh looks up the commit's committer by email through the GitLab API, and matches the result against the committer's name, to display the corresponding GitLab account username instead of the raw committer name recorded in the commit. This avoids the same contributor appearing under multiple different names (for example, a full name on one machine and a GitLab username on another) in build information and committer lists.
