@@ -1,1 +1,0 @@
-../../_docs/installation/gitops/runtime-argocd-admin-api-token.md

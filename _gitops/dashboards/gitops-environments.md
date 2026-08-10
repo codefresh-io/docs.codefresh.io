@@ -1,1 +1,0 @@
-../../_docs/dashboards/gitops-environments.md

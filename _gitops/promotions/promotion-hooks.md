@@ -1,1 +1,0 @@
-../../_docs/promotions/promotion-hooks.md

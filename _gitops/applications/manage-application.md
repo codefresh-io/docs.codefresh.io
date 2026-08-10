@@ -1,1 +1,0 @@
-../../_docs/deployments/gitops/manage-application.md

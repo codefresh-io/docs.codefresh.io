@@ -1,1 +1,0 @@
-../../_docs/promotions/product-promotion-props.md

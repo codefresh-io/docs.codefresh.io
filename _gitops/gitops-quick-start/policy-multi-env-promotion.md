@@ -1,1 +1,0 @@
-../../_docs/gitops-quick-start/policy-multi-env-promotion.md
