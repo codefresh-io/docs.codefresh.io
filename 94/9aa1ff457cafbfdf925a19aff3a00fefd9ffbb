@@ -1,0 +1,305 @@
+_docs/administration/account-user-management.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/products/promotion-flow-triggers.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-12
+_docs/deployments/gitops/install-argo-rollouts.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/promotions/create-promotion-sequence.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/administration/single-sign-on/team-sync.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/gitops-integrations/ci-integrations/codefresh-classic.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/gitops-integrations/container-registries/amazon-ecr.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/gitops/managed-cluster.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/service-accounts-promotion-workflows.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/promotions/yaml/promotion-flow-crd.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+  s_46b97495755676::t_0941456887181d 13-14
+_docs/promotions/yaml/promotion-policy-crd.md
+  s_46b97495755676::t_0941456887181d 13-14
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/promotions/trigger-promotions.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/terms-and-privacy-policy/octopus-deploy-customer-agreement.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/promotions/promotion-flow.md
+  s_46b97495755676::t_0941456887181d 13-14
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/installation/gitops/runtime-install-with-new-argo-cd.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/installation/gitops/runtime-install-with-existing-argo-cd.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/promotion-context-promotion-workflows.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/installation/gitops/runtime-prerequisites.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/administration/single-sign-on/oidc/oidc-onelogin.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/gitops-quick-start/quick-start-gitops-environments.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/products/promotion-concurrency.md
+  s_46b97495755676::t_0941456887181d 10-12
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/installation/gitops/shared-configuration.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/administration/single-sign-on/saml/saml-okta.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/promotions/promotion-policy.md
+  s_46b97495755676::t_0941456887181d 13-14
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/terms-and-privacy-policy/acceptable-use-policy.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+index.html
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 3-4
+_docs/promotions/promotion-hooks.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/gitops-quick-start/gitops-quick-start.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/gitops-integrations/ci-integrations/jenkins.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/promotions/promotions-overview.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/single-sign-on/oidc/oidc-okta.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/installation/gitops/upgrade-gitops-cli.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/deployments/gitops/troubleshooting-gitops-apps.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/gitops-integrations/image-enrichment-overview.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/gitops-quick-start/create-app-ui.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/product-promotion-props.md
+  s_46b97495755676::t_0941456887181d 13-14
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/gitops-integrations/ci-argument-reference.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/gitops-quick-start/policy-multi-env-promotion.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/gitops-integrations/container-registries/github-cr.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/administration/account-user-management/service-accounts.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/getting-started.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/platform-ip-addresses.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/single-sign-on/saml.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/installation/gitops/runtime-configuration.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/installation/gitops/configuration-runtime.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/promotion-components.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/security/secrets.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/deployments/gitops/application-configuration-settings.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/administration/account-user-management/add-users.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 11
+_docs/gitops-quick-start/multi-env-sequential-flow.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/gitops-integrations/container-registries/quay.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/gitops/git-sources.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/products/create-product.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/promotions/promotion-limitations.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/gitops-integrations/ci-integrations.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/gitops-integrations/issue-tracking.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/products/releases-in-products.md
+  s_46b97495755676::t_0941456887181d 10-12
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/installation/gitops/gitops-values-yaml-validation.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/administration/single-sign-on/saml/saml-pingid.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/gitops-quick-start/create-codefresh-account.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/administration-overview.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/installation/gitops/runtime-argocd-admin-api-token.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/products/about-products.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/dashboards/gitops-apps-dashboard.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/administration/user-self-management/user-settings.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/gitops-quick-start/quick-start-install-runtime.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 10
+_docs/gitops-integrations/container-registries.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/promotions/yaml/promotion-template-crd.md
+  s_46b97495755676::t_0941456887181d 13-14
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/deployments/gitops/create-application.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/user-self-management/manage-pats.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/dashboards/images.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/single-sign-on/oidc/oidc-google.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9
+_docs/administration/single-sign-on/ldap.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/deployments/gitops/gitops-app-groups.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/gitops-integrations/container-registries/dockerhub.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/gitops/monitor-runtimes.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/installation/gitops/runtime-status-panel.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/yaml/product-crd.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+  s_46b97495755676::t_0941456887181d 13-14
+_docs/administration/account-user-management/hosted-authorize-orgs.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/gitops/runtime-architecture.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/deployments/gitops/manage-application.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/terms-and-privacy-policy/cloud-credits.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/dashboards/gitops-environments.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/environments/create-manage-environments.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-12
+_docs/environments/manage-apps-in-environments.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/terms-and-privacy-policy/sla-gitops-cloud.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-8
+_docs/administration/account-user-management/gitops-abac.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/promotions/yaml.md
+  s_46b97495755676::t_0941456887181d 13-15
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+_docs/administration/single-sign-on/oidc/oidc-keycloak.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/gitops-quick-start/drag-and-drop.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/terms-and-privacy-policy/privacy-policy.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/administration/account-user-management/create-codefresh-account.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 12
+_docs/installation/gitops/manage-runtimes.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/deployments/gitops/about-apps.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/products/promotion-version-properties.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/gitops-quick-start/quick-start-promotion-workflow.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/gitops-integrations/ci-integrations/github-actions.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/gitops/runtime-ingress-configuration.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/deployments/gitops/monitor-applications.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/dashboards/gitops-products.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/administration/single-sign-on.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 10
+_docs/gitops-integrations/container-registries/jfrog.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7-8
+_docs/installation/installation-options.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/promotions/product-releases.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+  s_46b97495755676::t_0941456887181d 10-11
+_docs/security/git-tokens.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/administration/single-sign-on/oidc/oidc-azure.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 7
+_docs/installation/gitops/runtime-install-namespace-scope.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/products/assign-applications.md
+  s_46b97495755676::t_0941456887181d 10-12
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/installation/gitops/runtime-troubleshooting.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-7
+_docs/installation/gitops/runtime-system-requirements.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/products/configure-product-settings.md
+  s_46b97495755676::t_0941456887181d 10-12
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/terms-and-privacy-policy/legacy-cf-terms-of-service.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/administration/single-sign-on/saml/saml-onelogin.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/gitops-quick-start/dependency-multi-env-promotion.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/installation/gitops/runtime-concepts.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 5-6
+_docs/administration/single-sign-on/oidc/oidc-auth0.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9
+_docs/administration/single-sign-on/oidc.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+_docs/dashboards/home-dashboard.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/terms-and-privacy-policy/terms-of-service.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/gitops-quick-start/quick-start-configure-runtime.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 8
+_docs/promotions/promotion-workflow.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 9-10
+  s_46b97495755676::t_0941456887181d 13-14
+_docs/environments/environments-overview.md
+  s_46b97495755676::t_0941456887181d 10-11
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6-7
+_docs/administration/single-sign-on/saml/saml-jumpcloud.md
+  s_e2e4fbe59d88fa::t_f3284887fa4afa 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "949aa1ff457cafbfdf925a19aff3a00fefd9ffbb",
+  "prompts": {},
+  "sessions": {
+    "s_46b97495755676": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e468f3bd-ab95-4d14-b7eb-f487a59e94ee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Idan Arbel <idan.arbel@codefresh.io>"
+    },
+    "s_e2e4fbe59d88fa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0cd2976c-388f-4e96-bb5c-6b24741f2c6f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Idan Arbel <idan.arbel@codefresh.io>"
+    }
+  }
+}
