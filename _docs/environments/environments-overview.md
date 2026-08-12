@@ -5,7 +5,8 @@ group: environments
 toc: true
 ---
 
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Environments in Codefresh GitOps
 An environment in Codefresh GitOps is a logical grouping of one or more Kubernetes clusters and namespaces, representing a deployment context for your Argo CD applications. Environments provide visibility into all Argo CD applications deployed within these clusters and namespaces, enabling teams to track application states at a glance.

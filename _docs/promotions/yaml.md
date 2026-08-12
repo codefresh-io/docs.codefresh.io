@@ -8,6 +8,9 @@ redirect-from:
 toc: true
 ---
 
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+
 Codefresh provides two options for defining manifests for promotion entities: Form mode and YAML mode.
 
 If you prefer working with YAML, create manifests for promotion entities using our YAML examples:  

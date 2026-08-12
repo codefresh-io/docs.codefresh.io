@@ -8,11 +8,11 @@ redirect_from:
 ---
 
 ## GitOps quick starts: From start to deployment 
-Codefresh GitOps simplifies software delivery with automation, consistency, and scalability. These quick start guides provide step-by-step instructions to help you quickly set up, manage, and promote applications with Codefresh GitOps.
+Codefresh GitOps simplifies software delivery with automation, consistency, and scalability. These quick start guides provide step-by-step instructions to help you quickly set up, manage, and deploy applications with Codefresh GitOps.
 
-Each quick start is standalone, so you can explore specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a journey from setup to seamless application promotion across environments.
+Each quick start is standalone, so you can explore specific topics as needed. However, for maximum value, the quick starts are designed to build upon each other, taking you on a journey from setup to deploying applications.
 
-The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, leading to deploying and promoting applications effectively across multiple environments.
+The journey begins with setting up your account and installing the GitOps Runtime. From there, you’ll define environments, products, and applications, leading to deploying applications effectively across your clusters.
 
 We've provided a GitHub repository with all the applications and resources used in the quick starts. You can follow along directly or fork the repository to create and manage your own applications.
 
@@ -30,7 +30,7 @@ We've provided a GitHub repository with all the applications and resources used 
   Configure the GitOps Runtime for successful operation.
 
 
-## Creating GitOps entities for promotions
+## Creating GitOps entities
 * [Creating products and applications]({{site.baseurl}}/docs/gitops-quick-start/create-app-ui/)   
   Create Argo CD applications, the product to link them to, and configure their source repositories, manifests, and deployment paths.
 
@@ -38,30 +38,8 @@ We've provided a GitHub repository with all the applications and resources used 
   Define and manage environments such as development and production, enabling structured application deployments across different stages.
 
 
-
-
-## Simple promotions for applications
-
-Promote and deploy changes in applications across environments.
-Start with simple manual promotion across two environments, then automate across multiple environments with a simple Promotion Flows.
-
-* [Simple drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/)  
-  Manually promote a product between two environments.
-* [Simple Promotion Flow with multiple environments]({{site.baseurl}}/docs/gitops-quick-start/multi-env-sequential-flow/)  
-  Automate promotions across multiple environments sequentially using a simple Promotion Flow.
-
-## Advanced promotions for applications
-Evolve from simple sequential promotions to advanced application promotion scenarios with validations and environment dependencies.
-
-* [Creating Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/quick-start-promotion-workflow/)   
-  Automate pre- and post-promotion actions during GitOps promotions in environments, ensuring quality, security, and compliance at each stage.
-* [Advanced Promotion Flow with Promotion Workflows]({{site.baseurl}}/docs/gitops-quick-start/policy-multi-env-promotion/)  
-  Control promotion behavior for environments using Promotion Workflows within a Promotion Flow.
-* [Advanced Promotion Flow with environment dependencies]({{site.baseurl}}/docs/gitops-quick-start/dependency-multi-env-promotion/)  
-  Run promotions with defined dependencies between environments using an advanced Promotion Flow.
-
-
-  
+> **Note**  
+> Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0. The promotion quick starts are no longer part of this journey.
 
 ## Example Git repository
 
