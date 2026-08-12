@@ -3,7 +3,12 @@ title: "Assigning Promotion Flows and triggers to products"
 description: "Select Promotion Flows and configure their trigger conditions to optimize product promotions"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/promotion-flow-triggers/
 ---
+
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Promotion Flows for products
 A Promotion Flow in Codefresh GitOps defines the steps, validations, and conditions required to promote a product and its applications from one environment to another.  

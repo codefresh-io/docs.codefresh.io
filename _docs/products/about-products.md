@@ -3,10 +3,12 @@ title: "About products"
 description: "Create products to group and deploy applications"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/about-products/
 ---
 
-
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Products in Codefresh GitOps
 Harness the power of **products** in Codefresh GitOps to streamline the management and deployment of Argo CD applications. 

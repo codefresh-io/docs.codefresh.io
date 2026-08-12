@@ -3,12 +3,12 @@ title: "Promotion building blocks"
 description: "Explore entities and their roles in the promotion process"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-components/
 ---
 
->**Promotions is currently in development**  
-This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
-We don't recommend using Promotions for mission-critical or production deployments at this time.
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 ## Promotion components
 If you are new to promotions in GitOps, understanding the key entities involved in the promotion process helps clarify their roles.
 

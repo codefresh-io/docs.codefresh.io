@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/promotions/promotion-scenarios/policy-multi-env-promotion/
+  - /gitops/gitops-quick-start/policy-multi-env-promotion/
 ---
 
 ## Advanced Promotion Flow with Promotion Workflows quick start

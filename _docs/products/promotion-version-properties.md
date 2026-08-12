@@ -3,8 +3,12 @@ title: "Configuring version and promotable properties for products"
 description: "Configure application version and properties to promote for products"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/promotion-version-properties/
 ---
 
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Application version and promotable properties for products
 By default, when you promote a product across environments, all its applications and their properties are promoted. Not all properties change with every update, and different environments have different requirements. For example, while development environments may allow frequent updates, staging and production environments often require stricter controls.

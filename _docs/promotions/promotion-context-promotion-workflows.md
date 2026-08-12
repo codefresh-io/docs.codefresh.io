@@ -3,12 +3,12 @@ title: "Promotion contexts for promotion hooks"
 description: "Use promotion contexts to expose custom parameters to hooks in Promotion Flows"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-context-promotion-workflows/
 ---
 
->**Promotions is currently in development**  
-This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
-We don't recommend using Promotions for mission-critical or production deployments at this time.
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 ## About promotion contexts
 
 Promotion Workflows with hooks in Codefresh GitOps have access to a standard set of [default parameters]({{site.baseurl}}/docs/promotions/promotion-hooks/#default-arguments-in-promotion-hooks), such as the release ID, current release version, product, and commit SHA. When you define these parameters in the hook as input parameters, their values are dynamically retrieved from the ongoing promotion.

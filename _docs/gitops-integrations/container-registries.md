@@ -3,6 +3,8 @@ title: "GitOps container registry integrations"
 description: "Seamlessly integrate container registries with GitOps for image enrichment"
 group: gitops-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/container-registries/
 ---
 
 {% if page.collection == site.gitops_collection %}

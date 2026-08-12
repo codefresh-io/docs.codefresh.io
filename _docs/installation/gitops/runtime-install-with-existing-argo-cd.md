@@ -2,6 +2,8 @@
 title: "Install GitOps Runtime with existing Argo CD (BYOA)"
 description: "Provision GitOps Runtime connecting to an existing Argo CD instance"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-install-with-existing-argo-cd/
 ---
 
 

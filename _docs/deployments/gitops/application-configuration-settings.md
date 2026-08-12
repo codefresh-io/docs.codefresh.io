@@ -2,6 +2,8 @@
 title: "Application configuration settings"
 description: "Review configuration settings for Argo CD applications in Codefresh GitOps"
 toc: true
+redirect_from:
+  - /gitops/applications/application-configuration-settings/
 ---
 
 ## Application configuration settings

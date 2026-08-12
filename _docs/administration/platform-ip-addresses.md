@@ -3,6 +3,8 @@ title: "Codefresh IP addresses"
 description: "How to allowlist the IP addresses of the Codefresh platform"
 group: administration
 toc: true
+redirect_from:
+  - /gitops/administration/platform-ip-addresses/
 
 ---
 Access to Kubernetes clusters behind strict firewalls not accessible from the public internet is governed through authorized IP addresses.

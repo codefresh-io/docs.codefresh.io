@@ -3,6 +3,8 @@ title: "Codefresh Acceptable Use Policy"
 description: ""
 group: terms-and-privacy-policy
 toc: true
+redirect_from:
+  - /gitops/terms-and-privacy-policy/acceptable-use-policy/
 ---
 
 

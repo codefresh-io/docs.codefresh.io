@@ -6,12 +6,12 @@ redirect-from:
  - /docs/promotions/configuration/
  - /docs/promotions/entities/
 toc: true
+redirect_from:
+  - /gitops/promotions/product-promotion-props/
 ---
 
->**Promotions is currently in development**  
-This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
-We don't recommend using Promotions for mission-critical or production deployments at this time.
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 ## Promotion Settings for products
 
 Promotion settings for products define how and when product are promoted across environments. They determine which promotion sequences are valid, the triggers that initiate them, and the exact changes that should be promoted. These settings ensure consistent, accurate, and reliable delivery of updates while aligning with your deployment strategy.

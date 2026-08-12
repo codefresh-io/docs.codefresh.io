@@ -3,7 +3,12 @@ title: "Releases for products"
 description: "Monitor promotions for products through releases"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/releases-in-products/
 ---
+
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Product Releases
 The **Releases** feature provides visibility into a product’s deployment lifecycle as it moves through different environments during promotions.

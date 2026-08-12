@@ -3,12 +3,12 @@ title: "Tracking product releases"
 description: "Monitor promotion orchestration for a product through Releases"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/product-releases/
 ---
 
->**Promotions is currently in development**  
-This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
-We don't recommend using Promotions for mission-critical or production deployments at this time.
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 ## Releases for promotions in GitOps
 Releases in Codefresh GitOps offer a consolidated view of the deployment lifecycle for a product as it progresses through environments during a promotion. They enable you to track, visualize, and analyze changes from the initial trigger to the final deployment, providing comprehensive insights for all stakeholders.
 

@@ -3,9 +3,12 @@ title: "Manage products and applications in environments"
 description: "Work with products and applications in the Environments dashboard"
 group: environments
 toc: true
+redirect_from:
+  - /gitops/environments/manage-apps-in-environments/
 ---
 
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Working with products and applications in environments
 Environments provide visibility into which applications are running where. If you have created products to group applications, environments display the products, and their associated applications. If there are no products, the dashboard displays individual applications.

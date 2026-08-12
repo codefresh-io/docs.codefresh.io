@@ -3,7 +3,12 @@ title: "Configure Product Settings"
 description: "Configure metadata, promotion settings, and flows for product"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/configure-product-settings/
 ---
+
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Product settings
 After creating a product, optimize its functionality by configuring different settings for the product, including metadata, promotion settings, and more through Product Settings. 

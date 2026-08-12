@@ -4,6 +4,8 @@ description: "Connect GitHub Action pipelines with GitOps for enriched image dat
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/ci-integrations/github-actions/
 ---
 
 {% if page.collection == site.gitops_collection %}

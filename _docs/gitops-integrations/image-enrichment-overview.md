@@ -4,6 +4,7 @@ description: "Gain full visibility into deployments with metadata from third-par
 group: gitops-integrations
 redirect_from:
   - /csdp-docs/docs/integrations/image-enrichment-overview/
+  - /gitops/gitops-integrations/image-enrichment-overview/
 toc: true
 ---
 

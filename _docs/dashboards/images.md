@@ -3,6 +3,8 @@ title: "Images dashboard"
 description: ""
 group: deployments
 toc: true
+redirect_from:
+  - /gitops/dashboards/images/
 ---
 
 

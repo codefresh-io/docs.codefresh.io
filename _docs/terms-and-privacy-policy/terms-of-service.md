@@ -5,6 +5,7 @@ group: terms-and-privacy-policy
 redirect_from:
   - /docs/terms-of-service/
   - /docs/terms-and-privacy-policy/
+  - /gitops/terms-and-privacy-policy/terms-of-service/
 toc: true
 ---
 >Codefresh was acquired by Octopus Deploy in March 2024. Starting 1 October 2024, you can buy Codefresh through Octopus Deploy's umbrella Customer Agreement.  

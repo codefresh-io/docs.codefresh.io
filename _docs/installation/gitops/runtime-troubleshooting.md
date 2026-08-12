@@ -2,6 +2,9 @@
 title: "Troubleshooting GitOps Runtime installation"
 description: "Review how to resolve issues during Runtime installation"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-troubleshooting/
+  - /gitops/gitops-runtimes/troubleshooting-runtimes/
 ---
 
 ## Troubleshooting Runtime installation

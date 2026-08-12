@@ -6,7 +6,12 @@ redirect-from:
  - /docs/promotions/configuration/
  - /docs/promotions/entities/yaml/
 toc: true
+redirect_from:
+  - /gitops/promotions/yaml/
 ---
+
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 Codefresh provides two options for defining manifests for promotion entities: Form mode and YAML mode.
 

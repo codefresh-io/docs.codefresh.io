@@ -3,12 +3,12 @@ title: "Configure hooks in Promotion Workflows"
 description: "Configure hooks to capture release- and environment-level events in promotion releases"
 group: promotions"
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-hooks/
 ---
 
->**Promotions is currently in development.**  
-This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
-We don't recommend using Promotions for mission-critical or production deployments at this time.
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 ## Promotion hooks overview
 
 Promotion hooks in GitOps Cloud are specialized Promotion Workflows that run at key stages of a product release to provide information on the release and its environments. A product release is created when a Promotion Flow is triggered, either manually or automatically.   

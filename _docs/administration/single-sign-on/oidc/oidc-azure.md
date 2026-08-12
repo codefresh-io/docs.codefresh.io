@@ -4,6 +4,7 @@ description: "Set up Azure SSO for OIDC"
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-azure/
   - /docs/single-sign-on/oidc/oidc-azure/
+  - /gitops/administration/single-sign-on/oidc/oidc-azure/
 toc: true
 ---
 

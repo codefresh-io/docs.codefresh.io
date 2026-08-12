@@ -4,6 +4,8 @@ description: "Complete reference for arguments supported for integrations with G
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/ci-argument-reference/
 ---
 {% if page.collection == site.gitops_collection %}
 >**Early Access**  

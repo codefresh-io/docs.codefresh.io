@@ -2,6 +2,8 @@
 title: "Runtime Status Panel"
 description: "Monitor GitOps Runtime health from a single pane — connectivity, applications, components, Git Sources, and managed clusters"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-status-panel/
 ---
 
 ## Runtime Status Panel

@@ -3,6 +3,9 @@ title: "GitOps Cloud Service Commitment"
 description: "Service Level Agreements for Codefresh GitOps Cloud support"
 group: terms-and-privacy-policy
 toc: true
+redirect_from:
+  - /gitops/terms-and-privacy-policy/sla-gitops-cloud/
+  - /gitops/terms-and-privacy-policy/gitops-cloud-sla/
 ---
 
 

@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/promotions/promotion-scenarios/multi-env-sequential-flow/
+  - /gitops/gitops-quick-start/multi-env-sequential-flow/
 ---
 
 

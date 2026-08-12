@@ -4,6 +4,8 @@ description: ""
 group: administration
 sub_group: account-user-management
 toc: true
+redirect_from:
+  - /gitops/administration/account-user-management/hosted-authorize-orgs/
 ---
 
 If your Git provider has an OAuth application for Codefresh, you need to authorize access to the app's organizations/projects to see them in Codefresh.
