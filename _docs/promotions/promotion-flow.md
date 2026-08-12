@@ -10,8 +10,10 @@ redirect_from:
   - /gitops/promotions/promotion-flow/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+>**Promotions is currently in development**  
+This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
+We don't recommend using Promotions for mission-critical or production deployments at this time.
+
 ## Promotion Flows in Codefresh GitOps
 A Promotion Flow is a sequence of automated actions that systematically move code changes through environments, from development to production. This structured approach enhances deployment reliability and efficiency, ensuring changes meet quality standards before reaching end users.
 

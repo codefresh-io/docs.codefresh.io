@@ -7,8 +7,8 @@ redirect_from:
   - /gitops/dashboards/gitops-products/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+
+
 
 Explore the power of products for Argo CD applications in Codefresh GitOps. 
 

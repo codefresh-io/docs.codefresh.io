@@ -7,9 +7,6 @@ redirect_from:
   - /gitops/environments/create-manage-environments/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
-
 ## Creating and managing environments
 Environments provide a structured way to manage Argo CD applications across different stages of development and deployment. By defining environments, teams can control how applications are deployed, tested, and promoted. Environments in Codefresh GitOps integrate with products and applications, providing visibility and governance over deployments.
 

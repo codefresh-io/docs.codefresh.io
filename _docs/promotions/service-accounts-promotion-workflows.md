@@ -7,8 +7,10 @@ redirect_from:
   - /gitops/promotions/service-accounts-promotion-workflows/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+>**Promotions is currently in development.**  
+This feature is still under active development and we've identified some issues with its resilience and reliability, particularly with recovery from cluster and network problems. We are currently upgrading our architecture to resolve these known issues and add self-healing capabilities.
+We don't recommend using Promotions for mission-critical or production deployments at this time.
+
 ## Service accounts & service account roles for Promotion Workflows
 Service accounts are essential for all types of Promotion Workflows in GitOps Cloud. These accounts provide the necessary permissions for workflows to interact with clusters and other resources during the promotion process, including when hooks are used. 
 

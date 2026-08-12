@@ -7,8 +7,7 @@ redirect_from:
   - /gitops/products/create-product/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+
 
 A product in Codefresh is a logical grouping of related Argo CD applications that provides context, versioning, and lifecycle management across environments. Unlike standalone applications in Argo CD, products establish relationships between applications, making it easier to track deployments, manage promotions, and maintain consistency. See [About Products]({{site.baseurl}}/docs/products/about-products/).
 

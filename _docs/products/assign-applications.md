@@ -7,9 +7,6 @@ redirect_from:
   - /gitops/products/assign-applications/
 ---
 
->**Promotions has been disabled**  
-Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
-
 After creating a product, the next step is to assign applications to it.
 Assigning applications to a product groups these applications into a single cohesive entity, making it easier to manage promotions and deployments.
 
