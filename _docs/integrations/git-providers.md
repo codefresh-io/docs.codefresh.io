@@ -241,7 +241,7 @@ For example if you already have a `token` on a resource call `git-credentials` y
 Bitbucket **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).<br />
 If you already use an App password for your Bitbucket integration in Codefresh, we recommend switching to the new **API token** method described below.
 
-For the **API token** method you need:
+The **API token method** is the recommended way to integrate Bitbucket. To set it up, you’ll need:
 
 * A friendly name for the Git context (It can be anything you want.)
 * The email associated with your Bitbucket account  
@@ -294,7 +294,8 @@ now save the Git integration.
 
  If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
-For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. 
+For the **OAuth2 method** you need to enter a name for your connection and click *Save*. Then accept the permissions dialog. 
+For customers with high Bitbucket API usage, we recommend using the **API token method** instead of OAuth2.
 
 ## Azure DevOps
 
