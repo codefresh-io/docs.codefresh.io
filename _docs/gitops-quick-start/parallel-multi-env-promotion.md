@@ -7,8 +7,8 @@ redirect_from:
   - /docs/promotions/promotion-scenarios/parallel-multi-env-promotion/
 ---
 
-
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Advanced Promotion Flow with parallel environments quick start
 

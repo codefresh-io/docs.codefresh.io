@@ -5,6 +5,8 @@ group: dashboards
 toc: true
 ---
 
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Environments dashboard
 The **Environments** dashboard introduces a new dimension to the developer and deployment experience with Argo CD applications in Codefresh.

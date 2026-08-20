@@ -7,6 +7,8 @@ redirect_from:
   - /docs/promotions/promotion-scenarios/
 ---
 
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 Promotions orchestrate the flow of changes for applications across environments, ensuring controlled and validated deployments. 
 A successful promotion sequence relies on several key components that together govern and orchestrate the promotion flow across environments. 

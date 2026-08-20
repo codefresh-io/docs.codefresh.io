@@ -5,6 +5,9 @@ group: products
 toc: true
 ---
 
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
+
 ## Promotion concurrency for products
 
 When multiple promotions are triggered for a product, multiple releases can occur at the same time or concurrently.  

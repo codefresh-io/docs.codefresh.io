@@ -7,10 +7,8 @@ redirect_from:
   - /docs/promotions/promotion-scenarios/multi-env-sequential-flow/
 ---
 
-
-
-
-
+>**Promotions has been disabled**  
+Promotions has been disabled and turned off, and will no longer be available in GitOps Runtimes released after version 0.24.0.
 
 ## Simple Promotion Flow with multiple environments quick start
 [Drag-and-drop promotion]({{site.baseurl}}/docs/gitops-quick-start/drag-and-drop/) is ideal for on-demand promotions to a single environment.  
