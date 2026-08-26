@@ -1241,7 +1241,8 @@ This was a contrived example to demonstrate how you can use templates in the Cod
 
 ### Limitations of custom plugins
 
-[Parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workflows/) are not supported inside custom steps.
+[Parallel steps]({{site.baseurl}}/docs/pipelines/advanced-workf<img width="1280" height="640" alt="repository-open-graph-template (1)" src="https://github.com/user-attachments/assets/e03b31de-bfc5-4967-a068-084d3acf7f94" />
+lows/) are not supported inside custom steps.
   
 Within a custom step, the [fail_fast field]({{site.baseurl}}/docs/pipelines/what-is-the-codefresh-yaml/#execution-flow) does not work. Use  the `failFast` field instead.
 
