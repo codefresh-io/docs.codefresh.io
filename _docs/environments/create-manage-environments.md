@@ -3,6 +3,8 @@ title: "Create and manage environments"
 description: "Create and manage environments to track SDLC for Argo CD applications"
 group: environments
 toc: true
+redirect_from:
+  - /gitops/environments/create-manage-environments/
 ---
 
 >**Promotions has been disabled**  

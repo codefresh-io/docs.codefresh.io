@@ -9,6 +9,7 @@ redirect_from:
   - /docs/create-an-account/
   - /docs/getting-started/
   - /docs/getting-started/introduction/
+  - /gitops/administration/account-user-management/create-codefresh-account/
 toc: true
 ---
 

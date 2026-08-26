@@ -2,6 +2,8 @@
 title: "Monitoring GitOps Runtimes"
 description: "View and navigate all provisioned GitOps Runtimes in List and Topology views"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/monitor-runtimes/
 ---
 ## Monitoring GitOps Runtimes
 

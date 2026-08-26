@@ -4,6 +4,7 @@ description: "Seamlessly connect issue-trackers with GitOps for image enrichment
 group: gitops-integrations
 redirect_from:
   - /csdp-docs/docs/integrations/issue-tracking/jira/
+  - /gitops/gitops-integrations/issue-tracking/
 toc: true
 ---
 

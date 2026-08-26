@@ -3,6 +3,8 @@ title: "Releases for products"
 description: "Monitor promotions for products through releases"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/releases-in-products/
 ---
 
 >**Promotions has been disabled**  

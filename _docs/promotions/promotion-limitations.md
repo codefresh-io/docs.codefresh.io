@@ -3,6 +3,8 @@ title: "Promotion limitations"
 description: "Review the current limitations when working with promotions"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-limitations/
 ---
 
 >**Promotions has been disabled**  

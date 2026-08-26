@@ -1,1 +1,0 @@
-../../../../_docs/administration/single-sign-on/oidc/oidc-auth0.md

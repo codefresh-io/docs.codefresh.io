@@ -3,6 +3,8 @@ title: "Configuring version and promotable properties for products"
 description: "Configure application version and properties to promote for products"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/promotion-version-properties/
 ---
 
 >**Promotions has been disabled**  

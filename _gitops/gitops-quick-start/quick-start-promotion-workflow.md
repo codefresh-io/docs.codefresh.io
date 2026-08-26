@@ -1,1 +1,0 @@
-../../_docs/gitops-quick-start/quick-start-promotion-workflow.md

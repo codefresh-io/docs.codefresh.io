@@ -5,6 +5,7 @@ group: terms-and-privacy-policy
 redirect_from:
   - /docs/terms-of-service/
   - /docs/terms-and-privacy-policy/
+  - /gitops/terms-and-privacy-policy/legacy-cf-terms-of-service/
 toc: true
 ---
 {::nomarkdown}

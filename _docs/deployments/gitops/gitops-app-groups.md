@@ -4,6 +4,8 @@ description: "View deployment info for Argo CD applications through Application 
 group: deployments
 sub_group: gitops
 toc: true
+redirect_from:
+  - /gitops/applications/gitops-app-groups/
 ---
 
 

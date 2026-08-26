@@ -3,6 +3,8 @@ title: "Service account for Promotion Workflows"
 description: "Understand the service account and role requirements for Promotion Workflows"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/service-accounts-promotion-workflows/
 ---
 
 >**Promotions has been disabled**  

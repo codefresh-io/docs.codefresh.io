@@ -3,6 +3,8 @@ title: "Home dashboard"
 description: "Global dashboard"
 group: dashboards
 toc: true
+redirect_from:
+  - /gitops/dashboards/home-dashboard/
 ---
 
 {% if page.collection == site.gitops_collection %}

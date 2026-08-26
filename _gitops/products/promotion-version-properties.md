@@ -1,1 +1,0 @@
-../../_docs/products/promotion-version-properties.md

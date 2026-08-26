@@ -3,6 +3,8 @@ title: "Promotion contexts for promotion hooks"
 description: "Use promotion contexts to expose custom parameters to hooks in Promotion Flows"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-context-promotion-workflows/
 ---
 
 >**Promotions has been disabled**  

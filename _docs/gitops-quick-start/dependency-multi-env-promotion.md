@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/promotions/promotion-scenarios/dependency-multi-env-promotion/
+  - /gitops/gitops-quick-start/dependency-multi-env-promotion/
 ---
 
 >**Promotions has been disabled**  

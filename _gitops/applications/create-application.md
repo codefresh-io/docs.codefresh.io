@@ -1,1 +1,0 @@
-../../_docs/deployments/gitops/create-application.md

@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/gitops-quick-start/create-git-source/
+  - /gitops/gitops-quick-start/quick-start-configure-runtime/
 ---
 
 

@@ -7,6 +7,7 @@ redirect_from:
   - /docs/sso/federated-sso-overview/
   - /docs/enterprise/single-sign-on/
   - /docs/single-sign-on/single-sign-on/
+  - /gitops/administration/single-sign-on/
 toc: true
 ---
   

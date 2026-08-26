@@ -3,6 +3,8 @@ title: "Quick start: Creating Promotion Workflows"
 description: "Create a workflow template to use as pre- or post-action"
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - /gitops/gitops-quick-start/quick-start-promotion-workflow/
 ---
 
 >**Promotions has been disabled**  

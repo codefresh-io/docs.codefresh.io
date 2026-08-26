@@ -3,6 +3,8 @@ title: "Create products"
 description: "Create products and tailor settings to optimize them"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/create-product/
 ---
 
 >**Promotions has been disabled**  

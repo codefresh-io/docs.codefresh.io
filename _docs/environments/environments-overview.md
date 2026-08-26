@@ -3,6 +3,8 @@ title: "About environments"
 description: "Create environments reflecting SDLC and track applications"
 group: environments
 toc: true
+redirect_from:
+  - /gitops/environments/environments-overview/
 ---
 
 >**Promotions has been disabled**  

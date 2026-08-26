@@ -3,6 +3,8 @@ title: "Products dashboard"
 description: "Explore the Products page for insights and management options"
 group: dashboards
 toc: true
+redirect_from:
+  - /gitops/dashboards/gitops-products/
 ---
 
 >**Promotions has been disabled**  
