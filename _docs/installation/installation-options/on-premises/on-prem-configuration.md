@@ -46,6 +46,14 @@ Sign in to Codefresh for the first time after on-premises platform installation 
   max-width="50%"
     %}  
 
+{{site.data.callout.callout_warning}}
+**IMPORTANT: Do not use `admin-cf` as a production account**  
+
+The `admin-cf` account and its built-in `AdminCF` user that are shipped with every on-premises installation are intended for _bootstrap and initial administration only_. They are seeded directly during installation, outside the standard account-creation flow, and therefore miss all the default setup a regular Codefresh account gets. Affected features are user management, SSO integrations, permission policies, etc.
+
+Codefresh recommends to use `admin-cf` strictly as the initial administrative entry point to complete setup, primarily to create your organization's working account through the standard account-creation flow described in [Step 2: Add a Codefresh account](#step-2-add-a-codefresh-account). Accounts created through the standard flow receive the full default setup required for proper operation.
+{{site.data.callout.end}}
+
 {:start="4"}
 1. Continue with [Step 2: Add a Codefresh account](#step-2-add-a-codefresh-account).
 
