@@ -120,6 +120,8 @@ caption="API token in Okta to use as Access token"
 max-width="60%"
 %}
 
+> **Note:**
+> The api permission you can use is the built-in Read Only Admin role
   
 {% include image.html 
 lightbox="true" 
