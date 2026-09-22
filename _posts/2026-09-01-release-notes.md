@@ -21,6 +21,7 @@ For details, see [Request caching]({{site.baseurl}}/docs/integrations/git-provid
 
 ##### Availability
 
+{: .table .table-bordered .table-hover}
 | Installation | Status | Action required |
 |---|---|---|
 | Cloud | Available now | None |
@@ -37,6 +38,7 @@ For the full list of changes and upgrade steps, see the [GitOps Runtime 0.31.0 r
 
 ##### Availability
 
+{: .table .table-bordered .table-hover}
 | Installation | Status | Action required |
 |---|---|---|
 | Hybrid | GitOps Runtime [0.31.0](https://github.com/codefresh-io/gitops-runtime-helm/releases/tag/0.31.0){:target="_blank"} | Upgrade to GitOps Runtime 0.31.0 or later. Review the breaking changes first. |
@@ -54,6 +56,7 @@ Steps now always receive the value that was exported last for each variable.
 
 ##### Availability
 
+{: .table .table-bordered .table-hover}
 | Installation | Status | Action required |
 |---|---|---|
 | Cloud | Available now | None |
@@ -70,6 +73,7 @@ Additionally, typed steps now correctly work when a termination signal arrives b
 
 ##### Availability
 
+{: .table .table-bordered .table-hover}
 | Installation | Status | Action required |
 |---|---|---|
 | Cloud | Available now | None |
