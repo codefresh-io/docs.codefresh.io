@@ -1,0 +1,14 @@
+_docs/integrations/git-providers.md
+  h_e5037b46dfdc11 244-247,249,309,311-312,343
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "0cc3ba9ea7ead95ccd51a66a13fc9cb9ebdd989f",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
