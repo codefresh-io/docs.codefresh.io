@@ -241,6 +241,8 @@ Codefresh supports two authentication methods for Bitbucket Cloud: **API token**
 
 ### Supported authentication methods
 
+#### App passwords
+
 {{site.data.callout.callout_warning}}
 **WARNING!**
 Bitbucket **App passwords** are deprecated as of **June 9th 2026** and can no longer be used. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation){:target="\_blank"}.
