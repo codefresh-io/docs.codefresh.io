@@ -241,9 +241,12 @@ Codefresh supports two authentication methods for Bitbucket Cloud: **API token**
 
 ### Supported authentication methods
 
->**WARNING!**  
-Bitbucket **App passwords** are deprecated as of **June 9th 2026** and can no longer be used. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation){:target="\_blank"}.<br />
+{{site.data.callout.callout_warning}}
+**WARNING!**
+Bitbucket **App passwords** are deprecated as of **June 9th 2026** and can no longer be used. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation){:target="\_blank"}.
+
 If your Bitbucket integration in Codefresh still uses an App password, switch to the **API token** method described below.
+{{site.data.callout.end}}
 
 #### API token (recommended)
 
@@ -303,9 +306,10 @@ now save the Git integration.
 For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. Notice that if
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
-{{site.data.callout.callout_warning}}
+{{site.data.callout.callout_info}}
 **IMPORTANT**  
-Bitbucket applies API rate limits per OAuth consumer. All Codefresh accounts that authenticate with OAuth2 share a single Codefresh OAuth consumer, so their requests count against the same quota. If the quota is exhausted, your builds may fail with rate limit errors.<br />
+Bitbucket applies API rate limits per OAuth consumer. All Codefresh accounts that authenticate with OAuth2 share a single Codefresh OAuth consumer, so their requests count against the same quota. If the quota is exhausted, your builds may fail with rate limit errors.
+
 For this reason we do not recommend OAuth2 for Bitbucket. Use the [API token](#api-token-recommended) method instead, which gives your account its own rate limit quota. For details, see [API request limits](https://support.atlassian.com/bitbucket-cloud/docs/api-request-limits/){:target="\_blank"} in the Bitbucket documentation.
 {{site.data.callout.end}}
 
@@ -336,7 +340,7 @@ Turning the toggle off stops Codefresh from reading from the cache, but does not
 For a new integration that uses the OAuth2 method, the caching toggle is available only after the integration has been saved for the first time.
 {{site.data.callout.end}}
 
-## How to clear the cache
+#### How to clear the cache
 
 Clearing the cache removes all entries stored for the integration. Do this if you rotated or revoked the credentials of the integration, or if you want to force Codefresh to fetch content from Bitbucket again.
 
