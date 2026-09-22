@@ -15,7 +15,7 @@ You can now enable request caching for a Bitbucket Git integration. When it is o
 
 Caching is safe to use because only content pinned to a specific commit SHA is cached, such as file contents, commit objects, and diffstats. Anything that can change, including which commit a branch or tag points to, is always resolved live against Bitbucket, so builds never read stale data. If the cache is unavailable, Codefresh falls back to a live request.
 
-To enable it, edit your Bitbucket integration in **Pipeline Integrations > Git** and turn on **Cache requests to Bitbucket** in the **Caching** section. The same section has a **Clear cache** button for account administrators, which removes all stored entries for the integration, for example, after rotating its credentials.
+To enable it, edit your Bitbucket integration in **Pipeline Integrations → Git** and turn on **Cache requests to Bitbucket** in the **Caching** section. The same section has a **Clear cache** button for account administrators, which removes all stored entries for the integration, for example, after rotating its credentials.
 
 For details, see [Request caching]({{site.baseurl}}/docs/integrations/git-providers/#request-caching) for Bitbucket.
 
