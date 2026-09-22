@@ -26,7 +26,7 @@ For details, see [Request caching]({{site.baseurl}}/docs/integrations/git-provid
 |---|---|---|
 | Cloud | Available now | None |
 | Hybrid | Available now | None |
-| On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released. |
+| On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released, enable `enableGitRequestsCache` feature flag. |
 
 ### GitOps
 
