@@ -48,6 +48,21 @@ For the full list of changes and upgrade steps, see the [GitOps Runtime 0.31.0 r
 
 ### Classic Pipelines
 
+#### Entity name and ID were not displayed in the Audit Log for some entities
+
+In the Audit Log, the `Entity ID/Name` column was empty for some entity types, such as Git contexts.
+
+Audited events for these entities now show the name and ID of the affected entity.
+
+##### Availability
+
+{: .table .table-bordered .table-hover}
+| Installation | Status | Action required |
+|---|---|---|
+| Cloud | Available now | None |
+| Hybrid | Available now | None |
+| On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released. |
+
 #### Variables exported with `cf_export` could resolve to an outdated value
 
 When a variable was exported with `cf_export` more than once during a build, a following step could receive an earlier value instead of the last exported one. This happened whenever the latest exported value was identical to a value the variable had held before, whether from an earlier `cf_export`, from the pipeline variables, or from the step's own `environment`. For example, exporting `MY_VAR=v1`, then `MY_VAR=v2`, then `MY_VAR=v1` again resulted in `v2` in the next step.
