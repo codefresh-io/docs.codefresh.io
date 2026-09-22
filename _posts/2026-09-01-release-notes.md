@@ -30,7 +30,7 @@ For details, see [Request caching]({{site.baseurl}}/docs/integrations/git-provid
 
 ### GitOps
 
-#### Argo CD upgraded to 3.5.2 in GitOps Runtime
+#### Argo CD upgraded to 3.5 in GitOps Runtime
 
 GitOps Runtime 0.31.0 bumps the bundled Argo CD to version 3.5.2, bringing the latest upstream fixes and features to Codefresh GitOps. If you bring your own Argo CD (BYOA), the supported version range is now 3.3.x to 3.5.x.
 
