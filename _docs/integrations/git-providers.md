@@ -131,7 +131,11 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitHub on-premises you also need to provide the URL of the GitHub server in your organization.
+
+### Pipeline definition restrictions
+
+If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitHub Token
 
@@ -203,7 +207,8 @@ If you need additional permission for your integration, use the Manual Creation 
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
 
->**NOTE**  
+### Pipeline definition restrictions
+
 If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
@@ -225,7 +230,11 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the Git integration.
 
-For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.
+
+### Pipeline definition restrictions
+
+If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitLab Token
 
@@ -244,13 +253,14 @@ Codefresh supports two authentication methods for Bitbucket Cloud: **API token**
 #### App passwords
 
 {{site.data.callout.callout_warning}}
-**WARNING!**
+**WARNING**
+
 Bitbucket **App passwords** are deprecated as of **June 9th 2026** and can no longer be used. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation){:target="\_blank"}.
 
 If your Bitbucket integration in Codefresh still uses an App password, switch to the **API token** method described below.
 {{site.data.callout.end}}
 
-#### API token (recommended)
+#### API token
 
 For the **API token** method you need:
 
@@ -309,10 +319,11 @@ For the **OAuth2 method** you only need to enter a name for your connection and 
 you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
 
 {{site.data.callout.callout_info}}
-**IMPORTANT**  
+**IMPORTANT**
+
 Bitbucket applies API rate limits per OAuth consumer. All Codefresh accounts that authenticate with OAuth2 share a single Codefresh OAuth consumer, so their requests count against the same quota. If the quota is exhausted, your builds may fail with rate limit errors.
 
-For this reason we do not recommend OAuth2 for Bitbucket. Use the [API token](#api-token-recommended) method instead, which gives your account its own rate limit quota. For details, see [API request limits](https://support.atlassian.com/bitbucket-cloud/docs/api-request-limits/){:target="\_blank"} in the Bitbucket documentation.
+If you expect high load, use the [API token](#api-token) method instead of OAuth2. It gives your integration its own rate limit quota. For details, see [API request limits](https://support.atlassian.com/bitbucket-cloud/docs/api-request-limits/){:target="\_blank"} in the Bitbucket documentation.
 {{site.data.callout.end}}
 
 ### Request caching
@@ -325,6 +336,15 @@ Request caching is safe to use because Codefresh caches only content pinned to a
 
 Cached entries are scoped to your account and Git integration, and expire automatically. Codefresh manages the lifetime of the entries.
 
+{% include image.html
+lightbox="true"
+file="/images/integrations/git/git-cache.png"
+url="/images/integrations/git/git-cache.png"
+alt="Request caching for Bitbucket integrations"
+caption="Request caching for Bitbucket integrations"
+max-width="75%"
+%}
+
 #### How to enable request caching
 
 1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
@@ -336,7 +356,9 @@ Cached entries are scoped to your account and Git integration, and expire automa
 
 Integrations with request caching enabled show a **Caching** badge in the list of Git integrations.
 
-Turning the toggle off stops Codefresh from reading from the cache, but does not delete the stored entries.
+{{site.data.callout.callout_info}}
+Turning the toggle off stops Codefresh from reading from the cache, but does not delete the stored entries. Check [How to clear the cache](#how-to-clear-the-cache) for instructions.
+{{site.data.callout.end}}
 
 {{site.data.callout.callout_info}}
 For a new integration that uses the OAuth2 method, the caching toggle is available only after the integration has been saved for the first time.
@@ -424,7 +446,9 @@ alt="Codefresh integration with Azure Devops"
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+### Pipeline definition restrictions
+
+If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Atlassian Stash
 

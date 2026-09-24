@@ -3,6 +3,10 @@ title: "Release Notes: September 2026"
 description: "Release Notes for Classic Pipelines and GitOps"
 ---
 
+{{site.data.callout.callout_tip}}
+This article is updated throughout the month as new releases become available.
+{{site.data.callout.end}}
+
 ## Features & enhancements
 
 ### Classic Pipelines
@@ -14,6 +18,15 @@ Every pipeline build sends a number of API requests to Bitbucket, for example, t
 You can now enable request caching for a Bitbucket Git integration. When it is on, Codefresh stores Bitbucket API responses and serves repeated reads of the same content from the cache, so they no longer count against your rate limit.
 
 Caching is safe to use because only content pinned to a specific commit SHA is cached, such as file contents, commit objects, and diffstats. Anything that can change, including which commit a branch or tag points to, is always resolved live against Bitbucket, so builds never read stale data. If the cache is unavailable, Codefresh falls back to a live request.
+
+{% include image.html
+lightbox="true"
+file="/images/integrations/git/git-cache.png"
+url="/images/integrations/git/git-cache.png"
+alt="Request caching for Bitbucket integrations"
+caption="Request caching for Bitbucket integrations"
+max-width="75%"
+%}
 
 To enable it, edit your Bitbucket integration in **Pipeline Integrations → Git** and turn on **Cache requests to Bitbucket** in the **Caching** section. The same section has a **Clear cache** button for account administrators, which removes all stored entries for the integration, for example, after rotating its credentials.
 
