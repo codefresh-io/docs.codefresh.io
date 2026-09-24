@@ -131,7 +131,11 @@ caption="GitHub permissions"
 alt="GitHub permissions"
 %}
 
-For GitHub on-premises you also need to provide the URL of the GitHub server in your organization. If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitHub on-premises you also need to provide the URL of the GitHub server in your organization.
+
+### Pipeline definition restrictions
+
+If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitHub Token
 
@@ -203,7 +207,8 @@ If you need additional permission for your integration, use the Manual Creation 
 1. To verify your integration, click **Test connection**.
 1. To apply your changes, click **Save**.  
 
->**NOTE**  
+### Pipeline definition restrictions
+
 If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## GitLab
@@ -225,7 +230,11 @@ The name you enter in order to create the token in the GitLab UI is completely a
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK can
 now save the Git integration.
 
-For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.  If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+For GitLab on-premises, you also need to provide the URL of the GitLab server in your organization.
+
+### Pipeline definition restrictions
+
+If enabled in your account you can set up [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ### Using External Secrets for GitLab Token
 
@@ -237,12 +246,21 @@ For example if you already have a `token` on a resource call `git-credentials` y
 
 ## Bitbucket
 
-For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. This is the easiest and recommended way to integrate Bitbucket. Notice that if
-you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
+Codefresh supports two authentication methods for Bitbucket Cloud: **API token** and **OAuth2**. We recommend the **API token** method.
 
->**WARNING!**  
-Bitbucket **App passwords** will be deprecated on **June 9th 2026**. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation).<br />
-If you already use an App password for your Bitbucket integration in Codefresh, we recommend switching to the new **API token** method described below.
+### Supported authentication methods
+
+#### App passwords
+
+{{site.data.callout.callout_warning}}
+**WARNING**
+
+Bitbucket **App passwords** are deprecated as of **June 9th 2026** and can no longer be used. For details, see [the official announcement from Bitbucket](https://www.atlassian.com/blog/bitbucket/bitbucket-cloud-transitions-to-api-tokens-enhancing-security-with-app-password-deprecation){:target="\_blank"}.
+
+If your Bitbucket integration in Codefresh still uses an App password, switch to the **API token** method described below.
+{{site.data.callout.end}}
+
+#### API token
 
 For the **API token** method you need:
 
@@ -295,7 +313,73 @@ alt="Bitbucket scopes"
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the Git integration.
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+#### OAuth2
+
+For the **OAuth2 method** you only need to enter a name for your connection and click *Save*. Then accept the permissions dialog. Notice that if
+you used Bitbucket when you [created your Codefresh account]({{site.baseurl}}/docs/administration/account-user-management/create-codefresh-account/), this integration is already setup for you.
+
+{{site.data.callout.callout_info}}
+**IMPORTANT**
+
+Bitbucket applies API rate limits per OAuth consumer. All Codefresh accounts that authenticate with OAuth2 share a single Codefresh OAuth consumer, so their requests count against the same quota. If the quota is exhausted, your builds may fail with rate limit errors.
+
+If you expect high load, use the [API token](#api-token) method instead of OAuth2. It gives your integration its own rate limit quota. For details, see [API request limits](https://support.atlassian.com/bitbucket-cloud/docs/api-request-limits/){:target="\_blank"} in the Bitbucket documentation.
+{{site.data.callout.end}}
+
+### Request caching
+
+Every pipeline build sends a number of API requests to Bitbucket, for example, to read the pipeline YAML or to fetch commit details. Busy accounts can hit the Bitbucket API rate limit because the same content is requested many times a day.
+
+Request caching lets Codefresh store Bitbucket API responses for a Git integration, so that repeated reads of the same content do not count against your rate limit.
+
+Request caching is safe to use because Codefresh caches only content pinned to a specific commit SHA, such as file contents, commit objects, and diffstats. Anything that can change, including the mapping of branches and tags to commits, is always resolved live against Bitbucket. As a result, builds never read stale data because of the cache. If the cache is unavailable for any reason, Codefresh falls back to a live request to Bitbucket.
+
+Cached entries are scoped to your account and Git integration, and expire automatically. Codefresh manages the lifetime of the entries.
+
+{% include image.html
+lightbox="true"
+file="/images/integrations/git/git-cache.png"
+url="/images/integrations/git/git-cache.png"
+alt="Request caching for Bitbucket integrations"
+caption="Request caching for Bitbucket integrations"
+max-width="75%"
+%}
+
+#### How to enable request caching
+
+1. In the Codefresh UI, on the toolbar, click the **Settings** icon.
+2. From Configuration in the sidebar, select [**Pipeline Integrations**](https://g.codefresh.io/account-admin/account-conf/integration){:target="\_blank"}.
+3. Select **Git** and then click **Configure**.
+4. Select the Bitbucket integration, and click **Edit**.
+5. In the **Caching** section, turn on **Cache requests to Bitbucket**.
+6. Click **Save**.
+
+Integrations with request caching enabled show a **Caching** badge in the list of Git integrations.
+
+{{site.data.callout.callout_info}}
+Turning the toggle off stops Codefresh from reading from the cache, but does not delete the stored entries. Check [How to clear the cache](#how-to-clear-the-cache) for instructions.
+{{site.data.callout.end}}
+
+{{site.data.callout.callout_info}}
+For a new integration that uses the OAuth2 method, the caching toggle is available only after the integration has been saved for the first time.
+{{site.data.callout.end}}
+
+#### How to clear the cache
+
+Clearing the cache removes all entries stored for the integration. Do this if you rotated or revoked the credentials of the integration, or if you want to force Codefresh to fetch content from Bitbucket again.
+
+1. In the **Caching** section of the Bitbucket integration, click **Clear cache**.
+2. Confirm the action.
+   Codefresh reports how many entries were removed. If the cache was cleared only partly, click **Clear cache** again to remove the remaining entries.
+
+{{site.data.callout.callout_info}}
+Only account administrators can clear the cache.
+The **Clear cache** button is available only for integrations that have already been saved.
+{{site.data.callout.end}}
+
+### Pipeline definition restrictions
+
+If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Azure DevOps
 
@@ -362,7 +446,9 @@ alt="Codefresh integration with Azure Devops"
 
 Your Azure DevOps repositories will be available when [creating a new project in Codefresh]({{site.baseurl}}/docs/quick-start/ci-quick-start/create-ci-pipeline/).
 
- If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
+### Pipeline definition restrictions
+
+If enabled in your account you can setup [Pipeline definition restrictions]({{site.baseurl}}/docs/administration/account-user-management/access-control/#pipeline-definition-restrictions) by expanding the *YAML Options* segment.
 
 ## Atlassian Stash
 
@@ -503,4 +589,3 @@ You will get an error of Permission Denied or Forbidden to a Git Context that yo
 [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/)  
 [Git clone step]({{site.baseurl}}/docs/pipelines/steps/git-clone/)  
 [Checking out source code]({{site.baseurl}}/docs/example-catalog/ci-examples/git-checkout/)  
-
