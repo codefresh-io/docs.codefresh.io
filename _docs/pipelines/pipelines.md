@@ -386,13 +386,46 @@ The table describes the Build Runtime settings.
 | Setting              | Description                                                                                  |
 |---------------------------|---------------------------------------------------------------------------------------------------|
 | **Runtime Environment**         | The runtime environment for the pipeline. If your account admin has selected a default runtime environment for the account, this environment is automatically selected. You can override the default runtime environment by selecting a different one for the pipeline. <br>See also [Runtime environments for pipelines](#runtime-environments-for-pipelines). |
-| **CPU**               | The CPU, in millicores (**m**) to allocate to the pipeline.  | 
-| **Memory**               | The memory, in mebibytes (**Mi**) to allocate to the pipeline.  | 
+| **Resources**          | The resources you need for the pipeline's build.  |
 | **Minimum disk space required for build filesystem (Gi)**  | The minimum disk space you need for the pipeline's build volume, inherited by all the builds run for the pipeline.<br>When defined, Codefresh assigns either a cached disk with sufficient disk space or a new empty disk at the start of the build. <br>Track the actual disk usage in **Builds > Metrics**.<br>If not defined, because a portion of the disk space is already utilized by cache, a build can run out of disk space and fail with the 'no space left on device' error. <br><br>To configure the disk space for a specific trigger used by the pipeline or for a specific run, see [Set minimum disk space for build volume by trigger]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/#set-minimum-disk-space-for-build-volume-by-trigger). |
 | **Cluster Name** and **Cluster Namespace**          | The name of the cluster and the namespace where the pipeline build runs.  | 
 | **Display a warning banner when builds exceeds**  | The memory-usage threshold exceeding which to display a banner notification indicating the same. To inherit the account-level memory-usage threshold, leave empty.<br><br>Useful depending on the resources needed for pipeline execution. For example, if the account-level memory usage is set at 90%, and the specific pipeline is resource-intensive, you want to be warned when the usage exceeds 70%, instead of 90%. <br>Conversely, if the account-level memory usage is set to 70%, and the specific pipeline is likely to use between 80% and 90% for example, you can safely set the memory-usage threshold to 100% to avoid unnecessary usage warnings. |
 
 
+#### Resources
+
+To configure resources for build that differ from your runtime resources, select the override runtime setting option from the dropdown menu.
+
+In resources setting it's allowed to set requests and limits separately for build by enabling corresponding toggle:
+* resource requests specify the minimum amount of CPU or memory a container requires. Kubernetes guarantees that the container will receive at least this amount when scheduled on a node.
+* resource limits define the maximum CPU or memory a container can use. The kubelet enforces these limits at runtime using cgroups. CPU limits are enforced via throttling, meaning a container cannot exceed its CPU allocation, while memory limits are enforced by the kernel, which may terminate the container with an OOMKilled status if it exceeds the limit
+
+It’s allowed to set empty resources for the build, this results in standard Kubernetes behavior where no resource requests or limits are applied.
+
+{% include
+image.html
+lightbox="true"
+file="/images/pipeline/create/build-runtime-settings-resources.png"
+url="/images/pipeline/create/build-runtime-settings-resources.png"
+alt="Build Runtime settings resources for pipeline"
+caption="Build Runtime settings resources for pipeline"
+max-width="60%"
+%}
+
+{: .table .table-bordered .table-hover}
+| Setting              | Description                                                                                  |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **CPU**               | The CPU, in cores or millicores (**m**) to allocate to the pipeline.  |
+| **Memory**               | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**) to allocate to the pipeline.  |
+
+##### Build Resource Priority Order
+
+The server applies build resources according to the following priority (from highest to lowest):
+
+1. Resources defined in the run configuration
+2. Resources defined in the pipeline trigger
+3. Resources defined in the pipeline settings
+4. Resources defined in cf-runtime configuration
 
 
 #### Runtime environments for pipelines

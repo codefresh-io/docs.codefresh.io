@@ -372,8 +372,8 @@ The `runtimeEnvironment` selects the cluster that will execute the pipeline (mos
 | Field name          | Parent field                 | Type                  | Value |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
 | `name`       | `runtimeEnvironment`  | string | Name the environment as connected by the runner |
-| `cpu`       | `runtimeEnvironment` | string | CPU share using Kubernetes notation |
-| `memory`       |  `runtimeEnvironment` | string | memory share using Kubernetes notation |
+| `cpu`       | `runtimeEnvironment` | string | CPU share using Kubernetes notation in legacy format, use [resources]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead |
+| `memory`       |  `runtimeEnvironment` | string | memory share using Kubernetes notation in legacy format, use [resources]({{site.baseurl}}//docs/integrations/codefresh-api#resources) instead |
 | `dindStorage`       |  `runtimeEnvironment` | string | storage size using Kubernetes notation |
 
 
@@ -401,6 +401,32 @@ The `terminationPolicy` decides what happens when too many instances of the same
 | `type`       | `variables` | string | CPU share using Kubernetes notation |
 | `memory`       |  `variables` | boolean | memory share using Kubernetes notation |
 | `dindStorage`       |  `variables` | boolean | storage sizew using Kubernetes notation | -->
+
+### Resources
+
+Configures resources for the build that differs from your runtime resources.
+
+{: .table .table-bordered .table-hover}
+| Field name          | Parent field                 | Type                  | Value |
+| -------------- | ---------------------------- |-------------------------| -------------------------|
+| `requests`       | `resources` | string | Resource requests specify the minimum amount of CPU or memory container requires |
+| `limits`       | `resources` | string | Resource limits define the maximum CPU or memory a container can use |
+| `cpu`       |  `requests` or `limits` | string | The CPU, in cores or millicores (**m**) to allocate to the pipeline |
+| `memory`       |  `requests` or `limits` | string | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**) to allocate to the pipeline |
+
+Example of metadata:
+
+{% highlight yaml %}
+{% raw %}
+resources:
+    requests:
+        cpu: 1000m
+        memory: 700Mi
+    limits:
+        cpu: 2000m
+        memory: 800Mi
+{% endraw %}
+{% endhighlight %}
 
 ### External resources
 
