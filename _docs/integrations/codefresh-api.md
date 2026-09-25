@@ -428,7 +428,6 @@ resources:
 {% endraw %}
 {% endhighlight %}
 
-Test cache invalidation here!
 
 ### External resources
 
