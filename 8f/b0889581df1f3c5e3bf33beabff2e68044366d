@@ -1,0 +1,14 @@
+_docs/pipelines/pipelines.md
+  h_e5037b46dfdc11 431
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8fb0889581df1f3c5e3bf33beabff2e68044366d",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
