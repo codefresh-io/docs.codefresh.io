@@ -335,6 +335,7 @@ metadata:
 | `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that affect this pipeline |
 | `options`       |  `spec` | object | Extra options for the pipeline |
 | `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) and status updates back to the Git provider |
+| `resources`       |  `spec` | object | Compute resources for the pipeline. See [Resources]({{site.baseurl}}/docs/integrations/codefresh-api#resources) |
 
 ### Pipeline variables
 
@@ -372,8 +373,8 @@ The `runtimeEnvironment` selects the cluster that will execute the pipeline (mos
 | Field name          | Parent field                 | Type                  | Value |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
 | `name`       | `runtimeEnvironment`  | string | Name the environment as connected by the runner |
-| `cpu`       | `runtimeEnvironment` | string | CPU share using Kubernetes notation in legacy format, use [resources]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead |
-| `memory`       |  `runtimeEnvironment` | string | memory share using Kubernetes notation in legacy format, use [resources]({{site.baseurl}}//docs/integrations/codefresh-api#resources) instead |
+| `cpu`       | `runtimeEnvironment` | string | *Deprecated! Use [`resources`]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead.*</br>CPU share using Kubernetes notation. |
+| `memory`       |  `runtimeEnvironment` | string | *Deprecated! Use [`resources`]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead.*</br>Memory share using Kubernetes notation. |
 | `dindStorage`       |  `runtimeEnvironment` | string | storage size using Kubernetes notation |
 
 
@@ -404,17 +405,43 @@ The `terminationPolicy` decides what happens when too many instances of the same
 
 ### Resources
 
-Configures resources for the build that differs from your runtime resources.
+The `resources` configures compute resources (CPU and memory) for the pipeline.
+
+If not set, the pipeline will use the default resources defined by the runtime the pipeline is running on.
+
+{{site.data.callout.callout_info}}
+If the pipeline is running on a Cloud Runtime, the specified resources will be ignored. The pipeline will receive the resources allocated by the Cloud Runtime.
+{{site.data.callout.end}}
+
+#### Allowed locations
+
+Resources may be specified in the following locations:
+* `.spec.resources` — specifies the resources for the pipeline.
+* `.spec.triggers[].resources` — specifies the resources for the trigger.
+* `.spec.cronTriggers[].resources` — specifies the resources for the cron trigger.
+
+#### Priority
+
+When multiple resource specifications are present, the priority is as follows (from highest to lowest):
+1. Resources, defined during the pipeline launch ("Run" dialog in the Codefresh UI or API/CLI options)
+2. Resources, defined in the trigger being used (`.spec.triggers[].resources`/` .spec.cronTriggers[].resources`)
+3. Resources, defined in the pipeline spec (`.spec.resources`)
+4. Default resources provided by the runtime environment
+
+
+#### Available fields
+
+All the fields under `resources` are optional.
 
 {: .table .table-bordered .table-hover}
 | Field name          | Parent field                 | Type                  | Value |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
-| `requests`       | `resources` | string | Resource requests specify the minimum amount of CPU or memory container requires |
-| `limits`       | `resources` | string | Resource limits define the maximum CPU or memory a container can use |
-| `cpu`       |  `requests` or `limits` | string | The CPU, in cores or millicores (**m**) to allocate to the pipeline |
-| `memory`       |  `requests` or `limits` | string | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**) to allocate to the pipeline |
+| `requests`       | `resources` | string | Requests are guaranteed to be available. Leave a field blank to set no value for it — the cluster then decides what to guarantee for that resource. |
+| `limits`       | `resources` | string | Limits cap what the build can use. If your build needs more CPU than its limit, it's throttled and runs slower. If it needs more memory than its limit, it may be terminated with an out-of-memory error. |
+| `cpu`       |  `requests` or `limits` | string | The CPU, in cores or millicores (**m**) |
+| `memory`       |  `requests` or `limits` | string | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**) |
 
-Example of metadata:
+Example:
 
 {% highlight yaml %}
 {% raw %}
