@@ -422,7 +422,7 @@ Resources may be specified in the following locations:
 
 ## Priority
 
-When multiple resource specifications are present, the priority is as follows:
+When multiple resource specifications are present, the priority is as follows (from highest to lowest):
 1. Resources, defined during the pipeline launch ("Run" dialog in the Codefresh UI or API/CLI options)
 2. Resources, defined in the trigger being used (`.spec.triggers[].resources`/` .spec.cronTriggers[].resources`)
 3. Resources, defined in the pipeline spec (`.spec.resources`)
