@@ -417,8 +417,8 @@ image.html
 lightbox="true"
 file="/images/pipeline/create/build-runtime-settings-resources.png"
 url="/images/pipeline/create/build-runtime-settings-resources.png"
-alt="Build Runtime settings: resources for the pipeline"
-caption="Build Runtime settings: resources for the pipeline"
+alt="Build Runtime settings: resources for a pipeline"
+caption="Build Runtime settings: resources for a pipeline"
 max-width="60%"
 %}
 
