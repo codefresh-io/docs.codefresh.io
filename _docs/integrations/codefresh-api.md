@@ -413,14 +413,14 @@ If not set, the pipeline will use the default resources defined by the runtime t
 If the pipeline is running on a Cloud Runtime, the specified resources will be ignored. The pipeline will receive the resources allocated by the Cloud Runtime.
 {{site.data.callout.end}}
 
-## Allowed locations
+#### Allowed locations
 
 Resources may be specified in the following locations:
 * `.spec.resources` — specifies the resources for the pipeline.
 * `.spec.triggers[].resources` — specifies the resources for the trigger.
 * `.spec.cronTriggers[].resources` — specifies the resources for the cron trigger.
 
-## Priority
+#### Priority
 
 When multiple resource specifications are present, the priority is as follows (from highest to lowest):
 1. Resources, defined during the pipeline launch ("Run" dialog in the Codefresh UI or API/CLI options)
@@ -429,7 +429,7 @@ When multiple resource specifications are present, the priority is as follows (f
 4. Default resources provided by the runtime environment
 
 
-## Available fields
+#### Available fields
 
 All the fields under `resources` are optional.
 
