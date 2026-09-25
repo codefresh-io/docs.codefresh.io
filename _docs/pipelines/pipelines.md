@@ -428,7 +428,7 @@ max-width="60%"
 | **CPU**               | The CPU, in cores or millicores (**m**).  |
 | **Memory**               | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**).  |
 
-#### Priority
+##### Priority
 
 When resources defined at different levels, the priority is as follows (from highest to lowest):
 1. Resources, defined during the pipeline launch ("Run" dialog in the Codefresh UI or API/CLI options)
