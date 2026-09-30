@@ -555,7 +555,7 @@ caption="Classic Pipelines — Overview"
 max-width="100%"
 %}
 
-Download: [grafana-classic-pipelines-overview.json](../assets/grafana-classic-pipelines-overview.json)
+Download: [grafana-classic-pipelines-overview.json]({{ site.baseurl }}/docs/installation/runner/assets/grafana-classic-pipelines-overview.json)
 
 The “*Classic Pipelines — Overview*” dashboard is designed to help teams understand how their pipelines behave over time, rather than focusing on a single build in isolation. It provides a high-level view of performance trends, making it easier to spot gradual slowdowns, sudden regressions, or improvements introduced by recent changes.
 
@@ -586,7 +586,7 @@ caption="Classic Pipelines — Overview"
 max-width="100%"
 %}
 
-Download: [grafana-classic-build-details.json](../assets/grafana-classic-build-details.json)
+Download: [grafana-classic-build-details.json]({{ site.baseurl }}/docs/installation/runner/assets/grafana-classic-build-details.json)
 
 While the Pipeline Overview focuses on trends, The "*Classic Build — Details*" dashboard zooms in on individual builds to support faster troubleshooting and optimization. It is designed for moments when something looks off and teams need to understand exactly what happened during a specific execution.
 
