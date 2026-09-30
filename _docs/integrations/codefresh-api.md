@@ -37,7 +37,7 @@ There are several ways to use the API. Some of the most popular ones are:
 
 
 1. Triggering builds from another system. You can start a Codefresh pipeline from any other internal system that you already have in your organization.
-1. Getting the status of builds in another system. 
+1. Getting the status of builds in another system.
 1. Creating pipelines externally. You don't have to use the Codefresh UI to create pipelines. You can create them programmatically using your favorite template mechanism. You can reuse pipelines using your own custom implementation if you have special needs in your organization.
 
 You can browse the current API at [https://g.codefresh.io/api/](https://g.codefresh.io/api/){:target="\_blank"}.
@@ -61,7 +61,7 @@ For each call you will also see an example with `curl`.
 1. To create a new API key, click **Generate**, and do the following:
   * **Key Name**: Enter the name of the key, preferable one that will help you remember its purpose. The token is tied to your Codefresh account and should be considered sensitive information.
   * **Scopes**: Select the required [access scopes](#access-scopes).
-1. Copy the token to your clipboard. 
+1. Copy the token to your clipboard.
 1. Click **Create**.
 
 {% include image.html
@@ -155,7 +155,7 @@ and creating them from an external system.
 First you need a YAML file that defines the pipeline. This is a pipeline [specification](#full-pipeline-specification).
 
 {{site.data.callout.callout_tip}}
-**TIP**    
+**TIP**
 It is also very easy to create a a dummy pipeline in the Codefresh UI and then get its specification by running `codefresh get pipeline my-project/my-pipeline -o yaml > my-pipeline-spec.yml`
 {{site.data.callout.end}}
 
@@ -234,15 +234,15 @@ max-width="70%"
 Notice that you must prefix the name of the pipeline with your username and repository so that it becomes
 visible in the GUI under the correct project.
 
-## Example: Referencing shared configuration contexts 
-Use shared configuration contexts in your pipelines by referencing it in the pipeline's YAML. This method is an alternative to importing the shared configuration contexts with the variables to use from the UI.  
+## Example: Referencing shared configuration contexts
+Use shared configuration contexts in your pipelines by referencing it in the pipeline's YAML. This method is an alternative to importing the shared configuration contexts with the variables to use from the UI.
 
-Add the `spec.contexts` field followed by the name or names of the shared configuration context or contexts to use. 
+Add the `spec.contexts` field followed by the name or names of the shared configuration context or contexts to use.
 
 {{site.data.callout.callout_warning}}
-**IMPORTANT**     
-Referencing shared configuration contexts with `spec.contexts` only works programmatically via the CLI/API.  
-The UI-based YAML options (**inline YAML**, **Use YAML from Repository/URL**) do not support this.  
+**IMPORTANT**
+Referencing shared configuration contexts with `spec.contexts` only works programmatically via the CLI/API.
+The UI-based YAML options (**inline YAML**, **Use YAML from Repository/URL**) do not support this.
 {{site.data.callout.end}}
 
 If you have a shared configuration named `test-hello` that includes the variable `test=hello`, you can add `spec.contexts.test-hello` to the pipeline YAML, and then reference this variable in the pipeline as you would any other variable.
@@ -266,9 +266,9 @@ spec:
 
 ## Full pipeline specification
 
-If you don't want to create a pipeline from an existing one, you can also create your own YAML from scratch.  
-The following sections contain an explanation of the fields. 
->**NOTE**  
+If you don't want to create a pipeline from an existing one, you can also create your own YAML from scratch.
+The following sections contain an explanation of the fields.
+>**NOTE**
 Codefresh automatically generates additional fields, usually fields with dates and internal ID numbers. While you cannot edit these fields, you can view them by exporting the pipeline.
 
 ### Top level fields
@@ -328,13 +328,14 @@ metadata:
 | `contexts`       |  `spec` | array | Variable sets imported from [shared configuration]({{site.baseurl}}/docs/pipelines/configuration/shared-configuration/) |
 | `runtimeEnvironment`       |  `spec` | array | where to execute this pipeline |
 | `terminationPolicy `       |  `spec` | array | Termination settings of this pipeline |
-| `concurrency `       |  `spec` | number | How many instances of this pipeline [can run at the same time]({{site.baseurl}}/docs/pipelines/pipelines/#policies) | 
+| `concurrency `       |  `spec` | number | How many instances of this pipeline [can run at the same time]({{site.baseurl}}/docs/pipelines/pipelines/#policies) |
 | `triggerConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per trigger  |
 | `branchConcurrency `       |  `spec` | number | How many instances of this pipeline can run at the same time per branch  |
 | `externalResources `       |  `spec` | array | Optional external files available to this pipeline |
 | `triggers`       |  `spec` | array | a list of [Git triggers]({{site.baseurl}}/docs/pipelines/triggers/git-triggers/) that affect this pipeline |
 | `options`       |  `spec` | object | Extra options for the pipeline |
 | `enableNotifications`       |  `options` | boolean | if false the pipeline will not send notifications to [Slack]({{site.baseurl}}/docs/integrations/notifications/slack-integration/) and status updates back to the Git provider |
+| `resources`       |  `spec` | object | Compute resources for the pipeline. See [Resources]({{site.baseurl}}/docs/integrations/codefresh-api#resources) |
 
 ### Pipeline variables
 
@@ -372,8 +373,8 @@ The `runtimeEnvironment` selects the cluster that will execute the pipeline (mos
 | Field name          | Parent field                 | Type                  | Value |
 | -------------- | ---------------------------- |-------------------------| -------------------------|
 | `name`       | `runtimeEnvironment`  | string | Name the environment as connected by the runner |
-| `cpu`       | `runtimeEnvironment` | string | CPU share using Kubernetes notation |
-| `memory`       |  `runtimeEnvironment` | string | memory share using Kubernetes notation |
+| `cpu`       | `runtimeEnvironment` | string | *Deprecated! Use [`resources`]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead.*</br>CPU share using Kubernetes notation. |
+| `memory`       |  `runtimeEnvironment` | string | *Deprecated! Use [`resources`]({{site.baseurl}}/docs/integrations/codefresh-api#resources) instead.*</br>Memory share using Kubernetes notation. |
 | `dindStorage`       |  `runtimeEnvironment` | string | storage size using Kubernetes notation |
 
 
@@ -401,6 +402,59 @@ The `terminationPolicy` decides what happens when too many instances of the same
 | `type`       | `variables` | string | CPU share using Kubernetes notation |
 | `memory`       |  `variables` | boolean | memory share using Kubernetes notation |
 | `dindStorage`       |  `variables` | boolean | storage sizew using Kubernetes notation | -->
+
+### Resources
+
+The `resources` configures compute resources (CPU and memory) for the pipeline.
+
+If not set, the pipeline will use the default resources defined by the runtime the pipeline is running on.
+
+{{site.data.callout.callout_info}}
+If the pipeline is running on a Cloud Runtime, the specified resources will be ignored. The pipeline will receive the resources allocated by the Cloud Runtime.
+{{site.data.callout.end}}
+
+#### Allowed locations
+
+Resources may be specified in the following locations:
+* `.spec.resources` — specifies the resources for the pipeline.
+* `.spec.triggers[].resources` — specifies the resources for the trigger.
+* `.spec.cronTriggers[].resources` — specifies the resources for the cron trigger.
+
+#### Priority
+
+When multiple resource specifications are present, the priority is as follows (from highest to lowest):
+1. Resources, defined during the pipeline launch ("Run" dialog in the Codefresh UI or API/CLI options)
+2. Resources, defined in the trigger being used (`.spec.triggers[].resources`/` .spec.cronTriggers[].resources`)
+3. Resources, defined in the pipeline spec (`.spec.resources`)
+4. Default resources provided by the runtime environment
+
+
+#### Available fields
+
+All the fields under `resources` are optional.
+
+{: .table .table-bordered .table-hover}
+| Field name          | Parent field                 | Type                  | Value |
+| -------------- | ---------------------------- |-------------------------| -------------------------|
+| `requests`       | `resources` | string | Requests are guaranteed to be available. Leave a field blank to set no value for it — the cluster then decides what to guarantee for that resource. |
+| `limits`       | `resources` | string | Limits cap what the build can use. If your build needs more CPU than its limit, it's throttled and runs slower. If it needs more memory than its limit, it may be terminated with an out-of-memory error. |
+| `cpu`       |  `requests` or `limits` | string | The CPU, in cores or millicores (**m**) |
+| `memory`       |  `requests` or `limits` | string | The memory, in kibibytes (**Ki**), mebibytes (**Mi**) or gibibytes (**Gi**) |
+
+Example:
+
+{% highlight yaml %}
+{% raw %}
+resources:
+    requests:
+        cpu: 1000m
+        memory: 700Mi
+    limits:
+        cpu: 2000m
+        memory: 800Mi
+{% endraw %}
+{% endhighlight %}
+
 
 ### External resources
 
@@ -430,7 +484,7 @@ externalResources:
       repo: codefresh-contrib/helm-sample-app
       revision: master
 {% endraw %}
-{% endhighlight %}      
+{% endhighlight %}
 
 ### Git triggers
 
@@ -446,7 +500,7 @@ The `triggers` field is an array of objects that hold [Git trigger information](
 | `pullRequestAllowForkEvents`       |  `triggers` | boolean | If this trigger is also applicable to Git forks |
 | `commentRegex`       |  `triggers` | string | Only activate trigger if regex expression matches PR comment |
 | `branchRegex `       |  `triggers` | string | Only activate trigger if regex expression/string matches branch |
-| `branchRegexInput `       |  `triggers` | string | Defines what type of content is in `branchRegex`. Possible values are `regex`, `multiselect`, `multiselect-exclude` | 
+| `branchRegexInput `       |  `triggers` | string | Defines what type of content is in `branchRegex`. Possible values are `regex`, `multiselect`, `multiselect-exclude` |
 | `provider `       |  `triggers` | string | Name of provider as found in Git integrations |
 | `modifiedFilesGlob `       |  `triggers` | string | Only activate trigger if changed files match glob expression |
 | `disabled `       |  `triggers` | boolean | if true, trigger will never be activated  |
@@ -520,7 +574,7 @@ triggers:
         memory: 800Mi
         dindStorage: nullGi
 {% endraw %}
-{% endhighlight %}  
+{% endhighlight %}
 
 ### Cron triggers
 
@@ -544,7 +598,7 @@ The `cronTriggers` field is an array of objects that hold [Cron trigger informat
 {% highlight yaml %}
 {% raw %}
 ...
-cronTriggers: 
+cronTriggers:
     - name: SSO sync
       type: cron,
       message: "Sync successfull"
@@ -552,7 +606,7 @@ cronTriggers:
       gitTriggerId: 64905de8589da959de81d31d
       branch: main
       variables: []
-      options: 
+      options:
         noCfCache: false
         noCache: false
         resetVolume: false
@@ -564,14 +618,14 @@ cronTriggers:
       id: 64ddd8b04fdbcc74cc74fe80
 ...
 {% endraw %}
-{% endhighlight %}  
+{% endhighlight %}
 
 ## Using Codefresh from within Codefresh
 
 The Codefresh CLI is also packaged as a [Docker image on its own](https://hub.docker.com/r/codefresh/cli/){:target="\_blank"}. This makes it
 very easy to use it from within Codefresh in a [freestyle step]({{site.baseurl}}/docs/pipelines/steps/freestyle/).
 
-For example, you can easily call pipeline B from pipeline A  
+For example, you can easily call pipeline B from pipeline A
 with the following step:
 
 `codefresh.yml` of pipeline A
@@ -598,7 +652,5 @@ Note that when you use the Codefresh CLI in a pipeline step, it is already confi
 No additional authentication is required.
 
 ## Related articles
-[Codefresh API documentation](https://g.codefresh.io/api/){:target="\_blank"}    
-[Codefresh CLI documentation](https://codefresh-io.github.io/cli/){:target="\_blank"}  
-  
-
+[Codefresh API documentation](https://g.codefresh.io/api/){:target="\_blank"}
+[Codefresh CLI documentation](https://codefresh-io.github.io/cli/){:target="\_blank"}
