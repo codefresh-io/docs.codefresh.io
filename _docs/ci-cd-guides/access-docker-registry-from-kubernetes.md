@@ -27,6 +27,7 @@ Use [Docker registry secrets](https://kubernetes.io/docs/tasks/configure-pod-con
 
 ## Giving access to a Docker Registry via the UI
 
+
 Codefresh allows you to easily create and pull secrets for your cluster.   
 
 1. In the Codefresh UI, set up an integration with your [Docker registry in Codefresh]({{site.baseurl}}/docs/integrations/docker-registries/).  
