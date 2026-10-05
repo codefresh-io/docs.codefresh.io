@@ -952,7 +952,7 @@ You can use the f`lag `fail_fast: false`:
 * In a specific step to ignore it if it fails and continue execution
 * At the root level of the pipeline if you want to apply it to all steps
 
-If a parallel step has `fail_fast: false` in its definition, adding `strict_fail_fast: true` does not change the Build status returned even if a child step fails. This is because the parallel step itself is considered successful regardless of errors in child steps.
+If a parallel step has `fail_fast: false` in its definition, the parallel step is marked as failed when one of its child steps fails, while the pipeline continues its execution. A child step is excluded from the parallel step's status only when that child itself defines `fail_fast: false`.
 
 Therefore, if you want your pipeline to keep running to completion regardless of errors, you can add the following:
 
