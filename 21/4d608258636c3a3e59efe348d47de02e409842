@@ -1,0 +1,59 @@
+_posts/2026-01-01-release-notes.md
+  s_70a8367596dc76::t_5eee06a09e838b 1-28
+_posts/2026-03-01-release-notes.md
+  s_70a8367596dc76::t_fdf993ea6267af 1-30,32-40,42-58,60-73
+  s_70a8367596dc76::t_1b1b89e419b04c 31
+  s_70a8367596dc76::t_fe472d36644dbd 41
+  s_70a8367596dc76::t_17ef8d09e7068e 59
+_posts/2026-06-01-release-notes.md
+  s_70a8367596dc76::t_92a941a4fdba7e 1-55,57-64
+  s_70a8367596dc76::t_4d2df72ee2998c 56
+_posts/2026-04-01-release-notes.md
+  s_70a8367596dc76::t_0aa45bc11728d6 1-23,25-29,31-37,39-40
+  s_70a8367596dc76::t_86ce2ef7a2b488 30
+  s_70a8367596dc76::t_1824b68a88aabd 24
+  s_70a8367596dc76::t_18c1581177d8cf 38
+_posts/2026-05-01-release-notes.md
+  s_70a8367596dc76::t_389d305e314014 1-21,23,25,27-29,31-33,35,37-56
+  s_70a8367596dc76::t_1075a2c6eef379 22
+  s_70a8367596dc76::t_6e45723285c336 24
+  s_70a8367596dc76::t_0c3461777c6db0 26
+  s_70a8367596dc76::t_4d8e74df0768cb 30
+  s_70a8367596dc76::t_c195fbc2a882b5 34
+  s_70a8367596dc76::t_7616e4d1a9c6f8 36
+_posts/2026-08-01-release-notes.md
+  s_70a8367596dc76::t_d2ae90b6849639 1-13,15-43,45-47,49-55,57-64
+  s_70a8367596dc76::t_39b911e152967a 14
+  s_70a8367596dc76::t_8dc93f882378a3 44
+  s_70a8367596dc76::t_2df5fc80fe0c19 48
+  s_70a8367596dc76::t_eae8b9249f3aa0 56
+_posts/2025-12-01-release-notes.md
+  s_70a8367596dc76::t_905311580c534a 1-13,15-16
+  s_70a8367596dc76::t_9c633a3751e337 14
+_posts/2026-02-01-release-notes.md
+  s_70a8367596dc76::t_baed8b6d3e13db 1-31,33-57,59-63
+  s_70a8367596dc76::t_e6c46a6322afb6 32
+  s_70a8367596dc76::t_8b9a9948c16aa1 58
+  s_70a8367596dc76::t_3e9105dfb0705a 64
+_posts/2026-07-01-release-notes.md
+  s_70a8367596dc76::t_fe610761ba1477 1-61,63-65,67-77,79-86
+  s_70a8367596dc76::t_d2b5f095586cc0 62
+  s_70a8367596dc76::t_64efb5e4a0872f 66
+  s_70a8367596dc76::t_06de7229b908e6 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "214d608258636c3a3e59efe348d47de02e409842",
+  "prompts": {},
+  "sessions": {
+    "s_70a8367596dc76": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a828636-920d-425d-a969-8eb6a87efdd4",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
