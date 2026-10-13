@@ -39,10 +39,6 @@ title: "Release Notes: October 2026"
 description: "Release Notes for Classic Pipelines and GitOps"
 ---
 
-{{site.data.callout.callout_tip}}
-This article is updated throughout the month as new releases become available.
-{{site.data.callout.end}}
-
 ## Features & enhancements
 
 ### Classic Pipelines
