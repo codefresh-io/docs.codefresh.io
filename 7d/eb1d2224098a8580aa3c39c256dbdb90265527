@@ -1,0 +1,27 @@
+.claude/skills/writing-release-notes/SKILL.md
+  s_a6269bc0327147::t_ea44b0000aa139 103-104
+  s_a6269bc0327147::t_b9fa7b5b8141ed 1-9,11-13,15-19,34-51,54-56,60-62,64,73-74,76-102,105-106
+  s_a6269bc0327147::t_c073d61b5f49db 10
+  s_a6269bc0327147::t_8a11933948ca32 14
+  s_a6269bc0327147::t_626d4e7301ddc8 20-33
+  s_a6269bc0327147::t_3220b92d91c72e 52-53,57-58,66-72,75
+  s_a6269bc0327147::t_20eb8b6cb723db 59
+  s_a6269bc0327147::t_4cb7e4150f09ad 63
+  s_a6269bc0327147::t_10b39eafd41407 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7deb1d2224098a8580aa3c39c256dbdb90265527",
+  "prompts": {},
+  "sessions": {
+    "s_a6269bc0327147": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6a75be0b-d10d-4d24-9d34-6aaae9df3872",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
