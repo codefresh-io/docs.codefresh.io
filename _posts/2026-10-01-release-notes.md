@@ -39,7 +39,7 @@ Workspace Access Tokens have these limitations:
 |---|---|---|
 | Cloud | Available now | None |
 | Hybrid | Available now | None |
-| On-premises | Planned for Codefresh Platform TODO | Upgrade to Platform TODO when it is released. |
+| On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released. |
 
 ## Bug fixes
 
