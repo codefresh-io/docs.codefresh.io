@@ -1,0 +1,14 @@
+_docs/pipelines/run-pipeline.md
+  h_48b74706cf95a4 46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "c7be8128ff96cb89f6eab1a7dd3688f188071b4f",
+  "prompts": {},
+  "humans": {
+    "h_48b74706cf95a4": {
+      "author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}

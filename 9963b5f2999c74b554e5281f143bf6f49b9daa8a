@@ -1,0 +1,20 @@
+_posts/2026-09-01-release-notes.md
+  s_aec57fa8afe19e::t_f34fd4d4d4bc9c 52,54,56-65
+  s_aec57fa8afe19e::t_b5a0c0515e8891 51,53,55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9963b5f2999c74b554e5281f143bf6f49b9daa8a",
+  "prompts": {},
+  "sessions": {
+    "s_aec57fa8afe19e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aff918d6-51f5-4f30-b687-cab2c72b16e0",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}

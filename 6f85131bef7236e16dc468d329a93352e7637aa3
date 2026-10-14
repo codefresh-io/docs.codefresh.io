@@ -1,0 +1,44 @@
+_posts/2026-09-01-release-notes.md
+  s_40c246ec04f067::t_a221e024f2e7b5 55
+  s_40c246ec04f067::t_769d3fec96ccda 8,49-54,56-59,62
+  s_40c246ec04f067::t_e56f9ee42bd06f 24-26,29,47-48,63-66,68,73-75
+  s_40c246ec04f067::t_74fc2b832bb5c0 27
+  s_b6a9d6f4a22737::t_867959d695f19d 34
+  s_40c246ec04f067::t_c116a7b03f81d9 10
+  s_40c246ec04f067::t_0188b22ce112cf 12-20
+  s_b6a9d6f4a22737::t_71cee881a76edb 33,35-42
+  s_b6a9d6f4a22737::t_4906b391f36a37 43
+  s_40c246ec04f067::t_d7722adb27405f 5-7
+  s_40c246ec04f067::t_3f065790bdc0dd 9
+  s_40c246ec04f067::t_2142e09a31b20c 11
+  s_40c246ec04f067::t_cbe40c086a127a 21-23
+  s_40c246ec04f067::t_6373a0667bb8b3 28
+  s_40c246ec04f067::t_0dff6c45fa6d81 60-61
+  s_40c246ec04f067::t_82044439d966ec 67
+  s_40c246ec04f067::t_3f0ee021ddd88d 69-72
+  s_40c246ec04f067::t_845b5ece2914fc 76-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6f85131bef7236e16dc468d329a93352e7637aa3",
+  "prompts": {},
+  "sessions": {
+    "s_40c246ec04f067": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f909a8be-9e14-4b22-8131-779f04fabec0",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_b6a9d6f4a22737": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc2532-3fcc-4007-84da-c70cf3b25a94",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
