@@ -20,6 +20,27 @@ The [`deploy` step]({{site.baseurl}}/docs/pipelines/steps/deploy/) now supports 
 | Hybrid | Classic Runtime [11.0.0](https://github.com/codefresh-io/venona/releases/tag/cf-runtime-11.0.0-helm){:target="_blank"} | Upgrade to Runtime 11.0.0 or later. Review the breaking changes first. |
 | On-premises | Codefresh Platform [2.12.21](https://github.com/codefresh-io/codefresh-onprem-helm/releases/tag/codefresh-2.12.21){:target="_blank"} | Upgrade to Platform 2.12.21 or later. Review the breaking changes first. |
 
+#### Bitbucket integration supports Workspace Access Tokens
+
+You can now authenticate the [Bitbucket Cloud Git integration]({{site.baseurl}}/docs/integrations/git-providers/#bitbucket) with a [Workspace Access Token](https://support.atlassian.com/bitbucket-cloud/docs/using-workspace-access-tokens/){:target="_blank"}. Workspace Access Tokens belong to a workspace instead of a user, so the integration doesn't depend on a personal Bitbucket account.
+
+To use this method, in the Bitbucket integration settings, select the **Workspace Access Token** tab, and enter the workspace and the token.
+
+Workspace Access Tokens have these limitations:
+
+* The token gives access only to the repositories in its workspace.
+* Workspace Access Tokens can't be refreshed. When the token expires, update the integration with a new one.
+* Workspace Access Tokens require a Bitbucket Cloud Premium plan.
+
+##### Availability
+
+{: .table .table-bordered .table-hover}
+| Installation | Status | Action required |
+|---|---|---|
+| Cloud | Available now | None |
+| Hybrid | Available now | None |
+| On-premises | Planned for Codefresh Platform TODO | Upgrade to Platform TODO when it is released. |
+
 ## Bug fixes
 
 ### Classic Pipelines
