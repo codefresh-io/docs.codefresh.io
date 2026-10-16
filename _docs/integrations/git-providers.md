@@ -320,7 +320,7 @@ A Workspace Access Token belongs to a Bitbucket workspace rather than to a user,
 {{site.data.callout.callout_info}}
 **NOTE**
 
-Workspace Access Tokens are available only for workspaces on the Bitbucket Cloud **Premium** plan.
+Workspace Access Tokens are a Bitbucket Cloud feature, and their availability depends on your Bitbucket plan. For current requirements, see [Workspace Access Tokens](https://support.atlassian.com/bitbucket-cloud/docs/workspace-access-tokens/){:target="\_blank"} in the Bitbucket documentation.
 {{site.data.callout.end}}
 
 For the **Workspace Access Token** method you need:
