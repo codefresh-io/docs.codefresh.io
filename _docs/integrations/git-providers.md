@@ -246,7 +246,7 @@ For example if you already have a `token` on a resource call `git-credentials` y
 
 ## Bitbucket
 
-Codefresh supports two authentication methods for Bitbucket Cloud: **API token** and **OAuth2**. We recommend the **API token** method.
+Codefresh supports three authentication methods for Bitbucket Cloud: **API token**, **Workspace Access Token**, and **OAuth2**. We recommend the **API token** method.
 
 ### Supported authentication methods
 
@@ -312,6 +312,40 @@ alt="Bitbucket scopes"
 
 Once you have the token, paste it in the Codefresh UI and click *Test connection*. If everything is OK you can
 now save the Git integration.
+
+#### Workspace Access Token
+
+A Workspace Access Token belongs to a Bitbucket workspace rather than to a user, so the integration keeps working regardless of changes to individual user accounts.
+
+{{site.data.callout.callout_info}}
+**NOTE**
+
+Workspace Access Tokens are available only for workspaces on the Bitbucket Cloud **Premium** plan.
+{{site.data.callout.end}}
+
+For the **Workspace Access Token** method you need:
+
+* A friendly name for the Git context (It can be anything you want.)
+* The workspace ID (slug) of your Bitbucket workspace, as it appears in the URL `https://bitbucket.org/<workspace-id>/`
+* A Bitbucket Workspace Access Token
+
+To create a Workspace Access Token, go to your workspace *Settings*, select *Access tokens* under *Security*, and click **Create access token**. For more information, see the [Bitbucket Documentation page](https://support.atlassian.com/bitbucket-cloud/docs/using-workspace-access-tokens/){:target="\_blank"}.
+
+The minimum permissions required for the token are:
+
+* **Repositories**: Read, Write
+* **Pull requests**: Read
+* **Webhooks**: Read and write
+
+In the Codefresh UI, select the **Workspace Access Token** tab, enter the workspace ID and the token, and click *Test connection*. Codefresh verifies that the token can access the workspace. If everything is OK you can now save the Git integration.
+
+{{site.data.callout.callout_info}}
+**NOTE**
+
+* Codefresh lists only the repositories of the workspace that the token belongs to. To access repositories in other workspaces, create a separate Git integration for each workspace.
+* Workspace Access Tokens are not linked to a Bitbucket user, so features that rely on a user identity, such as listing the user's workspaces or checking per-user repository permissions, are not available with this method.
+* Bitbucket does not provide a way to refresh Workspace Access Tokens. When a token expires or is revoked, create a new token in Bitbucket and update the Git integration with it.
+{{site.data.callout.end}}
 
 #### OAuth2
 
