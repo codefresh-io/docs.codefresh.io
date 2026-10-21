@@ -1,0 +1,19 @@
+_docs/security/git-tokens.md
+  s_7cb0e54b553f1e::t_e5db82b1092436 73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "2fb18d2c82e6cbd19f3e62536755295f6967d648",
+  "prompts": {},
+  "sessions": {
+    "s_7cb0e54b553f1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c1d14464-01f3-4049-a8a4-8b8dce388c8e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}

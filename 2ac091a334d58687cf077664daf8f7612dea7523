@@ -1,0 +1,19 @@
+_docs/integrations/git-providers.md
+  s_c209e199747107::t_fc5944ccf416ef 240-242,245-248,301-354
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2ac091a334d58687cf077664daf8f7612dea7523",
+  "prompts": {},
+  "sessions": {
+    "s_c209e199747107": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0d588a6-3842-4445-a139-12e07bffe254",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}

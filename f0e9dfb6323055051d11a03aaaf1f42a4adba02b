@@ -1,0 +1,30 @@
+_docs/integrations/git-providers.md
+  s_771882fe0c2809::t_c9b7d7cf8c32dd 326
+_posts/2026-09-01-release-notes.md
+  s_aec57fa8afe19e::t_16c540eaf5a938 7-9
+  s_aec57fa8afe19e::t_3fe81cf47ba386 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "f0e9dfb6323055051d11a03aaaf1f42a4adba02b",
+  "prompts": {},
+  "sessions": {
+    "s_771882fe0c2809": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2ce7bfba-556b-42ed-9340-070bd2f79a8f",
+        "model": "unknown"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_aec57fa8afe19e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aff918d6-51f5-4f30-b687-cab2c72b16e0",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}

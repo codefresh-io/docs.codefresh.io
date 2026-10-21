@@ -1,0 +1,97 @@
+_docs/dashboards/gitops-environments.md
+  s_46b97495755676::t_bf772e5ece6826 8-9
+_docs/dashboards/gitops-products.md
+  s_46b97495755676::t_d7cb0cdb7a69bc 8-9
+_docs/environments/create-manage-environments.md
+  s_46b97495755676::t_d8639d56201efc 8-10
+_docs/environments/environments-overview.md
+  s_46b97495755676::t_1008297a4b573f 8-9
+_docs/environments/manage-apps-in-environments.md
+  s_46b97495755676::t_688aa585aa4896 8-9
+_docs/gitops-quick-start/dependency-multi-env-promotion.md
+  s_46b97495755676::t_df524653d1ea67 10-11
+_docs/gitops-quick-start/drag-and-drop.md
+  s_46b97495755676::t_94faf3dd666f66 10-11
+_docs/gitops-quick-start/gitops-quick-start.md
+  s_46b97495755676::t_dd7e4a1bf7920e 11,13,15,33,41-42
+_docs/gitops-quick-start/multi-env-sequential-flow.md
+  s_46b97495755676::t_0b1350597ef1dc 10-11
+_docs/gitops-quick-start/parallel-multi-env-promotion.md
+  s_46b97495755676::t_5a9b818ce41c31 10-11
+_docs/gitops-quick-start/policy-multi-env-promotion.md
+  s_46b97495755676::t_90e4b63eb77dac 10-12
+_docs/gitops-quick-start/promotions.md
+  s_46b97495755676::t_a37783f11052bf 10-11
+_docs/gitops-quick-start/quick-start-promotion-workflow.md
+  s_46b97495755676::t_3a0f94421bbc3c 8-9
+_docs/products/about-products.md
+  s_46b97495755676::t_cd3f22d91d9ea0 8-9
+_docs/products/assign-applications.md
+  s_46b97495755676::t_dfe82235df3dde 8-10
+_docs/products/configure-product-settings.md
+  s_46b97495755676::t_37c18a0f03a077 8-10
+_docs/products/create-product.md
+  s_46b97495755676::t_43e8b04c870b25 8-9
+_docs/products/promotion-concurrency.md
+  s_46b97495755676::t_0fbae75e3de8c0 8-10
+_docs/products/promotion-flow-triggers.md
+  s_46b97495755676::t_ce44266747402b 8-10
+_docs/products/promotion-version-properties.md
+  s_46b97495755676::t_3b7c9f572ef9ac 8-9
+_docs/products/releases-in-products.md
+  s_46b97495755676::t_72c40a1536170f 8-10
+_docs/promotions/create-promotion-sequence.md
+  s_46b97495755676::t_1cf5524be2dd5d 8-9
+_docs/promotions/getting-started.md
+  s_46b97495755676::t_c4d689392a4d3c 8-9
+_docs/promotions/product-promotion-props.md
+  s_46b97495755676::t_1f38013eaccdac 11-12
+_docs/promotions/product-releases.md
+  s_46b97495755676::t_2885f8003a581f 8-9
+_docs/promotions/promotion-components.md
+  s_46b97495755676::t_83a84cd6ed5063 8-9
+_docs/promotions/promotion-context-promotion-workflows.md
+  s_46b97495755676::t_0bd46685abbc7c 8-9
+_docs/promotions/promotion-flow.md
+  s_46b97495755676::t_06f970b4e35cbf 11-12
+_docs/promotions/promotion-hooks.md
+  s_46b97495755676::t_7c8ac3cb95c20e 8-9
+_docs/promotions/promotion-limitations.md
+  s_46b97495755676::t_4128518a6f9fa0 8-9
+_docs/promotions/promotion-policy.md
+  s_46b97495755676::t_e5b9b6831523a4 11-12
+_docs/promotions/promotion-workflow.md
+  s_46b97495755676::t_88e04aef56d074 11-12
+_docs/promotions/promotions-overview.md
+  s_46b97495755676::t_fd99ddcd250917 8-9
+_docs/promotions/service-accounts-promotion-workflows.md
+  s_46b97495755676::t_8dc79be7118bd9 8-9
+_docs/promotions/trigger-promotions.md
+  s_46b97495755676::t_2963565bd16d92 8-9
+_docs/promotions/yaml.md
+  s_46b97495755676::t_d12c2634ffcd04 11-13
+_docs/promotions/yaml/product-crd.md
+  s_46b97495755676::t_7be609ecf2cf90 11-12
+_docs/promotions/yaml/promotion-flow-crd.md
+  s_46b97495755676::t_0169f9c5ec8ef9 11-12
+_docs/promotions/yaml/promotion-policy-crd.md
+  s_46b97495755676::t_048d0672058007 11-12
+_docs/promotions/yaml/promotion-template-crd.md
+  s_46b97495755676::t_776f20db1c5d77 11-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "82fdff7554662137243b4fb7f0308e026a8bb3f6",
+  "prompts": {},
+  "sessions": {
+    "s_46b97495755676": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e468f3bd-ab95-4d14-b7eb-f487a59e94ee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Idan Arbel <idan.arbel@codefresh.io>"
+    }
+  }
+}

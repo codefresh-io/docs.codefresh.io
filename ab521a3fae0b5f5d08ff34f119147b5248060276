@@ -1,0 +1,25 @@
+_docs/installation/installation-options/on-premises/on-prem-configuration.md
+  h_48b74706cf95a4 52,54,56
+  s_8a865ff095f11e::t_e2ebccb7deb50c 49-51,53,55,57-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "ab521a3fae0b5f5d08ff34f119147b5248060276",
+  "prompts": {},
+  "humans": {
+    "h_48b74706cf95a4": {
+      "author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  },
+  "sessions": {
+    "s_8a865ff095f11e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e7c04111-e7b1-4d05-9d97-b50cf6c29dcb",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}

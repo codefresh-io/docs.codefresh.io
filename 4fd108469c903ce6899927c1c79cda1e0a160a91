@@ -1,0 +1,61 @@
+_docs/promotions/promotion-workflow.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/promotions/service-accounts-promotion-workflows.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/environments/manage-apps-in-environments.md
+  s_46b97495755676::t_354f370c1f5999 10
+_docs/promotions/product-promotion-props.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/environments/environments-overview.md
+  s_46b97495755676::t_354f370c1f5999 10
+_docs/promotions/getting-started.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/promotions/yaml/promotion-flow-crd.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/products/create-product.md
+  s_46b97495755676::t_354f370c1f5999 10
+_docs/promotions/create-promotion-sequence.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/dashboards/gitops-products.md
+  s_46b97495755676::t_354f370c1f5999 10-11
+_docs/promotions/promotion-flow.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/promotions/yaml/promotion-policy-crd.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/promotions/yaml/promotion-template-crd.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/promotions/promotion-components.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/promotions/promotion-context-promotion-workflows.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/promotions/trigger-promotions.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/products/about-products.md
+  s_46b97495755676::t_354f370c1f5999 10-11
+_docs/promotions/promotions-overview.md
+  s_46b97495755676::t_354f370c1f5999 10-14
+_docs/promotions/promotion-hooks.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/promotions/product-releases.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+_docs/promotions/promotion-policy.md
+  s_46b97495755676::t_354f370c1f5999 13-16
+_docs/promotions/promotion-limitations.md
+  s_46b97495755676::t_354f370c1f5999 10-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "4fd108469c903ce6899927c1c79cda1e0a160a91",
+  "prompts": {},
+  "sessions": {
+    "s_46b97495755676": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e468f3bd-ab95-4d14-b7eb-f487a59e94ee",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Idan Arbel <idan.arbel@codefresh.io>"
+    }
+  }
+}
