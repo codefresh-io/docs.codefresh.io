@@ -1,0 +1,22 @@
+_docs/installation/runner/behind-the-firewall.md
+  s_f4d803d402e4da::t_845f81911f8670 129
+_docs/installation/runner/install-codefresh-runner.md
+  s_f4d803d402e4da::t_a6f4d7a95a05c9 266
+  s_f4d803d402e4da::t_845f81911f8670 56,101,397,399-403
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "009a9f84cb9ccadaffd444988b5a1b3750183e69",
+  "prompts": {},
+  "sessions": {
+    "s_f4d803d402e4da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5565a84b-3978-4b8b-8fba-277b9d840adf",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}
