@@ -213,8 +213,6 @@
           url: "/deploy-with-kustomize"
         - title: Deploy to Docker Swarm
           url: "/docker-swarm"
-        - title: GitOps secrets
-          url: "/gitops-secrets"
         - title: Amazon ECS/Fargate
           url: "/amazon-ecs"
         - title: Elastic Beanstalk
