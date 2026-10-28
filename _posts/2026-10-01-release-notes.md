@@ -41,6 +41,23 @@ Workspace Access Tokens have these limitations:
 | Hybrid | Available now | None |
 | On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released. |
 
+### GitOps
+
+#### View permission for applications in ABAC rules
+
+GitOps ABAC rules for applications now support the **View** action. Use it to control which applications a team can see in the GitOps Apps dashboard. Applications that a user is not allowed to view are filtered out of the tree view and card view, and navigating to a restricted application shows a no application found error.
+
+The View permission is enforced for all application queries. By default, rules allow all users to see all applications, and account administrators are never restricted. Update your GitOps Runtime to version 0.29.0 or later for the permission to work correctly.
+
+For details, see [ABAC for GitOps applications]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#applications).
+
+{: .table .table-bordered .table-hover}
+| Installation | Status | Action required |
+|---|---|---|
+| Cloud | Available now | None |
+| Hybrid | Not applicable | None |
+| On-premises | Planned for Codefresh Platform 2.13 | Upgrade to Platform 2.13 when it is released. |
+
 ## Bug fixes
 
 ### Classic Pipelines
