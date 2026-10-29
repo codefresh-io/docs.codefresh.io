@@ -265,6 +265,7 @@ step_name:
   type: push
   title: Step Title
   description: Free text description
+  provider: standard
   candidate: {% raw %}${{build_step_name}}{% endraw %}
   tags: [ latest, {% raw %}${{CF_BRANCH}}{% endraw %} ]
   image_name: codefresh/app
@@ -285,25 +286,28 @@ step_name:
     ...
 {% endhighlight %}
 
+>**NOTE**  
+Push step without pre-saving the credentials arguments works differently from default usage (see the table below)
+
 {: .table .table-bordered .table-hover}
 | Field                        | Description                          | Required/Optional/Default                       |
 | ---------------------------- | ------------------------------------ | ----------------------------------------------- |
 | `title`                     | The free-text display name of the step.         | Optional                               |
 | `description`               | A basic, free-text description of the step.     | Optional                                        |
-| `provider`                  | The type of Docker registry provider. Can currently be either `docker` for a standard Docker registry, or `ecr` for the [Amazon EC2 Container Registry (ECR)](https://aws.amazon.com/ecr/){:target="\_blank"}.  | Optional <br> *Default value*: `docker`         |
+| `provider`                  | The type of Docker registry provider. Use `standard` if you want to pass registry credentials in the step, or `ecr` for the [Amazon EC2 Container Registry (ECR)](https://aws.amazon.com/ecr/){:target="\_blank"}.  | Required <br> *Default value*: `docker`         |
 | `candidate`                 | The identifier of the image to push to the remote Docker registry. It can be an explicit identifier of an image to push, or a variable that references a `Build` step.  | Required                                        |
 | `tag`                       | The tag under which to push the image. Use either this or `tags`. <br>The default is `latest`.  | Default  |
 | `tags`                        | Multiple tags under which to push the image. Use either this or 'tag'. <br>This is an array, so should be of the following style:<br> {::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span><br><span class="pi">-</span> <span class="s">tag1</span><br><span class="pi">-</span> <span class="s">tag2</span><br><span class="pi">-</span> <span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}</span><br><span class="pi">-</span> <span class="s">tag4</span></code></pre></figure>{:/}or<br>{::nomarkdown}<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span> <span class="s1">'</span><span class="s">tag1'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag2'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">{% raw %}${{CF_BRANCH_TAG_NORMALIZED}}{% endraw %}'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">tag4'</span> <span class="pi">]</span></code></pre></figure>{:/}  | Default                                         |
 | `image_name`  | The tagged image name that will be used. The default value will be the same image name as of the candidate.  | Default                                         |
-| `registry`  | The host address where the registry is located. The default is the registry configured in your Codefresh account, or Dockerhub.   | Default <br>**Ignored when provider is** `ecr`  |
-| `credentials`                              | Credentials to access the registry if it requires authentication. It can be a has object containing `username` and `password` fields. The default is the credentials configured in your Codefresh account.  | Optional <br>**Ignored when provider is** `ecr` |
+| `registry`  | The host address where the registry is located.   | Optional <br>**Ignored when provider is** `ecr`  |
+| `credentials`                              | Credentials to access the registry if it requires authentication. It should be an object containing `username` and `password` fields.   | Required <br>**Ignored when provider is** `ecr` |
 | `accessKeyId`         | Your AWS access key. | Optional <br>**Ignored when provider is** `docker`  |
 | `secretAccessKey`      | Your AWS secret access key.   | Optional <br>**Ignored when provider is** `docker`  |
 | `region`               | The region where the ECR registry is accessible.   | Optional <br>**Ignored when provider is** `docker`  |
 | `fail_fast`            | If a step fails, and the process is halted. The default value is `true`. |Default |
 | `when`                | Define a set of conditions which need to be satisfied in order to execute this step. <br>You can find more information in [Conditional Execution of Steps]({{site.baseurl}}/docs/pipelines/conditional-execution-of-steps/). | Optional |
 | `on_success`, `on_fail` and `on_finish`    | Define operations to perform upon step completion using a set of predefined [post-step operations]({{site.baseurl}}/docs/pipelines/post-step-operations/).| Optional                                       |
-                                       
+ 
 ### Exported resources
 - Image ID.
 
