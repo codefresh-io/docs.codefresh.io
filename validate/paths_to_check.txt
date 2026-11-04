@@ -200,7 +200,6 @@
 /docs/yaml-examples/examples/get-short-sha-id-and-use-it-in-a-ci-process/
 /docs/yaml-examples/examples/git-checkout-custom/
 /docs/yaml-examples/examples/git-checkout/
-/docs/yaml-examples/examples/gitops-secrets/
 /docs/yaml-examples/examples/helm/
 /docs/yaml-examples/examples/import-data-to-mongodb/
 /docs/yaml-examples/examples/integration-tests-with-mongo/
