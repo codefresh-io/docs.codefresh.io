@@ -1,0 +1,14 @@
+_docs/pipelines/steps/push.md
+  h_9fd7d1a18c4091 268,289-291,297,302-303,310
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a9a5f8fdb980845cc77b36065d3970e4c4696b91",
+  "prompts": {},
+  "humans": {
+    "h_9fd7d1a18c4091": {
+      "author": "Alina <alina.shportiuk@codefresh.io>"
+    }
+  }
+}

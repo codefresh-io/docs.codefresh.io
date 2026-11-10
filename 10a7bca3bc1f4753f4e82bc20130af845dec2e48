@@ -1,0 +1,14 @@
+_posts/2026-10-01-release-notes.md
+  h_e5037b46dfdc11 44-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "10a7bca3bc1f4753f4e82bc20130af845dec2e48",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
