@@ -6,6 +6,36 @@ toc: true
 
 Welcome to the release notes for our on-premises releases.
 
+## On-premises version 2.13
+
+### Installation & Upgrade
+
+### Features & enhancements
+
+#### GitOps Application Visibility  
+There are two ways to restrict users' access to GitOps Applications.
+
+##### *1. Git Permissions*
+
+This is the older approach. It controls Application visibility based on the user's permissions on the repository containing the Git Source.  
+This approach is enabled using the `csdpFilterAppsByGitPermissions` feature flag (enabled by default).  
+
+##### *2. ABAC View Permissions*
+
+This approach was introduced in this release and is intended to replace Git Permissions.  
+It is more flexible and allows account administrators to configure access for groups of users based on custom rules.  
+This approach is enabled using the `abacV2ViewPermissions` feature flag (disabled by default).  
+See [Access control for GitOps](https://codefresh.io/docs/docs/administration/account-user-management/gitops-abac/).
+
+##### Migrating from Git Permissions to ABAC View Permissions
+
+To enable ABAC View Permissions, we recommend first creating a rule that grants all users (the `users` group) the `VIEW` action on all Applications.  
+This ensures that all users retain access to all Applications when you enable the new access control mode.  
+After creating this rule, enable the `abacV2ViewPermissions` feature flag.  
+Both approaches will now work in parallel.  
+You can then configure the required access rules for users and disable Git Permissions.  
+To disable Git Permissions, use the **Disable Git-based View access** button on the **GitOps Permissions** page in account settings.  
+
 ## On-premises version 2.12
 
 ### Installation & Upgrade
