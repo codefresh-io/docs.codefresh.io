@@ -1,0 +1,14 @@
+_docs/whats-new/on-prem-release-notes.md
+  h_86ffe77adf8985 9-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "45ffc6bf722db5f44806ce333e34620bd4d08139",
+  "prompts": {},
+  "humans": {
+    "h_86ffe77adf8985": {
+      "author": "andrii-codefresh <andrii@codefresh.io>"
+    }
+  }
+}
