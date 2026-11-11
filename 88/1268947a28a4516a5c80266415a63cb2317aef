@@ -1,0 +1,82 @@
+_docs/whats-new/on-prem-release-notes.md
+  s_d1af1594bcd6a2::t_7045d6ac7c6415 31,33,35
+  s_d0896c5e4a0f35::t_d720b2edbb48a2 23
+  s_d0896c5e4a0f35::t_6f33759bc7e151 28,40
+  s_d1af1594bcd6a2::t_d74405638e33ea 13-20,25,29,48,166-171
+  s_d1af1594bcd6a2::t_ac3326ce0bfe8e 165,172-173
+  s_d1af1594bcd6a2::t_7f6313bbfffc9b 26,37-39,44-47
+  s_d1af1594bcd6a2::t_442e527a8cc90b 118-125,127-131
+  s_d0896c5e4a0f35::t_07ce041607800e 164
+  s_d1af1594bcd6a2::t_a253faef5f6ea1 126
+  s_d1af1594bcd6a2::t_28714d5c1a33dd 174
+  h_e5037b46dfdc11 107-108,159,236,241
+  s_d1af1594bcd6a2::t_3ffea4672a22a1 132-149,151-157,160-163
+  s_d1af1594bcd6a2::t_1c17bb74e59757 36
+  s_d0896c5e4a0f35::t_a959cee8f5c3eb 150
+  s_d1af1594bcd6a2::t_9c9ced6397ad69 49-106,109-117
+  s_d0896c5e4a0f35::t_8e755045f4415f 158
+  s_d1af1594bcd6a2::t_5fe764b73f2545 30
+.claude/skills/onprem-release-notes/SKILL.md
+  s_d1af1594bcd6a2::t_72f1d705c6224c 12-13
+  s_d1af1594bcd6a2::t_28714d5c1a33dd 133
+  s_d1af1594bcd6a2::t_d690855ce30adc 96-104,107
+  s_d1af1594bcd6a2::t_ea6e524ce405eb 162
+  s_d1af1594bcd6a2::t_16152b8a4328e8 111-112
+  h_e5037b46dfdc11 65
+  s_d1af1594bcd6a2::t_9b8c78e7aeef6f 128
+  s_de21638baa8514::t_b9ce23a661e20c 113
+  s_d1af1594bcd6a2::t_08c170d1e3952d 129,134
+  s_d1af1594bcd6a2::t_f4d10401d97b73 14
+  s_d1af1594bcd6a2::t_9197778bd233cd 131
+  s_d1af1594bcd6a2::t_df5d2892652973 41
+  s_d1af1594bcd6a2::t_c0403faf5ad175 110
+  s_d1af1594bcd6a2::t_79f93af867ff40 132
+  s_d1af1594bcd6a2::t_5d2e756745c772 21-29,31-35,37-40,43,47-48
+  s_d1af1594bcd6a2::t_1ea634bab86551 17,50,57,130
+  s_d1af1594bcd6a2::t_ce32188bea8634 15
+  s_d1af1594bcd6a2::t_bf58fed8354983 108
+  s_d1af1594bcd6a2::t_973c5c7ab73172 135
+  s_d1af1594bcd6a2::t_f505843840a313 136
+  s_d1af1594bcd6a2::t_112d659d718fda 3
+  s_d1af1594bcd6a2::t_659dc97e5502b6 51-56
+  s_d1af1594bcd6a2::t_aa28fd96cc72dc 60
+  s_de21638baa8514::t_479f773a7415fe 123-127
+  s_d1af1594bcd6a2::t_bdc9c0b56d1012 1-2,4-11,16,18-20,30,36,42,44-46,49,58-59,61-64,66-95,105-106,109,114-122,137-161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "881268947a28a4516a5c80266415a63cb2317aef",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  },
+  "sessions": {
+    "s_d0896c5e4a0f35": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f48eacc2-87a7-4a8d-970d-af3b5f917fda",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_d1af1594bcd6a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "00f0bd74-229d-4345-8ba2-9e645665d7dc",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_de21638baa8514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e7a95a4-a288-44bc-85d1-41cbb12099d4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
