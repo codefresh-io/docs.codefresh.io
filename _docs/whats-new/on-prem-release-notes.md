@@ -10,31 +10,168 @@ Welcome to the release notes for our on-premises releases.
 
 ### Installation & Upgrade
 
+#### Installing v2.13
+
+For detailed instructions on installing v2.13, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#codefresh-on-premises){:target="\_blank"}.
+
+#### Upgrading to v2.13
+
+For detailed instructions on upgrading to v2.13, visit [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#to-2-13-0){:target="\_blank"}.
+
 ### Features & enhancements
 
-#### GitOps Application Visibility  
-There are two ways to restrict users' access to GitOps Applications.
+##### GitOps: ABAC View Permissions for Applications
 
-##### *1. Git Permissions*
+{{site.data.callout.callout_info}}
+This feature is behind the feature flag `abacV2ViewPermissions` (Default: _off_).
 
-This is the older approach. It controls Application visibility based on the user's permissions on the repository containing the Git Source.  
-This approach is enabled using the `csdpFilterAppsByGitPermissions` feature flag (enabled by default).  
+This feature requires GitOps Runtime version 0.29.0 or higher. For configuration details, see [Access control for GitOps]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#applications).
+{{site.data.callout.end}}
 
-##### *2. ABAC View Permissions*
+This release introduces ABAC View Permissions, a new way to control which users can see which GitOps Applications.
 
-This approach was introduced in this release and is intended to replace Git Permissions.  
-It is more flexible and allows account administrators to configure access for groups of users based on custom rules.  
-This approach is enabled using the `abacV2ViewPermissions` feature flag (disabled by default).  
-See [Access control for GitOps](https://codefresh.io/docs/docs/administration/account-user-management/gitops-abac/).
+Until now, Application visibility relied only on **Git Permissions** (feature flag `csdpFilterAppsByGitPermissions`, _on_ by default). With Git Permissions, users see an Application only if they have access to the repository that contains its Git Source.
+
+**ABAC View Permissions** are intended to replace Git Permissions. They are more flexible: account admins define custom rules that grant the `VIEW` action to groups of users, based on attributes such as cluster, namespace, labels or product. Access is no longer tied to Git repository permissions.
+
+- When the flag is on, the Applications tree view and card view show only the Applications the user is allowed to view.
+- Opening a restricted Application from any dashboard shows a "no application found" error.
+- ABAC rules do not restrict account administrators.
+- The Codefresh Terraform provider also supports the ABAC `VIEW` action.
 
 ##### Migrating from Git Permissions to ABAC View Permissions
 
-To enable ABAC View Permissions, we recommend first creating a rule that grants all users (the `users` group) the `VIEW` action on all Applications.  
-This ensures that all users retain access to all Applications when you enable the new access control mode.  
-After creating this rule, enable the `abacV2ViewPermissions` feature flag.  
-Both approaches will now work in parallel.  
-You can then configure the required access rules for users and disable Git Permissions.  
-To disable Git Permissions, use the **Disable Git-based View access** button on the **GitOps Permissions** page in account settings.  
+1. [Create an access rule]({{site.baseurl}}/docs/administration/account-user-management/gitops-abac/#create-an-access-rule-for-gitops-entities-via-codefresh-ui) that grants the `users` group the `VIEW` action on all Applications. This keeps every user's current access when you switch on the new mode.
+1. Enable the `abacV2ViewPermissions` feature flag. Git Permissions and ABAC View Permissions now apply in parallel.
+1. Add the access rules your users need.
+1. In Account Settings, go to **GitOps Permissions** and click **Disable Git-based View access**.
+
+##### [Public Preview] Pipelines: Compute requests and limits per pipeline
+
+{{site.data.callout.callout_info}}
+This feature is behind the feature flag `allowClassicPipelineLimitsToBeDefined` (Default: _off_).
+
+For configuration details, see [Resources]({{site.baseurl}}/docs/integrations/codefresh-api/#resources).
+{{site.data.callout.end}}
+
+You can now set CPU and memory **requests** and **limits** for a pipeline that runs on a hybrid runner, instead of using a single value shared by the whole runtime.
+
+- Set resources in **Pipeline settings → Runtime**, or in the pipeline spec under `spec.resources`.
+- Override them per trigger (`spec.triggers[].resources`, `spec.cronTriggers[].resources`) or for a single run in the **Run** dialog, API, or CLI.
+- Priority, from highest to lowest: the run, the trigger, the pipeline spec, and the runtime defaults.
+- The `runtimeEnvironment.cpu` and `runtimeEnvironment.memory` fields are deprecated. Use `resources` instead.
+
+##### Pipelines: Request caching for Bitbucket integrations
+
+{{site.data.callout.callout_info}}
+This feature is behind the feature flag `enableGitRequestsCache` (Default: _on_). Caching also needs to be turned on for each Bitbucket Git integration.
+
+For configuration details, see [Request caching]({{site.baseurl}}/docs/integrations/git-providers/#request-caching).
+{{site.data.callout.end}}
+
+Busy accounts can hit the Bitbucket API rate limit because every build reads the same content many times a day. You can now turn on **Cache requests to Bitbucket** in the **Caching** section of a Bitbucket Git integration.
+
+Only content pinned to a specific commit SHA is cached, such as file contents, commit objects, and diffstats. Branches and tags are always resolved live, so builds never read stale data. If the cache is unavailable, Codefresh falls back to a live request. Account administrators can use **Clear cache**, for example, after rotating the integration's credentials.
+
+Codefresh also no longer sends redundant API calls to Bitbucket, which reduces the number of requests for some endpoints even when caching is off.
+
+##### Pipelines: Bitbucket Workspace Access Tokens
+
+You can now authenticate a Bitbucket Cloud Git integration with a Workspace Access Token. The token belongs to a workspace, not a user, so the integration keeps working when individual user accounts change.
+
+- The token gives access only to repositories in its own workspace.
+- Workspace Access Tokens can't be refreshed. When a token expires, update the integration with a new one.
+- Workspace Access Tokens depend on your Bitbucket Cloud plan.
+
+For details, see [Bitbucket]({{site.baseurl}}/docs/integrations/git-providers/#workspace-access-token).
+
+##### Pipelines: Original build info for restarted builds
+
+A restarted build now shows which build it was restarted from. For details on restarting builds, see [Restarting the pipeline]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/#restarting-the-pipeline).
+
+##### Pipelines: Git clone uses the repository's default branch
+
+When a `git-clone` step doesn't specify a `revision`, Codefresh now clones the repository's default branch instead of assuming `master`. See [Git clone step fields]({{site.baseurl}}/docs/pipelines/steps/git-clone/#fields).
+
+##### Pipelines: Branch validation when running a pipeline manually
+
+The **Run** dialog no longer pre-fills the branch from the last manual run. Codefresh now checks that the selected branch exists and shows a warning or an error if it doesn't. See [Manual build run settings]({{site.baseurl}}/docs/pipelines/run-pipeline/#manual-build-run-settings).
+
+##### Pipelines: `deploy` step supports Kubernetes 1.35 to 1.37
+
+The `deploy` step now supports Kubernetes 1.35, 1.36, and 1.37. See [Deploy step]({{site.baseurl}}/docs/pipelines/steps/deploy/).
+
+##### [Public Preview] Security: IP allowlist for API keys, troubleshooting improvements
+
+{{site.data.callout.callout_info}}
+This feature is behind the feature flag `enableApiKeysIpAllowlist` (Default: _off_).
+
+For configuration details, see [Chart Documentation](https://github.com/codefresh-io/codefresh-onprem-helm#api-keys-ip-allowlist){:target="\_blank"}.
+{{site.data.callout.end}}
+
+The IP allowlist for API keys, introduced in 2.12, has these improvements:
+
+- The allowlist management now lives on the **Access Control** page.
+- Account administrators can see a journal of denied API-key authentications for the last 30 days, with the key name, IP address, and time. You can filter it by IP address and key name.
+- The current IP address shown in the API keys tab is now correct.
+
+##### GitOps: Argo CD 3.5 in the GitOps Runtime
+
+You can now use GitOps Runtime 0.31.x, which bundles Argo CD 3.5. If you bring your own Argo CD, the supported range is 3.3.x to 3.5.x.
+
+Before upgrading the runtime, review the [GitOps Runtime 0.31.0 release notes](https://github.com/codefresh-io/gitops-runtime-helm/releases/tag/0.31.0){:target="\_blank"} and the Argo CD upgrade guides for [3.3 to 3.4](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/3.3-3.4/){:target="\_blank"} and [3.4 to 3.5](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/3.4-3.5/){:target="\_blank"}.
+
+##### GitOps: Runtime Status panel improvements
+
+The [Runtime Status panel]({{site.baseurl}}/docs/installation/gitops/runtime-status-panel/) now reflects the real state of the runtime:
+
+- Runtime applications and Git sources no longer show as healthy when the runtime can't clone its sources, for example, after the runtime token expires.
+- Table headers on the **Runtime Applications** tab are restored.
+- The irrelevant Troubleshooting Guide link is removed.
+- The row actions menu on the Runtime Applications tab is no longer cut off at the edge of the screen.
+
+### Bug fixes
+
+{{site.data.callout.callout_info}}
+Many fixes listed below were also delivered as 2.12.x patch releases. If you are already on the latest 2.12 patch, some of them are already in your installation.
+{{site.data.callout.end}}
+
+##### Pipelines
+
+- Fixed: `cf-api` ignored the `HTTP_PROXY` environment variables for calls to GitHub.
+- Fixed: adding a trigger failed with `Hook already exists on this repository` for GitHub repositories with more than 30 webhooks. Codefresh now lists up to 100 webhooks; set `GITHUB_WEBHOOK_LIMIT` on `cfapi` to change the limit.
+- Fixed: a newly added trigger could silently disappear on pipelines with many triggers.
+- Fixed: a single `codefresh-run` step could start duplicate child builds.
+- Fixed: typed steps, such as `codefresh-run`, that were elected on `workflow.result` (for example, after a graceful stop) failed with `plugin failed`.
+- Fixed: variables exported with `cf_export` more than once could resolve to an earlier value instead of the last one.
+- Fixed: with the `logMasking` feature flag on, the auto-generated `CF_API_KEY` and `CF_OIDC_REQUEST_TOKEN` variables were shown in clear text in build logs.
+- Fixed: builds failed with `Failed to run pipeline` when Bitbucket returned a temporary server error. Codefresh now retries these requests.
+- Fixed: re-authorizing an OAuth Git context could overwrite other settings saved in the context.
+- Fixed: Codefresh is updated for the Bitbucket Cloud SSH host change to `ssh.bitbucket.org`.
+- Fixed: the `Reset volume` step failed after upgrading to Classic Runtime 10.5.1.
+- Fixed: the GitHub username of the committer wasn't shown for builds triggered by other pipelines.
+- Fixed: build filters on a pipeline's **Builds** page could take a long time to load for pipelines with many builds.
+- Fixed: the build notification said the build failed because of resources when it had failed for another reason.
+- Fixed: the pipeline name and description were displayed incorrectly on the pipeline settings page.
+- Fixed: the Audit Log didn't show the entity name and ID for some entities, such as Git contexts.
+- Fixed: a memory leak in `cf-platform-analytics`.
+- Fixed: a request to the workflows API with an invalid `limit` value could make `cfapi` run out of memory.
+- Improved: feature management was refactored for better performance.
+
+##### GitOps
+
+- Fixed: completed hook jobs without a `HookSucceeded` delete policy showed as out of sync with "requires pruning".
+- Fixed: a spike of Application events could overload MongoDB and slow down the GitOps UI and API.
+
+### Feature Flags
+The table below lists the Feature Flags that are new in this release, or whose default value changed compared to the previous release.
+
+{: .table .table-bordered .table-hover}
+| Feature Flag       | Description  | Previous Value | New Value |
+| -----------        | --------------| -------------- | --------- |
+| `allowClassicPipelineLimitsToBeDefined`  | When enabled, takes the CPU and memory requests and limits of the `dind` pod from the pipeline's `resources` (pipeline spec, triggers, and run) instead of the single runtime value | N/A (new flag) | False |
+| `enableGitRequestsCache`  | When enabled, caches Git provider responses (Bitbucket Cloud only) for Git integrations that have caching turned on | N/A (new flag) | True |
+| `abacV2ViewPermissions`  | When enabled, filters GitOps Applications by ABAC `VIEW` rules | N/A (new flag) | False |
 
 ## On-premises version 2.12
 
@@ -96,12 +233,12 @@ The "Update Git Runtime Credentials" drawer now points to the correct token-gene
 ##### Pipelines
 
 - Fixed: `codecov-reporter` step failed with a GPG error on every run.
-- Fixed: `deploy` step failed occasionaly with `ReferenceError`.
+- Fixed: `deploy` step failed occasionally with `ReferenceError`.
 - Fixed: ECR integration using a Service Account ignored the configured region and logged in using the runtime's own region instead.
 - Fixed: cron-triggered builds were occasionally duplicated.
 - Fixed: pipelines using a Git integration with a `/` in its name could not be retrieved.
 - Fixed: `git-clone` step occasionally failed downloading files tracked by Git LFS.
-- Fixed: `git-clone` step failed occasionaly with `grep: command not found`.
+- Fixed: `git-clone` step failed occasionally with `grep: command not found`.
 - Fixed: builds using Bitbucket OAuth integration failed with `ForbiddenError`.
 - Fixed: for Bitbucket repositories, the owner's UUID was displayed instead of their name under some conditions.
 
