@@ -1,0 +1,61 @@
+_docs/whats-new/on-prem-release-notes.md
+  s_d1af1594bcd6a2::t_442e527a8cc90b 118-125,127-131
+  s_d1af1594bcd6a2::t_ac3326ce0bfe8e 165,172-173
+  s_d0896c5e4a0f35::t_6f33759bc7e151 28,40
+  s_d0896c5e4a0f35::t_07ce041607800e 164
+  s_d1af1594bcd6a2::t_9c9ced6397ad69 49-106,109-117
+  s_d1af1594bcd6a2::t_a253faef5f6ea1 126
+  s_d0896c5e4a0f35::t_d720b2edbb48a2 23
+  h_e5037b46dfdc11 107-108,159,236,241
+  s_d1af1594bcd6a2::t_3ffea4672a22a1 132-149,151-157,160-163
+  s_d0896c5e4a0f35::t_8e755045f4415f 158
+  s_d0896c5e4a0f35::t_a959cee8f5c3eb 150
+.claude/skills/onprem-release-notes/SKILL.md
+  s_d1af1594bcd6a2::t_bf58fed8354983 108
+  s_de21638baa8514::t_479f773a7415fe 123-127
+  s_d1af1594bcd6a2::t_f505843840a313 136
+  s_d1af1594bcd6a2::t_659dc97e5502b6 51-56
+  s_d1af1594bcd6a2::t_d690855ce30adc 96-104,107
+  s_d1af1594bcd6a2::t_1ea634bab86551 17,50,57,130
+  s_d1af1594bcd6a2::t_16152b8a4328e8 111-112
+  s_de21638baa8514::t_b9ce23a661e20c 113
+  s_d1af1594bcd6a2::t_9b8c78e7aeef6f 128
+  h_e5037b46dfdc11 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "72fa8d50234874b1d4ba6aae8e3e1654e151a316",
+  "prompts": {},
+  "humans": {
+    "h_e5037b46dfdc11": {
+      "author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  },
+  "sessions": {
+    "s_d0896c5e4a0f35": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f48eacc2-87a7-4a8d-970d-af3b5f917fda",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_d1af1594bcd6a2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "00f0bd74-229d-4345-8ba2-9e645665d7dc",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    },
+    "s_de21638baa8514": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e7a95a4-a288-44bc-85d1-41cbb12099d4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Zhenya Tikhonov <zhenya.tikhonov@octopus.com>"
+    }
+  }
+}
