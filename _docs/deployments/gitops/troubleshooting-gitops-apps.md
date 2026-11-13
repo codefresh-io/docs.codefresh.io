@@ -4,6 +4,8 @@ description: ""
 group: deployments
 sub_group: gitops
 toc: true
+redirect_from:
+  - /gitops/applications/troubleshooting-gitops-apps/
 ---
 
 

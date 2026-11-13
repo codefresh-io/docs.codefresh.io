@@ -78,15 +78,9 @@ collections:
   posts:
     output: true
     permalink: /:collection/:year/:month/:day/:title/
-  posts-gitops:
-    output: true
-    permalink: /:collection/:year/:month/:day/:title/
   pages:
     output: true
     permalink: /:collection/:path
-  gitops:
-    output: true
-    permalink: /:collection/:path/
   docs:
     output: true
     permalink: /:collection/:path/
@@ -99,14 +93,6 @@ defaults:
       type: posts
     values:
       layout: docs
-      toc: true
-      wide: true
-  # _posts-gitops
-  - scope:
-      path: "_posts-gitops"
-      type: posts-gitops
-    values:
-      layout: gitops
       toc: true
       wide: true
   # _pages
@@ -123,23 +109,11 @@ defaults:
       layout: docs
       toc: true
       wide: true
-  # _gitops
-  - scope:
-      path: "_gitops"
-      type: gitops
-    values:
-      layout: gitops
-      sitemap: false
-      toc: true
-      wide: true
 
 # #RSS Feed Location
 feed:
   path: /changelog/feed.xml
   excerpt_only: false
-  collections:
-    posts-gitops:
-      path: /changelog/gitops.xml
 
 
 
@@ -158,6 +132,9 @@ link_git_examples:    "https://github.com/codefresh-examples/examples/"
 link_api:             "https://g.codefresh.io/api/"
 link_plugins:         "https://codefresh.io/argohub/"
 
+# Retained for legacy `{% if page.collection == site.gitops_collection %}` conditionals in _docs
+# pages. The standalone GitOps Cloud collection has been removed, so this never matches
+# an actual collection; the conditionals render the enterprise (non-GitOps-Cloud) branch.
 gitops_collection:     "gitops"
 
 ga_tracking_code:     "UA-53554200-2"

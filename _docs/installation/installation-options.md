@@ -4,6 +4,7 @@ description: "Platform deployment options"
 group: installation
 redirect_from:
   - /docs/administration/installation-security/
+  - /gitops/platform-installation/installation-options/
 toc: true
 ---
 

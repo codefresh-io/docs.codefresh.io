@@ -4,6 +4,8 @@ description: "Explore options and actions to manage applications"
 group: deployments
 sub_group: gitops
 toc: true
+redirect_from:
+  - /gitops/applications/manage-application/
 ---
 
 ## Managing Argo CD applications

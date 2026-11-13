@@ -6,6 +6,8 @@ redirect-from:
  - /docs/promotions/entities/promotion-workflow/
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-workflow/
 ---
 
 >**Promotions has been disabled**  

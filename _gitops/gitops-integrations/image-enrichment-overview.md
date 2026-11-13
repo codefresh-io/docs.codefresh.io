@@ -1,1 +1,0 @@
-../../_docs/gitops-integrations/image-enrichment-overview.md

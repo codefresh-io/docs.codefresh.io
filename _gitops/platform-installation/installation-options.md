@@ -1,1 +1,0 @@
-../../_docs/installation/installation-options.md

@@ -3,6 +3,8 @@ title: "GitOps Codefresh pipeline integration"
 description: "Connect CI pipelines with GitOps for enriched image data"
 group: gitops-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/ci-integrations/codefresh-classic/
 ---
 
 {% if page.collection == site.gitops_collection %}

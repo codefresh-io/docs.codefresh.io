@@ -2,6 +2,8 @@
 title: "Managing external clusters in GitOps Runtimes"
 description: "Add multiple remote clusters to a GitOps Runtime and deploy applications"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/managed-cluster/
 ---
 
 Once you have an Argo CD installation as part of a [Hybrid]({{site.baseurl}}/docs/installation/gitops/runtime-install-with-new-argo-cd/) GitOps Runtime, you can add external clusters to them. You can then deploy applications to those clusters without having to install Argo CD on the clusters in order to do so.

@@ -2,10 +2,6 @@
 <html lang="en">
   <head>
     {% include header.html %}
-
-    {% if page.url contains '/gitops/' %}
-    <meta name="robots" content="noindex">
-    {% endif %}
   </head>
   <body>
 
@@ -22,11 +18,7 @@
       </div>
     </a>
 
-    {% if page.url contains '/gitops/' %}
-      {% include argohub-docs-navbar.html %}
-    {% else %}
-      {% include docs-navbar.html %}
-    {% endif %}
+    {% include docs-navbar.html %}
 
     {{ content }}
 

@@ -2,6 +2,8 @@
 title: "GitOps Runtime concepts"
 description: "Review key concepts and components for GitOps Runtimes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-concepts/
 ---
 
 

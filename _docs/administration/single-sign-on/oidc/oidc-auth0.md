@@ -6,6 +6,7 @@ redirect_from:
   - /docs/enterprise/single-sign-on/sso-auth0/
   - /docs/administration/single-sign-on/sso-auth0/
   - /docs/single-sign-on/oidc/oidc-auth0/
+  - /gitops/administration/single-sign-on/oidc/oidc-auth0/
 toc: true
 ---
 

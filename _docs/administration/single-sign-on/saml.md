@@ -5,6 +5,7 @@ redirect_from:
   - /docs/sso/sso-setup-saml2/
   - /docs/enterprise/single-sign-on/sso-setup-saml2/
   - /docs/single-sign-on/saml/
+  - /gitops/administration/single-sign-on/saml/
 toc: true
 ---
 

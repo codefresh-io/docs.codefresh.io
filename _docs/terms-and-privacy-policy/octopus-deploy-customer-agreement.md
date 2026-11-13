@@ -3,6 +3,8 @@ title: "Octopus Deploy Customer Agreement"
 description: ""
 group: terms-and-privacy-policy
 toc: true
+redirect_from:
+  - /gitops/terms-and-privacy-policy/octopus-deploy-customer-agreement/
 ---
 
 

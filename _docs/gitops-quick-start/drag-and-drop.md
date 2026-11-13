@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/promotions/promotion-scenarios/drag-and-drop/
+  - /gitops/gitops-quick-start/drag-and-drop/
 ---
 
 >**Promotions has been disabled**  

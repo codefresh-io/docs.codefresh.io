@@ -3,6 +3,8 @@ title: "Configure Product Settings"
 description: "Configure metadata, promotion settings, and flows for product"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/configure-product-settings/
 ---
 
 >**Promotions has been disabled**  

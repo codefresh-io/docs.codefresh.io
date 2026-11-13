@@ -3,6 +3,7 @@ title: JumpCloud SSO via SAML
 description: Set up JumpCloud via SAML
 redirect_from:
   - /docs/single-sign-on/saml/saml-jumpcloud/
+  - /gitops/administration/single-sign-on/saml/saml-jumpcloud/
 toc: true
 ---
 

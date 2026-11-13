@@ -3,6 +3,8 @@ title: "Quick start: Creating a Codefresh account"
 description: "Create a Codefresh account and start working in Codefresh"
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - /gitops/gitops-quick-start/create-codefresh-account/
 ---
 
 Begin your GitOps journey by creating a Codefresh account.

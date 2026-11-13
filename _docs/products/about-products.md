@@ -3,6 +3,8 @@ title: "About products"
 description: "Create products to group and deploy applications"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/about-products/
 ---
 
 >**Promotions has been disabled**  

@@ -3,6 +3,8 @@ title: "Assigning Promotion Flows and triggers to products"
 description: "Select Promotion Flows and configure their trigger conditions to optimize product promotions"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/promotion-flow-triggers/
 ---
 
 >**Promotions has been disabled**  

@@ -3,6 +3,7 @@ title: Okta SSO via SAML
 description: Setting up Okta via SAML
 redirect_from:
   - /docs/single-sign-on/saml/saml-okta/
+  - /gitops/administration/single-sign-on/saml/saml-okta/
 toc: true
 ---
 

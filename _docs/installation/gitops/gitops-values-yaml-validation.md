@@ -2,6 +2,8 @@
 title: "Runtime values file validation"
 description: "Review how Codefresh GitOps validates Runtime's values file"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/gitops-values-yaml-validation/
 ---
 
 

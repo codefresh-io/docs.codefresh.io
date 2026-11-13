@@ -2,6 +2,8 @@
 title: "Managing service accounts"
 description: "Manage access and permissions with service accounts"
 toc: true
+redirect_from:
+  - /gitops/administration/account-user-management/service-accounts/
 ---
 
 ## Service accounts

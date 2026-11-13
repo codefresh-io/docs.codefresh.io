@@ -2,6 +2,8 @@
 title: "GitOps Runtime architecture"
 description: "View components of GitOps Runtimes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-architecture/
 ---
 
 ## GitOps Runtime architecture overview

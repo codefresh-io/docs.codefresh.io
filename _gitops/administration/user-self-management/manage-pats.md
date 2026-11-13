@@ -1,1 +1,0 @@
-../../../_docs/administration/user-self-management/manage-pats.md

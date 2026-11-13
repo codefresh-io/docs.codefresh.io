@@ -2,6 +2,8 @@
 title: "Access control for GitOps"
 description: "Restrict access to GitOps entities through ABAC"
 toc: true
+redirect_from:
+  - /gitops/administration/account-user-management/gitops-abac/
 ---
 
 Control access to entities in GitOps through ABAC (Attribute-Based Access Control). ABAC allows fine-grained access to application entities through the use of rules.  

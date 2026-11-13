@@ -2,6 +2,8 @@
 title: "Ingress configuration for GitOps Runtimes"
 description: "Configure ingress controllers for GitOps Runtimes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-ingress-configuration/
 ---
 
 

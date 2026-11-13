@@ -3,6 +3,7 @@ title: OneLogin SSO via SAML
 description: Setting Up OneLogin via SAML
 redirect_from:
   - /docs/single-sign-on/saml/saml-onelogin/
+  - /gitops/administration/single-sign-on/saml/saml-onelogin/
 toc: true
 ---
 

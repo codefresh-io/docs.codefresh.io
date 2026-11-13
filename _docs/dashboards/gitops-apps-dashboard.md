@@ -3,6 +3,7 @@ title: "GitOps Apps dashboard"
 description: "Explore Argo CD applications in the GitOps Apps dashboard"
 redirect_from:
   - /docs/deployments/gitops/gitops-apps-dashboard/
+  - /gitops/dashboards/gitops-apps-dashboard/
 toc: true
 ---
 

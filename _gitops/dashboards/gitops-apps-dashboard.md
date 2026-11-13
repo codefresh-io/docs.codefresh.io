@@ -1,1 +1,0 @@
-../../_docs/dashboards/gitops-apps-dashboard.md

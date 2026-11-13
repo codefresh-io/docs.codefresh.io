@@ -3,6 +3,8 @@ title: "Configuring promotion concurrency"
 description: "Queue or terminate releases for concurrent product promotions"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/promotion-concurrency/
 ---
 
 >**Promotions has been disabled**  

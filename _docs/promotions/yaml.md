@@ -6,6 +6,8 @@ redirect-from:
  - /docs/promotions/configuration/
  - /docs/promotions/entities/yaml/
 toc: true
+redirect_from:
+  - /gitops/promotions/yaml/
 ---
 
 >**Promotions has been disabled**  

@@ -3,6 +3,7 @@ title: "Install GitOps Runtime with new Argo CD"
 description: "Provision GitOps Runtimes with a new Argo CD installation through Helm"
 redirect_from:
   - /docs/installation/gitops/hybrid-gitops-helm-installation/
+  - /gitops/gitops-runtimes/runtime-install-with-new-argo-cd/
 toc: true
 ---
 

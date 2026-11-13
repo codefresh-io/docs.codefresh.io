@@ -3,6 +3,8 @@ title: "Promotions: Setup & configuration guidelines"
 description: "High-level tasks for creating, triggering, and monitoring promotions"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/create-promotion-sequence/
 ---
 
 >**Promotions has been disabled**  

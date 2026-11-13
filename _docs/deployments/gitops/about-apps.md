@@ -2,6 +2,8 @@
 title: "About applications in GitOps"
 description: "Unique features for Argo CD applications in Codefresh GitOps"
 toc: true
+redirect_from:
+  - /gitops/applications/about-apps/
 ---
 
 

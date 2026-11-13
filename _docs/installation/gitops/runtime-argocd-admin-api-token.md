@@ -2,6 +2,8 @@
 title: "Argo CD Admin API token"
 description: "Generate Argo CD Admin API token to authenticate Runtime to existing Argo CD instance"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-argocd-admin-api-token/
 ---
 
 

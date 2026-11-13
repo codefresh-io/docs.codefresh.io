@@ -2,6 +2,8 @@
 title: "Designating Configuration Runtimes"
 description: "Select a Configuration Runtime to store product and promotion configuration"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/configuration-runtime/
 ---
 
 

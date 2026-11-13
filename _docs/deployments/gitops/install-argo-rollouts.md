@@ -4,6 +4,8 @@ description: "Install Argo Rollouts on managed clusters"
 group: deployments
 sub_group: gitops
 toc: true
+redirect_from:
+  - /gitops/applications/install-argo-rollouts/
 ---
 
 

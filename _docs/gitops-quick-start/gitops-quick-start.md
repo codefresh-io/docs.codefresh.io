@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - /docs/quick-start/gitops-quick-start/
+  - /gitops/gitops-quick-start/gitops-quick-start/
 ---
 
 ## GitOps quick starts: From start to deployment 

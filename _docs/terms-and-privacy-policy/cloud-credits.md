@@ -3,6 +3,8 @@ title: "Cloud Credits"
 description: ""
 group: terms-and-privacy-policy
 toc: true
+redirect_from:
+  - /gitops/terms-and-privacy-policy/cloud-credits/
 ---
 {::nomarkdown}
 

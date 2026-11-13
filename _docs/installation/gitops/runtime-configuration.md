@@ -2,6 +2,8 @@
 title: "Configure a GitOps Runtime"
 description: "Configure Git credentials, Git Sources, and more for Runtimes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-configuration/
 ---
 
 

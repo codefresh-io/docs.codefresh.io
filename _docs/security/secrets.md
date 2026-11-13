@@ -4,6 +4,7 @@ description: "Learn how Codefresh stores secrets for GitOps"
 group: security
 redirect_from:
   - /docs/reference/secrets/ 
+  - /gitops/security/secrets/
 toc: true
 ---
 

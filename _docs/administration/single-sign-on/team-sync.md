@@ -3,6 +3,7 @@ title: Common configuration for SSO providers
 description: "Set up team sync, default SSO provider for accounts"
 redirect_from:
   - /docs/single-sign-on/team-sync/
+  - /gitops/administration/single-sign-on/team-sync/
 toc: true
 ---
 

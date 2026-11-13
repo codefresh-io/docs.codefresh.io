@@ -4,6 +4,7 @@ description: "Manage user-specific settings"
 group: administration
 redirect_from:
   - /docs/administration/user-settings/
+  - /gitops/administration/user-self-management/user-settings/
 toc: true
 ---
 

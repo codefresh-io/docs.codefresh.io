@@ -1,1 +1,0 @@
-../../../_docs/administration/single-sign-on/team-sync.md

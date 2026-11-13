@@ -5,6 +5,7 @@ group: gitops-quick-start
 toc: true
 redirect_from:
   - docs/quick-start/gitops-quick-start/create-app-ui/
+  - /gitops/gitops-quick-start/create-app-ui/
 ---
 
 ## Applications quick start

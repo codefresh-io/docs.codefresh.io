@@ -5,6 +5,7 @@ group: single-sign-on
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-ldap/
   - /docs/single-sign-on/ldap/
+  - /gitops/administration/single-sign-on/ldap/
 toc: true
 ---
 

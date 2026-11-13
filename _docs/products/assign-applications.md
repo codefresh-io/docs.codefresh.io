@@ -3,6 +3,8 @@ title: "Assigning applications to products"
 description: "Manually or declaratively connect applications to products"
 group: products
 toc: true
+redirect_from:
+  - /gitops/products/assign-applications/
 ---
 
 >**Promotions has been disabled**  

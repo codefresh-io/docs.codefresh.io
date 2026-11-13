@@ -4,6 +4,8 @@ description: "Integrate Quay with GitOps for image enrichment"
 group: gitops-integrations
 sub_group: container-registries
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/container-registries/quay/
 ---
 
 {% if page.collection == site.gitops_collection %}

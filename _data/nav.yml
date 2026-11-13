@@ -772,6 +772,8 @@
       url: "/acceptable-use-policy"
     - title: Support Service Objectives
       url: "/sla"
+    - title: GitOps Cloud Service Commitment
+      url: "/sla-gitops-cloud"
     - title: Previous Service Commitment
       url: "/previous"
     - title: Support Triage Definitions

@@ -3,6 +3,8 @@ title: "GitOps CI integrations"
 description: "Seamlessly integrate existing CI tools with GitOps for image enrichment"
 group: gitops-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/ci-integrations/
 ---
 
 {% if page.collection == site.gitops_collection %}
