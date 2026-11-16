@@ -1,0 +1,19 @@
+_posts/2026-11-01-release-notes.md
+  s_e847c9bfd67350::t_2ef422717176f6 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8ea709547ea74d044514f251f1f623d34526ead1",
+  "prompts": {},
+  "sessions": {
+    "s_e847c9bfd67350": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b317903f-08bf-4888-93ab-cecd63f2674f",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}
