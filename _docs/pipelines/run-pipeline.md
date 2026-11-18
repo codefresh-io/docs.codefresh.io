@@ -43,6 +43,13 @@ The table below describes the settings in the Triggers page.
 |**Debug** | Runs the pipeline in debug mode where you can add breakpoints and use the debug terminal. See [Debugging pipelines]({{site.baseurl}}/docs/pipelines/debugging-pipelines/). |
 |**Run** | Triggers a build with the current settings and takes you to the Builds page where you can monitor the pipeline. See [Monitoring pipelines]({{site.baseurl}}/docs/pipelines/monitoring-pipelines/). |
 
+>**NOTES**  
+There are a few disclaimers in case of using Gitlab provider
+  * When a build is triggered manually with a simulated Git trigger, actually, only comitter name (public name) is available to attach build metadata instead of the correct GitLab username when build triggered directly by webhook. It's Gitlab restriction related to committ metadata
+  * In this case, Codefresh looks up the commit's committer by email through the GitLab API, and matches the result against the committer's name, to display the corresponding GitLab account username instead of the raw committer name recorded in the commit. This avoids the same contributor appearing under multiple different names (for example, a full name on one machine and a GitLab username on another) in build information and committer lists.
+  * But the lookup depends on the committer's email being visible to the API token used for the GitLab integration. By default, GitLab only exposes a user's _public_ email to non-admin tokens, which the committer must explicitly set on their GitLab profile.
+  * For self-hosted (on-premises) GitLab instances, if the integration uses a token that belongs to a GitLab instance administrator, the lookup can also match on the account's primary email, not only the public one, making resolution more reliable.
+  * If Codefresh cannot uniquely match the commit to a GitLab account, for example if the committer has no public email and the token is not an administrator's, or more than one account matches, it falls back to the original committer name recorded in the commit, same as when this behavior is disabled.
 
 
 ## Share build run settings 
