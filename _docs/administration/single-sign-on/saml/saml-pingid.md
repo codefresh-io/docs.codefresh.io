@@ -5,6 +5,7 @@ group: single-sign-on
 sub_group: saml
 redirect_from:
  - /docs/single-sign-on/saml/saml-pingid/
+ - /gitops/administration/single-sign-on/saml/saml-pingid/
 toc: true
 ---
 

@@ -41,7 +41,7 @@
     - title: Configuring app version and promoted properties
       localurl: /docs/products/promotion-version-properties/
     - title: Configuring promotion concurrency
-      localurl: /gitops/products/promotion-concurrency/
+      localurl: /docs/products/promotion-concurrency/
     - title: Assigning Promotion Flows and triggers
       localurl: /docs/products/promotion-flow-triggers/   
 

@@ -5,6 +5,7 @@ group: security
 redirect_from:
   - /docs/administration/git-tokens/ 
   - /docs/reference/git-tokens/ 
+  - /gitops/security/git-tokens/
 toc: true
 ---
 

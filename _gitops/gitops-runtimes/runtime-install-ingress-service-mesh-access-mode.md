@@ -1,1 +1,0 @@
-../../_docs/installation/gitops/runtime-install-ingress-service-mesh-access-mode.md

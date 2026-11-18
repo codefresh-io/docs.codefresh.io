@@ -2,6 +2,8 @@
 title: "GitOps Runtimes with ingress controllers/service meshes"
 description: "Requirements for installing GitOps Runtimes with ingress/service-mesh access modes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-install-ingress-service-mesh-access-mode/
 ---
 
 ## Installation with ingress controllers/service meshes

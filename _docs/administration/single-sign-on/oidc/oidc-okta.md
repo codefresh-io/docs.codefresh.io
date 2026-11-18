@@ -5,6 +5,7 @@ redirect_from:
   - /docs/enterprise/single-sign-on/sso-okta/
   - /docs/administration/single-sign-on/sso-okta/  
   - /docs/single-sign-on/oidc/oidc-okta/
+  - /gitops/administration/single-sign-on/oidc/oidc-okta/
 
 toc: true
 ---

@@ -3,6 +3,8 @@ title: "Environments dashboard"
 description: "Create environments to track SDLC for Argo CD applications"
 group: dashboards
 toc: true
+redirect_from:
+  - /gitops/dashboards/gitops-environments/
 ---
 
 >**Promotions has been disabled**  

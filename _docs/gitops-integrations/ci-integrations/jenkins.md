@@ -4,6 +4,8 @@ description: "Connect Jenkins pipelines with GitOps for enriched image data"
 group: gitops-integrations
 sub_group: ci-integrations
 toc: true
+redirect_from:
+  - /gitops/gitops-integrations/ci-integrations/jenkins/
 ---
 
 {% if page.collection == site.gitops_collection %}

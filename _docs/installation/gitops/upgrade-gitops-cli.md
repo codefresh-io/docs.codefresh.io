@@ -2,6 +2,8 @@
 title: "Download/upgrade GitOps CLI"
 description: "Have the latest version of the GitOps CLI"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/upgrade-gitops-cli/
 ---
 
 ## GitOps CLI

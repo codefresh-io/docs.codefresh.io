@@ -3,6 +3,8 @@ title: "About administration in Codefresh"
 description: "Add teams, users, configure access control, and SSO"
 group: administration
 toc: true
+redirect_from:
+  - /gitops/administration/administration-overview/
 ---
 
 

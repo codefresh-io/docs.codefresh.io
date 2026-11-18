@@ -7,6 +7,7 @@ redirect_from:
   - /docs/quick-start/gitops-quick-start/runtime/
   - /docs/gitops-quick-start/verify-requirements/
   - /docs/gitops-quick-start/runtime/
+  - /gitops/gitops-quick-start/quick-start-install-runtime/
 ---
 
 

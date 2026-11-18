@@ -1,1 +1,0 @@
-../../_docs/installation/gitops/monitor-runtimes.md

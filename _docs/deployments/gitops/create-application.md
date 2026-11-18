@@ -3,6 +3,8 @@ title: "Creating Argo CD applications"
 description: "Step-by-step instructions to create an Argo CD application in GitOps"
 group: deployments
 toc: true
+redirect_from:
+  - /gitops/applications/create-application/
 ---
 
 ## Codefresh GitOps & Argo CD applications 

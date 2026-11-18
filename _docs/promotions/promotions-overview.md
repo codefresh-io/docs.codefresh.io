@@ -3,6 +3,8 @@ title: "About promotions"
 description: "Explore the power of promotions in Codefresh GitOps for continuous delivery"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotions-overview/
 ---
 
 >**Promotions has been disabled**  

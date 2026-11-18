@@ -2,6 +2,8 @@
 title: "Runtime prerequisites"
 description: "Complete the prerequisites depending on your installation mode"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-prerequisites/
 ---
 
 Before installing GitOps Runtimes, ensure you meet the [system requirements]({{site.baseurl}}/docs/installation/gitops/runtime-system-requirements/), and complete the necessary prerequisites, which vary by installation mode.

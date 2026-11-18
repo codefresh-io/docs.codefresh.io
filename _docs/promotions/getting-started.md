@@ -3,6 +3,8 @@ title: "Getting started with promotions"
 description: "Quick links for all things promotions"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/getting-started/
 ---
 
 >**Promotions has been disabled**  

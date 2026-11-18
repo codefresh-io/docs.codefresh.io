@@ -2,6 +2,8 @@
 title: "Shared Configuration Repository"
 description: "Share configuration settings across GitOps Runtimes"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/shared-configuration/
 ---
 
 ## Shared Configuration Repository

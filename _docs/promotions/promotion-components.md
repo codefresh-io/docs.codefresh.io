@@ -3,6 +3,8 @@ title: "Promotion building blocks"
 description: "Explore entities and their roles in the promotion process"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-components/
 ---
 
 >**Promotions has been disabled**  

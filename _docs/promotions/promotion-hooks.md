@@ -3,6 +3,8 @@ title: "Configure hooks in Promotion Workflows"
 description: "Configure hooks to capture release- and environment-level events in promotion releases"
 group: promotions"
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-hooks/
 ---
 
 >**Promotions has been disabled**  

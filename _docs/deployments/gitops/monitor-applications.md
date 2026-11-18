@@ -4,6 +4,7 @@ description: "Deep dive to monitoring applications and resources"
 group: deployments
 redirect_from:
   - /docs/deployments/gitops/applications-dashboard/
+  - /gitops/applications/monitor-applications/
 toc: true
 ---
 

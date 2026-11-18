@@ -1,1 +1,0 @@
-../../../_docs/gitops-integrations/container-registries/jfrog.md

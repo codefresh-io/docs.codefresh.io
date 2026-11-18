@@ -1,1 +1,0 @@
-../../_docs/gitops-quick-start/multi-env-sequential-flow.md

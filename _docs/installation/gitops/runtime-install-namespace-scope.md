@@ -2,6 +2,8 @@
 title: "Install GitOps Runtime in a Kubernetes namespace scope"
 description: "Provision GitOps Runtimes with a new Argo CD installation in a dedicated Kubernetes namespace scope"
 toc: true
+redirect_from:
+  - /gitops/gitops-runtimes/runtime-install-namespace-scope/
 ---
 
 # Install a GitOps Runtime in a Namespace

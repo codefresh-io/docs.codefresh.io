@@ -1,1 +1,0 @@
-../../_docs/deployments/gitops/gitops-app-groups.md

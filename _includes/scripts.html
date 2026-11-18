@@ -1,9 +1,6 @@
 <script>
   const SITE_BASE_URL = "{{ site.baseurl }}";
-  const SITE_GITOPS_COLLECTION = "{{ site.gitops_collection }}";
-  const SITE_IS_GITOPS_COLLECTION = "{{ page.collection }}" === "{{ site.gitops_collection }}";
 </script>
-<script src="{{ site.baseurl }}/assets/js/argohub-redirect/argohub-redirect.min.js"></script>
 
 
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
@@ -100,7 +97,7 @@
     // Set content segment based on system type
     function setContentSegmentation() {
       const identify = new window.amplitude.Identify();
-      const segment = IS_GITOPS_DOC_COOKIE_SET ? 'gitOpsCloud' : 'enterprise';
+      const segment = 'enterprise';
       identify.set('segment', segment);
       window.amplitude.identify(identify);
     }

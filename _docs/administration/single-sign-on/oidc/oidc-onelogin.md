@@ -4,6 +4,7 @@ description: "Set up OneLogin SSO for OIDC "
 redirect_from:
   - /docs/enterprise/single-sign-on/sso-onelogin/
   - /docs/single-sign-on/oidc/oidc-onelogin/
+  - /gitops/administration/single-sign-on/oidc/oidc-onelogin/
 toc: true
 ---
 

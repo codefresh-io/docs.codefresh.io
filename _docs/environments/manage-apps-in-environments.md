@@ -3,6 +3,8 @@ title: "Manage products and applications in environments"
 description: "Work with products and applications in the Environments dashboard"
 group: environments
 toc: true
+redirect_from:
+  - /gitops/environments/manage-apps-in-environments/
 ---
 
 >**Promotions has been disabled**  

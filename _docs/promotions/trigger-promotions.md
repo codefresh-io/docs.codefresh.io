@@ -3,6 +3,8 @@ title: "Triggering promotions"
 description: "Explore ways to trigger promotions manually based on deployment requirements"
 group: promotions
 toc: true
+redirect_from:
+  - /gitops/promotions/trigger-promotions/
 ---
 
 >**Promotions has been disabled**  

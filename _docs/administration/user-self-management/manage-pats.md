@@ -3,6 +3,8 @@ title: "Managing Git PATs"
 description: "Generate, assign, and manage Git user tokens for GitOps Runtimes"
 group: administration
 toc: true
+redirect_from:
+  - /gitops/administration/user-self-management/manage-pats/
 ---
 
 ## Git user token management

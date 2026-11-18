@@ -3,6 +3,7 @@ title: "Managing GitOps Runtimes"
 description: "Options to manage your GitOps Runtimes"
 redirect_from:
   - /docs/installation/gitops/monitor-manage-runtimes.md
+  - /gitops/gitops-runtimes/manage-runtimes/
 toc: true
 ---
 

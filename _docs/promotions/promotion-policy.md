@@ -6,6 +6,8 @@ redirect-from:
  - /docs/promotions/configuration/
  - /docs/promotions/entities/promotion-policy/
 toc: true
+redirect_from:
+  - /gitops/promotions/promotion-policy/
 ---
 
 >**Promotions has been disabled**  

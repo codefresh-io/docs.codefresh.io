@@ -3,6 +3,8 @@ title: "Account and user management"
 description: "Add teams, users, and configure access control"
 group: administration
 toc: true
+redirect_from:
+  - /gitops/administration/account-user-management/
 ---
 
 Codefresh has comprehensive support for all aspects of administration for organizations<!---in both on-premises and SaaS environments-->.  

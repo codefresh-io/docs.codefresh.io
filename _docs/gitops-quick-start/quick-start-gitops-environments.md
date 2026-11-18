@@ -3,6 +3,8 @@ title: "Quick start: Creating environments"
 description: "Explore how environments empower application promotion and deployment"
 group: gitops-quick-start
 toc: true
+redirect_from:
+  - /gitops/gitops-quick-start/quick-start-gitops-environments/
 ---
 
 
