@@ -1,0 +1,26 @@
+_docs/kb/articles/reattaching-classic-runner.md
+  s_4f89ac308e8365::t_afa5226c9047ac 16,22,25,27-30,32-34,37-39,43-44
+  s_4f89ac308e8365::t_c1b2e6dc9af00e 20,24,26
+  s_4f89ac308e8365::t_e7c5b414f9ebf9 45
+_docs/installation/runner/install-codefresh-runner.md
+  s_4f89ac308e8365::t_fb0dd4a769e764 21
+  s_4f89ac308e8365::t_d3354a72542d44 402-416
+_docs/kb/articles/monitor-pod-crashloopbackoff.md
+  s_4f89ac308e8365::t_c3c53e17ed86e8 33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fb7eed8a93e9d0fd0bd883075160e3e77e35a8a4",
+  "prompts": {},
+  "sessions": {
+    "s_4f89ac308e8365": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cac92cc2-a393-4085-8cf4-47379eb345ad",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Bohdan Pysarenko <bohdan.pisarenko@octopus.com>"
+    }
+  }
+}
