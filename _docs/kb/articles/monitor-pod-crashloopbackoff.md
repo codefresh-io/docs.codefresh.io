@@ -30,10 +30,7 @@ Most likely the API token that is used in the Monitor deployment is not valid. P
 
 ## Solution
 
-To correct this you can edit the `monitor` deployment and modify the `API_TOKEN` variable at `.spec.containers[].env` with a new token :
-
-```shell
-kubectl edit deploy -n <runner_namespace> monitor
-```
+The Monitor uses the API token from the `cf-runtime` Helm chart values. To correct this, set a new token in `global.codefreshToken`, or in the secret referenced by `global.codefreshTokenSecretKeyRef`, and then run `helm upgrade` for the `cf-runtime` release.  
+See [Codefresh Runner installation]({{site.baseurl}}/docs/installation/runner/install-codefresh-runner/) and the [chart values](https://artifacthub.io/packages/helm/codefresh-runner/cf-runtime#values){:target="\_blank"}.
 
 The token can be generated in your [User Settings](https://g.codefresh.io/user/settings%C2%A0) with the **General** scope in it.

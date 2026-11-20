@@ -90,7 +90,6 @@ Codefresh can automatically export secret key-value pairs using the Vault plugin
 
 - [Vault secrets in the Pipeline]({{site.baseurl}}/docs/example-catalog/ci-examples/vault-secrets-in-the-pipeline/)
 - [Decryption with Mozilla SOPS]({{site.baseurl}}/docs/example-catalog/ci-examples/decryption-with-mozilla-sops/)
-- [GitOps with Bitnami sealed secrets]({{site.baseurl}}/docs/example-catalog/cd-examples/gitops-secrets/)
 
 ### Notification examples
 
