@@ -162,8 +162,6 @@
       localurl: /docs/integrations/cloud-storage/
     - title: Helm
       localurl: /docs/integrations/helm/
-    - title: Argo CD
-      localurl: /docs/integrations/argocd/
     - title: Datadog
       localurl: /docs/integrations/datadog/
     - title: Jenkins integration/migration
